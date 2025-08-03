@@ -22,19 +22,21 @@ repository               : "weiannlin/weiannlin.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.jpg"
   name             : "Wei-Ann Lin (林蔚安)"
   pronouns         : # example: "she/her"  
-  bio              : "Assistant Professor, Department of Mathematics."
+  bio              : |
+    Assistant Professor,<br>
+    Department of Mathematics.
   location         : "Taoyuan city"
   employer         : "National Central University"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "walin@math.ncu.edu.tw"
 
   # Academic websites
   academia         : # URL
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+  googlescholar    : "https://scholar.google.com/citations?user=xYpglRYAAAAJ"
   impactstory      : # URL
   orcid            : # "http://orcid.org/yourorcidurl"
   semantic         : # URL
@@ -227,6 +229,9 @@ collections:
   talks:
     output: true
     permalink: /:collection/:path/
+  biography:
+    output: true
+    permalink: /:collection/:path/
 
 
 # These settings control how pages and collections are included in the site
@@ -267,10 +272,10 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _portfolio
+  # _biography
   - scope:
       path: ""
-      type: portfolio
+      type: biography
     values:
       layout: single
       author_profile: true
@@ -284,6 +289,7 @@ defaults:
       layout: talk
       author_profile: true
       share: true
+
 
 
 # Sass/SCSS
