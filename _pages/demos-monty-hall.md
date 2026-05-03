@@ -55,7 +55,13 @@ author_profile: true
 
 Behind one of three doors is a car. Behind the other two are goats. You pick a door. The host — who knows where the car is — opens one of the remaining doors to reveal a goat, then offers you the chance to switch. **Should you?**
 
-The classical answer is yes: switching wins with probability 2/3, while staying wins only 1/3. Most people find this counterintuitive on first encounter. The game below lets you build intuition by playing; the simulator below that lets you watch the proportion converge.
+The classical answer is **yes**: switching wins with probability 2/3, while staying wins only 1/3.
+
+## Where it comes from
+
+The puzzle takes its name from **Monty Hall**, longtime host of the American game show *Let's Make a Deal* (premiered 1963), where contestants chose among curtained options for prizes ranging from a new car to a stuffed donkey. Steve Selvin first posed the puzzle in this exact form in a 1975 letter to *The American Statistician*, but it became a cultural flash-point in September 1990 when **Marilyn vos Savant** gave the correct "switch" answer in her *Parade* magazine column. Roughly **ten thousand readers** wrote in to tell her she was wrong, including about a thousand from people with PhDs in mathematics. The number theorist **Paul Erdős** reportedly held out against the result until a colleague ran a computer simulation in front of him.
+
+The intuition is genuinely hard. The game below lets you play your way to it; if the math at the end still doesn't land, do what convinced Erdős — scroll down to the simulator and watch the empirical fraction converge.
 
 ## Play
 
