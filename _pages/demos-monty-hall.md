@@ -237,8 +237,17 @@ $$P(\text{win} \mid \text{switch}) = 0 \cdot \frac{1}{N} + 1 \cdot \frac{N-1}{N}
     const svg = $('mh-chart');
     const placeholder = $('mh-chart-placeholder');
     const caption = $('mh-chart-caption');
+
+    // Adapt axis density + font for narrow screens (phones).
+    const narrow = window.innerWidth < 480;
     const W = 600, H = 260;
-    const M = { l: 46, r: 14, t: 12, b: 32 };
+    const M = narrow
+      ? { l: 56, r: 14, t: 14, b: 44 }
+      : { l: 46, r: 14, t: 12, b: 32 };
+    const fontSize = narrow ? 18 : 13;
+    const yTicks = narrow ? [0, 0.5, 1] : [0, 0.25, 0.5, 0.75, 1];
+    const xFracs = narrow ? [0, 0.5, 1] : [0, 0.25, 0.5, 0.75, 1];
+
     const innerW = W - M.l - M.r, innerH = H - M.t - M.b;
     const N = running.length;
     const x = i => M.l + (i / Math.max(1, N - 1)) * innerW;
@@ -260,28 +269,28 @@ $$P(\text{win} \mid \text{switch}) = 0 \cdot \frac{1}{N} + 1 \cdot \frac{N-1}{N}
     let s = '';
     // background grid + axes
     s += `<rect x="${M.l}" y="${M.t}" width="${innerW}" height="${innerH}" fill="none" stroke="currentColor" stroke-opacity="0.25"/>`;
-    for (const v of [0, 0.25, 0.5, 0.75, 1]) {
+    for (const v of yTicks) {
       s += `<line x1="${M.l}" y1="${y(v).toFixed(1)}" x2="${M.l + innerW}" y2="${y(v).toFixed(1)}" stroke="currentColor" stroke-opacity="0.1"/>`;
-      s += `<text x="${M.l - 6}" y="${(y(v) + 4).toFixed(1)}" text-anchor="end" fill="currentColor" font-size="13" opacity="0.75">${v}</text>`;
+      s += `<text x="${M.l - 6}" y="${(y(v) + 4).toFixed(1)}" text-anchor="end" fill="currentColor" font-size="${fontSize}" opacity="0.75">${v}</text>`;
     }
-    for (const f of [0, 0.25, 0.5, 0.75, 1]) {
+    for (const f of xFracs) {
       const xi = Math.round(f * (N - 1));
       const xp = x(xi);
-      s += `<text x="${xp.toFixed(1)}" y="${(M.t + innerH + 18).toFixed(1)}" text-anchor="middle" fill="currentColor" font-size="13" opacity="0.75">${xi.toLocaleString()}</text>`;
+      s += `<text x="${xp.toFixed(1)}" y="${(M.t + innerH + fontSize + 5).toFixed(1)}" text-anchor="middle" fill="currentColor" font-size="${fontSize}" opacity="0.75">${xi.toLocaleString()}</text>`;
     }
-    // axis titles
-    s += `<text x="${(M.l + innerW / 2).toFixed(1)}" y="${H - 4}" text-anchor="middle" fill="currentColor" font-size="13" opacity="0.7">round</text>`;
+    // axis title
+    s += `<text x="${(M.l + innerW / 2).toFixed(1)}" y="${H - 4}" text-anchor="middle" fill="currentColor" font-size="${fontSize}" opacity="0.7">round</text>`;
 
     // theoretical line (dashed)
     s += `<line x1="${M.l}" y1="${y(theo).toFixed(1)}" x2="${M.l + innerW}" y2="${y(theo).toFixed(1)}" stroke="#2a7ae2" stroke-opacity="0.55" stroke-dasharray="5,4" stroke-width="1"/>`;
-    s += `<text x="${(M.l + innerW - 4).toFixed(1)}" y="${(y(theo) - 4).toFixed(1)}" text-anchor="end" fill="#2a7ae2" font-size="13" opacity="0.85">theoretical = ${theo.toFixed(3)}</text>`;
+    s += `<text x="${(M.l + innerW - 4).toFixed(1)}" y="${(y(theo) - 4).toFixed(1)}" text-anchor="end" fill="#2a7ae2" font-size="${fontSize}" opacity="0.85">theoretical = ${theo.toFixed(3)}</text>`;
 
     // running-mean path
     let d = '';
     for (let i = 0; i < pts.length; i++) {
       d += (i === 0 ? 'M' : 'L') + x(pts[i][0]).toFixed(2) + ',' + y(pts[i][1]).toFixed(2);
     }
-    s += `<path d="${d}" fill="none" stroke="#2a7ae2" stroke-width="1.5"/>`;
+    s += `<path d="${d}" fill="none" stroke="#2a7ae2" stroke-width="2.5"/>`;
 
     svg.innerHTML = s;
     svg.style.display = 'block';
