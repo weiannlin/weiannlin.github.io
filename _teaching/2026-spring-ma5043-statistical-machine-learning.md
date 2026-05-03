@@ -4,7 +4,7 @@ collection: teaching
 type: "Graduate course"
 permalink: /teaching/2026-spring-ma5043-statistical-machine-learning/
 venue: "Department of Mathematics, National Central University"
-date: 2026-02-17
+date: 2026-02-18
 location: "Taoyuan, Taiwan"
 ---
 
