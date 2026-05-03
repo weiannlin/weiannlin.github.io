@@ -50,7 +50,14 @@ author_profile: true
     padding: 0.75rem; opacity: 0.6; font-style: italic;
     border: 1px dashed currentColor; border-radius: 4px;
   }
-  .mh-chart-caption { margin-top: 0.4rem; font-size: 0.9rem; opacity: 0.85; }
+  .mh-chart-caption { margin-top: 0.4rem; font-size: 0.9rem; opacity: 0.85; text-align: left; }
+
+  /* centering for game + simulator widgets (titles/prose stay left) */
+  .mh-section { text-align: center; }
+  .mh-doors { justify-content: center; }
+  .mh-tally { justify-content: center; max-width: 480px; margin-inline: auto; }
+  .mh-sim-result { max-width: 520px; margin-inline: auto; text-align: left; }
+  .mh-chart-wrap { margin-inline: auto; }
 </style>
 
 Behind one of three doors is a car. Behind the other two are goats. You pick a door. The host — who knows where the car is — opens one of the remaining doors to reveal a goat, then offers you the chance to switch. **Should you?**
@@ -115,6 +122,23 @@ The classical 3-door setup generalizes: with $N$ doors, after the host opens $N-
 Your initial pick has probability $1/N$ of being the car, so the other $N-1$ doors collectively share probability $(N-1)/N$. The host then eliminates $N-2$ of those goat-doors — but crucially, never the car-door. All of that $(N-1)/N$ probability mass collapses onto the single unopened door that isn't yours. Switching takes that mass; staying keeps your original $1/N$.
 
 The host's knowledge is what makes the puzzle work. If the host opened a remaining door at random (sometimes revealing the car, ending the game), the conditional probabilities would be different.
+
+## Two ideas at work
+
+Beyond the answer, two foundational probability ideas show up clearly here.
+
+**1. Conditional probability and the law of total probability.** Two random things happen: which door you initially pick, and whether your strategy wins given that pick. The conditional structure between them is the whole story. Under "switch":
+
+- Initial pick is the car, with probability $1/N$. Switching lands on a goat, so the conditional win probability is $0$.
+- Initial pick is a goat, with probability $(N-1)/N$. The host has eliminated all other goats among the remaining doors, so the unique unopened non-pick must be the car. Switching lands on it, with conditional win probability $1$.
+
+Combining via the law of total probability,
+
+$$P(\text{win} \mid \text{switch}) = 0 \cdot \frac{1}{N} + 1 \cdot \frac{N-1}{N} = \frac{N-1}{N}.$$
+
+"Stay" reverses the conditional probabilities and lands at $1/N$. A good strategy isn't about being lucky on the first event — it's about converting first-event outcomes into second-event wins as efficiently as possible.
+
+**2. The law of large numbers.** Each round of the simulator is an i.i.d. Bernoulli trial: $X_r = 1$ if the strategy wins on round $r$, otherwise $X_r = 0$, with $\mathbb{E}[X_r] = P(\text{win} \mid \text{strategy})$. The running curve in the chart is the sample mean $\bar{X}_R = \frac{1}{R} \sum_{r=1}^{R} X_r$. The law of large numbers guarantees $\bar{X}_R \to P(\text{win})$ as $R \to \infty$, and the fluctuation around the limit shrinks at rate $1/\sqrt{R}$, the standard error of a binomial fraction. Early rounds therefore swing wildly while the line eventually settles onto the dashed theoretical reference.
 
 <script>
 (function() {
@@ -238,19 +262,19 @@ The host's knowledge is what makes the puzzle work. If the host opened a remaini
     s += `<rect x="${M.l}" y="${M.t}" width="${innerW}" height="${innerH}" fill="none" stroke="currentColor" stroke-opacity="0.25"/>`;
     for (const v of [0, 0.25, 0.5, 0.75, 1]) {
       s += `<line x1="${M.l}" y1="${y(v).toFixed(1)}" x2="${M.l + innerW}" y2="${y(v).toFixed(1)}" stroke="currentColor" stroke-opacity="0.1"/>`;
-      s += `<text x="${M.l - 6}" y="${(y(v) + 4).toFixed(1)}" text-anchor="end" fill="currentColor" font-size="11" opacity="0.75">${v}</text>`;
+      s += `<text x="${M.l - 6}" y="${(y(v) + 4).toFixed(1)}" text-anchor="end" fill="currentColor" font-size="13" opacity="0.75">${v}</text>`;
     }
     for (const f of [0, 0.25, 0.5, 0.75, 1]) {
       const xi = Math.round(f * (N - 1));
       const xp = x(xi);
-      s += `<text x="${xp.toFixed(1)}" y="${(M.t + innerH + 18).toFixed(1)}" text-anchor="middle" fill="currentColor" font-size="11" opacity="0.75">${xi.toLocaleString()}</text>`;
+      s += `<text x="${xp.toFixed(1)}" y="${(M.t + innerH + 18).toFixed(1)}" text-anchor="middle" fill="currentColor" font-size="13" opacity="0.75">${xi.toLocaleString()}</text>`;
     }
     // axis titles
-    s += `<text x="${(M.l + innerW / 2).toFixed(1)}" y="${H - 4}" text-anchor="middle" fill="currentColor" font-size="11" opacity="0.7">round</text>`;
+    s += `<text x="${(M.l + innerW / 2).toFixed(1)}" y="${H - 4}" text-anchor="middle" fill="currentColor" font-size="13" opacity="0.7">round</text>`;
 
     // theoretical line (dashed)
     s += `<line x1="${M.l}" y1="${y(theo).toFixed(1)}" x2="${M.l + innerW}" y2="${y(theo).toFixed(1)}" stroke="#2a7ae2" stroke-opacity="0.55" stroke-dasharray="5,4" stroke-width="1"/>`;
-    s += `<text x="${(M.l + innerW - 4).toFixed(1)}" y="${(y(theo) - 4).toFixed(1)}" text-anchor="end" fill="#2a7ae2" font-size="11" opacity="0.85">theoretical = ${theo.toFixed(3)}</text>`;
+    s += `<text x="${(M.l + innerW - 4).toFixed(1)}" y="${(y(theo) - 4).toFixed(1)}" text-anchor="end" fill="#2a7ae2" font-size="13" opacity="0.85">theoretical = ${theo.toFixed(3)}</text>`;
 
     // running-mean path
     let d = '';
