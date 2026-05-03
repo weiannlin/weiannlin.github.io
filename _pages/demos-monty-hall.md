@@ -44,6 +44,13 @@ author_profile: true
   }
   .mh-sim-result strong { font-size: 1.2rem; color: #2a7ae2; }
   .mh-sim-result .theo { opacity: 0.7; font-size: 0.9rem; }
+  .mh-chart-wrap { margin-top: 1rem; max-width: 720px; }
+  .mh-chart-wrap svg { width: 100%; height: auto; display: block; }
+  .mh-chart-placeholder {
+    padding: 0.75rem; opacity: 0.6; font-style: italic;
+    border: 1px dashed currentColor; border-radius: 4px;
+  }
+  .mh-chart-caption { margin-top: 0.4rem; font-size: 0.9rem; opacity: 0.85; }
 </style>
 
 Behind one of three doors is a car. Behind the other two are goats. You pick a door. The host — who knows where the car is — opens one of the remaining doors to reveal a goat, then offers you the chance to switch. **Should you?**
@@ -87,6 +94,13 @@ The classical 3-door setup generalizes: with $N$ doors, after the host opens $N-
   <div class="mh-sim-result">
     Empirical $\hat{P}(\mathrm{win}) = $ <strong id="mh-prob">—</strong>
     <span class="theo">vs theoretical <span id="mh-theo">—</span></span>
+  </div>
+  <div class="mh-chart-wrap">
+    <div class="mh-chart-placeholder" id="mh-chart-placeholder">Run a simulation to see the running mean over rounds.</div>
+    <svg id="mh-chart" viewBox="0 0 600 260" preserveAspectRatio="xMidYMid meet" style="display:none;"></svg>
+    <div class="mh-chart-caption" id="mh-chart-caption" hidden>
+      Running mean of $\hat{P}(\mathrm{win})$ vs round index. Early rounds swing widely — the standard error of a fraction shrinks like $1/\sqrt{R}$, so concentration on the theoretical value (dashed) only kicks in once $R$ is large.
+    </div>
   </div>
 </div>
 
@@ -172,18 +186,79 @@ The host's knowledge is what makes the puzzle work. If the host opened a remaini
     const N = Math.max(3, Math.min(1000, parseInt($('mh-doors').value, 10) || 3));
     const R = Math.max(100, Math.min(1000000, parseInt($('mh-rounds').value, 10) || 10000));
     let wins = 0;
+    // Track the running mean at every round so we can visualize convergence.
     // Equivalent reasoning: with host opening all but one of the non-picked doors
     // (and never the car), switching wins iff car !== initial pick.
+    const running = new Float32Array(R);
     for (let r = 0; r < R; r++) {
       const car = Math.floor(Math.random() * N);
       const pick = Math.floor(Math.random() * N);
       const won = (strat === 'switch') ? (car !== pick) : (car === pick);
       if (won) wins++;
+      running[r] = wins / (r + 1);
     }
     $('mh-prob').textContent = (wins / R).toFixed(4);
     const theo = (strat === 'switch') ? (N - 1) / N : 1 / N;
     $('mh-theo').textContent = theo.toFixed(4);
+    drawChart(running, theo);
   }
+
+  function drawChart(running, theo) {
+    const svg = $('mh-chart');
+    const placeholder = $('mh-chart-placeholder');
+    const caption = $('mh-chart-caption');
+    const W = 600, H = 260;
+    const M = { l: 46, r: 14, t: 12, b: 32 };
+    const innerW = W - M.l - M.r, innerH = H - M.t - M.b;
+    const N = running.length;
+    const x = i => M.l + (i / Math.max(1, N - 1)) * innerW;
+    const y = v => M.t + (1 - v) * innerH;
+
+    // Downsample to ~600 points if R is very large (keeps SVG light + smooth).
+    const TARGET = 600;
+    let pts;
+    if (N <= TARGET) {
+      pts = [];
+      for (let i = 0; i < N; i++) pts.push([i, running[i]]);
+    } else {
+      const step = Math.ceil(N / TARGET);
+      pts = [];
+      for (let i = 0; i < N; i += step) pts.push([i, running[i]]);
+      if (pts[pts.length - 1][0] !== N - 1) pts.push([N - 1, running[N - 1]]);
+    }
+
+    let s = '';
+    // background grid + axes
+    s += `<rect x="${M.l}" y="${M.t}" width="${innerW}" height="${innerH}" fill="none" stroke="currentColor" stroke-opacity="0.25"/>`;
+    for (const v of [0, 0.25, 0.5, 0.75, 1]) {
+      s += `<line x1="${M.l}" y1="${y(v).toFixed(1)}" x2="${M.l + innerW}" y2="${y(v).toFixed(1)}" stroke="currentColor" stroke-opacity="0.1"/>`;
+      s += `<text x="${M.l - 6}" y="${(y(v) + 4).toFixed(1)}" text-anchor="end" fill="currentColor" font-size="11" opacity="0.75">${v}</text>`;
+    }
+    for (const f of [0, 0.25, 0.5, 0.75, 1]) {
+      const xi = Math.round(f * (N - 1));
+      const xp = x(xi);
+      s += `<text x="${xp.toFixed(1)}" y="${(M.t + innerH + 18).toFixed(1)}" text-anchor="middle" fill="currentColor" font-size="11" opacity="0.75">${xi.toLocaleString()}</text>`;
+    }
+    // axis titles
+    s += `<text x="${(M.l + innerW / 2).toFixed(1)}" y="${H - 4}" text-anchor="middle" fill="currentColor" font-size="11" opacity="0.7">round</text>`;
+
+    // theoretical line (dashed)
+    s += `<line x1="${M.l}" y1="${y(theo).toFixed(1)}" x2="${M.l + innerW}" y2="${y(theo).toFixed(1)}" stroke="#2a7ae2" stroke-opacity="0.55" stroke-dasharray="5,4" stroke-width="1"/>`;
+    s += `<text x="${(M.l + innerW - 4).toFixed(1)}" y="${(y(theo) - 4).toFixed(1)}" text-anchor="end" fill="#2a7ae2" font-size="11" opacity="0.85">theoretical = ${theo.toFixed(3)}</text>`;
+
+    // running-mean path
+    let d = '';
+    for (let i = 0; i < pts.length; i++) {
+      d += (i === 0 ? 'M' : 'L') + x(pts[i][0]).toFixed(2) + ',' + y(pts[i][1]).toFixed(2);
+    }
+    s += `<path d="${d}" fill="none" stroke="#2a7ae2" stroke-width="1.5"/>`;
+
+    svg.innerHTML = s;
+    svg.style.display = 'block';
+    placeholder.style.display = 'none';
+    caption.hidden = false;
+  }
+
   $('mh-run').addEventListener('click', simulate);
 })();
 </script>
