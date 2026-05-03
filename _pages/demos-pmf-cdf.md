@@ -214,7 +214,8 @@ The next demo will replace the discrete spikes with a smooth density (PDF). The 
     const { lo, hi } = axisRange();
     const totalP = points.reduce((s,p) => s + (p.p > 0 ? p.p : 0), 0);
     const yMax = Math.max(1.05, totalP * 1.1);
-    const yTicks = (yMax <= 1.05) ? [0, 0.25, 0.5, 0.75, 1] : [0, yMax/2, yMax];
+    /* y-axis numeric labels always cap at 1.0 even if curve overshoots — 1 is the meaningful probability ceiling. */
+    const yTicks = [0, 0.25, 0.5, 0.75, 1];
     let s = drawAxes(lo, hi, yMax, 'F(x)', yTicks);
 
     let cumPts = [[lo, 0]];
@@ -226,32 +227,40 @@ The next demo will replace the discrete spikes with a smooth density (PDF). The 
     }
     cumPts.push([hi, acc]);
 
+    /* Draw step curve segment by segment. Horizontal segments are solid, blue
+       when entirely to the left of currentX (split at currentX if straddling),
+       gray otherwise. Vertical jumps are dashed (signal: not part of the
+       function's graph between levels) and colored the same way. */
+    for (let i = 0; i < cumPts.length - 1; i++) {
+      const [ax, ay] = cumPts[i];
+      const [bx, by] = cumPts[i + 1];
+      const isVertical = (ax === bx);
+      if (isVertical) {
+        const inLeft = ax <= currentX;
+        const color = inLeft ? '#2a7ae2' : '#888';
+        const opacity = inLeft ? 1 : 0.5;
+        const xPx = xScale(lo, hi, ax);
+        s += '<line x1="'+xPx.toFixed(1)+'" y1="'+yScale(yMax, ay).toFixed(1)+'" x2="'+xPx.toFixed(1)+'" y2="'+yScale(yMax, by).toFixed(1)+'" stroke="'+color+'" stroke-width="2" stroke-dasharray="3,3" opacity="'+opacity+'"/>';
+      } else {
+        const yPx = yScale(yMax, ay);
+        const x1 = xScale(lo, hi, ax);
+        const x2 = xScale(lo, hi, bx);
+        if (bx <= currentX) {
+          s += '<line x1="'+x1.toFixed(1)+'" y1="'+yPx.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+yPx.toFixed(1)+'" stroke="#2a7ae2" stroke-width="2"/>';
+        } else if (ax >= currentX) {
+          s += '<line x1="'+x1.toFixed(1)+'" y1="'+yPx.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+yPx.toFixed(1)+'" stroke="#888" stroke-width="2" opacity="0.5"/>';
+        } else {
+          const xc = xScale(lo, hi, currentX);
+          s += '<line x1="'+x1.toFixed(1)+'" y1="'+yPx.toFixed(1)+'" x2="'+xc.toFixed(1)+'" y2="'+yPx.toFixed(1)+'" stroke="#2a7ae2" stroke-width="2"/>';
+          s += '<line x1="'+xc.toFixed(1)+'" y1="'+yPx.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+yPx.toFixed(1)+'" stroke="#888" stroke-width="2" opacity="0.5"/>';
+        }
+      }
+    }
+
+    /* current x marker, horizontal hint to dot, dot */
     const cxPx = xScale(lo, hi, currentX);
     const cumAtCurrent = cumValue(currentX);
     const cyPx = yScale(yMax, cumAtCurrent);
-    const baseY = yScale(yMax, 0);
-
-    /* shaded area under curve up to currentX */
-    let fill = 'M ' + xScale(lo, hi, lo).toFixed(1) + ' ' + baseY.toFixed(1);
-    let stopped = false;
-    for (let i = 0; i < cumPts.length; i++) {
-      const [px, py] = cumPts[i];
-      if (px > currentX) { stopped = true; break; }
-      fill += ' L ' + xScale(lo, hi, px).toFixed(1) + ' ' + yScale(yMax, py).toFixed(1);
-    }
-    if (stopped) fill += ' L ' + cxPx.toFixed(1) + ' ' + cyPx.toFixed(1);
-    fill += ' L ' + cxPx.toFixed(1) + ' ' + baseY.toFixed(1) + ' Z';
-    s += '<path d="'+fill+'" fill="#2a7ae2" fill-opacity="0.2"/>';
-
-    /* full step curve */
-    let line = 'M ' + xScale(lo, hi, cumPts[0][0]).toFixed(1) + ' ' + yScale(yMax, cumPts[0][1]).toFixed(1);
-    for (let i = 1; i < cumPts.length; i++) {
-      const [px, py] = cumPts[i];
-      line += ' L ' + xScale(lo, hi, px).toFixed(1) + ' ' + yScale(yMax, py).toFixed(1);
-    }
-    s += '<path d="'+line+'" fill="none" stroke="#2a7ae2" stroke-width="2"/>';
-
-    /* current x marker, horizontal hint, dot */
     s += '<line x1="'+cxPx+'" y1="'+M.t+'" x2="'+cxPx+'" y2="'+(M.t+innerH)+'" stroke="currentColor" stroke-opacity="0.5" stroke-dasharray="4,3"/>';
     s += '<line x1="'+M.l+'" y1="'+cyPx+'" x2="'+cxPx+'" y2="'+cyPx+'" stroke="#2a7ae2" stroke-opacity="0.4" stroke-dasharray="2,3"/>';
     s += '<circle cx="'+cxPx+'" cy="'+cyPx+'" r="5" fill="#2a7ae2"/>';
