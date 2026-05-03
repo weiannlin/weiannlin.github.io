@@ -92,6 +92,8 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The blue a
         <option value="uniform">Uniform</option>
         <option value="exponential">Exponential</option>
         <option value="beta">Beta</option>
+        <option value="cauchy">Cauchy</option>
+        <option value="logistic">Logistic</option>
       </select>
     </label>
   </div>
@@ -214,6 +216,31 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The blue a
         return sum * dt;
       },
       range: () => [-0.05, 1.05],
+    },
+    cauchy: {
+      name: 'Cauchy',
+      params: [
+        { key: 'x0',    label: 'x₀', min: -3, max: 3, step: 0.05, def: 0 },
+        { key: 'gamma', label: 'γ',  min: 0.2, max: 3, step: 0.05, def: 1 },
+      ],
+      pdf: (x, p) => 1 / (Math.PI * p.gamma * (1 + ((x - p.x0) / p.gamma) ** 2)),
+      cdf: (x, p) => 0.5 + Math.atan((x - p.x0) / p.gamma) / Math.PI,
+      /* ±15γ captures only ~96% — Cauchy's tails are genuinely fat; the readout will reflect this. */
+      range: (p) => [p.x0 - 15 * p.gamma, p.x0 + 15 * p.gamma],
+    },
+    logistic: {
+      name: 'Logistic',
+      params: [
+        { key: 'mu', label: 'μ', min: -3, max: 3, step: 0.05, def: 0 },
+        { key: 's',  label: 's', min: 0.2, max: 3, step: 0.05, def: 1 },
+      ],
+      pdf: (x, p) => {
+        const z = (x - p.mu) / p.s;
+        const e = Math.exp(-z);
+        return e / (p.s * (1 + e) * (1 + e));
+      },
+      cdf: (x, p) => 1 / (1 + Math.exp(-(x - p.mu) / p.s)),
+      range: (p) => [p.mu - 10 * p.s, p.mu + 10 * p.s],
     },
   };
 
