@@ -28,9 +28,11 @@ author_profile: true
   }
   .pc-sum { margin-top: 0.4rem; opacity: 0.8; font-size: 0.92rem; }
   .pc-sum.warn { color: #c0392b; opacity: 1; }
-  .pc-slider-wrap { margin: 1rem auto; max-width: 600px; }
+  .pc-slider-wrap { margin: 1rem auto; max-width: 720px; }
   .pc-slider-wrap label { display: block; margin-bottom: 0.25rem; font-size: 0.95rem; text-align: center; }
-  .pc-slider-wrap input[type=range] { width: 100%; }
+  /* Track area padding mirrors the SVG plot-area margins (M.l=50, M.r=14, W=600 → 8.333% left, 2.333% right) so the slider thumb center aligns horizontally with the dashed current-x line in the charts. */
+  .pc-slider-track-area { padding-left: 8.333%; padding-right: 2.333%; box-sizing: border-box; }
+  .pc-slider-wrap input[type=range] { width: 100%; display: block; }
   .pc-charts { max-width: 720px; margin-inline: auto; }
   .pc-charts svg { width: 100%; height: auto; display: block; margin-bottom: 0.4rem; }
   .pc-readout {
@@ -55,7 +57,9 @@ Below, you can build your own PMF by editing the $(x, p)$ table. The slider swee
 
 <div class="pc-slider-wrap">
   <label>Current $x$ = <strong id="pc-x-val">—</strong></label>
-  <input type="range" id="pc-x" min="0" max="6" step="0.01" value="3">
+  <div class="pc-slider-track-area">
+    <input type="range" id="pc-x" min="0" max="6" step="0.01" value="3">
+  </div>
 </div>
 
 <div class="pc-charts">
