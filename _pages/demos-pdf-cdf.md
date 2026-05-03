@@ -22,6 +22,7 @@ author_profile: true
   }
   .dc-param-label { display: block; font-size: 0.92rem; margin-bottom: 0.2rem; }
   .dc-param-label strong { color: #2a7ae2; }
+  .dc-area { margin-top: 0.6rem; opacity: 0.8; font-size: 0.92rem; }
   .dc-slider-wrap { margin: 1rem auto; max-width: 720px; }
   .dc-slider-wrap label { display: block; margin-bottom: 0.4rem; font-size: 0.95rem; text-align: center; }
 
@@ -90,10 +91,12 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The blue a
         <option value="normal">Normal</option>
         <option value="uniform">Uniform</option>
         <option value="exponential">Exponential</option>
+        <option value="beta">Beta</option>
       </select>
     </label>
   </div>
   <div class="dc-params" id="dc-params"></div>
+  <div class="dc-area" id="dc-area">Total area in plot range = —</div>
 </div>
 
 <div class="dc-slider-wrap">
@@ -130,6 +133,18 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The blue a
     const y = 1 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
     return sign * y;
   }
+
+  /* Lanczos approximation for log Γ(x), accurate for x > 0. */
+  function logGamma(x) {
+    const cof = [76.18009172947146, -86.50532032941677, 24.01409824083091,
+                 -1.231739572450155, 0.1208650973866179e-2, -0.5395239384953e-5];
+    let y = x, tmp = x + 5.5;
+    tmp -= (x + 0.5) * Math.log(tmp);
+    let ser = 1.000000000190015;
+    for (let j = 0; j < 6; j++) { y += 1; ser += cof[j] / y; }
+    return -tmp + Math.log(2.5066282746310005 * ser / x);
+  }
+  function logBeta(a, b) { return logGamma(a) + logGamma(b) - logGamma(a + b); }
 
   const DISTS = {
     normal: {
@@ -172,7 +187,33 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The blue a
       ],
       pdf: (x, p) => x >= 0 ? p.lambda * Math.exp(-p.lambda * x) : 0,
       cdf: (x, p) => x < 0 ? 0 : 1 - Math.exp(-p.lambda * x),
-      range: (p) => [-0.5, Math.max(2, 5 / p.lambda)],
+      range: (p) => [-0.5, Math.max(3, 8 / p.lambda)],
+    },
+    beta: {
+      name: 'Beta',
+      params: [
+        { key: 'alpha', label: 'α', min: 0.5, max: 5, step: 0.1, def: 2 },
+        { key: 'beta',  label: 'β', min: 0.5, max: 5, step: 0.1, def: 5 },
+      ],
+      pdf: (x, p) => {
+        if (x <= 0 || x >= 1) return 0;
+        return Math.exp((p.alpha - 1) * Math.log(x) + (p.beta - 1) * Math.log(1 - x) - logBeta(p.alpha, p.beta));
+      },
+      /* No closed-form CDF; use midpoint-rule integration on [0, x]. N=200 is plenty here since the singular cases (α<1 or β<1) are also handled by integrating away from the boundaries. */
+      cdf: (x, p) => {
+        if (x <= 0) return 0;
+        if (x >= 1) return 1;
+        const N = 200;
+        const dt = x / N;
+        const lb = logBeta(p.alpha, p.beta);
+        let sum = 0;
+        for (let i = 0; i < N; i++) {
+          const t = (i + 0.5) * dt;
+          sum += Math.exp((p.alpha - 1) * Math.log(t) + (p.beta - 1) * Math.log(1 - t) - lb);
+        }
+        return sum * dt;
+      },
+      range: () => [-0.05, 1.05],
     },
   };
 
@@ -376,9 +417,17 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The blue a
     $('dc-cum').textContent = cumAtCurrent.toFixed(3);
   }
 
+  function updateArea() {
+    const [lo, hi] = DISTS[currentDist].range(params);
+    const cdfFn = DISTS[currentDist].cdf;
+    const area = cdfFn(hi, params) - cdfFn(lo, params);
+    $('dc-area').textContent = 'Total area in plot range = ' + area.toFixed(3);
+  }
+
   function render() {
     drawPDF();
     drawCDF();
+    updateArea();
   }
 
   window.addEventListener('resize', render);
