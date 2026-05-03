@@ -89,7 +89,7 @@ The classical 3-door setup generalizes: with $N$ doors, after the host opens $N-
     </select>
   </label>
   <label>Doors ($N$): <input id="mh-doors" type="number" min="3" max="1000" value="3"></label>
-  <label>Rounds: <input id="mh-rounds" type="number" min="100" max="1000000" step="1000" value="10000"></label>
+  <label>Rounds ($R$): <input id="mh-rounds" type="number" min="100" max="1000000" step="1000" value="10000"></label>
   <button class="mh-run" id="mh-run">Run</button>
   <div class="mh-sim-result">
     Empirical $\hat{P}(\mathrm{win}) = $ <strong id="mh-prob">—</strong>
