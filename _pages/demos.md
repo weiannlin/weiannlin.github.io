@@ -9,5 +9,10 @@ author_profile: true
 
 Interactive teaching demos covering foundational topics in statistics, computer experiments, and Gaussian-process methodology.
 
+## Random variables
+
 - [From PMF to CDF](/demos/pmf-cdf/) — build a discrete distribution by editing $(x, p)$ points, then sweep a current $x$ to watch the CDF accumulate.
+
+## Random events
+
 - [The Monty Hall Problem](/demos/monty-hall/) — switching beats staying; play it, simulate it, see why.
