@@ -12,32 +12,38 @@ author_profile: true
   .mh-doors { display: flex; gap: 0.75rem; margin: 1rem 0; flex-wrap: wrap; }
   .mh-door {
     font-size: 2.5rem; padding: 0.6rem 1rem; cursor: pointer;
-    border: 2px solid #888; background: #f7f7f7; border-radius: 8px;
-    min-width: 4rem; line-height: 1;
+    border: 2px solid #888; background: #f7f7f7; color: #222;
+    border-radius: 8px; min-width: 4rem; line-height: 1;
   }
   .mh-door:hover:not(:disabled) { background: #e9e9e9; }
-  .mh-door:disabled { cursor: default; }
+  .mh-door:disabled { cursor: default; opacity: 0.95; }
   .mh-door.picked { border-color: #2a7ae2; box-shadow: 0 0 0 2px #2a7ae2 inset; }
   .mh-door.revealed { background: #fff; }
   .mh-status { margin: 0.5rem 0; min-height: 1.4em; }
   .mh-choice { margin: 0.5rem 0; }
-  .mh-choice button, .mh-reset { margin-right: 0.5rem; padding: 0.4rem 0.9rem; cursor: pointer; }
+  .mh-choice button, .mh-reset, .mh-run {
+    margin-right: 0.5rem; padding: 0.4rem 0.9rem; cursor: pointer;
+    background: #fff; color: #222; border: 1px solid #888; border-radius: 4px;
+  }
   .mh-tally {
-    margin-top: 1rem; padding: 0.5rem 0.75rem;
-    background: #f3f6fa; border-radius: 6px;
-    font-size: 0.92rem; color: #444;
+    margin-top: 1rem; padding: 0.4rem 0.75rem;
+    border-left: 3px solid #2a7ae2;
+    font-size: 0.92rem;
     display: flex; flex-wrap: wrap; gap: 1.25rem;
   }
   .mh-sim label { display: inline-block; margin: 0.25rem 1rem 0.25rem 0; }
-  .mh-sim input, .mh-sim select { padding: 0.2rem 0.4rem; }
+  .mh-sim input, .mh-sim select {
+    padding: 0.2rem 0.4rem;
+    background: #fff; color: #222;
+    border: 1px solid #888; border-radius: 3px;
+  }
   .mh-sim input[type=number] { width: 6em; }
   .mh-sim-result {
-    margin-top: 0.75rem; padding: 0.5rem 0.75rem;
-    background: #f3f6fa; border-radius: 6px;
+    margin-top: 0.75rem; padding: 0.4rem 0.75rem;
+    border-left: 3px solid #2a7ae2;
   }
   .mh-sim-result strong { font-size: 1.2rem; color: #2a7ae2; }
-  .mh-sim-result .theo { color: #777; font-size: 0.9rem; }
-  .mh-run { padding: 0.4rem 1rem; cursor: pointer; }
+  .mh-sim-result .theo { opacity: 0.7; font-size: 0.9rem; }
 </style>
 
 Behind one of three doors is a car. Behind the other two are goats. You pick a door. The host — who knows where the car is — opens one of the remaining doors to reveal a goat, then offers you the chance to switch. **Should you?**
