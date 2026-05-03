@@ -29,10 +29,35 @@ author_profile: true
   .pc-sum { margin-top: 0.4rem; opacity: 0.8; font-size: 0.92rem; }
   .pc-sum.warn { color: #c0392b; opacity: 1; }
   .pc-slider-wrap { margin: 1rem auto; max-width: 720px; }
-  .pc-slider-wrap label { display: block; margin-bottom: 0.25rem; font-size: 0.95rem; text-align: center; }
-  /* Track area padding mirrors the SVG plot-area margins (M.l=50, M.r=14, W=600 → 8.333% left, 2.333% right) so the slider thumb center aligns horizontally with the dashed current-x line in the charts. */
-  .pc-slider-track-area { padding-left: 8.333%; padding-right: 2.333%; box-sizing: border-box; }
-  .pc-slider-wrap input[type=range] { width: 100%; display: block; }
+  .pc-slider-wrap label { display: block; margin-bottom: 0.4rem; font-size: 0.95rem; text-align: center; }
+  /* Slider input element is widened by one thumb-diameter (16px) and offset so the thumb's CENTER reaches plot_left at value=min and plot_right at value=max. Without this, the browser insets the thumb by half its width and the thumb never aligns with the chart's dashed current-x line at the extremes. */
+  .pc-slider-wrap input[type=range] {
+    -webkit-appearance: none; appearance: none;
+    background: transparent;
+    display: block;
+    margin-left: calc(8.333% - 8px);
+    width: calc(89.334% + 16px);
+    height: 20px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .pc-slider-wrap input[type=range]::-webkit-slider-runnable-track {
+    height: 4px; border-radius: 2px;
+    background: linear-gradient(to right, #2a7ae2 0%, #2a7ae2 var(--pc-fill, 50%), #888 var(--pc-fill, 50%), #888 100%);
+  }
+  .pc-slider-wrap input[type=range]::-moz-range-track { height: 4px; background: #888; border-radius: 2px; border: none; }
+  .pc-slider-wrap input[type=range]::-moz-range-progress { height: 4px; background: #2a7ae2; border-radius: 2px; border: none; }
+  .pc-slider-wrap input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: #2a7ae2; cursor: pointer; margin-top: -6px;
+    border: 2px solid #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+  }
+  .pc-slider-wrap input[type=range]::-moz-range-thumb {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: #2a7ae2; cursor: pointer;
+    border: 2px solid #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+  }
   .pc-charts { max-width: 720px; margin-inline: auto; }
   .pc-charts svg { width: 100%; height: auto; display: block; margin-bottom: 0.4rem; }
   .pc-readout {
@@ -57,9 +82,7 @@ Below, you can build your own PMF by editing the $(x, p)$ table. The slider swee
 
 <div class="pc-slider-wrap">
   <label>Current $x$ = <strong id="pc-x-val">—</strong></label>
-  <div class="pc-slider-track-area">
-    <input type="range" id="pc-x" min="0" max="6" step="0.01" value="3">
-  </div>
+  <input type="range" id="pc-x" min="0" max="6" step="0.01" value="3">
 </div>
 
 <div class="pc-charts">
@@ -125,9 +148,15 @@ The next demo will replace the discrete spikes with a smooth density (PDF). The 
   });
 
   const slider = $('pc-x');
+  function updateSliderFill() {
+    const min = parseFloat(slider.min), max = parseFloat(slider.max);
+    const pct = (max > min) ? ((currentX - min) / (max - min)) * 100 : 50;
+    slider.style.setProperty('--pc-fill', Math.max(0, Math.min(100, pct)).toFixed(1) + '%');
+  }
   slider.addEventListener('input', () => {
     currentX = parseFloat(slider.value);
     $('pc-x-val').textContent = currentX.toFixed(2);
+    updateSliderFill();
     render();
   });
 
@@ -147,6 +176,7 @@ The next demo will replace the discrete spikes with a smooth density (PDF). The 
     if (currentX < lo || currentX > hi) currentX = (lo + hi) / 2;
     slider.value = currentX;
     $('pc-x-val').textContent = currentX.toFixed(2);
+    updateSliderFill();
   }
 
   function updateSum() {
