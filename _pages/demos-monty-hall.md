@@ -148,7 +148,6 @@ The law of large numbers guarantees $\bar{X}\_R \to P(\text{win})$ as $R \to \in
 
 <script>
 (function() {
-  // --- interactive 3-door game ---
   const G = { car: -1, pick: -1, opened: -1, phase: 'pick',
               swWins: 0, swTries: 0, stWins: 0, stTries: 0 };
   const $ = id => document.getElementById(id);
@@ -216,15 +215,12 @@ The law of large numbers guarantees $\bar{X}\_R \to P(\text{win})$ as $R \to \in
   reset.addEventListener('click', newRound);
   newRound();
 
-  // --- simulator (N doors) ---
   function simulate() {
     const strat = $('mh-strategy').value;
     const N = Math.max(3, Math.min(1000, parseInt($('mh-doors').value, 10) || 3));
     const R = Math.max(100, Math.min(1000000, parseInt($('mh-rounds').value, 10) || 10000));
     let wins = 0;
-    // Track the running mean at every round so we can visualize convergence.
-    // Equivalent reasoning: with host opening all but one of the non-picked doors
-    // (and never the car), switching wins iff car !== initial pick.
+    /* Equivalent reasoning: with host opening all but one of the non-picked doors (and never the car), switching wins iff car !== initial pick. */
     const running = new Float32Array(R);
     for (let r = 0; r < R; r++) {
       const car = Math.floor(Math.random() * N);
@@ -244,7 +240,6 @@ The law of large numbers guarantees $\bar{X}\_R \to P(\text{win})$ as $R \to \in
     const placeholder = $('mh-chart-placeholder');
     const caption = $('mh-chart-caption');
 
-    // Adapt axis density + font for narrow screens (phones).
     const narrow = window.innerWidth < 480;
     const W = 600, H = 260;
     const M = narrow
@@ -259,7 +254,6 @@ The law of large numbers guarantees $\bar{X}\_R \to P(\text{win})$ as $R \to \in
     const x = i => M.l + (i / Math.max(1, N - 1)) * innerW;
     const y = v => M.t + (1 - v) * innerH;
 
-    // Downsample to ~600 points if R is very large (keeps SVG light + smooth).
     const TARGET = 600;
     let pts;
     if (N <= TARGET) {
@@ -273,7 +267,6 @@ The law of large numbers guarantees $\bar{X}\_R \to P(\text{win})$ as $R \to \in
     }
 
     let s = '';
-    // background grid + axes
     s += `<rect x="${M.l}" y="${M.t}" width="${innerW}" height="${innerH}" fill="none" stroke="currentColor" stroke-opacity="0.25"/>`;
     for (const v of yTicks) {
       s += `<line x1="${M.l}" y1="${y(v).toFixed(1)}" x2="${M.l + innerW}" y2="${y(v).toFixed(1)}" stroke="currentColor" stroke-opacity="0.1"/>`;
@@ -284,14 +277,11 @@ The law of large numbers guarantees $\bar{X}\_R \to P(\text{win})$ as $R \to \in
       const xp = x(xi);
       s += `<text x="${xp.toFixed(1)}" y="${(M.t + innerH + fontSize + 5).toFixed(1)}" text-anchor="middle" fill="currentColor" font-size="${fontSize}" opacity="0.75">${xi.toLocaleString()}</text>`;
     }
-    // axis title
     s += `<text x="${(M.l + innerW / 2).toFixed(1)}" y="${H - 4}" text-anchor="middle" fill="currentColor" font-size="${fontSize}" opacity="0.7">round</text>`;
 
-    // theoretical line (dashed)
     s += `<line x1="${M.l}" y1="${y(theo).toFixed(1)}" x2="${M.l + innerW}" y2="${y(theo).toFixed(1)}" stroke="#2a7ae2" stroke-opacity="0.55" stroke-dasharray="5,4" stroke-width="1"/>`;
     s += `<text x="${(M.l + innerW - 4).toFixed(1)}" y="${(y(theo) - 4).toFixed(1)}" text-anchor="end" fill="#2a7ae2" font-size="${fontSize}" opacity="0.85">theoretical = ${theo.toFixed(3)}</text>`;
 
-    // running-mean path
     let d = '';
     for (let i = 0; i < pts.length; i++) {
       d += (i === 0 ? 'M' : 'L') + x(pts[i][0]).toFixed(2) + ',' + y(pts[i][1]).toFixed(2);
