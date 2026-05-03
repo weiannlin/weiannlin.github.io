@@ -92,7 +92,9 @@ The intuition is genuinely hard. The game below lets you play your way to it; if
 
 ## Simulate
 
-The classical 3-door setup generalizes: with $N$ doors, after the host opens $N-2$ goat-doors, switching wins with probability $(N-1)/N$ and staying wins with probability $1/N$. Try larger $N$ to see how decisively switching dominates.
+**Generalized rule.** With $N$ doors total, after your initial pick the host opens **$N-2$ goat-doors**, leaving exactly one other door unopened besides yours. The classical version is the case $N = 3$, where the host opens a single goat-door.
+
+Under this rule, switching wins with probability $(N-1)/N$ and staying wins with probability $1/N$. Try larger $N$ to see how decisively switching dominates — and how the convergence in the chart below sharpens.
 
 <div class="mh-section mh-sim">
   <label>Strategy:
