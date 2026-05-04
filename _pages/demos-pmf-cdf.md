@@ -12,24 +12,46 @@ author_profile: true
   .pc-section.center { text-align: center; }
   .pc-input-table { margin: 0 auto; border-collapse: collapse; }
   .pc-input-table th, .pc-input-table td { padding: 0.25rem 0.5rem; text-align: center; }
-  .pc-input-table th { font-weight: 600; opacity: 0.85; font-size: 0.95rem; }
-  .pc-input-table input {
-    width: 5em; padding: 0.2rem 0.4rem;
-    background: #fff; color: #222; border: 1px solid #888; border-radius: 3px;
+  /* Specificity bump: journal-base sets `.page__content table th { text-align: left }`
+     which would otherwise win over the rule above. Adding `thead` matches that
+     specificity, and the inline <style> wins on document order. */
+  .pc-input-table thead th {
     text-align: center;
+    font-weight: 600; opacity: 0.85; font-size: 0.78rem;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    font-feature-settings: "smcp" 1, "c2sc" 1, "kern" 1;
+    color: var(--journal-accent);
+    border-top: none; border-bottom: 1px solid var(--journal-divider);
+    background: transparent;
+  }
+  .pc-input-table input {
+    width: 5em; padding: 0.25rem 0.45rem;
+    background: var(--journal-bg); color: var(--journal-ink);
+    border: 1px solid var(--journal-divider); border-radius: 2px;
+    text-align: center;
+    font-family: 'IBM Plex Mono', Menlo, Consolas, monospace;
   }
   .pc-row-rm {
     padding: 0.1rem 0.55rem; cursor: pointer;
-    background: transparent; border: 1px solid #888; border-radius: 3px; color: inherit;
+    background: transparent; border: 1px solid var(--journal-divider); border-radius: 2px;
+    color: var(--journal-ink-soft);
   }
+  .pc-row-rm:hover { color: var(--journal-accent); border-color: var(--journal-accent); }
   .pc-add {
-    margin: 0.5rem 0; padding: 0.4rem 0.9rem; cursor: pointer;
-    background: #fff; color: #222; border: 1px solid #888; border-radius: 4px;
+    margin: 0.5rem 0; padding: 0.4rem 1rem; cursor: pointer;
+    background: var(--journal-bg); color: var(--journal-ink);
+    border: 1px solid var(--journal-ink); border-radius: 2px;
+    font-family: inherit; font-size: 0.82rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    font-feature-settings: "smcp" 1, "c2sc" 1, "kern" 1;
+    transition: background 120ms, color 120ms;
   }
-  .pc-sum { margin-top: 0.4rem; opacity: 0.8; font-size: 0.92rem; }
-  .pc-sum.warn { color: #c0392b; opacity: 1; }
+  .pc-add:hover { background: var(--journal-ink); color: var(--journal-bg); }
+  .pc-sum { margin-top: 0.4rem; opacity: 0.8; font-size: 0.92rem; font-family: 'IBM Plex Mono', monospace; }
+  .pc-sum.warn { color: var(--journal-accent); opacity: 1; }
   .pc-slider-wrap { margin: 1rem auto; max-width: 720px; }
   .pc-slider-wrap label { display: block; margin-bottom: 0.4rem; font-size: 0.95rem; text-align: center; }
+  .pc-slider-wrap label strong { font-family: 'IBM Plex Mono', monospace; color: var(--journal-accent); }
   /* Slider input element is widened by one thumb-diameter (16px) and offset so the thumb's CENTER reaches plot_left at value=min and plot_right at value=max. Without this, the browser insets the thumb by half its width and the thumb never aligns with the chart's dashed current-x line at the extremes. */
   .pc-slider-wrap input[type=range] {
     -webkit-appearance: none; appearance: none;
@@ -42,35 +64,35 @@ author_profile: true
     padding: 0;
   }
   .pc-slider-wrap input[type=range]::-webkit-slider-runnable-track {
-    height: 4px; border-radius: 2px;
-    background: linear-gradient(to right, #2a7ae2 0%, #2a7ae2 var(--pc-fill, 50%), #888 var(--pc-fill, 50%), #888 100%);
+    height: 3px; border-radius: 2px;
+    background: linear-gradient(to right, var(--journal-accent) 0%, var(--journal-accent) var(--pc-fill, 50%), var(--journal-divider) var(--pc-fill, 50%), var(--journal-divider) 100%);
   }
-  .pc-slider-wrap input[type=range]::-moz-range-track { height: 4px; background: #888; border-radius: 2px; border: none; }
-  .pc-slider-wrap input[type=range]::-moz-range-progress { height: 4px; background: #2a7ae2; border-radius: 2px; border: none; }
+  .pc-slider-wrap input[type=range]::-moz-range-track { height: 3px; background: var(--journal-divider); border-radius: 2px; border: none; }
+  .pc-slider-wrap input[type=range]::-moz-range-progress { height: 3px; background: var(--journal-accent); border-radius: 2px; border: none; }
   .pc-slider-wrap input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 16px; height: 16px; border-radius: 50%;
-    background: #2a7ae2; cursor: pointer; margin-top: -6px;
-    border: 2px solid #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    background: var(--journal-accent); cursor: pointer; margin-top: -6.5px;
+    border: 2px solid var(--journal-bg); box-shadow: 0 1px 2px rgba(31,28,24,0.25);
   }
   .pc-slider-wrap input[type=range]::-moz-range-thumb {
     width: 16px; height: 16px; border-radius: 50%;
-    background: #2a7ae2; cursor: pointer;
-    border: 2px solid #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    background: var(--journal-accent); cursor: pointer;
+    border: 2px solid var(--journal-bg); box-shadow: 0 1px 2px rgba(31,28,24,0.25);
   }
   .pc-charts { max-width: 720px; margin-inline: auto; }
   .pc-charts svg { width: 100%; height: auto; display: block; margin-bottom: 0.4rem; }
   .pc-readout {
-    margin-top: 0.5rem; padding: 0.4rem 0.75rem;
-    border-left: 3px solid #2a7ae2;
+    margin-top: 0.5rem; padding: 0.4rem 0.85rem;
+    border-left: 2px solid var(--journal-accent);
     text-align: left; font-size: 0.95rem;
   }
-  .pc-readout strong { color: #2a7ae2; font-size: 1.1rem; }
+  .pc-readout strong { color: var(--journal-accent); font-size: 1.1rem; font-family: 'IBM Plex Mono', monospace; }
 </style>
 
 The probability mass function (PMF) tells you how much probability sits at each value of a discrete random variable. The cumulative distribution function (CDF) tells you, for each $x$, the total probability of being $\leq x$. They carry the same information; the CDF is just the running sum of the PMF.
 
-Below, you can build your own PMF by editing the $(x, p)$ table. The slider sweeps a "current $x$" across the axis: PMF lollipops at $x \leq$ current $x$ turn blue, and their masses sum exactly to the height of the CDF curve at that $x$.
+Below, you can build your own PMF by editing the $(x, p)$ table. The slider sweeps a "current $x$" across the axis: PMF lollipops at $x \leq$ current $x$ turn red, and their masses sum exactly to the height of the CDF curve at that $x$.
 
 ## Interactive
 
@@ -89,17 +111,17 @@ Below, you can build your own PMF by editing the $(x, p)$ table. The slider swee
   <svg id="pc-pmf" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet"></svg>
   <svg id="pc-cdf" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet"></svg>
   <div class="pc-readout">
-    Cumulative mass at current $x$ = <strong id="pc-cum">—</strong>. The blue PMF lollipops sum to this; the CDF curve traces it.
+    Cumulative mass $F(x)$ = <strong id="pc-cum">—</strong>. The red PMF lollipops sum to this; the CDF curve traces it.
   </div>
 </div>
 
 ## What it shows
 
-The CDF is a **step function**: flat between the PMF's mass points, jumping straight up by $p\_i$ at each $x = x\_i$ where the PMF carries mass. Slide the current $x$ across some $x\_i$ and the CDF jumps while one more PMF lollipop turns blue — the same probability mass, viewed two ways.
+The CDF is a **step function**: flat between the PMF's mass points, jumping straight up by $p\_i$ at each $x = x\_i$ where the PMF carries mass. Slide the current $x$ across some $x\_i$ and the CDF jumps while one more PMF lollipop turns red — the same probability mass, viewed two ways.
 
 Convention: this CDF is right-continuous. At each $x = x\_i$, $F(x\_i) = P(X \leq x\_i)$ already includes the jump.
 
-The next demo will replace the discrete spikes with a smooth density (PDF). The construction is the same idea, but the running **sum** becomes a running **integral**, and the CDF turns from a staircase into a continuous curve.
+[The next demo](/demos/pdf-cdf/) replaces the discrete spikes with a smooth density (PDF). The construction is the same idea, but the running **sum** becomes a running **integral**, and the CDF turns from a staircase into a continuous curve.
 
 <script>
 (function() {
@@ -232,7 +254,7 @@ The next demo will replace the discrete spikes with a smooth density (PDF). The 
       const yTop = yScale(yMax, Math.max(pt.p, 0));
       const yBot = yScale(yMax, 0);
       const inLeft = pt.x <= currentX;
-      const color = inLeft ? '#2a7ae2' : '#888';
+      const color = inLeft ? '#9c2d2d' : '#888';
       const opacity = inLeft ? 1 : 0.4;
       const dotR = inLeft ? 5 : 4;
       s += '<line x1="'+x+'" y1="'+yBot+'" x2="'+x+'" y2="'+yTop+'" stroke="'+color+'" stroke-width="2" opacity="'+opacity+'"/>';
@@ -271,7 +293,7 @@ The next demo will replace the discrete spikes with a smooth density (PDF). The 
       const isVertical = (ax === bx);
       if (isVertical) {
         const inLeft = ax <= currentX;
-        const color = inLeft ? '#2a7ae2' : '#888';
+        const color = inLeft ? '#9c2d2d' : '#888';
         const opacity = inLeft ? 1 : 0.5;
         const xPx = xScale(lo, hi, ax);
         s += '<line x1="'+xPx.toFixed(1)+'" y1="'+yScale(yMax, ay).toFixed(1)+'" x2="'+xPx.toFixed(1)+'" y2="'+yScale(yMax, by).toFixed(1)+'" stroke="'+color+'" stroke-width="2" stroke-dasharray="3,3" opacity="'+opacity+'"/>';
@@ -280,12 +302,12 @@ The next demo will replace the discrete spikes with a smooth density (PDF). The 
         const x1 = xScale(lo, hi, ax);
         const x2 = xScale(lo, hi, bx);
         if (bx <= currentX) {
-          s += '<line x1="'+x1.toFixed(1)+'" y1="'+yPx.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+yPx.toFixed(1)+'" stroke="#2a7ae2" stroke-width="2"/>';
+          s += '<line x1="'+x1.toFixed(1)+'" y1="'+yPx.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+yPx.toFixed(1)+'" stroke="#9c2d2d" stroke-width="2"/>';
         } else if (ax >= currentX) {
           s += '<line x1="'+x1.toFixed(1)+'" y1="'+yPx.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+yPx.toFixed(1)+'" stroke="#888" stroke-width="2" opacity="0.5"/>';
         } else {
           const xc = xScale(lo, hi, currentX);
-          s += '<line x1="'+x1.toFixed(1)+'" y1="'+yPx.toFixed(1)+'" x2="'+xc.toFixed(1)+'" y2="'+yPx.toFixed(1)+'" stroke="#2a7ae2" stroke-width="2"/>';
+          s += '<line x1="'+x1.toFixed(1)+'" y1="'+yPx.toFixed(1)+'" x2="'+xc.toFixed(1)+'" y2="'+yPx.toFixed(1)+'" stroke="#9c2d2d" stroke-width="2"/>';
           s += '<line x1="'+xc.toFixed(1)+'" y1="'+yPx.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+yPx.toFixed(1)+'" stroke="#888" stroke-width="2" opacity="0.5"/>';
         }
       }
@@ -296,8 +318,8 @@ The next demo will replace the discrete spikes with a smooth density (PDF). The 
     const cumAtCurrent = cumValue(currentX);
     const cyPx = yScale(yMax, cumAtCurrent);
     s += '<line x1="'+cxPx+'" y1="'+M.t+'" x2="'+cxPx+'" y2="'+(M.t+innerH)+'" stroke="currentColor" stroke-opacity="0.5" stroke-dasharray="4,3"/>';
-    s += '<line x1="'+M.l+'" y1="'+cyPx+'" x2="'+cxPx+'" y2="'+cyPx+'" stroke="#2a7ae2" stroke-opacity="0.4" stroke-dasharray="2,3"/>';
-    s += '<circle cx="'+cxPx+'" cy="'+cyPx+'" r="5" fill="#2a7ae2"/>';
+    s += '<line x1="'+M.l+'" y1="'+cyPx+'" x2="'+cxPx+'" y2="'+cyPx+'" stroke="#9c2d2d" stroke-opacity="0.4" stroke-dasharray="2,3"/>';
+    s += '<circle cx="'+cxPx+'" cy="'+cyPx+'" r="5" fill="#9c2d2d"/>';
 
     svg.innerHTML = s;
     $('pc-cum').textContent = cumAtCurrent.toFixed(3);

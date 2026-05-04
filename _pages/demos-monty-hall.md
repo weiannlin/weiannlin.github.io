@@ -12,50 +12,64 @@ author_profile: true
   .mh-doors { display: flex; gap: 0.75rem; margin: 1rem 0; flex-wrap: wrap; }
   .mh-door {
     font-size: 2.5rem; padding: 0.6rem 1rem; cursor: pointer;
-    border: 2px solid #888; background: #f7f7f7; color: #222;
-    border-radius: 8px; min-width: 4rem; line-height: 1;
+    border: 1px solid var(--journal-divider); background: var(--journal-bg-warm); color: var(--journal-ink);
+    border-radius: 2px; min-width: 4rem; line-height: 1;
   }
-  .mh-door:hover:not(:disabled) { background: #e9e9e9; }
+  .mh-door:hover:not(:disabled) { background: var(--journal-accent-soft); border-color: var(--journal-accent); }
   .mh-door:disabled { cursor: default; opacity: 0.95; }
-  .mh-door.picked { border-color: #2a7ae2; box-shadow: 0 0 0 2px #2a7ae2 inset; }
-  .mh-door.revealed { background: #fff; }
+  .mh-door.picked { border-color: var(--journal-accent); box-shadow: 0 0 0 2px var(--journal-accent) inset; }
+  .mh-door.revealed { background: var(--journal-bg); }
   .mh-status { margin: 0.5rem 0; min-height: 1.4em; }
   .mh-choice { margin: 0.5rem 0; }
   .mh-choice button, .mh-reset, .mh-run {
-    margin-right: 0.5rem; padding: 0.4rem 0.9rem; cursor: pointer;
-    background: #fff; color: #222; border: 1px solid #888; border-radius: 4px;
+    margin-right: 0.5rem; padding: 0.4rem 1rem; cursor: pointer;
+    background: var(--journal-bg); color: var(--journal-ink);
+    border: 1px solid var(--journal-ink); border-radius: 2px;
+    font-family: inherit; font-size: 0.82rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    font-feature-settings: "smcp" 1, "c2sc" 1, "kern" 1;
+    transition: background 120ms, color 120ms;
+  }
+  .mh-choice button:hover, .mh-reset:hover, .mh-run:hover {
+    background: var(--journal-ink); color: var(--journal-bg);
   }
   .mh-tally {
-    margin-top: 1rem; padding: 0.4rem 0.75rem;
-    border-left: 3px solid #2a7ae2;
+    margin-top: 1rem; padding: 0.4rem 0.85rem;
+    border-left: 2px solid var(--journal-accent);
     font-size: 0.92rem;
     display: flex; flex-wrap: wrap; gap: 1.25rem;
   }
+  .mh-tally strong { font-family: 'IBM Plex Mono', Menlo, Consolas, monospace; }
   .mh-sim label { display: inline-block; margin: 0.25rem 1rem 0.25rem 0; }
   .mh-sim input, .mh-sim select {
-    padding: 0.2rem 0.4rem;
-    background: #fff; color: #222;
-    border: 1px solid #888; border-radius: 3px;
+    padding: 0.25rem 0.45rem;
+    background: var(--journal-bg); color: var(--journal-ink);
+    border: 1px solid var(--journal-divider); border-radius: 2px;
+    font-family: 'IBM Plex Mono', Menlo, Consolas, monospace;
+    font-size: 0.92rem;
   }
   .mh-sim input[type=number] { width: 6em; }
   .mh-sim-result {
-    margin-top: 0.75rem; padding: 0.4rem 0.75rem;
-    border-left: 3px solid #2a7ae2;
+    margin-top: 0.75rem; padding: 0.4rem 0.85rem;
+    border-left: 2px solid var(--journal-accent);
   }
-  .mh-sim-result strong { font-size: 1.2rem; color: #2a7ae2; }
-  .mh-sim-result .theo { opacity: 0.7; font-size: 0.9rem; }
+  .mh-sim-result strong {
+    font-size: 1.2rem; color: var(--journal-accent);
+    font-family: 'IBM Plex Mono', Menlo, Consolas, monospace;
+  }
+  .mh-sim-result .theo { opacity: 0.7; font-size: 0.9rem; font-family: 'IBM Plex Mono', monospace; }
   .mh-chart-wrap { margin-top: 1rem; max-width: 720px; }
   .mh-chart-wrap svg { width: 100%; height: auto; display: block; }
   .mh-chart-placeholder {
     padding: 0.75rem; opacity: 0.6; font-style: italic;
-    border: 1px dashed currentColor; border-radius: 4px;
+    border: 1px dashed currentColor; border-radius: 2px;
   }
   .mh-chart-caption { margin-top: 0.4rem; font-size: 0.9rem; opacity: 0.85; text-align: left; }
 
   /* centering for game + simulator widgets (titles/prose stay left) */
   .mh-section { text-align: center; }
   .mh-doors { justify-content: center; }
-  .mh-tally { justify-content: center; max-width: 480px; margin-inline: auto; }
+  .mh-tally { justify-content: center; max-width: 480px; margin-inline: auto; text-align: left; }
   .mh-sim-result { max-width: 520px; margin-inline: auto; text-align: left; }
   .mh-chart-wrap { margin-inline: auto; }
 </style>
@@ -279,14 +293,14 @@ The law of large numbers guarantees $\bar{X}\_R \to P(\text{win})$ as $R \to \in
     }
     s += `<text x="${(M.l + innerW / 2).toFixed(1)}" y="${H - 4}" text-anchor="middle" fill="currentColor" font-size="${fontSize}" opacity="0.7">round</text>`;
 
-    s += `<line x1="${M.l}" y1="${y(theo).toFixed(1)}" x2="${M.l + innerW}" y2="${y(theo).toFixed(1)}" stroke="#2a7ae2" stroke-opacity="0.55" stroke-dasharray="5,4" stroke-width="1"/>`;
-    s += `<text x="${(M.l + innerW - 4).toFixed(1)}" y="${(y(theo) - 4).toFixed(1)}" text-anchor="end" fill="#2a7ae2" font-size="${fontSize}" opacity="0.85">theoretical = ${theo.toFixed(3)}</text>`;
+    s += `<line x1="${M.l}" y1="${y(theo).toFixed(1)}" x2="${M.l + innerW}" y2="${y(theo).toFixed(1)}" stroke="#9c2d2d" stroke-opacity="0.55" stroke-dasharray="5,4" stroke-width="1"/>`;
+    s += `<text x="${(M.l + innerW - 4).toFixed(1)}" y="${(y(theo) - 4).toFixed(1)}" text-anchor="end" fill="#9c2d2d" font-size="${fontSize}" opacity="0.85">theoretical = ${theo.toFixed(3)}</text>`;
 
     let d = '';
     for (let i = 0; i < pts.length; i++) {
       d += (i === 0 ? 'M' : 'L') + x(pts[i][0]).toFixed(2) + ',' + y(pts[i][1]).toFixed(2);
     }
-    s += `<path d="${d}" fill="none" stroke="#2a7ae2" stroke-width="2.5"/>`;
+    s += `<path d="${d}" fill="none" stroke="#9c2d2d" stroke-width="2.5"/>`;
 
     svg.innerHTML = s;
     svg.style.display = 'block';

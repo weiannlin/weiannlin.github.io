@@ -12,8 +12,11 @@ author_profile: true
   .dc-section.center { text-align: center; }
   .dc-controls label { display: inline-block; margin: 0.25rem 0.75rem 0.25rem 0; font-size: 0.95rem; }
   .dc-controls select {
-    padding: 0.2rem 0.5rem; background: #fff; color: #222;
-    border: 1px solid #888; border-radius: 3px;
+    padding: 0.25rem 0.5rem;
+    background: var(--journal-bg); color: var(--journal-ink);
+    border: 1px solid var(--journal-divider); border-radius: 2px;
+    font-family: 'IBM Plex Mono', Menlo, Consolas, monospace;
+    font-size: 0.92rem;
   }
   .dc-params { margin-top: 0.5rem; }
   .dc-param {
@@ -21,10 +24,11 @@ author_profile: true
     text-align: left; min-width: 12rem; vertical-align: top;
   }
   .dc-param-label { display: block; font-size: 0.92rem; margin-bottom: 0.2rem; }
-  .dc-param-label strong { color: #2a7ae2; }
-  .dc-area { margin-top: 0.6rem; opacity: 0.8; font-size: 0.92rem; }
+  .dc-param-label strong { color: var(--journal-accent); font-family: 'IBM Plex Mono', monospace; }
+  .dc-area { margin-top: 0.6rem; opacity: 0.8; font-size: 0.92rem; font-family: 'IBM Plex Mono', monospace; }
   .dc-slider-wrap { margin: 1rem auto; max-width: 720px; }
   .dc-slider-wrap label { display: block; margin-bottom: 0.4rem; font-size: 0.95rem; text-align: center; }
+  .dc-slider-wrap label strong { font-family: 'IBM Plex Mono', monospace; color: var(--journal-accent); }
 
   /* Shared base styling for every range input on this page (param sliders + current-x slider). */
   .dc-slider {
@@ -33,21 +37,21 @@ author_profile: true
     width: 100%; height: 20px; cursor: pointer; padding: 0;
   }
   .dc-slider::-webkit-slider-runnable-track {
-    height: 4px; background: #888; border-radius: 2px;
+    height: 3px; background: var(--journal-divider); border-radius: 2px;
   }
   .dc-slider::-moz-range-track {
-    height: 4px; background: #888; border-radius: 2px; border: none;
+    height: 3px; background: var(--journal-divider); border-radius: 2px; border: none;
   }
   .dc-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 16px; height: 16px; border-radius: 50%;
-    background: #2a7ae2; cursor: pointer; margin-top: -6px;
-    border: 2px solid #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    background: var(--journal-accent); cursor: pointer; margin-top: -6.5px;
+    border: 2px solid var(--journal-bg); box-shadow: 0 1px 2px rgba(31,28,24,0.25);
   }
   .dc-slider::-moz-range-thumb {
     width: 16px; height: 16px; border-radius: 50%;
-    background: #2a7ae2; cursor: pointer;
-    border: 2px solid #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    background: var(--journal-accent); cursor: pointer;
+    border: 2px solid var(--journal-bg); box-shadow: 0 1px 2px rgba(31,28,24,0.25);
   }
 
   /* Current-x slider: extended width so thumb center reaches plot edges, plus gradient progress fill. */
@@ -56,23 +60,23 @@ author_profile: true
     width: calc(89.334% + 16px);
   }
   .dc-slider-cx::-webkit-slider-runnable-track {
-    background: linear-gradient(to right, #2a7ae2 0%, #2a7ae2 var(--dc-fill, 50%), #888 var(--dc-fill, 50%), #888 100%);
+    background: linear-gradient(to right, var(--journal-accent) 0%, var(--journal-accent) var(--dc-fill, 50%), var(--journal-divider) var(--dc-fill, 50%), var(--journal-divider) 100%);
   }
   .dc-slider-cx::-moz-range-progress {
-    height: 4px; background: #2a7ae2; border-radius: 2px; border: none;
+    height: 3px; background: var(--journal-accent); border-radius: 2px; border: none;
   }
 
   .dc-charts { max-width: 720px; margin-inline: auto; }
   .dc-charts svg { width: 100%; height: auto; display: block; margin-bottom: 0.4rem; }
   .dc-readout {
-    margin-top: 0.5rem; padding: 0.4rem 0.75rem;
-    border-left: 3px solid #2a7ae2;
+    margin-top: 0.5rem; padding: 0.4rem 0.85rem;
+    border-left: 2px solid var(--journal-accent);
     text-align: left; font-size: 0.95rem;
   }
-  .dc-readout strong { color: #2a7ae2; font-size: 1.1rem; }
+  .dc-readout strong { color: var(--journal-accent); font-size: 1.1rem; font-family: 'IBM Plex Mono', monospace; }
 </style>
 
-The continuous version of the previous demo. Now $X$ takes values on a continuum, not a discrete set. Probability is described by a **density** $f(x)$ — itself not a probability. A single point has probability zero; only intervals carry probability, given by area:
+The continuous version of the [previous demo](/demos/pmf-cdf/). Now $X$ takes values on a continuum, not a discrete set. Probability is described by a **density** $f(x)$ — itself not a probability. A single point has probability zero; only intervals carry probability, given by area:
 
 $$P(a < X \leq b) = \int_a^b f(t)\,dt.$$
 
@@ -80,7 +84,7 @@ The CDF is built the same way as before, with the running sum of point masses re
 
 $$F(x) = P(X \leq x) = \int_{-\infty}^{x} f(t)\,dt.$$
 
-Pick a distribution, tune its parameters, then sweep the current $x$. The blue area under the density to the left of $x$ equals the height of the CDF at $x$ — the same probability, viewed two ways.
+Pick a distribution, tune its parameters, then sweep the current $x$. The red area under the density to the left of $x$ equals the height of the CDF at $x$ — the same probability, viewed two ways.
 
 ## Interactive
 
@@ -110,7 +114,7 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The blue a
   <svg id="dc-pdf" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet"></svg>
   <svg id="dc-cdf" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet"></svg>
   <div class="dc-readout">
-    Cumulative probability $P(X \leq x)$ = <strong id="dc-cum">—</strong>. The blue area under the density equals this; the CDF curve traces it.
+    Cumulative probability $P(X \leq x)$ = <strong id="dc-cum">—</strong>. The red area under the density equals this; the CDF curve traces it.
   </div>
 </div>
 
@@ -120,7 +124,7 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The blue a
 
 **The CDF stays bounded.** $F(x)$ runs from 0 to 1, monotone non-decreasing, smooth wherever $f$ is finite. No jumps in the continuous case — those required point masses.
 
-**Discrete to continuous.** Compared to the PMF demo, the lollipop spikes have melted into a smooth density and the CDF staircase has straightened into a continuous curve. The accounting principle is unchanged: cumulative probability at $x$ is whatever sits "to the left" of $x$, just measured by area instead of by counting masses.
+**Discrete to continuous.** Compared to [the PMF demo](/demos/pmf-cdf/), the lollipop spikes have melted into a smooth density and the CDF staircase has straightened into a continuous curve. The accounting principle is unchanged: cumulative probability at $x$ is whatever sits "to the left" of $x$, just measured by area instead of by counting masses.
 
 <script>
 (function() {
@@ -372,7 +376,7 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The blue a
     if (!crossed) {
       fill += ' L ' + xS(lo, hi, hi).toFixed(1) + ' ' + baseY.toFixed(1) + ' Z';
     }
-    s += '<path d="' + fill + '" fill="#2a7ae2" fill-opacity="0.25"/>';
+    s += '<path d="' + fill + '" fill="#9c2d2d" fill-opacity="0.25"/>';
 
     /* density curve */
     let line = '';
@@ -380,7 +384,7 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The blue a
       const [x, y] = pts[i];
       line += (i === 0 ? 'M' : 'L') + xS(lo, hi, x).toFixed(1) + ',' + yS(yMax, y).toFixed(1);
     }
-    s += '<path d="' + line + '" fill="none" stroke="#2a7ae2" stroke-width="2"/>';
+    s += '<path d="' + line + '" fill="none" stroke="#9c2d2d" stroke-width="2"/>';
 
     /* current x marker */
     const cx = xS(lo, hi, currentX);
@@ -430,15 +434,15 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The blue a
         started.right = true;
       }
     }
-    if (leftPath) s += '<path d="' + leftPath + '" fill="none" stroke="#2a7ae2" stroke-width="2"/>';
+    if (leftPath) s += '<path d="' + leftPath + '" fill="none" stroke="#9c2d2d" stroke-width="2"/>';
     if (rightPath) s += '<path d="' + rightPath + '" fill="none" stroke="#888" stroke-width="2" opacity="0.55"/>';
 
     /* current x marker, horizontal hint, dot */
     const cumAtCurrent = cdfFn(currentX, params);
     const cyPx = yS(yMax, cumAtCurrent);
     s += '<line x1="' + xCpx + '" y1="' + M.t + '" x2="' + xCpx + '" y2="' + (M.t + innerH) + '" stroke="currentColor" stroke-opacity="0.5" stroke-dasharray="4,3"/>';
-    s += '<line x1="' + M.l + '" y1="' + cyPx + '" x2="' + xCpx + '" y2="' + cyPx + '" stroke="#2a7ae2" stroke-opacity="0.4" stroke-dasharray="2,3"/>';
-    s += '<circle cx="' + xCpx + '" cy="' + cyPx + '" r="5" fill="#2a7ae2"/>';
+    s += '<line x1="' + M.l + '" y1="' + cyPx + '" x2="' + xCpx + '" y2="' + cyPx + '" stroke="#9c2d2d" stroke-opacity="0.4" stroke-dasharray="2,3"/>';
+    s += '<circle cx="' + xCpx + '" cy="' + cyPx + '" r="5" fill="#9c2d2d"/>';
 
     svg.innerHTML = s;
     $('dc-cum').textContent = cumAtCurrent.toFixed(3);

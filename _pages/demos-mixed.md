@@ -12,8 +12,11 @@ author_profile: true
   .mx-section.center { text-align: center; }
   .mx-controls label { display: inline-block; margin: 0.25rem 0.75rem 0.25rem 0; font-size: 0.95rem; }
   .mx-controls select {
-    padding: 0.2rem 0.5rem; background: #fff; color: #222;
-    border: 1px solid #888; border-radius: 3px;
+    padding: 0.25rem 0.5rem;
+    background: var(--journal-bg); color: var(--journal-ink);
+    border: 1px solid var(--journal-divider); border-radius: 2px;
+    font-family: 'IBM Plex Mono', Menlo, Consolas, monospace;
+    font-size: 0.92rem;
   }
   .mx-params { margin-top: 0.5rem; }
   .mx-param {
@@ -21,30 +24,50 @@ author_profile: true
     text-align: left; min-width: 12rem; vertical-align: top;
   }
   .mx-param-label { display: block; font-size: 0.92rem; margin-bottom: 0.2rem; }
-  .mx-param-label strong { color: #2a7ae2; }
+  .mx-param-label strong { color: var(--journal-accent); font-family: 'IBM Plex Mono', monospace; }
 
   .mx-input-table { margin: 0.75rem auto 0.25rem; border-collapse: collapse; }
   .mx-input-table th, .mx-input-table td { padding: 0.25rem 0.5rem; text-align: center; }
-  .mx-input-table th { font-weight: 600; opacity: 0.85; font-size: 0.95rem; }
-  .mx-input-table input {
-    width: 5em; padding: 0.2rem 0.4rem;
-    background: #fff; color: #222; border: 1px solid #888; border-radius: 3px;
+  /* Same specificity bump as in demos-pmf-cdf — see comment there. */
+  .mx-input-table thead th {
     text-align: center;
+    font-weight: 600; opacity: 0.85; font-size: 0.78rem;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    font-feature-settings: "smcp" 1, "c2sc" 1, "kern" 1;
+    color: var(--journal-accent);
+    border-top: none; border-bottom: 1px solid var(--journal-divider);
+    background: transparent;
+  }
+  .mx-input-table input {
+    width: 5em; padding: 0.25rem 0.45rem;
+    background: var(--journal-bg); color: var(--journal-ink);
+    border: 1px solid var(--journal-divider); border-radius: 2px;
+    text-align: center;
+    font-family: 'IBM Plex Mono', Menlo, Consolas, monospace;
   }
   .mx-row-rm {
     padding: 0.1rem 0.55rem; cursor: pointer;
-    background: transparent; border: 1px solid #888; border-radius: 3px; color: inherit;
+    background: transparent; border: 1px solid var(--journal-divider); border-radius: 2px;
+    color: var(--journal-ink-soft);
   }
+  .mx-row-rm:hover { color: var(--journal-accent); border-color: var(--journal-accent); }
   .mx-add {
-    margin: 0.4rem 0; padding: 0.4rem 0.9rem; cursor: pointer;
-    background: #fff; color: #222; border: 1px solid #888; border-radius: 4px;
+    margin: 0.4rem 0; padding: 0.4rem 1rem; cursor: pointer;
+    background: var(--journal-bg); color: var(--journal-ink);
+    border: 1px solid var(--journal-ink); border-radius: 2px;
+    font-family: inherit; font-size: 0.82rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    font-feature-settings: "smcp" 1, "c2sc" 1, "kern" 1;
+    transition: background 120ms, color 120ms;
   }
-  .mx-mass { margin-top: 0.6rem; opacity: 0.8; font-size: 0.92rem; }
-  .mx-mass.warn { color: #c0392b; opacity: 1; }
-  .mx-mass strong { color: #2a7ae2; }
+  .mx-add:hover { background: var(--journal-ink); color: var(--journal-bg); }
+  .mx-mass { margin-top: 0.6rem; opacity: 0.85; font-size: 0.92rem; font-family: 'IBM Plex Mono', monospace; }
+  .mx-mass.warn { color: var(--journal-accent); opacity: 1; }
+  .mx-mass strong { color: var(--journal-accent); }
 
   .mx-slider-wrap { margin: 1rem auto; max-width: 720px; }
   .mx-slider-wrap label { display: block; margin-bottom: 0.4rem; font-size: 0.95rem; text-align: center; }
+  .mx-slider-wrap label strong { font-family: 'IBM Plex Mono', monospace; color: var(--journal-accent); }
 
   .mx-slider {
     -webkit-appearance: none; appearance: none;
@@ -52,41 +75,41 @@ author_profile: true
     width: 100%; height: 20px; cursor: pointer; padding: 0;
   }
   .mx-slider::-webkit-slider-runnable-track {
-    height: 4px; background: #888; border-radius: 2px;
+    height: 3px; background: var(--journal-divider); border-radius: 2px;
   }
   .mx-slider::-moz-range-track {
-    height: 4px; background: #888; border-radius: 2px; border: none;
+    height: 3px; background: var(--journal-divider); border-radius: 2px; border: none;
   }
   .mx-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 16px; height: 16px; border-radius: 50%;
-    background: #2a7ae2; cursor: pointer; margin-top: -6px;
-    border: 2px solid #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    background: var(--journal-accent); cursor: pointer; margin-top: -6.5px;
+    border: 2px solid var(--journal-bg); box-shadow: 0 1px 2px rgba(31,28,24,0.25);
   }
   .mx-slider::-moz-range-thumb {
     width: 16px; height: 16px; border-radius: 50%;
-    background: #2a7ae2; cursor: pointer;
-    border: 2px solid #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    background: var(--journal-accent); cursor: pointer;
+    border: 2px solid var(--journal-bg); box-shadow: 0 1px 2px rgba(31,28,24,0.25);
   }
   .mx-slider-cx {
     margin-left: calc(8.333% - 8px);
     width: calc(89.334% + 16px);
   }
   .mx-slider-cx::-webkit-slider-runnable-track {
-    background: linear-gradient(to right, #2a7ae2 0%, #2a7ae2 var(--mx-fill, 50%), #888 var(--mx-fill, 50%), #888 100%);
+    background: linear-gradient(to right, var(--journal-accent) 0%, var(--journal-accent) var(--mx-fill, 50%), var(--journal-divider) var(--mx-fill, 50%), var(--journal-divider) 100%);
   }
   .mx-slider-cx::-moz-range-progress {
-    height: 4px; background: #2a7ae2; border-radius: 2px; border: none;
+    height: 3px; background: var(--journal-accent); border-radius: 2px; border: none;
   }
 
   .mx-charts { max-width: 720px; margin-inline: auto; }
   .mx-charts svg { width: 100%; height: auto; display: block; margin-bottom: 0.4rem; }
   .mx-readout {
-    margin-top: 0.5rem; padding: 0.4rem 0.75rem;
-    border-left: 3px solid #2a7ae2;
+    margin-top: 0.5rem; padding: 0.4rem 0.85rem;
+    border-left: 2px solid var(--journal-accent);
     text-align: left; font-size: 0.95rem;
   }
-  .mx-readout strong { color: #2a7ae2; font-size: 1.1rem; }
+  .mx-readout strong { color: var(--journal-accent); font-size: 1.1rem; font-family: 'IBM Plex Mono', monospace; }
   .mx-readout .breakdown { display: block; margin-top: 0.25rem; opacity: 0.75; font-size: 0.9rem; }
 </style>
 
@@ -136,7 +159,7 @@ Below, pick a continuous family and add point masses with weights $w_i$. The con
 
 ## What it shows
 
-**Jumps are the signature of mixed type.** A purely continuous CDF is smooth; a purely discrete CDF is all jumps; a mixed CDF has both. **The jump at $x_i$ has height exactly $w_i$** — the same value you typed into the table. Slide current $x$ across an $x_i$ and watch the CDF lift by $w_i$ in one step, while the corresponding lollipop in the upper panel turns blue.
+**Jumps are the signature of mixed type.** A purely continuous CDF is smooth; a purely discrete CDF is all jumps; a mixed CDF has both. **The jump at $x_i$ has height exactly $w_i$** — the same value you typed into the table. Slide current $x$ across an $x_i$ and watch the CDF lift by $w_i$ in one step, while the corresponding lollipop in the upper panel turns red.
 
 **Continuous and discrete share the budget.** Adding a point mass $w_i$ removes $w_i$ from the continuous part: the smooth curve scales down by $W_c = 1 - \sum w_j$, and the lost area under the density reappears as the jumps. Total probability stays at 1 by construction.
 
@@ -435,7 +458,7 @@ Below, pick a continuous family and add point masses with weights $w_i$. The con
       fill += ' L ' + xS(lo, hi, x).toFixed(1) + ' ' + yS(yMax, y).toFixed(1);
     }
     if (!crossed) fill += ' L ' + xS(lo, hi, hi).toFixed(1) + ' ' + baseY.toFixed(1) + ' Z';
-    s += '<path d="' + fill + '" fill="#2a7ae2" fill-opacity="0.22"/>';
+    s += '<path d="' + fill + '" fill="#9c2d2d" fill-opacity="0.22"/>';
 
     /* density curve */
     let line = '';
@@ -443,7 +466,7 @@ Below, pick a continuous family and add point masses with weights $w_i$. The con
       const [x, y] = cont[i];
       line += (i === 0 ? 'M' : 'L') + xS(lo, hi, x).toFixed(1) + ',' + yS(yMax, y).toFixed(1);
     }
-    s += '<path d="' + line + '" fill="none" stroke="#2a7ae2" stroke-width="2"/>';
+    s += '<path d="' + line + '" fill="none" stroke="#9c2d2d" stroke-width="2"/>';
 
     /* point-mass lollipops */
     for (const pt of points) {
@@ -452,7 +475,7 @@ Below, pick a continuous family and add point masses with weights $w_i$. The con
       const yTop = yS(yMax, Math.max(pt.w, 0));
       const yBot = yS(yMax, 0);
       const inLeft = pt.x <= currentX;
-      const color = inLeft ? '#2a7ae2' : '#888';
+      const color = inLeft ? '#9c2d2d' : '#888';
       const opacity = inLeft ? 1 : 0.4;
       const dotR = inLeft ? 5 : 4;
       s += '<line x1="' + x + '" y1="' + yBot + '" x2="' + x + '" y2="' + yTop + '" stroke="' + color + '" stroke-width="2.5" opacity="' + opacity + '"/>';
@@ -511,7 +534,7 @@ Below, pick a continuous family and add point masses with weights $w_i$. The con
         const yBefore = Wc * cdfFn(xj, params) + off;
         const yAfter  = yBefore + j.w;
         const inLeft = xj <= currentX;
-        const color = inLeft ? '#2a7ae2' : '#888';
+        const color = inLeft ? '#9c2d2d' : '#888';
         const opacity = inLeft ? 1 : 0.5;
         const xpx = xS(lo, hi, xj);
         s += '<line x1="' + xpx + '" y1="' + yS(yMax, yBefore).toFixed(2) + '" x2="' + xpx + '" y2="' + yS(yMax, yAfter).toFixed(2) + '" stroke="' + color + '" stroke-width="2" stroke-dasharray="3,3" opacity="' + opacity + '"/>';
@@ -531,8 +554,8 @@ Below, pick a continuous family and add point masses with weights $w_i$. The con
     const cxPx = xS(lo, hi, currentX);
     const cyPx = yS(yMax, cumTotal);
     s += '<line x1="' + cxPx + '" y1="' + M.t + '" x2="' + cxPx + '" y2="' + (M.t + innerH) + '" stroke="currentColor" stroke-opacity="0.5" stroke-dasharray="4,3"/>';
-    s += '<line x1="' + M.l + '" y1="' + cyPx + '" x2="' + cxPx + '" y2="' + cyPx + '" stroke="#2a7ae2" stroke-opacity="0.4" stroke-dasharray="2,3"/>';
-    s += '<circle cx="' + cxPx + '" cy="' + cyPx + '" r="5" fill="#2a7ae2"/>';
+    s += '<line x1="' + M.l + '" y1="' + cyPx + '" x2="' + cxPx + '" y2="' + cyPx + '" stroke="#9c2d2d" stroke-opacity="0.4" stroke-dasharray="2,3"/>';
+    s += '<circle cx="' + cxPx + '" cy="' + cyPx + '" r="5" fill="#9c2d2d"/>';
 
     svg.innerHTML = s;
     $('mx-cum').textContent = cumTotal.toFixed(3);
@@ -542,7 +565,7 @@ Below, pick a continuous family and add point masses with weights $w_i$. The con
 
   function drawColoredPolyline(pts, cx, lo, hi, yMax, emit) {
     if (pts.length < 2) return;
-    const blueColor = '#2a7ae2', grayColor = '#888';
+    const activeColor = '#9c2d2d', inactiveColor = '#888';
     let leftPath = '', rightPath = '';
     let crossed = false;
     for (let i = 0; i < pts.length; i++) {
@@ -565,8 +588,8 @@ Below, pick a continuous family and add point masses with weights $w_i$. The con
         rightPath += (rightPath ? 'L' : 'M') + px + ',' + py;
       }
     }
-    if (leftPath && leftPath.length > 1) emit('<path d="' + leftPath + '" fill="none" stroke="' + blueColor + '" stroke-width="2"/>');
-    if (rightPath && rightPath.length > 1) emit('<path d="' + rightPath + '" fill="none" stroke="' + grayColor + '" stroke-width="2" opacity="0.55"/>');
+    if (leftPath && leftPath.length > 1) emit('<path d="' + leftPath + '" fill="none" stroke="' + activeColor + '" stroke-width="2"/>');
+    if (rightPath && rightPath.length > 1) emit('<path d="' + rightPath + '" fill="none" stroke="' + inactiveColor + '" stroke-width="2" opacity="0.55"/>');
   }
 
   function render() { drawPDF(); drawCDF(); }
