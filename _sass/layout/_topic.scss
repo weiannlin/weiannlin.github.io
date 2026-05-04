@@ -1,0 +1,356 @@
+/* ==========================================================================
+   Teaching Topics — journal aesthetic (refined for site-wide deploy)
+   The site-wide cream + brick red palette comes from _journal-base.scss
+   and the :root tokens in _default.scss. This file adds the journal-formal
+   article chrome (masthead row, abstract block, hairline rules, big title)
+   that's specific to topic-layout articles only.
+   ========================================================================== */
+
+.topic-page {
+  /* Inherits font-family / background from body (set in _journal-base.scss).
+     Only override font-size / line-height to lift the reading width slightly. */
+  font-size: 18px;
+  line-height: 1.7;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "onum" 1;
+}
+
+.topic-article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 5rem;
+
+  @media (min-width: 600px) {
+    padding: 3.5rem 1.5rem 6rem;
+  }
+
+  @media (min-width: 768px) {
+    padding: 4.5rem 2rem 8rem;
+  }
+}
+
+/* ---- Masthead (top: name | section · year) ---------------------------- */
+
+.topic-masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-feature-settings: "smcp" 1, "c2sc" 1, "kern" 1;
+  color: var(--journal-ink);
+  border-bottom: 1px solid var(--journal-ink);
+  padding-bottom: 0.55rem;
+  margin-bottom: 3rem;
+
+  &__left, &__right {
+    /* Allow CJK + Latin to wrap on tiny screens so the line never overflows. */
+    word-break: keep-all;
+  }
+
+  &__right {
+    text-align: right;
+  }
+
+  /* Stack vertically on narrow screens — left over right, both left-aligned —
+     so iPhone SE / older Androids never collide the two halves. */
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+
+    &__right {
+      text-align: left;
+    }
+  }
+}
+
+/* ---- Meta line (category · chapter, in red) --------------------------- */
+
+.topic-meta {
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-feature-settings: "smcp" 1, "c2sc" 1, "kern" 1;
+  color: var(--journal-accent);
+  margin-bottom: 1.4rem;
+
+  &__sep {
+    margin: 0 0.65rem;
+    color: var(--journal-ink-mute);
+  }
+}
+
+/* ---- Title + subtitle ------------------------------------------------- */
+
+.topic-title {
+  font-family: $serif;
+  font-size: 2.1rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  color: var(--journal-ink);
+  margin: 0 0 0.55rem 0;
+
+  @media (min-width: 600px) {
+    font-size: 2.5rem;
+    line-height: 1.18;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 2.95rem;
+  }
+}
+
+.topic-subtitle {
+  font-family: $serif;
+  font-style: italic;
+  font-size: 1.08rem;
+  line-height: 1.4;
+  color: var(--journal-ink-soft);
+  margin: 0 0 1.6rem 0;
+
+  @media (min-width: 768px) {
+    font-size: 1.18rem;
+  }
+}
+
+/* ---- Hairline rules --------------------------------------------------- */
+
+.topic-rule {
+  border: 0;
+  border-top: 1px solid var(--journal-rule);
+  margin: 1.5rem 0;
+  height: 0;
+  background: none;
+}
+
+/* ---- Abstract --------------------------------------------------------- */
+
+.topic-abstract {
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: var(--journal-ink-soft);
+  margin: 0;
+
+  &__label {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-feature-settings: "smcp" 1, "c2sc" 1, "kern" 1;
+    color: var(--journal-ink);
+    margin-right: 0.9rem;
+    white-space: nowrap;
+  }
+}
+
+/* ---- Body content ----------------------------------------------------- */
+
+.topic-content {
+  font-size: 1.05rem;
+  line-height: 1.78;
+  color: var(--journal-ink);
+
+  p {
+    margin: 0 0 1.25em 0;
+  }
+
+  h2 {
+    font-family: $serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--journal-accent);
+    letter-spacing: -0.005em;
+    margin: 2.6em 0 0.7em 0;
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid var(--journal-divider);
+  }
+
+  h3 {
+    font-family: $serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--journal-ink);
+    margin: 2em 0 0.55em 0;
+  }
+
+  ul, ol {
+    margin: 0 0 1.25em 0;
+    padding-left: 1.5em;
+
+    li {
+      margin-bottom: 0.45em;
+    }
+  }
+
+  strong {
+    color: var(--journal-ink);
+    font-weight: 700;
+  }
+
+  em {
+    color: var(--journal-ink);
+    font-style: italic;
+  }
+
+  a {
+    color: var(--journal-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 0.6px;
+    text-underline-offset: 2.5px;
+    transition: background 120ms ease;
+
+    &:hover {
+      background: var(--journal-accent-soft);
+    }
+  }
+
+  code {
+    font-family: $monospace;
+    font-size: 0.92em;
+    background: var(--global-code-background-color);
+    padding: 0.08em 0.35em;
+    border-radius: 2px;
+  }
+
+  pre {
+    font-family: $monospace;
+    background: var(--global-code-background-color);
+    border-left: 2px solid var(--journal-accent);
+    padding: 0.9em 1.1em;
+    overflow-x: auto;
+    font-size: 0.92em;
+    line-height: 1.55;
+    margin: 1.5em 0;
+
+    code {
+      background: none;
+      padding: 0;
+    }
+  }
+
+  blockquote {
+    border-left: 2px solid var(--journal-accent);
+    padding: 0.2em 0 0.2em 1.2em;
+    margin: 1.5em 0;
+    color: var(--journal-ink-soft);
+    font-style: italic;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.6em 0;
+    font-size: 0.95em;
+
+    thead th {
+      text-align: left;
+      padding: 0.55em 0.9em;
+      border-top: 1px solid var(--journal-ink);
+      border-bottom: 1px solid var(--journal-ink);
+      font-weight: 700;
+      font-size: 0.85em;
+      letter-spacing: 0.04em;
+      text-transform: none;
+    }
+
+    td, th {
+      padding: 0.55em 0.9em;
+      border-bottom: 1px solid var(--journal-divider);
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: 1px solid var(--journal-ink);
+    }
+  }
+
+  /* MathJax display blocks: extra breathing room. Overflow-x handled
+     globally in _journal-base.scss. */
+  mjx-container[display="true"] {
+    margin: 1.5em 0 !important;
+  }
+}
+
+/* ---- Related demos block (restyled for journal aesthetic) ------------- */
+
+.topic-content .related-demos {
+  background: transparent;
+  border: 0;
+  border-left: 2px solid var(--journal-accent);
+  border-radius: 0;
+  padding: 0.4em 0 0.4em 1.3em;
+  margin: 2em 0 2.6em 0;
+
+  h4 {
+    font-family: $serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-feature-settings: "smcp" 1, "c2sc" 1, "kern" 1;
+    color: var(--journal-accent);
+    margin: 0 0 0.55em 0;
+    font-weight: 700;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+  }
+
+  li {
+    margin-bottom: 0.45em;
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  li:last-child { margin-bottom: 0; }
+
+  a {
+    color: var(--journal-ink);
+    text-decoration: none;
+
+    strong {
+      color: var(--journal-ink);
+      border-bottom: 1px solid var(--journal-accent);
+      padding-bottom: 1px;
+    }
+
+    &:hover {
+      background: var(--journal-accent-soft);
+
+      strong { color: var(--journal-accent); }
+    }
+  }
+}
+
+/* ---- Override default page wrapper restrictions on topic pages.
+   The default single layout has #main + sidebar + .page__content with
+   max-widths. Topic pages drop those constraints since topic.html
+   uses default.html directly (no sidebar). These rules also defend
+   against any page-content wrapper that might surround the topic-page. */
+
+body:has(.topic-page) {
+  #main {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar,
+  .author__avatar,
+  .author__content,
+  .author__urls-wrapper {
+    display: none;
+  }
+
+  .page__inner-wrap,
+  .page__content {
+    padding: 0;
+    max-width: 100%;
+  }
+}

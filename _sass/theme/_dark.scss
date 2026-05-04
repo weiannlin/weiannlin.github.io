@@ -1,54 +1,42 @@
 /* ==========================================================================
-   DARK THEME
+   DARK THEME — disabled under the journal aesthetic (2026-05-04)
+
+   The site adopts a single light "paper" identity site-wide. The theme
+   toggle in the masthead remains in the markup but is hidden via CSS
+   (see _masthead.scss). If a true journal-dark variant is built later
+   (deep brown paper / ivory ink), restore those overrides here.
+
+   Identical mappings to _default.scss so any toggle-induced
+   `data-theme="dark"` attribute change is visually a no-op.
    ========================================================================== */
 
-/* Color codes used for the theme */
-$gray                       : #7a8288;
-$dark-gray                  : mix(#000, $gray, 40%);
-$darker-gray                : mix(#000, $gray, 60%);
-$light-gray                 : mix(#fff, $gray, 50%);
-
-$background                 : #474747;
-$background-light           : mix(#fff, $background, 80%);
-$background-lighter         : mix(#fff, $background, 90%);
-$text                       : #ffffff;
-$link                       : #0ea1c5;
-$link-dark                  : mix(#000, $link, 25%);
-$link-light                 : mix(#fff, $link, 25%);
-
-/* Color codes used for the site */
-$danger-color               : #ee5f5b;
-$info-color                 : #2f7f93;
-$notice-color               : #7a8288;
-$success-color              : #62c462;
-$warning-color              : #f89406;
-
-/* Other basic settings for the template */
-$border-radius              : 4px;
-$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
-$global-transition          : all 0.2s ease-in-out;
-$masthead-height            : 70px;
-$navicon-width              : 28px;
-$navicon-height             : 4px;
-$sidebar-link-max-width     : 250px;
-$sidebar-screen-min-width   : 1024px;
-
-/* Dark theme for the site */
 html[data-theme="dark"] {
-    --global-base-color                 : #{$background};
-    --global-bg-color                   : #{$background};
-    --global-footer-bg-color            : #{$background};
-    --global-border-color               : #{$light-gray};
-    --global-dark-border-color          : #{$background-light};
-    --global-code-background-color      : #fafafa;
-    --global-code-text-color            : #{$darker-gray};
-    --global-fig-caption-color          : #{$light-gray};
-    --global-link-color                 : #{$link};
-    --global-link-color-hover           : #{$link-dark};
-    --global-link-color-visited         : #{$link-light};
-    --global-masthead-link-color        : #{$text};
-    --global-masthead-link-color-hover  : #{$background-light};
-    --global-text-color                 : #{$text};
-    --global-text-color-light           : #{$light-gray};
-    --global-thead-color                : #{$background-lighter};
+    --global-base-color                 : #1f1c18;
+    --global-bg-color                   : #f5efe2;
+    --global-footer-bg-color            : #f5efe2;
+    --global-border-color               : rgba(31, 28, 24, 0.18);
+    --global-dark-border-color          : #1f1c18;
+    --global-code-background-color      : rgba(31, 28, 24, 0.06);
+    --global-code-text-color            : #1f1c18;
+    --global-fig-caption-color          : #6b6258;
+    --global-link-color                 : #9c2d2d;
+    --global-link-color-hover           : #7a1f1f;
+    --global-link-color-visited         : #9c2d2d;
+    --global-masthead-link-color        : #1f1c18;
+    --global-masthead-link-color-hover  : #9c2d2d;
+    --global-text-color                 : #1f1c18;
+    --global-text-color-light           : #6b6258;
+    --global-thead-color                : rgba(31, 28, 24, 0.04);
+
+    --journal-bg                        : #f5efe2;
+    --journal-bg-warm                   : #efe7d4;
+    --journal-ink                       : #1f1c18;
+    --journal-ink-soft                  : #443d35;
+    --journal-ink-mute                  : #8a7f72;
+    --journal-accent                    : #9c2d2d;
+    --journal-accent-dark               : #7a1f1f;
+    --journal-accent-soft               : rgba(156, 45, 45, 0.08);
+    --journal-rule                      : #9c2d2d;
+    --journal-divider                   : rgba(31, 28, 24, 0.18);
+    --journal-divider-soft              : rgba(31, 28, 24, 0.08);
 }

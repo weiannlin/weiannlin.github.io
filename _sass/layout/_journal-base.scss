@@ -1,0 +1,392 @@
+/* ==========================================================================
+   JOURNAL BASE — site-wide aesthetic overrides
+   Imported AFTER the academicpages base layout files so it wins on
+   specificity ties. Site-wide cream + brick red + serif. The topic layout
+   (_topic.scss) extends this with its own journal-formal masthead/abstract.
+   ========================================================================== */
+
+/* ---- Document body ---------------------------------------------------- */
+
+body {
+  font-family: $serif;
+  background: var(--journal-bg);
+  color: var(--journal-ink);
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+/* ---- Masthead (top nav) ---------------------------------------------- */
+
+.masthead {
+  background: var(--journal-bg);
+
+  &::after {
+    background: var(--journal-divider);
+    height: 1px;
+  }
+
+  &__inner-wrap {
+    font-family: $serif;
+    padding: 0.55em 1.2em;
+  }
+}
+
+.masthead__menu-item {
+  background-color: var(--journal-bg);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-feature-settings: "smcp" 1, "c2sc" 1, "kern" 1;
+
+  &--lg {
+    /* Site title: keep readable, no small-caps */
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    font-weight: 700;
+    text-transform: none;
+    font-feature-settings: "kern" 1;
+  }
+}
+
+/* Hide theme toggle (the journal aesthetic is light-only for now;
+   markup remains but is visually removed). */
+.masthead__menu #theme-toggle {
+  display: none !important;
+}
+
+.greedy-nav {
+  background: var(--journal-bg);
+
+  a {
+    color: var(--journal-ink);
+
+    &:hover {
+      color: var(--journal-accent);
+    }
+  }
+
+  .visible-links a {
+    &:before {
+      background: var(--journal-accent);
+      height: 1px;
+    }
+  }
+
+  button {
+    background-color: var(--journal-ink);
+    color: var(--journal-bg);
+  }
+
+  .hidden-links {
+    background: var(--journal-bg);
+    border: 1px solid var(--journal-divider);
+    box-shadow: 0 4px 12px rgba(31, 28, 24, 0.08);
+
+    a {
+      font-family: $serif;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      font-feature-settings: "kern" 1;
+
+      &:hover {
+        background: var(--journal-accent-soft);
+        color: var(--journal-accent);
+      }
+    }
+
+    &:before {
+      border-color: var(--journal-divider) transparent;
+    }
+
+    &:after {
+      border-color: var(--journal-bg) transparent;
+    }
+
+    li {
+      border-bottom: 1px solid var(--journal-divider-soft);
+
+      &:last-child { border-bottom: none; }
+    }
+  }
+}
+
+/* ---- Footer ----------------------------------------------------------- */
+
+.page__footer {
+  background-color: var(--journal-bg);
+  color: var(--journal-ink-soft);
+  border-top: 1px solid var(--journal-rule);
+  font-family: $serif;
+
+  a {
+    color: var(--journal-ink);
+
+    &:hover {
+      color: var(--journal-accent);
+      text-decoration: none;
+    }
+  }
+
+  .fas, .fab, .far, .fal {
+    color: var(--journal-ink);
+  }
+}
+
+.page__footer-follow {
+  ul {
+    text-align: center;
+  }
+
+  li {
+    font-family: $serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-feature-settings: "smcp" 1, "c2sc" 1, "kern" 1;
+  }
+
+  a {
+    font-weight: 500;
+  }
+}
+
+.page__footer-copyright {
+  font-family: $serif;
+  font-style: italic;
+  font-size: 0.82rem;
+  text-align: center;
+  margin-top: 0.7em;
+  color: var(--journal-ink-mute);
+  line-height: 1.55;
+
+  a {
+    color: var(--journal-ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--journal-divider);
+
+    &:hover {
+      color: var(--journal-accent);
+      border-bottom-color: var(--journal-accent);
+    }
+  }
+}
+
+/* ---- Page content (non-topic pages) prose typography ------------------ */
+
+.page__content {
+  font-family: $serif;
+  color: var(--journal-ink);
+  line-height: 1.7;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $serif;
+    color: var(--journal-ink);
+    font-weight: 700;
+  }
+
+  h2 {
+    color: var(--journal-accent);
+    border-bottom: 1px solid var(--journal-divider);
+    padding-bottom: 0.3em;
+    margin-top: 2em;
+    margin-bottom: 0.6em;
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    margin-top: 1.6em;
+    margin-bottom: 0.5em;
+    font-size: 1.2rem;
+  }
+
+  a {
+    color: var(--journal-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 0.6px;
+    text-underline-offset: 2.5px;
+    transition: background 120ms ease;
+
+    &:hover {
+      background: var(--journal-accent-soft);
+    }
+  }
+
+  strong {
+    color: var(--journal-ink);
+    font-weight: 700;
+  }
+
+  blockquote {
+    border-left: 2px solid var(--journal-accent);
+    padding: 0.2em 0 0.2em 1.2em;
+    margin: 1.4em 0;
+    color: var(--journal-ink-soft);
+    font-style: italic;
+  }
+
+  code {
+    font-family: $monospace;
+    background: var(--global-code-background-color);
+    padding: 0.08em 0.35em;
+    border-radius: 2px;
+    font-size: 0.92em;
+  }
+
+  pre {
+    font-family: $monospace;
+    background: var(--global-code-background-color);
+    border-left: 2px solid var(--journal-accent);
+    padding: 0.9em 1.1em;
+    overflow-x: auto;
+    line-height: 1.55;
+    margin: 1.5em 0;
+
+    code {
+      background: none;
+      padding: 0;
+    }
+  }
+}
+
+/* ---- Page title ------------------------------------------------------- */
+
+.page__title {
+  font-family: $serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--journal-ink);
+  letter-spacing: -0.005em;
+  border-bottom: 1px solid var(--journal-rule);
+  padding-bottom: 0.35em;
+  margin-bottom: 1em;
+  line-height: 1.2;
+
+  @media (min-width: 768px) {
+    font-size: 2.4rem;
+  }
+}
+
+/* ---- Sidebar (author profile when shown) ------------------------------ */
+
+.sidebar {
+  font-family: $serif;
+
+  .author__name {
+    font-family: $serif;
+    color: var(--journal-ink);
+  }
+
+  .author__bio {
+    color: var(--journal-ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .author__urls {
+    a {
+      color: var(--journal-ink);
+
+      &:hover {
+        color: var(--journal-accent);
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+/* ---- Archive listing items (Talks / Publications / Courses) ----------- */
+
+.archive {
+  font-family: $serif;
+}
+
+.archive__item-title {
+  font-family: $serif;
+  font-weight: 700;
+
+  a {
+    color: var(--journal-ink);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 120ms ease, color 120ms ease;
+
+    &:hover {
+      color: var(--journal-accent);
+      border-bottom-color: var(--journal-accent);
+      background: none;
+    }
+  }
+}
+
+.archive__item-excerpt {
+  color: var(--journal-ink-soft);
+}
+
+.archive__subtitle {
+  font-family: $serif;
+  color: var(--journal-accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-feature-settings: "smcp" 1, "c2sc" 1, "kern" 1;
+  border-bottom: 1px solid var(--journal-divider);
+  padding-bottom: 0.4em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+/* ---- Tables (in any prose) ------------------------------------------- */
+
+.page__content table,
+.archive table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+
+  th {
+    text-align: left;
+    padding: 0.55em 0.9em;
+    border-top: 1px solid var(--journal-ink);
+    border-bottom: 1px solid var(--journal-ink);
+    font-weight: 700;
+    background: var(--global-thead-color);
+  }
+
+  td {
+    padding: 0.55em 0.9em;
+    border-bottom: 1px solid var(--journal-divider);
+  }
+
+  tr:last-child td {
+    border-bottom: 1px solid var(--journal-ink);
+  }
+}
+
+/* ---- Mobile overflow guards (apply globally so demo / topic / archive
+   tables and math don't blow out on narrow screens) --------------------- */
+
+.page__content,
+.topic-content {
+  /* Wrap wide MathJax display blocks in horizontal scroll instead of
+     pushing the page wider than the viewport. */
+  mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    padding: 0.2em 0;
+  }
+
+  /* Same for code blocks (already overflow-x in pre) and tables. */
+  table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  @media (min-width: 600px) {
+    table {
+      display: table;
+    }
+  }
+}

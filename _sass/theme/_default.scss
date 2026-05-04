@@ -1,47 +1,66 @@
 /* ==========================================================================
-   DEFAULT THEME
+   DEFAULT THEME — journal aesthetic (site-wide, 2026-05-04)
+
+   Cream paper background, brick red as the single accent color, warm
+   charcoal body. Variables overridden here propagate through every layout
+   that reads `var(--global-*)` from the academicpages base — so this is
+   the single source of truth for the visual identity.
    ========================================================================== */
 
 /* Color codes used for the theme */
-$gray                       : #7a8288;
-$dark-gray                  : mix(#000, $gray, 40%);
-$darker-gray                : mix(#000, $gray, 60%);
-$light-gray                 : #9ba1a6;
-$lighter-gray               : mix(#fff, $gray, 90%);
+$gray                       : #8a7f72;
+$dark-gray                  : #443d35;
+$darker-gray                : #1f1c18;
+$light-gray                 : #b3a89a;
+$lighter-gray               : #e6dfd1;
 
 /* Color codes used for the site */
-$danger-color               : #ee5f5b;
-$info-color                 : #2f7f93;
-$notice-color               : #7a8288;
-$success-color              : #62c462;
-$warning-color              : #f89406;
+$danger-color               : #9c2d2d;
+$info-color                 : #6b6258;
+$notice-color               : #6b6258;
+$success-color              : #6e7d56;
+$warning-color              : #b58a3e;
 
 /* Other basic settings for the template */
-$border-radius              : 4px;
-$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
-$global-transition          : all 0.2s ease-in-out;
+$border-radius              : 2px;
+$box-shadow                 : none;
+$global-transition          : all 0.15s ease-in-out;
 $masthead-height            : 70px;
 $navicon-width              : 28px;
-$navicon-height             : 4px;
+$navicon-height             : 3px;
 $sidebar-link-max-width     : 250px;
 $sidebar-screen-min-width   : 1024px;
 
-/* Default light theme for the site */
+/* Light (default) theme: journal aesthetic */
 :root {
-    --global-base-color                 : #{$gray};
-    --global-bg-color                   : #fff;
-    --global-footer-bg-color            : #f2f3f3;
-    --global-border-color               : #{$lighter-gray};
-    --global-dark-border-color          : #bdc1c4;
-    --global-code-background-color      : #fafafa;
-    --global-code-text-color            : #{$darker-gray};
-    --global-fig-caption-color          : mix(#fff,  #{$dark-gray}, 25%);
-    --global-link-color                 : #52adc8;
-    --global-link-color-hover           : mix(#000, #2f7f93, 25%);
-    --global-link-color-visited         : mix(#fff, #2f7f93, 25%);  
-    --global-masthead-link-color        : #{$dark-gray};
-    --global-masthead-link-color-hover  : mix(#000, #{$gray}, 25%);    
-    --global-text-color                 : #{$dark-gray};
-    --global-text-color-light           : #{$light-gray};
-    --global-thead-color                : #{$lighter-gray};
+    /* Academicpages base variables — remapped to journal palette */
+    --global-base-color                 : #1f1c18;
+    --global-bg-color                   : #f5efe2;
+    --global-footer-bg-color            : #f5efe2;
+    --global-border-color               : rgba(31, 28, 24, 0.18);
+    --global-dark-border-color          : #1f1c18;
+    --global-code-background-color      : rgba(31, 28, 24, 0.06);
+    --global-code-text-color            : #1f1c18;
+    --global-fig-caption-color          : #6b6258;
+    --global-link-color                 : #9c2d2d;
+    --global-link-color-hover           : #7a1f1f;
+    --global-link-color-visited         : #9c2d2d;
+    --global-masthead-link-color        : #1f1c18;
+    --global-masthead-link-color-hover  : #9c2d2d;
+    --global-text-color                 : #1f1c18;
+    --global-text-color-light           : #6b6258;
+    --global-thead-color                : rgba(31, 28, 24, 0.04);
+
+    /* Journal-specific tokens — used by topic layout AND site-wide chrome */
+    --journal-bg                        : #f5efe2;
+    --journal-bg-warm                   : #efe7d4;
+    --journal-ink                       : #1f1c18;
+    --journal-ink-soft                  : #443d35;
+    --journal-ink-mute                  : #8a7f72;
+    --journal-accent                    : #9c2d2d;
+    --journal-accent-dark               : #7a1f1f;
+    --journal-accent-soft               : rgba(156, 45, 45, 0.08);
+    --journal-rule                      : #9c2d2d;
+    --journal-divider                   : rgba(31, 28, 24, 0.18);
+    --journal-divider-soft              : rgba(31, 28, 24, 0.08);
 }
