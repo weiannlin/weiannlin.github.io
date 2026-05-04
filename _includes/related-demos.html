@@ -1,0 +1,12 @@
+{% if page.related_demos and page.related_demos.size > 0 %}
+<aside class="related-demos">
+  <h4>相關 Demo</h4>
+  <ul>
+  {% for d in page.related_demos %}
+    <li>
+      <a href="{{ d.url | relative_url }}"><strong>{{ d.title }}</strong></a>{% if d.note %} &mdash; {{ d.note }}{% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+</aside>
+{% endif %}

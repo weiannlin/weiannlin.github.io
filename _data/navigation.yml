@@ -15,21 +15,24 @@ main:
     url: /publications/
 
   - title: "Talks"
-    url: /talks/    
+    url: /talks/
 
-  - title: "Teaching"
-    url: /teaching/    
-        
+  - title: "Courses"
+    url: /courses/
+
+  - title: "Teaching Topics"
+    url: /teaching-topics/
+
   - title: "Demos"
     url: /demos/
 
   - title: "Blog Posts"
     url: /year-archive/
-    
-  
-    
+
+
+
   # - title: "CV"
   #   url: /cv-json/
-    
+
   # - title: "Guide"
   #   url: /markdown/

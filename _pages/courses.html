@@ -1,0 +1,13 @@
+---
+layout: archive
+title: "Courses"
+permalink: /courses/
+author_profile: true
+---
+
+{% include base_path %}
+
+{% assign sorted_courses = site.courses | sort: 'date' %}
+{% for post in sorted_courses reversed %}
+  {% include archive-single.html %}
+{% endfor %}

@@ -1,0 +1,70 @@
+---
+layout: default
+---
+
+{% include base_path %}
+
+{% assign year = page.date | date: "%Y" %}
+{% case year %}
+  {% when "2024" %}{% assign year_roman = "MMXXIV" %}
+  {% when "2025" %}{% assign year_roman = "MMXXV" %}
+  {% when "2026" %}{% assign year_roman = "MMXXVI" %}
+  {% when "2027" %}{% assign year_roman = "MMXXVII" %}
+  {% when "2028" %}{% assign year_roman = "MMXXVIII" %}
+  {% when "2029" %}{% assign year_roman = "MMXXIX" %}
+  {% when "2030" %}{% assign year_roman = "MMXXX" %}
+  {% else %}{% assign year_roman = year %}
+{% endcase %}
+
+{% assign chapter = page.chapter | default: 1 %}
+{% case chapter %}
+  {% when 1 %}{% assign chapter_roman = "I" %}
+  {% when 2 %}{% assign chapter_roman = "II" %}
+  {% when 3 %}{% assign chapter_roman = "III" %}
+  {% when 4 %}{% assign chapter_roman = "IV" %}
+  {% when 5 %}{% assign chapter_roman = "V" %}
+  {% when 6 %}{% assign chapter_roman = "VI" %}
+  {% when 7 %}{% assign chapter_roman = "VII" %}
+  {% when 8 %}{% assign chapter_roman = "VIII" %}
+  {% when 9 %}{% assign chapter_roman = "IX" %}
+  {% when 10 %}{% assign chapter_roman = "X" %}
+  {% else %}{% assign chapter_roman = chapter %}
+{% endcase %}
+
+<div class="topic-page">
+  <article class="topic-article" itemscope itemtype="http://schema.org/CreativeWork">
+
+    <header class="topic-masthead">
+      <div class="topic-masthead__left">Wei-Ann Lin &middot; 林蔚安</div>
+      <div class="topic-masthead__right">Teaching Topics &middot; {{ year_roman }}</div>
+    </header>
+
+    <div class="topic-meta">
+      <span class="topic-meta__category">{{ page.category }}</span>
+      <span class="topic-meta__sep">&middot;</span>
+      <span class="topic-meta__chapter">Chapter {{ chapter_roman }}</span>
+    </div>
+
+    <h1 class="topic-title" itemprop="headline">{{ page.title }}</h1>
+
+    {% if page.subtitle %}
+      <p class="topic-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+
+    <hr class="topic-rule">
+
+    {% if page.excerpt and page.excerpt != "" %}
+      <div class="topic-abstract">
+        <span class="topic-abstract__label">Abstract.</span>
+        <span class="topic-abstract__text" itemprop="description">{{ page.excerpt | strip_html | strip_newlines }}</span>
+      </div>
+
+      <hr class="topic-rule">
+    {% endif %}
+
+    <section class="topic-content" itemprop="text">
+      {{ content }}
+    </section>
+
+  </article>
+</div>

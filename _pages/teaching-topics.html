@@ -1,0 +1,35 @@
+---
+layout: archive
+title: "Teaching Topics"
+permalink: /teaching-topics/
+author_profile: true
+---
+
+{% include base_path %}
+
+<p>本區塊正在建構中,文章陸續整理中。</p>
+
+<p style="color: #888; font-size: 0.95em;">構思中的內容:統計、電腦試驗與高斯過程基本概念的主題式短篇文章,每一篇都會搭配對應的<a href="{{ '/demos/' | relative_url }}">互動 demo</a>。</p>
+
+{% comment %}
+Listing logic — uncomment when ready to launch.
+Categories must match each article's `category:` front-matter exactly.
+
+{% assign categories = "隨機變數,隨機事件,高斯過程,試驗設計" | split: "," %}
+
+{% for cat in categories %}
+  {% assign articles = site.teaching_topics | where: "category", cat | sort: "chapter" %}
+  {% if articles.size > 0 %}
+<h2 id="{{ cat | slugify }}">{{ cat }}</h2>
+<ul class="teaching-topics-list">
+  {% for article in articles %}
+  <li>
+    <span class="topic-chapter">第 {{ article.chapter }} 章</span>
+    <a href="{{ article.url | relative_url }}"><strong>{{ article.title }}</strong></a>
+    {% if article.excerpt and article.excerpt != "" %} &mdash; {{ article.excerpt | strip_html | strip_newlines }}{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+  {% endif %}
+{% endfor %}
+{% endcomment %}

@@ -1,8 +1,8 @@
 ---
 title: "Theory of Statistical Inference II"
-collection: teaching
+collection: courses
 type: "Graduate course"
-permalink: /teaching/2026-spring-ma6058-statistical-inference-2/
+permalink: /courses/2026-spring-ma6058-statistical-inference-2/
 venue: "Department of Mathematics, National Central University"
 date: 2026-02-17
 location: "Taoyuan, Taiwan"

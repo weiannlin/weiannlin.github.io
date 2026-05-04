@@ -1,8 +1,8 @@
 ---
 title: "Theory of Statistical Inference I"
-collection: teaching
+collection: courses
 type: "Graduate course"
-permalink: /teaching/2025-fall-ma6057-statistical-inference-1/
+permalink: /courses/2025-fall-ma6057-statistical-inference-1/
 venue: "Department of Mathematics, National Central University"
 date: 2025-09-01
 location: "Taoyuan, Taiwan"
