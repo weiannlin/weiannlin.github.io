@@ -1,0 +1,77 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\newcommand{\vennbase}{%
+  \draw[journalink, line width=0.55pt, rounded corners=1pt] (-1.3,-0.85) rectangle (1.6,0.85);
+  \draw[journalink, line width=0.55pt] (-0.32,0) circle (0.62);
+  \draw[journalink, line width=0.55pt] (0.38,0) circle (0.62);
+}
+
+\newcommand{\shadeA}{%
+  \path[fill=journalaccent, fill opacity=0.13] (-0.32,0) circle (0.62);
+}
+
+\newcommand{\shadeB}{%
+  \path[fill=journalaccent, fill opacity=0.13] (0.38,0) circle (0.62);
+}
+
+\newcommand{\shadeIntersection}{%
+  \begin{scope}
+    \clip (-0.32,0) circle (0.62);
+    \path[fill=journalaccent, fill opacity=0.22] (0.38,0) circle (0.62);
+  \end{scope}
+}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  every node/.style={font=\normalsize}
+]
+  \begin{scope}[shift={(0,0)}]
+    \shadeA
+    \shadeB
+    \shadeIntersection
+    \vennbase
+    \node[journalink, font=\small] at (-0.62,-0.02) {$A$};
+    \node[journalink, font=\small] at (0.68,-0.02) {$B$};
+    \node[journalmuted] at (1.32,0.62) {$S$};
+    \node[journalink] at (0,-1.2) {$\mathbb{P}(A\cup B)$};
+  \end{scope}
+
+  \node[journalink] at (2.1,0) {$=$};
+
+  \begin{scope}[shift={(4.2,0)}]
+    \shadeA
+    \vennbase
+    \node[journalink, font=\small] at (-0.62,-0.02) {$A$};
+    \node[journalmuted] at (1.32,0.62) {$S$};
+    \node[journalink] at (0,-1.2) {$\mathbb{P}(A)$};
+  \end{scope}
+
+  \node[journalink] at (6.3,0) {$+$};
+
+  \begin{scope}[shift={(8.4,0)}]
+    \shadeB
+    \vennbase
+    \node[journalink, font=\small] at (0.68,-0.02) {$B$};
+    \node[journalmuted] at (1.32,0.62) {$S$};
+    \node[journalink] at (0,-1.2) {$\mathbb{P}(B)$};
+  \end{scope}
+
+  \node[journalink] at (10.5,0) {$-$};
+
+  \begin{scope}[shift={(12.6,0)}]
+    \shadeIntersection
+    \vennbase
+    \node[journalmuted] at (1.32,0.62) {$S$};
+    \node[journalink] at (0,-1.2) {$\mathbb{P}(A\cap B)$};
+  \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,33 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{xcolor}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  every node/.style={font=\Large}
+]
+  \path[
+    fill=journalaccent,
+    fill opacity=0.12,
+    even odd rule,
+    rounded corners=2pt
+  ]
+    (-3,-1.8) rectangle (3,1.8)
+    (-0.85,0) circle (1.05);
+
+  \draw[journalink, line width=0.8pt, rounded corners=2pt]
+    (-3,-1.8) rectangle (3,1.8);
+  \draw[journalink, line width=0.8pt]
+    (-0.85,0) circle (1.05);
+
+  \node[journalink] at (-0.85,0) {$A$};
+  \node[journalaccent] at (1.35,0.08) {$A^{\prime}$};
+  \node[journalmuted] at (2.55,1.42) {$S$};
+\end{tikzpicture}
+\end{document}

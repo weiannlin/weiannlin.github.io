@@ -51,7 +51,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-$\mathbb{P}(\varnothing)=0$ 表示不可能事件的機率必為零。但反過來並不一定成立：機率為 $0$ 的事件未必是不可能事件。這正好呼應[思想實驗 1.1](/teaching-topics/random-experiments-sample-space-events/#thought-experiment-dart-zero-probability)中的飛鏢例子：在以面積指定機率的連續落點模型中，某個特定點可以是樣本空間中的可能結果；若這個單點集合被納入事件集合族，則它的面積為零，機率也為零。換句話說，機率為零與不可能發生不是同一件事。
+$\mathbb{P}(\varnothing)=0$ 表示不可能事件的機率必為零。但反過來並不一定成立：機率為 $0$ 的事件未必是不可能事件。這正好呼應[思想實驗 1.1](/teaching-topics/random-experiments-sample-space-events/#thought-experiment-dart-zero-probability)中的飛鏢例子：在以面積指定機率的連續落點模型中，某個特定點可以是樣本空間中的可能結果；若這個單點集合被納入事件集合族，則它的面積為零，機率也為零。換句話說，不可能發生的事件機率必為零，但機率為零的事件未必不可能發生。
 </div>
 
 ## 有限可加性
@@ -92,14 +92,16 @@ $$
 
 ## 餘事件公式
 
-任一事件 $A$ 與其餘事件 $A^{\prime}$ 會把樣本空間切成兩個彼此互斥的事件，而且這兩個事件合起來正好是整個樣本空間：
+對任意事件 $A$，其餘事件 $A^{\prime}$ 是所有不屬於 $A$ 的樣本點所形成的事件。因此 $A$ 與 $A^{\prime}$ 彼此互斥，且二者合起來正好是整個樣本空間：
 
 $$
-\begin{aligned}
-S&=A\cup A^{\prime}\\
-A\cap A^{\prime}&=\varnothing
-\end{aligned}
+S=A\cup A^{\prime}, \qquad A\cap A^{\prime}=\varnothing
 $$
+
+<figure class="topic-figure topic-figure--compact">
+  <img src="/images/teaching-topics/probability-rules-complement.svg" alt="餘事件 A prime 的集合示意圖：樣本空間 S 中，事件 A 外側的區域為 A prime。">
+  <figcaption><span class="topic-figure__label">Fig. 1.1.</span> 餘事件 $A^{\prime}$ 是樣本空間中不屬於 $A$ 的部分。</figcaption>
+</figure>
 
 因此，有限可加性立刻給出餘事件公式。
 
@@ -152,7 +154,7 @@ $$
 若 $A,B\in\mathcal{F}$ 且 $A\subset B$，則
 
 $$
-\mathbb{P}(B\setminus A)=\mathbb{P}(B)-\mathbb{P}(A)
+\mathbb{P}(B-A)=\mathbb{P}(B)-\mathbb{P}(A)
 $$
 
 並且滿足
@@ -164,20 +166,25 @@ $$
 後者稱為機率的**單調性 (monotonicity)**。
 </div>
 
+<figure class="topic-figure topic-figure--medium">
+  <img src="/images/teaching-topics/probability-rules-monotonicity.svg" alt="單調性的集合示意圖：事件 A 包含於事件 B 中，B 比 A 多出的部分是差集 B-A。">
+  <figcaption><span class="topic-figure__label">Fig. 1.2.</span> 當 $A\subset B$ 時，$B$ 比 $A$ 多出的部分是 $B-A$，因此 $\mathbb{P}(A)\leq\mathbb{P}(B)$。</figcaption>
+</figure>
+
 <div class="topic-proof" markdown="1">
 **Proof.** 因為 $A\subset B$，可將 $B$ 拆成兩個互斥部分：
 
 $$
-B=A\cup (B\setminus A)
+B=A\cup (B-A)
 $$
 
 由有限可加性可知
 
 $$
-\mathbb{P}(B)=\mathbb{P}(A)+\mathbb{P}(B\setminus A)
+\mathbb{P}(B)=\mathbb{P}(A)+\mathbb{P}(B-A)
 $$
 
-故可得到差集公式。再由非負性可知 $\mathbb{P}(B\setminus A)\geq 0$，因此 $\mathbb{P}(A)\leq\mathbb{P}(B)$，也就是機率的單調性。 $\square$
+故可得到差集公式。再由非負性可知 $\mathbb{P}(B-A)\geq 0$，因此 $\mathbb{P}(A)\leq\mathbb{P}(B)$，也就是機率的單調性。 $\square$
 </div>
 
 單調性的使用有一個重要前提：兩個事件必須能比較大小，也就是其中一個事件包含於另一個事件。若 $A$ 與 $B$ 沒有包含關係，單調性本身並不能直接比較它們各自的機率。
@@ -198,6 +205,11 @@ $$
 
 此公式稱為**加法原理 (addition rule)**。
 </div>
+
+<figure class="topic-figure topic-figure--wide">
+  <img src="/images/teaching-topics/probability-rules-addition-rule.svg" alt="加法原理的集合示意圖：A union B 的機率等於 A 的機率加 B 的機率，再扣掉 A intersection B。">
+  <figcaption><span class="topic-figure__label">Fig. 1.3.</span> 加法原理的核心是先相加，再扣除被重複計算的交集。</figcaption>
+</figure>
 
 <div class="topic-proof" markdown="1">
 **Proof.** 將 $A\cup B$ 拆成三個兩兩互斥的部分：
@@ -242,11 +254,9 @@ $$
 從一副標準撲克牌中隨機抽一張牌。令 $A$ 表示抽到紅心，$B$ 表示抽到 King。則
 
 $$
-\begin{aligned}
-\mathbb{P}(A)&=\frac{13}{52}\\
-\mathbb{P}(B)&=\frac{4}{52}\\
-\mathbb{P}(A\cap B)&=\frac{1}{52}
-\end{aligned}
+\mathbb{P}(A)=\frac{13}{52}, \qquad
+\mathbb{P}(B)=\frac{4}{52}, \qquad
+\mathbb{P}(A\cap B)=\frac{1}{52}
 $$
 
 因此抽到「紅心或 King」的機率為
@@ -268,11 +278,16 @@ $$
 $$
 \begin{aligned}
 \mathbb{P}(A\cup B\cup C)
-&=\mathbb{P}(A)+\mathbb{P}(B)+\mathbb{P}(C)\\
-&\quad-\mathbb{P}(A\cap B)-\mathbb{P}(A\cap C)-\mathbb{P}(B\cap C)\\
+&=\mathbb{P}(A)+\mathbb{P}(B)+\mathbb{P}(C)\\[0.6em]
+&\quad-\mathbb{P}(A\cap B)-\mathbb{P}(A\cap C)-\mathbb{P}(B\cap C)\\[0.6em]
 &\quad+\mathbb{P}(A\cap B\cap C)
 \end{aligned}
 $$
+
+<figure class="topic-figure topic-figure--medium">
+  <img src="/images/teaching-topics/probability-rules-inclusion-exclusion-three.svg" alt="三事件排容原理的集合示意圖：三個事件互相重疊時，中央共同交集會被多次計算。">
+  <figcaption><span class="topic-figure__label">Fig. 1.4.</span> 三事件排容中，兩兩交集先被扣除，而三者共同交集需要再加回來。</figcaption>
+</figure>
 
 這個精神稱為**排容原理 (inclusion-exclusion principle)**：先把可能發生的部分都加進來，再逐步修正被重複計算的重疊部分。
 
@@ -296,7 +311,7 @@ $$
 \leq \sum_{i=1}^{n}\mathbb{P}(A_i)
 $$
 
-此不等式稱為**布爾不等式 (Boole's inequality)**。此外，還有下列常用形式
+此不等式稱為**布爾不等式 (Boole's inequality)**。此外，還有下列常用形式，與原形式等價
 
 $$
 \mathbb{P}\left(\bigcap_{i=1}^{n}A_i\right)
@@ -305,6 +320,11 @@ $$
 
 此為**邦佛洛尼不等式 (Bonferroni's inequality)** 的常用形式。
 </div>
+
+<figure class="topic-figure topic-figure--wide">
+  <img src="/images/teaching-topics/probability-rules-boole-bound.svg" alt="布爾不等式的集合示意圖：A union B 的機率不超過 A 的機率加 B 的機率。">
+  <figcaption><span class="topic-figure__label">Fig. 1.5.</span> 以兩事件為例，右側未扣除重疊部分，因此是上界而非精確值。</figcaption>
+</figure>
 
 布爾不等式的直覺是：如果直接把所有 $\mathbb{P}(A_i)$ 相加，重疊部分沒有被扣掉，所以右邊通常會偏大。邦佛洛尼不等式則可看成從餘事件觀點得到的下界：若每個 $A_i$ 失敗的機率都不大，那麼全部 $A_i$ 同時成立的機率就不會太小。
 
@@ -317,7 +337,7 @@ $$
 | 虛無事件 | $\mathbb{P}(\varnothing)=0$ | 不可能事件的機率為 $0$ |
 | 有限可加性 | $\mathbb{P}(\bigcup_i A_i)=\sum_i\mathbb{P}(A_i)$ | 互斥事件可以直接相加 |
 | 餘事件公式 | $\mathbb{P}(A^{\prime})=1-\mathbb{P}(A)$ | 全部扣掉 $A$ |
-| 單調性 | $A\subset B\Rightarrow \mathbb{P}(A)\leq\mathbb{P}(B)$ | 較大的事件機率不會較小 |
+| 單調性 | $A\subset B\Rightarrow \mathbb{P}(A)\leq\mathbb{P}(B)$ | 較小的事件，機率不會較大 |
 | 加法原理 | $\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)$ | 扣除重複 |
 | 排容原理 | 加、扣、再加回 | 修正多重重疊 |
 
