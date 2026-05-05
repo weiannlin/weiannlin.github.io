@@ -4,18 +4,6 @@ layout: default
 
 {% include base_path %}
 
-{% assign year = page.date | date: "%Y" %}
-{% case year %}
-  {% when "2024" %}{% assign year_roman = "MMXXIV" %}
-  {% when "2025" %}{% assign year_roman = "MMXXV" %}
-  {% when "2026" %}{% assign year_roman = "MMXXVI" %}
-  {% when "2027" %}{% assign year_roman = "MMXXVII" %}
-  {% when "2028" %}{% assign year_roman = "MMXXVIII" %}
-  {% when "2029" %}{% assign year_roman = "MMXXIX" %}
-  {% when "2030" %}{% assign year_roman = "MMXXX" %}
-  {% else %}{% assign year_roman = year %}
-{% endcase %}
-
 {% assign chapter = page.chapter | default: 1 %}
 {% case chapter %}
   {% when 1 %}{% assign chapter_roman = "I" %}
@@ -36,13 +24,15 @@ layout: default
 
     <header class="topic-masthead">
       <div class="topic-masthead__left">Wei-Ann Lin &middot; 林蔚安</div>
-      <div class="topic-masthead__right">Teaching Topics &middot; {{ year_roman }}</div>
+      <div class="topic-masthead__right">
+        <a class="topic-masthead__link" href="{{ base_path }}/teaching-topics/" aria-label="回到 Teaching Topics 主題概覽">Teaching Topics &middot; Index</a>
+      </div>
     </header>
 
     <div class="topic-meta">
       <span class="topic-meta__category">{{ page.category }}</span>
       <span class="topic-meta__sep">&middot;</span>
-      <span class="topic-meta__chapter">Chapter {{ chapter_roman }}</span>
+      <span class="topic-meta__chapter">Chapter {{ chapter_roman }}{% if page.topic %} &middot; Topic {{ page.topic }}{% endif %}</span>
     </div>
 
     <h1 class="topic-title" itemprop="headline">{{ page.title }}</h1>

@@ -53,6 +53,19 @@
     text-align: right;
   }
 
+  &__link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 120ms ease, color 120ms ease;
+
+    &:hover,
+    &:focus {
+      color: var(--journal-accent);
+      border-bottom-color: var(--journal-accent);
+    }
+  }
+
   /* Stack vertically on narrow screens — left over right, both left-aligned —
      so iPhone SE / older Androids never collide the two halves. */
   @media (max-width: 480px) {
@@ -151,8 +164,10 @@
 
 .topic-content {
   font-size: 1.05rem;
+  line-break: strict;
   line-height: 1.78;
   color: var(--journal-ink);
+  word-break: normal;
 
   p {
     margin: 0 0 1.25em 0;
@@ -275,6 +290,97 @@
   }
 }
 
+/* ---- Math teaching environments -------------------------------------- */
+
+.topic-content .topic-box,
+.topic-content .topic-proof {
+  margin: 1.55em 0;
+}
+
+.topic-content .topic-box {
+  border: 1px solid var(--journal-divider);
+  border-left: 3px solid var(--journal-accent);
+  background: rgba(255, 255, 255, 0.16);
+  padding: 1em 1.1em 0.95em;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  .topic-box__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-feature-settings: "smcp" 1, "c2sc" 1, "kern" 1;
+    color: var(--journal-accent);
+    font-weight: 700;
+    margin-bottom: 0.45rem;
+  }
+
+  &--note {
+    border-left-color: var(--journal-ink-mute);
+
+    .topic-box__label {
+      color: var(--journal-ink-mute);
+    }
+  }
+
+  &--example {
+    border-left-color: var(--warning-color);
+
+    .topic-box__label {
+      color: var(--warning-color);
+    }
+  }
+
+  &--proposition {
+    border-left-color: var(--success-color);
+
+    .topic-box__label {
+      color: var(--success-color);
+    }
+  }
+
+  &--interlude {
+    background: var(--journal-accent-soft);
+    border-left-color: var(--journal-accent-dark);
+
+    .topic-box__label {
+      color: var(--journal-accent-dark);
+    }
+  }
+}
+
+.topic-content .topic-list-paren {
+  counter-reset: topic-paren-list;
+  list-style: none;
+  margin: 0 0 1.25em 0;
+  padding-left: 0;
+
+  li {
+    counter-increment: topic-paren-list;
+    margin-bottom: 0.45em;
+    padding-left: 2em;
+    position: relative;
+  }
+
+  li::before {
+    content: "(" counter(topic-paren-list) ")";
+    left: 0;
+    position: absolute;
+  }
+}
+
+.topic-content .topic-proof {
+  border-left: 2px solid var(--journal-divider);
+  padding-left: 1.1em;
+  color: var(--journal-ink-soft);
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
 /* ---- Related demos block (restyled for journal aesthetic) ------------- */
 
 .topic-content .related-demos {
@@ -352,5 +458,27 @@ body:has(.topic-page) {
   .page__content {
     padding: 0;
     max-width: 100%;
+  }
+}
+
+/* ---- Teaching Topics index ------------------------------------------- */
+
+.teaching-topics-chapter {
+  color: var(--journal-accent);
+  font-family: $serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 1.45em 0 0.5em;
+}
+
+.teaching-topics-list {
+  margin-bottom: 1.6em;
+
+  .topic-chapter {
+    color: var(--journal-ink-soft);
+    font-size: 0.92em;
+    margin-right: 0.35em;
+    white-space: nowrap;
   }
 }

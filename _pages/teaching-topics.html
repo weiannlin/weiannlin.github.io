@@ -1,35 +1,37 @@
 ---
 layout: archive
-title: "Teaching Topics"
+title: "Teaching Topics（教學主題）"
 permalink: /teaching-topics/
 author_profile: true
 ---
 
 {% include base_path %}
 
-<p>本區塊正在建構中,文章陸續整理中。</p>
+<p>本區塊整理機率論 (probability theory)、數理統計 (mathematical statistics)、統計推論 (statistical inference)、電腦實驗 (computer experiments) 與高斯過程 (Gaussian processes) 等主題式短篇教材。文章以課程講義為基礎重新精簡，保留必要的定義、定理與證明，同時加入更適合網頁閱讀的例子與導讀。</p>
 
-<p style="color: #888; font-size: 0.95em;">構思中的內容:統計、電腦試驗與高斯過程基本概念的主題式短篇文章,每一篇都會搭配對應的<a href="{{ '/demos/' | relative_url }}">互動 demo</a>。</p>
+<p style="color: #888; font-size: 0.95em;">部分主題會搭配<a href="{{ '/demos/' | relative_url }}">互動展示 (interactive demos)</a>。同一篇文章可能出現在不同課程中，依據不同課程的綱要，可能以不同的順序被串聯在該課程的內容當中。</p>
 
-{% comment %}
-Listing logic — uncomment when ready to launch.
-Categories must match each article's `category:` front-matter exactly.
-
-{% assign categories = "隨機變數,隨機事件,高斯過程,試驗設計" | split: "," %}
+{% assign categories = "機率概論,隨機變數,隨機向量,分配理論,極限分配,統計推論,電腦實驗,高斯過程,試驗設計" | split: "," %}
 
 {% for cat in categories %}
-  {% assign articles = site.teaching_topics | where: "category", cat | sort: "chapter" %}
+  {% assign articles = site.teaching_topics | where: "category", cat | sort: "order" %}
   {% if articles.size > 0 %}
 <h2 id="{{ cat | slugify }}">{{ cat }}</h2>
+  {% assign chapter_groups = articles | group_by: "chapter" %}
+  {% for chapter_group in chapter_groups %}
+    {% if chapter_group.name and chapter_group.name != "" %}
+<h3 class="teaching-topics-chapter">第 {{ chapter_group.name }} 章</h3>
+    {% endif %}
 <ul class="teaching-topics-list">
-  {% for article in articles %}
+    {% assign chapter_articles = chapter_group.items | sort: "order" %}
+    {% for article in chapter_articles %}
   <li>
-    <span class="topic-chapter">第 {{ article.chapter }} 章</span>
+    {% if article.topic %}<span class="topic-chapter">主題 {{ article.topic }}</span>{% endif %}
     <a href="{{ article.url | relative_url }}"><strong>{{ article.title }}</strong></a>
     {% if article.excerpt and article.excerpt != "" %} &mdash; {{ article.excerpt | strip_html | strip_newlines }}{% endif %}
   </li>
-  {% endfor %}
+    {% endfor %}
 </ul>
+  {% endfor %}
   {% endif %}
 {% endfor %}
-{% endcomment %}
