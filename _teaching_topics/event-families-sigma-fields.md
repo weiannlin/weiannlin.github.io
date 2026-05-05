@@ -129,7 +129,7 @@ $$
 介於兩者之間，還有許多不同的 $\sigma$-域。這表示我們在建立機率模型時，不只是在指定樣本空間，也是在指定哪些事件值得被機率函數處理。
 
 <div class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.3</div>
+<div class="topic-box__label">Example 1.3 (Generated Sigma-Field)</div>
 
 考慮投擲一顆六面骰一次，令
 

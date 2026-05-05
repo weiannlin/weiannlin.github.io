@@ -61,7 +61,7 @@ $$
 在古典機率中，真正要算的是 $\mathrm{n}(A)$ 與 $\mathrm{n}(S)$ 這兩個數量。當樣本空間很小時，我們可以直接列出所有樣本點；當樣本空間很大時，就需要排列組合來幫忙點算。
 
 <div class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.4</div>
+<div class="topic-box__label">Example 1.4 (Two Dice)</div>
 
 投擲一顆公正骰子兩次，觀察兩次出現的點數，且考慮順序。此時
 
@@ -118,7 +118,7 @@ $$
 在一維中，$m(\cdot)$ 可以是長度；在二維中，可以是面積；在三維中，可以是體積。它背後仍然是一個「均勻」的想法：如果落點在整個區域中沒有偏向任何特定位置，事件的機率就由該事件所佔的幾何比例決定。
 
 <div class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.5</div>
+<div class="topic-box__label">Example 1.5 (Geometric Probability by Area)</div>
 
 假設炸彈會隨機落在半徑為 $1$ 的圓形區域內，且若落點距離圓心不超過 $0.5$，就能摧毀目標。令
 
@@ -183,7 +183,7 @@ $$
 這幾種機率看起來來源不同，但它們在現代機率論中扮演的是同一個角色：提供一個候選的機率函數。
 
 <div class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Proposition 1.2</div>
+<div class="topic-box__label">Proposition 1.2 (Normalized Counting Measure)</div>
 
 若 $S$ 為有限非空集合，且對任意 $A\subset S$ 定義
 

@@ -1,0 +1,40 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  every node/.style={font=\normalsize}
+]
+  \def\firstcircle{(-0.65,0) circle (1.35)}
+  \def\secondcircle{(0.7,0) circle (1.35)}
+
+  \begin{scope}
+    \clip \secondcircle;
+    \path[fill=journalaccent, fill opacity=0.10] (-3,-2) rectangle (3,2);
+  \end{scope}
+
+  \begin{scope}
+    \clip \firstcircle;
+    \path[fill=journalaccent, fill opacity=0.25] \secondcircle;
+  \end{scope}
+
+  \draw[journalink, line width=0.8pt, rounded corners=2pt]
+    (-2.75,-1.75) rectangle (2.75,1.75);
+  \draw[journalink, line width=0.8pt] \firstcircle;
+  \draw[journalink, line width=1.0pt] \secondcircle;
+
+  \node[journalink] at (-1.45,0.72) {$A$};
+  \node[journalink] at (1.42,0.72) {$B$};
+  \node[journalaccent] at (0.03,-0.08) {$A\cap B$};
+  \node[journalmuted] at (2.25,1.32) {$S$};
+
+\end{tikzpicture}
+\end{document}

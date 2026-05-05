@@ -287,6 +287,23 @@
     tr:last-child td {
       border-bottom: 1px solid var(--journal-ink);
     }
+
+    &.topic-table--sample-spaces {
+      table-layout: fixed;
+
+      .topic-table__experiment {
+        width: 72%;
+      }
+
+      .topic-table__sample-space {
+        width: 28%;
+      }
+
+      td:first-child,
+      th:first-child {
+        white-space: normal;
+      }
+    }
   }
 
   /* MathJax display blocks: extra breathing room. Overflow-x handled

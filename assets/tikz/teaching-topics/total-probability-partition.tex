@@ -1,0 +1,41 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  every node/.style={font=\normalsize}
+]
+  \fill[journalaccent, fill opacity=0.08, rounded corners=5pt]
+    (-4.45,-1.2) rectangle (4.45,1.2);
+
+  \draw[journalink, line width=0.8pt, rounded corners=2pt]
+    (-5,-2) rectangle (5,2);
+  \draw[journalink, line width=0.7pt] (-3,-2) -- (-3,2);
+  \draw[journalink, line width=0.7pt] (-1.15,-2) -- (-1.15,2);
+  \draw[journalink, line width=0.7pt] (3,-2) -- (3,2);
+
+  \draw[journalink, line width=0.9pt, rounded corners=5pt]
+    (-4.45,-1.2) rectangle (4.45,1.2);
+
+  \node[journalink] at (-4,1.55) {$A_1$};
+  \node[journalink] at (-2.08,1.55) {$A_2$};
+  \node[journalink] at (0.93,1.55) {$\cdots$};
+  \node[journalink] at (3.75,1.55) {$A_n$};
+
+  \node[journalaccent] at (-3.72,-0.05) {$B\cap A_1$};
+  \node[journalaccent] at (-2.08,-0.05) {$B\cap A_2$};
+  \node[journalaccent] at (3.75,-0.05) {$B\cap A_n$};
+  \node[journalink] at (0.93,-0.05) {$\cdots$};
+
+  \node[journalaccent, anchor=north east] at (4.3,-1.32) {$B$};
+  \node[journalmuted] at (4.55,1.55) {$S$};
+\end{tikzpicture}
+\end{document}

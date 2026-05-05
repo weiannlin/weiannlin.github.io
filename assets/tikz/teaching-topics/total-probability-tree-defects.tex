@@ -1,0 +1,49 @@
+\documentclass[tikz,border=3pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usetikzlibrary{arrows.meta}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+\definecolor{journalpaper}{HTML}{F5EFE3}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  every node/.style={font=\small},
+  source/.style={draw=journalink, line width=0.65pt, rounded corners=2pt, fill=journalpaper, inner xsep=5pt, inner ysep=3pt},
+  leaf/.style={inner xsep=3pt, inner ysep=2pt},
+  dleaf/.style={draw=journalaccent, line width=0.55pt, rounded corners=2pt, fill=journalaccent!4, inner xsep=5pt, inner ysep=2pt},
+  edge/.style={journalink, line width=0.75pt},
+  goodedge/.style={journalaccent, line width=1pt},
+  mutededge/.style={journalmuted, line width=0.65pt}
+]
+  \node[source] (root) at (0,0) {$S$};
+
+  \node[source] (m1) at (2.35,1.85) {$M_1$};
+  \node[source] (m2) at (2.35,0) {$M_2$};
+  \node[source] (m3) at (2.35,-1.85) {$M_3$};
+
+  \node[dleaf, text=journalaccent] (d1) at (5.2,2.35) {$D$};
+  \node[leaf, journalmuted] (n1) at (5.2,1.35) {$D^{\prime}$};
+  \node[dleaf, text=journalaccent] (d2) at (5.2,0.5) {$D$};
+  \node[leaf, journalmuted] (n2) at (5.2,-0.5) {$D^{\prime}$};
+  \node[dleaf, text=journalaccent] (d3) at (5.2,-1.35) {$D$};
+  \node[leaf, journalmuted] (n3) at (5.2,-2.35) {$D^{\prime}$};
+
+  \draw[goodedge] (root) -- node[journalaccent, above left=-1pt, pos=0.57, font=\scriptsize] {$0.2$} (m1);
+  \draw[goodedge] (root) -- node[journalaccent, above, pos=0.55, font=\scriptsize] {$0.3$} (m2);
+  \draw[goodedge] (root) -- node[journalaccent, below left=-1pt, pos=0.57, font=\scriptsize] {$0.5$} (m3);
+
+  \draw[goodedge] (m1) -- node[above, pos=0.58, font=\scriptsize] {$0.05$} (d1);
+  \draw[mutededge] (m1) -- node[below, pos=0.58, font=\scriptsize] {$0.95$} (n1);
+  \draw[goodedge] (m2) -- node[above, pos=0.58, font=\scriptsize] {$0.04$} (d2);
+  \draw[mutededge] (m2) -- node[below, pos=0.58, font=\scriptsize] {$0.96$} (n2);
+  \draw[goodedge] (m3) -- node[above, pos=0.58, font=\scriptsize] {$0.02$} (d3);
+  \draw[mutededge] (m3) -- node[below, pos=0.58, font=\scriptsize] {$0.98$} (n3);
+
+\end{tikzpicture}
+\end{document}
