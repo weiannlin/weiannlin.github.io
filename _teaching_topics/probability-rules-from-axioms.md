@@ -51,7 +51,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-$\mathbb{P}(\varnothing)=0$ 表示不可能事件的機率必為零。但反過來並不一定成立：機率為 $0$ 的事件未必是不可能事件。這正好呼應[思想實驗 1.1](/teaching-topics/random-experiments-sample-space-events/#thought-experiment-dart-zero-probability)中的飛鏢例子：在以面積指定機率的連續落點模型中，某個特定點可以是樣本空間中的可能結果；若這個單點集合被納入事件集合族，則它的面積為零，機率也為零。換句話說，不可能發生的事件機率必為零，但機率為零的事件未必不可能發生。
+$\mathbb{P}(\varnothing)=0$ 表示不可能事件的機率必為零。但反過來並不一定成立：機率為 $0$ 的事件未必是不可能事件。這正好呼應[直覺校準 1.1](/teaching-topics/random-experiments-sample-space-events/#thought-experiment-dart-zero-probability)中的飛鏢例子：在以面積指定機率的連續落點模型中，某個特定點可以是樣本空間中的可能結果；若這個單點集合被納入事件集合族，則它的面積為零，機率也為零。換句話說，不可能發生的事件機率必為零，但機率為零的事件未必不可能發生。
 </div>
 
 ## 有限可加性

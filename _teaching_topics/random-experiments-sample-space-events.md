@@ -134,7 +134,7 @@ $$
 前兩者通常合稱為離散樣本空間；第三者則是連續樣本空間。連續樣本空間的出現，會讓我們開始認真面對一個細緻的問題：在不可數多個可能結果之中，單一樣本點究竟扮演什麼角色？
 
 <div id="thought-experiment-dart-zero-probability" class="topic-box topic-box--interlude" markdown="1">
-<div class="topic-box__label">思想實驗 1.1</div>
+<div class="topic-box__label">直覺校準 1.1</div>
 
 想像你在酒吧丟飛鏢，且假設飛鏢的針尖沒有面積。第一次丟擲後，針尖落在靶上的某一個點，將這個點記作樣本點 $\omega_0$ 所在的位置。我將飛鏢拔起交還給你，請你第二次再丟到完全相同的點位。
 

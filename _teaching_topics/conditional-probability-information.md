@@ -35,7 +35,7 @@ $$
 此時我們已經不該再把 $1,3,5$ 放進討論裡；真正要看的，是 $B$ 裡面有多少結果也屬於 $A$。
 
 <div class="topic-box topic-box--interlude" markdown="1">
-<div class="topic-box__label">思想實驗 1.2</div>
+<div class="topic-box__label">直覺校準 1.2</div>
 
 「點數至少為 $4$」這個事件本身沒有改變；改變的是我們知道了「點數是偶數」這件資訊。資訊的作用不是改寫事件，而是改寫我們應該在哪個世界裡判斷事件。
 </div>
@@ -134,7 +134,7 @@ $$
 這個定理的教學意義很重要：只要條件固定，前面學過的機率規則仍然可以使用。真正需要小心的是，不同條件代表不同參照世界；若一個式子裡的條件改來改去，就不能把它們當成同一個機率空間裡的普通機率直接相加或比較。
 
 <div class="topic-box topic-box--interlude" markdown="1">
-<div class="topic-box__label">思想實驗 1.3</div>
+<div class="topic-box__label">直覺校準 1.3</div>
 
 固定給定事件 $B$。在 $B$ 這個參照世界裡，事件 $A$ 發生與事件 $A^{\prime}$ 發生仍然是互補的兩種情況，所以
 
@@ -228,7 +228,7 @@ $$
 </div>
 
 <div class="topic-box topic-box--interlude" markdown="1">
-<div class="topic-box__label">思想實驗 1.4</div>
+<div class="topic-box__label">直覺校準 1.4</div>
 
 如果你用過 Excel 的**樞紐分析表 (PivotTable)**，或旁邊那種按鈕式的**交叉分析篩選器 (slicer)**，那其實你就已經看過乘法原理的影子。每勾選一個欄位條件，資料表就被縮小一次；勾選越多條件，留下來的資料列就必須同時滿足越多要求。
 

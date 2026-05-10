@@ -150,7 +150,7 @@ $$
 這個問題之所以經典，正是因為它很容易騙過直覺。主持人打開一扇羊門後，眼前只剩兩扇未開的門，許多人會自然地想：既然只剩兩個選項，機率應該各半。但這個想法忽略了主持人的行動不是隨機揭露，而是帶著資訊的篩選。據說連數學家艾迪胥 (Paul Erdős) 也曾一度不接受切換策略較好的結論，直到看見電腦模擬後才被說服。若想把這個 $2/3$ 看成長期相對頻率，也可以到 Demos 中的<a class="text-nowrap" href="/demos/monty-hall/">蒙提霍爾問題實作</a>親自操作：改變策略、增加模擬次數，觀察切換策略的勝率如何逐漸穩定在理論值附近。
 
 <div class="topic-box topic-box--interlude" markdown="1">
-<div class="topic-box__label">思想實驗 1.5</div>
+<div class="topic-box__label">直覺校準 1.5</div>
 
 Monty Hall 問題還有一個等價外衣，稱為三囚徒問題 (three prisoners problem)。
 
@@ -198,7 +198,7 @@ $$
 </div>
 
 <div id="interlude-16-tree" class="topic-box topic-box--interlude" markdown="1">
-<div class="topic-box__label">思想實驗 1.6</div>
+<div class="topic-box__label">直覺校準 1.6</div>
 
 如果把 Example 1.11 畫成一張橫向樹狀圖，第一層先問「產品來自哪台機器」，第二層才問「它是否為不良品」。三台機器各自分成 $D$ 與 $D^{\prime}$，因此總共有六條路徑。
 
