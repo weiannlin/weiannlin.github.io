@@ -1,5 +1,5 @@
 ---
-title: "條件機率：資訊進來以後，機率如何改變"
+title: "條件機率，資訊進來以後，機率如何改變"
 subtitle: "Conditional Probability and the Multiplication Rule"
 layout: topic
 collection: teaching_topics
@@ -9,7 +9,7 @@ topic: 5
 order: 105
 permalink: /teaching-topics/conditional-probability-information/
 date: 2026-05-05
-excerpt: "條件機率描述的是：在已知某個事件已經發生之後，我們如何重新評估另一個事件的機率。本文從資訊的意義出發，介紹條件機率、乘法原理與廣義乘法原理。"
+excerpt: "條件機率描述在已知某個事件已經發生之後，我們如何重新評估另一個事件的機率。本文從資訊的意義出發，介紹條件機率、乘法原理與廣義乘法原理。"
 ---
 
 [上一篇文章](/teaching-topics/probability-rules-from-axioms/)整理了在同一個機率空間中可以使用的基本運算規則。那些規則告訴我們，一旦機率空間 $(S,\mathcal{F},\mathbb{P})$ 被指定以後，事件之間的聯集、交集、餘事件與大小關係便能轉化為機率運算。

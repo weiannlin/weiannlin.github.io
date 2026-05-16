@@ -1,5 +1,5 @@
 ---
-title: "機率如何被指定：古典機率、計數測度與幾何機率"
+title: "機率如何被指定，古典機率、計數測度與幾何機率"
 subtitle: "Classical Probability, Counting Measure, and Geometric Probability"
 layout: topic
 collection: teaching_topics

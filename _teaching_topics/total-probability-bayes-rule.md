@@ -1,5 +1,5 @@
 ---
-title: "分割與全機率定理：從分類到加總"
+title: "分割與全機率定理，從分類到加總"
 subtitle: "Partitions and the Law of Total Probability"
 layout: topic
 collection: teaching_topics

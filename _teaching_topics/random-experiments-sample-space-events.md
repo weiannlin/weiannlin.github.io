@@ -1,5 +1,5 @@
 ---
-title: "機率論的起點：隨機實驗、樣本空間與事件"
+title: "機率論的起點，隨機實驗、樣本空間與事件"
 subtitle: "Random Experiments, Sample Spaces, and Events"
 layout: topic
 collection: teaching_topics

@@ -1,5 +1,5 @@
 ---
-title: "由公理推出機率運算：餘事件、單調性與加法原理"
+title: "由公理推出機率運算，餘事件、單調性與加法原理"
 subtitle: "Probability Rules from the Kolmogorov Axioms"
 layout: topic
 collection: teaching_topics

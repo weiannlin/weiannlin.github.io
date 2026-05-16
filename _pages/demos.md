@@ -18,3 +18,4 @@ Interactive teaching demos covering foundational topics in statistics, computer 
 ## Random events
 
 - [The Monty Hall Problem](/demos/monty-hall/) — switching beats staying; play it, simulate it, see why.
+- [Rapid Test Bayesian Updating Lab](/demos/bayesian-updating/) — change prevalence, sensitivity, and specificity, then watch positive or negative results update the posterior.

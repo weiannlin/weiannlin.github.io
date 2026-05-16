@@ -1,5 +1,5 @@
 ---
-title: '哪些集合可以被賦予機率：事件集合族與 $\sigma$-域'
+title: '哪些集合可以被賦予機率，事件集合族與 $\sigma$-域'
 subtitle: "Event Families, Sigma-Fields, and Measurable Spaces"
 layout: topic
 collection: teaching_topics
