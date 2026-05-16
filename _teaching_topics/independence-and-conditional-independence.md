@@ -9,7 +9,7 @@ topic: 8
 order: 108
 permalink: /teaching-topics/independence-and-conditional-independence/
 date: 2026-05-17
-published: false
+published: true
 excerpt: "獨立性描述的是一種特別的資訊關係。若知道事件 B 發生後，事件 A 的機率完全不變，則 B 對 A 沒有提供新的機率資訊。"
 ---
 

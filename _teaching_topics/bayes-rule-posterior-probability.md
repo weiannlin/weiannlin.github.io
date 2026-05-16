@@ -9,7 +9,7 @@ topic: 7
 order: 107
 permalink: /teaching-topics/bayes-rule-posterior-probability/
 date: 2026-05-06
-published: false
+published: true
 excerpt: "貝氏定理描述資訊進來以後，我們如何重新分配對不同可能狀態的相信程度；它把事前機率、條件機率、總機率與事後機率連在一起。"
 ---
 
