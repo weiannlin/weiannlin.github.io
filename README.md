@@ -2,127 +2,55 @@
 
 This repository contains the source for [weiannlin.github.io](https://weiannlin.github.io), the academic website of Wei-Ann Lin.
 
-The site is built with Jekyll and GitHub Pages, based on the Academic Pages template and customized for a journal-like visual identity: cream paper background, brick-red accents, serif typography, academic profile pages, teaching materials, and interactive statistics demos.
+The site began from the Academic Pages template and has since been customized into a personal academic website with a journal-like visual identity, bilingual academic profile pages, teaching materials, notes, and interactive probability/statistics demos.
 
-## Project Focus
+This README is a repository overview. It is not part of the public site navigation.
 
-The site currently serves four main purposes:
+## Site Structure
 
-- Present biography, publications, talks, courses, and contact information.
-- Host course and teaching pages for statistics, computer experiments, and Gaussian-process methodology.
-- Develop short Teaching Topics articles designed for web reading.
-- Pair selected teaching articles with interactive demos that make statistical concepts visible.
+The public website is organized around the following sections.
 
-## Important Directories
+- **Home and About** introduce academic background, research interests, and selected industrial collaboration areas.
+- **Biography** gives a structured academic profile.
+- **Publications** collects journal articles, conference papers, and related research outputs.
+- **Talks** records invited talks, conference talks, contributed presentations, and scheduled talks.
+- **Courses** lists teaching-related course pages.
+- **Teaching Topics** hosts topic-based web articles, currently centered on probability theory and statistical foundations.
+- **Demos** provides interactive demonstrations linked to selected teaching topics.
+- **Notes** replaces the earlier generic blog role and is used for research notes, project updates, and software-development progress.
 
-- `_pages/`: top-level site pages, including the homepage, demos, publications, talks, courses, and archive pages.
-- `_biography/`: biography collection content.
-- `_courses/`: course pages.
-- `_publications/`: publication entries.
-- `_talks/`: talk and presentation entries.
-- `_teaching_topics/`: longer teaching articles. Some entries may be unpublished while under development.
-- `_layouts/`: Jekyll layouts, including the custom `topic` layout for Teaching Topics.
-- `_includes/`: reusable Liquid fragments.
-- `_sass/`: site styling, including the custom journal aesthetic.
-- `assets/`: CSS, JavaScript, fonts, and webfont assets.
-- `images/`: site images, profile images, favicons, and screenshots.
-- `files/`: downloadable PDFs, slides, and BibTeX files.
-- `markdown_generator/`: legacy Academic Pages helper scripts and notebooks for generating markdown entries.
+## Teaching Topics
 
-## Current Content Direction
+Teaching Topics is the main long-term teaching component of the site. Articles are written as concise web versions of lecture material rather than direct lecture-note copies. The goal is to keep mathematical definitions, theorems, examples, and proof ideas while making each topic readable as a standalone webpage.
 
-The near-term direction is to turn existing lecture material into concise, polished web articles under Teaching Topics. These articles should be readable on their own, but also connect to interactive demos where useful.
+The current probability sequence is organized by chapter and topic. Chapter 1 covers random experiments, sample spaces, events, event families, probability assignment, probability rules, conditional probability, total probability, Simpson's paradox, Bayes' rule, and independence. Chapter 2 is planned to begin with random variables and distribution functions.
 
-The first visible thread is probability accumulation:
+The writing direction is to connect rigorous probability/statistics content with modern examples and interactive demos whenever the interaction genuinely clarifies the mathematics.
 
-- PMF to CDF
-- PDF to CDF
-- Mixed distributions
+## Demos
 
-Future topics are expected to include foundational ideas in statistics, computer experiments, and Gaussian processes.
+Interactive demos are kept as focused teaching companions, not as standalone games. Current demos include PMF to CDF, PDF to CDF, mixed distributions, the Monty Hall problem, Bayesian updating for rapid tests, and Simpson's paradox mixing.
 
-## Local Development
+Most demos are implemented as page-local HTML, CSS, and JavaScript inside `_pages/demos-*.md`, so they can be revised together with the corresponding explanatory page.
 
-Install Ruby dependencies:
+## Repository Layout
 
-```bash
-bundle install
-```
+- `_pages/` contains top-level pages such as Home, About, Talks, Courses, Notes, Teaching Topics, and Demos.
+- `_teaching_topics/` contains topic-based teaching articles.
+- `_biography/`, `_courses/`, `_publications/`, and `_talks/` contain collection entries.
+- `_layouts/` and `_includes/` contain Jekyll layouts and reusable Liquid fragments.
+- `_sass/`, `assets/`, and `images/` contain styling, scripts, fonts, figures, and site images.
+- `files/` contains downloadable PDFs, slides, BibTeX files, and related public files.
+- `markdown_generator/` contains legacy Academic Pages helper scripts retained from the original template.
 
-Serve locally:
+## Editing Principles
 
-```bash
-bundle exec jekyll serve -l -H localhost
-```
-
-The site will be available at:
-
-```text
-http://localhost:4000
-```
-
-If dependencies need to be installed locally instead of system-wide:
-
-```bash
-bundle config set --local path 'vendor/bundle'
-bundle install
-```
-
-## Docker Development
-
-The repository also includes a Docker setup inherited from Academic Pages:
-
-```bash
-docker compose up
-```
-
-The development server should then be available at `localhost:4000`.
-
-## JavaScript Assets
-
-The source JavaScript file is:
-
-```text
-assets/js/_main.js
-```
-
-The minified bundle is:
-
-```text
-assets/js/main.min.js
-```
-
-To rebuild the minified bundle after JavaScript changes:
-
-```bash
-npm install
-npm run build:js
-```
-
-Many interactive demo pages currently use page-local HTML, CSS, and JavaScript inside `_pages/demos-*.md`.
-
-## Publishing Workflow
-
-Typical update flow:
-
-```bash
-git status
-bundle exec jekyll build
-git add <changed-files>
-git commit -m "Describe the update"
-git push origin master
-```
-
-GitHub Pages builds the public site from the `master` branch.
-
-## Notes For Future Editing
-
-- Keep the journal aesthetic consistent: cream background, brick-red accent, serif type, restrained rules, and clean academic spacing.
-- Prefer Teaching Topics that are shorter than lecture notes but richer than a glossary entry.
-- Use interactive demos to explain a concept only when the interaction clarifies the mathematics.
-- Clean up inherited Academic Pages sample content gradually when it is no longer needed.
-- Avoid committing generated `_site/` changes unless the deployment strategy changes.
+- Preserve the site's journal-like visual style, including cream paper background, brick-red accents, restrained rules, and serif typography.
+- Keep Teaching Topics concise enough for web reading but mathematically precise enough to support serious course use.
+- Use demos only when the interaction improves understanding.
+- Keep unpublished drafts marked as unpublished until they are ready for the public Teaching Topics index.
+- Avoid committing generated `_site/` files.
 
 ## Template Lineage
 
-This site began from [Academic Pages](https://academicpages.github.io/), itself based on Minimal Mistakes. The current repository has been customized substantially for Wei-Ann Lin's academic profile and teaching materials.
+This site began from [Academic Pages](https://academicpages.github.io/), which is based on Minimal Mistakes. The current repository has been substantially customized for Wei-Ann Lin's academic profile, teaching materials, and interactive probability/statistics content.
