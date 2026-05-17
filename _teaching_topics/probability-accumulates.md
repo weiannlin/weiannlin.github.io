@@ -13,31 +13,35 @@ published: false
 excerpt: "離散、連續、混合三種隨機變數都可以先從 CDF 來理解。PMF 與 PDF 則是在不同情況下，從 CDF 讀出機率資訊的方式。"
 ---
 
-每一份初等機率的教材都會把隨機變數分成三類，分別是**離散型**、**連續型**與**混合型**。標準的講法從各自的「分布」切入 ── 離散用 PMF、連續用 PDF、混合是兩者的拼貼 ── 然後幾乎是順帶一提地引入累積分布函數 (CDF)。
+每一份初等機率的教材都會把隨機變數分成三類，分別是**離散型**、**連續型**與**混合型**。標準講法通常從各自的「分布」切入，離散用 PMF，連續用 PDF，混合型則同時帶有兩種成分，然後才引入累積分布函數 (CDF)。
 
-這篇短文把順序倒過來。先從 CDF 理解隨機變數，再把 PMF 與 PDF 看成讀取 CDF 的兩種方式。一旦這個順序顛倒過來，混合型就不再像是被特別構造出來的奇案。
+本篇把順序倒過來。先從 CDF 理解隨機變數，再把 PMF 與 PDF 看成讀取 CDF 的兩種方式。一旦順序調整，混合型就不再像是被特別構造出來的奇案。
 
 ## CDF 到底是什麼
 
 對任一實值隨機變數 $X$，它的 **CDF** 定義為
 
-$$ F(x) = P(X \leq x), \qquad x \in \mathbb{R}. $$
+$$
+F(x)=\mathbb{P}(X\leq x), \qquad x\in\mathbb{R}
+$$
 
 整個定義就只有這一行。從這行可以直接推出三個性質。
 
-- $F$ **單調不減**，當 $x$ 變大時，事件 $\\{X \leq x\\}$ 只會多納入結果，不會少。
+- $F$ **單調不減**，當 $x$ 變大時，事件 $\lbrace X\leq x\rbrace$ 只會多納入結果，不會少。
 - $F$ 介於 $0$ 與 $1$ 之間，而 $F(-\infty) = 0$、$F(+\infty) = 1$。
 - $F$ **右連續**。
 
-這三個性質不論 $X$ 是離散、連續、還是介於中間的型態都成立。本文後續用到的 PMF、PDF 與單點質量，都可以看成從 $F$ 讀出來的機率資訊。
+這三個性質不論 $X$ 是離散、連續、還是介於中間的型態都成立。後續用到的 PMF、PDF 與單點質量，都可以看成從 $F$ 讀出來的機率資訊。
 
 ## 離散型，跳躍與棒棒糖
 
-若 $X$ 只取有限或可數個值 $x\_1, x\_2, \dots$，對應權重為 $p\_i = P(X = x\_i)$，則
+若 $X$ 只取有限或可數個值 $x_1, x_2, \dots$，對應權重為 $p_i=\mathbb{P}(X=x_i)$，則
 
-$$ F(x) = \sum_{x_i \leq x} p_i. $$
+$$
+F(x)=\sum_{x_i\leq x}p_i
+$$
 
-CDF 是一個**階梯函數**，在每一個 $x\_i$ 跳躍 $p\_i$，跳躍之間維持水平。PMF 就是**每個跳躍的高度** ── 在離散意義下相當於 CDF 的「導數」。
+CDF 是一個**階梯函數**，在每一個 $x_i$ 跳躍 $p_i$，跳躍之間維持水平。PMF 就是**每個跳躍的高度**，在離散意義下相當於 CDF 的「導數」。
 
 把 PMF 畫成棒棒糖圖時，每一根棒子都是該點的跳躍量，CDF 則從 $0$ 一階一階爬升至 $1$，每一階都是右半開的。右連續這件事在這裡有實際意義，CDF 在跳躍點的值是該階梯的**頂端**，不是底端。
 
@@ -47,35 +51,43 @@ CDF 是一個**階梯函數**，在每一個 $x\_i$ 跳躍 $p\_i$，跳躍之間
 
 若 $F$ 可微，定義
 
-$$ f(x) = F'(x). $$
+$$
+f(x)=F'(x)
+$$
 
 則 $f$ 就是 **PDF**，而機率變成 PDF 曲線下的面積。
 
-$$ P(a < X \leq b) = F(b) - F(a) = \int_a^b f(x)\, dx. $$
+$$
+\mathbb{P}(a<X\leq b)=F(b)-F(a)=\int_a^b f(x)\,dx
+$$
 
 兩個值得留意的後果如下。
 
 1. $f(x)$ **不是**機率，是機率**密度**。$f(x)$ 的值可以大於 $1$ 而毫無矛盾。只有 $f(x)\, dx$ 的單位才是機率。
-2. 對任一單獨的點 $x$，皆有 $P(X = x) = 0$。連續型的機率住在有正寬度的區間裡。
+2. 對任一單獨的點 $x$，皆有 $\mathbb{P}(X=x)=0$。連續型的機率住在有正寬度的區間裡。
 
 &rarr; 互動範例 **[From PDF to CDF](/demos/pdf-cdf/)**。
 
 ## 混合型，能平滑就平滑、該跳躍就跳躍
 
-混合型在教科書中常被當成奇例，但在實務上其實最常見。一段含有「正機率正好為零」的等待時間；一個被感測器飽和值截斷的量測；一筆消費金額，未消費者集中在 $0$、消費者則服從某連續分布。
+混合型在教科書中常被當成奇例，但在實務上其實最常見。一段含有「正機率正好為零」的等待時間、一個被感測器飽和值截斷的量測、一筆消費金額中未消費者集中在 $0$ 而消費者服從某連續分布，皆可能形成混合型分布。
 
-CDF 讓這個建構變得自然。挑一個連續家族 $G$ 當作平滑的部分，再列出有限個單點質量 $(x\_i, w\_i)$，每個 $w\_i > 0$。將**連續部分的權重**設為
+CDF 讓這個建構變得自然。挑一個連續家族 $G$ 當作平滑的部分，再列出有限個單點質量 $(x_i,w_i)$，每個 $w_i>0$。將**連續部分的權重**設為
 
-$$ w_c = 1 - \sum_i w_i, $$
+$$
+w_c=1-\sum_i w_i
+$$
 
-並要求 $w\_c \geq 0$。則
+並要求 $w_c\geq 0$。則
 
-$$ F(x) = w_c \cdot G(x) + \sum_{x_i \leq x} w_i. $$
+$$
+F(x)=w_c\cdot G(x)+\sum_{x_i\leq x}w_i
+$$
 
-這個 $F$ 單調不減、介於 $0$ 與 $1$ 之間、且右連續，因此是一個合法的 CDF。它沿著 $w\_c \cdot G$ 平滑爬升，並在每一個 $x\_i$ **正好跳 $w\_i$**。兩個極限狀況可以還原已知情形。
+這個 $F$ 單調不減、介於 $0$ 與 $1$ 之間、且右連續，因此是一個合法的 CDF。它沿著 $w_c\cdot G$ 平滑爬升，並在每一個 $x_i$ **正好跳 $w_i$**。兩個極限狀況可以還原已知情形。
 
-- $w\_c = 1$ 且沒有任何單點，這是純粹連續型。
-- $w\_c = 0$ 且所有 $w\_i$ 加總為 $1$，這是純粹離散型。
+- $w_c=1$ 且沒有任何單點，這是純粹連續型。
+- $w_c=0$ 且所有 $w_i$ 加總為 $1$，這是純粹離散型。
 
 兩者之間的所有設定都是混合型。視覺特徵很清楚，CDF 同時擁有平滑的段落，與肉眼可見的垂直跳躍。
 
@@ -94,3 +106,13 @@ $$ F(x) = w_c \cdot G(x) + \sum_{x_i \leq x} w_i. $$
 把 $F$ 當作主角後，混合型就不再像是獨立的物種，它就是「同時帶有平滑段與跳躍段」的 CDF。而這正好是現實過程同時擁有「連續模式」與「在特定值上集中機率」時必然出現的型態。
 
 上面三個 demo 讓你從零開始、一根拉桿一根拉桿地組，看著 CDF 慢慢長出來。
+
+## 參考文獻與延伸閱讀
+
+- Patrick Billingsley, *Probability and Measure*, chapters on distribution functions and probability measures.
+- William Feller, *An Introduction to Probability Theory and Its Applications*, Volume I, chapters on distribution functions.
+- George Casella and Roger L. Berger, *Statistical Inference*, sections on random variables and distribution functions.
+- Sheldon M. Ross, *A First Course in Probability*, chapters on random variables, distribution functions, and densities.
+- Lawrence M. Leemis, “Relationships among Common Univariate Distributions”, *The American Statistician*, 40(2), 143–146, 1986. [doi:10.1080/00031305.1986.10475379](https://doi.org/10.1080/00031305.1986.10475379).
+- Andrey N. Kolmogorov, “Sulla Determinazione Empirica di una Legge di Distribuzione”, *Giornale dell’Istituto Italiano degli Attuari*, 4, 83–91, 1933. [stable link](https://www.scirp.org/reference/referencespapers?referenceid=4051878).
+- Nikolai V. Smirnov, “Table for Estimating the Goodness of Fit of Empirical Distributions”, *The Annals of Mathematical Statistics*, 19(2), 279–281, 1948. [doi:10.1214/aoms/1177730256](https://doi.org/10.1214/aoms/1177730256).

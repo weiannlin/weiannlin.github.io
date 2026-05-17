@@ -5,25 +5,25 @@ layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 1
-topic: 7
-order: 107
+topic: 8
+order: 108
 permalink: /teaching-topics/bayes-rule-posterior-probability/
 date: 2026-05-06
 published: true
-excerpt: "貝氏定理描述資訊進來以後，我們如何重新分配對不同可能狀態的相信程度；它把事前機率、條件機率、總機率與事後機率連在一起。"
+excerpt: "貝氏定理把全機率定理反過來讀。當某個結果已經被觀察到時，它說明我們如何重新分配對不同可能來源的相信程度。"
 ---
 
-[上一篇文章](/teaching-topics/total-probability-bayes-rule/)利用分割與全機率定理，把事件 $B$ 的機率拆成不同來源的貢獻後再加總。換句話說，全機率定理回答的是，$B$ 總共多容易發生？
+[上一篇文章](/teaching-topics/group-mixing-simpsons-paradox/)由辛普森悖論說明，分組條件機率與混合後的整體機率可能給出不同方向的比較。由此可知，分割不只是計算技巧，也會影響我們如何理解整體資料。
 
-本文把問題反過來看。若 $B$ 已經發生，我們該如何判斷它最可能是由哪個來源造成？這正是**貝氏定理 (Bayes' rule)** 的角色。它不只是另一個條件機率公式，而是在描述一件很重要的事，也就是**資訊進來以後，機率會被更新。**
+本篇回到全機率定理本身，並把問題反過來看。全機率定理先問事件 $B$ 可以由哪些來源共同形成；貝氏定理 (Bayes' rule) 則問，若 $B$ 已經發生，我們該如何判斷它最可能是由哪個來源造成。它不只是另一個條件機率公式，而是在描述**資訊進來以後，機率如何被更新**。
 
 這裡的「更新」不是說世界本身被資訊改變了。地底下有沒有石油，病人有沒有疾病，一封信是不是垃圾郵件，通常早已有某個真實狀態；改變的是我們掌握的資訊，因此也改變了我們對各種可能狀態的機率評估。
 
-本文固定令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。除非特別說明，文中的事件皆是 $\mathcal{F}$ 中的事件。
+以下固定令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。除非特別說明，文中的事件皆是 $\mathcal{F}$ 中的事件。
 
 ## 從總機率到反向追問
 
-假設 $A_1,\ldots,A_n$ 是 $S$ 的一組分割，而事件 $B$ 是我們觀察到的新資訊。從正向角度看，全機率定理告訴我們
+假設 $A_1,\ldots,A_n$ 是 $S$ 的一組分割，而事件 $B$ 是我們觀察到的新資訊。從正向角度看，全機率定理給出
 
 $$
 \mathbb{P}(B)=\sum_{j=1}^{n}\mathbb{P}(B\mid A_j)\,\mathbb{P}(A_j)
@@ -93,7 +93,7 @@ $$
 貝氏定理的分母不是一個隨便拿來正規化的常數；它正是由全機率定理算出的事件 $B$ 總機率。也就是說，分母回答「$B$ 可以透過哪些方式發生」，並把所有可能來源都納入；分子則只保留其中一個特定來源 $A_i$ 對事件 $B$ 的貢獻。
 </div>
 
-## Example 1.12 (Exploratory Drilling Result)
+## Example 1.13 (Exploratory Drilling Result)
 
 假設某公司評估一塊區域是否含有可開採石油。令 $O$ 表示「該區域有石油」。根據過去地質資料，公司先認為
 
@@ -135,10 +135,10 @@ $$
 \end{aligned}
 $$
 
-試挖結果確實帶來資訊，使有石油的機率從 $0.2$ 向下修正為約 $0.048$。但它沒有讓機率變成 $0$，因為即使該區域真的有石油，試挖也可能沒有命中可開採的位置。這正是貝氏更新的核心想法，新資訊會推動機率移動，但移動多少，仍取決於事前機率與觀測結果本身的可靠度。
+試挖結果確實帶來資訊，使有石油的機率從 $0.2$ 向下修正為約 $0.048$。但它沒有讓機率變成 $0$，因為即使該區域真的有石油，試挖也可能沒有命中可開採的位置。因此，新資訊會推動機率移動；至於移動多少，仍取決於事前機率與觀測結果本身的可靠度。
 
 <div class="topic-box topic-box--interlude" markdown="1">
-<div class="topic-box__label">直覺校準 1.7</div>
+<div class="topic-box__label">直覺校準 1.8</div>
 
 請注意這個例子裡，地底下是否有石油不是試挖後才決定的。試挖改變的不是地底狀態，而是我們對地底狀態的資訊。
 
@@ -147,7 +147,7 @@ $$
 
 ## 基準率與原本比例
 
-貝氏定理也提醒我們，新資訊不能脫離原本的基準比例來看。醫療檢驗、保險定價與風險評估中，若只看「某訊號在高風險者中多常出現」，卻忘記高風險者原本佔多少比例，就很容易高估事後機率。
+貝氏定理也說明，新資訊不能脫離原本的基準比例來看。醫療檢驗、保險定價與風險評估中，若只看「某訊號在高風險者中多常出現」，卻忘記高風險者原本佔多少比例，就很容易高估事後機率。
 
 在醫療篩檢中，常見的真陽性 (true positive)、偽陽性 (false positive)、真陰性 (true negative) 與偽陰性 (false negative)，其實都可以理解為條件機率。真陽性率是在已知個體真的罹病下，檢驗呈陽性的機率；偽陽性率是在已知個體未罹病下，檢驗卻呈陽性的機率。相對地，真陰性率是在已知個體未罹病下，檢驗呈陰性的機率；偽陰性率則是在已知個體真的罹病下，檢驗卻呈陰性的機率。
 
@@ -173,7 +173,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Perspective</div>
 
-**貝氏統計 (Bayesian statistics).** 在貝氏統計裡，未知參數本身也被放入機率模型中。資料進來以前，我們用事前分布 (prior distribution) 描述對參數的認識；資料進來以後，則可更新為事後分布 (posterior distribution)。因此，貝氏統計的核心想法正是「資訊帶來更新」。
+**貝氏統計 (Bayesian statistics).** 在貝氏統計裡，未知參數本身也被放入機率模型中。資料進來以前，我們用事前分布 (prior distribution) 描述對參數的認識；資料進來以後，則可更新為事後分布 (posterior distribution)。因此，貝氏統計把「資訊帶來更新」放在模型的中心。
 
 **Naive Bayes classifier.** 在分類問題中，我們常想計算「看到這些特徵後，資料屬於某類別的機率」。例如垃圾郵件分類會問，在某些字詞出現後，這封信是 spam 的機率多大？Naive Bayes classifier 的基本形式可以寫成
 
@@ -200,3 +200,13 @@ $$
 | 事後機率 | $\mathbb{P}(A_i\mid B)$ | 資訊 $B$ 出現後，來源 $A_i$ 更新後的可能性 |
 
 條件機率與貝氏定理說明資訊如何改變機率。若資訊進來以後，某個事件的機率完全不變，就會自然導向下一個主題，也就是[獨立性](/teaching-topics/independence-and-conditional-independence/)。
+
+## 參考文獻與延伸閱讀
+
+- Thomas Bayes and Richard Price, “An Essay towards Solving a Problem in the Doctrine of Chances”, *Philosophical Transactions of the Royal Society of London*, 53, 370–418, 1763. [doi:10.1098/rstl.1763.0053](https://doi.org/10.1098/rstl.1763.0053).
+- H. O. Hartley, “In Dr. Bayes’ Consulting Room”, *The American Statistician*, 17(1), 22–24, 1963. [stable link](https://www.jstor.org/stable/2682492).
+- Andrew Gelman, John B. Carlin, Hal S. Stern, David B. Dunson, Aki Vehtari, and Donald B. Rubin, *Bayesian Data Analysis*.
+- Christopher M. Bishop, *Pattern Recognition and Machine Learning*, chapters on probabilistic classification and Naive Bayes.
+- Morris H. DeGroot and Mark J. Schervish, *Probability and Statistics*, chapters on Bayes rule and diagnostic testing.
+- Amos Tversky and Daniel Kahneman, “Judgment under Uncertainty: Heuristics and Biases”, *Science*, 185(4157), 1124–1131, 1974. [doi:10.1126/science.185.4157.1124](https://doi.org/10.1126/science.185.4157.1124).
+- Gerd Gigerenzer and Ulrich Hoffrage, “How to Improve Bayesian Reasoning without Instruction: Frequency Formats”, *Psychological Review*, 102(4), 684–704, 1995. [doi:10.1037/0033-295X.102.4.684](https://doi.org/10.1037/0033-295X.102.4.684).

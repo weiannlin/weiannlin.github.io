@@ -150,15 +150,21 @@ Beyond the answer, two foundational probability ideas show up clearly here.
 
 Combining via the law of total probability,
 
-$$P(\text{win} \mid \text{switch}) = 0 \cdot \frac{1}{N} + 1 \cdot \frac{N-1}{N} = \frac{N-1}{N}.$$
+$$
+\mathbb{P}(\text{win}\mid \text{switch})
+=0\cdot\frac{1}{N}+1\cdot\frac{N-1}{N}
+=\frac{N-1}{N}
+$$
 
 "Stay" reverses the conditional probabilities and lands at $1/N$. A good strategy isn't about being lucky on the first event — it's about converting first-event outcomes into second-event wins as efficiently as possible.
 
-**2. The law of large numbers.** Each round of the simulator is an i.i.d. Bernoulli trial: $X\_r = 1$ if the strategy wins on round $r$, otherwise $X\_r = 0$, with $\mathbb{E}[X\_r] = P(\text{win} \mid \text{strategy})$. The running curve in the chart is the sample mean
+**2. The law of large numbers.** Each round of the simulator is an i.i.d. Bernoulli trial: $X_r=1$ if the strategy wins on round $r$, otherwise $X_r=0$, with $\mathbb{E}[X_r]=\mathbb{P}(\text{win}\mid \text{strategy})$. The running curve in the chart is the sample mean
 
-$$\bar{X}_R = \frac{1}{R} \sum_{r=1}^{R} X_r.$$
+$$
+\bar{X}_R=\frac{1}{R}\sum_{r=1}^{R}X_r
+$$
 
-The law of large numbers guarantees $\bar{X}\_R \to P(\text{win})$ as $R \to \infty$, and the fluctuation around the limit shrinks at rate $1/\sqrt{R}$, the standard error of a binomial fraction. Early rounds therefore swing wildly while the line eventually settles onto the dashed theoretical reference.
+The law of large numbers guarantees $\bar{X}_R \to \mathbb{P}(\text{win})$ as $R \to \infty$, and the fluctuation around the limit shrinks at rate $1/\sqrt{R}$, the standard error of a binomial fraction. Early rounds therefore swing wildly while the line eventually settles onto the dashed theoretical reference.
 
 <script>
 (function() {

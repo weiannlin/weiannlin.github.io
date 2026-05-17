@@ -119,7 +119,7 @@ Below, you can build your own PMF by editing the $(x, p)$ table. The slider swee
 
 The CDF is a **step function**: flat between the PMF's mass points, jumping straight up by $p\_i$ at each $x = x\_i$ where the PMF carries mass. Slide the current $x$ across some $x\_i$ and the CDF jumps while one more PMF lollipop turns red — the same probability mass, viewed two ways.
 
-Convention: this CDF is right-continuous. At each $x = x\_i$, $F(x\_i) = P(X \leq x\_i)$ already includes the jump.
+Convention: this CDF is right-continuous. At each $x=x_i$, $F(x_i)=\mathbb{P}(X\leq x_i)$ already includes the jump.
 
 [The next demo](/demos/pdf-cdf/) replaces the discrete spikes with a smooth density (PDF). The construction is the same idea, but the running **sum** becomes a running **integral**, and the CDF turns from a staircase into a continuous curve.
 

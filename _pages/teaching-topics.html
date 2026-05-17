@@ -14,22 +14,30 @@ author_profile: true
 {% assign categories = "機率概論,隨機變數,隨機向量,分配理論,極限分配,統計推論,電腦實驗,高斯過程,試驗設計" | split: "," %}
 
 {% for cat in categories %}
-  {% assign articles = site.teaching_topics | where: "category", cat | sort: "order" %}
+  {% assign articles = site.teaching_topics | where: "category", cat | where_exp: "article", "article.published != false" | sort: "order" %}
   {% if articles.size > 0 %}
 <h2 id="{{ cat | slugify }}">{{ cat }}</h2>
   {% assign chapter_groups = articles | group_by: "chapter" %}
   {% for chapter_group in chapter_groups %}
     {% if chapter_group.name and chapter_group.name != "" %}
-<h3 class="teaching-topics-chapter">第 {{ chapter_group.name }} 章</h3>
+      {% assign chapter_title = "" %}
+      {% if cat == "機率概論" and chapter_group.name == "1" %}
+        {% assign chapter_title = "事件機率與條件化" %}
+      {% elsif cat == "機率概論" and chapter_group.name == "2" %}
+        {% assign chapter_title = "隨機變數" %}
+      {% endif %}
+<h3 class="teaching-topics-chapter">第 {{ chapter_group.name }} 章{% if chapter_title != "" %} {{ chapter_title }}{% endif %}</h3>
     {% endif %}
 <ul class="teaching-topics-list">
     {% assign chapter_articles = chapter_group.items | sort: "order" %}
     {% for article in chapter_articles %}
+  {% unless article.listed == false %}
   <li>
     {% if article.topic %}<span class="topic-chapter">主題 {{ article.topic }}</span>{% endif %}
     <a href="{{ article.url | relative_url }}"><strong>{{ article.title }}</strong></a>
     {% if article.excerpt and article.excerpt != "" %} &mdash; {{ article.excerpt | strip_html | strip_newlines }}{% endif %}
   </li>
+  {% endunless %}
     {% endfor %}
 </ul>
   {% endfor %}

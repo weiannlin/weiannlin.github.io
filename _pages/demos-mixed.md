@@ -115,7 +115,9 @@ author_profile: true
 
 A **mixed-type distribution** has both a continuous part and one or more point masses. Its CDF is the sum:
 
-$$F(x) = W_c \cdot G(x) + \sum_{x_i \leq x} w_i,$$
+$$
+F(x)=W_c\cdot G(x)+\sum_{x_i\leq x}w_i
+$$
 
 where $G$ is the continuous CDF (weight $W_c$) and the $w_i$ are the point masses at $x_i$. The defining visual feature: the CDF picks up a **jump of size exactly $w_i$** at every $x_i$, while remaining smooth in between.
 

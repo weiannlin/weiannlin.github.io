@@ -78,11 +78,15 @@ author_profile: true
 
 The continuous version of the [previous demo](/demos/pmf-cdf/). Now $X$ takes values on a continuum, not a discrete set. Probability is described by a **density** $f(x)$ — itself not a probability. A single point has probability zero; only intervals carry probability, given by area:
 
-$$P(a < X \leq b) = \int_a^b f(t)\,dt.$$
+$$
+\mathbb{P}(a<X\leq b)=\int_a^b f(t)\,dt
+$$
 
 The CDF is built the same way as before, with the running sum of point masses replaced by a running integral of density:
 
-$$F(x) = P(X \leq x) = \int_{-\infty}^{x} f(t)\,dt.$$
+$$
+F(x)=\mathbb{P}(X\leq x)=\int_{-\infty}^{x} f(t)\,dt
+$$
 
 Pick a distribution, tune its parameters, then sweep the current $x$. The red area under the density to the left of $x$ equals the height of the CDF at $x$ — the same probability, viewed two ways.
 
@@ -114,7 +118,7 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The red ar
   <svg id="dc-pdf" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet"></svg>
   <svg id="dc-cdf" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet"></svg>
   <div class="dc-readout">
-    Cumulative probability $P(X \leq x)$ = <strong id="dc-cum">—</strong>. The red area under the density equals this; the CDF curve traces it.
+    Cumulative probability $\mathbb{P}(X\leq x)$ = <strong id="dc-cum">—</strong>. The red area under the density equals this; the CDF curve traces it.
   </div>
 </div>
 

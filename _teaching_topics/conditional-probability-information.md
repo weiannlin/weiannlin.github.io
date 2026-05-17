@@ -9,14 +9,14 @@ topic: 5
 order: 105
 permalink: /teaching-topics/conditional-probability-information/
 date: 2026-05-05
-excerpt: "條件機率描述在已知某個事件已經發生之後，我們如何重新評估另一個事件的機率。本文從資訊的意義出發，介紹條件機率、乘法原理與廣義乘法原理。"
+excerpt: "條件機率描述在已知某個事件已經發生之後，我們如何重新評估另一個事件的機率。本篇從資訊的意義出發，介紹條件機率、乘法原理與廣義乘法原理。"
 ---
 
-[上一篇文章](/teaching-topics/probability-rules-from-axioms/)整理了在同一個機率空間中可以使用的基本運算規則。那些規則告訴我們，一旦機率空間 $(S,\mathcal{F},\mathbb{P})$ 被指定以後，事件之間的聯集、交集、餘事件與大小關係便能轉化為機率運算。
+[上一篇文章](/teaching-topics/probability-rules-from-axioms/)整理了在同一個機率空間中可以使用的基本運算規則。由那些規則可知，一旦機率空間 $(S,\mathcal{F},\mathbb{P})$ 被指定以後，事件之間的聯集、交集、餘事件與大小關係便能轉化為機率運算。
 
-但機率與統計更常處理的是「資訊的變化」。原本我們站在整個樣本空間中評估某事件的機率；一旦知道某個事件 $B$ 已經發生，原先的樣本空間便被縮小成 $B$ 所代表的世界，我們也必須在其中重新評估問題。條件機率 (conditional probability) 要描述的正是這件事：資訊進來以後，機率如何改變。
+但機率與統計更常處理的是「資訊的變化」。原本我們站在整個樣本空間中評估某事件的機率；一旦知道某個事件 $B$ 已經發生，原先的樣本空間便被縮小成 $B$ 所代表的世界，我們也必須在其中重新評估問題。條件機率 (conditional probability) 描述的就是資訊進來以後，機率如何改變。
 
-本文固定令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。除非特別說明，文中的事件皆是 $\mathcal{F}$ 中的事件。
+以下固定令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。除非特別說明，文中的事件皆是 $\mathcal{F}$ 中的事件。
 
 ## 資訊會改變我們看的世界
 
@@ -26,7 +26,7 @@ $$
 \mathbb{P}(A)=\frac{3}{6}=\frac{1}{2}
 $$
 
-現在加入一個資訊：點數是偶數。也就是說，我們知道事件 $B$ 發生，其中
+現在加入一個資訊。點數是偶數。也就是說，我們知道事件 $B$ 發生，其中
 
 $$
 B=\{2,4,6\}
@@ -47,7 +47,7 @@ $$
 =\frac{2}{3}
 $$
 
-這個比例就是條件機率的原型：把「同時屬於 $A$ 與 $B$ 的部分」拿來和「已知會發生的 $B$」相比。
+這個比例就是條件機率的原型。把「同時屬於 $A$ 與 $B$ 的部分」拿來和「已知會發生的 $B$」相比。
 
 ## 條件機率
 
@@ -62,10 +62,10 @@ $$
 
 </div>
 
-這個定義的分子是 $A$ 與 $B$ 同時發生的機率；分母則是我們已經知道會發生的事件 $B$ 的機率。因此 $\mathbb{P}(A\mid B)$ 可以理解為：在 $B$ 所代表的新世界裡，$A$ 佔了多少比例。
+這個定義的分子是 $A$ 與 $B$ 同時發生的機率；分母則是我們已經知道會發生的事件 $B$ 的機率。因此 $\mathbb{P}(A\mid B)$ 表示在 $B$ 所代表的新世界裡，$A$ 佔了多少比例。
 
 <figure class="topic-figure topic-figure--medium">
-  <img src="/images/teaching-topics/conditional-probability-region.svg" alt="條件機率的集合示意圖：已知 B 發生後，以 B 作為新的參照區域，A 只剩下 A cap B 的部分會被計入。">
+  <img src="/images/teaching-topics/conditional-probability-region.svg" alt="條件機率的集合示意圖。已知 B 發生後，以 B 作為新的參照區域，A 只剩下 A cap B 的部分會被計入。">
   <figcaption><span class="topic-figure__label">Fig. 1.6.</span> 給定 $B$ 發生後，參照範圍縮小為 $B$；此時 $A$ 真正留下來的是 $A\cap B$。</figcaption>
 </figure>
 
@@ -131,7 +131,7 @@ $$
 故 $\mathbb{P}(\,\cdot\,\mid B)$ 滿足機率三大公理。 $\square$
 </div>
 
-這個定理的教學意義很重要：只要條件固定，前面學過的機率規則仍然可以使用。真正需要小心的是，不同條件代表不同參照世界；若一個式子裡的條件改來改去，就不能把它們當成同一個機率空間裡的普通機率直接相加或比較。
+此定理說明，只要條件固定，前面學過的機率規則仍然可以使用。真正需要小心的是，不同條件代表不同參照世界；若一個式子裡的條件改來改去，就不能把它們當成同一個機率空間裡的普通機率直接相加或比較。
 
 <div class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 1.3</div>
@@ -148,7 +148,7 @@ $$
 \mathbb{P}(A\mid B)+\mathbb{P}(A\mid B^{\prime})
 $$
 
-它也會等於 $1$ 嗎？答案通常是否定的。第一項是在 $B$ 的世界裡看 $A$，第二項是在 $B^{\prime}$ 的世界裡看 $A$；兩者的條件不同，參照世界也不同。我有時會戲稱這是「張飛打岳飛問題」：看起來都在談 $A$，但其實時空錯置，條件根本對不上。條件對不上時，就不能套用餘事件公式把兩項湊成 $1$。
+它也會等於 $1$ 嗎？答案通常是否定的。第一項是在 $B$ 的世界裡看 $A$，第二項是在 $B^{\prime}$ 的世界裡看 $A$；兩者的條件不同，參照世界也不同。我有時會戲稱這是「張飛打岳飛問題」。看起來都在談 $A$，但其實時空錯置，條件根本對不上。條件對不上時，就不能套用餘事件公式把兩項湊成 $1$。
 </div>
 
 ## 乘法原理
@@ -172,7 +172,7 @@ $$
 
 </div>
 
-乘法原理的用途是：當交集機率不好直接算，但條件機率容易描述時，我們可以先算「第一個事件發生的機率」，再乘上「在第一個事件已經發生之下，第二個事件發生的機率」。
+乘法原理的用途在於，當交集機率不好直接算，但條件機率容易描述時，我們可以先算「第一個事件發生的機率」，再乘上「在第一個事件已經發生之下，第二個事件發生的機率」。
 
 <div class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.8 (Two Cards without Replacement)</div>
@@ -239,7 +239,7 @@ $$
 =\mathbb{P}(A)\,\mathbb{P}(B\mid A)\,\mathbb{P}(C\mid A\cap B)
 $$
 
-但你也可以先篩 $B$，再篩 $A$，最後篩 $C$：
+也可以先篩 $B$，再篩 $A$，最後篩 $C$。
 
 $$
 \mathbb{P}(A\cap B\cap C)
@@ -251,7 +251,7 @@ $$
 
 ## 條件不能隨意交換
 
-最後要先提醒一個常見誤解：$\mathbb{P}(A\mid B)$ 與 $\mathbb{P}(B\mid A)$ 通常不是同一件事。前者問的是「在 $B$ 已知發生之下，$A$ 的機率」；後者問的是「在 $A$ 已知發生之下，$B$ 的機率」。兩者的分母不同，參照世界也不同。
+最後要先提醒一個常見誤解。$\mathbb{P}(A\mid B)$ 與 $\mathbb{P}(B\mid A)$ 通常不是同一件事。前者問的是「在 $B$ 已知發生之下，$A$ 的機率」；後者問的是「在 $A$ 已知發生之下，$B$ 的機率」。兩者的分母不同，參照世界也不同。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -261,13 +261,23 @@ $$
 
 ## 本篇小結
 
-本文把條件機率理解為「資訊進來以後的重新評估」：
+本篇將條件機率理解為「資訊進來以後的重新評估」。
 
-| 工具 | 公式 | 核心想法 |
+| 工具 | 公式 | 重點 |
 | --- | --- | --- |
 | 條件機率 | $\mathbb{P}(A\mid B)=\mathbb{P}(A\cap B)/\mathbb{P}(B)$ | 在已知 $B$ 發生後重新看 $A$ |
 | 條件機率測度 | $A\mapsto\mathbb{P}(A\mid B)$ | 固定條件後仍是機率 |
 | 乘法原理 | $\mathbb{P}(A\cap B)=\mathbb{P}(A\mid B)\,\mathbb{P}(B)$ | 用條件機率還原交集機率 |
 | 廣義乘法原理 | 依序相乘 | 適合描述逐步加入條件的篩選過程 |
 
-[下一篇文章](/teaching-topics/total-probability-bayes-rule/)將把條件機率與「分類」放在一起：若樣本空間被一組事件分割成互斥且完整的情況，我們就能得到全機率定理。再往後，若想用新資訊反過來修正原先對各種情況的判斷，就會進入貝氏定理。
+[下一篇文章](/teaching-topics/total-probability-bayes-rule/)將把條件機率與「分類」放在一起。若樣本空間被一組事件分割成互斥且完整的情況，我們就能得到全機率定理。再往後，若想用新資訊反過來修正原先對各種情況的判斷，就會進入貝氏定理。
+
+## 參考文獻與延伸閱讀
+
+- Sheldon M. Ross, *A First Course in Probability*, chapters on conditional probability and multiplication rules.
+- Joseph K. Blitzstein and Jessica Hwang, *Introduction to Probability*, chapters on conditioning and Bayes rule.
+- Morris H. DeGroot and Mark J. Schervish, *Probability and Statistics*, chapters on conditional probability.
+- Michael Woodroofe, *Probability with Applications*, McGraw-Hill, 1975, Chapter 10 on conditional probability.
+- Peter J. Bickel and Kjell A. Doksum, *Mathematical Statistics, Basic Ideas and Selected Topics*, Holden-Day, 1977, early sections on conditioning and statistical reasoning.
+- Alfréd Rényi, “On Conditional Probability Spaces Generated by a Dimensionally Ordered Set of Measures”, *Theory of Probability and Its Applications*, 1(1), 55–64, 1956. [doi:10.1137/1101005](https://doi.org/10.1137/1101005).
+- David Blackwell and Lester E. Dubins, “On Existence and Non-Existence of Proper, Regular, Conditional Distributions”, *The Annals of Probability*, 3(5), 741–752, 1975. [doi:10.1214/aop/1176996261](https://doi.org/10.1214/aop/1176996261).

@@ -197,18 +197,18 @@ This is a probability demo, not medical guidance. The repeated-test calculations
 
 <div class="bu-grid">
   <div class="bu-panel bu-controls">
-    <label>Prevalence prior $P(D)$
+    <label>Prevalence prior $\mathbb{P}(D)$
       <input id="bu-prior" type="number" min="0.001" max="0.999" step="0.001" value="0.050">
     </label>
-    <label>Sensitivity $P(+\mid D)$
+    <label>Sensitivity $\mathbb{P}(+\mid D)$
       <input id="bu-sensitivity" type="number" min="0.001" max="0.999" step="0.001" value="0.950">
     </label>
-    <label>Specificity $P(-\mid D^\prime)$
+    <label>Specificity $\mathbb{P}(-\mid D^\prime)$
       <input id="bu-specificity" type="number" min="0.001" max="0.999" step="0.001" value="0.900">
     </label>
 
     <div class="bu-model">
-      Sensitivity is the true positive rate, while specificity is the true negative rate. A positive result uses $P(+\mid D^\prime)=1-\mathrm{specificity}$, so lowering specificity directly raises the false positive rate.
+      Sensitivity is the true positive rate, while specificity is the true negative rate. A positive result uses $\mathbb{P}(+\mid D^\prime)=1-\mathrm{specificity}$, so lowering specificity directly raises the false positive rate.
     </div>
 
     <div class="bu-result-buttons">
@@ -225,7 +225,7 @@ This is a probability demo, not medical guidance. The repeated-test calculations
   <div class="bu-panel">
     <div class="bu-readout">
       <div class="bu-card">
-        <span class="label">Current $P(D)$</span>
+        <span class="label">Current $\mathbb{P}(D)$</span>
         <strong id="bu-current">—</strong>
       </div>
       <div class="bu-card">
@@ -260,8 +260,8 @@ This is a probability demo, not medical guidance. The repeated-test calculations
         <th>Step</th>
         <th>Result</th>
         <th>Prior</th>
-        <th>$P(E\mid D)$</th>
-        <th>$P(E\mid D^\prime)$</th>
+        <th>$\mathbb{P}(E\mid D)$</th>
+        <th>$\mathbb{P}(E\mid D^\prime)$</th>
         <th>Posterior</th>
       </tr>
     </thead>
@@ -311,7 +311,7 @@ This is a probability demo, not medical guidance. The repeated-test calculations
     return p;
   }
 
-  function currentP() {
+  function currentProb() {
     return history.length ? history[history.length - 1].posterior : initialPrior;
   }
 
@@ -324,7 +324,7 @@ This is a probability demo, not medical guidance. The repeated-test calculations
   function addResult(kind) {
     const sensitivity = readSensitivity();
     const specificity = readSpecificity();
-    const prior = currentP();
+    const prior = currentProb();
     const row = kind === 'positive'
       ? {
           result: 'Positive',
@@ -354,7 +354,7 @@ This is a probability demo, not medical guidance. The repeated-test calculations
   }
 
   function render() {
-    const p = currentP();
+    const p = currentProb();
     $('bu-current').textContent = fmt(p);
     $('bu-disease-val').textContent = pct(p);
     $('bu-healthy-val').textContent = pct(1 - p);
@@ -420,7 +420,7 @@ This is a probability demo, not medical guidance. The repeated-test calculations
       });
     }
     html += '<text x="' + (M.l + iw / 2) + '" y="' + (H - 12) + '" text-anchor="middle" fill="currentColor" font-size="13" opacity="0.72">observation step</text>';
-    html += '<text transform="translate(16 ' + (M.t + ih / 2) + ') rotate(-90)" text-anchor="middle" fill="currentColor" font-size="13" opacity="0.72">P(D)</text>';
+    html += '<text transform="translate(16 ' + (M.t + ih / 2) + ') rotate(-90)" text-anchor="middle" fill="currentColor" font-size="13" opacity="0.72">ℙ(D)</text>';
     svg.innerHTML = html;
   }
 

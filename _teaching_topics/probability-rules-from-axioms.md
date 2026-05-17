@@ -9,14 +9,14 @@ topic: 4
 order: 104
 permalink: /teaching-topics/probability-rules-from-axioms/
 date: 2026-05-05
-excerpt: "Kolmogorov 公理本身很短，卻能推出一整套機率運算規則。本文從虛無事件、有限可加性與餘事件公式開始，進一步整理單調性、加法原理、排容原理與常用機率不等式。"
+excerpt: "Kolmogorov 公理本身很短，卻能推出一整套機率運算規則。本篇從虛無事件、有限可加性與餘事件公式開始，進一步整理單調性、加法原理、排容原理與常用機率不等式。"
 ---
 
 [上一篇文章](/teaching-topics/probability-assignment-classical-geometric/)說明了不同情境下如何指定機率函數，也就是 $\mathbb{P}$ 的來源。一旦 $\mathbb{P}$ 被指定，並且滿足 Kolmogorov 公理，我們就可以不再依賴特定模型，而是直接從公理推出一系列共同成立的運算規則。
 
-本文固定令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。除非特別說明，文中的事件皆是 $\mathcal{F}$ 中的事件。
+以下固定令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。除非特別說明，文中的事件皆是 $\mathcal{F}$ 中的事件。
 
-## 第一個推論：虛無事件的機率
+## 虛無事件的機率
 
 Kolmogorov 公理直接指定 $\mathbb{P}(S)=1$，但沒有直接指定虛無事件的機率。若以 $\varnothing$ 表示虛無事件，這件事可以由可數可加性推出。
 
@@ -51,7 +51,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-$\mathbb{P}(\varnothing)=0$ 表示不可能事件的機率必為零。但反過來並不一定成立：機率為 $0$ 的事件未必是不可能事件。這正好呼應[直覺校準 1.1](/teaching-topics/random-experiments-sample-space-events/#thought-experiment-dart-zero-probability)中的飛鏢例子：在以面積指定機率的連續落點模型中，某個特定點可以是樣本空間中的可能結果；若這個單點集合被納入事件集合族，則它的面積為零，機率也為零。換句話說，不可能發生的事件機率必為零，但機率為零的事件未必不可能發生。
+$\mathbb{P}(\varnothing)=0$ 表示不可能事件的機率必為零。但反過來並不一定成立，機率為 $0$ 的事件未必是不可能事件。這正好呼應[直覺校準 1.1](/teaching-topics/random-experiments-sample-space-events/#thought-experiment-dart-zero-probability)中的飛鏢例子。在以面積指定機率的連續落點模型中，某個特定點可以是樣本空間中的可能結果；若這個單點集合被納入事件集合族，則它的面積為零，機率也為零。換句話說，不可能發生的事件機率必為零，但機率為零的事件未必不可能發生。
 </div>
 
 ## 有限可加性
@@ -71,7 +71,7 @@ $$
 </div>
 
 <div class="topic-proof" markdown="1">
-**Proof.** 對所有 $k>n$，令 $A_k$ 為虛無事件。則可數聯集等同於前 $n$ 個事件的聯集：
+**Proof.** 對所有 $k>n$，令 $A_k$ 為虛無事件。則可數聯集等同於前 $n$ 個事件的聯集。
 
 $$
 \bigcup_{i=1}^{\infty}A_i=\bigcup_{i=1}^{n}A_i
@@ -92,14 +92,14 @@ $$
 
 ## 餘事件公式
 
-對任意事件 $A$，其餘事件 $A^{\prime}$ 是所有不屬於 $A$ 的樣本點所形成的事件。因此 $A$ 與 $A^{\prime}$ 彼此互斥，且二者合起來正好是整個樣本空間：
+對任意事件 $A$，其餘事件 $A^{\prime}$ 是所有不屬於 $A$ 的樣本點所形成的事件。因此 $A$ 與 $A^{\prime}$ 彼此互斥，且二者合起來正好是整個樣本空間。
 
 $$
 S=A\cup A^{\prime}, \qquad A\cap A^{\prime}=\varnothing
 $$
 
 <figure class="topic-figure topic-figure--compact">
-  <img src="/images/teaching-topics/probability-rules-complement.svg" alt="餘事件 A prime 的集合示意圖：樣本空間 S 中，事件 A 外側的區域為 A prime。">
+  <img src="/images/teaching-topics/probability-rules-complement.svg" alt="餘事件 A prime 的集合示意圖。樣本空間 S 中，事件 A 外側的區域為 A prime。">
   <figcaption><span class="topic-figure__label">Fig. 1.1.</span> 餘事件 $A^{\prime}$ 是樣本空間中不屬於 $A$ 的部分。</figcaption>
 </figure>
 
@@ -144,7 +144,7 @@ $$
 在許多問題中，直接計算目標事件不容易，但計算它的餘事件比較簡單。此時餘事件公式往往是最省力的做法。
 </div>
 
-## 單調性：較小的事件，機率不會較大
+## 單調性與事件包含
 
 若 $A\subset B$，則事件 $A$ 發生時，事件 $B$ 一定發生。直觀上，$B$ 至少包含 $A$ 的所有可能結果，因此 $B$ 的機率不應小於 $A$ 的機率。
 
@@ -167,12 +167,12 @@ $$
 </div>
 
 <figure class="topic-figure topic-figure--medium">
-  <img src="/images/teaching-topics/probability-rules-monotonicity.svg" alt="單調性的集合示意圖：事件 A 包含於事件 B 中，B 比 A 多出的部分是差集 B-A。">
+  <img src="/images/teaching-topics/probability-rules-monotonicity.svg" alt="單調性的集合示意圖。事件 A 包含於事件 B 中，B 比 A 多出的部分是差集 B-A。">
   <figcaption><span class="topic-figure__label">Fig. 1.2.</span> 當 $A\subset B$ 時，$B$ 比 $A$ 多出的部分是 $B-A$，因此 $\mathbb{P}(A)\leq\mathbb{P}(B)$。</figcaption>
 </figure>
 
 <div class="topic-proof" markdown="1">
-**Proof.** 因為 $A\subset B$，可將 $B$ 拆成兩個互斥部分：
+**Proof.** 因為 $A\subset B$，可將 $B$ 拆成兩個互斥部分。
 
 $$
 B=A\cup (B-A)
@@ -187,9 +187,9 @@ $$
 故可得到差集公式。再由非負性可知 $\mathbb{P}(B-A)\geq 0$，因此 $\mathbb{P}(A)\leq\mathbb{P}(B)$，也就是機率的單調性。 $\square$
 </div>
 
-單調性的使用有一個重要前提：兩個事件必須能比較大小，也就是其中一個事件包含於另一個事件。若 $A$ 與 $B$ 沒有包含關係，單調性本身並不能直接比較它們各自的機率。
+單調性的使用有一個重要前提，兩個事件必須能比較大小，也就是其中一個事件包含於另一個事件。若 $A$ 與 $B$ 沒有包含關係，單調性本身並不能直接比較它們各自的機率。
 
-## 加法原理：扣除重複的部分
+## 加法原理與重複扣除
 
 對兩個事件而言，最常用的運算是聯集。若我們想計算 $A\cup B$ 的機率，直覺上會把 $\mathbb{P}(A)$ 與 $\mathbb{P}(B)$ 相加；但若 $A$ 與 $B$ 有重疊，交集 $A\cap B$ 就會被加到兩次，因此需要扣回一次。
 
@@ -207,12 +207,12 @@ $$
 </div>
 
 <figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/probability-rules-addition-rule.svg" alt="加法原理的集合示意圖：A union B 的機率等於 A 的機率加 B 的機率，再扣掉 A intersection B。">
-  <figcaption><span class="topic-figure__label">Fig. 1.3.</span> 加法原理的核心是先相加，再扣除被重複計算的交集。</figcaption>
+  <img src="/images/teaching-topics/probability-rules-addition-rule.svg" alt="加法原理的集合示意圖。A union B 的機率等於 A 的機率加 B 的機率，再扣掉 A intersection B。">
+  <figcaption><span class="topic-figure__label">Fig. 1.3.</span> 加法原理先相加，再扣除被重複計算的交集。</figcaption>
 </figure>
 
 <div class="topic-proof" markdown="1">
-**Proof.** 將 $A\cup B$ 拆成三個兩兩互斥的部分：
+**Proof.** 將 $A\cup B$ 拆成三個兩兩互斥的部分。
 
 $$
 A\cup B=(A\cap B^{\prime})\cup(A\cap B)\cup(A^{\prime}\cap B)
@@ -273,7 +273,7 @@ $$
 
 ## 三個事件與排容原理
 
-加法原理可以推廣到三個以上的事件。以三個事件為例，先加上三個單一事件的機率，再扣掉兩兩交集，最後要把三者共同交集加回來：
+加法原理可以推廣到三個以上的事件。以三個事件為例，先加上三個單一事件的機率，再扣掉兩兩交集，最後要把三者共同交集加回來。
 
 $$
 \begin{aligned}
@@ -285,11 +285,11 @@ $$
 $$
 
 <figure class="topic-figure topic-figure--medium">
-  <img src="/images/teaching-topics/probability-rules-inclusion-exclusion-three.svg" alt="三事件排容原理的集合示意圖：三個事件互相重疊時，中央共同交集會被多次計算。">
+  <img src="/images/teaching-topics/probability-rules-inclusion-exclusion-three.svg" alt="三事件排容原理的集合示意圖。三個事件互相重疊時，中央共同交集會被多次計算。">
   <figcaption><span class="topic-figure__label">Fig. 1.4.</span> 三事件排容中，兩兩交集先被扣除，而三者共同交集需要再加回來。</figcaption>
 </figure>
 
-這個精神稱為**排容原理 (inclusion-exclusion principle)**：先把可能發生的部分都加進來，再逐步修正被重複計算的重疊部分。
+此即**排容原理 (inclusion-exclusion principle)**。先把可能發生的部分都加進來，再逐步修正被重複計算的重疊部分。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -297,7 +297,7 @@ $$
 排容原理與排列組合中的排容原理是同一個想法，只是這裡計算的是機率而不是元素個數。若在有限均等可能的古典機率模型中，把兩邊同乘以 $\mathrm{n}(S)$，就會回到集合個數版本的排容原理。
 </div>
 
-## 常用不等式：Boole 與 Bonferroni
+## Boole 與 Bonferroni 不等式
 
 若交集機率不容易取得，加法原理未必能直接給出精確值。不過它仍然能推出有用的界限。
 
@@ -322,17 +322,17 @@ $$
 </div>
 
 <figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/probability-rules-boole-bound.svg" alt="布爾不等式的集合示意圖：A union B 的機率不超過 A 的機率加 B 的機率。">
+  <img src="/images/teaching-topics/probability-rules-boole-bound.svg" alt="布爾不等式的集合示意圖。A union B 的機率不超過 A 的機率加 B 的機率。">
   <figcaption><span class="topic-figure__label">Fig. 1.5.</span> 以兩事件為例，右側未扣除重疊部分，因此是上界而非精確值。</figcaption>
 </figure>
 
-布爾不等式的直覺是：如果直接把所有 $\mathbb{P}(A_i)$ 相加，重疊部分沒有被扣掉，所以右邊通常會偏大。邦佛洛尼不等式則可看成從餘事件觀點得到的下界：若每個 $A_i$ 失敗的機率都不大，那麼全部 $A_i$ 同時成立的機率就不會太小。
+布爾不等式的直覺如下。若直接把所有 $\mathbb{P}(A_i)$ 相加，重疊部分沒有被扣掉，所以右邊通常會偏大。邦佛洛尼不等式則可看成從餘事件觀點得到的下界。若每個 $A_i$ 失敗的機率都不大，那麼全部 $A_i$ 同時成立的機率就不會太小。
 
 ## 本篇小結
 
-本文把 Kolmogorov 公理推出的基本運算整理成一條線：
+本篇將 Kolmogorov 公理推出的基本運算整理如下。
 
-| 工具 | 公式 | 核心想法 |
+| 工具 | 公式 | 重點 |
 | --- | --- | --- |
 | 虛無事件 | $\mathbb{P}(\varnothing)=0$ | 不可能事件的機率為 $0$ |
 | 有限可加性 | $\mathbb{P}(\bigcup_i A_i)=\sum_i\mathbb{P}(A_i)$ | 互斥事件可以直接相加 |
@@ -342,3 +342,12 @@ $$
 | 排容原理 | 加、扣、再加回 | 修正多重重疊 |
 
 這些工具仍然是在同一個機率空間中運作。[下一篇文章](/teaching-topics/conditional-probability-information/)將開始討論「資訊進來以後」機率如何改變，也就是條件機率與乘法原理。
+
+## 參考文獻與延伸閱讀
+
+- William Feller, *An Introduction to Probability Theory and Its Applications*, Volume I, chapters on probability axioms and elementary consequences.
+- Sheldon M. Ross, *A First Course in Probability*, chapters on axioms and probability identities.
+- Geoffrey Grimmett and David Stirzaker, *Probability and Random Processes*, chapters on events, probability, and inclusion-exclusion.
+- John Gurland, “Inequalities of Expectations of Random Variables Derived by Monotonicity or Convexity”, *The American Statistician*, 22(2), 26–27, 1968. [stable link](https://www.jstor.org/stable/2681985).
+- D. A. Dawson and D. Sankoff, “An Inequality for Probabilities”, *Proceedings of the American Mathematical Society*, 18(3), 504, 1967. [doi:10.1090/S0002-9939-1967-0211424-0](https://doi.org/10.1090/S0002-9939-1967-0211424-0).
+- David Hunter, “An Upper Bound for the Probability of a Union”, *Journal of Applied Probability*, 13(3), 597–603, 1976. [doi:10.2307/3212481](https://doi.org/10.2307/3212481).
