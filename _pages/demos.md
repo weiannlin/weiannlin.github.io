@@ -9,13 +9,13 @@ author_profile: true
 
 Interactive teaching demos covering foundational topics in statistics, computer experiments, and Gaussian-process methodology.
 
+## Random events
+
+- [The Monty Hall Problem](/demos/monty-hall/) — switching beats staying; play it, simulate it, see why.
+- [Rapid Test Bayesian Updating Lab](/demos/bayesian-updating/) — change prevalence, sensitivity, and specificity, then watch positive or negative results update the posterior.
+
 ## Random variables
 
 - [From PMF to CDF](/demos/pmf-cdf/) — build a discrete distribution by editing $(x, p)$ points, then sweep a current $x$ to watch the CDF accumulate.
 - [From PDF to CDF](/demos/pdf-cdf/) — pick a continuous distribution, tune its parameters, sweep $x$, and watch the running integral build the CDF.
 - [Mixed distributions](/demos/mixed/) — combine a continuous family with user-defined point masses; watch the CDF jump by exactly $w_i$ at each $x_i$.
-
-## Random events
-
-- [The Monty Hall Problem](/demos/monty-hall/) — switching beats staying; play it, simulate it, see why.
-- [Rapid Test Bayesian Updating Lab](/demos/bayesian-updating/) — change prevalence, sensitivity, and specificity, then watch positive or negative results update the posterior.

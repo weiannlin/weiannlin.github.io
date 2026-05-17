@@ -33,7 +33,7 @@ $$
 
 但若 $B$ 已經發生，問題就變成反向的。所有能產生 $B$ 的來源當中，$A_i$ 這條路線佔了多少比例？這個比例就是 $\mathbb{P}(A_i\mid B)$。
 
-這裡有四個重要語言。
+這裡有四個常用名稱。
 
 <ol class="topic-list-paren">
   <li>$\mathbb{P}(A_i)$ 是觀察 $B$ 以前，對來源 $A_i$ 的<strong class="text-nowrap">事前機率 (prior probability)</strong>。</li>
@@ -149,7 +149,7 @@ $$
 
 貝氏定理也說明，新資訊不能脫離原本的基準比例來看。醫療檢驗、保險定價與風險評估中，若只看「某訊號在高風險者中多常出現」，卻忘記高風險者原本佔多少比例，就很容易高估事後機率。
 
-在醫療篩檢中，常見的真陽性 (true positive)、偽陽性 (false positive)、真陰性 (true negative) 與偽陰性 (false negative)，其實都可以理解為條件機率。真陽性率是在已知個體真的罹病下，檢驗呈陽性的機率；偽陽性率是在已知個體未罹病下，檢驗卻呈陽性的機率。相對地，真陰性率是在已知個體未罹病下，檢驗呈陰性的機率；偽陰性率則是在已知個體真的罹病下，檢驗卻呈陰性的機率。
+在醫療篩檢中，常見的真陽性 (true positive)、偽陽性 (false positive)、真陰性 (true negative) 與偽陰性 (false negative)，本質上都是條件機率。真陽性率是在已知個體真的罹病下，檢驗呈陽性的機率；偽陽性率是在已知個體未罹病下，檢驗卻呈陽性的機率。相對地，真陰性率是在已知個體未罹病下，檢驗呈陰性的機率；偽陰性率則是在已知個體真的罹病下，檢驗卻呈陰性的機率。
 
 醫學上也常用**敏感性 (sensitivity)** 與**特異性 (specificity)** 來描述檢驗表現。敏感性就是真陽性率，也就是 $\mathbb{P}(+\mid D)$；特異性就是真陰性率，也就是 $\mathbb{P}(-\mid D^{\prime})$。因此，偽陽性率是 $1-\text{specificity}$，而偽陰性率是 $1-\text{sensitivity}$。
 
@@ -173,7 +173,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Perspective</div>
 
-**貝氏統計 (Bayesian statistics).** 在貝氏統計裡，未知參數本身也被放入機率模型中。資料進來以前，我們用事前分布 (prior distribution) 描述對參數的認識；資料進來以後，則可更新為事後分布 (posterior distribution)。因此，貝氏統計把「資訊帶來更新」放在模型的中心。
+**貝氏統計 (Bayesian statistics).** 在貝氏統計裡，未知參數本身也被放入機率模型中。資料進來以前，我們用事前分佈 (prior distribution) 描述對參數的認識；資料進來以後，則可更新為事後分佈 (posterior distribution)。因此，貝氏統計把「資訊帶來更新」放在模型的中心。
 
 **Naive Bayes classifier.** 在分類問題中，我們常想計算「看到這些特徵後，資料屬於某類別的機率」。例如垃圾郵件分類會問，在某些字詞出現後，這封信是 spam 的機率多大？Naive Bayes classifier 的基本形式可以寫成
 

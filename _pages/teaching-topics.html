@@ -19,6 +19,14 @@ author_profile: true
 <h2 id="{{ cat | slugify }}">{{ cat }}</h2>
   {% assign chapter_groups = articles | group_by: "chapter" %}
   {% for chapter_group in chapter_groups %}
+    {% assign chapter_articles = chapter_group.items | sort: "order" %}
+    {% assign listed_count = 0 %}
+    {% for article in chapter_articles %}
+      {% unless article.listed == false %}
+        {% assign listed_count = listed_count | plus: 1 %}
+      {% endunless %}
+    {% endfor %}
+    {% if listed_count > 0 %}
     {% if chapter_group.name and chapter_group.name != "" %}
       {% assign chapter_title = "" %}
       {% if cat == "機率概論" and chapter_group.name == "1" %}
@@ -26,10 +34,13 @@ author_profile: true
       {% elsif cat == "機率概論" and chapter_group.name == "2" %}
         {% assign chapter_title = "隨機變數" %}
       {% endif %}
-<h3 class="teaching-topics-chapter">第 {{ chapter_group.name }} 章{% if chapter_title != "" %} {{ chapter_title }}{% endif %}</h3>
     {% endif %}
+<details class="teaching-topics-chapter-block"{% if forloop.first %} open{% endif %}>
+<summary class="teaching-topics-chapter">
+  <span class="teaching-topics-chapter__title">第 {{ chapter_group.name }} 章{% if chapter_title != "" %} {{ chapter_title }}{% endif %}</span>
+  <span class="teaching-topics-chapter__count">{{ listed_count }} 個主題</span>
+</summary>
 <ul class="teaching-topics-list">
-    {% assign chapter_articles = chapter_group.items | sort: "order" %}
     {% for article in chapter_articles %}
   {% unless article.listed == false %}
   <li>
@@ -40,6 +51,8 @@ author_profile: true
   {% endunless %}
     {% endfor %}
 </ul>
+</details>
+    {% endif %}
   {% endfor %}
   {% endif %}
 {% endfor %}

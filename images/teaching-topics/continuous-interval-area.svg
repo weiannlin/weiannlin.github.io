@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
+  <title id="title">Interval probability for a continuous random variable</title>
+  <desc id="desc">A smooth density curve with the area between a and b shaded, representing the probability P(a less than X less than or equal to b).</desc>
+  <defs>
+    <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 1 1 L 7 4 L 1 7 Z" fill="#1f1c18"/>
+    </marker>
+  </defs>
+
+  <rect x="18" y="18" width="684" height="324" rx="18" fill="none" stroke="#c9c1b4" stroke-width="2"/>
+
+  <line x1="82" y1="282" x2="642" y2="282" stroke="#1f1c18" stroke-width="2" marker-end="url(#axis-arrow)"/>
+  <line x1="82" y1="282" x2="82" y2="62" stroke="#1f1c18" stroke-width="2" marker-end="url(#axis-arrow)"/>
+
+  <path d="M 240 282 L 240 212.8 L 250 199.9 L 260 186 L 270 171.4 L 280 156.5 L 290 141.7 L 300 127.4 L 310 114.3 L 320 102.7 L 330 93.1 L 340 85.9 L 350 81.5 L 360 80 L 370 81.5 L 380 85.9 L 390 93.1 L 400 102.7 L 410 114.3 L 420 127.4 L 430 141.7 L 440 156.5 L 450 171.4 L 460 186 L 470 199.9 L 480 212.8 L 490 224.5 L 500 235 L 500 282 Z" fill="#9c2d2d" opacity="0.16"/>
+
+  <path d="M 100 280.7 L 110 280.1 L 120 279.2 L 130 278 L 140 276.5 L 150 274.4 L 160 271.7 L 170 268.2 L 180 263.8 L 190 258.4 L 200 251.9 L 210 244.1 L 220 235 L 230 224.5 L 240 212.8 L 250 199.9 L 260 186 L 270 171.4 L 280 156.5 L 290 141.7 L 300 127.4 L 310 114.3 L 320 102.7 L 330 93.1 L 340 85.9 L 350 81.5 L 360 80 L 370 81.5 L 380 85.9 L 390 93.1 L 400 102.7 L 410 114.3 L 420 127.4 L 430 141.7 L 440 156.5 L 450 171.4 L 460 186 L 470 199.9 L 480 212.8 L 490 224.5 L 500 235 L 510 244.1 L 520 251.9 L 530 258.4 L 540 263.8 L 550 268.2 L 560 271.7 L 570 274.4 L 580 276.5 L 590 278 L 600 279.2 L 610 280.1 L 620 280.7" fill="none" stroke="#1f1c18" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <line x1="240" y1="282" x2="240" y2="212.8" stroke="#9c2d2d" stroke-width="2" stroke-dasharray="7 6"/>
+  <line x1="500" y1="282" x2="500" y2="235" stroke="#9c2d2d" stroke-width="2" stroke-dasharray="7 6"/>
+  <circle cx="240" cy="212.8" r="4.8" fill="#9c2d2d"/>
+  <circle cx="500" cy="235" r="4.8" fill="#9c2d2d"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif">
+    <text x="648" y="290" fill="#1f1c18" font-size="21" font-style="italic">t</text>
+    <text x="40" y="68" fill="#1f1c18" font-size="20" font-style="italic">f<tspan baseline-shift="sub" font-size="70%">X</tspan>(t)</text>
+    <text x="234" y="306" fill="#9c2d2d" font-size="21" font-style="italic">a</text>
+    <text x="494" y="306" fill="#9c2d2d" font-size="21" font-style="italic">b</text>
+    <text x="360" y="210" fill="#9c2d2d" font-size="22" font-style="normal" font-family="'Noto Serif TC', 'Songti TC', Georgia, serif" text-anchor="middle">區間面積</text>
+  </g>
+</svg>

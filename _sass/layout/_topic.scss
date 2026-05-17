@@ -527,17 +527,64 @@ body:has(.topic-page) {
 
 /* ---- Teaching Topics index ------------------------------------------- */
 
+.teaching-topics-chapter-block {
+  border-top: 1px solid var(--journal-divider);
+  margin: 1.25em 0 0;
+  padding-top: 0.45em;
+
+  &[open] {
+    padding-bottom: 0.15em;
+  }
+}
+
 .teaching-topics-chapter {
   color: var(--journal-accent);
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
   font-family: $serif;
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  margin: 1.45em 0 0.5em;
+  list-style: none;
+  margin: 0;
+  padding: 0.28em 0 0.38em;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &::before {
+    color: var(--journal-ink-soft);
+    content: "+";
+    flex: 0 0 auto;
+    font-size: 0.95em;
+    line-height: 1;
+    margin-right: 0.55rem;
+  }
+}
+
+.teaching-topics-chapter-block[open] > .teaching-topics-chapter::before {
+  content: "-";
+}
+
+.teaching-topics-chapter__title {
+  flex: 1 1 auto;
+}
+
+.teaching-topics-chapter__count {
+  color: var(--journal-ink-soft);
+  flex: 0 0 auto;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .teaching-topics-list {
-  margin-bottom: 1.6em;
+  margin: 0.25em 0 1.25em 1.35em;
 
   .topic-chapter {
     color: var(--journal-ink-soft);

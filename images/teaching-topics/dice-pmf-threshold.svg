@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320" role="img" aria-labelledby="title desc">
+  <title id="title">PMF plot for a fair die with threshold at 3.4</title>
+  <desc id="desc">A lollipop plot of the PMF for a fair die. The six possible values are equally spaced. The masses at 1, 2, and 3 are highlighted because they are included in the event X less than or equal to 3.4.</desc>
+  <defs>
+    <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 1 1 L 7 4 L 1 7 Z" fill="#1f1c18"/>
+    </marker>
+  </defs>
+
+  <rect x="18" y="18" width="684" height="284" rx="18" fill="none" stroke="#c9c1b4" stroke-width="2"/>
+
+  <line x1="98" y1="242" x2="626" y2="242" stroke="#1f1c18" stroke-width="2" marker-end="url(#axis-arrow)"/>
+  <line x1="98" y1="242" x2="98" y2="70" stroke="#1f1c18" stroke-width="2" marker-end="url(#axis-arrow)"/>
+
+  <text x="638" y="250" fill="#1f1c18" font-family="Georgia, 'Times New Roman', serif" font-size="21" font-style="italic">t</text>
+  <text x="50" y="74" fill="#1f1c18" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-style="italic">p<tspan baseline-shift="sub" font-size="70%">X</tspan>(t)</text>
+
+  <line x1="98" y1="152" x2="602" y2="152" stroke="#8a7f72" stroke-width="1.2" stroke-dasharray="5 6" opacity="0.55"/>
+  <text x="48" y="158" fill="#8a7f72" font-family="Georgia, 'Times New Roman', serif" font-size="19">1/6</text>
+
+  <rect x="130" y="66" width="236" height="176" fill="#9c2d2d" opacity="0.07"/>
+  <text x="175" y="50" fill="#9c2d2d" font-family="'Noto Serif TC', 'Songti TC', Georgia, serif" font-size="17">被收入的機率質量</text>
+
+  <line x1="366" y1="74" x2="366" y2="248" stroke="#9c2d2d" stroke-width="2.2" stroke-dasharray="7 6"/>
+  <text x="378" y="94" fill="#9c2d2d" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic">x=3.4</text>
+
+  <g font-family="Georgia, 'Times New Roman', serif">
+    <line x1="150" y1="242" x2="150" y2="152" stroke="#9c2d2d" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="150" cy="152" r="7.8" fill="#9c2d2d"/>
+    <line x1="240" y1="242" x2="240" y2="152" stroke="#9c2d2d" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="240" cy="152" r="7.8" fill="#9c2d2d"/>
+    <line x1="330" y1="242" x2="330" y2="152" stroke="#9c2d2d" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="330" cy="152" r="7.8" fill="#9c2d2d"/>
+
+    <line x1="420" y1="242" x2="420" y2="152" stroke="#8a7f72" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <circle cx="420" cy="152" r="7.8" fill="#8a7f72"/>
+    <line x1="510" y1="242" x2="510" y2="152" stroke="#8a7f72" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <circle cx="510" cy="152" r="7.8" fill="#8a7f72"/>
+    <line x1="600" y1="242" x2="600" y2="152" stroke="#8a7f72" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <circle cx="600" cy="152" r="7.8" fill="#8a7f72"/>
+
+    <g fill="#1f1c18" font-size="19">
+      <text x="145" y="269">1</text>
+      <text x="235" y="269">2</text>
+      <text x="325" y="269">3</text>
+      <text x="415" y="269">4</text>
+      <text x="505" y="269">5</text>
+      <text x="595" y="269">6</text>
+    </g>
+  </g>
+</svg>

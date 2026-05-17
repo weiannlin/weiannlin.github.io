@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" role="img" aria-labelledby="title desc">
+  <title id="title">Random variable as a map from the sample space to the real line</title>
+  <desc id="desc">A sample space S is mapped by X to points on the real line. The set X less than or equal to x corresponds to an event in the sample space.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 1 1 L 11 6 L 1 11 Z" fill="#1f1c18"/>
+    </marker>
+    <marker id="arrow-small" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M 1 1 L 8 4.5 L 1 8 Z" fill="#1f1c18"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 1 1 L 11 6 L 1 11 Z" fill="#9c2d2d"/>
+    </marker>
+  </defs>
+
+  <rect x="18" y="18" width="684" height="264" rx="18" fill="none" stroke="#c9c1b4" stroke-width="2"/>
+
+  <ellipse cx="180" cy="150" rx="115" ry="92" fill="#9c2d2d" fill-opacity="0.07" stroke="#1f1c18" stroke-width="3"/>
+  <text x="79" y="76" fill="#8a7f72" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-style="italic">S</text>
+
+  <path d="M 142 116 C 260 68, 390 138, 480 184" fill="none" stroke="#8a7f72" stroke-width="1.7" stroke-dasharray="6 6"/>
+  <path d="M 184 153 C 284 128, 410 161, 535 184" fill="none" stroke="#8a7f72" stroke-width="1.7" stroke-dasharray="6 6"/>
+  <path d="M 218 195 C 330 226, 468 205, 606 184" fill="none" stroke="#8a7f72" stroke-width="1.7" stroke-dasharray="6 6"/>
+
+  <circle cx="142" cy="116" r="7" fill="#9c2d2d"/>
+  <circle cx="184" cy="153" r="7" fill="#9c2d2d"/>
+  <circle cx="218" cy="195" r="7" fill="#9c2d2d"/>
+
+  <text x="95" y="122" fill="#1f1c18" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-style="italic">ω₁</text>
+  <text x="136" y="160" fill="#1f1c18" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-style="italic">ω₂</text>
+  <text x="169" y="204" fill="#1f1c18" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-style="italic">ω₃</text>
+
+  <path d="M 296 176 C 337 199, 383 198, 424 185" fill="none" stroke="#1f1c18" stroke-width="2.1" marker-end="url(#arrow-small)"/>
+  <text x="347" y="181" fill="#1f1c18" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-style="italic">X</text>
+
+  <line x1="438" y1="184" x2="632" y2="184" stroke="#1f1c18" stroke-width="3"/>
+  <path d="M 632 184 L 618 176 L 618 192 Z" fill="#1f1c18"/>
+  <text x="648" y="195" fill="#8a7f72" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-style="italic">ℝ</text>
+
+  <line x1="438" y1="184" x2="555" y2="184" stroke="#9c2d2d" stroke-width="8" stroke-linecap="round" opacity="0.45"/>
+  <line x1="555" y1="145" x2="555" y2="203" stroke="#9c2d2d" stroke-width="3"/>
+  <text x="548" y="135" fill="#9c2d2d" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-style="italic">x</text>
+
+  <circle cx="480" cy="184" r="7" fill="#1f1c18"/>
+  <circle cx="535" cy="184" r="7" fill="#1f1c18"/>
+  <circle cx="606" cy="184" r="7" fill="#1f1c18"/>
+
+  <text x="442" y="158" fill="#1f1c18" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-style="italic">X(ω₁)</text>
+  <text x="504" y="224" fill="#1f1c18" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-style="italic">X(ω₂)</text>
+  <text x="572" y="164" fill="#1f1c18" font-family="Georgia, 'Times New Roman', serif" font-size="18" font-style="italic">X(ω₃)</text>
+
+  <text x="455" y="82" fill="#9c2d2d" font-family="Georgia, 'Times New Roman', serif" font-size="25" font-style="italic">(-∞, x]</text>
+  <path d="M 502 91 C 507 117, 526 135, 547 147" fill="none" stroke="#9c2d2d" stroke-width="2" marker-end="url(#arrow-red)"/>
+</svg>

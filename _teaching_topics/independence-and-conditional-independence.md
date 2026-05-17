@@ -49,7 +49,7 @@ $$
 則稱 $A$ 與 $B$ 為**獨立事件 (independent events)**。
 </div>
 
-這個定義是對稱的，因為 $A\cap B=B\cap A$。因此，若 $A$ 與 $B$ 獨立，則可以同時理解為 $B$ 不改變 $A$ 的機率，也可以理解為 $A$ 不改變 $B$ 的機率。
+這個定義是對稱的，因為 $A\cap B=B\cap A$。因此，若 $A$ 與 $B$ 獨立，則 $B$ 不改變 $A$ 的機率，$A$ 也不改變 $B$ 的機率。
 
 當 $\mathbb{P}(B)>0$ 時，由定義可得
 
@@ -129,7 +129,7 @@ $$
 | $\mathbb{P}(A)>0$ 且 $\mathbb{P}(B)>0$ | $A,B$ 非獨立 | 若 $\mathbb{P}(A\cap B)=\mathbb{P}(A)\,\mathbb{P}(B)$，則 $A,B$ 獨立；否則非獨立 |
 | $\mathbb{P}(A)=0$ 或 $\mathbb{P}(B)=0$ | $A,B$ 獨立 | $A,B$ 獨立，因為 $\mathbb{P}(A\cap B)=0$ |
 
-這張表想提醒的是，若兩事件機率皆為正，互斥與獨立幾乎站在相反的方向；但只要其中一個事件機率為 $0$，乘法條件會自動成立。這不是說兩事件在直覺上「沒有關係」，而是獨立性的定義本身只看機率乘法是否成立。
+這張表想提醒的是，若兩事件機率皆為正，互斥與獨立幾乎站在相反的方向；但只要其中一個事件機率為 $0$，乘法條件會自動成立。這時不宜直接解讀成兩事件在直覺上「沒有關係」，因為獨立性的定義本身只看機率乘法是否成立。
 </div>
 
 ## 多個事件的獨立
@@ -206,7 +206,7 @@ $$
 
 ## 條件獨立
 
-在貝氏定理與分類問題中，我們常常不是直接假設事件本身獨立，而是說在某個狀態已知後，它們才獨立。這稱為條件獨立。
+在貝氏定理與分類問題中，我們常會先固定某個狀態，再討論事件之間是否獨立。這稱為條件獨立。
 
 <div class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.17</div>
@@ -221,7 +221,7 @@ $$
 則稱 $A$ 與 $B$ 在給定 $C$ 後**條件獨立 (conditionally independent given $C$)**。
 </div>
 
-條件獨立不是獨立的附屬品，而是一個新的參照世界。它說的是，當我們已經固定在 $C$ 所代表的世界裡，$A$ 與 $B$ 不再彼此提供額外資訊。
+條件獨立的重點在於先固定條件 $C$。固定在 $C$ 所代表的參照世界後，$A$ 的發生不再改變 $B$ 的機率，$B$ 的發生也不再改變 $A$ 的機率。
 
 快篩檢測正是很好的例子。令 $D$ 表示真實罹病狀態，令 $T_1,T_2$ 表示兩次檢測都呈陽性的事件。若我們假設在真實狀態固定後，每次檢測誤差近似獨立，則有
 
@@ -305,11 +305,11 @@ $$
 因此 $A$ 與 $B$ 在每個分割區塊內都條件獨立，混合回整體後卻不獨立。原因是未給定分割區塊時，$A$ 的發生會改變我們對目前落在哪個 $C_i$ 的判斷；而 $B$ 的發生機率也會隨 $C_i$ 改變。這種共同來源會在整體中留下關聯。
 </div>
 
-這也是 Naive Bayes classifier 的核心假設。給定類別 $C_k$ 後，模型把特徵 $x_1,\ldots,x_m$ 近似看成條件獨立，因此可以把許多條件機率相乘。這個假設未必完全真實，但它把複雜的聯合分布拆成許多較容易估計的部分。
+這也是 Naive Bayes classifier 的核心假設。給定類別 $C_k$ 後，模型把特徵 $x_1,\ldots,x_m$ 近似看成條件獨立，因此可以把許多條件機率相乘。這個假設未必完全真實，但它把複雜的聯合分佈拆成許多較容易估計的部分。
 
 ## 本篇小結
 
-獨立性是條件機率的特殊情況。它描述的不是兩件事沒有任何關聯，而是某個資訊進來後，另一個事件的機率不變。
+獨立性是條件機率的特殊情況。它描述的是，某個資訊進來後，另一個事件的機率仍然不變。
 
 | 概念 | 形式 | 重點 |
 | --- | --- | --- |
@@ -318,15 +318,16 @@ $$
 | 相互獨立 | 所有子群交集都滿足乘法規則 | 多事件一起看也不洩漏額外資訊 |
 | 條件獨立 | $\mathbb{P}(A\cap B\mid C)=\mathbb{P}(A\mid C)\,\mathbb{P}(B\mid C)$ | 固定在 $C$ 的世界裡，$A$ 與 $B$ 不再互相提供資訊 |
 
-條件機率問資訊如何改變機率，貝氏定理問資訊如何更新我們對於未知狀態的認知，獨立性則描述資訊進來後機率仍然不變的情形。這三件事合在一起，構成第一章後半部最重要的機率語言。
+條件機率討論資訊如何改變機率，貝氏定理討論資訊如何更新我們對於未知狀態的認知，獨立性則描述資訊進來後機率仍然不變的情形。這三件事合在一起，構成第一章後半部的重要內容。
 
-不過，到目前為止，我們討論的仍是事件的機率。每一個事件 $A$ 對應到一個數 $\mathbb{P}(A)$，這足以建立機率模型的基本語言；但若永遠只逐一討論事件，發展會比較受限。下一章開始，我們會把樣本空間中的結果透過隨機變數映到數線上，使我們不只問某個事件有多可能，也能討論數值與機率之間的函數關係。這一步會讓期望、分配函數與極限分配等更多數學工具自然進入機率論。
+不過，到目前為止，我們討論的仍是事件的機率。每一個事件 $A$ 對應到一個數 $\mathbb{P}(A)$，這足以建立機率模型的基本架構；但若永遠只逐一討論事件，發展會比較受限。下一章會從[隨機變數，從樣本空間到數線](/teaching-topics/random-variables-from-sample-space-to-real-line/)開始，把樣本空間中的結果透過隨機變數映到數線上，使我們不只處理單一事件的機率，也能討論數值與機率之間的函數關係。這一步會讓期望、分配函數與極限分配等更多數學工具自然進入機率論。
 
 ## 參考文獻與延伸閱讀
 
 - William Feller, *An Introduction to Probability Theory and Its Applications*, Volume I, chapters on independence.
 - Patrick Billingsley, *Probability and Measure*, sections on independent events and independent random variables.
 - Y. S. Chow and Henry Teicher, *Probability Theory, Independence, Interchangeability, Martingales*, 3rd ed., Springer, 1997, chapters on independence.
+- Ron Mittelhammer, *Mathematical Statistics for Economics and Business*, Springer, 1996, p. 31. 直覺校準 1.9 的表格整理參考此書。
 - Christopher M. Bishop, *Pattern Recognition and Machine Learning*, discussion of Naive Bayes and conditional independence.
 - Judea Pearl, Madelyn Glymour, and Nicholas P. Jewell, *Causal Inference in Statistics, A Primer*, discussion of conditional independence in graphical thinking.
 - David A. Pierce and Richard L. Dykstra, “Independence and the Normal Distribution”, *The American Statistician*, 23(4), 39, 1969. [doi:10.1080/00031305.1969.10481871](https://doi.org/10.1080/00031305.1969.10481871).
