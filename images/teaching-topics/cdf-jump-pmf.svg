@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
+  <title id="title">PMF from a CDF jump</title>
+  <desc id="desc">A step plot of a discrete CDF. At x equals a, the open circle marks the left limit and the filled circle marks the CDF value. The vertical gap is labeled as the point mass.</desc>
+  <defs>
+    <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 1 1 L 7 4 L 1 7 Z" fill="#1f1c18"/>
+    </marker>
+    <marker id="red-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M 1 1 L 8 4.5 L 1 8 Z" fill="#9c2d2d"/>
+    </marker>
+  </defs>
+
+  <rect x="18" y="18" width="684" height="324" rx="18" fill="none" stroke="#c9c1b4" stroke-width="2"/>
+
+  <line x1="92" y1="282" x2="632" y2="282" stroke="#1f1c18" stroke-width="2" marker-end="url(#axis-arrow)"/>
+  <line x1="92" y1="282" x2="92" y2="62" stroke="#1f1c18" stroke-width="2" marker-end="url(#axis-arrow)"/>
+
+  <text x="644" y="290" fill="#1f1c18" font-family="Georgia, 'Times New Roman', serif" font-size="21" font-style="italic">x</text>
+  <text x="44" y="66" fill="#1f1c18" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-style="italic">F<tspan baseline-shift="sub" font-size="70%">X</tspan>(x)</text>
+
+  <g stroke="#c9c1b4" stroke-width="1.1" stroke-dasharray="4 7">
+    <line x1="92" y1="228" x2="610" y2="228"/>
+    <line x1="92" y1="174" x2="610" y2="174"/>
+    <line x1="92" y1="120" x2="610" y2="120"/>
+  </g>
+
+  <g stroke="#1f1c18" stroke-width="3" fill="none" stroke-linecap="round">
+    <line x1="100" y1="282" x2="190" y2="282"/>
+    <line x1="190" y1="220" x2="330" y2="220"/>
+    <line x1="330" y1="150" x2="490" y2="150"/>
+    <line x1="490" y1="102" x2="622" y2="102"/>
+  </g>
+
+  <g stroke="#9c2d2d" stroke-width="2.1" fill="none" stroke-linecap="round" stroke-dasharray="1 7">
+    <line x1="190" y1="282" x2="190" y2="220"/>
+    <line x1="330" y1="220" x2="330" y2="150"/>
+    <line x1="490" y1="150" x2="490" y2="102"/>
+  </g>
+
+  <g stroke="#1f1c18" stroke-width="2.2">
+    <circle cx="190" cy="282" r="5.4" fill="#f5efe5"/>
+    <circle cx="190" cy="220" r="5.4" fill="#1f1c18"/>
+    <circle cx="490" cy="150" r="5.4" fill="#f5efe5"/>
+    <circle cx="490" cy="102" r="5.4" fill="#1f1c18"/>
+  </g>
+
+  <g stroke="#9c2d2d" stroke-width="2.5">
+    <circle cx="330" cy="150" r="18" fill="none"/>
+    <circle cx="330" cy="220" r="18" fill="none"/>
+    <circle cx="330" cy="220" r="6.2" fill="#f5efe5"/>
+    <circle cx="330" cy="150" r="6.2" fill="#9c2d2d"/>
+  </g>
+
+  <line x1="330" y1="282" x2="330" y2="150" stroke="#9c2d2d" stroke-width="2" stroke-dasharray="7 6"/>
+  <line x1="92" y1="220" x2="330" y2="220" stroke="#9c2d2d" stroke-width="1.6" stroke-dasharray="7 6" opacity="0.65"/>
+  <line x1="92" y1="150" x2="330" y2="150" stroke="#9c2d2d" stroke-width="1.6" stroke-dasharray="7 6" opacity="0.65"/>
+
+  <path d="M 348 150 C 386 166, 386 204, 348 220" fill="none" stroke="#9c2d2d" stroke-width="2.2" marker-end="url(#red-arrow)"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif">
+    <text x="322" y="309" fill="#9c2d2d" font-size="22" font-style="italic">a</text>
+    <text x="84" y="226" text-anchor="end" fill="#8a7f72" font-size="18" font-style="italic">F<tspan baseline-shift="sub" font-size="70%">X</tspan>(a<tspan baseline-shift="super" font-size="70%">−</tspan>)</text>
+    <text x="84" y="156" text-anchor="end" fill="#8a7f72" font-size="18" font-style="italic">F<tspan baseline-shift="sub" font-size="70%">X</tspan>(a)</text>
+    <text x="386" y="190" fill="#9c2d2d" font-size="19" font-style="italic">p<tspan baseline-shift="sub" font-size="70%">X</tspan>(a)</text>
+  </g>
+
+  <g fill="#9c2d2d" font-family="'Noto Serif TC', 'Songti TC', Georgia, serif" font-size="17">
+    <text x="356" y="135">實心點表示在 a 的函數值</text>
+    <text x="356" y="240">空心點表示左側極限</text>
+  </g>
+</svg>
