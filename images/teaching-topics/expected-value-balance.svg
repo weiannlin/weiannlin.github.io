@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
+  <title id="title">Expected value as a balance point</title>
+  <desc id="desc">A discrete distribution on the points 1 through 5, with larger mass at 3 and the expected value marked as the balance point.</desc>
+  <defs>
+    <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 1 1 L 7 4 L 1 7 Z" fill="#1f1c18"/>
+    </marker>
+  </defs>
+
+  <rect x="18" y="18" width="684" height="324" rx="18" fill="none" stroke="#c9c1b4" stroke-width="2"/>
+
+  <line x1="95" y1="246" x2="625" y2="246" stroke="#1f1c18" stroke-width="2" marker-end="url(#axis-arrow)"/>
+  <line x1="115" y1="246" x2="115" y2="238" stroke="#1f1c18" stroke-width="2"/>
+  <line x1="235" y1="246" x2="235" y2="238" stroke="#1f1c18" stroke-width="2"/>
+  <line x1="355" y1="246" x2="355" y2="238" stroke="#1f1c18" stroke-width="2"/>
+  <line x1="475" y1="246" x2="475" y2="238" stroke="#1f1c18" stroke-width="2"/>
+  <line x1="595" y1="246" x2="595" y2="238" stroke="#1f1c18" stroke-width="2"/>
+
+  <line x1="355" y1="92" x2="355" y2="292" stroke="#1f1c18" stroke-width="2.2" stroke-dasharray="7 6"/>
+  <path d="M 331 292 L 379 292 L 355 252 Z" fill="#c9c1b4" stroke="#1f1c18" stroke-width="2"/>
+
+  <line x1="115" y1="246" x2="115" y2="188" stroke="#9c2d2d" stroke-width="5" stroke-linecap="round"/>
+  <line x1="235" y1="246" x2="235" y2="188" stroke="#9c2d2d" stroke-width="5" stroke-linecap="round"/>
+  <line x1="355" y1="246" x2="355" y2="130" stroke="#9c2d2d" stroke-width="5" stroke-linecap="round"/>
+  <line x1="475" y1="246" x2="475" y2="188" stroke="#9c2d2d" stroke-width="5" stroke-linecap="round"/>
+  <line x1="595" y1="246" x2="595" y2="188" stroke="#9c2d2d" stroke-width="5" stroke-linecap="round"/>
+
+  <circle cx="115" cy="188" r="12" fill="#9c2d2d"/>
+  <circle cx="235" cy="188" r="12" fill="#9c2d2d"/>
+  <circle cx="355" cy="130" r="12" fill="#9c2d2d"/>
+  <circle cx="475" cy="188" r="12" fill="#9c2d2d"/>
+  <circle cx="595" cy="188" r="12" fill="#9c2d2d"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif">
+    <text x="630" y="254" fill="#1f1c18" font-size="21" font-style="italic">x</text>
+    <text x="109" y="276" fill="#1f1c18" font-size="20" text-anchor="middle">1</text>
+    <text x="235" y="276" fill="#1f1c18" font-size="20" text-anchor="middle">2</text>
+    <text x="355" y="276" fill="#1f1c18" font-size="20" text-anchor="middle">3</text>
+    <text x="475" y="276" fill="#1f1c18" font-size="20" text-anchor="middle">4</text>
+    <text x="595" y="276" fill="#1f1c18" font-size="20" text-anchor="middle">5</text>
+
+    <text x="355" y="76" fill="#9c2d2d" font-size="22" text-anchor="middle" font-style="italic">E(X)=3</text>
+    <text x="355" y="325" fill="#1f1c18" font-size="20" text-anchor="middle" font-family="'Noto Serif TC', 'Songti TC', Georgia, serif">平均位置</text>
+  </g>
+</svg>
