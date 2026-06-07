@@ -69,7 +69,7 @@ $$
 這正是此母體機率分配下的期望值。所謂加權平均並沒有離開原本的算術平均；它只是把相同的資料值先作同類項合併，再用出現比例作為權重。
 </div>
 
-<div class="topic-box topic-box--example" markdown="1">
+<div class="topic-box topic-box--example" id="example-25" markdown="1">
 <div class="topic-box__label">Example 2.5 (Two Balls without Replacement)</div>
 
 延續[離散型隨機變數與 PMF](/teaching-topics/discrete-random-variables-pmf/)中的例子。箱中有四顆大小形狀完全相同、分別編號 $0,1,2,3$ 的球。從中一次抽取兩顆球，不考慮抽取順序，令 $X$ 表示兩顆球的號碼總和。
@@ -212,6 +212,48 @@ $$
 函數期望值公式的用途正在於此。真正先發生的仍是 $X$ 的取值。若 $X=x$，則 $g(X)=g(x)$；若 $X$ 落在 $x$ 附近，則這一小段機率對平均的貢獻就是 $g(x)$ 乘上該處附近的機率。因此，函數期望值不是先把 $g(X)$ 的分佈完整求出來，再重新計算一次平均。它是沿著 $X$ 原本的分佈，把每個位置 $x$ 轉成 $g(x)$ 後加權。離散型使用 $p_X(x)$ 作權重，連續型則使用 $f_X(x)\,dx$ 作權重。這正是楊老師所說，先依取值合併，再以相對頻率加權的觀點在隨機變數上的延伸。
 </div>
 
+## 期望值的線性關係
+
+有了函數期望值後，接著可整理期望值最常使用的計算規則。若 $g(X)$ 與 $h(X)$ 的期望值皆存在且有限，則對任意常數 $a,b$，期望值滿足下列線性關係。
+
+<div class="topic-box topic-box--proposition" markdown="1">
+<div class="topic-box__label">Proposition 2.6 (Linearity of Expectation)</div>
+
+$$
+\mathbb{E}[a g(X)+b h(X)]
+=
+a\mathbb{E}[g(X)]+b\mathbb{E}[h(X)]
+$$
+
+特別地，取 $g(X)=X$ 且 $h(X)=1$，可得
+
+$$
+\mathbb{E}(aX+b)
+=
+a\mathbb{E}(X)+b
+$$
+
+</div>
+
+證明以離散型為例。由函數期望值公式可得
+
+$$
+\begin{aligned}
+\mathbb{E}[a g(X)+b h(X)]
+&=
+\sum_{x\in\mathcal{R}_X}[a g(x)+b h(x)]p_X(x) \\[0.45em]
+&=
+a\sum_{x\in\mathcal{R}_X}g(x)p_X(x)
++b\sum_{x\in\mathcal{R}_X}h(x)p_X(x) \\[0.45em]
+&=
+a\mathbb{E}[g(X)]+b\mathbb{E}[h(X)]
+\end{aligned}
+$$
+
+連續型情形相同，只是將加總改為積分，並以 $f_X(x)\,dx$ 作為權重。
+
+這個規則稱為**期望值的線性關係 (linearity of expectation)**。計算變異數時，常會先把平方展開，再使用此關係把期望值拆開處理。
+
 ## 期望值可能不存在
 
 期望值雖然常被稱為平均數，但不是每個隨機變數都有有限期望值。若尾端機率下降得太慢，遠處的大數值仍可能對平均造成不可忽略的影響。此時相關的加總或積分可能發散。
@@ -248,7 +290,7 @@ $$
 \int_{-\infty}^{\infty}x f_X(x)\,dx
 $$
 
-若需要計算 $X$ 的函數，也可直接使用 $\mathbb{E}[g(X)]$。下一篇會在期望值的基礎上討論變異數，說明除了平均位置之外，還需要衡量隨機變數在平均值附近的分散程度。
+若需要計算 $X$ 的函數，也可直接使用 $\mathbb{E}[g(X)]$。下一篇[變異數與標準差](/teaching-topics/variance-standard-deviation/)會在期望值的基礎上討論分散程度，說明除了平均位置之外，還需要衡量隨機變數離開平均值的程度。
 
 ## 參考文獻與延伸閱讀
 

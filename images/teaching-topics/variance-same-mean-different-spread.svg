@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="380" viewBox="0 0 720 380" role="img" aria-labelledby="title desc">
+  <title id="title">Same mean and different variance</title>
+  <desc id="desc">Two probability density curves share the same mean, but one is wider and the other is more concentrated.</desc>
+  <defs>
+    <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 1 1 L 7 4 L 1 7 Z" fill="#1f1c18"/>
+    </marker>
+  </defs>
+
+  <rect x="18" y="18" width="684" height="344" rx="18" fill="none" stroke="#c9c1b4" stroke-width="2"/>
+
+  <line x1="80" y1="300" x2="642" y2="300" stroke="#1f1c18" stroke-width="2" marker-end="url(#axis-arrow)"/>
+  <line x1="360" y1="72" x2="360" y2="315" stroke="#1f1c18" stroke-width="2" stroke-dasharray="7 7"/>
+
+  <path d="M 108 300
+           C 154 298, 196 276, 238 240
+           C 280 214, 320 206, 360 206
+           C 400 206, 440 214, 482 240
+           C 524 276, 566 298, 612 300
+           L 108 300 Z"
+        fill="#9c2d2d" opacity="0.14"/>
+  <path d="M 108 300
+           C 154 298, 196 276, 238 240
+           C 280 214, 320 206, 360 206
+           C 400 206, 440 214, 482 240
+           C 524 276, 566 298, 612 300"
+        fill="none" stroke="#9c2d2d" stroke-width="3.2" stroke-linecap="round"/>
+
+  <path d="M 250 300
+           C 280 294, 298 244, 318 178
+           C 333 126, 346 98, 360 98
+           C 374 98, 387 126, 402 178
+           C 422 244, 440 294, 470 300
+           L 250 300 Z"
+        fill="#6f7d65" opacity="0.18"/>
+  <path d="M 250 300
+           C 280 294, 298 244, 318 178
+           C 333 126, 346 98, 360 98
+           C 374 98, 387 126, 402 178
+           C 422 244, 440 294, 470 300"
+        fill="none" stroke="#6f7d65" stroke-width="3.2" stroke-linecap="round"/>
+
+  <g font-family="'Noto Serif TC', 'Songti TC', Georgia, serif" fill="#1f1c18">
+    <text x="648" y="307" font-family="Georgia, 'Times New Roman', serif" font-size="21" font-style="italic">x</text>
+    <text x="360" y="340" font-size="20" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic">μ<tspan baseline-shift="sub" font-size="14">X</tspan></text>
+    <text x="218" y="124" font-size="20" text-anchor="middle" fill="#9c2d2d">變異數較大</text>
+    <text x="502" y="124" font-size="20" text-anchor="middle" fill="#6f7d65">變異數較小</text>
+    <text x="360" y="58" font-size="19" text-anchor="middle">相同的期望值</text>
+  </g>
+</svg>
