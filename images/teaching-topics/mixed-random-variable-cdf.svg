@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="380" viewBox="0 0 720 380" role="img" aria-labelledby="title desc">
+  <title id="title">Mixed random variable CDF</title>
+  <desc id="desc">A cumulative distribution function with a jump at zero and a continuous linear increase on the interval from zero to one.</desc>
+  <defs>
+    <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 1 1 L 7 4 L 1 7 Z" fill="#1f1c18"/>
+    </marker>
+    <marker id="jump-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 1 1 L 7 4 L 1 7 Z" fill="#9c2d2d"/>
+    </marker>
+  </defs>
+
+  <rect x="18" y="18" width="684" height="344" rx="18" fill="none" stroke="#c9c1b4" stroke-width="2"/>
+
+  <line x1="86" y1="302" x2="642" y2="302" stroke="#1f1c18" stroke-width="2" marker-end="url(#axis-arrow)"/>
+  <line x1="130" y1="304" x2="130" y2="62" stroke="#1f1c18" stroke-width="2" marker-end="url(#axis-arrow)"/>
+
+  <line x1="130" y1="302" x2="130" y2="232" stroke="#9c2d2d" stroke-width="3" marker-end="url(#jump-arrow)"/>
+  <line x1="130" y1="232" x2="510" y2="92" stroke="#6f7d65" stroke-width="4" stroke-linecap="round"/>
+  <line x1="510" y1="92" x2="616" y2="92" stroke="#6f7d65" stroke-width="4" stroke-linecap="round"/>
+  <line x1="88" y1="302" x2="130" y2="302" stroke="#1f1c18" stroke-width="3" stroke-linecap="round"/>
+
+  <circle cx="130" cy="302" r="6" fill="#f8f1e6" stroke="#1f1c18" stroke-width="2.3"/>
+  <circle cx="130" cy="232" r="6" fill="#9c2d2d"/>
+  <circle cx="510" cy="92" r="6" fill="#6f7d65"/>
+
+  <line x1="130" y1="232" x2="98" y2="232" stroke="#9c2d2d" stroke-width="1.8" stroke-dasharray="6 6"/>
+  <line x1="510" y1="92" x2="98" y2="92" stroke="#6f7d65" stroke-width="1.8" stroke-dasharray="6 6"/>
+  <line x1="510" y1="302" x2="510" y2="92" stroke="#6f7d65" stroke-width="1.8" stroke-dasharray="6 6"/>
+
+  <g font-family="'Noto Serif TC', 'Songti TC', Georgia, serif" fill="#1f1c18">
+    <text x="648" y="310" font-family="Georgia, 'Times New Roman', serif" font-size="21" font-style="italic">x</text>
+    <text x="56" y="72" font-family="Georgia, 'Times New Roman', serif" font-size="21" font-style="italic">F<tspan baseline-shift="sub" font-size="70%">X</tspan>(x)</text>
+
+    <text x="130" y="330" font-size="20" text-anchor="middle">0</text>
+    <text x="510" y="330" font-size="20" text-anchor="middle">1</text>
+    <text x="86" y="238" font-size="18" text-anchor="middle" fill="#9c2d2d">1/3</text>
+    <text x="90" y="98" font-size="18" text-anchor="middle" fill="#6f7d65">1</text>
+
+    <text x="154" y="272" font-size="17" fill="#9c2d2d">單點機率 = 1/3</text>
+    <text x="380" y="116" font-size="18" text-anchor="middle" fill="#6f7d65">連續累積</text>
+  </g>
+</svg>
