@@ -49,7 +49,7 @@ $$
 
 貝氏定理得名自英國牧師兼數學家 Thomas Bayes。Bayes 生前並未發表這篇機率論文章；他過世後，友人 Richard Price 整理遺稿，才在 1763 年將文章送交 Royal Society 發表。換句話說，今天如此有名的公式，某種意義上是一個「身後被朋友救出來」的定理。
 
-Bayes 原文中的問題也不是以現代符號寫成，而是透過把球隨機丟到桌面上的想像實驗，思考如何由觀察結果反推未知機率。後來 Laplace 也獨立發展並大幅推廣這種由結果反推原因的想法，因此現代貝氏思想其實同時有 Bayes 與 Laplace 的影子。
+Bayes 原文中的問題沒有採用現代符號，而是透過把球隨機丟到桌面上的想像實驗，思考如何由觀察結果反推未知機率。後來 Laplace 也獨立發展並大幅推廣這種由結果反推原因的想法，因此現代貝氏思想其實同時有 Bayes 與 Laplace 的影子。
 </div>
 
 ## 貝氏定理
@@ -173,9 +173,9 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Perspective</div>
 
-**貝氏統計 (Bayesian statistics).** 在貝氏統計裡，未知參數本身也被放入機率模型中。資料進來以前，我們用事前分佈 (prior distribution) 描述對參數的認識；資料進來以後，則可更新為事後分佈 (posterior distribution)。因此，貝氏統計把「資訊帶來更新」放在模型的中心。
+**貝氏統計 (Bayesian statistics).** 在貝氏統計裡，未知參數本身也被放入機率模型中。資料進來以前，我們用事前分配 (prior distribution) 描述對參數的認識；資料進來以後，則可更新為事後分配 (posterior distribution)。因此，貝氏統計把「資訊帶來更新」放在模型的中心。
 
-**Naive Bayes classifier.** 在分類問題中，我們常想計算「看到這些特徵後，資料屬於某類別的機率」。例如垃圾郵件分類會問，在某些字詞出現後，這封信是 spam 的機率多大？Naive Bayes classifier 的基本形式可以寫成
+**Naive Bayes 分類法.** 在分類問題中，我們常想計算「觀察到某些變數後，資料屬於某類別的機率」。例如垃圾郵件分類會處理這樣的問題：在某些字詞出現後，這封信是 spam 的機率多大？Naive Bayes 分類法的基本形式可以寫成
 
 $$
 \mathbb{P}(C_k\mid x_1,\ldots,x_m)
@@ -183,7 +183,7 @@ $$
 \mathbb{P}(C_k)\prod_{r=1}^{m}\mathbb{P}(x_r\mid C_k)
 $$
 
-其中 $C_k$ 是類別，而 $x_1,\ldots,x_m$ 是觀察到的特徵。它之所以稱為 naive，是因為模型通常假設，在給定類別後，這些特徵可以近似看作條件獨立。下一篇會正式討論獨立性；此處只要先把它理解成「給定類別後，特徵之間不再提供太多彼此的額外資訊」即可。
+其中 $C_k$ 是類別，而 $x_1,\ldots,x_m$ 是觀察到的變數。它之所以稱為 naive，是因為此法通常假設，在給定類別後，這些觀察變數可以近似看作條件獨立。下一篇會正式討論獨立性；此處只要先把它理解成「給定類別後，這些變數之間不再提供太多彼此的額外資訊」即可。
 
 這和本頁搭配的快篩更新 demo 是同一種結構。若把連續幾次檢測結果視為 $x_1,\ldots,x_m$，而把真實疾病狀態視為類別 $C_k$，則每一次陽性或陰性結果，都等於把一個新的條件機率乘進更新式。這樣做之所以合理，正是因為我們暫時假設，在給定真實疾病狀態後，各次檢測誤差可以近似看作彼此獨立。這個假設未必完全真實，但在許多分類與篩檢問題中已經相當有用。
 </div>
@@ -203,10 +203,10 @@ $$
 
 ## 參考文獻與延伸閱讀
 
-- Thomas Bayes and Richard Price, “An Essay towards Solving a Problem in the Doctrine of Chances”, *Philosophical Transactions of the Royal Society of London*, 53, 370–418, 1763. [doi:10.1098/rstl.1763.0053](https://doi.org/10.1098/rstl.1763.0053).
-- H. O. Hartley, “In Dr. Bayes’ Consulting Room”, *The American Statistician*, 17(1), 22–24, 1963. [stable link](https://www.jstor.org/stable/2682492).
-- Andrew Gelman, John B. Carlin, Hal S. Stern, David B. Dunson, Aki Vehtari, and Donald B. Rubin, *Bayesian Data Analysis*.
-- Christopher M. Bishop, *Pattern Recognition and Machine Learning*, chapters on probabilistic classification and Naive Bayes.
-- Morris H. DeGroot and Mark J. Schervish, *Probability and Statistics*, chapters on Bayes rule and diagnostic testing.
-- Amos Tversky and Daniel Kahneman, “Judgment under Uncertainty: Heuristics and Biases”, *Science*, 185(4157), 1124–1131, 1974. [doi:10.1126/science.185.4157.1124](https://doi.org/10.1126/science.185.4157.1124).
-- Gerd Gigerenzer and Ulrich Hoffrage, “How to Improve Bayesian Reasoning without Instruction: Frequency Formats”, *Psychological Review*, 102(4), 684–704, 1995. [doi:10.1037/0033-295X.102.4.684](https://doi.org/10.1037/0033-295X.102.4.684).
+- Thomas Bayes and Richard Price. 1763. “An Essay towards Solving a Problem in the Doctrine of Chances.” *Philosophical Transactions of the Royal Society of London* 53: 370–418.
+- H. O. Hartley. 1963. “In Dr. Bayes’ Consulting Room.” *The American Statistician* 17 (1): 22–24.
+- Andrew Gelman, John B. Carlin, Hal S. Stern, David B. Dunson, Aki Vehtari, and Donald B. Rubin. 2013. *Bayesian Data Analysis*. 3rd ed. Chapman and Hall/CRC.
+- David J. Hand and Keming Yu. 2001. “Idiot’s Bayes—Not So Stupid After All?” *International Statistical Review* 69 (3): 385–398.
+- Morris H. DeGroot and Mark J. Schervish. 2012. *Probability and Statistics*. 4th ed. Pearson.
+- Amos Tversky and Daniel Kahneman. 1974. “Judgment under Uncertainty: Heuristics and Biases.” *Science* 185 (4157): 1124–1131.
+- Gerd Gigerenzer and Ulrich Hoffrage. 1995. “How to Improve Bayesian Reasoning without Instruction: Frequency Formats.” *Psychological Review* 102 (4): 684–704.

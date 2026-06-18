@@ -103,8 +103,8 @@ $$
 
 ## 參考文獻與延伸閱讀
 
-- G. Udny Yule, “Notes on the Theory of Association of Attributes in Statistics”, *Biometrika*, 2(2), 121–134, 1903. [doi:10.1093/biomet/2.2.121](https://doi.org/10.1093/biomet/2.2.121).
-- Edward H. Simpson, “The Interpretation of Interaction in Contingency Tables”, *Journal of the Royal Statistical Society, Series B*, 13(2), 238–241, 1951. [doi:10.1111/j.2517-6161.1951.tb00088.x](https://doi.org/10.1111/j.2517-6161.1951.tb00088.x).
-- Colin R. Blyth, “On Simpson’s Paradox and the Sure-Thing Principle”, *Journal of the American Statistical Association*, 67(338), 364–366, 1972. [doi:10.1080/01621459.1972.10482387](https://doi.org/10.1080/01621459.1972.10482387).
-- P. J. Bickel, E. A. Hammel, and J. W. O’Connell, “Sex Bias in Graduate Admissions, Data from Berkeley”, *Science*, 187(4175), 398–404, 1975. [doi:10.1126/science.187.4175.398](https://doi.org/10.1126/science.187.4175.398).
-- Jan Sprenger and Naftali Weinberger, [Simpson’s Paradox](https://plato.stanford.edu/Archives/fall2022/entries/paradox-simpson/), *The Stanford Encyclopedia of Philosophy*.
+- G. Udny Yule. 1903. “Notes on the Theory of Association of Attributes in Statistics.” *Biometrika* 2 (2): 121–134.
+- Edward H. Simpson. 1951. “The Interpretation of Interaction in Contingency Tables.” *Journal of the Royal Statistical Society, Series B* 13 (2): 238–241.
+- Colin R. Blyth. 1972. “On Simpson’s Paradox and the Sure-Thing Principle.” *Journal of the American Statistical Association* 67 (338): 364–366.
+- P. J. Bickel, E. A. Hammel, and J. W. O’Connell. 1975. “Sex Bias in Graduate Admissions: Data from Berkeley.” *Science* 187 (4175): 398–404.
+- Jan Sprenger and Naftali Weinberger. 2022. “Simpson’s Paradox.” In Edward N. Zalta, ed., *The Stanford Encyclopedia of Philosophy*, Fall 2022 ed. [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/Archives/fall2022/entries/paradox-simpson/).

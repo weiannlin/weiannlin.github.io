@@ -116,10 +116,10 @@ author_profile: true
 A **mixed-type distribution** has both a continuous part and one or more point masses. Its CDF is the sum:
 
 $$
-F(x)=W_c\cdot G(x)+\sum_{x_i\leq x}w_i
+F(x)=W_c\cdot G(x)+\sum_{x_i\leqslant x}w_i
 $$
 
-where $G$ is the continuous CDF (weight $W_c$) and the $w_i$ are the point masses at $x_i$. The defining visual feature: the CDF picks up a **jump of size exactly $w_i$** at every $x_i$, while remaining smooth in between.
+where $G$ is the continuous CDF (weight $W_c$) and the $w_i$ are the point masses at $x_i$. The main visual pattern is that the CDF picks up a **jump of size exactly $w_i$** at every $x_i$, while remaining smooth in between.
 
 Below, pick a continuous family and add point masses with weights $w_i$. The continuous weight $W_c = 1 - \sum w_i$ is allocated automatically — what's left over after the discrete part. Sweep current $x$ and watch the CDF jump as you cross each $x_i$.
 
@@ -155,7 +155,7 @@ Below, pick a continuous family and add point masses with weights $w_i$. The con
   <svg id="mx-cdf" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet"></svg>
   <div class="mx-readout">
     Cumulative $F(x)$ = <strong id="mx-cum">—</strong>
-    <span class="breakdown">continuous $W_c \cdot G(x)$ = <span id="mx-cum-cont">—</span>, discrete $\sum_{x_i \leq x} w_i$ = <span id="mx-cum-disc">—</span></span>
+    <span class="breakdown">continuous $W_c \cdot G(x)$ = <span id="mx-cum-cont">—</span>, discrete $\sum_{x_i \leqslant x} w_i$ = <span id="mx-cum-disc">—</span></span>
   </div>
 </div>
 

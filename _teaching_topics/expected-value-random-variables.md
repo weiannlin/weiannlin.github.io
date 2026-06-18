@@ -10,12 +10,12 @@ order: 205
 permalink: /teaching-topics/expected-value-random-variables/
 date: 2026-06-06
 published: true
-excerpt: "分佈說明隨機變數的機率如何分佈在數線上。期望值則依照這些機率作加權平均，給出隨機變數的平均位置。離散型以 PMF 加總，連續型以 PDF 積分。"
+excerpt: "分配說明隨機變數的機率在數線上的分配情形。期望值則依照這些機率作加權平均，給出隨機變數的平均位置。離散型以 PMF 加總，連續型以 PDF 積分。"
 ---
 
-[上一篇文章](/teaching-topics/continuous-random-variables-pdf/)說明了連續型隨機變數與 PDF。到目前為止，我們已經看過 CDF、PMF 與 PDF。這些函數描述的是隨機變數的機率如何分佈在數線上。
+[上一篇文章](/teaching-topics/continuous-random-variables-pdf/)說明了連續型隨機變數與 PDF。到目前為止，我們已經看過 CDF、PMF 與 PDF。這些函數描述的是隨機變數的機率在數線上的分配情形。
 
-若分佈已經指定，接下來常需要整理一個代表整體位置的數值。黃文璋老師在《數理統計》中也從「代表值」的角度說明期望值，指出我們常希望用一個單一數值掌握隨機變數大致多大，而期望值正是最常使用的選擇之一。這個數值稱為**期望值 (expected value)**，也常稱為**平均數 (mean)**。期望值不是指某次實驗最可能出現的結果，也不必然是隨機變數真的可能取到的值；它是依照機率權重所得到的平均位置。
+若分配已經指定，接下來常需要整理一個代表整體位置的數值。黃文璋老師在《數理統計》中也從「代表值」的角度說明期望值，指出我們常希望用一個單一數值掌握隨機變數大致多大，而期望值正是最常使用的選擇之一。這個數值稱為**期望值 (expected value)**，也常稱為**平均數 (mean)**。期望值不是指某次實驗最可能出現的結果，也不必然是隨機變數真的可能取到的值；它是依照機率權重所得到的平均位置。
 
 ## 離散型期望值
 
@@ -40,7 +40,7 @@ $$
 
 </div>
 
-這個公式是加權平均。每個 $x$ 的權重是 $p_X(x)$，所有權重加總為 $1$。因此，期望值可視為分佈在數線上的平均位置。
+這個公式是加權平均。每個 $x$ 的權重是 $p_X(x)$，所有權重加總為 $1$。因此，期望值可視為此一分配的平均位置。
 
 <div class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 2.5</div>
@@ -96,8 +96,8 @@ $$
 </div>
 
 <figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/expected-value-balance.svg" alt="離散分佈的期望值作為平均位置。點 1 到 5 上有不同機率質量，平均位置位於 3。">
-  <figcaption><span class="topic-figure__label">Fig. 2.13.</span> 期望值可視為分佈在數線上的平均位置。此例中 $x=3$ 的機率質量較大，左右兩側仍以機率權重平衡在 $\mathbb{E}(X)=3$。</figcaption>
+  <img src="/images/teaching-topics/expected-value-balance.svg" alt="離散分配的期望值作為平均位置。點 1 到 5 上有不同機率質量，平均位置位於 3。">
+  <figcaption><span class="topic-figure__label">Fig. 2.13.</span> 期望值可視為此一分配的平均位置。此例中 $x=3$ 的機率質量較大，左右兩側仍以機率權重平衡在 $\mathbb{E}(X)=3$。</figcaption>
 </figure>
 
 <div class="topic-box topic-box--interlude" markdown="1">
@@ -173,7 +173,7 @@ $$
 
 </div>
 
-這個結果符合直觀。若機率均勻分佈在 $0$ 到 $1$ 的區間上，平均位置就在區間中央。
+這個結果符合直觀。若機率均勻分配在 $0$ 到 $1$ 的區間上，平均位置就在區間中央。
 
 ## 函數的期望值
 
@@ -200,16 +200,16 @@ $$
 
 </div>
 
-楊維哲老師在〈機率一講〉中，曾以記述統計的平均數說明類似想法。計算平均時，不必逐筆慢慢相加，也可先依取值合併，再乘上各取值的相對頻率；他稱這是 Lebesgue 式的想法。放到隨機變數上，若要求 $g(X)$ 的期望值，便可以沿著 $X$ 原本的分佈直接加權。取 $g(x)=x$ 時，便回到 $\mathbb{E}(X)$。
+楊維哲老師在〈機率一講〉中，曾以記述統計的平均數說明類似想法。計算平均時，不必逐筆慢慢相加，也可先依取值合併，再乘上各取值的相對頻率；他稱這是 Lebesgue 式的想法。放到隨機變數上，若要求 $g(X)$ 的期望值，便可以沿著 $X$ 原本的分配直接加權。取 $g(x)=x$ 時，便回到 $\mathbb{E}(X)$。
 
 <div class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 2.7</div>
 
 看到 $g(X)$ 時，讀者很自然會先想兩件事。第一，$Y=g(X)$ 是否仍是隨機變數。答案是肯定的。因為 $X$ 原本就是樣本點的函數，而 $g$ 只是把 $X$ 已經得到的數值再作一次轉換，所以 $Y=g(X)$ 仍然是樣本點的函數。
 
-第二，既然 $Y$ 也是隨機變數，為何不先求出 $Y$ 的分佈，再計算 $\mathbb{E}(Y)$。這個想法並沒有錯，有些題目也確實會這樣做。只是很多時候，求 $Y$ 的分佈比直接加權困難得多。
+第二，既然 $Y$ 也是隨機變數，為何不先求出 $Y$ 的分配，再計算 $\mathbb{E}(Y)$。這個想法並沒有錯，有些題目也確實會這樣做。只是很多時候，求 $Y$ 的分配比直接加權困難得多。
 
-函數期望值公式的用途正在於此。真正先發生的仍是 $X$ 的取值。若 $X=x$，則 $g(X)=g(x)$；若 $X$ 落在 $x$ 附近，則這一小段機率對平均的貢獻就是 $g(x)$ 乘上該處附近的機率。因此，函數期望值不是先把 $g(X)$ 的分佈完整求出來，再重新計算一次平均。它是沿著 $X$ 原本的分佈，把每個位置 $x$ 轉成 $g(x)$ 後加權。離散型使用 $p_X(x)$ 作權重，連續型則使用 $f_X(x)\,dx$ 作權重。這正是楊老師所說，先依取值合併，再以相對頻率加權的觀點在隨機變數上的延伸。
+函數期望值公式的用途正在於此。真正先發生的仍是 $X$ 的取值。若 $X=x$，則 $g(X)=g(x)$；若 $X$ 落在 $x$ 附近，則這一小段機率對平均的貢獻就是 $g(x)$ 乘上該處附近的機率。因此，函數期望值不是先把 $g(X)$ 的分配完整求出來，再重新計算一次平均。它是沿著 $X$ 原本的分配，把每個位置 $x$ 轉成 $g(x)$ 後加權。離散型使用 $p_X(x)$ 作權重，連續型則使用 $f_X(x)\,dx$ 作權重。這正是楊老師所說，先依取值合併，再以相對頻率加權的觀點在隨機變數上的延伸。
 </div>
 
 ## 期望值的線性關係
@@ -270,7 +270,7 @@ $$
 \int_{-\infty}^{\infty}|x|f_X(x)\,dx<\infty
 $$
 
-這不是技術上的多餘條件，而是為了確保正負兩側的貢獻能被合理合併，避免出現無法定義的 $\infty-\infty$。
+這個條件並非技術上的多餘限制。它的作用在於確保正負兩側的貢獻能被合理合併，避免出現無法定義的 $\infty-\infty$。
 
 ## 本篇小結
 
@@ -294,10 +294,10 @@ $$
 
 ## 參考文獻與延伸閱讀
 
-- 黃文璋，《數理統計》，第 1 章第 6 節「期望值」。
-- 楊維哲，〈機率一講〉，《數學傳播》第 2 卷第 3 期，EpisteMath，<https://episte.math.ntu.edu.tw/articles/mm/mm_02_3_11/>。
-- Patrick Billingsley, *Probability and Measure*, 3rd ed., Wiley, 1995, chapters on integration and expectation.
-- William Feller, *An Introduction to Probability Theory and Its Applications*, Volume I, 3rd ed., Wiley, 1968, chapters on mathematical expectation.
-- George Casella and Roger L. Berger, *Statistical Inference*, 2nd ed., Duxbury, 2002, sections on expected values and moments.
-- Sheldon M. Ross, *A First Course in Probability*, 10th ed., Pearson, 2019, chapters on expectation.
-- Joseph K. Blitzstein and Jessica Hwang, *Introduction to Probability*, 2nd ed., CRC Press, 2019, chapters on expectation and LOTUS.
+- 黃文璋，2003，《數理統計》，初版，華泰文化。
+- 楊維哲，1978，〈機率一講〉，《數學傳播》2(3)。[EpisteMath 重刊](https://episte.math.ntu.edu.tw/articles/mm/mm_02_3_11/)。
+- Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
+- William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
+- George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
+- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.

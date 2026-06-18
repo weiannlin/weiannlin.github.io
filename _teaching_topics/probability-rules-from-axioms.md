@@ -32,7 +32,7 @@ $$
 </div>
 
 <div class="topic-proof" markdown="1">
-**Proof.** 令 $A_1$ 為整個樣本空間，且對所有 $i\geq 2$，令 $A_i$ 為虛無事件。則 $A_1,A_2,\ldots$ 兩兩互斥，且其聯集滿足
+**Proof.** 令 $A_1$ 為整個樣本空間，且對所有 $i\geqslant 2$，令 $A_i$ 為虛無事件。則 $A_1,A_2,\ldots$ 兩兩互斥，且其聯集滿足
 
 $$
 \bigcup_{i=1}^{\infty}A_i=S
@@ -117,7 +117,7 @@ $$
 同時也有
 
 $$
-0\leq \mathbb{P}(A)\leq 1
+0\leqslant \mathbb{P}(A)\leqslant 1
 $$
 
 </div>
@@ -129,7 +129,7 @@ $$
 1=\mathbb{P}(S)=\mathbb{P}(A)+\mathbb{P}(A^{\prime})
 $$
 
-故可得到餘事件公式。又由非負性可知 $\mathbb{P}(A)\geq 0$ 且 $\mathbb{P}(A^{\prime})\geq 0$，因此 $\mathbb{P}(A)\leq 1$，也就是事件機率至多為一。 $\square$
+故可得到餘事件公式。又由非負性可知 $\mathbb{P}(A)\geqslant 0$ 且 $\mathbb{P}(A^{\prime})\geqslant 0$，因此 $\mathbb{P}(A)\leqslant 1$，也就是事件機率至多為一。 $\square$
 </div>
 
 <div class="topic-box topic-box--example" markdown="1">
@@ -160,7 +160,7 @@ $$
 並且滿足
 
 $$
-\mathbb{P}(A)\leq \mathbb{P}(B)
+\mathbb{P}(A)\leqslant \mathbb{P}(B)
 $$
 
 後者稱為機率的**單調性 (monotonicity)**。
@@ -168,7 +168,7 @@ $$
 
 <figure class="topic-figure topic-figure--medium">
   <img src="/images/teaching-topics/probability-rules-monotonicity.svg" alt="單調性的集合示意圖。事件 A 包含於事件 B 中，B 比 A 多出的部分是差集 B-A。">
-  <figcaption><span class="topic-figure__label">Fig. 1.2.</span> 當 $A\subset B$ 時，$B$ 比 $A$ 多出的部分是 $B-A$，因此 $\mathbb{P}(A)\leq\mathbb{P}(B)$。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 1.2.</span> 當 $A\subset B$ 時，$B$ 比 $A$ 多出的部分是 $B-A$，因此 $\mathbb{P}(A)\leqslant\mathbb{P}(B)$。</figcaption>
 </figure>
 
 <div class="topic-proof" markdown="1">
@@ -184,7 +184,7 @@ $$
 \mathbb{P}(B)=\mathbb{P}(A)+\mathbb{P}(B-A)
 $$
 
-故可得到差集公式。再由非負性可知 $\mathbb{P}(B-A)\geq 0$，因此 $\mathbb{P}(A)\leq\mathbb{P}(B)$，也就是機率的單調性。 $\square$
+故可得到差集公式。再由非負性可知 $\mathbb{P}(B-A)\geqslant 0$，因此 $\mathbb{P}(A)\leqslant\mathbb{P}(B)$，也就是機率的單調性。 $\square$
 </div>
 
 單調性的使用有一個重要前提，兩個事件必須能比較大小，也就是其中一個事件包含於另一個事件。若 $A$ 與 $B$ 沒有包含關係，單調性本身並不能直接比較它們各自的機率。
@@ -308,14 +308,14 @@ $$
 
 $$
 \mathbb{P}\left(\bigcup_{i=1}^{n}A_i\right)
-\leq \sum_{i=1}^{n}\mathbb{P}(A_i)
+\leqslant \sum_{i=1}^{n}\mathbb{P}(A_i)
 $$
 
 此不等式稱為**布爾不等式 (Boole's inequality)**。此外，還有下列常用形式，與原形式等價
 
 $$
 \mathbb{P}\left(\bigcap_{i=1}^{n}A_i\right)
-\geq 1-\sum_{i=1}^{n}\mathbb{P}(A_i^{\prime})
+\geqslant 1-\sum_{i=1}^{n}\mathbb{P}(A_i^{\prime})
 $$
 
 此為**邦佛洛尼不等式 (Bonferroni's inequality)** 的常用形式。
@@ -337,7 +337,7 @@ $$
 | 虛無事件 | $\mathbb{P}(\varnothing)=0$ | 不可能事件的機率為 $0$ |
 | 有限可加性 | $\mathbb{P}(\bigcup_i A_i)=\sum_i\mathbb{P}(A_i)$ | 互斥事件可以直接相加 |
 | 餘事件公式 | $\mathbb{P}(A^{\prime})=1-\mathbb{P}(A)$ | 全部扣掉 $A$ |
-| 單調性 | $A\subset B\Rightarrow \mathbb{P}(A)\leq\mathbb{P}(B)$ | 較小的事件，機率不會較大 |
+| 單調性 | $A\subset B\Rightarrow \mathbb{P}(A)\leqslant\mathbb{P}(B)$ | 較小的事件，機率不會較大 |
 | 加法原理 | $\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)$ | 扣除重複 |
 | 排容原理 | 加、扣、再加回 | 修正多重重疊 |
 
@@ -345,9 +345,9 @@ $$
 
 ## 參考文獻與延伸閱讀
 
-- William Feller, *An Introduction to Probability Theory and Its Applications*, Volume I, chapters on probability axioms and elementary consequences.
-- Sheldon M. Ross, *A First Course in Probability*, chapters on axioms and probability identities.
-- Geoffrey Grimmett and David Stirzaker, *Probability and Random Processes*, chapters on events, probability, and inclusion-exclusion.
-- John Gurland, “Inequalities of Expectations of Random Variables Derived by Monotonicity or Convexity”, *The American Statistician*, 22(2), 26–27, 1968. [stable link](https://www.jstor.org/stable/2681985).
-- D. A. Dawson and D. Sankoff, “An Inequality for Probabilities”, *Proceedings of the American Mathematical Society*, 18(3), 504, 1967. [doi:10.1090/S0002-9939-1967-0211424-0](https://doi.org/10.1090/S0002-9939-1967-0211424-0).
-- David Hunter, “An Upper Bound for the Probability of a Union”, *Journal of Applied Probability*, 13(3), 597–603, 1976. [doi:10.2307/3212481](https://doi.org/10.2307/3212481).
+- William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
+- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Geoffrey Grimmett and David Stirzaker. 2001. *Probability and Random Processes*. 3rd ed. Oxford University Press.
+- John Gurland. 1968. “The Teacher's Corner: Inequalities of Expectations of Random Variables Derived by Monotonicity or Convexity.” *The American Statistician* 22 (2): 26–27.
+- D. A. Dawson and D. Sankoff. 1967. “An Inequality for Probabilities.” *Proceedings of the American Mathematical Society* 18 (3): 504–507.
+- David Hunter. 1976. “An Upper Bound for the Probability of a Union.” *Journal of Applied Probability* 13 (3): 597–603.

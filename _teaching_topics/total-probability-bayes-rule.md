@@ -223,8 +223,8 @@ $$
 
 ## 參考文獻與延伸閱讀
 
-- Sheldon M. Ross, *A First Course in Probability*, chapters on conditional probability and the law of total probability.
-- Joseph K. Blitzstein and Jessica Hwang, *Introduction to Probability*, chapters on conditioning, partitions, and tree diagrams.
-- Steve Selvin, “A Problem in Probability”, *The American Statistician*, 29(1), 67, 1975. [doi:10.2307/2683689](https://doi.org/10.2307/2683689).
-- Richard D. Gill, “The Monty Hall Problem Is Not a Probability Puzzle”, *Statistica Neerlandica*, 65(1), 58–71, 2011. [doi:10.1111/j.1467-9574.2010.00474.x](https://doi.org/10.1111/j.1467-9574.2010.00474.x).
-- Martin Gardner, *Mathematical Puzzles and Diversions*, discussion of the three prisoners problem.
+- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.
+- Steve Selvin. 1975. “A Problem in Probability.” *The American Statistician* 29 (1): 67.
+- Richard D. Gill. 2011. “The Monty Hall Problem Is Not a Probability Puzzle: It's a Challenge in Mathematical Modelling.” *Statistica Neerlandica* 65 (1): 58–71.
+- Martin Gardner. 1959. *The Scientific American Book of Mathematical Puzzles and Diversions*. Simon and Schuster.

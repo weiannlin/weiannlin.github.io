@@ -281,7 +281,7 @@ This is a probability demo, not medical guidance. The repeated-test calculations
 
 **High sensitivity and low specificity.** The test rarely misses true cases, but it also produces many false positives. A negative result can still be reassuring, while a positive result may need more confirmation, especially when the prevalence is low.
 
-**A bridge to Naive Bayes.** Repeated updates are equivalent to multiplying conditional probabilities when the observations are treated as conditionally independent given the hidden state. That is the same simplification behind a Naive Bayes classifier. In this demo, the observations are repeated test results. In a classifier, the observations are features such as words, symptoms, or signals. The mathematical move is the same, and the next topic will make this independence assumption precise.
+**A bridge to Naive Bayes.** Repeated updates are equivalent to multiplying conditional probabilities when the observations are treated as conditionally independent given the hidden state. That is the same simplification behind the Naive Bayes classification rule. In this demo, the observations are repeated test results. In a classification problem, the observations may be words, symptoms, or signals. The mathematical move is the same, and the next topic will make this independence assumption precise.
 
 <script>
 (function() {

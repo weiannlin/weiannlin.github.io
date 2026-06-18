@@ -103,7 +103,7 @@ $$
     </tr>
     <tr>
       <td style="white-space: normal;">觀察某一電腦零件之壽命</td>
-      <td>$S=\lbrace\,t\mid t\geq 0\,\rbrace$</td>
+      <td>$S=\lbrace\,t\mid t\geqslant 0\,\rbrace$</td>
     </tr>
   </tbody>
 </table>
@@ -259,10 +259,10 @@ $$
 
 ## 參考文獻與延伸閱讀
 
-- Sheldon M. Ross, *A First Course in Probability*, chapters on sample spaces, events, and probability axioms.
-- Joseph K. Blitzstein and Jessica Hwang, *Introduction to Probability*, chapters on probability spaces and counting.
-- Patrick Billingsley, *Probability and Measure*, sections on probability spaces and measurable events.
-- Emanuel Parzen, *Modern Probability Theory and Its Applications*, John Wiley & Sons, 1960, overview of probability foundations.
-- Michael Woodroofe, *Probability with Applications*, McGraw-Hill, 1975, early chapters on probability spaces and events.
-- B. V. Gnedenko, *The Theory of Probability*, English translation, Mir Publishers, 1975.
-- R. T. Cox, “Probability, Frequency and Reasonable Expectation”, *American Journal of Physics*, 14(1), 1–13, 1946. [doi:10.1119/1.1990764](https://doi.org/10.1119/1.1990764).
+- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.
+- Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
+- Emanuel Parzen. 1960. *Modern Probability Theory and Its Applications*. John Wiley & Sons.
+- Michael Woodroofe. 1974. *Probability with Applications*. McGraw-Hill.
+- B. V. Gnedenko. 1975. *The Theory of Probability*. English translation. Mir Publishers.
+- R. T. Cox. 1946. “Probability, Frequency and Reasonable Expectation.” *American Journal of Physics* 14 (1): 1–13.

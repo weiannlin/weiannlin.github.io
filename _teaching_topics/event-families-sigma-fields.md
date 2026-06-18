@@ -190,7 +190,7 @@ $$
 <ol class="topic-list-paren">
   <li><strong>非負性 (non-negativity)</strong>。對任意 $A\in\mathcal{F}$，皆有
   $$
-  \mathbb{P}(A)\geq 0
+  \mathbb{P}(A)\geqslant 0
   $$</li>
   <li><strong>歸一性 (normalization)</strong>。樣本空間本身滿足
   $$
@@ -226,11 +226,11 @@ $$
 
 ## 參考文獻與延伸閱讀
 
-- Andrey N. Kolmogorov, *Foundations of the Theory of Probability*, English translation, 1956.
-- Patrick Billingsley, *Probability and Measure*, chapters on measure spaces and probability measures.
-- Achim Klenke, *Probability Theory, A Comprehensive Course*, chapters on measurable spaces and probability spaces.
-- Leo Breiman, *Probability*, Addison-Wesley, 1968, chapters on probability spaces and random variables.
-- Y. S. Chow and Henry Teicher, *Probability Theory, Independence, Interchangeability, Martingales*, 3rd ed., Springer, 1997, chapters on probability spaces and independence.
-- Kai Lai Chung, *A Course in Probability Theory*, 3rd ed., Academic Press, 2001.
-- Alfréd Rényi, “On a New Axiomatic Theory of Probability”, *Acta Mathematica Academiae Scientiarum Hungaricae*, 6(3), 285–335, 1955. [stable link](https://static.renyi.hu/renyi_cikkek/1955_on_a_new_axiomatic_theory_of_probability.pdf).
-- David Blackwell, “On a Class of Probability Spaces”, *Proceedings of the Third Berkeley Symposium on Mathematical Statistics and Probability*, Volume II, 1–6, 1956. [stable link](https://projecteuclid.org/euclid.bsmsp/1200502002).
+- Andrey N. Kolmogorov. 1956. *Foundations of the Theory of Probability*. Translated by Nathan Morrison. Chelsea Publishing Company.
+- Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
+- Achim Klenke. 2014. *Probability Theory: A Comprehensive Course*. 2nd ed. Springer London.
+- Leo Breiman. 1968. *Probability*. Addison-Wesley.
+- Y. S. Chow and Henry Teicher. 1997. *Probability Theory: Independence, Interchangeability, Martingales*. 3rd ed. Springer New York.
+- Kai Lai Chung. 2001. *A Course in Probability Theory*. 3rd ed. Academic Press.
+- Alfréd Rényi. 1955. “On a New Axiomatic Theory of Probability.” *Acta Mathematica Academiae Scientiarum Hungaricae* 6 (3–4): 285–335.
+- David Blackwell. 1956. “On a Class of Probability Spaces.” *Proceedings of the Third Berkeley Symposium on Mathematical Statistics and Probability* 2: 1–6.

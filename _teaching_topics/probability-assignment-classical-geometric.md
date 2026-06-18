@@ -123,7 +123,7 @@ $$
 假設炸彈會隨機落在半徑為 $1$ 的圓形區域內，且若落點距離圓心不超過 $0.5$，就能摧毀目標。令
 
 $$
-S=\lbrace\,(x,y)\mid x^2+y^2\leq 1\,\rbrace
+S=\lbrace\,(x,y)\mid x^2+y^2\leqslant 1\,\rbrace
 $$
 
 而 $A$ 為落在半徑 $0.5$ 之圓內的事件。若以面積作為幾何測度，則
@@ -195,7 +195,7 @@ $$
 </div>
 
 <div class="topic-proof" markdown="1">
-**Proof.** 對任意 $A\subset S$，$\mathrm{n}(A)\geq 0$，所以其機率非負。又因為 $\mathrm{n}(S)/\mathrm{n}(S)=1$，所以樣本空間的機率為一。
+**Proof.** 對任意 $A\subset S$，$\mathrm{n}(A)\geqslant 0$，所以其機率非負。又因為 $\mathrm{n}(S)/\mathrm{n}(S)=1$，所以樣本空間的機率為一。
 
 若 $A_1,A_2,\ldots$ 兩兩互斥，且皆為 $S$ 的子集合，則因為 $S$ 為有限集合，其中至多只有有限多個 $A_i$ 非空。由計數的可加性可得
 
@@ -229,12 +229,12 @@ Kolmogorov 公理不說明機率要怎麼算；它要求算出來的東西必須
 
 ## 參考文獻與延伸閱讀
 
-- William Feller, *An Introduction to Probability Theory and Its Applications*, Volume I, chapters on classical probability and combinatorial models.
-- Sheldon M. Ross, *A First Course in Probability*, chapters on equally likely outcomes and counting.
-- Morris H. DeGroot and Mark J. Schervish, *Probability and Statistics*, chapters on probability interpretations and probability models.
-- Emanuel Parzen, *Modern Probability Theory and Its Applications*, John Wiley & Sons, 1960, discussion of probability foundations and interpretations.
-- B. V. Gnedenko, *The Theory of Probability*, English translation, Mir Publishers, 1975.
-- Andrey N. Kolmogorov, *Foundations of the Theory of Probability*, English translation, 1956.
-- Richard von Mises, “Grundlagen der Wahrscheinlichkeitsrechnung”, *Mathematische Zeitschrift*, 5, 52–99, 1919. [stable link](https://eudml.org/doc/167538).
-- William Feller, “Note on the Law of Large Numbers and ‘Fair’ Games”, *The Annals of Mathematical Statistics*, 16(3), 301–304, 1945. [doi:10.1214/aoms/1177731094](https://doi.org/10.1214/aoms/1177731094).
-- F. J. Anscombe and R. J. Aumann, “A Definition of Subjective Probability”, *The Annals of Mathematical Statistics*, 34(1), 199–205, 1963. [doi:10.1214/aoms/1177704255](https://doi.org/10.1214/aoms/1177704255).
+- William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
+- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Morris H. DeGroot and Mark J. Schervish. 2012. *Probability and Statistics*. 4th ed. Pearson.
+- Emanuel Parzen. 1960. *Modern Probability Theory and Its Applications*. John Wiley & Sons.
+- B. V. Gnedenko. 1975. *The Theory of Probability*. English translation. Mir Publishers.
+- Andrey N. Kolmogorov. 1956. *Foundations of the Theory of Probability*. Translated by Nathan Morrison. Chelsea Publishing Company.
+- Richard von Mises. 1919. “Grundlagen der Wahrscheinlichkeitsrechnung.” *Mathematische Zeitschrift* 5 (1–2): 52–99.
+- William Feller. 1945. “Note on the Law of Large Numbers and ‘Fair’ Games.” *The Annals of Mathematical Statistics* 16 (3): 301–304.
+- F. J. Anscombe and R. J. Aumann. 1963. “A Definition of Subjective Probability.” *The Annals of Mathematical Statistics* 34 (1): 199–205.

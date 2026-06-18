@@ -90,9 +90,9 @@ author_profile: true
   .pc-readout strong { color: var(--journal-accent); font-size: 1.1rem; font-family: 'IBM Plex Mono', monospace; }
 </style>
 
-The probability mass function (PMF) tells you how much probability sits at each value of a discrete random variable. The cumulative distribution function (CDF) tells you, for each $x$, the total probability of being $\leq x$. They carry the same information; the CDF is just the running sum of the PMF.
+The probability mass function (PMF) tells you how much probability sits at each value of a discrete random variable. The cumulative distribution function (CDF) tells you, for each $x$, the total probability of being $\leqslant x$. They carry the same information; the CDF is just the running sum of the PMF.
 
-Below, you can build your own PMF by editing the $(x, p)$ table. The slider sweeps a "current $x$" across the axis: PMF lollipops at $x \leq$ current $x$ turn red, and their masses sum exactly to the height of the CDF curve at that $x$.
+Below, you can build your own PMF by editing the $(x, p)$ table. The slider sweeps a "current $x$" across the axis: PMF lollipops at $x \leqslant$ current $x$ turn red, and their masses sum exactly to the height of the CDF curve at that $x$.
 
 ## Interactive
 
@@ -119,7 +119,7 @@ Below, you can build your own PMF by editing the $(x, p)$ table. The slider swee
 
 The CDF is a **step function**: flat between the PMF's mass points, jumping straight up by $p\_i$ at each $x = x\_i$ where the PMF carries mass. Slide the current $x$ across some $x\_i$ and the CDF jumps while one more PMF lollipop turns red — the same probability mass, viewed two ways.
 
-Convention: this CDF is right-continuous. At each $x=x_i$, $F(x_i)=\mathbb{P}(X\leq x_i)$ already includes the jump.
+Convention: this CDF is right-continuous. At each $x=x_i$, $F(x_i)=\mathbb{P}(X\leqslant x_i)$ already includes the jump.
 
 [The next demo](/demos/pdf-cdf/) replaces the discrete spikes with a smooth density (PDF). The construction is the same idea, but the running **sum** becomes a running **integral**, and the CDF turns from a staircase into a continuous curve.
 

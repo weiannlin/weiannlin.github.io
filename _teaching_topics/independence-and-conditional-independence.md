@@ -305,7 +305,7 @@ $$
 因此 $A$ 與 $B$ 在每個分割區塊內都條件獨立，混合回整體後卻不獨立。原因是未給定分割區塊時，$A$ 的發生會改變我們對目前落在哪個 $C_i$ 的判斷；而 $B$ 的發生機率也會隨 $C_i$ 改變。這種共同來源會在整體中留下關聯。
 </div>
 
-這也是 Naive Bayes classifier 的核心假設。給定類別 $C_k$ 後，模型把特徵 $x_1,\ldots,x_m$ 近似看成條件獨立，因此可以把許多條件機率相乘。這個假設未必完全真實，但它把複雜的聯合分佈拆成許多較容易估計的部分。
+這也是 Naive Bayes 分類法常用的條件獨立近似。給定類別 $C_k$ 後，若可把觀察變數 $x_1,\ldots,x_m$ 近似看成條件獨立，便能把許多條件機率相乘。這個假設未必完全真實，但它把複雜的聯合分配拆成許多較容易估計的部分。
 
 ## 本篇小結
 
@@ -324,12 +324,12 @@ $$
 
 ## 參考文獻與延伸閱讀
 
-- William Feller, *An Introduction to Probability Theory and Its Applications*, Volume I, chapters on independence.
-- Patrick Billingsley, *Probability and Measure*, sections on independent events and independent random variables.
-- Y. S. Chow and Henry Teicher, *Probability Theory, Independence, Interchangeability, Martingales*, 3rd ed., Springer, 1997, chapters on independence.
-- Ron Mittelhammer, *Mathematical Statistics for Economics and Business*, Springer, 1996, p. 31. 直覺校準 1.9 的表格整理參考此書。
-- Christopher M. Bishop, *Pattern Recognition and Machine Learning*, discussion of Naive Bayes and conditional independence.
-- Judea Pearl, Madelyn Glymour, and Nicholas P. Jewell, *Causal Inference in Statistics, A Primer*, discussion of conditional independence in graphical thinking.
-- David A. Pierce and Richard L. Dykstra, “Independence and the Normal Distribution”, *The American Statistician*, 23(4), 39, 1969. [doi:10.1080/00031305.1969.10481871](https://doi.org/10.1080/00031305.1969.10481871).
-- James D. Broffitt, “Zero Correlation, Independence, and Normality”, *The American Statistician*, 40(4), 276–277, 1986. [doi:10.1080/00031305.1986.10475412](https://doi.org/10.1080/00031305.1986.10475412).
-- A. Philip Dawid, “Conditional Independence in Statistical Theory”, *Journal of the Royal Statistical Society, Series B*, 41(1), 1–31, 1979. [doi:10.1111/j.2517-6161.1979.tb01052.x](https://doi.org/10.1111/j.2517-6161.1979.tb01052.x).
+- William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
+- Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
+- Y. S. Chow and Henry Teicher. 1997. *Probability Theory: Independence, Interchangeability, Martingales*. 3rd ed. Springer New York.
+- Ron C. Mittelhammer. 1996. *Mathematical Statistics for Economics and Business*. Springer New York, 31.
+- Christopher M. Bishop. 2006. *Pattern Recognition and Machine Learning*. Springer New York.
+- Judea Pearl, Madelyn Glymour, and Nicholas P. Jewell. 2016. *Causal Inference in Statistics: A Primer*. Wiley.
+- David A. Pierce and Richard L. Dykstra. 1969. “Independence and the Normal Distribution.” *The American Statistician* 23 (4): 39.
+- James D. Broffitt. 1986. “Zero Correlation, Independence, and Normality.” *The American Statistician* 40 (4): 276–277.
+- A. Philip Dawid. 1979. “Conditional Independence in Statistical Theory.” *Journal of the Royal Statistical Society, Series B* 41 (1): 1–15.
