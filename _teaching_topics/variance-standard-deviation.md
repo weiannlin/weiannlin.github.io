@@ -205,6 +205,8 @@ $$
 $$
 \sigma_X
 =
+\mathrm{SD}(X)
+=
 \sqrt{\mathrm{Var}(X)}
 $$
 

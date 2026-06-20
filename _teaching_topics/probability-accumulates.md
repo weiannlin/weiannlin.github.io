@@ -147,19 +147,19 @@ $$
 
 ## 連續型，靠密度積分
 
-另一種常見情形中，單點本身不具有正機率，機率沿著區間連續累積。若存在非負函數 $f_X$，使得對任意 $x\in\mathbb{R}$ 皆有
+另一種常見情形中，CDF 沒有跳躍，機率沿著區間連續累積。以下先討論其中最常用的一類，也就是可由密度函數描述的情形。若存在非負函數 $f_X$，使得對任意 $x\in\mathbb{R}$ 皆有
 
 $$
 F_X(x)=\int_{-\infty}^{x} f_X(t)\,dt
 $$
 
-則稱 $X$ 為**連續型隨機變數 (continuous random variable)**。此時 $f_X$ 稱為**機率密度函數**，英文全名為 probability density function，常簡記為 PDF。
+則稱 $f_X$ 為 $X$ 的**機率密度函數**，英文全名為 probability density function，常簡記為 PDF。
 
 此時事件 $\lbrace X\leqslant x\rbrace$ 的機率改由密度函數在 $(-\infty,x]$ 上的面積累積，而不採單點相加。
 
 <figure class="topic-figure topic-figure--wide">
   <img src="/images/teaching-topics/continuous-cdf-area.svg" alt="連續型隨機變數的 CDF 可由密度曲線左側面積表示。">
-  <figcaption><span class="topic-figure__label">Fig. 2.5.</span> 對連續型隨機變數而言，$F_X(x)$ 是密度函數在 $(-\infty,x]$ 上的面積。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 2.5.</span> 對可由 PDF 描述的連續型隨機變數而言，$F_X(x)$ 是密度函數在 $(-\infty,x]$ 上的面積。</figcaption>
 </figure>
 
 若 $a<b$，則區間機率可由兩個累積面積相減得到。
@@ -182,10 +182,10 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-嚴格地說，CDF 連續不必然代表可由一般密度函數積分表示。測度論中還有更細的分解，例如奇異連續分配。本章先採統計課程中最常用的版本，也就是可由 PDF 描述的連續型隨機變數。
+嚴格地說，CDF 連續不必然代表可由一般密度函數積分表示。測度論中還有更細的分解，例如奇異連續分配。本章先採統計課程中最常用的版本，也就是可由 PDF 描述的連續型情形。
 </div>
 
-此外，連續型隨機變數在單點上的機率為零。對任意實數 $a$，
+此外，只要 CDF 在 $a$ 處連續，單點 $\{a\}$ 的機率便為零。在可由 PDF 描述的情形下，對任意實數 $a$，此結果可寫為
 
 $$
 \mathbb{P}(X=a)=\int_a^a f_X(t)\,dt=0
@@ -215,7 +215,7 @@ $$
 | 型態 | $\lbrace X\leqslant x\rbrace$ 的機率如何計算 | CDF 的形狀 |
 | --- | --- | --- |
 | 離散型 | **加總**不超過 $x$ 的單點機率 | 階梯狀，有跳躍 |
-| 連續型 | **積分** $(-\infty,x]$ 上的密度 | 通常平滑累積 |
+| 具有 PDF 的連續型 | **積分** $(-\infty,x]$ 上的密度 | 通常平滑累積 |
 
 PMF 與 PDF 分別記錄離散型與連續型的計算方式。前者記錄單點機率，後者記錄累積機率的變化率；二者最後都回到同一個累積分配函數。
 

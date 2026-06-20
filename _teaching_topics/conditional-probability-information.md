@@ -52,7 +52,7 @@ $$
 ## 條件機率
 
 <div class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 1.13</div>
+<div class="topic-box__label">Definition 1.15</div>
 
 令 $A,B\in\mathcal{F}$，且 $\mathbb{P}(B)>0$。則**在給定 $B$ 發生之下，$A$ 發生的條件機率 (conditional probability)** 定義為
 

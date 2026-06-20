@@ -182,7 +182,13 @@ $$
 <div class="topic-box topic-box--proposition" markdown="1">
 <div class="topic-box__label">Proposition 2.5 (Expectation of a Function of $X$)</div>
 
-若 $X$ 為離散型隨機變數，且 $g$ 為實值函數，則在和式收斂時，
+若 $X$ 為離散型隨機變數，且 $g$ 為實值函數。當
+
+$$
+\sum_{x\in\mathcal{R}_X}|g(x)|p_X(x)<\infty
+$$
+
+時，
 
 $$
 \mathbb{E}[g(X)]
@@ -190,7 +196,13 @@ $$
 \sum_{x\in\mathcal{R}_X} g(x)p_X(x)
 $$
 
-若 $X$ 為連續型隨機變數，PDF 為 $f_X$，則在積分收斂時，
+若 $X$ 為具有 PDF $f_X$ 的連續型隨機變數，且
+
+$$
+\int_{-\infty}^{\infty}|g(x)|f_X(x)\,dx<\infty
+$$
+
+則
 
 $$
 \mathbb{E}[g(X)]

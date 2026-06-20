@@ -37,6 +37,15 @@ $$
 
 且在某些區間上的機率由密度函數積分取得，則稱 $X$ 為**混合型隨機變數 (mixed random variable)**。
 
+較完整地說，其 CDF 可唯一寫成
+
+$$
+F_X(x)=\alpha F_d(x)+(1-\alpha)F_c(x),
+\qquad 0\leqslant\alpha\leqslant 1
+$$
+
+其中 $F_d$ 與 $F_c$ 分別是正規化後的離散型與連續型 CDF，而 $\alpha$ 表示全部離散質點所佔的總機率。
+
 </div>
 
 此時只寫 PMF 或只寫 PDF 都不足以描述整個分配。PMF 只能記錄單點機率，PDF 的面積只能記錄連續部分。CDF 則仍可完整呈現兩者。
@@ -192,7 +201,7 @@ $$
 F_X(x)=\alpha F_d(x)+(1-\alpha)F_c(x)
 $$
 
-其中 $F_d$ 是離散部分的 CDF，對應的離散機率函數為 $f_d$。$F_c$ 是連續部分的 CDF，對應 PDF 為 $f_c$，則
+其中 $0\leqslant\alpha\leqslant 1$，$F_d$ 是正規化後的離散部分 CDF，對應的離散機率函數為 $f_d$。$F_c$ 是正規化後的連續部分 CDF，對應 PDF 為 $f_c$，則
 
 <div class="topic-box topic-box--proposition" markdown="1">
 <div class="topic-box__label">Proposition 2.9 (Mixed Calculation Rule)</div>

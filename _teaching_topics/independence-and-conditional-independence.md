@@ -38,7 +38,7 @@ $$
 不過，這個寫法需要 $\mathbb{P}(B)>0$。為了讓定義在一般情況下也可使用，我們通常把條件機率式改寫成乘法形式。
 
 <div class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 1.15</div>
+<div class="topic-box__label">Definition 1.17</div>
 
 令 $A,B\in\mathcal{F}$。若
 
@@ -137,7 +137,7 @@ $$
 兩個事件的獨立只需要檢查一次交集。但當事件變多時，事情會更細緻。三個事件 $A,B,C$ 彼此成對獨立，並不保證三者共同獨立。
 
 <div class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 1.16</div>
+<div class="topic-box__label">Definition 1.18</div>
 
 令 $A_1,\ldots,A_n\in\mathcal{F}$。若對任意 $2\le k\le n$ 與任意相異指標 $i_1,\ldots,i_k$，皆有
 
@@ -209,7 +209,7 @@ $$
 在貝氏定理與分類問題中，我們常會先固定某個狀態，再討論事件之間是否獨立。這稱為條件獨立。
 
 <div class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 1.17</div>
+<div class="topic-box__label">Definition 1.19</div>
 
 令 $A,B,C\in\mathcal{F}$，且 $\mathbb{P}(C)>0$。若
 
