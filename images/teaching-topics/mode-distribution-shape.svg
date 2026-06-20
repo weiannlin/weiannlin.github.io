@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="340" viewBox="0 0 940 340" role="img" aria-labelledby="title desc">
+  <title id="title">Number of modes</title>
+  <desc id="desc">Three smooth density sketches comparing unimodal, bimodal, and multimodal distributions.</desc>
+  <defs>
+    <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 1 1 L 7 4 L 1 7 Z" fill="#1f1c18"/>
+    </marker>
+    <style>
+      .axis { stroke: #1f1c18; stroke-width: 1.7; marker-end: url(#axis-arrow); }
+      .panel { fill: none; stroke: #c9c1b4; stroke-width: 1.5; }
+      .curve { fill: none; stroke: #1f1c18; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .shade { fill: #d8b7aa; opacity: 0.38; }
+      .mode-line { stroke: #9c2d2d; stroke-width: 2; stroke-dasharray: 6 5; }
+      .label { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #1f1c18; font-size: 18px; }
+      .small { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #5b5148; font-size: 15px; }
+    </style>
+  </defs>
+
+  <rect x="18" y="18" width="904" height="304" rx="18" fill="none" stroke="#c9c1b4" stroke-width="2"/>
+
+  <g transform="translate(42,50)">
+    <rect class="panel" x="0" y="0" width="252" height="220" rx="12"/>
+    <line class="axis" x1="16" y1="174" x2="238" y2="174"/>
+    <path class="shade" d="M 28 174 C 64 174, 86 100, 126 100 C 166 100, 188 174, 224 174 Z"/>
+    <path class="curve" d="M 28 174 C 64 174, 86 100, 126 100 C 166 100, 188 174, 224 174"/>
+    <line class="mode-line" x1="126" y1="100" x2="126" y2="174"/>
+    <text class="small" x="126" y="28" text-anchor="middle">單峰分配</text>
+    <text class="label" x="126" y="205" text-anchor="middle">一個高峰</text>
+  </g>
+
+  <g transform="translate(344,50)">
+    <rect class="panel" x="0" y="0" width="252" height="220" rx="12"/>
+    <line class="axis" x1="16" y1="174" x2="238" y2="174"/>
+    <path class="shade" d="M 24 174 C 46 174, 58 108, 86 108 C 112 108, 122 158, 136 158 C 150 158, 162 108, 190 108 C 218 108, 230 174, 232 174 Z"/>
+    <path class="curve" d="M 24 174 C 46 174, 58 108, 86 108 C 112 108, 122 158, 136 158 C 150 158, 162 108, 190 108 C 218 108, 230 174, 232 174"/>
+    <line class="mode-line" x1="86" y1="108" x2="86" y2="174"/>
+    <line class="mode-line" x1="190" y1="108" x2="190" y2="174"/>
+    <text class="small" x="126" y="28" text-anchor="middle">雙峰分配</text>
+    <text class="label" x="126" y="205" text-anchor="middle">兩個高峰</text>
+  </g>
+
+  <g transform="translate(646,50)">
+    <rect class="panel" x="0" y="0" width="252" height="220" rx="12"/>
+    <line class="axis" x1="10" y1="174" x2="246" y2="174"/>
+    <path class="shade" d="M 18 174 C 42 174, 52 126, 72 126 C 94 126, 104 164, 116 164 C 128 164, 138 104, 154 104 C 176 104, 184 150, 194 150 C 206 150, 212 126, 218 126 C 228 126, 232 170, 234 174 Z"/>
+    <path class="curve" d="M 18 174 C 42 174, 52 126, 72 126 C 94 126, 104 164, 116 164 C 128 164, 138 104, 154 104 C 176 104, 184 150, 194 150 C 206 150, 212 126, 218 126 C 228 126, 232 170, 234 174"/>
+    <line class="mode-line" x1="72" y1="126" x2="72" y2="174"/>
+    <line class="mode-line" x1="154" y1="104" x2="154" y2="174"/>
+    <line class="mode-line" x1="218" y1="126" x2="218" y2="174"/>
+    <text class="small" x="126" y="28" text-anchor="middle">多峰分配</text>
+    <text class="label" x="126" y="205" text-anchor="middle">多個高峰</text>
+  </g>
+</svg>
