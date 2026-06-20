@@ -5,14 +5,14 @@ layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 1
-topic: 6
-order: 106
+topic: 7
+order: 107
 permalink: /teaching-topics/total-probability-bayes-rule/
 date: 2026-05-05
 excerpt: "當樣本空間被一組互斥且周延的事件分割時，事件可以被拆成互斥片段；全機率定理將各來源的貢獻加總，並為辛普森悖論與貝氏定理提供共同骨架。"
 ---
 
-[上一篇文章](/teaching-topics/conditional-probability-information/)把條件機率理解為「資訊進來以後的重新評估」。本篇換一個角度來看。若事件 $B$ 可能由許多不同來源造成，可以先把樣本空間依來源切開，再分別計算各來源對 $B$ 的貢獻。
+[上一篇文章](/teaching-topics/independence-and-conditional-independence/)討論了資訊進來後機率是否改變。本篇換一個角度來看。若事件 $B$ 可能由許多不同來源造成，可以先把樣本空間依來源切開，再分別計算各來源對 $B$ 的貢獻。
 
 這正是**分割 (partition)** 與**全機率定理 (the law of total probability)** 的角色。它們讓我們把一個總機率拆成幾個互斥片段來計算，先切開來源，逐一計算各來源對目標事件的貢獻，最後再加總。
 
@@ -111,7 +111,7 @@ $$
 這個公式的意思很樸素。先看每個來源 $A_i$ 本身有多常出現，再看在該來源之下 $B$ 有多容易發生，最後把所有來源的貢獻加總起來。換句話說，這就是機率問題中的**分而治之**。先把問題依來源切成互不重疊的小問題，再把每一塊的貢獻加回來。在英文片語當中常常聽到的 <span class="text-nowrap">divide-and-conquer</span>，在這裡就是這個意思。
 
 <div class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.10 (The Monty Hall Problem)</div>
+<div class="topic-box__label">Example 1.12 (The Monty Hall Problem)</div>
 
 蒙提霍爾問題 (Monty Hall problem) 是一個源自真實歷史故事的數學問題。它得名自美國電視遊戲節目 <span class="text-nowrap">Let's Make a Deal</span>；節目主持人正是 Monty Hall。這個實境節目自 1963 年開始播出，節目的張力在於「交易」。參賽者可以保留手上的東西，也可以相信主持人的邀請，換成門後、箱子裡或布幕後的未知獎品。這種舞台效果後來被整理成三扇門的標準機率問題；看起來像是剩下兩扇門各半，實際上主持人掌握資訊並刻意打開羊門，才是計算時不能忽略的線索。
 
@@ -162,7 +162,7 @@ Monty Hall 問題還有一個等價外衣，稱為三囚徒問題 (three prisone
 </div>
 
 <div id="example-111" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.11 (Manufacturing Defects)</div>
+<div class="topic-box__label">Example 1.13 (Manufacturing Defects)</div>
 
 三台機器 $M_1,M_2,M_3$ 製造同一種產品，分別負責總產量的 $20\%,30\%,50\%$；其產品不良率依序為 $5\%,4\%,2\%$。現在從全部產品中隨機抽出一件，問題是抽到不良品的總機率是多少？
 
@@ -200,7 +200,7 @@ $$
 <div id="interlude-16-tree" class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 1.6</div>
 
-如果把 Example 1.11 畫成一張橫向樹狀圖，第一層先問「產品來自哪台機器」，第二層才問「它是否為不良品」。三台機器各自分成 $D$ 與 $D^{\prime}$，因此總共有六條路徑。
+如果把 Example 1.13 畫成一張橫向樹狀圖，第一層先問「產品來自哪台機器」，第二層才問「它是否為不良品」。三台機器各自分成 $D$ 與 $D^{\prime}$，因此總共有六條路徑。
 
 <figure class="topic-figure topic-figure--medium">
   <img src="/images/teaching-topics/total-probability-tree-defects.svg" alt="三台機器各自分成不良品 D 與非不良品 D prime 的橫向樹狀圖，其中通往 D 的三條路徑以紅色標示。">
@@ -223,6 +223,7 @@ $$
 
 ## 參考文獻與延伸閱讀
 
+- 黃文璋，2003，《機率論》，初版，華泰文化。
 - Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
 - Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.
 - Steve Selvin. 1975. “A Problem in Probability.” *The American Statistician* 29 (1): 67.

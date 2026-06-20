@@ -304,6 +304,8 @@ $$
 
 ## 參考文獻與延伸閱讀
 
+- 黃文璋，2003，《機率論》，初版，華泰文化。
+- 黃文璋，2003，《數理統計》，初版，華泰文化。
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.

@@ -5,15 +5,15 @@ layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 2
-topic: 7
-order: 207
+topic: 5
+order: 205
 permalink: /teaching-topics/mixed-random-variables/
 date: 2026-06-08
 published: true
 excerpt: "混合型隨機變數同時具有單點機率與連續密度。CDF 可同時呈現跳躍與連續累積，計算時則把離散部分加總、連續部分積分。"
 ---
 
-[上一篇文章](/teaching-topics/variance-standard-deviation/)討論期望值、變異數與標準差。到目前為止，我們已經分別處理離散型與連續型隨機變數。離散型的機率集中在單點上，事件機率由 PMF 加總取得；連續型的單點不具有正機率，事件機率由 PDF 的面積取得。
+[上一篇文章](/teaching-topics/continuous-random-variables-pdf/)討論了連續型隨機變數與 PDF。到目前為止，我們已經分別處理離散型與連續型隨機變數。離散型的機率集中在單點上，事件機率由 PMF 加總取得；連續型的單點不具有正機率，事件機率由 PDF 的面積取得。
 
 實際建模時，兩種情形可能同時出現。以每日降雨量為例，某一天完全沒有下雨時，降雨量正好等於 $0$，這是一個單點事件；若當天有下雨，降雨量則可能在某個區間內連續變動。這樣的隨機變數便稱為**混合型隨機變數 (mixed random variable)**。
 
@@ -23,11 +23,11 @@ excerpt: "混合型隨機變數同時具有單點機率與連續密度。CDF 可
 
 <figure class="topic-figure topic-figure--wide">
   <img src="/images/teaching-topics/mixed-random-variable-cdf.svg" alt="混合型隨機變數的 CDF 在 0 發生跳躍，並在 0 到 1 之間連續上升。">
-  <figcaption><span class="topic-figure__label">Fig. 2.15.</span> 混合型隨機變數的 CDF 可能同時具有跳躍與連續上升。圖中 $x=0$ 的跳躍高度為 $\mathbb{P}(X=0)=1/3$，而 $0<x<1$ 的上升來自連續密度的累積。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 2.13.</span> 混合型隨機變數的 CDF 可能同時具有跳躍與連續上升。圖中 $x=0$ 的跳躍高度為 $\mathbb{P}(X=0)=1/3$，而 $0<x<1$ 的上升來自連續密度的累積。</figcaption>
 </figure>
 
 <div class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 2.9</div>
+<div class="topic-box__label">Definition 2.5</div>
 
 若隨機變數 $X$ 的機率分配可拆成離散部分與連續部分，亦即對某些點 $x_i$ 有
 
@@ -49,6 +49,61 @@ $$
 </div>
 
 此時只寫 PMF 或只寫 PDF 都不足以描述整個分配。PMF 只能記錄單點機率，PDF 的面積只能記錄連續部分。CDF 則仍可完整呈現兩者。
+
+<div class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 2.5 (A CDF with a Jump at Zero)</div>
+
+令 $X$ 的 CDF 為
+
+$$
+F_X(x)=
+\left\{
+\begin{array}{c@{\quad}l}
+0, & x<0,\\[0.35em]
+1-0.8e^{-x}, & x\geqslant 0
+\end{array}
+\right.
+$$
+
+這個 CDF 在 $x=0$ 的右側值為
+
+$$
+F_X(0)=1-0.8=0.2
+$$
+
+而左極限為
+
+$$
+F_X(0^-)=0
+$$
+
+因此 $X$ 在 $0$ 有單點機率
+
+$$
+\mathbb{P}(X=0)=F_X(0)-F_X(0^-)=0.2
+$$
+
+在 $x>0$ 的連續部分，密度可由 CDF 微分取得。
+
+$$
+\frac{d}{dx}\left(1-0.8e^{-x}\right)=0.8e^{-x}
+$$
+
+所以這個混合型隨機變數可寫成
+
+$$
+f_X(x)=
+\left\{
+\begin{array}{c@{\quad}l}
+0.2, & x=0,\\[0.35em]
+0.8e^{-x}, & x>0,\\[0.35em]
+0, & \text{otherwise}
+\end{array}
+\right.
+$$
+
+這裡的第一列是單點機率，第二列是連續密度。二者不能用同一種方式解讀。
+</div>
 
 ## 一個簡化的降雨量模型
 
@@ -168,7 +223,7 @@ $$
 混合型隨機變數的計算方式很直接。若事件包含某個具有正機率的單點，就把該點機率加進來；若事件包含某段連續區間，就再加上該區間的密度面積。
 
 <div id="example-29" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.9 (A Mixed Rainfall Model)</div>
+<div class="topic-box__label">Example 2.6 (A Mixed Rainfall Model)</div>
 
 延續上面的降雨量模型。若要求 $X\leqslant 1/2$ 的機率，事件可拆成兩部分。第一部分是完全沒下雨，也就是 $X=0$；第二部分是有下雨，且降雨量落在 $(0,1/2]$。
 
@@ -193,82 +248,11 @@ $$
 這個例子同時使用了離散型的加總與連續型的積分。混合型隨機變數的計算並不是第三套全新的方法，而是把前面兩套方法放在同一個分配中使用。
 </div>
 
-## 期望值與變異數
+## 後續量數的計算預告
 
-函數期望值也可以用相同方式拆開。若
+本篇先把混合型分配的機率計算整理清楚。等到下一篇正式定義期望值後，同一個拆分原則仍會保留下來：單點部分用加總，連續部分用積分，再按照各自的混合比例加權。
 
-$$
-F_X(x)=\alpha F_d(x)+(1-\alpha)F_c(x)
-$$
-
-其中 $0\leqslant\alpha\leqslant 1$，$F_d$ 是正規化後的離散部分 CDF，對應的離散機率函數為 $f_d$。$F_c$ 是正規化後的連續部分 CDF，對應 PDF 為 $f_c$，則
-
-<div class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Proposition 2.9 (Mixed Calculation Rule)</div>
-
-在相關加總與積分皆收斂時，
-
-$$
-\mathbb{E}[g(X)]
-=
-\alpha\sum_i g(x_i)f_d(x_i)
-+(1-\alpha)\int_{-\infty}^{\infty}g(x)f_c(x)\,dx
-$$
-
-</div>
-
-取 $g(x)=x$ 時，可得到期望值；取 $g(x)=x^2$ 時，可先求 $\mathbb{E}(X^2)$，再用變異數的計算公式求得 $\mathrm{Var}(X)$。
-
-<div class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.10 (Mean and Variance of the Mixed Rainfall Model)</div>
-
-延續 [Example 2.9 的降雨量模型](#example-29)。由混合型的計算規則可得
-
-$$
-\mathbb{E}(X)
-=
-\frac{1}{3}\cdot 0
-+\frac{2}{3}\int_0^1 x\cdot 1\,dx
-=
-\frac{1}{3}
-$$
-
-接著計算二次方的期望值。
-
-$$
-\mathbb{E}(X^2)
-=
-\frac{1}{3}\cdot 0^2
-+\frac{2}{3}\int_0^1 x^2\cdot 1\,dx
-=
-\frac{2}{9}
-$$
-
-因此
-
-$$
-\mathrm{Var}(X)
-=
-\mathbb{E}(X^2)-[\mathbb{E}(X)]^2
-=
-\frac{2}{9}-\left(\frac{1}{3}\right)^2
-=
-\frac{1}{9}
-$$
-
-標準差為變異數開根號而得，因此
-
-$$
-\mathrm{SD}(X)
-=
-\sqrt{\mathrm{Var}(X)}
-=
-\frac{1}{3}
-$$
-
-標準差的定義只依賴變異數，與隨機變數屬於離散型、連續型或混合型無關。
-
-</div>
+也就是說，混合型隨機變數並不是第三套完全不同的理論。它只是提醒我們，描述一個分配時要同時保留兩件事：哪些點具有正機率，以及哪些區間由密度面積累積機率。
 
 ## 本篇小結
 
@@ -282,12 +266,13 @@ $$
 \text{連續密度積分}
 $$
 
-期望值、變異數與標準差也使用相同原則。混合型隨機變數把兩種算法放在同一個模型中，也讓離散型與連續型的計算方式在同一篇文章中重新整理一次。
+後續定義期望值、變異數與標準差時，也會使用相同原則。混合型隨機變數把兩種算法放在同一個模型中，也讓離散型與連續型的計算方式在同一篇文章中重新整理一次。
 
-期望值描述了一個分配的「重心位置」所在，而標準差則說明這個分配的「變異程度」。這給我們一個自然的方向。當我們想要比較某些個體在不同群體中的數值高低，譬如一名學生在考試中取得數學成績 $60$ 分與自然成績 $80$ 分，哪個表現較為優異，便需要用到方才回顧的群體重心位置以及變異程度。這會帶出[下一篇文章](/teaching-topics/linear-transformations-standardization/)中的統計標準化。
+下一篇[期望值，隨機變數的平均位置](/teaching-topics/expected-value-random-variables/)會開始討論如何用機率權重整理一個代表分配位置的數值。
 
 ## 參考文獻與延伸閱讀
 
+- 黃文璋，2003，《機率論》，初版，華泰文化。
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.

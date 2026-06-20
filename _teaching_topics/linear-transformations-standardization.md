@@ -13,7 +13,7 @@ published: true
 excerpt: "線性轉換會平移或伸縮隨機變數的尺度。標準化則先扣掉平均位置，再除以標準差，使不同尺度下的數值可以用 z-score 比較相對位置。"
 ---
 
-[上一篇文章](/teaching-topics/mixed-random-variables/)同時回顧了離散型與連續型的計算方式，也再次用到期望值、變異數與標準差。期望值描述分配的平均位置，標準差描述分配的變異程度。有了這兩個量，便能進一步討論一個常見問題。
+[上一篇文章](/teaching-topics/variance-standard-deviation/)討論變異數與標準差。期望值描述分配的平均位置，標準差描述分配的變異程度。有了這兩個量，便能進一步討論一個常見問題。
 
 若一名學生的數學成績為 $60$ 分，自然成績為 $80$ 分，哪一科的相對表現較高？只看原始分數時，自然成績比較高。不過，若數學考試整體偏難，而自然考試整體偏易，這個判斷就未必恰當。此時需要知道各科成績分配的平均位置與變異程度，才能把兩個不同尺度下的數值放在同一個基準上比較。
 
@@ -258,10 +258,11 @@ $$
 \mathrm{SD}(Z)=1
 $$
 
-z-score 適合用來描述個體在所屬分配中的相對位置。[下一篇文章](/teaching-topics/quantiles-and-median/)會轉向分位數、百分位數與中位數。標準化關心的是某個個體離平均位置多遠；分位數則描述整個分配各處位置如何切分。
+z-score 適合用來描述個體在所屬分配中的相對位置。[下一篇文章](/teaching-topics/quantiles-and-median/)會改從 CDF 出發，討論分位數、百分位數與中位數如何描述分配位置。
 
 ## 參考文獻與延伸閱讀
 
+- 黃文璋，2003，《機率論》，初版，華泰文化。
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.

@@ -5,24 +5,24 @@ layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 2
-topic: 5
-order: 205
+topic: 6
+order: 206
 permalink: /teaching-topics/expected-value-random-variables/
 date: 2026-06-06
 published: true
 excerpt: "分配說明隨機變數的機率在數線上的分配情形。期望值則依照這些機率作加權平均，給出隨機變數的平均位置。離散型以 PMF 加總，連續型以 PDF 積分。"
 ---
 
-[上一篇文章](/teaching-topics/continuous-random-variables-pdf/)說明了連續型隨機變數與 PDF。到目前為止，我們已經看過 CDF、PMF 與 PDF。這些函數描述的是隨機變數的機率在數線上的分配情形。
+[上一篇文章](/teaching-topics/mixed-random-variables/)整理了離散、連續與混合型隨機變數。到目前為止，我們已經看過 CDF、PMF 與 PDF。這些函數描述的是隨機變數的機率在數線上的分配情形。
 
-若分配已經指定，接下來常需要整理一個代表整體位置的數值。黃文璋老師在《數理統計》中也從「代表值」的角度說明期望值，指出我們常希望用一個單一數值掌握隨機變數大致多大，而期望值正是最常使用的選擇之一。這個數值稱為**期望值 (expected value)**，也常稱為**平均數 (mean)**。期望值不是指某次實驗最可能出現的結果，也不必然是隨機變數真的可能取到的值；它是依照機率權重所得到的平均位置。
+若分配已經指定，接下來常需要整理一個代表整體位置的數值。我們常希望用一個單一數值掌握隨機變數大致多大，而期望值正是最常使用的選擇之一。這個數值稱為**期望值 (expected value)**，也常稱為**平均數 (mean)**。期望值不是指某次實驗最可能出現的結果，也不必然是隨機變數真的可能取到的值；它是依照機率權重所得到的平均位置。
 
 ## 離散型期望值
 
 先從離散型隨機變數開始。若 $X$ 的可能取值集合為 $\mathcal{R}_X$，且 PMF 為 $p_X(x)=\mathbb{P}(X=x)$，則期望值就是把每個可能取值乘上該點機率，再全部加總。
 
 <div class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 2.5</div>
+<div class="topic-box__label">Definition 2.6</div>
 
 令 $X$ 為離散型隨機變數，可能取值集合為 $\mathcal{R}_X$，PMF 為 $p_X$。若
 
@@ -69,8 +69,8 @@ $$
 這正是此母體機率分配下的期望值。所謂加權平均並沒有離開原本的算術平均；它只是把相同的資料值先作同類項合併，再用出現比例作為權重。
 </div>
 
-<div class="topic-box topic-box--example" id="example-25" markdown="1">
-<div class="topic-box__label">Example 2.5 (Two Balls without Replacement)</div>
+<div id="example-25" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 2.7 (Two Balls without Replacement)</div>
 
 延續[離散型隨機變數與 PMF](/teaching-topics/discrete-random-variables-pmf/)中的例子。箱中有四顆大小形狀完全相同、分別編號 $0,1,2,3$ 的球。從中一次抽取兩顆球，不考慮抽取順序，令 $X$ 表示兩顆球的號碼總和。
 
@@ -97,7 +97,7 @@ $$
 
 <figure class="topic-figure topic-figure--wide">
   <img src="/images/teaching-topics/expected-value-balance.svg" alt="離散分配的期望值作為平均位置。點 1 到 5 上有不同機率質量，平均位置位於 3。">
-  <figcaption><span class="topic-figure__label">Fig. 2.13.</span> 期望值可視為此一分配的平均位置。此例中 $x=3$ 的機率質量較大，左右兩側仍以機率權重平衡在 $\mathbb{E}(X)=3$。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 2.14.</span> 期望值可視為此一分配的平均位置。此例中 $x=3$ 的機率質量較大，左右兩側仍以機率權重平衡在 $\mathbb{E}(X)=3$。</figcaption>
 </figure>
 
 <div class="topic-box topic-box--interlude" markdown="1">
@@ -124,7 +124,7 @@ $$
 連續型隨機變數沒有可逐一相加的單點機率。若 $X$ 的 PDF 為 $f_X$，則期望值由積分定義。這與離散型的公式相互呼應，只是把加總改為積分，把 PMF 改為 PDF。
 
 <div class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 2.6</div>
+<div class="topic-box__label">Definition 2.7</div>
 
 令 $X$ 為連續型隨機變數，PDF 為 $f_X$。若
 
@@ -145,7 +145,7 @@ $$
 在離散型中，$p_X(x)$ 是各點的權重。在連續型中，$f_X(x)\,dx$ 扮演相應角色，表示 $x$ 附近很短一段區間所分到的機率。因此，連續型期望值仍然是加權平均，只是權重透過密度面積取得。
 
 <div class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.6 (Uniform Distribution on $[0,1]$)</div>
+<div class="topic-box__label">Example 2.8 (Uniform Distribution on $[0,1]$)</div>
 
 令 $X$ 的 PDF 為
 
@@ -266,6 +266,28 @@ $$
 
 這個規則稱為**期望值的線性關係 (linearity of expectation)**。計算變異數時，常會先把平方展開，再使用此關係把期望值拆開處理。
 
+## 期望值與平方損失
+
+期望值還有一個重要的解釋。若想用一個常數 $a$ 代表隨機變數 $X$，可以用平均平方距離
+
+$$
+\mathbb{E}\big[(X-a)^2\big]
+$$
+
+衡量 $a$ 與 $X$ 的整體差距。當 $\mathbb{E}(X^2)$ 存在時，這個量可展開為
+
+$$
+\begin{aligned}
+\mathbb{E}\big[(X-a)^2\big]
+&=\mathbb{E}\big[(X-\mu_X+\mu_X-a)^2\big]\\[0.45em]
+&=\mathbb{E}\big[(X-\mu_X)^2\big]+(\mu_X-a)^2
+\end{aligned}
+$$
+
+其中 $\mu_X=\mathbb{E}(X)$。右邊第一項與 $a$ 無關，第二項在 $a=\mu_X$ 時達到最小。因此，期望值也是使 $\mathbb{E}[(X-a)^2]$ 最小的常數。
+
+這個性質會自然銜接到下一篇的變異數。變異數正是把 $a$ 選成最合適的代表值 $\mu_X$ 後，所剩下的平均平方離差。
+
 ## 期望值可能不存在
 
 期望值雖然常被稱為平均數，但不是每個隨機變數都有有限期望值。若尾端機率下降得太慢，遠處的大數值仍可能對平均造成不可忽略的影響。此時相關的加總或積分可能發散。
@@ -306,8 +328,9 @@ $$
 
 ## 參考文獻與延伸閱讀
 
+- 黃文璋，2003，《機率論》，初版，華泰文化。
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
-- 楊維哲，1978，〈機率一講〉，《數學傳播》2(3)。[EpisteMath 重刊](https://episte.math.ntu.edu.tw/articles/mm/mm_02_3_11/)。
+- 楊維哲，1978，〈機率一講〉，《數學傳播》2(3)。
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.

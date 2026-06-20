@@ -5,8 +5,8 @@ layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 1
-topic: 7
-order: 107
+topic: 8
+order: 108
 permalink: /teaching-topics/group-mixing-simpsons-paradox/
 date: 2026-05-17
 published: true
@@ -42,7 +42,7 @@ $$
 假設有兩位醫師，稱為醫師 $A$ 與醫師 $B$。病患可以分為低風險 $C_1$ 與高風險 $C_2$。在每個風險分組內，醫師 $A$ 的手術成功率都比較高。
 
 <div class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.12 (A Simpson Reversal)</div>
+<div class="topic-box__label">Example 1.14 (A Simpson Reversal)</div>
 
 低風險病患中，醫師 $A$ 有 $9$ 人成功、$1$ 人失敗，醫師 $B$ 有 $72$ 人成功、$18$ 人失敗。因此
 
@@ -103,8 +103,9 @@ $$
 
 ## 參考文獻與延伸閱讀
 
+- 黃文璋，2003，《機率論》，初版，華泰文化。
 - G. Udny Yule. 1903. “Notes on the Theory of Association of Attributes in Statistics.” *Biometrika* 2 (2): 121–134.
 - Edward H. Simpson. 1951. “The Interpretation of Interaction in Contingency Tables.” *Journal of the Royal Statistical Society, Series B* 13 (2): 238–241.
 - Colin R. Blyth. 1972. “On Simpson’s Paradox and the Sure-Thing Principle.” *Journal of the American Statistical Association* 67 (338): 364–366.
 - P. J. Bickel, E. A. Hammel, and J. W. O’Connell. 1975. “Sex Bias in Graduate Admissions: Data from Berkeley.” *Science* 187 (4175): 398–404.
-- Jan Sprenger and Naftali Weinberger. 2022. “Simpson’s Paradox.” In Edward N. Zalta, ed., *The Stanford Encyclopedia of Philosophy*, Fall 2022 ed. [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/Archives/fall2022/entries/paradox-simpson/).
+- Jan Sprenger and Naftali Weinberger. 2022. “Simpson’s Paradox.” In Edward N. Zalta, ed., *The Stanford Encyclopedia of Philosophy*. Fall 2022 ed.

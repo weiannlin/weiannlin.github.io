@@ -270,10 +270,11 @@ $$
 | 乘法原理 | $\mathbb{P}(A\cap B)=\mathbb{P}(A\mid B)\,\mathbb{P}(B)$ | 用條件機率還原交集機率 |
 | 廣義乘法原理 | 依序相乘 | 適合描述逐步加入條件的篩選過程 |
 
-[下一篇文章](/teaching-topics/total-probability-bayes-rule/)將把條件機率與「分類」放在一起。若樣本空間被一組事件分割成互斥且完整的情況，我們就能得到全機率定理。再往後，若想用新資訊反過來修正原先對各種情況的判斷，就會進入貝氏定理。
+[下一篇文章](/teaching-topics/independence-and-conditional-independence/)將討論獨立性。若資訊進來以後，某個事件的機率完全不變，條件機率便退化成一種特別穩定的關係。
 
 ## 參考文獻與延伸閱讀
 
+- 黃文璋，2003，《機率論》，初版，華泰文化。
 - Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
 - Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.
 - Morris H. DeGroot and Mark J. Schervish. 2012. *Probability and Statistics*. 4th ed. Pearson.

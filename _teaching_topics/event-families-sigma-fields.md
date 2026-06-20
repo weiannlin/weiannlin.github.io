@@ -5,16 +5,16 @@ layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 1
-topic: 2
-order: 102
+topic: 3
+order: 103
 permalink: /teaching-topics/event-families-sigma-fields/
 date: 2026-05-05
 excerpt: '樣本空間只說明隨機實驗的所有可能結果；事件集合族則說明哪些由結果構成的集合值得被賦予機率。本篇以 $\sigma$-域作為可測事件的清單，說明可測空間與機率空間的第一層結構。'
 ---
 
-[上一篇文章](/teaching-topics/random-experiments-sample-space-events/)先把**事件 (event)** 理解為樣本空間的子集合。這個說法適合建立第一層直覺。樣本空間收納所有可能結果，而事件則是研究者所關心的一群結果。
+[上一篇文章](/teaching-topics/probability-assignment-classical-geometric/)說明了古典機率、幾何機率、客觀機率與主觀機率等指定方式。這些方式回答的是機率數值從哪裡來。
 
-不過，一旦樣本空間變得很複雜，枚舉這些結果並逐一討論就變得不切實際。機率函數不一定需要、也不一定能夠，對樣本空間的每一個任意子集合都賦予機率。於是，我們需要先指定一份「值得被賦予機率的事件之清單」。這份清單在機率論中通常用 $\mathcal{F}$ 表示。
+但在正式建立機率函數以前，還要先釐清它能作用在哪些事件上。樣本空間收納所有可能結果，而事件可先理解為樣本空間中的子集合。不過，一旦樣本空間變得很複雜，機率函數不一定需要、也不一定能夠，對樣本空間的每一個任意子集合都賦予機率。於是，我們需要先指定一份「值得被賦予機率的事件之清單」。這份清單在機率論中通常用 $\mathcal{F}$ 表示。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">閱讀提示</div>
@@ -129,7 +129,7 @@ $$
 介於兩者之間，還有許多不同的 $\sigma$-域。這表示我們在建立機率模型時，不只是在指定樣本空間，也是在指定哪些事件值得被機率函數處理。
 
 <div class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.3 (Generated Sigma-Field)</div>
+<div class="topic-box__label">Example 1.5 (Generated Sigma-Field)</div>
 
 考慮投擲一顆六面骰一次，令
 
@@ -222,10 +222,11 @@ $$
 | 可測空間 | $(S,\mathcal{F})$ | 指定可能結果與可測事件 |
 | 機率空間 | $(S,\mathcal{F},\mathbb{P})$ | 再加入機率函數 |
 
-因此，嚴格地說，事件不是任意子集合，而是屬於 $\mathcal{F}$ 的子集合。這個觀點在有限樣本空間中常常可以被簡化；但在連續樣本空間與極限操作中，$\sigma$-域正是讓機率模型能夠穩定運作的關鍵。下一篇將回到較直接的主題，也就是[機率如何被指定](/teaching-topics/probability-assignment-classical-geometric/)。
+因此，嚴格地說，事件不是任意子集合，而是屬於 $\mathcal{F}$ 的子集合。這個觀點在有限樣本空間中常常可以被簡化；但在連續樣本空間與極限操作中，$\sigma$-域正是讓機率模型能夠穩定運作的關鍵。下一篇將從 Kolmogorov 公理出發，整理[由公理推出的基本機率運算](/teaching-topics/probability-rules-from-axioms/)。
 
 ## 參考文獻與延伸閱讀
 
+- 黃文璋，2003，《機率論》，初版，華泰文化。
 - Andrey N. Kolmogorov. 1956. *Foundations of the Theory of Probability*. Translated by Nathan Morrison. Chelsea Publishing Company.
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - Achim Klenke. 2014. *Probability Theory: A Comprehensive Course*. 2nd ed. Springer London.

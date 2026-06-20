@@ -270,10 +270,12 @@ $$
 f_X(x)=F_X'(x)
 $$
 
-離散型與連續型使用同一個 CDF 定義，差異在於計算事件機率的方式。離散型以 PMF 加總，連續型以 PDF 積分。下一篇[期望值，隨機變數的平均位置](/teaching-topics/expected-value-random-variables/)會開始討論如何用這些機率函數計算分配的代表數值。
+離散型與連續型使用同一個 CDF 定義，差異在於計算事件機率的方式。離散型以 PMF 加總，連續型以 PDF 積分。下一篇[混合型隨機變數](/teaching-topics/mixed-random-variables/)會討論兩種型態同時出現時，如何在同一個 CDF 中處理單點跳躍與連續累積。
 
 ## 參考文獻與延伸閱讀
 
+- 黃文璋，2003，《機率論》，初版，華泰文化。
+- 黃文璋，2003，《數理統計》，初版，華泰文化。
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.

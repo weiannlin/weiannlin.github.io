@@ -12,7 +12,7 @@ date: 2026-05-05
 excerpt: "Kolmogorov 公理本身很短，卻能推出一整套機率運算規則。本篇從虛無事件、有限可加性與餘事件公式開始，進一步整理單調性、加法原理、排容原理與常用機率不等式。"
 ---
 
-[上一篇文章](/teaching-topics/probability-assignment-classical-geometric/)說明了不同情境下如何指定機率函數，也就是 $\mathbb{P}$ 的來源。一旦 $\mathbb{P}$ 被指定，並且滿足 Kolmogorov 公理，我們就可以不再依賴特定模型，而是直接從公理推出一系列共同成立的運算規則。
+[上一篇文章](/teaching-topics/event-families-sigma-fields/)整理了事件集合族、$\sigma$-域與機率空間。當 $(S,\mathcal{F},\mathbb{P})$ 被指定，且 $\mathbb{P}$ 滿足 Kolmogorov 公理後，我們就可以不再依賴特定模型，而是直接從公理推出一系列共同成立的運算規則。
 
 以下固定令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。除非特別說明，文中的事件皆是 $\mathcal{F}$ 中的事件。
 
@@ -345,6 +345,7 @@ $$
 
 ## 參考文獻與延伸閱讀
 
+- 黃文璋，2003，《機率論》，初版，華泰文化。
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
 - Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
 - Geoffrey Grimmett and David Stirzaker. 2001. *Probability and Random Processes*. 3rd ed. Oxford University Press.

@@ -6,6 +6,15 @@ The site began from the Academic Pages template and has since been customized in
 
 This README is a repository overview. It is not part of the public site navigation.
 
+## Working Notes for Codex
+
+Two internal files record the working rules for future Codex sessions.
+
+- `CODEX_PROJECT_MEMORY.md` records mandatory project rules, especially for Teaching Topics prose, notation, references, figures, and local preview workflow.
+- `PROJECT_HANDOFF.md` records the broader handoff: project goals, current teaching sequence, user preferences, source hierarchy, style decisions, figure conventions, and likely next steps.
+
+Future Codex sessions should read both files before editing the teaching materials.
+
 ## Site Structure
 
 The public website is organized around the following sections.

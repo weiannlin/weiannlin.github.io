@@ -5,15 +5,15 @@ layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 1
-topic: 9
-order: 109
+topic: 6
+order: 106
 permalink: /teaching-topics/independence-and-conditional-independence/
 date: 2026-05-17
 published: true
 excerpt: "獨立性描述的是一種特別的資訊關係。若知道事件 B 發生後，事件 A 的機率完全不變，則 B 對 A 沒有提供新的機率資訊。"
 ---
 
-[上一篇文章](/teaching-topics/bayes-rule-posterior-probability/)把貝氏定理理解為資訊更新規則。觀察到事件 $B$ 後，我們會重新評估某些來源或狀態的機率。
+[上一篇文章](/teaching-topics/conditional-probability-information/)把條件機率理解為資訊進來以後的重新評估。知道事件 $B$ 發生後，我們會在 $B$ 所代表的條件世界中重新計算事件 $A$ 的機率。
 
 本篇處理另一種同樣重要的情況。若事件 $B$ 已經發生，但這個資訊完全不改變事件 $A$ 的機率，那麼我們會說 $A$ 與 $B$ 彼此獨立。獨立性不是說兩件事都很隨機，也不是說它們沒有任何文字上的關係；它說的是，一件事的發生不改變另一件事的機率評估。
 
@@ -63,7 +63,7 @@ $$
 同理，若 $\mathbb{P}(A)>0$，則也有 $\mathbb{P}(B\mid A)=\mathbb{P}(B)$。
 
 <div class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.14 (A Die Roll)</div>
+<div class="topic-box__label">Example 1.10 (A Die Roll)</div>
 
 投擲一顆公正骰子一次。令
 
@@ -153,7 +153,7 @@ $$
 這個定義要求所有子群都滿足乘法規則。若只知道每一對事件都獨立，稱為**成對獨立 (pairwise independent)**；成對獨立比相互獨立弱。
 
 <div class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.15 (Pairwise but Not Mutual)</div>
+<div class="topic-box__label">Example 1.11 (Pairwise but Not Mutual)</div>
 
 連續投擲一枚公正硬幣兩次，樣本空間為
 
@@ -206,7 +206,7 @@ $$
 
 ## 條件獨立
 
-在貝氏定理與分類問題中，我們常會先固定某個狀態，再討論事件之間是否獨立。這稱為條件獨立。
+在貝氏定理與分割模型中，我們常會先固定某個狀態，再討論事件之間是否獨立。這稱為條件獨立。
 
 <div class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.19</div>
@@ -305,7 +305,13 @@ $$
 因此 $A$ 與 $B$ 在每個分割區塊內都條件獨立，混合回整體後卻不獨立。原因是未給定分割區塊時，$A$ 的發生會改變我們對目前落在哪個 $C_i$ 的判斷；而 $B$ 的發生機率也會隨 $C_i$ 改變。這種共同來源會在整體中留下關聯。
 </div>
 
-這也是 Naive Bayes 分類法常用的條件獨立近似。給定類別 $C_k$ 後，若可把觀察變數 $x_1,\ldots,x_m$ 近似看成條件獨立，便能把許多條件機率相乘。這個假設未必完全真實，但它把複雜的聯合分配拆成許多較容易估計的部分。
+這個例子也提醒我們，條件獨立與整體獨立不能互相替代。條件資訊若沒有被明確放進模型，混合後的整體關係可能完全不同。
+
+<!-- Future extension, hidden until a machine-learning or classification topic exists:
+Naive Bayes 分類法常用條件獨立近似。給定類別 $C_k$ 後，若可把觀察變數 $x_1,\ldots,x_m$ 近似看成條件獨立，便能把許多條件機率相乘。References to preserve for that future extension:
+- Christopher M. Bishop. 2006. Pattern Recognition and Machine Learning. Springer New York.
+- Judea Pearl, Madelyn Glymour, and Nicholas P. Jewell. 2016. Causal Inference in Statistics: A Primer. Wiley.
+-->
 
 ## 本篇小結
 
@@ -318,18 +324,17 @@ $$
 | 相互獨立 | 所有子群交集都滿足乘法規則 | 多事件一起看也不洩漏額外資訊 |
 | 條件獨立 | $\mathbb{P}(A\cap B\mid C)=\mathbb{P}(A\mid C)\,\mathbb{P}(B\mid C)$ | 固定在 $C$ 的世界裡，$A$ 與 $B$ 不再互相提供資訊 |
 
-條件機率討論資訊如何改變機率，貝氏定理討論資訊如何更新我們對於未知狀態的認知，獨立性則描述資訊進來後機率仍然不變的情形。這三件事合在一起，構成第一章後半部的重要內容。
+條件機率討論資訊如何改變機率，獨立性則描述資訊進來後機率仍然不變的情形。這兩件事合在一起，讓我們可以處理事件之間的影響關係。
 
-不過，到目前為止，我們討論的仍是事件的機率。每一個事件 $A$ 對應到一個數 $\mathbb{P}(A)$，這足以建立機率模型的基本架構；但若永遠只逐一討論事件，發展會比較受限。下一章會從[隨機變數，從樣本空間到數線](/teaching-topics/random-variables-from-sample-space-to-real-line/)開始，把樣本空間中的結果透過隨機變數映到數線上，使我們不只處理單一事件的機率，也能討論數值與機率之間的函數關係。這一步會讓期望、分配函數與極限分配等更多數學工具自然進入機率論。
+接著若樣本空間被一組互斥且沒有遺漏的事件切開，便可把整體事件拆成幾個來源來加總。這會導向[分割與全機率定理](/teaching-topics/total-probability-bayes-rule/)。
 
 ## 參考文獻與延伸閱讀
 
+- 黃文璋，2003，《機率論》，初版，華泰文化。
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - Y. S. Chow and Henry Teicher. 1997. *Probability Theory: Independence, Interchangeability, Martingales*. 3rd ed. Springer New York.
 - Ron C. Mittelhammer. 1996. *Mathematical Statistics for Economics and Business*. Springer New York, 31.
-- Christopher M. Bishop. 2006. *Pattern Recognition and Machine Learning*. Springer New York.
-- Judea Pearl, Madelyn Glymour, and Nicholas P. Jewell. 2016. *Causal Inference in Statistics: A Primer*. Wiley.
 - David A. Pierce and Richard L. Dykstra. 1969. “Independence and the Normal Distribution.” *The American Statistician* 23 (4): 39.
 - James D. Broffitt. 1986. “Zero Correlation, Independence, and Normality.” *The American Statistician* 40 (4): 276–277.
 - A. Philip Dawid. 1979. “Conditional Independence in Statistical Theory.” *Journal of the Royal Statistical Society, Series B* 41 (1): 1–15.

@@ -13,7 +13,7 @@ published: true
 excerpt: "事件機率把事件送到機率數值；隨機變數則先把樣本點送到實數，使我們可以用數線、函數與微積分方法描述機率。"
 ---
 
-[上一章最後一篇文章](/teaching-topics/independence-and-conditional-independence/)說明了獨立性。到那裡為止，我們討論的主要對象仍是事件。事件是樣本空間的子集合，而機率函數把可測事件送到 $0$ 與 $1$ 之間的數值。
+[上一章最後一篇文章](/teaching-topics/bayes-rule-posterior-probability/)完成了分割、全機率定理與貝氏定理的討論。到那裡為止，我們討論的主要對象仍是事件。事件是樣本空間的子集合，而機率函數把可測事件送到 $0$ 與 $1$ 之間的數值。
 
 $$
 \mathbb{P}:\mathcal{F}\longrightarrow [0,1]
@@ -106,6 +106,18 @@ $$
 所以 $\mathbb{P}(X=x)$ 的機率對象，是由 $X$ 定出的事件 $\{X=x\}$；數字 $x$ 只是用來指定這個事件的取值。
 </div>
 
+## 可能取值集合的型態
+
+隨機變數一旦把樣本點送到實數線上，就會形成一個可能取值集合
+
+$$
+\mathcal{R}_X=\{X(\omega)\mid \omega\in S\}
+$$
+
+這個集合的型態，會決定後續使用哪一種機率函數描述 $X$。若 $\mathcal{R}_X$ 是有限集合或可數無限集合，機率通常集中在可逐一列出的單點上，這會導向離散型隨機變數與 PMF。若可能取值落在區間上，而且單點不具有正機率，便會導向連續型隨機變數與 PDF。有些情形則同時具有單點機率與連續區間，後面會以混合型隨機變數處理。
+
+因此，隨機變數的定義先把樣本空間接到數線；離散、連續與混合型，是在觀察 $\mathcal{R}_X$ 與機率如何落在數線上之後才進一步區分。
+
 ## 由門檻事件定義累積分配函數
 
 隨機變數把樣本點送到數線上後，可以固定一個門檻 $x$，回頭審視哪些樣本點滿足 $X(\omega)\leqslant x$。這些樣本點形成事件 $\{X\leqslant x\}$，其機率即為**累積分配函數 (cumulative distribution function, CDF)**。在本講義中，CDF 也簡稱為**分配函數 (distribution function, DF)**。
@@ -162,6 +174,8 @@ $$
 
 ## 參考文獻與延伸閱讀
 
+- 黃文璋，2003，《機率論》，初版，華泰文化。
+- 黃文璋，2003，《數理統計》，初版，華泰文化。
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.

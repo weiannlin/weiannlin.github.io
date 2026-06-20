@@ -13,7 +13,7 @@ published: true
 excerpt: "標準化描述個體離平均位置幾個標準差。分位數與百分位數則從 CDF 出發，找出使累積機率達到指定比例的位置。中位數是其中最常用的特例。"
 ---
 
-[上一篇文章](/teaching-topics/linear-transformations-standardization/)討論標準化與 z-score。z-score 處理的是單一觀察值相對於其所屬分配的位置，說明該觀察值離平均位置幾個標準差。
+[上一篇文章](/teaching-topics/linear-transformations-standardization/)討論標準化與 z-score。標準化描述單一觀察值離平均位置幾個標準差；本篇改從累積機率來看分配的位置。
 
 本篇改從整個分配來看位置。若想知道一個分配的下方四分之一、中央位置或上方四分之一落在哪裡，就需要使用**分位數 (quantile)**。若將比例改用百分比表示，便得到常見的**百分位數 (percentile)**。分位數不是先固定一個 $x$ 再求機率，而是先固定一個機率比例，再回頭找出對應的數線位置。
 
@@ -253,10 +253,11 @@ $$
 
 第一四分位數與第三四分位數也會引出四分位距與盒鬚圖。不過，盒鬚圖主要用於整理樣本資料，屬於敘述統計的範圍。這裡先留作伏筆；日後討論敘述統計時，可再回頭比較機率分配中的分位數與樣本資料中的分位數。
 
-[下一篇文章](/teaching-topics/mode-and-distribution-shape/)將討論眾數與分配形狀。期望值、中位數與眾數都是中央趨勢量數，但它們對尾端或極端值的靈敏程度並不相同。
+[下一篇文章](/teaching-topics/mode-and-distribution-shape/)將討論眾數。到那時，期望值、中位數與眾數這三個中央趨勢量數便可放在一起比較，進一步觀察有偏分配中的相對位置。
 
 ## 參考文獻與延伸閱讀
 
+- 黃文璋，2003，《機率論》，初版，華泰文化。
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
 - Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
