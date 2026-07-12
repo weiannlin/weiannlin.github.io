@@ -188,7 +188,7 @@ $$
 \sum_{x\in\mathcal{R}_X}|g(x)|p_X(x)<\infty
 $$
 
-時，
+時，期望值存在且可寫為
 
 $$
 \mathbb{E}[g(X)]
@@ -237,7 +237,7 @@ $$
 a\mathbb{E}[g(X)]+b\mathbb{E}[h(X)]
 $$
 
-特別地，取 $g(X)=X$ 且 $h(X)=1$，可得
+取 $g(X)=X$ 且 $h(X)=1$，可得
 
 $$
 \mathbb{E}(aX+b)

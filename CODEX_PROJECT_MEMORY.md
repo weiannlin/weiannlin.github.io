@@ -1,5 +1,9 @@
 # Codex Project Memory
 
+## Read-First Hard Rule (all models, every reply)
+
+- 本專案的跨模型根規範是倉庫根目錄的 `SITE_STYLE_CANON.md`（本機限定、不入 git）。**任何模型（Codex、Claude 或其他）每一次回覆前都必須實際重新開檔復讀該檔的鐵律區與文風參照節**——只讀完本檔與 `PROJECT_HANDOFF.md` 就開工, 視同漏讀, 該次產出全數退件重做並記違規。若在你的環境中找不到該檔（例如非本機工作), 先向使用者索取, 不得逕行開工。
+
 ## Teaching Topics Rules
 
 - 每次重新接手本專案，或對話上下文被壓縮後，先閱讀本檔案，再修改 Teaching Topics 內容。此規則是硬性要求，不可只依賴壓縮摘要、模糊記憶或上一輪工作印象。

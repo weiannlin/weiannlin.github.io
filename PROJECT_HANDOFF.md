@@ -6,10 +6,12 @@ Before editing this project, read this file together with `CODEX_PROJECT_MEMORY.
 
 ## Primary Files To Read First
 
+- `SITE_STYLE_CANON.md`（倉庫根, 本機限定不入 git）是**跨模型根規範**: 鐵律區（每次回覆前復讀）、網站文風參照、三線規劃（Teaching Topics／Demos／manim 動畫線）。**先讀它, 再讀下列各檔**; 每次回覆前的復讀義務見其鐵律一。
+
 - `CODEX_PROJECT_MEMORY.md` is the hard-rule memory file. It records mandatory style, terminology, citation, LaTeX, cross-reference, and source-checking rules. It must be read after every context compression and before any Teaching Topics edit.
 - `PROJECT_HANDOFF.md` is this handoff file. It records the broader project direction, current status, editorial rationale, and accumulated user preferences.
 - `README.md` is the public repository overview. It is intentionally shorter and should not be treated as a complete workflow or writing specification.
-- `/Users/sagalin/Dropbox/.claude/用詞文風對照檔.md` is an external style reference requested by the user. When working on prose, consult it together with the user's MathStat source files.
+- `/Users/sagalin/Dropbox/書稿規範/用詞文風對照檔.md`（2026-07-05 自 .claude/ 遷入書稿規範資料夾） is an external style reference requested by the user. When working on prose, consult it together with the user's MathStat source files.
 - `/Users/sagalin/Dropbox/MathStat/chapters/` contains the user's source lecture/book material. This is the primary mathematical, notational, graphical, and stylistic source for Teaching Topics. For probability and mathematical statistics topics, inspect the relevant `mathstat*.tex` files before writing.
 - `/Users/sagalin/Dropbox/黃文璋數統/` contains Huang Wen-Jang's materials. These are the secondary but still essential benchmark for Chinese textbook rigor, terminology, and exposition.
 
@@ -66,8 +68,9 @@ Chapter 2, random variables and distributional summaries:
 - Topic 9: `quantiles-and-median`, quantiles, percentiles, and median.
 - Topic 10: `mode-and-distribution-shape`, mode and distribution shape.
 - Topic 11: `skewness-and-kurtosis`, skewness, Pearson skewness, kurtosis, and the moment-system bridge.
+- Topic 12: `moment-generating-functions`, moment-generating functions, raw moments, Taylor expansion, and MGF uniqueness.
 
-The next likely article after Topic 11 is moment-generating functions. The user has repeatedly said that each new topic must begin by checking the original MathStat manuscript before drafting.
+The next likely article after Topic 12 should follow the user's MathStat manuscript immediately after the MGF material, likely other generating functions or probability inequalities. The user has repeatedly said that each new topic must begin by checking the original MathStat manuscript before drafting.
 
 ## Demos And Interactive Material
 
@@ -397,10 +400,11 @@ Important decisions:
 - Quantiles and median come after standardization. Quantiles describe positions throughout a distribution; z-scores describe a single individual's standardized distance from the center.
 - Mode comes after quantiles and median as another central tendency measure and a bridge to distribution shape.
 - Skewness and kurtosis come after quantiles/median and mode, as formal shape measures connected to moments.
+- Moment-generating functions come after skewness and kurtosis, following the user's MathStat manuscript section on the moment system and MGF. The MGF article should preserve the distinction that MGF existence near 0 implies all raw moments exist, while all moments existing alone does not automatically guarantee a finite MGF near 0.
 
 ## Current Topic 9 To 11 Notes
 
-`quantiles-and-median.md`, `mode-and-distribution-shape.md`, and `skewness-and-kurtosis.md` are the current end of Chapter 2.
+`quantiles-and-median.md`, `mode-and-distribution-shape.md`, `skewness-and-kurtosis.md`, and `moment-generating-functions.md` are the current end of Chapter 2.
 
 Important rules for this article:
 
@@ -418,7 +422,7 @@ Important rules for this article:
 
 Likely next Teaching Topics:
 
-- Moment-generating functions, using the user's MathStat source immediately after the skewness/kurtosis material.
+- Other generating functions or probability inequalities, using the user's MathStat source immediately after the MGF material.
 - Do not start a new topic from memory. Reopen the relevant original manuscript section first, then draft from that order and wording skeleton.
 - When later teaching machine learning or classification topics, hidden Naive Bayes notes in the Bayes and independence articles may be revived as cross-references.
 
@@ -460,3 +464,11 @@ Other future directions:
 - Run `bundle exec jekyll build` with Homebrew Ruby.
 - Provide a local preview URL with cache-busting query string.
 - If user asks to push, stage only related files, commit, push, and verify clean status.
+
+## Session Log 2026-07-12 (cross-model governance + MGF topic finalization)
+
+- Established `SITE_STYLE_CANON.md` (repo root, local-only, gitignored) as the cross-model root rule file; read-first hooks added here, in `CODEX_PROJECT_MEMORY.md`, and in `.codex/PROJECT_MEMORY.md`. Every model must re-open and re-read it before every reply.
+- Fixed stale style-canon path (moved 2026-07-05 to `Dropbox/書稿規範/`).
+- MGF topic (`moment-generating-functions.md`) audited against the MathStat source and finalized per author rulings: Theorem renumbered 2.13 → 2.1 (site convention: separate Theorem/Proposition counters); parenthetical "mgf" unified to "moment-generating function, MGF"; chapter-2 Proposition gap closed by renumbering 2.10→2.9, 2.11→2.10 (linear-transformations) and 2.12→2.11 (MGF), with the one in-text cross-reference updated; Jekyll build verified clean and rendered anchors checked.
+- Deliberate deviation from the source book kept (author-confirmed): MGF existence requires more than existence of all moments (lognormal counterexample). The source-book theorem (mathstatch2.tex, mgfMomentSum) is registered as an erratum work item in `Dropbox/書稿規範/10_MathStat_工作規格.md`; the book will be fixed on the manuscript side by the author — the website does not edit the book (one-way rule).
+- Commit made locally; **push awaits the author's explicit go** after their review.

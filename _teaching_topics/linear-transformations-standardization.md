@@ -29,8 +29,8 @@ $$
 
 其中 $a,b$ 為常數。這種形式稱為 $X$ 的**線性轉換 (linear transformation)**。其中 $b$ 會造成平移，$a$ 會造成伸縮。若 $a<0$，數線方向還會左右反轉。
 
-<div id="proposition-210" class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Proposition 2.10</div>
+<div id="proposition-29" class="topic-box topic-box--proposition" markdown="1">
+<div class="topic-box__label">Proposition 2.9</div>
 
 若 $X$ 的期望值與變異數皆存在，且 $Y=aX+b$，則有以下關係
 
@@ -121,7 +121,7 @@ $$
 標準化後的隨機變數有很簡單的期望值與標準差。
 
 <div class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Proposition 2.11</div>
+<div class="topic-box__label">Proposition 2.10</div>
 
 若
 
@@ -141,7 +141,7 @@ $$
 
 </div>
 
-這是 [Proposition 2.10](#proposition-210) 的直接應用。因為
+這是 [Proposition 2.9](#proposition-29) 的直接應用。因為
 
 $$
 Z

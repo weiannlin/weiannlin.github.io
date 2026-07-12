@@ -21,3 +21,6 @@ vendor/
 
 # Ignore Claude Code per-machine settings
 .claude/
+
+# Local-only cross-model governance (never commit)
+SITE_STYLE_CANON.md
