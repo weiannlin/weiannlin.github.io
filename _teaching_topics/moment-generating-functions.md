@@ -221,6 +221,36 @@ $$
 
 要注意的是，若 MGF 已知在 $0$ 附近存在，則它會保證各階原動差存在，並且上述泰勒係數正是這些原動差。反過來說，單憑各階動差存在，不足以直接保證 MGF 一定在 $0$ 附近存在。後續使用泰勒展開反推 MGF 時，必須確認該級數確實在 $0$ 附近代表一個有限的 MGF。
 
+<div id="mgf-function-transformations"></div>
+
+## MGF 與函數轉換
+
+若 $Y=g(X)$ 且 $Y$ 的 MGF 存在，則由定義可得
+
+$$
+M_Y(t)
+=
+\mathbb{E}(e^{tY})
+=
+\mathbb{E}\bigl(e^{t g(X)}\bigr)
+$$
+
+對[線性轉換](/teaching-topics/linear-transformations-standardization/) $Y=aX+b$，其中 $a,b\in\mathbb{R}$，上式可進一步寫成
+
+$$
+\begin{aligned}
+M_Y(t)
+&=
+\mathbb{E}\bigl[e^{t(aX+b)}\bigr] \\[0.35em]
+&=
+e^{bt}\mathbb{E}(e^{(at)X}) \\[0.35em]
+&=
+e^{bt}M_X(at)
+\end{aligned}
+$$
+
+這個關係式對所有使 $M_X(at)$ 有限的 $t$ 成立。常數 $b$ 產生乘數 $e^{bt}$，係數 $a$ 則把 MGF 的參數由 $t$ 改為 $at$。後續介紹特徵函數時，會比較同一個線性轉換在複指數下所得的公式。
+
 ## 由 MGF 辨認分配
 
 MGF 起初用來生成動差，但它還有另一個常用性質。若兩個隨機變數的 MGF 在 $0$ 附近相同，則兩者的機率分配相同。
@@ -344,11 +374,11 @@ $$
 M_X(t)=\mathbb{E}(e^{tX})
 $$
 
-若它在 $0$ 附近存在，則 $M_X^{(r)}(0)=\mathbb{E}(X^r)$，因此可透過微分取得各階原動差。對離散型與連續型隨機變數而言，MGF 分別由 PMF 加總與 PDF 積分得到。
+若它在 $0$ 附近存在，則 $M_X^{(r)}(0)=\mathbb{E}(X^r)$，因此可透過微分取得各階原動差。對離散型與連續型隨機變數而言，MGF 分別由 PMF 加總與 PDF 積分得到。若 $Y=aX+b$，則在兩側皆有限的範圍內有 $M_Y(t)=e^{bt}M_X(at)$。
 
 MGF 不一定存在，即使存在，也可能只在某個 $t$ 的範圍內有限。使用 MGF 時，應同時留意存在區間。若兩個隨機變數的 MGF 在 $0$ 附近相同，則兩者有相同機率分配，這便是 MGF 的唯一性。
 
-後續介紹常見分配時，MGF 會成為整理期望值、變異數與分配辨認的常用工具。若要補齊母函數家族，下一步會討論機率母函數 (probability generating function, pgf)、特徵函數 (characteristic function, cf) 與其他常見轉換；若要進入機率界限，則會由動差與 MGF 導向馬可夫不等式 (Markov's inequality)、柴比雪夫不等式 (Chebyshev's inequality) 與車諾夫界限 (Chernoff bounds)。
+後續介紹常見分配時，MGF 會成為整理期望值、變異數與分配辨認的常用工具。[下一篇文章](/teaching-topics/probability-cumulant-generating-functions/)會討論機率母函數 (probability generating function, PGF)、階乘動差與累積量母函數 (cumulant generating function, CGF)。再下一篇則介紹[特徵函數](/teaching-topics/characteristic-functions/)，說明複指數轉換如何在 MGF 不存在時仍然描述一個機率分配。
 
 ## 參考文獻與延伸閱讀
 

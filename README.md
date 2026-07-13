@@ -32,7 +32,7 @@ The public website is organized around the following sections.
 
 Teaching Topics is the main long-term teaching component of the site. Articles are written as concise web versions of lecture material rather than direct lecture-note copies. The goal is to keep mathematical definitions, theorems, examples, and proof ideas while making each topic readable as a standalone webpage.
 
-The current probability sequence is organized by chapter and topic. Chapter 1 covers random experiments, sample spaces, events, event families, probability assignment, probability rules, conditional probability, total probability, Simpson's paradox, Bayes' rule, and independence. Chapter 2 is planned to begin with random variables and distribution functions.
+The current probability sequence contains 23 published topics: nine in Chapter 1, from random experiments through Bayes' rule, and fourteen in Chapter 2, from random variables and distribution functions through characteristic functions.
 
 The writing direction is to connect rigorous probability/statistics content with modern examples and interactive demos whenever the interaction genuinely clarifies the mathematics.
 
