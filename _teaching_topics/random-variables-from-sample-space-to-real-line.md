@@ -58,29 +58,9 @@ $$
 
 ## 從樣本點到數值
 
-投擲一顆公正骰子一次。為了先把樣本點與數值分開，將六個可能結果記作
+投擲一顆公正骰子一次。為了先把樣本點與數值分開，將六個可能結果記作 $S=\{\omega_1,\omega_2,\omega_3,\omega_4,\omega_5,\omega_6\}$，其中 $\omega_i$ 表示擲出點數 $i$ 的樣本點。定義點數隨機變數 $X$ 為 $X(\omega_i)=i$，其中 $i=1,\ldots,6$。
 
-$$
-S=\{\omega_1,\omega_2,\omega_3,\omega_4,\omega_5,\omega_6\}
-$$
-
-其中 $\omega_i$ 表示擲出點數 $i$ 的樣本點。定義點數隨機變數 $X$ 為
-
-$$
-X(\omega_i)=i,\qquad i=1,\ldots,6
-$$
-
-則 $X$ 就是觀察點數本身。此時
-
-$$
-\{X\leqslant 3\}=\{\omega_1,\omega_2,\omega_3\}
-$$
-
-公正骰子有六個均等可能的樣本點，其中三個落在這個事件中，故機率為
-
-$$
-\mathbb{P}(X\leqslant 3)=\frac{3}{6}=\frac{1}{2}
-$$
+此時 $X$ 就是觀察點數本身，而且 $\{X\leqslant 3\}=\{\omega_1,\omega_2,\omega_3\}$。公正骰子有六個均等可能的樣本點，其中三個落在這個事件中，故 $\mathbb{P}(X\leqslant 3)=3/6=1/2$。
 
 同一個樣本空間也可以對應到不同的隨機變數。例如，定義另一個隨機變數 $Y$ 為
 
@@ -103,7 +83,7 @@ $$
 \{X=x\}=\{\omega\in S\mid X(\omega)=x\}
 $$
 
-所以 $\mathbb{P}(X=x)$ 的機率對象，是由 $X$ 定出的事件 $\{X=x\}$；數字 $x$ 只是用來指定這個事件的取值。
+所以 $\mathbb{P}(X=x)$ 所計算的是事件 $\lbrace X=x\rbrace$ 的機率；數字 $x$ 只用來指定這個事件所對應的取值。
 </div>
 
 ## 可能取值集合的型態
@@ -114,13 +94,13 @@ $$
 \mathcal{R}_X=\{X(\omega)\mid \omega\in S\}
 $$
 
-這個集合的型態，會決定後續使用哪一種機率函數描述 $X$。若 $\mathcal{R}_X$ 是有限集合或可數無限集合，機率通常集中在可逐一列出的單點上，這會導向離散型隨機變數與 PMF。若可能取值落在區間上，而且單點不具有正機率，便會導向連續型隨機變數與 PDF。有些情形則同時具有單點機率與連續區間，後面會以混合型隨機變數處理。
+這個集合的型態，以及機率如何分配在其上，會決定後續使用哪一種函數描述 $X$。若 $\mathcal{R}_X$ 是有限集合或可數無限集合，機率通常集中在可逐一列出的單點上，這會導向離散型隨機變數與機率質量函數 (probability mass function, pmf)。若 $X$ 的 CDF 可由某個非負函數積分表示，則會導向可由機率密度函數 (probability density function, pdf) 描述的連續型隨機變數。這類分配的單點機率皆為 $0$，但單點機率皆為 $0$ 本身並不足以保證 pdf 存在。有些情形則同時具有單點機率與連續區間，後面會以混合型隨機變數處理。
 
 因此，隨機變數的定義先把樣本空間接到數線；離散、連續與混合型，是在觀察 $\mathcal{R}_X$ 與機率如何落在數線上之後才進一步區分。
 
 ## 由門檻事件定義累積分配函數
 
-隨機變數把樣本點送到數線上後，可以固定一個門檻 $x$，回頭審視哪些樣本點滿足 $X(\omega)\leqslant x$。這些樣本點形成事件 $\{X\leqslant x\}$，其機率即為**累積分配函數 (cumulative distribution function, CDF)**。在本講義中，CDF 也簡稱為**分配函數 (distribution function, DF)**。
+隨機變數把樣本點送到數線上後，可以固定一個門檻 $x$，回頭審視哪些樣本點滿足 $X(\omega)\leqslant x$。這些樣本點形成事件 $\{X\leqslant x\}$，可將其機率記為 $F_X(x)=\mathbb{P}(X\leqslant x)$。讓 $x$ 在實數線上變動，便得到**累積分配函數 (cumulative distribution function, CDF)**，也簡稱為**分配函數 (distribution function, DF)**。
 
 <div class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 2.2</div>
@@ -148,7 +128,7 @@ $$
 
 CDF 的定義比單純列出幾個機率更抽象。對每一個門檻 $x$，它都給出事件 $\{X\leqslant x\}$ 的機率。
 
-這個定義先不區分型態。無論 $X$ 之後屬於離散型或連續型，只要 $X$ 是實值隨機變數，事件 $\{X\leqslant x\}$ 都有意義，函數 $F_X$ 也都可以被定義。下一篇[累積分配函數如何累積機率](/teaching-topics/probability-accumulates/)會從離散型與連續型開始，說明同一個 $F_X$ 如何呈現機率資訊。
+這個定義先不區分型態。無論 $X$ 屬於離散型、連續型或混合型，只要 $X$ 是實值隨機變數，事件 $\{X\leqslant x\}$ 都有意義，因而都可定義 $F_X$。下一篇[累積分配函數如何累積機率](/teaching-topics/probability-accumulates/)會從離散型與連續型開始，說明同一個 $F_X$ 如何呈現機率資訊。
 
 ## 本篇小結
 

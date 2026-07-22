@@ -9,6 +9,7 @@ topic: 7
 order: 107
 permalink: /teaching-topics/total-probability-bayes-rule/
 date: 2026-05-05
+published: true
 excerpt: "當樣本空間被一組互斥且周延的事件分割時，事件可以被拆成互斥片段；全機率定理將各來源的貢獻加總，並為辛普森悖論與貝氏定理提供共同骨架。"
 ---
 

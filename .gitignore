@@ -24,3 +24,7 @@ vendor/
 
 # Local-only cross-model governance (never commit)
 SITE_STYLE_CANON.md
+AGENTS.md
+CLAUDE.md
+.codex/
+claude_comment/

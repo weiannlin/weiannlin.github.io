@@ -9,6 +9,7 @@ topic: 5
 order: 105
 permalink: /teaching-topics/conditional-probability-information/
 date: 2026-05-05
+published: true
 excerpt: "條件機率描述在已知某個事件已經發生之後，我們如何重新評估另一個事件的機率。本篇從資訊的意義出發，介紹條件機率、乘法原理與廣義乘法原理。"
 ---
 

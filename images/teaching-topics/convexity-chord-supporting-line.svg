@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="660" viewBox="0 0 760 660" role="img" aria-labelledby="title desc">
+  <title id="title">凸函數的弦線與支撐直線</title>
+  <desc id="desc">上圖顯示凸函數在兩端點之間位於弦線下方，下圖顯示通過函數圖形上一點的支撐直線位於函數圖形下方。</desc>
+  <defs>
+    <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 1 1 L 7 4 L 1 7 Z" fill="#1f1c18"/>
+    </marker>
+    <style>
+      .frame { fill: none; stroke: #c9c1b4; stroke-width: 2; }
+      .axis { stroke: #1f1c18; stroke-width: 1.7; marker-end: url(#axis-arrow); }
+      .tick { stroke: #1f1c18; stroke-width: 1.4; }
+      .guide { stroke: #a59b8f; stroke-width: 1.4; stroke-dasharray: 6 6; }
+      .curve { fill: none; stroke: #1f1c18; stroke-width: 3.2; stroke-linecap: round; }
+      .chord { fill: none; stroke: #9c2d2d; stroke-width: 3.2; stroke-linecap: round; }
+      .support { fill: none; stroke: #5f7561; stroke-width: 3.2; stroke-dasharray: 10 7; stroke-linecap: round; }
+      .point-chord { fill: #9c2d2d; stroke: #fffdf8; stroke-width: 1.8; }
+      .point-support { fill: #5f7561; stroke: #fffdf8; stroke-width: 1.8; }
+      .label { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #1f1c18; font-size: 24px; }
+      .small { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #5b5148; font-size: 22px; }
+      .math { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #1f1c18; font-size: 24px; }
+      .panel { font-family: Georgia, "Times New Roman", serif; fill: #1f1c18; font-size: 24px; }
+      .sub { font-size: 16px; baseline-shift: sub; }
+    </style>
+  </defs>
+
+  <rect class="frame" x="24" y="24" width="712" height="612" rx="12"/>
+
+  <text class="panel" x="48" y="66">(a)</text>
+  <line class="axis" x1="70" y1="285" x2="690" y2="285"/>
+  <line class="axis" x1="80" y1="285" x2="80" y2="54"/>
+  <path class="curve" d="M 99 129.746 Q 365 387.234 631 92.786"/>
+  <line class="chord" x1="175" y1="192.05" x2="574" y2="149.546"/>
+  <line class="guide" x1="175" y1="192.05" x2="175" y2="285"/>
+  <line class="guide" x1="403" y1="167.762" x2="403" y2="285"/>
+  <line class="guide" x1="574" y1="149.546" x2="574" y2="285"/>
+  <circle class="point-chord" cx="175" cy="192.05" r="5.2"/>
+  <circle class="point-chord" cx="403" cy="167.762" r="5.2"/>
+  <circle class="point-chord" cx="574" cy="149.546" r="5.2"/>
+  <circle class="point-support" cx="403" cy="243.794" r="5.2"/>
+  <line class="tick" x1="175" y1="280" x2="175" y2="290"/>
+  <line class="tick" x1="403" y1="280" x2="403" y2="290"/>
+  <line class="tick" x1="574" y1="280" x2="574" y2="290"/>
+  <text class="math" x="175" y="312" text-anchor="middle">x<tspan class="sub">1</tspan></text>
+  <text class="math" x="403" y="312" text-anchor="middle">m</text>
+  <text class="math" x="574" y="312" text-anchor="middle">x<tspan class="sub">2</tspan></text>
+  <text class="math" x="703" y="292">x</text>
+  <text class="math" x="645" y="84">f(x)</text>
+  <text class="label" x="278" y="158">弦線</text>
+  <text class="math" x="403" y="125" text-anchor="middle">tf(x<tspan class="sub">1</tspan>) + (1−t)f(x<tspan class="sub">2</tspan>)</text>
+  <text class="math" x="420" y="274">f(m)</text>
+
+  <text class="panel" x="48" y="382">(b)</text>
+  <line class="axis" x1="70" y1="600" x2="690" y2="600"/>
+  <line class="axis" x1="80" y1="600" x2="80" y2="369"/>
+  <path class="curve" d="M 99 444.746 Q 365 702.234 631 407.786"/>
+  <line class="support" x1="213" y1="600.154" x2="631" y2="509.162"/>
+  <line class="guide" x1="403" y1="558.794" x2="403" y2="600"/>
+  <circle class="point-support" cx="403" cy="558.794" r="5.2"/>
+  <line class="tick" x1="403" y1="595" x2="403" y2="605"/>
+  <text class="math" x="403" y="627" text-anchor="middle">m</text>
+  <text class="math" x="703" y="607">x</text>
+  <text class="math" x="645" y="399">f(x)</text>
+  <text class="label" x="493" y="570">支撐直線</text>
+  <text class="math" x="390" y="538" text-anchor="end">(m, f(m))</text>
+</svg>

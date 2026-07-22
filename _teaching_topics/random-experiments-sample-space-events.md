@@ -9,6 +9,7 @@ topic: 1
 order: 101
 permalink: /teaching-topics/random-experiments-sample-space-events/
 date: 2026-05-05
+published: true
 excerpt: "機率論可從一個可重複、結果不確定、但所有可能結果可先描述的隨機實驗開始。樣本空間負責收納所有可能結果，事件則是我們真正關心的那些結果集合。"
 ---
 

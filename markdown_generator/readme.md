@@ -1,7 +1,5 @@
-# Jupyter notebook markdown generator
+# Disabled template generators
 
-These .ipynb files are Jupyter notebook files that convert a TSV containing structured data about talks (`talks.tsv`) or presentations (`presentations.tsv`) into individual markdown files that will be properly formatted for the academicpages template. The notebooks contain a lot of documentation about the process. The .py files are pure python that do the same things if they are executed in a terminal, they just don't have pretty documentation.
+Do not run the scripts or notebooks in this directory against the current website. The TSV and notebook inputs are sample data inherited from Academic Pages and do not describe the site's talks or publications. Running the generators can write template records into `_talks/` or `_publications/`.
 
-
-
-
+The current site collections are maintained manually. These files remain only as inactive template references.

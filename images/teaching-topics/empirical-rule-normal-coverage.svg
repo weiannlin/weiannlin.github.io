@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="460" viewBox="0 0 760 460" role="img" aria-labelledby="title desc">
+  <title id="title">常態分配的 68-95-99.7 經驗法則</title>
+  <desc id="desc">常態密度曲線以期望值為中心，期望值左右一個、兩個與三個標準差的中央區間，依序涵蓋約 68.27%、95.45% 與 99.73% 的機率面積。</desc>
+  <defs>
+    <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 1 1 L 7 4 L 1 7 Z" fill="#1f1c18"/>
+    </marker>
+    <marker id="interval-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M 1 1 L 7 4 L 1 7 Z" fill="#9c2d2d"/>
+    </marker>
+    <clipPath id="density-area">
+      <path d="M 117.5 355 L 117.5 354.541 C 130 354.273 142.5 353.834 155 352.667 C 167.5 351.501 180 349.618 192.5 345.773 C 205 341.929 217.5 336.053 230 326.58 C 242.5 317.106 255 303.867 267.5 286.823 C 280 269.779 292.5 248.857 305 227.629 C 317.5 206.4 330 185.119 342.5 169.676 C 355 154.232 367.5 145 380 145 C 392.5 145 405 154.232 417.5 169.676 C 430 185.119 442.5 206.4 455 227.629 C 467.5 248.857 480 269.779 492.5 286.823 C 505 303.867 517.5 317.106 530 326.58 C 542.5 336.053 555 341.929 567.5 345.773 C 580 349.618 592.5 351.501 605 352.667 C 617.5 353.834 630 354.273 642.5 354.541 L 642.5 355 Z"/>
+    </clipPath>
+    <style>
+      .frame { fill: none; stroke: #c9c1b4; stroke-width: 2; }
+      .axis { stroke: #1f1c18; stroke-width: 1.7; marker-end: url(#axis-arrow); }
+      .tick { stroke: #1f1c18; stroke-width: 1.4; }
+      .guide { stroke: #8f867b; stroke-width: 1.4; stroke-dasharray: 6 6; }
+      .mean-guide { stroke: #1f1c18; stroke-width: 1.5; }
+      .curve { fill: none; stroke: #1f1c18; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+      .interval { stroke: #9c2d2d; stroke-width: 2; marker-end: url(#interval-arrow); }
+      .percent { font-family: Georgia, "Times New Roman", serif; fill: #9c2d2d; font-size: 23px; font-weight: 600; }
+      .math { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #1f1c18; font-size: 23px; }
+    </style>
+  </defs>
+
+  <rect class="frame" x="24" y="24" width="712" height="412" rx="12"/>
+
+  <g clip-path="url(#density-area)">
+    <rect x="155" y="135" width="450" height="220" fill="#8f867b" opacity="0.16"/>
+    <rect x="230" y="135" width="300" height="220" fill="#8f867b" opacity="0.16"/>
+    <rect x="305" y="135" width="150" height="220" fill="#8f867b" opacity="0.18"/>
+  </g>
+
+  <line class="guide" x1="155" y1="65" x2="155" y2="355"/>
+  <line class="guide" x1="605" y1="65" x2="605" y2="355"/>
+  <line class="guide" x1="230" y1="100" x2="230" y2="355"/>
+  <line class="guide" x1="530" y1="100" x2="530" y2="355"/>
+  <line class="guide" x1="305" y1="135" x2="305" y2="355"/>
+  <line class="guide" x1="455" y1="135" x2="455" y2="355"/>
+  <line class="mean-guide" x1="380" y1="145" x2="380" y2="355"/>
+
+  <path class="curve" d="M 117.5 354.541 C 130 354.273 142.5 353.834 155 352.667 C 167.5 351.501 180 349.618 192.5 345.773 C 205 341.929 217.5 336.053 230 326.58 C 242.5 317.106 255 303.867 267.5 286.823 C 280 269.779 292.5 248.857 305 227.629 C 317.5 206.4 330 185.119 342.5 169.676 C 355 154.232 367.5 145 380 145 C 392.5 145 405 154.232 417.5 169.676 C 430 185.119 442.5 206.4 455 227.629 C 467.5 248.857 480 269.779 492.5 286.823 C 505 303.867 517.5 317.106 530 326.58 C 542.5 336.053 555 341.929 567.5 345.773 C 580 349.618 592.5 351.501 605 352.667 C 617.5 353.834 630 354.273 642.5 354.541"/>
+
+  <text class="percent" x="380" y="61" text-anchor="middle">99.73%</text>
+  <line class="interval" x1="334" y1="65" x2="155" y2="65"/>
+  <line class="interval" x1="426" y1="65" x2="605" y2="65"/>
+  <text class="percent" x="380" y="96" text-anchor="middle">95.45%</text>
+  <line class="interval" x1="334" y1="100" x2="230" y2="100"/>
+  <line class="interval" x1="426" y1="100" x2="530" y2="100"/>
+  <text class="percent" x="380" y="131" text-anchor="middle">68.27%</text>
+  <line class="interval" x1="334" y1="135" x2="305" y2="135"/>
+  <line class="interval" x1="426" y1="135" x2="455" y2="135"/>
+
+  <line class="axis" x1="80" y1="355" x2="690" y2="355"/>
+  <line class="tick" x1="155" y1="350" x2="155" y2="360"/>
+  <line class="tick" x1="230" y1="350" x2="230" y2="360"/>
+  <line class="tick" x1="305" y1="350" x2="305" y2="360"/>
+  <line class="tick" x1="380" y1="350" x2="380" y2="360"/>
+  <line class="tick" x1="455" y1="350" x2="455" y2="360"/>
+  <line class="tick" x1="530" y1="350" x2="530" y2="360"/>
+  <line class="tick" x1="605" y1="350" x2="605" y2="360"/>
+  <text class="math" x="155" y="397" text-anchor="middle">μ−3σ</text>
+  <text class="math" x="230" y="397" text-anchor="middle">μ−2σ</text>
+  <text class="math" x="305" y="397" text-anchor="middle">μ−σ</text>
+  <text class="math" x="380" y="397" text-anchor="middle">μ</text>
+  <text class="math" x="455" y="397" text-anchor="middle">μ+σ</text>
+  <text class="math" x="530" y="397" text-anchor="middle">μ+2σ</text>
+  <text class="math" x="605" y="397" text-anchor="middle">μ+3σ</text>
+  <text class="math" x="704" y="363">x</text>
+</svg>

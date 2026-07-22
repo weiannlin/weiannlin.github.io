@@ -26,7 +26,7 @@ e^{iu}=\cos u+i\sin u,
 \qquad u\in\mathbb{R}
 $$
 
-因此
+由 Euler 公式可得
 
 $$
 \lvert e^{iu}\rvert
@@ -69,7 +69,7 @@ $$
 \sum_{x\in\mathcal{R}_X}e^{itx}p_X(x)
 $$
 
-若 $X$ 為連續型隨機變數，且 PDF 為 $f_X$，則
+若 $X$ 為連續型隨機變數，且 pdf 為 $f_X$，則
 
 $$
 \varphi_X(t)
@@ -170,7 +170,7 @@ $$
 \varphi_X(0)=\mathbb{E}(1)=1
 $$
 
-以及
+同時，由期望值的絕對值不等式可得
 
 $$
 \lvert\varphi_X(t)\rvert
@@ -330,7 +330,8 @@ $$
 
 </div>
 
-此定理可由 CF 的反演公式證明。若 $F$ 是 $X$ 的 CDF，$a<b$ 且 $a,b$ 都是 $F$ 的連續點，則
+<div class="topic-proof" markdown="1">
+**Proof.** 令 $F$ 為 $X$ 的 CDF，$a<b$ 且 $a,b$ 都是 $F$ 的連續點。由 CF 的反演公式可得
 
 $$
 F(b)-F(a)
@@ -342,18 +343,19 @@ F(b)-F(a)
 \varphi_X(t)\,dt
 $$
 
-被積函數在 $t=0$ 的值以連續延伸解釋。右側完全由 $\varphi_X$ 決定，因此 CF 可決定所有連續點之間的區間機率，進而決定 CDF。故若 $\varphi_X(t)=\varphi_Y(t)$ 對所有實數 $t$ 成立，兩個 CDF 相同，原式得證。
+被積函數在 $t=0$ 的值以連續延伸解釋。右側完全由 $\varphi_X$ 決定，因此 CF 可決定所有連續點之間的區間機率，進而決定 CDF。故若 $\varphi_X(t)=\varphi_Y(t)$ 對所有實數 $t$ 成立，兩個 CDF 相同。原式得證。$\square$
+</div>
 
 <div id="note-cf-density-inversion" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-不能在沒有條件時直接由 CF 寫出 PDF。若
+不能在沒有條件時直接由 CF 寫出 pdf。若
 
 $$
 \int_{-\infty}^{\infty}\lvert\varphi_X(t)\rvert\,dt<\infty
 $$
 
-則 $X$ 具有有界且連續的 PDF，並可由傅立葉反演公式 (Fourier inversion formula) 求得
+則 $X$ 具有有界且連續的 pdf，並可由傅立葉反演公式 (Fourier inversion formula) 求得
 
 $$
 f_X(x)
@@ -407,7 +409,7 @@ $$
 X_1
 $$
 
-反演公式還能直接求出樣本平均數的 PDF。先檢查絕對可積條件，可得
+反演公式還能直接求出樣本平均數的 pdf。先檢查絕對可積條件，可得
 
 $$
 \begin{aligned}
@@ -422,7 +424,7 @@ $$
 \end{aligned}
 $$
 
-故 $\overline{X}_n$ 具有有界且連續的 PDF。將反演積分在 $t=0$ 的兩側分開。在負半軸上，$\lvert t\rvert=-t$，所以 $e^{-\lvert t\rvert}=e^t$。令 $u=-t$，則 $t=-u$、$dt=-du$，而上下限由 $t\colon -\infty\to 0$ 變成 $u\colon \infty\to 0$。因此，負半軸部分可寫為
+故 $\overline{X}_n$ 具有有界且連續的 pdf。將反演積分在 $t=0$ 的兩側分開。在負半軸上，$\lvert t\rvert=-t$，所以 $e^{-\lvert t\rvert}=e^t$。令 $u=-t$，則 $t=-u$、$dt=-du$，而上下限由 $t\colon -\infty\to 0$ 變成 $u\colon \infty\to 0$。因此，負半軸部分可寫為
 
 $$
 \begin{aligned}
@@ -512,7 +514,7 @@ e^{-(1+ix)t}
 \end{aligned}
 $$
 
-後續兩個複數值廣義積分都收斂，因為 $1-ix$ 與 $1+ix$ 的實部皆為 $1$。所得 PDF 正是標準柯西密度，也就是樣本平均數仍具有標準柯西分配。
+上式中的兩個複數值廣義積分都收斂，因為 $1-ix$ 與 $1+ix$ 的實部皆為 $1$。所得 pdf 正是標準柯西密度，也就是樣本平均數仍具有標準柯西分配。
 
 標準柯西分配沒有有限期望值與變異數，因此不滿足有限變異數型中央極限定理的前提；中央極限定理不能套用，原因不是它沒有 MGF。
 
@@ -528,9 +530,9 @@ $$
 
 因為 $\lvert e^{itX}\rvert=1$，CF 對所有 $t\in\mathbb{R}$ 都存在。CF 滿足 $\varphi_X(0)=1$、$\lvert\varphi_X(t)\rvert\leqslant 1$ 與均勻連續性；線性轉換可改寫其引數，獨立隨機變數之和則對應 CF 的乘積。
 
-若 $\mathbb{E}(\lvert X\rvert^r)<\infty$，CF 的 $r$ 階導數可生成 $r$ 階原動差。CF 的唯一性則說明，只要兩個 CF 在整條實數線上相同，對應的機率分配便相同。PDF 的反演公式另有絕對可積條件，不能由 CF 存在直接推出。
+若 $\mathbb{E}(\lvert X\rvert^r)<\infty$，CF 的 $r$ 階導數可生成 $r$ 階原動差。CF 的唯一性則說明，只要兩個 CF 在整條實數線上相同，對應的機率分配便相同。pdf 的反演公式另有絕對可積條件，不能由 CF 存在直接推出。
 
-後續文章將轉向機率不等式。當完整分配未知，只知道非負性與期望值時，馬可夫不等式仍能給出尾端機率的上界。
+[下一篇文章](/teaching-topics/markov-inequality/)將轉向機率不等式。當完整分配未知，只知道非負性與期望值時，馬可夫不等式仍能給出尾端機率的上界。
 
 ## 參考文獻與延伸閱讀
 

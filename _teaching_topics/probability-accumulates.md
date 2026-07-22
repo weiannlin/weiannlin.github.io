@@ -13,9 +13,9 @@ published: true
 excerpt: "CDF 描述隨機變數不超過門檻 x 的事件機率；離散型靠單點機率加總，連續型靠密度面積積分。"
 ---
 
-[上一篇文章](/teaching-topics/random-variables-from-sample-space-to-real-line/)把隨機變數定義為從樣本空間到實數線的函數。一旦有了這個對應，便可固定一個門檻 $x$，計算映射過去的數字落在 $x$ 以下的總機率。
+[上一篇文章](/teaching-topics/random-variables-from-sample-space-to-real-line/)把隨機變數定義為從樣本空間到實數線的函數。一旦有了這個對應，便可固定門檻 $x$，計算 $X$ 的取值不超過 $x$ 的機率。
 
-這個累積量稱為累積分配函數 (cumulative distribution function, CDF)，也簡稱為分配函數 (distribution function, DF)。
+由此得到的函數稱為累積分配函數 (cumulative distribution function, CDF)，也簡稱為分配函數 (distribution function, DF)，定義為
 
 $$
 F_X(x)=\mathbb{P}(X\leqslant x)
@@ -25,7 +25,7 @@ $$
 
 ## 累積分配函數的基本性質
 
-先從函數觀點看 $F_X$。輸入是實數 $x$，輸出是事件 $\lbrace X\leqslant x\rbrace$ 的機率。下圖以兩條平行數線表示此關係。每個點的位置代表 $X(\omega_i)$ 的數值；當門檻由 $x_1$ 移到 $x_2$，紅色區段變長，原本已被收入的樣本點仍然保留，只會額外納入新的樣本點。
+先從函數觀點看 $F_X$。輸入是實數 $x$，輸出是事件 $\lbrace X\leqslant x\rbrace$ 的機率。下圖以兩條平行數線表示此關係。每個點的位置代表 $X(\omega_i)$ 的數值；當門檻由 $x_1$ 移到 $x_2$，紅色區段變長，原本已位於門檻左側的樣本點仍然保留，只會額外包含新的樣本點。
 
 <figure class="topic-figure topic-figure--wide">
   <img src="/images/teaching-topics/cdf-nested-thresholds.svg" alt="兩條平行數線展示 x1 小於等於 x2 時，事件 X 小於等於 x1 被包含於事件 X 小於等於 x2。">
@@ -40,7 +40,7 @@ $$
 
 故 $F_X$ 不會隨 $x$ 增大而下降。
 
-<div class="topic-box topic-box--theorem" markdown="1">
+<div id="proposition-21" class="topic-box topic-box--proposition" markdown="1">
 <div class="topic-box__label">Proposition 2.1 (Basic Properties of a CDF)</div>
 
 令 $X$ 為一個隨機變數，$F_X(x)=\mathbb{P}(X\leqslant x)$。則 $F_X$ 滿足下列性質。
@@ -63,7 +63,13 @@ $$
 (4) $F_X$ 右連續。
 </div>
 
-前三點由機率性質直接得到。第四點是 CDF 的標準正則性條件，也是後續用 CDF 描述分配時不可缺少的性質。
+<div class="topic-proof" markdown="1">
+**Proof.** 若 $x_1\leqslant x_2$，則 $\{X\leqslant x_1\}\subset\{X\leqslant x_2\}$，故 $F_X(x_1)\leqslant F_X(x_2)$；又因 $F_X(x)$ 是事件機率，所以 $0\leqslant F_X(x)\leqslant1$。
+
+當 $n\to\infty$ 時，事件 $\{X\leqslant -n\}$ 遞減至空集合，而 $\{X\leqslant n\}$ 遞增至樣本空間。由機率對單調事件序列的連續性可得 $F_X(-n)\to0$ 及 $F_X(n)\to1$；再配合 $F_X$ 的單調性，即得 $x\to-\infty$ 與 $x\to\infty$ 時的兩個極限。
+
+最後，若 $x_n\downarrow x$，則 $\{X\leqslant x_n\}$ 遞減至 $\{X\leqslant x\}$。再次使用機率對遞減事件序列的連續性，可得 $F_X(x_n)\to F_X(x)$，故 $F_X$ 右連續。$\square$
+</div>
 
 ## 離散型，靠單點機率加總
 
@@ -73,7 +79,7 @@ $$
 p_X(t)=\mathbb{P}(X=t)
 $$
 
-並稱 $p_X$ 為**機率質量函數**，英文全名為 probability mass function，常簡記為 PMF。
+並稱 $p_X$ 為**機率質量函數**，英文全名為 probability mass function，常簡記為 pmf。
 
 對離散型隨機變數而言，事件 $\lbrace X\leqslant x\rbrace$ 是由所有不超過 $x$ 的單點事件合併而成。因此
 
@@ -87,7 +93,7 @@ $$
 
 此加總只取 $X$ 可能取到且不超過 $x$ 的那些 $t$。離散型 CDF 因而是門檻左側單點機率的累積。
 
-<div class="topic-box topic-box--example" markdown="1">
+<div id="example-21" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.1 (A Die Roll)</div>
 
 投擲一顆公正骰子一次，令 $X$ 表示點數。則
@@ -114,26 +120,14 @@ $$
 <div class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 2.2</div>
 
-在 Example 2.1 中，$X$ 只能取 $1,2,\ldots,6$。這個集合是 $X$ 的**值域 (range)**。但 CDF 的輸入 $x$ 是數線上的門檻，可以是任意實數，而不必剛好等於骰子點數。
-
-例如 $F_X(3.4)$ 仍然有意義。此時
-
-$$
-\lbrace X\leqslant 3.4\rbrace=\lbrace 1,2,3\rbrace
-$$
-
-所以
-
-$$
-F_X(3.4)=\mathbb{P}(X\leqslant 3.4)=\frac{1}{2}
-$$
+在 [Example 2.1](#example-21) 中，$X$ 只能取 $1,2,\ldots,6$。不過，CDF 的自變數仍可取任意實數。例如，$\lbrace X\leqslant3.4\rbrace=\lbrace1,2,3\rbrace$，所以 $F_X(3.4)=3/6=1/2$。
 
 只有當門檻跨過下一個可能取值，例如從 $3.9$ 移到 $4$，CDF 才會往上跳。
 </div>
 
 <figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/dice-pmf-threshold.svg" alt="公正骰子的 PMF 棒棒糖圖。點數 1, 2, 3 的機率質量被標成紅色，門檻 x=3.4 位於 3 與 4 之間。">
-  <figcaption><span class="topic-figure__label">Fig. 2.3.</span> 即使門檻 $x=3.4$ 不是骰子點數，它仍然只收入點數 $1,2,3$ 的機率質量，因此 $F_X(3.4)=1/2$。</figcaption>
+  <img src="/images/teaching-topics/dice-pmf-threshold.svg" alt="公正骰子的 pmf 棒棒糖圖。點數 1, 2, 3 的機率質量被標成紅色，門檻 x=3.4 位於 3 與 4 之間。">
+  <figcaption><span class="topic-figure__label">Fig. 2.3.</span> 即使門檻 $x=3.4$ 不是骰子點數，門檻左側仍只有點數 $1,2,3$，因此 $F_X(3.4)=1/2$。</figcaption>
 </figure>
 
 離散型 CDF 的跳躍高度正是該點的機率質量。以公正骰子為例，每個點數的機率質量都是 $1/6$，所以 CDF 每次跨過一個整數點，便往上跳 $1/6$。
@@ -143,7 +137,7 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 2.4.</span> 公正骰子的 CDF 在每個可能取值處都跳躍 $1/6$。在 $x=3.4$ 時，CDF 的高度是 $3/6$。</figcaption>
 </figure>
 
-若想親手改變單點機率並觀察階梯如何累積，可以參考互動展示 [From&nbsp;PMF&nbsp;to&nbsp;CDF](/demos/pmf-cdf/)。
+若想親手改變單點機率並觀察階梯如何累積，可以參考互動展示 [From&nbsp;pmf&nbsp;to&nbsp;CDF](/demos/pmf-cdf/)。
 
 ## 連續型，靠密度積分
 
@@ -153,13 +147,13 @@ $$
 F_X(x)=\int_{-\infty}^{x} f_X(t)\,dt
 $$
 
-則稱 $f_X$ 為 $X$ 的**機率密度函數**，英文全名為 probability density function，常簡記為 PDF。
+則稱 $f_X$ 為 $X$ 的**機率密度函數**，英文全名為 probability density function，常簡記為 pdf。
 
 此時事件 $\lbrace X\leqslant x\rbrace$ 的機率改由密度函數在 $(-\infty,x]$ 上的面積累積，而不採單點相加。
 
 <figure class="topic-figure topic-figure--wide">
   <img src="/images/teaching-topics/continuous-cdf-area.svg" alt="連續型隨機變數的 CDF 可由密度曲線左側面積表示。">
-  <figcaption><span class="topic-figure__label">Fig. 2.5.</span> 對可由 PDF 描述的連續型隨機變數而言，$F_X(x)$ 是密度函數在 $(-\infty,x]$ 上的面積。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 2.5.</span> 對可由 pdf 描述的連續型隨機變數而言，$F_X(x)$ 是密度函數在 $(-\infty,x]$ 上的面積。</figcaption>
 </figure>
 
 若 $a<b$，則區間機率可由兩個累積面積相減得到。
@@ -182,10 +176,10 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-嚴格地說，CDF 連續不必然代表可由一般密度函數積分表示。測度論中還有更細的分解，例如奇異連續分配。本章先採統計課程中最常用的版本，也就是可由 PDF 描述的連續型情形。
+嚴格地說，CDF 連續不必然代表可由一般密度函數積分表示。測度論中還有更細的分解，例如**奇異連續分配 (singular continuous distribution)**。本章先採統計課程中最常用的版本，也就是可由 pdf 描述的連續型情形。
 </div>
 
-此外，只要 CDF 在 $a$ 處連續，單點 $\{a\}$ 的機率便為零。在可由 PDF 描述的情形下，對任意實數 $a$，此結果可寫為
+此外，只要 CDF 在 $a$ 處連續，單點 $\{a\}$ 的機率便為零。在可由 pdf 描述的情形下，對任意實數 $a$，此結果可寫為
 
 $$
 \mathbb{P}(X=a)=\int_a^a f_X(t)\,dt=0
@@ -198,9 +192,9 @@ $$
 
 這不表示 $a$ 不可能成為觀測值，而是說單點在連續模型中沒有面積，故不具有正機率。這一點延續了第一章中[飛鏢落點的直覺校準](/teaching-topics/random-experiments-sample-space-events/#thought-experiment-dart-zero-probability)。也因此，對連續型隨機變數而言，端點是否包含通常不會改變區間機率。
 
-若想調整密度圖形並觀察面積如何變成 CDF，可以參考互動展示 [From&nbsp;PDF&nbsp;to&nbsp;CDF](/demos/pdf-cdf/)。
+若想調整密度圖形並觀察面積如何變成 CDF，可以參考互動展示 [From&nbsp;pdf&nbsp;to&nbsp;CDF](/demos/pdf-cdf/)。
 
-有些分配同時具有單點機率與連續密度。這類情形需要同時使用加總與積分，較適合在 PMF 與 PDF 都介紹完後再討論。
+有些分配同時具有單點機率與連續密度。這類情形需要同時使用加總與積分，較適合在 pmf 與 pdf 都介紹完後再討論。
 
 ## 本篇小結
 
@@ -215,13 +209,13 @@ $$
 | 型態 | $\lbrace X\leqslant x\rbrace$ 的機率如何計算 | CDF 的形狀 |
 | --- | --- | --- |
 | 離散型 | **加總**不超過 $x$ 的單點機率 | 階梯狀，有跳躍 |
-| 具有 PDF 的連續型 | **積分** $(-\infty,x]$ 上的密度 | 通常平滑累積 |
+| 具有 pdf 的連續型 | **積分** $(-\infty,x]$ 上的密度 | 通常平滑累積 |
 
-PMF 與 PDF 分別記錄離散型與連續型的計算方式。前者記錄單點機率，後者記錄累積機率的變化率；二者最後都回到同一個累積分配函數。
+pmf 與 pdf 分別記錄離散型與連續型的計算方式。前者記錄單點機率，後者記錄累積機率的變化率；二者最後都回到同一個累積分配函數。
 
 CDF 仍以事件機率為本，並把隨機變數的討論帶到實數線上的函數討論之中。離散型把門檻左側的單點機率相加；連續型把門檻左側的密度面積積分。
 
-因此，隨機變數不只是樣本點的重新命名；函數、極限、微分、積分與分配形狀都能納入討論，後續的常見分配、期望值與極限定理也由此展開。下一篇[離散型隨機變數與機率質量函數](/teaching-topics/discrete-random-variables-pmf/)會先細講離散型情形，說明 PMF 如何記錄單點機率，以及它如何與 CDF 的跳躍相互對應。
+因此，隨機變數不只是樣本點的重新命名；函數、極限、微分、積分與分配形狀都能納入討論，後續的常見分配、期望值與極限定理也由此展開。下一篇[離散型隨機變數與機率質量函數](/teaching-topics/discrete-random-variables-pmf/)會先細講離散型情形，說明 pmf 如何記錄單點機率，以及它如何與 CDF 的跳躍相互對應。
 
 ## 參考文獻與延伸閱讀
 

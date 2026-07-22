@@ -10,12 +10,12 @@ order: 203
 permalink: /teaching-topics/discrete-random-variables-pmf/
 date: 2026-05-19
 published: true
-excerpt: "離散型隨機變數的機率集中在有限或可數個取值上。PMF 記錄各單點機率，事件機率則由對應單點機率加總取得。"
+excerpt: "離散型隨機變數的機率集中在有限或可數個取值上。pmf 記錄各單點機率，事件機率則由對應單點機率加總取得。"
 ---
 
 [上一篇文章](/teaching-topics/probability-accumulates/)已經提過，有些隨機變數的機率是靠「加總」取得的。若隨機變數只會取到有限或可數無限多個值，則事件 $\{X\leqslant x\}$ 的機率，就是把不超過 $x$ 的那些單點機率加起來。
 
-本篇細講這個加總如何被整理成一個函數。這個函數稱為**機率質量函數 (probability mass function, PMF)**。它把離散型隨機變數每一個可能取值上的機率列出來，使許多事件機率都能轉化為加總問題。
+本篇細講這個加總如何被整理成一個函數。這個函數稱為**機率質量函數 (probability mass function, pmf)**。它把離散型隨機變數每一個可能取值上的機率列出來，使許多事件機率都能轉化為加總問題。
 
 ## 離散型隨機變數
 
@@ -49,16 +49,12 @@ $$
 並令 $p_X(x)=0$，若 $x\notin\mathcal{R}_X$。若 $p_X$ 滿足
 
 $$
-p_X(x)\geqslant 0,\qquad x\in\mathcal{R}_X
-$$
-
-且
-
-$$
+p_X(x)\geqslant 0\quad(x\in\mathcal{R}_X),
+\qquad
 \sum_{x\in\mathcal{R}_X}p_X(x)=1
 $$
 
-則稱 $p_X$ 為 $X$ 的**機率質量函數 (probability mass function, PMF)**。
+則稱 $p_X$ 為 $X$ 的**機率質量函數 (probability mass function, pmf)**。
 </div>
 
 這裡的 $\mathbb{P}(X=x)$ 是簡寫。完整而言，它指的是事件
@@ -67,17 +63,17 @@ $$
 \{X=x\}=\{\omega\in S\mid X(\omega)=x\}
 $$
 
-的機率。換言之，PMF 的每一個函數值都是一個事件機率。
+的機率。換言之，pmf 的每一個函數值都是一個事件機率。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-PMF 之所以稱為「機率質量函數」，是因為離散型隨機變數的機率集中在一個一個單點上。每個可能取值像是一個質點，$p_X(x)$ 則記錄該點具有多少機率質量。
+pmf 之所以稱為「機率質量函數」，是因為離散型隨機變數的機率集中在一個一個單點上。每個可能取值像是一個質點，$p_X(x)$ 則記錄該點具有多少機率質量。
 </div>
 
-## 由 PMF 計算事件機率
+## 由 pmf 計算事件機率
 
-PMF 不只記錄單點機率，也足以計算所有由 $X$ 所決定的事件機率。若 $A\subset\mathbb{R}$，則
+pmf 不只記錄單點機率，也足以計算所有由 $X$ 所決定的事件機率。若 $A\subset\mathbb{R}$，則
 
 $$
 \mathbb{P}(X\in A)
@@ -85,7 +81,7 @@ $$
 \sum_{x\in A\cap\mathcal{R}_X}p_X(x)
 $$
 
-這個公式表示，若要計算 $X$ 落在某個集合 $A$ 中的機率，只要找出 $\mathcal{R}_X$ 中同時落在 $A$ 裡的那些點，再把它們的 PMF 值相加。
+這個公式表示，若要計算 $X$ 落在某個集合 $A$ 中的機率，只要找出 $\mathcal{R}_X$ 中同時落在 $A$ 裡的那些點，再把它們的 pmf 值相加。
 
 若取 $A=(-\infty,x]$，則對任意實數 $x$，可得
 
@@ -99,7 +95,7 @@ $$
 
 這正是前一篇提到的離散型 CDF。CDF 是把門檻左側的機率質量逐步累積起來。
 
-<div class="topic-box topic-box--example" markdown="1">
+<div id="example-22" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.2 (Two Balls without Replacement)</div>
 
 箱中有四顆大小形狀完全相同、分別編號 $0,1,2,3$ 的球。從中一次抽取兩顆球，不考慮抽取順序，令 $X$ 表示兩顆球的號碼總和。
@@ -116,7 +112,7 @@ $$
 | --- | --- | --- | --- | --- | --- |
 | $p_X(x)$ | $1/6$ | $1/6$ | $2/6$ | $1/6$ | $1/6$ |
 
-因此 $X$ 的 PMF 可寫為
+因此 $X$ 的 pmf 可寫為
 
 $$
 p_X(x)=
@@ -129,11 +125,7 @@ p_X(x)=
 \right.
 $$
 
-若要求號碼總和為 $3$ 的機率，由 PMF 表可得
-
-$$
-\mathbb{P}(X=3)=p_X(3)=\frac{1}{3}
-$$
+若要求號碼總和為 $3$ 的機率，由 pmf 表可得 $\mathbb{P}(X=3)=p_X(3)=1/3$。
 
 若要求號碼總和不超過 $3$ 的機率，則把 $x=1,2,3$ 的機率相加，此即
 
@@ -169,26 +161,38 @@ $$
 差異正是左端點 $x=1$ 上的單點機率 $p_X(1)=1/6$。這一點和連續型隨機變數很不一樣。
 </div>
 
-## PMF 的基本性質
+## pmf 的基本性質
 
-PMF 有兩個基本要求。每個單點機率不可為負，所有可能取值上的機率總和必須為 $1$。反過來，若一個函數滿足這兩個條件，便可作為某個離散型隨機變數的 PMF。
+pmf 有兩個基本要求。每個單點機率不可為負，所有可能取值上的機率總和必須為 $1$。反過來，若一個函數滿足這兩個條件，便可作為某個離散型隨機變數的 pmf。
 
-<div class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Proposition 2.2 (PMF Conditions)</div>
+<div id="proposition-22" class="topic-box topic-box--proposition" markdown="1">
+<div class="topic-box__label">Proposition 2.2 (Conditions for a pmf)</div>
 
 令 $\mathcal{R}_X$ 為有限或可數無限集合。若函數 $p_X:\mathcal{R}_X\to\mathbb{R}$ 滿足
 
 $$
-p_X(x)\geqslant 0,\qquad x\in\mathcal{R}_X
-$$
-
-且
-
-$$
+p_X(x)\geqslant 0\quad(x\in\mathcal{R}_X),
+\qquad
 \sum_{x\in\mathcal{R}_X}p_X(x)=1
 $$
 
-則 $p_X$ 可作為某個離散型隨機變數 $X$ 在 $\mathcal{R}_X$ 上的 PMF。
+則 $p_X$ 可作為某個離散型隨機變數 $X$ 在 $\mathcal{R}_X$ 上的 pmf。
+</div>
+
+<div class="topic-proof" markdown="1">
+**Proof.** 取樣本空間 $S=\mathcal{R}_X$，並令事件族為 $\mathcal{F}=2^S$。對每個 $A\in\mathcal{F}$，定義 $\mathbb{P}(A)=\sum_{x\in A}p_X(x)$。非負性與總和為 $1$ 分別給出 $\mathbb{P}(A)\geqslant0$ 與 $\mathbb{P}(S)=1$。若 $A_1,A_2,\ldots$ 兩兩互斥，則非負級數可以重排，因而可得
+
+$$
+\mathbb{P}\left(\bigcup_{n=1}^{\infty}A_n\right)
+=
+\sum_{x\in\bigcup_{n=1}^{\infty}A_n}p_X(x)
+=
+\sum_{n=1}^{\infty}\sum_{x\in A_n}p_X(x)
+=
+\sum_{n=1}^{\infty}\mathbb{P}(A_n)
+$$
+
+因此，$\mathbb{P}$ 也滿足可數可加性，是 $S$ 上的機率函數。再令 $X(\omega)=\omega$。對任意 Borel 集合 $B$，有 $X^{-1}(B)=B\cap S\in 2^S=\mathcal{F}$，因此 $X$ 是隨機變數。對每個 $x\in\mathcal{R}_X$，皆有 $\mathbb{P}(X=x)=\mathbb{P}(\{x\})=p_X(x)$，故 $p_X$ 確實可作為 $X$ 的 pmf。$\square$
 </div>
 
 <div class="topic-box topic-box--example" markdown="1">
@@ -206,7 +210,7 @@ c\left(\frac{1}{2}\right)^x, & x=1,2,\ldots,\\[0.35em]
 \right.
 $$
 
-其中 $c$ 為常數。若 $p_X$ 是 PMF，則其總和必須為 $1$。
+其中 $c$ 為常數。若 $p_X$ 是 pmf，則其總和必須為 $1$，因此有
 
 $$
 1
@@ -218,28 +222,20 @@ c\sum_{x=1}^{\infty}\left(\frac{1}{2}\right)^x
 c
 $$
 
-故 $c=1$。由此可計算任意 $x$ 的機率，例如
-
-$$
-\mathbb{P}(X=5)=p_X(5)=\left(\frac{1}{2}\right)^5=\frac{1}{32}
-$$
+故 $c=1$。例如，$X=5$ 的機率為 $\mathbb{P}(X=5)=p_X(5)=(1/2)^5=1/32$。
 
 </div>
 
-## 由 CDF 求得 PMF
+## 由 CDF 求得 pmf
 
-PMF 可以加總成 CDF；反過來，離散型隨機變數的 PMF 也可以由 CDF 的跳躍高度求得。這是離散型隨機變數的基本性質。
+pmf 可以加總成 CDF；反過來，離散型隨機變數的 pmf 也可以由 CDF 的跳躍高度求得。這是離散型隨機變數的基本性質。
 
-未免符號混淆，先將 $F_X$ 在 $a$ 左側的極限記為
-
-$$
-F_X(a^-)=\lim_{x\uparrow a}F_X(x)
-$$
+未免符號混淆，先將 $F_X$ 在 $a$ 左側的極限記為 $F_X(a^-)=\lim_{x\uparrow a}F_X(x)$。
 
 若 $X$ 為離散型隨機變數，則有下列關係。
 
-<div class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Proposition 2.3 (PMF from CDF Jumps)</div>
+<div id="proposition-23" class="topic-box topic-box--proposition" markdown="1">
+<div class="topic-box__label">Proposition 2.3 (Recovering the pmf from CDF Jumps)</div>
 
 對任意 $a\in\mathbb{R}$，皆有
 
@@ -253,52 +249,51 @@ $$
 
 </div>
 
-由集合關係可知，事件 $\{X\leqslant a\}$ 比事件 $\{X<a\}$ 多出的部分，正是事件 $\{X=a\}$。因此 CDF 在 $a$ 的跳躍高度，就是 $X=a$ 的單點機率。
+<div class="topic-proof" markdown="1">
+**Proof.** 由機率對遞增事件序列的連續性可得 $F_X(a^-)=\mathbb{P}(X<a)$。又因 $\lbrace X\leqslant a\rbrace$ 是 $\lbrace X<a\rbrace$ 與 $\lbrace X=a\rbrace$ 的互斥聯集，所以
+
+$$
+\begin{aligned}
+F_X(a)
+&=
+\mathbb{P}(X<a)+\mathbb{P}(X=a) \\[0.35em]
+&=
+F_X(a^-)+p_X(a)
+\end{aligned}
+$$
+
+移項後即得所求。原式得證。$\square$
+</div>
 
 <figure class="topic-figure topic-figure--wide">
   <img src="/images/teaching-topics/cdf-jump-pmf.svg" alt="離散型 CDF 在 a 點的跳躍。空心點表示左側極限，實心點表示函數值，兩者高度差為單點機率。">
   <figcaption><span class="topic-figure__label">Fig. 2.8.</span> 在跳躍點 $a$ 上，空心點表示 $F_X(a^-)$，實心點表示 $F_X(a)$。兩者的高度差正是 $p_X(a)=\mathbb{P}(X=a)$。</figcaption>
 </figure>
 
-若 $a$ 不是 $X$ 的可能取值，則 $p_X(a)=0$，此時 CDF 在 $a$ 不會跳躍。換言之，若 $F_X(a)=F_X(a^-)$，左右高度沒有差距，該點就沒有單點機率。若 $a$ 是 $X$ 的可能取值，跳躍高度便等於該點的機率質量。
+若 $p_X(a)=0$，則 CDF 在 $a$ 不會跳躍；若 $p_X(a)>0$，則 $a$ 是具有正機率的質點，CDF 在該點的跳躍高度正是 $p_X(a)$。因此，是否發生跳躍取決於單點機率是否為正，不能只由 $a$ 是否列在值域中判斷。
 
-以 Example 2.2 為例，$x=3$ 的機率質量為 $1/3$。因此 CDF 在 $3$ 的跳躍高度也是 $1/3$。
+以 [Example 2.2](#example-22) 為例，$x=3$ 的機率質量為 $1/3$，因此 $F_X(3)-F_X(3^-)=p_X(3)=1/3$。
 
-$$
-F_X(3)-F_X(3^-)=p_X(3)=\frac{1}{3}
-$$
+這個關係也說明，離散型的 CDF 與 pmf 相互決定。只要知道 pmf，就能加總得到 CDF；只要知道 CDF 的每個跳躍高度，也能求得 pmf。
 
-這個關係也說明，離散型的 CDF 與 PMF 相互決定。只要知道 PMF，就能加總得到 CDF；只要知道 CDF 的每個跳躍高度，也能求得 PMF。
-
-若想親手調整單點機率並觀察 CDF 的跳躍，可以參考互動展示 [From&nbsp;PMF&nbsp;to&nbsp;CDF](/demos/pmf-cdf/)。
+若想親手調整單點機率並觀察 CDF 的跳躍，可以參考互動展示 [From&nbsp;pmf&nbsp;to&nbsp;CDF](/demos/pmf-cdf/)。
 
 ## 本篇小結
 
-離散型隨機變數的可能取值可以逐一列出，機率也集中在這些單點上。PMF 記錄每個可能取值的單點機率，可寫為
+離散型隨機變數的可能取值可以逐一列出，機率也集中在這些單點上。pmf 以 $p_X(x)=\mathbb{P}(X=x)$ 記錄每個可能取值的單點機率。事件機率與 CDF 都可由 pmf 加總得到，分別為
 
 $$
-p_X(x)=\mathbb{P}(X=x)
-$$
-
-事件機率則由對應單點機率相加得到。
-
-$$
+\begin{aligned}
 \mathbb{P}(X\in A)
-=
-\sum_{x\in A\cap\mathcal{R}_X}p_X(x)
+&=
+\sum_{x\in A\cap\mathcal{R}_X}p_X(x) \\[0.35em]
+F_X(x)
+&=
+\sum_{t\leqslant x}p_X(t)
+\end{aligned}
 $$
 
-CDF 可由 PMF 加總得到。
-
-$$
-F_X(x)=\sum_{t\leqslant x}p_X(t)
-$$
-
-PMF 則可由 CDF 的跳躍高度求得。
-
-$$
-p_X(a)=F_X(a)-F_X(a^-)
-$$
+反過來，pmf 也可由 CDF 的跳躍高度求得，即 $p_X(a)=F_X(a)-F_X(a^-)$。
 
 下一篇[連續型隨機變數與機率密度函數](/teaching-topics/continuous-random-variables-pdf/)會轉向連續型隨機變數。當單點不再具有正機率時，機率不再逐點相加，而要改由密度函數在區間上的面積來計算。
 

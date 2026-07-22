@@ -13,9 +13,9 @@ published: true
 excerpt: "標準化描述個體離平均位置幾個標準差。分位數與百分位數則從 CDF 出發，找出使累積機率達到指定比例的位置。中位數是其中最常用的特例。"
 ---
 
-[上一篇文章](/teaching-topics/linear-transformations-standardization/)討論標準化與 z-score。標準化描述單一觀察值離平均位置幾個標準差；本篇改從累積機率來看分配的位置。
+[上一篇文章](/teaching-topics/linear-transformations-standardization/)討論標準化與 z-score，說明如何以標準差為單位比較單一觀察值的相對位置。本篇改從整個分配來看位置。若想知道一個分配的下方四分之一、中央位置或上方四分之一落在哪裡，就需要使用**分位數 (quantile)**；若將比例改用百分比表示，便得到常見的**百分位數 (percentile)**。
 
-本篇改從整個分配來看位置。若想知道一個分配的下方四分之一、中央位置或上方四分之一落在哪裡，就需要使用**分位數 (quantile)**。若將比例改用百分比表示，便得到常見的**百分位數 (percentile)**。分位數不是先固定一個 $x$ 再求機率，而是先固定一個機率比例，再回頭找出對應的數線位置。
+分位數不是先固定一個 $x$ 再求機率，而是先固定一個機率比例，再回頭找出對應的數線位置。
 
 ## 累積機率與分位數
 
@@ -33,12 +33,8 @@ $$
 令 $0<p<1$。若實數 $q$ 滿足
 
 $$
-\mathbb{P}(X\leqslant q)\geqslant p
-$$
-
-且
-
-$$
+\mathbb{P}(X\leqslant q)\geqslant p,
+\qquad
 \mathbb{P}(X\geqslant q)\geqslant 1-p
 $$
 
@@ -52,12 +48,8 @@ $$
 令 $X$ 的可能取值為 $0,1,4,5$，且各自機率皆為 $1/4$。若取 $p=1/2$，則任何 $q\in[1,4]$ 都滿足
 
 $$
-\mathbb{P}(X\leqslant q)\geqslant \frac{1}{2}
-$$
-
-且
-
-$$
+\mathbb{P}(X\leqslant q)\geqslant \frac{1}{2},
+\qquad
 \mathbb{P}(X\geqslant q)\geqslant \frac{1}{2}
 $$
 
@@ -70,13 +62,7 @@ $$
 x_p=F_X^{-1}(p)=\inf\{x\in\mathbb{R}\mid F_X(x)\geqslant p\}
 $$
 
-這裡的 $F_X^{-1}$ 稱為分位函數，並不是一般意義下必須一對一才存在的反函數。這個 $x_p$ 會選取第一個使 CDF 達到或超過 $p$ 的位置。若 $F_X$ 是連續且嚴格遞增的函數，則 $x_p$ 就是使
-
-$$
-F_X(x)=p
-$$
-
-成立的那個 $x$。若 $F_X$ 有平坦區段或跳躍，分位函數仍提供一個固定且明確的選取方式。
+這裡的 $F_X^{-1}$ 稱為**分位函數 (quantile function)**，並不是一般意義下必須一對一才存在的反函數。這個 $x_p$ 會選取第一個使 CDF 達到或超過 $p$ 的位置。若 $F_X$ 連續且嚴格遞增，則 $x_p$ 就是唯一滿足 $F_X(x)=p$ 的 $x$。若 $F_X$ 有平坦區段或跳躍，分位函數仍提供一個固定且明確的選取方式。
 
 若比例寫成 $p=k/r$，則相應的位置也可稱為第 $k$ 個 $r$ 分位數，記作 $q_k$。四分位數、十分位數與百分位數都屬於這個說法的特例。
 
@@ -149,12 +135,8 @@ $$
 若實數 $\eta_X$ 滿足
 
 $$
-\mathbb{P}(X\leqslant \eta_X)\geqslant\frac{1}{2}
-$$
-
-且
-
-$$
+\mathbb{P}(X\leqslant \eta_X)\geqslant\frac{1}{2},
+\qquad
 \mathbb{P}(X\geqslant \eta_X)\geqslant\frac{1}{2}
 $$
 
@@ -173,7 +155,7 @@ $$
 <div id="example-215" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.15 (A Fair Die)</div>
 
-令 $X$ 表示投擲一顆公平骰子所得點數。則
+令 $X$ 表示投擲一顆公正骰子所得點數。則
 
 $$
 \mathbb{P}(X=k)=\frac{1}{6},
@@ -196,11 +178,7 @@ $$
 \{x\in\mathbb{R}\mid F_X(x)\geqslant 1/2\}=[3,\infty)
 $$
 
-因此
-
-$$
-x_{0.5}=\inf[3,\infty)=3
-$$
+因此，$x_{0.5}=\inf[3,\infty)=3$。
 
 另一方面，若把 $[3,4]$ 之間的任何一個數代入中位數定義，都會得到
 
@@ -228,15 +206,13 @@ $$
 \mathbb{P}(X=1000)=0.01
 $$
 
-則
+其期望值為
 
 $$
 \mathbb{E}(X)=0(0.99)+1000(0.01)=10
 $$
 
-但其中位數為 $0$。原因是 $X=0$ 這個點已經累積了 $99\%$ 的機率，因此累積機率達到一半的位置早已在 $0$。
-
-這個例子說明，平均數會受到少數很大的數值影響；中位數則更直接反映「有一半機率落在何處之前」。
+但其中位數為 $0$。因為 $X=0$ 已累積 $99\%$ 的機率，CDF 在 $0$ 便已超過 $1/2$。這個例子說明，平均數會受到少數很大的數值影響；中位數則由累積機率達到一半的位置決定。
 </div>
 
 ## 本篇小結

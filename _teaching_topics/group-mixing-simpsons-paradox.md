@@ -77,7 +77,7 @@ $$
 
 這個反向來自分組比例。醫師 $A$ 的病患中高風險者占了 $40/50$，醫師 $B$ 的病患中高風險者只占 $10/100$。兩個整體成功率不是同一組權重下的比較。
 
-<div class="topic-box topic-box--intuition" markdown="1">
+<div class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 1.7</div>
 
 若你只看整體成功率，會認為醫師 $B$ 比較好。若你分別看低風險與高風險病患，會認為醫師 $A$ 比較好。

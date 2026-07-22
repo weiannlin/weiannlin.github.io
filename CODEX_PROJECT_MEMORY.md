@@ -1,82 +1,20 @@
-# Codex Project Memory
+# Website Project Bootstrap
 
-## Read-First Hard Rule (all models, every reply)
+This tracked file is a compatibility pointer. It deliberately contains no private paths, detailed editorial rules, or local work history.
 
-- 本專案的跨模型根規範是倉庫根目錄的 `SITE_STYLE_CANON.md`（本機限定、不入 git）。**任何模型（Codex、Claude 或其他）每一次回覆前都必須實際重新開檔復讀該檔的鐵律區與文風參照節**——只讀完本檔與 `PROJECT_HANDOFF.md` 就開工, 視同漏讀, 該次產出全數退件重做並記違規。若在你的環境中找不到該檔（例如非本機工作), 先向使用者索取, 不得逕行開工。
+When the local governance files are available:
 
-## Teaching Topics Rules
+1. Read SITE_STYLE_CANON.md and follow its two mandatory reread points.
+2. Use local/site-governance/EDITORIAL.md for teaching prose and mathematics.
+3. Use local/site-governance/WORKFLOW.md for preview, publishing, and Git.
+4. Use local/site-governance/STATUS.md for the current working state.
 
-- 每次重新接手本專案，或對話上下文被壓縮後，先閱讀本檔案，再修改 Teaching Topics 內容。此規則是硬性要求，不可只依賴壓縮摘要、模糊記憶或上一輪工作印象。
-- 每次重新接手本專案，或對話上下文被壓縮後，也必須閱讀 `PROJECT_HANDOFF.md`。`CODEX_PROJECT_MEMORY.md` 記錄硬性規則，`PROJECT_HANDOFF.md` 記錄完整專案方向、目前進度、使用者偏好與移交細節；二者缺一不可。
-- 本專案 Teaching Topics 的最高內容規範是使用者書稿與黃文璋老師教材，其中又以使用者書稿為更主要的參考依據。撰寫或修改定義、命題、符號、例題、圖形、章節脈絡與文風時，必須先查使用者書稿；黃老師教材用來校準中文教科書高度、嚴謹性與傳統寫法。不可只憑模型知識自行延伸。
-- Teaching Topics 的主題編排與內容文字雛形，必須以 `/Users/sagalin/Dropbox/MathStat/chapters/` 中的 MathStat 原書檔為最高對照規範。每次重新接手、上下文壓縮後，或開始撰寫新主題前，不能只依照壓縮摘要、上一輪記憶或一般教科書知識推進；必須回到相關 `mathstat*.tex` 段落確認原書的章節順序、敘述重點、例題安排、符號與圖形邏輯。若網頁閱讀節奏需要調整順序，也只能在不偏離原書內容骨架的前提下進行。
-- 若工作涉及參考文獻、專業用語、文風、LaTeX、圖形、交叉引用或公開頁面格式，必須先檢查本檔案中的相關規則，再開始編輯。
-- 凡是撰寫或修正 Teaching Topics 的數學內容，必須先查使用者原書檔與黃文璋老師教材的對應段落。主題安排順序可依網頁閱讀節奏調整，但定義、命題、公式、符號與例題內涵不得和原書或黃老師教材相違。若尚未查到對應段落，不得只憑模型記憶或一般知識直接定稿。
-- 若使用者原書檔與黃文璋老師教材在定義、命題、符號或敘述上有所差異，裁定時以數學上較嚴謹、適用範圍較清楚且較不容易誤導學生的版本為主；同時盡量保留使用者原書的符號習慣與講義語氣。不可機械式偏向任一來源，也不可為了敘事流暢而犧牲嚴謹性。
-- 若發現某篇 Teaching Topics 曾未充分比對原書與黃文璋老師教材，不能只修當前頁面。必須回頭校勘所有已完成且相關的前序主題，逐篇確認定義、命題、公式、符號、例題內涵與來源一致；可接受主題順序與網頁敘事不同，但不可接受數學內容不同。
-- 數學符號也要盡量與使用者原書檔及黃文璋老師教材一致。若原書使用自訂 LaTeX 巨集，網頁可改用可執行的標準 LaTeX 寫法，但記號本身不應任意改成另一套。例如中位數優先使用 `\eta_X`，四分位數使用 `Q_1,Q_2,Q_3`，百分位數使用 `P_r`；若黃老師以分位函數 `F^{-1}` 或 `x_p=F^{-1}(p)` 表示，網頁也應優先採用相近符號，而不是自行引入新的 `Q_X(p)` 記號。
-- 本機預覽不要使用系統 `/usr/bin/bundle`，它會抓到 macOS Ruby 2.6 並因 Bundler 2.6.9/Ruby 版本不相容而失敗。應使用 Homebrew Ruby 3.4 的 bundle，例如 `/opt/homebrew/lib/ruby/gems/3.4.0/bin/bundle exec jekyll serve --host 127.0.0.1 --port 3000`。若 3000 已被舊 Ruby/Jekyll process 佔用，先確認 `_site` 是否已更新，再決定是否需要重啟。
-- 教學主題以中文撰寫，專業名詞、句型節奏與敘述方式以使用者講義及使用者即時修正為最高依據。
-- 黃文璋老師的中文數理統計與機率論教材是中文教本的重要典範，應作為寫作高度、章節鋪陳與參考文獻整理的標竿。若未有使用者講義或即時指示可依循，則以黃老師教材的嚴謹寫法作為主要參考。
-- 參考黃老師教材時，不照搬其用詞與例子。黃老師的文字較屬前一世代風格，本專案目標是做出符合當代學生閱讀習慣、網頁瀏覽節奏與互動展示設計的新版本。
-- 目前階段優先完成網頁框架與互動教材骨架，包含 Teaching Topics、Demos、文章間路徑與主題首頁。傳統講義整理仍然需要，但屬於後續工程，不在現階段與網頁教材互相拉扯。
-- Teaching Topics 的現階段任務，是把嚴謹機率統計內容改寫為與 Demos 高度連結的科普文章與教材。文章應在定義、定理與證明之外，主動安排直覺校準、互動展示連結、現代情境例子與清楚的學習路徑；傳統講義電子化屬於後續工程。
-- 全站文風要避免「AI 口吻」。避免過度使用「本文要說明」、「核心想法」、「這件事很重要」、「可以理解為」等泛化提示句；優先使用講義式的直接敘述，例如「令」、「若」、「則稱」、「由此可知」、「因此」、「故」等能明確承接定義、定理與推導的句型。
-- 避免在教材正文中使用「問」、「詢問」作為抽象解釋語氣，也避免把「考察」當作萬用替代詞。若需表達同一意思，優先使用較自然的講義式用語，例如「討論」、「計算」、「求取」、「處理」、「關心的是」、「回頭審視」或直接寫出事件與機率。
-- 避免用「讀出」、「讀回」描述由表格、公式或圖形取得數值。優先改成「由表可得」、「由公式可得」、「求得」、「計算」或「呈現」。
-- 避免用「承載」描述單點與機率的關係。優先使用「具有正機率」、「機率集中在單點上」、「記錄該點具有多少機率質量」等說法。
-- 避免在教材正文中用「語言」、「物件」包裝概念。優先直接寫成「定義」、「概念」、「符號」、「內容」、「基礎」、「架構」或具體名稱。
-- 避免用「入口」這類模板化比喻包裝段落。若要表達入門性，可用使用者偏好的說法，例如「敲門磚」。
-- 避免使用否定後再轉折的模板句，例如先說某事不屬於某範圍，再接一個轉折改說真正重點。遇到這類句子時，改成直接陳述重點或分成兩句說明。
-- distribution 的一般中文譯詞依使用者 2026-06-21 裁示統一寫作「分配」，不要寫作「分布」。Teaching Topics 全系列第一次提到 distribution 相關概念時，可補一句說明「分配」也有教材寫作「分佈」；此後公開正文統一使用「分配」。例如常態分配、事前分配、事後分配、聯合分配。
-- 第二章隨機變數與 CDF 相關用語以使用者 MathStat 講義為準。使用「累積分配函數 (cumulative distribution function, CDF)」，並可說明其簡稱為「分配函數 (distribution function, DF)」。除非是在全系列第一次提到 distribution 時作術語說明，避免混用「累積分佈函數」或「分佈函數」。
-- 分位數是位置量數；中位數是 $p=1/2$ 分位數的特例，同時也是中央趨勢量數。期望值、中位數、眾數並列時，應稱為「中央趨勢量數」。不要自行延伸或改稱「中心量數」。
-- 寫 Teaching Topics 時，要嚴格區分「給學生看的教材正文」與「給使用者看的課程編排筆記」。不要把作者視角或授課規劃視角直接寫進文章，例如用尚未介紹的術語來解釋「為何不先從某某開始」。若需要說明學習順序，應改寫為學生能沿著當下內容理解的路徑，例如先採較抽象但一致的定義，再於後文說明不同型態如何各自展開。
-- 教材正文不可出現工作流或內部參照語句，例如「原書」、「我的講義」、「使用者講義」、「沿用原書的寫法」、「依照使用者要求」等。即使內容確實參考使用者講義，也只能轉化為學生能直接閱讀的定義、說明、例子或推導。
-- 每次完成 Teaching Topics 初稿後，檢查是否有只是在向使用者交代寫作決策的段落混入正文。若有，改成學生可直接閱讀的概念鋪陳，或移到專案記憶與工作筆記，不留在公開教材中。
-- Teaching Topics 是科普性網頁教材，不是考研補習講義。避免用「題目給出」、「解題時」、「候選函數」這類考試導向開場；應改成從定義、建模、指定機率或概念推展的角度敘述。可使用 MathStat 原書例題或考古題的數學內涵，但公開頁面必須重新改寫題目文字，不照抄原題，且題名不要寫校系或考題出處。
-- 避免在使用者可見文字中使用中文全形冒號。
-- 避免使用使用者已明確列為不喜歡的二字詞，第一字為「語」，第二字為「感」。
-- 數學模式使用 `$...$` 與 `$$...$$`，不要使用 `\(...\)` 或 `\[...\]`。
-- 機率統計常用符號使用 `\mathbb{P}`、`\mathbb{E}` 與 `\mathrm{Var}`。
-- 展示數式內不要以句號、逗號或中文句點收尾。需要標點時，放在數式前後的正文中處理。
-- 展示數式前一行也不要用逗號硬斷開。若正文要銜接展示數式，改成「則」、「可寫為」、「此即」、「由此可得」等完整橋接語，或直接把句子收束後再開公式。
-- 在 `markdown="1"` 的 HTML 區塊中，若展示數式 `$$...$$` 後面緊接 `</div>`，要在 `$$` 與 `</div>` 之間保留空行；否則 Markdown/MathJax 可能把數式包進段落並以 inline math 渲染，導致不置中且分式變小。
-- 多行對齊數式若需要換行，行距要比預設寬，可使用 `\\[0.35em]` 或 `\\[0.45em]`。
-- 分段函數若使用 cases 類環境，數值欄置中且保留逗號，條件欄置左。可用 `\left\{\begin{array}{c@{\quad}l} ... \end{array}\right.` 取代預設 `cases`，避免數值欄靠左或逗號被移到條件欄。
-- 集合建構式優先使用 `\mid` 表示「使得」或「滿足」，例如 `\{x\in\mathbb{R}\mid F_X(x)\geqslant p\}`，不要使用冒號 `:`。這與使用者講義習慣一致，也可避免冒號在網頁中顯得像一般標點。
-- 隨機變數的可能取值集合優先寫作 `\mathcal{R}_X`，不要只寫成漂浮的 `\mathcal{R}`。若定理需要一般集合，也盡量用與隨機變數相連的記號說明。
-- 近似相等或經驗法則若原書使用 `\doteqdot`，Teaching Topics 也使用 `\doteqdot`，不要自行改成 `\doteq`。例如 Pearson 經驗法則應寫作 `\big|\mu_X-m_o\big|\doteqdot 3\big|\mu_X-\eta_X\big|`。
-- 避免單獨標點成行、頭點、尾點，以及單字或短詞孤立成行。
-- 例題可使用題名，例如 `Example 1.12 (A Simpson Reversal)`。
-- Teaching Topics 的例題必須使用 `<div class="topic-box topic-box--example" markdown="1">` 或帶穩定 anchor 的 `<div id="example-..." class="topic-box topic-box--example" markdown="1">`，下一行接 `<div class="topic-box__label">Example ...</div>`。不要把例題改成 `## Example ...` 或其他章節標題環境。
-- 文章內交叉引用若指的是特定例題、定義、定理、圖或直覺校準，應優先連到具體編號與 anchor，例如 `Example 2.7 的抽球例子`，不要只連到整篇文章。若該區塊尚無 anchor，先補上穩定 id 再引用。
-- 互動展示連結通常放在概念介紹後的筆記或補充段落中，不放在文章一開始。
-- 每篇 Teaching Topics 文章結尾保留「參考文獻與延伸閱讀」區塊。
-- 參考文獻若為期刊論文，需附期刊名、卷、期與頁碼。不要在公開教材的參考文獻中顯示 DOI；DOI 可作為查證用資料，但不列入頁面文字。公開參考文獻也不要做成 Markdown 外部連結或裸 URL；即使來源本身是網頁型資料，也優先改成純書目格式。
-- 期刊論文或會議論文若已有完整書目資訊，不要在條目尾端附上館藏或資料庫標籤，例如 EUDML、JSTOR、Project Euclid。這些可作查證來源，但公開參考文獻維持純書目格式。網頁型來源若必須保留，仍不要附可點擊連結，除非使用者明確指定。
-- 參考文獻不可憑記憶或常識補出版狀況。期刊論文優先查 DOI、Crossref、JSTOR、Project Euclid 或出版社頁面；書籍優先查出版社、圖書館目錄或可信書目資料庫。若公開網路來源無法確認某個版本、出版社或頁碼，應回報「未能由公開網路來源確認」，不得自行猜補。
-- 黃文璋老師著作的正式出版資訊以國圖 ISBN/全國新書資訊網等書目資料為準，不可以本機講義封面或系所名稱代替出版社。已查證條目包含《機率論》（初版，2003，華泰文化事業股份有限公司）、《機率論》（二版，2010，華泰文化事業股份有限公司）與《數理統計》（初版，2003，華泰文化事業股份有限公司）。公開教材的參考文獻不列出版地與 ISBN，出版社以一般書目簡稱呈現，例如「華泰文化」，除非使用者另行指定。
-- `10.2307/...` 常是 JSTOR stable number，不可一律標成 DOI。若要顯示連結，標作一般穩定連結，不使用 DOI 標籤。
-- 修改規則性格式時，要回頭檢查既有主題是否也需要同步調整。
+If the local files are absent, preserve these public invariants:
 
-## Explicit User Frustration Items
+- Treat the author's current instruction as authoritative.
+- Do not draft mathematical teaching content from model memory alone.
+- Keep internal workflow, local paths, and private sources out of public pages.
+- Preserve unrelated changes and unpublished drafts.
+- Do not commit or push unless the author explicitly requests it for the current work.
 
-- 使用者已明確不滿我把黃文璋老師《數理統計》誤寫為「國立高雄大學應用數學系」出版。這是把本機講義封面與正式出版資訊混淆的錯誤。以後不得用內部講義封面、系所名稱、檔名、資料夾名稱或講義日期代替正式出版社資訊。
-- 使用者已明確不滿我沒有先查華泰文化出版資訊。以後遇到中文書籍引用，先查出版社、國圖 ISBN/全國新書資訊網、圖書館目錄或其他可信書目資料庫。不能查證時，回報不能查證，不可自行補出版資訊。
-- 使用者已明確不滿公開參考文獻寫「臺北市」或類似出版地。Teaching Topics 的公開參考文獻不要列出版地。
-- 使用者已明確不滿只有黃文璋老師某一本書附 ISBN。Teaching Topics 的公開參考文獻不要列 ISBN，避免格式不一致。ISBN 可留在工作查證或專案記憶中，不放進公開頁面。
-- 使用者已明確說過不要 DOI。Teaching Topics 的公開參考文獻不要顯示 DOI、`doi:`、`DOI` 或 `https://doi.org/...`。DOI 可作為查證來源，但不出現在頁面上。
-- 使用者已明確不滿 `[EUDML](...)` 這種資料庫尾巴。期刊論文或會議論文若已有完整書目資訊，不要在條目尾端附上 EUDML、JSTOR、Project Euclid、Rényi Institute 等館藏或資料庫標籤。這些可用於查證，但不放進公開書目。
-- 使用者已明確不滿公開參考文獻中的外部可點連結，例如 `[Stanford Encyclopedia of Philosophy](https://...)`。Teaching Topics 的參考文獻採純書目格式，不要使用 Markdown 外部連結或裸 URL。
-- 使用者已明確要求中文出版社用一般書目簡稱。公開參考文獻寫「華泰文化」，不要寫「華泰文化事業股份有限公司」，除非使用者指定要全稱。
-- 使用者已明確不滿參考文獻格式混雜。Teaching Topics 的參考文獻要整體一致，不要同時混用 APA 括號年份、中文全形句式、出版地、ISBN、DOI、資料庫尾巴與一般 bibliography 格式。
-- 使用者指出「標準 bib 引用格式」時，應採書目式呈現。中文書可寫作「作者，年份，《書名》，版次，出版社。」英文書可寫作「Author. Year. *Title*. Edition. Publisher.」期刊可寫作「Author. Year. “Title.” *Journal* volume (issue): pages.」
-- 若使用者指出某一項引用格式問題，不可只改該項。必須全站掃描同類型問題並同步修正。
-- 每次修改參考文獻後，至少掃描 `_pages` 與 `_teaching_topics` 中是否殘留 `doi:|DOI|https://doi\.org|ISBN|臺北市|台北市|stable link|\([12][0-9]{3}\)|EUDML|JSTOR|Project Euclid|Rényi Institute`。
-- 遇到使用者明確表達不滿時，不要辯解，不要只說抽象道歉。應具體承認錯誤、查證來源、修正檔案、全站掃描並回報結果。
-
-## Teaching Topics Source Notes
-
-- 獨立性文章中「直覺校準 1.9」的互斥與獨立比較表，依使用者講義 `statch2.tex` 註腳，來源為 Ron Mittelhammer, *Mathematical Statistics for Economics and Business*, Springer, 1996, p. 31。
-- 分位數文章中的 Uniform Distribution 例子目前顯示為 Example 2.14，但需要保留穩定 anchor `example-214`。未來撰寫機率積分轉換 (probability integral transform) 時，要回頭交叉引用此例。
+The original detailed project-memory files were consolidated locally on 2026-07-15. Their full text remains in the local governance archive.

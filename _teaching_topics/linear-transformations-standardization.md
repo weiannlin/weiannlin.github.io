@@ -38,10 +38,10 @@ $$
 \begin{aligned}
 \mathbb{E}(Y)
 &=
-a\mathbb{E}(X)+b,\\[0.45em]
+a\mathbb{E}(X)+b\\[0.45em]
 \mathrm{Var}(Y)
 &=
-a^2\mathrm{Var}(X),\\[0.45em]
+a^2\mathrm{Var}(X)\\[0.45em]
 \mathrm{SD}(Y)
 &=
 \lvert a\rvert\,\mathrm{SD}(X)
@@ -50,7 +50,7 @@ $$
 
 </div>
 
-第一個式子是 [Proposition 2.6](/teaching-topics/expected-value-random-variables/#期望值的線性關係) 的直接應用。第二個與第三個式子則承接 [Proposition 2.8](/teaching-topics/variance-standard-deviation/#平移與伸縮)。
+第一個式子是 [Proposition 2.6](/teaching-topics/expected-value-random-variables/#proposition-26) 的直接應用。第二個與第三個式子則承接 [Proposition 2.8](/teaching-topics/variance-standard-deviation/#proposition-28)。
 
 直觀上，平移只會把整個分配往左或往右搬動，不改變分散程度；伸縮則會同步改變所有離差，因此標準差也會依伸縮倍數的絕對值改變。
 
@@ -73,7 +73,7 @@ $$
 68
 $$
 
-而
+華氏溫度的標準差則為
 
 $$
 \mathrm{SD}(Y)
@@ -120,16 +120,16 @@ $$
 
 標準化後的隨機變數有很簡單的期望值與標準差。
 
-<div class="topic-box topic-box--proposition" markdown="1">
+<div id="proposition-210" class="topic-box topic-box--proposition" markdown="1">
 <div class="topic-box__label">Proposition 2.10</div>
 
-若
+令 $X$ 為滿足 $\mathbb{E}(X)=\mu_X$ 與 $0<\sigma_X^2=\mathrm{Var}(X)<\infty$ 的隨機變數。若
 
 $$
 Z=\frac{X-\mu_X}{\sigma_X}
 $$
 
-其中 $\sigma_X>0$，則
+則
 
 $$
 \mathbb{E}(Z)=0,
@@ -141,7 +141,8 @@ $$
 
 </div>
 
-這是 [Proposition 2.9](#proposition-29) 的直接應用。因為
+<div class="topic-proof" markdown="1">
+**Proof.** 這是 [Proposition 2.9](#proposition-29) 的直接應用。因為
 
 $$
 Z
@@ -151,25 +152,24 @@ Z
 \frac{\mu_X}{\sigma_X}
 $$
 
-所以
+由此可得
 
 $$
+\begin{aligned}
 \mathbb{E}(Z)
-=
+&=
 \frac{1}{\sigma_X}\mathbb{E}(X)
--
-\frac{\mu_X}{\sigma_X}
-=0
-$$
-
-且
-
-$$
+-\frac{\mu_X}{\sigma_X}
+=0 \\[0.45em]
 \mathrm{Var}(Z)
-=
+&=
 \frac{1}{\sigma_X^2}\mathrm{Var}(X)
 =1
+\end{aligned}
 $$
+
+再由標準差的定義可得 $\mathrm{SD}(Z)=1$。原式得證。$\square$
+</div>
 
 ## z-score 的意義
 
@@ -244,7 +244,7 @@ $$
 
 線性轉換 $Y=aX+b$ 會改變隨機變數的平均位置與尺度。期望值會隨著平移與伸縮改變，標準差則只受到伸縮倍數影響。
 
-標準化是線性轉換的一個特別重要的例子。
+標準化是線性轉換的一個特別重要的例子，可寫為
 
 $$
 Z=\frac{X-\mu_X}{\sigma_X}

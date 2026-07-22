@@ -164,8 +164,11 @@ include:
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
+  - AGENTS.md
   - .asset-cache
   - .bundle
+  - .claude
+  - .codex
   - .github
   - .jekyll-assets-cache
   - .sass-cache
@@ -174,21 +177,41 @@ exclude:
   - assets/js/vendor
   - CHANGELOG
   - Capfile
+  - CLAUDE.md
+  - CODEX_PROJECT_MEMORY.md
+  - CONTRIBUTING.md
   - config
+  - docker-compose.yaml
   - Dockerfile
+  - files/bibtex1.bib
+  - files/paper1.pdf
+  - files/paper2.pdf
+  - files/paper3.pdf
+  - files/slides1.pdf
+  - files/slides2.pdf
+  - files/slides3.pdf
   - Gemfile
   - Gruntfile.js
   - gulpfile.js
   - LICENSE
   - local
   - log
+  - markdown_generator
   - node_modules
   - package.json*
+  - PROJECT_HANDOFF.md
   - Rakefile
   - README
   - README.md
+  - scripts
+  - SITE_STYLE_CANON.md
+  - talkmap
+  - talkmap.py
+  - talkmap.ipynb
+  - talkmap_out.ipynb
   - tmp
   - vendor
+  - claude_comment
 keep_files:
   - .git
   - .svn
@@ -225,9 +248,6 @@ collections:
     output: true
     permalink: /teaching-topics/:path/
   publications:
-    output: true
-    permalink: /:collection/:path/
-  portfolio:
     output: true
     permalink: /:collection/:path/
   talks:
@@ -293,7 +313,7 @@ defaults:
       layout: single
       author_profile: true
       share: true
-      comment: true
+      comments: true
   # _talks
   - scope:
       path: ""

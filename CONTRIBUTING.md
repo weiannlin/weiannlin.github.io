@@ -1,8 +1,5 @@
-Contributions are welcome! 
+# Contributing
 
-Please add issues and make pull requests. There are no stupid questions. All ideas are welcome. This is a volunteer project. Be excellent to each other.
+This repository is the source of a personal academic website, not a reusable website template. Reports of broken links or typographical errors may be submitted as GitHub issues. Content, teaching materials, and site direction remain under the site owner's review.
 
-Bug reports and feature requests to the template  should be [submitted via GitHub](https://github.com/academicpages/academicpages.github.io/issues/new/choose). For questions concerning how to style the template, please feel free to start a [new discussion on GitHub](https://github.com/academicpages/academicpages.github.io/discussions).
-
-Fork from master and go from there. Remember that this repository is intended to remain a generic, ready-to-fork template that demonstrates the features of academicpages.
-
+Questions about the upstream Academic Pages template should be directed to the [Academic Pages project](https://github.com/academicpages/academicpages.github.io).

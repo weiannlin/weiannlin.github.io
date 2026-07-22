@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" role="img" aria-labelledby="title desc">
+  <title id="title">函數轉換的合成映射</title>
+  <desc id="desc">樣本空間中的樣本點 omega 先由 X 映到實數 X of omega，再由 g 映到實數 Y of omega，三個階段以橫向節點與箭頭連接。</desc>
+  <defs>
+    <marker id="map-arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M 1 1 L 9 5 L 1 9 Z" fill="#9c2d2d"/>
+    </marker>
+    <style>
+      .frame { fill: none; stroke: #c9c1b4; stroke-width: 2; }
+      .node { fill: #fffdf8; stroke: #1f1c18; stroke-width: 2.2; }
+      .divider { stroke: #c9c1b4; stroke-width: 1.5; }
+      .node-title { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #5b5148; font-size: 26px; }
+      .space { font-family: Georgia, "Times New Roman", serif; fill: #1f1c18; font-size: 42px; font-style: italic; }
+      .value { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #1f1c18; font-size: 27px; }
+      .value-math { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+      .value-long { font-size: 26px; }
+      .arrow { fill: none; stroke: #9c2d2d; stroke-width: 3; stroke-linecap: round; marker-end: url(#map-arrow); }
+      .arrow-label { font-family: Georgia, "Times New Roman", serif; fill: #9c2d2d; font-size: 32px; font-style: italic; }
+    </style>
+  </defs>
+
+  <rect class="frame" x="18" y="18" width="684" height="264" rx="12"/>
+
+  <rect class="node" x="34" y="63" width="166" height="172" rx="18"/>
+  <line class="divider" x1="52" y1="113" x2="182" y2="113"/>
+  <text class="node-title" x="117" y="100" text-anchor="middle">樣本空間</text>
+  <text class="space" x="117" y="163" text-anchor="middle">S</text>
+  <text class="value" x="117" y="214" text-anchor="middle">樣本點 <tspan class="value-math">ω</tspan></text>
+
+  <path class="arrow" d="M 211 149 L 265 149"/>
+  <text class="arrow-label" x="238" y="128" text-anchor="middle">X</text>
+
+  <rect class="node" x="277" y="63" width="166" height="172" rx="18"/>
+  <line class="divider" x1="295" y1="113" x2="425" y2="113"/>
+  <text class="node-title" x="360" y="100" text-anchor="middle">實數線</text>
+  <text class="space" x="360" y="163" text-anchor="middle">ℝ</text>
+  <text class="value" x="360" y="214" text-anchor="middle">取值 <tspan class="value-math">X(ω)</tspan></text>
+
+  <path class="arrow" d="M 454 149 L 508 149"/>
+  <text class="arrow-label" x="481" y="128" text-anchor="middle">g</text>
+
+  <rect class="node" x="520" y="63" width="166" height="172" rx="18"/>
+  <line class="divider" x1="538" y1="113" x2="668" y2="113"/>
+  <text class="node-title" x="603" y="100" text-anchor="middle">實數線</text>
+  <text class="space" x="603" y="163" text-anchor="middle">ℝ</text>
+  <text class="value value-long" x="603" y="196" text-anchor="middle"><tspan class="value-math">Y(ω)</tspan></text>
+  <text class="value value-long" x="603" y="222" text-anchor="middle"><tspan class="value-math">=g(X(ω))</tspan></text>
+</svg>

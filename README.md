@@ -6,15 +6,6 @@ The site began from the Academic Pages template and has since been customized in
 
 This README is a repository overview. It is not part of the public site navigation.
 
-## Working Notes for Codex
-
-Two internal files record the working rules for future Codex sessions.
-
-- `CODEX_PROJECT_MEMORY.md` records mandatory project rules, especially for Teaching Topics prose, notation, references, figures, and local preview workflow.
-- `PROJECT_HANDOFF.md` records the broader handoff: project goals, current teaching sequence, user preferences, source hierarchy, style decisions, figure conventions, and likely next steps.
-
-Future Codex sessions should read both files before editing the teaching materials.
-
 ## Site Structure
 
 The public website is organized around the following sections.
@@ -32,7 +23,7 @@ The public website is organized around the following sections.
 
 Teaching Topics is the main long-term teaching component of the site. Articles are written as concise web versions of lecture material rather than direct lecture-note copies. The goal is to keep mathematical definitions, theorems, examples, and proof ideas while making each topic readable as a standalone webpage.
 
-The current probability sequence contains 23 published topics: nine in Chapter 1, from random experiments through Bayes' rule, and fourteen in Chapter 2, from random variables and distribution functions through characteristic functions.
+The current probability sequence contains 30 published topics: nine in Chapter 1, from random experiments through Bayes' rule, and twenty-one in Chapter 2, from random variables and distribution functions through transformations of continuous random variables.
 
 The writing direction is to connect rigorous probability/statistics content with modern examples and interactive demos whenever the interaction genuinely clarifies the mathematics.
 
@@ -50,7 +41,7 @@ Most demos are implemented as page-local HTML, CSS, and JavaScript inside `_page
 - `_layouts/` and `_includes/` contain Jekyll layouts and reusable Liquid fragments.
 - `_sass/`, `assets/`, and `images/` contain styling, scripts, fonts, figures, and site images.
 - `files/` contains downloadable PDFs, slides, BibTeX files, and related public files.
-- `markdown_generator/` contains legacy Academic Pages helper scripts retained from the original template.
+- `markdown_generator/` contains disabled Academic Pages sample generators retained for reference. Their inputs are template data and must not be run against the current site collections.
 
 ## Editing Principles
 

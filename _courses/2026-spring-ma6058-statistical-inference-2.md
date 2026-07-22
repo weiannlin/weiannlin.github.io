@@ -14,13 +14,10 @@ location: "Taoyuan, Taiwan"
 
 Topics:
 
-- Probability and distributions
-- Properties of random samples
-- Principles of data reduction
-- Point estimation
-- Hypothesis testing
-- Interval estimation
-- Asymptotic evaluations
+- Sufficiency
+- Point Estimation
+- Interval Estimation
+- Hypothesis Testing
 
 **Textbook**:
 

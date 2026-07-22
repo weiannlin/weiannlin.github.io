@@ -9,6 +9,7 @@ topic: 4
 order: 104
 permalink: /teaching-topics/probability-rules-from-axioms/
 date: 2026-05-05
+published: true
 excerpt: "Kolmogorov 公理本身很短，卻能推出一整套機率運算規則。本篇從虛無事件、有限可加性與餘事件公式開始，進一步整理單調性、加法原理、排容原理與常用機率不等式。"
 ---
 

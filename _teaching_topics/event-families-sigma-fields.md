@@ -9,6 +9,7 @@ topic: 3
 order: 103
 permalink: /teaching-topics/event-families-sigma-fields/
 date: 2026-05-05
+published: true
 excerpt: '樣本空間只說明隨機實驗的所有可能結果；事件集合族則說明哪些由結果構成的集合值得被賦予機率。本篇以 $\sigma$-域作為可測事件的清單，說明可測空間與機率空間的第一層結構。'
 ---
 

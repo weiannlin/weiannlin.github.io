@@ -7,12 +7,16 @@ author_profile: true
 
 {% include base_path %}
 
-Interactive teaching demos covering foundational topics in statistics, computer experiments, and Gaussian-process methodology.
+Interactive teaching demos for foundational probability concepts and random variables.
 
 ## Random events
 
 - [The Monty Hall Problem](/demos/monty-hall/) — switching beats staying; play it, simulate it, see why.
+
+## Event probabilities
+
 - [Rapid Test Bayesian Updating Lab](/demos/bayesian-updating/) — change prevalence, sensitivity, and specificity, then watch positive or negative results update the posterior.
+- [Simpson’s Paradox Mixing Lab](/demos/simpsons-paradox/) — change the group mix and observe when within-group comparisons reverse after aggregation.
 
 ## Random variables
 

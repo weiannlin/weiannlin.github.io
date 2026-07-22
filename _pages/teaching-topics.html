@@ -14,7 +14,7 @@ author_profile: true
 {% assign categories = "機率概論,隨機變數,隨機向量,分配理論,極限分配,統計推論,電腦實驗,高斯過程,試驗設計" | split: "," %}
 
 {% for cat in categories %}
-  {% assign articles = site.teaching_topics | where: "category", cat | where_exp: "article", "article.published != false" | sort: "order" %}
+  {% assign articles = site.teaching_topics | where: "category", cat | sort: "order" %}
   {% if articles.size > 0 %}
 <h2 id="{{ cat | slugify }}">{{ cat }}</h2>
   {% assign chapter_groups = articles | group_by: "chapter" %}
@@ -46,7 +46,7 @@ author_profile: true
   <li>
     {% if article.topic %}<span class="topic-chapter">主題 {{ article.topic }}</span>{% endif %}
     <a href="{{ article.url | relative_url }}"><strong>{{ article.title }}</strong></a>
-    {% if article.excerpt and article.excerpt != "" %} &mdash; {{ article.excerpt | strip_html | strip_newlines }}{% endif %}
+    {% if article.excerpt and article.excerpt != "" %}: {{ article.excerpt | strip_html | strip_newlines }}{% endif %}
   </li>
   {% endunless %}
     {% endfor %}
