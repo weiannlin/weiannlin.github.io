@@ -476,7 +476,7 @@ $$
 
 若 $F_X$ 連續，令 $U=F_X(X)$，則 $U\sim\mathcal{U}(0,1)$。
 
-反過來，令 $F$ 為任意 CDF，且 $U\sim\mathcal{U}(0,1)$。其中 $F^{-1}$ 為[廣義分位函數](/teaching-topics/quantiles-and-median/#累積機率與分位數)，對 $0<u<1$ 定義為
+反過來，令 $F$ 為任意 CDF，且 $U\sim\mathcal{U}(0,1)$。其中 $F^{-1}$ 表示先前所定義的[分位函數](/teaching-topics/quantiles-and-median/#quantile-function)。對 $0<u<1$，其公式為
 
 $$
 F^{-1}(u)
@@ -582,6 +582,8 @@ $$
 
 這個性質可用來模擬隨機變數。一般的亂數產生器 (random number generator) 通常先提供 $0$ 與 $1$ 之間的均勻亂數。若目標分配的 CDF 為 $F$，則將每個均勻亂數 $u$ 轉換為 $F^{-1}(u)$；反覆進行後，即可得到來自該分配的一組模擬值。對有單點機率的分配，CDF 的跳躍會使一整段 $u$ 對應到同一個值，因此也能生成相應的單點機率。若 $F^{-1}$ 沒有簡單公式，則可用數值方法求出所需的分位數。
 
+若想實際操作這個過程，可以在互動展示 [Probability Integral Transform and Inverse Transform Sampling](/demos/probability-integral-transform/) 中調整 $u$，同時觀察標準柯西分配 (standard Cauchy distribution) 的 pdf 高度，以及其 CDF 與分位函數在對應位置的斜率。若以 $F$ 表示標準柯西分配的 CDF，則可由圖中的數值確認 $F\bigl(F^{-1}(u)\bigr)=u$。展示也可重複產生 $\mathcal{U}(0,1)$ 樣本，再由 $F^{-1}$ 轉換為標準柯西樣本，以直方圖比較轉換前後的分配形狀。
+
 第二個方向可與[均勻分配的分位數例題](/teaching-topics/quantiles-and-median/#example-214)對照。
 
 ## 本篇小結
@@ -609,7 +611,7 @@ $$
 
 多對一轉換須把 $\mathcal{R}_X$ 分成單調分支，並加總所有滿足 $y\in E_j$ 的原像分支。不同分支的值域可能不同，所以密度常須分段書寫。
 
-[Proposition 2.18](#proposition-218) 進一步說明，連續 CDF 可把隨機變數轉換為均勻分配，而廣義分位函數可由均勻分配產生指定的 CDF。
+[Proposition 2.18](#proposition-218) 進一步說明，連續 CDF 可把隨機變數轉換為均勻分配，而分位函數可由均勻分配產生指定的 CDF。
 
 至此已建立單一隨機變數的 CDF、pmf、pdf、期望值、變異數、母函數、特徵函數、機率界限與函數轉換，第二章也在此告一段落。下一章會把單一隨機變數推廣為隨機向量，進一步討論聯合分配、邊際分配及多個隨機變數之間的關係。
 

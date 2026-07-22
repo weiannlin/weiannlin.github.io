@@ -57,6 +57,7 @@ $$
 </div>
 
 由此可知，分位數未必唯一。為了指定一個明確的代表值，常採用分位函數
+{: #quantile-function}
 
 $$
 x_p=F_X^{-1}(p)=\inf\{x\in\mathbb{R}\mid F_X(x)\geqslant p\}

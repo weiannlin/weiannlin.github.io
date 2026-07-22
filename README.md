@@ -29,7 +29,7 @@ The writing direction is to connect rigorous probability/statistics content with
 
 ## Demos
 
-Interactive demos are kept as focused teaching companions, not as standalone games. Current demos include PMF to CDF, PDF to CDF, mixed distributions, the Monty Hall problem, Bayesian updating for rapid tests, and Simpson's paradox mixing.
+Interactive demos are kept as focused teaching companions, not as standalone games. Current demos include PMF to CDF, PDF to CDF, mixed distributions, probability integral transform with inverse transform sampling, the Monty Hall problem, Bayesian updating for rapid tests, and Simpson's paradox mixing.
 
 Most demos are implemented as page-local HTML, CSS, and JavaScript inside `_pages/demos-*.md`, so they can be revised together with the corresponding explanatory page.
 

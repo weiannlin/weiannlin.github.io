@@ -23,3 +23,4 @@ Interactive teaching demos for foundational probability concepts and random vari
 - [From PMF to CDF](/demos/pmf-cdf/) — build a discrete distribution by editing $(x, p)$ points, then sweep a current $x$ to watch the CDF accumulate.
 - [From PDF to CDF](/demos/pdf-cdf/) — pick a continuous distribution, tune its parameters, sweep $x$, and watch the running integral build the CDF.
 - [Mixed distributions](/demos/mixed/) — combine a continuous family with user-defined point masses; watch the CDF jump by exactly $w_i$ at each $x_i$.
+- [Probability Integral Transform and Inverse Transform Sampling](/demos/probability-integral-transform/) — follow one value through the standard Cauchy pdf, CDF, and quantile function, then generate inverse-transformed samples and compare their histograms.
