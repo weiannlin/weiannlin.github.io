@@ -82,13 +82,13 @@ $$
 \mathbb{P}(a<X\leqslant b)=\int_a^b f(t)\,dt
 $$
 
-The CDF is built the same way as before, with the running sum of point masses replaced by a running integral of density:
+The cdf is built the same way as before, with the running sum of point masses replaced by a running integral of density:
 
 $$
 F(x)=\mathbb{P}(X\leqslant x)=\int_{-\infty}^{x} f(t)\,dt
 $$
 
-Pick a distribution, tune its parameters, then sweep the current $x$. The red area under the density to the left of $x$ equals the height of the CDF at $x$ — the same probability, viewed two ways.
+Pick a distribution, tune its parameters, then sweep the current $x$. The red area under the density to the left of $x$ equals the height of the cdf at $x$ — the same probability, viewed two ways.
 
 ## Interactive
 
@@ -118,7 +118,7 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The red ar
   <svg id="dc-pdf" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet"></svg>
   <svg id="dc-cdf" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet"></svg>
   <div class="dc-readout">
-    Cumulative probability $\mathbb{P}(X\leqslant x)$ = <strong id="dc-cum">—</strong>. The red area under the density equals this; the CDF curve traces it.
+    Cumulative probability $\mathbb{P}(X\leqslant x)$ = <strong id="dc-cum">—</strong>. The red area under the density equals this; the cdf curve traces it.
   </div>
 </div>
 
@@ -126,9 +126,9 @@ Pick a distribution, tune its parameters, then sweep the current $x$. The red ar
 
 **Density vs. probability.** $f(x)$ measures how concentrated probability is around $x$, in units of probability per unit of $x$. It can exceed 1 — try a Normal with $\sigma = 0.2$. Probability itself only emerges by integrating over a region of positive width.
 
-**The CDF stays bounded.** $F(x)$ runs from 0 to 1, monotone non-decreasing, smooth wherever $f$ is finite. No jumps in the continuous case — those required point masses.
+**The cdf stays bounded.** $F(x)$ runs from 0 to 1, monotone non-decreasing, smooth wherever $f$ is finite. No jumps in the continuous case — those required point masses.
 
-**Discrete to continuous.** Compared to [the PMF demo](/demos/pmf-cdf/), the lollipop spikes have melted into a smooth density and the CDF staircase has straightened into a continuous curve. The accounting principle is unchanged: cumulative probability at $x$ is whatever sits "to the left" of $x$, just measured by area instead of by counting masses.
+**Discrete to continuous.** Compared to [the pmf demo](/demos/pmf-cdf/), the lollipop spikes have melted into a smooth density and the cdf staircase has straightened into a continuous curve. The accounting principle is unchanged: cumulative probability at $x$ is whatever sits "to the left" of $x$, just measured by area instead of by counting masses.
 
 <script>
 (function() {

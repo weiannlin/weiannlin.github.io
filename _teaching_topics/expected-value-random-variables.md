@@ -9,11 +9,11 @@ topic: 6
 order: 206
 permalink: /teaching-topics/expected-value-random-variables/
 date: 2026-06-06
-published: true
+published: false
 excerpt: "分配說明隨機變數的機率在數線上的分配情形。期望值則依照這些機率作加權平均，給出隨機變數的平均位置。離散型以 pmf 加總，連續型以 pdf 積分。"
 ---
 
-[上一篇文章](/teaching-topics/mixed-random-variables/)整理了離散、連續與混合型隨機變數。到目前為止，我們已經看過 CDF、pmf 與 pdf。這些函數描述的是隨機變數的機率在數線上的分配情形。
+[上一篇文章](/teaching-topics/mixed-random-variables/)整理了離散、連續與混合型隨機變數。到目前為止，我們已經看過 cdf、pmf 與 pdf。這些函數描述的是隨機變數的機率在數線上的分配情形。
 
 若分配已經指定，接下來常需要整理一個代表整體位置的數值。我們常希望用一個單一數值掌握隨機變數大致多大，而期望值正是最常使用的選擇之一。這個數值稱為**期望值 (expected value)**，也常稱為**平均數 (mean)**。期望值不是指某次實驗最可能出現的結果，也不必然是隨機變數真的可能取到的值；它是依照機率權重所得到的平均位置。
 
@@ -305,7 +305,7 @@ a\mathbb{E}[g(X)]+b\mathbb{E}[h(X)]
 \end{aligned}
 $$
 
-具有 pdf 的連續型情形相同，只是將加總改為積分，並以 $f_X(x)\,dx$ 作為權重。混合型情形則分別對單點加總與連續部分積分使用線性關係，再把兩部分相加。原式得證。$\square$
+具有 pdf 的連續型情形相同，只是將加總改為積分，並以 $f_X(x)\,dx$ 作為權重。混合型情形則分別對單點加總與連續部分積分使用線性關係，再把兩部分相加。原式得證。<span class="topic-qed">$\square$</span>
 </div>
 
 這個規則稱為**期望值的線性關係 (linearity of expectation)**。計算變異數時，常會先把平方展開，再使用此關係把期望值拆開處理。
@@ -362,5 +362,5 @@ $$
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
 - Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.

@@ -80,9 +80,9 @@ The classical answer is **yes**: switching wins with probability 2/3, while stay
 
 ## Where it comes from
 
-The puzzle takes its name from **Monty Hall**, longtime host of the American game show *Let's Make a Deal* (premiered 1963), where contestants chose among curtained options for prizes ranging from a new car to a stuffed donkey. Steve Selvin first posed the puzzle in this exact form in a 1975 letter to *The American Statistician*, but it became a cultural flash-point in September 1990 when **Marilyn vos Savant** gave the correct "switch" answer in her *Parade* magazine column. Roughly **ten thousand readers** wrote in to tell her she was wrong, including about a thousand from people with PhDs in mathematics. The number theorist **Paul Erdős** reportedly held out against the result until a colleague ran a computer simulation in front of him.
+The puzzle takes its name from **Monty Hall**, longtime host of the American game show *Let’s Make a Deal* (premiered 1963), where contestants chose among curtained options for prizes ranging from a new car to a stuffed donkey. Steve Selvin first posed the puzzle in this exact form in a 1975 letter to *The American Statistician*, but it became a cultural flash-point in September 1990 when **Marilyn vos Savant** gave the correct "switch" answer in her *Parade* magazine column. Roughly **ten thousand readers** wrote in to tell her she was wrong, including about a thousand from people with PhDs in mathematics. The number theorist **Paul Erdős** reportedly held out against the result until a colleague ran a computer simulation in front of him.
 
-The intuition is genuinely hard. The game below lets you play your way to it; if the math at the end still doesn't land, do what convinced Erdős — scroll down to the simulator and watch the empirical fraction converge.
+The intuition is genuinely hard. The game below lets you play your way to it; if the math at the end still doesn’t land, do what convinced Erdős — scroll down to the simulator and watch the empirical fraction converge.
 
 ## Play
 
@@ -135,9 +135,9 @@ Under this rule, switching wins with probability $(N-1)/N$ and staying wins with
 
 ## Why switching wins
 
-Your initial pick has probability $1/N$ of being the car, so the other $N-1$ doors collectively share probability $(N-1)/N$. The host then eliminates $N-2$ of those goat-doors — but crucially, never the car-door. All of that $(N-1)/N$ probability mass collapses onto the single unopened door that isn't yours. Switching takes that mass; staying keeps your original $1/N$.
+Your initial pick has probability $1/N$ of being the car, so the other $N-1$ doors collectively share probability $(N-1)/N$. The host then eliminates $N-2$ of those goat-doors — but crucially, never the car-door. All of that $(N-1)/N$ probability mass collapses onto the single unopened door that isn’t yours. Switching takes that mass; staying keeps your original $1/N$.
 
-The host's knowledge is what makes the puzzle work. If the host opened a remaining door at random (sometimes revealing the car, ending the game), the conditional probabilities would be different.
+The host’s knowledge is what makes the puzzle work. If the host opened a remaining door at random (sometimes revealing the car, ending the game), the conditional probabilities would be different.
 
 ## Two ideas at work
 
@@ -156,7 +156,7 @@ $$
 =\frac{N-1}{N}
 $$
 
-"Stay" reverses the conditional probabilities and lands at $1/N$. A good strategy isn't about being lucky on the first event — it's about converting first-event outcomes into second-event wins as efficiently as possible.
+"Stay" reverses the conditional probabilities and lands at $1/N$. A good strategy isn’t about being lucky on the first event — it’s about converting first-event outcomes into second-event wins as efficiently as possible.
 
 **2. The law of large numbers.** Each round of the simulator is an i.i.d. Bernoulli trial: $X_r=1$ if the strategy wins on round $r$, otherwise $X_r=0$, with $\mathbb{E}[X_r]=\mathbb{P}(\text{win}\mid \text{strategy})$. The running curve in the chart is the sample mean
 

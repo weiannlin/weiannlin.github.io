@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" role="img" aria-labelledby="title desc">
+  <title id="title">A density slice normalized into a conditional density</title>
+  <desc id="desc">The left panel shows the density slice three x times one minus x at y equal to one fourth, with area one half. The right panel shows the conditional density six x times one minus x after division by one half, with area one.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 1 1 L 9 5 L 1 9 Z" fill="#1f1c18"/>
+    </marker>
+    <style>
+      .math { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+      .math-inline { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+      .math-roman { font-family: Georgia, "Times New Roman", serif; font-style: normal; }
+      .sub { baseline-shift: sub; font-size: 70%; }
+    </style>
+  </defs>
+  <rect x="16" y="16" width="868" height="368" rx="18" fill="none" stroke="#c9c1b4" stroke-width="2"/>
+
+  <text x="225" y="54" text-anchor="middle" fill="#1f1c18" font-family="'Noto Serif TC','Songti TC',Georgia,serif" font-size="24">固定 <tspan class="math-inline">Y = 1/4</tspan> 的密度截面</text>
+  <line x1="64" y1="310" x2="390" y2="310" stroke="#1f1c18" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="90" y1="334" x2="90" y2="72" stroke="#1f1c18" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <path d="M 90 310 Q 225 90 360 310" fill="#9c2d2d" fill-opacity="0.12" stroke="#9c2d2d" stroke-width="4"/>
+  <line x1="225" y1="310" x2="225" y2="200" stroke="#8a7f72" stroke-width="1.7" stroke-dasharray="6 5"/>
+  <line x1="90" y1="200" x2="225" y2="200" stroke="#8a7f72" stroke-width="1.7" stroke-dasharray="6 5"/>
+  <text x="215" y="338" fill="#1f1c18" font-family="Georgia,'Times New Roman',serif" font-size="22">1/2</text>
+  <text x="350" y="338" fill="#1f1c18" font-family="Georgia,'Times New Roman',serif" font-size="22">1</text>
+  <text x="50" y="208" fill="#1f1c18" font-family="Georgia,'Times New Roman',serif" font-size="22">3/4</text>
+  <text class="math" x="378" y="340" fill="#1f1c18" font-size="26">x</text>
+  <text class="math" x="100" y="102" fill="#9c2d2d" font-size="24">3x(1 − x)</text>
+  <text x="225" y="370" text-anchor="middle" fill="#8a7f72" font-family="'Noto Serif TC','Songti TC',Georgia,serif" font-size="20">曲線下方面積<tspan class="math-roman"> = 1/2</tspan></text>
+
+  <line x1="390" y1="205" x2="510" y2="205" stroke="#1f1c18" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <text x="450" y="171" text-anchor="middle" fill="#8a7f72" font-family="'Noto Serif TC','Songti TC',Georgia,serif" font-size="20">除以 <tspan class="math-inline">f<tspan class="sub">Y</tspan>(1/4) = 1/2</tspan></text>
+
+  <text x="685" y="54" text-anchor="middle" fill="#1f1c18" font-family="'Noto Serif TC','Songti TC',Georgia,serif" font-size="24">給定 <tspan class="math-inline">Y = 1/4</tspan> 的條件 pdf</text>
+  <line x1="532" y1="310" x2="846" y2="310" stroke="#1f1c18" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="550" y1="334" x2="550" y2="72" stroke="#1f1c18" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <path d="M 550 310 Q 685 -130 820 310" fill="#9c2d2d" fill-opacity="0.12" stroke="#9c2d2d" stroke-width="4"/>
+  <line x1="685" y1="310" x2="685" y2="90" stroke="#8a7f72" stroke-width="1.7" stroke-dasharray="6 5"/>
+  <line x1="550" y1="90" x2="685" y2="90" stroke="#8a7f72" stroke-width="1.7" stroke-dasharray="6 5"/>
+  <text x="674" y="338" fill="#1f1c18" font-family="Georgia,'Times New Roman',serif" font-size="22">1/2</text>
+  <text x="810" y="338" fill="#1f1c18" font-family="Georgia,'Times New Roman',serif" font-size="22">1</text>
+  <text x="514" y="98" fill="#1f1c18" font-family="Georgia,'Times New Roman',serif" font-size="22">3/2</text>
+  <text class="math" x="834" y="340" fill="#1f1c18" font-size="26">x</text>
+  <text class="math" x="738" y="82" text-anchor="middle" fill="#9c2d2d" font-size="24">6x(1 − x)</text>
+  <text x="685" y="370" text-anchor="middle" fill="#8a7f72" font-family="'Noto Serif TC','Songti TC',Georgia,serif" font-size="20">曲線下方面積<tspan class="math-roman"> = 1</tspan></text>
+</svg>

@@ -11,12 +11,16 @@ author_profile: true
 
 <p style="color: #888; font-size: 0.95em;">部分主題會搭配<a href="{{ '/demos/' | relative_url }}">互動展示 (interactive demos)</a>。同一篇文章可能出現在不同課程中，依據不同課程的綱要，可能以不同的順序被串聯在該課程的內容當中。</p>
 
-{% assign categories = "機率概論,隨機變數,隨機向量,分配理論,極限分配,統計推論,電腦實驗,高斯過程,試驗設計" | split: "," %}
+{% assign categories = "機率概論,隨機變數,分配理論,極限分配,統計推論,電腦實驗,高斯過程,試驗設計" | split: "," %}
 
 {% for cat in categories %}
   {% assign articles = site.teaching_topics | where: "category", cat | sort: "order" %}
   {% if articles.size > 0 %}
-<h2 id="{{ cat | slugify }}">{{ cat }}</h2>
+  {% assign category_label = cat %}
+  {% if cat == "機率概論" %}
+    {% assign category_label = "機率論" %}
+  {% endif %}
+<h2 id="{{ category_label | slugify }}">{{ category_label }}</h2>
   {% assign chapter_groups = articles | group_by: "chapter" %}
   {% for chapter_group in chapter_groups %}
     {% assign chapter_articles = chapter_group.items | sort: "order" %}
@@ -33,6 +37,8 @@ author_profile: true
         {% assign chapter_title = "事件機率與條件化" %}
       {% elsif cat == "機率概論" and chapter_group.name == "2" %}
         {% assign chapter_title = "隨機變數" %}
+      {% elsif cat == "機率概論" and chapter_group.name == "3" %}
+        {% assign chapter_title = "隨機向量" %}
       {% endif %}
     {% endif %}
 <details class="teaching-topics-chapter-block">

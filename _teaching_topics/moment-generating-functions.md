@@ -9,13 +9,13 @@ topic: 12
 order: 212
 permalink: /teaching-topics/moment-generating-functions/
 date: 2026-06-21
-published: true
+published: false
 excerpt: '動差母函數 $M_X(t)=\mathbb{E}(e^{tX})$ 把各階原動差收進同一個函數。若它在 $0$ 附近存在，對 $t$ 微分並令 $t=0$，即可得到 $\mathbb{E}(X^r)$。'
 ---
 
 [上一篇文章](/teaching-topics/skewness-and-kurtosis/)用三階與四階標準化動差 (standardized moments) 描述偏態與峰態。到這裡，動差已經不只是單一量數，而是一整串能描述分配位置、分散程度與形狀的數值。
 
-若只需要前幾階動差，可以直接由定義計算。不過，一旦需要系統地處理許多階原動差 (raw moments)，逐階加總或逐階積分便不夠有效。**動差母函數 (moment-generating function, MGF)** 正是為了把這些原動差放進同一個函數中處理。
+若只需要前幾階動差，可以直接由定義計算。不過，一旦需要系統地處理許多階原動差 (raw moments)，逐階加總或逐階積分便不夠有效。**動差母函數 (moment-generating function, mgf)** 正是為了把這些原動差放進同一個函數中處理。
 
 ## 由原動差到函數
 
@@ -30,7 +30,7 @@ $$
 M_X(t)=\mathbb{E}(e^{tX})
 $$
 
-為 $X$ 的**動差母函數 (moment-generating function, MGF)**，亦稱**動差生成函數**。
+為 $X$ 的**動差母函數 (moment-generating function, mgf)**，亦稱**動差生成函數**。
 
 若 $X$ 為離散型隨機變數，機率質量函數 (probability mass function, pmf) 為 $p_X$，則
 
@@ -56,19 +56,19 @@ $$
 M_X(0)=\mathbb{E}(e^0)=1
 $$
 
-因此，MGF 若要用來生成動差，至少必須在 $0$ 附近有定義。
+因此，mgf 若要用來生成動差，至少必須在 $0$ 附近有定義。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-MGF 不一定對所有 $t$ 存在，也不一定對所有隨機變數存在。例如若 $X$ 的 pdf 為
+mgf 不一定對所有 $t$ 存在，也不一定對所有隨機變數存在。例如若 $X$ 的 pdf 為
 
 $$
 f_X(x)=\lambda e^{-\lambda x},
 \qquad x>0,\quad \lambda>0
 $$
 
-由 MGF 的定義可得
+由 mgf 的定義可得
 
 $$
 M_X(t)
@@ -79,12 +79,12 @@ M_X(t)
 \qquad t<\lambda
 $$
 
-當 $t\geqslant \lambda$ 時，這個積分不再有限。這個例子說明，寫出 MGF 時必須同時標明它的存在範圍。
+當 $t\geqslant \lambda$ 時，這個積分不再有限。這個例子說明，寫出 mgf 時必須同時標明它的存在範圍。
 </div>
 
 ## 微分生成原動差
 
-MGF 之所以稱為母函數 (generating function)，是因為它能用微分產生各階原動差。若把 $e^{tX}$ 對 $t$ 微分 $r$ 次，會得到 $X^r e^{tX}$；再令 $t=0$，便留下 $X^r$。
+mgf 之所以稱為母函數 (generating function)，是因為它能用微分產生各階原動差。若把 $e^{tX}$ 對 $t$ 微分 $r$ 次，會得到 $X^r e^{tX}$；再令 $t=0$，便留下 $X^r$。
 
 <div id="proposition-211" class="topic-box topic-box--proposition" markdown="1">
 <div class="topic-box__label">Proposition 2.11 (Generating Raw Moments)</div>
@@ -101,7 +101,7 @@ M_X^{(r)}(0)
 \mathbb{E}(X^r)
 $$
 
-若以 $\mu_r'=\mathbb{E}(X^r)$ 表示 $r$ 階原動差，上式也可寫成 $M_X^{(r)}(0)=\mu_r'$。
+若以 $\mu_r^{\prime}=\mathbb{E}(X^r)$ 表示 $r$ 階原動差，上式也可寫成 $M_X^{(r)}(0)=\mu_r^{\prime}$。
 
 </div>
 
@@ -124,11 +124,11 @@ M_X^{(r)}(t)
 \lvert t\rvert\leqslant a
 $$
 
-令 $t=0$，便有 $M_X^{(r)}(0)=\mathbb{E}(X^r)$。原式得證。$\square$
+令 $t=0$，便有 $M_X^{(r)}(0)=\mathbb{E}(X^r)$。原式得證。<span class="topic-qed">$\square$</span>
 </div>
 
 <div id="example-217" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.17 (A Discrete MGF)</div>
+<div class="topic-box__label">Example 2.17 (A Discrete mgf)</div>
 
 令 $Y$ 的 pmf 為
 
@@ -137,7 +137,7 @@ p_Y(y)=2^{-y},
 \qquad y=1,2,3,\ldots
 $$
 
-因為 $\sum_{y=1}^{\infty}2^{-y}=1$，這確實定義了一個離散型隨機變數。由 MGF 的定義可得
+因為 $\sum_{y=1}^{\infty}2^{-y}=1$，這確實定義了一個離散型隨機變數。由 mgf 的定義可得
 
 $$
 \begin{aligned}
@@ -160,7 +160,7 @@ M_Y'(t)=\frac{2e^t}{(2-e^t)^2},
 M_Y''(t)=\frac{2e^t(2+e^t)}{(2-e^t)^3}
 $$
 
-令 $t=0$，可得 $\mathbb{E}(Y)=M_Y'(0)=2$ 與 $\mathbb{E}(Y^2)=M_Y''(0)=6$。
+令 $t=0$，可得 $\mathbb{E}(Y)=M_Y^{\prime}(0)=2$ 與 $\mathbb{E}(Y^2)=M_Y^{\prime\prime}(0)=6$。
 
 由此可得
 
@@ -176,7 +176,7 @@ $$
 
 </div>
 
-這個例子呈現 MGF 的基本用法。先把 pmf 加總成 $t$ 的函數，再透過微分取得原動差。若直接計算 $\mathbb{E}(Y)$ 與 $\mathbb{E}(Y^2)$，也會得到相同結果；MGF 的優點在於它把多階原動差放進同一套計算中。
+這個例子呈現 mgf 的基本用法。先把 pmf 加總成 $t$ 的函數，再透過微分取得原動差。若直接計算 $\mathbb{E}(Y)$ 與 $\mathbb{E}(Y^2)$，也會得到相同結果；mgf 的優點在於它把多階原動差放進同一套計算中。
 
 ## 泰勒展開
 
@@ -192,15 +192,15 @@ M_X^{(r)}(0)\frac{t^r}{r!}
 \mathbb{E}(X^r)\frac{t^r}{r!}
 $$
 
-這個式子把 MGF 與所有原動差連在一起。第一項是 $\mathbb{E}(X^0)=1$；後面依序放入 $\mathbb{E}(X)$、$\mathbb{E}(X^2)$、$\mathbb{E}(X^3)$ 等。
+這個式子把 mgf 與所有原動差連在一起。第一項是 $\mathbb{E}(X^0)=1$；後面依序放入 $\mathbb{E}(X)$、$\mathbb{E}(X^2)$、$\mathbb{E}(X^3)$ 等。
 
-要注意的是，若 MGF 已知在 $0$ 附近存在，則它會保證各階原動差存在，並且上述泰勒係數正是這些原動差。反過來說，單憑各階動差存在，不足以直接保證 MGF 一定在 $0$ 附近存在。後續使用泰勒展開反推 MGF 時，必須確認該級數確實在 $0$ 附近代表一個有限的 MGF。
+要注意的是，若 mgf 已知在 $0$ 附近存在，則它會保證各階原動差存在，並且上述泰勒係數正是這些原動差。反過來說，單憑各階動差存在，不足以直接保證 mgf 一定在 $0$ 附近存在。後續使用泰勒展開反推 mgf 時，必須確認該級數確實在 $0$ 附近代表一個有限的 mgf。
 
 <div id="mgf-function-transformations"></div>
 
-## MGF 與函數轉換
+## mgf 與函數轉換
 
-若 $Y=g(X)$ 且 $Y$ 的 MGF 存在，則由定義可得
+若 $Y=g(X)$ 且 $Y$ 的 mgf 存在，則由定義可得
 
 $$
 M_Y(t)
@@ -224,16 +224,16 @@ e^{bt}M_X(at)
 \end{aligned}
 $$
 
-這個關係式對所有使 $M_X(at)$ 有限的 $t$ 成立。常數 $b$ 產生乘數 $e^{bt}$，係數 $a$ 則把 MGF 的參數由 $t$ 改為 $at$。後續介紹特徵函數時，會比較同一個線性轉換在複指數下所得的公式。
+這個關係式對所有使 $M_X(at)$ 有限的 $t$ 成立。常數 $b$ 產生乘數 $e^{bt}$，係數 $a$ 則把 mgf 的參數由 $t$ 改為 $at$。後續介紹特徵函數時，會比較同一個線性轉換在複指數下所得的公式。
 
-## 由 MGF 辨認分配
+## 由 mgf 辨認分配
 
-MGF 起初用來生成動差，但它還有另一個常用性質。若兩個隨機變數的 MGF 在 $0$ 附近相同，則兩者的機率分配相同。
+mgf 起初用來生成動差，但它還有另一個常用性質。若兩個隨機變數的 mgf 在 $0$ 附近相同，則兩者的機率分配相同。
 
 <div id="theorem-21" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 2.1 (Uniqueness of MGF)</div>
+<div class="topic-box__label">Theorem 2.1 (Uniqueness of mgf)</div>
 
-若 $X$ 與 $Y$ 的 MGF 在同一個含 $0$ 的開區間上存在，且該區間內皆滿足
+若 $X$ 與 $Y$ 的 mgf 在同一個含 $0$ 的開區間上存在，且該區間內皆滿足
 
 $$
 M_X(t)=M_Y(t)
@@ -243,12 +243,12 @@ $$
 
 </div>
 
-這個唯一性定理常由拉普拉斯轉換 (Laplace transform) 的唯一性證明。此處只需先掌握結論；後續介紹常見分配與極限定理時，MGF 常用來辨認某個隨機變數屬於哪一種分配。
+這個唯一性定理常由拉普拉斯轉換 (Laplace transform) 的唯一性證明。此處只需先掌握結論；後續介紹常見分配與極限定理時，mgf 常用來辨認某個隨機變數屬於哪一種分配。
 
 <div id="example-218" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.18 (A Finite MGF)</div>
+<div class="topic-box__label">Example 2.18 (A Finite mgf)</div>
 
-設 $X$ 的 MGF 為
+設 $X$ 的 mgf 為
 
 $$
 M_X(t)
@@ -269,7 +269,7 @@ M_X'(t)
 +\frac{16e^{8t}}{5}
 $$
 
-令 $t=0$，可得 $\mathbb{E}(X)=M_X'(0)=5$。
+令 $t=0$，可得 $\mathbb{E}(X)=M_X^{\prime}(0)=5$。
 
 再微分一次可得
 
@@ -281,7 +281,7 @@ M_X''(t)
 +\frac{128e^{8t}}{5}
 $$
 
-再次令 $t=0$，可得 $\mathbb{E}(X^2)=M_X''(0)=161/5$。
+再次令 $t=0$，可得 $\mathbb{E}(X^2)=M_X^{\prime\prime}(0)=161/5$。
 
 由變異數計算公式可得
 
@@ -293,20 +293,20 @@ $$
 \frac{36}{5}
 $$
 
-此外，因為離散型 MGF 中的 $p e^{at}$ 對應到 $X=a$ 且機率為 $p$，這個 MGF 也表示 $X$ 在 $1,4,8$ 三點上分別具有機率 $1/5,2/5,2/5$。
+此外，因為離散型 mgf 中的 $p e^{at}$ 對應到 $X=a$ 且機率為 $p$，這個 mgf 也表示 $X$ 在 $1,4,8$ 三點上分別具有機率 $1/5,2/5,2/5$。
 </div>
 
 <div id="example-219" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.19 (Moments to a Distribution)</div>
 
-假設 $X$ 的 MGF 在 $0$ 附近存在，且其正整數階原動差滿足
+假設 $X$ 的 mgf 在 $0$ 附近存在，且其正整數階原動差滿足
 
 $$
 \mathbb{E}(X^r)=0.8,
 \qquad r=1,2,3,\ldots
 $$
 
-由於 $\mathbb{E}(X^0)=1$，MGF 在 $0$ 附近的泰勒展開為
+由於 $\mathbb{E}(X^0)=1$，mgf 在 $0$ 附近的泰勒展開為
 
 $$
 \begin{aligned}
@@ -330,7 +330,7 @@ $$
 \mathbb{P}(X=1)=0.8
 $$
 
-的隨機變數，其 MGF 正是 $0.2+0.8e^t$。由 [Theorem 2.1](#theorem-21) 可知，這些動差所對應的分配就是後面會正式介紹的**伯努利分配 (Bernoulli distribution)**，參數為 $p=0.8$。
+的隨機變數，其 mgf 正是 $0.2+0.8e^t$。由 [Theorem 2.1](#theorem-21) 可知，這些動差所對應的分配就是後面會正式介紹的**伯努利分配 (Bernoulli distribution)**，參數為 $p=0.8$。
 </div>
 
 ## 本篇小結
@@ -341,11 +341,11 @@ $$
 M_X(t)=\mathbb{E}(e^{tX})
 $$
 
-若它在 $0$ 附近存在，則 $M_X^{(r)}(0)=\mathbb{E}(X^r)$，因此可透過微分取得各階原動差。對離散型與連續型隨機變數而言，MGF 分別由 pmf 加總與 pdf 積分得到。若 $Y=aX+b$，則在兩側皆有限的範圍內有 $M_Y(t)=e^{bt}M_X(at)$。
+若它在 $0$ 附近存在，則 $M_X^{(r)}(0)=\mathbb{E}(X^r)$，因此可透過微分取得各階原動差。對離散型與連續型隨機變數而言，mgf 分別由 pmf 加總與 pdf 積分得到。若 $Y=aX+b$，則在兩側皆有限的範圍內有 $M_Y(t)=e^{bt}M_X(at)$。
 
-MGF 不一定存在，即使存在，也可能只在某個 $t$ 的範圍內有限。使用 MGF 時，應同時留意存在區間。若兩個隨機變數的 MGF 在 $0$ 附近相同，則兩者有相同機率分配，這便是 [Theorem 2.1](#theorem-21) 的內容。
+mgf 不一定存在，即使存在，也可能只在某個 $t$ 的範圍內有限。使用 mgf 時，應同時留意存在區間。若兩個隨機變數的 mgf 在 $0$ 附近相同，則兩者有相同機率分配，這便是 [Theorem 2.1](#theorem-21) 的內容。
 
-後續介紹常見分配時，MGF 會成為整理期望值、變異數與分配辨認的常用工具。[下一篇文章](/teaching-topics/probability-cumulant-generating-functions/)會討論機率母函數 (probability generating function, PGF)、階乘動差與累積量母函數 (cumulant generating function, CGF)。再下一篇則介紹[特徵函數](/teaching-topics/characteristic-functions/)，說明複指數轉換如何在 MGF 不存在時仍然描述一個機率分配。
+後續介紹常見分配時，mgf 會成為整理期望值、變異數與分配辨認的常用工具。[下一篇文章](/teaching-topics/probability-cumulant-generating-functions/)會討論機率母函數 (probability generating function, pgf)、階乘動差與累積量母函數 (cumulant generating function, cgf)。再下一篇則介紹[特徵函數](/teaching-topics/characteristic-functions/)，說明複指數轉換如何在 mgf 不存在時仍然描述一個機率分配。
 
 ## 參考文獻與延伸閱讀
 
@@ -353,4 +353,4 @@ MGF 不一定存在，即使存在，也可能只在某個 $t$ 的範圍內有�
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.

@@ -1,6 +1,6 @@
 ---
 title: "柴比雪夫與坎特利不等式"
-subtitle: "Chebyshev's and Cantelli's Inequalities"
+subtitle: "Chebyshev’s and Cantelli’s Inequalities"
 layout: topic
 collection: teaching_topics
 category: "機率概論"
@@ -9,18 +9,18 @@ topic: 16
 order: 216
 permalink: /teaching-topics/chebyshev-cantelli-inequalities/
 date: 2026-07-13
-published: true
+published: false
 excerpt: '柴比雪夫不等式利用期望值與變異數控制雙邊偏離機率；坎特利不等式再針對單一方向給出更精確的界限。'
 ---
 
-[上一篇的 Theorem 2.4](/teaching-topics/markov-inequality/#theorem-24) 由非負隨機變數的期望值建立尾端機率上界。令 $\mu_X=\mathbb{E}(X)$，且 $\sigma_X^2=\mathrm{Var}(X)$。在已知前二階動差的情況下，我們可以把平方離差放入該不等式，對隨機變數落在特定範圍內的機率進行一些推論。這其中，[柴比雪夫不等式 (Chebyshev's inequality)](#theorem-25) 同時處理期望值左右兩側的偏離；[坎特利不等式 (Cantelli's inequality)](#theorem-26) 則只處理其中一側。兩者都不需要指定 $X$ 屬於哪一種機率分配。
+[上一篇的 Theorem 2.4](/teaching-topics/markov-inequality/#theorem-24) 由非負隨機變數的期望值建立尾端機率上界。令 $\mu_X=\mathbb{E}(X)$，且 $\sigma_X^2=\mathrm{Var}(X)$。在已知前二階動差的情況下，我們可以把平方離差放入該不等式，對隨機變數落在特定範圍內的機率進行一些推論。這其中，[柴比雪夫不等式 (Chebyshev’s inequality)](#theorem-25) 同時處理期望值左右兩側的偏離；[坎特利不等式 (Cantelli’s inequality)](#theorem-26) 則只處理其中一側。兩者都不需要指定 $X$ 屬於哪一種機率分配。
 
 ## 平方離差給出雙邊界限
 
 若 $\mathbb{E}(X^2)<\infty$，則 $\mu_X$ 與 $\sigma_X^2$ 皆為有限值。對任意 $k>0$，事件 $\lvert X-\mu_X\rvert\geqslant k$ 與事件 $(X-\mu_X)^2\geqslant k^2$ 完全相同，因此可直接套用 [Theorem 2.4](/teaching-topics/markov-inequality/#theorem-24)。
 
 <div id="theorem-25" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 2.5 (Chebyshev's Inequality)</div>
+<div class="topic-box__label">Theorem 2.5 (Chebyshev’s Inequality)</div>
 
 令 $X$ 為滿足 $\mathbb{E}(X^2)<\infty$ 的隨機變數，並令 $\mu_X=\mathbb{E}(X)$ 與 $\sigma_X^2=\mathrm{Var}(X)$。對每個 $k>0$，皆有
 
@@ -52,7 +52,7 @@ $$
 \end{aligned}
 $$
 
-另一個不等式再由餘事件取得。$\square$
+另一個不等式再由餘事件取得。<span class="topic-qed">$\square$</span>
 </div>
 
 若 $\sigma_X>0$，令 $k=a\sigma_X$，可將 [Theorem 2.5](#theorem-25) 改寫為標準差倍數的形式。對每個 $a>0$，皆有
@@ -119,10 +119,10 @@ $$
 
 ## 單邊偏離使用坎特利不等式
 
-[Theorem 2.5](#theorem-25) 把左右兩側合在同一個事件中。若只關心 $X$ 大於期望值的方向，便可只對右尾建立上界。下列 [Theorem 2.6](#theorem-26) 也稱為單邊柴比雪夫不等式 (one-sided Chebyshev's inequality)，它利用相同的一二階動差給出較小的單邊界限。
+[Theorem 2.5](#theorem-25) 把左右兩側合在同一個事件中。若只關心 $X$ 大於期望值的方向，便可只對右尾建立上界。下列 [Theorem 2.6](#theorem-26) 也稱為單邊柴比雪夫不等式 (one-sided Chebyshev’s inequality)，它利用相同的一二階動差給出較小的單邊界限。
 
 <div id="theorem-26" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 2.6 (Cantelli's Inequality)</div>
+<div class="topic-box__label">Theorem 2.6 (Cantelli’s Inequality)</div>
 
 令 $X$ 為滿足 $\mathbb{E}(X^2)<\infty$ 的隨機變數，並令 $\mu_X=\mathbb{E}(X)$ 與 $\sigma_X^2=\mathrm{Var}(X)$。對每個 $k>0$，皆有
 
@@ -172,7 +172,7 @@ $$
 \end{aligned}
 $$
 
-因為 $\mathbb{E}(-Y)=0$ 且 $\mathbb{E}[(-Y)^2]=\sigma_X^2$，把相同結果套用在 $-Y$，即可得到左尾界限。$\square$
+因為 $\mathbb{E}(-Y)=0$ 且 $\mathbb{E}[(-Y)^2]=\sigma_X^2$，把相同結果套用在 $-Y$，即可得到左尾界限。<span class="topic-qed">$\square$</span>
 </div>
 
 若 $\sigma_X>0$，令 $k=a\sigma_X$，則對每個 $a>0$，皆有
@@ -327,4 +327,4 @@ $$
 - 黃文璋，2003，《機率論》，初版，華泰文化。
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.

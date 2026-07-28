@@ -291,25 +291,269 @@
     &.topic-table--sample-spaces {
       table-layout: fixed;
 
+      // 桌面欄寬沿用原本行內設定的比例, 觀感不變。
       .topic-table__experiment {
-        width: 72%;
+        width: 68%;
       }
 
       .topic-table__sample-space {
-        width: 28%;
+        width: 32%;
       }
 
       td:first-child,
       th:first-child {
         white-space: normal;
       }
+
+      // 「隨機實驗」欄的儲存格在桌面即會折成兩行, 置中反而難讀, 故該欄維持靠左;
+      // 「樣本空間」欄比照同頁其餘三張表置中。
+      td:last-child,
+      th:last-child {
+        text-align: center;
+      }
     }
+
+    &.topic-table--basic-objects,
+    &.topic-table--chapter-summary {
+      display: table;
+      table-layout: fixed;
+    }
+
+    &.topic-table--basic-objects {
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 20%;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2) {
+        width: 24%;
+      }
+
+      th:nth-child(3),
+      td:nth-child(3) {
+        width: 56%;
+      }
+    }
+
+    &.topic-table--chapter-summary {
+      th:first-child,
+      td:first-child {
+        white-space: normal;
+      }
+
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 44%;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2) {
+        width: 56%;
+      }
+    }
+
+    &.topic-table--matrix {
+      tbody td:first-child {
+        background: var(--global-border-color);
+        font-weight: 700;
+      }
+
+      tbody td:first-child,
+      thead th:first-child {
+        border-right: 1px solid var(--journal-ink);
+      }
+    }
+
+    &.topic-table--joint-pmf {
+      tbody td:first-child {
+        background: var(--global-border-color);
+        font-weight: 700;
+      }
+
+      tbody td:first-child,
+      thead th:first-child {
+        border-right: 1px solid var(--journal-ink);
+      }
+
+      th:last-child,
+      td:last-child {
+        border-left: 2px solid var(--journal-ink);
+      }
+
+      tbody tr:last-child td {
+        border-top: 2px solid var(--journal-ink);
+      }
+    }
+
+    // 只有邊際欄而沒有邊際列的表格: 保留邊際欄的 2px 分隔線,
+    // 但不把最末一列誤標為邊際列。
+    &.topic-table--joint-pmf.topic-table--margin-column-only {
+      tbody tr:last-child td {
+        border-top: 0;
+      }
+    }
+
+    th,
+    td {
+      vertical-align: middle;
+    }
+  }
+
+  @media (max-width: 599px) {
+    table {
+      margin-inline: auto;
+      width: fit-content;
+    }
+
+    table.topic-table--joint-pmf {
+      font-size: 0.85em;
+
+      // 窄版把括號內的比率移到儲存格第二行, 避免括號被拆到下一行。
+      .topic-cell-rate {
+        display: block;
+      }
+
+      th,
+      td {
+        padding: 0.45em 0.5em;
+      }
+
+      td:first-child,
+      th:first-child {
+        min-width: 0;
+      }
+    }
+
+    // 窄版各表共用: 滿版、固定欄寬、縮字級與內距,
+    // 使欄內文字自然換行而不需要橫向捲動。
+    table.topic-table--sample-spaces,
+    table.topic-table--sample-space-types,
+    table.topic-table--basic-objects,
+    table.topic-table--chapter-summary {
+      width: 100%;
+      table-layout: fixed;
+      font-size: 0.85em;
+
+      th,
+      td {
+        padding: 0.45em 0.5em;
+      }
+
+      td:first-child,
+      th:first-child {
+        min-width: 0;
+        white-space: normal;
+      }
+    }
+
+    // 窄版加寬樣本空間欄, 讓最長的一組數式留有餘裕。
+    table.topic-table--sample-spaces {
+      .topic-table__experiment {
+        width: 52%;
+      }
+
+      .topic-table__sample-space {
+        width: 48%;
+      }
+    }
+
+    // 中欄的 uncountably 有最小寬度, 實際欄寬會與宣告值略有出入;
+    // 此處宣告的即為實測結果 (24 / 29 / 47)。
+    table.topic-table--sample-space-types {
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 24%;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2) {
+        width: 29%;
+      }
+
+      th:nth-child(3),
+      td:nth-child(3) {
+        width: 47%;
+      }
+    }
+
+    table.topic-table--basic-objects {
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 26%;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2) {
+        width: 26%;
+      }
+
+      th:nth-child(3),
+      td:nth-child(3) {
+        width: 48%;
+      }
+    }
+
+    // 小結表 (topic-table--chapter-summary) 窄版刻意沿用桌面宣告的 44 / 56 欄寬,
+    // 此處不另行宣告。日後若調整其桌面欄寬, 須一併確認窄版是否仍然合用。
+  }
+
+  .topic-grid-options {
+    column-gap: 2.5em;
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    margin: 1.2em 0;
+    row-gap: 0.4em;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .topic-grid-options--equal {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 699px) {
+    .topic-grid-options {
+      column-gap: 1.6em;
+      grid-template-columns: repeat(2, max-content);
+    }
+
+    .topic-grid-options--equal {
+      display: block;
+
+      p {
+        display: inline;
+        margin-right: 0.9em;
+      }
+    }
+  }
+
+  [lang="en"] {
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: justify;
   }
 
   /* MathJax display blocks: extra breathing room. Overflow-x handled
      globally in _journal-base.scss. */
   mjx-container[display="true"] {
     margin: 1.5em 0 !important;
+  }
+
+  .topic-math-layout--mobile {
+    display: none;
+  }
+
+  @media (max-width: 699px) {
+    .topic-math-layout--desktop {
+      display: none;
+    }
+
+    .topic-math-layout--mobile {
+      display: block;
+    }
   }
 
   .topic-figure {
@@ -350,6 +594,35 @@
 
     &--wide img {
       width: min(100%, 620px);
+    }
+
+    &__steps {
+      align-items: center;
+      display: flex;
+      gap: 0.5em 1em;
+      justify-content: center;
+
+      img {
+        min-width: 0;
+      }
+    }
+
+    &__step-arrow--mobile {
+      display: none;
+    }
+
+    @media (max-width: 699px) {
+      &__steps {
+        flex-direction: column;
+      }
+
+      &__step-arrow--desktop {
+        display: none;
+      }
+
+      &__step-arrow--mobile {
+        display: block;
+      }
     }
   }
 }
@@ -592,4 +865,17 @@ body:has(.topic-page) {
     margin-right: 0.35em;
     white-space: nowrap;
   }
+}
+
+/* ---- Proof QED square flush right (author ruling 2026-07-27) ---------- */
+
+.topic-content .topic-proof .topic-qed {
+  float: right;
+  margin-left: 0.6em;
+}
+
+.topic-content .topic-proof::after {
+  content: "";
+  display: table;
+  clear: both;
 }

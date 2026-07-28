@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320" role="img" aria-labelledby="title desc">
-  <title id="title">PMF plot for a fair die with threshold at 3.4</title>
-  <desc id="desc">A lollipop plot of the PMF for a fair die. The six possible values are equally spaced. The masses at 1, 2, and 3 are highlighted because they are included in the event X less than or equal to 3.4.</desc>
+  <title id="title">pmf plot for a fair die with threshold at 3.4</title>
+  <desc id="desc">A lollipop plot of the pmf for a fair die. The six possible values are equally spaced. The masses at 1, 2, and 3 are highlighted because they are included in the event X less than or equal to 3.4.</desc>
   <defs>
     <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
       <path d="M 1 1 L 7 4 L 1 7 Z" fill="#1f1c18"/>

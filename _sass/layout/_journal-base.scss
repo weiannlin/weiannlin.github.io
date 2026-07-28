@@ -368,11 +368,10 @@ body {
 
 .page__content,
 .topic-content {
-  /* Wrap wide MathJax display blocks in horizontal scroll instead of
-     pushing the page wider than the viewport. */
+  /* Display equations must be line-broken in source for narrow screens.
+     Do not turn a centered equation into a horizontally scrolling box. */
   mjx-container[display="true"] {
-    overflow-x: auto;
-    overflow-y: hidden;
+    box-sizing: border-box;
     max-width: 100%;
     padding: 0.2em 0;
   }

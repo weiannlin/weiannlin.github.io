@@ -9,7 +9,7 @@ topic: 1
 order: 201
 permalink: /teaching-topics/random-variables-from-sample-space-to-real-line/
 date: 2026-05-17
-published: true
+published: false
 excerpt: "事件機率把事件送到機率數值；隨機變數則先把樣本點送到實數，使我們可以用數線、函數與微積分方法描述機率。"
 ---
 
@@ -34,7 +34,7 @@ $$
 
 以下定義先採用半直線版本。這個寫法與稍後的累積分配函數直接相連，也最容易看出隨機變數如何把數線上的門檻拉回樣本空間。
 
-<div class="topic-box topic-box--definition" markdown="1">
+<div id="definition-21" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 2.1</div>
 
 令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。若 $X:S\to\mathbb{R}$ 為定義在樣本空間 $S$ 上的實值函數，且對任意 $x\in\mathbb{R}$，皆有
@@ -46,13 +46,13 @@ $$
 則稱 $X$ 為定義於 $(S,\mathcal{F},\mathbb{P})$ 上的**隨機變數 (random&nbsp;variable)**。
 </div>
 
-有些教科書會採用反映射版本。這個寫法需要實數線上的 Borel $\sigma$-域 $\mathcal{B}(\mathbb{R})$，若需要回顧，可先參考[事件集合族與 $\sigma$-域](/teaching-topics/event-families-sigma-fields/#實數線上的-borel-sigma-域)。對任意 $B\in\mathcal{B}(\mathbb{R})$，要求
+有些教科書會採用反映射版本。這個寫法需要實數線上的 Borel $\sigma$-域 $\mathcal{B}(\mathbb{R})$，若需要回顧，可先參考[域、$\sigma$-域與機率空間](/teaching-topics/event-families-sigma-fields/#實數線上的-borel-sigma-域)。對任意 $B\in\mathcal{B}(\mathbb{R})$，要求
 
 $$
 X^{-1}(B)=\{\omega\in S\mid X(\omega)\in B\}\in\mathcal{F}
 $$
 
-半直線版本與反映射版本在實值情形中等價，因為 $(-\infty,x]$ 這類半直線會生成 $\mathcal{B}(\mathbb{R})$。半直線版本和接下來的 CDF 定義相連；反映射版本則直接說明可測性的來源。
+半直線版本與反映射版本在實值情形中等價，因為 $(-\infty,x]$ 這類半直線會生成 $\mathcal{B}(\mathbb{R})$。半直線版本和接下來的 cdf 定義相連；反映射版本則直接說明可測性的來源。
 
 這個條件的用途很明確。對每一個實數 $x$，所有滿足 $X(\omega)\leqslant x$ 的樣本點必須形成 $\mathcal{F}$ 中的事件，如此才可以賦予其機率。
 
@@ -94,13 +94,13 @@ $$
 \mathcal{R}_X=\{X(\omega)\mid \omega\in S\}
 $$
 
-這個集合的型態，以及機率如何分配在其上，會決定後續使用哪一種函數描述 $X$。若 $\mathcal{R}_X$ 是有限集合或可數無限集合，機率通常集中在可逐一列出的單點上，這會導向離散型隨機變數與機率質量函數 (probability mass function, pmf)。若 $X$ 的 CDF 可由某個非負函數積分表示，則會導向可由機率密度函數 (probability density function, pdf) 描述的連續型隨機變數。這類分配的單點機率皆為 $0$，但單點機率皆為 $0$ 本身並不足以保證 pdf 存在。有些情形則同時具有單點機率與連續區間，後面會以混合型隨機變數處理。
+這個集合的型態，以及機率如何分配在其上，會決定後續使用哪一種函數描述 $X$。若 $\mathcal{R}_X$ 是有限集合或可數無限集合，機率通常集中在可逐一列出的單點上，這會導向離散型隨機變數與機率質量函數 (probability mass function, pmf)。若 $X$ 的 cdf 可由某個非負函數積分表示，則會導向可由機率密度函數 (probability density function, pdf) 描述的連續型隨機變數。這類分配的單點機率皆為 $0$，但單點機率皆為 $0$ 本身並不足以保證 pdf 存在。有些情形則同時具有單點機率與連續區間，後面會以混合型隨機變數處理。
 
 因此，隨機變數的定義先把樣本空間接到數線；離散、連續與混合型，是在觀察 $\mathcal{R}_X$ 與機率如何落在數線上之後才進一步區分。
 
 ## 由門檻事件定義累積分配函數
 
-隨機變數把樣本點送到數線上後，可以固定一個門檻 $x$，回頭審視哪些樣本點滿足 $X(\omega)\leqslant x$。這些樣本點形成事件 $\{X\leqslant x\}$，可將其機率記為 $F_X(x)=\mathbb{P}(X\leqslant x)$。讓 $x$ 在實數線上變動，便得到**累積分配函數 (cumulative distribution function, CDF)**，也簡稱為**分配函數 (distribution function, DF)**。
+隨機變數把樣本點送到數線上後，可以固定一個門檻 $x$，回頭審視哪些樣本點滿足 $X(\omega)\leqslant x$。這些樣本點形成事件 $\{X\leqslant x\}$，可將其機率記為 $F_X(x)=\mathbb{P}(X\leqslant x)$。讓 $x$ 在實數線上變動，便得到**累積分配函數 (cumulative distribution function, cdf)**，也簡稱為**分配函數 (distribution function, df)**。
 
 <div class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 2.2</div>
@@ -111,10 +111,10 @@ $$
 F_X(x)=\mathbb{P}(X\leqslant x),\qquad x\in\mathbb{R}
 $$
 
-則稱 $F_X$ 為 $X$ 的**累積分配函數 (cumulative distribution function, CDF)**，也稱為**分配函數 (distribution function, DF)**。
+則稱 $F_X$ 為 $X$ 的**累積分配函數 (cumulative distribution function, cdf)**，也稱為**分配函數 (distribution function, df)**。
 </div>
 
-若把 $\{X\leqslant x\}$ 完整寫回樣本空間，CDF 計算的是
+若把 $\{X\leqslant x\}$ 完整寫回樣本空間，cdf 計算的是
 
 $$
 F_X(x)
@@ -122,11 +122,11 @@ F_X(x)
 \mathbb{P}\bigl(\{\omega\in S\mid X(\omega)\leqslant x\}\bigr)
 $$
 
-因此，CDF 是一個由實數到機率的函數。輸入是實數 $x$，輸出是機率 $F_X(x)$。隨機變數把樣本點轉成實數後，便能在機率論中討論函數圖形、單調性、極限、微分與積分。
+因此，cdf 是一個由實數到機率的函數。輸入是實數 $x$，輸出是機率 $F_X(x)$。隨機變數把樣本點轉成實數後，便能在機率論中討論函數圖形、單調性、極限、微分與積分。
 
 ## 同一個定義涵蓋不同型態
 
-CDF 的定義比單純列出幾個機率更抽象。對每一個門檻 $x$，它都給出事件 $\{X\leqslant x\}$ 的機率。
+cdf 的定義比單純列出幾個機率更抽象。對每一個門檻 $x$，它都給出事件 $\{X\leqslant x\}$ 的機率。
 
 這個定義先不區分型態。無論 $X$ 屬於離散型、連續型或混合型，只要 $X$ 是實值隨機變數，事件 $\{X\leqslant x\}$ 都有意義，因而都可定義 $F_X$。下一篇[累積分配函數如何累積機率](/teaching-topics/probability-accumulates/)會從離散型與連續型開始，說明同一個 $F_X$ 如何呈現機率資訊。
 
@@ -150,7 +150,7 @@ $$
 F_X(x)=\mathbb{P}(X\leqslant x)
 $$
 
-這一步使機率論不只停留在集合運算，也開始進入函數觀點。下一篇[累積分配函數如何累積機率](/teaching-topics/probability-accumulates/)會進一步說明 CDF 如何累積機率，並由此區分離散型與連續型隨機變數。
+這一步使機率論不只停留在集合運算，也開始進入函數觀點。下一篇[累積分配函數如何累積機率](/teaching-topics/probability-accumulates/)會進一步說明 cdf 如何累積機率，並由此區分離散型與連續型隨機變數。
 
 ## 參考文獻與延伸閱讀
 
@@ -159,5 +159,5 @@ $$
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
 - Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.

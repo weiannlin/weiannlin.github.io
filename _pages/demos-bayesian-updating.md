@@ -187,7 +187,7 @@ author_profile: true
   }
 </style>
 
-Bayes' rule is easiest to see as repeated updating. Start with a prior probability for a hidden state, record one observation, then use the posterior as the next prior.
+Bayes’ rule is easiest to see as repeated updating. Start with a prior probability for a hidden state, record one observation, then use the posterior as the next prior.
 
 This lab uses a rapid diagnostic test as the running example. The hidden state is whether a person has the disease. Each test returns one of two observations, positive or negative. The controls let you change the prevalence, sensitivity, and specificity, then watch how the interpretation of the same test result changes.
 

@@ -13,10 +13,11 @@
       .normal { fill: none; stroke: #1f1c18; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
       .laplace { fill: none; stroke: #9c2d2d; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
       .uniform { fill: none; stroke: #5f7561; stroke-width: 3; stroke-dasharray: 9 7; stroke-linejoin: round; }
-      .label { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #1f1c18; font-size: 18px; }
-      .small { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #5b5148; font-size: 16px; }
-      .math { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #1f1c18; font-size: 19px; }
-      .sub { font-size: 13px; baseline-shift: sub; }
+      .label { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #1f1c18; font-size: 22px; }
+      .small { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #5b5148; font-size: 22px; }
+      .math-inline { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+      .math { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #1f1c18; font-size: 22px; }
+      .sub { font-size: 70%; baseline-shift: sub; }
     </style>
   </defs>
 
@@ -41,11 +42,11 @@
 
   <g transform="translate(620,62)">
     <line class="laplace" x1="0" y1="0" x2="48" y2="0"/>
-    <text class="small" x="60" y="6">拉普拉斯　α<tspan class="sub">4</tspan> = 6</text>
+    <text class="small" x="60" y="6">拉普拉斯　<tspan class="math-inline">α<tspan class="sub">4</tspan> = 6</tspan></text>
     <line class="normal" x1="0" y1="34" x2="48" y2="34"/>
-    <text class="small" x="60" y="40">常態　α<tspan class="sub">4</tspan> = 3</text>
+    <text class="small" x="60" y="40">常態　<tspan class="math-inline">α<tspan class="sub">4</tspan> = 3</tspan></text>
     <line class="uniform" x1="0" y1="68" x2="48" y2="68"/>
-    <text class="small" x="60" y="74">均勻　α<tspan class="sub">4</tspan> = 9/5</text>
+    <text class="small" x="60" y="74">均勻　<tspan class="math-inline">α<tspan class="sub">4</tspan> = 9/5</tspan></text>
   </g>
 
   <text class="label" x="470" y="388" text-anchor="middle">三者的期望值皆為 0，變異數皆為 1</text>

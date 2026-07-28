@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="300" viewBox="0 0 820 300" role="img" aria-labelledby="title desc">
+  <title id="title">A sample point mapped to a two-dimensional random vector</title>
+  <desc id="desc">The die-roll outcome three and four is mapped through the sum and absolute difference to the vector seven and one.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 1 1 L 11 6 L 1 11 Z" fill="#1f1c18"/>
+    </marker>
+    <style>
+      .math { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+      .math-inline { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+    </style>
+  </defs>
+  <rect x="18" y="18" width="784" height="264" rx="18" fill="none" stroke="#c9c1b4" stroke-width="2"/>
+
+  <rect x="62" y="76" width="210" height="145" rx="16" fill="#f7f3ed" stroke="#8a7f72" stroke-width="2"/>
+  <text x="167" y="112" text-anchor="middle" fill="#1f1c18" font-family="'Noto Serif TC','Songti TC',Georgia,serif" font-size="20">樣本空間 <tspan class="math-inline" font-size="22">S</tspan></text>
+  <circle cx="167" cy="161" r="8" fill="#9c2d2d"/>
+  <text x="167" y="197" text-anchor="middle" fill="#1f1c18" font-family="Georgia,'Times New Roman',serif" font-size="23">(3, 4)</text>
+
+  <line x1="292" y1="149" x2="510" y2="149" stroke="#1f1c18" stroke-width="2.6" marker-end="url(#arrow)"/>
+  <text class="math" x="401" y="117" text-anchor="middle" fill="#9c2d2d" font-size="26">(X, Y)</text>
+  <text x="401" y="184" text-anchor="middle" fill="#8a7f72" font-family="'Noto Serif TC','Songti TC',Georgia,serif" font-size="17">點數和、點數差的絕對值</text>
+
+  <rect x="548" y="76" width="210" height="145" rx="16" fill="#f7f3ed" stroke="#8a7f72" stroke-width="2"/>
+  <text x="653" y="112" text-anchor="middle" fill="#1f1c18" font-family="Georgia,'Times New Roman',serif" font-size="21">ℝ²</text>
+  <circle cx="653" cy="161" r="8" fill="#9c2d2d"/>
+  <text x="653" y="197" text-anchor="middle" fill="#1f1c18" font-family="Georgia,'Times New Roman',serif" font-size="23">(7, 1)</text>
+</svg>

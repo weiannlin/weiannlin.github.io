@@ -1,5 +1,6 @@
 \documentclass[tikz,border=2pt]{standalone}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{xcolor}
 
 \definecolor{journalink}{HTML}{1F1C18}
@@ -10,24 +11,20 @@
 \begin{tikzpicture}[
   x=1cm,
   y=1cm,
-  every node/.style={font=\Large}
+  every node/.style={font=\normalsize}
 ]
-  \path[
-    fill=journalaccent,
-    fill opacity=0.12,
-    even odd rule,
-    rounded corners=2pt
-  ]
-    (-3,-1.8) rectangle (3,1.8)
-    (-0.85,0) circle (1.05);
+  \def\circleA{(0,0) circle (1.2)}
 
-  \draw[journalink, line width=0.8pt, rounded corners=2pt]
-    (-3,-1.8) rectangle (3,1.8);
-  \draw[journalink, line width=0.8pt]
-    (-0.85,0) circle (1.05);
+  \begin{scope}[even odd rule]
+    \clip \circleA (-1.6,-1.6) rectangle (2.9,1.6);
+    \path[fill=journalaccent, fill opacity=0.15, rounded corners=2pt] (-1.6,-1.6) rectangle (2.9,1.6);
+  \end{scope}
 
-  \node[journalink] at (-0.85,0) {$A$};
-  \node[journalaccent] at (1.35,0.08) {$A^{\prime}$};
-  \node[journalmuted] at (2.55,1.42) {$S$};
+  \draw[journalink, line width=0.8pt, rounded corners=2pt] (-1.6,-1.6) rectangle (2.9,1.6);
+  \draw[journalink, line width=0.8pt] \circleA;
+
+  \node[journalink] at (0,0) {$\mathbb{P}(A)$};
+  \node[journalaccent] at (1.85,0) {$\mathbb{P}(A')$};
+  \node[journalmuted] at (2.35,-1.95) {$\mathbb{P}(S)$};
 \end{tikzpicture}
 \end{document}

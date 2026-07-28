@@ -9,7 +9,7 @@ topic: 7
 order: 207
 permalink: /teaching-topics/variance-standard-deviation/
 date: 2026-06-06
-published: true
+published: false
 excerpt: "期望值給出隨機變數的平均位置。變異數則衡量隨機變數離開此平均位置的平均程度，標準差再把單位還原回原來的尺度。"
 ---
 
@@ -147,7 +147,7 @@ $$
 \end{aligned}
 $$
 
-原式得證。$\square$
+原式得證。<span class="topic-qed">$\square$</span>
 </div>
 
 這個公式可記為「平方的期望值，減去期望值的平方」。在許多計算中，先求 $\mathbb{E}(X)$ 與 $\mathbb{E}(X^2)$，再相減，往往比直接套用離差平方更簡潔。
@@ -256,7 +256,7 @@ $$
 |a|\,\sigma_X
 $$
 
-原式得證。$\square$
+原式得證。<span class="topic-qed">$\square$</span>
 </div>
 
 平移不會改變分散程度。若把每個取值都加上同一個常數 $b$，整個分配只是往左或往右移動，離期望值的相對距離並未改變。
@@ -282,5 +282,5 @@ $$
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
 - Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.

@@ -90,9 +90,9 @@ author_profile: true
   .pc-readout strong { color: var(--journal-accent); font-size: 1.1rem; font-family: 'IBM Plex Mono', monospace; }
 </style>
 
-The probability mass function (PMF) tells you how much probability sits at each value of a discrete random variable. The cumulative distribution function (CDF) tells you, for each $x$, the total probability of being $\leqslant x$. They carry the same information; the CDF is just the running sum of the PMF.
+The probability mass function (pmf) tells you how much probability sits at each value of a discrete random variable. The cumulative distribution function (cdf) tells you, for each $x$, the total probability of being $\leqslant x$. They carry the same information; the cdf is just the running sum of the pmf.
 
-Below, you can build your own PMF by editing the $(x, p)$ table. The slider sweeps a "current $x$" across the axis: PMF lollipops at $x \leqslant$ current $x$ turn red, and their masses sum exactly to the height of the CDF curve at that $x$.
+Below, you can build your own pmf by editing the $(x, p)$ table. The slider sweeps a "current $x$" across the axis: pmf lollipops at $x \leqslant$ current $x$ turn red, and their masses sum exactly to the height of the cdf curve at that $x$.
 
 ## Interactive
 
@@ -111,17 +111,17 @@ Below, you can build your own PMF by editing the $(x, p)$ table. The slider swee
   <svg id="pc-pmf" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet"></svg>
   <svg id="pc-cdf" viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet"></svg>
   <div class="pc-readout">
-    Cumulative mass $F(x)$ = <strong id="pc-cum">—</strong>. The red PMF lollipops sum to this; the CDF curve traces it.
+    Cumulative mass $F(x)$ = <strong id="pc-cum">—</strong>. The red pmf lollipops sum to this; the cdf curve traces it.
   </div>
 </div>
 
 ## What it shows
 
-The CDF is a **step function**: flat between the PMF's mass points, jumping straight up by $p\_i$ at each $x = x\_i$ where the PMF carries mass. Slide the current $x$ across some $x\_i$ and the CDF jumps while one more PMF lollipop turns red — the same probability mass, viewed two ways.
+The cdf is a **step function**: flat between the pmf’s mass points, jumping straight up by $p\_i$ at each $x = x\_i$ where the pmf carries mass. Slide the current $x$ across some $x\_i$ and the cdf jumps while one more pmf lollipop turns red — the same probability mass, viewed two ways.
 
-Convention: this CDF is right-continuous. At each $x=x_i$, $F(x_i)=\mathbb{P}(X\leqslant x_i)$ already includes the jump.
+Convention: this cdf is right-continuous. At each $x=x_i$, $F(x_i)=\mathbb{P}(X\leqslant x_i)$ already includes the jump.
 
-[The next demo](/demos/pdf-cdf/) replaces the discrete spikes with a smooth density (PDF). The construction is the same idea, but the running **sum** becomes a running **integral**, and the CDF turns from a staircase into a continuous curve.
+[The next demo](/demos/pdf-cdf/) replaces the discrete spikes with a smooth density (pdf). The construction is the same idea, but the running **sum** becomes a running **integral**, and the cdf turns from a staircase into a continuous curve.
 
 <script>
 (function() {

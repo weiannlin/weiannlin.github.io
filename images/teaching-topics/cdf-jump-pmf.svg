@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
-  <title id="title">PMF from a CDF jump</title>
-  <desc id="desc">A step plot of a discrete CDF. At x equals a, the open circle marks the left limit and the filled circle marks the CDF value. The vertical gap is labeled as the point mass.</desc>
+  <title id="title">pmf from a cdf jump</title>
+  <desc id="desc">A step plot of a discrete cdf. At x equals a, the open circle marks the left limit and the filled circle marks the cdf value. The vertical gap is labeled as the point mass.</desc>
   <defs>
     <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
       <path d="M 1 1 L 7 4 L 1 7 Z" fill="#1f1c18"/>
@@ -65,7 +65,7 @@
   </g>
 
   <g fill="#9c2d2d" font-family="'Noto Serif TC', 'Songti TC', Georgia, serif" font-size="17">
-    <text x="356" y="135">實心點表示在 a 的函數值</text>
+    <text x="356" y="135">實心點表示在 <tspan font-family="Georgia, 'Times New Roman', serif" font-style="italic">a</tspan> 的函數值</text>
     <text x="356" y="240">空心點表示左側極限</text>
   </g>
 </svg>

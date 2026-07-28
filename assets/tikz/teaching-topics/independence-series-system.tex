@@ -1,0 +1,17 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage{xcolor}
+\definecolor{journalink}{HTML}{1F1C18}
+\begin{document}
+\begin{tikzpicture}[-,auto,node distance=1cm,
+  point/.style={coordinate},
+  block/.style={draw=journalink, line width=0.8pt, rounded corners=2pt, rectangle, minimum height=3em, minimum width=3em, text=journalink},
+  every path/.style={draw=journalink, line width=0.8pt}]
+\node[point] (0) at (0,0)  {};
+\node[block] (1) at (1,0)  {1};
+\node[block] (2) at (3,0)  {2};
+\node[point] (3) at (4,0)  {};
+\draw   (0) -- (1);
+\draw   (1) -- (2);
+\draw   (2) -- (3);
+\end{tikzpicture}
+\end{document}

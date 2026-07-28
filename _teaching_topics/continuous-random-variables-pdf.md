@@ -9,11 +9,11 @@ topic: 4
 order: 204
 permalink: /teaching-topics/continuous-random-variables-pdf/
 date: 2026-06-06
-published: true
-excerpt: "連續型隨機變數的單點不具有正機率，事件機率改由密度函數在區間上的面積計算。pdf 可視為 CDF 的變化率，區間機率則由積分取得。"
+published: false
+excerpt: "連續型隨機變數的單點不具有正機率，事件機率改由密度函數在區間上的面積計算。pdf 可視為 cdf 的變化率，區間機率則由積分取得。"
 ---
 
-[上一篇文章](/teaching-topics/discrete-random-variables-pmf/)細講離散型隨機變數。離散型的機率集中在可逐一列出的單點上，因此事件機率可由 pmf 加總取得。本篇轉向最常用的一類連續型隨機變數，也就是 CDF 可由某個非負函數積分表示的情形。該非負函數稱為**機率密度函數 (probability density function, pdf)**，區間機率可由密度曲線下方的面積計算。
+[上一篇文章](/teaching-topics/discrete-random-variables-pmf/)細講離散型隨機變數。離散型的機率集中在可逐一列出的單點上，因此事件機率可由 pmf 加總取得。本篇轉向最常用的一類連續型隨機變數，也就是 cdf 可由某個非負函數積分表示的情形。該非負函數稱為**機率密度函數 (probability density function, pdf)**，區間機率可由密度曲線下方的面積計算。
 
 ## 由累積分配函數到密度
 
@@ -32,7 +32,7 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 2.9.</span> 對可由 pdf 描述的連續型隨機變數而言，$F_X(x)$ 是密度函數在 $(-\infty,x]$ 上累積的面積。</figcaption>
 </figure>
 
-<div class="topic-box topic-box--definition" markdown="1">
+<div id="definition-24" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 2.4</div>
 
 令 $X$ 為隨機變數。若存在非負函數 $f_X$，使得對任意 $x\in\mathbb{R}$ 皆有
@@ -49,7 +49,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-嚴格而言，並非所有連續的 CDF 都能由一般 pdf 積分表示。測度論中還有更細緻的分解。本章先採統計課程中最常使用的情形，也就是可由密度函數描述的連續型情形。
+嚴格而言，並非所有連續的 cdf 都能由一般 pdf 積分表示。測度論中還有更細緻的分解。本章先採統計課程中最常使用的情形，也就是可由密度函數描述的連續型情形。
 </div>
 
 ## pdf 的基本性質
@@ -70,7 +70,7 @@ $$
 </div>
 
 <div class="topic-proof" markdown="1">
-**Proof.** 若 $f_X$ 為 $X$ 的 pdf，則 pdf 的定義已要求 $f_X$ 非負。再由 CDF 在正無窮處的極限可得
+**Proof.** 若 $f_X$ 為 $X$ 的 pdf，則 pdf 的定義已要求 $f_X$ 非負。再由 cdf 在正無窮處的極限可得
 
 $$
 \int_{-\infty}^{\infty}f_X(x)\,dx
@@ -94,7 +94,7 @@ $$
 \end{aligned}
 $$
 
-因此，$\mathbb{P}$ 滿足機率公理。再令 $X(\omega)=\omega$。對任意 Borel 集合 $B$，恆等映射滿足 $X^{-1}(B)=B\in\mathcal{B}(\mathbb{R})$，因此 $X$ 是隨機變數。其 CDF 為
+因此，$\mathbb{P}$ 滿足機率公理。再令 $X(\omega)=\omega$。對任意 Borel 集合 $B$，恆等映射滿足 $X^{-1}(B)=B\in\mathcal{B}(\mathbb{R})$，因此 $X$ 是隨機變數。其 cdf 為
 
 $$
 F_X(x)
@@ -104,7 +104,7 @@ F_X(x)
 \int_{-\infty}^x f_X(t)\,dt
 $$
 
-故 $f_X$ 可作為 $X$ 的 pdf。$\square$
+故 $f_X$ 可作為 $X$ 的 pdf。<span class="topic-qed">$\square$</span>
 </div>
 
 這兩個條件和 pmf 的條件十分相似。離散型把所有單點機率加總為 $1$，pdf 則把整條密度曲線下方的面積積分為 $1$。
@@ -130,7 +130,7 @@ $$
 
 <figure id="fig-211" class="topic-figure topic-figure--wide">
   <img src="/images/teaching-topics/continuous-small-interval-area.svg" alt="連續型隨機變數在 x 到 x 加 Delta x 之間的局部區間面積。">
-  <figcaption><span class="topic-figure__label">Fig. 2.11.</span> 將一般區間縮小為 $x$ 到 $x+\Delta x$ 後，紅色面積就是 CDF 從 $x$ 推進到 $x+\Delta x$ 時增加的機率。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 2.11.</span> 將一般區間縮小為 $x$ 到 $x+\Delta x$ 後，紅色面積就是 cdf 從 $x$ 推進到 $x+\Delta x$ 時增加的機率。</figcaption>
 </figure>
 
 若區間很短，且 $f_X$ 在該處變化不大，則
@@ -145,9 +145,9 @@ $$
 
 因此，$f_X(x)$ 描述機率在 $x$ 附近隨區間長度增加的速率；真正具有機率意義的仍是密度在區間上所形成的面積。
 
-## 由 CDF 求得 pdf
+## 由 cdf 求得 pdf
 
-離散型的 pmf 可由 CDF 的跳躍高度求得。連續型也有相應的關係，只是這裡看的不是跳躍高度，而是 CDF 的局部變化率。回到 [Fig. 2.11](#fig-211)，當門檻由 $x$ 推進到 $x+\Delta x$ 時，CDF 的增加量可寫為
+離散型的 pmf 可由 cdf 的跳躍高度求得。連續型也有相應的關係，只是這裡看的不是跳躍高度，而是 cdf 的局部變化率。回到 [Fig. 2.11](#fig-211)，當門檻由 $x$ 推進到 $x+\Delta x$ 時，cdf 的增加量可寫為
 
 $$
 \begin{aligned}
@@ -161,7 +161,7 @@ f_X(x)\Delta x
 \end{aligned}
 $$
 
-上式先從右側小區間說明 CDF 的局部變化。若要得到普通導數，則改以可正可負的 $h$ 表示增量。若 $f_X$ 在 $x$ 連續，則由微積分基本定理 (fundamental theorem of calculus, FTC) 可得
+上式先從右側小區間說明 cdf 的局部變化。若要得到普通導數，則改以可正可負的 $h$ 表示增量。若 $f_X$ 在 $x$ 連續，則由微積分基本定理 (fundamental theorem of calculus, FTC) 可得
 
 $$
 F_X'(x)
@@ -174,7 +174,7 @@ F_X'(x)
 f_X(x)
 $$
 
-這表示在 $f_X$ 於 $x$ 附近連續的條件下，pdf 在該點等於 CDF 的斜率。反過來由 CDF 求 pdf 時，只能在適當的可微點取導數；端點或有限多點上的密度值如何指定，並不會改變任何區間機率。CDF 給出的是 $X$ 落在 $(-\infty,x]$ 中的機率；pdf 則描述當位置在 $x$ 附近微小推進時，這個機率增加得多快。
+這表示在 $f_X$ 於 $x$ 附近連續的條件下，pdf 在該點等於 cdf 的斜率。反過來由 cdf 求 pdf 時，只能在適當的可微點取導數；端點或有限多點上的密度值如何指定，並不會改變任何區間機率。cdf 給出的是 $X$ 落在 $(-\infty,x]$ 中的機率；pdf 則描述當位置在 $x$ 附近微小推進時，這個機率增加得多快。
 
 <div class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 2.4</div>
@@ -197,7 +197,7 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 2.12.</span> 單點 $a$ 沒有寬度，因此 $a$ 到 $a$ 之間的密度面積為 $0$。</figcaption>
 </figure>
 
-這不表示 $a$ 不可能成為觀測值，而是說單點在連續模型中不具有正機率。這一點延續了第一章中[飛鏢落點的直覺校準](/teaching-topics/random-experiments-sample-space-events/#thought-experiment-dart-zero-probability)。因此，對連續型隨機變數而言，端點是否包含通常不會改變區間機率。
+這不表示 $a$ 不可能成為觀測值，而是說單點在連續模型中不具有正機率。這一點延續了第一章中的[幾何機率](/teaching-topics/probability-assignment-classical-geometric/#幾何機率與幾何測度)。因此，對連續型隨機變數而言，端點是否包含通常不會改變區間機率。
 
 $$
 \mathbb{P}(a<X\leqslant b)
@@ -236,7 +236,7 @@ $$
 1
 $$
 
-故 $f_X$ 可作為 pdf。其 CDF 為
+故 $f_X$ 可作為 pdf。其 cdf 為
 
 $$
 F_X(x)=
@@ -263,15 +263,15 @@ $$
 
 這個例子也說明，均勻分配的密度曲線是平的，但機率並不在單點上。機率來自區間長度，區間越長，累積到的面積越大。
 
-若想調整密度圖形並觀察面積如何形成 CDF，可以參考互動展示 [From&nbsp;pdf&nbsp;to&nbsp;CDF](/demos/pdf-cdf/)。
+若想調整密度圖形並觀察面積如何形成 cdf，可以參考互動展示 [From&nbsp;pdf&nbsp;to&nbsp;cdf](/demos/pdf-cdf/)。
 
 ## 本篇小結
 
 連續型隨機變數的機率不以單點相加計算，而是以密度函數的面積計算。pdf 滿足 $f_X(x)\geqslant0$ 與 $\int_{-\infty}^{\infty}f_X(x)\,dx=1$；區間機率則由 $\mathbb{P}(a<X\leqslant b)=\int_a^b f_X(t)\,dt$ 求得。
 
-若 $f_X$ 在 $x$ 附近連續，則由微積分基本定理可得 $f_X(x)=F_X'(x)$。
+若 $f_X$ 在 $x$ 附近連續，則由微積分基本定理可得 $f_X(x)=F_X^{\prime}(x)$。
 
-離散型與連續型使用同一個 CDF 定義，差異在於計算事件機率的方式。離散型以 pmf 加總，連續型以 pdf 積分。下一篇[混合型隨機變數](/teaching-topics/mixed-random-variables/)會討論兩種型態同時出現時，如何在同一個 CDF 中處理單點跳躍與連續累積。
+離散型與連續型使用同一個 cdf 定義，差異在於計算事件機率的方式。離散型以 pmf 加總，連續型以 pdf 積分。下一篇[混合型隨機變數](/teaching-topics/mixed-random-variables/)會討論兩種型態同時出現時，如何在同一個 cdf 中處理單點跳躍與連續累積。
 
 ## 參考文獻與延伸閱讀
 
@@ -280,5 +280,5 @@ $$
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
 - Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.

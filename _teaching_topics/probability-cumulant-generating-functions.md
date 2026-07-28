@@ -9,13 +9,13 @@ topic: 13
 order: 213
 permalink: /teaching-topics/probability-cumulant-generating-functions/
 date: 2026-07-13
-published: true
-excerpt: '機率母函數 (PGF) 以冪級數整理非負整數值隨機變數的機率與階乘動差；累積量母函數 (CGF) 則對 MGF 取對數，由微分得到期望值、變異數與高階累積量。'
+published: false
+excerpt: '機率母函數 (pgf) 以冪級數整理非負整數值隨機變數的機率與階乘動差；累積量母函數 (cgf) 則對 mgf 取對數，由微分得到期望值、變異數與高階累積量。'
 ---
 
-[上一篇文章](/teaching-topics/moment-generating-functions/)介紹動差母函數 (moment-generating function, MGF)，說明如何由 $M_X(t)=\mathbb{E}(e^{tX})$ 生成各階原動差。本篇再整理兩種母函數。**機率母函數 (probability-generating function, PGF)** 適用於非負整數值隨機變數，可生成各點機率與**階乘動差 (factorial moment)**；**累積量母函數 (cumulant-generating function, CGF)** 則由 MGF 取對數而得，可生成**累積量 (cumulant)**。
+[上一篇文章](/teaching-topics/moment-generating-functions/)介紹動差母函數 (moment-generating function, mgf)，說明如何由 $M_X(t)=\mathbb{E}(e^{tX})$ 生成各階原動差。本篇再整理兩種母函數。**機率母函數 (probability-generating function, pgf)** 適用於非負整數值隨機變數，可生成各點機率與**階乘動差 (factorial moment)**；**累積量母函數 (cumulant-generating function, cgf)** 則由 mgf 取對數而得，可生成**累積量 (cumulant)**。
 
-三種母函數使用的函數形式不同，微分後代入的點也不同。MGF 在 $t=0$ 生成原動差；PGF 在 $s=1$ 生成階乘動差，並在 $s=0$ 取回各點機率；CGF 在 $t=0$ 生成累積量。
+三種母函數使用的函數形式不同，微分後代入的點也不同。mgf 在 $t=0$ 生成原動差；pgf 在 $s=1$ 生成階乘動差，並在 $s=0$ 取回各點機率；cgf 在 $t=0$ 生成累積量。
 
 ## 機率母函數
 
@@ -34,7 +34,7 @@ G_X(s)
 \sum_{k=0}^{\infty}s^k p_X(k)
 $$
 
-為 $X$ 的**機率母函數 (probability-generating function, PGF)**。上式對所有使級數絕對收斂的 $s$ 有意義；至少對每個滿足 $\lvert s\rvert\leqslant 1$ 的實數 $s$ 皆存在。
+為 $X$ 的**機率母函數 (probability-generating function, pgf)**。上式對所有使級數絕對收斂的 $s$ 有意義；至少對每個滿足 $\lvert s\rvert\leqslant 1$ 的實數 $s$ 皆存在。
 
 </div>
 
@@ -44,15 +44,15 @@ $$
 G_X(1)=1
 $$
 
-而 $G_X(0)=p_X(0)$。PGF 是 $s$ 的函數，不再是隨機變數。非負整數值的條件也不能省略，因為冪級數中 $s^k$ 的係數正是 $\mathbb{P}(X=k)$；一般實值或連續型隨機變數的 $\mathbb{E}(s^X)$ 不稱為 PGF。
+而 $G_X(0)=p_X(0)$。pgf 是 $s$ 的函數，不再是隨機變數。非負整數值的條件也不能省略，因為冪級數中 $s^k$ 的係數正是 $\mathbb{P}(X=k)$；一般實值或連續型隨機變數的 $\mathbb{E}(s^X)$ 不稱為 pgf。
 
 <div id="note-pgf-domain" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-PGF 在 $\lvert s\rvert\leqslant 1$ 必定存在，但未必能延伸到所有實數。例如某些分配的 PGF 在 $s>1$ 會發散。後續微分或代入 $s=e^t$ 時，仍須檢查對應的收斂範圍。
+pgf 在 $\lvert s\rvert\leqslant 1$ 必定存在，但未必能延伸到所有實數。例如某些分配的 pgf 在 $s>1$ 會發散。後續微分或代入 $s=e^t$ 時，仍須檢查對應的收斂範圍。
 </div>
 
-## PGF 生成階乘動差
+## pgf 生成階乘動差
 
 對冪次 $s^k$ 微分一次會產生 $k s^{k-1}$；連續微分 $r$ 次，則會產生由 $k$ 向下相乘的係數。對正整數 $r$，令
 
@@ -73,7 +73,7 @@ $$
 \mathbb{E}[(X)_r]<\infty
 $$
 
-則 PGF 在 $s=1$ 的 $r$ 階左導數滿足
+則 pgf 在 $s=1$ 的 $r$ 階左導數滿足
 
 $$
 G_X^{(r)}(1-)
@@ -114,7 +114,7 @@ k(k-1)\cdots(k-r+1)p_X(k) \\[0.35em]
 \end{aligned}
 $$
 
-原式得證。$\square$
+原式得證。<span class="topic-qed">$\square$</span>
 </div>
 
 前兩階的結果為
@@ -139,9 +139,9 @@ $$
 G_X''(1-)+G_X'(1-)-[G_X'(1-)]^2
 $$
 
-## PGF 取回各點機率
+## pgf 取回各點機率
 
-PGF 的另一項功能，是從冪級數係數取回 pmf。對 $G_X(s)$ 微分 $k$ 次後，次方低於 $k$ 的項消失；再代入 $s=0$，只有原來的 $s^k$ 項會留下。
+pgf 的另一項功能，是從冪級數係數取回 pmf。對 $G_X(s)$ 微分 $k$ 次後，次方低於 $k$ 的項消失；再代入 $s=0$，只有原來的 $s^k$ 項會留下。
 
 <div id="proposition-213" class="topic-box topic-box--proposition" markdown="1">
 <div class="topic-box__label">Proposition 2.13 (Recovering the pmf)</div>
@@ -178,23 +178,23 @@ $$
 G_X^{(k)}(0)=k!p_X(k)
 $$
 
-除以 $k!$ 即得所求。$k=0$ 時則由 $G_X(0)=p_X(0)$ 直接成立。原式得證。$\square$
+除以 $k!$ 即得所求。$k=0$ 時則由 $G_X(0)=p_X(0)$ 直接成立。原式得證。<span class="topic-qed">$\square$</span>
 </div>
 
 ## 累積量母函數
 
-MGF 把原動差放進同一個函數。若再對 MGF 取自然對數，微分後所得的係數稱為累積量。
+mgf 把原動差放進同一個函數。若再對 mgf 取自然對數，微分後所得的係數稱為累積量。
 
 <div id="definition-219" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 2.19</div>
 
-若 $X$ 的 MGF $M_X(t)=\mathbb{E}(e^{tX})$ 在某個包含 $0$ 的開區間內有限，則定義
+若 $X$ 的 mgf $M_X(t)=\mathbb{E}(e^{tX})$ 在某個包含 $0$ 的開區間內有限，則定義
 
 $$
 K_X(t)=\log M_X(t)
 $$
 
-為 $X$ 的**累積量母函數 (cumulant-generating function, CGF)**。對正整數 $r$，定義
+為 $X$ 的**累積量母函數 (cumulant-generating function, cgf)**。對正整數 $r$，定義
 
 $$
 \kappa_r=K_X^{(r)}(0)
@@ -204,13 +204,13 @@ $$
 
 </div>
 
-因為 $M_X(t)>0$ 且 $M_X(0)=1$，所以 CGF 在 MGF 有限的區間內有定義，並且
+因為 $M_X(t)>0$ 且 $M_X(0)=1$，所以 cgf 在 mgf 有限的區間內有定義，並且
 
 $$
 K_X(0)=\log 1=0
 $$
 
-CGF 的前兩階導數為
+cgf 的前兩階導數為
 
 $$
 K_X'(t)=\frac{M_X'(t)}{M_X(t)}
@@ -224,7 +224,7 @@ K_X''(t)
 \frac{M_X''(t)M_X(t)-[M_X'(t)]^2}{[M_X(t)]^2}
 $$
 
-令 $t=0$，並使用 $M_X(0)=1$、$M_X'(0)=\mathbb{E}(X)$ 與 $M_X''(0)=\mathbb{E}(X^2)$，可得
+令 $t=0$，並使用 $M_X(0)=1$、$M_X^{\prime}(0)=\mathbb{E}(X)$ 與 $M_X^{\prime\prime}(0)=\mathbb{E}(X^2)$，可得
 
 $$
 \kappa_1=\mathbb{E}(X)
@@ -264,10 +264,10 @@ $$
 <div id="note-cgf-existence" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-CGF 的定義以 MGF 在某個包含 $0$ 的開區間內有限為前提。各階動差全都存在，仍不足以保證 MGF 或 CGF 在 $0$ 附近存在。因此，不能只由動差存在便直接寫出 CGF 的泰勒展開。
+cgf 的定義以 mgf 在某個包含 $0$ 的開區間內有限為前提。各階動差全都存在，仍不足以保證 mgf 或 cgf 在 $0$ 附近存在。因此，不能只由動差存在便直接寫出 cgf 的泰勒展開。
 </div>
 
-## PGF、MGF 與 CGF 的關係
+## pgf、mgf 與 cgf 的關係
 
 若 $X$ 為非負整數值隨機變數，則在兩側期望值皆有限的範圍內，代入 $s=e^t$ 可得
 
@@ -289,7 +289,7 @@ $$
 G_X(s)=M_X(\log s)
 $$
 
-CGF 也可寫成
+cgf 也可寫成
 
 $$
 K_X(t)
@@ -311,7 +311,7 @@ $$
 \qquad y=1,2,3,\ldots
 $$
 
-由 PGF 的定義可得
+由 pgf 的定義可得
 
 $$
 \begin{aligned}
@@ -339,7 +339,7 @@ G_Y'(s)=\frac{p}{(1-qs)^2},
 G_Y''(s)=\frac{2pq}{(1-qs)^3}
 $$
 
-將 $s=1$ 代入前兩階導數，可得 $\mathbb{E}(Y)=G_Y'(1)=1/p$。此外，二階階乘動差為
+將 $s=1$ 代入前兩階導數，可得 $\mathbb{E}(Y)=G_Y^{\prime}(1)=1/p$。此外，二階階乘動差為
 
 $$
 \mathbb{E}[Y(Y-1)]
@@ -363,7 +363,7 @@ G_Y''(1)+G_Y'(1)-[G_Y'(1)]^2 \\[0.35em]
 \end{aligned}
 $$
 
-同一個 PGF 也能給出 MGF 與 CGF。當 $0<p<1$ 且 $t<-\log q$ 時，
+同一個 pgf 也能給出 mgf 與 cgf。當 $0<p<1$ 且 $t<-\log q$ 時，
 
 $$
 M_Y(t)
@@ -395,15 +395,15 @@ $$
 
 ## 本篇小結
 
-若 $X$ 為非負整數值隨機變數，其 PGF 為
+若 $X$ 為非負整數值隨機變數，其 pgf 為
 
 $$
 G_X(s)=\mathbb{E}(s^X)
 $$
 
-PGF 在 $s=1$ 的左導數生成階乘動差，在 $s=0$ 的各階導數則取回 pmf 的係數。使用 $s=1$ 的導數時，必須確認對應的階乘動差有限。
+pgf 在 $s=1$ 的左導數生成階乘動差，在 $s=0$ 的各階導數則取回 pmf 的係數。使用 $s=1$ 的導數時，必須確認對應的階乘動差有限。
 
-若 MGF 在某個包含 $0$ 的開區間內有限，則 CGF 定義為
+若 mgf 在某個包含 $0$ 的開區間內有限，則 cgf 定義為
 
 $$
 K_X(t)=\log M_X(t)
@@ -411,7 +411,7 @@ $$
 
 其前兩階累積量分別是期望值與變異數。對非負整數值隨機變數，$M_X(t)=G_X(e^t)$ 與 $G_X(s)=M_X(\log s)$ 只在兩側皆有限的範圍內成立。
 
-[下一篇文章](/teaching-topics/characteristic-functions/)會介紹特徵函數 (characteristic function, CF)。把同一個 PGF 冪級數延伸到複數單位圓，並令 $s=e^{it}$，可得 $\varphi_X(t)=G_X(e^{it})$；其複指數項的絕對值恆為 $1$，因此 CF 對每個實值隨機變數都存在。
+[下一篇文章](/teaching-topics/characteristic-functions/)會介紹特徵函數 (characteristic function, cf)。把同一個 pgf 冪級數延伸到複數單位圓，並令 $s=e^{it}$，可得 $\varphi_X(t)=G_X(e^{it})$；其複指數項的絕對值恆為 $1$，因此 cf 對每個實值隨機變數都存在。
 
 ## 參考文獻與延伸閱讀
 
@@ -419,4 +419,4 @@ $$
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
-  <title id="title">CDF as area under a density curve</title>
+  <title id="title">cdf as area under a density curve</title>
   <desc id="desc">A smooth density curve with the area to the left of x shaded, representing the cumulative distribution function F_X(x).</desc>
   <defs>
     <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">

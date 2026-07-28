@@ -1,6 +1,6 @@
 ---
 title: "馬可夫不等式與機率上界"
-subtitle: "Markov's Inequality and Probability Bounds"
+subtitle: "Markov’s Inequality and Probability Bounds"
 layout: topic
 collection: teaching_topics
 category: "機率概論"
@@ -9,11 +9,11 @@ topic: 15
 order: 215
 permalink: /teaching-topics/markov-inequality/
 date: 2026-07-13
-published: true
+published: false
 excerpt: '馬可夫不等式只使用非負性與期望值，便能給出尾端機率的上界。它不需要知道完整分配，也是柴比雪夫不等式與其他動差界限的起點。'
 ---
 
-[上一篇文章](/teaching-topics/characteristic-functions/)使用 CF 完整描述一個機率分配。本篇改從資訊較少的情形出發。即使不知道 pmf、pdf 或 CDF，只知道某個非負隨機變數的期望值，仍可對其超過門檻的機率給出上界。
+[上一篇文章](/teaching-topics/characteristic-functions/)使用 cf 完整描述一個機率分配。本篇改從資訊較少的情形出發。即使不知道 pmf、pdf 或 cdf，只知道某個非負隨機變數的期望值，仍可對其超過門檻的機率給出上界。
 
 這類上界通常不會求出精確機率，而是說明在既有條件下，尾端機率至多能有多大。最基本的結果先從隨機變數的非負函數開始。
 
@@ -32,7 +32,7 @@ $$
 
 </div>
 
-若需回顧實數線上的 Borel $\sigma$-域，可參考[事件集合族與 $\sigma$-域](/teaching-topics/event-families-sigma-fields/#實數線上的-borel-sigma-域)。
+若需回顧實數線上的 Borel $\sigma$-域，可參考[域、$\sigma$-域與機率空間](/teaching-topics/event-families-sigma-fields/#實數線上的-borel-sigma-域)。
 
 <div class="topic-proof" markdown="1">
 **Proof.** 令 $A=\lbrace h(X)\geqslant k\rbrace$，並以 $\mathbf{1}_A$ 表示事件 $A$ 的指標函數。由 $h$ 的 Borel 可測性可知，$A$ 為事件。
@@ -53,17 +53,17 @@ k\mathbb{P}(h(X)\geqslant k)
 \end{aligned}
 $$
 
-因為 $k>0$，兩側除以 $k$ 即得定理結論。原式得證。 $\square$
+因為 $k>0$，兩側除以 $k$ 即得定理結論。原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
 這個證明同時適用於離散型、連續型與混合型隨機變數。
 
 ## 馬可夫不等式
 
-在 [Theorem 2.3](#theorem-23) 中取 $h(x)=x_+=\max\lbrace x,0\rbrace$。此函數連續且非負，因此為 Borel 可測函數。若再假設 $X\geqslant 0$，便有 $h(X)=X$，由此可得馬可夫不等式 (Markov's inequality)。此處使用 $x_+$，是為了讓 $h$ 在整條實數線上保持非負；套用到非負隨機變數 $X$ 時，其值仍與 $X$ 相同。
+在 [Theorem 2.3](#theorem-23) 中取 $h(x)=x_+=\max\lbrace x,0\rbrace$。此函數連續且非負，因此為 Borel 可測函數。若再假設 $X\geqslant 0$，便有 $h(X)=X$，由此可得馬可夫不等式 (Markov’s inequality)。此處使用 $x_+$，是為了讓 $h$ 在整條實數線上保持非負；套用到非負隨機變數 $X$ 時，其值仍與 $X$ 相同。
 
 <div id="theorem-24" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 2.4 (Markov's Inequality)</div>
+<div class="topic-box__label">Theorem 2.4 (Markov’s Inequality)</div>
 
 若 $X$ 為非負隨機變數，且 $\mathbb{E}(X)<\infty$，則對每個 $k>0$，皆有
 
@@ -88,7 +88,7 @@ $$
 \frac{\mathbb{E}(X)}{k}
 $$
 
-原式得證。 $\square$
+原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
 <div id="note-markov-assumptions" class="topic-box topic-box--note" markdown="1">
@@ -196,4 +196,4 @@ $$
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.

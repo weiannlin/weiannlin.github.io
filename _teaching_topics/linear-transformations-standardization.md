@@ -9,7 +9,7 @@ topic: 8
 order: 208
 permalink: /teaching-topics/linear-transformations-standardization/
 date: 2026-06-12
-published: true
+published: false
 excerpt: "線性轉換會平移或伸縮隨機變數的尺度。標準化則先扣掉平均位置，再除以標準差，使不同尺度下的數值可以用 z-score 比較相對位置。"
 ---
 
@@ -168,7 +168,7 @@ $$
 \end{aligned}
 $$
 
-再由標準差的定義可得 $\mathrm{SD}(Z)=1$。原式得證。$\square$
+再由標準差的定義可得 $\mathrm{SD}(Z)=1$。原式得證。<span class="topic-qed">$\square$</span>
 </div>
 
 ## z-score 的意義
@@ -258,7 +258,7 @@ $$
 \mathrm{SD}(Z)=1
 $$
 
-z-score 適合用來描述個體在所屬分配中的相對位置。[下一篇文章](/teaching-topics/quantiles-and-median/)會改從 CDF 出發，討論分位數、百分位數與中位數如何描述分配位置。
+z-score 適合用來描述個體在所屬分配中的相對位置。[下一篇文章](/teaching-topics/quantiles-and-median/)會改從 cdf 出發，討論分位數、百分位數與中位數如何描述分配位置。
 
 ## 參考文獻與延伸閱讀
 
@@ -266,5 +266,5 @@ z-score 適合用來描述個體在所屬分配中的相對位置。[下一篇�
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
 - Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.

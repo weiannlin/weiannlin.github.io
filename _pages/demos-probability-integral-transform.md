@@ -393,9 +393,9 @@ author_profile: true
   }
 </style>
 
-[Proposition 2.18](/teaching-topics/continuous-random-variable-transformations/#proposition-218) connects a continuous CDF with the standard uniform distribution in both directions. This demo uses the standard Cauchy distribution because its pdf, CDF, and [quantile function](/teaching-topics/quantiles-and-median/#quantile-function) all have closed forms. Its heavy tails also make the changes in local slope especially visible.
+Proposition 2.18 connects a continuous cdf with the standard uniform distribution in both directions. This demo uses the standard Cauchy distribution because its pdf, cdf, and quantile function all have closed forms. Its heavy tails also make the changes in local slope especially visible.
 
-The standard Cauchy distribution will be introduced in a later teaching topic. For now, only the following three functions are needed. Its CDF is continuous and strictly increasing, so its quantile function agrees with the ordinary inverse of the CDF. Write $Q=F^{-1}$. Then
+The standard Cauchy distribution will be introduced in a later teaching topic. For now, only the following three functions are needed. Its cdf is continuous and strictly increasing, so its quantile function agrees with the ordinary inverse of the cdf. Write $Q=F^{-1}$. Then
 
 <div class="pit-formulas" markdown="1">
 $$
@@ -419,7 +419,7 @@ $$
 
 ## Follow one value through all three functions
 
-Start with $u$ on the standard uniform scale and set $x=Q(u)$. The same $x$ is marked on the pdf and CDF, while the same $u$ is marked on the quantile function. Move the slider or play the values from left to right.
+Start with $u$ on the standard uniform scale and set $x=Q(u)$. The same $x$ is marked on the pdf and cdf, while the same $u$ is marked on the quantile function. Move the slider or play the values from left to right.
 
 <div class="pit-theory-stage">
 <div class="pit-panel">
@@ -442,7 +442,7 @@ Start with $u$ on the standard uniform scale and set $x=Q(u)$. The same $x$ is m
 <div class="pit-function-grid" id="pit-function-grid">
   <section class="pit-chart-card" aria-labelledby="pit-pdf-heading">
     <h3 id="pit-pdf-heading">PDF: density height</h3>
-    <p>The height $f(x)$ is the local slope of the CDF at the same $x$.</p>
+    <p>The height $f(x)$ is the local slope of the cdf at the same $x$.</p>
     <svg id="pit-pdf-chart" class="pit-chart pit-chart--theory" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="pit-pdf-title pit-pdf-desc"></svg>
   </section>
   <section class="pit-chart-card" aria-labelledby="pit-cdf-heading">
@@ -452,7 +452,7 @@ Start with $u$ on the standard uniform scale and set $x=Q(u)$. The same $x$ is m
   </section>
   <section class="pit-chart-card" aria-labelledby="pit-quantile-heading">
     <h3 id="pit-quantile-heading">Quantile function: ordinary inverse</h3>
-    <p>The point $(u,x)$ satisfies $x=Q(u)$, and its slope is $Q'(u)$.</p>
+    <p>The point $(u,x)$ satisfies $x=Q(u)$, and its slope is $Q^{\prime}(u)$.</p>
     <svg id="pit-quantile-chart" class="pit-chart pit-chart--theory" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="pit-quantile-title pit-quantile-desc"></svg>
   </section>
 </div>
@@ -484,7 +484,7 @@ Start with $u$ on the standard uniform scale and set $x=Q(u)$. The same $x$ is m
 
 ## Why the two slopes cancel
 
-The pdf gives the local slope of the CDF, so $F'(x)=f(x)$. At the corresponding point $x=Q(u)$, the inverse-function rule gives
+The pdf gives the local slope of the cdf, so $F^{\prime}(x)=f(x)$. At the corresponding point $x=Q(u)$, the inverse-function rule gives
 
 $$
 Q'(u)
@@ -508,7 +508,7 @@ $$
 F(Q(u))=u
 $$
 
-For $0<u<1$, this agrees with the linear part of the standard uniform CDF, and the identity extends continuously to the two endpoints. Because the three charts use different axis scales, the apparent angles of the two tangents should not be compared directly. The displayed derivative values and their product give the relevant comparison.
+For $0<u<1$, this agrees with the linear part of the standard uniform cdf, and the identity extends continuously to the two endpoints. Because the three charts use different axis scales, the apparent angles of the two tangents should not be compared directly. The displayed derivative values and their product give the relevant comparison.
 
 ## Generate a Cauchy sample
 
@@ -564,13 +564,13 @@ The first histogram should be approximately flat. The second should follow the s
 
 **One control links both directions.** Reading from $x$ to $u=F(x)$ is the forward probability integral transform. Reading from $u$ to $x=Q(u)$ is inverse transform sampling.
 
-**The CDF records where probability accumulates.** A large pdf height makes the CDF rise quickly. The quantile function compensates by moving through the corresponding $x$ values more slowly. In the tails, the pdf is small, so the quantile function must move much farther for the same change in $u$.
+**The cdf records where probability accumulates.** A large pdf height makes the cdf rise quickly. The quantile function compensates by moving through the corresponding $x$ values more slowly. In the tails, the pdf is small, so the quantile function must move much farther for the same change in $u$.
 
-**The composition follows the uniform CDF, not the quantile curve.** The cancellation is expressed by $f(Q(u))Q'(u)=1$. Consequently, $F(Q(u))=u$ grows linearly even though neither the Cauchy CDF nor its quantile function is linear.
+**The composition follows the uniform cdf, not the quantile curve.** The cancellation is expressed by $f(Q(u))Q^{\prime}(u)=1$. Consequently, $F(Q(u))=u$ grows linearly even though neither the Cauchy cdf nor its quantile function is linear.
 
 **The plotted Cauchy range is incomplete.** The simulation chart displays only the central interval from $Q(0.05)$ to $Q(0.95)$. Tail observations are counted below the chart, and every histogram density is divided by the full sample size rather than only by the number of visible observations.
 
-The proof, the quantile-function formula used by the transform, and the endpoint convention are in [Proposition 2.18](/teaching-topics/continuous-random-variable-transformations/#proposition-218). To review how a density builds a CDF before applying the transformation, see [From PDF to CDF](/demos/pdf-cdf/).
+The proof, the quantile-function formula used by the transform, and the endpoint convention are in Proposition 2.18. To review how a density builds a cdf before applying the transformation, see [From pdf to cdf](/demos/pdf-cdf/).
 
 <script>
 (function () {
@@ -759,7 +759,7 @@ The proof, the quantile-function formula used by the transform, and the endpoint
     pdfChart.innerHTML = pdfHTML;
 
     let cdfHTML = '<title id="pit-cdf-title">Standard Cauchy cumulative distribution function</title>';
-    cdfHTML += '<desc id="pit-cdf-desc">The CDF with a marker and tangent at the current Cauchy value.</desc>';
+    cdfHTML += '<desc id="pit-cdf-desc">The cdf with a marker and tangent at the current Cauchy value.</desc>';
     cdfHTML += '<defs><clipPath id="pit-cdf-clip"><rect x="' +
       THEORY_LAYOUT.margin.left + '" y="' + THEORY_LAYOUT.margin.top +
       '" width="' + cdfScales.innerWidth + '" height="' + cdfScales.innerHeight +
@@ -926,7 +926,7 @@ The proof, the quantile-function formula used by the transform, and the endpoint
       'The standard Cauchy density at x equals ' + x.toFixed(3) +
       ' has height ' + density.toFixed(4) + '.';
     theoryElements.cdfDesc.textContent =
-      'The standard Cauchy CDF maps x equals ' + x.toFixed(3) +
+      'The standard Cauchy cdf maps x equals ' + x.toFixed(3) +
       ' to u equals ' + mappedU.toFixed(3) +
       ', with local slope ' + density.toFixed(4) + '.';
     theoryElements.quantileDesc.textContent =

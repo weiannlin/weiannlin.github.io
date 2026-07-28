@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="390" viewBox="0 0 900 390" role="img" aria-labelledby="title desc">
+  <title id="title">A triangular joint range, an event region, and marginal slices</title>
+  <desc id="desc">The left panel shades the part of zero less than or equal to x, x less than or equal to y, and y less than or equal to one that also satisfies x plus y less than or equal to one. The right panel shows a vertical x slice and a horizontal y slice.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 1 1 L 9 5 L 1 9 Z" fill="#1f1c18"/>
+    </marker>
+    <style>
+      .math { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+      .math-inline { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+      .sub { baseline-shift: sub; font-size: 70%; }
+    </style>
+  </defs>
+  <rect x="16" y="16" width="868" height="358" rx="18" fill="none" stroke="#c9c1b4" stroke-width="2"/>
+  <line x1="450" y1="40" x2="450" y2="350" stroke="#d8d1c7" stroke-width="2"/>
+
+  <text x="225" y="52" text-anchor="middle" fill="#1f1c18" font-family="'Noto Serif TC','Songti TC',Georgia,serif" font-size="24">事件範圍</text>
+  <line x1="70" y1="310" x2="404" y2="310" stroke="#1f1c18" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="92" y1="330" x2="92" y2="70" stroke="#1f1c18" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <polygon points="92,310 92,90 312,90" fill="#c9c1b4" opacity="0.38" stroke="#8a7f72" stroke-width="2"/>
+  <polygon points="92,310 92,90 202,200" fill="#9c2d2d" opacity="0.3" stroke="#9c2d2d" stroke-width="2"/>
+  <line x1="92" y1="90" x2="312" y2="310" stroke="#9c2d2d" stroke-width="2" stroke-dasharray="7 6"/>
+  <text class="math" x="304" y="78" fill="#1f1c18" font-size="24">y = 1</text>
+  <text class="math" x="264" y="143" fill="#1f1c18" font-size="24">y = x</text>
+  <text class="math" x="278" y="259" fill="#9c2d2d" font-size="24">x + y = 1</text>
+  <text x="130" y="181" fill="#9c2d2d" font-family="'Noto Serif TC','Songti TC',Georgia,serif" font-size="22">目標事件</text>
+  <text class="math" x="393" y="338" fill="#1f1c18" font-size="26">x</text>
+  <text class="math" x="68" y="72" fill="#1f1c18" font-size="26">y</text>
+  <text x="82" y="337" fill="#1f1c18" font-family="Georgia,'Times New Roman',serif" font-size="22">0</text>
+  <text x="306" y="337" fill="#1f1c18" font-family="Georgia,'Times New Roman',serif" font-size="22">1</text>
+  <text x="68" y="100" fill="#1f1c18" font-family="Georgia,'Times New Roman',serif" font-size="22">1</text>
+
+  <text x="675" y="52" text-anchor="middle" fill="#1f1c18" font-family="'Noto Serif TC','Songti TC',Georgia,serif" font-size="24">求邊際 pdf 的切片</text>
+  <line x1="510" y1="310" x2="844" y2="310" stroke="#1f1c18" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="532" y1="330" x2="532" y2="70" stroke="#1f1c18" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <polygon points="532,310 532,90 752,90" fill="#c9c1b4" opacity="0.38" stroke="#8a7f72" stroke-width="2"/>
+  <line x1="620" y1="222" x2="620" y2="90" stroke="#9c2d2d" stroke-width="5" stroke-linecap="round"/>
+  <line x1="532" y1="156" x2="686" y2="156" stroke="#1f1c18" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="620" cy="222" r="5" fill="#9c2d2d"/>
+  <circle cx="620" cy="90" r="5" fill="#9c2d2d"/>
+  <circle cx="532" cy="156" r="5" fill="#1f1c18"/>
+  <circle cx="686" cy="156" r="5" fill="#1f1c18"/>
+  <text class="math" x="602" y="341" fill="#9c2d2d" font-size="24">x<tspan class="sub">0</tspan></text>
+  <text class="math" x="486" y="164" fill="#1f1c18" font-size="24">y<tspan class="sub">0</tspan></text>
+  <text x="634" y="202" fill="#9c2d2d" font-family="'Noto Serif TC','Songti TC',Georgia,serif" font-size="22">固定 <tspan class="math-inline">x</tspan></text>
+  <text x="698" y="148" fill="#1f1c18" font-family="'Noto Serif TC','Songti TC',Georgia,serif" font-size="22">固定 <tspan class="math-inline">y</tspan></text>
+  <text class="math" x="833" y="338" fill="#1f1c18" font-size="26">x</text>
+  <text class="math" x="508" y="72" fill="#1f1c18" font-size="26">y</text>
+</svg>

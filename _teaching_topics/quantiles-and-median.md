@@ -9,8 +9,8 @@ topic: 9
 order: 209
 permalink: /teaching-topics/quantiles-and-median/
 date: 2026-06-13
-published: true
-excerpt: "標準化描述個體離平均位置幾個標準差。分位數與百分位數則從 CDF 出發，找出使累積機率達到指定比例的位置。中位數是其中最常用的特例。"
+published: false
+excerpt: "標準化描述個體離平均位置幾個標準差。分位數與百分位數則從 cdf 出發，找出使累積機率達到指定比例的位置。中位數是其中最常用的特例。"
 ---
 
 [上一篇文章](/teaching-topics/linear-transformations-standardization/)討論標準化與 z-score，說明如何以標準差為單位比較單一觀察值的相對位置。本篇改從整個分配來看位置。若想知道一個分配的下方四分之一、中央位置或上方四分之一落在哪裡，就需要使用**分位數 (quantile)**；若將比例改用百分比表示，便得到常見的**百分位數 (percentile)**。
@@ -63,13 +63,13 @@ $$
 x_p=F_X^{-1}(p)=\inf\{x\in\mathbb{R}\mid F_X(x)\geqslant p\}
 $$
 
-這裡的 $F_X^{-1}$ 稱為**分位函數 (quantile function)**，並不是一般意義下必須一對一才存在的反函數。這個 $x_p$ 會選取第一個使 CDF 達到或超過 $p$ 的位置。若 $F_X$ 連續且嚴格遞增，則 $x_p$ 就是唯一滿足 $F_X(x)=p$ 的 $x$。若 $F_X$ 有平坦區段或跳躍，分位函數仍提供一個固定且明確的選取方式。
+這裡的 $F_X^{-1}$ 稱為**分位函數 (quantile function)**，並不是一般意義下必須一對一才存在的反函數。這個 $x_p$ 會選取第一個使 cdf 達到或超過 $p$ 的位置。若 $F_X$ 連續且嚴格遞增，則 $x_p$ 就是唯一滿足 $F_X(x)=p$ 的 $x$。若 $F_X$ 有平坦區段或跳躍，分位函數仍提供一個固定且明確的選取方式。
 
 若比例寫成 $p=k/r$，則相應的位置也可稱為第 $k$ 個 $r$ 分位數，記作 $q_k$。四分位數、十分位數與百分位數都屬於這個說法的特例。
 
 <figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/quantile-from-cdf.svg?v=xp-notation" alt="從 CDF 取得分位函數。先固定累積機率 p，再找出數線上的 x_p。">
-  <figcaption><span class="topic-figure__label">Fig. 2.16.</span> 分位函數是從 CDF 反向取得的位置。先固定累積機率 $p$，再找出第一個使 $F_X(x)\geqslant p$ 的位置 $x_p=F_X^{-1}(p)$。</figcaption>
+  <img src="/images/teaching-topics/quantile-from-cdf.svg?v=xp-notation" alt="從 cdf 取得分位函數。先固定累積機率 p，再找出數線上的 x_p。">
+  <figcaption><span class="topic-figure__label">Fig. 2.16.</span> 分位函數是從 cdf 反向取得的位置。先固定累積機率 $p$，再找出第一個使 $F_X(x)\geqslant p$ 的位置 $x_p=F_X^{-1}(p)$。</figcaption>
 </figure>
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -163,7 +163,7 @@ $$
 \qquad k=1,2,\ldots,6
 $$
 
-由 CDF 可得
+由 cdf 可得
 
 $$
 Q_1=x_{0.25}=2,
@@ -213,7 +213,7 @@ $$
 \mathbb{E}(X)=0(0.99)+1000(0.01)=10
 $$
 
-但其中位數為 $0$。因為 $X=0$ 已累積 $99\%$ 的機率，CDF 在 $0$ 便已超過 $1/2$。這個例子說明，平均數會受到少數很大的數值影響；中位數則由累積機率達到一半的位置決定。
+但其中位數為 $0$。因為 $X=0$ 已累積 $99\%$ 的機率，cdf 在 $0$ 便已超過 $1/2$。這個例子說明，平均數會受到少數很大的數值影響；中位數則由累積機率達到一半的位置決定。
 </div>
 
 ## 本篇小結
@@ -237,6 +237,6 @@ $$
 - 黃文璋，2003，《機率論》，初版，華泰文化。
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - Rob J. Hyndman and Yanan Fan. 1996. “Sample Quantiles in Statistical Packages.” *The American Statistician* 50 (4): 361–365.

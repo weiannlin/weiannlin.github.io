@@ -1,0 +1,30 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  every node/.style={font=\normalsize}
+]
+  \draw[journalink, line width=0.8pt, rounded corners=2pt]
+    (-5.7,-2) rectangle (5.7,2);
+
+  \draw[journalink, line width=0.8pt] (-3.5,-2) -- (-3.5,2);
+  \draw[journalink, line width=0.8pt] (-1.7,-2) -- (-1.7,2);
+  \draw[journalink, line width=0.8pt] (3.5,-2) -- (3.5,2);
+
+  \node[journalink] at (-4.6,0) {$A_1$};
+  \node[journalink] at (-2.6,0) {$A_2$};
+  \node[journalink] at (0.9,0) {$\cdots$};
+  \node[journalink] at (4.6,0) {$A_n$};
+
+  \node[journalmuted] at (5.4,-2.35) {$S$};
+\end{tikzpicture}
+\end{document}

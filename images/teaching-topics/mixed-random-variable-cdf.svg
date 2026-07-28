@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="380" viewBox="0 0 720 380" role="img" aria-labelledby="title desc">
-  <title id="title">Mixed random variable CDF</title>
+  <title id="title">Mixed random variable cdf</title>
   <desc id="desc">A cumulative distribution function with a jump at zero and a continuous linear increase on the interval from zero to one.</desc>
   <defs>
     <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">

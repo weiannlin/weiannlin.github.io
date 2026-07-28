@@ -5,228 +5,379 @@ layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 1
-topic: 7
-order: 107
+topic: 8
+order: 108
 permalink: /teaching-topics/total-probability-bayes-rule/
 date: 2026-05-05
 published: true
-excerpt: "當樣本空間被一組互斥且周延的事件分割時，事件可以被拆成互斥片段；全機率定理將各來源的貢獻加總，並為辛普森悖論與貝氏定理提供共同骨架。"
+excerpt: "樣本空間的分割由一組互斥且周延的事件構成。本篇介紹分割的定義、全機率定理及其條件機率版本，並說明兩組分割彼此交集而成的二元分割與列聯表。"
 ---
 
-[上一篇文章](/teaching-topics/independence-and-conditional-independence/)討論了資訊進來後機率是否改變。本篇換一個角度來看。若事件 $B$ 可能由許多不同來源造成，可以先把樣本空間依來源切開，再分別計算各來源對 $B$ 的貢獻。
+[上一篇文章](/teaching-topics/independence-and-conditional-independence/)在介紹列聯表時曾經提到，表內的聯合機率與表邊的邊際機率，與分割及全機率定理有非常高度的相關。本篇便由樣本空間的分割談起，說明一個事件如何依一組分割被切成數個互斥的部分，再逐一加總回來。
 
-這正是**分割 (partition)** 與**全機率定理 (the law of total probability)** 的角色。它們讓我們把一個總機率拆成幾個互斥片段來計算，先切開來源，逐一計算各來源對目標事件的貢獻，最後再加總。
+## 樣本空間的分割
 
-以下固定令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。除非特別說明，文中的事件皆是 $\mathcal{F}$ 中的事件。
+<div id="definition-partition" class="topic-box topic-box--definition" markdown="1">
+<div class="topic-box__label">Definition 1.23</div>
 
-## 分割與不重疊來源
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A_1,A_2,\ldots,A_n\in\mathcal{F}$，若其滿足以下條件，則稱 $A_1,A_2,\ldots,A_n$ 為 $S$ 的一組**分割 (partition)**:
 
-許多機率問題都可以先問一句話。這件事可能來自哪幾種互不重疊的情況？例如一件產品可能來自不同機台，一位病患可能屬於不同疾病狀態，一封郵件可能來自不同寄件類型。這些「來源」若剛好能把整個樣本空間切乾淨，就形成一組分割。
-
-<div class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 1.16</div>
-
-令 $A_1,\ldots,A_n\in\mathcal{F}$。若下列兩條件成立，則它們構成 $S$ 的一組**分割 (partition)**。
-
-<ol class="topic-list-paren">
-  <li><strong>互斥 (mutually exclusive)</strong>。對任意 $i\neq j$，皆有
+(1) **互斥 (mutually exclusive)**:
 
 $$
-A_i\cap A_j=\varnothing
+A_i\cap A_j=\varnothing,\ \forall i\neq j
 $$
 
-  </li>
-  <li><strong>周延 (collectively exhaustive)</strong>。所有事件合起來正好是整個樣本空間，即
+(2) **周延 (collectively exhaustive)**:
 
 $$
 \bigcup_{i=1}^{n}A_i=S
 $$
 
-  </li>
-</ol>
 </div>
 
-互斥表示這些來源不會同時發生；周延表示所有可能情況都已被列入。換句話說，分割就是把樣本空間「分成數個不重複而且沒有遺漏的事件」。
+分割的定義，即是把樣本空間「分割成數個不重複的事件」，故其應滿足兩兩**互斥**與彼此**周延**的條件，其中**周延**是指各個事件的聯集等於樣本空間者。
+
+分割的概念可以由以下的圖示來理解:
 
 <figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/total-probability-partition.svg" alt="樣本空間被 A_1 到 A_n 分割，而事件 B 被切成 B cap A_i 的互斥片段。">
-  <figcaption><span class="topic-figure__label">Fig. 1.7.</span> 當 $A_1,\ldots,A_n$ 是 $S$ 的一組分割時，事件 $B$ 會被切成 $B\cap A_1,\ldots,B\cap A_n$ 這些互斥片段。</figcaption>
+  <img src="/images/teaching-topics/total-probability-partition-strips.svg" alt="樣本空間 S 的矩形被垂直分線切成 A_1、A_2 到 A_n 等互不重疊的直條。">
+  <figcaption><span class="topic-figure__label">Fig. 1.23.</span> 樣本空間 $S$ 被 $A_1,A_2,\ldots,A_n$ 切成數個互不重疊的部分，而這些事件的聯集恰為整個樣本空間。</figcaption>
 </figure>
 
 ## 全機率定理
 
-若 $A_1,\ldots,A_n$ 是 $S$ 的一組分割，那麼任意事件 $B$ 都可以被這組分割切成許多互斥片段。
+<div id="theorem-law-of-total-probability" class="topic-box topic-box--theorem" markdown="1">
+<div class="topic-box__label">Theorem 1.16 (The Law of Total Probability)</div>
+
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，且令 $A_1,A_2,\ldots,A_n\in\mathcal{F}$ 為 $S$ 的一組[分割](#definition-partition)，$B\in\mathcal{F}$ 為一事件，則
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-B=\bigcup_{i=1}^{n}(B\cap A_i)
+\mathbb{P}(B)=\mathbb{P}\left(\bigcup_{i=1}^{n}(B\cap A_i)\right)=\sum_{i=1}^{n}\mathbb{P}(B\cap A_i)
 $$
 
-這件事來自集合的分配律與分割的周延性。把它放進機率裡，就得到一個計算總機率的工具。切成片段，逐片計算，再加總。
-
-<div class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Theorem 1.10 (Law of Total Probability)</div>
-
-令 $A_1,\ldots,A_n$ 為 $S$ 的一組分割，且令 $B\in\mathcal{F}$。則
-
-$$
-\mathbb{P}(B)
-=\mathbb{P}\left(\bigcup_{i=1}^{n}(B\cap A_i)\right)
-=\sum_{i=1}^{n}\mathbb{P}(B\cap A_i)
-$$
-
-此性質稱為**全機率定理 (the law of total probability)**。
 </div>
-
-<div class="topic-proof" markdown="1">
-**Proof.** 因為 $A_1,\ldots,A_n$ 為 $S$ 的一組分割，所以
-
-$$
-B=B\cap S
-=B\cap\left(\bigcup_{i=1}^{n}A_i\right)
-=\bigcup_{i=1}^{n}(B\cap A_i)
-$$
-
-此外，$B\cap A_1,\ldots,B\cap A_n$ 兩兩互斥。因此由有限可加性可得
-
-$$
-\mathbb{P}(B)
-=\mathbb{P}\left(\bigcup_{i=1}^{n}(B\cap A_i)\right)
-=\sum_{i=1}^{n}\mathbb{P}(B\cap A_i)
-$$
-
-故得證。 $\square$
-</div>
-
-若進一步假設 $\mathbb{P}(A_i)>0$，便可以用乘法原理將每個交集機率改寫成
-
-$$
-\mathbb{P}(B\cap A_i)=\mathbb{P}(B\mid A_i)\,\mathbb{P}(A_i)
-$$
-
-因此全機率定理常用的條件機率版本為
-
-$$
-\mathbb{P}(B)=\sum_{i=1}^{n}\mathbb{P}(B\mid A_i)\,\mathbb{P}(A_i)
-$$
-
-這個公式的意思很樸素。先看每個來源 $A_i$ 本身有多常出現，再看在該來源之下 $B$ 有多容易發生，最後把所有來源的貢獻加總起來。換句話說，這就是機率問題中的**分而治之**。先把問題依來源切成互不重疊的小問題，再把每一塊的貢獻加回來。在英文片語當中常常聽到的 <span class="text-nowrap">divide-and-conquer</span>，在這裡就是這個意思。
-
-<div class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.12 (The Monty Hall Problem)</div>
-
-蒙提霍爾問題 (Monty Hall problem) 是一個源自真實歷史故事的數學問題。它得名自美國電視遊戲節目 <span class="text-nowrap">Let's Make a Deal</span>；節目主持人正是 Monty Hall。這個實境節目自 1963 年開始播出，節目的張力在於「交易」。參賽者可以保留手上的東西，也可以相信主持人的邀請，換成門後、箱子裡或布幕後的未知獎品。這種舞台效果後來被整理成三扇門的標準機率問題；看起來像是剩下兩扇門各半，實際上主持人掌握資訊並刻意打開羊門，才是計算時不能忽略的線索。
-
-考慮這個標準化版本。三扇門中有一扇門後面是車，其餘兩扇門後面是羊。你先選一扇門，主持人知道車在哪裡，並從剩下兩扇門中打開一扇有羊的門。此時若你採取「切換」策略，勝率是多少？
-
-令 $C$ 表示「一開始選到車」，令 $G$ 表示「一開始選到羊」。事件 $C$ 與 $G$ 構成樣本空間的一組分割；其機率為
-
-$$
-\mathbb{P}(C)=\frac{1}{3},\qquad
-\mathbb{P}(G)=\frac{2}{3}
-$$
-
-令 $W$ 表示「切換後獲勝」。若一開始選到車，切換後必定輸；若一開始選到羊，主持人打開另一扇有羊的門後，剩下那扇未開且未選的門必定是車。因此
-
-$$
-\mathbb{P}(W\mid C)=0,\qquad
-\mathbb{P}(W\mid G)=1
-$$
-
-由全機率定理可得
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
 \begin{aligned}
-\mathbb{P}(W)
-&=\mathbb{P}(W\mid C)\,\mathbb{P}(C)
-+\mathbb{P}(W\mid G)\,\mathbb{P}(G)\\[0.45em]
-&=0\cdot\frac{1}{3}+1\cdot\frac{2}{3}=\frac{2}{3}
+\mathbb{P}(B)&=\mathbb{P}\left(\bigcup_{i=1}^{n}(B\cap A_i)\right)\\[0.4em]
+&=\sum_{i=1}^{n}\mathbb{P}(B\cap A_i)
 \end{aligned}
 $$
 
-所以切換策略的勝率為 $2/3$。
 </div>
 
-這個例子的關鍵在於，「一開始選對」與「一開始選錯」這兩種情況形成一組分割；全機率定理把兩種情況下切換策略的貢獻分別算出來，再加總成總勝率。主持人沒有改變車的位置，他揭露羊門的動作改變了資訊狀態。
-
-這個問題之所以經典，正是因為它很容易騙過直覺。主持人打開一扇羊門後，眼前只剩兩扇未開的門，許多人會自然地認為，既然只剩兩個選項，機率應該各半。但這個想法忽略了主持人的行動帶著資訊，具有篩選效果。據說連數學家艾迪胥 (Paul Erdős) 也曾一度不接受切換策略較好的結論，直到看見電腦模擬後才被說服。若想把這個 $2/3$ 看成長期相對頻率，也可以到 Demos 中的<a class="text-nowrap" href="/demos/monty-hall/">蒙提霍爾問題實作</a>親自操作，改變策略、增加模擬次數，觀察切換策略的勝率如何逐漸穩定在理論值附近。
-
-<div class="topic-box topic-box--interlude" markdown="1">
-<div class="topic-box__label">直覺校準 1.5</div>
-
-Monty Hall 問題還有一個等價外衣，稱為三囚徒問題 (three prisoners problem)。
-
-想像有三位囚徒 $A,B,C$，其中一人將獲赦免，另外兩人會被處決。囚徒 $A$ 不知道誰會獲赦，於是請知道結果的守衛在 $B,C$ 之中，說出一位「確定不會獲赦」的人。守衛回答「$B$ 不會獲赦」。
-
-請先不要急著算。這時 $A$ 會不會像三門問題中的參賽者一樣，以為「剩下 $A$ 與 $C$，所以自己被赦免的機率變成 $1/2$」？若守衛的規則是，他必須避開 $A$，而且只能說出 $B,C$ 中不會獲赦的人；當 $B,C$ 都不會獲赦時，守衛用對稱方式選一位回答，那麼這個問題和 Monty Hall 的結構相同。
-
-對應關係如下。囚徒 $A$ 就像一開始選定的門，守衛說出的囚徒就像主持人打開的羊門，剩下的囚徒 $C$ 就像另一扇未開的門。守衛知道答案後，回答時會刻意避開某些選項。因此，真正被重新分割的仍是「一開始 $A$ 是否就是獲赦者」這件事，不能簡單把兩個剩餘選項均分。
 </div>
 
-<div id="example-111" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.13 (Manufacturing Defects)</div>
-
-三台機器 $M_1,M_2,M_3$ 製造同一種產品，分別負責總產量的 $20\%,30\%,50\%$；其產品不良率依序為 $5\%,4\%,2\%$。現在從全部產品中隨機抽出一件，問題是抽到不良品的總機率是多少？
-
-令 $D$ 表示抽到不良品之事件。由題意可知
+<div class="topic-proof" markdown="1">
+**Proof.** 由於 $A_1,A_2,\ldots,A_n$ 為 $S$ 的一組分割，故
 
 $$
-\mathbb{P}(M_1)=0.2,\quad
-\mathbb{P}(M_2)=0.3,\quad
-\mathbb{P}(M_3)=0.5
+A_i\cap A_j=\varnothing,\ \forall i\neq j
 $$
 
-另外，各機器之條件不良率為
+且
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}(D\mid M_1)=0.05,\quad
-\mathbb{P}(D\mid M_2)=0.04,\quad
-\mathbb{P}(D\mid M_3)=0.02
+B=B\cap S=B\cap\left(\bigcup_{i=1}^{n}A_i\right)=\bigcup_{i=1}^{n}(B\cap A_i)
 $$
 
-因此由全機率定理可得
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
 \begin{aligned}
-\mathbb{P}(D)
-&=\mathbb{P}(D\mid M_1)\,\mathbb{P}(M_1)
-+\mathbb{P}(D\mid M_2)\,\mathbb{P}(M_2)
-+\mathbb{P}(D\mid M_3)\,\mathbb{P}(M_3)\\[0.45em]
+B&=B\cap S=B\cap\left(\bigcup_{i=1}^{n}A_i\right)\\[0.4em]
+&=\bigcup_{i=1}^{n}(B\cap A_i)
+\end{aligned}
+$$
+
+</div>
+
+此外，$B\cap A_1,B\cap A_2,\ldots,B\cap A_n$ 兩兩互斥，故由[有限可加性](/teaching-topics/probability-rules-from-axioms/#theorem-finite-additivity)可得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(B)=\mathbb{P}\left(\bigcup_{i=1}^{n}(B\cap A_i)\right)=\sum_{i=1}^{n}\mathbb{P}(B\cap A_i)
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(B)&=\mathbb{P}\left(\bigcup_{i=1}^{n}(B\cap A_i)\right)\\[0.4em]
+&=\sum_{i=1}^{n}\mathbb{P}(B\cap A_i)
+\end{aligned}
+$$
+
+</div>
+
+原式得證。 <span class="topic-qed">$\square$</span>
+</div>
+
+**全機率定理 (the law of total probability)** 的概念，我們在[兩事件版本的全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)中即曾經提過；這裡的全機率定理，是將該定理由 $A$ 與 $A^{\prime}$ 這組特別的分割，推廣至一般的 $n$ 個事件所構成的分割，其概念可以由下圖理解:
+
+<figure class="topic-figure topic-figure--wide">
+  <img src="/images/teaching-topics/total-probability-partition.svg" alt="樣本空間 S 的矩形被切成 A_1、A_2 到 A_n 等直條，事件 B 為橫跨各直條的圓角橫帶，並被分線切成 B 交 A_1 到 B 交 A_n 等區塊。">
+  <figcaption><span class="topic-figure__label">Fig. 1.24.</span> 事件 $B$ 橫跨分割中的各個事件，因而被切成 $B\cap A_1,B\cap A_2,\ldots,B\cap A_n$ 這些互斥的部分。</figcaption>
+</figure>
+
+上圖中，$B$ 被這組分割交集成 $n$ 個互斥的集合 <span class="text-nowrap">$B\cap A_1,B\cap A_2,\ldots,B\cap A_n$，</span>其聯集即為 $B$ 本身，故由機率的[有限可加性](/teaching-topics/probability-rules-from-axioms/#theorem-finite-additivity)應可以推得上述的結果，且此結果之直觀意義，仍與[兩事件版本的全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)所提到的直觀意義完全一致。
+
+特別值得注意的一點是，全機率定理是許多交集機率的總和，故當然可以套用[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)，將交集機率改寫為以條件機率表示的版本。若進一步假設 $\mathbb{P}(A_i)>0$，$i=1,2,\ldots,n$，則有
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(B)=\mathbb{P}\left(\bigcup_{i=1}^{n}(B\cap A_i)\right)=\sum_{i=1}^{n}\mathbb{P}(B\cap A_i)=\sum_{i=1}^{n}\mathbb{P}(B\mid A_i)\,\mathbb{P}(A_i)
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(B)&=\mathbb{P}\left(\bigcup_{i=1}^{n}(B\cap A_i)\right)\\[0.4em]
+&=\sum_{i=1}^{n}\mathbb{P}(B\cap A_i)\\[0.4em]
+&=\sum_{i=1}^{n}\mathbb{P}(B\mid A_i)\,\mathbb{P}(A_i)
+\end{aligned}
+$$
+
+</div>
+
+這個表示式與乘法原理的好處相同，在某些僅知道條件機率的時候相當有用。
+
+## 二元分割與列聯表
+
+分割的概念可以推廣至兩組分割彼此的交集，我們稱為**二元分割**。二元分割的概念即為上一篇文章中的[列聯表](/teaching-topics/independence-and-conditional-independence/#互斥與獨立)，如下表:
+
+| | $A_1$ | $\cdots$ | $A_n$ | 總和 |
+| :---: | :---: | :---: | :---: | :---: |
+| $B_1$ | $\mathbb{P}(A_1\cap B_1)$ | $\cdots$ | $\mathbb{P}(A_n\cap B_1)$ | $\mathbb{P}(B_1)$ |
+| $\vdots$ | $\vdots$ | $\ddots$ | $\vdots$ | $\vdots$ |
+| $B_m$ | $\mathbb{P}(A_1\cap B_m)$ | $\cdots$ | $\mathbb{P}(A_n\cap B_m)$ | $\mathbb{P}(B_m)$ |
+| 總和 | $\mathbb{P}(A_1)$ | $\cdots$ | $\mathbb{P}(A_n)$ | $1$ |
+{: .topic-table--joint-pmf}
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+讀者應不難發現，聯合機率所對應的集合，如 $A_1\cap B_1$、$A_1\cap B_2$ 等，皆為彼此互斥的集合，其理由在於 $A_1,A_2,\ldots,A_n$ 與 $B_1,B_2,\ldots,B_m$ 分別是樣本空間 $S$ 中的兩組分割，故其彼此交集後的集合應仍為互斥集合。
+
+進一步我們可以驗證，聯合機率的所有集合之聯集即是樣本空間，即
+
+$$
+\bigcup_{i=1}^{n}\bigcup_{j=1}^{m}(A_i\cap B_j)=S
+$$
+
+故這些集合應仍為一組分割，我們稱其為二元分割。
+</div>
+
+## 全機率定理的應用
+
+<div id="example-symptoms-and-diseases" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 1.25 (Symptoms and Diseases)</div>
+
+<div lang="en" markdown="1">
+Suppose that a patient examined at a hospital is free of any disease with probability $0.99$, is affected by Disease $B$ with probability $0.001$, and is affected by Disease $C$ with probability $0.009$. These three states are the only possibilities. Symptom $A$ is observed with probability $0.001$ in a patient free of any disease, and with probability $0.9$ in each of the two diseased states. What is the probability that a patient chosen at random shows Symptom $A$?
+</div>
+
+令 $A$ 表有 $A$ 症狀、$B$ 表感染 $B$ 疾病、$C$ 表感染 $C$ 疾病、$N$ 表沒有感染疾病之事件。依題目敘述可知
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(A\mid N)=0.001,\qquad\mathbb{P}(A\mid B)=0.9,\qquad\mathbb{P}(A\mid C)=0.9
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+\mathbb{P}(A\mid N)=0.001\\[0.4em]
+\mathbb{P}(A\mid B)=0.9\\[0.4em]
+\mathbb{P}(A\mid C)=0.9
+\end{gathered}
+$$
+
+</div>
+
+且
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(N)=0.99,\qquad\mathbb{P}(B)=0.001,\qquad\mathbb{P}(C)=0.009
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+\mathbb{P}(N)=0.99\\[0.4em]
+\mathbb{P}(B)=0.001\\[0.4em]
+\mathbb{P}(C)=0.009
+\end{gathered}
+$$
+
+</div>
+
+由[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)可得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{gathered}
+\mathbb{P}(N\cap A)=\mathbb{P}(A\mid N)\,\mathbb{P}(N)=0.001\times 0.99=0.00099\\[0.4em]
+\mathbb{P}(B\cap A)=\mathbb{P}(A\mid B)\,\mathbb{P}(B)=0.9\times 0.001=0.0009\\[0.4em]
+\mathbb{P}(C\cap A)=\mathbb{P}(A\mid C)\,\mathbb{P}(C)=0.9\times 0.009=0.0081
+\end{gathered}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+\begin{aligned}
+\mathbb{P}(N\cap A)&=\mathbb{P}(A\mid N)\,\mathbb{P}(N)\\[0.4em]
+&=0.001\times 0.99=0.00099
+\end{aligned}\\[0.6em]
+\begin{aligned}
+\mathbb{P}(B\cap A)&=\mathbb{P}(A\mid B)\,\mathbb{P}(B)\\[0.4em]
+&=0.9\times 0.001=0.0009
+\end{aligned}\\[0.6em]
+\begin{aligned}
+\mathbb{P}(C\cap A)&=\mathbb{P}(A\mid C)\,\mathbb{P}(C)\\[0.4em]
+&=0.9\times 0.009=0.0081
+\end{aligned}
+\end{gathered}
+$$
+
+</div>
+
+由於 $N$、$B$、$C$ 兩兩互斥，且三者的聯集為整個樣本空間，故此三個事件為 $S$ 的一組[分割](#definition-partition)，因此由[全機率定理](#theorem-law-of-total-probability)可得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(A)=\mathbb{P}(N\cap A)+\mathbb{P}(B\cap A)+\mathbb{P}(C\cap A)=0.00999
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(A)&=\mathbb{P}(N\cap A)+\mathbb{P}(B\cap A)\\[0.4em]
+&\quad+\mathbb{P}(C\cap A)=0.00999
+\end{aligned}
+$$
+
+</div>
+
+</div>
+
+<div id="example-111" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 1.26 (Manufacturing Defects)</div>
+
+<div lang="en" markdown="1">
+Three machines $A$, $B$, and $C$ produce the same item and account for $20\%$, $30\%$, and $50\%$ of the total output, respectively. Of the items made by $A$, $B$, and $C$, $5\%$, $4\%$, and $2\%$ are defective, respectively. One item is drawn at random from the combined output and inspected. What is the probability that the item drawn is defective?
+</div>
+
+令 $A$、$B$、$C$ 分別表示該產品來自 <span class="text-nowrap">$A$、$B$、$C$</span> 機台之事件，$R$ 表示不良品之事件。則由題意可知
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(A)=0.2,\qquad\mathbb{P}(B)=0.3,\qquad\mathbb{P}(C)=0.5
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+\mathbb{P}(A)=0.2\\[0.4em]
+\mathbb{P}(B)=0.3\\[0.4em]
+\mathbb{P}(C)=0.5
+\end{gathered}
+$$
+
+</div>
+
+且
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(R\mid A)=0.05,\qquad\mathbb{P}(R\mid B)=0.04,\qquad\mathbb{P}(R\mid C)=0.02
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+\mathbb{P}(R\mid A)=0.05\\[0.4em]
+\mathbb{P}(R\mid B)=0.04\\[0.4em]
+\mathbb{P}(R\mid C)=0.02
+\end{gathered}
+$$
+
+</div>
+
+由於抽出的產品必來自 $A$、$B$、$C$ 三台機器之一，此三個事件恰為樣本空間的一組[分割](#definition-partition)，故由[全機率定理](#theorem-law-of-total-probability)可知，所求為
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(R)&=\mathbb{P}(R\mid A)\,\mathbb{P}(A)+\mathbb{P}(R\mid B)\,\mathbb{P}(B)+\mathbb{P}(R\mid C)\,\mathbb{P}(C)\\[0.4em]
 &=0.05\times 0.2+0.04\times 0.3+0.02\times 0.5=0.032
 \end{aligned}
 $$
 
-所以從全部產品中抽到不良品的機率為 $0.032$。
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\mathbb{P}(R)=\mathbb{P}(R\mid A)\,\mathbb{P}(A)\\[0.4em]
+&\hphantom{\mathbb{P}(R)=}+\mathbb{P}(R\mid B)\,\mathbb{P}(B)\\[0.4em]
+&\hphantom{\mathbb{P}(R)=}+\mathbb{P}(R\mid C)\,\mathbb{P}(C)\\[0.4em]
+&=0.05\times 0.2+0.04\times 0.3+0.02\times 0.5\\[0.4em]
+&=0.032
+\end{aligned}
+$$
+
 </div>
 
-<div id="interlude-16-tree" class="topic-box topic-box--interlude" markdown="1">
-<div class="topic-box__label">直覺校準 1.6</div>
-
-如果把 Example 1.13 畫成一張橫向樹狀圖，第一層先問「產品來自哪台機器」，第二層才問「它是否為不良品」。三台機器各自分成 $D$ 與 $D^{\prime}$，因此總共有六條路徑。
-
-<figure class="topic-figure topic-figure--medium">
-  <img src="/images/teaching-topics/total-probability-tree-defects.svg" alt="三台機器各自分成不良品 D 與非不良品 D prime 的橫向樹狀圖，其中通往 D 的三條路徑以紅色標示。">
-  <figcaption><span class="topic-figure__label">Fig. 1.8.</span> 三個來源各自再分成 $D$ 與 $D^{\prime}$，共形成六條路徑；紅框中的三個 $D$ 對應到「有 $D$ 的路徑」。</figcaption>
-</figure>
-
-沿著某一條路徑前進時，先乘上走到該來源的機率，再乘上該來源產生 $D$ 的條件機率。例如，走到 $M_1$ 再看到 $D$ 的路徑機率是 $\mathbb{P}(M_1)\,\mathbb{P}(D\mid M_1)$。全機率定理做的事，就是把紅色這三條路徑加起來，得到有 $D$ 的那三個路徑的總機率。
 </div>
 
 ## 本篇小結
 
-本篇整理分割與全機率定理。
+本篇由樣本空間的分割出發，依序整理下列結果:
 
-| 工具 | 公式 | 重點 |
-| --- | --- | --- |
-| 分割 | $A_i\cap A_j=\varnothing,\ \bigcup_i A_i=S$ | 分類且不重複、不遺漏 |
-| 全機率定理 | $\mathbb{P}(B)=\sum_i\mathbb{P}(B\mid A_i)\,\mathbb{P}(A_i)$ | 加總各來源對 $B$ 的貢獻 |
+| 結果 | 內容 |
+| :---: | :---: |
+| [Definition 1.23](#definition-partition) | 分割的互斥與周延條件 |
+| [Theorem 1.16](#theorem-law-of-total-probability) | 全機率定理與其條件機率版本 |
+| [二元分割](#二元分割與列聯表) | 兩組分割彼此交集所構成的列聯表 |
 
-全機率定理回答的是「$B$ 總共多容易發生」。既然整體機率是分組機率的加權平均，下一步自然要問，分組後的比較與混合後的比較是否一定會有相同方向。這會導向[辛普森悖論](/teaching-topics/group-mixing-simpsons-paradox/)。
+全機率定理把 $\mathbb{P}(B)$ 寫成各個條件機率 $\mathbb{P}(B\mid A_i)$ 以 $\mathbb{P}(A_i)$ 為權重的加權平均。既然整體機率由各組的條件機率混合而成，接下來自然要問，分組之後的比較方向與混合之後的比較方向是否一定相同。這會導向[分組、混合與辛普森悖論](/teaching-topics/group-mixing-simpsons-paradox/)。
 
 ## 參考文獻與延伸閱讀
 
-- 黃文璋，2003，《機率論》，初版，華泰文化。
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- 黃文璋，2010，《機率論》，二版，華泰文化。
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
 - Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.
-- Steve Selvin. 1975. “A Problem in Probability.” *The American Statistician* 29 (1): 67.
-- Richard D. Gill. 2011. “The Monty Hall Problem Is Not a Probability Puzzle: It's a Challenge in Mathematical Modelling.” *Statistica Neerlandica* 65 (1): 58–71.
-- Martin Gardner. 1959. *The Scientific American Book of Mathematical Puzzles and Diversions*. Simon and Schuster.

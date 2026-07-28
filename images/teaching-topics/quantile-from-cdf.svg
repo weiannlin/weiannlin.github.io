@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="380" viewBox="0 0 720 380" role="img" aria-labelledby="title desc">
-  <title id="title">Quantile from a CDF</title>
-  <desc id="desc">A cumulative distribution function. A horizontal line at probability p meets the CDF, and the corresponding x value is x_p.</desc>
+  <title id="title">Quantile from a cdf</title>
+  <desc id="desc">A cumulative distribution function. A horizontal line at probability p meets the cdf, and the corresponding x value is x_p.</desc>
   <defs>
     <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
       <path d="M 1 1 L 7 4 L 1 7 Z" fill="#1f1c18"/>

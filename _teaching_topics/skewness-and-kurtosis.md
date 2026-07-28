@@ -9,7 +9,7 @@ topic: 11
 order: 211
 permalink: /teaching-topics/skewness-and-kurtosis/
 date: 2026-06-20
-published: true
+published: false
 excerpt: "偏態描述分配尾巴偏向哪一側，峰態則整理標準化四次方離差的平均，並以常態分配為比較基準。兩者把分配形狀轉成可計算的量數。"
 ---
 
@@ -96,7 +96,7 @@ SK_{P_1}
 \frac{\mu_X-m_o}{\sigma_X}
 $$
 
-稱為 $X$ 的**皮爾森第一偏態係數 (Pearson's first coefficient of skewness)**，亦稱為眾數偏態係數。
+稱為 $X$ 的**皮爾森第一偏態係數 (Pearson’s first coefficient of skewness)**，亦稱為眾數偏態係數。
 
 另一個常用的版本可寫為
 
@@ -106,7 +106,7 @@ SK_{P_2}
 \frac{3(\mu_X-\eta_X)}{\sigma_X}
 $$
 
-稱為 $X$ 的**皮爾森第二偏態係數 (Pearson's second coefficient of skewness)**，亦稱為中位數偏態係數。
+稱為 $X$ 的**皮爾森第二偏態係數 (Pearson’s second coefficient of skewness)**，亦稱為中位數偏態係數。
 
 </div>
 
@@ -236,4 +236,4 @@ $$
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
 - Lawrence T. DeCarlo. 1997. “On the Meaning and Use of Kurtosis.” *Psychological Methods* 2 (3): 292–307.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.

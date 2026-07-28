@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="360" viewBox="0 0 620 360" role="img" aria-labelledby="title desc">
+  <title id="title">Region accumulated by a joint cumulative distribution function</title>
+  <desc id="desc">The shaded lower-left region ends at x and y. Dashed lines mark its upper and right boundaries.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M 1 1 L 9 5 L 1 9 Z" fill="#1f1c18"/>
+    </marker>
+    <style>
+      .math { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+    </style>
+  </defs>
+  <rect x="16" y="16" width="588" height="328" rx="18" fill="none" stroke="#c9c1b4" stroke-width="2"/>
+  <text x="310" y="52" text-anchor="middle" fill="#1f1c18" font-family="'Noto Serif TC','Songti TC',Georgia,serif" font-size="20">聯合 cdf 的累積範圍</text>
+  <rect x="70" y="104" width="370" height="190" fill="#9c2d2d" opacity="0.14"/>
+  <line x1="68" y1="242" x2="570" y2="242" stroke="#1f1c18" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="190" y1="302" x2="190" y2="70" stroke="#1f1c18" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <line x1="440" y1="104" x2="440" y2="294" stroke="#9c2d2d" stroke-width="2" stroke-dasharray="7 6"/>
+  <line x1="70" y1="104" x2="440" y2="104" stroke="#9c2d2d" stroke-width="2" stroke-dasharray="7 6"/>
+  <circle cx="440" cy="104" r="5.5" fill="#9c2d2d"/>
+  <text class="math" x="450" y="94" fill="#9c2d2d" font-size="20">(x, y)</text>
+  <text class="math" x="558" y="266" fill="#1f1c18" font-size="20">x</text>
+  <text class="math" x="168" y="82" fill="#1f1c18" font-size="20">y</text>
+  <text class="math" x="300" y="281" text-anchor="middle" fill="#9c2d2d" font-size="18">(-∞, x] × (-∞, y]</text>
+</svg>

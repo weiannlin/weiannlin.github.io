@@ -1,254 +1,486 @@
 ---
 title: "貝氏定理，資訊如何帶來更新"
-subtitle: "Bayes' Rule and Updating Information"
+subtitle: "Bayes’ Rule and Updating Information"
 layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 1
-topic: 9
-order: 109
+topic: 10
+order: 110
 permalink: /teaching-topics/bayes-rule-posterior-probability/
 date: 2026-05-06
 published: true
-excerpt: "貝氏定理把全機率定理反過來讀。當某個結果已經被觀察到時，它說明我們如何重新分配對不同可能來源的相信程度。"
+excerpt: "貝氏定理的分母即是全機率定理，它把事前機率與條件機率轉化為事後機率。本篇介紹貝氏定理、事前與事後機率的意義、計算流程的樹狀圖，以及由觀察結果反推來源的例題。"
 ---
 
-[上一篇文章](/teaching-topics/group-mixing-simpsons-paradox/)由辛普森悖論說明，分組條件機率與混合後的整體機率可能給出不同方向的比較。由此可知，分割不只是計算技巧，也會影響我們如何理解整體資料。
-
-本篇回到全機率定理本身，並把問題反過來看。全機率定理先問事件 $B$ 可以由哪些來源共同形成；貝氏定理 (Bayes' rule) 則問，若 $B$ 已經發生，我們該如何判斷它最可能是由哪個來源造成。它不只是另一個條件機率公式，而是在描述**資訊進來以後，機率如何被更新**。
-
-這裡的「更新」不是說世界本身被資訊改變了。產品來自哪台機器、病人有沒有疾病、失聯飛機在哪個區域，通常早已有某個真實狀態；改變的是我們掌握的資訊，因此也改變了我們對各種可能狀態的機率評估。
-
-以下固定令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。除非特別說明，文中的事件皆是 $\mathcal{F}$ 中的事件。
-
-## 從總機率到反向追問
-
-假設 $A_1,\ldots,A_n$ 是 $S$ 的一組分割，而事件 $B$ 是我們觀察到的新資訊。從正向角度看，全機率定理給出
-
-$$
-\mathbb{P}(B)=\sum_{j=1}^{n}\mathbb{P}(B\mid A_j)\,\mathbb{P}(A_j)
-$$
-
-也就是先看來源 $A_j$ 本身有多常出現，再看該來源之下 $B$ 有多容易發生，最後把所有來源對 $B$ 的貢獻加總。
-
-但若 $B$ 已經發生，問題就變成反向的。所有能產生 $B$ 的來源當中，$A_i$ 這條路線佔了多少比例？這個比例就是 $\mathbb{P}(A_i\mid B)$。
-
-這裡有四個常用名稱。
-
-<ol class="topic-list-paren">
-  <li>$\mathbb{P}(A_i)$ 是觀察 $B$ 以前，對來源 $A_i$ 的<strong class="text-nowrap">事前機率 (prior probability)</strong>。</li>
-  <li>$\mathbb{P}(B\mid A_i)$ 是在來源 $A_i$ 下觀察到 $B$ 的<strong class="text-nowrap">條件機率 (conditional probability)</strong>。</li>
-  <li>$\mathbb{P}(B)$ 是所有來源合起來產生 $B$ 的總機率，也可稱為<strong class="text-nowrap">邊際機率 (marginal probability)</strong>。</li>
-  <li>$\mathbb{P}(A_i\mid B)$ 是觀察 $B$ 以後，對來源 $A_i$ 的<strong class="text-nowrap">事後機率 (posterior probability)</strong>。</li>
-</ol>
-
-這裡的「事前」與「事後」都是相對於事件 $B$ 是否已被觀測到而言。也就是說，$\mathbb{P}(A_i)$ 是尚未把 $B$ 納入資訊時，對來源 $A_i$ 的機率評估；$\mathbb{P}(A_i\mid B)$ 則是在已經知道 $B$ 發生後，重新評估來源 $A_i$ 的機率。它們描述的是資訊狀態的改變，而不必然是事件本身在時間上先後發生。
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Historical Note</div>
-
-貝氏定理得名自英國牧師兼數學家 Thomas Bayes。Bayes 生前並未發表這篇機率論文章；他過世後，友人 Richard Price 整理遺稿，才在 1763 年將文章送交 Royal Society 發表。換句話說，今天如此有名的公式，某種意義上是一個「身後被朋友救出來」的定理。
-
-Bayes 原文中的問題沒有採用現代符號，而是透過把球隨機丟到桌面上的想像實驗，思考如何由觀察結果反推未知機率。後來 Laplace 也獨立發展並大幅推廣這種由結果反推原因的想法，因此現代貝氏思想其實同時有 Bayes 與 Laplace 的影子。
-</div>
+[上一篇文章](/teaching-topics/group-mixing-simpsons-paradox/)說明，分組內的比較方向與混合後的比較方向未必相同。本篇回到全機率定理，並把它反過來讀: 全機率定理由各個來源 $A_i$ 的機率與條件機率合成事件 $B$ 的機率；貝氏定理則在 $B$ 已經發生的條件下，回頭計算 $B$ 來自各個來源的機率。
 
 ## 貝氏定理
 
-<div class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Theorem 1.11 (Bayes' Rule)</div>
+<div id="theorem-bayes-rule" class="topic-box topic-box--theorem" markdown="1">
+<div class="topic-box__label">Theorem 1.17 (Bayes’ Rule)</div>
 
-令 $A_1,\ldots,A_n$ 為 $S$ 的一組分割，且對任意 $i$ 皆有 $\mathbb{P}(A_i)>0$。若 $B\in\mathcal{F}$ 且 $\mathbb{P}(B)>0$，則對任意 $i=1,\ldots,n$，皆有
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，且令 $A_1,A_2,\ldots,A_n\in\mathcal{F}$ 為 $S$ 的一組<span class="text-nowrap">[分割](/teaching-topics/total-probability-bayes-rule/#definition-partition)，</span>$B\in\mathcal{F}$ 為一事件。若 $\mathbb{P}(B)>0$ 且 $\mathbb{P}(A_i)>0$，$i=1,2,\ldots,n$，則對任意 $i=1,2,\ldots,n$，皆有
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}(A_i\mid B)
-=\frac{\mathbb{P}(B\mid A_i)\,\mathbb{P}(A_i)}
-{\sum_{j=1}^{n}\mathbb{P}(B\mid A_j)\,\mathbb{P}(A_j)}
+\begin{aligned}
+\mathbb{P}(A_i\mid B)&=\frac{\mathbb{P}(A_i\cap B)}{\mathbb{P}(B)}=\frac{\mathbb{P}(B\cap A_i)}{\sum_{j=1}^{n}\mathbb{P}(B\cap A_j)}\\[0.4em]
+&=\frac{\mathbb{P}(B\mid A_i)\,\mathbb{P}(A_i)}{\sum_{j=1}^{n}\mathbb{P}(B\mid A_j)\,\mathbb{P}(A_j)}
+\end{aligned}
 $$
 
-此性質稱為**貝氏定理 (Bayes' rule)**。
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(A_i\mid B)&=\frac{\mathbb{P}(A_i\cap B)}{\mathbb{P}(B)}\\[0.4em]
+&=\frac{\mathbb{P}(B\cap A_i)}{\sum_{j=1}^{n}\mathbb{P}(B\cap A_j)}\\[0.4em]
+&=\frac{\mathbb{P}(B\mid A_i)\,\mathbb{P}(A_i)}{\sum_{j=1}^{n}\mathbb{P}(B\mid A_j)\,\mathbb{P}(A_j)}
+\end{aligned}
+$$
+
+</div>
+
+此性質稱為**貝氏定理 (Bayes’ rule)**。
 </div>
 
 <div class="topic-proof" markdown="1">
-**Proof.** 由條件機率定義與乘法原理可知
+**Proof.** 第一個等號即[條件機率](/teaching-topics/conditional-probability-information/#definition-conditional-probability)的定義。由於 $A_1,A_2,\ldots,A_n$ 為 $S$ 的一組分割，由<span class="text-nowrap">[全機率定理](/teaching-topics/total-probability-bayes-rule/#theorem-law-of-total-probability)</span>可知
 
 $$
-\mathbb{P}(A_i\mid B)
-=\frac{\mathbb{P}(A_i\cap B)}{\mathbb{P}(B)}
-=\frac{\mathbb{P}(B\mid A_i)\,\mathbb{P}(A_i)}{\mathbb{P}(B)}
+\mathbb{P}(B)=\sum_{j=1}^{n}\mathbb{P}(B\cap A_j)
 $$
 
-另一方面，由全機率定理可得
+將其代入分母，並將分子依交換律改寫為 $\mathbb{P}(B\cap A_i)$，即得第二個等號。最後對分子與分母中的每一個交集機率套用<span class="text-nowrap">[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)</span>，即
 
 $$
-\mathbb{P}(B)
-=\sum_{j=1}^{n}\mathbb{P}(B\mid A_j)\,\mathbb{P}(A_j)
+\mathbb{P}(B\cap A_j)=\mathbb{P}(B\mid A_j)\,\mathbb{P}(A_j)
 $$
 
-將分母代入，即得貝氏定理。 $\square$
+便得第三個等號。原式得證。 <span class="topic-qed">$\square$</span>
 </div>
+
+上述定理中有幾個特別需要注意的地方:
+
+<ol class="topic-list-paren">
+  <li>$\mathbb{P}(A_i)$，$i=1,2,\ldots,n$，稱作<strong class="text-nowrap">事前機率 (prior probability)</strong>，<span class="text-nowrap">或稱先驗機率。</span></li>
+  <li>$\mathbb{P}(A_i\mid B)$，$i=1,2,\ldots,n$，稱作<strong class="text-nowrap">事後機率 (posterior probability)</strong>，<span class="text-nowrap">或稱後驗機率。</span></li>
+  <li>$\mathbb{P}(B\mid A_i)$，$i=1,2,\ldots,n$，為在 $A_i$ 發生的條件下 $B$ 的條件機率。</li>
+</ol>
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-貝氏定理的分母不是一個隨便拿來正規化的常數；它正是由全機率定理算出的事件 $B$ 總機率。也就是說，分母回答「$B$ 可以透過哪些方式發生」，並把所有可能來源都納入；分子則只保留其中一個特定來源 $A_i$ 對事件 $B$ 的貢獻。
+所謂的「事前」與「事後」，都是**相對於事件 $B$ 而言**，即「$B$ 發生前」與「$B$ 發生後」。
 </div>
 
-<div id="example-115" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.15 (Defective Item Source)</div>
+事實上，貝氏定理的計算本身並不困難，其分母的部分即是<span class="text-nowrap">[全機率定理](/teaching-topics/total-probability-bayes-rule/#theorem-law-of-total-probability)</span>，但其結果卻相當漂亮，簡潔地將事前機率與條件機率轉化為事後機率，並且帶出了**$B$ 事件如何影響研究者認知 $A_i$ 事件**的關係。
 
-延續前一篇 [Example 1.13 的機台不良品例子](/teaching-topics/total-probability-bayes-rule/#example-111)。三台機器 $M_1,M_2,M_3$ 製造同一種產品，分別負責總產量的 $20\%,30\%,50\%$；其產品不良率依序為 $5\%,4\%,2\%$。現在從全部產品中隨機抽出一件，且已知它是不良品。求這件不良品來自 $M_1$ 的機率。
+## 事前機率、條件機率與交集機率的關係
 
-令 $D$ 表示抽到不良品之事件。由題意可知
+貝氏定理的概念及計算流程可以使用**樹狀圖 (tree diagram)** 來輔助。
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+樹狀圖又稱作樹形圖，是一種具階層式構造的圖形，而其擴散出去的分支形象有如一棵倒過來或橫躺的樹，故得此名。在**圖論 (graph theory)** 與集合論中，樹狀圖是相當重要的討論工具。
+</div>
+
+其計算流程可以由下圖理解:
+
+<figure id="fig-bayes-flow" class="topic-figure topic-figure--wide">
+  <img src="/images/teaching-topics/bayes-rule-flow.svg" alt="樣本空間 S 的矩形被切成 A_1、A_2 到 A_n 等直條，事件 B 為橫跨各直條的橫帶。上方由 prior probability 方框分出三條箭頭指向各直條，分別標示 P(A_1)、P(A_2) 與 P(A_n)；下方由各直條分出三條箭頭，分別標示 P(B 給定 A_1)、P(B 給定 A_2) 與 P(B 給定 A_n)，箭頭末端為 P(B 交 A_1)、P(B 交 A_2) 與 P(B 交 A_n)。下方三條箭頭之間另有 conditional probability 方框，與上方的 prior probability 方框相對。">
+  <figcaption><span class="topic-figure__label">Fig. 1.25.</span> 事前機率 $\mathbb{P}(A_i)$ 先決定樣本空間落在哪一個 $A_i$，條件機率 $\mathbb{P}(B\mid A_i)$ 再決定該條件下 $B$ 是否發生，兩者相乘即為交集機率 $\mathbb{P}(B\cap A_i)$。</figcaption>
+</figure>
+
+上圖中，事前機率 $\mathbb{P}(A_i)$ 是指，在沒有任何事件發生下，發生 $A_i$ 事件的機率；而一旦發生 $A_i$ 事件後，樣本空間應縮小至 $A_i$ 內，此時條件機率 $\mathbb{P}(B\mid A_i)$ 是指，在已發生了 $A_i$ 的條件下，再發生 $B$ 事件的機率；若將此二者用<span class="text-nowrap">[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)</span>相乘，則可得到 $B\cap A_i$ 的交集機率。
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+(1) 讀者可以回憶，我們曾經在<span class="text-nowrap">[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)</span>中提過對條件機率的理解，若將其套用在此處，則條件機率可以視為 $A_i$ 中 $B$ 所佔的比例。
+
+(2) 乘法原理將條件機率還原回非條件機率 (即交集機率) 的過程，實際上也是在將樣本空間還原回 $S$，故此處交集機率的樣本空間應為 $S$，而不是再限縮於 $A_i$ 內。
+</div>
+
+## 貝氏定理的應用
+
+<div id="example-symptoms-and-diseases-continued" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 1.25 (Continued)</div>
+
+<div lang="en" markdown="1">
+Suppose that a patient examined at a hospital is free of any disease with probability $0.99$, is affected by Disease $B$ with probability $0.001$, and is affected by Disease $C$ with probability $0.009$. These three states are the only possibilities. Symptom $A$ is observed with probability $0.001$ in a patient free of any disease, and with probability $0.9$ in each of the two diseased states. Given that a patient shows Symptom $A$, what is the probability that this patient is affected by Disease $C$?
+</div>
+
+令 $A$ 表有 $A$ 症狀、$B$ 表感染 $B$ 疾病、$C$ 表感染 $C$ 疾病、$N$ 表沒有感染疾病之事件。前一篇的 [Example 1.25](/teaching-topics/total-probability-bayes-rule/#example-symptoms-and-diseases) 已由<span class="text-nowrap">[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)</span>求得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}(M_1)=0.2,\quad
-\mathbb{P}(M_2)=0.3,\quad
-\mathbb{P}(M_3)=0.5
+\mathbb{P}(N\cap A)=0.00099,\quad\mathbb{P}(B\cap A)=0.0009,\quad\mathbb{P}(C\cap A)=0.0081
 $$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+\mathbb{P}(N\cap A)=0.00099\\[0.4em]
+\mathbb{P}(B\cap A)=0.0009\\[0.4em]
+\mathbb{P}(C\cap A)=0.0081
+\end{gathered}
+$$
+
+</div>
 
 且
 
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
 $$
-\mathbb{P}(D\mid M_1)=0.05,\quad
-\mathbb{P}(D\mid M_2)=0.04,\quad
-\mathbb{P}(D\mid M_3)=0.02
+\mathbb{P}(A)=\mathbb{P}(N\cap A)+\mathbb{P}(B\cap A)+\mathbb{P}(C\cap A)=0.00999
 $$
 
-前一篇已由全機率定理算出
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
 \begin{aligned}
-\mathbb{P}(D)
-&=\mathbb{P}(D\mid M_1)\,\mathbb{P}(M_1)
-+\mathbb{P}(D\mid M_2)\,\mathbb{P}(M_2)
-+\mathbb{P}(D\mid M_3)\,\mathbb{P}(M_3)\\[0.45em]
+\mathbb{P}(A)&=\mathbb{P}(N\cap A)+\mathbb{P}(B\cap A)\\[0.4em]
+&\quad+\mathbb{P}(C\cap A)=0.00999
+\end{aligned}
+$$
+
+</div>
+
+故由[貝氏定理](#theorem-bayes-rule)可知，所求為
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(C\mid A)=\frac{\mathbb{P}(C\cap A)}{\mathbb{P}(A)}=\frac{0.0081}{0.00999}\approx 0.8108
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(C\mid A)&=\frac{\mathbb{P}(C\cap A)}{\mathbb{P}(A)}\\[0.4em]
+&=\frac{0.0081}{0.00999}\approx 0.8108
+\end{aligned}
+$$
+
+</div>
+
+</div>
+
+<div id="example-115" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 1.26 (Continued)</div>
+
+<div lang="en" markdown="1">
+Three machines $A$, $B$, and $C$ produce the same item and account for $20\%$, $30\%$, and $50\%$ of the total output, respectively. Of the items made by $A$, $B$, and $C$, $5\%$, $4\%$, and $2\%$ are defective, respectively. One item is drawn at random from the combined output and turns out to be defective. What is the probability that this item was made by machine $A$?
+</div>
+
+令 $A$、$B$、$C$ 分別表示該產品來自 <span class="text-nowrap">$A$、$B$、$C$</span> 機台之事件，$R$ 表示不良品之事件。則由題意可知
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(A)=0.2,\qquad\mathbb{P}(B)=0.3,\qquad\mathbb{P}(C)=0.5
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+\mathbb{P}(A)=0.2\\[0.4em]
+\mathbb{P}(B)=0.3\\[0.4em]
+\mathbb{P}(C)=0.5
+\end{gathered}
+$$
+
+</div>
+
+且
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(R\mid A)=0.05,\qquad\mathbb{P}(R\mid B)=0.04,\qquad\mathbb{P}(R\mid C)=0.02
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+\mathbb{P}(R\mid A)=0.05\\[0.4em]
+\mathbb{P}(R\mid B)=0.04\\[0.4em]
+\mathbb{P}(R\mid C)=0.02
+\end{gathered}
+$$
+
+</div>
+
+前一篇的 [Example 1.26](/teaching-topics/total-probability-bayes-rule/#example-111) 已由<span class="text-nowrap">[全機率定理](/teaching-topics/total-probability-bayes-rule/#theorem-law-of-total-probability)</span>求得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(R)&=\mathbb{P}(R\mid A)\,\mathbb{P}(A)+\mathbb{P}(R\mid B)\,\mathbb{P}(B)+\mathbb{P}(R\mid C)\,\mathbb{P}(C)\\[0.4em]
 &=0.05\times 0.2+0.04\times 0.3+0.02\times 0.5=0.032
 \end{aligned}
 $$
 
-已知抽到的是不良品後，問題反過來變成「在所有不良品來源中，來自 $M_1$ 的那一部分占多少」。由貝氏定理可得
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
 \begin{aligned}
-\mathbb{P}(M_1\mid D)
-&=\frac{\mathbb{P}(D\mid M_1)\,\mathbb{P}(M_1)}{\mathbb{P}(D)}\\[0.45em]
-&=\frac{0.05\times 0.2}{0.032}
-=0.3125
+&\mathbb{P}(R)=\mathbb{P}(R\mid A)\,\mathbb{P}(A)\\[0.4em]
+&\hphantom{\mathbb{P}(R)=}+\mathbb{P}(R\mid B)\,\mathbb{P}(B)\\[0.4em]
+&\hphantom{\mathbb{P}(R)=}+\mathbb{P}(R\mid C)\,\mathbb{P}(C)\\[0.4em]
+&=0.05\times 0.2+0.04\times 0.3+0.02\times 0.5\\[0.4em]
+&=0.032
 \end{aligned}
 $$
 
-因此，這件不良品來自 $M_1$ 的事後機率為 $0.3125$。這個數值不是只看 $M_1$ 的不良率 $5\%$，也不是只看 $M_1$ 的產量比例 $20\%$；它同時使用「產品來自哪台機器」的事前機率，以及「各機器下出現不良品」的條件機率。
+</div>
+
+故由[貝氏定理](#theorem-bayes-rule)可知，所求為
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(A\mid R)=\frac{\mathbb{P}(A\cap R)}{\mathbb{P}(R)}=\frac{\mathbb{P}(R\mid A)\,\mathbb{P}(A)}{\mathbb{P}(R)}=\frac{0.05\times 0.2}{0.032}=0.3125
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(A\mid R)&=\frac{\mathbb{P}(A\cap R)}{\mathbb{P}(R)}\\[0.4em]
+&=\frac{\mathbb{P}(R\mid A)\,\mathbb{P}(A)}{\mathbb{P}(R)}\\[0.4em]
+&=\frac{0.05\times 0.2}{0.032}=0.3125
+\end{aligned}
+$$
+
+</div>
+
+</div>
+
+<div id="example-five-bowls" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 1.28 (Five Bowls)</div>
+
+<div lang="en" markdown="1">
+Five identical bowls are labeled $1$, $2$, $3$, $4$, and $5$. Bowl $i$ contains $i$ white and $5-i$ black balls, for $i=1,2,\ldots,5$. A bowl is randomly selected and a ball is randomly selected from the contents of the bowl.
+
+(1) What is the probability that the ball selected is white?
+
+(2) Given that the ball selected is white, what is the probability that bowl $1$ was selected?
+</div>
+
+令 $A_i$ 表示選到第 $i$ 個碗的事件，$W$ 表示選到白球的事件。由於每個碗都有 $5$ 顆球，其中第 $i$ 個碗有 $i$ 顆白球，故對 $i=1,2,\ldots,5$，皆有
+
+$$
+\mathbb{P}(A_i)=\frac{1}{5},\qquad\mathbb{P}(W\mid A_i)=\frac{i}{5}
+$$
+
+以下依序求解。
+
+(1) 由於 $A_1,A_2,\ldots,A_5$ 為樣本空間的一組<span class="text-nowrap">[分割](/teaching-topics/total-probability-bayes-rule/#definition-partition)，</span>故由<span class="text-nowrap">[全機率定理](/teaching-topics/total-probability-bayes-rule/#theorem-law-of-total-probability)</span>可得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(W)=\sum_{i=1}^{5}\mathbb{P}(W\mid A_i)\,\mathbb{P}(A_i)=\frac{1}{5}\sum_{i=1}^{5}\frac{i}{5}=\frac{3}{5}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(W)&=\sum_{i=1}^{5}\mathbb{P}(W\mid A_i)\,\mathbb{P}(A_i)\\[0.4em]
+&=\frac{1}{5}\sum_{i=1}^{5}\frac{i}{5}=\frac{3}{5}
+\end{aligned}
+$$
+
+</div>
+
+(2) 由[貝氏定理](#theorem-bayes-rule)可得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(A_1\mid W)=\frac{\mathbb{P}(W\mid A_1)\,\mathbb{P}(A_1)}{\mathbb{P}(W)}=\frac{(1/5)\times(1/5)}{3/5}=\frac{1}{15}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(A_1\mid W)&=\frac{\mathbb{P}(W\mid A_1)\,\mathbb{P}(A_1)}{\mathbb{P}(W)}\\[0.4em]
+&=\frac{(1/5)\times(1/5)}{3/5}=\frac{1}{15}
+\end{aligned}
+$$
+
+</div>
+
 </div>
 
 <div id="example-116" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.16 (Unsuccessful Search)</div>
+<div class="topic-box__label">Example 1.29 (Missing Plane Problem)</div>
 
-有一架飛機失聯，搜救前先把三個可能區域記為 $A_1,A_2,A_3$，並認為飛機落在三區的事前機率相同。
+<div lang="en" markdown="1">
+A plane is missing and is presumed to have equal probability of going down in any of three regions. If a plane is actually down in region $i$, let $1-p_i$ denote the probability that the plane will be found upon a search of the $i$-th region, $i=1,2,3$. What is the posterior probability that the plane is in region $3$, given that the search of region $1$ was unsuccessful?
+</div>
+
+令 $A_i$，$i=1,2,3$，表示飛機於區域 $i$ 失事的事件，$F_1$ 表示在區域 $1$ 發現該飛機的事件。則由題目敘述可知
 
 $$
 \mathbb{P}(A_1)=\mathbb{P}(A_2)=\mathbb{P}(A_3)=\frac{1}{3}
 $$
 
-若飛機真的在區域 $i$，搜尋該區找到飛機的機率為 $1-p_i$，因此搜尋失敗的機率為 $p_i$。現在先搜尋區域 $1$，但沒有找到飛機。求此時飛機其實在區域 $3$ 的事後機率。
+且
 
-令 $U_1$ 表示「搜尋區域 $1$ 但沒有找到飛機」。若飛機在區域 $1$，搜尋失敗的機率為 $p_1$；若飛機在區域 $2$ 或 $3$，搜尋區域 $1$ 本來就不會找到飛機，因此
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}(U_1\mid A_1)=p_1,\qquad
-\mathbb{P}(U_1\mid A_2)=1,\qquad
-\mathbb{P}(U_1\mid A_3)=1
+\mathbb{P}(F_1\mid A_1)=1-p_1,\qquad\mathbb{P}(F_1\mid A_2)=0,\qquad\mathbb{P}(F_1\mid A_3)=0
 $$
 
-由貝氏定理可得
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+\mathbb{P}(F_1\mid A_1)=1-p_1\\[0.4em]
+\mathbb{P}(F_1\mid A_2)=0\\[0.4em]
+\mathbb{P}(F_1\mid A_3)=0
+\end{gathered}
+$$
+
+</div>
+
+「搜尋區域 $1$ 而未發現飛機」即為 $F_1$ 的餘事件 $F_1^{\prime}$。由於在給定 $A_i$ 之下的條件機率[仍為一個機率測度](/teaching-topics/conditional-probability-information/#theorem-conditional-probability-measure)，故可用餘事件公式求得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(F_1^{\prime}\mid A_1)=1-(1-p_1)=p_1,\qquad\mathbb{P}(F_1^{\prime}\mid A_2)=\mathbb{P}(F_1^{\prime}\mid A_3)=1
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+\mathbb{P}(F_1^{\prime}\mid A_1)=1-(1-p_1)=p_1\\[0.4em]
+\mathbb{P}(F_1^{\prime}\mid A_2)=\mathbb{P}(F_1^{\prime}\mid A_3)=1
+\end{gathered}
+$$
+
+</div>
+
+故由[貝氏定理](#theorem-bayes-rule)可知，所求為
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 \begin{aligned}
-\mathbb{P}(A_3\mid U_1)
-&=
-\frac{\mathbb{P}(U_1\mid A_3)\mathbb{P}(A_3)}
-{\sum_{i=1}^{3}\mathbb{P}(U_1\mid A_i)\mathbb{P}(A_i)}\\[0.45em]
-&=
-\frac{1\cdot\frac{1}{3}}
-{p_1\cdot\frac{1}{3}+1\cdot\frac{1}{3}+1\cdot\frac{1}{3}}
-=\frac{1}{2+p_1}
+\mathbb{P}(A_3\mid F_1^{\prime})&=\frac{\mathbb{P}(F_1^{\prime}\mid A_3)\,\mathbb{P}(A_3)}{\sum_{i=1}^{3}\mathbb{P}(F_1^{\prime}\mid A_i)\,\mathbb{P}(A_i)}\\[0.4em]
+&=\frac{1\times(1/3)}{p_1\times(1/3)+1\times(1/3)+1\times(1/3)}=\frac{1}{2+p_1}
 \end{aligned}
 $$
 
-這個例子提醒我們，「沒有找到」也是資訊。它並不只表示搜尋失敗，也會降低飛機在已搜尋區域的機率，並相對提高其他區域的事後機率。
 </div>
-
-<div class="topic-box topic-box--interlude" markdown="1">
-<div class="topic-box__label">直覺校準 1.8</div>
-
-請注意這個例子裡，飛機是否落在區域 $1$ 早已是確定狀態。搜救失敗並不改變飛機的真實位置；它改變的是我們對三個可能區域的機率評估。
-
-這也是貝氏定理在許多應用中有用的地方。我們可以把「未知但已存在的狀態」納入機率模型。保險中的風險類別、醫療中的疾病狀態、搜尋問題中的真實位置，都可以被看成尚未被我們完全知道的狀態；新的資料進來後，這些狀態的機率就會被重新分配。
-</div>
-
-## 基準率與原本比例
-
-貝氏定理也說明，新資訊不能脫離原本的基準比例來看。醫療檢驗、保險定價與風險評估中，若只看「某訊號在高風險者中多常出現」，卻忘記高風險者原本佔多少比例，就很容易高估事後機率。
-
-在醫療篩檢中，常見的真陽性 (true positive)、偽陽性 (false positive)、真陰性 (true negative) 與偽陰性 (false negative)，本質上都是條件機率。真陽性率是在已知個體真的罹病下，檢驗呈陽性的機率；偽陽性率是在已知個體未罹病下，檢驗卻呈陽性的機率。相對地，真陰性率是在已知個體未罹病下，檢驗呈陰性的機率；偽陰性率則是在已知個體真的罹病下，檢驗卻呈陰性的機率。
-
-醫學上也常用**敏感性 (sensitivity)** 與**特異性 (specificity)** 來描述檢驗表現。敏感性就是真陽性率，也就是 $\mathbb{P}(+\mid D)$；特異性就是真陰性率，也就是 $\mathbb{P}(-\mid D^{\prime})$。因此，偽陽性率是 $1-\text{specificity}$，而偽陰性率是 $1-\text{sensitivity}$。
-
-讀者也可以打開 [Rapid Test Bayesian Updating Lab](/demos/bayesian-updating/)自行調整盛行率、敏感性與特異性，觀察一次陽性或陰性結果如何改變事後機率。特別可以比較敏感性與特異性都高、以及敏感性高但特異性低時，連續檢測路徑如何不同。
-
-例如某疾病在一個族群中的盛行率只有 $1\%$。假設某檢驗對真正罹病者呈陽性的機率為 $0.99$，而對未罹病者也有 $0.05$ 的偽陽性率。令 $D$ 表示「罹病」，令 $+$ 表示「檢驗呈陽性」。若某人檢驗呈陽性，則
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
 \begin{aligned}
-\mathbb{P}(D\mid +)
-&=\frac{\mathbb{P}(+\mid D)\,\mathbb{P}(D)}
-{\mathbb{P}(+\mid D)\,\mathbb{P}(D)+\mathbb{P}(+\mid D^{\prime})\,\mathbb{P}(D^{\prime})}\\[0.45em]
+&\mathbb{P}(A_3\mid F_1^{\prime})\\[0.4em]
+&=\frac{\mathbb{P}(F_1^{\prime}\mid A_3)\,\mathbb{P}(A_3)}{\sum_{i=1}^{3}\mathbb{P}(F_1^{\prime}\mid A_i)\,\mathbb{P}(A_i)}\\[0.4em]
+&=\frac{1\times(1/3)}{(p_1+1+1)\times(1/3)}=\frac{1}{2+p_1}
+\end{aligned}
+$$
+
+</div>
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+[Example 1.29](#example-116) 為**失蹤飛機問題 (missing plane problem)**，是貝氏定理中一個著名的問題。其問題的關鍵在於，如果該飛機事實上並沒有在區域 $i$，則在該區域進行搜救是不可能會找到的；但即便飛機真的在<span class="text-nowrap">區域 $i$，</span>在該區域搜救也未必就會找到。由於這個原因，我們可以從某次搜救的結果得到一些資訊，針對「飛機可能在哪個區域」的機率進行調整，是一個事後機率的典型例子。
+</div>
+
+<div id="interlude-information-updates" class="topic-box topic-box--interlude" markdown="1">
+<div class="topic-box__label">直覺校準 1.4</div>
+
+在[失蹤飛機問題](#example-116)裡，搜尋區域 $1$ 而沒有找到飛機，究竟改變了什麼？飛機落在哪一個區域，早已是確定的事實，搜尋的結果並不改變飛機的真實位置，改變的是我們掌握的資訊，因而也改變了我們對三個區域的機率評估。
+
+保險中的風險類別、醫療中的疾病狀態與搜尋問題中的真實位置，都是這種尚未被完全知道的狀態。貝氏定理提供的，正是新的觀察進來以後，重新分配這些狀態機率的規則。
+</div>
+
+## 敏感度、特異度與事後機率
+
+貝氏定理在醫學檢驗上的一個常見應用，是由檢驗結果回頭評估受檢者是否罹病。令 $D$ 表示罹病之事件，$+$ 與 $-$ 分別表示檢驗結果呈陽性與呈陰性之事件。醫學上以<strong class="text-nowrap">敏感度 (sensitivity)</strong> 表示 $\mathbb{P}(+\mid D)$，即真陽性率；以<strong class="text-nowrap">特異度 (specificity)</strong> 表示 $\mathbb{P}(-\mid D^{\prime})$，即真陰性率。由餘事件可知，偽陽性率 $\mathbb{P}(+\mid D^{\prime})$ 為 $1$ 減去特異度，偽陰性率 $\mathbb{P}(-\mid D)$ 則為 $1$ 減去敏感度。
+
+例如某疾病在一個族群中的盛行率為 $\mathbb{P}(D)=0.01$，某檢驗的敏感度為 $0.99$，特異度為 $0.95$，故偽陽性率為 $0.05$。若某人的檢驗結果呈陽性，則由<span class="text-nowrap">[貝氏定理](#theorem-bayes-rule)</span>可得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(D\mid +)&=\frac{\mathbb{P}(+\mid D)\,\mathbb{P}(D)}{\mathbb{P}(+\mid D)\,\mathbb{P}(D)+\mathbb{P}(+\mid D^{\prime})\,\mathbb{P}(D^{\prime})}\\[0.4em]
 &=\frac{0.99\times 0.01}{0.99\times 0.01+0.05\times 0.99}\approx 0.167
 \end{aligned}
 $$
 
-即使檢驗看起來很靈敏，陽性之後真正罹病的機率仍大約只有 $16.7\%$。這不是檢驗沒有用，而是因為罹病者在原族群中本來就很少；偽陽性即使比例不高，乘上大量未罹病者以後，仍可能形成相當大的陽性來源。
-
-## 幾個延伸視角
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Perspective</div>
-
-**貝氏統計 (Bayesian statistics).** 在貝氏統計裡，未知參數本身也被放入機率模型中。資料進來以前，我們用事前分配 (prior distribution) 描述對參數的認識；資料進來以後，則可更新為事後分配 (posterior distribution)。因此，貝氏統計把「資訊帶來更新」放在模型的中心。
-
-本頁搭配的快篩更新 demo 正是貝氏定理的一個具體版本。盛行率提供事前機率，敏感性與特異性提供條件機率，檢測結果則把這些資訊合併成事後機率。
-
-<!-- Future extension, hidden until a machine-learning or classification topic exists:
-Naive Bayes 分類法. 在分類問題中，我們常想計算觀察到某些變數後，資料屬於某類別的機率。基本形式可寫成
-
-$$
-\mathbb{P}(C_k\mid x_1,\ldots,x_m)
-\propto
-\mathbb{P}(C_k)\prod_{r=1}^{m}\mathbb{P}(x_r\mid C_k)
-$$
-
-其中 $C_k$ 是類別，而 $x_1,\ldots,x_m$ 是觀察到的變數。此法通常假設，在給定類別後，這些觀察變數可以近似看作條件獨立。Reference to preserve for that future extension: David J. Hand and Keming Yu. 2001. “Idiot’s Bayes—Not So Stupid After All?” International Statistical Review 69 (3): 385–398.
--->
 </div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\mathbb{P}(D\mid +)\\[0.4em]
+&=\frac{\mathbb{P}(+\mid D)\,\mathbb{P}(D)}{\mathbb{P}(+\mid D)\,\mathbb{P}(D)+\mathbb{P}(+\mid D^{\prime})\,\mathbb{P}(D^{\prime})}\\[0.4em]
+&=\frac{0.99\times 0.01}{0.99\times 0.01+0.05\times 0.99}\approx 0.167
+\end{aligned}
+$$
+
+</div>
+
+即使檢驗的敏感度高達 $0.99$，陽性結果之後真正罹病的機率仍然只有大約 $16.7\%$。其原因在於罹病者在族群中原本就很少；未罹病者雖然只有 $5\%$ 呈偽陽性，但乘上人數龐大的未罹病者以後，仍然構成陽性結果的主要來源。這說明事後機率同時取決於檢驗表現與事前機率，只看其中一項並不足以判斷。
+
+讀者也可以打開 [Rapid Test Bayesian Updating Lab](/demos/bayesian-updating/)，自行調整盛行率、敏感度與特異度，觀察一次陽性或陰性的檢驗結果如何把事前機率<span class="text-nowrap">更新為事後機率。</span>
 
 ## 本篇小結
 
-貝氏定理可以視為「全機率定理的反向讀法」，也可以視為一種資訊更新規則。
+本篇由全機率定理的反向讀法出發，依序整理下列結果:
 
-| 名稱 | 形式 | 角色 |
-| --- | --- | --- |
-| 事前機率 | $\mathbb{P}(A_i)$ | 資訊進來以前，來源 $A_i$ 原本有多可能 |
-| 條件機率 | $\mathbb{P}(B\mid A_i)$ | 若來源為 $A_i$，觀察到 $B$ 有多合理 |
-| 總機率／邊際機率 | $\mathbb{P}(B)=\sum_j\mathbb{P}(B\mid A_j)\,\mathbb{P}(A_j)$ | 所有來源合起來，觀察到 $B$ 的總機率 |
-| 事後機率 | $\mathbb{P}(A_i\mid B)$ | 資訊 $B$ 出現後，來源 $A_i$ 更新後的可能性 |
+| 結果 | 內容 |
+| :---: | :---: |
+| [Theorem 1.17](#theorem-bayes-rule) | 貝氏定理與事前、事後機率的名稱 |
+| [Example 1.25 (Continued)](#example-symptoms-and-diseases-continued) | 由症狀回頭計算感染某一疾病的機率 |
+| [Example 1.26 (Continued)](#example-115) | 由不良品回頭計算來自某一機台的機率 |
+| [Example 1.28](#example-five-bowls) | 五碗問題與白球來自某一碗的機率 |
+| [Example 1.29](#example-116) | 失蹤飛機問題與搜救結果所帶來的資訊 |
+| [直覺校準 1.4](#interlude-information-updates) | 搜尋結果改變的是資訊而非飛機的位置 |
 
-條件機率、獨立性、全機率定理與貝氏定理合在一起，完成第一章後半部的主要工具。到目前為止，我們討論的仍是事件機率。下一章會從[隨機變數，從樣本空間到數線](/teaching-topics/random-variables-from-sample-space-to-real-line/)開始，把樣本空間中的結果映到實數線上，使函數、期望與分配函數等工具自然進入機率論。
+條件機率、獨立、分割、全機率定理與貝氏定理合起來，構成第一章處理事件機率的主要工具。到目前為止，我們討論的對象仍然是事件。下一章將由隨機變數，從樣本空間到數線開始，把樣本空間中的結果對應到實數線上，使函數、期望值與分配函數等工具能夠進入機率論。
 
 ## 參考文獻與延伸閱讀
 
-- 黃文璋，2003，《機率論》，初版，華泰文化。
-- Thomas Bayes and Richard Price. 1763. “An Essay towards Solving a Problem in the Doctrine of Chances.” *Philosophical Transactions of the Royal Society of London* 53: 370–418.
-- H. O. Hartley. 1963. “In Dr. Bayes’ Consulting Room.” *The American Statistician* 17 (1): 22–24.
-- Andrew Gelman, John B. Carlin, Hal S. Stern, David B. Dunson, Aki Vehtari, and Donald B. Rubin. 2013. *Bayesian Data Analysis*. 3rd ed. Chapman and Hall/CRC.
+- 黃文璋，2010，《機率論》，二版，華泰文化。
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.
 - Morris H. DeGroot and Mark J. Schervish. 2012. *Probability and Statistics*. 4th ed. Pearson.
-- Amos Tversky and Daniel Kahneman. 1974. “Judgment under Uncertainty: Heuristics and Biases.” *Science* 185 (4157): 1124–1131.
-- Gerd Gigerenzer and Ulrich Hoffrage. 1995. “How to Improve Bayesian Reasoning without Instruction: Frequency Formats.” *Psychological Review* 102 (4): 684–704.

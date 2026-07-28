@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
-  <title id="title">CDF jumps for a fair die</title>
-  <desc id="desc">A step plot of the CDF for a fair die. Dotted vertical lines and open and filled circles mark the jumps. The value at x equal to 3.4 is shown at height three sixths, and one jump height is marked as one sixth.</desc>
+  <title id="title">cdf jumps for a fair die</title>
+  <desc id="desc">A step plot of the cdf for a fair die. Dotted vertical lines and open and filled circles mark the jumps. The value at x equal to 3.4 is shown at height three sixths, and one jump height is marked as one sixth.</desc>
   <defs>
     <marker id="axis-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
       <path d="M 1 1 L 7 4 L 1 7 Z" fill="#1f1c18"/>

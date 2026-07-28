@@ -11,11 +11,12 @@
       .curve { fill: none; stroke: #1f1c18; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
       .guide { stroke: #7e7468; stroke-width: 1.8; stroke-dasharray: 7 6; }
       .accent { fill: #9c2d2d; }
-      .label { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #1f1c18; font-size: 20px; }
-      .small { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #5b5148; font-size: 17px; }
-      .math { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #1f1c18; font-size: 20px; }
-      .math-accent { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #9c2d2d; font-size: 21px; }
-      .sub { font-size: 13px; baseline-shift: sub; }
+      .label { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #1f1c18; font-size: 22px; }
+      .small { font-family: "Noto Serif TC", "Songti TC", Georgia, serif; fill: #5b5148; font-size: 22px; }
+      .math-inline { font-family: Georgia, "Times New Roman", serif; font-style: italic; }
+      .math { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #1f1c18; font-size: 22px; }
+      .math-accent { font-family: Georgia, "Times New Roman", serif; font-style: italic; fill: #9c2d2d; font-size: 22px; }
+      .sub { font-size: 70%; baseline-shift: sub; }
     </style>
   </defs>
 
@@ -33,7 +34,7 @@
     <text class="math" x="814" y="220" text-anchor="start">x</text>
     <text class="math-accent" x="606" y="62" text-anchor="middle">α<tspan class="sub">3</tspan> &gt; 0</text>
     <text class="label" x="395" y="281" text-anchor="middle">右偏分配（正偏分配）</text>
-    <text class="small" x="395" y="309" text-anchor="middle">尾巴向右延伸，常見位置關係為 m<tspan class="sub">o</tspan> ≤ η<tspan class="sub">X</tspan> ≤ μ<tspan class="sub">X</tspan></text>
+    <text class="small" x="395" y="309" text-anchor="middle">尾巴向右延伸，常見位置關係為 <tspan class="math-inline">m<tspan class="sub">o</tspan> ≤ η<tspan class="sub">X</tspan> ≤ μ<tspan class="sub">X</tspan></tspan></text>
   </g>
 
   <g transform="translate(62,385)">
@@ -48,7 +49,7 @@
     <text class="math" x="814" y="220" text-anchor="start">x</text>
     <text class="math-accent" x="184" y="62" text-anchor="middle">α<tspan class="sub">3</tspan> &lt; 0</text>
     <text class="label" x="395" y="281" text-anchor="middle">左偏分配（負偏分配）</text>
-    <text class="small" x="395" y="309" text-anchor="middle">尾巴向左延伸，常見位置關係為 μ<tspan class="sub">X</tspan> ≤ η<tspan class="sub">X</tspan> ≤ m<tspan class="sub">o</tspan></text>
+    <text class="small" x="395" y="309" text-anchor="middle">尾巴向左延伸，常見位置關係為 <tspan class="math-inline">μ<tspan class="sub">X</tspan> ≤ η<tspan class="sub">X</tspan> ≤ m<tspan class="sub">o</tspan></tspan></text>
   </g>
 
   <g transform="translate(62,715)">

@@ -9,7 +9,7 @@ topic: 19
 order: 219
 permalink: /teaching-topics/empirical-rule-bell-shaped-distributions/
 date: 2026-07-13
-published: true
+published: false
 excerpt: '經驗法則以常態分配為基準，給出期望值左右一個、兩個與三個標準差內的近似機率。這組 68-95-99.7 規則只適用於常態分配或可合理近似常態的分配。'
 ---
 
@@ -39,7 +39,7 @@ excerpt: '經驗法則以常態分配為基準，給出期望值左右一個、�
 
 令 $X\sim\mathcal{N}(\mu,\sigma^2)$，其中 $\sigma>0$。將 $X$ 標準化可得 $Z=(X-\mu)/\sigma\sim\mathcal{N}(0,1)$。
 
-以 $\Phi$ 表示**標準常態分配 (standard normal distribution)** 的**累積分配函數 (cumulative distribution function, CDF)**，亦即 $\Phi(z)=\mathbb{P}(Z\leqslant z)$。
+以 $\Phi$ 表示**標準常態分配 (standard normal distribution)** 的**累積分配函數 (cumulative distribution function, cdf)**，亦即 $\Phi(z)=\mathbb{P}(Z\leqslant z)$。
 
 對任意 $k>0$，由常態分配的對稱性可得
 
@@ -140,12 +140,12 @@ $$
 
 常態分配的實際機率則為 $\mathbb{P}(\lvert X-\mu\rvert<2\sigma)\doteqdot0.9545$。
 
-[柴比雪夫下界](/teaching-topics/chebyshev-cantelli-inequalities/#theorem-25)適用於所有具有有限二階動差且變異數為正的分配，因此較為保守。已知 $X$ 服從常態分配後，便可使用常態 CDF 得到較精確的機率。
+[柴比雪夫下界](/teaching-topics/chebyshev-cantelli-inequalities/#theorem-25)適用於所有具有有限二階動差且變異數為正的分配，因此較為保守。已知 $X$ 服從常態分配後，便可使用常態 cdf 得到較精確的機率。
 </div>
 
 ## 何時不應使用經驗法則
 
-分配明顯有偏、具有多個高峰、尾端特別厚，或受到明顯截斷時，中央區間機率可能與常態基準相差很多。此時應使用已知的機率質量函數 (probability mass function, pmf)、機率密度函數 (probability density function, pdf) 或 CDF 直接計算；若只知道期望值與變異數，則使用[柴比雪夫不等式](/teaching-topics/chebyshev-cantelli-inequalities/#theorem-25)所給的普遍界限。
+分配明顯有偏、具有多個高峰、尾端特別厚，或受到明顯截斷時，中央區間機率可能與常態基準相差很多。此時應使用已知的機率質量函數 (probability mass function, pmf)、機率密度函數 (probability density function, pdf) 或 cdf 直接計算；若只知道期望值與變異數，則使用[柴比雪夫不等式](/teaching-topics/chebyshev-cantelli-inequalities/#theorem-25)所給的普遍界限。
 
 樣本直方圖看起來近似鐘形，只能作為初步判斷。樣本大小、組距選擇與尾端觀察都會影響圖形。若要把[經驗法則](#empirical-rule-68-95-997)用於實際資料，仍應先說明常態近似的根據。
 
@@ -153,7 +153,7 @@ $$
 
 [經驗法則](#empirical-rule-68-95-997)以常態分配為基準。若 $X$ 服從常態分配，則期望值左右一個、兩個與三個標準差內的機率分別約為 $0.6827$、$0.9545$ 與 $0.9973$。在可合理近似常態的情形中，常簡記為 68-95-99.7 規則。
 
-鐘形分配只是一種外觀描述。對稱、單峰或中央較高都不足以單獨保證[經驗法則](#empirical-rule-68-95-997)成立。若沒有近似常態的根據，應由 pmf、pdf 或 CDF 計算，或使用只依賴期望值與變異數的機率不等式。
+鐘形分配只是一種外觀描述。對稱、單峰或中央較高都不足以單獨保證[經驗法則](#empirical-rule-68-95-997)成立。若沒有近似常態的根據，應由 pmf、pdf 或 cdf 計算，或使用只依賴期望值與變異數的機率不等式。
 
 前面曾討論分配資訊有限的情形。即使不知道分配的詳細資訊，只知道一、二階動差，或能計算某些有限的指數動差，仍可在相應條件下對事件機率給出上界或下界；若再知道所用函數的凸性或凹性，且相應的期望值存在，也可對函數轉換後的期望值給出上界或下界。
 
@@ -170,4 +170,4 @@ $$
 - 黃文璋，2003，《機率論》，初版，華泰文化。
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.

@@ -1,6 +1,6 @@
 ---
 title: "凸函數與延森不等式"
-subtitle: "Convexity and Jensen's Inequality"
+subtitle: "Convexity and Jensen’s Inequality"
 layout: topic
 collection: teaching_topics
 category: "機率概論"
@@ -9,13 +9,13 @@ topic: 18
 order: 218
 permalink: /teaching-topics/convexity-jensen-inequality/
 date: 2026-07-13
-published: true
+published: false
 excerpt: '凸性比較先取函數值再平均與先平均再取函數值的大小。延森不等式把這項幾何性質推廣至期望值，並導出平均數關係與 KL 訊息數非負性。'
 ---
 
 [上一篇文章](/teaching-topics/chernoff-inequality/)先對隨機變數作指數轉換，再利用期望值建立尾端機率界限。若要有系統地比較 $\mathbb{E}[g(X)]$ 與 $g(\mathbb{E}(X))$，則需要先確認函數 $g$ 的形狀。
 
-凸函數 (convex function) 的圖形位於任兩點所連成的弦線下方；凹函數 (concave function) 則位於弦線上方。[延森不等式 (Jensen's inequality)](#theorem-28) 把這項兩點之間的性質推廣到隨機變數的期望值。
+凸函數 (convex function) 的圖形位於任兩點所連成的弦線下方；凹函數 (concave function) 則位於弦線上方。[延森不等式 (Jensen’s inequality)](#theorem-28) 把這項兩點之間的性質推廣到隨機變數的期望值。
 
 ## 凸函數與凹函數
 
@@ -88,7 +88,7 @@ $$
 使用 [Theorem 2.8](#theorem-28) 前，須先確認 $X$ 可積且以機率 $1$ 取值於函數的定義區間內，並確認函數轉換也可積。此外，也須確認所使用的函數為凸函數或凹函數，因為兩者的不等號方向相反。
 
 <div id="theorem-28" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 2.8 (Jensen's Inequality)</div>
+<div class="topic-box__label">Theorem 2.8 (Jensen’s Inequality)</div>
 
 令 $I\subseteq\mathbb{R}$ 為一個區間，$X$ 為滿足
 
@@ -147,7 +147,7 @@ g\bigl(\mathbb{E}(X)\bigr)
 \end{aligned}
 $$
 
-若 $h$ 為凹函數，則 $-h$ 為凸函數。把前述結果套用在 $-h$，即可得到凹函數版本。$\square$
+若 $h$ 為凹函數，則 $-h$ 為凸函數。把前述結果套用在 $-h$，即可得到凹函數版本。<span class="topic-qed">$\square$</span>
 </div>
 
 這個證明使用支撐直線，不要求函數在 $m$ 可微。若 $g$ 可微，才可把斜率 $s$ 直接寫成 $g^{\prime}(m)$。
@@ -467,4 +467,4 @@ $$
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
 - Thomas M. Cover and Joy A. Thomas. 2006. *Elements of Information Theory*. 2nd ed. Wiley.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.

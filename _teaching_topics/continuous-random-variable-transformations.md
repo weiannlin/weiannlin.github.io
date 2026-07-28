@@ -9,22 +9,22 @@ topic: 21
 order: 221
 permalink: /teaching-topics/continuous-random-variable-transformations/
 date: 2026-07-13
-published: true
-excerpt: "連續型隨機變數經函數轉換後，可先由事件原像求 CDF；在一對一、連續可微且導數不為 $0$ 等條件下，也可使用 Jacobian 法求 pdf。多對一轉換則須分段並加總各原像分支。"
+published: false
+excerpt: "連續型隨機變數經函數轉換後，可先由事件原像求 cdf；在一對一、連續可微且導數不為 $0$ 等條件下，也可使用 Jacobian 法求 pdf。多對一轉換則須分段並加總各原像分支。"
 ---
 
 [上一篇文章](/teaching-topics/discrete-random-variable-transformations/)說明離散型轉換的 pmf 來自**原像 (preimage)** 的機率加總。轉換後事件的機率由該事件在 $X$ 下的原像決定。對離散型隨機變數，可加總各原像的 pmf；對連續型隨機變數，因為單點機率皆為 $0$，必須改由累積分配函數處理，或在適當條件下使用 **Jacobian 法 (Jacobian method)**，亦稱亞可比法，轉換機率密度函數。
 
-以下令 $X$ 為具有 pdf $f_X$ 與 CDF $F_X$ 的連續型隨機變數，並令 $Y=g(X)$，其中 $g$ 為 **Borel 可測函數 (Borel measurable function)**；其可測性條件可回顧[上一篇的 Theorem 2.9](/teaching-topics/discrete-random-variable-transformations/#theorem-29)。
+以下令 $X$ 為具有 pdf $f_X$ 與 cdf $F_X$ 的連續型隨機變數，並令 $Y=g(X)$，其中 $g$ 為 **Borel 可測函數 (Borel measurable function)**；其可測性條件可回顧[上一篇的 Theorem 2.9](/teaching-topics/discrete-random-variable-transformations/#theorem-29)。
 
-若轉換後的 MGF 在 $0$ 附近存在，[上一篇介紹的 MGF 法](/teaching-topics/discrete-random-variable-transformations/#mgf-法與線性轉換)也可用來辨認分配，而且不受離散型或連續型的限制。本篇集中整理 CDF 法與 Jacobian 法。
+若轉換後的 mgf 在 $0$ 附近存在，[上一篇介紹的 mgf 法](/teaching-topics/discrete-random-variable-transformations/#mgf-法與線性轉換)也可用來辨認分配，而且不受離散型或連續型的限制。本篇集中整理 cdf 法與 Jacobian 法。
 
-## CDF 法
+## cdf 法
 
-CDF 法把事件 $\lbrace g(X)\leqslant y\rbrace$ 改寫為以 $X$ 表示的等價事件，再找出所有滿足 $g(x)\leqslant y$ 的 $x$ 所形成的範圍。這個作法不要求 $g$ 一對一，也不要求 $g$ 可微。以下以 $\mathcal{R}_X$ 表示 $X$ 的**值域 (range)**。
+cdf 法把事件 $\lbrace g(X)\leqslant y\rbrace$ 改寫為以 $X$ 表示的等價事件，再找出所有滿足 $g(x)\leqslant y$ 的 $x$ 所形成的範圍。這個作法不要求 $g$ 一對一，也不要求 $g$ 可微。以下以 $\mathcal{R}_X$ 表示 $X$ 的**值域 (range)**。
 
 <div id="proposition-216" class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Proposition 2.16 (CDF Method)</div>
+<div class="topic-box__label">Proposition 2.16 (cdf Method)</div>
 
 對任意 $y\in\mathbb{R}$，令
 
@@ -65,7 +65,7 @@ F_Y(y)
 \sum_{j=1}^{m}\int_{I_j(y)}f_X(x)\,dx
 $$
 
-以下進一步考慮一般 CDF 公式的兩個特例，分別是 $g$ 在 $X$ 的值域上嚴格遞增與嚴格遞減。令 $D=\mathcal{R}_X$。若 $g$ 在 $D$ 上嚴格單調，則限制函數 $g\vert_D:D\to g(D)$ 具有反函數。以下的 $g^{-1}(y)$ 專指此反函數在 $y$ 的值。對每個 $y\in g(D)$，若 $g$ 在 $D$ 上嚴格遞增，則
+以下進一步考慮一般 cdf 公式的兩個特例，分別是 $g$ 在 $X$ 的值域上嚴格遞增與嚴格遞減。令 $D=\mathcal{R}_X$。若 $g$ 在 $D$ 上嚴格單調，則限制函數 $g\vert_D:D\to g(D)$ 具有反函數。以下的 $g^{-1}(y)$ 專指此反函數在 $y$ 的值。對每個 $y\in g(D)$，若 $g$ 在 $D$ 上嚴格遞增，則
 
 $$
 F_Y(y)
@@ -124,12 +124,12 @@ F_Y(y)
 1-F_X\bigl(g^{-1}(y)-\bigr)
 $$
 
-因 $F_X$ 連續，後一式可化為 $F_Y(y)=1-F_X\bigl(g^{-1}(y)\bigr)$。$\square$
+因 $F_X$ 連續，後一式可化為 $F_Y(y)=1-F_X\bigl(g^{-1}(y)\bigr)$。<span class="topic-qed">$\square$</span>
 </div>
 
 當 $g$ 在 $\mathcal{R}_X$ 上不是一對一時，不能把 $X$ 寫成單一的 $g^{-1}(Y)$。對每個 $y$，應先解不等式 $g(x)\leqslant y$，找出所有滿足此不等式的 $x$；這些 $x$ 所形成的集合就是 $A_y$，接著在 $A_y$ 上積分即可。[Example 2.32](#example-232) 中的 $Y=X^2$ 會實際使用這個方法。
 
-反函數式只在 $Y$ 的值域內使用。若 $y$ 小於 $Y$ 的所有可能取值，則 $F_Y(y)=0$；若 $y$ 大於或等於所有可能取值，則 $F_Y(y)=1$。求 CDF 時應先決定轉換後的取值範圍，再分段處理。
+反函數式只在 $Y$ 的值域內使用。若 $y$ 小於 $Y$ 的所有可能取值，則 $F_Y(y)=0$；若 $y$ 大於或等於所有可能取值，則 $F_Y(y)=1$。求 cdf 時應先決定轉換後的取值範圍，再分段處理。
 
 <div id="interlude-223" class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 2.23</div>
@@ -141,7 +141,7 @@ $$
 
 ## 一對一轉換與 Jacobian
 
-在 [Proposition 2.17](#proposition-217) 的條件下，可以由 CDF 公式微分，得到轉換後的 pdf。微分時出現的反函數導數絕對值，就是一維 Jacobian。
+在 [Proposition 2.17](#proposition-217) 的條件下，可以由 cdf 公式微分，得到轉換後的 pdf。微分時出現的反函數導數絕對值，就是一維 Jacobian。
 
 這與微積分的變數代換公式相同。在該公式中，Jacobian 行列式的絕對值是體積轉換因子，用來調整長度、面積或體積的變化；本篇是一維情形，所調整的就是區間長度。若 $\Delta x$ 與 $\Delta y$ 分別表示在 $x$ 與 $y=g(x)$ 附近相互對應的小區間長度，則局部有
 
@@ -203,7 +203,7 @@ f_X\bigl(g^{-1}(y)\bigr)
 \frac{d}{dy}g^{-1}(y)
 $$
 
-此時反函數導數為正。若 $g$ 嚴格遞減，CDF 公式前方會出現 $1-$，反函數導數則為負；兩個負號相消，最後同樣得到導數的絕對值。又由 $\mathbb{P}(X\in D)=1$ 及 $E=g(D)$ 可知 $\mathbb{P}(Y\in E)=1$，所以在 $E$ 以外可取 $f_Y(y)=0$。$\square$
+此時反函數導數為正。若 $g$ 嚴格遞減，cdf 公式前方會出現 $1-$，反函數導數則為負；兩個負號相消，最後同樣得到導數的絕對值。又由 $\mathbb{P}(X\in D)=1$ 及 $E=g(D)$ 可知 $\mathbb{P}(Y\in E)=1$，所以在 $E$ 以外可取 $f_Y(y)=0$。<span class="topic-qed">$\square$</span>
 </div>
 
 因此，Jacobian 的絕對值不可省略。它調整局部區間長度的變化，使轉換後密度的積分仍為 $1$。
@@ -250,7 +250,7 @@ $$
 
 多對一公式加總的是所有滿足 $y\in E_j$ 的原像分支。不同分支的值域可能不同，所以原像數量也可能隨 $y$ 改變。
 
-若某個原像 $x$ 滿足 $g^{\prime}(x)=0$，依方程式 $g(x)=y$ 的各根加總之公式便不能在該處直接使用。轉換後密度可能在臨界值附近趨向無窮，但 pdf 在單一點的取值不影響機率分配。此時可先用 CDF 法求出分配，再在可微區間內求導數。
+若某個原像 $x$ 滿足 $g^{\prime}(x)=0$，依方程式 $g(x)=y$ 的各根加總之公式便不能在該處直接使用。轉換後密度可能在臨界值附近趨向無窮，但 pdf 在單一點的取值不影響機率分配。此時可先用 cdf 法求出分配，再在可微區間內求導數。
 </div>
 
 ## 一對一遞減轉換
@@ -273,7 +273,7 @@ $$
 
 並令 $Y=1/X$。
 
-由 $\mathbb{P}(0<X<1)=1$ 可知 $\mathbb{P}(Y>1)=1$。先用 CDF 法。對 $y\leqslant 1$，有 $F_Y(y)=0$；對 $y>1$，由 $x\mapsto 1/x$ 嚴格遞減可得
+由 $\mathbb{P}(0<X<1)=1$ 可知 $\mathbb{P}(Y>1)=1$。先用 cdf 法。對 $y\leqslant 1$，有 $F_Y(y)=0$；對 $y>1$，由 $x\mapsto 1/x$ 嚴格遞減可得
 
 $$
 \begin{aligned}
@@ -287,7 +287,7 @@ F_Y(y)
 \end{aligned}
 $$
 
-在 $0<x<1$ 上，$X$ 的 CDF 可寫為
+在 $0<x<1$ 上，$X$ 的 cdf 可寫為
 
 $$
 F_X(x)
@@ -407,7 +407,7 @@ F_Y(y)
 \end{aligned}
 $$
 
-合併各區間後，$Y$ 的 CDF 為
+合併各區間後，$Y$ 的 cdf 為
 
 $$
 F_Y(y)
@@ -460,14 +460,14 @@ $$
 
 因此，$0<y<1$ 時兩個分支相加，得到 $1/(3\sqrt{y})$；$1<y<4$ 時只有負分支，得到 $1/(6\sqrt{y})$。
 
-在 $y=0$ 時，上式含有 $1/\sqrt{y}$，不能直接代入；在 $y=1$ 時，CDF 的左右導數不同。pdf 在這兩個單點取任何有限值都不會改變任何區間機率，因此可把公式限定在上列開區間。
+在 $y=0$ 時，上式含有 $1/\sqrt{y}$，不能直接代入；在 $y=1$ 時，cdf 的左右導數不同。pdf 在這兩個單點取任何有限值都不會改變任何區間機率，因此可把公式限定在上列開區間。
 </div>
 
 ## 機率積分轉換
 
 以下結果稱為**機率積分轉換 (probability integral transform)**。
 
-均勻分配 (uniform distribution) 將在後面的主題中另行介紹。此處只先使用其中的標準均勻分配 (standard uniform distribution)。若 $U\sim\mathcal{U}(0,1)$，則當 $0\leqslant u\leqslant 1$ 時，其 CDF 滿足 $F_U(u)=u$。
+均勻分配 (uniform distribution) 將在後面的主題中另行介紹。此處只先使用其中的標準均勻分配 (standard uniform distribution)。若 $U\sim\mathcal{U}(0,1)$，則當 $0\leqslant u\leqslant 1$ 時，其 cdf 滿足 $F_U(u)=u$。
 
 <!-- ref-point: 待均勻分配主題發布後，將「後面的主題」改為指向該篇文章的站內連結。 -->
 
@@ -476,7 +476,7 @@ $$
 
 若 $F_X$ 連續，令 $U=F_X(X)$，則 $U\sim\mathcal{U}(0,1)$。
 
-反過來，令 $F$ 為任意 CDF，且 $U\sim\mathcal{U}(0,1)$。其中 $F^{-1}$ 表示先前所定義的[分位函數](/teaching-topics/quantiles-and-median/#quantile-function)。對 $0<u<1$，其公式為
+反過來，令 $F$ 為任意 cdf，且 $U\sim\mathcal{U}(0,1)$。其中 $F^{-1}$ 表示先前所定義的[分位函數](/teaching-topics/quantiles-and-median/#quantile-function)。對 $0<u<1$，其公式為
 
 $$
 F^{-1}(u)
@@ -484,9 +484,9 @@ F^{-1}(u)
 \inf\lbrace x\in\mathbb{R}\mid F(x)\geqslant u\rbrace
 $$
 
-上式不直接定義 $u=0$ 與 $u=1$。當 $u=0$ 時，每個 CDF 都滿足 $F(x)\geqslant 0$，因此定義集合是 $\mathbb{R}$，其下確界為 $-\infty$。當 $u=1$ 時，若 $F(x)$ 只在 $x\to\infty$ 時趨近於 $1$，定義集合便是空集合；在這兩種情況下，公式都不能得到有限的實數值。為使 $F^{-1}$ 在 $[0,1]$ 上都有實數值，可另為 $F^{-1}(0)$ 與 $F^{-1}(1)$ 指定任意有限值。由於 $\mathbb{P}\bigl(U\in\lbrace 0,1\rbrace\bigr)=0$，這兩個指定值不影響 $F^{-1}(U)$ 的分配。
+上式不直接定義 $u=0$ 與 $u=1$。當 $u=0$ 時，每個 cdf 都滿足 $F(x)\geqslant 0$，因此定義集合是 $\mathbb{R}$，其下確界為 $-\infty$。當 $u=1$ 時，若 $F(x)$ 只在 $x\to\infty$ 時趨近於 $1$，定義集合便是空集合；在這兩種情況下，公式都不能得到有限的實數值。為使 $F^{-1}$ 在 $[0,1]$ 上都有實數值，可另為 $F^{-1}(0)$ 與 $F^{-1}(1)$ 指定任意有限值。由於 $\mathbb{P}\bigl(U\in\lbrace 0,1\rbrace\bigr)=0$，這兩個指定值不影響 $F^{-1}(U)$ 的分配。
 
-令 $Y=F^{-1}(U)$，則 $Y$ 的 CDF 為 $F$。
+令 $Y=F^{-1}(U)$，則 $Y$ 的 cdf 為 $F$。
 
 </div>
 
@@ -575,20 +575,20 @@ $$
 F(y)
 $$
 
-因此，$F^{-1}(U)$ 具有 CDF $F$。$\square$
+因此，$F^{-1}(U)$ 具有 cdf $F$。<span class="topic-qed">$\square$</span>
 </div>
 
-[Proposition 2.18](#proposition-218) 把不同分配與標準均勻分配連結起來。第一個方向可將具有連續 CDF 的隨機變數轉換為 $\mathcal{U}(0,1)$；第二個方向則由 $\mathcal{U}(0,1)$ 生成具有任意指定 CDF 的實值隨機變數。
+[Proposition 2.18](#proposition-218) 把不同分配與標準均勻分配連結起來。第一個方向可將具有連續 cdf 的隨機變數轉換為 $\mathcal{U}(0,1)$；第二個方向則由 $\mathcal{U}(0,1)$ 生成具有任意指定 cdf 的實值隨機變數。
 
-這個性質可用來模擬隨機變數。一般的亂數產生器 (random number generator) 通常先提供 $0$ 與 $1$ 之間的均勻亂數。若目標分配的 CDF 為 $F$，則將每個均勻亂數 $u$ 轉換為 $F^{-1}(u)$；反覆進行後，即可得到來自該分配的一組模擬值。對有單點機率的分配，CDF 的跳躍會使一整段 $u$ 對應到同一個值，因此也能生成相應的單點機率。若 $F^{-1}$ 沒有簡單公式，則可用數值方法求出所需的分位數。
+這個性質可用來模擬隨機變數。一般的亂數產生器 (random number generator) 通常先提供 $0$ 與 $1$ 之間的均勻亂數。若目標分配的 cdf 為 $F$，則將每個均勻亂數 $u$ 轉換為 $F^{-1}(u)$；反覆進行後，即可得到來自該分配的一組模擬值。對有單點機率的分配，cdf 的跳躍會使一整段 $u$ 對應到同一個值，因此也能生成相應的單點機率。若 $F^{-1}$ 沒有簡單公式，則可用數值方法求出所需的分位數。
 
-若想實際操作這個過程，可以在互動展示 [Probability Integral Transform and Inverse Transform Sampling](/demos/probability-integral-transform/) 中調整 $u$，同時觀察標準柯西分配 (standard Cauchy distribution) 的 pdf 高度，以及其 CDF 與分位函數在對應位置的斜率。若以 $F$ 表示標準柯西分配的 CDF，則可由圖中的數值確認 $F\bigl(F^{-1}(u)\bigr)=u$。展示也可重複產生 $\mathcal{U}(0,1)$ 樣本，再由 $F^{-1}$ 轉換為標準柯西樣本，以直方圖比較轉換前後的分配形狀。
+若想實際操作這個過程，可以在互動展示 [Probability Integral Transform and Inverse Transform Sampling](/demos/probability-integral-transform/) 中調整 $u$，同時觀察標準柯西分配 (standard Cauchy distribution) 的 pdf 高度，以及其 cdf 與分位函數在對應位置的斜率。若以 $F$ 表示標準柯西分配的 cdf，則可由圖中的數值確認 $F\bigl(F^{-1}(u)\bigr)=u$。展示也可重複產生 $\mathcal{U}(0,1)$ 樣本，再由 $F^{-1}$ 轉換為標準柯西樣本，以直方圖比較轉換前後的分配形狀。
 
 第二個方向可與[均勻分配的分位數例題](/teaching-topics/quantiles-and-median/#example-214)對照。
 
 ## 本篇小結
 
-[Proposition 2.16](#proposition-216) 說明，對任意 Borel 可測函數 $g$，CDF 法都可由事件原像求得
+[Proposition 2.16](#proposition-216) 說明，對任意 Borel 可測函數 $g$，cdf 法都可由事件原像求得
 
 $$
 F_Y(y)
@@ -611,13 +611,13 @@ $$
 
 多對一轉換須把 $\mathcal{R}_X$ 分成單調分支，並加總所有滿足 $y\in E_j$ 的原像分支。不同分支的值域可能不同，所以密度常須分段書寫。
 
-[Proposition 2.18](#proposition-218) 進一步說明，連續 CDF 可把隨機變數轉換為均勻分配，而分位函數可由均勻分配產生指定的 CDF。
+[Proposition 2.18](#proposition-218) 進一步說明，連續 cdf 可把隨機變數轉換為均勻分配，而分位函數可由均勻分配產生指定的 cdf。
 
-至此已建立單一隨機變數的 CDF、pmf、pdf、期望值、變異數、母函數、特徵函數、機率界限與函數轉換，第二章也在此告一段落。下一章會把單一隨機變數推廣為隨機向量，進一步討論聯合分配、邊際分配及多個隨機變數之間的關係。
+至此已建立單一隨機變數的 cdf、pmf、pdf、期望值、變異數、母函數、特徵函數、機率界限與函數轉換，第二章也在此告一段落。下一章會把單一隨機變數推廣為隨機向量，進一步討論聯合分配、邊際分配及多個隨機變數之間的關係。
 
 ## 參考文獻與延伸閱讀
 
 - 黃文璋，2003，《機率論》，初版，華泰文化。
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.

@@ -9,7 +9,7 @@ topic: 10
 order: 210
 permalink: /teaching-topics/mode-and-distribution-shape/
 date: 2026-06-20
-published: true
+published: false
 excerpt: "眾數描述機率或密度最集中的位置。期望值、中位數與眾數都是中央趨勢量數，但在有偏分配中，三者對尾端與極端值的靈敏程度並不相同。"
 ---
 
@@ -150,4 +150,4 @@ $$
 - 黃文璋，2003，《機率論》，初版，華泰文化。
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.

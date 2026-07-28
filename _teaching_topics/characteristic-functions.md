@@ -9,13 +9,13 @@ topic: 14
 order: 214
 permalink: /teaching-topics/characteristic-functions/
 date: 2026-07-13
-published: true
-excerpt: '特徵函數 (CF) 以複指數 $e^{itX}$ 描述機率分配。CF 對每個實值隨機變數都存在，能把獨立隨機變數之和轉成函數乘積，並由唯一性定理辨認分配。'
+published: false
+excerpt: '特徵函數 (cf) 以複指數 $e^{itX}$ 描述機率分配。cf 對每個實值隨機變數都存在，能把獨立隨機變數之和轉成函數乘積，並由唯一性定理辨認分配。'
 ---
 
-[上一篇文章](/teaching-topics/probability-cumulant-generating-functions/)介紹 PGF 與 CGF。對非負整數值隨機變數，將 PGF 的冪級數延伸到複數單位圓，再取 $s=e^{it}$，可得 $G_X(e^{it})=\mathbb{E}(e^{itX})$。本篇把這個複指數期望值推廣到每個實值隨機變數，並稱為**特徵函數 (characteristic function, CF)**。
+[上一篇文章](/teaching-topics/probability-cumulant-generating-functions/)介紹 pgf 與 cgf。對非負整數值隨機變數，將 pgf 的冪級數延伸到複數單位圓，再取 $s=e^{it}$，可得 $G_X(e^{it})=\mathbb{E}(e^{itX})$。本篇把這個複指數期望值推廣到每個實值隨機變數，並稱為**特徵函數 (characteristic function, cf)**。
 
-MGF 不一定在 $0$ 附近存在，CF 卻對所有實值隨機變數與所有實數 $t$ 都存在。這項差異來自複指數的絕對值恆為 $1$。
+mgf 不一定在 $0$ 附近存在，cf 卻對所有實值隨機變數與所有實數 $t$ 都存在。這項差異來自複指數的絕對值恆為 $1$。
 
 ## Euler 公式與複指數
 
@@ -50,7 +50,7 @@ $$
 \qquad t\in\mathbb{R}
 $$
 
-為 $X$ 的**特徵函數 (characteristic function, CF)**。由 Euler 公式可寫成
+為 $X$ 的**特徵函數 (characteristic function, cf)**。由 Euler 公式可寫成
 
 $$
 \varphi_X(t)
@@ -77,7 +77,7 @@ $$
 \int_{-\infty}^{\infty}e^{itx}f_X(x)\,dx
 $$
 
-因為 $\lvert e^{itX}\rvert=1$，所以 $e^{itX}$ 對每個 $t\in\mathbb{R}$ 都可積。CF 的存在不要求 $X$ 有有限期望值、變異數或 MGF。
+因為 $\lvert e^{itX}\rvert=1$，所以 $e^{itX}$ 對每個 $t\in\mathbb{R}$ 都可積。cf 的存在不要求 $X$ 有有限期望值、變異數或 mgf。
 
 <div id="note-cf-mgf-relation" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -94,23 +94,23 @@ $$
 \varphi_X(t)=M_X(it)
 $$
 
-不過，[動差母函數的定義](/teaching-topics/moment-generating-functions/#definition-217)原本只把 $M_X(t)$ 定義在實數參數上。因此，$M_X(it)$ 應視為複數參數的延伸記號，不能當成把 $it$ 直接代入一個只定義在實數域的函數。CF 即使在實數 MGF 不存在時仍然存在。
+不過，[動差母函數的定義](/teaching-topics/moment-generating-functions/#definition-217)原本只把 $M_X(t)$ 定義在實數參數上。因此，$M_X(it)$ 應視為複數參數的延伸記號，不能當成把 $it$ 直接代入一個只定義在實數域的函數。cf 即使在實數 mgf 不存在時仍然存在。
 </div>
 
 <div id="interlude-216" class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 2.16</div>
 
-固定 $t$ 後，$e^{itX}=\cos(tX)+i\sin(tX)$ 的取值都落在複數平面的單位圓上。CF 是這些複數取值依機率加權後的平均，因此其絕對值不會超過 $1$。
+固定 $t$ 後，$e^{itX}=\cos(tX)+i\sin(tX)$ 的取值都落在複數平面的單位圓上。cf 是這些複數取值依機率加權後的平均，因此其絕對值不會超過 $1$。
 
-這也說明 CF 為何對厚尾分配仍然存在。厚尾分配可能使 $\mathbb{E}(e^{tX})$ 發散；但 $\lvert e^{itX}\rvert=1$，故 CF 對每個實值隨機變數皆存在。
+這也說明 cf 為何對厚尾分配仍然存在。厚尾分配可能使 $\mathbb{E}(e^{tX})$ 發散；但 $\lvert e^{itX}\rvert=1$，故 cf 對每個實值隨機變數皆存在。
 </div>
 
-## CF 的基本性質
+## cf 的基本性質
 
 <div id="proposition-214" class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Proposition 2.14 (Basic Properties of CF)</div>
+<div class="topic-box__label">Proposition 2.14 (Basic Properties of cf)</div>
 
-令 $X$ 為實值隨機變數，則 CF 具有下列性質。
+令 $X$ 為實值隨機變數，則 cf 具有下列性質。
 
 <ol class="topic-list-paren">
   <li>$\varphi_X(0)=1$，且對每個 $t\in\mathbb{R}$，皆有 $\lvert\varphi_X(t)\rvert\leqslant 1$。</li>
@@ -133,7 +133,7 @@ $$
 $$
 
   </li>
-  <li>若 $X_1,\ldots,X_n$ 相互獨立，則
+  <li>若 $X_1,\ldots,X_n$ 完全獨立 (mutually independent)，則
 
 $$
 \varphi_{X_1+\cdots+X_n}(t)
@@ -146,7 +146,7 @@ $$
 
 </div>
 
-第 (3) 點與[動差母函數的線性轉換公式](/teaching-topics/moment-generating-functions/#mgf-function-transformations)直接對應。若 $Y=aX+b$，MGF 一節已先得到
+第 (3) 點與[動差母函數的線性轉換公式](/teaching-topics/moment-generating-functions/#mgf-function-transformations)直接對應。若 $Y=aX+b$，mgf 一節已先得到
 
 $$
 M_Y(t)
@@ -154,7 +154,7 @@ M_Y(t)
 e^{bt}M_X(at)
 $$
 
-CF 的對應公式為
+cf 的對應公式為
 
 $$
 \varphi_Y(t)
@@ -162,7 +162,7 @@ $$
 e^{ibt}\varphi_X(at)
 $$
 
-在兩式中，將 $X$ 乘上 $a$ 都會使函數中的 $t$ 變為 $at$。再加上 $b$ 時，MGF 會多出 $e^{bt}$，CF 則會多出 $e^{ibt}$。MGF 公式只在所需期望值有限的範圍內使用；CF 對所有實數 $t$ 都存在，因此使用其線性轉換公式時不必另行檢查存在區間。
+在兩式中，將 $X$ 乘上 $a$ 都會使函數中的 $t$ 變為 $at$。再加上 $b$ 時，mgf 會多出 $e^{bt}$，cf 則會多出 $e^{ibt}$。mgf 公式只在所需期望值有限的範圍內使用；cf 對所有實數 $t$ 都存在，因此使用其線性轉換公式時不必另行檢查存在區間。
 
 第一項由定義直接得到
 
@@ -255,7 +255,7 @@ e^{ibt}\varphi_X(at)
 \end{aligned}
 $$
 
-再由 $e^{-itX}=\overline{e^{itX}}$ 可得共軛關係。最後，若 $X_1,\ldots,X_n$ 相互獨立，則
+再由 $e^{-itX}=\overline{e^{itX}}$ 可得共軛關係。最後，若 $X_1,\ldots,X_n$ 完全獨立，則
 
 $$
 \begin{aligned}
@@ -273,17 +273,17 @@ $$
 
 其中第二個等號使用了獨立性。
 
-相互獨立隨機變數的正式定義會在下一章給出。此處先使用它所帶來的乘積性質，也就是獨立隨機變數的函數，其期望值可分解成各期望值的乘積。
+完全獨立隨機變數的正式定義會在下一章給出。此處先使用它所帶來的乘積性質，也就是獨立隨機變數的函數，其期望值可分解成各期望值的乘積。
 
 <div id="note-cf-product-independence" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-獨立性足以推出和的 CF 等於各 CF 的乘積；反向敘述並不成立。只知道 $\varphi_{X+Y}(t)=\varphi_X(t)\varphi_Y(t)$ 對所有 $t$ 成立，仍不足以斷定 $X$ 與 $Y$ 獨立。
+獨立性足以推出和的 cf 等於各 cf 的乘積；反向敘述並不成立。只知道 $\varphi_{X+Y}(t)=\varphi_X(t)\varphi_Y(t)$ 對所有 $t$ 成立，仍不足以斷定 $X$ 與 $Y$ 獨立。
 </div>
 
-## CF 與動差
+## cf 與動差
 
-CF 總是存在，但其導數是否存在取決於動差條件。若對某個正整數 $r$ 有
+cf 總是存在，但其導數是否存在取決於動差條件。若對某個正整數 $r$ 有
 
 $$
 \mathbb{E}(\lvert X\rvert^r)<\infty
@@ -305,22 +305,22 @@ $$
 i^r\mathbb{E}(X^r)
 $$
 
-因此，CF 可在適當動差條件下生成原動差。CF 存在本身則不保證任何正整數階動差存在。
+因此，cf 可在適當動差條件下生成原動差。cf 存在本身則不保證任何正整數階動差存在。
 
 <div id="note-cf-derivative-converse" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-由動差存在推導 CF 可微時，需要 $\mathbb{E}(\lvert X\rvert^r)<\infty$。反向命題須區分 $r$ 的奇偶。若 CF 在 $t=0$ 的 $r$ 階導數存在，$r$ 為偶數時可推出 $\mathbb{E}(\lvert X\rvert^r)<\infty$；$r$ 為奇數時，一般只能保證 $\mathbb{E}(\lvert X\rvert^{r-1})<\infty$。
+由動差存在推導 cf 可微時，需要 $\mathbb{E}(\lvert X\rvert^r)<\infty$。反向命題須區分 $r$ 的奇偶。若 cf 在 $t=0$ 的 $r$ 階導數存在，$r$ 為偶數時可推出 $\mathbb{E}(\lvert X\rvert^r)<\infty$；$r$ 為奇數時，一般只能保證 $\mathbb{E}(\lvert X\rvert^{r-1})<\infty$。
 </div>
 
-## CF 唯一決定分配
+## cf 唯一決定分配
 
-CF 不只整理動差，也能完整辨認機率分配。這項性質不要求 MGF 存在。
+cf 不只整理動差，也能完整辨認機率分配。這項性質不要求 mgf 存在。
 
 <div id="theorem-22" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 2.2 (Uniqueness of CF)</div>
+<div class="topic-box__label">Theorem 2.2 (Uniqueness of cf)</div>
 
-若實值隨機變數 $X$ 與 $Y$ 的 CF 對每個 $t\in\mathbb{R}$ 皆滿足
+若實值隨機變數 $X$ 與 $Y$ 的 cf 對每個 $t\in\mathbb{R}$ 皆滿足
 
 $$
 \varphi_X(t)=\varphi_Y(t)
@@ -331,7 +331,7 @@ $$
 </div>
 
 <div class="topic-proof" markdown="1">
-**Proof.** 令 $F$ 為 $X$ 的 CDF，$a<b$ 且 $a,b$ 都是 $F$ 的連續點。由 CF 的反演公式可得
+**Proof.** 令 $F$ 為 $X$ 的 cdf，$a<b$ 且 $a,b$ 都是 $F$ 的連續點。由 cf 的反演公式可得
 
 $$
 F(b)-F(a)
@@ -343,13 +343,13 @@ F(b)-F(a)
 \varphi_X(t)\,dt
 $$
 
-被積函數在 $t=0$ 的值以連續延伸解釋。右側完全由 $\varphi_X$ 決定，因此 CF 可決定所有連續點之間的區間機率，進而決定 CDF。故若 $\varphi_X(t)=\varphi_Y(t)$ 對所有實數 $t$ 成立，兩個 CDF 相同。原式得證。$\square$
+被積函數在 $t=0$ 的值以連續延伸解釋。右側完全由 $\varphi_X$ 決定，因此 cf 可決定所有連續點之間的區間機率，進而決定 cdf。故若 $\varphi_X(t)=\varphi_Y(t)$ 對所有實數 $t$ 成立，兩個 cdf 相同。原式得證。<span class="topic-qed">$\square$</span>
 </div>
 
 <div id="note-cf-density-inversion" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-不能在沒有條件時直接由 CF 寫出 pdf。若
+不能在沒有條件時直接由 cf 寫出 pdf。若
 
 $$
 \int_{-\infty}^{\infty}\lvert\varphi_X(t)\rvert\,dt<\infty
@@ -364,13 +364,13 @@ f_X(x)
 \int_{-\infty}^{\infty}e^{-itx}\varphi_X(t)\,dt
 $$
 
-一般分配的反演應使用 CDF 版本及其連續點條件。
+一般分配的反演應使用 cdf 版本及其連續點條件。
 </div>
 
 <div id="example-221" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.21 (The Cauchy Sample Mean)</div>
 
-令 $X_1,\ldots,X_n$ 為相互獨立且具有標準柯西分配 (standard Cauchy distribution) 的隨機變數，其共同 CF 為
+令 $X_1,\ldots,X_n$ 為完全獨立且具有標準柯西分配 (standard Cauchy distribution) 的隨機變數，其共同 cf 為
 
 $$
 \varphi_X(t)=e^{-\lvert t\rvert}
@@ -401,7 +401,7 @@ e^{-\lvert t\rvert}
 \end{aligned}
 $$
 
-這正是每個 $X_j$ 的 CF。由[CF 的唯一性](#theorem-22)可知，對每個正整數 $n$，皆有
+這正是每個 $X_j$ 的 cf。由[cf 的唯一性](#theorem-22)可知，對每個正整數 $n$，皆有
 
 $$
 \overline{X}_n
@@ -516,21 +516,21 @@ $$
 
 上式中的兩個複數值廣義積分都收斂，因為 $1-ix$ 與 $1+ix$ 的實部皆為 $1$。所得 pdf 正是標準柯西密度，也就是樣本平均數仍具有標準柯西分配。
 
-標準柯西分配沒有有限期望值與變異數，因此不滿足有限變異數型中央極限定理的前提；中央極限定理不能套用，原因不是它沒有 MGF。
+標準柯西分配沒有有限期望值與變異數，因此不滿足有限變異數型中央極限定理的前提；中央極限定理不能套用，原因不是它沒有 mgf。
 
 </div>
 
 ## 本篇小結
 
-實值隨機變數 $X$ 的 CF 定義為
+實值隨機變數 $X$ 的 cf 定義為
 
 $$
 \varphi_X(t)=\mathbb{E}(e^{itX})
 $$
 
-因為 $\lvert e^{itX}\rvert=1$，CF 對所有 $t\in\mathbb{R}$ 都存在。CF 滿足 $\varphi_X(0)=1$、$\lvert\varphi_X(t)\rvert\leqslant 1$ 與均勻連續性；線性轉換可改寫其引數，獨立隨機變數之和則對應 CF 的乘積。
+因為 $\lvert e^{itX}\rvert=1$，cf 對所有 $t\in\mathbb{R}$ 都存在。cf 滿足 $\varphi_X(0)=1$、$\lvert\varphi_X(t)\rvert\leqslant 1$ 與均勻連續性；線性轉換可改寫其引數，獨立隨機變數之和則對應 cf 的乘積。
 
-若 $\mathbb{E}(\lvert X\rvert^r)<\infty$，CF 的 $r$ 階導數可生成 $r$ 階原動差。CF 的唯一性則說明，只要兩個 CF 在整條實數線上相同，對應的機率分配便相同。pdf 的反演公式另有絕對可積條件，不能由 CF 存在直接推出。
+若 $\mathbb{E}(\lvert X\rvert^r)<\infty$，cf 的 $r$ 階導數可生成 $r$ 階原動差。cf 的唯一性則說明，只要兩個 cf 在整條實數線上相同，對應的機率分配便相同。pdf 的反演公式另有絕對可積條件，不能由 cf 存在直接推出。
 
 [下一篇文章](/teaching-topics/markov-inequality/)將轉向機率不等式。當完整分配未知，只知道非負性與期望值時，馬可夫不等式仍能給出尾端機率的上界。
 

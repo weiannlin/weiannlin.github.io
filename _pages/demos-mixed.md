@@ -113,15 +113,15 @@ author_profile: true
   .mx-readout .breakdown { display: block; margin-top: 0.25rem; opacity: 0.75; font-size: 0.9rem; }
 </style>
 
-A **mixed-type distribution** has both a continuous part and one or more point masses. Its CDF is the sum:
+A **mixed-type distribution** has both a continuous part and one or more point masses. Its cdf is the sum:
 
 $$
 F(x)=W_c\cdot G(x)+\sum_{x_i\leqslant x}w_i
 $$
 
-where $G$ is the continuous CDF (weight $W_c$) and the $w_i$ are the point masses at $x_i$. The main visual pattern is that the CDF picks up a **jump of size exactly $w_i$** at every $x_i$, while remaining smooth in between.
+where $G$ is the continuous cdf (weight $W_c$) and the $w_i$ are the point masses at $x_i$. The main visual pattern is that the cdf picks up a **jump of size exactly $w_i$** at every $x_i$, while remaining smooth in between.
 
-Below, pick a continuous family and add point masses with weights $w_i$. The continuous weight $W_c = 1 - \sum w_i$ is allocated automatically — what's left over after the discrete part. Sweep current $x$ and watch the CDF jump as you cross each $x_i$.
+Below, pick a continuous family and add point masses with weights $w_i$. The continuous weight $W_c = 1 - \sum w_i$ is allocated automatically — what’s left over after the discrete part. Sweep current $x$ and watch the cdf jump as you cross each $x_i$.
 
 ## Interactive
 
@@ -161,11 +161,11 @@ Below, pick a continuous family and add point masses with weights $w_i$. The con
 
 ## What it shows
 
-**Jumps are the signature of mixed type.** A purely continuous CDF is smooth; a purely discrete CDF is all jumps; a mixed CDF has both. **The jump at $x_i$ has height exactly $w_i$** — the same value you typed into the table. Slide current $x$ across an $x_i$ and watch the CDF lift by $w_i$ in one step, while the corresponding lollipop in the upper panel turns red.
+**Jumps are the signature of mixed type.** A purely continuous cdf is smooth; a purely discrete cdf is all jumps; a mixed cdf has both. **The jump at $x_i$ has height exactly $w_i$** — the same value you typed into the table. Slide current $x$ across an $x_i$ and watch the cdf lift by $w_i$ in one step, while the corresponding lollipop in the upper panel turns red.
 
 **Continuous and discrete share the budget.** Adding a point mass $w_i$ removes $w_i$ from the continuous part: the smooth curve scales down by $W_c = 1 - \sum w_j$, and the lost area under the density reappears as the jumps. Total probability stays at 1 by construction.
 
-**Mixed PDF is not a function in the ordinary sense.** Strictly, $f_{\text{mix}}(x) = W_c\, g(x) + \sum_i w_i\, \delta(x - x_i)$, with Dirac deltas at the mass points. The lollipops are just a visual stand-in for those deltas — heights of lollipops carry **probability mass** (unitless), heights of the smooth curve carry **probability density** (per unit $x$). They share an axis here for layout convenience, not because they share units.
+**Mixed pdf is not a function in the ordinary sense.** Strictly, $f_{\text{mix}}(x) = W_c\, g(x) + \sum_i w_i\, \delta(x - x_i)$, with Dirac deltas at the mass points. The lollipops are just a visual stand-in for those deltas — heights of lollipops carry **probability mass** (unitless), heights of the smooth curve carry **probability density** (per unit $x$). They share an axis here for layout convenience, not because they share units.
 
 <script>
 (function() {

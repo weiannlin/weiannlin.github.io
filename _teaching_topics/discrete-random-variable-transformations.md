@@ -9,13 +9,13 @@ topic: 20
 order: 220
 permalink: /teaching-topics/discrete-random-variable-transformations/
 date: 2026-07-13
-published: true
-excerpt: "已知離散型隨機變數 $X$ 的 pmf 與 $Y=g(X)$ 後，$Y$ 在每個轉換後取值的機率等於所有映到該值的原取值機率總和。一對一反函數式是這項公式的特例，MGF 則提供另一種辨認分配的方法。"
+published: false
+excerpt: "已知離散型隨機變數 $X$ 的 pmf 與 $Y=g(X)$ 後，$Y$ 在每個轉換後取值的機率等於所有映到該值的原取值機率總和。一對一反函數式是這項公式的特例，mgf 則提供另一種辨認分配的方法。"
 ---
 
 [上一篇文章](/teaching-topics/empirical-rule-bell-shaped-distributions/)利用期望值與標準差描述常態分配的中央區間。本篇改以函數關係產生新的隨機變數，並求取轉換後的完整分配。
 
-[函數期望值](/teaching-topics/expected-value-random-variables/#函數的期望值)已經處理過 $\mathbb{E}[g(X)]$。若只需要一個期望值，可以沿著 $X$ 原有的 pmf 直接加權；若需要知道 $Y=g(X)$ 的 pmf、CDF 或其他分配性質，便須進一步整理 $X$ 的每個可能值會被 $g$ 送到哪裡。
+[函數期望值](/teaching-topics/expected-value-random-variables/#函數的期望值)已經處理過 $\mathbb{E}[g(X)]$。若只需要一個期望值，可以沿著 $X$ 原有的 pmf 直接加權；若需要知道 $Y=g(X)$ 的 pmf、cdf 或其他分配性質，便須進一步整理 $X$ 的每個可能值會被 $g$ 送到哪裡。
 
 ## 函數作用後仍是隨機變數
 
@@ -28,7 +28,7 @@ excerpt: "已知離散型隨機變數 $X$ 的 pmf 與 $Y=g(X)$ 後，$Y$ 在每�
 
 </div>
 
-若需回顧實數線上的 Borel $\sigma$-域，可參考[事件集合族與 $\sigma$-域](/teaching-topics/event-families-sigma-fields/#實數線上的-borel-sigma-域)。
+若需回顧實數線上的 Borel $\sigma$-域，可參考[域、$\sigma$-域與機率空間](/teaching-topics/event-families-sigma-fields/#實數線上的-borel-sigma-域)。
 
 <div class="topic-proof" markdown="1">
 **Proof.** 對任意 Borel 集合 $A\subseteq\mathbb{R}$，事件可寫為
@@ -43,7 +43,7 @@ $$
 
 其中，$g^{-1}(A)=\lbrace x\in\mathbb{R}\mid g(x)\in A\rbrace$ 稱為 $A$ 在 $g$ 下的原像。這個記號不要求 $g$ 一對一。
 
-因為 $g$ 為 Borel 可測函數，所以 $g^{-1}(A)$ 是 Borel 集合；又因 $X$ 為隨機變數，故 $\lbrace X\in g^{-1}(A)\rbrace\in\mathcal{F}$。因此 $Y$ 為實值隨機變數。$\square$
+因為 $g$ 為 Borel 可測函數，所以 $g^{-1}(A)$ 是 Borel 集合；又因 $X$ 為隨機變數，故 $\lbrace X\in g^{-1}(A)\rbrace\in\mathcal{F}$。因此 $Y$ 為實值隨機變數。<span class="topic-qed">$\square$</span>
 </div>
 
 [Theorem 2.9](#theorem-29) 中的函數合成關係如 [Fig. 2.23](#fig-223) 所示。
@@ -99,7 +99,7 @@ $$
 \mathbb{P}(X=x)
 $$
 
-若 $y\notin\mathcal{R}_Y$，則不存在滿足 $g(x)=y$ 的 $x\in\mathcal{R}_X$，故 $p_Y(y)=0$。$\square$
+若 $y\notin\mathcal{R}_Y$，則不存在滿足 $g(x)=y$ 的 $x\in\mathcal{R}_X$，故 $p_Y(y)=0$。<span class="topic-qed">$\square$</span>
 </div>
 
 [Proposition 2.15](#proposition-215) 同時涵蓋有限與可數無限的可能取值集合。有限情形可直接列表；可數無限情形則依公式加總所有原像。
@@ -189,11 +189,11 @@ $$
 
 若原像不只一個，$g^{-1}(\lbrace y\rbrace)$ 是一個集合，不能把它當成單一數值代入 $p_X$。此時必須回到 [Proposition 2.15](#proposition-215) 的原像加總公式。
 
-## MGF 法與線性轉換
+## mgf 法與線性轉換
 
-[動差母函數一文](/teaching-topics/moment-generating-functions/#mgf-function-transformations)已先說明 MGF 在函數轉換下的寫法。本節把這項關係用於辨認離散型隨機變數經轉換後的分配。
+[動差母函數一文](/teaching-topics/moment-generating-functions/#mgf-function-transformations)已先說明 mgf 在函數轉換下的寫法。本節把這項關係用於辨認離散型隨機變數經轉換後的分配。
 
-若 $Y=g(X)$ 的 MGF 存在，則
+若 $Y=g(X)$ 的 mgf 存在，則
 
 $$
 M_Y(t)
@@ -220,7 +220,7 @@ $$
 <div id="note-affine-mgf-domain" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-關係式 $M_Y(t)=e^{bt}M_X(at)$ 在 $M_X(at)$ 有限的 $t$ 上成立。若要依 [MGF 唯一性定理](/teaching-topics/moment-generating-functions/#theorem-21)辨認 $Y$ 的分配，所比較的 MGF 必須在同一個含 $0$ 的開區間上存在並相等。
+關係式 $M_Y(t)=e^{bt}M_X(at)$ 在 $M_X(at)$ 有限的 $t$ 上成立。若要依 [mgf 唯一性定理](/teaching-topics/moment-generating-functions/#theorem-21)辨認 $Y$ 的分配，所比較的 mgf 必須在同一個含 $0$ 的開區間上存在並相等。
 
 若 $a=0$，則 $Y=0\cdot X+b=b$，不論 $X$ 取何值，$Y$ 都等於 $b$。因此 $Y$ 的 pmf 為
 
@@ -245,7 +245,7 @@ e^{bt}M_X(0)
 e^{bt}
 $$
 
-所以線性轉換的 MGF 公式仍可使用。若 $\mathcal{R}_X$ 至少含有兩個值，所有 $x\in\mathcal{R}_X$ 都映到同一個 $b$，因此 $x\mapsto ax+b$ 在 $\mathcal{R}_X$ 上不是一對一。此時 $\lbrace x\in\mathcal{R}_X\mid g(x)=b\rbrace=\mathcal{R}_X$；這個原像是整個可能取值集合，而不是能代入 $p_X$ 的單一數值，故不能使用一對一反函數式。應回到 [Proposition 2.15](#proposition-215) 的原像加總公式，得到
+所以線性轉換的 mgf 公式仍可使用。若 $\mathcal{R}_X$ 至少含有兩個值，所有 $x\in\mathcal{R}_X$ 都映到同一個 $b$，因此 $x\mapsto ax+b$ 在 $\mathcal{R}_X$ 上不是一對一。此時 $\lbrace x\in\mathcal{R}_X\mid g(x)=b\rbrace=\mathcal{R}_X$；這個原像是整個可能取值集合，而不是能代入 $p_X$ 的單一數值，故不能使用一對一反函數式。應回到 [Proposition 2.15](#proposition-215) 的原像加總公式，得到
 
 $$
 p_Y(b)
@@ -302,7 +302,7 @@ p_X\left(\frac{y-1}{2}\right)
 \frac{y-1}{20}
 $$
 
-最後使用 MGF。由 $X$ 的值域有限可知 $M_X(t)$ 對所有實數 $t$ 皆存在，且
+最後使用 mgf。由 $X$ 的值域有限可知 $M_X(t)$ 對所有實數 $t$ 皆存在，且
 
 $$
 M_X(t)
@@ -316,7 +316,7 @@ M_X(t)
 \frac{4}{10}e^{4t}
 $$
 
-利用線性轉換的 MGF 公式，可得
+利用線性轉換的 mgf 公式，可得
 
 $$
 \begin{aligned}
@@ -334,7 +334,7 @@ e^tM_X(2t) \\[0.35em]
 \end{aligned}
 $$
 
-這個 MGF 同樣顯示 $Y$ 在 $3,5,7,9$ 四點上分別具有機率 $1/10,2/10,3/10,4/10$。
+這個 mgf 同樣顯示 $Y$ 在 $3,5,7,9$ 四點上分別具有機率 $1/10,2/10,3/10,4/10$。
 </div>
 
 ## 方法的適用情形
@@ -344,9 +344,9 @@ $$
 | 直接列表 | 可能取值有限或容易列出 | 列出 $x$、$g(x)$ 與 $p_X(x)$，再合併相同的轉換後取值 |
 | pmf 原像加總 | 任意離散型轉換 | 對所有滿足 $g(x)=y$ 的 $x$ 加總 $p_X(x)$ |
 | 一對一反函數 | $g$ 在 $\mathcal{R}_X$ 上一對一 | 使用 $p_Y(y)=p_X(g^{-1}(y))$ |
-| MGF | 所需區間內的 MGF 存在 | 計算 $M_Y(t)=\mathbb{E}(e^{t g(X)})$，再依唯一性辨認分配 |
+| mgf | 所需區間內的 mgf 存在 | 計算 $M_Y(t)=\mathbb{E}(e^{t g(X)})$，再依唯一性辨認分配 |
 
-直接列表與一對一反函數都來自 pmf 原像加總公式。MGF 則以另一種函數形式刻畫分配，而且同時適用於離散型與連續型隨機變數。已知 MGF 的形式或處理線性轉換時，MGF 法特別方便。
+直接列表與一對一反函數都來自 pmf 原像加總公式。mgf 則以另一種函數形式刻畫分配，而且同時適用於離散型與連續型隨機變數。已知 mgf 的形式或處理線性轉換時，mgf 法特別方便。
 
 ## 本篇小結
 
@@ -360,13 +360,13 @@ $$
 
 多個 $x$ 映到同一個 $y$ 時，必須把所有原像的機率相加。若 $g$ 在 $X$ 的可能取值集合上一對一，公式才可簡化為 $p_Y(y)=p_X(g^{-1}(y))$。
 
-線性轉換 $Y=aX+b$ 的 MGF 滿足 $M_Y(t)=e^{bt}M_X(at)$，但使用 MGF 辨認分配時仍須確認它在 $0$ 附近存在。
+線性轉換 $Y=aX+b$ 的 mgf 滿足 $M_Y(t)=e^{bt}M_X(at)$，但使用 mgf 辨認分配時仍須確認它在 $0$ 附近存在。
 
-[下一篇文章](/teaching-topics/continuous-random-variable-transformations/)將處理連續型隨機變數的函數轉換。離散型分配合併機率質量；連續型分配則須由 CDF 或 [Jacobian 公式](/teaching-topics/continuous-random-variable-transformations/#proposition-217)整理轉換後的密度。
+[下一篇文章](/teaching-topics/continuous-random-variable-transformations/)將處理連續型隨機變數的函數轉換。離散型分配合併機率質量；連續型分配則須由 cdf 或 [Jacobian 公式](/teaching-topics/continuous-random-variable-transformations/#proposition-217)整理轉換後的密度。
 
 ## 參考文獻與延伸閱讀
 
 - 黃文璋，2003，《機率論》，初版，華泰文化。
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.

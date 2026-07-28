@@ -23,7 +23,10 @@
   window.MathJax = {
     tex: {
       inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      macros: {
+        indep: '\\mathrel{\\perp\\!\\!\\!\\perp}'
+      }
     }
   };
 </script>

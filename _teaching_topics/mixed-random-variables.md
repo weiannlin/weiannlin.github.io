@@ -9,21 +9,21 @@ topic: 5
 order: 205
 permalink: /teaching-topics/mixed-random-variables/
 date: 2026-06-08
-published: true
-excerpt: "混合型隨機變數同時具有單點機率與連續密度。CDF 可同時呈現跳躍與連續累積，計算時則把離散部分加總、連續部分積分。"
+published: false
+excerpt: "混合型隨機變數同時具有單點機率與連續密度。cdf 可同時呈現跳躍與連續累積，計算時則把離散部分加總、連續部分積分。"
 ---
 
 [上一篇文章](/teaching-topics/continuous-random-variables-pdf/)討論了連續型隨機變數與 pdf。到目前為止，我們已經分別處理離散型與連續型隨機變數。離散型的機率集中在單點上，事件機率由 pmf 加總取得；連續型的單點不具有正機率，事件機率由 pdf 的面積取得。
 
 實際建模時，兩種情形可能同時出現。以每日降雨量為例，某一天完全沒有下雨時，降雨量正好等於 $0$，這是一個單點事件；若當天有下雨，降雨量則可能在某個區間內連續變動。這樣的隨機變數便稱為**混合型隨機變數 (mixed random variable)**。
 
-## CDF 同時記錄跳躍與連續累積
+## cdf 同時記錄跳躍與連續累積
 
-混合型隨機變數最適合先從 CDF 觀察。若某個點具有正機率，CDF 會在該點發生跳躍。若某段區間上的機率由密度面積取得，CDF 會在該區間上連續上升。
+混合型隨機變數最適合先從 cdf 觀察。若某個點具有正機率，cdf 會在該點發生跳躍。若某段區間上的機率由密度面積取得，cdf 會在該區間上連續上升。
 
 <figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/mixed-random-variable-cdf.svg" alt="混合型隨機變數的 CDF 在 0 發生跳躍，並在 0 到 1 之間連續上升。">
-  <figcaption><span class="topic-figure__label">Fig. 2.13.</span> 混合型隨機變數的 CDF 可能同時具有跳躍與連續上升。圖中 $x=0$ 的跳躍高度為 $\mathbb{P}(X=0)=1/3$，而 $0<x<1$ 的上升來自連續密度的累積。</figcaption>
+  <img src="/images/teaching-topics/mixed-random-variable-cdf.svg" alt="混合型隨機變數的 cdf 在 0 發生跳躍，並在 0 到 1 之間連續上升。">
+  <figcaption><span class="topic-figure__label">Fig. 2.13.</span> 混合型隨機變數的 cdf 可能同時具有跳躍與連續上升。圖中 $x=0$ 的跳躍高度為 $\mathbb{P}(X=0)=1/3$，而 $0<x<1$ 的上升來自連續密度的累積。</figcaption>
 </figure>
 
 <div id="definition-25" class="topic-box topic-box--definition" markdown="1">
@@ -49,23 +49,23 @@ $$
 \int_B f_X^{(c)}(x)\,dx
 $$
 
-則稱 $X$ 為**混合型隨機變數 (mixed random variable)**。將單點部分與連續部分各自正規化後，其 CDF 可唯一寫成
+則稱 $X$ 為**混合型隨機變數 (mixed random variable)**。將單點部分與連續部分各自正規化後，其 cdf 可唯一寫成
 
 $$
 F_X(x)=\alpha F_d(x)+(1-\alpha)F_c(x),
 \qquad x\in\mathbb{R}
 $$
 
-其中 $F_d$ 與 $F_c$ 分別是正規化後的離散型與連續型 CDF。若 $\alpha=0$，分配為純連續型；若 $\alpha=1$，分配為純離散型，這兩種情形都不稱為混合型。
+其中 $F_d$ 與 $F_c$ 分別是正規化後的離散型與連續型 cdf。若 $\alpha=0$，分配為純連續型；若 $\alpha=1$，分配為純離散型，這兩種情形都不稱為混合型。
 
 </div>
 
-此時只寫 pmf 或只寫 pdf 都不足以描述整個分配。pmf 只能記錄單點機率，pdf 的面積只能記錄連續部分。CDF 則仍可完整呈現兩者。
+此時只寫 pmf 或只寫 pdf 都不足以描述整個分配。pmf 只能記錄單點機率，pdf 的面積只能記錄連續部分。cdf 則仍可完整呈現兩者。
 
 <div id="example-25-mixed" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.5 (A CDF with a Jump at Zero)</div>
+<div class="topic-box__label">Example 2.5 (A cdf with a Jump at Zero)</div>
 
-令 $X$ 的 CDF 為
+令 $X$ 的 cdf 為
 
 $$
 F_X(x)=
@@ -77,7 +77,7 @@ F_X(x)=
 \right.
 $$
 
-這個 CDF 在 $x=0$ 的函數值為 $F_X(0)=1-0.8=0.2$，左極限為 $F_X(0^-)=0$，因此 $\mathbb{P}(X=0)=0.2$。當 $x>0$ 時，CDF 的導數為 $0.8e^{-x}$，這是連續部分對整體分配的密度。對任意 Borel 集合 $B$，完整分配可寫為
+這個 cdf 在 $x=0$ 的函數值為 $F_X(0)=1-0.8=0.2$，左極限為 $F_X(0^-)=0$，因此 $\mathbb{P}(X=0)=0.2$。當 $x>0$ 時，cdf 的導數為 $0.8e^{-x}$，這是連續部分對整體分配的密度。對任意 Borel 集合 $B$，完整分配可寫為
 
 $$
 \mathbb{P}(X\in B)
@@ -94,7 +94,7 @@ $$
 
 令 $X$ 表示某日降雨量，單位為公分。假設該日不下雨的機率為 $1/3$，因此 $\mathbb{P}(X=0)=1/3$。
 
-若該日有下雨，則降雨量落在 $0$ 到 $1$ 公分之間，且在此區間上均勻分配。若要寫出整體 CDF，可先把離散部分與連續部分各自寫成正規的分配函數。
+若該日有下雨，則降雨量落在 $0$ 到 $1$ 公分之間，且在此區間上均勻分配。若要寫出整體 cdf，可先把離散部分與連續部分各自寫成正規的分配函數。
 
 離散部分是完全沒下雨所造成的單點分配，記為 $F_d$，則
 
@@ -121,7 +121,7 @@ x, & 0<x<1,\\[0.35em]
 \right.
 $$
 
-整體分配由這兩個 CDF 按照發生比例混合。由於不下雨的機率為 $1/3$，下雨的機率為 $2/3$，故
+整體分配由這兩個 cdf 按照發生比例混合。由於不下雨的機率為 $1/3$，下雨的機率為 $2/3$，故
 
 $$
 F_X(x)
@@ -144,7 +144,7 @@ F_X(x)=
 \right.
 $$
 
-這個 CDF 在 $x=0$ 有跳躍，並在 $0<x<1$ 上連續上升。若已知當天有下雨，連續部分正規化後的 pdf 為
+這個 cdf 在 $x=0$ 有跳躍，並在 $0<x<1$ 上連續上升。若已知當天有下雨，連續部分正規化後的 pdf 為
 
 $$
 f_c(x)=
@@ -210,7 +210,7 @@ $$
 
 ## 本篇小結
 
-混合型隨機變數同時具有單點機率與連續密度。其 CDF 會在單點機率處發生跳躍，並在連續部分依密度面積向上累積。
+混合型隨機變數同時具有單點機率與連續密度。其 cdf 會在單點機率處發生跳躍，並在連續部分依密度面積向上累積。
 
 若事件同時包含單點與連續區間，便把相應的單點機率與連續密度積分相加。後續計算期望值、變異數與標準差時，也會沿用相同的拆分原則。
 
@@ -223,4 +223,4 @@ $$
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon M. Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.

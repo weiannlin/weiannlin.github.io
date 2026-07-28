@@ -29,8 +29,12 @@ layout: default
       </div>
     </header>
 
+    {% assign topic_category_label = page.category %}
+    {% if page.category == "機率概論" %}
+      {% assign topic_category_label = "機率論" %}
+    {% endif %}
     <div class="topic-meta">
-      <span class="topic-meta__category">{{ page.category }}</span>
+      <span class="topic-meta__category">{{ topic_category_label }}</span>
       <span class="topic-meta__sep">&middot;</span>
       <span class="topic-meta__chapter">Chapter {{ chapter_roman }}{% if page.topic %} &middot; Topic {{ page.topic }}{% endif %}</span>
     </div>
