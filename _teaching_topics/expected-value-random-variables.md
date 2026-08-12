@@ -10,6 +10,7 @@ order: 206
 permalink: /teaching-topics/expected-value-random-variables/
 date: 2026-06-06
 published: false
+listed: false
 excerpt: "分配說明隨機變數的機率在數線上的分配情形。期望值則依照這些機率作加權平均，給出隨機變數的平均位置。離散型以 pmf 加總，連續型以 pdf 積分。"
 ---
 

@@ -10,6 +10,7 @@ order: 217
 permalink: /teaching-topics/chernoff-inequality/
 date: 2026-07-13
 published: false
+listed: false
 excerpt: '車諾夫不等式把指數轉換放入馬可夫不等式，再對所有使指數動差有限的參數取下確界，得到可依參數調整的尾端機率上界。'
 ---
 

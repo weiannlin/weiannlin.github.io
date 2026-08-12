@@ -10,6 +10,7 @@ order: 221
 permalink: /teaching-topics/continuous-random-variable-transformations/
 date: 2026-07-13
 published: false
+listed: false
 excerpt: "連續型隨機變數經函數轉換後，可先由事件原像求 cdf；在一對一、連續可微且導數不為 $0$ 等條件下，也可使用 Jacobian 法求 pdf。多對一轉換則須分段並加總各原像分支。"
 ---
 
@@ -147,11 +148,11 @@ $$
 
 $$
 \Delta y
-\approx
+\fallingdotseq
 \lvert g^{\prime}(x)\rvert\,\Delta x,
 \qquad
 \Delta x
-\approx
+\fallingdotseq
 \left\lvert
 \frac{d}{dy}g^{-1}(y)
 \right\rvert\,\Delta y

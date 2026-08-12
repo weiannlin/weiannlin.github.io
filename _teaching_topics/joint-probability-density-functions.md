@@ -10,6 +10,7 @@ order: 303
 permalink: /teaching-topics/joint-probability-density-functions/
 date: 2026-07-24
 published: false
+listed: false
 excerpt: "當聯合分配可由二重積分表示時，聯合 pdf 描述平面各處的密度；區域機率則是該區域上方的密度體積。"
 ---
 
@@ -37,7 +38,7 @@ $$
 則稱 $(X,Y)$ 具有**聯合絕對連續分配 (jointly absolutely continuous distribution)**，並稱 $f_{XY}$ 為其**聯合機率密度函數 (joint probability density function, joint pdf)**。
 </div>
 
-[Definition 3.5](#definition-35) 與單變數的 [Definition 2.4](/teaching-topics/continuous-random-variables-pdf/#definition-24) 具有相同的形式。單變數的 cdf 是 pdf 在半直線上的單積分；聯合 cdf 則是 joint pdf 在左下矩形上的二重積分。相應地，密度曲線下方的面積也改為密度曲面下方的體積。
+[Definition 3.5](#definition-35) 與單變數的 [Definition 2.5](/teaching-topics/cdf-and-pdf/#def-pdf) 具有相同的形式。單變數的 cdf 是 pdf 在半直線上的單積分；聯合 cdf 則是 joint pdf 在左下矩形上的二重積分。相應地，密度曲線下方的面積也改為密度曲面下方的體積。
 
 這個定義也可用一般的平面區域表示。令 $\mu$ 表示 $(X,Y)$ 的聯合分配，並對 Borel 集合 (Borel set) $A\subseteq\mathbb{R}^2$ 定義
 

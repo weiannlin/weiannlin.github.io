@@ -5,222 +5,454 @@ layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 2
-topic: 5
-order: 205
+topic: 4
+order: 204
 permalink: /teaching-topics/mixed-random-variables/
 date: 2026-06-08
 published: false
-excerpt: "混合型隨機變數同時具有單點機率與連續密度。cdf 可同時呈現跳躍與連續累積，計算時則把離散部分加總、連續部分積分。"
+listed: false
+excerpt: "混合型隨機變數在某些單點上具有正機率，其餘部分則以密度累積機率。本篇由一個在原點跳躍的 cdf 求出其機率函數，再介紹分解定理: 任一 cdf 都可以寫成一個離散型 cdf 與一個連續型 cdf 的線性組合，其係數即離散質點的機率總和；當兩個部分都不退化時，這樣的分解是唯一的。"
 ---
 
-[上一篇文章](/teaching-topics/continuous-random-variables-pdf/)討論了連續型隨機變數與 pdf。到目前為止，我們已經分別處理離散型與連續型隨機變數。離散型的機率集中在單點上，事件機率由 pmf 加總取得；連續型的單點不具有正機率，事件機率由 pdf 的面積取得。
+[上一篇文章](/teaching-topics/cdf-and-pdf/)介紹了累積分配函數與機率密度函數。離散型的 cdf 呈階梯狀，在每一個質點上跳躍；連續型的 cdf 則連續而沒有跳躍。
 
-實際建模時，兩種情形可能同時出現。以每日降雨量為例，某一天完全沒有下雨時，降雨量正好等於 $0$，這是一個單點事件；若當天有下雨，降雨量則可能在某個區間內連續變動。這樣的隨機變數便稱為**混合型隨機變數 (mixed random variable)**。
+有一部分隨機變數，並不純粹是離散型隨機變數，亦不純粹是連續型隨機變數。其同時具備離散型隨機變數中具有單點機率，及連續型隨機變數中機率函數不是機率，這兩種重要的特性。我們將這種隨機變數稱作**混合型隨機變數 (mixed random variable)**。
 
-## cdf 同時記錄跳躍與連續累積
+我們在[隨機變數，從樣本空間到數線](/teaching-topics/random-variables-from-sample-space-to-real-line/#note-uncountable-not-continuous)曾經提過，值域為不可數無限並不足以保證 $X$ 為連續型，其中一種情形是某些單點仍具有正機率。混合型正是這樣的例子。
 
-混合型隨機變數最適合先從 cdf 觀察。若某個點具有正機率，cdf 會在該點發生跳躍。若某段區間上的機率由密度面積取得，cdf 會在該區間上連續上升。
+<span id="example-29"></span>
+<span id="definition-25"></span>
 
-<figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/mixed-random-variable-cdf.svg" alt="混合型隨機變數的 cdf 在 0 發生跳躍，並在 0 到 1 之間連續上升。">
-  <figcaption><span class="topic-figure__label">Fig. 2.13.</span> 混合型隨機變數的 cdf 可能同時具有跳躍與連續上升。圖中 $x=0$ 的跳躍高度為 $\mathbb{P}(X=0)=1/3$，而 $0<x<1$ 的上升來自連續密度的累積。</figcaption>
-</figure>
+## 由 cdf 的跳躍與導數求機率函數
 
-<div id="definition-25" class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 2.5</div>
+混合型的機率函數同樣可以由 cdf 求得: 跳躍的高度給出單點機率，可微部分的導數給出密度。下面這道例題便是這樣的計算。
 
-令 $X$ 為隨機變數，並令
+<div id="ex-mixed-cdf-density" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 2.13 (A Distribution with a Jump)</div>
 
-$$
-A=\lbrace x\in\mathbb{R}\mid \mathbb{P}(X=x)>0\rbrace,
-\qquad
-\alpha=\sum_{x\in A}\mathbb{P}(X=x)
-$$
-
-集合 $A$ 至多可數。這是因為對每個正整數 $m$，滿足 $\mathbb{P}(X=x)\geqslant 1/m$ 的 $x$ 至多只有 $m$ 個，而 $A$ 是這些有限集合的可數聯集。
-
-若 $0<\alpha<1$，且其餘機率在正規化後可由 pdf $f_c$ 描述，令連續部分對整體分配的密度為 $f_X^{(c)}(x)=(1-\alpha)f_c(x)$。若對任意 Borel 集合 $B$，皆有
+<div lang="en" markdown="1">
+A random variable $X$ has the distribution function
 
 $$
-\mathbb{P}(X\in B)
-=
-\sum_{x\in A\cap B}\mathbb{P}(X=x)
-+
-\int_B f_X^{(c)}(x)\,dx
-$$
-
-則稱 $X$ 為**混合型隨機變數 (mixed random variable)**。將單點部分與連續部分各自正規化後，其 cdf 可唯一寫成
-
-$$
-F_X(x)=\alpha F_d(x)+(1-\alpha)F_c(x),
-\qquad x\in\mathbb{R}
-$$
-
-其中 $F_d$ 與 $F_c$ 分別是正規化後的離散型與連續型 cdf。若 $\alpha=0$，分配為純連續型；若 $\alpha=1$，分配為純離散型，這兩種情形都不稱為混合型。
-
-</div>
-
-此時只寫 pmf 或只寫 pdf 都不足以描述整個分配。pmf 只能記錄單點機率，pdf 的面積只能記錄連續部分。cdf 則仍可完整呈現兩者。
-
-<div id="example-25-mixed" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.5 (A cdf with a Jump at Zero)</div>
-
-令 $X$ 的 cdf 為
-
-$$
-F_X(x)=
+F_{\sssig X}(x)=
 \left\{
 \begin{array}{c@{\quad}l}
-0, & x<0,\\[0.35em]
+0, & x<0\\[0.35em]
 1-0.8e^{-x}, & x\geqslant 0
 \end{array}
 \right.
 $$
 
-這個 cdf 在 $x=0$ 的函數值為 $F_X(0)=1-0.8=0.2$，左極限為 $F_X(0^-)=0$，因此 $\mathbb{P}(X=0)=0.2$。當 $x>0$ 時，cdf 的導數為 $0.8e^{-x}$，這是連續部分對整體分配的密度。對任意 Borel 集合 $B$，完整分配可寫為
-
-$$
-\mathbb{P}(X\in B)
-=
-0.2\,\mathbf{1}_B(0)
-+
-\int_{B\cap(0,\infty)}0.8e^{-x}\,dx
-$$
-
-其中 $\mathbf{1}_B(0)$ 為指標函數 (indicator function)；若 $0\in B$，其值為 $1$，否則為 $0$。若將連續部分正規化為總面積等於 $1$ 的分配，其 pdf 為 $f_c(x)=e^{-x}$，$x>0$，而該部分在整體分配中的比例為 $0.8$。因此，單點機率與連續密度須分開表示。
+Obtain the density function of $X$.
 </div>
 
-## 一個簡化的降雨量模型
+依 cdf 的定義，$F_{\sssig X}(0)=\mathbb{P}(X\leqslant 0)$ 而 $F_{\sssig X}(0^{-})=\mathbb{P}(X<0)$，兩者相減即為 $X=0$ 的單點機率，也就是 cdf 在該點跳躍的高度。此處 $F_{\sssig X}(0)=1-0.8=0.2$ 而 <span class="text-nowrap">$F_{\sssig X}(0^{-})=0$，故</span>
 
-令 $X$ 表示某日降雨量，單位為公分。假設該日不下雨的機率為 $1/3$，因此 $\mathbb{P}(X=0)=1/3$。
-
-若該日有下雨，則降雨量落在 $0$ 到 $1$ 公分之間，且在此區間上均勻分配。若要寫出整體 cdf，可先把離散部分與連續部分各自寫成正規的分配函數。
-
-離散部分是完全沒下雨所造成的單點分配，記為 $F_d$，則
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-F_d(x)=
+\mathbb{P}(X=0)=F_{\sssig X}(0)-F_{\sssig X}(0^{-})=1-0.8e^{0}-0=0.2
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(X=0)&=F_{\sssig X}(0)-F_{\sssig X}(0^{-})\\[0.45em]
+&=1-0.8e^{0}-0=0.2
+\end{aligned}
+$$
+
+</div>
+
+當 $x>0$ 時，$F_{\sssig X}(x)=1-0.8e^{-x}$ 可微，其導數 $F_{\sssig X}^{\prime}(x)=0.8e^{-x}$ 即 $f_{\sssig X}$ 在 $x>0$ 的值。故所求為
+
+$$
+f_{\sssig X}(x)=
 \left\{
 \begin{array}{c@{\quad}l}
-0, & x<0,\\[0.35em]
-1, & x\geqslant 0
-\end{array}
-\right.
-$$
-
-連續部分是已知當天有下雨後的降雨量分配，記為 $F_c$。在本例中，它是 $(0,1)$ 上的均勻分配，因此
-
-$$
-F_c(x)=
-\left\{
-\begin{array}{c@{\quad}l}
-0, & x\leqslant 0,\\[0.35em]
-x, & 0<x<1,\\[0.35em]
-1, & x\geqslant 1
-\end{array}
-\right.
-$$
-
-整體分配由這兩個 cdf 按照發生比例混合。由於不下雨的機率為 $1/3$，下雨的機率為 $2/3$，故
-
-$$
-F_X(x)
-=
-\frac{1}{3}F_d(x)
-+
-\frac{2}{3}F_c(x)
-$$
-
-將 $F_d$ 與 $F_c$ 代入後，可得
-
-$$
-F_X(x)=
-\left\{
-\begin{array}{c@{\quad}l}
-0, & x<0,\\[0.35em]
-\frac{1}{3}+\frac{2}{3}x, & 0\leqslant x<1,\\[0.35em]
-1, & x\geqslant 1
-\end{array}
-\right.
-$$
-
-這個 cdf 在 $x=0$ 有跳躍，並在 $0<x<1$ 上連續上升。若已知當天有下雨，連續部分正規化後的 pdf 為
-
-$$
-f_c(x)=
-\left\{
-\begin{array}{c@{\quad}l}
-1, & 0<x<1,\\[0.35em]
+0.2, & x=0\\[0.35em]
+0.8e^{-x}, & x>0\\[0.35em]
 0, & \text{otherwise}
 \end{array}
 \right.
 $$
 
-連續部分對整體分配的密度為 $f_X^{(c)}(x)=(2/3)f_c(x)$。因此，對任意 Borel 集合 $B$，完整分配可寫為
+</div>
+
+<div id="note-mixed-density-meaning" class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+上式的 $f_{\sssig X}$ 在 $x=0$ 取的值 $0.2$ 是一個機率，在 $x>0$ 取的值 $0.8e^{-x}$ 則是一個密度，兩者不是同一件事情。這正是混合型同時具備的兩個特性: 離散部分具有單點機率，連續部分的機率函數不是機率。要計算事件機率時，落在單點上的部分用加總，落在區間上的部分用積分。
+
+</div>
+
+<figure id="fig-mixed-cdf" class="topic-figure topic-figure--wide">
+  <img src="/images/teaching-topics/mixed-random-variable-cdf.svg" alt="混合型隨機變數的 cdf。函數在 x 小於 0 時為 0，在 x 等於 0 處由 0 跳到 0.2，圖中以雙向箭頭標出這段跳躍，並註明其高度即 X 等於 0 的機率 0.2；其後沿 1 減 0.8 乘 e 的負 x 次方連續上升，並以 1 為水平漸近線。">
+  <figcaption><span class="topic-figure__label">Fig. 2.14.</span> Example 2.13 的 cdf: 在 $x=0$ 由 $0$ <span class="text-nowrap">跳到 $0.2$，</span>跳躍高度即單點機率 <span class="text-nowrap">$\mathbb{P}(X=0)=0.2$；</span>其後沿 $1-0.8e^{-x}$ 連續上升，並以 $1$ 為水平漸近線。</figcaption>
+</figure>
+
+由圖可見，$x=0$ 的跳躍高度就是單點機率 <span class="text-nowrap">$0.2$，</span>而 $x>0$ 的連續上升則來自密度 $0.8e^{-x}$ 的累積。
+
+## 分解定理
+
+混合型隨機變數，可以看成是由一個完整的離散型隨機變數，與一個完整的連續型隨機變數，經由線性組合而得，這一點不論在 pdf 或是 cdf 都通用。以 [Example 2.13](#ex-mixed-cdf-density) 而言，我們可以將其 cdf 寫為
 
 $$
-\mathbb{P}(X\in B)
-=
-\frac{1}{3}\mathbf{1}_B(0)
-+
-\frac{2}{3}\int_{B\cap(0,1)}1\,dx
+F_{\sssig X}(x)=0.2\,F_{\sssig d}(x)+0.8\,F_{\sssig c}(x)
 $$
 
-第一項是 $x=0$ 的單點機率，第二項是連續區間的密度面積，兩者在計算事件機率時相加。
+其中，離散部分的 cdf 為
+
+$$
+F_{\sssig d}(x)=
+\left\{
+\begin{array}{c@{\quad}l}
+0, & x<0\\[0.35em]
+1, & x\geqslant 0
+\end{array}
+\right.
+$$
+
+連續部分的 cdf 則為
+
+$$
+F_{\sssig c}(x)=
+\left\{
+\begin{array}{c@{\quad}l}
+0, & x<0\\[0.35em]
+1-e^{-x}, & x\geqslant 0
+\end{array}
+\right.
+$$
+
+在上面的拆解中，可以發現 $F_{\sssig d}(x)$ 與 $F_{\sssig c}(x)$ 分別是正規的離散型 cdf 與連續型 cdf。事實上，這裡的離散 cdf 與連續 cdf，及其線性組合的係數都是唯一的，此即下列的**分解定理 (decomposition theorem)**。
+
+<div id="thm-decomposition" class="topic-box topic-box--theorem" markdown="1">
+<div class="topic-box__label">Theorem 2.7 (Decomposition Theorem)</div>
+
+若 $X$ 為一隨機變數，且 $F_{\sssig X}(x)$ 為其 cdf，則其可分解為
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+F_{\sssig X}(x)=\alpha F_{\sssig d}(x)+(1-\alpha)F_{\sssig c}(x),\qquad 0\leqslant\alpha\leqslant 1
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+F_{\sssig X}(x)=\alpha F_{\sssig d}(x)+(1-\alpha)F_{\sssig c}(x)\\[0.4em]
+0\leqslant\alpha\leqslant 1
+\end{gathered}
+$$
+
+</div>
+
+其中，$F_{\sssig d}(x)$ 表一離散隨機變數的 cdf，$F_{\sssig c}(x)$ 表一連續隨機變數的 cdf；當 $0<\alpha<1$ 時，此分解必定唯一。
+
+</div>
+
+在進行分解的過程中，可先尋找線性組合的係數 $\alpha$，這個係數將等於離散質點的機率總和。在 [Example 2.13](#ex-mixed-cdf-density) 中即為
+
+$$
+\alpha=0.2
+$$
+
+整體而言，尋找 $\alpha$、$F_{\sssig d}(x)$ 與 $F_{\sssig c}(x)$ 的步驟如下:
+
+(1) 令 $x_1<x_2<\cdots<x_k$ 表該分配之所有離散質點，對應之機率分別為 $p_1,\ldots,p_k$，則
+{: .topic-paren-item}
+
+$$
+\alpha=\sum_{i=1}^{k}p_i
+$$
+
+並令
+{: .topic-paren-cont}
+
+$$
+F_{\sssig 1}(x)=
+\left\{
+\begin{array}{c@{\quad}l}
+0, & x<x_1\\[0.35em]
+p_1, & x_1\leqslant x<x_2\\[0.35em]
+p_1+p_2, & x_2\leqslant x<x_3\\[0.35em]
+\vdots & \\[0.35em]
+\sum\limits_{i=1}^{k}p_i, & x\geqslant x_k
+\end{array}
+\right.
+$$
+
+(2) $F_{\sssig 1}(x)$ 未必為一 cdf，則可令
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+F_{\sssig d}(x)=\frac{1}{\alpha}F_{\sssig 1}(x)=
+\left\{
+\begin{array}{c@{\quad}l}
+0, & x<x_1\\[0.35em]
+\dfrac{p_1}{\alpha}, & x_1\leqslant x<x_2\\[0.35em]
+\vdots & \\[0.35em]
+1, & x\geqslant x_k
+\end{array}
+\right.
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+F_{\sssig d}(x)&=\frac{1}{\alpha}F_{\sssig 1}(x)\\[0.45em]
+&=
+\left\{
+\begin{array}{c@{\quad}l}
+0, & x<x_1\\[0.35em]
+\dfrac{p_1}{\alpha}, & x_1\leqslant x<x_2\\[0.35em]
+\vdots & \\[0.35em]
+1, & x\geqslant x_k
+\end{array}
+\right.
+\end{aligned}
+$$
+
+</div>
+
+此即離散型 cdf。
+{: .topic-paren-cont}
+
+(3) 令 $F_{\sssig 2}(x)=F_{\sssig X}(x)-F_{\sssig 1}(x)$，則 $F_{\sssig 2}(x)$ 未必為一 cdf，可令
+{: .topic-paren-item}
+
+$$
+F_{\sssig c}(x)=\frac{1}{\,1-\alpha\,}F_{\sssig 2}(x)
+$$
+
+此即連續型 cdf。
+{: .topic-paren-cont}
+
+事實上，讀者將會發現，實際上在拆解的流程，並不是先知道 $F_{\sssig d}(x)$ 與 $F_{\sssig c}(x)$ 為何，而是先尋找 $\alpha$，再將 $F_{\sssig 1}(x)$ 與 $F_{\sssig 2}(x)$ 這二個未必是 cdf 的函數，進行修正而得。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-若從條件分配的角度描述，下雨時的降雨量可視為在 $(0,1)$ 上的均勻分配，其 pdf $f_c$ 的總面積為 $1$。乘上下雨的機率 $2/3$ 後，$f_X^{(c)}$ 的總面積才是連續部分在整體分配中所占的機率 $2/3$。
+讀者應該沒有忘記，[Theorem 2.1](/teaching-topics/cdf-and-pdf/#thm-cdf-properties) 中指出，任何的 cdf (不論離散或連續)，其函數值都是從 $0$ 開始，而以 $1$ 結尾，因此需要進行修正，才能夠將其變為正規的 cdf。
+
 </div>
 
-## 離散加總與連續積分一起使用
+<div id="note-decomposition-special-cases" class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
 
-混合型隨機變數的計算方式很直接。若事件包含某個具有正機率的單點，就把該點機率加進來；若事件包含某段連續區間，就再加上該區間的密度面積。
+這其中的特例如下:
 
-<div id="example-29" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.6 (A Mixed Rainfall Model)</div>
+**[當 $\alpha=0$ 時]**
 
-延續上面的降雨量模型。若要求 $X\leqslant 1/2$ 的機率，事件可拆成兩部分。第一部分是完全沒下雨，也就是 $X=0$；第二部分是有下雨，且降雨量落在 $(0,1/2]$。
+$$
+F_{\sssig X}(x)=F_{\sssig c}(x)
+$$
 
-依上述兩部分拆分，所求機率為
+此即 $X$ 為一個純粹的連續型隨機變數。
+
+**[當 $\alpha=1$ 時]**
+
+$$
+F_{\sssig X}(x)=F_{\sssig d}(x)
+$$
+
+此即 $X$ 為一個純粹的離散型隨機變數。
+
+上列三個步驟中，第 (2) 步除以 $\alpha$、第 (3) 步除以 $1-\alpha$，故三個步驟以 $0<\alpha<1$ 為前提。$\alpha=0$ 與 $\alpha=1$ 這兩個特例，直接由本則的兩個等式得到。
+
+</div>
+
+## pdf 的分解
+
+分解定理的概念，並不僅限於 cdf 的分解，其同樣適用於混合型 pdf 的分解，下面我們就來看一個這樣的例子。
+
+<div id="ex-component-lifetime" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 2.14 (Length of Life of Electronic Components)</div>
+
+<div lang="en" markdown="1">
+Let $Y$ denote the length of life (in hundreds of hours) of electronic components. These components frequently fail immediately upon insertion into a system. It has been observed that the probability of immediate failure is $\frac{1}{4}$. If a component does not fail immediately, the distribution for its length of life has the exponential density function
+
+$$
+g(y)=
+\left\{
+\begin{array}{c@{\quad}l}
+e^{-y}, & y>0\\[0.35em]
+0, & \text{elsewhere}
+\end{array}
+\right.
+$$
+
+(1) Find the pdf and cdf of $Y$, also evaluate $\mathbb{P}(Y>1)$.
+{: .topic-paren-item}
+</div>
+
+**(1)** 由於元件有 $\frac{1}{4}$ 的機率在裝上系統時馬上就壞掉，故我們可以假設馬上壞掉的元件，其壽命分配的 pmf 為
+
+$$
+f_{\sssig d}(y)=
+\left\{
+\begin{array}{c@{\quad}l}
+1, & y=0\\[0.35em]
+0, & \text{elsewhere}
+\end{array}
+\right.
+$$
+
+此即離散部分。並且由題意知道，不會馬上壞掉的元件，其壽命分配的 pdf 為
+
+$$
+f_{\sssig c}(y)=g(y)=
+\left\{
+\begin{array}{c@{\quad}l}
+e^{-y}, & y>0\\[0.35em]
+0, & \text{elsewhere}
+\end{array}
+\right.
+$$
+
+此即連續部分。則整體元件的壽命分配可以視為二種分配的線性組合，且混合比例為 $\frac{1}{4}$，此即
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+f_{\sssig Y}(y)=\frac{1}{4}f_{\sssig d}(y)+\frac{3}{4}f_{\sssig c}(y)=
+\left\{
+\begin{array}{c@{\quad}l}
+\dfrac{1}{4}, & y=0\\[0.5em]
+\dfrac{3}{4}e^{-y}, & y>0\\[0.5em]
+0, & \text{elsewhere}
+\end{array}
+\right.
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
 \begin{aligned}
-\mathbb{P}\left(X\leqslant\frac{1}{2}\right)
+f_{\sssig Y}(y)&=\frac{1}{4}f_{\sssig d}(y)+\frac{3}{4}f_{\sssig c}(y)\\[0.45em]
 &=
-\mathbb{P}(X=0)
-+\mathbb{P}\left(0<X\leqslant\frac{1}{2}\right) \\[0.45em]
-&=
-\frac{1}{3}
-+\frac{2}{3}\int_0^{1/2}1\,dx \\[0.45em]
-&=
-\frac{1}{3}+\frac{1}{3}
-=
-\frac{2}{3}
+\left\{
+\begin{array}{c@{\quad}l}
+\dfrac{1}{4}, & y=0\\[0.5em]
+\dfrac{3}{4}e^{-y}, & y>0\\[0.5em]
+0, & \text{elsewhere}
+\end{array}
+\right.
 \end{aligned}
 $$
 
-這個例子同時使用了離散型的加總與連續型的積分。
 </div>
 
-## 後續量數仍使用相同拆分原則
+cdf 亦可以用二種類型的 cdf 經由線性組合得到，故先算出離散部分的 cdf
 
-後續定義期望值、變異數與標準差時，仍會把單點部分加總、把連續部分積分，再依各自的混合比例合併。因此，混合型隨機變數並非使用第三套計算方法，而是要求我們同時保留單點機率與連續密度。
+$$
+F_{\sssig d}(y)=
+\left\{
+\begin{array}{c@{\quad}l}
+0, & y<0\\[0.35em]
+1, & y\geqslant 0
+\end{array}
+\right.
+$$
+
+與連續部分的 cdf
+
+$$
+F_{\sssig c}(y)=
+\left\{
+\begin{array}{c@{\quad}l}
+0, & y<0\\[0.35em]
+1-e^{-y}, & y\geqslant 0
+\end{array}
+\right.
+$$
+
+且以此進行線性組合得到
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+F_{\sssig Y}(y)=\frac{1}{4}F_{\sssig d}(y)+\frac{3}{4}F_{\sssig c}(y)=
+\left\{
+\begin{array}{c@{\quad}l}
+0, & y<0\\[0.5em]
+1-\dfrac{3}{4}e^{-y}, & y\geqslant 0
+\end{array}
+\right.
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+F_{\sssig Y}(y)&=\frac{1}{4}F_{\sssig d}(y)+\frac{3}{4}F_{\sssig c}(y)\\[0.45em]
+&=
+\left\{
+\begin{array}{c@{\quad}l}
+0, & y<0\\[0.5em]
+1-\dfrac{3}{4}e^{-y}, & y\geqslant 0
+\end{array}
+\right.
+\end{aligned}
+$$
+
+</div>
+
+則所求為
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(Y>1)=1-F_{\sssig Y}(1)=1-\left(1-\frac{3}{4}e^{-1}\right)\fallingdotseq 0.2759
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(Y>1)&=1-F_{\sssig Y}(1)\\[0.45em]
+&=1-\left(1-\frac{3}{4}e^{-1}\right)\\[0.45em]
+&\fallingdotseq 0.2759
+\end{aligned}
+$$
+
+</div>
+
+</div>
 
 ## 本篇小結
 
-混合型隨機變數同時具有單點機率與連續密度。其 cdf 會在單點機率處發生跳躍，並在連續部分依密度面積向上累積。
+混合型隨機變數同時具備兩種特性: 像離散型一樣，某些單點具有正機率；像連續型一樣，機率函數在其餘部分不是機率而是密度。
 
-若事件同時包含單點與連續區間，便把相應的單點機率與連續密度積分相加。後續計算期望值、變異數與標準差時，也會沿用相同的拆分原則。
+[分解定理](#thm-decomposition)指出，任一隨機變數的 cdf 都可以寫成
 
-下一篇[期望值，隨機變數的平均位置](/teaching-topics/expected-value-random-variables/)會開始討論如何用機率權重整理一個代表分配位置的數值。
+$$
+F_{\sssig X}(x)=\alpha F_{\sssig d}(x)+(1-\alpha)F_{\sssig c}(x)
+$$
+
+其中 $F_{\sssig d}$ 為一離散型 cdf、$F_{\sssig c}$ 為一連續型 cdf，而 $\alpha$ 為離散質點的機率總和，且當 $0<\alpha<1$ 時這樣的分解必定唯一。$\alpha=0$ 時 $X$ 為純粹的連續型隨機變數，$\alpha=1$ 時 $X$ 為純粹的離散型隨機變數。
+
+同一個線性組合也適用於 pdf。把離散部分的 pmf 與連續部分的 pdf 依混合比例組合，即得混合型的機率函數，[Example 2.14](#ex-component-lifetime) 的電子元件壽命便是這樣的例子。
+
+至此，隨機變數的三種型態都已介紹完畢。下一篇[期望值，隨機變數的平均位置](/teaching-topics/expected-value-random-variables/)開始討論如何以機率為權重，整理出描述一個分配的量數。
 
 ## 參考文獻與延伸閱讀
 
-- 黃文璋，2003，《機率論》，初版，華泰文化。
+- 黃文璋，2010，《機率論》，二版，華泰文化。
 - 黃文璋，2003，《數理統計》，初版，華泰文化。
-- Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
-- William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
-- George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
 - Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.
+- George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
+- Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.

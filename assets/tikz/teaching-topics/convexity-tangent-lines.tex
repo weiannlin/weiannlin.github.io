@@ -1,0 +1,158 @@
+% Fig. 2.21 / spec Fig A23 + A24 -- a convex function with its tangent line
+%   below it, and a concave function with its tangent line above it.
+% Source: mathstatch2.tex lines 4077-4095 and 4100-4118, two separate
+%   tikzpictures which spec 1.3 item 7 requires to become one picture sharing
+%   one x range, one y scale and one axis length.  Panels are stacked, as in
+%   skewness-coefficients.tex (Fig. 2.17) and as the prose of P221 assumes
+%   ("the upper panel" / "the lower panel").
+%
+% Functions and the one number that matters, the slope:
+%   convex   g(x) = 0.0784 (x - 2.3)^2 + 1        drawn on [0.5, 7.5]
+%   concave  h(x) = 2.8 - 0.0784 (x - 2.3)^2      drawn on [0.5, 7.5]
+% Tangency at a = 4.1, so
+%   g(4.1) = 0.0784 x 1.8^2 + 1 = 0.254016 + 1 = 1.254016
+%   g'(4.1) = 0.1568 x 1.8 = 0.28224
+%   h(4.1) = 2.8 - 0.254016 = 2.545984      h'(4.1) = -0.28224
+% and the tangent segments, drawn over exactly the interval of the curve so
+% that spec 1.8 item 3 is met, run
+%   convex   (0.5, 0.237952) -- (7.5, 2.213632)
+%              1.254016 -+ 0.28224 x 3.6 = 0.237952 and
+%              1.254016 +  0.28224 x 3.4 = 2.213632
+%   concave  (0.5, 3.562048) -- (7.5, 1.586368)
+% The vertical separation between line and curve is 0.0784 (x - 4.1)^2 in both
+% panels: zero only at x = 4.1, so each line meets its curve at the point of
+% tangency and nowhere else.  This is the whole point of the figure and is the
+% reason the manuscript's own slope cannot be used (see below).
+%
+% Deviations from CH2_FIGURE_SPECS.md:
+%
+% 1. Spec A23 and A24 record the manuscript's tangent segments, whose slope is
+%    +-0.257143 = +-1.8/7, read off two endpoints rather than differentiated
+%    (spec 1.8 item 1, spec 3.2 item 9).  At that slope the "tangent" of the
+%    convex panel crosses the curve and runs above it on x in (3.779, 4.1),
+%    contradicting the property the figure exists to show.  The analytic
+%    derivative +-0.28224 is used instead, as spec 1.8 directs.
+%
+% 2. The Chinese labels of the manuscript panels are gone, per spec 1.4;
+%    convexity and concavity are named in the caption of P221 instead.
+%
+% 3. Spec A23 puts the tangent's label to the right of (7.6, 2.154016), which
+%    is past the end of the x axis at 8.2 and so breaks spec 1.3 item 4.  Both
+%    labels are shortened to $\ell(x)$ (the caption gives the full
+%    g'(a)(x - a) + g(a)) and set at the left end of each line, per the same
+%    spec note.  In the convex panel the label sits above the line, in the
+%    concave panel below it, i.e. on the side away from the curve; each box
+%    clears its own line by 0.197cm at the near corner and its curve by
+%    0.424cm.
+%
+% 4. The manuscript writes E for the expectation; the site writes \mathbb{E}.
+%    No expectation occurs in this figure, but the sibling jensen-inequality
+%    figure follows the site's convention and this note records why.
+%
+% Placement of every text node.  With x = 0.89cm and y = 1.15cm the 0.18cm of
+% spec 1.3 item 5 is 0.2022 x-units and 0.1565 y-units; the clearances below
+% are the ones measured back off the finished SVG, at the binding corner in
+% each case, and all of them clear 0.18cm:
+%   upper  $g(x)$      south east at (7.5, 3.2765): curve 0.232cm below the
+%                      ink, 0.194cm from the end of the curve read diagonally
+%          $\ell(x)$   south west at (0.15, 0.4925): line 0.197cm below the
+%                      ink at the box's right edge, curve 0.424cm above
+%          $(a, g(a))$ north west at the point, +0.30cm / -0.30cm: point
+%                      0.244cm above, tangent 0.43cm above, axis 0.819cm below
+%   lower  $h(x)$      north east at (7.5, 0.5235): curve 0.231cm above the
+%                      ink, 0.193cm diagonally, axis 0.244cm below
+%          $\ell(x)$   north west at (0.15, 3.3075): line 0.197cm above the
+%                      ink at the box's right edge, curve 0.424cm below
+%          $(a, h(a))$ south west at the point, +0.30cm / +0.30cm: point
+%                      0.244cm below, tangent 0.43cm below
+% Both panels are drawn on the same x window [0, 8.2], the same y unit and the
+% same axis length, and an unstroked \path pins each panel's window to
+% [0, 3.65] on y so that the two are boxes of exactly one size; the tallest
+% ink stands at 3.5884 in the upper panel and 3.5622 in the lower, so they
+% also read at the same height.  The panels stand 0.53cm apart.
+%
+% Size and type.  Native 222.728 x 263.966 pt = 7.857 x 9.311 cm, inside the
+% 9.0cm cap of spec 1.3 and inside the 7.9cm this figure needs: it sits in a
+% topic-box--note, whose figure column is 602px on the desktop and 309px on a
+% 390px phone rather than the 620/350px of body text.  A mark of S pt shows at
+% S x 0.99626 x <display width> / 222.728 px, so
+%     display width      309px (390px phone)   602px (desktop)
+%      9pt \small        12.44px               24.24px
+%     10pt text          13.82px               26.93px
+% The smallest type in the picture is the \small of the two point labels
+% $(a, g(a))$ and $(a, h(a))$ at 12.44px, above the 12px floor; no script or
+% scriptscript size occurs anywhere in the figure, so 12.44px really is the
+% smallest mark and not merely the smallest label.  \DeclareMathSizes is kept
+% for uniformity with the other files of the chapter.
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usetikzlibrary{arrows.meta}
+\DeclareMathSizes{10}{10}{9}{8}
+\DeclareMathSizes{9}{9}{8}{7}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\newcommand{\convexg}[1]{0.0784*(#1-2.3)*(#1-2.3)+1}
+\newcommand{\concaveh}[1]{2.8-0.0784*(#1-2.3)*(#1-2.3)}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=0.89cm,
+  y=1.15cm,
+  every node/.style={font=\normalsize, journalink},
+  axis/.style={journalink, line width=0.8pt, -{Stealth[length=4pt]}},
+  curve/.style={journalink, line width=0.8pt},
+  tangent/.style={journalaccent, line width=0.8pt},
+  dot/.style={circle, fill=journalink, inner sep=0pt, minimum size=3.6pt}
+]
+
+% =====================================================================
+% upper panel: the convex g, its tangent at a = 4.1 lying below it
+% =====================================================================
+\begin{scope}[yshift=0cm]
+  % pin the panel window to [0, 3.65] on y, so both panels are boxes of one
+  % size and the shared y range is exact rather than merely implied by the ink
+  \path (0,0) (0,3.65);
+  \draw[curve] plot[domain=0.5:7.5, samples=300, smooth]
+    (\x,{\convexg{\x}});
+  \draw[tangent] (0.5,0.237952) -- (7.5,2.213632);
+
+  \draw[axis] (0,0) -- (8.2,0);
+  \node[anchor=west, inner sep=2.8pt] at (8.2,0) {$x$};
+
+  \node[dot] at (4.1,1.254016) {};
+  \node[anchor=north west, inner sep=0pt, xshift=0.3cm, yshift=-0.3cm]
+    at (4.1,1.254016) {\small $(a, g(a))$};
+
+  \node[anchor=south east, inner sep=0pt] at (7.5,3.2765) {$g(x)$};
+  \node[journalaccent, anchor=south west, inner sep=0pt]
+    at (0.15,0.4925) {$\ell(x)$};
+\end{scope}
+
+% =====================================================================
+% lower panel: the concave h, its tangent at a = 4.1 lying above it
+% =====================================================================
+\begin{scope}[yshift=-4.80cm]
+  \path (0,0) (0,3.65);
+  \draw[curve] plot[domain=0.5:7.5, samples=300, smooth]
+    (\x,{\concaveh{\x}});
+  \draw[tangent] (0.5,3.562048) -- (7.5,1.586368);
+
+  \draw[axis] (0,0) -- (8.2,0);
+  \node[anchor=west, inner sep=2.8pt] at (8.2,0) {$x$};
+
+  \node[dot] at (4.1,2.545984) {};
+  \node[anchor=south west, inner sep=0pt, xshift=0.3cm, yshift=0.3cm]
+    at (4.1,2.545984) {\small $(a, h(a))$};
+
+  \node[anchor=north east, inner sep=0pt] at (7.5,0.5235) {$h(x)$};
+  \node[journalaccent, anchor=north west, inner sep=0pt]
+    at (0.15,3.3075) {$\ell(x)$};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}

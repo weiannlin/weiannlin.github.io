@@ -10,6 +10,7 @@ order: 208
 permalink: /teaching-topics/linear-transformations-standardization/
 date: 2026-06-12
 published: false
+listed: false
 excerpt: "線性轉換會平移或伸縮隨機變數的尺度。標準化則先扣掉平均位置，再除以標準差，使不同尺度下的數值可以用 z-score 比較相對位置。"
 ---
 

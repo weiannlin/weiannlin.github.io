@@ -10,6 +10,7 @@ order: 216
 permalink: /teaching-topics/chebyshev-cantelli-inequalities/
 date: 2026-07-13
 published: false
+listed: false
 excerpt: '柴比雪夫不等式利用期望值與變異數控制雙邊偏離機率；坎特利不等式再針對單一方向給出更精確的界限。'
 ---
 
@@ -292,7 +293,7 @@ $$
 \frac{80{,}000^2}{80{,}000^2+400{,}000^2} \\[0.35em]
 &=
 \frac{1}{26}
-\approx
+\fallingdotseq
 0.03846
 \end{aligned}
 $$

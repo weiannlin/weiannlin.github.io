@@ -10,6 +10,7 @@ order: 215
 permalink: /teaching-topics/markov-inequality/
 date: 2026-07-13
 published: false
+listed: false
 excerpt: '馬可夫不等式只使用非負性與期望值，便能給出尾端機率的上界。它不需要知道完整分配，也是柴比雪夫不等式與其他動差界限的起點。'
 ---
 

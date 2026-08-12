@@ -15,8 +15,8 @@
   \draw[journalink, line width=0.8pt, rounded corners=2pt] \panelbox;
   \draw[journalink, line width=0.8pt] \circA;
   \draw[journalink, line width=0.8pt] \circB;
-  \node[journalink, font=\small] at (-0.53,0) {$A\cap B'$};
-  \node[journalink, font=\small] at (1.73,0) {$A'\cap B$};
+  \node[journalink, font=\small] at (-0.53,0) {$A\cap B^{\prime}$};
+  \node[journalink, font=\small] at (1.73,0) {$A^{\prime}\cap B$};
   \node[journalink, font=\small] at (0.6,0) {$A\cap B$};
   \node[journalink] at (-1.1,1.1) {$A$};
   \node[journalink] at (2.3,1.1) {$B$};
@@ -36,7 +36,7 @@
     \twocircleframe
     \panelcaption{$A\cup B$}
     \spacelabel
-    \node[journalink] at (3.8,0) {$\Longrightarrow$};
+    \node[journalink] at (3.55,0) {$\Longrightarrow$};
   \end{scope}
 
   %% Row 1, right: (A cup B)' = A' cap B'
@@ -49,7 +49,7 @@
       \end{scope}
     \end{scope}
     \twocircleframe
-    \panelcaption{$(A\cup B)'$}
+    \panelcaption{$(A\cup B)^{\prime}$}
     \spacelabel
   \end{scope}
 
@@ -62,7 +62,7 @@
     \twocircleframe
     \panelcaption{$A\cap B$}
     \spacelabel
-    \node[journalink] at (3.8,0) {$\Longrightarrow$};
+    \node[journalink] at (3.55,0) {$\Longrightarrow$};
   \end{scope}
 
   %% Row 2, right: (A cap B)' = A' cup B'
@@ -76,7 +76,7 @@
       \path[accentfill] \circA;
     \end{scope}
     \twocircleframe
-    \panelcaption{$(A\cap B)'$}
+    \panelcaption{$(A\cap B)^{\prime}$}
     \spacelabel
   \end{scope}
 

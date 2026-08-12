@@ -19,33 +19,33 @@ excerpt: "機率論先由隨機實驗開始，整理實驗所有可能的結果�
 
 ## 確定現象與隨機現象
 
-在日常生活與自然界中，我們所能觀察到的現象 (phenomenon) 通常可先粗略分成兩類。
+在日常生活與自然界中，我們所能觀察到的現象 <span lang="en">(phenomenon)</span> 通常可先粗略分成兩類。
 
 <div class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.1</div>
 
-**確定現象 (deterministic phenomenon)** 是指在一定條件之下進行，就一定會發生，或者一定不會發生的現象。例如，在一大氣壓之下，將水加熱至 $100^\circ\mathrm{C}$ 便會沸騰。過去我們所學過的諸多自然定律都符合這個現象。
+**確定現象 <span lang="en">(deterministic phenomenon)</span>** 是指在一定條件之下進行，就一定會發生，或者一定不會發生的現象。例如，在一大氣壓之下，將水加熱至 $100^\circ\mathrm{C}$ 便會沸騰。過去我們所學過的諸多自然定律都符合這個現象。
 </div>
 
 <div class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.2</div>
 
-**隨機現象 (random phenomenon)** 是指不能事先知道結果的現象。例如賭博時投擲一顆骰子，並不能夠事前就知道出現的點數，即可視為一種隨機現象。此種現象具有**不確定性 (uncertainty)**，因此不能被事前預知其結果；但它往往仍伴隨一定程度的規律，使研究者可以度量其發生的**可能性**，也就是**機率 (probability)**。整個**機率論 (probability theory)** 就是在探討這樣的規律性。
+**隨機現象 <span lang="en">(random phenomenon)</span>** 是指不能事先知道結果的現象。例如賭博時投擲一顆骰子，並不能夠事前就知道出現的點數，即可視為一種隨機現象。此種現象具有**不確定性 <span lang="en">(uncertainty)</span>**，因此不能被事前預知其結果；但它往往仍伴隨一定程度的規律，使研究者可以度量其發生的**可能性**，也就是**機率 <span lang="en">(probability)</span>**。整個**機率論 <span lang="en">(probability theory)</span>** 就是在探討這樣的規律性。
 </div>
 
 確定現象強調「在同樣條件下，結果可以被事前肯定」。隨機現象則強調「單次結果無法事前肯定，但大量重複時可能呈現規律」。機率論研究的正是後者。
 
 ## 隨機實驗
 
-要把隨機現象轉成數學上可以討論的問題，我們先將觀察的過程稱為實驗 (experiment)。如果這個實驗在相同條件下重複操作時，仍無法事先預知結果，則稱為隨機實驗。
+要把隨機現象轉成數學上可以討論的問題，我們先將觀察的過程稱為實驗 <span lang="en">(experiment)</span>。如果這個實驗在相同條件下重複操作時，仍無法事先預知結果，則稱為隨機實驗。
 
 <div class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.3</div>
 
-一個**隨機實驗 (random experiment)** 是指具有下列三個性質的實驗。
+一個**隨機實驗 <span lang="en">(random experiment)</span>** 是指具有下列三個性質的實驗。
 
 <ol class="topic-list-paren">
-  <li>實驗所有可能的<strong>結果 (outcomes)</strong> 在實驗開始前即已知。</li>
+  <li>實驗所有可能的<strong>結果 <span lang="en">(outcomes)</span></strong> 在實驗開始前即已知。</li>
   <li>實驗在未執行前，該實驗會產生何種結果無法事先預知。</li>
   <li>在相同的條件之下，該實驗可以被重複執行。</li>
 </ol>
@@ -60,7 +60,7 @@ excerpt: "機率論先由隨機實驗開始，整理實驗所有可能的結果�
 <div class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.4</div>
 
-隨機實驗之所有可能的結果所形成的集合稱作**樣本空間 <span class="text-nowrap">(sample space)</span>**，通常以英文字母 $S$ 或希臘字母 $\Omega$ 表示。樣本空間中的元素被稱作**樣本點 (sample point)**，通常以希臘字母 $\omega$ 表示。
+隨機實驗之所有可能的結果所形成的集合稱作**樣本空間 (sample space)**，通常以英文字母 $S$ 或希臘字母 $\Omega$ 表示。樣本空間中的元素被稱作**樣本點 (sample point)**，通常以希臘字母 $\omega$ 表示。
 </div>
 
 在符號上，若 $\omega$ 是某個可能結果，而 $S$ 是所有可能結果構成的集合，則我們寫成
@@ -69,7 +69,7 @@ $$
 \omega \in S
 $$
 
-這是**集合論 (set theory)** 的表示法，表示 $\omega$ 為 $S$ 中的**元素 (element)**。這裡要特別注意 $\in$ 與 $\subseteq$ 的差別: $\omega\in S$ 表示元素 $\omega$ 屬於**集合 (set)** <span class="text-nowrap">$S$，</span>是元素對集合的關係；而 $A\subseteq S$ 表示集合 $A$ 是 $S$ 的子集合，是集合對集合的關係。這個差異稍後在事件的定義中會立刻出現，集合的**算子 (operator)** 也會在後續有較完整的介紹。
+這是**集合論 (set theory)** 的表示法，表示 $\omega$ 為 $S$ 中的**元素 <span lang="en">(element)</span>**。這裡要特別注意 $\in$ 與 $\subseteq$ 的差別: $\omega\in S$ 表示元素 $\omega$ 屬於**集合 (set)** <span class="text-nowrap">$S$，</span>是元素對集合的關係；而 $A\subseteq S$ 表示集合 $A$ 是 $S$ 的子集合，是集合對集合的關係。這個差異稍後在事件的定義中會立刻出現，集合的**算子 <span lang="en">(operator)</span>** 也會在後續有較完整的介紹。
 
 <div id="example-sample-spaces" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.1 (Sample Spaces)</div>
@@ -108,14 +108,14 @@ $$
 
 上述的例子裡可以發現，樣本空間的型態很多樣，因此可對樣本空間分類。
 
-若將隨機實驗與微積分中的**函數 (function)** 做聯想，則可以將樣本空間想像成該函數的**值域 (range)**；依照值域的不同，函數能被分成**實值函數 <span class="text-nowrap">(real-valued function)</span>** 等不同函數。同理，我們也能夠以此為樣本空間進行分類，並將其分為二大類。
+若將隨機實驗與微積分中的**函數 <span lang="en">(function)</span>** 做聯想，則可以將樣本空間想像成該函數的**對應域 <span lang="en">(codomain)</span>**；依照對應域的不同，函數能被分成**實值函數 <span lang="en">(real-valued function)</span>** 等不同函數。同理，我們也能夠以此為樣本空間進行分類，並將其分為二大類。
 
 <div class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.5</div>
 
-**離散樣本空間 (discrete sample space)** 是指樣本空間中之元素個數為**有限 (finite)** 或**可數無限 (countably infinite)** 者。
+**離散樣本空間 <span lang="en">(discrete sample space)</span>** 是指樣本空間中之元素個數為**有限 (finite)** 或**可數無限 <span lang="en">(countably infinite)</span>** 者。
 
-**連續樣本空間 <span class="text-nowrap">(continuous sample space)</span>** 是指樣本空間中之元素個數為**不可數無限 (uncountably infinite)** 者。
+**連續樣本空間 <span lang="en">(continuous sample space)</span>** 是指樣本空間中之元素個數為**不可數無限 <span lang="en">(uncountably infinite)</span>** 者。
 </div>
 
 經過上述的分類以後，回頭來看 [Example 1.1](#example-sample-spaces)，可以發現該題中的三個答案分別對應到此二大類下的三個小類別: 有限樣本空間、可數無限樣本空間及不可數無限樣本空間。
@@ -125,9 +125,9 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-前段所說的一一對應，嚴謹的說法如下。一集合為可數即代表其元素個數為有限，或是無限但能與正整數集合 $\mathbb{N}$ **對射 (bijection)** 的集合；對射是指此對應同時為一對一 (one-to-one) 且映成 (onto)。換言之，該集合的**基數 (cardinality)** 小於或者等於正整數集合的基數，我們稱此集合為**可數 (countable)**。
+前段所說的一一對應，嚴謹的說法如下。一集合為可數即代表其元素個數為有限，或是無限但能與正整數集合 $\mathbb{N}$ **對射 <span lang="en">(bijection)</span>** 的集合；對射是指此對應同時為一對一 (one-to-one) 且映成 (onto)。換言之，該集合的**基數 <span lang="en">(cardinality)</span>** 小於或者等於正整數集合的基數，我們稱此集合為**可數 <span lang="en">(countable)</span>**。
 
-在樣本空間的分類上，不可數無限所對應的正是連續的概念；連續與「極限」的概念密不可分，可視為**微積分 (calculus)** 之起源。
+在樣本空間的分類上，不可數無限所對應的正是連續的概念；連續與「極限」的概念密不可分，可視為**微積分 <span lang="en">(calculus)</span>** 之起源。
 </div>
 
 可以把分類想成下面這張表。
@@ -146,7 +146,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-本系列第二章談到隨機變數時，會以其函數的值域分為離散變數與連續變數。為了與後續章節一致，本系列在樣本空間的分類上使用離散與連續，而不使用可數與不可數。
+本系列第二章談到隨機變數時，會依其值域與機率的表示方式分為離散型與連續型隨機變數。為了與後續章節一致，本系列在樣本空間的分類上使用離散與連續，而不使用可數與不可數。
 </div>
 
 ## 事件與事件的發生
@@ -173,7 +173,11 @@ $$
 <div class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.2 (Events of a Die Roll)</div>
 
-若投擲一顆骰子一次，則樣本空間為 $S=\lbrace1,2,3,4,5,6\rbrace$。
+若投擲一顆骰子一次，則樣本空間為
+
+$$
+S=\lbrace1,2,3,4,5,6\rbrace
+$$
 
 令 $A$ 表示點數大於等於 $4$ 之事件，$B$ 表示點數小於等於 $3$ 之事件，$C$ 表示點數恰巧為 $5$ 之事件，則
 
@@ -209,15 +213,15 @@ $$
 
 若樣本空間 $S$ 具有 $n$ 個樣本點，則每個事件都是 $S$ 的一個子集合。對每個樣本點而言，形成子集合時都有「放入」與「不放入」兩種選擇，因此所有可能的事件共有 $2^n$ 個。
 
-這些子集合所形成的集合稱為**冪集合 <span class="text-nowrap">(power set)</span>**，記作
+這些子集合所形成的集合稱為**冪集合 (power set)**，記作
 
 $$
 2^S=\lbrace\,A\mid A\subseteq S\,\rbrace
 $$
 
-事實上，對任意**非空集合 (non-empty set)** 而言，「所有元素都出現」與「所有元素都不出現」所對應的兩個子集合，都是該集合的**顯然子集 <span class="text-nowrap">(trivial subset)</span>**；對於一樣本空間而言，此二集合皆為事件。
+事實上，對任意**非空集合 (non-empty set)** 而言，「所有元素都出現」與「所有元素都不出現」所對應的兩個子集合，都是該集合的**顯然子集 <span lang="en">(trivial subset)</span>**；對於一樣本空間而言，此二集合皆為事件。
 
-在這 $2^n$ 個事件中，$S$ 稱為**確定事件 <span class="text-nowrap">(certain event)</span>**，$\varnothing$ 稱為**虛無事件 <span class="text-nowrap">(null event)</span>**。空集合 (empty set) 是沒有任何元素的集合。
+在這 $2^n$ 個事件中，$S$ 稱為**確定事件 <span lang="en">(certain event)</span>**，$\varnothing$ 稱為**虛無事件 (null event)**。空集合 (empty set) 是沒有任何元素的集合。
 
 ## 本篇小結
 
@@ -232,7 +236,7 @@ $$
 | 某事件是否發生？ | 檢查實際結果是否屬於該事件 |
 {: .topic-table--chapter-summary}
 
-等到這些定義都被釐清，下一篇將先介紹[事件的聯集、交集、差集、餘集、集合序列與互斥](/teaching-topics/event-set-operations/)，建立後續機率運算所需的集合工具；之後再討論如何把介於 $0$ 與 $1$ 之間的數值指定給事件。
+等到這些定義都被釐清，[下一篇](/teaching-topics/event-set-operations/)將先介紹事件的聯集、交集、差集、餘集、集合序列與互斥，建立後續機率運算所需的集合工具；之後再討論如何把介於 $0$ 與 $1$ 之間的數值指定給事件。
 
 ## 參考文獻與延伸閱讀
 

@@ -1,5 +1,5 @@
 ---
-title: "條件機率，資訊進來以後，機率如何改變"
+title: "條件機率與乘法原理"
 subtitle: "Conditional Probability and the Multiplication Rule"
 layout: topic
 collection: teaching_topics
@@ -13,7 +13,7 @@ published: true
 excerpt: "條件機率描述在已知某個事件已經發生之後，我們如何重新評估另一個事件的機率。本篇從資訊的變化出發，介紹條件機率、乘法原理與廣義乘法原理，並以蒙提霍爾問題示範資訊如何改變機率。"
 ---
 
-[上一篇文章](/teaching-topics/probability-rules-from-axioms/)整理了由機率公理推出的各種運算規則。這些規則都是在同一個機率空間中評估事件的機率。然而，機率與統計重視的是「資訊的變化」。
+[上一篇](/teaching-topics/probability-rules-from-axioms/)整理了由機率公理推出的各種運算規則。這些規則都是在同一個機率空間中評估事件的機率。然而，機率與統計重視的是「資訊的變化」。
 
 舉例而言，若蘋果公司 (Apple Inc.) 宣布發表新款的 iPhone，消息一出，該公司下週股價上揚的機率，應較平常為高，其原因便是「將發表新款 iPhone」這個資訊流入。
 
@@ -24,7 +24,7 @@ excerpt: "條件機率描述在已知某個事件已經發生之後，我們如�
 <div id="definition-conditional-probability" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.19</div>
 
-令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A,B\in\mathcal{F}$，且 $\mathbb{P}(B)>0$，則定義 **$A$ 在給定 $B$ 發生之下的條件機率 (conditional probability)** 為
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A,B\in\mathcal{F}$，且 $\mathbb{P}(B)>0$，則定義 **$A$ 在給定 $B$ 發生之下的條件機率 <span lang="en">(conditional probability)</span>** 為
 
 $$
 \mathbb{P}(A\mid B)=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}
@@ -48,7 +48,7 @@ $$
 </div>
 
 <div id="example-net-worth-online-trading" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.13 (Net Worth and Online Trading)</div>
+<div class="topic-box__label">Example 1.13 <span lang="en">(Net Worth and Online Trading)</span></div>
 
 <div lang="en" markdown="1">
 The president of a securities firm is studying the characteristics of stock market investors. A survey shows that $50\%$ of all investors have a net worth exceeding one million dollars, $40\%$ trade through an online trading system, and $35\%$ do both. Let $W$ be the event that an investor’s net worth exceeds one million dollars, and let $T$ be the event that an investor trades through the online trading system. Find $\mathbb{P}(W\cup T)$ and $\mathbb{P}(W^{\prime}\mid T^{\prime})$.
@@ -117,12 +117,14 @@ $$
 </div>
 
 <div id="example-unions-and-conditional" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.14 (Unions and a Conditional Probability)</div>
+<div class="topic-box__label">Example 1.14 <span lang="en">(Unions and a Conditional Probability)</span></div>
 
 <div lang="en" markdown="1">
 (1) Suppose that $A$ and $B$ are events for which the union $A\cup B$ has probability $0.76$ and the union $A\cup B^{\prime}$ has probability $0.87$. Find the probability of $A$.
+{: .topic-paren-item}
 
 (2) Suppose that $A$ and $B$ are events for which $A$ has probability $\frac{1}{3}$, $B$ has probability $\frac{1}{2}$, and the probability that both occur is $\frac{1}{5}$. Find the conditional probability that $A$ occurs given that $B$ does not.
+{: .topic-paren-item}
 </div>
 
 以下依序求解。
@@ -230,7 +232,7 @@ $$
 ## 條件機率為機率測度
 
 <div id="theorem-conditional-probability-measure" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.12 (Conditional Probability Measure)</div>
+<div class="topic-box__label">Theorem 1.12 <span lang="en">(Conditional Probability Measure)</span></div>
 
 令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$B\in\mathcal{F}$ 且 $\mathbb{P}(B)>0$，則 $\mathbb{P}(\,\cdot\,\mid B)$ 為一機率測度。
 </div>
@@ -282,7 +284,7 @@ $$
 ## 乘法原理
 
 <div id="theorem-18" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.13 (Multiplication Rule)</div>
+<div class="topic-box__label">Theorem 1.13 <span lang="en">(Multiplication Rule)</span></div>
 
 令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A,B\in\mathcal{F}$，且 $\mathbb{P}(B)>0$，則
 
@@ -290,7 +292,7 @@ $$
 \mathbb{P}(A\cap B)=\mathbb{P}(A\mid B)\,\mathbb{P}(B)
 $$
 
-此性質稱為**乘法原理 (multiplication rule)**。
+此性質稱為**乘法原理 <span lang="en">(multiplication rule)</span>**。
 </div>
 
 乘法原理只是將條件機率的定義，經過移項後，得到的一個延伸結果，雖然簡單，但卻相當有用。我們常常利用這個定理，將已知的條件機率，反過來用於求取交集機率。
@@ -304,7 +306,7 @@ $$
     <span class="topic-figure__step-arrow topic-figure__step-arrow--mobile">$\Downarrow$</span>
     <img src="/images/teaching-topics/conditional-probability-step2.svg" alt="乘法原理流程圖之二。圓 B 之內的虛線箭頭收斂到 A 與 B 的交集，交集處標示 P(A cap B)。">
   </div>
-  <figcaption><span class="topic-figure__label">Fig. 1.17.</span> 乘法原理的流程: step 1 將樣本空間縮小至 $B$，即 $\mathbb{P}(S)$ 乘以 $\mathbb{P}(B)$；step 2 在 $B$ 中尋找 $A$，即 $\mathbb{P}(B)$ 再乘以 $\mathbb{P}(A\mid B)$。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 1.17.</span> 乘法原理的流程: step 1 將樣本空間縮小至 <span class="text-nowrap">$B$，</span>即 $\mathbb{P}(S)$ 乘以 $\mathbb{P}(B)$；step 2 在 $B$ 中尋找 <span class="text-nowrap">$A$，</span>即 $\mathbb{P}(B)$ 再乘以 $\mathbb{P}(A\mid B)$。</figcaption>
 </figure>
 
 事實上，這個定理就是**利用各種條件，層層篩選**，來尋找我們所要求的交集機率；當然，**路徑未必只有一條**，從 $A$ 出發、再從 $A$ 中尋找 $B$ 也未嘗不可，因此我們當然可以有
@@ -318,9 +320,9 @@ $$
 ## 廣義乘法原理
 
 <div id="theorem-general-multiplication-rule" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.14 (General Multiplication Rule)</div>
+<div class="topic-box__label">Theorem 1.14 <span lang="en">(General Multiplication Rule)</span></div>
 
-令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A_1,\ldots,A_n\in\mathcal{F}$，且 $\mathbb{P}\left(\bigcap_{i=1}^{n-1}A_i\right)>0$，則
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A_1,\ldots,A_n\in\mathcal{F}$，且 <span class="text-nowrap">$\mathbb{P}\left(\bigcap_{i=1}^{n-1}A_i\right)>0$，</span>則
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -345,7 +347,7 @@ $$
 
 </div>
 
-此性質稱為**廣義乘法原理 (general multiplication rule)**。
+此性質稱為**廣義乘法原理 <span lang="en">(general multiplication rule)</span>**。
 </div>
 
 此定理的證明並不困難，讀者應可由[乘法原理](#theorem-18)對事件個數逐步遞推得到，我們在此便不證明。
@@ -400,14 +402,16 @@ $$
 </div>
 
 <div id="example-watering-plant" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.16 (Watering the Plant)</div>
+<div class="topic-box__label">Example 1.16 <span lang="en">(Watering the Plant)</span></div>
 
 <div lang="en" markdown="1">
 Before leaving on vacation, you ask a neighbor to water an ailing plant for you. The plant dies with probability $0.8$ if it goes unwatered, and with probability $0.15$ if it is watered. There is a $90\%$ chance that your neighbor remembers to water it.
 
 (1) What is the probability that the plant is still alive when you come back?
+{: .topic-paren-item}
 
 (2) Given that the plant is dead when you come back, what is the probability that your neighbor forgot to water it?
+{: .topic-paren-item}
 </div>
 
 以下依序求解。
@@ -488,7 +492,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}(A^{\prime}\mid B)=\frac{\mathbb{P}(A^{\prime}\cap B)}{\mathbb{P}(B)}=\frac{0.08}{0.215}\approx 0.3721
+\mathbb{P}(A^{\prime}\mid B)=\frac{\mathbb{P}(A^{\prime}\cap B)}{\mathbb{P}(B)}=\frac{0.08}{0.215}\fallingdotseq 0.3721
 $$
 
 </div>
@@ -497,7 +501,7 @@ $$
 $$
 \begin{aligned}
 \mathbb{P}(A^{\prime}\mid B)&=\frac{\mathbb{P}(A^{\prime}\cap B)}{\mathbb{P}(B)}\\[0.4em]
-&=\frac{0.08}{0.215}\approx 0.3721
+&=\frac{0.08}{0.215}\fallingdotseq 0.3721
 \end{aligned}
 $$
 
@@ -507,10 +511,10 @@ $$
 
 ## 蒙提霍爾問題
 
-蒙提霍爾問題 (Monty Hall problem) 是一個源自真實歷史故事的數學問題。它得名自美國電視遊戲節目 <span class="text-nowrap">Let’s Make a Deal</span>；節目主持人正是 Monty Hall。這個實境節目自 1963 年開始播出，節目的張力在於「交易」。參賽者可以保留手上的東西，也可以相信主持人的邀請，換成門後、箱子裡或布幕後的未知獎品。這種舞台效果後來被整理成三扇門的標準機率問題；看起來像是剩下兩扇門各半，實際上主持人掌握資訊並刻意打開沒有獎品的門，才是計算時不能忽略的線索。
+蒙提霍爾問題 <span lang="en">(Monty Hall problem)</span> 是一個源自真實歷史故事的數學問題。它得名自美國電視遊戲節目 Let’s Make a Deal；節目主持人正是 Monty Hall。這個實境節目自 1963 年開始播出，節目的張力在於「交易」。參賽者可以保留手上的東西，也可以相信主持人的邀請，換成門後、箱子裡或布幕後的未知獎品。這種舞台效果後來被整理成三扇門的標準機率問題；看起來像是剩下兩扇門各半，實際上主持人掌握資訊並刻意打開沒有獎品的門，才是計算時不能忽略的線索。
 
 <div id="example-monty-hall" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.17 (The Monty Hall Problem)</div>
+<div class="topic-box__label">Example 1.17 <span lang="en">(The Monty Hall Problem)</span></div>
 
 <div lang="en" markdown="1">
 On a television game show, a contestant is shown three doors; a prize is hidden behind exactly one of them. The contestant picks a door. Before that door is opened, the host opens one of the other two doors that has no prize behind it, and then asks whether the contestant wants to switch to the remaining unopened door. A friend of yours is about to appear on this show and hopes to win the prize. Should you advise your friend to switch doors, or does it not matter? Explain briefly.
@@ -580,7 +584,7 @@ $$
 <div id="interlude-three-prisoners" class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 1.1</div>
 
-Monty Hall 問題還有一個等價外衣，稱為三囚徒問題 (three prisoners problem)。
+Monty Hall 問題還有一個等價外衣，稱為三囚徒問題 <span lang="en">(three prisoners problem)</span>。
 
 想像有三位囚徒 $A,B,C$，其中一人將獲赦免，另外兩人會被處決。囚徒 $A$ 不知道誰會獲赦，於是請知道結果的守衛在 $B,C$ 之中，說出一位「確定不會獲赦」的人。守衛回答「$B$ 不會獲赦」。
 
@@ -605,7 +609,7 @@ Monty Hall 問題還有一個等價外衣，稱為三囚徒問題 (three prisone
 
 一如稍早的例子中，蘋果公司宣布將發表新款的 iPhone，對其未來一週股價上揚的機率顯然是種正面影響；又若今天某科技公司爆發高層捲款潛逃的消息，則該公司未來一週股價上揚的機率應是大幅下修，此類影響應為負面影響。
 
-既然影響有正有負，那麼在各種資訊流入中，比較特別的是，若某一事件的資訊流入**對於另一事件毫無影響**呢？這種狀況便是所謂的兩事件彼此間**獨立 (independent)**，我們將在[下一篇文章](/teaching-topics/independence-and-conditional-independence/)詳細介紹。
+既然影響有正有負，那麼在各種資訊流入中，比較特別的是，若某一事件的資訊流入**對於另一事件毫無影響**呢？這種狀況便是所謂的兩事件彼此間**獨立 <span lang="en">(independent)</span>**，我們將在[下一篇](/teaching-topics/independence-and-conditional-independence/)詳細介紹。
 
 ## 參考文獻與延伸閱讀
 

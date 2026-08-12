@@ -28,3 +28,6 @@ AGENTS.md
 CLAUDE.md
 .codex/
 claude_comment/
+
+# Stray pdfTeX compile logs left by figure builds
+/*.log

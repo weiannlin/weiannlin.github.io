@@ -10,6 +10,7 @@ order: 214
 permalink: /teaching-topics/characteristic-functions/
 date: 2026-07-13
 published: false
+listed: false
 excerpt: '特徵函數 (cf) 以複指數 $e^{itX}$ 描述機率分配。cf 對每個實值隨機變數都存在，能把獨立隨機變數之和轉成函數乘積，並由唯一性定理辨認分配。'
 ---
 
@@ -102,7 +103,7 @@ $$
 
 固定 $t$ 後，$e^{itX}=\cos(tX)+i\sin(tX)$ 的取值都落在複數平面的單位圓上。cf 是這些複數取值依機率加權後的平均，因此其絕對值不會超過 $1$。
 
-這也說明 cf 為何對厚尾分配仍然存在。厚尾分配可能使 $\mathbb{E}(e^{tX})$ 發散；但 $\lvert e^{itX}\rvert=1$，故 cf 對每個實值隨機變數皆存在。
+這也說明 cf 為何對厚尾分配仍然存在。厚尾分配可能使 $\mathbb{E}(e^{tX})$ 發散；但 <span class="text-nowrap">$\lvert e^{itX}\rvert=1$，</span>故 cf 對每個實值隨機變數皆存在。
 </div>
 
 ## cf 的基本性質

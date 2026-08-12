@@ -13,36 +13,40 @@ published: true
 excerpt: "事件是樣本空間的子集合。本篇介紹聯集、交集、差集與餘集等集合運算及其基本性質，並推廣至有限與可數的聯集與交集、單調集合序列的極限，最後說明互斥與加集。"
 ---
 
-[上一篇文章](/teaching-topics/random-experiments-sample-space-events/)將事件定義為樣本空間的子集合。由於事件就是集合，我們在探討事件之間的關係時，自然可以引入集合之間的關係，因此本篇正式引入集合算子的概念。
+[上一篇](/teaching-topics/random-experiments-sample-space-events/)將事件定義為樣本空間的子集合。由於事件就是集合，我們在探討事件之間的關係時，自然可以引入集合之間的關係，因此本篇正式引入集合算子的概念。
 
 ## 聯集、交集、差集與餘集
 
 兩個集合之間的常見運算有下列四種。
 
 <div id="definition-set-operations" class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 1.7 (Set Operations)</div>
+<div class="topic-box__label">Definition 1.7 <span lang="en">(Set Operations)</span></div>
 
 若 $A,B\subseteq S$，則
 
 (1) **聯集 ($A\cup B$, union)**
+{: .topic-paren-item}
 
 $$
 A\cup B=\lbrace\,x\mid x\in A\text{ 或 }x\in B\,\rbrace
 $$
 
 (2) **交集 ($A\cap B$, intersection)**
+{: .topic-paren-item}
 
 $$
 A\cap B=\lbrace\,x\mid x\in A\text{ 且 }x\in B\,\rbrace
 $$
 
 (3) **差集 ($A-B$, difference)**
+{: .topic-paren-item}
 
 $$
 A-B=\lbrace\,x\mid x\in A\text{ 但 }x\notin B\,\rbrace
 $$
 
 (4) **餘集 ($A^{\prime}$, complement)**
+{: .topic-paren-item}
 
 $$
 A^{\prime}=\lbrace\,x\mid x\in S\text{ 但 }x\notin A\,\rbrace
@@ -50,35 +54,35 @@ $$
 
 </div>
 
-集合與集合間的關係時常能夠用**文氏圖 (Venn diagram)** (或譯為溫氏圖) 來協助理解，例如上述四種關係所表示的範圍，即可由下圖的暗紅色區塊來理解。文氏圖多用於說明二或三個集合彼此間的交互情形；四個集合以上時已不容易看出背後的直覺，但其交互情形仍可由二或三個集合的結果代數推廣得到。
+集合與集合間的關係時常能夠用**文氏圖 <span lang="en">(Venn diagram)</span>** (或譯為溫氏圖) 來協助理解，例如上述四種關係所表示的範圍，即可由下圖的暗紅色區塊來理解。文氏圖多用於說明二或三個集合彼此間的交互情形；四個集合以上時已不容易看出背後的直覺，但其交互情形仍可由二或三個集合的結果代數推廣得到。
 
 <figure class="topic-figure topic-figure--wide">
   <img src="/images/teaching-topics/event-set-operations.svg" alt="事件聯集、交集、差集與餘集的四面板文氏圖。每個面板都以矩形表示樣本空間 S，內含代表 A 與 B 的兩個圓，三個區域分別標示 A 交 B 的餘集、A 交 B 與 A 的餘集交 B，暗紅色區域表示各運算所得的集合。第四個面板只畫一個圓，圓內標示 A，圓外標示 A 的餘集。">
   <figcaption><span class="topic-figure__label">Fig. 1.1.</span> 聯集、交集、差集與餘集在樣本空間 $S$ 中所對應的範圍。</figcaption>
 </figure>
 
-**聯集 (union)** 又稱併集或並集，本系列一律用聯集。聯集對應到邏輯學中「或 (or)」與四則運算中「加 (addition)」的概念，是將兩個集合中的元素放在一起所構成的新集合。就事件而言，聯集表示兩事件發生其一即可，兩者皆發生亦可。
+**聯集 (union)** 又稱併集或並集，本系列一律用聯集。聯集對應到邏輯學中「或 (or)」與四則運算中「加 <span lang="en">(addition)</span>」的概念，是將兩個集合中的元素放在一起所構成的新集合。就事件而言，聯集表示兩事件發生其一即可，兩者皆發生亦可。
 
-**交集**對應到邏輯學中「且 (and)」與四則運算中「乘 (multiplication)」的概念，是兩個集合中均有的元素所構成的新集合。就事件而言，交集表示兩事件皆發生才可。部分寫法會把 $A\cap B$ 簡寫為 $AB$，與其「乘」的概念互相呼應。
+**交集**對應到邏輯學中「且 (and)」與四則運算中「乘 <span lang="en">(multiplication)</span>」的概念，是兩個集合中均有的元素所構成的新集合。就事件而言，交集表示兩事件皆發生才可。部分寫法會把 $A\cap B$ 簡寫為 $AB$，與其「乘」的概念互相呼應。
 
-**差集 (difference)** 又稱相對餘集 (relative complement)，本系列一律用差集；差集亦記為 $A\backslash B$，本系列以 $A-B$ 為主要記號。差集對應到「減」的概念，就事件而言表示 $A$ 發生但 $B$ 沒有發生，由定義亦可寫為
+**差集 <span lang="en">(difference)</span>** 又稱相對餘集 <span lang="en">(relative complement)</span>，本系列一律用差集；差集亦記為 $A\backslash B$，本系列以 $A-B$ 為主要記號。差集對應到「減」的概念，就事件而言表示 $A$ 發生但 $B$ 沒有發生，由定義亦可寫為
 
 $$
 A-B=A\cap B^{\prime}
 $$
 
-**餘集 (complement)** 又稱補集或絕對餘集，本系列一律用餘集；部分教科書把餘集記為 $A^{c}$ 或 $\overline{A}$，本系列固定以 $A^{\prime}$ 為主要記號。餘集對應到邏輯學中「否 (not)」的概念，就事件而言表示 $A$ 沒有發生。當樣本空間 (或稱**宇集 (universal set)**) $S$ 已知時，樣本空間與 $A$ 的差集就是 $A$ 的餘集，亦即
+**餘集 <span lang="en">(complement)</span>** 又稱補集或絕對餘集，本系列一律用餘集；部分教科書把餘集記為 $A^{c}$ 或 $\overline{A}$，本系列固定以 $A^{\prime}$ 為主要記號。餘集對應到邏輯學中「否 (not)」的概念，就事件而言表示 $A$ 沒有發生。當樣本空間 (或稱**宇集 <span lang="en">(universal set)</span>**) $S$ 已知時，樣本空間與 $A$ 的差集就是 $A$ 的餘集，亦即
 
 $$
 S-A=A^{\prime}
 $$
 
 <div id="example-die-events-continued" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.2 (Continued)</div>
+<div class="topic-box__label">Example 1.2 <span lang="en">(Continued)</span></div>
 
 若投擲一顆骰子一次，且令 $A$ 表示其點數大於等於 $4$ 點之事件、$B$ 表示其點數小於等於 $3$ 點之事件、$C$ 表示其點數恰巧為 $5$ 點之事件。
 
-沿用[上一篇文章](/teaching-topics/random-experiments-sample-space-events/)的結果，可知 $S=\lbrace1,2,3,4,5,6\rbrace$、$A=\lbrace4,5,6\rbrace$、$B=\lbrace1,2,3\rbrace$ 與 $C=\lbrace5\rbrace$，故由 [Definition 1.7](#definition-set-operations) 可得
+沿用[上一篇](/teaching-topics/random-experiments-sample-space-events/)的結果，可知 $S=\lbrace1,2,3,4,5,6\rbrace$、$A=\lbrace4,5,6\rbrace$、$B=\lbrace1,2,3\rbrace$ 與 $C=\lbrace5\rbrace$，故由 [Definition 1.7](#definition-set-operations) 可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -117,11 +121,12 @@ $$
 前述的集合運算有一些附帶的性質，我們列在下方。
 
 <div id="theorem-set-identities" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.1 (Set Identities)</div>
+<div class="topic-box__label">Theorem 1.1 <span lang="en">(Set Identities)</span></div>
 
 若 $A,B,C\subseteq S$，則有下列性質。
 
-(1) **交換律 (commutativity property)**
+(1) **交換律 <span lang="en">(commutativity property)</span>**
+{: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -141,7 +146,8 @@ $$
 
 </div>
 
-(2) **結合律 (associativity property)**
+(2) **結合律 <span lang="en">(associativity property)</span>**
+{: .topic-paren-item}
 
 $$
 \begin{gathered}
@@ -150,7 +156,8 @@ A\cap(B\cap C)=(A\cap B)\cap C
 \end{gathered}
 $$
 
-(3) **分配律 (distributive property)**
+(3) **分配律 <span lang="en">(distributive property)</span>**
+{: .topic-paren-item}
 
 $$
 \begin{gathered}
@@ -159,7 +166,8 @@ A\cup(B\cap C)=(A\cup B)\cap(A\cup C)
 \end{gathered}
 $$
 
-(4) **單位元素 (identity element)**
+(4) **單位元素 <span lang="en">(identity element)</span>**
+{: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -179,7 +187,8 @@ $$
 
 </div>
 
-(5) **支配律 (domination law)**
+(5) **支配律 <span lang="en">(domination law)</span>**
+{: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -199,7 +208,8 @@ $$
 
 </div>
 
-(6) **冪等律 (idempotent law)**
+(6) **冪等律 <span lang="en">(idempotent law)</span>**
+{: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -219,7 +229,8 @@ $$
 
 </div>
 
-(7) **對合律 (involution law)**
+(7) **對合律 <span lang="en">(involution law)</span>**
+{: .topic-paren-item}
 
 $$
 (A^{\prime})^{\prime}=A
@@ -231,9 +242,15 @@ $$
 
 在 (4) 的單位元素中，$S$ 與 $\varnothing$ 分別是 $\cap$ 與 $\cup$ 的單位元素，亦即任何集合只要以該算子作用其上，都會得到與本身相同的結果 (例如實數在乘法下的單位元素是 $1$)。但這兩個集合如果搭配相反的算子，會得到完全相反的結果，也就是 (5) 中反而被「支配」的結果。
 
-(7) 所提到的對合律，其實可從前面的關係式 $S-A=A^{\prime}$ 延伸得到 $S-A^{\prime}=A$，代表 $A$ 就是 $A^{\prime}$ 的餘集，此即 $(A^{\prime})^{\prime}=A$。這一點完全與邏輯學中的「否」互相呼應，因為「否」也是一個對合算子。
+(7) 所提到的對合律，可從前面的關係式 $S-A=A^{\prime}$ 延伸得到 $S-A^{\prime}=A$，代表 $A$ 就是 $A^{\prime}$ 的餘集，此即
 
-差集並不具有交換律，亦即 $A-B$ 在一般狀況下與 $B-A$ 並不相同。由此，我們可以定義一個特殊的集合關係，即**對稱差集 (symmetric difference)**，其定義為
+$$
+(A^{\prime})^{\prime}=A
+$$
+
+這一點完全與邏輯學中的「否」互相呼應，因為「否」也是一個對合算子。
+
+差集並不具有交換律，亦即 $A-B$ 在一般狀況下與 $B-A$ 並不相同。由此，我們可以定義一個特殊的集合關係，即**對稱差集 <span lang="en">(symmetric difference)</span>**，其定義為
 
 $$
 \begin{aligned}
@@ -253,20 +270,22 @@ $$
 
 ## 狄摩根律
 
-英國數學家狄摩根 <span class="text-nowrap">(Augustus DeMorgan, 1806–1871)</span> 以上述的關係發展出**狄摩根律 (DeMorgan’s law)**，這在邏輯學與集合論中都是常用的關係式。狄摩根律又稱作**對偶律 (DeMorgan’s duality law)**，經常於邏輯學中被使用於**布林算子 (Boolean operators)**，在電腦科學中應用甚廣。我們現在就來看看其內容。
+英國數學家狄摩根 (Augustus DeMorgan, 1806–1871) 以上述的關係發展出**狄摩根律 <span lang="en">(DeMorgan’s law)</span>**，這在邏輯學與集合論中都是常用的關係式。狄摩根律又稱作**對偶律 <span lang="en">(DeMorgan’s duality law)</span>**，經常於邏輯學中被使用於**布林算子 <span lang="en">(Boolean operators)</span>**，在電腦科學中應用甚廣。我們現在就來看看其內容。
 
 <div id="theorem-de-morgan" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.2 (DeMorgan’s Law)</div>
+<div class="topic-box__label">Theorem 1.2 <span lang="en">(DeMorgan’s Law)</span></div>
 
 若 $A,B\subseteq S$，則
 
 (1) 聯集的餘集:
+{: .topic-paren-item}
 
 $$
 (A\cup B)^{\prime}=A^{\prime}\cap B^{\prime}
 $$
 
 (2) 交集的餘集:
+{: .topic-paren-item}
 
 $$
 (A\cap B)^{\prime}=A^{\prime}\cup B^{\prime}
@@ -301,7 +320,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在前述的證明中，使用了一個關係是**集合相等 (set equality)**，其定義是兩集合內的元素完全相等，即
+在前述的證明中，使用了一個關係是**集合相等 <span lang="en">(set equality)</span>**，其定義是兩集合內的元素完全相等，即
 
 $$
 A=B\ \Longleftrightarrow\ \forall x,\ x\in A\Leftrightarrow x\in B
@@ -319,7 +338,7 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 1.3.</span> $A\cup B$ 與 $A\cap B$ 各自取餘集之後所對應的範圍。</figcaption>
 </figure>
 
-我們稍早曾經提過，$A\cup B$ 的直觀理解是「兩事件發生其一即可」，其餘集為此理解的反面，即「兩者皆不可發生」，換言之，即為 $A^{\prime}\cap B^{\prime}$；而 $A\cap B$ 的餘集則同理可得。在邏輯學中，可以否逆命題來解釋為何其餘集為「兩者皆不可發生」，而非「有其一不發生即可」。理解這個邏輯，對於數理統計中的**假說檢定 (hypothesis testing)** 之邏輯有莫大的幫助。
+我們稍早曾經提過，$A\cup B$ 的直觀理解是「兩事件發生其一即可」，其餘集為此理解的反面，即「兩者皆不可發生」，換言之，即為 $A^{\prime}\cap B^{\prime}$；而 $A\cap B$ 的餘集則同理可得。在邏輯學中，可以否逆命題來解釋為何其餘集為「兩者皆不可發生」，而非「有其一不發生即可」。理解這個邏輯，對於數理統計中的**假說檢定 <span lang="en">(hypothesis testing)</span>** 之邏輯有莫大的幫助。
 
 事實上，狄摩根律有一組廣義的版本，即
 
@@ -357,7 +376,7 @@ $$
 \end{gathered}
 $$
 
-當然，此處若有無窮多個集合，則我們可將有限聯集與有限交集推廣成**可數聯集 (countable union)** 與**可數交集 (countable intersection)**
+當然，此處若有無窮多個集合，則我們可將有限聯集與有限交集推廣成**可數聯集 <span lang="en">(countable union)</span>** 與**可數交集 <span lang="en">(countable intersection)</span>**
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -383,7 +402,7 @@ $$
 如果搭配前述的集合算子及性質，我們將能利用這些工具處理各種集合關係。下面便是一些簡單的例子，能讓讀者了解這些工具的應用。
 
 <div id="example-finite-unions-intersections" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.3 (Finite Unions and Intersections)</div>
+<div class="topic-box__label">Example 1.3 <span lang="en">(Finite Unions and Intersections)</span></div>
 
 設 $S=(0,1]$，並對每一個正整數 $i$ 定義
 
@@ -426,11 +445,11 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 1.4.</span> 集合序列 $\lbrace A_i\rbrace$ 的前幾項與一般項 $A_k$，其左端點隨 $i$ 增大而越來越靠近 $0$。</figcaption>
 </figure>
 
-對這個**集合序列 (sequence of sets)** 中的每一個集合而言，其左端會越來越小，因此在探討有限聯集的時候，左方的端點只要取最小者，也就是 $i=k$ 即可；而有限交集的結果就是貫穿所有集合的點所構成的集合，很顯然地，在此只有 $1$ 這個單點滿足這個要件。
+對這個**集合序列 <span lang="en">(sequence of sets)</span>** 中的每一個集合而言，其左端會越來越小，因此在探討有限聯集的時候，左方的端點只要取最小者，也就是 $i=k$ 即可；而有限交集的結果就是貫穿所有集合的點所構成的集合，很顯然地，在此只有 $1$ 這個單點滿足這個要件。
 </div>
 
 <div id="example-finite-unions-intersections-b-c" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.4 (Finite Unions and Intersections)</div>
+<div class="topic-box__label">Example 1.4 <span lang="en">(Finite Unions and Intersections)</span></div>
 
 設兩個集合序列 $\lbrace B_k\rbrace$ 與 $\lbrace C_k\rbrace$ 分別定義為
 
@@ -508,42 +527,46 @@ $C_1,C_2,\ldots,C_n$ 的序列則同時有兩端變化，下界越來越小，�
 
 ## 單調集合序列與極限
 
-事實上，上述的三個序列都是特殊的集合序列，它們都屬於**單調集合序列 (monotone sequence of sets)**。單調集合序列的可數聯集或可數交集，結果將與該集合序列的**極限 (limit)** 有關。我們馬上來看看其相關定義為何，以及其衍生的特殊性質。
+事實上，上述的三個序列都是特殊的集合序列，它們都屬於**單調集合序列 <span lang="en">(monotone sequence of sets)</span>**。單調集合序列的可數聯集或可數交集，結果將與該集合序列的**極限 (limit)** 有關。我們馬上來看看其相關定義為何，以及其衍生的特殊性質。
 
 <div id="definition-monotone-set-sequences" class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 1.8 (Monotone Sequences of Sets and Their Limits)</div>
+<div class="topic-box__label">Definition 1.8 <span lang="en">(Monotone Sequences of Sets and Their Limits)</span></div>
 
 (1) 若集合序列 $\lbrace A_i\rbrace_{i=1}^{\infty}$ 滿足
+{: .topic-paren-item}
 
 $$
 A_1\subseteq A_2\subseteq\cdots
 $$
 
-則稱 $\lbrace A_i\rbrace_{i=1}^{\infty}$ 為**非遞減集合序列 (non-decreasing sequence of sets)**，記為 $A_i\ \cancel{\downarrow}$，並定義該集合序列之極限為
+則稱 $\lbrace A_i\rbrace_{i=1}^{\infty}$ 為**非遞減集合序列 <span lang="en">(non-decreasing sequence of sets)</span>**，記為 $A_i\ \cancel{\downarrow}$，並定義該集合序列之極限為
+{: .topic-paren-cont}
 
 $$
 \lim_{n\to\infty}A_n=\bigcup_{i=1}^{\infty}A_i
 $$
 
 (2) 若集合序列 $\lbrace A_i\rbrace_{i=1}^{\infty}$ 滿足
+{: .topic-paren-item}
 
 $$
 A_1\supseteq A_2\supseteq\cdots
 $$
 
-則稱 $\lbrace A_i\rbrace_{i=1}^{\infty}$ 為**非遞增集合序列 (non-increasing sequence of sets)**，記為 $A_i\ \cancel{\uparrow}$，並定義該集合序列之極限為
+則稱 $\lbrace A_i\rbrace_{i=1}^{\infty}$ 為**非遞增集合序列 <span lang="en">(non-increasing sequence of sets)</span>**，記為 $A_i\ \cancel{\uparrow}$，並定義該集合序列之極限為
+{: .topic-paren-cont}
 
 $$
 \lim_{n\to\infty}A_n=\bigcap_{i=1}^{\infty}A_i
 $$
 
-其中非遞減與非遞增集合序列合稱為**單調集合序列 (monotone sequence of sets)**。
+其中非遞減與非遞增集合序列合稱為**單調集合序列 <span lang="en">(monotone sequence of sets)</span>**。
 </div>
 
-非遞減集合序列又簡稱為非遞減序列，非遞增集合序列又簡稱為非遞增序列。部分教科書以 $\subset$ 與 $\supset$ 書寫上述兩個條件，而這兩個記號在某些情境中不允許兩側集合相等，故上述定義有時亦被稱作**遞增序列 (increasing sequence)** 與**遞減序列 (decreasing sequence)**。此外，亦有教科書將 $A_i\ \cancel{\downarrow}$ 記為 $\lbrace A_i\rbrace_{i=1}^{\infty}\in\cancel{\downarrow}$，並將 $A_i\ \cancel{\uparrow}$ 記為 $\lbrace A_i\rbrace_{i=1}^{\infty}\in\cancel{\uparrow}$。
+非遞減集合序列又簡稱為非遞減序列，非遞增集合序列又簡稱為非遞增序列。部分教科書以 $\subset$ 與 $\supset$ 書寫上述兩個條件，而這兩個記號在某些情境中不允許兩側集合相等，故上述定義有時亦被稱作**遞增序列 <span lang="en">(increasing sequence)</span>** 與**遞減序列 <span lang="en">(decreasing sequence)</span>**。此外，亦有教科書將 $A_i\ \cancel{\downarrow}$ 記為 $\lbrace A_i\rbrace_{i=1}^{\infty}\in\cancel{\downarrow}$，並將 $A_i\ \cancel{\uparrow}$ 記為 $\lbrace A_i\rbrace_{i=1}^{\infty}\in\cancel{\uparrow}$。
 
 <div id="example-monotone-set-limits" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.3 (Continued)</div>
+<div class="topic-box__label">Example 1.3 <span lang="en">(Continued)</span></div>
 
 沿用 [Example 1.3](#example-finite-unions-intersections) 的集合序列 $\lbrace A_i\rbrace$。試求 $\lim\limits_{i\to\infty}A_i$ 與 $A_i$ 之可數交集。
 
@@ -579,7 +602,7 @@ $$
 </div>
 
 <div id="example-monotone-set-limits-b-c" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.4 (Continued)</div>
+<div class="topic-box__label">Example 1.4 <span lang="en">(Continued)</span></div>
 
 沿用 [Example 1.4](#example-finite-unions-intersections-b-c) 的兩個集合序列 $\lbrace B_k\rbrace$ 與 $\lbrace C_k\rbrace$。試求 $\lim\limits_{k\to\infty}B_k$ 與 $\lim\limits_{k\to\infty}C_k$。
 
@@ -619,7 +642,7 @@ $$
 在定義完各種事件的關係後，我們要探討一個特殊的事件關係，即為**互斥 (disjoint 或 mutually exclusive)**。
 
 <div id="definition-disjoint-events" class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 1.9 (Disjoint Events)</div>
+<div class="topic-box__label">Definition 1.9 <span lang="en">(Disjoint Events)</span></div>
 
 若 $A$ 與 $B$ 為樣本空間 $S$ 裡的兩個事件，且
 
@@ -637,16 +660,16 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 1.7.</span> 互斥事件 $A$ 與 $B$ 在樣本空間 $S$ 中沒有任何重疊的部分。</figcaption>
 </figure>
 
-互斥這個概念，時常被讀者與本章後面要提到的事件關係[**獨立 (independent)**](/teaching-topics/independence-and-conditional-independence/#definition-117)混淆。互斥的定義僅在於集合之間的關係，而獨立的定義需要用到**機率函數 (probability function)**，二者實為完全不同的關係，不應混為一談。
+互斥這個概念，時常被讀者與本章後面要提到的事件關係[**獨立 <span lang="en">(independent)</span>**](/teaching-topics/independence-and-conditional-independence/#definition-117)混淆。互斥的定義僅在於集合之間的關係，而獨立的定義需要用到**機率函數 <span lang="en">(probability function)</span>**，二者實為完全不同的關係，不應混為一談。
 
-互斥雖然是兩個事件間的關係，但其使用上並不僅限於兩個事件，我們當然可以推廣至多個事件，再抓取其中任兩個事件來觀察是否互斥。若給定三個以上的事件，其中任兩個事件彼此皆互斥，則這個概念為**成對互斥 (pairwise disjoint)**。
+互斥雖然是兩個事件間的關係，但其使用上並不僅限於兩個事件，我們當然可以推廣至多個事件，再抓取其中任兩個事件來觀察是否互斥。若給定三個以上的事件，其中任兩個事件彼此皆互斥，則這個概念為**成對互斥 <span lang="en">(pairwise disjoint)</span>**。
 
 在互斥的前提之下，我們可以額外定義一種集合算子，是聯集的特例。
 
 <div id="definition-addition-of-sets" class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 1.10 (Addition of Sets)</div>
+<div class="topic-box__label">Definition 1.10 <span lang="en">(Addition of Sets)</span></div>
 
-若給定兩個集合 $A$ 與 $B$，且 $A$ 與 $B$ 互斥 (即 $A\cap B=\varnothing$)，則定義其**加集 (addition)** 為
+若給定兩個集合 $A$ 與 $B$，且 $A$ 與 $B$ 互斥 (即 $A\cap B=\varnothing$)，則定義其**加集 <span lang="en">(addition)</span>** 為
 
 $$
 A+B\equiv A\cup B
@@ -661,7 +684,7 @@ $A+B$ 的範圍，我們可以如下表示。
   <figcaption><span class="topic-figure__label">Fig. 1.8.</span> 兩個互斥事件的加集 $A+B$ 所對應的範圍。</figcaption>
 </figure>
 
-加集是聯集的一種特例，也是對稱差集的一種特例。我們可以像前面一樣，將加集推廣至**有限加集 (finite addition)** 與**可數加集 (countable addition)**，即若 $A_1,A_2,\ldots\subseteq S$ 且 $A_i\cap A_j=\varnothing$ 對所有 $i\neq j$ 成立，則
+加集是聯集的一種特例，也是對稱差集的一種特例。我們可以像前面一樣，將加集推廣至**有限加集 <span lang="en">(finite addition)</span>** 與**可數加集 <span lang="en">(countable addition)</span>**，即若 $A_1,A_2,\ldots\subseteq S$ 且 $A_i\cap A_j=\varnothing$ 對所有 $i\neq j$ 成立，則
 
 $$
 \begin{gathered}
@@ -686,7 +709,7 @@ $$
 | 互斥 | $A\cap B=\varnothing$ | $A$ 與 $B$ 不可能同時發生 |
 | 加集 | $A+B$ | 互斥前提下的聯集 |
 
-有限與可數聯交集把這些運算推廣到多個事件；單調集合序列則以可數聯集或可數交集定義極限。在有了集合及事件的基本關係後，我們便可以正式進入機率的世界，下一篇將依序介紹[古典機率、幾何機率、客觀機率與主觀機率](/teaching-topics/probability-assignment-classical-geometric/)。
+有限與可數聯交集把這些運算推廣到多個事件；單調集合序列則以可數聯集或可數交集定義極限。在有了集合及事件的基本關係後，我們便可以正式進入機率的世界，[下一篇](/teaching-topics/probability-assignment-classical-geometric/)將依序介紹古典機率、幾何機率、客觀機率與主觀機率。
 
 ## 參考文獻與延伸閱讀
 

@@ -10,6 +10,7 @@ order: 218
 permalink: /teaching-topics/convexity-jensen-inequality/
 date: 2026-07-13
 published: false
+listed: false
 excerpt: '凸性比較先取函數值再平均與先平均再取函數值的大小。延森不等式把這項幾何性質推廣至期望值，並導出平均數關係與 KL 訊息數非負性。'
 ---
 

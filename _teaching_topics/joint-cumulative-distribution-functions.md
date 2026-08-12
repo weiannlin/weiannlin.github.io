@@ -10,6 +10,7 @@ order: 302
 permalink: /teaching-topics/joint-cumulative-distribution-functions/
 date: 2026-07-24
 published: false
+listed: false
 excerpt: "聯合 cdf 記錄兩個隨機變數同時不超過指定門檻的機率；離散型情形可由左下方的單點機率加總得到。"
 ---
 
@@ -64,12 +65,14 @@ $$
 令 $F_{XY}$ 為 $(X,Y)$ 的聯合 cdf。則有下列兩項性質。
 
 (1) $F_{XY}$ 是由 $\mathbb{R}^2$ 對應至 $[0,1]$ 的函數，可記為
+{: .topic-paren-item}
 
 $$
 F_{XY}:\mathbb{R}^2\longrightarrow[0,1]
 $$
 
 (2) 若 $(X,Y)$ 為離散型，則對任意 $(x,y)\in\mathbb{R}^2$，皆有
+{: .topic-paren-item}
 
 $$
 F_{XY}(x,y)

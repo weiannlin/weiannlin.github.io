@@ -10,6 +10,7 @@ order: 202
 permalink: /teaching-topics/probability-accumulates/
 date: 2026-05-17
 published: false
+listed: false
 excerpt: "cdf 描述隨機變數不超過門檻 x 的事件機率；離散型靠單點機率加總，連續型靠密度面積積分。"
 ---
 
@@ -46,14 +47,17 @@ $$
 令 $X$ 為一個隨機變數，$F_X(x)=\mathbb{P}(X\leqslant x)$。則 $F_X$ 滿足下列性質。
 
 (1) $F_X$ 為非遞減函數。
+{: .topic-paren-item}
 
 (2) 對任意 $x\in\mathbb{R}$，皆有
+{: .topic-paren-item}
 
 $$
 0\leqslant F_X(x)\leqslant 1
 $$
 
 (3) $F_X$ 滿足
+{: .topic-paren-item}
 
 $$
 \lim_{x\to -\infty}F_X(x)=0,\qquad
@@ -61,6 +65,7 @@ $$
 $$
 
 (4) $F_X$ 右連續。
+{: .topic-paren-item}
 </div>
 
 <div class="topic-proof" markdown="1">
@@ -114,20 +119,20 @@ F_X(3)
 \frac{1}{2}
 $$
 
-若 $3<x<4$，門檻雖然變大，但沒有新增任何可能點數，因此 $F_X(x)$ 仍等於 $1/2$。這也是離散型 cdf 呈現階梯狀的原因。
+若 $3<x<4$，門檻雖然變大，但沒有新增任何可能點數，因此 $F_X(x)$ 仍等於 <span class="text-nowrap">$1/2$。</span>這也是離散型 cdf 呈現階梯狀的原因。
 </div>
 
 <div class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 2.2</div>
 
-在 [Example 2.1](#example-21) 中，$X$ 只能取 $1,2,\ldots,6$。不過，cdf 的自變數仍可取任意實數。例如，$\lbrace X\leqslant3.4\rbrace=\lbrace1,2,3\rbrace$，所以 $F_X(3.4)=3/6=1/2$。
+在 [Example 2.1](#example-21) 中，$X$ 只能取 <span class="text-nowrap">$1,2,\ldots,6$。</span>不過，cdf 的自變數仍可取任意實數。例如，$\lbrace X\leqslant3.4\rbrace=\lbrace1,2,3\rbrace$，所以 $F_X(3.4)=3/6=1/2$。
 
 只有當門檻跨過下一個可能取值，例如從 $3.9$ 移到 $4$，cdf 才會往上跳。
 </div>
 
 <figure class="topic-figure topic-figure--wide">
   <img src="/images/teaching-topics/dice-pmf-threshold.svg" alt="公正骰子的 pmf 棒棒糖圖。點數 1, 2, 3 的機率質量被標成紅色，門檻 x=3.4 位於 3 與 4 之間。">
-  <figcaption><span class="topic-figure__label">Fig. 2.3.</span> 即使門檻 $x=3.4$ 不是骰子點數，門檻左側仍只有點數 $1,2,3$，因此 $F_X(3.4)=1/2$。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 2.3.</span> 即使門檻 $x=3.4$ 不是骰子點數，門檻左側仍只有點數 $1,2,3$，因此 <span class="text-nowrap">$F_X(3.4)=1/2$。</span></figcaption>
 </figure>
 
 離散型 cdf 的跳躍高度正是該點的機率質量。以公正骰子為例，每個點數的機率質量都是 $1/6$，所以 cdf 每次跨過一個整數點，便往上跳 $1/6$。

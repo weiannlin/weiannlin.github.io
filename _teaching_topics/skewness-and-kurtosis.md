@@ -10,6 +10,7 @@ order: 211
 permalink: /teaching-topics/skewness-and-kurtosis/
 date: 2026-06-20
 published: false
+listed: false
 excerpt: "偏態描述分配尾巴偏向哪一側，峰態則整理標準化四次方離差的平均，並以常態分配為比較基準。兩者把分配形狀轉成可計算的量數。"
 ---
 
@@ -116,7 +117,7 @@ $$
 
 $$
 \big|\mu_X-m_o\big|
-\doteqdot
+\fallingdotseq
 3\big|\mu_X-\eta_X\big|
 $$
 

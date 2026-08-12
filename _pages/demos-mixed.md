@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Mixed Distributions"
+title: "Mixed distributions"
 permalink: /demos/mixed/
 author_profile: true
 ---
@@ -166,6 +166,8 @@ Below, pick a continuous family and add point masses with weights $w_i$. The con
 **Continuous and discrete share the budget.** Adding a point mass $w_i$ removes $w_i$ from the continuous part: the smooth curve scales down by $W_c = 1 - \sum w_j$, and the lost area under the density reappears as the jumps. Total probability stays at 1 by construction.
 
 **Mixed pdf is not a function in the ordinary sense.** Strictly, $f_{\text{mix}}(x) = W_c\, g(x) + \sum_i w_i\, \delta(x - x_i)$, with Dirac deltas at the mass points. The lollipops are just a visual stand-in for those deltas — heights of lollipops carry **probability mass** (unitless), heights of the smooth curve carry **probability density** (per unit $x$). They share an axis here for layout convenience, not because they share units.
+
+For the formal statement, including the condition that makes this split unique, see [the decomposition theorem](/teaching-topics/mixed-random-variables/#thm-decomposition).
 
 <script>
 (function() {

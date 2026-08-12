@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "From PDF to CDF"
+title: "From pdf to cdf"
 permalink: /demos/pdf-cdf/
 author_profile: true
 ---

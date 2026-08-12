@@ -1,0 +1,49 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\newcommand{\sssig}{\scriptscriptstyle}
+
+%% 書稿用 whitegray 灰階曲面; 本站改用同一色相的墨色濃淡，
+%% 與其他圖的主線色 journalink 相稱。
+\pgfplotsset{
+  colormap={journalgray}{color(0cm)=(white); color(1cm)=(journalink)}
+}
+
+\begin{document}
+\begin{tikzpicture}[
+    declare function={mu1=2;},
+    declare function={mu2=2;},
+    declare function={sigma1=1;},
+    declare function={sigma2=1;},
+    declare function={bivar(\ma,\sa,\mb,\sb)=
+        1/(2*pi*\sa*\sb) * exp(-((x-\ma)^2/\sa^2 + (y-\mb)^2/\sb^2))/2;}]
+\begin{axis}[
+    axis line style={draw=none},
+    colormap name=journalgray,
+    width=11cm,
+    view={50}{45},
+    enlargelimits=false,
+    domain=0:4,
+    y domain=0:4,
+    samples=50,
+    xlabel=$x$,
+    ylabel=$y$,
+    zlabel={$f_{\sssig XY}(x,\,y)$},
+    label style={journalink, font=\large},
+    xtick=\empty,
+    ytick=\empty,
+    ztick=\empty,
+    zlabel style={rotate=-90, anchor=west},
+]
+\addplot3[surf, draw=journalink, line width=0.2pt] {bivar(mu1,sigma1,mu2,sigma2)};
+\end{axis}
+\end{tikzpicture}
+\end{document}

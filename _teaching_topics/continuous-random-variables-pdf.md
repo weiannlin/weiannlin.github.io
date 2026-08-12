@@ -10,6 +10,7 @@ order: 204
 permalink: /teaching-topics/continuous-random-variables-pdf/
 date: 2026-06-06
 published: false
+listed: false
 excerpt: "連續型隨機變數的單點不具有正機率，事件機率改由密度函數在區間上的面積計算。pdf 可視為 cdf 的變化率，區間機率則由積分取得。"
 ---
 
@@ -139,7 +140,7 @@ $$
 \mathbb{P}(x<X\leqslant x+\Delta x)
 =
 \int_x^{x+\Delta x} f_X(t)\,dt
-\approx
+\fallingdotseq
 f_X(x)\Delta x
 $$
 
@@ -156,7 +157,7 @@ F_X(x+\Delta x)-F_X(x)
 \mathbb{P}(x<X\leqslant x+\Delta x) \\
 &=
 \int_x^{x+\Delta x}f_X(t)\,dt \\
-&\approx
+&\fallingdotseq
 f_X(x)\Delta x
 \end{aligned}
 $$
@@ -164,7 +165,7 @@ $$
 上式先從右側小區間說明 cdf 的局部變化。若要得到普通導數，則改以可正可負的 $h$ 表示增量。若 $f_X$ 在 $x$ 連續，則由微積分基本定理 (fundamental theorem of calculus, FTC) 可得
 
 $$
-F_X'(x)
+F_X^{\prime}(x)
 =
 \lim_{h\to0}
 \frac{F_X(x+h)-F_X(x)}{h}

@@ -10,6 +10,7 @@ order: 207
 permalink: /teaching-topics/variance-standard-deviation/
 date: 2026-06-06
 published: false
+listed: false
 excerpt: "期望值給出隨機變數的平均位置。變異數則衡量隨機變數離開此平均位置的平均程度，標準差再把單位還原回原來的尺度。"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "獨立性，資訊不再改變機率"
+title: "獨立性與條件獨立"
 subtitle: "Independence and Conditional Independence"
 layout: topic
 collection: teaching_topics
@@ -13,45 +13,65 @@ published: true
 excerpt: "獨立性描述資訊進來後機率仍然不變的情形。本篇依序介紹獨立事件、互斥與獨立的關係、列聯表、完全獨立與成對獨立，以及可靠度的串聯與並聯系統，最後補充條件獨立。"
 ---
 
-[上一篇文章](/teaching-topics/conditional-probability-information/)的結尾提到，資訊的流入對某件事情發生的機率，影響可能為正、也可能為負；而比較特別的情況，是某一事件的資訊流入對另一事件毫無影響，這種狀況便是兩事件彼此獨立。本篇就從這個概念的正式定義說起。
+[上一篇](/teaching-topics/conditional-probability-information/)的結尾提到，資訊的流入對某件事情發生的機率，影響可能為正、也可能為負；而比較特別的情況，是某一事件的資訊流入對另一事件毫無影響，這種狀況便是兩事件彼此獨立。本篇就從這個概念的正式定義說起。
 
 ## 獨立事件
 
 <div id="definition-117" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.20</div>
 
-令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A,B\in\mathcal{F}$。**$A$ 與 $B$ 獨立 (independent)**，記為 $A\indep B$，與以下條件等價:
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A,B\in\mathcal{F}$。**$A$ 與 $B$ 獨立 <span lang="en">(independent)</span>**，記為 $A\indep B$，與以下條件等價:
 
-(1) $\mathbb{P}(B\mid A)=\mathbb{P}(B)$，其中 $\mathbb{P}(A)>0$。
+(1) 在 $\mathbb{P}(A)>0$ 之下，皆有
+{: .topic-paren-item}
 
-(2) $\mathbb{P}(A\mid B)=\mathbb{P}(A)$，其中 $\mathbb{P}(B)>0$。
+$$
+\mathbb{P}(B\mid A)=\mathbb{P}(B)
+$$
 
-(3) $\mathbb{P}(A\cap B)=\mathbb{P}(A)\,\mathbb{P}(B)$。
+(2) 在 $\mathbb{P}(B)>0$ 之下，皆有
+{: .topic-paren-item}
+
+$$
+\mathbb{P}(A\mid B)=\mathbb{P}(A)
+$$
+
+(3) 皆有
+{: .topic-paren-item}
+
+$$
+\mathbb{P}(A\cap B)=\mathbb{P}(A)\,\mathbb{P}(B)
+$$
+
 </div>
 
-上述的條件其實都是在說，給定發生 $A$ (或 $B$) 的條件之下，發生 $B$ (或 $A$) 的條件機率，與沒有給定此條件時相同；換言之，即**發生 $A$ (或 $B$) 並不影響 $B$ (或 $A$) 發生的機率**，這個概念即為二者**獨立**。
+上述的條件其實都是在說，給定發生 $A$ (或 $B$) 的條件之下，發生 $B$ (或 $A$) 的條件機率，與沒有給定此條件時相同；換言之，即**發生 $A$ <span class="text-nowrap">(或 $B$)</span> 並不影響 $B$ <span class="text-nowrap">(或 $A$)</span> 發生的機率**，這個概念即為二者**獨立**。
 
 由[條件機率的定義](/teaching-topics/conditional-probability-information/#definition-conditional-probability)及[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)可知，若 (1) 或 (2) 成立，我們當然能夠順勢得到 (3)。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，我們後續在判斷兩事件是否為**獨立事件 (independent events)** 時，較常使用的等價定義為 (3)，因為 (1) 與 (2) 要求 $\mathbb{P}(A)>0$ 或 $\mathbb{P}(B)>0$ (為了使條件機率 $\mathbb{P}(B\mid A)$ 或 $\mathbb{P}(A\mid B)$ 有定義)，而 (3) 則完全避免了條件機率的出現，故即使 $\mathbb{P}(A)=\mathbb{P}(B)=0$，我們仍然可以用其作為判斷是否獨立的依據。
+事實上，我們後續在判斷兩事件是否為**獨立事件 <span lang="en">(independent events)</span>** 時，較常使用的等價定義為 (3)，因為 (1) 與 (2) 要求 $\mathbb{P}(A)>0$ 或 $\mathbb{P}(B)>0$ (為了使條件機率 $\mathbb{P}(B\mid A)$ 或 $\mathbb{P}(A\mid B)$ 有定義)，而 (3) 則完全避免了條件機率的出現，故即使 $\mathbb{P}(A)=\mathbb{P}(B)=0$，我們仍然可以用其作為判斷是否獨立的依據。
 </div>
 
 <div id="example-computer-ownership" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.18 (Computer Ownership)</div>
+<div class="topic-box__label">Example 1.18 <span lang="en">(Computer Ownership)</span></div>
 
 <div lang="en" markdown="1">
 In a survey on computer ownership, $73.4\%$ of the respondents said they own a PC, $21.8\%$ said they own both a PC and a Mac, and $80.1\%$ said they own at least one of the two. Let $P$ be the event that a randomly chosen respondent owns a PC, and let $M$ be the event that the respondent owns a Mac.
 
 (1) What is the probability that a respondent owns a Mac?
+{: .topic-paren-item}
 
 (2) Are $P$ and $M$ mutually exclusive? Justify your answer with probabilities.
+{: .topic-paren-item}
 
 (3) Given that a respondent owns a PC, what is the conditional probability that the respondent also owns a Mac?
+{: .topic-paren-item}
 
 (4) Are $P$ and $M$ independent? Justify your answer with probabilities.
+{: .topic-paren-item}
 </div>
 
 以下依序求解。
@@ -79,11 +99,27 @@ $$
 
 則由[加法原理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)可知
 
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
 $$
 \mathbb{P}(P\cup M)=\mathbb{P}(P)+\mathbb{P}(M)-\mathbb{P}(P\cap M)
 $$
 
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(P\cup M)&=\mathbb{P}(P)+\mathbb{P}(M)\\[0.4em]
+&\quad-\mathbb{P}(P\cap M)
+\end{aligned}
+$$
+
+</div>
+
 移項可得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 \begin{aligned}
@@ -92,6 +128,20 @@ $$
 \end{aligned}
 $$
 
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(M)&=\mathbb{P}(P\cup M)+\mathbb{P}(P\cap M)\\[0.4em]
+&\quad-\mathbb{P}(P)\\[0.4em]
+&=0.801+0.218-0.734\\[0.4em]
+&=0.285
+\end{aligned}
+$$
+
+</div>
+
 **(2)** 由 $\mathbb{P}(P\cap M)=0.218\neq 0$ 可知 $P\cap M\neq\varnothing$，故 $P$ 與 $M$ 不為互斥事件。
 
 **(3)** 所求為
@@ -99,7 +149,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}(M\mid P)=\frac{\mathbb{P}(P\cap M)}{\mathbb{P}(P)}=\frac{0.218}{0.734}\approx 0.2970
+\mathbb{P}(M\mid P)=\frac{\mathbb{P}(P\cap M)}{\mathbb{P}(P)}=\frac{0.218}{0.734}\fallingdotseq 0.2970
 $$
 
 </div>
@@ -108,7 +158,7 @@ $$
 $$
 \begin{aligned}
 \mathbb{P}(M\mid P)&=\frac{\mathbb{P}(P\cap M)}{\mathbb{P}(P)}\\[0.4em]
-&=\frac{0.218}{0.734}\approx 0.2970
+&=\frac{0.218}{0.734}\fallingdotseq 0.2970
 \end{aligned}
 $$
 
@@ -119,7 +169,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}(P\cap M)=0.218\neq\mathbb{P}(P)\,\mathbb{P}(M)=0.734\times 0.285\approx 0.209
+\mathbb{P}(P\cap M)=0.218\neq\mathbb{P}(P)\,\mathbb{P}(M)=0.734\times 0.285\fallingdotseq 0.2092
 $$
 
 </div>
@@ -128,7 +178,7 @@ $$
 $$
 \begin{aligned}
 &\mathbb{P}(P\cap M)=0.218\\[0.4em]
-\neq\;&\mathbb{P}(P)\,\mathbb{P}(M)=0.734\times 0.285\approx 0.209
+\neq\;&\mathbb{P}(P)\,\mathbb{P}(M)=0.734\times 0.285\fallingdotseq 0.2092
 \end{aligned}
 $$
 
@@ -260,14 +310,16 @@ $$
 </div>
 
 <div id="example-independent-vs-exclusive" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.20 (Independence versus Exclusiveness)</div>
+<div class="topic-box__label">Example 1.20 <span lang="en">(Independence versus Exclusiveness)</span></div>
 
 <div lang="en" markdown="1">
 Prove the following two statements, assuming that every conditioning event has positive probability.
 
 (1) If $\mathbb{P}(B)=1$, then $\mathbb{P}(A\mid B)=\mathbb{P}(A)$ for every event $A$.
+{: .topic-paren-item}
 
 (2) Suppose that $\mathbb{P}(A)>0$ and $\mathbb{P}(B)>0$. If $A$ and $B$ are independent, then they cannot be mutually exclusive. Conversely, if they are mutually exclusive, then they cannot be independent.
+{: .topic-paren-item}
 </div>
 
 以下依序求解。
@@ -344,7 +396,7 @@ $$
 </div>
 
 <div id="example-fungus-beetles" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.21 (Fungus Beetles)</div>
+<div class="topic-box__label">Example 1.21 <span lang="en">(Fungus Beetles)</span></div>
 
 <div lang="en" markdown="1">
 On a field trip to Guatemala, you study a population of handsome fungus beetles. Females make up $70\%$ of the population and males $30\%$. The population also has two color morphs, with $60\%$ of the beetles dull brown and $40\%$ bronze. Half of all the beetles are dull brown females. Is the event that a beetle is male independent of the event that a beetle is dull brown?
@@ -382,7 +434,7 @@ $$
 故 $A$ 與 $M$ 不獨立，其顏色為 dull brown 與其性別為 male 此二事件不獨立。
 </div>
 
-[Example 1.21](#example-fungus-beetles) 中，我們將昆蟲群體依照其**顏色**與**性別**兩組互斥且合起來涵蓋整個母體的分類方式 (即稍後將正式介紹的**分割 (partition)**) 進行分類，並列成表格，這種表格稱為**列聯表 (contingency table)**。其型態如下表:
+[Example 1.21](#example-fungus-beetles) 中，我們將昆蟲群體依照其**顏色**與**性別**兩組互斥且合起來涵蓋整個母體的分類方式 (即稍後將正式介紹的**分割 <span lang="en">(partition)</span>**) 進行分類，並列成表格，這種表格稱為**列聯表 <span lang="en">(contingency table)</span>**。其型態如下表:
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -406,12 +458,12 @@ $$
 
 </div>
 
-在上述表格中，表內的機率如 $\mathbb{P}(A_1\cap B_1)$ 等，稱作**聯合機率 (joint probability)**，而表邊的機率如 $\mathbb{P}(A_1)$ 等，稱作**邊際機率 (marginal probability)**，這二者的概念與分割及全機率定理具有非常高度的相關，我們將在[下一篇文章](/teaching-topics/total-probability-bayes-rule/)與後續章節詳細介紹。
+在上述表格中，表內的機率如 $\mathbb{P}(A_1\cap B_1)$ 等，稱作**聯合機率 <span lang="en">(joint probability)</span>**，而表邊的機率如 $\mathbb{P}(A_1)$ 等，稱作**邊際機率 <span lang="en">(marginal probability)</span>**，這二者的概念與分割及全機率定理具有非常高度的相關，我們將在[下一篇](/teaching-topics/total-probability-bayes-rule/)與後續章節詳細介紹。
 
 ## 獨立事件的餘事件
 
 <div id="theorem-independence-complements" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.15 (Independence and Complements)</div>
+<div class="topic-box__label">Theorem 1.15 <span lang="en">(Independence and Complements)</span></div>
 
 令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A,B\in\mathcal{F}$，且 $A\indep B$，則以下敘述亦成立:
 
@@ -525,9 +577,10 @@ $$
 <div id="definition-118" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.21</div>
 
-令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間。若 $A,B,C\in\mathcal{F}$ 滿足以下條件，則稱 **$A,B,C$ 完全獨立 (mutually independent)**:
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間。若 $A,B,C\in\mathcal{F}$ 滿足以下條件，則稱 **$A,B,C$ 完全獨立 <span lang="en">(mutually independent)</span>**:
 
 (1) 三事件兩兩獨立，即
+{: .topic-paren-item}
 
 $$
 \begin{gathered}
@@ -538,6 +591,7 @@ $$
 $$
 
 (2) 交集機率等於各自機率相乘，即
+{: .topic-paren-item}
 
 $$
 \mathbb{P}(A\cap B\cap C)=\mathbb{P}(A)\,\mathbb{P}(B)\,\mathbb{P}(C)
@@ -548,7 +602,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-**完全獨立 (mutually independent)** 除了單純將「交集的機率等於各自機率相乘」推廣至三個事件的版本外，還多了「兩兩事件彼此也要獨立」的條件。若僅滿足 (1) 而沒有滿足 (2) 的話，我們稱之為**成對獨立 (pairwise independent)**。
+**完全獨立 <span lang="en">(mutually independent)</span>** 除了單純將「交集的機率等於各自機率相乘」推廣至三個事件的版本外，還多了「兩兩事件彼此也要獨立」的條件。若僅滿足 (1) 而沒有滿足 (2) 的話，我們稱之為**成對獨立 <span lang="en">(pairwise independent)</span>**。
 
 事實上，這個定義若要推廣到任意 $n$ 個事件的話，需要在這 $n$ 個事件中任意取 $k$ 個事件 (其中 $k=2,3,\ldots,n$)，彼此都滿足「交集機率等於各自機率相乘」。若以四個事件而言，則其中任意兩個、三個事件及全部四個事件都要滿足這個條件。
 </div>
@@ -598,7 +652,7 @@ $$
 上式與 [Definition 1.21](#definition-118) 完全等價。但讀者要注意的是，若上式成立，將導致 [Definition 1.21](#definition-118) 中的 (1) 與 (2) 同時成立；反之，[Definition 1.21](#definition-118) 中的 (1) 與 (2) 必須同時成立，才能導致上式成立。
 
 <div id="example-pairwise-not-mutual" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.22 (Pairwise but Not Mutual)</div>
+<div class="topic-box__label">Example 1.22 <span lang="en">(Pairwise but Not Mutual)</span></div>
 
 <div lang="en" markdown="1">
 Four cards are labeled with the numbers $1$, $2$, $3$, and $123$, one number per card. One card is drawn at random, and for $i=1,2,3$ let $A_i$ be the event that the number on the drawn card contains the digit $i$. Show that the three events $A_1,A_2,A_3$ are pairwise independent but not mutually independent.
@@ -690,7 +744,7 @@ $$
 
 正因為其容易操作的特性，現實世界中的複雜問題，往往會先簡化假設至彼此獨立的狀況，以便進行初步的分析，這也是獨立的觀念之所以重要的原因。
 
-系統的**可靠度 (reliability)** 就其字面上的意思為**系統可靠的程度**，顧名思義是指系統「可以成功運作的機率」。所有的可靠度問題，都可以經由**子系統拆解**，簡化為最簡單的兩種系統: **串聯**與**並聯**。首先假設兩個獨立的元件，並且 $A$ 與 $B$ 分別是第一個與第二個元件能順利運作的事件，則我們分別探討下列兩種系統的可靠度。
+系統的**可靠度 <span lang="en">(reliability)</span>** 就其字面上的意思為**系統可靠的程度**，顧名思義是指系統「可以成功運作的機率」。所有的可靠度問題，都可以經由**子系統拆解**，簡化為最簡單的兩種系統: **串聯**與**並聯**。首先假設兩個獨立的元件，並且 $A$ 與 $B$ 分別是第一個與第二個元件能順利運作的事件，則我們分別探討下列兩種系統的可靠度。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -705,7 +759,11 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 1.18.</span> 兩個元件的串聯系統。</figcaption>
 </figure>
 
-這種系統若要成功運作，表示兩個元件皆必須要可以運作，即 $A$ 事件與 $B$ 事件之交集，故整個系統的可靠度為 $\mathbb{P}(A\cap B)=\mathbb{P}(A)\,\mathbb{P}(B)$。
+這種系統若要成功運作，表示兩個元件皆必須要可以運作，即 $A$ 事件與 $B$ 事件之交集，故整個系統的可靠度為
+
+$$
+\mathbb{P}(A\cap B)=\mathbb{P}(A)\,\mathbb{P}(B)
+$$
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -759,7 +817,7 @@ $$
 </div>
 
 <div id="example-three-component-reliability" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.23 (A Three-Component System)</div>
+<div class="topic-box__label">Example 1.23 <span lang="en">(A Three-Component System)</span></div>
 
 <div lang="en" markdown="1">
 A system consists of three components $1$, $2$, and $3$, arranged as in the figure below. Each component fails with probability $0.1$.
@@ -772,8 +830,10 @@ A system consists of three components $1$, $2$, and $3$, arranged as in the figu
 
 <div lang="en" markdown="1">
 (1) If the three components work independently, what is the probability that the system works?
+{: .topic-paren-item}
 
 (2) Suppose instead that component $1$ works independently of components $2$ and $3$, and that the conditional probability that component $2$ fails given that component $3$ fails is $0.4$, and vice versa. What is the probability that the system works?
+{: .topic-paren-item}
 </div>
 
 以下依序求解。
@@ -853,7 +913,10 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}(A_2\cap A_3)=\mathbb{P}(A_2)+\mathbb{P}(A_3)-\mathbb{P}(A_2\cup A_3)=0.9+0.9-0.96=0.84
+\begin{aligned}
+\mathbb{P}(A_2\cap A_3)&=\mathbb{P}(A_2)+\mathbb{P}(A_3)-\mathbb{P}(A_2\cup A_3)\\[0.4em]
+&=0.9+0.9-0.96=0.84
+\end{aligned}
 $$
 
 </div>
@@ -896,7 +959,7 @@ $$
 </div>
 
 <div id="example-power-transmission" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.24 (A Power Transmission System)</div>
+<div class="topic-box__label">Example 1.24 <span lang="en">(A Power Transmission System)</span></div>
 
 <div lang="en" markdown="1">
 Consider the power transmission system composed of the components shown in the figure below, where the number in each block is the probability that the component operates. Find the probability that the whole system operates.
@@ -932,8 +995,8 @@ $$
 $$
 \begin{gathered}
 \mathbb{P}(E_1)=0.8\\[0.4em]
-\mathbb{P}(E_2)=1-(1-0.9)(1-0.9)=0.99\\[0.4em]
-\begin{aligned}\mathbb{P}(E_3)&=1-(1-0.9)(1-0.7)(1-0.8)\\[0.4em]&=0.994\end{aligned}
+\begin{aligned}\mathbb{P}(E_2)&=1-(1-0.9)(1-0.9)\\[0.4em]&=0.99\end{aligned}\\[0.4em]
+\begin{aligned}\mathbb{P}(E_3)&=1-(1-0.9)(1-0.7)\\[0.4em]&\quad\times(1-0.8)\\[0.4em]&=0.994\end{aligned}
 \end{gathered}
 $$
 
@@ -944,7 +1007,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}(E_1)\,\mathbb{P}(E_2)\,\mathbb{P}(E_3)=0.8\times 0.99\times 0.994\approx 0.7872
+\mathbb{P}(E_1)\,\mathbb{P}(E_2)\,\mathbb{P}(E_3)=0.8\times 0.99\times 0.994\fallingdotseq 0.7872
 $$
 
 </div>
@@ -954,7 +1017,7 @@ $$
 \begin{aligned}
 &\mathbb{P}(E_1)\,\mathbb{P}(E_2)\,\mathbb{P}(E_3)\\[0.4em]
 &\quad=0.8\times 0.99\times 0.994\\[0.4em]
-&\quad\approx 0.7872
+&\quad\fallingdotseq 0.7872
 \end{aligned}
 $$
 
@@ -976,7 +1039,7 @@ $$
 =\mathbb{P}(A\mid C)\,\mathbb{P}(B\mid C)
 $$
 
-則稱 $A$ 與 $B$ 在給定 $C$ 後**條件獨立 (conditionally independent)**。
+則稱 $A$ 與 $B$ 在給定 $C$ 後**條件獨立 <span lang="en">(conditionally independent)</span>**。
 </div>
 
 條件獨立的重點在於先固定條件 $C$。固定在 $C$ 所代表的參照世界後，$A$ 的發生不再改變 $B$ 的機率，$B$ 的發生也不再改變 $A$ 的機率。

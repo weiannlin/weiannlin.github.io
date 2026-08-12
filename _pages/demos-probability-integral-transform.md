@@ -393,7 +393,7 @@ author_profile: true
   }
 </style>
 
-Proposition 2.18 connects a continuous cdf with the standard uniform distribution in both directions. This demo uses the standard Cauchy distribution because its pdf, cdf, and quantile function all have closed forms. Its heavy tails also make the changes in local slope especially visible.
+[Proposition 2.4](/teaching-topics/one-to-one-transformations/#prop-probability-integral-transform) connects a continuous cdf with the standard uniform distribution in both directions. This demo uses the standard Cauchy distribution because its pdf, cdf, and quantile function all have closed forms. Its heavy tails also make the changes in local slope especially visible.
 
 The standard Cauchy distribution will be introduced in a later teaching topic. For now, only the following three functions are needed. Its cdf is continuous and strictly increasing, so its quantile function agrees with the ordinary inverse of the cdf. Write $Q=F^{-1}$. Then
 
@@ -487,7 +487,7 @@ Start with $u$ on the standard uniform scale and set $x=Q(u)$. The same $x$ is m
 The pdf gives the local slope of the cdf, so $F^{\prime}(x)=f(x)$. At the corresponding point $x=Q(u)$, the inverse-function rule gives
 
 $$
-Q'(u)
+Q^{\prime}(u)
 =
 \frac{1}{f(Q(u))}
 $$
@@ -497,7 +497,7 @@ Therefore, the chain rule gives
 $$
 \frac{d}{du}F(Q(u))
 =
-f(Q(u))Q'(u)
+f(Q(u))Q^{\prime}(u)
 =
 1
 $$
@@ -570,7 +570,7 @@ The first histogram should be approximately flat. The second should follow the s
 
 **The plotted Cauchy range is incomplete.** The simulation chart displays only the central interval from $Q(0.05)$ to $Q(0.95)$. Tail observations are counted below the chart, and every histogram density is divided by the full sample size rather than only by the number of visible observations.
 
-The proof, the quantile-function formula used by the transform, and the endpoint convention are in Proposition 2.18. To review how a density builds a cdf before applying the transformation, see [From pdf to cdf](/demos/pdf-cdf/).
+The proof, the quantile-function formula used by the transform, and the endpoint convention are in [Proposition 2.4](/teaching-topics/one-to-one-transformations/#prop-probability-integral-transform). To review how a density builds a cdf before applying the transformation, see [From pdf to cdf](/demos/pdf-cdf/).
 
 <script>
 (function () {

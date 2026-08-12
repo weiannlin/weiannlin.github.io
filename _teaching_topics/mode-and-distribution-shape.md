@@ -10,6 +10,7 @@ order: 210
 permalink: /teaching-topics/mode-and-distribution-shape/
 date: 2026-06-20
 published: false
+listed: false
 excerpt: "眾數描述機率或密度最集中的位置。期望值、中位數與眾數都是中央趨勢量數，但在有偏分配中，三者對尾端與極端值的靈敏程度並不相同。"
 ---
 

@@ -1,0 +1,53 @@
+% Fig 2.7 / spec Fig A03 -- cdf of a degenerate random variable
+% Source: mathstatch2.tex lines 391-420
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usetikzlibrary{arrows.meta}
+\newcommand{\sssig}{\scriptscriptstyle}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  every node/.style={font=\normalsize, journalink},
+  axis/.style={journalink, line width=0.8pt, -{Stealth[length=4pt]}},
+  tick/.style={journalink, line width=0.8pt},
+  stepline/.style={journalink, line width=1.0pt},
+  solidpt/.style={circle, fill=journalink, inner sep=0pt, minimum size=3.6pt},
+  openpt/.style={circle, draw=journalink, line width=0.6pt, fill=white,
+                 inner sep=0pt, minimum size=3.6pt}
+]
+  % ---- axes (x axis starts at -1 so the flat piece for x<0 is visible) ----
+  \draw[axis] (-1,0) -- (3.5,0);
+  \draw[axis] (0,0) -- (0,3.5);
+
+  % ---- x ticks: 1.5 units per unit label; the tick at x=0 is lengthened
+  %      to clear the open endpoint sitting there ----
+  \draw[tick] (0,0.035) -- (0,-0.150);
+  \foreach \x in {1.5,3}
+    \draw[tick] (\x,0.035) -- (\x,-0.106);
+  \foreach \x/\lab in {0/0, 1.5/1, 3/2}
+    \node[anchor=north] at (\x,-0.25) {$\lab$};
+
+  % ---- y ticks: only y=3, which corresponds to probability 1 ----
+  \draw[tick] (0.035,3) -- (-0.106,3) node[anchor=east, inner sep=2pt] {$1$};
+
+  % ---- step segments ----
+  \draw[stepline] (-1,0) -- (0,0);
+  \draw[stepline] (0,3)  -- (3,3);
+
+  % ---- endpoints (drawn last) ----
+  \node[openpt]  at (0,0) {};
+  \node[solidpt] at (0,3) {};
+
+  % ---- axis labels ----
+  \node[anchor=west, inner sep=0pt] at (3.6,0) {$x$};
+  \node[anchor=south, inner sep=0pt] at (0,3.6) {$F_{\sssig X}(x)$};
+\end{tikzpicture}
+\end{document}

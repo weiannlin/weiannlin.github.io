@@ -10,6 +10,7 @@ order: 220
 permalink: /teaching-topics/discrete-random-variable-transformations/
 date: 2026-07-13
 published: false
+listed: false
 excerpt: "已知離散型隨機變數 $X$ 的 pmf 與 $Y=g(X)$ 後，$Y$ 在每個轉換後取值的機率等於所有映到該值的原取值機率總和。一對一反函數式是這項公式的特例，mgf 則提供另一種辨認分配的方法。"
 ---
 

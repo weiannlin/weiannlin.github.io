@@ -1,0 +1,75 @@
+% Fig. 2.13 / spec Fig A13 -- the mode as an interior solution: the density
+%   peaks inside its support, so the mode is a critical point.
+% Source: mathstatch2.tex lines 2112-2150, the companion of Fig. 2.12.
+%
+% Deviations from CH2_FIGURE_SPECS.md:
+%
+% 1. The manuscript curve (45/4) x^3 e^{-1.7x} - 0.15 does not integrate to 1
+%    and is cut off at both ends.  Per spec 1.6 the web uses Gamma(shape 4,
+%    rate 1.7), f(x) = 1.3920167 x^3 e^{-1.7x}, the chapter's right-skewed
+%    reference density.  Its mode is 3/1.7 = 1.764706, the same value the
+%    manuscript marks, and the peak density is 0.380871, so at y = 7.6cm the
+%    peak stands 2.894cm high -- level with the 2.9cm peak of the companion
+%    figure.
+%
+% 2. The word for "interior solution" is set below the picture in the
+%    manuscript.  Spec 1.4 moves it to the caption.
+%
+% 3. The manuscript puts the x label at (6.5,0.15) while the axis stops at
+%    6.2.  Per spec 1.3 the label goes at the end of the axis instead.
+%
+% 4. \DeclareMathSizes{10}{10}{9}{8}, as in the companion figure and in
+%    quartiles-equal-areas.tex; not the site-wide \sssig change that ruling 21
+%    defers.
+%
+% 5. Bounding box shared with mode-corner-solution.tex, so the pair renders at
+%    one scale.  Native size 220.402 x 111.135 pt, drawing range 7.63cm
+%    wide; at 350px that is 15.8px for 10pt text, 14.2px for 9pt scripts and
+%    12.7px for 8pt scriptscripts, at 620px 28.0 / 25.2 / 22.4px.
+%
+% The density is written as 1.3920167 (x e^{-0.56666667x})^3 rather than
+% 1.3920167 x^3 / e^{1.7x}: pgfmath cannot hold e^{1.7 x} at the right hand
+% end of the range, where it passes 16384.
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usetikzlibrary{arrows.meta}
+\newcommand{\sssig}{\scriptscriptstyle}
+\DeclareMathSizes{10}{10}{9}{8}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=1cm,
+  y=7.6cm,
+  every node/.style={font=\normalsize, journalink},
+  axis/.style={journalink, line width=0.8pt, -{Stealth[length=4pt]}},
+  tick/.style={journalink, line width=0.8pt},
+  curve/.style={journalink, line width=0.8pt},
+  guide/.style={journalmuted, line width=0.5pt, dash pattern=on 2pt off 2pt}
+]
+  % ---- bounding box shared with mode-corner-solution.tex ----------------
+  \path (-0.53cm,-0.80cm) rectangle (7.10cm,2.98cm);
+
+  % ---- x axis ----------------------------------------------------------
+  \draw[axis] (-0.5,0) -- (6.7,0);
+  \node[anchor=west, inner sep=2.8pt] at (6.7,0) {$x$};
+
+  % ---- the mode, here an interior critical point -----------------------
+  \draw[guide] (1.764706,0.380871) -- (1.764706,0);
+  \draw[tick] ([yshift=0.035cm]1.764706,0) -- ([yshift=-0.106cm]1.764706,0);
+  \node[anchor=north] at ([yshift=-0.25cm]1.764706,0) {$m_{o}$};
+
+  % ---- density curve: Gamma(4, 1.7) ------------------------------------
+  \draw[curve] plot[domain=0:6.4, samples=300, smooth]
+    (\x,{1.3920167*pow(\x*exp(-0.56666667*\x),3)});
+
+  % ---- curve label -----------------------------------------------------
+  \node[anchor=south west, inner sep=0pt] at ([yshift=1.30cm]3.65,0)
+    {$f_{\sssig X}(x)$};
+\end{tikzpicture}
+\end{document}

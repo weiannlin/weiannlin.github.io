@@ -10,6 +10,7 @@ order: 212
 permalink: /teaching-topics/moment-generating-functions/
 date: 2026-06-21
 published: false
+listed: false
 excerpt: '動差母函數 $M_X(t)=\mathbb{E}(e^{tX})$ 把各階原動差收進同一個函數。若它在 $0$ 附近存在，對 $t$ 微分並令 $t=0$，即可得到 $\mathbb{E}(X^r)$。'
 ---
 
@@ -155,9 +156,9 @@ $$
 接著對 $t$ 微分，可得
 
 $$
-M_Y'(t)=\frac{2e^t}{(2-e^t)^2},
+M_Y^{\prime}(t)=\frac{2e^t}{(2-e^t)^2},
 \qquad
-M_Y''(t)=\frac{2e^t(2+e^t)}{(2-e^t)^3}
+M_Y^{\prime\prime}(t)=\frac{2e^t(2+e^t)}{(2-e^t)^3}
 $$
 
 令 $t=0$，可得 $\mathbb{E}(Y)=M_Y^{\prime}(0)=2$ 與 $\mathbb{E}(Y^2)=M_Y^{\prime\prime}(0)=6$。
@@ -262,7 +263,7 @@ $$
 對 $t$ 微分可得
 
 $$
-M_X'(t)
+M_X^{\prime}(t)
 =
 \frac{e^t}{5}
 +\frac{8e^{4t}}{5}
@@ -274,7 +275,7 @@ $$
 再微分一次可得
 
 $$
-M_X''(t)
+M_X^{\prime\prime}(t)
 =
 \frac{e^t}{5}
 +\frac{32e^{4t}}{5}

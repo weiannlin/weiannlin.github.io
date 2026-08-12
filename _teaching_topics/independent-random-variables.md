@@ -10,6 +10,7 @@ order: 306
 permalink: /teaching-topics/independent-random-variables/
 date: 2026-07-24
 published: false
+listed: false
 excerpt: "若一個變數的取值不改變另一個變數的分配，兩者便獨立；聯合 cdf、pmf 或 pdf 也會分解為兩個邊際函數的乘積。"
 ---
 
@@ -38,7 +39,7 @@ p_{XY}(x,y)
 p_{Y\mid X}(y\mid x)\,p_X(x)
 $$
 
-若 $(X,Y)$ 具有聯合 pdf，則對滿足 $f_Y(y)>0$ 的固定值 $y$，以及任意 $x\in\mathbb{R}$，皆有
+若 $(X,Y)$ 具有聯合 pdf，則對滿足 $f_Y(y)>0$ 的固定值 $y$，以及任意 <span class="text-nowrap">$x\in\mathbb{R}$，</span>皆有
 
 $$
 f_{XY}(x,y)
@@ -87,8 +88,10 @@ $$
 對定義在同一個機率空間上的任意兩個隨機變數 $X$ 與 $Y$，下列兩項等價:
 
 (1) $X\indep Y$。
+{: .topic-paren-item}
 
 (2) 對任意 $x,y\in\mathbb{R}$，皆有
+{: .topic-paren-item}
 
 $$
 F_{XY}(x,y)
@@ -99,6 +102,7 @@ $$
 若 $(X,Y)$ 為二元離散型隨機向量，則上述兩項也與下列三項等價:
 
 (3) 對任意 $x\in\mathcal{R}_X$ 與 $y\in\mathcal{R}_Y$，皆有
+{: .topic-paren-item}
 
 $$
 p_{XY}(x,y)
@@ -107,6 +111,7 @@ p_X(x)\,p_Y(y)
 $$
 
 (4) 對每個滿足 $p_Y(y)>0$ 的 $y$，以及每個 $x\in\mathcal{R}_X$，皆有
+{: .topic-paren-item}
 
 $$
 p_{X\mid Y}(x\mid y)
@@ -115,6 +120,7 @@ p_X(x)
 $$
 
 (5) 對每個滿足 $p_X(x)>0$ 的 $x$，以及每個 $y\in\mathcal{R}_Y$，皆有
+{: .topic-paren-item}
 
 $$
 p_{Y\mid X}(y\mid x)
@@ -125,6 +131,7 @@ $$
 以下的幾乎處處 (almost everywhere, a.e.) 均是相對於相應的 Lebesgue 測度而言。若 $(X,Y)$ 具有聯合 pdf，則上述兩項也與下列三項等價:
 
 (6) 對 $\mathbb{R}^2$ 中幾乎每個 $(x,y)$，皆有
+{: .topic-paren-item}
 
 $$
 f_{XY}(x,y)
@@ -133,6 +140,7 @@ f_X(x)\,f_Y(y)
 $$
 
 (7) 對幾乎每個滿足 $f_Y(y)>0$ 的 $y$，皆有
+{: .topic-paren-item}
 
 $$
 f_{X\mid Y}(x\mid y)
@@ -141,8 +149,10 @@ f_X(x)
 $$
 
 且此等式對幾乎每個 $x$ 成立。
+{: .topic-paren-cont}
 
 (8) 對幾乎每個滿足 $f_X(x)>0$ 的 $x$，皆有
+{: .topic-paren-item}
 
 $$
 f_{Y\mid X}(y\mid x)
@@ -151,10 +161,11 @@ f_Y(y)
 $$
 
 且此等式對幾乎每個 $y$ 成立。
+{: .topic-paren-cont}
 </div>
 
 <div class="topic-proof" markdown="1">
-**Proof.** 若 $X\indep Y$，在 [Definition 3.10](#definition-310) 中取 $A=(-\infty,x]$ 與 $B=(-\infty,y]$，便得到 (2)。
+**Proof.** 若 $X\indep Y$，在 [Definition 3.10](#definition-310) 中取 $A=(-\infty,x]$ 與 <span class="text-nowrap">$B=(-\infty,y]$，</span>便得到 (2)。
 
 反過來，令 $\mu$ 表示 $(X,Y)$ 的聯合分配，$\nu$ 表示 $X$ 與 $Y$ 的邊際分配所形成的乘積分配 (product distribution)。條件 (2) 表示 $\mu$ 與 $\nu$ 在所有左下矩形 $(-\infty,x]\times(-\infty,y]$ 上取相同的值。這些矩形形成一個 $\pi$-系統 ($\pi$-system)，並生成 $\mathbb{R}^2$ 上的 Borel $\sigma$-域，所以機率測度的唯一性給出 $\mu=\nu$。因此 (2) 推出 $X\indep Y$。
 
@@ -370,7 +381,7 @@ f_{XY}(x,y)
 \end{aligned}
 $$
 
-在二維幾乎處處成立。因此，由 [Proposition 3.5](#proposition-35) 可知 $X\indep Y$。這是一項方便使用的充分條件；若聯合 pdf 無法直接寫成此形式，不能只憑這一點判定不獨立，仍須比較 $f_{XY}$ 與 $f_X\,f_Y$。
+在二維幾乎處處成立。因此，由 [Proposition 3.5](#proposition-35) 可知 <span class="text-nowrap">$X\indep Y$。</span>這是一項方便使用的充分條件；若聯合 pdf 無法直接寫成此形式，不能只憑這一點判定不獨立，仍須比較 $f_{XY}$ 與 <span class="text-nowrap">$f_X\,f_Y$。</span>
 
 ## 聯合 pdf 的分解與非零範圍
 

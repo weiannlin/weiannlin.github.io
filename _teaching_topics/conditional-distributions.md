@@ -10,6 +10,7 @@ order: 305
 permalink: /teaching-topics/conditional-distributions/
 date: 2026-07-24
 published: false
+listed: false
 excerpt: "條件分配固定其中一個變數的取值，再重新調整聯合 pmf 的一列或聯合 pdf 的一個截面，使總量回到 1。"
 ---
 
@@ -252,7 +253,7 @@ f_Y(y)
 \end{aligned}
 $$
 
-所以 $f_{X\mid Y}(\,\cdot\mid y)$ 滿足 [Proposition 2.4](/teaching-topics/continuous-random-variables-pdf/#proposition-24) 的可測性、非負性與總積分條件，確實是一個 pdf。條件分配只在條件變數的邊際分配下幾乎處處決定。對其中固定的條件值 $y$，條件 pdf 又只在 $x$ 的 Lebesgue 幾乎處處意義下決定。後文涉及條件 pdf 的等式時，均採用這兩層意義。
+所以 $f_{X\mid Y}(\,\cdot\mid y)$ 滿足 [Proposition 2.2](/teaching-topics/cdf-and-pdf/#prop-pdf-existence-conditions) 的可測性、非負性與總積分條件，確實是一個 pdf。條件分配只在條件變數的邊際分配下幾乎處處決定。對其中固定的條件值 $y$，條件 pdf 又只在 $x$ 的 Lebesgue 幾乎處處意義下決定。後文涉及條件 pdf 的等式時，均採用這兩層意義。
 
 條件 pdf 的函數值本身不是機率。若 $A\subseteq\mathbb{R}$ 為 Borel 集合，則
 

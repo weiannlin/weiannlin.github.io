@@ -1,5 +1,5 @@
 ---
-title: "分割與全機率定理，從分類到加總"
+title: "樣本空間的分割與全機率定理"
 subtitle: "Partitions and the Law of Total Probability"
 layout: topic
 collection: teaching_topics
@@ -13,22 +13,24 @@ published: true
 excerpt: "樣本空間的分割由一組互斥且周延的事件構成。本篇介紹分割的定義、全機率定理及其條件機率版本，並說明兩組分割彼此交集而成的二元分割與列聯表。"
 ---
 
-[上一篇文章](/teaching-topics/independence-and-conditional-independence/)在介紹列聯表時曾經提到，表內的聯合機率與表邊的邊際機率，與分割及全機率定理有非常高度的相關。本篇便由樣本空間的分割談起，說明一個事件如何依一組分割被切成數個互斥的部分，再逐一加總回來。
+[上一篇](/teaching-topics/independence-and-conditional-independence/)在介紹列聯表時曾經提到，表內的聯合機率與表邊的邊際機率，與分割及全機率定理有非常高度的相關。本篇便由樣本空間的分割談起，說明一個事件如何依一組分割被切成數個互斥的部分，再逐一加總回來。
 
 ## 樣本空間的分割
 
 <div id="definition-partition" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.23</div>
 
-令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A_1,A_2,\ldots,A_n\in\mathcal{F}$，若其滿足以下條件，則稱 $A_1,A_2,\ldots,A_n$ 為 $S$ 的一組**分割 (partition)**:
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A_1,A_2,\ldots,A_n\in\mathcal{F}$，若其滿足以下條件，則稱 $A_1,A_2,\ldots,A_n$ 為 $S$ 的一組**分割 <span lang="en">(partition)</span>**:
 
-(1) **互斥 (mutually exclusive)**:
+(1) **互斥 <span lang="en">(mutually exclusive)</span>**:
+{: .topic-paren-item}
 
 $$
 A_i\cap A_j=\varnothing,\ \forall i\neq j
 $$
 
-(2) **周延 (collectively exhaustive)**:
+(2) **周延 <span lang="en">(collectively exhaustive)</span>**:
+{: .topic-paren-item}
 
 $$
 \bigcup_{i=1}^{n}A_i=S
@@ -48,7 +50,7 @@ $$
 ## 全機率定理
 
 <div id="theorem-law-of-total-probability" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.16 (The Law of Total Probability)</div>
+<div class="topic-box__label">Theorem 1.16 <span lang="en">(The Law of Total Probability)</span></div>
 
 令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，且令 $A_1,A_2,\ldots,A_n\in\mathcal{F}$ 為 $S$ 的一組[分割](#definition-partition)，$B\in\mathcal{F}$ 為一事件，則
 
@@ -122,7 +124,7 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-**全機率定理 (the law of total probability)** 的概念，我們在[兩事件版本的全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)中即曾經提過；這裡的全機率定理，是將該定理由 $A$ 與 $A^{\prime}$ 這組特別的分割，推廣至一般的 $n$ 個事件所構成的分割，其概念可以由下圖理解:
+**全機率定理 <span lang="en">(the law of total probability)</span>** 的概念，我們在[兩事件版本的全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)中即曾經提過；這裡的全機率定理，是將該定理由 $A$ 與 $A^{\prime}$ 這組特別的分割，推廣至一般的 $n$ 個事件所構成的分割，其概念可以由下圖理解:
 
 <figure class="topic-figure topic-figure--wide">
   <img src="/images/teaching-topics/total-probability-partition.svg" alt="樣本空間 S 的矩形被切成 A_1、A_2 到 A_n 等直條，事件 B 為橫跨各直條的圓角橫帶，並被分線切成 B 交 A_1 到 B 交 A_n 等區塊。">
@@ -156,7 +158,7 @@ $$
 
 ## 二元分割與列聯表
 
-分割的概念可以推廣至兩組分割彼此的交集，我們稱為**二元分割**。二元分割的概念即為上一篇文章中的[列聯表](/teaching-topics/independence-and-conditional-independence/#互斥與獨立)，如下表:
+分割的概念可以推廣至兩組分割彼此的交集，我們稱為**二元分割**。二元分割的概念即為上一篇中的[列聯表](/teaching-topics/independence-and-conditional-independence/#互斥與獨立)，如下表:
 
 | | $A_1$ | $\cdots$ | $A_n$ | 總和 |
 | :---: | :---: | :---: | :---: | :---: |
@@ -183,7 +185,7 @@ $$
 ## 全機率定理的應用
 
 <div id="example-symptoms-and-diseases" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.25 (Symptoms and Diseases)</div>
+<div class="topic-box__label">Example 1.25 <span lang="en">(Symptoms and Diseases)</span></div>
 
 <div lang="en" markdown="1">
 Suppose that a patient examined at a hospital is free of any disease with probability $0.99$, is affected by Disease $B$ with probability $0.001$, and is affected by Disease $C$ with probability $0.009$. These three states are the only possibilities. Symptom $A$ is observed with probability $0.001$ in a patient free of any disease, and with probability $0.9$ in each of the two diseased states. What is the probability that a patient chosen at random shows Symptom $A$?
@@ -288,7 +290,7 @@ $$
 </div>
 
 <div id="example-111" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.26 (Manufacturing Defects)</div>
+<div class="topic-box__label">Example 1.26 <span lang="en">(Manufacturing Defects)</span></div>
 
 <div lang="en" markdown="1">
 Three machines $A$, $B$, and $C$ produce the same item and account for $20\%$, $30\%$, and $50\%$ of the total output, respectively. Of the items made by $A$, $B$, and $C$, $5\%$, $4\%$, and $2\%$ are defective, respectively. One item is drawn at random from the combined output and inspected. What is the probability that the item drawn is defective?
@@ -374,7 +376,7 @@ $$
 | [Theorem 1.16](#theorem-law-of-total-probability) | 全機率定理與其條件機率版本 |
 | [二元分割](#二元分割與列聯表) | 兩組分割彼此交集所構成的列聯表 |
 
-全機率定理把 $\mathbb{P}(B)$ 寫成各個條件機率 $\mathbb{P}(B\mid A_i)$ 以 $\mathbb{P}(A_i)$ 為權重的加權平均。既然整體機率由各組的條件機率混合而成，接下來自然要問，分組之後的比較方向與混合之後的比較方向是否一定相同。這會導向[分組、混合與辛普森悖論](/teaching-topics/group-mixing-simpsons-paradox/)。
+全機率定理把 $\mathbb{P}(B)$ 寫成各個條件機率 $\mathbb{P}(B\mid A_i)$ 以 $\mathbb{P}(A_i)$ 為權重的加權平均。既然整體機率由各組的條件機率混合而成，接下來自然要問，分組之後的比較方向與混合之後的比較方向是否一定相同。這正是[下一篇](/teaching-topics/group-mixing-simpsons-paradox/)要談的分組、混合與辛普森悖論。
 
 ## 參考文獻與延伸閱讀
 

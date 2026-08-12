@@ -13,15 +13,15 @@ published: true
 excerpt: "同一個比較在每個分組內都成立，混合後卻可能反轉。辛普森悖論說明，條件機率與全機率定理不只用來計算，也用來檢查比較是否公平。"
 ---
 
-[上一篇文章](/teaching-topics/total-probability-bayes-rule/)討論了分割與全機率定理。當樣本空間被切成幾個互斥且沒有遺漏的來源時，整體機率可以看成各來源條件機率的加權平均。
+[上一篇](/teaching-topics/total-probability-bayes-rule/)討論了分割與全機率定理。當樣本空間被切成幾個互斥且沒有遺漏的來源時，整體機率可以看成各來源條件機率的加權平均。
 
 先想一個看似直覺的問題。若一位外科醫師整體的手術成功率比另一位醫師更高，我們就應該選擇這位醫師替自己動手術嗎？這件事真的有那麼自然嗎？事實上，另一位醫師在每種病況中的手術成功率，或許都比這位整體成功率較高的醫師還要高。
 
 原因在於，整體成功率不只受到醫師技術影響，也受到接案組成影響。實力較好的醫師，未必會接到比較容易的案子；他也可能因為經驗較足，被分派或轉介更多高風險、低成功率的病患。相反地，整體成功率較高的那位醫師即使在各種難度的手術分組內，成功率都較低，若主要處理低風險手術，混合後的整體成功率仍可能看起來比較高。
 
-**辛普森悖論 (Simpson’s paradox)** 則說明另一件事。即使每個分組裡的比較方向都相同，把分組混合起來以後，整體比較仍可能反轉。這種反轉來自混合權重的改變，使我們實際比較的對象也跟著改變。
+**辛普森悖論 <span lang="en">(Simpson’s paradox)</span>** 則說明另一件事。即使每個分組裡的比較方向都相同，把分組混合起來以後，整體比較仍可能反轉。這種反轉來自混合權重的改變，使我們實際比較的對象也跟著改變。
 
-以下固定令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。令 $C_1,\ldots,C_k$ 為樣本空間的一組<span class="text-nowrap">[分割](/teaching-topics/total-probability-bayes-rule/#definition-partition)，</span>也就是這些事件彼此互斥，且合起來沒有遺漏。
+以下固定令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。令 $C_1,\ldots,C_k$ 為樣本空間的一組[分割](/teaching-topics/total-probability-bayes-rule/#definition-partition)，也就是這些事件彼此互斥，且合起來沒有遺漏。
 
 ## 混合後的機率是加權平均
 
@@ -42,7 +42,7 @@ $$
 假設有兩位醫師，稱為醫師 $A$ 與醫師 $B$。病患可以分為低風險 $C_1$ 與高風險 $C_2$。在每個風險分組內，醫師 $A$ 的手術成功率都比較高。
 
 <div id="example-simpson-reversal" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.27 (A Simpson Reversal)</div>
+<div class="topic-box__label">Example 1.27 <span lang="en">(A Simpson Reversal)</span></div>
 
 兩位醫師共治療 $150$ 位病患。以自這 $150$ 位病患中均等可能地隨機抽取一位為隨機實驗，令 $A$、$B$ 分別表示該病患由<span class="text-nowrap">醫師 $A$、醫師 $B$</span> 開刀之事件，$Y$ 表示手術成功之事件，$C_1$、$C_2$ 分別表示低風險與高風險之事件。試比較兩位醫師在分組內與整體的手術成功率。
 
@@ -115,7 +115,7 @@ $$
 
 這個反轉來自分組比例。醫師 $A$ 的病患中高風險者占了 $40/50$，醫師 $B$ 的病患中高風險者只占 $10/100$。兩個整體成功率不是同一組權重下的比較。
 
-若想親手調整混合比例，可以參考互動展示 <span class="text-nowrap">[Simpson’s Paradox Mixing Lab](/demos/simpsons-paradox/)。</span>它會固定各分組成功率，只讓讀者改變高風險案例比例，觀察整體比較如何反轉。
+若想親手調整混合比例，可以參考互動展示 [Simpson’s Paradox Mixing Lab](/demos/simpsons-paradox/)。它會固定各分組成功率，只讓讀者改變高風險案例比例，觀察整體比較如何反轉。
 
 <div id="interlude-which-comparison" class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 1.3</div>
@@ -130,7 +130,7 @@ $$
 
 辛普森悖論的命名本身也有一點歷史錯位。類似現象早在 Udny Yule 於 1903 年的研究中就已經出現，因此它也常被稱為 Yule-Simpson effect。後來 Edward H. Simpson 在 1951 年用列聯表清楚分析這類反轉，這個名稱才逐漸流傳開來。
 
-它最有名的真實案例之一，是 1973 年 <span class="text-nowrap">UC Berkeley</span> 研究所入學資料。整體資料看似呈現性別差異，但分科系檢查後，問題其實和不同科系的錄取難度與申請組成密切相關。這個案例顯示，同一份資料在分組前後可以支持相反的結論，因此必須先確認比較的對象。
+它最有名的真實案例之一，是 1973 年 UC Berkeley 研究所入學資料。整體資料看似呈現性別差異，但分科系檢查後，問題其實和不同科系的錄取難度與申請組成密切相關。這個案例顯示，同一份資料在分組前後可以支持相反的結論，因此必須先確認比較的對象。
 
 Colin R. Blyth 在 1972 年把這個現象與決策理論中的 sure-thing principle 相連，指出各分組內一致的比較方向，未必能推廣到混合之後。
 </div>
@@ -149,7 +149,7 @@ Colin R. Blyth 在 1972 年把這個現象與決策理論中的 sure-thing princ
 
 在本篇的醫師案例中，分組內的成功率與混合後的成功率給出不同方向，差別來自低風險與高風險病患所占比例不同。也就是說，混合不是把資訊變少而已，它也會改變比較時使用的權重。
 
-下一篇文章會把全機率定理反過來讀。若我們已經觀察到某個結果，該如何回頭判斷它最可能來自哪個來源？這會自然導向[貝氏定理](/teaching-topics/bayes-rule-posterior-probability/)。
+[下一篇](/teaching-topics/bayes-rule-posterior-probability/)會把全機率定理反過來讀。若我們已經觀察到某個結果，該如何回頭判斷它最可能來自哪個來源？這會自然導向貝氏定理。
 
 ## 參考文獻與延伸閱讀
 

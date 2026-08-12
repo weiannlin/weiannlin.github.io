@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "From PMF to CDF"
+title: "From pmf to cdf"
 permalink: /demos/pmf-cdf/
 author_profile: true
 ---

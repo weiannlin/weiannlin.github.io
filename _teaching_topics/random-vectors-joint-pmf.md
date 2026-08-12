@@ -10,6 +10,7 @@ order: 301
 permalink: /teaching-topics/random-vectors-joint-pmf/
 date: 2026-07-24
 published: false
+listed: false
 excerpt: "隨機向量將同一個樣本點產生的多個數值合在一起；聯合 pmf 給出各組取值同時出現的機率，邊際 pmf 則由聯合 pmf 對另一個變數加總得到。"
 ---
 

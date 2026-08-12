@@ -10,6 +10,7 @@ order: 213
 permalink: /teaching-topics/probability-cumulant-generating-functions/
 date: 2026-07-13
 published: false
+listed: false
 excerpt: '機率母函數 (pgf) 以冪級數整理非負整數值隨機變數的機率與階乘動差；累積量母函數 (cgf) 則對 mgf 取對數，由微分得到期望值、變異數與高階累積量。'
 ---
 
@@ -120,15 +121,15 @@ $$
 前兩階的結果為
 
 $$
-G_X'(1-)=\mathbb{E}(X),
+G_X^{\prime}(1-)=\mathbb{E}(X),
 \qquad
-G_X''(1-)=\mathbb{E}[X(X-1)]
+G_X^{\prime\prime}(1-)=\mathbb{E}[X(X-1)]
 $$
 
 由 $X^2=X(X-1)+X$ 可得
 
 $$
-\mathbb{E}(X^2)=G_X''(1-)+G_X'(1-)
+\mathbb{E}(X^2)=G_X^{\prime\prime}(1-)+G_X^{\prime}(1-)
 $$
 
 將前兩階導數代入變異數的計算公式，可得
@@ -136,7 +137,7 @@ $$
 $$
 \mathrm{Var}(X)
 =
-G_X''(1-)+G_X'(1-)-[G_X'(1-)]^2
+G_X^{\prime\prime}(1-)+G_X^{\prime}(1-)-[G_X^{\prime}(1-)]^2
 $$
 
 ## pgf 取回各點機率
@@ -213,15 +214,15 @@ $$
 cgf 的前兩階導數為
 
 $$
-K_X'(t)=\frac{M_X'(t)}{M_X(t)}
+K_X^{\prime}(t)=\frac{M_X^{\prime}(t)}{M_X(t)}
 $$
 
 再對 $t$ 微分一次，可得
 
 $$
-K_X''(t)
+K_X^{\prime\prime}(t)
 =
-\frac{M_X''(t)M_X(t)-[M_X'(t)]^2}{[M_X(t)]^2}
+\frac{M_X^{\prime\prime}(t)M_X(t)-[M_X^{\prime}(t)]^2}{[M_X(t)]^2}
 $$
 
 令 $t=0$，並使用 $M_X(0)=1$、$M_X^{\prime}(0)=\mathbb{E}(X)$ 與 $M_X^{\prime\prime}(0)=\mathbb{E}(X^2)$，可得
@@ -334,9 +335,9 @@ $$
 若 $p=1$，則 $\mathbb{P}(Y=1)=1$，且 $G_Y(s)=s$。對 $0<p<1$ 微分可得
 
 $$
-G_Y'(s)=\frac{p}{(1-qs)^2},
+G_Y^{\prime}(s)=\frac{p}{(1-qs)^2},
 \qquad
-G_Y''(s)=\frac{2pq}{(1-qs)^3}
+G_Y^{\prime\prime}(s)=\frac{2pq}{(1-qs)^3}
 $$
 
 將 $s=1$ 代入前兩階導數，可得 $\mathbb{E}(Y)=G_Y^{\prime}(1)=1/p$。此外，二階階乘動差為
@@ -344,7 +345,7 @@ $$
 $$
 \mathbb{E}[Y(Y-1)]
 =
-G_Y''(1)
+G_Y^{\prime\prime}(1)
 =
 \frac{2q}{p^2}
 $$
@@ -355,7 +356,7 @@ $$
 \begin{aligned}
 \mathrm{Var}(Y)
 &=
-G_Y''(1)+G_Y'(1)-[G_Y'(1)]^2 \\[0.35em]
+G_Y^{\prime\prime}(1)+G_Y^{\prime}(1)-[G_Y^{\prime}(1)]^2 \\[0.35em]
 &=
 \frac{2q}{p^2}+\frac{1}{p}-\frac{1}{p^2} \\[0.35em]
 &=
@@ -384,9 +385,9 @@ $$
 其前兩階導數在 $t=0$ 的值為
 
 $$
-K_Y'(0)=\frac{1}{p},
+K_Y^{\prime}(0)=\frac{1}{p},
 \qquad
-K_Y''(0)=\frac{1-p}{p^2}
+K_Y^{\prime\prime}(0)=\frac{1-p}{p^2}
 $$
 
 分別與 $\mathbb{E}(Y)$ 及 $\mathrm{Var}(Y)$ 相同。

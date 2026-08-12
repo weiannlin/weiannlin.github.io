@@ -1,0 +1,27 @@
+---
+---
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting&hellip;</title>
+    <link rel="canonical" href="{{ page.redirect.to }}">
+    <meta name="robots" content="noindex">
+    <script>
+      // Carry the URL fragment across the redirect. The jekyll-redirect-from
+      // built-in template navigates to a fixed target, so an old link that
+      // carried an #anchor would land at the top of the new page instead of at
+      // the environment it pointed to. location.replace keeps the redirect stub
+      // out of session history, so Back returns to where the reader came from.
+      (function () {
+        var target = {{ page.redirect.to | jsonify }};
+        location.replace(target + location.hash);
+      })();
+    </script>
+    <meta http-equiv="refresh" content="0; url={{ page.redirect.to }}">
+  </head>
+  <body>
+    <h1>Redirecting&hellip;</h1>
+    <a href="{{ page.redirect.to }}">Click here if you are not redirected.</a>
+  </body>
+</html>

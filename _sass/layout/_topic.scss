@@ -169,6 +169,19 @@
   color: var(--journal-ink);
   word-break: normal;
 
+  /* 英文長詞可以連字符斷行，用來填滿行尾。中文不受影響: 瀏覽器對中日韓
+     不做連字符斷行，而且本站根層是 lang="zh-Hant"，只有帶 lang="en" 的
+     段落才會套用英文的斷字規則。行文中的英文括注在原始檔就包成
+     <span lang="en">，英文題幹則是既有的 <div lang="en">。
+     6 3 3 的意思是: 只有六個字母以上的字才斷，斷點前後各至少留三個字母，
+     免得出現一兩個字母的碎片。取三而不取四，是因為取四會連 dis-joint
+     這種正規的斷點都一併擋掉。不支援 hyphenate-limit-chars 的瀏覽器會
+     退回 auto 的預設值，仍然可讀。 */
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  -webkit-hyphenate-limit-chars: 6 3 3;
+  hyphenate-limit-chars: 6 3 3;
+
   p {
     margin: 0 0 1.25em 0;
   }
@@ -217,6 +230,17 @@
     text-decoration-thickness: 0.6px;
     text-underline-offset: 2.5px;
     transition: background 120ms ease;
+
+    /* A term set in bold and then linked, as in [**獨立 (independent)**](...),
+       used to come out in the ink colour: the .topic-content strong rule above
+       sets a colour of its own, and the strong is the element the text is
+       painted from, so the link kept its underline but lost its colour. Let a
+       bold run inside a link follow the link instead. The .related-demos block
+       further down deliberately does the opposite and is more specific, so it
+       is unaffected; the chapter index is outside .topic-content. */
+    strong {
+      color: inherit;
+    }
 
     &:hover {
       background: var(--journal-accent-soft);
@@ -425,6 +449,24 @@
       }
     }
 
+    // 矩陣式表格的首欄是不可折行的行內數式, 故不套下方的固定欄寬共用規則
+    // (等分五欄會把首欄壓在極限值上, 且表格會靠左而非置中);
+    // 改比照 topic-table--joint-pmf, 只縮字級與內距並解除首欄最小寬度,
+    // 保留 width: fit-content 與 margin-inline: auto, 表格仍置中且不需橫向捲動。
+    table.topic-table--matrix {
+      font-size: 0.85em;
+
+      th,
+      td {
+        padding: 0.45em 0.5em;
+      }
+
+      td:first-child,
+      th:first-child {
+        min-width: 0;
+      }
+    }
+
     // 窄版各表共用: 滿版、固定欄寬、縮字級與內距,
     // 使欄內文字自然換行而不需要橫向捲動。
     table.topic-table--sample-spaces,
@@ -596,6 +638,17 @@
       width: min(100%, 620px);
     }
 
+    /* For a source SVG that is natively narrower than its siblings, so that
+       its in-figure labels render at the same size as theirs. The ratio is
+       the natural-width ratio to a --wide figure (140.77pt / 219.297pt =
+       0.6419), applied to both the percentage and the pixel cap so the two
+       stay matched at every viewport. A bare max-width would not do: at
+       390px the figure would still fill the 350px column and its labels
+       would come out about half again as large as the other figures'. */
+    &--narrow img {
+      width: min(64.2%, 398px);
+    }
+
     &__steps {
       align-items: center;
       display: flex;
@@ -625,6 +678,16 @@
       }
     }
   }
+}
+
+/* Inside a topic-box the percentage above resolves against the box's content
+   width, which is narrower than the article column by the box padding and
+   borders, so a plain 64.2% comes out too small and the figure's labels fall
+   below the other figures'. Restate the same target width against that basis:
+   72.7% of the box content equals 0.6419 x the article column at 390px, and
+   the 398px cap governs from roughly 700px upwards. */
+.topic-content .topic-box .topic-figure--narrow img {
+  width: min(72.7%, 398px);
 }
 
 /* ---- Math teaching environments -------------------------------------- */
@@ -688,6 +751,41 @@
   }
 }
 
+/* ---- "(1) (2)" enumerations: hanging indent ---------------------------
+   Both writings of a paren list share one indent so they line up:
+     (a) <ol class="topic-list-paren"> — marker drawn by a CSS counter;
+     (b) plain paragraphs that literally begin "(1) ", tagged in Markdown
+         with {: .topic-paren-item}; a paragraph that continues the same
+         item after a display formula is tagged {: .topic-paren-cont}.
+   The indent equals the measured rendered advance width of the literal
+   string "(1) " in the body serif at the two content sizes in use
+   (Source Serif 4; .topic-content is 1.05rem, and html is 16px below
+   768px and 18px at or above it):
+     root 16px -> 16.80px text -> 24.39px
+     root 18px -> 18.90px text -> 26.94px
+   so a wrapped line starts exactly where the item text starts. Display
+   formulas inside an item stay centred in the full content column and are
+   never indented, as in the LaTeX original. */
+
+.topic-content {
+  --topic-paren-indent: 24.39px;
+
+  @media (min-width: 768px) {
+    --topic-paren-indent: 26.94px;
+  }
+}
+
+/* A continued example carries on the numbering of its parent problem, so its
+   first item may be (2), (3), ... rather than (1). The marker comes from a
+   custom counter, and the HTML `value` attribute has no effect on one, so the
+   starting point is set by a modifier class that seeds the counter. Add one
+   class per starting number as the chapter needs them. Selectors carry an `ol`
+   type so they outrank the base rule below regardless of source order. */
+.topic-content ol.topic-list-paren--start-2 { counter-reset: topic-paren-list 1; }
+.topic-content ol.topic-list-paren--start-3 { counter-reset: topic-paren-list 2; }
+.topic-content ol.topic-list-paren--start-4 { counter-reset: topic-paren-list 3; }
+.topic-content ol.topic-list-paren--start-5 { counter-reset: topic-paren-list 4; }
+
 .topic-content .topic-list-paren {
   counter-reset: topic-paren-list;
   list-style: none;
@@ -697,7 +795,7 @@
   li {
     counter-increment: topic-paren-list;
     margin-bottom: 0.45em;
-    padding-left: 2em;
+    padding-left: var(--topic-paren-indent);
     position: relative;
   }
 
@@ -706,6 +804,34 @@
     left: 0;
     position: absolute;
   }
+
+  /* A display formula inside an item is centred on the full content column,
+     not on the indented item box, matching the LaTeX original where a list
+     does not shift displayed equations. The negative left margin cancels the
+     item indent and the extra width restores the full column, so the centre
+     line is the same as for a formula outside any list. */
+  li mjx-container[display="true"] {
+    margin-left: calc(-1 * var(--topic-paren-indent)) !important;
+    width: calc(100% + var(--topic-paren-indent));
+    max-width: calc(100% + var(--topic-paren-indent));
+  }
+}
+
+.topic-content p.topic-paren-item {
+  padding-left: var(--topic-paren-indent);
+  text-indent: calc(-1 * var(--topic-paren-indent));
+}
+
+.topic-content p.topic-paren-cont {
+  padding-left: var(--topic-paren-indent);
+}
+
+/* Items sit closer together than ordinary paragraphs, as a LaTeX list does.
+   Only the gap between two consecutive items is tightened; the gap after the
+   last item of a list keeps the ordinary paragraph spacing. */
+.topic-content p.topic-paren-item:has(+ p.topic-paren-item),
+.topic-content p.topic-paren-cont:has(+ p.topic-paren-item) {
+  margin-bottom: 0.45em;
 }
 
 .topic-content .topic-proof {

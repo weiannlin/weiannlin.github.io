@@ -10,6 +10,7 @@ order: 219
 permalink: /teaching-topics/empirical-rule-bell-shaped-distributions/
 date: 2026-07-13
 published: false
+listed: false
 excerpt: '經驗法則以常態分配為基準，給出期望值左右一個、兩個與三個標準差內的近似機率。這組 68-95-99.7 規則只適用於常態分配或可合理近似常態的分配。'
 ---
 
@@ -60,11 +61,11 @@ $$
 $$
 \begin{aligned}
 \mathbb{P}(\lvert X-\mu\rvert\leqslant \sigma)
-&\doteqdot 0.6827 \\[0.35em]
+&\fallingdotseq 0.6827 \\[0.35em]
 \mathbb{P}(\lvert X-\mu\rvert\leqslant 2\sigma)
-&\doteqdot 0.9545 \\[0.35em]
+&\fallingdotseq 0.9545 \\[0.35em]
 \mathbb{P}(\lvert X-\mu\rvert\leqslant 3\sigma)
-&\doteqdot 0.9973
+&\fallingdotseq 0.9973
 \end{aligned}
 $$
 
@@ -126,7 +127,7 @@ $$
 | :---: | :---: | :---: |
 | $1$ | $0.6827$ | $0$ |
 | $2$ | $0.9545$ | $0.75$ |
-| $3$ | $0.9973$ | $8/9\doteqdot 0.8889$ |
+| $3$ | $0.9973$ | $8/9\fallingdotseq 0.8889$ |
 
 以 $k=2$ 為例，[柴比雪夫不等式](/teaching-topics/chebyshev-cantelli-inequalities/#theorem-25)保證
 
@@ -138,7 +139,7 @@ $$
 0.75
 $$
 
-常態分配的實際機率則為 $\mathbb{P}(\lvert X-\mu\rvert<2\sigma)\doteqdot0.9545$。
+常態分配的實際機率則為 $\mathbb{P}(\lvert X-\mu\rvert<2\sigma)\fallingdotseq0.9545$。
 
 [柴比雪夫下界](/teaching-topics/chebyshev-cantelli-inequalities/#theorem-25)適用於所有具有有限二階動差且變異數為正的分配，因此較為保守。已知 $X$ 服從常態分配後，便可使用常態 cdf 得到較精確的機率。
 </div>

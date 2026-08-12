@@ -1,5 +1,5 @@
 ---
-title: "由公理推出機率運算，餘事件、單調性與加法原理"
+title: "機率公理及其推論"
 subtitle: "Probability Rules Derived from the Axioms"
 layout: topic
 collection: teaching_topics
@@ -13,7 +13,7 @@ published: true
 excerpt: "由柯爾莫哥洛夫三大公理出發，本篇依序推出虛無事件的機率、有限可加性、餘事件公式、全機率定理與加法原理、單調性、廣義加法原理，以及布爾與邦佛洛尼不等式，最後以單調事件序列的機率極限作結。"
 ---
 
-[上一篇文章](/teaching-topics/event-families-sigma-fields/)整理了域、$\sigma$-域與機率空間。藉由機率公理，我們能夠衍伸出一些相當有用的機率等式與不等式，下面就從單一事件所構成的一些式子開始說明起。
+[上一篇](/teaching-topics/event-families-sigma-fields/)整理了域、$\sigma$-域與機率空間。藉由機率公理，我們能夠衍伸出一些相當有用的機率等式與不等式，下面就從單一事件所構成的一些式子開始說明起。
 
 ## 虛無事件的機率
 
@@ -55,7 +55,13 @@ $$
 
 </div>
 
-兩邊消去 $\mathbb{P}(S)$，可得 $\sum_{i=2}^{\infty}\mathbb{P}(\varnothing)=0$；又由 Axiom 1 知 $\mathbb{P}(\varnothing)\geqslant 0$，故 $\mathbb{P}(\varnothing)=0$。 <span class="topic-qed">$\square$</span>
+兩邊消去 $\mathbb{P}(S)$，可得 $\sum_{i=2}^{\infty}\mathbb{P}(\varnothing)=0$；又由 Axiom 1 知 $\mathbb{P}(\varnothing)\geqslant 0$，故
+
+$$
+\mathbb{P}(\varnothing)=0
+$$
+
+原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -70,8 +76,10 @@ $$
 若投擲一公正骰子，令 $A$ 表出現點數為偶數點之事件、$B$ 表出現點數為奇數點之事件，試回答下列問題:
 
 (1) 分別求出 $\mathbb{P}(A)$ 與 $\mathbb{P}(B)$。
+{: .topic-paren-item}
 
 (2) 若 $C$ 表示出現點數既為奇數又為偶數之事件，試求 $\mathbb{P}(C)$。
+{: .topic-paren-item}
 
 以下依序求解。
 
@@ -116,12 +124,12 @@ $$
 [Example 1.10](#example-odd-even-faces) (2) 的答案，讀者應可不必計算即知道其機率為 $0$，因為這原先就是一個「不可能發生的事件」，故直覺上其發生的機率為 $0$。然而，這個敘述的逆命題卻未必為真，換言之，即「機率為 $0$ 的事件未必不可能發生」。以 [Theorem 1.3](#theorem-null-event) 來思考此一觀點，即為「$\mathbb{P}(\varnothing)=0$，但機率為 $0$ 的事件卻未必是 $\varnothing$」。此一概念在下一章談到隨機變數中的連續型變數將會更為清晰，但讀者不妨在此思考一個例子: 有一魔術表演專用的硬幣，有正反二面，但不論如何丟擲，最後都必定會呈現正面朝上，則**丟出反面**的機率是 $0$ (因為必然不會發生)，但**丟出反面的事件**卻不是 $\varnothing$，而是 $\lbrace\mathrm{T}\rbrace$。
 </div>
 
-從 [Theorem 1.3](#theorem-null-event) 可以發現，**不可能發生的事件機率一定為 $0$**。除了符合我們的直覺以外，這個定理還能引導出可數可加性的一個比較弱的版本，也就是**有限可加性 (finite additivity)**。
+從 [Theorem 1.3](#theorem-null-event) 可以發現，**不可能發生的事件機率一定為 $0$**。除了符合我們的直覺以外，這個定理還能引導出可數可加性的一個比較弱的版本，也就是**有限可加性 <span lang="en">(finite additivity)</span>**。
 
 ## 有限可加性
 
 <div id="theorem-finite-additivity" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.4 (Finite Additivity)</div>
+<div class="topic-box__label">Theorem 1.4 <span lang="en">(Finite Additivity)</span></div>
 
 令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，若 $A_1,\ldots,A_n\in\mathcal{F}$，且 $A_i\cap A_j=\varnothing$ 對所有 $i\neq j$ 成立，則
 
@@ -162,7 +170,7 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-有限可加性又被稱作**可加性 (additivity)**，是一個很有用的性質，特別是在探討有限個成對互斥集合間的機率關係時，我們可以不用每次都令一堆多餘的空集合，而只需要關注有限個集合本身的情況。
+有限可加性又被稱作**可加性 <span lang="en">(additivity)</span>**，是一個很有用的性質，特別是在探討有限個成對互斥集合間的機率關係時，我們可以不用每次都令一堆多餘的空集合，而只需要關注有限個集合本身的情況。
 
 特別之處在於，我們常常會說有限可加性相較於可數可加性，是一個比較**弱 (weak)** 的性質，其理由正是源於上面的證明，因為可數可加性可以直接導致有限可加性的成立。
 
@@ -171,13 +179,24 @@ $$
 ## 機率的範圍與餘事件公式
 
 <div id="theorem-basic-equations" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.5 (Basic Equations)</div>
+<div class="topic-box__label">Theorem 1.5 <span lang="en">(Basic Equations)</span></div>
 
 令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A\in\mathcal{F}$ 為一事件，則
 
-(1) $\mathbb{P}(A)\leqslant 1$。
+(1) **機率的範圍**:
+{: .topic-paren-item}
 
-(2) $\mathbb{P}(A^{\prime})=1-\mathbb{P}(A)$。
+$$
+\mathbb{P}(A)\leqslant 1
+$$
+
+(2) **餘事件公式**:
+{: .topic-paren-item}
+
+$$
+\mathbb{P}(A^{\prime})=1-\mathbb{P}(A)
+$$
+
 </div>
 
 <div class="topic-proof" markdown="1">
@@ -193,7 +212,13 @@ $$
 \mathbb{P}(A)=1-\mathbb{P}(A^{\prime})\leqslant 1
 $$
 
-**(2)** 由 (1) 之證明可知 $\mathbb{P}(A)=1-\mathbb{P}(A^{\prime})$，移項即得 $\mathbb{P}(A^{\prime})=1-\mathbb{P}(A)$。 <span class="topic-qed">$\square$</span>
+**(2)** 由 (1) 之證明可知 $\mathbb{P}(A)=1-\mathbb{P}(A^{\prime})$，移項即得
+
+$$
+\mathbb{P}(A^{\prime})=1-\mathbb{P}(A)
+$$
+
+原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -222,11 +247,12 @@ $$
 ## 全機率定理與加法原理
 
 <div id="theorem-total-and-addition" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.6 (Law of Total Probability and Addition Rule)</div>
+<div class="topic-box__label">Theorem 1.6 <span lang="en">(Law of Total Probability and Addition Rule)</span></div>
 
 令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A,B\in\mathcal{F}$ 為二事件，則
 
-(1) **全機率定理 <span class="text-nowrap">(the law of total probability)</span>**:
+(1) **全機率定理 <span lang="en">(the law of total probability)</span>**:
+{: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -246,7 +272,8 @@ $$
 
 </div>
 
-(2) **加法原理 (addition rule)**:
+(2) **加法原理 <span lang="en">(addition rule)</span>**:
+{: .topic-paren-item}
 
 $$
 \mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)
@@ -289,7 +316,11 @@ $$
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
-移項即得 $\mathbb{P}(B\cap A^{\prime})=\mathbb{P}(B-A)=\mathbb{P}(B)-\mathbb{P}(B\cap A)$。
+移項即得
+
+$$
+\mathbb{P}(B\cap A^{\prime})=\mathbb{P}(B-A)=\mathbb{P}(B)-\mathbb{P}(B\cap A)
+$$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
@@ -361,7 +392,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-全機率定理其實更常被寫為 $\mathbb{P}(B)=\mathbb{P}(A\cap B)+\mathbb{P}(A^{\prime}\cap B)$，也就是指，$B$ 的機率被分為有 $A$ 的部分與沒有 $A$ 的部分。這個表示法背後隱含的直覺為「任何事件都可被樣本空間的一組**分割 (partition)** 切成很多沒有交集的部分」；分割的概念在稍後的文章會有詳盡的介紹，讀者在此可將其想像為一種「各組間不重疊的分類方式」。其概念如下圖:
+全機率定理其實更常被寫為 $\mathbb{P}(B)=\mathbb{P}(A\cap B)+\mathbb{P}(A^{\prime}\cap B)$，也就是指，$B$ 的機率被分為有 $A$ 的部分與沒有 $A$ 的部分。這個表示法背後隱含的直覺為「任何事件都可被樣本空間的一組**分割 <span lang="en">(partition)</span>** 切成很多沒有交集的部分」；分割的概念在稍後的文章會有詳盡的介紹，讀者在此可將其想像為一種「各組間不重疊的分類方式」。其概念如下圖:
 
 <figure class="topic-figure">
   <img src="/images/teaching-topics/probability-rules-total-partition.svg" alt="全機率定理的集合示意圖。樣本空間分為 A 與 A prime 兩塊，事件 B 橫跨兩塊，被切成 A 交 B 與 A prime 交 B 兩部分。">
@@ -394,19 +425,25 @@ $$
 
 這也是[機率空間一篇](/teaching-topics/event-families-sigma-fields/#機率空間)提到的線性的特例。
 
-全機率定理則是在當 $A$ 是 $B$ 的一個子集 (亦即 $A\subseteq B$) 時，會有一較為特殊的結果，這個結果是 $\mathbb{P}(B-A)=\mathbb{P}(B)-\mathbb{P}(A)$。其理由是，當 $A\subseteq B$ 時，$A\cap B=A$。證明此特例並不困難，讀者應可自行將全機率定理中的 $A\cap B$ 改寫為 $A$ 得到，我們僅以圖形說明此結果。
+全機率定理則是在當 $A$ 是 $B$ 的一個子集 (亦即 $A\subseteq B$) 時，會有一較為特殊的結果，這個結果是
+
+$$
+\mathbb{P}(B-A)=\mathbb{P}(B)-\mathbb{P}(A)
+$$
+
+其理由是，當 $A\subseteq B$ 時，$A\cap B=A$。證明此特例並不困難，讀者應可自行將全機率定理中的 $A\cap B$ 改寫為 $A$ 得到，我們僅以圖形說明此結果。
 
 <figure class="topic-figure">
   <img src="/images/teaching-topics/probability-rules-subset-case.svg" alt="A 包含於 B 時的文氏圖。大圓 B 內含小圓 A，著色環狀區域的機率為 P(A prime 交 B)。">
   <figcaption><span class="topic-figure__label">Fig. 1.12.</span> $A\subseteq B$ 時的兩事件配置: $B$ 之中扣除 $A$ 後，剩下的機率是 $\mathbb{P}(A^{\prime}\cap B)$。</figcaption>
 </figure>
 
-上圖可以發現 $A\cap B$ 就是 $A$ 本身，故 $\mathbb{P}(A^{\prime}\cap B)$ 可用 $\mathbb{P}(B)$ 直接扣除 $\mathbb{P}(A)$ 得到。這個結果只是全機率定理的一個小特例，但是我們卻可以從這裡來驗證一個非常直觀的結果，即機率的**單調性 (monotonicity)**。
+上圖可以發現 $A\cap B$ 就是 $A$ 本身，故 $\mathbb{P}(A^{\prime}\cap B)$ 可用 $\mathbb{P}(B)$ 直接扣除 $\mathbb{P}(A)$ 得到。這個結果只是全機率定理的一個小特例，但是我們卻可以從這裡來驗證一個非常直觀的結果，即機率的**單調性 <span lang="en">(monotonicity)</span>**。
 
 ## 單調性
 
 <div id="theorem-monotonicity" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.7 (Monotonicity)</div>
+<div class="topic-box__label">Theorem 1.7 <span lang="en">(Monotonicity)</span></div>
 
 令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A,B\in\mathcal{F}$ 且 $A\subseteq B$，則
 
@@ -423,7 +460,13 @@ $$
 \mathbb{P}(B)=\mathbb{P}(B-A)+\mathbb{P}(A)
 $$
 
-又由 Axiom 1 可知 $\mathbb{P}(B-A)\geqslant 0$，故 $\mathbb{P}(B)\geqslant\mathbb{P}(A)$，即 $\mathbb{P}(A)\leqslant\mathbb{P}(B)$。 <span class="topic-qed">$\square$</span>
+又由 Axiom 1 可知 $\mathbb{P}(B-A)\geqslant 0$，故 $\mathbb{P}(B)\geqslant\mathbb{P}(A)$，即
+
+$$
+\mathbb{P}(A)\leqslant\mathbb{P}(B)
+$$
+
+原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -446,7 +489,7 @@ $$
 ## 廣義加法原理與排容原理
 
 <div id="theorem-generalized-addition" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.8 (Generalized Addition Rule)</div>
+<div class="topic-box__label">Theorem 1.8 <span lang="en">(Generalized Addition Rule)</span></div>
 
 令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A_1,\ldots,A_n\in\mathcal{F}$，且令
 
@@ -479,6 +522,7 @@ $$
 一般而言，$S_k$ 是所有「$k$ 個事件交集的機率」之總和。則
 
 (1) 當 $n$ 為奇數:
+{: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -499,6 +543,7 @@ $$
 </div>
 
 (2) 當 $n$ 為偶數:
+{: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -535,12 +580,12 @@ $$
 </figure>
 </div>
 
-廣義加法原理的內容，與**組合數學 (combinatorics)** 中的**排容原理 <span class="text-nowrap">(inclusion-exclusion principle)</span>** 是相同的，排容原理的機率版本，就是廣義加法原理。
+廣義加法原理的內容，與**組合數學 <span lang="en">(combinatorics)</span>** 中的**排容原理 <span lang="en">(inclusion-exclusion principle)</span>** 是相同的，排容原理的機率版本，就是廣義加法原理。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-廣義的組合數學即為**離散數學 <span class="text-nowrap">(discrete mathematics)</span>**，其細部的差異在此並不探究。組合數學主要用以研究可數或離散空間中的數學問題，其中幾個著名的問題包含**地圖著色問題**與**渡河問題**；臺灣的高中數學所教授的排列組合，即是組合數學中的一個重要領域。
+廣義的組合數學即為**離散數學 <span lang="en">(discrete mathematics)</span>**，其細部的差異在此並不探究。組合數學主要用以研究可數或離散空間中的數學問題，其中幾個著名的問題包含**地圖著色問題**與**渡河問題**；臺灣的高中數學所教授的排列組合，即是組合數學中的一個重要領域。
 </div>
 
 在部分機率論專書中，廣義加法原理時常以
@@ -551,18 +596,24 @@ $$
 
 的形式出現，並且被稱作**龐加萊 (Poincaré) 公式**。這個版本的寫法與 [Theorem 1.8](#theorem-generalized-addition) 完全相同，但較為簡潔，且對所有 $n\in\mathbb{N}$ 都成立，不需要考慮 $n$ 為奇數或偶數。
 
-經由加法原理，我們可以得到兩個著名的不等式，即**布爾不等式 (Boole’s inequality)** 及**邦佛洛尼不等式 (Bonferroni’s inequality)**，以下就將兩個不等式分開討論。
+經由加法原理，我們可以得到兩個著名的不等式，即**布爾不等式 <span lang="en">(Boole’s inequality)</span>** 及**邦佛洛尼不等式 <span lang="en">(Bonferroni’s inequality)</span>**，以下就將兩個不等式分開討論。
 
 ## 布爾不等式
 
 <div id="theorem-boole" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.9 (Boole’s Inequality)</div>
+<div class="topic-box__label">Theorem 1.9 <span lang="en">(Boole’s Inequality)</span></div>
 
 令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A_1,\ldots,A_n\in\mathcal{F}$，則
 
-(1) $\mathbb{P}(A_1\cup A_2)\leqslant\mathbb{P}(A_1)+\mathbb{P}(A_2)$。
+(1) 兩事件的情況:
+{: .topic-paren-item}
+
+$$
+\mathbb{P}(A_1\cup A_2)\leqslant\mathbb{P}(A_1)+\mathbb{P}(A_2)
+$$
 
 (2) 推廣至 $n$ 個事件:
+{: .topic-paren-item}
 
 $$
 \mathbb{P}\left(\bigcup_{i=1}^{n}A_i\right)\leqslant\sum_{i=1}^{n}\mathbb{P}(A_i)
@@ -573,7 +624,13 @@ $$
 <div class="topic-proof" markdown="1">
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
-**Proof.** **(1)** 由加法原理知 $\mathbb{P}(A_1\cup A_2)=\mathbb{P}(A_1)+\mathbb{P}(A_2)-\mathbb{P}(A_1\cap A_2)$，且 $\mathbb{P}(A_1\cap A_2)\geqslant 0$，故
+**Proof.** **(1)** 由加法原理知
+
+$$
+\mathbb{P}(A_1\cup A_2)=\mathbb{P}(A_1)+\mathbb{P}(A_2)-\mathbb{P}(A_1\cap A_2)
+$$
+
+又 $\mathbb{P}(A_1\cap A_2)\geqslant 0$，故
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
@@ -595,7 +652,13 @@ $$
 \mathbb{P}(A_1\cup A_2)\leqslant\mathbb{P}(A_1)+\mathbb{P}(A_2)
 $$
 
-**(2)** 由 (1) 知道 $n=2$ 時原式顯然成立。又令 $n=k$ 時原式成立，即 $\mathbb{P}\left(\bigcup_{i=1}^{k}A_i\right)\leqslant\sum_{i=1}^{k}\mathbb{P}(A_i)$，則當 $n=k+1$ 時，由 (1) 可知
+**(2)** 由 (1) 知道 $n=2$ 時原式顯然成立。又令 $n=k$ 時原式成立，即
+
+$$
+\mathbb{P}\left(\bigcup_{i=1}^{k}A_i\right)\leqslant\sum_{i=1}^{k}\mathbb{P}(A_i)
+$$
+
+則當 $n=k+1$ 時，由 (1) 可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -640,13 +703,19 @@ $$
 ## 邦佛洛尼不等式
 
 <div id="theorem-bonferroni" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.10 (Bonferroni’s Inequality)</div>
+<div class="topic-box__label">Theorem 1.10 <span lang="en">(Bonferroni’s Inequality)</span></div>
 
 令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A_1,\ldots,A_n\in\mathcal{F}$，則
 
-(1) $\mathbb{P}(A_1\cap A_2)\geqslant\mathbb{P}(A_1)+\mathbb{P}(A_2)-1$。
+(1) 兩事件的情況:
+{: .topic-paren-item}
+
+$$
+\mathbb{P}(A_1\cap A_2)\geqslant\mathbb{P}(A_1)+\mathbb{P}(A_2)-1
+$$
 
 (2) 推廣至 $n$ 個事件:
+{: .topic-paren-item}
 
 $$
 \mathbb{P}\left(\bigcap_{i=1}^{n}A_i\right)\geqslant\sum_{i=1}^{n}\mathbb{P}(A_i)-(n-1)
@@ -657,7 +726,13 @@ $$
 <div class="topic-proof" markdown="1">
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
-**Proof.** **(1)** 由加法原理知 $\mathbb{P}(A_1\cup A_2)=\mathbb{P}(A_1)+\mathbb{P}(A_2)-\mathbb{P}(A_1\cap A_2)$，移項可得
+**Proof.** **(1)** 由加法原理知
+
+$$
+\mathbb{P}(A_1\cup A_2)=\mathbb{P}(A_1)+\mathbb{P}(A_2)-\mathbb{P}(A_1\cap A_2)
+$$
+
+移項可得
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
@@ -699,7 +774,13 @@ $$
 \mathbb{P}(A_1\cap A_2)\geqslant\mathbb{P}(A_1)+\mathbb{P}(A_2)-1
 $$
 
-**(2)** 由 (1) 知道 $n=2$ 時原式顯然成立。又令 $n=k$ 時原式成立，即 $\mathbb{P}\left(\bigcap_{i=1}^{k}A_i\right)\geqslant\sum_{i=1}^{k}\mathbb{P}(A_i)-(k-1)$，則當 $n=k+1$ 時，由 (1) 可知
+**(2)** 由 (1) 知道 $n=2$ 時原式顯然成立。又令 $n=k$ 時原式成立，即
+
+$$
+\mathbb{P}\left(\bigcap_{i=1}^{k}A_i\right)\geqslant\sum_{i=1}^{k}\mathbb{P}(A_i)-(k-1)
+$$
+
+則當 $n=k+1$ 時，由 (1) 可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -746,12 +827,12 @@ $$
 
 ## 兩不等式的等價性
 
-事實上我們應可以發現，布爾不等式與邦佛洛尼不等式的出發點同為加法原理，只是一者以聯集為出發，而一者以交集為出發。細心一點的讀者可能在此提問: 這兩個不等式**等價 (equivalent)** 嗎？這個問題的答案是肯定的，我們在此以狄摩根律證明。
+事實上我們應可以發現，布爾不等式與邦佛洛尼不等式的出發點同為加法原理，只是一者以聯集為出發，而一者以交集為出發。細心一點的讀者可能在此提問: 這兩個不等式**等價 <span lang="en">(equivalent)</span>** 嗎？這個問題的答案是肯定的，我們在此以狄摩根律證明。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-證明中將使用的**不失一般性 <span class="text-nowrap">(without loss of generality，</span>或簡稱 <span class="text-nowrap">WLOG)</span>**，是數學證明中的一種常用表示法，其最主要的目的是用來表示，在這個條件下所假設的東西足以代表一般的所有狀況，而非僅是一個特例。
+證明中將使用的**不失一般性 (without loss of generality，或簡稱 WLOG)**，是數學證明中的一種常用表示法，其最主要的目的是用來表示，在這個條件下所假設的東西足以代表一般的所有狀況，而非僅是一個特例。
 </div>
 
 <div class="topic-proof" markdown="1">
@@ -792,11 +873,17 @@ $$
 
 </div>
 
-其中，由 $A_1,\ldots,A_n\in\mathcal{F}$ 知道 $A_1^{\prime},\ldots,A_n^{\prime}\in\mathcal{F}$，且 $\mathbb{P}\left(\bigcap_{i=1}^{n}A_i^{\prime}\right)\geqslant\sum_{i=1}^{n}\mathbb{P}(A_i^{\prime})-(n-1)$ 表示邦佛洛尼不等式成立。故可知道布爾不等式成立，若且唯若邦佛洛尼不等式成立，二者為等價不等式。 <span class="topic-qed">$\square$</span>
+其中，由 $A_1,\ldots,A_n\in\mathcal{F}$ 知道 $A_1^{\prime},\ldots,A_n^{\prime}\in\mathcal{F}$，且
+
+$$
+\mathbb{P}\left(\bigcap_{i=1}^{n}A_i^{\prime}\right)\geqslant\sum_{i=1}^{n}\mathbb{P}(A_i^{\prime})-(n-1)
+$$
+
+即邦佛洛尼不等式。故可知道布爾不等式成立，若且唯若邦佛洛尼不等式成立，二者為等價不等式。 <span class="topic-qed">$\square$</span>
 </div>
 
 <div id="example-union-covers" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.11 (Union Covering the Sample Space)</div>
+<div class="topic-box__label">Example 1.11 <span lang="en">(Union Covering the Sample Space)</span></div>
 
 <div lang="en" markdown="1">
 If the sample space is $S=C_1\cup C_2$ and if $\mathbb{P}(C_1)=0.8$ and $\mathbb{P}(C_2)=0.5$, find $\mathbb{P}(C_1\cap C_2)$.
@@ -851,12 +938,14 @@ $$
 </div>
 
 <div id="example-disjoint-and-bound" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 1.12 (Disjoint Complements and a Lower Bound)</div>
+<div class="topic-box__label">Example 1.12 <span lang="en">(Disjoint Complements and a Lower Bound)</span></div>
 
 <div lang="en" markdown="1">
-(1) Suppose that two events $A$ and $B$ cannot occur at the same time. Under what condition is the same true of their complements $A^{\prime}$ and $B^{\prime}$?
+(1) Suppose that two events $A$ and $B$ cannot occur at the same time. Under what condition is the same true of their complements $A^{\prime}$ and <span class="text-nowrap">$B^{\prime}$?</span>
+{: .topic-paren-item}
 
-(2) Suppose that $A_1$, $A_2$, and $A_3$ are events with $\mathbb{P}(A_i)=\frac{1}{4+i}$ for $i=1,2,3$. Find a lower bound for the probability that none of the three occurs.
+(2) Suppose that $A_1$, $A_2$, and $A_3$ are events with $\mathbb{P}(A_i)=\frac{1}{4+i}$ for <span class="text-nowrap">$i=1,2,3$.</span> Find a lower bound for the probability that none of the three occurs.
+{: .topic-paren-item}
 </div>
 
 以下依序求解。
@@ -867,7 +956,11 @@ $$
 A^{\prime}\cap B^{\prime}=(A\cup B)^{\prime}=\varnothing
 $$
 
-故所求條件為 $A\cup B=S$。
+故所求條件為
+
+$$
+A\cup B=S
+$$
 
 **(2)** 將邦佛洛尼不等式的改寫形式套用於 $A_1^{\prime},A_2^{\prime},A_3^{\prime}$，可知
 
@@ -899,11 +992,12 @@ $$
 ## 單調事件序列的機率極限
 
 <div id="theorem-continuity" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 1.11 (Limits along Monotone Sequences)</div>
+<div class="topic-box__label">Theorem 1.11 <span lang="en">(Limits along Monotone Sequences)</span></div>
 
 令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A_1,A_2,\ldots\in\mathcal{F}$。
 
 (1) 若 $\lbrace A_i\rbrace$ 為非遞減序列，則
+{: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -924,6 +1018,7 @@ $$
 </div>
 
 (2) 若 $\lbrace A_i\rbrace$ 為非遞增序列，則
+{: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -946,7 +1041,11 @@ $$
 </div>
 
 <div class="topic-proof" markdown="1">
-**Proof.** **(1)** 由於 $\lbrace A_i\rbrace$ 非遞減，故依[單調集合序列的定義](/teaching-topics/event-set-operations/#單調集合序列與極限)，我們可知 $\lim_{n\to\infty}A_n=\bigcup_{i=1}^{\infty}A_i$。
+**Proof.** **(1)** 由於 $\lbrace A_i\rbrace$ 非遞減，故依[單調集合序列的定義](/teaching-topics/event-set-operations/#單調集合序列與極限)可知
+
+$$
+\lim_{n\to\infty}A_n=\bigcup_{i=1}^{\infty}A_i
+$$
 
 另外定義 $\lbrace B_i\rbrace$，滿足
 
@@ -954,7 +1053,22 @@ $$
 B_1=A_1,\qquad B_k=A_k-A_{k-1},\quad k\geqslant 2
 $$
 
-則 $\lbrace B_i\rbrace$ 兩兩為互斥事件，$A_k=\bigcup_{i=1}^{k}B_i$，且 $\mathbb{P}(B_i)=\mathbb{P}(A_i)-\mathbb{P}(A_{i-1})$ 對 $i\geqslant 2$ 成立。此外，又因 $\lbrace A_i\rbrace$ 非遞減，可知 $\bigcup_{i=1}^{k}A_i=A_k=\bigcup_{i=1}^{k}B_i$ 成立，則
+則 $\lbrace B_i\rbrace$ 兩兩為互斥事件，且
+
+$$
+\begin{gathered}
+A_k=\bigcup_{i=1}^{k}B_i\\[0.4em]
+\mathbb{P}(B_i)=\mathbb{P}(A_i)-\mathbb{P}(A_{i-1}),\quad i\geqslant 2
+\end{gathered}
+$$
+
+此外，又因 $\lbrace A_i\rbrace$ 非遞減，可知
+
+$$
+\bigcup_{i=1}^{k}A_i=A_k=\bigcup_{i=1}^{k}B_i
+$$
+
+由此可得
 
 $$
 \bigcup_{i=1}^{\infty}A_i=\lim_{n\to\infty}A_n=\bigcup_{i=1}^{\infty}B_i=\sum_{i=1}^{\infty}B_i
@@ -987,7 +1101,13 @@ $$
 
 原式得證。
 
-**(2)** 由於 $\lbrace A_i\rbrace$ 非遞增，故由[單調集合序列的定義](/teaching-topics/event-set-operations/#單調集合序列與極限)可知 $\lim_{n\to\infty}A_n=\bigcap_{i=1}^{\infty}A_i$，且 $\lbrace A_i^{\prime}\rbrace$ 為非遞減序列。由狄摩根律與非遞減序列的定義可知
+**(2)** 由於 $\lbrace A_i\rbrace$ 非遞增，故依[單調集合序列的定義](/teaching-topics/event-set-operations/#單調集合序列與極限)可知
+
+$$
+\lim_{n\to\infty}A_n=\bigcap_{i=1}^{\infty}A_i
+$$
+
+此外，$\lbrace A_i^{\prime}\rbrace$ 為非遞減序列。由狄摩根律與非遞減序列的定義可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -1051,7 +1171,7 @@ $$
 | [Theorem 1.9](#theorem-boole) 與 [Theorem 1.10](#theorem-bonferroni) | 布爾與邦佛洛尼不等式 (等價) |
 | [Theorem 1.11](#theorem-continuity) | 單調事件序列的機率極限 |
 
-加法原理與全機率定理皆可推廣至三個以上的集合彼此間的狀況，其中全機率定理的推廣版本是貝氏定理的基礎。下一篇[條件機率](/teaching-topics/conditional-probability-information/)，便從「已知某事件發生」如何改變機率談起。
+加法原理與全機率定理皆可推廣至三個以上的集合彼此間的狀況，其中全機率定理的推廣版本是貝氏定理的基礎。[下一篇](/teaching-topics/conditional-probability-information/)要談條件機率與乘法原理，便從「已知某事件發生」如何改變機率談起。
 
 ## 參考文獻與延伸閱讀
 

@@ -10,6 +10,7 @@ order: 304
 permalink: /teaching-topics/region-probabilities-marginal-distributions/
 date: 2026-07-24
 published: false
+listed: false
 excerpt: "二重積分的上下限由聯合值域與事件共同決定；將聯合 pdf 對另一個變數積分，即可得到邊際 pdf。"
 ---
 
@@ -184,7 +185,7 @@ $$
 1
 $$
 
-所以 $f_X$ 符合 [Proposition 2.4](/teaching-topics/continuous-random-variables-pdf/#proposition-24) 的兩項條件，並且確實是 $X$ 的 pdf。$f_Y$ 的結果亦同。
+所以 $f_X$ 符合 [Proposition 2.2](/teaching-topics/cdf-and-pdf/#prop-pdf-existence-conditions) 的兩項條件，並且確實是 $X$ 的 pdf。$f_Y$ 的結果亦同。
 
 回到 [Example 3.4](#example-34)。對固定的 $x\in[0,1]$，聯合值域要求 $x\leqslant y\leqslant1$，因此
 

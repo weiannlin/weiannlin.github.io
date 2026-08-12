@@ -10,6 +10,7 @@ order: 209
 permalink: /teaching-topics/quantiles-and-median/
 date: 2026-06-13
 published: false
+listed: false
 excerpt: "標準化描述個體離平均位置幾個標準差。分位數與百分位數則從 cdf 出發，找出使累積機率達到指定比例的位置。中位數是其中最常用的特例。"
 ---
 

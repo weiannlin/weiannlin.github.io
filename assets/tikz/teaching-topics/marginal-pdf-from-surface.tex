@@ -1,0 +1,61 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\newcommand{\sssig}{\scriptscriptstyle}
+
+\pgfplotsset{
+  colormap={journalgray}{color(0cm)=(white); color(1cm)=(journalink)}
+}
+
+\begin{document}
+\begin{tikzpicture}[
+    declare function={mu1=2;},
+    declare function={mu2=2;},
+    declare function={sigma1=1;},
+    declare function={sigma2=0.8;},
+    declare function={normal(\m,\s)=0.4/(2*\s*sqrt(pi))*exp(-(x-\m)^2/(2*\s^2));},
+    declare function={bivar(\ma,\sa,\mb,\sb)=
+        1/(2*pi*\sa*\sb) * exp(-((x-\ma)^2/\sa^2 + (y-\mb)^2/\sb^2))/2;}]
+\begin{axis}[
+    axis line style={journalink, line width=0.6pt},
+    colormap name=journalgray,
+    width=11cm,
+    view={50}{45},
+    enlargelimits=false,
+    grid=minor,
+    grid style={journalmuted, line width=0.2pt, opacity=0.4},
+    domain=0:4,
+    y domain=0:4,
+    zmax=0.17,
+    samples=50,
+    xlabel=$x$,
+    ylabel=$y$,
+    zlabel={$f_{\sssig XY}(x,\,y)$},
+    label style={journalink, font=\large},
+    xtick=\empty,
+    ytick=\empty,
+    ztick=\empty,
+    zlabel style={rotate=-90, anchor=east},
+]
+\addplot3[surf, draw=journalink, line width=0.2pt] {bivar(mu1,sigma1,mu2,sigma2)};
+%% 兩條邊際密度曲線: 沿一軸積分之後留在後牆與左牆上的那一條
+\addplot3[domain=0:4, samples=50, samples y=0, smooth,
+          journalaccent, line width=1.0pt] (x,4,{normal(mu1,sigma1)});
+\addplot3[domain=0:4, samples=50, samples y=0, smooth,
+          journalaccent, line width=1.0pt] (0,x,{normal(mu2,sigma2)});
+
+\node[journalink, font=\large] at (axis cs:0,1,0.057)
+  [pin={95:{$f_{\sssig Y}(y)$}}] {};
+\node[journalink, font=\large] at (axis cs:1.1,4,0.07)
+  [pin={95:{$f_{\sssig X}(x)$}}] {};
+\end{axis}
+\end{tikzpicture}
+\end{document}

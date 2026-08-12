@@ -1,0 +1,47 @@
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\newcommand{\sssig}{\scriptscriptstyle}
+
+\begin{document}
+\begin{tikzpicture}[x=1cm, y=1cm, scale=1.15, >=stealth,
+                    every node/.style={journalink, font=\normalsize}]
+
+  %% 聯合值域 (0,1)x(0,1) 落在這個方框內
+  \fill[journalaccent, fill opacity=0.15] (1,1) rectangle (4,4);
+
+  %% 值域的兩條邊界
+  \draw[journalink, line width=0.8pt] (4,1) -- (4,5);
+  \draw[journalink, line width=0.8pt] (1,4) -- (7.2,4);
+  \node[journalink, below] at (4,1) {$x=1$};
+  \node[journalink, left]  at (1,4) {$y=1$};
+
+  %% 座標軸
+  \draw[journalink, line width=0.8pt, ->] (1,1) -- (7.4,1) node[right] {$x$};
+  \draw[journalink, line width=0.8pt, ->] (1,1) -- (1,5.4) node[above] {$y$};
+
+  %% 九宮格中，四個非零的區塊各自的積分寫法
+  \node[font=\small] at (2.5,2.5)
+    {$\displaystyle\int_{0}^{y}\!\!\int_{0}^{x} f_{\sssig XY}(t,s)\,dt\,ds$};
+  \node[font=\small] at (5.6,2.5)
+    {$\displaystyle\int_{0}^{y}\!\!\int_{0}^{1} f_{\sssig XY}(t,s)\,dt\,ds$};
+  \node[font=\small] at (2.5,4.7)
+    {$\displaystyle\int_{0}^{1}\!\!\int_{0}^{x} f_{\sssig XY}(t,s)\,dt\,ds$};
+  \node[font=\small] at (5.6,4.7)
+    {$\displaystyle\int_{0}^{1}\!\!\int_{0}^{1} f_{\sssig XY}(t,s)\,dt\,ds=1$};
+
+  %% 其餘各區塊的 cdf 值皆為 0
+  \node at (0.45,2.5) {$0$};
+  \node at (0.45,0.5) {$0$};
+  \node at (2.5,0.5)  {$0$};
+  \node at (5.6,0.5)  {$0$};
+  \node at (0.45,4.7) {$0$};
+
+\end{tikzpicture}
+\end{document}
