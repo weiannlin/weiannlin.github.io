@@ -347,7 +347,7 @@ $$
 Z=\frac{\,X-\mu\,}{\sigma}=\frac{1}{\,\sigma\,}X-\frac{\mu}{\,\sigma\,}
 $$
 
-由 [Theorem 2.39](/teaching-topics/ch2-p223-candidate/#thm-mgf-linear-transformation) 可知
+由 [Theorem 2.39](/teaching-topics/one-to-one-transformations/#thm-mgf-linear-transformation) 可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -368,7 +368,7 @@ $$
 
 </div>
 
-由 [mgf 的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)可知
+由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 Z\sim\mathcal{N}(0,1)
@@ -406,7 +406,7 @@ $$
 </div>
 
 <div class="topic-proof" markdown="1">
-**Proof.** 由於 <span class="text-nowrap">$X=\sigma Z+\mu$，</span>由 [Theorem 2.39](/teaching-topics/ch2-p223-candidate/#thm-mgf-linear-transformation) 可知
+**Proof.** 由於 <span class="text-nowrap">$X=\sigma Z+\mu$，</span>由 [Theorem 2.39](/teaching-topics/one-to-one-transformations/#thm-mgf-linear-transformation) 可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -426,7 +426,7 @@ $$
 
 </div>
 
-由 [mgf 的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)可知
+由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 X\sim\mathcal{N}(\mu,\sigma^{2})
@@ -471,7 +471,7 @@ $$
 X_1,X_2,\ldots,X_n\overset{\mathrm{ind}}{\sim}\mathcal{N}(\mu_i,\sigma^{2}_i)
 $$
 
-由獨立隨機變數線性組合的動差母函數之定理與 [Theorem 2.39](/teaching-topics/ch2-p223-candidate/#thm-mgf-linear-transformation) 的合併推廣可知
+由獨立隨機變數線性組合的動差母函數之定理與 [Theorem 2.39](/teaching-topics/one-to-one-transformations/#thm-mgf-linear-transformation) 的合併推廣可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -496,7 +496,7 @@ $$
 
 </div>
 
-由 [mgf 的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)可知
+由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 Y\sim\mathcal{N}\Bigl(\sum_{i=1}^{n}a_i\mu_i+b,\ \sum_{i=1}^{n}a_i^{2}\sigma_i^{2}\Bigr)
@@ -579,7 +579,7 @@ $$
      還是改為數學上正確的 3 倍並另以縮小字級或錯開標示處理重疊，照書稿保留為預設。
      圖畫好之後，把下一段開頭的「這個圖形」改為指向該 anchor 的 Fig. 4.4 連結。 -->
 
-這個圖形正是 [Theorem 2.37](/teaching-topics/ch2-p222-candidate/#thm-empirical-rule) 所敘述的鐘形分配經驗法則。[^empirical-rule] 若我們將鐘形分配經驗法則中的期望用在標準常態分配身上，可以得到如下的結果:
+這個圖形正是 [Theorem 2.37](/teaching-topics/empirical-rule-bell-shaped-distributions/#thm-empirical-rule) 所敘述的鐘形分配經驗法則。[^empirical-rule] 若我們將鐘形分配經驗法則中的期望用在標準常態分配身上，可以得到如下的結果:
 {: .topic-paren-cont}
 
 $$
@@ -676,9 +676,9 @@ $$
 
 [Definition 4.21](#def-normal) 的常態分配以 $\mu$ 與 $\sigma^{2}$ 兩個參數界定，值域為整條實數線，機率函數為 $\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}$ 這個式子。證明的四個步驟依序是: 以 $u=\frac{x-\mu}{\sigma}$ 的代換把積分化到標準形，再套高斯積分驗證積分為 <span class="text-nowrap">$1$；</span>把指數上的兩項併成完全平方，湊出另一個常態密度而得到 <span class="text-nowrap">$M_{\sssig X}(t)=e^{\mu t+\frac{1}{2}\sigma^{2}t^{2}}$；</span>再由這個動差母函數的一階與二階導數在 $t=0$ 的值得到 $\mathbb{E}(X)$ 與 <span class="text-nowrap">$\mathbb{E}\bigl(X^{2}\bigr)$；</span>最後相減得到 <span class="text-nowrap">$\mathrm{Var}(X)=\sigma^{2}$。</span>由於直接積分相當繁複，這裡採用的次序是先求動差母函數，再由它回頭算期望值與變異數。
 
-定義之後的六點說明之中，第二點給出四款延伸性質。取 $\mu=0$ 與 $\sigma^{2}=1$ 得到的標準常態分配另有專屬的記號 $\phi(z)$ 與 <span class="text-nowrap">$\Phi(z)$，</span>其中 $\Phi(z)$ 只能以積分式存在，沒有解析解。標準化 $Z=\frac{X-\mu}{\sigma}$ 與反標準化 $X=\sigma Z+\mu$ 是一對互逆的線性轉換，兩者的證明都是把 [Theorem 2.39](/teaching-topics/ch2-p223-candidate/#thm-mgf-linear-transformation) 的線性轉換公式套上去，算出來的動差母函數再由 [mgf 的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)辨識分配。線性組合可加性把這件事推到 $n$ 個彼此獨立的常態變數: $Y=\sum_{i=1}^{n}a_iX_i+b$ 仍為常態分配，期望值與變異數分別是 $\sum_{i=1}^{n}a_i\mu_i+b$ 與 <span class="text-nowrap">$\sum_{i=1}^{n}a_i^{2}\sigma_i^{2}$。</span>取 $a_i=\frac{1}{n}$ 與 $b=0$ 即得常態隨機樣本的樣本平均數服從 $\mathcal{N}\bigl(\mu,\frac{\sigma^{2}}{n}\bigr)$ 這個結果，它在後續的統計推論中舉足輕重。
+定義之後的六點說明之中，第二點給出四款延伸性質。取 $\mu=0$ 與 $\sigma^{2}=1$ 得到的標準常態分配另有專屬的記號 $\phi(z)$ 與 <span class="text-nowrap">$\Phi(z)$，</span>其中 $\Phi(z)$ 只能以積分式存在，沒有解析解。標準化 $Z=\frac{X-\mu}{\sigma}$ 與反標準化 $X=\sigma Z+\mu$ 是一對互逆的線性轉換，兩者的證明都是把 [Theorem 2.39](/teaching-topics/one-to-one-transformations/#thm-mgf-linear-transformation) 的線性轉換公式套上去，算出來的動差母函數再由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識分配。線性組合可加性把這件事推到 $n$ 個彼此獨立的常態變數: $Y=\sum_{i=1}^{n}a_iX_i+b$ 仍為常態分配，期望值與變異數分別是 $\sum_{i=1}^{n}a_i\mu_i+b$ 與 <span class="text-nowrap">$\sum_{i=1}^{n}a_i^{2}\sigma_i^{2}$。</span>取 $a_i=\frac{1}{n}$ 與 $b=0$ 即得常態隨機樣本的樣本平均數服從 $\mathcal{N}\bigl(\mu,\frac{\sigma^{2}}{n}\bigr)$ 這個結果，它在後續的統計推論中舉足輕重。
 
-其餘各點回到圖形與尾機率。常態分配的密度曲線正是 [Theorem 2.37](/teaching-topics/ch2-p222-candidate/#thm-empirical-rule) 鐘形分配經驗法則所描述的形狀，用在標準常態分配上分別給出 <span class="text-nowrap">$0.6826$、</span><span class="text-nowrap">$0.9544$</span> 與 $0.9974$ 這三個涵蓋比例。把同一件事反過來看，固定右側的機率 $\alpha$ 再反求端點，得到的即為右尾點的定義式 <span class="text-nowrap">$\mathbb{P}(Z>z_{\sssig \alpha})=\alpha$。</span>此外，常態分配的期望值、中位數與眾數三者相等，反曲點落在 <span class="text-nowrap">$\mu\pm\sigma$，</span>偏態係數為 $0$ 而峰態係數為 <span class="text-nowrap">$3$。</span>最後兩點則預告了後文: 標準常態分配是許多分配在中央極限定理之下的極限分配，而不獨立的兩個常態變數若出自多元常態，其線性組合的變異數還要再加上 $2ab\rho\sigma_1\sigma_2$ 這一項。
+其餘各點回到圖形與尾機率。常態分配的密度曲線正是 [Theorem 2.37](/teaching-topics/empirical-rule-bell-shaped-distributions/#thm-empirical-rule) 鐘形分配經驗法則所描述的形狀，用在標準常態分配上分別給出 <span class="text-nowrap">$0.6826$、</span><span class="text-nowrap">$0.9544$</span> 與 $0.9974$ 這三個涵蓋比例。把同一件事反過來看，固定右側的機率 $\alpha$ 再反求端點，得到的即為右尾點的定義式 <span class="text-nowrap">$\mathbb{P}(Z>z_{\sssig \alpha})=\alpha$。</span>此外，常態分配的期望值、中位數與眾數三者相等，反曲點落在 <span class="text-nowrap">$\mu\pm\sigma$，</span>偏態係數為 $0$ 而峰態係數為 <span class="text-nowrap">$3$。</span>最後兩點則預告了後文: 標準常態分配是許多分配在中央極限定理之下的極限分配，而不獨立的兩個常態變數若出自多元常態，其線性組合的變異數還要再加上 $2ab\rho\sigma_1\sigma_2$ 這一項。
 
 [下一篇](/teaching-topics/ch4-p18-candidate/)以四道例題演練常態機率的計算，前三道的作法一致，都是先標準化再把所求化為標準常態的機率；最後一道則由 $2\,\phi(z)\Phi(\lambda z)$ 這個函數出發，先驗證它是一個合法的 pdf，再求其平方所服從的分配。
 

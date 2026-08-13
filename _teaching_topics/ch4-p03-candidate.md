@@ -15,7 +15,7 @@ excerpt: "多項實驗把一次實驗的出象分成 $k$ 個互斥的類別，�
 
 [上一篇](/teaching-topics/ch4-p02-candidate/)把伯努利實驗重複進行 $n$ 次，只記錄「成功類」的發生次數，得到的模型即為二項分配。若一次實驗的出象並不只有成功與失敗兩類，而是被分成 $k$ 個互斥的類別，那麼各個類別的發生次數所構成的隨機向量，服從的便是本篇的多項分配。
 
-驗證二項分配的機率函數合法時，我們用的是 [Theorem 2.18](/teaching-topics/ch2-p213-candidate/#thm-binomial) 的二項式定理；把類別數由兩類推到三類，所需要的工具便是[三項式定理](#thm-trinomial-thm)。本篇因而先由這個定理談起，再給出多項實驗與多項分配的定義，接著以三項分配為例證明機率函數合法，並一次證完三項分配的五款性質，最後以兩道例題作為演練。
+驗證二項分配的機率函數合法時，我們用的是 [Theorem 2.18](/teaching-topics/moment-system/#thm-binomial) 的二項式定理；把類別數由兩類推到三類，所需要的工具便是[三項式定理](#thm-trinomial-thm)。本篇因而先由這個定理談起，再給出多項實驗與多項分配的定義，接著以三項分配為例證明機率函數合法，並一次證完三項分配的五款性質，最後以兩道例題作為演練。
 
 ## 三項式定理
 
@@ -30,7 +30,7 @@ $$
 
 </div>
 
-[三項式定理](#thm-trinomial-thm)即是 [Theorem 2.18](/teaching-topics/ch2-p213-candidate/#thm-binomial) 擴展至三項的版本，若繼續往上推廣，當然可同理得出多項的版本，即多項式定理 <span lang="en">(multinomial theorem)</span>，在此便不贅述，讀者可自行推廣。
+[三項式定理](#thm-trinomial-thm)即是 [Theorem 2.18](/teaching-topics/moment-system/#thm-binomial) 擴展至三項的版本，若繼續往上推廣，當然可同理得出多項的版本，即多項式定理 <span lang="en">(multinomial theorem)</span>，在此便不贅述，讀者可自行推廣。
 
 ## 多項實驗與多項分配
 
@@ -754,7 +754,7 @@ $$
 
 ## 本篇小結
 
-[Theorem 4.1](#thm-trinomial-thm) 的三項式定理把 [Theorem 2.18](/teaching-topics/ch2-p213-candidate/#thm-binomial) 的兩項推廣到三項，係數由 $\binom{n}{x}$ 換成 $\frac{n!}{\,x!y!z!\,}$ 這個式子，加總的範圍則是所有滿足 $x+y+z=n$ 的非負整數三元組。同樣的作法可以繼續推到多項式定理。
+[Theorem 4.1](#thm-trinomial-thm) 的三項式定理把 [Theorem 2.18](/teaching-topics/moment-system/#thm-binomial) 的兩項推廣到三項，係數由 $\binom{n}{x}$ 換成 $\frac{n!}{\,x!y!z!\,}$ 這個式子，加總的範圍則是所有滿足 $x+y+z=n$ 的非負整數三元組。同樣的作法可以繼續推到多項式定理。
 
 [Definition 4.4](#def-multinomial-trial) 的多項實驗由三個條件界定: 出象被分成 $k$ 個互斥事件、各事件的發生機率固定且總和為 <span class="text-nowrap">$1$，</span>以及實驗與實驗之間彼此獨立。由於各類次數的總和必定是 <span class="text-nowrap">$n$，</span>[Definition 4.5](#def-multinomial) 只記錄前 $k-1$ 類的次數，最後一類的次數隨即可以得到；機率函數的分母因而多出 $\bigl(n-\sum_{i=1}^{k-1}x_i\bigr)!$ 這一項，而末尾的機率是 $1-\sum_{i=1}^{k-1}p_i$ 這個數。$k=3$ 時稱為三項分配，其機率函數的合法性正好由[三項式定理](#thm-trinomial-thm)一步得出。
 

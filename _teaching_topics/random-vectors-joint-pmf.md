@@ -1,6 +1,6 @@
 ---
-title: "隨機向量與離散型聯合分配"
-subtitle: "Random Vectors and Discrete Joint Distributions"
+title: "隨機向量與聯合機率質量函數"
+subtitle: "Random Vectors and Joint Probability Mass Functions"
 layout: topic
 collection: teaching_topics
 category: "機率概論"
@@ -8,373 +8,454 @@ chapter: 3
 topic: 1
 order: 301
 permalink: /teaching-topics/random-vectors-joint-pmf/
-date: 2026-07-24
+date: 2026-08-12
 published: false
-listed: false
-excerpt: "隨機向量將同一個樣本點產生的多個數值合在一起；聯合 pmf 給出各組取值同時出現的機率，邊際 pmf 則由聯合 pmf 對另一個變數加總得到。"
+excerpt: "隨機變數的概念並不限於一維。把定義在同一個機率空間上的 $n$ 個隨機變數合起來看成一個向量函數，並要求對任意實數 $x_1,x_2,\\ldots,x_n$ 而言，能使各個 $X_i(\\omega)\\leqslant x_i$ 同時成立的樣本點所形成的集合都是事件，這樣的向量函數即為隨機向量。二元離散型的聯合機率質量函數在聯合值域上記錄 $\\mathbb{P}(X=x,Y=y)$ 這個機率，並滿足三項性質；把其中一個變數的所有可能取值加總，便得到另一個變數的邊際機率質量函數。本篇最後以一道例題示範常數的求法、事件機率的計算與邊際 pmf 的求取。"
 ---
 
-[第二章最後一篇文章](/teaching-topics/continuous-random-variable-transformations/)討論單一隨機變數的函數轉換。不過，一次隨機試驗常會同時產生多個數值。例如，對同一位受試者記錄身高與體重，或對同一位學生記錄兩次考試的成績，都不能只用一個數值保留全部資訊。
+[上一篇](/teaching-topics/many-to-one-transformations/)以三道例題處理了非一對一的函數轉換，第二章到此告一段落。第二章所討論的[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable) <span lang="en">(random variable)</span> 都只有一維，但這個概念當然不僅限於一維，我們可以將其擴展至二維以上的多維空間，代表的意義也會隨之不同。
 
-若 $X_1,\ldots,X_n$ 定義在同一個機率空間上，則對同一個樣本點 $\omega$，每個隨機變數 $X_i:S\to\mathbb{R}$ 分別給出一個實數 $X_i(\omega)$。將這些函數值依序合在一起，可寫成
+在第一章，我們曾經探討過，若是我們有兩個事件，則我們可以就其關係歸納出[互斥、獨立](/teaching-topics/independence-and-conditional-independence/#互斥與獨立)等觀念；又於第二章，我們曾說過，所謂隨機變數事實上是將樣本空間內的元素，映射到實數上的函數，故在此，我們當然可以將樣本空間分別映射至不同的兩個實數上，此概念即為二元隨機變數。
 
-$$
-\mathbf{X}(\omega)
-=
-\bigl(X_1(\omega),\ldots,X_n(\omega)\bigr)
-$$
+當然，一旦具有二元乃至多元隨機變數的概念，則與複數個事件相同，我們可以探討事件與事件間的關係，在此當然也可以探討變數與變數間的關係，諸如此類的定義與性質，與單元隨機變數相同，我們都需要從二元 (多元) 隨機變數的定義開始出發。
 
-其中，各分量都以同一個 $\omega$ 為輸入，但由不同的 $X_i$ 決定其函數值；這些函數值可以相同，也可以不同。
+這其中，當我們手上具有許多個隨機變數所構成的向量，我們特稱之為**隨機向量**，以下就來看看隨機向量與單一的隨機變數，在定義上有何不同。
 
 ## 隨機向量
 
-<div id="definition-31" class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 3.1</div>
+<div id="def-random-vector" class="topic-box topic-box--definition" markdown="1">
+<div class="topic-box__label">Definition 3.1 (隨機向量, random vector)</div>
 
-令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間，並令
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$X_1,X_2,\ldots,X_n$ 為定義在同一機率空間中的隨機變數，而下面的向量函數 <span lang="en">(vector function)</span>
 
-$$
-\mathbf{X}
-=
-(X_1,\ldots,X_n):S\longrightarrow\mathbb{R}^n
-$$
-
-為定義在 $S$ 上的函數。若對任意 $x_1,\ldots,x_n\in\mathbb{R}$，皆有
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{aligned}
-\mathbf{X}^{-1}
-\left(
-\prod_{i=1}^{n}(-\infty,x_i]
-\right)
-&=
-\bigcap_{i=1}^{n}
-\lbrace X_i\leqslant x_i\rbrace
-\in\mathcal{F}
-\end{aligned}
+\boldsymbol{X}(\omega)=\bigl(\,X_1(\omega),X_2(\omega),\ldots,X_n(\omega)\,\bigr)\colon S\to\mathbb{R}^{n}
 $$
 
-這個交集中的各項條件都針對同一個樣本點 $\omega$，並分別由座標函數 $X_1,\ldots,X_n$ 決定各座標的函數值。此時稱 $\mathbf{X}$ 為一個 $n$ 維**隨機向量 (random vector)**。
 </div>
-
-[Definition 2.1](/teaching-topics/random-variables-from-sample-space-to-real-line/#definition-21) 使用數線上的半直線 $(-\infty,x]$ 定義實值隨機變數。此處則把相同條件推廣至 $\mathbb{R}^n$ 中的左下矩形
-
-$$
-\prod_{i=1}^{n}(-\infty,x_i]
-$$
-
-這些左下矩形生成 $\mathbb{R}^n$ 上的 Borel $\sigma$-域，因此 [Definition 3.1](#definition-31) 等價於要求 $\mathbf{X}$ 為 Borel 可測函數 (Borel measurable function)。
-
-這個條件也等價於要求每個 $X_i$ 都是定義在同一個機率空間上的實值隨機變數。若每個 $X_i$ 都可測，則定義中的交集是有限個事件的交集，因而屬於 $\mathcal{F}$。反過來，若 $\mathbf{X}$ 為 Borel 可測函數，令
-
-$$
-\pi_i:\mathbb{R}^n\longrightarrow\mathbb{R}
-$$
-
-表示取出第 $i$ 個座標的投影函數。由於 $\pi_i$ 為 Borel 可測函數，且
-
-$$
-X_i
-=
-\pi_i\circ\mathbf{X}
-$$
-
-所以每個 $X_i$ 都是實值隨機變數。
-
-隨機向量 $\mathbf{X}$ 的聯合值域定義為
-
-$$
-\mathcal{R}_{\mathbf{X}}
-=
-\bigl\{\mathbf{X}(\omega)\mid\omega\in S\bigr\}
-\subseteq
-\mathbb{R}^n
-$$
-
-往後先以二元隨機向量 $(X,Y)$ 為主，其聯合值域記為 $\mathcal{R}_{XY}\subseteq\mathbb{R}^2$。
-
-<figure id="fig-31" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/random-vector-map.svg" alt="同一個擲骰子樣本點同時經由 X 與 Y 形成平面上的一個向量。樣本點 (3,4) 對應到點數和 7 與點數差絕對值 1。">
-  <figcaption><span class="topic-figure__label">Fig. 3.1.</span> 投擲一顆骰子兩次，令 $X$ 為兩次點數和，$Y$ 為兩次點數差的絕對值。樣本點 $(3,4)$ 會被送到 $(X,Y)=(7,1)$；兩個座標來自同一個樣本點，因此保留了聯合關係。</figcaption>
-</figure>
-
-隨機向量不必由相同型態的隨機變數組成。例如，一個座標可以是離散型，另一個座標可以具有 pdf。本章先處理離散型座標組成的向量，以及具有聯合 pdf 的向量，再逐步討論更一般的關係。
-
-## 聯合機率質量函數
-
-二元隨機向量 $(X,Y)$ 的聯合值域為
-
-$$
-\mathcal{R}_{XY}
-=
-\bigl\{(X(\omega),Y(\omega))\mid\omega\in S\bigr\}
-\subseteq
-\mathbb{R}^2
-$$
-
-若 $\mathcal{R}_{XY}$ 為有限集合或可數無限集合，則稱 $(X,Y)$ 為**二元離散型隨機向量 (bivariate discrete random vector)**。
-
-<div id="definition-32" class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 3.2</div>
-
-令 $(X,Y)$ 為二元離散型隨機向量，其聯合值域為 $\mathcal{R}\_{XY}$。對 $(x,y)\in\mathcal{R}\_{XY}$，定義
-
-$$
-p_{XY}(x,y)
-=
-\mathbb{P}(X=x,Y=y)
-$$
-
-並令 $p\_{XY}(x,y)=0$，若 $(x,y)\notin\mathcal{R}\_{XY}$。由機率的非負性、歸一性與可數可加性，$p\_{XY}$ 必滿足
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
 \begin{gathered}
-p_{XY}(x,y)\geqslant0
-\quad\bigl((x,y)\in\mathcal{R}_{XY}\bigr) \\[0.8em]
-\sum_{(x,y)\in\mathcal{R}_{XY}}p_{XY}(x,y)=1
+\boldsymbol{X}(\omega)=\bigl(\,X_1(\omega),X_2(\omega),\ldots,X_n(\omega)\,\bigr)\\[0.45em]
+\boldsymbol{X}\colon S\to\mathbb{R}^{n}
 \end{gathered}
 $$
 
-稱 $p\_{XY}$ 為 $(X,Y)$ 的**聯合機率質量函數 (joint probability mass function, joint pmf)**。
 </div>
 
-式中的逗號表示兩個條件同時成立，因為
+為由 $X_1,X_2,\ldots,X_n$ 所構成，且滿足對任意 $x_1,x_2,\ldots,x_n\in\mathbb{R}$ 而言，下面的集合都是事件
 
 $$
-\lbrace X=x,Y=y\rbrace
-=
-\lbrace X=x\rbrace\cap\lbrace Y=y\rbrace
+\lbrace\,\omega\mid\omega\in S,\ X_i(\omega)\leqslant x_i,\ i=1,2,\ldots,n\,\rbrace\in\mathcal{F}
 $$
 
-所以 $p_{XY}(x,y)$ 本身就是一個事件的機率。
+則稱 $\boldsymbol{X}$ 為一個定義於 $S$ 的**隨機向量 (random vector)**。
 
-聯合 pmf 也足以計算由 $(X,Y)$ 所決定的事件機率。對任意集合 $A\subseteq\mathbb{R}^2$，皆有
+</div>
+
+隨機向量是一個向量函數，其有一些特殊的性質需要注意。
+
+(1) 在部分的教科書上，隨機向量 $\boldsymbol{X}$ 會以其反映射 <span lang="en">(inverse mapping)</span> $\boldsymbol{X}^{-1}(\cdot)$ 定義，並定義以下的集合
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}\bigl((X,Y)\in A\bigr)
-=
-\sum_{(x,y)\in A\cap\mathcal{R}_{XY}}
-p_{XY}(x,y)
+I=\bigl\lbrace\,(\,t_1,t_2,\ldots,t_n\,)\mid-\infty<t_i\leqslant x_i,\ x_i\in\mathbb{R},\ i=1,2,\ldots,n\,\bigr\rbrace
 $$
 
-單變數的公式對 $A\cap\mathcal{R}\_X$ 中的實數 $x$ 加總；二元公式則對 $A\cap\mathcal{R}\_{XY}$ 中的有序對 $(x,y)$ 加總。此時 $A$ 是 $\mathbb{R}^2$ 中的集合，可以是矩形，也可以是其他平面區域。
-
-與 [單變數的 Proposition 2.2](/teaching-topics/discrete-random-variables-pmf/#proposition-22) 相比，條件的形式沒有改變。差別在於，單變數的每個可能取值是實數 $x$，二元隨機向量的每個可能取值則是有序對 $(x,y)$。反過來，只要定義在有限或可數無限集合上的函數滿足這兩項條件，便可形成相應的聯合 pmf。
-
-<div id="proposition-31" class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Proposition 3.1 (Conditions for a Joint pmf)</div>
-
-令 $\mathcal{R}\_{XY}\subseteq\mathbb{R}^2$ 為有限或可數無限集合。若函數 $p\_{XY}:\mathcal{R}\_{XY}\to\mathbb{R}$ 滿足
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
 \begin{gathered}
-p_{XY}(x,y)\geqslant0
-\quad\bigl((x,y)\in\mathcal{R}_{XY}\bigr) \\[0.8em]
-\sum_{(x,y)\in\mathcal{R}_{XY}}p_{XY}(x,y)=1
+I=\bigl\lbrace\,(\,t_1,t_2,\ldots,t_n\,)\mid\\[0.35em]
+-\infty<t_i\leqslant x_i,\ x_i\in\mathbb{R},\\[0.35em]
+i=1,2,\ldots,n\,\bigr\rbrace
 \end{gathered}
 $$
 
-則 $p\_{XY}$ 可作為某個二元離散型隨機向量 $(X,Y)$ 在 $\mathcal{R}\_{XY}$ 上的聯合 pmf。
 </div>
 
-<div class="topic-proof" markdown="1">
-**Proof.** 取樣本空間 $S=\mathcal{R}\_{XY}$，並令 $\mathcal{F}=2^S$，也就是由 $S$ 的所有子集合所構成的 $\sigma$-域。對每個 $A\in\mathcal{F}$，定義
+則 $\boldsymbol{X}\colon S\to\mathbb{R}^{n}$ 滿足下式
+{: .topic-paren-cont}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}(A)
-=
-\sum_{(x,y)\in A}p_{XY}(x,y)
+\boldsymbol{X}^{-1}(I)=\lbrace\,\omega\mid X_i(\omega)\leqslant x_i,\ i=1,2,\ldots,n\,\rbrace=\bigcap_{i=1}^{n}\lbrace\,\omega\mid X_i(\omega)\leqslant x_i\,\rbrace\in\mathcal{F}
 $$
 
-非負性與總和為 $1$ 分別給出 $\mathbb{P}(A)\geqslant0$ 與 $\mathbb{P}(S)=1$。為了檢查可數可加性，任取一列兩兩互斥的集合 $A_1,A_2,\ldots\in\mathcal{F}$。由於這些集合彼此沒有重疊，聯集中的每個 $(x,y)$ 恰好只屬於其中一個 $A_n$。因此，對聯集內所有 $(x,y)$ 的加總，可按照 $(x,y)$ 所屬的 $A_n$ 分組；又因各項皆為非負數，這樣分組不會改變總和。由此可得
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
 \begin{aligned}
-\mathbb{P}\left(\bigcup_{n=1}^{\infty}A_n\right)
-&=
-\sum_{(x,y)\in\bigcup_{n=1}^{\infty}A_n}p_{XY}(x,y) \\[0.4em]
-&=
-\sum_{n=1}^{\infty}\sum_{(x,y)\in A_n}p_{XY}(x,y) \\[0.4em]
-&=
-\sum_{n=1}^{\infty}\mathbb{P}(A_n)
+\boldsymbol{X}^{-1}(I)&=\lbrace\,\omega\mid X_i(\omega)\leqslant x_i,\\[0.2em]
+&\qquad i=1,2,\ldots,n\,\rbrace\\[0.45em]
+&=\bigcap_{i=1}^{n}\lbrace\,\omega\mid X_i(\omega)\leqslant x_i\,\rbrace\in\mathcal{F}
 \end{aligned}
 $$
 
-因此，$\mathbb{P}$ 滿足三項機率公理，是定義在 $\mathcal{F}$ 上的機率函數，而 $(S,\mathcal{F},\mathbb{P})$ 構成一個機率空間。對 $\omega=(u,v)\in S$，令 $X(\omega)=u$ 與 $Y(\omega)=v$，故 $(X,Y)(\omega)=\omega$。對任意 $a,b\in\mathbb{R}$，令
-
-$$
-I_{a,b}=(-\infty,a]\times(-\infty,b]
-$$
-
-則
-
-$$
-\begin{aligned}
-\lbrace X\leqslant a,Y\leqslant b\rbrace
-&=
-(X,Y)^{-1}(I_{a,b}) \\[0.4em]
-&=
-I_{a,b}\cap S
-\in\mathcal{F}
-\end{aligned}
-$$
-
-因此，$(X,Y):S\to\mathbb{R}^2$ 是二元隨機向量。對每個 $(x,y)\in\mathcal{R}\_{XY}$，皆有 $\mathbb{P}(X=x,Y=y)=\mathbb{P}(\lbrace(x,y)\rbrace)=p\_{XY}(x,y)$。若 $(x,y)\notin\mathcal{R}\_{XY}$，則 $\lbrace X=x,Y=y\rbrace=\varnothing$，故 $\mathbb{P}(X=x,Y=y)=0$。因此，在 $\mathcal{R}\_{XY}$ 之外將 $p\_{XY}$ 定義為 $0$ 後，$p\_{XY}$ 確實可作為 $(X,Y)$ 的聯合 pmf。<span class="topic-qed">$\square$</span>
 </div>
 
-## 邊際機率質量函數
+事實上，這二個等價定義都在說明同一件事情，也就是，只要我們有實數 $x_1,x_2,\ldots,x_n$ 這 $n$ 個數，則**能夠使得 $X_1(\omega)\leqslant x_1,X_2(\omega)\leqslant x_2,\ldots,X_n(\omega)\leqslant x_n$ 的那些樣本點所收集而成的集合，必須是個能夠被定義機率的事件**。
+{: .topic-paren-cont}
 
-若現在只想知道 $X$ 的分配，就要把與同一個 $x$ 搭配的所有 $y$ 都考慮進來。對固定的 $x$，事件 $\lbrace X=x\rbrace$ 可分解為互斥事件
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
 
-$$
-\lbrace X=x\rbrace
-=
-\bigcup_{y\in\mathcal{R}_Y}
-\lbrace X=x,Y=y\rbrace
-$$
-
-因此，$\mathbb{P}(X=x)$ 等於這些聯合機率的總和。
-
-<div id="definition-33" class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 3.3</div>
-
-令 $(X,Y)$ 為二元離散型隨機向量，聯合 pmf 為 $p_{XY}$。定義
+讀者應該還記得，在隨機變數的等價定義中，我們曾經提過，對於一個隨機變數 <span class="text-nowrap">$X_i$，</span>依其定義，我們有下式
 
 $$
-\begin{aligned}
-p_X(x)
-&=
-\sum_{y\in\mathcal{R}_Y}p_{XY}(x,y) \\[0.4em]
-p_Y(y)
-&=
-\sum_{x\in\mathcal{R}_X}p_{XY}(x,y)
-\end{aligned}
+X^{-1}\bigl((-\infty,x_i]\bigr)=\lbrace\,\omega\mid X_i(\omega)\leqslant x_i\,\rbrace\in\mathcal{F},\quad i=1,2,\ldots,n
 $$
 
-則稱 $p_X$ 與 $p_Y$ 分別為 $X$ 與 $Y$ 的**邊際機率質量函數 (marginal probability mass function, marginal pmf)**。
+又由 $\mathcal{F}$ 的定義可知，若 $A_i\in\mathcal{F}$ 對 $i=1,2,\ldots,n$ 都成立，我們有下式
+
+$$
+\bigcap_{i=1}^{n}A_i\in\mathcal{F}
+$$
+
+故由此定義可以看出，只要 $X_1,X_2,\ldots,X_n$ 都是定義於 $(S,\mathcal{F},\mathbb{P})$ 上之隨機變數，則其所構成的向量
+
+$$
+\boldsymbol{X}=\bigl(\,X_1(\omega),X_2(\omega),\ldots,X_n(\omega)\,\bigr)
+$$
+
+就是一個隨機向量。
+
 </div>
 
-加總後，$p_X$ 只以 $x$ 為自變數，描述 $X$ 自身的分配，與 $y$ 無關；$p_Y$ 亦同。這不表示 $X$ 與 $Y$ 獨立，而只表示此時分別考慮其中一個變數的分配。
+(2) $\boldsymbol{X}$ 為一函數，定義域 (domain) 是樣本空間 <span class="text-nowrap">$S$、</span>對應域 <span lang="en">(codomain)</span> 是 $n$ 維實數空間 <span class="text-nowrap">$\mathbb{R}^{n}$，</span>而**聯合值域 (joint range)** 記為 <span class="text-nowrap">$\mathcal{R}\_{\boldsymbol{X}}$，</span>為 $n$ 維實數空間 $\mathbb{R}^{n}$ 的子集。
+{: .topic-paren-item}
 
-## 聯合 pmf 與邊際 pmf 的計算
+(3) 在本系列往後的各篇中，我們多半只關注 $n=2$ 的情況，並可能稱其為多元隨機變數。
+{: .topic-paren-item}
 
-<div id="example-31" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 3.1 (A Joint pmf on Five Points)</div>
+為了與第二章接軌，我們在隨機向量 (或稱多元隨機變數) 中，仍分離散型隨機向量與連續型隨機向量，探討其機率函數與分配函數的定義。
 
-令聯合值域為
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
 
-$$
-\mathcal{R}_{XY}
-=
-\lbrace(0,1),(0,2),(1,0),(1,1),(2,0)\rbrace
-$$
+儘管如此，讀者仍應謹記，一般的隨機向量中，並不是只能離散與離散搭配、連續與連續搭配，離散變數與連續變數混搭而成的隨機向量是符合定義的，只是便於介紹，我們特以離散與離散、連續與連續的情況來介紹。
 
-並在 $\mathcal{R}\_{XY}$ 上定義
+</div>
 
-$$
-p_{XY}(x,y)=c(x+2y)
-$$
+## 聯合、邊際[機率質量函數](/teaching-topics/random-variables-and-pmf/#def-pmf)
 
-並令其他位置的函數值為 $0$。先求 $c$，使這個函數成為 $(X,Y)$ 的聯合 pmf；再計算 $\mathbb{P}(X\geqslant1,Y\leqslant1)$，並求出 $X$ 與 $Y$ 的邊際 pmf。
+<div id="def-joint-pmf" class="topic-box topic-box--definition" markdown="1">
+<div class="topic-box__label">Definition 3.2 (聯合機率質量函數, joint pmf)</div>
 
-依序將 $\mathcal{R}\_{XY}$ 中的五個有序對代入 $x+2y$，相應的值為 $2,4,1,3,2$。由 [Proposition 3.1](#proposition-31) 的總和條件可得
+若 $(X,Y)$ 為定義於機率空間 $(S,\mathcal{F},\mathbb{P})$ 上之二元**離散型**隨機向量，其聯合值域為 <span class="text-nowrap">$\mathcal{R}\_{\sssig XY}$，</span>則定義函數
 
 $$
-1
-=
-\sum_{(x,y)\in\mathcal{R}_{XY}}p_{XY}(x,y)
-=
-c(2+4+1+3+2)
-=
-12c
+p_{\sssig XY}(x,y)=
+\left\lbrace
+\begin{array}{c@{\quad}l}
+\mathbb{P}(X=x,Y=y), & \forall (x,y)\in\mathcal{R}_{\sssig XY}\\[0.4em]
+0, & \forall (x,y)\notin\mathcal{R}_{\sssig XY}
+\end{array}
+\right.
 $$
 
-因此，$c=1/12$。此時 $p\_{XY}$ 在五個指定點上的函數值皆為非負，在其他位置的函數值為 $0$，且所有可能取值上的總和為 $1$。由 [Proposition 3.1](#proposition-31) 可知，$p\_{XY}$ 確實可作為 $(X,Y)$ 的聯合 pmf。
+若 $p\_{\sssig XY}(x,y)$ 滿足以下性質，則稱 $p\_{\sssig XY}(x,y)$ 為 $(X,Y)$ 的**聯合機率質量函數 <span lang="en">(joint probability mass function, joint pmf)</span>**:
 
-令 $A=\lbrace(1,0),(1,1),(2,0)\rbrace$，則事件 $\lbrace X\geqslant1,Y\leqslant1\rbrace$ 等同於 $(X,Y)\in A$。由聯合 pmf 的事件機率公式可得
+<ol class="topic-list-paren">
+  <li>對任意 $(x,y)\in\mathcal{R}_{\sssig XY}$，皆有
+  $$
+  0\leqslant p_{\sssig XY}(x,y)\leqslant 1
+  $$</li>
+  <li>$(X,Y)$ 的取值落在聯合值域中的機率會是下式
+  <div class="topic-math-layout topic-math-layout--desktop">
+  $$
+  \mathbb{P}\bigl((X,Y)\in\mathcal{R}_{\sssig XY}\bigr)=\mathop{\sum\sum}\limits_{(x,y)\in\mathcal{R}_{\sssig XY}}p_{\sssig XY}(x,y)=1
+  $$
+  </div>
+  <div class="topic-math-layout topic-math-layout--mobile">
+  $$
+  \begin{aligned}
+  &\mathbb{P}\bigl((X,Y)\in\mathcal{R}_{\sssig XY}\bigr)\\[0.45em]
+  &\quad =\mathop{\sum\sum}\limits_{(x,y)\in\mathcal{R}_{\sssig XY}}p_{\sssig XY}(x,y)=1
+  \end{aligned}
+  $$
+  </div></li>
+  <li>對任意集合 $A$，皆有
+  $$
+  \mathbb{P}\bigl((X,Y)\in A\bigr)=\mathop{\sum\sum}\limits_{(x,y)\in A}p_{\sssig XY}(x,y)
+  $$</li>
+</ol>
 
-$$
-\mathbb{P}\bigl((X,Y)\in A\bigr)
-=
-\sum_{(x,y)\in A}p_{XY}(x,y)
-=
-\frac{1+3+2}{12}
-=
-\frac{1}{2}
-$$
+</div>
 
-把聯合 pmf 與邊際 pmf 一併列入表中，可得
+聯合機率質量函數有一些地方需要注意。
 
-| $Y\backslash X$ | $0$ | $1$ | $2$ | $p_Y(y)$ |
-|:---:|:---:|:---:|:---:|:---:|
-| $2$ | $4/12$ | $0$ | $0$ | $4/12$ |
-| $1$ | $2/12$ | $3/12$ | $0$ | $5/12$ |
-| $0$ | $0$ | $1/12$ | $2/12$ | $3/12$ |
-| $p_X(x)$ | $6/12$ | $4/12$ | $2/12$ | $1$ |
+(1) 與單元的 pmf 相同，$\mathbb{P}(X=x,Y=y)$ **就是機率**。
+{: .topic-paren-item}
+
+(2) 很多時候一個二元離散向量 $(X,Y)$ 的聯合值域 $\mathcal{R}\_{\sssig XY}$ 是有限集合，這種時候我們常常將其聯合機率函數窮舉為表格的形式，其型態與第一章我們所談到的[列聯表](/teaching-topics/independence-and-conditional-independence/#互斥與獨立)非常相似，二者的本質也是相同的，下面我們便來看看這樣的例子:
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+| $Y\backslash X$ | $0$ | $1$ | $2$ | 邊際 |
+| :---: | :---: | :---: | :---: | :---: |
+| $0$ | $\mathbb{P}(X=0,Y=0)$ | $\mathbb{P}(X=1,Y=0)$ | $\mathbb{P}(X=2,Y=0)$ | $\mathbb{P}(Y=0)$ |
+| $1$ | $\mathbb{P}(X=0,Y=1)$ | $\mathbb{P}(X=1,Y=1)$ | $\mathbb{P}(X=2,Y=1)$ | $\mathbb{P}(Y=1)$ |
+| $2$ | $\mathbb{P}(X=0,Y=2)$ | $\mathbb{P}(X=1,Y=2)$ | $\mathbb{P}(X=2,Y=2)$ | $\mathbb{P}(Y=2)$ |
+| 邊際 | $\mathbb{P}(X=0)$ | $\mathbb{P}(X=1)$ | $\mathbb{P}(X=2)$ | $1$ |
 {: .topic-table--joint-pmf}
 
-例如，把可與 $X=0$ 搭配的所有 $y$ 值加總，可得
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+| $Y\backslash X$ | $0$ | $1$ | $2$ | 邊際 |
+| :---: | :---: | :---: | :---: | :---: |
+| $0$ | $\mathbb{P}(X=0,$<br>$Y=0)$ | $\mathbb{P}(X=1,$<br>$Y=0)$ | $\mathbb{P}(X=2,$<br>$Y=0)$ | $\mathbb{P}(Y=0)$ |
+| $1$ | $\mathbb{P}(X=0,$<br>$Y=1)$ | $\mathbb{P}(X=1,$<br>$Y=1)$ | $\mathbb{P}(X=2,$<br>$Y=1)$ | $\mathbb{P}(Y=1)$ |
+| $2$ | $\mathbb{P}(X=0,$<br>$Y=2)$ | $\mathbb{P}(X=1,$<br>$Y=2)$ | $\mathbb{P}(X=2,$<br>$Y=2)$ | $\mathbb{P}(Y=2)$ |
+| 邊際 | $\mathbb{P}(X=0)$ | $\mathbb{P}(X=1)$ | $\mathbb{P}(X=2)$ | $1$ |
+{: .topic-table--joint-pmf}
+
+</div>
+
+上表的解讀方式與第一章的機率列聯表幾乎完全相同，差異只在當時我們所使用的是集合事件，而這裡我們使用隨機變數，但本質上都是完全相同的。
+{: .topic-paren-cont}
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+讀者應該記得，不論是 $X=x$ 或 <span class="text-nowrap">$Y=y$，</span>其實都分別表示一個事件，因此上表的理解理應與過去我們所知道的機率列聯表完全相同；而表內的交集事件原先應為 $\lbrace X=x\rbrace\cap\lbrace Y=y\rbrace$ 這樣的形式，但在隨機向量中，我們一般以逗號代替交集符號，因此改為 <span class="text-nowrap">$X=x,Y=y$。</span>
+
+</div>
+
+另外，上表中原先在表邊的總和機率在這邊變成了**邊際機率 <span lang="en">(marginal probability)</span>**，這種機率所構成的機率分配，仍然是一種正規的機率分配，其直觀意義與當時相同，仍是應用了[全機率定理](/teaching-topics/total-probability-bayes-rule/#theorem-law-of-total-probability)。關於這種機率分配的定義與其性質，我們馬上便會看見。
+{: .topic-paren-cont}
+
+<div id="def-marginal-pmf" class="topic-box topic-box--definition" markdown="1">
+<div class="topic-box__label">Definition 3.3 (邊際機率質量函數, marginal pmf)</div>
+
+若 $(X,Y)$ 為一二元**離散型**隨機向量，其聯合機率質量函數為 <span class="text-nowrap">$p\_{\sssig XY}(x,y)$，</span>則稱以下的函數
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}(X=0)
-=
-\sum_{y\in\mathcal{R}_Y}p_{XY}(0,y)
-=
-\frac{0+2+4}{12}
-=
-\frac{1}{2}
-=
-p_X(0)
+p_{\sssig X}(x)=\sum_{y\in\mathcal{R}_{\sssig Y}}p_{\sssig XY}(x,y)=\sum_{y\in\mathcal{R}_{\sssig Y}}\mathbb{P}(X=x,Y=y)
 $$
 
-這個計算同時說明，直接由聯合 pmf 加總與由邊際 pmf 讀取 $p_X(0)$，是同一個計算。
-
-$X$ 的完整邊際 pmf 為
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-p_X(x)
-=
-\left\{
+\begin{aligned}
+p_{\sssig X}(x)&=\sum_{y\in\mathcal{R}_{\sssig Y}}p_{\sssig XY}(x,y)\\[0.45em]
+&=\sum_{y\in\mathcal{R}_{\sssig Y}}\mathbb{P}(X=x,Y=y)
+\end{aligned}
+$$
+
+</div>
+
+為 $X$ 的**邊際機率質量函數 <span lang="en">(marginal pmf)</span>**，並稱以下的函數
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+p_{\sssig Y}(y)=\sum_{x\in\mathcal{R}_{\sssig X}}p_{\sssig XY}(x,y)=\sum_{x\in\mathcal{R}_{\sssig X}}\mathbb{P}(X=x,Y=y)
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+p_{\sssig Y}(y)&=\sum_{x\in\mathcal{R}_{\sssig X}}p_{\sssig XY}(x,y)\\[0.45em]
+&=\sum_{x\in\mathcal{R}_{\sssig X}}\mathbb{P}(X=x,Y=y)
+\end{aligned}
+$$
+
+</div>
+
+為 $Y$ 的**邊際機率質量函數**。
+
+</div>
+
+讀者應特別注意的是，邊際機率質量函數仍然是一種機率質量函數，例如: $X$ 的邊際機率質量函數便可以視為是 $X$ 自己的機率函數，**而與 $Y$ 完全無關**。
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+這個概念與微積分中，將一個雙變數函數的其中一個變數積分過後，剩下來的單變數函數亦被稱為邊際函數，是完全相同的，且該邊際函數亦與被積分的變數完全無關。我們將在二元連續隨機變數中看到這樣的例子。
+
+</div>
+
+<div id="ex-joint-pmf-constant" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 3.1</div>
+
+<div lang="en" markdown="1">
+Suppose that a discrete random vector $(X,Y)$ has joint probability mass function
+
+$$
+p_{\sssig XY}(x,y)=c(x+2y)
+$$
+
+on the set $\lbrace(0,1),(0,2),(1,0),(1,1),(2,0)\rbrace$, where $c$ is a constant.
+
+<ol class="topic-list-paren">
+  <li>Determine the value of <span class="text-nowrap">$c$.</span></li>
+  <li>Evaluate $\mathbb{P}(X\geqslant 1,Y\leqslant 1)$ and <span class="text-nowrap">$\mathbb{P}(X=0)$.</span></li>
+  <li>Find the marginal pmf of <span class="text-nowrap">$X$.</span></li>
+</ol>
+</div>
+
+(1) 由 joint pmf 之性質知道
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+1&=\mathop{\sum\sum}\limits_{(x,y)\in\mathcal{R}_{\sssig XY}}p_{\sssig XY}(x,y)\\[0.45em]
+&=c\,\bigl[(0+2\cdot1)+(0+2\cdot2)+(1+2\cdot0)+(1+2\cdot1)+(2+2\cdot0)\bigr]=c\times12
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+1&=\mathop{\sum\sum}\limits_{(x,y)\in\mathcal{R}_{\sssig XY}}p_{\sssig XY}(x,y)\\[0.45em]
+&=c\,\bigl[(0+2\cdot1)+(0+2\cdot2)\\[0.2em]
+&\qquad +(1+2\cdot0)+(1+2\cdot1)\\[0.2em]
+&\qquad +(2+2\cdot0)\bigr]\\[0.45em]
+&=c\times12
+\end{aligned}
+$$
+
+</div>
+
+由此可以得到 <span class="text-nowrap">$c=\frac{1}{\,12\,}$，</span>又 $0\leqslant p\_{\sssig XY}(x,y)\leqslant1$ 對聯合值域中的五個點 $(0,1)$、$(0,2)$、$(1,0)$、$(1,1)$ 與 $(2,0)$ 皆成立，故知道所求為
+{: .topic-paren-cont}
+
+$$
+c=\frac{1}{\,12\,}
+$$
+
+(2) 令 $A=\lbrace(1,0),(1,1),(2,0)\rbrace$，則有
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(X\geqslant1,Y\leqslant1)=\mathop{\sum\sum}\limits_{(x,y)\in A}p_{\sssig XY}(x,y)=\frac{\,1+2\cdot0\,}{12}+\frac{\,1+2\cdot1\,}{12}+\frac{\,2+2\cdot0\,}{12}=\frac{1}{\,2\,}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\mathbb{P}(X\geqslant1,Y\leqslant1)=\mathop{\sum\sum}\limits_{(x,y)\in A}p_{\sssig XY}(x,y)\\[0.45em]
+&\quad =\frac{\,1+2\cdot0\,}{12}+\frac{\,1+2\cdot1\,}{12}+\frac{\,2+2\cdot0\,}{12}\\[0.45em]
+&\quad =\frac{1}{\,2\,}
+\end{aligned}
+$$
+
+</div>
+
+另一個所求為
+{: .topic-paren-cont}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{P}(X=0)=p_{\sssig XY}(0,1)+p_{\sssig XY}(0,2)=\frac{\,0+2\cdot1\,}{12}+\frac{\,0+2\cdot2\,}{12}=\frac{1}{\,2\,}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{P}(X=0)&=p_{\sssig XY}(0,1)+p_{\sssig XY}(0,2)\\[0.45em]
+&=\frac{\,0+2\cdot1\,}{12}+\frac{\,0+2\cdot2\,}{12}=\frac{1}{\,2\,}
+\end{aligned}
+$$
+
+</div>
+
+(3) $X$ 的邊際機率質量函數為
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+p_{\sssig X}(x)=\sum_{y\in\mathcal{R}_{\sssig Y}}p_{\sssig XY}(x,y)=\sum_{y=0}^{2}p_{\sssig XY}(x,y)=
+\left\lbrace
 \begin{array}{c@{\quad}l}
-\frac{1}{2}, & x=0,\\[0.35em]
-\frac{1}{3}, & x=1,\\[0.35em]
-\frac{1}{6}, & x=2,\\[0.35em]
-0, & \text{otherwise}
-\end{array}
-\right.
-$$
-
-而 $Y$ 的完整邊際 pmf 為
-
-$$
-p_Y(y)
-=
-\left\{
-\begin{array}{c@{\quad}l}
-\frac{1}{4}, & y=0,\\[0.35em]
-\frac{5}{12}, & y=1,\\[0.35em]
-\frac{1}{3}, & y=2,\\[0.35em]
+\dfrac{1}{\,2\,}, & x=0\\[0.6em]
+\dfrac{1}{\,3\,}, & x=1\\[0.6em]
+\dfrac{1}{\,6\,}, & x=2\\[0.6em]
 0, & \text{otherwise}
 \end{array}
 \right.
 $$
 
 </div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
-表格內部的每一格記錄 $X$ 與 $Y$ 同時取特定值的機率。最下方與最右側則分別把同一欄或同一列的機率加總，因此稱為邊際分配。
+$$
+\begin{aligned}
+p_{\sssig X}(x)&=\sum_{y\in\mathcal{R}_{\sssig Y}}p_{\sssig XY}(x,y)=\sum_{y=0}^{2}p_{\sssig XY}(x,y)\\[0.45em]
+&=
+\left\lbrace
+\begin{array}{c@{\quad}l}
+\dfrac{1}{\,2\,}, & x=0\\[0.6em]
+\dfrac{1}{\,3\,}, & x=1\\[0.6em]
+\dfrac{1}{\,6\,}, & x=2\\[0.6em]
+0, & \text{otherwise}
+\end{array}
+\right.
+\end{aligned}
+$$
+
+</div>
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+事實上，上述求取邊際 pmf 的做法，也可以窮舉的方式完成，亦即將題目的敘述轉化為以下的列聯表:
+
+| $Y\backslash X$ | $0$ | $1$ | $2$ | $p_{\sssig Y}(y)$ |
+| :---: | :---: | :---: | :---: | :---: |
+| $0$ | $0$ | $1/12$ | $2/12$ | $3/12$ |
+| $1$ | $2/12$ | $3/12$ | $0$ | $5/12$ |
+| $2$ | $4/12$ | $0$ | $0$ | $4/12$ |
+| $p_{\sssig X}(x)$ | $6/12$ | $4/12$ | $2/12$ | $1$ |
+{: .topic-table--joint-pmf}
+
+則由上表同樣可以知道 $X$ 的邊際分配。
+
+值得注意的是，第二小題中的 <span class="text-nowrap">$\mathbb{P}(X=0)$，</span>我們是採用正規的聯合機率計算，利用純粹只說 $X=0$ 時，表示 $Y$ 可以是任意值的結果求算；但事實上，這個結果會直接等價於，先計算 $X$ 的邊際分配，再利用邊際分配求算 <span class="text-nowrap">$\mathbb{P}(X=0)$，</span>而且二者的原理其實完全相同，讀者可以思考看看為何。
+
+</div>
 
 ## 本篇小結
 
-隨機向量把同一個樣本點所產生的多個數值放在一起。對二元離散型隨機向量，聯合 pmf 給出每一組 $(x,y)$ 同時出現的機率，而一般事件的機率可由事件範圍內的聯合 pmf 加總得到。
+[Definition 3.1](#def-random-vector) 把隨機變數的概念推廣到多維。令 $X_1,X_2,\ldots,X_n$ 為定義在同一個機率空間上的隨機變數，由它們所構成的向量函數 $\boldsymbol{X}(\omega)$ 若滿足對任意實數 $x_1,x_2,\ldots,x_n$ 而言，能使各個 $X_i(\omega)\leqslant x_i$ 同時成立的樣本點所形成的集合都是事件，則稱之為隨機向量。這個條件與單變數的要求相同，差別只在於它同時對 $n$ 個座標提出要求，而所要求的集合正是 $n$ 個事件的交集。$\boldsymbol{X}$ 的定義域是樣本空間、對應域是 <span class="text-nowrap">$\mathbb{R}^{n}$，</span>聯合值域 $\mathcal{R}\_{\boldsymbol{X}}$ 則是 $\mathbb{R}^{n}$ 的子集。
 
-若只關心其中一個變數，則將另一個變數的所有可能值加總，便得到邊際 pmf。邊際分配保留單一變數的機率資訊，但不再保留兩個變數如何搭配。
+回到離散型，[Definition 3.2](#def-joint-pmf) 的聯合機率質量函數在聯合值域上記錄 $\mathbb{P}(X=x,Y=y)$ 這個機率，在聯合值域之外則取 <span class="text-nowrap">$0$，</span>並滿足介於 $0$ 與 $1$ 之間、在聯合值域上加總為 <span class="text-nowrap">$1$，</span>以及任一事件的機率為該事件上之雙重加總這三項性質。聯合值域為有限集合時，聯合機率質量函數可以窮舉成列聯表的形式，表邊的總和機率即為邊際機率。[Definition 3.3](#def-marginal-pmf) 把這件事寫成定義。對另一個變數的所有可能取值加總，所得的 $p\_{\sssig X}(x)$ 與 $p\_{\sssig Y}(y)$ 分別是 $X$ 與 $Y$ 的邊際機率質量函數，它們各自仍是一個機率質量函數。
 
-[下一篇文章](/teaching-topics/joint-cumulative-distribution-functions/)會改由門檻事件 $\lbrace X\leqslant x,Y\leqslant y\rbrace$ 累積機率，定義聯合累積分配函數。
+[Example 3.1](#ex-joint-pmf-constant) 以一組五個質點的聯合機率質量函數示範三件事: 由加總為 $1$ 求出常數 <span class="text-nowrap">$c$、</span>把事件寫成質點的集合再加總以求得事件機率，以及對 $y$ 加總求出 $X$ 的邊際機率質量函數。同一題若先把聯合機率窮舉成列聯表，邊際分配可以直接由表邊得到，兩種算法的原理完全相同。[下一篇](/teaching-topics/joint-cumulative-distribution-functions/)改以累積的機率描述二元隨機向量的分配，介紹[聯合累積分配函數](/teaching-topics/joint-cumulative-distribution-functions/#def-joint-cdf)。
 
 ## 參考文獻與延伸閱讀
 
-- 黃文璋，2003，《機率論》，初版，華泰文化。
-- 黃文璋，2003，《數理統計》，初版，華泰文化。
-- George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
+- 黃文璋，2010，《機率論》，二版，華泰文化。
 - Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
-- Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.
+- Robert V. Hogg, Joseph W. McKean, and Allen T. Craig. 2019. *Introduction to Mathematical Statistics*. 8th ed. Pearson.
+- George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.

@@ -329,7 +329,7 @@ Suppose that $X_1$ and $X_2$ are independent and identically distributed random 
 </ol>
 </div>
 
-(1) 由 [pdf 的性質](/teaching-topics/ch2-p03-candidate/#thm-pdf-properties)檢查可知
+(1) 由 [pdf 的性質](/teaching-topics/probability-density-functions/#thm-pdf-properties)檢查可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -484,7 +484,7 @@ $$
 
 </div>
 
-(4) 由 [marginal pdf 的定義](/teaching-topics/ch3-p04-candidate/#def-marginal-pdf)可知
+(4) 由 [marginal pdf 的定義](/teaching-topics/marginal-probability-density-functions/#def-marginal-pdf)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">

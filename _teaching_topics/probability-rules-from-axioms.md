@@ -121,7 +121,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Example 1.10](#example-odd-even-faces) (2) 的答案，讀者應可不必計算即知道其機率為 $0$，因為這原先就是一個「不可能發生的事件」，故直覺上其發生的機率為 $0$。然而，這個敘述的逆命題卻未必為真，換言之，即「機率為 $0$ 的事件未必不可能發生」。以 [Theorem 1.3](#theorem-null-event) 來思考此一觀點，即為「$\mathbb{P}(\varnothing)=0$，但機率為 $0$ 的事件卻未必是 $\varnothing$」。此一概念在下一章談到隨機變數中的連續型變數將會更為清晰，但讀者不妨在此思考一個例子: 有一魔術表演專用的硬幣，有正反二面，但不論如何丟擲，最後都必定會呈現正面朝上，則**丟出反面**的機率是 $0$ (因為必然不會發生)，但**丟出反面的事件**卻不是 $\varnothing$，而是 $\lbrace\mathrm{T}\rbrace$。
+[Example 1.10](#example-odd-even-faces) (2) 的答案，讀者應可不必計算即知道其機率為 $0$，因為這原先就是一個「不可能發生的事件」，故直覺上其發生的機率為 $0$。然而，這個敘述的逆命題卻未必為真，換言之，即「機率為 $0$ 的事件未必不可能發生」。以 [Theorem 1.3](#theorem-null-event) 來思考此一觀點，即為「$\mathbb{P}(\varnothing)=0$，但機率為 $0$ 的事件卻未必是 $\varnothing$」。此一概念在下一章談到[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)中的連續型變數將會更為清晰，但讀者不妨在此思考一個例子: 有一魔術表演專用的硬幣，有正反二面，但不論如何丟擲，最後都必定會呈現正面朝上，則**丟出反面**的機率是 $0$ (因為必然不會發生)，但**丟出反面的事件**卻不是 $\varnothing$，而是 $\lbrace\mathrm{T}\rbrace$。
 </div>
 
 從 [Theorem 1.3](#theorem-null-event) 可以發現，**不可能發生的事件機率一定為 $0$**。除了符合我們的直覺以外，這個定理還能引導出可數可加性的一個比較弱的版本，也就是**有限可加性 <span lang="en">(finite additivity)</span>**。

@@ -675,7 +675,7 @@ $$
 
 </div>
 
-故依照[百分位數](/teaching-topics/ch2-p212-candidate/#def-quantile)定義可知，$\theta$ 除期望值外，同時為第 $100\times(1-e^{-1})$ 百分位數。
+故依照[百分位數](/teaching-topics/quantiles/#def-quantile)定義可知，$\theta$ 除期望值外，同時為第 $100\times(1-e^{-1})$ 百分位數。
 
 </div>
 

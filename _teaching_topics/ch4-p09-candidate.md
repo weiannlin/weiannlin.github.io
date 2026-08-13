@@ -221,7 +221,7 @@ $$
 
 </div>
 
-由[動差母函數的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)可知
+由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 {: .topic-paren-cont}
 
 $$
@@ -352,7 +352,7 @@ $$
 
 </div>
 
-由[動差母函數的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)可知 $W\sim\mathrm{Poi}(m+n)$ 這個結果，故
+由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知 $W\sim\mathrm{Poi}(m+n)$ 這個結果，故
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -901,7 +901,7 @@ $$
 
 [Example 4.21](#ex-poisson-sum-1) 與 [Example 4.3 <span lang="en">(Continued)</span>](#ex-binomial-2-continued) 是卜瓦松機率的兩種基本用法。前者把每半小時平均巡視一次直接當成 <span class="text-nowrap">$\lambda=1$，</span>三個小題依序求 <span class="text-nowrap">$\mathbb{P}(Y=0)$、</span>$\mathbb{P}(Y=1)$ 與 $\mathbb{P}(Y\geqslant1)$ 這三個機率，最後一項以餘事件計算。後者承接[上一篇](/teaching-topics/ch4-p08-candidate/)所證的二項分配卜瓦松近似: $n=200$ 很大、$p=0.03$ 很小而 <span class="text-nowrap">$np=6$，</span>以 $\mathrm{Poi}(6)$ 求得的 $0.1377$ 與二項分配的精確值 $0.1398$ 相當接近。
 
-[Theorem 4.10](#thm-poisson-sum-conditional) 給出兩個獨立卜瓦松變數相加之後的兩件事。第一件是可加性，證明只需把兩個動差母函數相乘，指數上的 $\lambda_1$ 與 $\lambda_2$ 因而相加，再由[動差母函數的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)辨識出 $\mathrm{Poi}(\lambda_1+\lambda_2)$ 這個分配。第二件是在總和固定為 $n$ 的條件下，$X$ 的條件分配為二項分配，成功機率是 $\frac{\lambda_1}{\,\lambda_1+\lambda_2\,}$ 這個比值；證明把條件機率函數的分子寫成兩個機率函數的乘積、分母寫成和的機率函數，指數項相消之後剩下的正是二項分配的形式。[Example 4.22](#ex-poisson-sum-2) 把同一組推導在參數為 $m$ 與 $n$ 而總和固定為 $50$ 的情形下再作一次。
+[Theorem 4.10](#thm-poisson-sum-conditional) 給出兩個獨立卜瓦松變數相加之後的兩件事。第一件是可加性，證明只需把兩個動差母函數相乘，指數上的 $\lambda_1$ 與 $\lambda_2$ 因而相加，再由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識出 $\mathrm{Poi}(\lambda_1+\lambda_2)$ 這個分配。第二件是在總和固定為 $n$ 的條件下，$X$ 的條件分配為二項分配，成功機率是 $\frac{\lambda_1}{\,\lambda_1+\lambda_2\,}$ 這個比值；證明把條件機率函數的分子寫成兩個機率函數的乘積、分母寫成和的機率函數，指數項相消之後剩下的正是二項分配的形式。[Example 4.22](#ex-poisson-sum-2) 把同一組推導在參數為 $m$ 與 $n$ 而總和固定為 $50$ 的情形下再作一次。
 
 [Theorem 4.11](#thm-poisson-thinning) 處理的是相反的方向: 先有一個服從 $\mathrm{Poi}(\lambda)$ 的變數 <span class="text-nowrap">$X$，</span>再在給定 $X=x$ 之下讓 $Y$ 服從 <span class="text-nowrap">$\mathrm{Bin}(x,p)$，</span>也就是把 $X$ 所計數的每一次發生各以機率 $p$ 歸入 $Y$ 這一類。證明先由條件機率函數與邊際機率函數相乘得到聯合機率函數，再取 $U=Y$ 與 $V=X-Y$ 這組轉換，聯合機率函數隨即分解成 $\mathrm{Poi}(\lambda p)$ 與 $\mathrm{Poi}\bigl(\lambda(1-p)\bigr)$ 兩個機率函數的乘積；分解一旦完成，三個結論同時成立，兩類的個數各自服從卜瓦松分配，而且彼此獨立。[Example 4.23](#ex-poisson-sum-3) 的第一小題由條件期望值與條件變異數求出 $\mathbb{E}(Y)=p\lambda$ 與 <span class="text-nowrap">$\mathrm{Var}(Y)=p\lambda$，</span>與 $Y\sim\mathrm{Poi}(\lambda p)$ 的期望值、變異數一致；第二小題則是 [Theorem 4.11](#thm-poisson-thinning) 第三項的完整重述。
 

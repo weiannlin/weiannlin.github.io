@@ -138,7 +138,7 @@ $$
 
 </div>
 
-整個形式宛若[二項式定理](/teaching-topics/ch2-p213-candidate/#thm-binomial)一般，只不過 $(1-q)$ 的次方變成負的 (範圍當然也不同)，因此有了**負二項級數**之名。
+整個形式宛若[二項式定理](/teaching-topics/moment-system/#thm-binomial)一般，只不過 $(1-q)$ 的次方變成負的 (範圍當然也不同)，因此有了**負二項級數**之名。
 
 值得注意的是，負二項級數雖然因為形式與二項式定理非常類似因此得名，不過事實上，負二項級數所對應的分配 (負二項分配) 其關係反倒是和[幾何分配](/teaching-topics/ch4-p04-candidate/#def-geometric)比較接近，稍後我們馬上會看到原因。
 
@@ -433,7 +433,7 @@ $$
 
 </div>
 
-則由[動差母函數的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)可知
+則由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 W=X+Y\sim\mathcal{NB}(r_1+r_2,\ p)
@@ -883,11 +883,11 @@ $$
 
 ## 本篇小結
 
-[Theorem 4.7](#thm-negative-binomial-series) 的負二項級數把 $(1-q)^{-r}$ 展開成 $q$ 的冪級數，係數是 $\binom{k+r-1}{k}$ 這個組合數，成立的條件為 <span class="text-nowrap">$\lvert q\rvert<1$。</span>證明的作法是直接對 $(1-q)^{-r}$ 作馬克勞林展開，逐項的係數即為排列數除以階乘。把組合數改寫成 $(-1)^{k}\binom{-r}{k}$ 之後，整個式子的形式與 [Theorem 2.18](/teaching-topics/ch2-p213-candidate/#thm-binomial) 的二項式定理相同，只是次方變成負的，這也是這個級數名稱的由來。
+[Theorem 4.7](#thm-negative-binomial-series) 的負二項級數把 $(1-q)^{-r}$ 展開成 $q$ 的冪級數，係數是 $\binom{k+r-1}{k}$ 這個組合數，成立的條件為 <span class="text-nowrap">$\lvert q\rvert<1$。</span>證明的作法是直接對 $(1-q)^{-r}$ 作馬克勞林展開，逐項的係數即為排列數除以階乘。把組合數改寫成 $(-1)^{k}\binom{-r}{k}$ 之後，整個式子的形式與 [Theorem 2.18](/teaching-topics/moment-system/#thm-binomial) 的二項式定理相同，只是次方變成負的，這也是這個級數名稱的由來。
 
 [Definition 4.7](#def-negative-binomial) 的負二項分配記錄的是進行伯努利實驗，直到出現第 $r$ 次成功實驗所需要的實驗次數，值域自 $r$ 起算，機率函數為 $\binom{x-1}{r-1}p^{r}q^{x-r}$ 這個式子，其中的組合數對應「前 $x-1$ 次之中哪 $r-1$ 次成功」的選法。證明的四個步驟依序是: 以負二項級數驗證機率函數的加總為 <span class="text-nowrap">$1$、</span>把 $x\binom{x-1}{r-1}$ 改寫成 $r\binom{x}{r}$ 這個形式，把加總湊成另一個負二項分配的機率函數而求得 <span class="text-nowrap">$\mathbb{E}(X)=\frac{r}{\,p\,}$、</span>再以 $\mathbb{E}\bigl[(X+1)X\bigr]$ 得到 $\mathbb{E}\bigl(X^{2}\bigr)$ 進而算出 <span class="text-nowrap">$\mathrm{Var}(X)=\frac{\,rq\,}{p^{2}}$，</span>最後直接由定義求得動差母函數。
 
-定義之後的幾點說明依序是: $r=1$ 時負二項分配即為[幾何分配](/teaching-topics/ch4-p04-candidate/#def-geometric)、成功機率相同且彼此獨立的兩個負二項變數相加仍為負二項分配 (可加性)、$r$ 個獨立且成功機率相同的幾何變數相加即為負二項分配，以及實驗負二項與失敗負二項兩種定義的差別，後者記錄的是失敗次數 <span class="text-nowrap">$Y=X-r$，</span>值域自 $0$ 起算，期望值少了 $r$ 而變異數不變。可加性的證明只需把兩個動差母函數相乘，指數因而相加，再由[動差母函數的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)辨識出結果。
+定義之後的幾點說明依序是: $r=1$ 時負二項分配即為[幾何分配](/teaching-topics/ch4-p04-candidate/#def-geometric)、成功機率相同且彼此獨立的兩個負二項變數相加仍為負二項分配 (可加性)、$r$ 個獨立且成功機率相同的幾何變數相加即為負二項分配，以及實驗負二項與失敗負二項兩種定義的差別，後者記錄的是失敗次數 <span class="text-nowrap">$Y=X-r$，</span>值域自 $0$ 起算，期望值少了 $r$ 而變異數不變。可加性的證明只需把兩個動差母函數相乘，指數因而相加，再由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識出結果。
 
 負二項分配之於幾何分配的關係，與[二項分配](/teaching-topics/ch4-p02-candidate/#def-binomial)之於[伯努利分配](/teaching-topics/ch4-p01-candidate/#def-bernoulli)的關係相同，兩者因而有對偶關係: 「$n$ 次實驗中成功不到 $r$ 次」與「第 $r$ 次成功所需的實驗次數超過 $n$ 次」講的是同一件事情。另一方面，負二項分配與幾何分配的最後一次實驗都一定是成功實驗，差別在於前面的 $x-1$ 次之中還有 $r-1$ 次成功，其位置不固定，因而引入了組合數，也因為這個組合數，相鄰兩個機率值不再成等比，負二項分配於是不再具有[無記憶性](/teaching-topics/ch4-p04-candidate/#thm-memoryless)。
 

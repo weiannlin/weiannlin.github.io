@@ -685,15 +685,15 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-本題的題幹指出，壽命期望值就是故障前平均時間 <span lang="en">(mean time to failure, MTTF)</span>，讀者應該不會感到陌生，因為早在[第二章討論期望值的時候](/teaching-topics/ch2-p207-candidate/)，我們便曾經提過這件事。
+本題的題幹指出，壽命期望值就是故障前平均時間 <span lang="en">(mean time to failure, MTTF)</span>，讀者應該不會感到陌生，因為早在[第二章討論期望值的時候](/teaching-topics/properties-of-expectation/)，我們便曾經提過這件事。
 
-更甚者，我們在當時也曾提過，[Theorem 2.8](/teaching-topics/ch2-p06-candidate/#thm-expectation-tail-sum) 的連續型版本可以用來計算 MTTF，此即可靠度函數在值域範圍上的積分，也就是
+更甚者，我們在當時也曾提過，[Theorem 2.8](/teaching-topics/expectation/#thm-expectation-tail-sum) 的連續型版本可以用來計算 MTTF，此即可靠度函數在值域範圍上的積分，也就是
 
 $$
 \mathbb{E}(X)=\int_{0}^{\infty}R_{\sssig X}(x)\,dx
 $$
 
-因此若本題並不是給 pdf，而是給了 cdf 或可靠度函數 (甚至是風險函數)，我們同樣可以先求得可靠度函數 <span class="text-nowrap">$R_{\sssig X}(x)$，</span>再透過 [Theorem 2.8](/teaching-topics/ch2-p06-candidate/#thm-expectation-tail-sum) 求得壽命之 MTTF。
+因此若本題並不是給 pdf，而是給了 cdf 或可靠度函數 (甚至是風險函數)，我們同樣可以先求得可靠度函數 <span class="text-nowrap">$R_{\sssig X}(x)$，</span>再透過 [Theorem 2.8](/teaching-topics/expectation/#thm-expectation-tail-sum) 求得壽命之 MTTF。
 
 </div>
 

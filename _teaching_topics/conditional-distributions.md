@@ -5,399 +5,205 @@ layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 3
-topic: 5
-order: 305
+topic: 7
+order: 307
 permalink: /teaching-topics/conditional-distributions/
-date: 2026-07-24
+date: 2026-08-12
 published: false
-listed: false
-excerpt: "條件分配固定其中一個變數的取值，再重新調整聯合 pmf 的一列或聯合 pdf 的一個截面，使總量回到 1。"
+excerpt: "把隨機向量中的一個或多個隨機變數固定成常數之後，所得到的機率分配即為條件機率分配。二元離散型的條件機率質量函數，定義為聯合機率質量函數除以邊際機率質量函數，它本身仍是一種機率質量函數，也仍然是機率，而且是樣本空間縮小到 $Y=y$ 已經發生的狀況之後，再看 $X=x$ 發生的條件機率。二元連續型的條件機率密度函數同樣是聯合機率密度函數除以邊際機率密度函數，只是它與單變數的機率密度函數一樣不是機率。由圖形來看，固定住 $Y=1.5$ 等於在聯合機率密度函數的曲面上切下一個截面，這個截面還要除以該處本身的邊際機率密度，才會被拉高或降低成一個真正的機率密度函數。"
 ---
 
-[上一篇文章](/teaching-topics/region-probabilities-marginal-distributions/)把另一個變數的所有可能值加總或積分，得到邊際分配。條件分配採取另一種做法: 固定其中一個變數的取值，再觀察另一個變數如何分配。
+[上一篇](/teaching-topics/marginal-cumulative-distribution-functions/)補上了[邊際累積分配函數](/teaching-topics/marginal-cumulative-distribution-functions/#def-marginal-cdf)，把聯合與邊際的各個機率函數與分配函數之間的關係補齊。本篇把[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector)中的一個或多個變數固定成常數，介紹此時的機率分配，並分別給出離散型與連續型的定義。
 
-對離散型隨機向量，這可直接由第一章的 [條件機率](/teaching-topics/conditional-probability-information/#條件機率) 得到。對具有聯合 pdf 的隨機向量，則取出固定位置的密度截面，再將截面的總量調整為 $1$。
+有些時候，我們常常把隨機向量中的其中幾個變數當成常數，再來協助計算所求機率。我們並不是真的要把該變數當成常數，只是為了方便計算暫且為之。
 
-## 條件機率質量函數
+但是，若真的把其中的一個或多個[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)「固定成常數」的話，這時候的機率分配會變成**條件機率分配 <span lang="en">(conditional probability distribution)</span>**，以下詳述。
 
-<div id="definition-38" class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 3.8</div>
+<div id="def-conditional-pmf" class="topic-box topic-box--definition" markdown="1">
+<div class="topic-box__label">Definition 3.8 (條件機率質量函數, conditional pmf)</div>
 
-令 $(X,Y)$ 為二元離散型隨機向量，聯合 pmf 為 $p_{XY}$，邊際 pmf 為 $p_X$ 與 $p_Y$。
+令 $(X,Y)$ 為二元**離散型**隨機變數，其 joint pmf 為 <span class="text-nowrap">$p_{\sssig XY}(x,y)$。</span>
 
-對滿足 $p_Y(y)>0$ 的固定值 $y$，令
-
-$$
-\mathcal{R}_{X\mid Y=y}
-=
-\bigl\{
-x\in\mathcal{R}_X
-\mid
-(x,y)\in\mathcal{R}_{XY}
-\bigr\}
-$$
-
-並對 $x\in\mathcal{R}_{X\mid Y=y}$ 定義
+若 $Y$ 的 marginal pmf 為 <span class="text-nowrap">$p_{\sssig Y}(y)$，</span>則
 
 $$
-\begin{aligned}
-p_{X\mid Y}(x\mid y)
-&=
-\mathbb{P}(X=x\mid Y=y)
-\\[0.4em]
-&=
-\frac{
-\mathbb{P}\bigl(\lbrace X=x\rbrace\cap\lbrace Y=y\rbrace\bigr)
-}{
-\mathbb{P}(Y=y)
-} \\[0.4em]
-&=
-\frac{p_{XY}(x,y)}{p_Y(y)}
-\end{aligned}
+p_{\sssig X\mid Y}(x\mid y)=\frac{\,p_{\sssig XY}(x,y)\,}{p_{\sssig Y}(y)}
 $$
 
-在 $\mathcal{R}\_{X\mid Y=y}$ 以外令 $p\_{X\mid Y}(x\mid y)=0$。則稱 $p\_{X\mid Y}(\,\cdot\mid y)$ 為給定 $Y=y$ 時 $X$ 的**條件機率質量函數 (conditional probability mass function, conditional pmf)**。
+為 **$X$ 給定 $Y=y$ 下的條件[機率質量函數](/teaching-topics/random-variables-and-pmf/#def-pmf) <span lang="en">(conditional pmf of $X$ given $Y=y$)</span>**。
 
-對滿足 $p_X(x)>0$ 的固定值 $x$，令
-
-$$
-\mathcal{R}_{Y\mid X=x}
-=
-\bigl\{
-y\in\mathcal{R}_Y
-\mid
-(x,y)\in\mathcal{R}_{XY}
-\bigr\}
-$$
-
-並對 $y\in\mathcal{R}_{Y\mid X=x}$ 定義
+若 $X$ 的 marginal pmf 為 <span class="text-nowrap">$p_{\sssig X}(x)$，</span>則
 
 $$
-\begin{aligned}
-p_{Y\mid X}(y\mid x)
-&=
-\mathbb{P}(Y=y\mid X=x)
-\\[0.4em]
-&=
-\frac{
-\mathbb{P}\bigl(\lbrace Y=y\rbrace\cap\lbrace X=x\rbrace\bigr)
-}{
-\mathbb{P}(X=x)
-} \\[0.4em]
-&=
-\frac{p_{XY}(x,y)}{p_X(x)}
-\end{aligned}
+p_{\sssig Y\mid X}(y\mid x)=\frac{\,p_{\sssig XY}(x,y)\,}{p_{\sssig X}(x)}
 $$
 
-在 $\mathcal{R}\_{Y\mid X=x}$ 以外令 $p\_{Y\mid X}(y\mid x)=0$。則稱 $p\_{Y\mid X}(\,\cdot\mid x)$ 為給定 $X=x$ 時 $Y$ 的條件 pmf。
-</div>
-
-由聯合 pmf 的非負性與 $p_Y(y)>0$ 可知，$p_{X\mid Y}(x\mid y)\geqslant0$；另一個方向的條件 pmf 亦同。
-
-在 $p_{X\mid Y}(x\mid y)$ 中，$y$ 是已經固定的條件值，只有 $x$ 是此條件 pmf 的自變數。因此，條件 pmf 的總和可寫為
-
-$$
-\begin{aligned}
-\sum_{x\in\mathcal{R}_{X\mid Y=y}}
-p_{X\mid Y}(x\mid y)
-&=
-\frac{
-\sum_{x\in\mathcal{R}_{X\mid Y=y}}p_{XY}(x,y)
-}{
-p_Y(y)
-} \\[0.4em]
-&=
-\frac{p_Y(y)}{p_Y(y)}
-=
-1
-\end{aligned}
-$$
-
-所以 $p_{X\mid Y}(\,\cdot\mid y)$ 滿足 [Proposition 2.2](/teaching-topics/discrete-random-variables-pmf/#proposition-22) 的非負性與總和條件，確實是一個 pmf。若 $A\subseteq\mathbb{R}$ 為 Borel 集合，則
-
-$$
-\mathbb{P}(X\in A\mid Y=y)
-=
-\sum_{x\in A\cap\mathcal{R}_{X\mid Y=y}}
-p_{X\mid Y}(x\mid y)
-$$
-
-<div id="example-36" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 3.6 (Conditioning a Row of a Joint pmf)</div>
-
-延續 [Example 3.1](/teaching-topics/random-vectors-joint-pmf/#example-31)。在 $Y=1$ 這一列中，
-
-$$
-p_{XY}(0,1)=\frac{2}{12},
-\qquad
-p_{XY}(1,1)=\frac{3}{12},
-\qquad
-p_{XY}(2,1)=0
-$$
-
-而 $p_Y(1)=5/12$。將這一列的每一格都除以列和 $5/12$，可得
-
-$$
-p_{X\mid Y}(x\mid1)
-=
-\begin{cases}
-2/5, & x=0,\\
-3/5, & x=1,\\
-0, & \text{其他}
-\end{cases}
-$$
-
-因此
-
-$$
-\mathbb{P}(X\geqslant1\mid Y=1)
-=
-\frac{3}{5}
-$$
+為 **$Y$ 給定 $X=x$ 下的條件機率質量函數 <span lang="en">(conditional pmf of $Y$ given $X=x$)</span>**。
 
 </div>
 
-原本 $Y=1$ 這一列的總和是 $5/12$。除以 $5/12$ 之後，列內各格的相對比例不變，但總和成為 $1$，因而形成給定 $Y=1$ 時的完整分配。
+條件機率質量函數有一些地方需要注意:
 
-若條件本身是一個具有正機率的事件，便可直接使用條件機率的比值。例如，當 $\mathbb{P}(c<Y<d)>0$ 時，
+(1) conditional pmf 仍然是一種 pmf，並且這種 pmf 只有 $X$ (或 $Y$) 作為隨機變數，$Y=y$ (或 $X=x$) 則視為常數。事實上，**條件分配仍然是一種機率分配**。
+{: .topic-paren-item}
 
-$$
-\mathbb{P}(a<X<b\mid c<Y<d)
-=
-\frac{
-\mathbb{P}(a<X<b,\ c<Y<d)
-}{
-\mathbb{P}(c<Y<d)
-}
-$$
+(2) conditional pmf 是第一章所談到的[條件機率](/teaching-topics/conditional-probability-information/#definition-conditional-probability)，推廣至離散隨機變數的版本，其直觀意義也是相同的，即**樣本空間縮小至 $Y=y$ (或 $X=x$) 已經發生的狀況下，再來探討此時 $X=x$ (或 $Y=y$) 發生的條件機率**。
+{: .topic-paren-item}
 
-分子先計算兩項範圍同時成立的機率，分母再把結果調整為已知 $c<Y<d$ 之後的相對比例。
+(3) 由於 conditional pmf 仍然是一種 pmf，故與 pmf 相同，**conditional pmf 本身就是機率**，而且這種機率**是一種條件機率**。我們可以由這個性質將[上述定義](#def-conditional-pmf)改寫為
+{: .topic-paren-item}
 
-## 條件機率密度函數
-
-對具有聯合 pdf 的隨機向量，每個 $y\in\mathbb{R}$ 都滿足 $\mathbb{P}(Y=y)=0$，所以不能把 $\mathbb{P}(X\in A\mid Y=y)$ 直接寫成兩個事件機率的比值。條件 pdf 使用密度的比值，給出離散型公式在連續情形中的對應方式。
-
-<div id="definition-39" class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 3.9</div>
-
-令 $(X,Y)$ 具有聯合 pdf $f_{XY}$，並令 $f_X$ 與 $f_Y$ 為 [Definition 3.6](/teaching-topics/region-probabilities-marginal-distributions/#definition-36) 由 $f_{XY}$ 的切片積分所得的邊際 pdf。
-
-對滿足 $f_Y(y)>0$ 的固定值 $y$，定義
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-f_{X\mid Y}(x\mid y)
-=
-\frac{f_{XY}(x,y)}{f_Y(y)}
+p_{\sssig Y\mid X}(y\mid x)=\mathbb{P}(Y=y\mid X=x)=\frac{\,\mathbb{P}(X=x,Y=y)\,}{\mathbb{P}(X=x)}
 $$
 
-則稱 $f_{X\mid Y}(\,\cdot\mid y)$ 為給定 $Y=y$ 時 $X$ 的**條件機率密度函數 (conditional probability density function, conditional pdf)**。
-
-對滿足 $f_X(x)>0$ 的固定值 $x$，定義
-
-$$
-f_{Y\mid X}(y\mid x)
-=
-\frac{f_{XY}(x,y)}{f_X(x)}
-$$
-
-則稱 $f_{Y\mid X}(\,\cdot\mid x)$ 為給定 $X=x$ 時 $Y$ 的條件 pdf。
 </div>
-
-對固定且滿足 $f_Y(y)>0$ 的 $y$，函數 $x\mapsto f_{XY}(x,y)$ 是非負 Borel 可測函數，除以正數 $f_Y(y)$ 後仍然如此；另一個方向的條件 pdf 亦同。
-
-在 $f_{X\mid Y}(x\mid y)$ 中，$y$ 是已經固定的條件值，只有 $x$ 是此條件 pdf 的自變數。對目前選定的聯合 pdf 與條件 pdf 版本，令
-
-$$
-D_{X\mid Y=y}
-=
-\bigl\{
-x\in\mathbb{R}
-\mid
-f_{XY}(x,y)>0
-\bigr\}
-$$
-
-當 $f_Y(y)>0$ 時，這正是目前這個條件 pdf 版本取正值的範圍。密度可在長度為 $0$ 的集合上改值，因此這個取正值的範圍不是由分配唯一決定。
-
-同理，對目前選定的密度版本，令
-
-$$
-D_{Y\mid X=x}
-=
-\bigl\{
-y\in\mathbb{R}
-\mid
-f_{XY}(x,y)>0
-\bigr\}
-$$
-
-當 $f_X(x)>0$ 時，這是目前的 $f_{Y\mid X}(\,\cdot\mid x)$ 取正值的範圍；同樣地，這個範圍不是由分配唯一決定。
-
-對固定且滿足 $f_Y(y)>0$ 的 $y$，由 [Definition 3.6](/teaching-topics/region-probabilities-marginal-distributions/#definition-36) 可得
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
 \begin{aligned}
-\int_{-\infty}^{\infty}
-f_{X\mid Y}(x\mid y)\,dx
-&=
-\frac{
-\int_{-\infty}^{\infty}
-f_{XY}(x,y)\,dx
-}{
-f_Y(y)
-} \\[0.4em]
-&=
-\frac{f_Y(y)}{f_Y(y)}
-=
-1
-\end{aligned}
-$$
-
-所以 $f_{X\mid Y}(\,\cdot\mid y)$ 滿足 [Proposition 2.2](/teaching-topics/cdf-and-pdf/#prop-pdf-existence-conditions) 的可測性、非負性與總積分條件，確實是一個 pdf。條件分配只在條件變數的邊際分配下幾乎處處決定。對其中固定的條件值 $y$，條件 pdf 又只在 $x$ 的 Lebesgue 幾乎處處意義下決定。後文涉及條件 pdf 的等式時，均採用這兩層意義。
-
-條件 pdf 的函數值本身不是機率。若 $A\subseteq\mathbb{R}$ 為 Borel 集合，則
-
-$$
-\mathbb{P}(X\in A\mid Y=y)
-=
-\int_A f_{X\mid Y}(x\mid y)\,dx
-$$
-
-## 條件 pdf 的截面與正規化
-
-<div id="example-37" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 3.7 (A Conditional Density Slice)</div>
-
-回到 [Example 3.3](/teaching-topics/joint-probability-density-functions/#example-33) 的聯合 pdf:
-
-$$
-f_{XY}(x,y)
-=
-\begin{cases}
-12xy(1-x), & 0<x<1,\ 0<y<1,\\
-0, & \text{其他}
-\end{cases}
-$$
-
-先求 $Y$ 的邊際 pdf。對 $0<y<1$，有
-
-$$
-\begin{aligned}
-f_Y(y)
-&=
-\int_0^1 12xy(1-x)\,dx \\[0.4em]
-&=
-12y
-\int_0^1(x-x^2)\,dx
-=
-2y
-\end{aligned}
-$$
-
-因此，對每個 $0<y<1$，給定 $Y=y$ 時 $X$ 的條件 pdf 為
-
-$$
-\begin{aligned}
-f_{X\mid Y}(x\mid y)
-&=
-\frac{12xy(1-x)}{2y} \\[0.4em]
-&=
-6x(1-x),
-\qquad
-0<x<1
-\end{aligned}
-$$
-
-例如，給定 $Y=1/4$ 時，可得
-
-$$
-\begin{aligned}
-\mathbb{P}
-\left(
-X\leqslant\frac{1}{2}
-\mid
-Y=\frac{1}{4}
-\right)
-&=
-\int_0^{1/2}6x(1-x)\,dx \\[0.4em]
-&=
-6
-\left[
-\frac{x^2}{2}-\frac{x^3}{3}
-\right]_0^{1/2}
-=
-\frac{1}{2}
+p_{\sssig Y\mid X}(y\mid x)&=\mathbb{P}(Y=y\mid X=x)\\[0.45em]
+&=\frac{\,\mathbb{P}(X=x,Y=y)\,}{\mathbb{P}(X=x)}
 \end{aligned}
 $$
 
 </div>
 
-<figure id="fig-34" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/conditional-density-slice.svg" alt="左圖顯示固定 Y 等於四分之一時的密度截面 3x(1-x)，曲線下方面積為二分之一。右圖顯示截面除以二分之一後得到條件密度 6x(1-x)，曲線下方面積為 1。">
-  <figcaption><span class="topic-figure__label">Fig. 3.4.</span> 在 <a href="#example-37">Example 3.7</a> 中固定 $Y=1/4$，原始截面為 $f_{XY}(x,1/4)=3x(1-x)$，其曲線下方面積為 $f_Y(1/4)=1/2$。將截面除以 $1/2$ 後，便得到積分為 $1$ 的條件 pdf $6x(1-x)$。</figcaption>
-</figure>
-
-在 [Example 3.7](#example-37) 中，條件 pdf 不隨指定的 $y$ 改變，而且恰好等於 $X$ 的邊際 pdf。這表示知道 $Y$ 的值並未改變 $X$ 的分配，下一篇會由此定義獨立性。
-
-## 以事件為條件時的截尾分配
-
-令 $B\subseteq\mathbb{R}$ 為 Borel 集合，且 $\mathbb{P}(X\in B)>0$。若只保留 $X\in B$ 的結果，便會得到一個**截尾分配 (truncated distribution)**。此時，條件分配將 $B$ 之外的機率改為 $0$，再把 $B$ 之內的機率重新調整至總量為 $1$。離散型與具有 pdf 的情形分別可寫為
+(4) 當然，由於 conditional pmf 仍是一種 pmf，故具有以下三個性質:
+{: .topic-paren-item}
 
 $$
-p_{X\mid X\in B}(x)
-=
-\frac{p_X(x)\mathbf{1}_B(x)}
-{\mathbb{P}(X\in B)}
+\begin{gathered}
+0\leqslant p_{\sssig X\mid Y}(x\mid y)\leqslant 1,\ \forall x\in\mathcal{R}_{\sssig X}\\[0.5em]
+\mathbb{P}\bigl(X\in\mathcal{R}_{\sssig X}\bigr)=\sum_{x\in\mathcal{R}_{\sssig X}}p_{\sssig X\mid Y}(x\mid y)=1\\[0.5em]
+\mathbb{P}\bigl(X\in A\bigr)=\sum_{x\in A}p_{\sssig X\mid Y}(x\mid y)
+\end{gathered}
 $$
 
-以及
+特別注意的是，這裡的變數只有 $X$ (或 $Y$)，而 $Y=y$ (或 $X=x$) 則**已經是常數**了。
+{: .topic-paren-cont}
+
+<div id="def-conditional-pdf" class="topic-box topic-box--definition" markdown="1">
+<div class="topic-box__label">Definition 3.9 (條件機率密度函數, conditional pdf)</div>
+
+令 $(X,Y)$ 為二元**連續型**隨機變數，其 joint pdf 為 <span class="text-nowrap">$f_{\sssig XY}(x,y)$。</span>
+
+若 $Y$ 的 marginal pdf 為 <span class="text-nowrap">$f_{\sssig Y}(y)$，</span>則
 
 $$
-f_{X\mid X\in B}(x)
-=
-\frac{f_X(x)\mathbf{1}_B(x)}
-{\mathbb{P}(X\in B)}
+f_{\sssig X\mid Y}(x\mid y)=\frac{\,f_{\sssig XY}(x,y)\,}{f_{\sssig Y}(y)}
 $$
 
-其中，$\mathbf{1}_B$ 為集合 $B$ 的**指標函數 (indicator function)**。
+為 **$X$ 給定 $Y=y$ 下的條件[機率密度函數](/teaching-topics/probability-density-functions/#def-pdf) <span lang="en">(conditional pdf of $X$ given $Y=y$)</span>**。
 
-<div id="example-38" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 3.8 (A Truncated Uniform Distribution)</div>
-
-令 $X$ 在 $(0,1)$ 上服從均勻分配 (uniform distribution; 參見 [Example 2.14](/teaching-topics/quantiles-and-median/#example-214))。若已知 $X<1/4$，則條件 pdf 為
+若 $X$ 的 marginal pdf 為 <span class="text-nowrap">$f_{\sssig X}(x)$，</span>則
 
 $$
-f_{X\mid X<1/4}(x)
-=
-\begin{cases}
-4, & 0<x<1/4,\\
-0, & \text{其他}
-\end{cases}
+f_{\sssig Y\mid X}(y\mid x)=\frac{\,f_{\sssig XY}(x,y)\,}{f_{\sssig X}(x)}
 $$
 
-原本 $(0,1/4)$ 上的 pdf 高度為 $1$，曲線下方面積為 $1/4$。除以這個條件事件的機率後，pdf 高度成為 $4$，面積也回到 $1$。因此，
+為 **$Y$ 給定 $X=x$ 下的條件機率密度函數 <span lang="en">(conditional pdf of $Y$ given $X=x$)</span>**。
+
+</div>
+
+條件機率密度函數有一些地方需要注意:
+
+(1) conditional pdf 仍然是一種 pdf，並且這種 pdf 只有 $X$ (或 $Y$) 作為隨機變數，$Y=y$ (或 $X=x$) 則視為常數。但是，由於 [pdf](/teaching-topics/probability-density-functions/#def-pdf) 本身並不是機率，故 **conditional pdf 本身亦不是機率**。
+{: .topic-paren-item}
+
+(2) 當然，由於 conditional pdf 仍是一種 pdf，故當然具有以下三個性質:
+{: .topic-paren-item}
 
 $$
-\mathbb{P}\left(X<\frac{1}{8}\mid X<\frac{1}{4}\right)
-=
-\frac{1/8}{1/4}
-=
-\frac{1}{2}
+\begin{gathered}
+f_{\sssig X\mid Y}(x\mid y)\geqslant 0,\ \forall x\in\mathcal{R}_{\sssig X}\\[0.5em]
+\mathbb{P}\bigl(X\in\mathcal{R}_{\sssig X}\bigr)=\int_{x\in\mathcal{R}_{\sssig X}}f_{\sssig X\mid Y}(x\mid y)\,dx=1\\[0.5em]
+\mathbb{P}\bigl(X\in A\bigr)=\int_{x\in A}f_{\sssig X\mid Y}(x\mid y)\,dx
+\end{gathered}
 $$
+
+特別注意的是，這裡的變數只有 $X$ (或 $Y$)，而 $Y=y$ (或 $X=x$) 則**已經是常數**了。
+{: .topic-paren-cont}
+
+(3) conditional pmf 可以解釋為 $Y=y$ 已經發生的事件中，$X=x$ 的條件機率，這一點在 conditional pdf 上將轉為固定在 $Y=y$ 之下來探討 $X$ 的**機率密度**，如下所示:
+{: .topic-paren-item}
+
+<!-- fig-pending: conditional-density-slice
+     Fig. 3.11，對應書稿 mathstatch3.tex 第 1287 至 1339 行的 tikzpicture (單面板)。
+     以 pgfplots 畫的三維曲面圖，view={50}{45}，width=11cm，
+     domain=0:4、y domain=0:4、samples=50，座標軸線本身不畫 (axis line style={draw=none})。
+     曲面為書稿自定的 bivar 函數，取 $\mu_1=\mu_2=2$、$\sigma_1=\sigma_2=1$ 之後為
+     $\frac{1}{2\pi}\exp\bigl(-((x-2)^2+(y-2)^2)\bigr)\big/2$，是一個中央隆起的鐘形曲面。
+     請照書稿這條式子畫，不要代換成標準的二元常態密度: 它的指數部分沒有慣見的
+     $\frac{1}{2}$，整體另外再除以 2。書稿的 colormap 名為 whitegray，兩端都是白色，
+     也就是曲面不上色，只留網格線；網頁依 CH3_FIGURE_SPECS.md 第 3.2 節改用
+     colormap={journalgray}{color(0cm)=(white); color(1cm)=(journalink)}，與其他圖的主線色相稱。
+     三軸標示: 兩個水平方向的軸分別標 $x$ 與 $y$，鉛直軸標 $f_{\sssig XY}(x,y)$
+     (書稿把 zlabel 轉 -90 度、anchor=west)。$x$ 軸與鉛直軸都不畫刻度
+     (xtick=\empty、ztick=\empty)，$y$ 軸只有一個刻度，位置在 1.5，標示文字為 1.5。
+     切面: 在 $y=1.5$ 處，把 $(x,\,1.5,\,f_{\sssig XY}(x,1.5))$ 這條曲線之下填滿
+     (書稿用 fill=gray、opacity=0.4)，並另以較粗的黑線 (thick、opacity=0.6) 描出該曲線本身。
+     這片切面就是正文所說的「灰色部分」，網頁改依 CH3_FIGURE_SPECS.md 第一節的配色，
+     填色用 journalaccent、透明度 0.15，切面曲線用 journalink (曲面網格的顏色由上述 colormap 決定)。
+     格式依 CH3_FIGURE_SPECS.md 第 3.2 節〔作者裁定 2026-08-13〕: 三維曲面也交 SVG，
+     取樣數 samples=40，以 latex 產生 DVI 之後交 dvisvgm -O -d2 -n 轉檔 (原始檔不必改寫)。
+     原訂的 PNG 作法已作廢，Fig. 3.2 與 3.3 的既有 PNG 亦待重製為 SVG。
+     檔名 conditional-density-slice.svg，anchor 取 #fig-conditional-density-slice。
+     另注意本站自訂的字級門檻是 350 px 之下最小可見字 11 px，Fig. 3.2 與 3.3 因
+     \sssig 下標而只有 7.7 px 與 5.4 px，本圖畫的時候要先把這一點處理好再交件。
+     站上另有一個同名的舊 SVG，屬 CH3_FIGURE_SPECS.md 第四節所列的四張作廢圖之一
+     (手寫、無原始檔)，不得沿用，也不要覆寫，它隨作廢草稿留在原地。
+     圖畫好之後，下一段的「上方圖例中灰色部分」與本篇小結第三段的「本篇的第一張圖」
+     一併改為指向該 anchor 的 Fig. 3.11 連結。
+-->
+
+上方圖例中灰色部分，代表 $Y=1.5$ 的空間，而將樣本空間縮小到這個空間上來探討 $X$ 的機率分配，即為 conditional pdf。
+
+但是，上圖所顯示的，其實只是 <span class="text-nowrap">$f_{\sssig XY}(x,1.5)$，</span>而不是真正的 pdf，因為真正的 pdf 需要滿足許多條件，而上述範圍未必恰巧滿足；將 $f_{\sssig XY}(x,1.5)$ 轉為一個真正的 pdf 的做法，就是將其所處的空間 (也就是 $Y=1.5$) 本身的邊際機率密度給除掉，將這個未完成品「拉高」(或降低) 至該有的高度，如下所示:
+
+<!-- fig-pending: conditional-density-normalize
+     Fig. 3.12，對應書稿 mathstatch3.tex 第 1349 至 1392 行的 tikzpicture (單面板)。
+     純 TikZ 圖，不是 pgfplots。只有一條橫軸: 由原點以箭頭畫到 (8.2, 0)，
+     在 (8.5, 0.15) 的下方標 $x$；沒有鉛直軸，兩軸都沒有刻度與數值。
+     兩條峰頂同在 $x=4$、形狀相同的鐘形曲線，定義域 0 至 8 (samples=200):
+     較低的一條是 $3e^{-(x-4)^2/3}$，峰高 3，其下方以 gray、opacity 0.2 填滿，
+     代表尚未調整的 $f_{\sssig XY}(x,1.5)$；較高的一條是 $4.5e^{-(x-4)^2/3}$，峰高 4.5，
+     不填色，代表已調整的 $f_{\sssig X\mid Y}(x\mid 1.5)$。兩條曲線的高度比恰為 1.5 比 1，
+     這個比值就是正文所說的「除以邊際機率密度」之後被「拉高」的倍數。
+     兩條引線: 由較高曲線上 $x=2.8$ 的點往左上方拉一條直線 (終點在該點左 1、上 1 之處)，
+     線的左端標 $f_{\sssig X\mid Y}(x\mid 1.5)$；由較低曲線上 $x=6$ 的點往右上方拉一條直線
+     (終點在該點右 1、上 1 之處)，線的右端標 $f_{\sssig XY}(x,1.5)$。
+     網頁改依 CH3_FIGURE_SPECS.md 第一節的配色，曲線用 journalink、填色用 journalaccent
+     並取 0.15 的透明度，兩條引線用 journalmuted。
+     檔名 conditional-density-normalize.svg，anchor 取 #fig-conditional-density-normalize。
+     圖畫好之後，上一段的「如下所示」與本篇小結第三段的「第二張圖」
+     一併改為指向該 anchor 的 Fig. 3.12 連結。
+-->
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+細心一點的讀者或許會發現，這個未完成品的 <span class="text-nowrap">$f_{\sssig XY}(x,1.5)$，</span>其機率密度的「分配模式」已經與真正的 conditional pdf 一樣了，只差在調整成一個合理的 pdf 而已。
+
+事實上，這個發現也是相當合理的，因為 $(X,Y)$ 再怎麼變化，也還是要依循其 joint pdf 變化，條件分配做的事情只是「固定住」其中一個變數而已，故從聯合分配的角度而言，此時的變動情況就被「鎖定」在其 joint pdf 的某一個薄薄的切片上，因此其「分配模式」與真正的條件分配相同，是完全符合直觀的。
 
 </div>
 
 ## 本篇小結
 
-離散型條件 pmf 取出聯合 pmf 的一列或一欄，再除以該列或該欄的邊際機率。具有聯合 pdf 時，條件 pdf 則取出密度截面，再除以相應的邊際密度。
+[Definition 3.8](#def-conditional-pmf) 把條件機率推廣到二元離散型的情形。給定 $Y=y$ 之下 $X$ 的條件機率質量函數，是[聯合機率質量函數](/teaching-topics/random-vectors-joint-pmf/#def-joint-pmf)除以 $Y$ 的[邊際機率質量函數](/teaching-topics/random-vectors-joint-pmf/#def-marginal-pmf)，給定 $X=x$ 之下 $Y$ 的條件機率質量函數亦同。這種 pmf 只有 $X$ 是隨機變數，$Y=y$ 則視為常數；它本身就是機率，而且就是第一章的條件機率推廣到離散隨機變數的版本，也就是把樣本空間縮小到 $Y=y$ 已經發生的狀況下，再看 $X=x$ 發生的機率。既然它仍是一種 pmf，也就同樣具有介於 $0$ 與 $1$ 之間、在值域上加總為 <span class="text-nowrap">$1$，</span>以及一個事件的機率為該事件上之加總這三個性質。
 
-兩種情形都必須先確認分母為正。若以具有正機率的事件為條件，則可直接用事件機率的比值；若固定具有 pdf 的隨機變數取值，則改用聯合密度與邊際密度的比值。調整後的 pmf 總和為 $1$，pdf 的積分也為 $1$，所以它們分別形成給定條件下的完整機率分配。
+[Definition 3.9](#def-conditional-pdf) 以完全相同的形式給出二元連續型的情形。條件機率密度函數就是[聯合機率密度函數](/teaching-topics/joint-probability-density-functions/#def-joint-pdf)除以另一個變數的[邊際機率密度函數](/teaching-topics/marginal-probability-density-functions/#def-marginal-pdf)。差別在於 pdf 本身並不是機率，故 conditional pdf 也不是機率，但它同樣具有非負、在值域上積分為 <span class="text-nowrap">$1$，</span>以及一個事件的機率為該事件上之積分這三個性質。
 
-[下一篇文章](/teaching-topics/independent-random-variables/)會討論條件分配與邊際分配一致時所得到的獨立性。離散型情形須逐一考慮邊際機率為正的條件值；具有聯合 pdf 時，則須在幾乎處處的意義下敘述。
+由圖形來看，固定 $Y=1.5$ 等於在 joint pdf 的曲面上切下一個截面，本篇的第一張圖畫的就是這片切面。但這片切面所給的只是 $f_{\sssig XY}(x,1.5)$ 這個式子，它未必恰巧滿足一個 pdf 該有的條件，還要除以 $Y=1.5$ 這個空間本身的邊際機率密度，才會被拉高或降低到該有的高度；第二張圖把調整前後的兩條曲線畫在一起，兩者的形狀完全相同，差別只在高度。
+
+[下一篇](/teaching-topics/conditional-distributions-examples/)以五道例題練習條件機率質量函數與條件機率密度函數的求法，並由其中一題引出截尾分配。
 
 ## 參考文獻與延伸閱讀
 
-- 黃文璋，2003，《數理統計》，初版，華泰文化。
-- George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
+- 黃文璋，2010，《機率論》，二版，華泰文化。
 - Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
-- Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.
+- Robert V. Hogg, Joseph W. McKean, and Allen T. Craig. 2019. *Introduction to Mathematical Statistics*. 8th ed. Pearson.
+- George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.

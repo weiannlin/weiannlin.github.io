@@ -1,357 +1,607 @@
 ---
 title: "動差母函數"
-subtitle: "Moment-Generating Functions"
+subtitle: "Moment Generating Functions"
 layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 2
-topic: 12
-order: 212
+topic: 15
+order: 215
 permalink: /teaching-topics/moment-generating-functions/
-date: 2026-06-21
-published: false
-listed: false
-excerpt: '動差母函數 $M_X(t)=\mathbb{E}(e^{tX})$ 把各階原動差收進同一個函數。若它在 $0$ 附近存在，對 $t$ 微分並令 $t=0$，即可得到 $\mathbb{E}(X^r)$。'
+date: 2026-08-06
+published: true
+excerpt: "動差母函數把 $e^{tX}$ 的期望值看成 $t$ 的函數: 只要存在某個 $h>0$，使 $\\mathbb{E}(e^{tX})$ 對一切 $t\\in(-h,h)$ 皆存在，這個期望值就稱為 $X$ 的動差母函數 $M_{X}(t)$。它起先是以工具函數的角色被引入。對 $t$ 微分 $r$ 次後在 $t=0$ 取值，所得的 $M_{X}^{(r)}(0)$ 正是 $r$ 階原動差 $\\mathbb{E}(X^{r})$；反過來把 $M_{X}(t)$ 在 $t=0$ 泰勒展開，$\\frac{t^{r}}{r!}$ 的係數也正是各階原動差。由於 $e^{tX}$ 無限可微，動差母函數一旦存在便保證各階動差都存在，但它並不是任何時候都存在。"
 ---
 
-[上一篇文章](/teaching-topics/skewness-and-kurtosis/)用三階與四階標準化動差 (standardized moments) 描述偏態與峰態。到這裡，動差已經不只是單一量數，而是一整串能描述分配位置、分散程度與形狀的數值。
+[上一篇](/teaching-topics/measures-of-shape/)以三階與四階主動差建立了偏態係數與[峰態係數](/teaching-topics/measures-of-shape/#def-kurtosis)，用來描述一個分配的形狀。在前面兩篇，我們已經看到動差是如何描述一個分配的各種特徵。讀者可能會思考，動差既然能用以描述一個分配，那如果我們知道一個分配的各階動差，我們應能夠掌握關於這個分配的所有資訊。
 
-若只需要前幾階動差，可以直接由定義計算。不過，一旦需要系統地處理許多階原動差 (raw moments)，逐階加總或逐階積分便不夠有效。**動差母函數 (moment-generating function, mgf)** 正是為了把這些原動差放進同一個函數中處理。
+這個想法基本上是正確的，但問題在於很多時候直接求取各階動差，並不是一件容易達成的事情，這個時候數學家引入了**動差母函數 <span lang="en">(moment generating function, mgf)</span>**，或名**動差生成函數**，作為一個工具函數，進而幫我們達成求取所有動差的可能性。本篇先給出動差母函數的定義與三點須注意之處，再看它如何以微分生成各階原動差、它的存在與各階動差的存在之間有何關係，接著看它在 $t=0$ 的泰勒展開，最後以三道例題示範動差母函數的求算與運用。這三道例題分別由 pmf 求動差母函數並據以算出[變異數](/teaching-topics/variance/#def-variance)、由已知的動差母函數逐階微分求變異數，以及由 pdf 求動差母函數。
 
-## 由原動差到函數
+<div id="def-mgf" class="topic-box topic-box--definition" markdown="1">
+<div class="topic-box__label">Definition 2.16 (動差母函數, moment generating function, mgf)</div>
 
-令 $X$ 為隨機變數。對每個正整數 $r$，若 $\mathbb{E}(X^r)$ 存在，則稱它為 $X$ 的 $r$ 階原動差。動差母函數的作法，是先考慮指數函數 $e^{tX}$ 的期望值。
-
-<div id="definition-217" class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 2.17</div>
-
-若存在某個 $h>0$，使得 $\mathbb{E}(e^{tX})$ 對所有 $t\in(-h,h)$ 皆有限，則定義
+若 $X$ 為離散型[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)，值域為 $\mathcal{R}\_{\sssig X}$、pmf 為 $p\_{\sssig X}(x)$，且存在某個 <span class="text-nowrap">$h>0$，</span>使得下列[期望值](/teaching-topics/expectation/#def-expectation)在 $-h<t<h$ 區間內皆存在，則
 
 $$
-M_X(t)=\mathbb{E}(e^{tX})
+M_{\sssig X}(t)=\mathbb{E}\bigl(e^{tX}\bigr)=\sum_{x\in\mathcal{R}_{\sssig X}}e^{tx}\,p_{\sssig X}(x)
 $$
 
-為 $X$ 的**動差母函數 (moment-generating function, mgf)**，亦稱**動差生成函數**。
+被定義為 $X$ 之**動差母函數**。
 
-若 $X$ 為離散型隨機變數，機率質量函數 (probability mass function, pmf) 為 $p_X$，則
+若 $X$ 為連續型隨機變數，pdf 為 $f\_{\sssig X}(x)$，且存在某個 <span class="text-nowrap">$h>0$，</span>使得下列期望值在 $-h<t<h$ 區間內皆存在，則
 
-$$
-M_X(t)
-=
-\sum_{x\in\mathcal{R}_X} e^{tx}p_X(x)
-$$
-
-若 $X$ 為連續型隨機變數，機率密度函數 (probability density function, pdf) 為 $f_X$，則
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-M_X(t)
-=
-\int_{-\infty}^{\infty}e^{tx}f_X(x)\,dx
+M_{\sssig X}(t)=\mathbb{E}\bigl(e^{tX}\bigr)=\int_{-\infty}^{\infty}e^{tx}\,f_{\sssig X}(x)\,dx
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+M_{\sssig X}(t)&=\mathbb{E}\bigl(e^{tX}\bigr)\\[0.45em]
+&=\int_{-\infty}^{\infty}e^{tx}\,f_{\sssig X}(x)\,dx
+\end{aligned}
 $$
 
 </div>
 
-定義中的 $t$ 是一個普通實數變數。加總或積分完成後，$M_X(t)$ 是 $t$ 的函數，不再是隨機變數。代入 $t=0$，可得
+被定義為 $X$ 之**動差母函數**。
 
-$$
-M_X(0)=\mathbb{E}(e^0)=1
-$$
+</div>
 
-因此，mgf 若要用來生成動差，至少必須在 $0$ 附近有定義。
+動差母函數有一些地方需要注意:
+
+(1) 動差母函數又被譯為**動差生成函數**，其原因是它能夠幫我們「生成」所有的[原動差](/teaching-topics/moment-system/#def-population-moment)。
+{: .topic-paren-item}
+
+(2) 純粹以微積分的角度而言，動差母函數的定義中已經將所有的 $X$ 都積分 (加總) 完了，故其結果並不會再殘存有任何 $X$。
+{: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-mgf 不一定對所有 $t$ 存在，也不一定對所有隨機變數存在。例如若 $X$ 的 pdf 為
+換句話說，動差母函數是 $t$ 的函數而非 $X$ 的函數，且其定義要求該函數在 $-h<t<h$ 的區間內，都必須要有定義 (即存在)；換言之，至少在 $t=0$ 的點上，該函數必須有定義，其原因在[生成各階動差的方式](#thm-mgf-generates-moments)中會談到。
 
-$$
-f_X(x)=\lambda e^{-\lambda x},
-\qquad x>0,\quad \lambda>0
-$$
-
-由 mgf 的定義可得
-
-$$
-M_X(t)
-=
-\int_0^\infty e^{tx}\lambda e^{-\lambda x}\,dx
-=
-\frac{\lambda}{\lambda-t},
-\qquad t<\lambda
-$$
-
-當 $t\geqslant \lambda$ 時，這個積分不再有限。這個例子說明，寫出 mgf 時必須同時標明它的存在範圍。
 </div>
 
-## 微分生成原動差
+(3) 動差母函數起先是以**工具函數**的角色被定義，其[生成各階動差的方式](#thm-mgf-generates-moments)，稍後會談到。
+{: .topic-paren-item}
 
-mgf 之所以稱為母函數 (generating function)，是因為它能用微分產生各階原動差。若把 $e^{tX}$ 對 $t$ 微分 $r$ 次，會得到 $X^r e^{tX}$；再令 $t=0$，便留下 $X^r$。
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
 
-<div id="proposition-211" class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Proposition 2.11 (Generating Raw Moments)</div>
+然而動差母函數後來被發現一個更有用的用途，即**動差母函數的唯一性**，這個定理讓動差母函數不僅僅是工具函數，而有了更多的用途，[下一篇](/teaching-topics/uniqueness-of-the-mgf/)我們便會看到這些實用之處。
 
-若 $M_X(t)$ 在 $0$ 附近存在，則對每個正整數 $r$，皆有
+</div>
+
+<div id="thm-mgf-generates-moments" class="topic-box topic-box--theorem" markdown="1">
+<div class="topic-box__label">Theorem 2.21 (由 mgf 微分生成原動差, moments generated by the mgf)</div>
+
+若 $X$ 為一隨機變數，其 mgf $M\_{\sssig X}(t)$ 存在，且對任意正數 $h$，$M\_{\sssig X}(t)$ 於 $-h<t<h$ 皆存在，則
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-M_X^{(r)}(0)
-=
-\left.
-\frac{d^r}{dt^r}M_X(t)
-\right|_{t=0}
-=
-\mathbb{E}(X^r)
+M^{(r)}_{\sssig X}(0)=\left.\frac{d^{r}M_{\sssig X}(t)}{d\,t^{r}}\right|_{t=0}=\mathbb{E}\bigl(X^{r}\bigr)=\mu_{\sssig r}^{\prime}
 $$
 
-若以 $\mu_r^{\prime}=\mathbb{E}(X^r)$ 表示 $r$ 階原動差，上式也可寫成 $M_X^{(r)}(0)=\mu_r^{\prime}$。
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+M^{(r)}_{\sssig X}(0)&=\left.\frac{d^{r}M_{\sssig X}(t)}{d\,t^{r}}\right|_{t=0}\\[0.45em]
+&=\mathbb{E}\bigl(X^{r}\bigr)=\mu_{\sssig r}^{\prime}
+\end{aligned}
+$$
+
+</div>
 
 </div>
 
 <div class="topic-proof" markdown="1">
-**Proof.** 因為 $M_X$ 在 $0$ 附近存在，可取 $0<a<b$，使 $M_X(t)$ 對每個 $t\in[-b,b]$ 都有限。對固定的正整數 $r$，存在常數 $C>0$，使每個 $\lvert t\rvert\leqslant a$ 與 $x\in\mathbb{R}$ 都滿足
+**Proof.** 在此僅以連續型隨機變數證明，離散型同理可證。由 [Definition 2.16](#def-mgf) 可以寫出下式
 
-$$
-\lvert x\rvert^r e^{tx}
-\leqslant
-C\bigl(e^{bx}+e^{-bx}\bigr)
-$$
-
-右側在 $X$ 下的期望值為 $C[M_X(b)+M_X(-b)]<\infty$。因此，可將對 $t$ 的 $r$ 階微分移入期望值，得到
-
-$$
-M_X^{(r)}(t)
-=
-\mathbb{E}\bigl(X^r e^{tX}\bigr),
-\qquad
-\lvert t\rvert\leqslant a
-$$
-
-令 $t=0$，便有 $M_X^{(r)}(0)=\mathbb{E}(X^r)$。原式得證。<span class="topic-qed">$\square$</span>
-</div>
-
-<div id="example-217" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.17 (A Discrete mgf)</div>
-
-令 $Y$ 的 pmf 為
-
-$$
-p_Y(y)=2^{-y},
-\qquad y=1,2,3,\ldots
-$$
-
-因為 $\sum_{y=1}^{\infty}2^{-y}=1$，這確實定義了一個離散型隨機變數。由 mgf 的定義可得
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 \begin{aligned}
-M_Y(t)
-&=
-\sum_{y=1}^{\infty}e^{ty}2^{-y} \\[0.35em]
-&=
-\sum_{y=1}^{\infty}\left(\frac{e^t}{2}\right)^y \\[0.35em]
-&=
-\frac{e^t}{2-e^t},
-\qquad t<\ln 2
+\left.\frac{d^{r}M_{\sssig X}(t)}{d\,t^{r}}\right|_{t=0}&=\left.\frac{d^{r}}{d\,t^{r}}\int_{-\infty}^{\infty}e^{tx}\,f_{\sssig X}(x)\,dx\right|_{t=0}\\[0.45em]
+&=\left.\int_{-\infty}^{\infty}\frac{d^{r}}{d\,t^{r}}e^{tx}\,f_{\sssig X}(x)\,dx\right|_{t=0}\\[0.45em]
+&=\left.\int_{-\infty}^{\infty}x^{r}e^{tx}\,f_{\sssig X}(x)\,dx\right|_{t=0}\\[0.45em]
+&=\int_{-\infty}^{\infty}x^{r}e^{0}\,f_{\sssig X}(x)\,dx\\[0.45em]
+&=\int_{-\infty}^{\infty}x^{r}\,f_{\sssig X}(x)\,dx=\mathbb{E}\bigl(X^{r}\bigr)
 \end{aligned}
 $$
 
-接著對 $t$ 微分，可得
-
-$$
-M_Y^{\prime}(t)=\frac{2e^t}{(2-e^t)^2},
-\qquad
-M_Y^{\prime\prime}(t)=\frac{2e^t(2+e^t)}{(2-e^t)^3}
-$$
-
-令 $t=0$，可得 $\mathbb{E}(Y)=M_Y^{\prime}(0)=2$ 與 $\mathbb{E}(Y^2)=M_Y^{\prime\prime}(0)=6$。
-
-由此可得
-
-$$
-\mathrm{Var}(Y)
-=
-\mathbb{E}(Y^2)-[\mathbb{E}(Y)]^2
-=
-6-2^2
-=
-2
-$$
-
 </div>
-
-這個例子呈現 mgf 的基本用法。先把 pmf 加總成 $t$ 的函數，再透過微分取得原動差。若直接計算 $\mathbb{E}(Y)$ 與 $\mathbb{E}(Y^2)$，也會得到相同結果；mgf 的優點在於它把多階原動差放進同一套計算中。
-
-## 泰勒展開
-
-若 $M_X(t)$ 在 $0$ 附近存在，則它在 $t=0$ 的泰勒展開 (Taylor expansion) 可寫為
-
-$$
-M_X(t)
-=
-\sum_{r=0}^{\infty}
-M_X^{(r)}(0)\frac{t^r}{r!}
-=
-\sum_{r=0}^{\infty}
-\mathbb{E}(X^r)\frac{t^r}{r!}
-$$
-
-這個式子把 mgf 與所有原動差連在一起。第一項是 $\mathbb{E}(X^0)=1$；後面依序放入 $\mathbb{E}(X)$、$\mathbb{E}(X^2)$、$\mathbb{E}(X^3)$ 等。
-
-要注意的是，若 mgf 已知在 $0$ 附近存在，則它會保證各階原動差存在，並且上述泰勒係數正是這些原動差。反過來說，單憑各階動差存在，不足以直接保證 mgf 一定在 $0$ 附近存在。後續使用泰勒展開反推 mgf 時，必須確認該級數確實在 $0$ 附近代表一個有限的 mgf。
-
-<div id="mgf-function-transformations"></div>
-
-## mgf 與函數轉換
-
-若 $Y=g(X)$ 且 $Y$ 的 mgf 存在，則由定義可得
-
-$$
-M_Y(t)
-=
-\mathbb{E}(e^{tY})
-=
-\mathbb{E}\bigl(e^{t g(X)}\bigr)
-$$
-
-對[線性轉換](/teaching-topics/linear-transformations-standardization/) $Y=aX+b$，其中 $a,b\in\mathbb{R}$，上式可進一步寫成
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
 \begin{aligned}
-M_Y(t)
-&=
-\mathbb{E}\bigl[e^{t(aX+b)}\bigr] \\[0.35em]
-&=
-e^{bt}\mathbb{E}(e^{(at)X}) \\[0.35em]
-&=
-e^{bt}M_X(at)
+&\left.\frac{d^{r}M_{\sssig X}(t)}{d\,t^{r}}\right|_{t=0}\\[0.45em]
+&\quad =\left.\frac{d^{r}}{d\,t^{r}}\int_{-\infty}^{\infty}e^{tx}\,f_{\sssig X}(x)\,dx\right|_{t=0}\\[0.45em]
+&\quad =\left.\int_{-\infty}^{\infty}\frac{d^{r}}{d\,t^{r}}e^{tx}\,f_{\sssig X}(x)\,dx\right|_{t=0}\\[0.45em]
+&\quad =\left.\int_{-\infty}^{\infty}x^{r}e^{tx}\,f_{\sssig X}(x)\,dx\right|_{t=0}\\[0.45em]
+&\quad =\int_{-\infty}^{\infty}x^{r}e^{0}\,f_{\sssig X}(x)\,dx\\[0.45em]
+&\quad =\int_{-\infty}^{\infty}x^{r}\,f_{\sssig X}(x)\,dx=\mathbb{E}\bigl(X^{r}\bigr)
 \end{aligned}
 $$
 
-這個關係式對所有使 $M_X(at)$ 有限的 $t$ 成立。常數 $b$ 產生乘數 $e^{bt}$，係數 $a$ 則把 mgf 的參數由 $t$ 改為 $at$。後續介紹特徵函數時，會比較同一個線性轉換在複指數下所得的公式。
+</div>
 
-## 由 mgf 辨認分配
+原式得證。 <span class="topic-qed">$\square$</span>
+</div>
 
-mgf 起初用來生成動差，但它還有另一個常用性質。若兩個隨機變數的 mgf 在 $0$ 附近相同，則兩者的機率分配相同。
+[Theorem 2.21](#thm-mgf-generates-moments) 即是 mgf 的初始用途，也是其為何被稱為「工具函數」的原因。
 
-<div id="theorem-21" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 2.1 (Uniqueness of mgf)</div>
+我們可以運用微分與積分在不互相影響的狀況下可交換順序的性質，得到這個結論，即透過將複雜的 pdf (或 pmf) 先行算出一個與 $t$ 有關，且形式較為簡單的期望值，再透過**連鎖律 (chain rule)** 尋求 $t$ 的各階微分，並在 $t=0$ 取值，從而得到其各階原動差。
 
-若 $X$ 與 $Y$ 的 mgf 在同一個含 $0$ 的開區間上存在，且該區間內皆滿足
+這個性質也同時展示了，為何對任意 $h>0$，$M\_{\sssig X}(t)$ 在 $-h<t<h$ 的範圍內都需要有定義的原因 (因為其需要代入 $t=0$)。
 
-$$
-M_X(t)=M_Y(t)
-$$
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
 
-則 $X$ 與 $Y$ 具有相同機率分配。
+在更嚴謹的機率論專書中，這個條件會被定義成在 $-h<t<h$ 內，$M\_{\sssig X}(t)$ 都必須**可微 <span lang="en">(differentiable)</span>**。
 
 </div>
 
-這個唯一性定理常由拉普拉斯轉換 (Laplace transform) 的唯一性證明。此處只需先掌握結論；後續介紹常見分配與極限定理時，mgf 常用來辨認某個隨機變數屬於哪一種分配。
+然而 mgf 雖然看似方便，能夠幫我們生出各階原動差，但細心一點的讀者或許已經產生一個疑惑: 稍早在 [Theorem 2.20](/teaching-topics/moment-system/#thm-lower-order-moment-existence) 之後不是曾說過，一個隨機變數的各階動差未必都存在嗎？難道有了 mgf 就能夠忽略這個限制嗎？
 
-<div id="example-218" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.18 (A Finite mgf)</div>
+這個答案當然是否定的，mgf 並沒有如此萬能。mgf 最大的問題在於，由於 $e^{tX}$ 對 $t$ 來說是一個**無限可微 <span lang="en">(infinitely differentiable)</span>** 的函數，故若其定義的這個特殊的期望值存在，則保證了該隨機變數的各階動差都存在；反之，若一隨機變數並非各階動差皆存在，則其動差母函數不存在。簡而言之，**動差母函數不是任何時候都存在**。
 
-設 $X$ 的 mgf 為
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
 
-$$
-M_X(t)
-=
-\frac{e^t}{5}
-+\frac{2e^{4t}}{5}
-+\frac{2e^{8t}}{5},
-\qquad -\infty<t<\infty
-$$
-
-對 $t$ 微分可得
+值得注意的一個小地方是，對任何存在 mgf $M\_{\sssig X}(t)$ 的 $X$ 而言，皆有
 
 $$
-M_X^{\prime}(t)
-=
-\frac{e^t}{5}
-+\frac{8e^{4t}}{5}
-+\frac{16e^{8t}}{5}
+M_{\sssig X}(0)=\mathbb{E}\bigl(X^{0}\bigr)=1
 $$
 
-令 $t=0$，可得 $\mathbb{E}(X)=M_X^{\prime}(0)=5$。
+這事實上僅是其機率密度在值域上的積分而已。
 
-再微分一次可得
-
-$$
-M_X^{\prime\prime}(t)
-=
-\frac{e^t}{5}
-+\frac{32e^{4t}}{5}
-+\frac{128e^{8t}}{5}
-$$
-
-再次令 $t=0$，可得 $\mathbb{E}(X^2)=M_X^{\prime\prime}(0)=161/5$。
-
-由變異數計算公式可得
-
-$$
-\mathrm{Var}(X)
-=
-\frac{161}{5}-5^2
-=
-\frac{36}{5}
-$$
-
-此外，因為離散型 mgf 中的 $p e^{at}$ 對應到 $X=a$ 且機率為 $p$，這個 mgf 也表示 $X$ 在 $1,4,8$ 三點上分別具有機率 $1/5,2/5,2/5$。
 </div>
 
-<div id="example-219" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.19 (Moments to a Distribution)</div>
+讀者可能會有疑問，若我們有一個隨機變數 <span class="text-nowrap">$X$，</span>且其有存在的 mgf <span class="text-nowrap">$M\_{\sssig X}(t)$，</span>則我們可以由 $M\_{\sssig X}(t)$ 生出 $X$ 的各階原動差；但若情況反過來，已知 $X$ 的各階原動差，我們可以由此組合出 $M\_{\sssig X}(t)$ 嗎？這個答案是有條件的: 只要 $M\_{\sssig X}(t)$ 本身存在，它在 $t=0$ 的泰勒展開就正是由各階原動差組成的級數，我們便來看下面的定理。
 
-假設 $X$ 的 mgf 在 $0$ 附近存在，且其正整數階原動差滿足
+<div id="thm-mgf-moment-series" class="topic-box topic-box--theorem" markdown="1">
+<div class="topic-box__label">Theorem 2.22 (mgf 的動差級數展開, moment series expansion of the mgf)</div>
 
-$$
-\mathbb{E}(X^r)=0.8,
-\qquad r=1,2,3,\ldots
-$$
+若 $X$ 為一隨機變數，且其動差母函數 $M\_{\sssig X}(t)$ 存在，則
 
-由於 $\mathbb{E}(X^0)=1$，mgf 在 $0$ 附近的泰勒展開為
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 \begin{aligned}
-M_X(t)
-&=
-\sum_{r=0}^{\infty}\mathbb{E}(X^r)\frac{t^r}{r!} \\[0.35em]
-&=
-1+0.8\sum_{r=1}^{\infty}\frac{t^r}{r!} \\[0.35em]
-&=
-1+0.8(e^t-1) \\[0.35em]
-&=
-0.2+0.8e^t
+M_{\sssig X}(t)&=\sum_{r=0}^{\infty}\mathbb{E}\bigl(X^{r}\bigr)\frac{\,t^{r}\,}{r!}\\[0.45em]
+&=\mathbb{E}\bigl(X^{0}\bigr)\frac{\,t^{0}\,}{0!}+\mathbb{E}\bigl(X^{1}\bigr)\frac{\,t^{1}\,}{1!}+\mathbb{E}\bigl(X^{2}\bigr)\frac{\,t^{2}\,}{2!}+\cdots
 \end{aligned}
 $$
 
-而只在 $0$ 與 $1$ 取值、且
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\mathbb{P}(X=0)=0.2,
-\qquad
-\mathbb{P}(X=1)=0.8
+\begin{aligned}
+M_{\sssig X}(t)&=\sum_{r=0}^{\infty}\mathbb{E}\bigl(X^{r}\bigr)\frac{\,t^{r}\,}{r!}\\[0.45em]
+&=\mathbb{E}\bigl(X^{0}\bigr)\frac{\,t^{0}\,}{0!}+\mathbb{E}\bigl(X^{1}\bigr)\frac{\,t^{1}\,}{1!}\\[0.45em]
+&\quad +\mathbb{E}\bigl(X^{2}\bigr)\frac{\,t^{2}\,}{2!}+\cdots
+\end{aligned}
 $$
 
-的隨機變數，其 mgf 正是 $0.2+0.8e^t$。由 [Theorem 2.1](#theorem-21) 可知，這些動差所對應的分配就是後面會正式介紹的**伯努利分配 (Bernoulli distribution)**，參數為 $p=0.8$。
+</div>
+
+</div>
+
+<div class="topic-proof" markdown="1">
+**Proof.** 由 [Theorem 2.21](#thm-mgf-generates-moments) 已知 $\mathbb{E}(X^{r})=M^{(r)}\_{\sssig X}(0)$，又由**泰勒級數 (Taylor’s series)** 將 $M\_{\sssig X}(t)$ 在 $t=0$ 展開得到
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+M_{\sssig X}(t)=\sum_{r=0}^{\infty}M^{(r)}_{\sssig X}(0)\frac{\,t^{r}\,}{r!}=\sum_{r=0}^{\infty}\mathbb{E}\bigl(X^{r}\bigr)\frac{\,t^{r}\,}{r!}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+M_{\sssig X}(t)&=\sum_{r=0}^{\infty}M^{(r)}_{\sssig X}(0)\frac{\,t^{r}\,}{r!}\\[0.45em]
+&=\sum_{r=0}^{\infty}\mathbb{E}\bigl(X^{r}\bigr)\frac{\,t^{r}\,}{r!}
+\end{aligned}
+$$
+
+</div>
+
+原式得證。 <span class="topic-qed">$\square$</span>
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+[Theorem 2.22](#thm-mgf-moment-series) 只在單一方向成立。mgf 若已知在 $0$ 的附近存在，它就保證各階原動差都存在，而上式的泰勒係數正是這些原動差；反過來說，單憑各階原動差都存在，並不足以保證 mgf 在 $0$ 的附近存在: **對數常態分配 <span lang="en">(lognormal distribution)</span>** 的各階動差都有限，它的 mgf 卻在任何 $t>0$ 都不存在。日後若要由泰勒展開反推 mgf，必須另行確認該級數在 $0$ 的附近確實代表一個有限的 mgf。
+
+</div>
+
+<div id="ex-geometric-mgf" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 2.29</div>
+
+<div lang="en" markdown="1">
+Suppose that $Y$ is a discrete random variable whose pmf is
+
+$$
+p_{\sssig Y}(y)=\left(\frac{1}{\,2\,}\right)^{y},\quad y=1, 2, 3, \ldots
+$$
+
+<ol class="topic-list-paren">
+  <li>Determine the moment generating function of $Y$.</li>
+  <li>Find the variance of $Y$.</li>
+</ol>
+</div>
+
+(1) 由 [Definition 2.16](#def-mgf) 可知
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+M_{\sssig Y}(t)&=\sum_{y=1}^{\infty}e^{ty}\left(\frac{1}{\,2\,}\right)^{y}=\sum_{y=1}^{\infty}\left(\frac{1}{\,2\,}e^{t}\right)^{y}\\[0.45em]
+&=\frac{\frac{1}{\,2\,}e^{t}}{\,1-\frac{1}{\,2\,}e^{t}\,}=\frac{e^{t}}{\,2-e^{t}\,}
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+M_{\sssig Y}(t)&=\sum_{y=1}^{\infty}e^{ty}\left(\frac{1}{\,2\,}\right)^{y}\\[0.45em]
+&=\sum_{y=1}^{\infty}\left(\frac{1}{\,2\,}e^{t}\right)^{y}\\[0.45em]
+&=\frac{\frac{1}{\,2\,}e^{t}}{\,1-\frac{1}{\,2\,}e^{t}\,}=\frac{e^{t}}{\,2-e^{t}\,}
+\end{aligned}
+$$
+
+</div>
+
+其中幾何級數收斂的條件為 <span class="text-nowrap">$\frac{1}{\,2\,}e^{t}<1$，</span>即
+{: .topic-paren-cont}
+
+$$
+t<\ln2
+$$
+
+(2) 由第 (1) 小題已得 $M\_{\sssig Y}(t)=\frac{e^{t}}{\,2-e^{t}\,}$ (其中 $t<\ln2$)，先求出一階導數
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+M^{\prime}_{\sssig Y}(t)&=\frac{d}{d\,t}\frac{e^{t}}{\,2-e^{t}\,}=\frac{e^{t}(2-e^{t})-e^{t}(-e^{t})}{(2-e^{t})^{2}}\\[0.45em]
+&=\frac{2e^{t}}{(2-e^{t})^{2}}
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+M^{\prime}_{\sssig Y}(t)&=\frac{d}{d\,t}\frac{e^{t}}{\,2-e^{t}\,}\\[0.45em]
+&=\frac{e^{t}(2-e^{t})-e^{t}(-e^{t})}{(2-e^{t})^{2}}\\[0.45em]
+&=\frac{2e^{t}}{(2-e^{t})^{2}}
+\end{aligned}
+$$
+
+</div>
+
+在 $t=0$ 取值即得
+{: .topic-paren-cont}
+
+$$
+\mathbb{E}(Y)=M^{\prime}_{\sssig Y}(0)=2
+$$
+
+再微分一次得
+{: .topic-paren-cont}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+M^{\prime\prime}_{\sssig Y}(t)&=\frac{d}{d\,t}\frac{2e^{t}}{(2-e^{t})^{2}}\\[0.45em]
+&=\frac{2e^{t}(2-e^{t})^{2}-2e^{t}\cdot2(2-e^{t})(-e^{t})}{(2-e^{t})^{4}}
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&M^{\prime\prime}_{\sssig Y}(t)=\frac{d}{d\,t}\frac{2e^{t}}{(2-e^{t})^{2}}\\[0.45em]
+&\quad =\frac{\begin{aligned}&2e^{t}(2-e^{t})^{2}\\[0.1em]&\quad -2e^{t}\cdot2(2-e^{t})(-e^{t})\end{aligned}}{(2-e^{t})^{4}}
+\end{aligned}
+$$
+
+</div>
+
+同樣在 $t=0$ 取值即得
+{: .topic-paren-cont}
+
+$$
+\mathbb{E}\bigl(Y^{2}\bigr)=M^{\prime\prime}_{\sssig Y}(0)=6
+$$
+
+再由 [Theorem 2.11](/teaching-topics/variance/#thm-variance-formula) 可知，所求為
+{: .topic-paren-cont}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathrm{Var}(Y)=\mathbb{E}\bigl(Y^{2}\bigr)-\bigl[\mathbb{E}(Y)\bigr]^{2}=6-2^{2}=2
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathrm{Var}(Y)&=\mathbb{E}\bigl(Y^{2}\bigr)-\bigl[\mathbb{E}(Y)\bigr]^{2}\\[0.45em]
+&=6-2^{2}=2
+\end{aligned}
+$$
+
+</div>
+
+</div>
+
+<div id="ex-discrete-mgf-variance" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 2.30</div>
+
+<div lang="en" markdown="1">
+Suppose that the mgf of a random variable $X$ is given by
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+M_{\sssig X}(t)=\frac{\,e^{t}\,}{5}+\frac{\,2e^{4t}\,}{5}+\frac{\,2e^{8t}\,}{5},\quad -\infty<t<\infty
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+M_{\sssig X}(t)=\frac{\,e^{t}\,}{5}+\frac{\,2e^{4t}\,}{5}+\frac{\,2e^{8t}\,}{5}\\[0.45em]
+-\infty<t<\infty
+\end{gathered}
+$$
+
+</div>
+
+Determine the variance of $X$.
+</div>
+
+由 [Theorem 2.21](#thm-mgf-generates-moments) 可知
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{E}(X)=M^{\prime}_{\sssig X}(0)=\left.\frac{\,e^{t}\,}{5}+\frac{\,8e^{4t}\,}{5}+\frac{\,16e^{8t}\,}{5}\right|_{t=0}=5
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{E}(X)&=M^{\prime}_{\sssig X}(0)\\[0.45em]
+&=\left.\frac{\,e^{t}\,}{5}+\frac{\,8e^{4t}\,}{5}\right.\\[0.45em]
+&\qquad \left.+\frac{\,16e^{8t}\,}{5}\right|_{t=0}=5
+\end{aligned}
+$$
+
+</div>
+
+且
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{E}\bigl(X^{2}\bigr)=M^{\prime\prime}_{\sssig X}(0)=\left.\frac{\,e^{t}\,}{5}+\frac{\,32e^{4t}\,}{5}+\frac{\,128e^{8t}\,}{5}\right|_{t=0}=\frac{\,161\,}{5}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{E}\bigl(X^{2}\bigr)&=M^{\prime\prime}_{\sssig X}(0)\\[0.45em]
+&=\left.\frac{\,e^{t}\,}{5}+\frac{\,32e^{4t}\,}{5}\right.\\[0.45em]
+&\qquad \left.+\frac{\,128e^{8t}\,}{5}\right|_{t=0}=\frac{\,161\,}{5}
+\end{aligned}
+$$
+
+</div>
+
+再由 [Theorem 2.11](/teaching-topics/variance/#thm-variance-formula) 可知，所求為
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathrm{Var}(X)=\mathbb{E}\bigl(X^{2}\bigr)-\bigl[\mathbb{E}(X)\bigr]^{2}=\frac{\,161\,}{5}-5^{2}=\frac{\,36\,}{5}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathrm{Var}(X)&=\mathbb{E}\bigl(X^{2}\bigr)-\bigl[\mathbb{E}(X)\bigr]^{2}\\[0.45em]
+&=\frac{\,161\,}{5}-5^{2}=\frac{\,36\,}{5}
+\end{aligned}
+$$
+
+</div>
+
+</div>
+
+<div id="ex-logistic-cdf" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 2.31</div>
+
+<div lang="en" markdown="1">
+Suppose that $X$ has the logistic pdf
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+f_{\sssig X}(x)=\frac{e^{-x}}{\,(1+e^{-x})^{2}\,},\quad -\infty<x<\infty
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+f_{\sssig X}(x)=\frac{e^{-x}}{\,(1+e^{-x})^{2}\,}\\[0.45em]
+-\infty<x<\infty
+\end{gathered}
+$$
+
+</div>
+
+<ol class="topic-list-paren">
+  <li>Determine the distribution function $F_{\sssig X}(x)$ of $X$.</li>
+  <li>Show that $f_{\sssig X}(x)=F_{\sssig X}(x)\bigl[1-F_{\sssig X}(x)\bigr]$.</li>
+  <li>Show that the mgf of $X$ is $M_{\sssig X}(t)=\Gamma(1-t)\,\Gamma(1+t)$ for $-1<t<1$.</li>
+</ol>
+</div>
+
+(1) 由 cdf 的定義可知
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+F_{\sssig X}(x)&=\int_{-\infty}^{x}\frac{e^{-s}}{\,(1+e^{-s})^{2}\,}\,ds=-\int_{-\infty}^{x}\frac{d\,e^{-s}}{\,(1+e^{-s})^{2}\,}\\[0.45em]
+&=-\int_{-\infty}^{x}\frac{d\,(1+e^{-s})}{\,(1+e^{-s})^{2}\,}=\left[\frac{1}{\,1+e^{-s}\,}\right]_{-\infty}^{x}\\[0.45em]
+&=\frac{1}{\,1+e^{-x}\,},\quad x\in\mathbb{R}
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&F_{\sssig X}(x)=\int_{-\infty}^{x}\frac{e^{-s}}{\,(1+e^{-s})^{2}\,}\,ds\\[0.45em]
+&\quad =-\int_{-\infty}^{x}\frac{d\,e^{-s}}{\,(1+e^{-s})^{2}\,}\\[0.45em]
+&\quad =-\int_{-\infty}^{x}\frac{d\,(1+e^{-s})}{\,(1+e^{-s})^{2}\,}\\[0.45em]
+&\quad =\left[\frac{1}{\,1+e^{-s}\,}\right]_{-\infty}^{x}\\[0.45em]
+&\quad =\frac{1}{\,1+e^{-x}\,},\quad x\in\mathbb{R}
+\end{aligned}
+$$
+
+</div>
+
+(2) 由第 (1) 小題所得的 cdf 可知
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+f_{\sssig X}(x)&=\frac{e^{-x}}{\,(1+e^{-x})^{2}\,}=\frac{1}{\,1+e^{-x}\,}\left[1-\frac{1}{\,1+e^{-x}\,}\right]\\[0.45em]
+&=F_{\sssig X}(x)\bigl[1-F_{\sssig X}(x)\bigr]
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+f_{\sssig X}(x)&=\frac{e^{-x}}{\,(1+e^{-x})^{2}\,}\\[0.45em]
+&=\frac{1}{\,1+e^{-x}\,}\left[1-\frac{1}{\,1+e^{-x}\,}\right]\\[0.45em]
+&=F_{\sssig X}(x)\bigl[1-F_{\sssig X}(x)\bigr]
+\end{aligned}
+$$
+
+</div>
+
+原式得證。
+{: .topic-paren-cont}
+
+(3) 由 [Definition 2.16](#def-mgf) 可知
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+M_{\sssig X}(t)&=\mathbb{E}\bigl(e^{tX}\bigr)=\int_{-\infty}^{\infty}e^{tx}\,\frac{e^{-x}}{\,(1+e^{-x})^{2}\,}\,dx\\[0.45em]
+&=-\int_{\infty}^{0}u^{-t}\,\frac{1}{\,(1+u)^{2}\,}\,du\qquad\bigl(\text{令}\ u=e^{-x}\bigr)\\[0.45em]
+&=-\int_{0}^{1}(1-y)^{-t}y^{t}y^{2}(-y^{-2})\,dy\qquad\bigl(\text{令}\ y=(1+u)^{-1}\bigr)\\[0.45em]
+&=\int_{0}^{1}y^{(t+1)-1}(1-y)^{(1-t)-1}\,dy=\frac{\,\Gamma(t+1)\,\Gamma(1-t)\,}{\Gamma\bigl((t+1)+(1-t)\bigr)}\\[0.45em]
+&=\frac{\,\Gamma(t+1)\,\Gamma(1-t)\,}{1!}=\Gamma(t+1)\,\Gamma(1-t),\quad -1<t<1
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&M_{\sssig X}(t)=\mathbb{E}\bigl(e^{tX}\bigr)\\[0.45em]
+&\quad =\int_{-\infty}^{\infty}e^{tx}\,\frac{e^{-x}}{\,(1+e^{-x})^{2}\,}\,dx\\[0.45em]
+&\quad =-\int_{\infty}^{0}u^{-t}\,\frac{1}{\,(1+u)^{2}\,}\,du\\[0.2em]
+&\qquad\quad \bigl(\text{令}\ u=e^{-x}\bigr)\\[0.45em]
+&\quad =-\int_{0}^{1}(1-y)^{-t}y^{t}y^{2}(-y^{-2})\,dy\\[0.2em]
+&\qquad\quad \bigl(\text{令}\ y=(1+u)^{-1}\bigr)\\[0.45em]
+&\quad =\int_{0}^{1}y^{(t+1)-1}(1-y)^{(1-t)-1}\,dy\\[0.45em]
+&\quad =\frac{\,\Gamma(t+1)\,\Gamma(1-t)\,}{\Gamma\bigl((t+1)+(1-t)\bigr)}\\[0.45em]
+&\quad =\frac{\,\Gamma(t+1)\,\Gamma(1-t)\,}{1!}\\[0.45em]
+&\quad =\Gamma(t+1)\,\Gamma(1-t),\ -1<t<1
+\end{aligned}
+$$
+
+</div>
+
+原式得證。
+{: .topic-paren-cont}
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+此為**邏輯斯分配 <span lang="en">(logistic distribution)</span>**，在**邏輯斯迴歸 <span lang="en">(logistic regression)</span>** 具有核心的地位。
+
+證明 mgf 的過程中，我們首先令了 $u=e^{-x}$，則以萊布尼茲微分符號的運算，我們有 $\frac{\,du\,}{dx}=-e^{-x}$，即 $du=-e^{-x}\,dx$；再令 $y=(1+u)^{-1}$，即 $u=\frac{\,1-y\,}{y}$，又一次地，我們有 $du=\frac{\,-1\,}{y^{2}}\,dy$，再搭配**貝塔積分 <span lang="en">(beta integral)</span>**，方可將本題的 mgf 證明出來。
+
+值得提醒的是，由於這題連續使用了兩個代換積分，積分的上下界需要特別留意，不可任意顛倒順序。
+
 </div>
 
 ## 本篇小結
 
-動差母函數定義為
+[Definition 2.16](#def-mgf) 把 $\mathbb{E}(e^{tX})$ 定義為 $X$ 的動差母函數 $M\_{\sssig X}(t)$，前提是存在某個 $h>0$，使這個期望值在 $-h<t<h$ 內皆存在。定義已把 $X$ 加總 (積分) 完畢，所得的結果是 $t$ 的函數而不再殘存 $X$；它至少必須在 $t=0$ 有定義，這一點在下一個定理便派上用場。
 
-$$
-M_X(t)=\mathbb{E}(e^{tX})
-$$
+動差母函數的初始角色是工具函數。[Theorem 2.21](#thm-mgf-generates-moments) 說明它如何生成原動差。對 $t$ 微分 $r$ 次後在 $t=0$ 取值，所得的 $M^{(r)}\_{\sssig X}(0)$ 正是 $r$ 階原動差 $\mathbb{E}(X^{r})$，證明的關鍵在於微分與積分可以交換順序。由於 $e^{tX}$ 對 $t$ 無限可微，動差母函數一旦存在就保證各階動差都存在；反過來說，各階動差不全存在的隨機變數沒有動差母函數，可見動差母函數不是任何時候都存在。[Theorem 2.22](#thm-mgf-moment-series) 則走另一個方向。動差母函數存在時，把它在 $t=0$ 泰勒展開，$\frac{\,t^{r}\,}{r!}$ 的係數正是 $\mathbb{E}(X^{r})$。
 
-若它在 $0$ 附近存在，則 $M_X^{(r)}(0)=\mathbb{E}(X^r)$，因此可透過微分取得各階原動差。對離散型與連續型隨機變數而言，mgf 分別由 pmf 加總與 pdf 積分得到。若 $Y=aX+b$，則在兩側皆有限的範圍內有 $M_Y(t)=e^{bt}M_X(at)$。
-
-mgf 不一定存在，即使存在，也可能只在某個 $t$ 的範圍內有限。使用 mgf 時，應同時留意存在區間。若兩個隨機變數的 mgf 在 $0$ 附近相同，則兩者有相同機率分配，這便是 [Theorem 2.1](#theorem-21) 的內容。
-
-後續介紹常見分配時，mgf 會成為整理期望值、變異數與分配辨認的常用工具。[下一篇文章](/teaching-topics/probability-cumulant-generating-functions/)會討論機率母函數 (probability generating function, pgf)、階乘動差與累積量母函數 (cumulant generating function, cgf)。再下一篇則介紹[特徵函數](/teaching-topics/characteristic-functions/)，說明複指數轉換如何在 mgf 不存在時仍然描述一個機率分配。
+三道例題示範了三種出發點: [Example 2.29](#ex-geometric-mgf) 由 pmf 出發，以幾何級數求和得到 $M\_{\sssig Y}(t)=\frac{e^{t}}{\,2-e^{t}\,}$ 並附上收斂條件 $t<\ln2$，再由前兩階導數求得變異數；[Example 2.30](#ex-discrete-mgf-variance) 直接由已知的動差母函數逐階微分求變異數；[Example 2.31](#ex-logistic-cdf) 由邏輯斯 pdf 出發，先求 cdf 與 $f\_{\sssig X}=F\_{\sssig X}(1-F\_{\sssig X})$ 的關係，再連續兩次代換並套用貝塔積分求出動差母函數。到這裡動差母函數都還只是生成動差的工具，[下一篇](/teaching-topics/uniqueness-of-the-mgf/)要介紹的唯一性，才是它真正被大量使用的原因。兩個隨機變數的動差母函數若都存在且相等，它們的分配也就相等，於是我們可以反過來由動差母函數認出一個分配。
 
 ## 參考文獻與延伸閱讀
 
-- 黃文璋，2003，《機率論》，初版，華泰文化。
-- 黃文璋，2003，《數理統計》，初版，華泰文化。
-- Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
+- 黃文璋，2010，《機率論》，二版，華泰文化。
+- Robert V. Hogg, Joseph W. McKean, and Allen T. Craig. 2019. *Introduction to Mathematical Statistics*. 8th ed. Pearson.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
+- Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.

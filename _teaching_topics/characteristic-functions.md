@@ -1,544 +1,666 @@
 ---
-title: "特徵函數與分配的唯一性"
-subtitle: "Characteristic Functions and Uniqueness of Distributions"
+title: "特徵函數"
+subtitle: "Characteristic Functions"
 layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 2
-topic: 14
-order: 214
+topic: 18
+order: 218
 permalink: /teaching-topics/characteristic-functions/
-date: 2026-07-13
-published: false
-listed: false
-excerpt: '特徵函數 (cf) 以複指數 $e^{itX}$ 描述機率分配。cf 對每個實值隨機變數都存在，能把獨立隨機變數之和轉成函數乘積，並由唯一性定理辨認分配。'
+date: 2026-08-08
+published: true
+excerpt: "特徵函數把工具函數換成 $e^{itX}$。由歐拉公式可知 $\\lvert e^{itX}\\rvert=1$，因此 $\\mathbb{E}(e^{itX})$ 對每一個實值隨機變數與每一個 $t$ 都存在，這正是它與動差母函數最大的差別。它同樣以微分生成原動差，$r$ 階動差存在時 $\\phi_{X}^{(r)}(0)=i^{r}\\mathbb{E}(X^{r})$；也同樣具有唯一性，兩個分配相同若且唯若兩者的特徵函數處處相等，而且還能由反演公式反過來求出 cdf 與 pdf。標準柯西分配沒有 mgf，卻有形式簡單的 $\\phi_{X}(t)=e^{-\\lvert t\\rvert}$，其樣本平均數與單一觀測值同分配正是由唯一性得到的。"
 ---
 
-[上一篇文章](/teaching-topics/probability-cumulant-generating-functions/)介紹 pgf 與 cgf。對非負整數值隨機變數，將 pgf 的冪級數延伸到複數單位圓，再取 $s=e^{it}$，可得 $G_X(e^{it})=\mathbb{E}(e^{itX})$。本篇把這個複指數期望值推廣到每個實值隨機變數，並稱為**特徵函數 (characteristic function, cf)**。
+[上一篇](/teaching-topics/probability-cumulant-generating-functions/)介紹了[機率母函數](/teaching-topics/probability-cumulant-generating-functions/#def-pgf)與[累積量母函數](/teaching-topics/probability-cumulant-generating-functions/#def-cgf)。前者把工具函數取為 $t^{X}$ 而生成階乘動差與機率，後者由 mgf 取對數而生成累積量，[Theorem 2.26](/teaching-topics/probability-cumulant-generating-functions/#thm-mgf-pgf-cgf-relation) 並說明 mgf 與 pgf 之間只差一個變數的代換。
 
-mgf 不一定在 $0$ 附近存在，cf 卻對所有實值隨機變數與所有實數 $t$ 都存在。這項差異來自複指數的絕對值恆為 $1$。
+母函數的家族還有一位成員。我們在[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)一篇曾說過，動差母函數不是任何時候都存在。它要求存在某個 $h>0$，使 $\mathbb{E}(e^{tX})$ 在 $-h<t<h$ 之內皆為有限，而 $e^{tX}$ 會隨著 $tX$ 增大而無界地增長，一旦分配的尾巴夠厚，這個[期望值](/teaching-topics/expectation/#def-expectation)便發散。問題既然出在 $e^{tX}$ 無界，一個自然的想法是把工具函數換成一個有界的東西。
 
-## Euler 公式與複指數
+把指數的自變數乘上一個平方等於 $-1$ 的數之後，$e^{itX}$ 的絕對值恆為 $1$，於是 $\mathbb{E}(e^{itX})$ 對每一個實值[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)與每一個 $t$ 都存在，這個期望值便是**特徵函數 <span lang="en">(characteristic function, cf)</span>**。本篇先交代複數指數所需的歐拉公式，再給出特徵函數的定義與三點須注意之處，接著依序看它的五項基本性質、如何以微分生成原動差、它與 mgf 及 pgf 的關係，以及它的唯一性，最後以**標準柯西分配 <span lang="en">(standard Cauchy distribution)</span>** 的樣本平均數示範唯一性的用法。
 
-令 $i$ 表示虛數單位，並滿足 $i^2=-1$。Euler 公式為
-
-$$
-e^{iu}=\cos u+i\sin u,
-\qquad u\in\mathbb{R}
-$$
-
-由 Euler 公式可得
+在進入定義之前，先交代複數指數的兩個基本事實。以 $i$ 表**虛數單位 <span lang="en">(imaginary unit)</span>**，即 $i^{2}=-1$。對任意實數 $u$，複數指數 $e^{iu}$ 可由**歐拉公式 <span lang="en">(Euler’s formula)</span>** 寫成三角函數的組合，即
 
 $$
-\lvert e^{iu}\rvert
-=
-\sqrt{\cos^2u+\sin^2u}
-=
-1
+e^{iu}=\cos u+i\sin u,\quad u\in\mathbb{R}
 $$
 
-把 $u$ 換成 $tX$ 後，每個 $e^{itX}$ 都是絕對值為 $1$ 的複數。其期望值可由實部與虛部分別取期望值得到。
-
-<div id="definition-220" class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 2.20</div>
-
-令 $X$ 為實值隨機變數。定義
+由此可得它的絕對值
 
 $$
-\varphi_X(t)
-=
-\mathbb{E}(e^{itX}),
-\qquad t\in\mathbb{R}
+\lvert e^{iu}\rvert=\bigl(\cos^{2}u+\sin^{2}u\bigr)^{1/2}=1,\quad u\in\mathbb{R}
 $$
 
-為 $X$ 的**特徵函數 (characteristic function, cf)**。由 Euler 公式可寫成
+也就是說，不論 $u$ 取什麼實數值，$e^{iu}$ 的絕對值都是 $1$。這一點正是特徵函數對每個分配都存在的原因。
+
+<div id="def-characteristic-function" class="topic-box topic-box--definition" markdown="1">
+<div class="topic-box__label">Definition 2.19 (特徵函數, characteristic function, cf)</div>
+
+若 $X$ 為離散型隨機變數，值域為 $\mathcal{R}\_{\sssig X}$、pmf 為 $p\_{\sssig X}(x)$，則
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\varphi_X(t)
-=
-\mathbb{E}[\cos(tX)]
-+i\mathbb{E}[\sin(tX)]
+\phi_{\sssig X}(t)=\mathbb{E}\bigl(e^{itX}\bigr)=\sum_{x\in\mathcal{R}_{\sssig X}}e^{itx}\,p_{\sssig X}(x),\quad t\in\mathbb{R}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\phi_{\sssig X}(t)&=\mathbb{E}\bigl(e^{itX}\bigr)\\[0.45em]
+&=\sum_{x\in\mathcal{R}_{\sssig X}}e^{itx}\,p_{\sssig X}(x),\quad t\in\mathbb{R}
+\end{aligned}
 $$
 
 </div>
 
-若 $X$ 為離散型隨機變數，則
+被定義為 $X$ 的**特徵函數**。
+
+若 $X$ 為連續型隨機變數，pdf 為 $f\_{\sssig X}(x)$，則
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\varphi_X(t)
-=
-\sum_{x\in\mathcal{R}_X}e^{itx}p_X(x)
+\phi_{\sssig X}(t)=\mathbb{E}\bigl(e^{itX}\bigr)=\int_{-\infty}^{\infty}e^{itx}\,f_{\sssig X}(x)\,dx,\quad t\in\mathbb{R}
 $$
 
-若 $X$ 為連續型隨機變數，且 pdf 為 $f_X$，則
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\varphi_X(t)
-=
-\int_{-\infty}^{\infty}e^{itx}f_X(x)\,dx
+\begin{aligned}
+\phi_{\sssig X}(t)&=\mathbb{E}\bigl(e^{itX}\bigr)\\[0.45em]
+&=\int_{-\infty}^{\infty}e^{itx}\,f_{\sssig X}(x)\,dx,\quad t\in\mathbb{R}
+\end{aligned}
 $$
 
-因為 $\lvert e^{itX}\rvert=1$，所以 $e^{itX}$ 對每個 $t\in\mathbb{R}$ 都可積。cf 的存在不要求 $X$ 有有限期望值、變異數或 mgf。
+</div>
 
-<div id="note-cf-mgf-relation" class="topic-box topic-box--note" markdown="1">
+被定義為 $X$ 的**特徵函數**。
+
+兩型皆可由歐拉公式拆成實部與虛部，即
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\phi_{\sssig X}(t)=\mathbb{E}\bigl[\cos(tX)\bigr]+i\,\mathbb{E}\bigl[\sin(tX)\bigr]
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\phi_{\sssig X}(t)&=\mathbb{E}\bigl[\cos(tX)\bigr]\\[0.45em]
+&\quad +i\,\mathbb{E}\bigl[\sin(tX)\bigr]
+\end{aligned}
+$$
+
+</div>
+
+</div>
+
+特徵函數有一些地方需要注意:
+
+(1) 與 mgf、pgf 相同，特徵函數的定義中已經將所有的 $X$ 都積分 (加總) 完了，故其結果是 $t$ 的函數而非 $X$ 的函數。
+{: .topic-paren-item}
+
+(2) 由於 $\lvert e^{itX}\rvert=1$，上面兩式的絕對值皆以 $1$ 為界，因此不論 $X$ 是什麼樣的實值隨機變數、$t$ 取什麼實數值，$\phi\_{\sssig X}(t)$ 都存在。這是特徵函數與動差母函數最大的差別。
+{: .topic-paren-item}
+
+<div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-若把指數轉換延伸到複數參數 $z$，並寫成
+動差母函數要求存在某個 $h>0$，使 $\mathbb{E}(e^{tX})$ 在 $-h<t<h$ 之內皆為有限，這個條件並不是每個分配都滿足；特徵函數沒有這個前提，因此本篇其後的性質與定理都不必附加存在性的條件。
 
-$$
-M_X(z)=\mathbb{E}(e^{zX})
-$$
-
-則在 $z=it$ 時可得
-
-$$
-\varphi_X(t)=M_X(it)
-$$
-
-不過，[動差母函數的定義](/teaching-topics/moment-generating-functions/#definition-217)原本只把 $M_X(t)$ 定義在實數參數上。因此，$M_X(it)$ 應視為複數參數的延伸記號，不能當成把 $it$ 直接代入一個只定義在實數域的函數。cf 即使在實數 mgf 不存在時仍然存在。
 </div>
 
-<div id="interlude-216" class="topic-box topic-box--interlude" markdown="1">
-<div class="topic-box__label">直覺校準 2.16</div>
+(3) 特徵函數起先同樣是以**工具函數**的角色被引入，其[生成各階動差的方式](#thm-cf-generates-moments)與 mgf 相似，稍後便會看到。
+{: .topic-paren-item}
 
-固定 $t$ 後，$e^{itX}=\cos(tX)+i\sin(tX)$ 的取值都落在複數平面的單位圓上。cf 是這些複數取值依機率加權後的平均，因此其絕對值不會超過 $1$。
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
 
-這也說明 cf 為何對厚尾分配仍然存在。厚尾分配可能使 $\mathbb{E}(e^{tX})$ 發散；但 <span class="text-nowrap">$\lvert e^{itX}\rvert=1$，</span>故 cf 對每個實值隨機變數皆存在。
+和動差母函數一樣，特徵函數後來被發現一個更有用的用途，即[**特徵函數的唯一性**](#thm-cf-uniqueness)；而且它還能由反演公式反過來求出 cdf 與 pdf，這一點是 mgf 做不到的。這兩件事都在本篇稍後說明。
+
 </div>
 
-## cf 的基本性質
+<div id="thm-cf-properties" class="topic-box topic-box--theorem" markdown="1">
+<div class="topic-box__label">Theorem 2.27 (特徵函數的基本性質, properties of the cf)</div>
 
-<div id="proposition-214" class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Proposition 2.14 (Basic Properties of cf)</div>
-
-令 $X$ 為實值隨機變數，則 cf 具有下列性質。
+若 $X$ 為一隨機變數，其特徵函數為 <span class="text-nowrap">$\phi\_{\sssig X}(t)$，則</span>
 
 <ol class="topic-list-paren">
-  <li>$\varphi_X(0)=1$，且對每個 $t\in\mathbb{R}$，皆有 $\lvert\varphi_X(t)\rvert\leqslant 1$。</li>
-  <li>$\varphi_X$ 在 $\mathbb{R}$ 上均勻連續。</li>
-  <li>若 $Y=aX+b$，其中 $a,b\in\mathbb{R}$，則
-
-$$
-\varphi_Y(t)
-=
-e^{ibt}\varphi_X(at)
-$$
-
+  <li>
+  $$
+  \phi_{\sssig X}(0)=1
+  $$
   </li>
-  <li>對每個 $t\in\mathbb{R}$，皆有
-
-$$
-\varphi_X(-t)
-=
-\overline{\varphi_X(t)}
-$$
-
-  </li>
-  <li>若 $X_1,\ldots,X_n$ 完全獨立 (mutually independent)，則
-
-$$
-\varphi_{X_1+\cdots+X_n}(t)
-=
-\prod_{j=1}^{n}\varphi_{X_j}(t)
-$$
-
+  <li>
+  $$
+  \lvert\phi_{\sssig X}(t)\rvert\leqslant1,\quad\forall\,t\in\mathbb{R}
+  $$
   </li>
 </ol>
 
-</div>
+(3) $\phi\_{\sssig X}(t)$ 在 $\mathbb{R}$ 上**均勻連續 <span lang="en">(uniformly continuous)</span>**。
+{: .topic-paren-item}
 
-第 (3) 點與[動差母函數的線性轉換公式](/teaching-topics/moment-generating-functions/#mgf-function-transformations)直接對應。若 $Y=aX+b$，mgf 一節已先得到
+<ol class="topic-list-paren topic-list-paren--start-4">
+  <li>
+  $$
+  \phi_{\sssig X}(-t)=\overline{\phi_{\sssig X}(t)},\quad\forall\,t\in\mathbb{R}
+  $$
+  </li>
+</ol>
 
-$$
-M_Y(t)
-=
-e^{bt}M_X(at)
-$$
+其中 $\overline{\phi\_{\sssig X}(t)}$ 表 $\phi\_{\sssig X}(t)$ 的**共軛複數 <span lang="en">(complex conjugate)</span>**。
+{: .topic-paren-cont}
 
-cf 的對應公式為
-
-$$
-\varphi_Y(t)
-=
-e^{ibt}\varphi_X(at)
-$$
-
-在兩式中，將 $X$ 乘上 $a$ 都會使函數中的 $t$ 變為 $at$。再加上 $b$ 時，mgf 會多出 $e^{bt}$，cf 則會多出 $e^{ibt}$。mgf 公式只在所需期望值有限的範圍內使用；cf 對所有實數 $t$ 都存在，因此使用其線性轉換公式時不必另行檢查存在區間。
-
-第一項由定義直接得到
+(5) 若 $Y=aX+b$，其中 $a,b\in\mathbb{R}$，則
+{: .topic-paren-item}
 
 $$
-\varphi_X(0)=\mathbb{E}(1)=1
+\phi_{\sssig Y}(t)=e^{ibt}\,\phi_{\sssig X}(at),\quad\forall\,t\in\mathbb{R}
 $$
-
-同時，由期望值的絕對值不等式可得
-
-$$
-\lvert\varphi_X(t)\rvert
-\leqslant
-\mathbb{E}(\lvert e^{itX}\rvert)
-=
-1
-$$
-
-均勻連續性的證明較為繁瑣，因此收合於下方。有興趣的讀者再行展開閱讀即可。
-
-<details class="topic-proof">
-<summary><strong>均勻連續性的證明</strong></summary>
-<div markdown="1">
-
-為了證明均勻連續，對任意 $t,h\in\mathbb{R}$ 可得
-
-$$
-\begin{aligned}
-\lvert\varphi_X(t+h)-\varphi_X(t)\rvert
-&=
-\left\lvert
-\mathbb{E}\left[e^{itX}(e^{ihX}-1)\right]
-\right\rvert \\[0.35em]
-&\leqslant
-\mathbb{E}\left(\lvert e^{ihX}-1\rvert\right)
-\end{aligned}
-$$
-
-對任意實數 $u$，皆有
-
-$$
-\lvert e^{iu}-1\rvert
-=
-2\left\lvert\sin\left(\frac{u}{2}\right)\right\rvert
-\leqslant
-\min\{\lvert u\rvert,2\}
-$$
-
-以 $\mathbf{1}_A$ 表示事件 $A$ 的指標函數 (indicator function)。取 $M>0$，並把期望值依 $\lvert X\rvert\leqslant M$ 與 $\lvert X\rvert>M$ 分成兩部分，可得
-
-$$
-\begin{aligned}
-\mathbb{E}\left(\lvert e^{ihX}-1\rvert\right)
-&=
-\mathbb{E}\left[\lvert e^{ihX}-1\rvert\mathbf{1}_{\{\lvert X\rvert\leqslant M\}}\right] \\[0.35em]
-&\quad+
-\mathbb{E}\left[\lvert e^{ihX}-1\rvert\mathbf{1}_{\{\lvert X\rvert>M\}}\right] \\[0.35em]
-&\leqslant
-\lvert h\rvert M+2\mathbb{P}(\lvert X\rvert>M)
-\end{aligned}
-$$
-
-因 $X$ 為實值隨機變數，當 $M\to\infty$ 時，$\mathbb{P}(\lvert X\rvert>M)\to 0$。給定 $\varepsilon>0$，可取 $M>0$ 使
-
-$$
-2\mathbb{P}(\lvert X\rvert>M)<\frac{\varepsilon}{2}
-$$
-
-再取 $\delta=\varepsilon/(2M)$。若 $\lvert h\rvert<\delta$，則
-
-$$
-\mathbb{E}\left(\lvert e^{ihX}-1\rvert\right)<\varepsilon
-$$
-
-右側上界不含 $t$，故 $\varphi_X$ 在整條實數線上均勻連續。
-
-</div>
-</details>
-
-若 $Y=aX+b$，則
-
-$$
-\begin{aligned}
-\varphi_Y(t)
-&=
-\mathbb{E}[e^{it(aX+b)}] \\[0.35em]
-&=
-e^{ibt}\mathbb{E}(e^{i(at)X}) \\[0.35em]
-&=
-e^{ibt}\varphi_X(at)
-\end{aligned}
-$$
-
-再由 $e^{-itX}=\overline{e^{itX}}$ 可得共軛關係。最後，若 $X_1,\ldots,X_n$ 完全獨立，則
-
-$$
-\begin{aligned}
-\varphi_{X_1+\cdots+X_n}(t)
-&=
-\mathbb{E}\left[
-\prod_{j=1}^{n}e^{itX_j}
-\right] \\[0.35em]
-&=
-\prod_{j=1}^{n}\mathbb{E}(e^{itX_j}) \\[0.35em]
-&=
-\prod_{j=1}^{n}\varphi_{X_j}(t)
-\end{aligned}
-$$
-
-其中第二個等號使用了獨立性。
-
-完全獨立隨機變數的正式定義會在下一章給出。此處先使用它所帶來的乘積性質，也就是獨立隨機變數的函數，其期望值可分解成各期望值的乘積。
-
-<div id="note-cf-product-independence" class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-獨立性足以推出和的 cf 等於各 cf 的乘積；反向敘述並不成立。只知道 $\varphi_{X+Y}(t)=\varphi_X(t)\varphi_Y(t)$ 對所有 $t$ 成立，仍不足以斷定 $X$ 與 $Y$ 獨立。
-</div>
-
-## cf 與動差
-
-cf 總是存在，但其導數是否存在取決於動差條件。若對某個正整數 $r$ 有
-
-$$
-\mathbb{E}(\lvert X\rvert^r)<\infty
-$$
-
-則可把微分移入期望值，得到
-
-$$
-\varphi_X^{(r)}(t)
-=
-\mathbb{E}\left[(iX)^r e^{itX}\right]
-$$
-
-令 $t=0$ 可得
-
-$$
-\varphi_X^{(r)}(0)
-=
-i^r\mathbb{E}(X^r)
-$$
-
-因此，cf 可在適當動差條件下生成原動差。cf 存在本身則不保證任何正整數階動差存在。
-
-<div id="note-cf-derivative-converse" class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-由動差存在推導 cf 可微時，需要 $\mathbb{E}(\lvert X\rvert^r)<\infty$。反向命題須區分 $r$ 的奇偶。若 cf 在 $t=0$ 的 $r$ 階導數存在，$r$ 為偶數時可推出 $\mathbb{E}(\lvert X\rvert^r)<\infty$；$r$ 為奇數時，一般只能保證 $\mathbb{E}(\lvert X\rvert^{r-1})<\infty$。
-</div>
-
-## cf 唯一決定分配
-
-cf 不只整理動差，也能完整辨認機率分配。這項性質不要求 mgf 存在。
-
-<div id="theorem-22" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 2.2 (Uniqueness of cf)</div>
-
-若實值隨機變數 $X$ 與 $Y$ 的 cf 對每個 $t\in\mathbb{R}$ 皆滿足
-
-$$
-\varphi_X(t)=\varphi_Y(t)
-$$
-
-則 $X$ 與 $Y$ 具有相同機率分配。
 
 </div>
 
 <div class="topic-proof" markdown="1">
-**Proof.** 令 $F$ 為 $X$ 的 cdf，$a<b$ 且 $a,b$ 都是 $F$ 的連續點。由 cf 的反演公式可得
+**Proof.** 第 (1) 款由 [Definition 2.19](#def-characteristic-function) 在 $t=0$ 取值即得
 
 $$
-F(b)-F(a)
-=
-\frac{1}{2\pi}
-\lim_{T\to\infty}
-\int_{-T}^{T}
-\frac{e^{-ita}-e^{-itb}}{it}
-\varphi_X(t)\,dt
+\phi_{\sssig X}(0)=\mathbb{E}\bigl(e^{0}\bigr)=\mathbb{E}(1)=1
 $$
 
-被積函數在 $t=0$ 的值以連續延伸解釋。右側完全由 $\varphi_X$ 決定，因此 cf 可決定所有連續點之間的區間機率，進而決定 cdf。故若 $\varphi_X(t)=\varphi_Y(t)$ 對所有實數 $t$ 成立，兩個 cdf 相同。原式得證。<span class="topic-qed">$\square$</span>
+第 (2) 款用到一項關於**複數值隨機變數 <span lang="en">(complex-valued random variable)</span>** 的事實: 這一型隨機變數 $Z$ 的期望值是實部與虛部各自取期望值，而 $\lvert\mathbb{E}(Z)\rvert\leqslant\mathbb{E}(\lvert Z\rvert)$ 在這一型同樣成立。取 $Z=e^{itX}$ 並代入 $\lvert e^{itX}\rvert=1$ 可得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\lvert\phi_{\sssig X}(t)\rvert=\bigl\lvert\mathbb{E}\bigl(e^{itX}\bigr)\bigr\rvert\leqslant\mathbb{E}\bigl(\bigl\lvert e^{itX}\bigr\rvert\bigr)=\mathbb{E}(1)=1
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\lvert\phi_{\sssig X}(t)\rvert&=\bigl\lvert\mathbb{E}\bigl(e^{itX}\bigr)\bigr\rvert\\[0.45em]
+&\leqslant\mathbb{E}\bigl(\bigl\lvert e^{itX}\bigr\rvert\bigr)\\[0.45em]
+&=\mathbb{E}(1)=1
+\end{aligned}
+$$
+
 </div>
 
-<div id="note-cf-density-inversion" class="topic-box topic-box--note" markdown="1">
+第 (3) 款在此僅以連續型隨機變數證明，離散型同理可證。對任意 <span class="text-nowrap">$t,h\in\mathbb{R}$，</span>把兩個函數值相減再提出 $e^{itX}$ 可得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\bigl\lvert\phi_{\sssig X}(t+h)-\phi_{\sssig X}(t)\bigr\rvert=\Bigl\lvert\mathbb{E}\bigl[e^{itX}\bigl(e^{ihX}-1\bigr)\bigr]\Bigr\rvert\leqslant\mathbb{E}\bigl(\bigl\lvert e^{ihX}-1\bigr\rvert\bigr)
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\bigl\lvert\phi_{\sssig X}(t+h)-\phi_{\sssig X}(t)\bigr\rvert\\[0.45em]
+&\quad =\Bigl\lvert\mathbb{E}\bigl[e^{itX}\bigl(e^{ihX}-1\bigr)\bigr]\Bigr\rvert\\[0.45em]
+&\quad \leqslant\mathbb{E}\bigl(\bigl\lvert e^{ihX}-1\bigr\rvert\bigr)
+\end{aligned}
+$$
+
+</div>
+
+其中不等號同樣由 $\lvert\mathbb{E}(Z)\rvert\leqslant\mathbb{E}(\lvert Z\rvert)$ 與 $\lvert e^{itX}\rvert=1$ 得到。右側已經與 $t$ 無關，因此只要證明它可以隨著 $h$ 變小而一致地變小即可。給定 $\varepsilon>0$，先取 $c>0$ 夠大，使得
+
+$$
+\mathbb{P}\bigl(\lvert X\rvert>c\bigr)<\frac{\,\varepsilon\,}{4}
+$$
+
+再把右側的期望值依 $\lvert x\rvert\leqslant c$ 與 $\lvert x\rvert>c$ 拆成兩段，可得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{E}\bigl(\bigl\lvert e^{ihX}-1\bigr\rvert\bigr)=\int_{\lvert x\rvert\leqslant c}\bigl\lvert e^{ihx}-1\bigr\rvert\,f_{\sssig X}(x)\,dx+\int_{\lvert x\rvert>c}\bigl\lvert e^{ihx}-1\bigr\rvert\,f_{\sssig X}(x)\,dx
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\mathbb{E}\bigl(\bigl\lvert e^{ihX}-1\bigr\rvert\bigr)\\[0.45em]
+&\quad =\int_{\lvert x\rvert\leqslant c}\bigl\lvert e^{ihx}-1\bigr\rvert\,f_{\sssig X}(x)\,dx\\[0.45em]
+&\qquad +\int_{\lvert x\rvert>c}\bigl\lvert e^{ihx}-1\bigr\rvert\,f_{\sssig X}(x)\,dx
+\end{aligned}
+$$
+
+</div>
+
+下面會用到 $\lvert e^{iu}-1\rvert\leqslant\lvert u\rvert$ 這個界限。由歐拉公式可得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\bigl\lvert e^{iu}-1\bigr\rvert^{2}=(\cos u-1)^{2}+\sin^{2}u=2(1-\cos u)=4\sin^{2}\frac{u}{\,2\,}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\bigl\lvert e^{iu}-1\bigr\rvert^{2}&=(\cos u-1)^{2}+\sin^{2}u\\[0.45em]
+&=2(1-\cos u)=4\sin^{2}\frac{u}{\,2\,}
+\end{aligned}
+$$
+
+</div>
+
+再由 $\lvert\sin\frac{u}{\,2\,}\rvert\leqslant\bigl\lvert\frac{u}{\,2\,}\bigr\rvert$ 即得 $\lvert e^{iu}-1\rvert=2\lvert\sin\frac{u}{\,2\,}\rvert\leqslant\lvert u\rvert$。第一段之中 <span class="text-nowrap">$\lvert x\rvert\leqslant c$，</span>因而 $\lvert e^{ihx}-1\rvert\leqslant\lvert hx\rvert\leqslant\lvert h\rvert c$，只要取 $\lvert h\rvert<\frac{\varepsilon}{\,2c\,}$ 便有 $\lvert e^{ihx}-1\rvert<\frac{\varepsilon}{\,2\,}$；第二段之中被積函數以 $\lvert e^{ihx}-1\rvert\leqslant2$ 為界，故
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{E}\bigl(\bigl\lvert e^{ihX}-1\bigr\rvert\bigr)\leqslant\frac{\,\varepsilon\,}{2}+2\times\frac{\,\varepsilon\,}{4}=\varepsilon
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\mathbb{E}\bigl(\bigl\lvert e^{ihX}-1\bigr\rvert\bigr)\\[0.45em]
+&\quad \leqslant\frac{\,\varepsilon\,}{2}+2\times\frac{\,\varepsilon\,}{4}=\varepsilon
+\end{aligned}
+$$
+
+</div>
+
+這個 $h$ 的取法只與 $c$ 及 $\varepsilon$ 有關而與 $t$ 無關，故 $\phi\_{\sssig X}$ 在 $\mathbb{R}$ 上均勻連續。
+
+第 (4) 款由 $e^{-itx}$ 與 $e^{itx}$ 互為共軛複數，且取共軛與取期望值可以交換順序，故有下式
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\phi_{\sssig X}(-t)=\mathbb{E}\bigl(e^{-itX}\bigr)=\overline{\mathbb{E}\bigl(e^{itX}\bigr)}=\overline{\phi_{\sssig X}(t)}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\phi_{\sssig X}(-t)&=\mathbb{E}\bigl(e^{-itX}\bigr)\\[0.45em]
+&=\overline{\mathbb{E}\bigl(e^{itX}\bigr)}=\overline{\phi_{\sssig X}(t)}
+\end{aligned}
+$$
+
+</div>
+
+第 (5) 款由 $e^{it(aX+b)}=e^{ibt}e^{i(at)X}$，再把與 $X$ 無關的 $e^{ibt}$ 提到期望值之外，可以得到下式
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\phi_{\sssig Y}(t)=\mathbb{E}\bigl(e^{it(aX+b)}\bigr)=e^{ibt}\,\mathbb{E}\bigl(e^{i(at)X}\bigr)=e^{ibt}\,\phi_{\sssig X}(at)
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\phi_{\sssig Y}(t)&=\mathbb{E}\bigl(e^{it(aX+b)}\bigr)\\[0.45em]
+&=e^{ibt}\,\mathbb{E}\bigl(e^{i(at)X}\bigr)\\[0.45em]
+&=e^{ibt}\,\phi_{\sssig X}(at)
+\end{aligned}
+$$
+
+</div>
+
+原式得證。 <span class="topic-qed">$\square$</span>
+</div>
+
+接下來看特徵函數如何生成原動差。
+
+<div id="thm-cf-generates-moments" class="topic-box topic-box--theorem" markdown="1">
+<div class="topic-box__label">Theorem 2.28 (由 cf 微分生成原動差, moments generated by the cf)</div>
+
+若 $X$ 為一隨機變數，且 $\mathbb{E}(\lvert X\rvert^{r})<\infty$，則其特徵函數 $\phi\_{\sssig X}(t)$ 的 $r$ 階導數存在且連續，並且
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\phi^{(r)}_{\sssig X}(0)=\left.\frac{d^{r}\phi_{\sssig X}(t)}{d\,t^{r}}\right|_{t=0}=i^{r}\,\mathbb{E}\bigl(X^{r}\bigr)=i^{r}\mu_{\sssig r}^{\prime}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\phi^{(r)}_{\sssig X}(0)&=\left.\frac{d^{r}\phi_{\sssig X}(t)}{d\,t^{r}}\right|_{t=0}\\[0.45em]
+&=i^{r}\,\mathbb{E}\bigl(X^{r}\bigr)=i^{r}\mu_{\sssig r}^{\prime}
+\end{aligned}
+$$
+
+</div>
+
+</div>
+
+<div class="topic-proof" markdown="1">
+**Proof.** 在此僅以連續型隨機變數證明，離散型同理可證。由 [Definition 2.19](#def-characteristic-function) 對 $t$ 微分 $r$ 次可得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+\frac{d^{r}\phi_{\sssig X}(t)}{d\,t^{r}}&=\frac{d^{r}}{d\,t^{r}}\int_{-\infty}^{\infty}e^{itx}\,f_{\sssig X}(x)\,dx=\int_{-\infty}^{\infty}\frac{d^{r}}{d\,t^{r}}e^{itx}\,f_{\sssig X}(x)\,dx\\[0.45em]
+&=\int_{-\infty}^{\infty}(ix)^{r}e^{itx}\,f_{\sssig X}(x)\,dx=i^{r}\int_{-\infty}^{\infty}x^{r}e^{itx}\,f_{\sssig X}(x)\,dx
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\frac{d^{r}\phi_{\sssig X}(t)}{d\,t^{r}}=\frac{d^{r}}{d\,t^{r}}\int_{-\infty}^{\infty}e^{itx}\,f_{\sssig X}(x)\,dx\\[0.45em]
+&\quad =\int_{-\infty}^{\infty}\frac{d^{r}}{d\,t^{r}}e^{itx}\,f_{\sssig X}(x)\,dx\\[0.45em]
+&\quad =\int_{-\infty}^{\infty}(ix)^{r}e^{itx}\,f_{\sssig X}(x)\,dx\\[0.45em]
+&\quad =i^{r}\int_{-\infty}^{\infty}x^{r}e^{itx}\,f_{\sssig X}(x)\,dx
+\end{aligned}
+$$
+
+</div>
+
+其中微分與積分可以交換順序，是因為被積函數取絕對值之後為 <span class="text-nowrap">$\lvert x\rvert^{r}f\_{\sssig X}(x)$，</span>其在 $\mathbb{R}$ 上的積分正是 $\mathbb{E}(\lvert X\rvert^{r})$，依假設為有限。再於 $t=0$ 取值，並代入 $e^{0}=1$ 即得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\phi^{(r)}_{\sssig X}(0)=i^{r}\int_{-\infty}^{\infty}x^{r}e^{0}\,f_{\sssig X}(x)\,dx=i^{r}\int_{-\infty}^{\infty}x^{r}\,f_{\sssig X}(x)\,dx=i^{r}\,\mathbb{E}\bigl(X^{r}\bigr)
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\phi^{(r)}_{\sssig X}(0)&=i^{r}\int_{-\infty}^{\infty}x^{r}e^{0}\,f_{\sssig X}(x)\,dx\\[0.45em]
+&=i^{r}\int_{-\infty}^{\infty}x^{r}\,f_{\sssig X}(x)\,dx\\[0.45em]
+&=i^{r}\,\mathbb{E}\bigl(X^{r}\bigr)
+\end{aligned}
+$$
+
+</div>
+
+原式得證。 <span class="topic-qed">$\square$</span>
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-不能在沒有條件時直接由 cf 寫出 pdf。若
-
-$$
-\int_{-\infty}^{\infty}\lvert\varphi_X(t)\rvert\,dt<\infty
-$$
-
-則 $X$ 具有有界且連續的 pdf，並可由傅立葉反演公式 (Fourier inversion formula) 求得
-
-$$
-f_X(x)
-=
-\frac{1}{2\pi}
-\int_{-\infty}^{\infty}e^{-itx}\varphi_X(t)\,dt
-$$
-
-一般分配的反演應使用 cdf 版本及其連續點條件。
-</div>
-
-<div id="example-221" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.21 (The Cauchy Sample Mean)</div>
-
-令 $X_1,\ldots,X_n$ 為完全獨立且具有標準柯西分配 (standard Cauchy distribution) 的隨機變數，其共同 cf 為
-
-$$
-\varphi_X(t)=e^{-\lvert t\rvert}
-$$
-
-考慮樣本平均數
-
-$$
-\overline{X}_n
-=
-\frac{1}{n}\sum_{j=1}^{n}X_j
-$$
-
-由[線性轉換與獨立和的性質](#proposition-214)可得
-
-$$
-\begin{aligned}
-\varphi_{\overline{X}_n}(t)
-&=
-\prod_{j=1}^{n}
-\varphi_{X_j}\left(\frac{t}{n}\right) \\[0.35em]
-&=
-\left[
-e^{-\lvert t/n\rvert}
-\right]^n \\[0.35em]
-&=
-e^{-\lvert t\rvert}
-\end{aligned}
-$$
-
-這正是每個 $X_j$ 的 cf。由[cf 的唯一性](#theorem-22)可知，對每個正整數 $n$，皆有
-
-$$
-\overline{X}_n
-\overset{d}{=}
-X_1
-$$
-
-反演公式還能直接求出樣本平均數的 pdf。先檢查絕對可積條件，可得
-
-$$
-\begin{aligned}
-\int_{-\infty}^{\infty}
-\left\lvert\varphi_{\overline{X}_n}(t)\right\rvert\,dt
-&=
-2\int_0^\infty e^{-t}\,dt \\[0.35em]
-&=
-2
-<
-\infty
-\end{aligned}
-$$
-
-故 $\overline{X}_n$ 具有有界且連續的 pdf。將反演積分在 $t=0$ 的兩側分開。在負半軸上，$\lvert t\rvert=-t$，所以 $e^{-\lvert t\rvert}=e^t$。令 $u=-t$，則 $t=-u$、$dt=-du$，而上下限由 $t\colon -\infty\to 0$ 變成 $u\colon \infty\to 0$。因此，負半軸部分可寫為
-
-$$
-\begin{aligned}
-\int_{-\infty}^{0}e^{-itx}e^t\,dt
-&=
-\int_{\infty}^{0}e^{iux}e^{-u}(-du) \\[0.35em]
-&=
-\int_0^\infty e^{iux}e^{-u}\,du
-\end{aligned}
-$$
-
-$dt=-du$ 帶來的負號與對調積分上下限帶來的負號相消。把這個結果與正半軸部分相加，再將第一個積分的積分變數 $u$ 改記為 $t$，可得
-
-$$
-\begin{aligned}
-f_{\overline{X}_n}(x)
-&=
-\frac{1}{2\pi}
-\int_{-\infty}^{\infty}
-e^{-itx}e^{-\lvert t\rvert}\,dt \\[0.35em]
-&=
-\frac{1}{2\pi}
-\int_0^\infty e^{iux}e^{-u}\,du \\[-0.05em]
-&\quad+
-\frac{1}{2\pi}
-\int_0^\infty e^{-t}e^{-itx}\,dt \\[0.35em]
-&=
-\frac{1}{2\pi}
-\int_0^\infty
-e^{-t}\left(e^{itx}+e^{-itx}\right)\,dt \\[0.35em]
-&=
-\frac{1}{\pi}
-\int_0^\infty e^{-t}\cos(tx)\,dt
-\end{aligned}
-$$
-
-由 $e^{itx}+e^{-itx}=2\cos(tx)$，上述兩個積分相加後便得到餘弦積分；因子 $2$ 與 $1/(2\pi)$ 合併成 $1/\pi$。
-
-為了繼續計算，將 $\cos(tx)$ 以複指數展開，可得
-
-$$
-\begin{aligned}
-e^{-t}\cos(tx)
-&=
-\frac{1}{2}e^{-t}\left(e^{itx}+e^{-itx}\right) \\[0.35em]
-&=
-\frac{1}{2}\left(e^{-t+itx}+e^{-t-itx}\right) \\[0.35em]
-&=
-\frac{1}{2}
-\left[
-e^{-(1-ix)t}
-+
-e^{-(1+ix)t}
-\right]
-\end{aligned}
-$$
-
-第一項的指數滿足 $-t+itx=-(1-ix)t$，第二項則滿足 $-t-itx=-(1+ix)t$。將上式代入前一個餘弦積分，其中的因子 $1/2$ 與 $1/\pi$ 合併成 $1/(2\pi)$，因此
-
-$$
-\begin{aligned}
-f_{\overline{X}_n}(x)
-&=
-\frac{1}{2\pi}
-\int_0^\infty
-\left[
-e^{-(1-ix)t}
-+
-e^{-(1+ix)t}
-\right]\,dt \\[0.35em]
-&=
-\frac{1}{2\pi}
-\int_0^\infty e^{-(1-ix)t}\,dt \\[-0.05em]
-&\quad+
-\frac{1}{2\pi}
-\int_0^\infty e^{-(1+ix)t}\,dt \\[0.35em]
-&=
-\frac{1}{2\pi}
-\left(
-\frac{1}{1-ix}
-+
-\frac{1}{1+ix}
-\right) \\[0.35em]
-&=
-\frac{1}{\pi(1+x^2)}
-\quad x\in\mathbb{R}
-\end{aligned}
-$$
-
-上式中的兩個複數值廣義積分都收斂，因為 $1-ix$ 與 $1+ix$ 的實部皆為 $1$。所得 pdf 正是標準柯西密度，也就是樣本平均數仍具有標準柯西分配。
-
-標準柯西分配沒有有限期望值與變異數，因此不滿足有限變異數型中央極限定理的前提；中央極限定理不能套用，原因不是它沒有 mgf。
+[Theorem 2.28](#thm-cf-generates-moments) 的前提是動差存在，而結論是導數可求得動差。反過來想僅由導數存在就直接得到動差時，結論會弱一些，而且要分奇偶兩種情形: 若 $\phi\_{\sssig X}(t)$ 在 $t=0$ 的 $r$ 階導數存在，則 $r$ 為偶數時可得 $\mathbb{E}(\lvert X\rvert^{r})<\infty$，即 $r$ 階動差存在；$r$ 為奇數時一般只能得到 $r-1$ 階動差存在。也就是說，這個定理的逆命題只在偶數階完全成立。
 
 </div>
+
+<div id="thm-cf-mgf-pgf-relation" class="topic-box topic-box--theorem" markdown="1">
+<div class="topic-box__label">Theorem 2.29 (cf 與 mgf、pgf 的關係, relations among cf, mgf and pgf)</div>
+
+若 $X$ 為一隨機變數，則
+
+(1) 在 $M\_{\sssig X}$ 的自變數延伸到複數的意義之下
+{: .topic-paren-item}
+
+$$
+\phi_{\sssig X}(t)=M_{\sssig X}(it),\quad\forall\,t\in\mathbb{R}
+$$
+
+(2) 若 $X$ 另為非負整數隨機變數，則
+{: .topic-paren-item}
+
+$$
+\phi_{\sssig X}(t)=G_{\sssig X}\bigl(e^{it}\bigr),\quad\forall\,t\in\mathbb{R}
+$$
+
+</div>
+
+<div class="topic-proof" markdown="1">
+**Proof.**
+
+(1) 由[動差母函數的定義](/teaching-topics/moment-generating-functions/#def-mgf)，把 $M\_{\sssig X}$ 的自變數取為純虛數 $it$ 可得
+{: .topic-paren-item}
+
+$$
+M_{\sssig X}(it)=\mathbb{E}\bigl(e^{itX}\bigr)=\phi_{\sssig X}(t)
+$$
+
+(2) 由[機率母函數的定義](/teaching-topics/probability-cumulant-generating-functions/#def-pgf)，把 $G\_{\sssig X}$ 的自變數取為 $e^{it}$ 可得
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+G_{\sssig X}\bigl(e^{it}\bigr)=\mathbb{E}\Bigl[\bigl(e^{it}\bigr)^{X}\Bigr]=\mathbb{E}\bigl(e^{itX}\bigr)=\phi_{\sssig X}(t)
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+G_{\sssig X}\bigl(e^{it}\bigr)&=\mathbb{E}\Bigl[\bigl(e^{it}\bigr)^{X}\Bigr]\\[0.45em]
+&=\mathbb{E}\bigl(e^{itX}\bigr)=\phi_{\sssig X}(t)
+\end{aligned}
+$$
+
+</div>
+
+此處的代入是合法的: 由 $\lvert e^{it}\rvert=1$ 可知該級數各項的絕對值之和為 $\sum\_{x=0}^{\infty}p\_{\sssig X}(x)=1$，級數絕對收斂。
+{: .topic-paren-cont}
+
+原式得證。 <span class="topic-qed">$\square$</span>
+{: .topic-paren-cont}
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+[Definition 2.16](/teaching-topics/moment-generating-functions/#def-mgf) 只把 $M\_{\sssig X}$ 定義在實自變數上，並且要求該期望值在 $-h<t<h$ 之內皆存在。因此 $M\_{\sssig X}(it)$ 不是把 $it$ 直接代進一個已經定義好的函數，而是把定義式 $\mathbb{E}(e^{tX})$ 中的自變數容許取複數值之後才有的延伸寫法，[Theorem 2.29](#thm-cf-mgf-pgf-relation) 第 (1) 款所說的也正是延伸之後的兩式相等。特徵函數則不需要這一層延伸，它本來就直接定義在實自變數 $t$ 上。
+
+</div>
+
+有了基本性質與生成動差的方式之後，接著看特徵函數最有用的一項性質。
+
+<div id="thm-cf-uniqueness" class="topic-box topic-box--theorem" markdown="1">
+<div class="topic-box__label">Theorem 2.30 (特徵函數的唯一性, uniqueness of cf)</div>
+
+若 $X, Y$ 為二隨機變數，則二者之特徵函數 $\phi\_{\sssig X}(t), \phi\_{\sssig Y}(t)$ 對一切 $t\in\mathbb{R}$ 皆相等，若且唯若二者之 cdf 亦相等，即
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\phi_{\sssig X}(t)=\phi_{\sssig Y}(t),\ \forall\,t\in\mathbb{R}\Longleftrightarrow F_{\sssig X}(s)=F_{\sssig Y}(s),\ \forall\,s\in\mathbb{R}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+\phi_{\sssig X}(t)=\phi_{\sssig Y}(t),\ \forall\,t\in\mathbb{R}\\[0.45em]
+\Longleftrightarrow F_{\sssig X}(s)=F_{\sssig Y}(s),\ \forall\,s\in\mathbb{R}
+\end{gathered}
+$$
+
+</div>
+
+</div>
+
+<div class="topic-proof" markdown="1">
+**Proof.** 見黃文璋 (2010)，《機率論》，二版，第四章〈唯一性及倒轉公式〉一節；亦見 Billingsley (1995)，*Probability and Measure*，3rd ed.，第五章。 <span class="topic-qed">$\square$</span>
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+唯一性的來源是**反演公式 <span lang="en">(inversion formula)</span>**，或譯為**倒轉公式**，它把分配由特徵函數反算回來。若 $a<b$ 皆為 $F\_{\sssig X}$ 的連續點，則
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+F_{\sssig X}(b)-F_{\sssig X}(a)=\frac{1}{\,2\pi\,}\lim_{c\to\infty}\int_{-c}^{c}\frac{e^{-ita}-e^{-itb}}{it}\,\phi_{\sssig X}(t)\,dt
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&F_{\sssig X}(b)-F_{\sssig X}(a)\\[0.45em]
+&\quad =\frac{1}{\,2\pi\,}\lim_{c\to\infty}\\[0.45em]
+&\qquad\quad \int_{-c}^{c}\frac{e^{-ita}-e^{-itb}}{it}\,\phi_{\sssig X}(t)\,dt
+\end{aligned}
+$$
+
+</div>
+
+式中的被積函數在 $t=0$ 沒有定義，該點的值以連續延伸解釋，即取 $t\to0$ 的極限 $b-a$。
+
+至於密度，須另加一個條件。若 $\int\_{-\infty}^{\infty}\lvert\phi\_{\sssig X}(t)\rvert\,dt<\infty$，則 $X$ 的 pdf 存在、有界且均勻連續，並且
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+f_{\sssig X}(x)=\frac{1}{\,2\pi\,}\int_{-\infty}^{\infty}e^{-itx}\,\phi_{\sssig X}(t)\,dt,\quad x\in\mathbb{R}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+f_{\sssig X}(x)&=\frac{1}{\,2\pi\,}\int_{-\infty}^{\infty}e^{-itx}\,\phi_{\sssig X}(t)\,dt,\\[0.45em]
+&\quad x\in\mathbb{R}
+\end{aligned}
+$$
+
+</div>
+
+特徵函數對每個分配都存在，但這並不表示每個隨機變數都有 pdf: 上面這個絕對可積的條件不成立時，反演只能停在 cdf 的層次，不能直接推得 pdf。
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+**獨立 <span lang="en">(independent)</span>** 與**同分配 <span lang="en">(identically distributed)</span>** 是我們在下一個章節才會提到的性質，在此階段讀者不妨想像成，每個隨機變數不互相影響，且客觀條件皆相同。在彼此獨立的前提之下，$e^{itX\_{1}},\ldots,e^{itX\_{n}}$ 也彼此不互相影響，期望值因而可以逐項相乘，即<!-- ref-point: 第三章發布後，把「獨立」改回指向 /teaching-topics/independent-random-variables/#def-indep-r-v 的站內連結。目前第三章 published: false，依 EDITORIAL 第 308 行「未發布草稿不可由已發布文章連入」，此處暫不放連結。 -->
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\phi_{\sssig X_{1}+\cdots+X_{n}}(t)=\prod_{j=1}^{n}\phi_{\sssig X_{j}}(t),\quad t\in\mathbb{R}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\phi_{\sssig X_{1}+\cdots+X_{n}}(t)&=\prod_{j=1}^{n}\phi_{\sssig X_{j}}(t),\\[0.45em]
+&\quad t\in\mathbb{R}
+\end{aligned}
+$$
+
+</div>
+
+正式的定義與證明留到下一個章節，這一式在下面的例題馬上就會用到。
+
+</div>
+
+<div id="ex-cauchy-sample-mean-cf" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 2.53</div>
+
+<div lang="en" markdown="1">
+Suppose that $X\_{1}, X\_{2}, \ldots, X\_{n}$ are independent and identically distributed random variables, each having the standard Cauchy pdf
+
+$$
+f(x)=\frac{1}{\,\pi(1+x^{2})\,},\quad x\in\mathbb{R}
+$$
+
+with common characteristic function $\phi(t)=e^{-\lvert t\rvert}$. Show that $\overline{X}\_{n}=\frac{1}{n}\sum\_{j=1}^{n}X\_{j}$ follows the same distribution as $X\_{1}$.
+</div>
+
+依題意可知
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+\phi_{\sssig \overline{X}_{n}}(t)&=\mathbb{E}\bigl(e^{it\overline{X}_{n}}\bigr)=\mathbb{E}\Bigl(e^{\sum_{j=1}^{n}i\frac{t}{n}X_{j}}\Bigr)=\mathbb{E}\Bigl(\prod_{j=1}^{n}e^{i\frac{t}{n}X_{j}}\Bigr)\\[0.45em]
+&=\prod_{j=1}^{n}\mathbb{E}\Bigl(e^{i\frac{t}{n}X_{j}}\Bigr)=\prod_{j=1}^{n}\phi_{\sssig X_{j}}\Bigl(\frac{t}{\,n\,}\Bigr)\\[0.45em]
+&=\prod_{j=1}^{n}e^{-\left\lvert\frac{t}{n}\right\rvert}=\Bigl(e^{-\left\lvert\frac{t}{n}\right\rvert}\Bigr)^{n}=e^{-\lvert t\rvert},\quad t\in\mathbb{R}
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\phi_{\sssig \overline{X}_{n}}(t)=\mathbb{E}\bigl(e^{it\overline{X}_{n}}\bigr)\\[0.45em]
+&\quad =\mathbb{E}\Bigl(e^{\sum_{j=1}^{n}i\frac{t}{n}X_{j}}\Bigr)\\[0.45em]
+&\quad =\mathbb{E}\Bigl(\prod_{j=1}^{n}e^{i\frac{t}{n}X_{j}}\Bigr)\\[0.45em]
+&\quad =\prod_{j=1}^{n}\mathbb{E}\Bigl(e^{i\frac{t}{n}X_{j}}\Bigr)\\[0.45em]
+&\quad =\prod_{j=1}^{n}\phi_{\sssig X_{j}}\Bigl(\frac{t}{\,n\,}\Bigr)\\[0.45em]
+&\quad =\prod_{j=1}^{n}e^{-\left\lvert\frac{t}{n}\right\rvert}=\Bigl(e^{-\left\lvert\frac{t}{n}\right\rvert}\Bigr)^{n}\\[0.45em]
+&\quad =e^{-\lvert t\rvert},\quad t\in\mathbb{R}
+\end{aligned}
+$$
+
+</div>
+
+這正是 $X\_{1}$ 的特徵函數，故由[特徵函數的唯一性](#thm-cf-uniqueness)可知，不論 $n$ 多大，皆有
+
+$$
+\overline{X}_{n}\sim\mathrm{Cauchy}(0,1)
+$$
+
+即 $\overline{X}\_{n}$ 與 $X\_{1}$ 同分配。原式得證。這道例題在後續章節討論中央極限定理時還會再出現。
+
+</div>
+
+最後把特徵函數與動差母函數放在一起，比較四件事。
+
+第一是存在性。mgf 要求 $\mathbb{E}(e^{tX})$ 在 $t=0$ 的某個鄰域之內為有限，並不是每個分配都滿足；cf 則由 $\lvert e^{itX}\rvert=1$ 保證對每一個實值隨機變數與每一個 $t$ 都存在。[Example 2.53](#ex-cauchy-sample-mean-cf) 的標準柯西分配正是一個例子: 它連期望值都不存在，自然沒有 mgf，卻有 $\phi\_{\sssig X}(t)=e^{-\lvert t\rvert}$ 這個形式簡單的 cf。
+
+第二是生成動差。[Theorem 2.21](/teaching-topics/moment-generating-functions/#thm-mgf-generates-moments) 說 mgf 微分 $r$ 次後在 $t=0$ 取值即得 <span class="text-nowrap">$\mathbb{E}(X^{r})$，</span>[Theorem 2.28](#thm-cf-generates-moments) 說 cf 的對應結果多一個 $i^{r}$。兩者的前提也不同: mgf 一旦存在便保證各階動差都存在，cf 這一邊則是逐階要求 $\mathbb{E}(\lvert X\rvert^{r})<\infty$，只換得到 $r$ 階為止。
+
+第三是唯一性。兩者都有: [Theorem 2.23](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness) 說 mgf 相等則分配相等，[Theorem 2.30](#thm-cf-uniqueness) 說 cf 相等則分配相等。差別在於前者附帶了兩個 mgf 都要存在的條件，後者沒有這個附帶條件。
+
+第四是能不能反過來求出分配的密度。mgf 做不到，離散型至多由 $p\_{\sssig 1}e^{a\_{1}t}+\cdots+p\_{\sssig n}e^{a\_{n}t}$ 的形式直接寫出 pmf，連續型只能回頭比對各個常見機率模型的 mgf；cf 則有反演公式，在 $\int\_{-\infty}^{\infty}\lvert\phi\_{\sssig X}(t)\rvert\,dt<\infty$ 之下可以直接算出 pdf。
 
 ## 本篇小結
 
-實值隨機變數 $X$ 的 cf 定義為
+[Definition 2.19](#def-characteristic-function) 把 $\mathbb{E}(e^{itX})$ 定義為 $X$ 的特徵函數 $\phi\_{\sssig X}(t)$。由歐拉公式可知 $\lvert e^{itX}\rvert=1$，因此這個期望值不必附加任何存在性條件，對每一個實值隨機變數與每一個 $t$ 都有定義，這正是它與動差母函數最大的差別。
 
-$$
-\varphi_X(t)=\mathbb{E}(e^{itX})
-$$
+[Theorem 2.27](#thm-cf-properties) 給了五項基本性質: $\phi\_{\sssig X}(0)=1$、$\lvert\phi\_{\sssig X}(t)\rvert\leqslant1$、在 $\mathbb{R}$ 上均勻連續、$\phi\_{\sssig X}(-t)=\overline{\phi\_{\sssig X}(t)}$，以及 $Y=aX+b$ 之下的 $\phi\_{\sssig Y}(t)=e^{ibt}\phi\_{\sssig X}(at)$。[Theorem 2.28](#thm-cf-generates-moments) 的前提是動差存在，而結論是導數可求得動差，只是每微分一次多出一個 $i$，因而在 $t=0$ 取值時得到 $i^{r}\mathbb{E}(X^{r})$；反過來僅由導數存在就直接得到動差則要分奇偶。[Theorem 2.29](#thm-cf-mgf-pgf-relation) 把它接回前兩篇的兩個母函數。在自變數延伸到複數的意義之下 $\phi\_{\sssig X}(t)=M\_{\sssig X}(it)$，而非負整數隨機變數另有 $\phi\_{\sssig X}(t)=G\_{\sssig X}(e^{it})$。[Theorem 2.30](#thm-cf-uniqueness) 則是本篇的重點。特徵函數相等若且唯若分配相同，並且由反演公式可以把 cdf 反算回來，在絕對可積的條件之下還可以算出 pdf。[Example 2.53](#ex-cauchy-sample-mean-cf) 示範了這項性質的用法，標準柯西分配的 $n$ 個獨立觀測值取平均之後，特徵函數仍是 <span class="text-nowrap">$e^{-\lvert t\rvert}$，</span>因此樣本平均數與單一觀測值同分配。
 
-因為 $\lvert e^{itX}\rvert=1$，cf 對所有 $t\in\mathbb{R}$ 都存在。cf 滿足 $\varphi_X(0)=1$、$\lvert\varphi_X(t)\rvert\leqslant 1$ 與均勻連續性；線性轉換可改寫其引數，獨立隨機變數之和則對應 cf 的乘積。
-
-若 $\mathbb{E}(\lvert X\rvert^r)<\infty$，cf 的 $r$ 階導數可生成 $r$ 階原動差。cf 的唯一性則說明，只要兩個 cf 在整條實數線上相同，對應的機率分配便相同。pdf 的反演公式另有絕對可積條件，不能由 cf 存在直接推出。
-
-[下一篇文章](/teaching-topics/markov-inequality/)將轉向機率不等式。當完整分配未知，只知道非負性與期望值時，馬可夫不等式仍能給出尾端機率的上界。
+到這裡，動差、動差母函數、機率母函數、累積量母函數與特徵函數已經把「以一個函數表示整個分配」這條線走完。[下一篇](/teaching-topics/probability-inequalities/)換一個處境。分配的形式並不清楚，手上只有期望值，或再加上一個[變異數](/teaching-topics/variance/#def-variance)，這時候能對機率說出什麼。
 
 ## 參考文獻與延伸閱讀
 
-- 黃文璋，2003，《機率論》，初版，華泰文化。
-- 黃文璋，2003，《數理統計》，初版，華泰文化。
+- 黃文璋，2010，《機率論》，二版，華泰文化。
 - Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
 - Kai Lai Chung. 2001. *A Course in Probability Theory*. 3rd ed. Academic Press.
-- George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
+- Eugene Lukacs. 1970. *Characteristic Functions*. 2nd ed. Griffin.

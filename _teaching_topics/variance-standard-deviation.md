@@ -1,287 +1,732 @@
 ---
-title: "變異數與標準差"
-subtitle: "Variance and Standard Deviation"
+title: "變異數的求算與標準差"
+subtitle: "Computing the Variance and the Standard Deviation"
 layout: topic
 collection: teaching_topics
 category: "機率概論"
 chapter: 2
-topic: 7
-order: 207
+topic: 9
+order: 209
 permalink: /teaching-topics/variance-standard-deviation/
-date: 2026-06-06
-published: false
-listed: false
-excerpt: "期望值給出隨機變數的平均位置。變異數則衡量隨機變數離開此平均位置的平均程度，標準差再把單位還原回原來的尺度。"
+date: 2026-08-06
+published: true
+excerpt: "三道例題示範變異數的求算: 線性關係下直接套用平方伸縮性，分段定義的密度以分段積分求出期望值與平方期望值，混合型則把離散部分與連續部分分開計算。期望值另有一項重要特性: 在所有實數之中，期望值使平方離差的期望值達到最小。若只知道期望值與變異數，$g(X)$ 的期望值與變異數仍可由泰勒級數展開求得近似值。標準差是變異數開根號後的量數，單位與期望值相同，性質由變異數承接而來，只是平方伸縮性在標準差中改為絕對伸縮性。"
 ---
 
-[上一篇文章](/teaching-topics/expected-value-random-variables/)討論期望值。期望值給出的是隨機變數的平均位置。不過，只知道平均位置仍然不夠。兩個隨機變數可能具有相同的期望值，卻一個大多集中在期望值附近，另一個常常離期望值很遠。
+[上一篇](/teaching-topics/variance/)給出[變異數](/teaching-topics/variance/#def-variance)的定義、計算公式、函數變異數與兩項性質，並以兩道例題示範計算。本篇接著看三道例題。一道是[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)之間的線性關係，一道的密度函數分段定義，一道則是混合型隨機變數。
 
-因此，除了平均位置之外，我們還需要衡量隨機變數在此位置附近的分散程度。這個量數稱為**變異數 (variance)**。
+三道例題之後，我們回頭補上[期望值](/teaching-topics/expectation/#def-expectation)的一項重要特性。在所有的實數之中，期望值是使平方離差的期望值達到最小的那一個。接著討論在只知道期望值與變異數的情形下，如何以泰勒級數展開求出 $g(X)$ 的期望值與變異數的近似值。最後介紹標準差。它是變異數開根號之後的量數，單位與期望值相同，性質可以直接由變異數的性質承接而來。
 
-<figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/variance-same-mean-different-spread.svg" alt="兩個分配有相同的期望值，但分散程度不同。">
-  <figcaption><span class="topic-figure__label">Fig. 2.15.</span> 兩個分配可以有相同的期望值，卻有不同的分散程度。紅色曲線較分散，綠色曲線較集中；前者對應的變異數較大。</figcaption>
-</figure>
+<div id="ex-income-linear-variance" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 2.19</div>
 
-## 離差與平方
+<div lang="en" markdown="1">
+Suppose that $X$ denotes the number of customer visits recorded in a study of visits and income, and that the variance of $X$ is $0.81$. The income associated with the number of visits is $W=449+0.25X$.
 
-令 $\mu_X=\mathbb{E}(X)$。若 $X$ 取到某個數值，則 $X-\mu_X$ 表示此數值離開平均位置的差距。這個差距稱為**離差 (deviation)**。
+<ol class="topic-list-paren">
+  <li>Find the variance of the income $W$.</li>
+</ol>
+</div>
 
-直接把離差取平均並不能衡量分散程度，因為正離差與負離差會互相抵消。事實上，只要期望值存在，就有 $\mathbb{E}(X-\mu_X)=0$。
+(1) 由 [Theorem 2.13](/teaching-topics/variance/#thm-variance-properties) 的平移不變性與平方伸縮性可知
+{: .topic-paren-item}
 
-因此，若要把「離期望值有多遠」整理成一個非負量，最常見的方式是先取平方，再求期望值。這便導向變異數的定義。
-
-## 變異數
-
-<div class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 2.8</div>
-
-令 $X$ 為隨機變數，且 $\mu_X=\mathbb{E}(X)$。若 $\mathbb{E}(X^2)<\infty$，則稱
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathrm{Var}(X)
-=
-\mathbb{E}\big[(X-\mu_X)^2\big]
+\begin{aligned}
+\mathrm{Var}(W)&=\mathrm{Var}(449+0.25X)=0.25^{2}\times\mathrm{Var}(X)\\[0.45em]
+&=0.0625\times0.81=0.050625
+\end{aligned}
 $$
 
-為 $X$ 的**變異數 (variance)**。變異數也常記為 $\sigma_X^2$。
-
-若 $X$ 為離散型隨機變數，pmf 為 $p_X$，則
-
-$$
-\mathrm{Var}(X)
-=
-\sum_{x\in\mathcal{R}_X}(x-\mu_X)^2p_X(x)
-$$
-
-若 $X$ 為連續型隨機變數，pdf 為 $f_X$，則
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\mathrm{Var}(X)
-=
-\int_{-\infty}^{\infty}(x-\mu_X)^2f_X(x)\,dx
+\begin{aligned}
+&\mathrm{Var}(W)=\mathrm{Var}(449+0.25X)\\[0.45em]
+&\quad =0.25^{2}\times\mathrm{Var}(X)\\[0.45em]
+&\quad =0.0625\times0.81=0.050625
+\end{aligned}
 $$
 
 </div>
 
-變異數本身也是一種期望值。它不是直接平均 $X$，而是平均 $(X-\mu_X)^2$。換言之，變異數是**離差平方的期望值**，可用來描述隨機變數平均而言離開期望值的程度。
-
-<div class="topic-box topic-box--interlude" markdown="1">
-<div class="topic-box__label">直覺校準 2.8</div>
-
-平方有兩個作用。第一，平方後的離差不會發生正負相消。第二，較大的離差在平方後會被放大，因此變異數對遠離期望值的取值相當敏感。
-
-這個性質有利也有弊。若遠離期望值的結果本來就值得特別注意，平方會把它清楚呈現出來。若資料中存在極端值，變異數也會受到較明顯的影響。這也是後續統計學會另外討論其他分散量數的原因之一。
 </div>
 
-<div class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.9 (Same Mean, Different Variance)</div>
+<div id="ex-piecewise-density-variance" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 2.20</div>
 
-令 $X$ 與 $Y$ 為兩個離散型隨機變數，其分配可寫為
-
-$$
-\mathbb{P}(X=0)=\mathbb{P}(X=2)=\frac{1}{2},
-\qquad
-\mathbb{P}(Y=0.5)=\mathbb{P}(Y=1.5)=\frac{1}{2}
-$$
-
-兩者皆以 $1$ 為對稱中心，所以期望值同為 $1$。然而，$X$ 的取值離 $1$ 較遠，$Y$ 的取值離 $1$ 較近。由定義可得
+令隨機變數 $X$ 的 pdf 為
 
 $$
-\mathrm{Var}(X)
-=
-(0-1)^2\cdot\frac{1}{2}
-+(2-1)^2\cdot\frac{1}{2}
-=1
+f_{\sssig X}(x)=
+\left\lbrace
+\begin{array}{c@{\quad}l}
+0, & x<0\\[0.4em]
+x, & 0\leqslant x<1\\[0.4em]
+\dfrac{1}{2}, & 1\leqslant x<2\\[0.6em]
+0, & x\geqslant2
+\end{array}
+\right.
 $$
 
-由定義計算 $Y$ 的變異數則有
+求 $X$ 之期望值與變異數。
+
+先算出期望值為
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathrm{Var}(Y)
-=
-(0.5-1)^2\cdot\frac{1}{2}
-+(1.5-1)^2\cdot\frac{1}{2}
-=\frac{1}{4}
+\begin{aligned}
+\mathbb{E}(X)&=\int_{-\infty}^{\infty}x\,f_{\sssig X}(x)\,dx=\int_{0}^{1}x\cdot x\,dx+\int_{1}^{2}x\cdot\frac{1}{\,2\,}\,dx\\[0.45em]
+&=\left[\frac{x^{3}}{3}\right]_{0}^{1}+\left[\frac{x^{2}}{4}\right]_{1}^{2}=\left[\frac{1^{3}}{3}-\frac{0^{3}}{3}\right]+\left[\frac{2^{2}}{4}-\frac{1^{2}}{4}\right]=\frac{\,13\,}{12}
+\end{aligned}
 $$
 
-因此，即使兩個隨機變數有相同的期望值，它們也可能有不同的分散程度。
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{E}(X)&=\int_{-\infty}^{\infty}x\,f_{\sssig X}(x)\,dx\\[0.45em]
+&=\int_{0}^{1}x\cdot x\,dx\\[0.2em]
+&\quad +\int_{1}^{2}x\cdot\frac{1}{\,2\,}\,dx\\[0.45em]
+&=\left[\frac{x^{3}}{3}\right]_{0}^{1}+\left[\frac{x^{2}}{4}\right]_{1}^{2}\\[0.45em]
+&=\left[\frac{1^{3}}{3}-\frac{0^{3}}{3}\right]\\[0.2em]
+&\quad +\left[\frac{2^{2}}{4}-\frac{1^{2}}{4}\right]\\[0.45em]
+&=\frac{\,13\,}{12}
+\end{aligned}
+$$
+
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
+再算出平方期望值為
 
-這個例子選用離散型隨機變數，是因為有限個取值能讓計算一眼看清楚。變異數的定義並不侷限於離散型；若 $X$ 為連續型隨機變數，則同樣是計算離差平方的期望值，只是由 pmf 加總改為用 pdf 積分。
-</div>
-
-## 變異數的計算公式
-
-由定義直接計算變異數有時不太方便。展開平方後，可得到另一個常用公式。
-
-<div id="proposition-27" class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Proposition 2.7 (Computing Variance)</div>
-
-若 $X$ 的變異數存在，則
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathrm{Var}(X)
-=
-\mathbb{E}(X^2)-[\mathbb{E}(X)]^2
+\begin{aligned}
+\mathbb{E}\bigl(X^{2}\bigr)&=\int_{-\infty}^{\infty}x^{2}\,f_{\sssig X}(x)\,dx=\int_{0}^{1}x^{2}\cdot x\,dx+\int_{1}^{2}x^{2}\cdot\frac{1}{\,2\,}\,dx\\[0.45em]
+&=\left[\frac{x^{4}}{4}\right]_{0}^{1}+\left[\frac{x^{3}}{6}\right]_{1}^{2}=\left[\frac{1^{4}}{4}-\frac{0^{4}}{4}\right]+\left[\frac{2^{3}}{6}-\frac{1^{3}}{6}\right]=\frac{\,17\,}{12}
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{E}\bigl(X^{2}\bigr)&=\int_{-\infty}^{\infty}x^{2}\,f_{\sssig X}(x)\,dx\\[0.45em]
+&=\int_{0}^{1}x^{2}\cdot x\,dx\\[0.2em]
+&\quad +\int_{1}^{2}x^{2}\cdot\frac{1}{\,2\,}\,dx\\[0.45em]
+&=\left[\frac{x^{4}}{4}\right]_{0}^{1}+\left[\frac{x^{3}}{6}\right]_{1}^{2}\\[0.45em]
+&=\left[\frac{1^{4}}{4}-\frac{0^{4}}{4}\right]\\[0.2em]
+&\quad +\left[\frac{2^{3}}{6}-\frac{1^{3}}{6}\right]\\[0.45em]
+&=\frac{\,17\,}{12}
+\end{aligned}
+$$
+
+</div>
+
+故所求的變異數為
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathrm{Var}(X)=\mathbb{E}\bigl(X^{2}\bigr)-\bigl[\mathbb{E}(X)\bigr]^{2}=\frac{\,17\,}{12}-\left(\frac{13}{12}\right)^{2}=\frac{\,35\,}{144}\fallingdotseq0.2431
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\mathrm{Var}(X)=\mathbb{E}\bigl(X^{2}\bigr)-\bigl[\mathbb{E}(X)\bigr]^{2}\\[0.45em]
+&\quad =\frac{\,17\,}{12}-\left(\frac{13}{12}\right)^{2}\\[0.45em]
+&\quad =\frac{\,35\,}{144}\fallingdotseq0.2431
+\end{aligned}
+$$
+
+</div>
+
+</div>
+
+<div id="ex-component-lifetime-variance" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 2.14 <span lang="en">(Continued)</span></div>
+
+<div lang="en" markdown="1">
+Let $Y$ denote the length of life <span lang="en">(in hundreds of hours)</span> of electronic components. These components frequently fail immediately upon insertion into a system. It has been observed that the probability of immediate failure is $\frac{1}{4}$. If a component does not fail immediately, the distribution for its length of life has the exponential density function
+
+$$
+g(y)=
+\left\lbrace
+\begin{array}{c@{\quad}l}
+e^{-y}, & y>0\\[0.4em]
+0, & \text{elsewhere}
+\end{array}
+\right.
+$$
+
+<ol class="topic-list-paren topic-list-paren--start-3">
+  <li>Find the variance of $Y$.</li>
+</ol>
+</div>
+
+(3) 由[第 (1) 小題](/teaching-topics/mixed-random-variables/#ex-component-lifetime)已知 $Y$ 為混合型隨機變數，其分配為
+{: .topic-paren-item}
+
+$$
+f_{\sssig Y}(y)=
+\left\lbrace
+\begin{array}{c@{\quad}l}
+\dfrac{1}{4}, & y=0\\[0.6em]
+\dfrac{3}{4}e^{-y}, & y>0\\[0.6em]
+0, & \text{elsewhere}
+\end{array}
+\right.
+$$
+
+則其壽命 $Y$ 的期望值為
+{: .topic-paren-cont}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{E}(Y)&=0\times\frac{1}{4}+\int_{0}^{\infty}y\,\frac{3}{4}e^{-y}\,dy=\frac{3}{4}\int_{0}^{\infty}y^{2-1}e^{-\frac{y}{1}}\,dy\\[0.45em]
+&=\frac{3}{4}\times1^{2}\times\Gamma(2)=\frac{3}{4}\times(2-1)!=\frac{3}{4}
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{E}(Y)&=0\times\frac{1}{4}+\int_{0}^{\infty}y\,\frac{3}{4}e^{-y}\,dy\\[0.45em]
+&=\frac{3}{4}\int_{0}^{\infty}y^{2-1}e^{-\frac{y}{1}}\,dy\\[0.45em]
+&=\frac{3}{4}\times1^{2}\times\Gamma(2)\\[0.45em]
+&=\frac{3}{4}\times(2-1)!=\frac{3}{4}
+\end{aligned}
+$$
+
+</div>
+
+壽命 $Y$ 的平方期望值為
+{: .topic-paren-cont}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{E}\bigl(Y^{2}\bigr)&=0^{2}\times\frac{1}{4}+\int_{0}^{\infty}y^{2}\,\frac{3}{4}e^{-y}\,dy=\frac{3}{4}\int_{0}^{\infty}y^{3-1}e^{-\frac{y}{1}}\,dy\\[0.45em]
+&=\frac{3}{4}\times1^{3}\times\Gamma(3)=\frac{3}{4}\times(3-1)!=\frac{3}{2}
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{E}\bigl(Y^{2}\bigr)&=0^{2}\times\frac{1}{4}+\int_{0}^{\infty}y^{2}\,\frac{3}{4}e^{-y}\,dy\\[0.45em]
+&=\frac{3}{4}\int_{0}^{\infty}y^{3-1}e^{-\frac{y}{1}}\,dy\\[0.45em]
+&=\frac{3}{4}\times1^{3}\times\Gamma(3)\\[0.45em]
+&=\frac{3}{4}\times(3-1)!=\frac{3}{2}
+\end{aligned}
+$$
+
+</div>
+
+故所求的變異數為
+{: .topic-paren-cont}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathrm{Var}(Y)=\mathbb{E}\bigl(Y^{2}\bigr)-\bigl[\mathbb{E}(Y)\bigr]^{2}=\frac{3}{2}-\left[\frac{3}{4}\right]^{2}=0.9375
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\mathrm{Var}(Y)=\mathbb{E}\bigl(Y^{2}\bigr)-\bigl[\mathbb{E}(Y)\bigr]^{2}\\[0.45em]
+&\quad =\frac{3}{2}-\left[\frac{3}{4}\right]^{2}=0.9375
+\end{aligned}
+$$
+
+</div>
+
+</div>
+
+<div id="thm-mean-minimizes-squared-deviation" class="topic-box topic-box--theorem" markdown="1">
+<div class="topic-box__label">Theorem 2.14 (期望值使平方離差的期望值最小, the mean minimizes mean squared deviation)</div>
+
+若 $X$ 為一隨機變數，且 $\mathbb{E}(X^{2})<\infty$，並令
+
+$$
+g(a)=\mathbb{E}\bigl[(X-a)^{2}\bigr],\quad\forall\,a\in\mathbb{R}
+$$
+
+則 $X$ 的期望值 $\mu_{\sssig X}$ 是使得 $g(a)$ 達到最小值的 $a$，此即
+
+$$
+g(a)\geqslant g(\mu_{\sssig X}),\quad\forall\,a\in\mathbb{R}
 $$
 
 </div>
 
 <div class="topic-proof" markdown="1">
-**Proof.** 令 $\mu_X=\mathbb{E}(X)$，並使用前一篇整理的[期望值的線性關係](/teaching-topics/expected-value-random-variables/#proposition-26)，則
+**Proof.** 把 $X-a$ 分解成 $(X-\mu_{\sssig X})+(\mu_{\sssig X}-a)$，再由 [Theorem 2.10](/teaching-topics/properties-of-expectation/#thm-expectation-linearity) 可知
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 \begin{aligned}
-\mathrm{Var}(X)
-&=
-\mathbb{E}\big[(X-\mu_X)^2\big] \\[0.45em]
-&=
-\mathbb{E}(X^2-2\mu_X X+\mu_X^2) \\[0.45em]
-&=
-\mathbb{E}(X^2)-2\mu_X\mathbb{E}(X)+\mu_X^2 \\[0.45em]
-&=
-\mathbb{E}(X^2)-[\mathbb{E}(X)]^2
+g(a)&=\mathbb{E}\bigl[(X-a)^{2}\bigr]=\mathbb{E}\Bigl[\bigl[(X-\mu_{\sssig X})+(\mu_{\sssig X}-a)\bigr]^{2}\Bigr]\\[0.45em]
+&=\mathbb{E}\bigl[(X-\mu_{\sssig X})^{2}+2(\mu_{\sssig X}-a)(X-\mu_{\sssig X})+(\mu_{\sssig X}-a)^{2}\bigr]\\[0.45em]
+&=\mathbb{E}\bigl[(X-\mu_{\sssig X})^{2}\bigr]+2(\mu_{\sssig X}-a)\,\mathbb{E}\bigl(X-\mu_{\sssig X}\bigr)+(\mu_{\sssig X}-a)^{2}\\[0.45em]
+&=g(\mu_{\sssig X})+(\mu_{\sssig X}-a)^{2}\geqslant g(\mu_{\sssig X})
 \end{aligned}
 $$
 
-原式得證。<span class="topic-qed">$\square$</span>
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&g(a)=\mathbb{E}\bigl[(X-a)^{2}\bigr]\\[0.45em]
+&\quad =\mathbb{E}\Bigl[\bigl[(X-\mu_{\sssig X})+(\mu_{\sssig X}-a)\bigr]^{2}\Bigr]\\[0.45em]
+&\quad =\mathbb{E}\bigl[(X-\mu_{\sssig X})^{2}\\[0.2em]
+&\qquad +2(\mu_{\sssig X}-a)(X-\mu_{\sssig X})\\[0.2em]
+&\qquad +(\mu_{\sssig X}-a)^{2}\bigr]\\[0.45em]
+&\quad =\mathbb{E}\bigl[(X-\mu_{\sssig X})^{2}\bigr]\\[0.2em]
+&\qquad +2(\mu_{\sssig X}-a)\,\mathbb{E}\bigl(X-\mu_{\sssig X}\bigr)\\[0.2em]
+&\qquad +(\mu_{\sssig X}-a)^{2}\\[0.45em]
+&\quad =g(\mu_{\sssig X})+(\mu_{\sssig X}-a)^{2}\\[0.45em]
+&\quad \geqslant g(\mu_{\sssig X})
+\end{aligned}
+$$
+
 </div>
 
-這個公式可記為「平方的期望值，減去期望值的平方」。在許多計算中，先求 $\mathbb{E}(X)$ 與 $\mathbb{E}(X^2)$，再相減，往往比直接套用離差平方更簡潔。
+原式得證。 <span class="topic-qed">$\square$</span>
+</div>
 
-<div class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.10 (Variance from $\mathbb{E}(X^2)$)</div>
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
 
-延續上一篇文章 [Example 2.7 的抽球例子](/teaching-topics/expected-value-random-variables/#example-25)。箱中有四顆編號 $0,1,2,3$ 的球，從中一次抽取兩顆球，不考慮抽取順序，令 $X$ 表示兩顆球的號碼總和。該例中 $\mathbb{E}(X)=3$，且 pmf 為
+這個性質在 [Definition 2.6](/teaching-topics/expectation/#def-expectation) 之後的說明中就已經提過，是期望值的一個重要特性。由於期望值可以簡單視為分配的中心，故任意的位置與期望值所構成的離差 <span lang="en">(deviation)</span> 平方的平均，將是最小的。
 
-| $x$ | 1 | 2 | 3 | 4 | 5 |
-| --- | --- | --- | --- | --- | --- |
-| $p_X(x)$ | $1/6$ | $1/6$ | $1/3$ | $1/6$ | $1/6$ |
+這個定理的證明過程使用一個技巧，將 $X-a$ 分解為互相正交的兩個部分，分別是 $X-\mu_{\sssig X}$ 與 $\mu_{\sssig X}-a$，我們則借其意，將此方法稱為**正交分解 <span lang="en">(orthogonal decomposition)</span>**，在往後的推導過程中，我們將經常使用這個技巧。
 
-由此可先計算
+</div>
+
+<div id="thm-taylor-approximation" class="topic-box topic-box--theorem" markdown="1">
+<div class="topic-box__label">Theorem 2.15 (期望值與變異數的泰勒近似, Taylor approximation of the mean and the variance)</div>
+
+若 $X$ 為一隨機變數，且 $\mu_{\sssig X}=\mathbb{E}(X)$、$\sigma_{\sssig X}^{2}=\mathrm{Var}(X)$ 皆為有限，$g(\cdot)$ 為一二階可微且可測之函數，則
+
+<ol class="topic-list-paren">
+  <li>
+  $$
+  \mathbb{E}\bigl[g(X)\bigr]\fallingdotseq g(\mu_{\sssig X})+\frac{\,g^{\prime\prime}(\mu_{\sssig X})\,}{2}\,\sigma_{\sssig X}^{2}
+  $$
+  </li>
+  <li>
+  $$
+  \mathrm{Var}\bigl[g(X)\bigr]\fallingdotseq\bigl[g^{\prime}(\mu_{\sssig X})\bigr]^{2}\sigma_{\sssig X}^{2}
+  $$
+  </li>
+</ol>
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+[Theorem 2.15](#thm-taylor-approximation) 的 (1) 用到 $g^{\prime\prime}(\mu_{\sssig X})$，(2) 用到 $g^{\prime}(\mu_{\sssig X})$，故前提要求 $g(\cdot)$ 二階可微；只有一階可微時，(1) 所寫的 $g^{\prime\prime}(\mu_{\sssig X})$ 並不存在。下面的推導把 $g(X)$ 在 $\mu_{\sssig X}$ 處展開到第三項，用到的也正是二階導數。至於捨去第三項之後的誤差有多大，須另加更強的條件才估計得出來，本篇只取近似值，不再細談。
+
+</div>
+
+許多時候我們並不知道隨機變數 $X$ 的機率函數 $f_{\sssig X}(x)$，只知道期望值 $\mu_{\sssig X}$ 與變異數 $\sigma_{\sssig X}^{2}$。在這種有限的資訊之下，我們仍然可以利用這些資訊，求出隨機變數 $X$ 之某函數轉換 $g(X)$ 的期望值與變異數近似值，步驟如下:
+
+(1) 先將 $g(X)$ 在 $X=\mu_{\sssig X}$ 處作**泰勒級數 (Taylor series)** 展開，可得
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{E}(X^2)
-=
-1^2\cdot\frac{1}{6}
-+2^2\cdot\frac{1}{6}
-+3^2\cdot\frac{1}{3}
-+4^2\cdot\frac{1}{6}
-+5^2\cdot\frac{1}{6}
-=
-\frac{32}{3}
+\begin{aligned}
+g(X)&=g(\mu_{\sssig X})+\frac{g^{\prime}(\mu_{\sssig X})}{1!}(X-\mu_{\sssig X})^{1}+\frac{g^{\prime\prime}(\mu_{\sssig X})}{2!}(X-\mu_{\sssig X})^{2}+\cdots\\[0.45em]
+&=g(\mu_{\sssig X})+g^{\prime}(\mu_{\sssig X})(X-\mu_{\sssig X})+\frac{1}{2}\,g^{\prime\prime}(\mu_{\sssig X})(X-\mu_{\sssig X})^{2}+\cdots
+\end{aligned}
 $$
 
-代入 [Proposition 2.7](#proposition-27)，可得
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\mathrm{Var}(X)
-=
-\mathbb{E}(X^2)-[\mathbb{E}(X)]^2
-=
-\frac{32}{3}-9
-=
-\frac{5}{3}
+\begin{aligned}
+g(X)&=g(\mu_{\sssig X})+\frac{g^{\prime}(\mu_{\sssig X})}{1!}(X-\mu_{\sssig X})^{1}\\[0.45em]
+&\quad +\frac{g^{\prime\prime}(\mu_{\sssig X})}{2!}(X-\mu_{\sssig X})^{2}+\cdots\\[0.45em]
+&=g(\mu_{\sssig X})+g^{\prime}(\mu_{\sssig X})(X-\mu_{\sssig X})\\[0.45em]
+&\quad +\frac{1}{2}\,g^{\prime\prime}(\mu_{\sssig X})(X-\mu_{\sssig X})^{2}+\cdots
+\end{aligned}
 $$
+
+</div>
+
+(2) 採用前三項取其期望值，可得
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+\mathbb{E}\bigl[g(X)\bigr]&\fallingdotseq\mathbb{E}\bigl[g(\mu_{\sssig X})\bigr]+g^{\prime}(\mu_{\sssig X})\,\mathbb{E}\bigl(X-\mu_{\sssig X}\bigr)+\frac{1}{2}\,g^{\prime\prime}(\mu_{\sssig X})\,\mathbb{E}\bigl[(X-\mu_{\sssig X})^{2}\bigr]\\[0.45em]
+&=g(\mu_{\sssig X})+\frac{1}{2}\,g^{\prime\prime}(\mu_{\sssig X})\,\sigma_{\sssig X}^{2}
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\mathbb{E}\bigl[g(X)\bigr]\fallingdotseq\mathbb{E}\bigl[g(\mu_{\sssig X})\bigr]\\[0.45em]
+&\quad +g^{\prime}(\mu_{\sssig X})\,\mathbb{E}\bigl(X-\mu_{\sssig X}\bigr)\\[0.45em]
+&\quad +\frac{1}{2}\,g^{\prime\prime}(\mu_{\sssig X})\,\mathbb{E}\bigl[(X-\mu_{\sssig X})^{2}\bigr]\\[0.45em]
+&=g(\mu_{\sssig X})+\frac{1}{2}\,g^{\prime\prime}(\mu_{\sssig X})\,\sigma_{\sssig X}^{2}
+\end{aligned}
+$$
+
+</div>
+
+(3) 採用前兩項取其變異數，可得
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathrm{Var}\bigl[g(X)\bigr]\fallingdotseq\mathrm{Var}\bigl[g(\mu_{\sssig X})\bigr]+\bigl[g^{\prime}(\mu_{\sssig X})\bigr]^{2}\,\mathrm{Var}\bigl(X-\mu_{\sssig X}\bigr)=\bigl[g^{\prime}(\mu_{\sssig X})\bigr]^{2}\sigma_{\sssig X}^{2}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\mathrm{Var}\bigl[g(X)\bigr]\fallingdotseq\mathrm{Var}\bigl[g(\mu_{\sssig X})\bigr]\\[0.45em]
+&\quad +\bigl[g^{\prime}(\mu_{\sssig X})\bigr]^{2}\,\mathrm{Var}\bigl(X-\mu_{\sssig X}\bigr)\\[0.45em]
+&=\bigl[g^{\prime}(\mu_{\sssig X})\bigr]^{2}\sigma_{\sssig X}^{2}
+\end{aligned}
+$$
+
+</div>
+
+<div id="ex-log-taylor-approximation" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 2.21</div>
+
+<div lang="en" markdown="1">
+Let $X$ be a positive-valued random variable. If $\mathbb{E}(X)=9$ and $\mathrm{Var}(X)=100$, please calculate the approximate mean and variance of $\ln X$.
+</div>
+
+令 $g(X)=\ln X$，則有
+
+$$
+g^{\prime}(X)=\frac{1}{X}\quad\text{且}\quad g^{\prime\prime}(X)=\frac{-1}{X^{2}}
+$$
+
+將 $\ln X$ 在 $X=\mu_{\sssig X}$ 處作泰勒級數展開至第三項，可得
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\ln X\fallingdotseq\ln\mu_{\sssig X}+\frac{1}{\mu_{\sssig X}}(X-\mu_{\sssig X})+\frac{1}{2}\cdot\frac{-1}{\mu_{\sssig X}^{2}}(X-\mu_{\sssig X})^{2}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\ln X&\fallingdotseq\ln\mu_{\sssig X}+\frac{1}{\mu_{\sssig X}}(X-\mu_{\sssig X})\\[0.45em]
+&\quad +\frac{1}{2}\cdot\frac{-1}{\mu_{\sssig X}^{2}}(X-\mu_{\sssig X})^{2}
+\end{aligned}
+$$
+
+</div>
+
+故 $\ln X$ 的近似期望值為
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{E}(\ln X)\fallingdotseq\ln\mu_{\sssig X}+\frac{1}{2}\cdot\frac{-1}{\mu_{\sssig X}^{2}}\,\sigma_{\sssig X}^{2}=\ln9-\frac{100}{2\times9^{2}}\fallingdotseq1.580
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\mathbb{E}(\ln X)\fallingdotseq\ln\mu_{\sssig X}+\frac{1}{2}\cdot\frac{-1}{\mu_{\sssig X}^{2}}\,\sigma_{\sssig X}^{2}\\[0.45em]
+&\quad =\ln9-\frac{100}{2\times9^{2}}\fallingdotseq1.580
+\end{aligned}
+$$
+
+</div>
+
+而其近似變異數為
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathrm{Var}(\ln X)\fallingdotseq\frac{1}{\mu_{\sssig X}^{2}}\,\sigma_{\sssig X}^{2}=\frac{100}{9^{2}}\fallingdotseq1.235
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\mathrm{Var}(\ln X)\fallingdotseq\frac{1}{\mu_{\sssig X}^{2}}\,\sigma_{\sssig X}^{2}\\[0.45em]
+&\quad =\frac{100}{9^{2}}\fallingdotseq1.235
+\end{aligned}
+$$
+
+</div>
 
 </div>
 
 ## 標準差
 
-變異數採用平方，因此其單位也是原隨機變數單位的平方。例如 $X$ 以公分為單位，$\mathrm{Var}(X)$ 的單位便是平方公分。為了回到原本的尺度，通常會再取平方根，得到**標準差 (standard deviation)**。
+<div id="def-standard-deviation" class="topic-box topic-box--definition" markdown="1">
+<div class="topic-box__label">Definition 2.8 (標準差, standard deviation)</div>
 
-<div class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 2.9</div>
-
-若 $X$ 的變異數存在，則定義 $X$ 的**標準差 (standard deviation)** 為
+若 $X$ 為一隨機變數，其變異數存在且為 $\sigma_{\sssig X}^{2}$，則
 
 $$
-\sigma_X
-=
-\mathrm{SD}(X)
-=
-\sqrt{\mathrm{Var}(X)}
+\sigma_{\sssig X}=\operatorname{SD}(X)=\sqrt{\sigma_{\sssig X}^{2}}
 $$
+
+為其**標準差 <span lang="en">(standard deviation)</span>**。
 
 </div>
 
-標準差與 $X$ 有相同的單位，因此在描述實際情境時通常較容易解讀。變異數在代數推導中較方便，標準差則較適合回到原尺度解釋分散程度。
+標準差有一些地方需要注意:
 
-## 平移與伸縮
-
-變異數與標準差有幾個基本性質。這些性質都與「分散程度」的意義相符。
-
-<div id="proposition-28" class="topic-box topic-box--proposition" markdown="1">
-<div class="topic-box__label">Proposition 2.8</div>
-
-若 $a,b$ 為常數，且 $X$ 的變異數存在，則
-
-$$
-\begin{aligned}
-\mathrm{Var}(X) &\geqslant 0 \\
-\mathrm{Var}(aX+b) &=a^2\mathrm{Var}(X) \\
-\sigma_{aX+b} &=|a|\,\sigma_X
-\end{aligned}
-$$
-
-</div>
-
-<div class="topic-proof" markdown="1">
-**Proof.** 非負性可由定義中的加總或積分形式看出，因為離差平方與機率權重皆非負。至於平移與伸縮，令 $Y=aX+b$。由期望值的線性關係可知 $\mu_Y=\mathbb{E}(Y)=a\mu_X+b$。將此式代回變異數的定義，可得
-
-$$
-\begin{aligned}
-\mathrm{Var}(aX+b)
-&=
-\mathbb{E}\big[(Y-\mu_Y)^2\big] \\[0.45em]
-&=
-\mathbb{E}\big[(aX+b-a\mu_X-b)^2\big] \\[0.45em]
-&=
-\mathbb{E}\big[a^2(X-\mu_X)^2\big] \\[0.45em]
-&=
-a^2\mathrm{Var}(X)
-\end{aligned}
-$$
-
-再由標準差的定義，可得
-
-$$
-\sigma_{aX+b}
-=
-\sqrt{\mathrm{Var}(aX+b)}
-=
-|a|\,\sigma_X
-$$
-
-原式得證。<span class="topic-qed">$\square$</span>
-</div>
-
-平移不會改變分散程度。若把每個取值都加上同一個常數 $b$，整個分配只是往左或往右移動，離期望值的相對距離並未改變。
-
-伸縮則會改變分散程度。若把 $X$ 乘上 $a$，離差也會乘上 $a$，離差平方便會乘上 $a^2$。因此，變異數具有平方伸縮性；標準差取平方根後，則具有絕對伸縮性。
+(1) 標準差的單位是變異數的單位再開根號，與期望值是相同的。
+{: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-本篇討論的是隨機變數本身的變異數與標準差，屬於母體層次的量數。之後進入統計推論時，還會遇到樣本變異數與樣本標準差。樣本版本會多出自由度與估計量的討論，屆時再另外處理。
+雖然標準差的計算多了一道程序，而且因為根號的緣故，較難以推論，但由於單位與原始單位相同，大多數的資料分析，在呈現上還是比較常用標準差。
+
+</div>
+
+(2) 我們稱其為母體標準差，避免與具有隨機性的樣本標準差搞混，後者的定義如下
+{: .topic-paren-item}
+
+$$
+S=\sqrt{\frac{1}{\,n-1\,}\sum_{i=1}^{n}\bigl(X_{i}-\overline{X}\bigr)^{2}}
+$$
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+與變異數相同，標準差是用來衡量一個隨機變數離散程度的母數，不具隨機性。
+
+</div>
+
+(3) $X$ 的函數標準差為
+{: .topic-paren-item}
+
+$$
+\operatorname{SD}\bigl[g(X)\bigr]=\sqrt{\mathrm{Var}\bigl[g(X)\bigr]}
+$$
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+事實上，不論如何，在計算標準差的時候，我們總是都先計算變異數，再行開根號。
+
+</div>
+
+<div id="thm-standard-deviation-properties" class="topic-box topic-box--theorem" markdown="1">
+<div class="topic-box__label">Theorem 2.16 (標準差的性質, standard deviation properties)</div>
+
+若 $X$ 為一隨機變數，$g(\cdot)$ 為一實值可測函數，$a, b$ 為二常數，則
+
+<ol class="topic-list-paren">
+  <li>
+  $$
+  \operatorname{SD}(X)\geqslant0
+  $$
+  </li>
+  <li>
+  $$
+  \operatorname{SD}\bigl[ag(X)+b\bigr]=\lvert a\rvert\,\operatorname{SD}\bigl[g(X)\bigr]
+  $$
+  </li>
+</ol>
+
+</div>
+
+<div class="topic-proof" markdown="1">
+**Proof.** 本處的證明我們承接 [Theorem 2.13](/teaching-topics/variance/#thm-variance-properties) 的變異數性質接續證明。
+
+(1) 由變異數的非負性可知
+{: .topic-paren-item}
+
+$$
+\mathrm{Var}(X)\geqslant0\Longrightarrow\operatorname{SD}(X)\geqslant0
+$$
+
+(2) 由 [Definition 2.8](#def-standard-deviation) 與變異數的平方伸縮性可知
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+\operatorname{SD}\bigl[ag(X)+b\bigr]&=\sqrt{\mathrm{Var}\bigl[ag(X)+b\bigr]}=\sqrt{a^{2}\,\mathrm{Var}\bigl[g(X)\bigr]}\\[0.45em]
+&=\lvert a\rvert\,\operatorname{SD}\bigl[g(X)\bigr]
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\operatorname{SD}\bigl[ag(X)+b\bigr]=\sqrt{\mathrm{Var}\bigl[ag(X)+b\bigr]}\\[0.45em]
+&\quad =\sqrt{a^{2}\,\mathrm{Var}\bigl[g(X)\bigr]}\\[0.45em]
+&\quad =\lvert a\rvert\,\operatorname{SD}\bigl[g(X)\bigr]
+\end{aligned}
+$$
+
+</div>
+
+原式得證。 <span class="topic-qed">$\square$</span>
+{: .topic-paren-cont}
+</div>
+
+[Theorem 2.16](#thm-standard-deviation-properties) 中，(1) 是承接了變異數的**非負性**。(2) 的部分則是可以仿照 [Theorem 2.13](/teaching-topics/variance/#thm-variance-properties)，透過設定 $g(\cdot)$ 與 $a, b$ 的值，來得到許多有用的子性質，並將之與 [Theorem 2.13](/teaching-topics/variance/#thm-variance-properties) 比較，見以下設定。
+
+(1) **[ 設定 $a=0$ ]**
+{: .topic-paren-item}
+
+$$
+\operatorname{SD}(b)=0
+$$
+
+此即**常數不具變異性**。
+{: .topic-paren-cont}
+
+(2) **[ 設定 $a=1$，$g(X)=X$ ]**
+{: .topic-paren-item}
+
+$$
+\operatorname{SD}(X+b)=\operatorname{SD}(X)
+$$
+
+此即**平移不變性**。
+{: .topic-paren-cont}
+
+(3) **[ 設定 $a\neq0$ 且 $g(X)=X$，$b=0$ ]**
+{: .topic-paren-item}
+
+$$
+\operatorname{SD}(aX)=\lvert a\rvert\,\operatorname{SD}(X)
+$$
+
+此即**絕對伸縮性**。
+{: .topic-paren-cont}
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+變異數的**平方伸縮性**，在標準差中不復存在，取而代之的是**絕對伸縮性**。絕對伸縮性的直觀，在於標準差的單位與期望值相同，故若把原隨機變數乘上 $a$ 倍，則其單位尺度應隨之改變，然而因為標準差具有非負性，所以在標準差的單位尺度上，原先應該跟著伸縮 $a$ 倍的變異程度，則隨之改為 $\lvert a\rvert$ 倍。
+
+</div>
+
+<div id="ex-income-standard-deviation" class="topic-box topic-box--example" markdown="1">
+<div class="topic-box__label">Example 2.19 <span lang="en">(Continued)</span></div>
+
+<div lang="en" markdown="1">
+Suppose that $X$ denotes the number of customer visits recorded in a study of visits and income, and that the variance of $X$ is $0.81$. The income associated with the number of visits is $W=449+0.25X$.
+
+<ol class="topic-list-paren topic-list-paren--start-2">
+  <li>Determine the standard deviation of the income $W$.</li>
+</ol>
+</div>
+
+(2) 由[前一小題](#ex-income-linear-variance)已求得
+{: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\begin{aligned}
+\mathrm{Var}(W)&=\mathrm{Var}(449+0.25X)=0.25^{2}\times\mathrm{Var}(X)\\[0.45em]
+&=0.0625\times0.81=0.050625
+\end{aligned}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\mathrm{Var}(W)=\mathrm{Var}(449+0.25X)\\[0.45em]
+&\quad =0.25^{2}\times\mathrm{Var}(X)\\[0.45em]
+&\quad =0.0625\times0.81=0.050625
+\end{aligned}
+$$
+
+</div>
+
+故由 [Theorem 2.16](#thm-standard-deviation-properties) 的絕對伸縮性可得
+{: .topic-paren-cont}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\operatorname{SD}(W)=\sqrt{\mathrm{Var}(W)}=\lvert 0.25\rvert\times\sqrt{\mathrm{Var}(X)}=0.225
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\operatorname{SD}(W)=\sqrt{\mathrm{Var}(W)}\\[0.45em]
+&\quad =\lvert 0.25\rvert\times\sqrt{\mathrm{Var}(X)}=0.225
+\end{aligned}
+$$
+
+</div>
+
 </div>
 
 ## 本篇小結
 
-期望值說明隨機變數的平均位置，變異數則衡量隨機變數離開此平均位置的平均程度。若 $\mu_X=\mathbb{E}(X)$，則 $\mathrm{Var}(X)=\mathbb{E}\big[(X-\mu_X)^2\big]$，也可寫成 $\mathrm{Var}(X)=\mathbb{E}(X^2)-[\mathbb{E}(X)]^2$。標準差為 $\sigma_X=\sqrt{\mathrm{Var}(X)}$。
+三道例題示範了變異數的三種求算情境。[Example 2.19](#ex-income-linear-variance) 只知道 $X$ 的變異數與 $W$ 對 $X$ 的線性關係，直接套用平移不變性與平方伸縮性即可；[Example 2.20](#ex-piecewise-density-variance) 的密度函數分段定義，期望值與平方期望值都要分段積分，再代入計算公式；[Example 2.14 <span lang="en">(Continued)</span>](#ex-component-lifetime-variance) 是混合型隨機變數，離散部分以質點加權、連續部分以密度積分，兩者分開計算之後合併。
 
-變異數適合代數運算，標準差則把單位還原到與隨機變數相同的尺度。[下一篇文章](/teaching-topics/linear-transformations-standardization/)會討論線性轉換與標準化，說明平均位置與標準差如何用來比較不同尺度下的數值。
+[Theorem 2.14](#thm-mean-minimizes-squared-deviation) 指出，在所有的實數 $a$ 之中，$\mathbb{E}[(X-a)^{2}]$ 在 $a=\mu_{\sssig X}$ 處達到最小，證明的關鍵是把 $X-a$ 拆成 $(X-\mu_{\sssig X})+(\mu_{\sssig X}-a)$ 的正交分解。[Theorem 2.15](#thm-taylor-approximation) 則處理只知道 $\mu_{\sssig X}$ 與 $\sigma_{\sssig X}^{2}$ 的情形。把 $g(X)$ 在 $\mu_{\sssig X}$ 處作泰勒級數展開，取前三項求期望值、取前兩項求變異數，便得到 $g(X)$ 的期望值與變異數的近似值，[Example 2.21](#ex-log-taylor-approximation) 即以 $g(X)=\ln X$ 示範。
+
+[Definition 2.8](#def-standard-deviation) 把標準差定義為變異數的平方根，它的單位與期望值相同，因此資料分析在呈現上多用標準差；指稱時同樣以母體標準差與樣本標準差 $S$ 區別，計算上則一律先求變異數再開根號。[Theorem 2.16](#thm-standard-deviation-properties) 的兩項性質都由 [Theorem 2.13](/teaching-topics/variance/#thm-variance-properties) 承接而來，其中的複合性質經設定後得到常數不具變異性、平移不變性與絕對伸縮性三個子性質，[Example 2.19 <span lang="en">(Continued)</span>](#ex-income-standard-deviation) 便是絕對伸縮性的直接應用。變異數的平方伸縮性在標準差中改為絕對伸縮性，是兩者性質唯一不同之處。[下一篇](/teaching-topics/mode/)離開離散程度的量數，改談指出分配位置的另一個量數，[眾數](/teaching-topics/mode/#def-mode)。
 
 ## 參考文獻與延伸閱讀
 
-- 黃文璋，2003，《機率論》，初版，華泰文化。
-- 黃文璋，2003，《數理統計》，初版，華泰文化。
-- Patrick Billingsley. 1995. *Probability and Measure*. 3rd ed. Wiley.
-- William Feller. 1968. *An Introduction to Probability Theory and Its Applications*. Vol. 1, 3rd ed. Wiley.
+- 黃文璋，2010，《機率論》，二版，華泰文化。
+- Morris H. DeGroot and Mark J. Schervish. 2012. *Probability and Statistics*. 4th ed. Pearson.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-- Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.
-- Joseph K. Blitzstein and Jessica Hwang. 2019. *Introduction to Probability*. 2nd ed. Chapman and Hall/CRC.
+- Alexander M. Mood, Franklin A. Graybill, and Duane C. Boes. 1974. *Introduction to the Theory of Statistics*. 3rd ed. McGraw-Hill.

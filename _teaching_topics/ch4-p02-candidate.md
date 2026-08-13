@@ -251,7 +251,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在證明的過程中，我們使用到了 [Theorem 2.18](/teaching-topics/ch2-p213-candidate/#thm-binomial) 中提到的二項式定理 <span lang="en">(binomial theorem)</span>。
+在證明的過程中，我們使用到了 [Theorem 2.18](/teaching-topics/moment-system/#thm-binomial) 中提到的二項式定理 <span lang="en">(binomial theorem)</span>。
 
 此外，二項分配的期望值與變異數，未必要依照上面使用階乘動差 <span lang="en">(factorial moment)</span> 的方式證明，直接由 mgf 證明其期望值與變異數亦無不可。
 
@@ -304,7 +304,7 @@ $$
 
 </div>
 
-則由 [mgf 的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)可知
+則由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 W=X+Y\sim\mathrm{Bin}(n_1+n_2,\ p)
@@ -375,7 +375,7 @@ $$
 </ol>
 </div>
 
-(1) 由 [mgf 的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)可知
+(1) 由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -669,7 +669,7 @@ $$
 </ol>
 </div>
 
-(1) 依 [mgf 的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)可知 <span class="text-nowrap">$X_1\sim\mathrm{Bin}\bigl(4,\ \frac{2}{\,3\,}\bigr)$，</span>又 $X_2$ 的機率函數為
+(1) 依 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知 <span class="text-nowrap">$X_1\sim\mathrm{Bin}\bigl(4,\ \frac{2}{\,3\,}\bigr)$，</span>又 $X_2$ 的機率函數為
 {: .topic-paren-item}
 
 $$
@@ -740,9 +740,9 @@ $$
 
 ## 本篇小結
 
-[Definition 4.3](#def-binomial) 把伯努利分配推廣到 $n$ 次實驗: $X$ 記錄 $n$ 次伯努利實驗中成功的次數，值域為 <span class="text-nowrap">$\lbrace\,0,1,\ldots,n\,\rbrace$，</span>機率函數為 <span class="text-nowrap">$\binom{n}{x}p^{x}q^{n-x}$，</span>其中的組合數對應「哪幾次成功」的選法，而 $n$ 是一個固定的常數，不是參數。證明的四個步驟依序驗證機率函數的加總為 <span class="text-nowrap">$1$、</span>求得 <span class="text-nowrap">$\mathbb{E}(X)=np$、</span>再以階乘動差 $\mathbb{E}\bigl[X(X-1)\bigr]=n(n-1)p^{2}$ 得到 $\mathbb{E}\bigl(X^{2}\bigr)$ 進而算出 <span class="text-nowrap">$\mathrm{Var}(X)=npq$，</span>最後直接由定義求得 <span class="text-nowrap">$M_{\sssig X}(t)=\bigl(pe^{t}+q\bigr)^{n}$。</span>其中機率函數的加總、兩個動差的計算與動差母函數的推導，都用到 [Theorem 2.18](/teaching-topics/ch2-p213-candidate/#thm-binomial) 的二項式定理。
+[Definition 4.3](#def-binomial) 把伯努利分配推廣到 $n$ 次實驗: $X$ 記錄 $n$ 次伯努利實驗中成功的次數，值域為 <span class="text-nowrap">$\lbrace\,0,1,\ldots,n\,\rbrace$，</span>機率函數為 <span class="text-nowrap">$\binom{n}{x}p^{x}q^{n-x}$，</span>其中的組合數對應「哪幾次成功」的選法，而 $n$ 是一個固定的常數，不是參數。證明的四個步驟依序驗證機率函數的加總為 <span class="text-nowrap">$1$、</span>求得 <span class="text-nowrap">$\mathbb{E}(X)=np$、</span>再以階乘動差 $\mathbb{E}\bigl[X(X-1)\bigr]=n(n-1)p^{2}$ 得到 $\mathbb{E}\bigl(X^{2}\bigr)$ 進而算出 <span class="text-nowrap">$\mathrm{Var}(X)=npq$，</span>最後直接由定義求得 <span class="text-nowrap">$M_{\sssig X}(t)=\bigl(pe^{t}+q\bigr)^{n}$。</span>其中機率函數的加總、兩個動差的計算與動差母函數的推導，都用到 [Theorem 2.18](/teaching-topics/moment-system/#thm-binomial) 的二項式定理。
 
-定義之後的幾點說明依序是: $n=1$ 時二項分配即為伯努利分配、成功機率相同且彼此獨立的兩個二項變數相加仍為二項分配 (可加性)、機率函數中的組合數所對應的直觀意義，以及 $p$ 的大小決定分配的形狀，$p$ 大於、等於、小於 $0.5$ 時分別為左偏、對稱與右偏。可加性的證明只需把兩個 mgf 相乘，指數因而相加，再由 [mgf 的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)辨識出結果；同一個論證也給出 $n$ 個獨立同分配的伯努利變數相加即為二項分配。
+定義之後的幾點說明依序是: $n=1$ 時二項分配即為伯努利分配、成功機率相同且彼此獨立的兩個二項變數相加仍為二項分配 (可加性)、機率函數中的組合數所對應的直觀意義，以及 $p$ 的大小決定分配的形狀，$p$ 大於、等於、小於 $0.5$ 時分別為左偏、對稱與右偏。可加性的證明只需把兩個 mgf 相乘，指數因而相加，再由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識出結果；同一個論證也給出 $n$ 個獨立同分配的伯努利變數相加即為二項分配。
 
 六道例題涵蓋三種常見的用法。[Example 4.2](#ex-binomial-1) 與 [Example 4.7](#ex-binomial-6) 由 mgf 的形狀反推分配，前者辨識出 <span class="text-nowrap">$\mathrm{Bin}(16,\ 0.75)$，</span>後者則在辨識之後再以獨立性把兩個 mgf 相乘。[Example 4.3](#ex-binomial-2) 與 [Example 4.4](#ex-binomial-3) 是直接的機率計算，前者以餘事件處理「至少一個」，後者則把「至少 $7$ 位」拆成兩項相加。[Example 4.5](#ex-binomial-4) 與 [Example 4.6](#ex-binomial-5) 則把成功機率或實驗次數本身當成隨機的: 前者先以伯努利變數表示挑到哪一個硬幣，再用雙重期望值定理求 <span class="text-nowrap">$\mathbb{E}(X)$；</span>後者以全機率定理把條件二項分配對 $N$ 加總，最後得到 <span class="text-nowrap">$Y\sim\mathrm{Bin}(m,\ pq)$，</span>仍然是一個二項分配。
 

@@ -15,7 +15,7 @@ excerpt: "均勻分配的機率密度在整個值域上處處相同，它的 cdf
 
 [上一篇](/teaching-topics/ch4-p13-candidate/)以[韋伯分配](/teaching-topics/ch4-p13-candidate/#def-weibull-distribution)、[可靠度函數](/teaching-topics/ch4-p13-candidate/#def-reliability-function)與[風險函數](/teaching-topics/ch4-p13-candidate/#def-hazard-function)作結，卜瓦松過程所衍生的各個機率模型至此全部給出。本篇轉入第三大類的機率模型，也就是與貝塔分配相關的一系列分配，而這一類之中最基本的一個，是值域上每一個點都具有相同機率密度的均勻分配。
 
-均勻分配的 cdf 是一條直線，其中的標準均勻分配更把這條直線變成恆等函數，變數值本身就代表累積機率。本篇先給出均勻分配的定義並完整推導其期望值、變異數與動差母函數，再說明所有的均勻分配都可以由標準均勻分配伸縮平移而得。由於這個轉換所用的函數正是該均勻分配自己的 cdf，同樣的手法可以推廣到任意的連續分配，機率積分轉換與逆機率積分轉換兩個定理就是這樣來的；這兩個定理在第二章的 [Proposition 2.4](/teaching-topics/ch2-p223-candidate/#prop-probability-integral-transform) 曾經先行敘述，本篇把它們放回均勻分配的脈絡之中。最後以三道例題作為演練。
+均勻分配的 cdf 是一條直線，其中的標準均勻分配更把這條直線變成恆等函數，變數值本身就代表累積機率。本篇先給出均勻分配的定義並完整推導其期望值、變異數與動差母函數，再說明所有的均勻分配都可以由標準均勻分配伸縮平移而得。由於這個轉換所用的函數正是該均勻分配自己的 cdf，同樣的手法可以推廣到任意的連續分配，機率積分轉換與逆機率積分轉換兩個定理就是這樣來的；這兩個定理在第二章的 [Proposition 2.4](/teaching-topics/one-to-one-transformations/#prop-probability-integral-transform) 曾經先行敘述，本篇把它們放回均勻分配的脈絡之中。最後以三道例題作為演練。
 
 ## 均勻分配
 

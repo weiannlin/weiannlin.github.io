@@ -15,7 +15,7 @@ excerpt: "超幾何分配描述有限母體以取後不放回的方式抽樣時�
 
 [上一篇](/teaching-topics/ch4-p06-candidate/)的[負二項分配](/teaching-topics/ch4-p06-candidate/#def-negative-binomial)仍然建立在伯努利實驗之上，每一次實驗的成功機率固定，實驗與實驗之間也彼此獨立。本篇要處理的情形則不同: 母體只有有限多個元素，而且抽出的元素不再放回，因此每抽一次，母體的組成就改變一次，成功類所佔的比例也隨之改變。在這樣的抽樣方式之下，抽出的元素中成功類的個數所服從的分配，即為本篇的超幾何分配。
 
-驗證[二項分配](/teaching-topics/ch4-p02-candidate/#def-binomial)的機率函數合法時，我們用的是 [Theorem 2.18](/teaching-topics/ch2-p213-candidate/#thm-binomial) 的二項式定理；在超幾何分配這裡，所需要的工具則是[汎德蒙等式](#thm-vandermonde-identity)。本篇因而先由這個等式談起，再依序給出超幾何實驗與超幾何分配的定義，接著證明其機率函數合法並推導期望值與變異數，最後以兩道例題作為演練。
+驗證[二項分配](/teaching-topics/ch4-p02-candidate/#def-binomial)的機率函數合法時，我們用的是 [Theorem 2.18](/teaching-topics/moment-system/#thm-binomial) 的二項式定理；在超幾何分配這裡，所需要的工具則是[汎德蒙等式](#thm-vandermonde-identity)。本篇因而先由這個等式談起，再依序給出超幾何實驗與超幾何分配的定義，接著證明其機率函數合法並推導期望值與變異數，最後以兩道例題作為演練。
 
 ## 汎德蒙等式
 

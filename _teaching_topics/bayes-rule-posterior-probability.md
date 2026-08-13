@@ -482,7 +482,7 @@ $$
 | [Example 1.29](#example-116) | 失蹤飛機問題與搜救結果所帶來的資訊 |
 | [直覺校準 1.4](#interlude-information-updates) | 搜尋結果改變的是資訊而非飛機的位置 |
 
-條件機率、獨立、分割、全機率定理與貝氏定理合起來，構成第一章處理事件機率的主要工具。到目前為止，我們討論的對象仍然是事件。下一章將由隨機變數，從樣本空間到數線開始，把樣本空間中的結果對應到實數線上，使函數、期望值與分配函數等工具能夠進入機率論。
+條件機率、獨立、分割、全機率定理與貝氏定理合起來，構成第一章處理事件機率的主要工具。到目前為止，我們討論的對象仍然是事件。[下一章](/teaching-topics/random-variables-and-pmf/)將由[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)與[機率質量函數](/teaching-topics/random-variables-and-pmf/#def-pmf)開始，把樣本空間中的結果對應到實數線上，使函數、[期望值](/teaching-topics/expectation/#def-expectation)與分配函數等工具能夠進入機率論。
 
 ## 參考文獻與延伸閱讀
 

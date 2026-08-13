@@ -484,7 +484,7 @@ $$
 
 </div>
 
-則由[動差母函數的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)可知
+則由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 W=X+Y\sim\mathrm{Gamma}(\alpha_1+\alpha_2,\ \beta)
@@ -528,7 +528,7 @@ $$
 
 </div>
 
-則由[動差母函數的唯一性](/teaching-topics/ch2-p216-candidate/#thm-mgf-uniqueness)可知
+則由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 Y\sim\mathrm{Gamma}(\alpha,\ a\beta)

@@ -119,23 +119,30 @@
   \node[anchor=north] at ([yshift=-0.25cm]1.7320508,0) {$\sqrt{3}$};
 
   % ---- legend, top right corner ---------------------------------------
-  % Sample segments 0.5cm long per spec 1.9, from x = 0.52 to x = 1.02.
+  % Sample segments 0.5cm long per spec 1.9, from x = 1.37 to x = 1.87.
+  % 2026-08-13: the author asked twice for the legend to move right; it was
+  % reading as cramped against the curves on its left.  The whole block was
+  % shifted right by 0.85cm, which is the largest shift that keeps the
+  % drawing's bounding box at 219.951 units wide.  Beyond that the legend,
+  % rather than the x-axis label, sets the right edge and the whole figure
+  % grows (0.95cm widens it to 222.204, 1.00cm to 223.622), which would
+  % shrink every glyph by the same ratio once the SVG is fitted to 350px.
   % Rows at 2.58 / 2.16 / 1.74 / 1.32 cm above the axis: the lowest of them
   % clears the Laplace curve, which reaches 1.32cm at |x| = 0.335, by
   % 0.185cm, and the head row stands 0.46cm above the Laplace peak.
-  \node[anchor=west, inner sep=0pt] at ([yshift=2.58cm]2.60,0)
+  \node[anchor=west, inner sep=0pt] at ([yshift=2.58cm]3.45,0)
     {$\alpha_{\sssig 4}$};
 
-  \draw[laplacecurve] ([yshift=2.16cm]0.52,0) -- ([yshift=2.16cm]1.02,0);
-  \node[anchor=west, inner sep=0pt] at ([yshift=2.16cm]1.15,0) {Laplace};
-  \node[anchor=west, inner sep=0pt] at ([yshift=2.16cm]2.60,0) {$6$};
+  \draw[laplacecurve] ([yshift=2.16cm]1.37,0) -- ([yshift=2.16cm]1.87,0);
+  \node[anchor=west, inner sep=0pt] at ([yshift=2.16cm]2.00,0) {Laplace};
+  \node[anchor=west, inner sep=0pt] at ([yshift=2.16cm]3.45,0) {$6$};
 
-  \draw[normalcurve] ([yshift=1.74cm]0.52,0) -- ([yshift=1.74cm]1.02,0);
-  \node[anchor=west, inner sep=0pt] at ([yshift=1.74cm]1.15,0) {normal};
-  \node[anchor=west, inner sep=0pt] at ([yshift=1.74cm]2.60,0) {$3$};
+  \draw[normalcurve] ([yshift=1.74cm]1.37,0) -- ([yshift=1.74cm]1.87,0);
+  \node[anchor=west, inner sep=0pt] at ([yshift=1.74cm]2.00,0) {normal};
+  \node[anchor=west, inner sep=0pt] at ([yshift=1.74cm]3.45,0) {$3$};
 
-  \draw[uniformcurve] ([yshift=1.32cm]0.52,0) -- ([yshift=1.32cm]1.02,0);
-  \node[anchor=west, inner sep=0pt] at ([yshift=1.32cm]1.15,0) {uniform};
-  \node[anchor=west, inner sep=0pt] at ([yshift=1.32cm]2.60,0) {$9/5$};
+  \draw[uniformcurve] ([yshift=1.32cm]1.37,0) -- ([yshift=1.32cm]1.87,0);
+  \node[anchor=west, inner sep=0pt] at ([yshift=1.32cm]2.00,0) {uniform};
+  \node[anchor=west, inner sep=0pt] at ([yshift=1.32cm]3.45,0) {$9/5$};
 \end{tikzpicture}
 \end{document}

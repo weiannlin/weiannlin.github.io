@@ -15,7 +15,7 @@ excerpt: "上一篇給出常態分配的定義、標準化與線性組合可加�
 
 [上一篇](/teaching-topics/ch4-p17-candidate/)給出[常態分配](/teaching-topics/ch4-p17-candidate/#def-normal)的定義，並依序說明標準常態分配、標準化、反標準化與線性組合可加性這幾項性質。本篇不再增加新的定義，而是把這些性質用在實際的機率計算上。
 
-前三道例題的作法一致: 先把常態變數減去期望值再除以標準差，化為標準常態變數 <span class="text-nowrap">$Z$，</span>所求的機率便可以由標準常態的機率表達，其中第二題另外用到兩個獨立常態變數相減之後仍為常態分配這一項性質。第四道例題則換一個方向，給定 $f_{\sssig Z}(z)=2\,\phi(z)\Phi(\lambda z)$ 這個函數，先驗證它是一個合法的 pdf，再以 [cdf 法](/teaching-topics/ch2-p223-candidate/#prop-cdf-method)與 [Jacobian 法](/teaching-topics/ch2-p223-candidate/#prop-jacobian-method)各證明一次 $Y=Z^{2}$ 服從 $\chi^{2}(1)$ 分配；兩處的關鍵都是 $\phi$ 為偶函數以及 $\Phi(-z)=1-\Phi(z)$ 這兩件事。
+前三道例題的作法一致: 先把常態變數減去期望值再除以標準差，化為標準常態變數 <span class="text-nowrap">$Z$，</span>所求的機率便可以由標準常態的機率表達，其中第二題另外用到兩個獨立常態變數相減之後仍為常態分配這一項性質。第四道例題則換一個方向，給定 $f_{\sssig Z}(z)=2\,\phi(z)\Phi(\lambda z)$ 這個函數，先驗證它是一個合法的 pdf，再以 [cdf 法](/teaching-topics/one-to-one-transformations/#prop-cdf-method)與 [Jacobian 法](/teaching-topics/one-to-one-transformations/#prop-jacobian-method)各證明一次 $Y=Z^{2}$ 服從 $\chi^{2}(1)$ 分配；兩處的關鍵都是 $\phi$ 為偶函數以及 $\Phi(-z)=1-\Phi(z)$ 這兩件事。
 
 ## 常態機率的計算
 
