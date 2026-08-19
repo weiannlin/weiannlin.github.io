@@ -1,0 +1,61 @@
+% Fig. 3.25 -- the largest order statistic Y_n splits the support into two
+%   stretches: n-1 of the sample lie to its left, none to its right.
+% Source: mathstatch3.tex lines 5297-5311.  Manuscript geometry kept: the
+%   same number line as Fig. 3.24, a divider at x = 7 named y_n, the counts
+%   above the line at x = 3.5 and x = 8.5, and two dashed arcs under the line
+%   spanning 0 to 7 and 7 to 9.95, labelled with the probability that one
+%   sample value falls in that stretch.
+%
+% Second of the series 3.24-3.27; coordinates, divider height, arc depth and
+% type size are those of order-stat-min.tex, and the four departures from the
+% manuscript picture recorded there apply here unchanged (counts left as bare
+% mathematics, y_n carried at the top of the divider, arcs drawn as cubics of
+% sag 0.40, F_{\sssig X} written F_X).
+%
+% \DeclareMathSizes{10}{10}{9}{8} raises the math script sizes from the
+% default 7pt/5pt.  Native width 249.343pt (drawing range 8.63cm, inside the
+% 9.0cm cap of spec 1.3).  A mark of S pt shows at
+% S x 0.99626 x <display width> / 249.343 px, so in a topic-figure--wide at the
+% 350px phone width
+%     10pt text 13.98px, 9pt scripts 12.59px
+% and at the 620px desktop width 24.77 / 22.30px.  The smallest marks in the
+% picture are the X of F_X and the n of y_n, both at script size.
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usetikzlibrary{arrows.meta}
+\DeclareMathSizes{10}{10}{9}{8}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=0.85cm,
+  y=1cm,
+  every node/.style={font=\normalsize, journalink, inner sep=1pt},
+  axis/.style={journalink, line width=0.8pt, -{Stealth[length=4pt]}},
+  divider/.style={journalink, line width=0.8pt},
+  arc/.style={journalmuted, line width=0.5pt, dash pattern=on 2pt off 2pt}
+]
+  % ---- the number line -------------------------------------------------
+  \draw[axis] (0,0) -- (10.15,0);
+
+  % ---- the cut at y_n --------------------------------------------------
+  \draw[divider] (7,-0.12) -- (7,0.86);
+  \node[anchor=south] at (7,0.90) {$y_n$};
+
+  % ---- how many of the sample lie in each stretch ----------------------
+  \node at (3.5,0.43) {$n-1$};
+  \node at (8.5,0.43) {$0$};
+
+  % ---- the probability of each stretch ---------------------------------
+  \draw[arc] (0,0) .. controls (2.3333,-0.5333) and (4.6667,-0.5333) .. (7,0);
+  \draw[arc] (7,0) .. controls (7.9833,-0.5333) and (8.9667,-0.5333)
+    .. (9.95,0);
+  \node[anchor=north] at (3.5,-0.65) {$F_X(y_n)$};
+  \node[anchor=north] at (8.5,-0.65) {$1-F_X(y_n)$};
+\end{tikzpicture}
+\end{document}

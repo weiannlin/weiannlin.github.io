@@ -1,0 +1,143 @@
+% Fig. 3.19 -- 五種相關型態，再加一個零相關但非線性的碗形，六面板。
+% 書稿來源: mathstatch3.tex 第 3773、3799、3827、3853、3882 與 3908 行起始的六個
+%   tikzpicture (各止於第 3786、3812、3840、3866、3895 與 3921 行)。書稿把六者
+%   兩兩放進 .49\textwidth 的 minipage 並排、排成三列 (第 3768 至 3927 行)，
+%   網頁併為一張六面板圖，排法照書稿由左至右、由上至下。
+%
+% 面板順序與資料檔:
+%   之一 data100.csv  (350 列)  參考直線 (-2.5,-2.5)--(2.5,2.5)   標 $\rho_{XY}=1$
+%   之二 data60.csv   (347 列)  參考直線 (-2.5,-2.5)--(2.5,2.5)   標 $0<\rho_{XY}<1$
+%   之三 datan100.csv (345 列)  參考直線 (-2.5,2.5)--(2.5,-2.5)   標 $\rho_{XY}=-1$
+%   之四 datan60.csv  (346 列)  參考直線 (-2.5,2.5)--(2.5,-2.5)   標 $-1<\rho_{XY}<0$
+%   之五 data0.csv    (349 列)  無參考直線                        標 $\rho_{XY}=0$
+%   之六 dataBowl.csv (346 列)  無參考直線，縱軸改為 0 至 3.8     標 $\rho_{XY}=0$
+%   之五與之六的標示相同，這正是本圖要講的事: 兩者的相關係數同為 0，
+%   點的排法卻一個沒有形狀、一個是明顯的二次曲線。
+%   資料檔依 CH3_FIGURE_SPECS.md 第 3.3 節複製到本目錄，不由書稿所在的資料夾
+%   直接讀取。
+%
+% 產製 (本圖走 pgfplots，比照 CH3_FIGURE_SPECS.md 第 3.2 節的 dvisvgm 路徑，
+%   -O 不可省; 理由見下方「檔案大小」一段):
+%   latex -interaction=nonstopmode '\def\pgfsysdriver{pgfsys-dvisvgm.def}\input{correlation-types-scatter.tex}'
+%   dvisvgm -O -d2 -n -o ../../images/teaching-topics/correlation-types-scatter.svg correlation-types-scatter.dvi
+%
+% 對書稿的五處調整 (前四處與 Fig. 3.18 的 correlation-strength-scatter.tex 相同):
+%   1. 資料點取 journalink，參考直線取 journalaccent、線寬 0.8pt，兩者分層。
+%   2. xtick、ytick 明列，去掉兩軸重複的原點標號; 之六的縱軸只標 1、2、3。
+%   3. mark size 由書稿的 1pt 收為 0.8pt，理由見 Fig. 3.18 的檔頭。
+%   4. 面板標示改用一般下標 $\rho_{XY}$。
+%   5. 書稿在每個面板下方另有一行中文 (完全正相關、正相關、完全負相關、
+%      負相關、零相關、零相關)。CH2_FIGURE_SPECS.md 第 1.4 節規定圖內不得
+%      出現中文，這六個名稱一律移到圖說。
+%   另: 六個面板的原始檔各有一行被註解掉的線性迴歸線，一律不畫; 之五、之六
+%      另有一行被註解掉的水平線，同樣不畫。
+%
+% axis on top。資料點畫在座標軸與刻度標號之下，否則負向的刻度標號會被點雲蓋住。
+%
+% 字級。\DeclareMathSizes{10}{10}{9}{8} 把 script 級由預設的 7pt 提到 9pt。
+%   圖內最小的字是面板標示 $\rho_{XY}$ 的下標 XY，落在 script 級 9pt;
+%   沒有任何字落在 scriptscript 級。
+%   一個 S pt 的字在顯示寬 W px 之下的像素高度為 S x 0.99626 x W / <viewBox 寬>。
+%   本圖 viewBox 為 258.73 x 491.14，寬度與 Fig. 3.18 相同，故 350px 之下
+%   9pt 為 12.13px、10pt 為 13.48px; 620px 之下為 21.49px 與 23.87px。
+%   門檻 11px。面板因此只能是 3.6cm 見方: 總寬超過 285 之後 9pt 就跌破 11px。
+%   兩張散布圖同寬同面板大小，並排比較時比例尺一致。
+%
+% 檔案大小。六面板合計 2,083 顆點。同一份圖交 pdftocairo -svg 為
+%   1,320,787 bytes (gzip -9 為 189,041)，交 dvisvgm -O -d2 -n 為
+%   319,162 bytes (gzip -9 為 97,816)。
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.18}
+\DeclareMathSizes{10}{10}{9}{8}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\pgfplotsset{
+  scatterpanel/.style={
+    scale only axis,
+    width=3.6cm, height=3.6cm,
+    axis lines=middle,
+    axis on top,
+    axis line style={journalink, line width=0.8pt},
+    xmin=-2.9, xmax=2.9,
+    ymin=-2.9, ymax=2.9,
+    xlabel=$x$, ylabel=$y$,
+    xtick={-2,-1,1,2}, ytick={-2,-1,1,2},
+    tick style={journalink, line width=0.8pt},
+    tick label style={journalink, font=\normalsize},
+    label style={journalink, font=\normalsize},
+    clip=false,
+  },
+  datapoints/.style={
+    only marks, mark=*, mark size=0.8pt,
+    mark options={fill=journalink, draw=journalink, line width=0.2pt},
+  },
+  guideline/.style={mark=none, journalaccent, line width=0.8pt},
+}
+
+%% 面板標示: 掛在該面板繪圖區下緣的正中央，預設下移 0.50cm。
+%% 第三列的兩個面板改為 0.85cm: 之六的橫軸落在繪圖區的下緣 (ymin=0)，
+%% 其刻度標號因而落到繪圖區之外，0.50cm 會與面板標示相碰; 之五一併下移，
+%% 使同一列的兩個標示對齊。
+\newcommand{\panellabel}[2][-0.50cm]{%
+  \node[journalink, font=\normalsize, anchor=north]
+    at (rel axis cs:0.5,0) [yshift=#1] {#2}%
+}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{groupplot}[
+  group style={group size=2 by 3, horizontal sep=1.9cm, vertical sep=2.55cm},
+  scatterpanel,
+]
+
+%% 之一 完全正相關: 點全落在同一條上升的直線上
+\nextgroupplot
+\pgfplotstableread[col sep=comma, row sep=newline]{data100.csv}\tablea
+\addplot[datapoints] table {\tablea};
+\addplot[guideline] coordinates {(-2.5,-2.5) (2.5,2.5)};
+\panellabel{$\rho_{XY}=1$};
+
+%% 之二 正相關: 點雲成橢圓形，長軸沿上升的直線
+\nextgroupplot
+\pgfplotstableread[col sep=comma, row sep=newline]{data60.csv}\tableb
+\addplot[datapoints] table {\tableb};
+\addplot[guideline] coordinates {(-2.5,-2.5) (2.5,2.5)};
+\panellabel{$0<\rho_{XY}<1$};
+
+%% 之三 完全負相關: 點全落在同一條下降的直線上
+\nextgroupplot
+\pgfplotstableread[col sep=comma, row sep=newline]{datan100.csv}\tablec
+\addplot[datapoints] table {\tablec};
+\addplot[guideline] coordinates {(-2.5,2.5) (2.5,-2.5)};
+\panellabel{$\rho_{XY}=-1$};
+
+%% 之四 負相關: 點雲成橢圓形，長軸沿下降的直線
+\nextgroupplot
+\pgfplotstableread[col sep=comma, row sep=newline]{datan60.csv}\tabled
+\addplot[datapoints] table {\tabled};
+\addplot[guideline] coordinates {(-2.5,2.5) (2.5,-2.5)};
+\panellabel{$-1<\rho_{XY}<0$};
+
+%% 之五 零相關: 點雲成圓形，沒有方向可言，無參考直線
+\nextgroupplot
+\pgfplotstableread[col sep=comma, row sep=newline]{data0.csv}\tablee
+\addplot[datapoints] table {\tablee};
+\panellabel[-0.85cm]{$\rho_{XY}=0$};
+
+%% 之六 零相關但不獨立: 點排成開口向上的碗形，縱軸範圍改為 0 至 3.8
+\nextgroupplot[ymin=0, ymax=3.8, ytick={1,2,3}]
+\pgfplotstableread[col sep=comma, row sep=newline]{dataBowl.csv}\tablef
+\addplot[datapoints] table {\tablef};
+\panellabel[-0.85cm]{$\rho_{XY}=0$};
+
+\end{groupplot}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,105 @@
+% Fig. 3.18 -- 兩種相關強度的樣本散布，兩面板。
+% 書稿來源: mathstatch3.tex 第 3701 至 3714 行 (左面板，data60.csv) 與
+%   第 3724 至 3737 行 (右面板，data99.csv)。書稿把兩個 tikzpicture 各放進一個
+%   .49\textwidth 的 minipage 並排 (第 3697 至 3741 行)，網頁併為一張兩面板圖，
+%   兩面板共用同一組座標範圍與同一個比例尺。
+%
+% 資料檔依 CH3_FIGURE_SPECS.md 第 3.3 節複製到本目錄，不由書稿所在的資料夾
+%   直接讀取。data60.csv 347 列、data99.csv 347 列，皆與書稿所讀的同一份。
+%
+% 產製 (本圖走 pgfplots，比照 CH3_FIGURE_SPECS.md 第 3.2 節的 dvisvgm 路徑，
+%   -O 不可省; 理由見下方「檔案大小」一段):
+%   latex -interaction=nonstopmode '\def\pgfsysdriver{pgfsys-dvisvgm.def}\input{correlation-strength-scatter.tex}'
+%   dvisvgm -O -d2 -n -o ../../images/teaching-topics/correlation-strength-scatter.svg correlation-strength-scatter.dvi
+%
+% 對書稿的四處調整:
+%   1. 書稿的資料點與參考直線同為黑色。本站依 CH3_FIGURE_SPECS.md 第一節，
+%      資料點取主線色 journalink，45 度參考直線取重點色 journalaccent，
+%      線寬 0.8pt，兩者因而分層。
+%   2. 書稿未設 xtick 與 ytick，採 pgfplots 預設的 {-2,-1,0,1,2}，兩軸的 0
+%      會疊在原點附近。此處明列 {-2,-1,1,2}，只去掉重複的原點標號。
+%   3. mark size 由書稿的 1pt 收為 0.8pt。書稿的面板經 \scalebox{0.9} 之後
+%      繪圖區約 6.7cm 見方，點徑對繪圖區的比為 0.0095; 網頁的面板只有 3.6cm
+%      見方 (寬度受字級門檻所限，見下)，若照抄 1pt 則該比值升到 0.0195，
+%      點會糊成一團。0.8pt 時為 0.0156，在 350px 之下點徑約 2.2px，
+%      仍看得出是一顆一顆的點。
+%   4. 書稿的面板標示為 $\rho_{\sssig XY}$，圖內改用一般下標 $\rho_{XY}$，
+%      理由見下方字級一段。
+%   另: 書稿六個面板的原始檔各有一行被註解掉的線性迴歸線
+%      (create col/linear regression)，一律不畫。
+%
+% axis on top。資料點畫在座標軸與刻度標號之下，否則負向的刻度標號會被點雲蓋住。
+%
+% 字級。\DeclareMathSizes{10}{10}{9}{8} 把 script 級由預設的 7pt 提到 9pt。
+%   圖內最小的字是面板標示 $\rho_{XY}$ 的下標 XY，落在 script 級 9pt;
+%   沒有任何字落在 scriptscript 級 (以 .log 的字型清單覆核: cmmi10、cmmi9、
+%   cmr10、cmsy10 四支，沒有 8pt 以下的字型)。
+%   一個 S pt 的字在顯示寬 W px 之下的像素高度為 S x 0.99626 x W / <viewBox 寬>。
+%   本圖 viewBox 為 258.73 x 131.15，故 350px 之下 9pt 為 12.13px、
+%   10pt 為 13.48px; 620px 之下為 21.49px 與 23.87px。門檻 11px。
+%   兩面板合起來的繪圖寬度因此不能再放大: 總寬超過 285 之後 9pt 就跌破 11px。
+%
+% 檔案大小。同一份圖交 pdftocairo -svg 為 450,708 bytes (gzip -9 為 66,170)，
+%   交 dvisvgm -O -d2 -n 為 112,944 bytes (gzip -9 為 36,380)。差別在 dvisvgm
+%   把重複的字形收進 defs 再以 <use> 引用，且路徑座標只留兩位小數。
+%   兩者以 rsvg-convert 出圖比對: 694 顆點一顆不少，版面與標示位置一致。
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.18}
+\DeclareMathSizes{10}{10}{9}{8}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\pgfplotsset{
+  scatterpanel/.style={
+    scale only axis,
+    width=3.6cm, height=3.6cm,
+    axis lines=middle,
+    axis on top,
+    axis line style={journalink, line width=0.8pt},
+    xmin=-2.9, xmax=2.9,
+    ymin=-2.9, ymax=2.9,
+    xlabel=$x$, ylabel=$y$,
+    xtick={-2,-1,1,2}, ytick={-2,-1,1,2},
+    tick style={journalink, line width=0.8pt},
+    tick label style={journalink, font=\normalsize},
+    label style={journalink, font=\normalsize},
+    clip=false,
+  },
+  datapoints/.style={
+    only marks, mark=*, mark size=0.8pt,
+    mark options={fill=journalink, draw=journalink, line width=0.2pt},
+  },
+  guideline/.style={mark=none, journalaccent, line width=0.8pt},
+}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{groupplot}[
+  group style={group size=2 by 1, horizontal sep=1.9cm},
+  scatterpanel,
+]
+
+%% 左面板: 相關強度中等，點雲成橢圓形，仍看得出沿參考直線的走向
+\nextgroupplot
+\pgfplotstableread[col sep=comma, row sep=newline]{data60.csv}\tablea
+\addplot[datapoints] table {\tablea};
+\addplot[guideline] coordinates {(-2.5,-2.5) (2.5,2.5)};
+\node[journalink, font=\normalsize, anchor=north] at (axis cs:0,-2.9) [yshift=-0.45cm] {$\rho_{XY}=0.6$};
+
+%% 右面板: 相關強度接近上限，點雲收成一條窄帶
+\nextgroupplot
+\pgfplotstableread[col sep=comma, row sep=newline]{data99.csv}\tableb
+\addplot[datapoints] table {\tableb};
+\addplot[guideline] coordinates {(-2.5,-2.5) (2.5,2.5)};
+\node[journalink, font=\normalsize, anchor=north] at (axis cs:0,-2.9) [yshift=-0.45cm] {$\rho_{XY}=0.99$};
+
+\end{groupplot}
+\end{tikzpicture}
+\end{document}

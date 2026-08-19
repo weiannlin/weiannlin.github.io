@@ -1,0 +1,78 @@
+% Fig. 3.28 -- an order statistic is sorted before any value is observed, so
+%   its density piles up around the place its rank marks out and is low at
+%   both ends.
+% Source: mathstatch3.tex lines 5422-5446.  The manuscript draws it with
+%   pgfplots: the x axis alone (axis x line=bottom, axis y line=none), ticks
+%   at every 0.1 from 0 to 1.1, xmin 0, xmax 1.1, ymin 0, ymax 3.5, and one
+%   curve, \addplot[domain=0:1, black, smooth] {eee(x,3,8)}, where eee is the
+%   manuscript's own beta density macro; so the plotted function is
+%   360 x^2 (1-x)^7, which peaks at x = 2/9 at height 3.0616.  That function
+%   is reproduced here exactly.
+%
+% Departures from the manuscript picture:
+%
+% 1. pgfplots is not used.  The axis carries no y line, no y ticks and no
+%    axis labels, so nothing of it survives except a tick row and one curve,
+%    which plain TikZ draws in three lines and through pdflatex ->
+%    pdftocairo, the ordinary route of spec 1.1.  The proportions are the
+%    manuscript's: its axis box is .8\textwidth by .55\textwidth over ranges
+%    1.1 and 3.5, i.e. 0.216 units of y to one of x, and 7cm : 1.5cm here is
+%    0.214.
+%
+% 2. The tick marks stay at every 0.1 as in the manuscript, but only 0, 0.5
+%    and 1 are labelled.  All twelve labels would stand 0.7cm apart carrying
+%    marks 0.44cm wide, i.e. 0.26cm of clear space, against the 0.6cm of
+%    spec 1.3.  No label is invented; the ones kept are the manuscript's own.
+%
+% 3. The manuscript's \addlegendentry names a distribution and a pair of
+%    parameters, and names them inconsistently with the curve it draws
+%    (Beta(a=3,b=7) against eee(x,3,8)).  Per the author's ruling of
+%    2026-08-13 the figure is a schematic and neither the picture nor the
+%    caption is to carry the name of the distribution or its parameters, so
+%    there is no legend and the question of which pair to print does not
+%    arise.
+%
+% 4. The curve is journalink 0.8pt, per spec 1.2, in place of the
+%    manuscript's black.
+%
+% \DeclareMathSizes{10}{10}{9}{8} raises the math script sizes from the
+% default 7pt/5pt, though nothing in this picture is below text size.  Native
+% width 238.044pt (drawing range 8.16cm, inside the 9.0cm cap of spec 1.3).  A
+% mark of S pt shows at S x 0.99626 x <display width> / 238.044 px, so in a
+% topic-figure--wide at the 350px phone width 10pt text shows at 14.65px, and
+% at the 620px desktop width at 25.95px.  The tick labels are the only marks
+% in the picture.
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usetikzlibrary{arrows.meta}
+\DeclareMathSizes{10}{10}{9}{8}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=7cm,
+  y=1.5cm,
+  every node/.style={font=\normalsize, journalink, inner sep=1pt},
+  axis/.style={journalink, line width=0.8pt, -{Stealth[length=4pt]}},
+  tick/.style={journalink, line width=0.8pt},
+  curve/.style={journalink, line width=0.8pt}
+]
+  % ---- the density, 360 x^2 (1-x)^7 ------------------------------------
+  \draw[curve] plot[domain=0:1, samples=300, smooth]
+    (\x,{360*\x*\x*pow(1-\x,7)});
+
+  % ---- x axis ----------------------------------------------------------
+  \draw[axis] (0,0) -- (1.16,0);
+
+  \foreach \t in {0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1}
+    \draw[tick] ([yshift=0.035cm]\t,0) -- ([yshift=-0.106cm]\t,0);
+  \node[anchor=north] at ([yshift=-0.25cm]0,0)   {$0$};
+  \node[anchor=north] at ([yshift=-0.25cm]0.5,0) {$0.5$};
+  \node[anchor=north] at ([yshift=-0.25cm]1,0)   {$1$};
+\end{tikzpicture}
+\end{document}

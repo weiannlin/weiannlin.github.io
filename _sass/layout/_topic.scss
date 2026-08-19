@@ -584,6 +584,19 @@
     margin: 1.5em 0 !important;
   }
 
+  /* 承接前一個展示式的推論〔作者裁定 2026-08-15 丙案〕。推論箭頭後面若又是一條
+     等號鏈, 另起一個置中展示環境; 兩式之間若沿用 1.5em 的預設間距, 看起來會像
+     兩件不相干的事。這個類別把上下間距收窄, 讓讀者看得出後式是前式推出來的。
+     用法: 在後一個展示式所在的段落 (或包住它的 div) 加上 topic-math-follow。 */
+  .topic-math-follow mjx-container[display="true"],
+  p.topic-math-follow + p mjx-container[display="true"] {
+    margin-top: 0.55em !important;
+  }
+
+  .topic-math-follow-before mjx-container[display="true"] {
+    margin-bottom: 0.55em !important;
+  }
+
   .topic-math-layout--mobile {
     display: none;
   }
@@ -596,6 +609,101 @@
     .topic-math-layout--mobile {
       display: block;
     }
+  }
+
+  /* 分段定義 (cases) 的窄版版面。左邊是被定義的函數與一個大括號, 右邊每一列
+     分成「取值」與「條件」兩欄; 條件欄是一個無邊框的文字方塊, 文字太長就自然
+     換行, 不必在 LaTeX 裡手動斷行。大括號由三段 SVG (上端、中間的尖點、下端)
+     與兩段直線拼成, 直線用 flex 伸縮, 因此括號高度隨內容變化而曲線不變形。 */
+  .topic-cases {
+    align-items: center;
+    display: flex;
+    gap: 0.4em;
+    margin: 1.5em 0;
+  }
+
+  .topic-cases__lhs {
+    flex: 0 0 auto;
+  }
+
+  .topic-cases__brace {
+    align-self: stretch;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    width: 0.6em;
+  }
+
+  .topic-cases__brace svg {
+    display: block;
+    fill: none;
+    flex: 0 0 auto;
+    height: 0.62em;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.1;
+    width: 100%;
+  }
+
+  .topic-cases__brace-bar {
+    flex: 1 1 auto;
+    min-height: 0;
+    position: relative;
+  }
+
+  /* 直線畫在元素的正中央, 與 SVG 內 x = 6 (viewBox 寬 12 的一半) 對齊。 */
+  .topic-cases__brace-bar::before {
+    border-left: 1.1px solid currentColor;
+    content: "";
+    inset: 0 auto 0 50%;
+    position: absolute;
+    transform: translateX(-50%);
+  }
+
+  .topic-cases__rows {
+    column-gap: 1.1em;
+    display: grid;
+    flex: 1 1 auto;
+    grid-template-columns: max-content minmax(0, 1fr);
+    min-width: 0;
+    row-gap: 0.8em;
+  }
+
+  .topic-cases__val,
+  .topic-cases__cond {
+    align-self: center;
+    min-width: 0;
+  }
+
+  /* 〔作者裁定 2026-08-14〕左欄置中、右欄靠左, 與桌面版 array 的 c@{\quad}l 一致。 */
+  .topic-cases__val {
+    text-align: center;
+  }
+
+  .topic-cases__cond {
+    line-height: 1.65;
+    text-align: left;
+  }
+
+  /* 取值本身就很寬時 (帶分式或長括號的那幾則)，兩欄並排會把條件欄擠到只剩
+     幾十個像素，條件又常是單一個 MathJax 方塊、折不了行。這個修飾類別把該
+     則改為上下排列: 取值一列，條件縮排在其下，大括號與分支結構不變。 */
+  .topic-cases--stack .topic-cases__rows {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.3em;
+  }
+
+  .topic-cases--stack .topic-cases__val {
+    text-align: left;
+  }
+
+  .topic-cases--stack .topic-cases__val + .topic-cases__cond {
+    padding-left: 1.6em;
+  }
+
+  .topic-cases--stack .topic-cases__cond + .topic-cases__val {
+    margin-top: 0.6em;
   }
 
   .topic-figure {
@@ -769,9 +877,11 @@
 
 .topic-content {
   --topic-paren-indent: 24.39px;
+  --topic-paren-marker-shift: -1.63px;
 
   @media (min-width: 768px) {
     --topic-paren-indent: 26.94px;
+    --topic-paren-marker-shift: -2.20px;
   }
 }
 
@@ -799,10 +909,20 @@
     position: relative;
   }
 
+  /* The marker is taken out of flow, so its line box starts at the top of the
+     item and its own line-height (1.78, inherited from the body text) decides
+     where the digits sit inside it. A display formula sets its first row on a
+     much shallower box, so with `top: 0` the marker's centre lands below the
+     centre of the row beside it -- measured 1.63px at the 16.8px body size and
+     2.20px at 18.9px, on both a multi-row `aligned` and a single-row formula.
+     The shift below cancels that. The two values are measured, one per content
+     size in use, exactly as --topic-paren-indent above is.
+     〔作者 2026-08-19 指出〕 */
   li::before {
     content: "(" counter(topic-paren-list) ")";
     left: 0;
     position: absolute;
+    top: var(--topic-paren-marker-shift);
   }
 
   /* A display formula inside an item is centred on the full content column,
@@ -814,6 +934,64 @@
     margin-left: calc(-1 * var(--topic-paren-indent)) !important;
     width: calc(100% + var(--topic-paren-indent));
     max-width: calc(100% + var(--topic-paren-indent));
+  }
+
+  /* Only the margins that face another item are zeroed, so that the `li` rule
+     above governs the gap between items. The very top of the first item and
+     the very bottom of the last keep MathJax's own margin untouched, which
+     leaves the space around the whole list exactly as it was; the change was
+     meant for the gap between items and nothing else.
+     Two shapes occur in the source, and both are covered: the formula sitting
+     directly in the item (78 items), and a desktop/mobile pair of wrappers
+     with one formula each (23 items), of which only one member is ever shown.
+     Should an item ever hold a `topic-math-follow` pair, check this again --
+     the pair's own 0.55em is set with `!important` and would need to outrank
+     whichever of these selectors reaches it. */
+}
+
+/* An item list whose every item is nothing but a display formula is marked
+   `topic-list-paren--math` in the source. There the formulas start flush left
+   at the item indent instead of being centred on the full column: centring
+   gives each item a different starting point, so a run of five short formulas
+   comes out ragged. Lists that mix prose and formulas keep the centred
+   setting, which is the manuscript's look.
+   〔作者裁定 2026-08-19〕 */
+.topic-content .topic-list-paren--math {
+  li mjx-container[display="true"] {
+    margin-left: 0 !important;
+    width: auto;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  /* Every item here is one formula and nothing else, so the gap between two
+     items is the gap between two formulas. MathJax gives each display
+     container `margin: 1em 0` (27.59px at the mobile body size) and that margin
+     collapses straight through an item carrying no top padding or border, so
+     the `li` value below only takes effect once the margins facing another
+     item are zeroed. 1.2em measures 20.2px, wider than the 13.8px between two
+     rows of one `aligned` so an item never reads as a further row, and about a
+     quarter tighter than MathJax's own spacing.
+     The outermost edges keep MathJax's margin, which leaves the space around
+     the whole list exactly as it was.
+     These rules are confined to `--math` on purpose: in a list that mixes
+     prose and formulas a formula may sit in the middle of an item, and CSS
+     cannot tell a display that follows text from one that opens the item --
+     `:first-child` ignores text nodes -- so zeroing there would flatten one
+     side of a mid-item formula and leave the other at 1em.
+     〔作者裁定 2026-08-19; 範圍於 2026-08-20 收到 --math〕 */
+  li {
+    margin-bottom: 1.2em;
+  }
+
+  li:not(:first-child) > mjx-container[display="true"],
+  li:not(:first-child) > .topic-math-layout > mjx-container[display="true"] {
+    margin-top: 0 !important;
+  }
+
+  li:not(:last-child) > mjx-container[display="true"],
+  li:not(:last-child) > .topic-math-layout > mjx-container[display="true"] {
+    margin-bottom: 0 !important;
   }
 }
 

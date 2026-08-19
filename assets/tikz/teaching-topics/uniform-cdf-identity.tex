@@ -1,0 +1,136 @@
+% Fig. 4.2 -- 標準均勻分配的 cdf 是恆等函數，與一般分配的 cdf 對照，兩面板。
+% 書稿來源: mathstatch4.tex 第 2766 至 2790 行 (第一個 tikzpicture) 與第 2792 至 2839 行
+%   (第二個 tikzpicture)，書稿分別放進 .4\textwidth 與 .55\textwidth 的兩個 minipage，
+%   橫排成一列。座標一律照抄書稿，單位為 TikZ 的 x = 1cm, y = 1cm:
+%
+%   第一個面板 (標準均勻分配的 cdf)
+%     座標軸 (0,0)--(3.2,0) 與 (0,0)--(0,3)，均帶箭頭。
+%     主線 (0,0)--(3,3)，即 [0,1] 上的恆等函數 (書稿的 3 個單位對應 cdf 值 1)。
+%     y 刻度 y=1 標 F_U(a)=a、y=2 標 F_U(b)=b; x 刻度 x=1 標 a、x=2 標 b。
+%     虛線 (0,2)--(2,2)、(2,2)--(2,0)、(0,1)--(1,1)、(1,1)--(1,0)。
+%     文字 F_U(u) 與 u。
+%
+%   第二個面板 (一般分配的 cdf)
+%     座標軸 (0,0)--(6.2,0) 與 (0,0)--(0,3)，均帶箭頭。
+%     主線 2.7*exp(2*(x-3))/(1+exp(2*(x-3)))，domain 0:6、samples 200，
+%     上方水平漸近線為 y = 2.7。
+%     y 刻度 y=0.956728 標 F_X(a)、y=2.317002 標 F_X(b);
+%     x 刻度 x=2.7 標 a、x=3.9 標 b。曲線在這兩點的值即上列兩個 y 值。
+%     虛線 (0,2.317002)--(3.9,2.317002)、(3.9,2.317002)--(3.9,0)、
+%          (0,0.956728)--(2.7,0.956728)、(2.7,0.956728)--(2.7,0)。
+%     文字 F_X(x) 與 x。
+%   書稿在第二個面板中被註解掉的兩項不畫: 由 (3.9,2.317002) 彎向 (5,1.5) 的虛線箭頭，
+%   以及 F'_X(a) = f_X(a) 那一行說明文字。
+%
+% 兩個面板的 y 軸尺度不同 (第一個面板到 3、第二個面板的曲線漸近於 2.7)，依候選稿內
+% fig-pending 的指示照書稿保留，不為了對齊而統一。
+%
+% 對書稿的四處調整:
+%
+%   1. 兩個面板改為上下堆疊，第一個面板在上。書稿並排成一列，兩個面板的 y 軸標示都
+%      掛在軸的左側，並排之後原生寬約 14.3cm; 在 350 px 顯示寬之下，即使把兩個面板
+%      的座標一起壓到 0.58 倍，最小字也只剛好踩到 11 px 的下限，而左面板的繪圖區只
+%      剩約 72 px。堆疊之後上面板的繪圖區有 139 px、下面板有 259 px，字也有餘裕。
+%      作法同 sum-range-two-cases.tex。
+%      **候選稿在本圖之後的一段以「左側」「右側」稱呼兩個面板，堆疊之後這兩個方位詞
+%      與圖不合; 該段不在本次可改動的範圍內，已列入回報請作者裁定。**
+%   2. 軸名與曲線名的位置。書稿把 F_U(u) 寫在 (3.5,3.3)、F_X(x) 寫在 (6.75,3)，都在
+%      座標軸端點之外; 依 CH2_FIGURE_SPECS.md 1.3，網頁一律改標在軸末端箭頭旁，
+%      故 F_U(u) 與 F_X(x) 移到 y 軸箭頭正上方 (作法同第二章 Fig A01)，u 與 x 移到
+%      x 軸箭頭右側。
+%   3. 下標改為一般下標，不用 \scriptscriptstyle。書稿的 F_{\sssig U} 在 350 px 顯示寬
+%      之下只有 6 至 7 px，作法同 product-space-nine-regions.tex; 再以
+%      \DeclareMathSizes{10}{10}{9}{8} 把 script 級撐到 9pt。
+%   4. 虛線依 CH2_FIGURE_SPECS.md 1.6 改為 journalmuted 0.5pt、dash pattern on 2pt
+%      off 2pt，書稿的 dashed 未指定顏色與線寬。
+%
+% 版面: x = y = 1cm，原生寬約 8.8cm，在 CH2_FIGURE_SPECS.md 1.3 的 9.0cm 上限之內。
+%
+% 產製:
+%   pdflatex uniform-cdf-identity.tex
+%   pdftocairo -svg uniform-cdf-identity.pdf ../../images/teaching-topics/uniform-cdf-identity.svg
+
+\documentclass[tikz,border=2pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usetikzlibrary{arrows.meta}
+\DeclareMathSizes{10}{10}{9}{8}
+
+\definecolor{journalink}{HTML}{1F1C18}
+\definecolor{journalmuted}{HTML}{8A7F72}
+\definecolor{journalaccent}{HTML}{9C2D2D}
+
+\begin{document}
+\begin{tikzpicture}[
+  x=1cm, y=1cm,
+  every node/.style={font=\normalsize, journalink},
+  axis/.style={journalink, line width=0.8pt, -{Stealth[length=4pt]}},
+  tick/.style={journalink, line width=0.8pt},
+  curve/.style={journalink, line width=0.8pt},
+  guide/.style={journalmuted, line width=0.5pt, dash pattern=on 2pt off 2pt}
+]
+
+%% ==== 上面板: 標準均勻分配的 cdf，在 [0,1] 上是恆等函數 ==============
+\begin{scope}
+
+  %% 虛線先畫，主線與座標軸疊在其上
+  \draw[guide] (0,2) -- (2,2) -- (2,0);
+  \draw[guide] (0,1) -- (1,1) -- (1,0);
+
+  %% 恆等函數
+  \draw[curve] (0,0) -- (3,3);
+
+  %% 座標軸
+  \draw[axis] (0,0) -- (3.4,0);
+  \node[anchor=west, inner sep=2.5pt] at (3.4,0) {$u$};
+  \draw[axis] (0,0) -- (0,3.2);
+  \node[anchor=south, inner sep=2.5pt] at (0,3.2) {$F_{U}(u)$};
+
+  %% y 軸刻度
+  \draw[tick] ([xshift=1pt]0,2) -- ([xshift=-3pt]0,2);
+  \node[anchor=east, inner sep=2.5pt] at ([xshift=-3pt]0,2) {$F_{U}(b)=b$};
+  \draw[tick] ([xshift=1pt]0,1) -- ([xshift=-3pt]0,1);
+  \node[anchor=east, inner sep=2.5pt] at ([xshift=-3pt]0,1) {$F_{U}(a)=a$};
+
+  %% x 軸刻度
+  \draw[tick] ([yshift=1pt]2,0) -- ([yshift=-3pt]2,0);
+  \node[anchor=north, inner sep=2.5pt] at ([yshift=-3pt]2,0) {$b$};
+  \draw[tick] ([yshift=1pt]1,0) -- ([yshift=-3pt]1,0);
+  \node[anchor=north, inner sep=2.5pt] at ([yshift=-3pt]1,0) {$a$};
+
+\end{scope}
+
+%% ==== 下面板: 一般分配的 cdf =========================================
+\begin{scope}[yshift=-4.75cm]
+
+  %% 虛線
+  \draw[guide] (0,2.317002) -- (3.9,2.317002) -- (3.9,0);
+  \draw[guide] (0,0.956728) -- (2.7,0.956728) -- (2.7,0);
+
+  %% cdf 曲線
+  \draw[curve] plot[domain=0:6, samples=200, smooth]
+    (\x,{2.7*exp(2*(\x-3))/(1+exp(2*(\x-3)))});
+
+  %% 座標軸
+  \draw[axis] (0,0) -- (6.4,0);
+  \node[anchor=west, inner sep=2.5pt] at (6.4,0) {$x$};
+  \draw[axis] (0,0) -- (0,3.2);
+  \node[anchor=south, inner sep=2.5pt] at (0,3.2) {$F_{X}(x)$};
+
+  %% y 軸刻度
+  \draw[tick] ([xshift=1pt]0,2.317002) -- ([xshift=-3pt]0,2.317002);
+  \node[anchor=east, inner sep=2.5pt] at ([xshift=-3pt]0,2.317002) {$F_{X}(b)$};
+  \draw[tick] ([xshift=1pt]0,0.956728) -- ([xshift=-3pt]0,0.956728);
+  \node[anchor=east, inner sep=2.5pt] at ([xshift=-3pt]0,0.956728) {$F_{X}(a)$};
+
+  %% x 軸刻度
+  \draw[tick] ([yshift=1pt]3.9,0) -- ([yshift=-3pt]3.9,0);
+  \node[anchor=north, inner sep=2.5pt] at ([yshift=-3pt]3.9,0) {$b$};
+  \draw[tick] ([yshift=1pt]2.7,0) -- ([yshift=-3pt]2.7,0);
+  \node[anchor=north, inner sep=2.5pt] at ([yshift=-3pt]2.7,0) {$a$};
+
+\end{scope}
+
+\end{tikzpicture}
+\end{document}

@@ -26,7 +26,16 @@
       displayMath: [['$$', '$$'], ['\\[', '\\]']],
       macros: {
         indep: '\\mathrel{\\perp\\!\\!\\!\\perp}',
-        sssig: '\\scriptscriptstyle'
+        sssig: '\\scriptscriptstyle',
+        // 第五章的收斂箭頭。定義逐字取自書稿的 preamble
+        // (/Users/sagalin/Dropbox/MathStat/elegantProbability.tex 第 258 至 262、274 行)，
+        // 網頁不自訂另一套寫法。
+        dconv: '\\xrightarrow{~~d~~}',
+        pconv: '\\xrightarrow{~~p~~}',
+        asconv: '\\xrightarrow{~~a.s.~~}',
+        rconv: '\\xrightarrow{~~r~~}',
+        aconv: '\\xrightarrow{~~a~~}',
+        iidto: '\\overset{\\mathrm{iid}}{\\sim}'
       }
     }
   };
