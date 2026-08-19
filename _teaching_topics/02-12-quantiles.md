@@ -33,8 +33,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{P}(X\leqslant x_{\sssig p})&\geqslant p\\[0.45em]
-\mathbb{P}(X\geqslant x_{\sssig p})&\geqslant1-p
+&\mathbb{P}(X\leqslant x_{\sssig p})\geqslant p\ \text{且}\\[0.45em]
+&\mathbb{P}(X\geqslant x_{\sssig p})\geqslant1-p
 \end{aligned}
 $$
 
@@ -55,8 +55,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{P}(X\leqslant q_{\sssig k})&\geqslant\frac{k}{\,q\,}\\[0.45em]
-\mathbb{P}(X\geqslant q_{\sssig k})&\geqslant1-\frac{k}{\,q\,}
+&\mathbb{P}(X\leqslant q_{\sssig k})\geqslant\frac{k}{\,q\,}\ \text{且}\\[0.45em]
+&\mathbb{P}(X\geqslant q_{\sssig k})\geqslant1-\frac{k}{\,q\,}
 \end{aligned}
 $$
 
