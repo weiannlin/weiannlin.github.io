@@ -625,10 +625,18 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-g^{\prime}(c)=\frac{\,2ca-2\sigma_{\sssig X}^{2}\,}{(a+c)^{3}}=0\qquad\therefore\, c=\frac{\,\sigma_{\sssig X}^{2}\,}{a}
+g^{\prime}(c)=\frac{\,2ca-2\sigma_{\sssig X}^{2}\,}{(a+c)^{3}}=0
 $$
 
 </div>
+
+</div>
+
+<div class="topic-math-follow" markdown="1">
+
+$$
+\Longrightarrow\ c=\frac{\,\sigma_{\sssig X}^{2}\,}{a}
+$$
 
 </div>
 

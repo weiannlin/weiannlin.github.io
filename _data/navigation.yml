@@ -20,7 +20,7 @@ main:
   - title: "Courses"
     url: /courses/
 
-  - title: "講義"
+  - title: "Lecture Notes"
     url: /lecture-notes/
 
   - title: "Demos"
