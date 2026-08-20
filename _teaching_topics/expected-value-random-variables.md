@@ -4,5 +4,5 @@ layout: redirect
 sitemap: false
 permalink: /teaching-topics/expected-value-random-variables/
 redirect:
-  to: /teaching-topics/expectation/
+  to: /lecture-notes/expectation/
 ---

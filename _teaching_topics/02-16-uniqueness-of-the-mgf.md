@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 2
 topic: 16
 order: 216
-permalink: /teaching-topics/uniqueness-of-the-mgf/
+permalink: /lecture-notes/uniqueness-of-the-mgf/
 date: 2026-08-06
 published: true
 excerpt: "動差母函數的唯一性指出: 兩個隨機變數的 mgf 若存在且相等，則兩者的 pdf (或 pmf) 也會相等。有了這一項性質，只要把各階動差所組成的級數求和，得到一個認得出來的 mgf，就能反過來指出原本的分配是哪一個: 各階原動差皆為 $0.8$ 的是伯努利分配，偶階動差為 $\\frac{(2m)!}{2^{m}m!}$ 而奇階動差為 $0$ 的是標準常態分配。離散型的 mgf 還可以展開成 $p_{1}e^{a_{1}t}+\\cdots+p_{n}e^{a_{n}t}$，由各項的係數與指數直接還原 pmf。"
 ---
 
-[上一篇](/teaching-topics/moment-generating-functions/)給了[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)的定義，說明它如何以微分生成各階原動差，也給了它的動差級數展開；三道例題或由已知的分配求出 mgf，或由已知的 mgf 求出動差與[變異數](/teaching-topics/variance/#def-variance)。
+[上一篇](/lecture-notes/moment-generating-functions/)給了[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)的定義，說明它如何以微分生成各階原動差，也給了它的動差級數展開；三道例題或由已知的分配求出 mgf，或由已知的 mgf 求出動差與[變異數](/lecture-notes/variance/#def-variance)。
 
 本篇處理的是另一個方向的問題。手上先有各階動差，把它們所組成的級數求和之後得到一個 mgf，再由這個 mgf 指出原本的分配是哪一個。這個作法的依據是動差母函數的唯一性。以下先以兩道例題示範如何由各階動差求得 mgf，其中第二題已先用到唯一性；接著給出唯一性定理，再以兩道例題由 mgf 指出所對應的分配；最後說明離散型的 mgf 如何直接還原成 pmf。
 
@@ -100,7 +100,7 @@ $$
 Determine the mgf of $X$ and the pdf of $X$.
 </div>
 
-由 [Theorem 2.22](/teaching-topics/moment-generating-functions/#thm-mgf-moment-series) 可得
+由 [Theorem 2.22](/lecture-notes/moment-generating-functions/#thm-mgf-moment-series) 可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -154,7 +154,7 @@ $$
 <div id="thm-mgf-uniqueness" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.23 (動差母函數的唯一性, uniqueness of mgf)</div>
 
-若 $X, Y$ 為二[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)，且二者之動差母函數 $M\_{\sssig X}(t), M\_{\sssig Y}(t)$ 存在且相等，若且唯若二者之 pdf (或 pmf) 亦會相等，即
+若 $X, Y$ 為二[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)，且二者之動差母函數 $M\_{\sssig X}(t), M\_{\sssig Y}(t)$ 存在且相等，若且唯若二者之 pdf (或 pmf) 亦會相等，即
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -246,7 +246,7 @@ $$
 Find the mgf of $X$ and the distribution of $X$.
 </div>
 
-由 [Theorem 2.22](/teaching-topics/moment-generating-functions/#thm-mgf-moment-series) 可得
+由 [Theorem 2.22](/lecture-notes/moment-generating-functions/#thm-mgf-moment-series) 可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -304,7 +304,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-我們在 [Example 2.3 <span lang="en">(Continued)</span>](/teaching-topics/expectation/#ex-geometric-expectation) 中有用過一樣的技巧，即改變加總與微分的順序，讓我們能夠運用幾何級數。
+我們在 [Example 2.3 <span lang="en">(Continued)</span>](/lecture-notes/expectation/#ex-geometric-expectation) 中有用過一樣的技巧，即改變加總與微分的順序，讓我們能夠運用幾何級數。
 
 此處的分配是伽瑪分配 <span lang="en">(gamma distribution)</span>，利用 [mgf 的唯一性](#thm-mgf-uniqueness)可以輕鬆判斷，但值得注意的是，這個分配同時也是卡方分配 <span lang="en">(chi-square distribution)</span>，在後面的機率模型章節中，我們會詳述這些關係。
 
@@ -335,7 +335,7 @@ p_{\sssig n}, & x=a_{n}
 \right.
 $$
 
-譬如 [Example 2.30](/teaching-topics/moment-generating-functions/#ex-discrete-mgf-variance) 的 mgf 為
+譬如 [Example 2.30](/lecture-notes/moment-generating-functions/#ex-discrete-mgf-variance) 的 mgf 為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -377,7 +377,7 @@ $$
 
 [Theorem 2.23](#thm-mgf-uniqueness) 使 mgf 不只能生成動差，還能用來辨認分配。只要把手上各階動差所組成的級數求和，得到一個認得出來的 mgf，原本的分配是哪一個也就跟著確定了。本篇的例題正是這樣做的，[Example 2.32](#ex-constant-moments-mgf) 由各階原動差皆為 $0.8$ 求得 $M_{\sssig X}(t)=0.2+0.8e^{t}$，[Example 2.32 <span lang="en">(Continued)</span>](#ex-constant-moments-bernoulli) 再由這個 mgf 得知 $X$ 為伯努利分配；[Example 2.33](#ex-normal-moments-to-pdf) 由偶階與奇階動差求得 $M_{\sssig X}(t)=e^{t^{2}/2}$，因而得知 $X$ 為標準常態分配；[Example 2.34](#ex-factorial-moments-to-mgf) 則以改變加總與微分順序的技巧求得 $M_{\sssig X}(t)=(1-2t)^{-2}$，因而得知 $X$ 為伽瑪分配，也就是自由度為 $4$ 的卡方分配。
 
-離散型的 mgf 還有一項更直接的用法。這一型的 mgf 可以展開成 $p_{\sssig 1}e^{a_{1}t}+\cdots+p_{\sssig n}e^{a_{n}t}$，各項的指數 $a_{i}$ 就是 $X$ 的各個取值，係數 $p_{\sssig i}$ 就是各個取值的機率，因此看見這種形式的 mgf 便能立刻寫出它的 pmf；連續型的 mgf 沒有這種對應，要由 mgf 認出連續型的分配，仍須回到各個常見機率模型的 mgf 逐一比對。動差母函數之外，還有其他的母函數各自生成不同的量，[下一篇](/teaching-topics/probability-cumulant-generating-functions/)就要介紹生成機率的[機率母函數](/teaching-topics/probability-cumulant-generating-functions/#def-pgf)，以及生成累積量的[累積量母函數](/teaching-topics/probability-cumulant-generating-functions/#def-cgf)。
+離散型的 mgf 還有一項更直接的用法。這一型的 mgf 可以展開成 $p_{\sssig 1}e^{a_{1}t}+\cdots+p_{\sssig n}e^{a_{n}t}$，各項的指數 $a_{i}$ 就是 $X$ 的各個取值，係數 $p_{\sssig i}$ 就是各個取值的機率，因此看見這種形式的 mgf 便能立刻寫出它的 pmf；連續型的 mgf 沒有這種對應，要由 mgf 認出連續型的分配，仍須回到各個常見機率模型的 mgf 逐一比對。動差母函數之外，還有其他的母函數各自生成不同的量，[下一篇](/lecture-notes/probability-cumulant-generating-functions/)就要介紹生成機率的[機率母函數](/lecture-notes/probability-cumulant-generating-functions/#def-pgf)，以及生成累積量的[累積量母函數](/lecture-notes/probability-cumulant-generating-functions/#def-cgf)。
 
 ## 參考文獻與延伸閱讀
 

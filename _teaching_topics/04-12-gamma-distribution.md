@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 4
 topic: 12
 order: 412
-permalink: /teaching-topics/gamma-distribution/
+permalink: /lecture-notes/gamma-distribution/
 date: 2026-08-12
 published: false
 excerpt: "伽瑪分配在形狀參數 $\\alpha=n$ 為正整數時，描述的是卜瓦松過程中直到第 $n$ 次偶發事件發生為止的等待時間。本篇先給出定義，並完整證明其機率函數為一個合法的機率函數，以及期望值 $\\alpha\\beta$、變異數 $\\alpha\\beta^{2}$ 與動差母函數 $(1-\\beta t)^{-\\alpha}$ 三者的公式，另外求出 $k$ 階原動差的公式。接著依序給出四項延伸性質: 伽瑪分配與卜瓦松分配的對偶關係、形狀參數為 $1$ 時即為指數分配、比例參數相同且彼此獨立的兩個伽瑪變數相加仍為伽瑪分配，以及比例伸縮性質。最後以四道例題演練對偶關係的兩種寫法，以及個數為隨機的指數變數之和的動差母函數。"
 ---
 
-[上一篇](/teaching-topics/exponential-memoryless-and-minima/)談的是指數分配的無記憶性，以及兩個獨立指數分配的極小值與先後次序。指數分配所描述的，是[卜瓦松過程](/teaching-topics/poisson-process-and-distribution/#def-poisson-process)中等候直到一次偶發事件發生所需的等待時間；若把「一次」換成「$n$ 次」，這段等待時間所服從的分配，就是本篇的伽瑪分配。
+[上一篇](/lecture-notes/exponential-memoryless-and-minima/)談的是指數分配的無記憶性，以及兩個獨立指數分配的極小值與先後次序。指數分配所描述的，是[卜瓦松過程](/lecture-notes/poisson-process-and-distribution/#def-poisson-process)中等候直到一次偶發事件發生所需的等待時間；若把「一次」換成「$n$ 次」，這段等待時間所服從的分配，就是本篇的伽瑪分配。
 
-本篇先給出伽瑪分配的定義，並完整證明其機率函數為一個合法的機率函數，以及期望值、變異數與動差母函數的公式，另外再求出 $k$ 階原動差的公式。接著依序說明四項延伸性質: 伽瑪分配與[卜瓦松分配](/teaching-topics/poisson-process-and-distribution/#def-poisson-distribution)的對偶關係、形狀參數為 $1$ 時即為[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution)、比例參數相同且彼此獨立的兩個伽瑪變數相加仍為伽瑪分配，以及比例伸縮性質。最後以四道例題作為演練。
+本篇先給出伽瑪分配的定義，並完整證明其機率函數為一個合法的機率函數，以及期望值、變異數與動差母函數的公式，另外再求出 $k$ 階原動差的公式。接著依序說明四項延伸性質: 伽瑪分配與[卜瓦松分配](/lecture-notes/poisson-process-and-distribution/#def-poisson-distribution)的對偶關係、形狀參數為 $1$ 時即為[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)、比例參數相同且彼此獨立的兩個伽瑪變數相加仍為伽瑪分配，以及比例伸縮性質。最後以四道例題作為演練。
 
 <div id="def-gamma-distribution" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 4.14 (伽瑪分配, gamma distribution)</div>
@@ -447,7 +447,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-由[獨立隨機變數線性組合的動差母函數之定理](/teaching-topics/mgf-method-transformations/#thm-mgf-two-to-one)可知
+由[獨立隨機變數線性組合的動差母函數之定理](/lecture-notes/mgf-method-transformations/#thm-mgf-two-to-one)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -471,7 +471,7 @@ $$
 
 </div>
 
-則由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+則由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 W=X+Y\sim\mathrm{Gamma}(\alpha_1+\alpha_2,\ \beta)
@@ -515,7 +515,7 @@ $$
 
 </div>
 
-則由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+則由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 Y\sim\mathrm{Gamma}(\alpha,\ a\beta)
@@ -842,13 +842,13 @@ $$
 
 ## 本篇小結
 
-[Definition 4.14](#def-gamma-distribution) 的伽瑪分配以兩個參數界定: $\alpha$ 為形狀參數、$\beta$ 為比例參數，而頻率參數 $\lambda$ 就是 $\beta$ 的倒數，兩者只是同一個參數的兩種寫法。機率函數的分母是 $\beta^{\alpha}\Gamma(\alpha)$ 這個常數，其中的[伽瑪函數](/teaching-topics/gamma-function-exponential-distribution/#def-gamma-function)正是讓整條密度在值域上的積分等於 $1$ 的關鍵。證明的四個步驟依序驗證積分為 <span class="text-nowrap">$1$、</span>求得 <span class="text-nowrap">$\mathbb{E}(X)=\alpha\beta$、</span>再由二階原動差得到 <span class="text-nowrap">$\mathrm{Var}(X)=\alpha\beta^{2}$，</span>最後直接由定義求得 <span class="text-nowrap">$M_{\sssig X}(t)=(1-\beta t)^{-\alpha}$。</span>若先求出 $k$ 階原動差的公式，期望值與變異數都只是它在 $k=1$ 與 $k=2$ 的兩個特例。
+[Definition 4.14](#def-gamma-distribution) 的伽瑪分配以兩個參數界定: $\alpha$ 為形狀參數、$\beta$ 為比例參數，而頻率參數 $\lambda$ 就是 $\beta$ 的倒數，兩者只是同一個參數的兩種寫法。機率函數的分母是 $\beta^{\alpha}\Gamma(\alpha)$ 這個常數，其中的[伽瑪函數](/lecture-notes/gamma-function-exponential-distribution/#def-gamma-function)正是讓整條密度在值域上的積分等於 $1$ 的關鍵。證明的四個步驟依序驗證積分為 <span class="text-nowrap">$1$、</span>求得 <span class="text-nowrap">$\mathbb{E}(X)=\alpha\beta$、</span>再由二階原動差得到 <span class="text-nowrap">$\mathrm{Var}(X)=\alpha\beta^{2}$，</span>最後直接由定義求得 <span class="text-nowrap">$M_{\sssig X}(t)=(1-\beta t)^{-\alpha}$。</span>若先求出 $k$ 階原動差的公式，期望值與變異數都只是它在 $k=1$ 與 $k=2$ 的兩個特例。
 
-定義之後的四項延伸性質，第一項是伽瑪分配與卜瓦松分配的對偶關係: $\alpha=n$ 為正整數時，$T>t$ 這個事件說的是「直到第 $n$ 次偶發事件發生所需的時間比 $t$ 還要長」，換句話說，$t$ 時長內的發生次數不到 $n$ 次，兩者是同一件事情，因而有 $\mathbb{P}(T>t)=\mathbb{P}(Y<n)$ 這條等式。由這條等式對 $t$ 微分，加總的兩項彼此相消之後只剩一項，得到的正是伽瑪分配的密度。第二項指出 $\alpha=1$ 時伽瑪分配即為[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution)。第三項是可加性: 兩個 mgf 相乘使指數上的 $\alpha_1$ 與 $\alpha_2$ 相加，前提是兩個變數獨立且比例參數相同；$\alpha_1=\alpha_2=1$ 時，它說的就是兩個 iid 的指數變數相加會變成伽瑪分配。第四項是比例伸縮性質，$Y=aX$ 只把比例參數乘上 <span class="text-nowrap">$a$，</span>形狀參數不變。
+定義之後的四項延伸性質，第一項是伽瑪分配與卜瓦松分配的對偶關係: $\alpha=n$ 為正整數時，$T>t$ 這個事件說的是「直到第 $n$ 次偶發事件發生所需的時間比 $t$ 還要長」，換句話說，$t$ 時長內的發生次數不到 $n$ 次，兩者是同一件事情，因而有 $\mathbb{P}(T>t)=\mathbb{P}(Y<n)$ 這條等式。由這條等式對 $t$ 微分，加總的兩項彼此相消之後只剩一項，得到的正是伽瑪分配的密度。第二項指出 $\alpha=1$ 時伽瑪分配即為[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)。第三項是可加性: 兩個 mgf 相乘使指數上的 $\alpha_1$ 與 $\alpha_2$ 相加，前提是兩個變數獨立且比例參數相同；$\alpha_1=\alpha_2=1$ 時，它說的就是兩個 iid 的指數變數相加會變成伽瑪分配。第四項是比例伸縮性質，$Y=aX$ 只把比例參數乘上 <span class="text-nowrap">$a$，</span>形狀參數不變。
 
 四道例題分成兩組。[Example 4.31](#ex-gamma-1) 以分部積分把 $h(\alpha)$ 一層一層往上遞推，得到 $\mathbb{P}(X\leqslant x)=\mathbb{P}(Y\geqslant\alpha)$ 這條等式，這是前面對偶關係的餘事件版本；[Example 4.33](#ex-gamma-3) 則把卜瓦松過程中第 $k$ 次到達的時刻寫成 <span class="text-nowrap">$T_k$，</span>其密度的求法與對偶關係的證明完全相同。[Example 4.32](#ex-gamma-2) 把兩個獨立的指數變數相加，先由可加性認出伽瑪分配，再由對偶關係換成卜瓦松機率來計算。[Example 4.34](#ex-gamma-4) 的兩個小題則把相加的個數本身當成隨機的: 個數固定為 $n$ 時，$n$ 個 iid 的指數變數之和是伽瑪分配；個數服從幾何分配時，等比級數加總之後所得到的 mgf 仍是指數分配的形式，只是平均等待時間由 $\theta$ 變為 $\theta/p$ 這個值。
 
-[下一篇](/teaching-topics/weibull-reliability-and-hazard/)介紹韋伯分配，並依序給出可靠度函數與風險函數的定義。
+[下一篇](/lecture-notes/weibull-reliability-and-hazard/)介紹韋伯分配，並依序給出可靠度函數與風險函數的定義。
 
 ## 參考文獻與延伸閱讀
 

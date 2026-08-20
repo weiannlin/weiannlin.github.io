@@ -4,5 +4,5 @@ layout: redirect
 sitemap: false
 permalink: /teaching-topics/quantiles-and-median/
 redirect:
-  to: /teaching-topics/quantiles/
+  to: /lecture-notes/quantiles/
 ---

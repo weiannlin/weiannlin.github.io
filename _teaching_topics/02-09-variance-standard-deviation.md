@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 2
 topic: 9
 order: 209
-permalink: /teaching-topics/variance-standard-deviation/
+permalink: /lecture-notes/variance-standard-deviation/
 date: 2026-08-06
 published: true
 excerpt: "三道例題示範變異數的求算: 線性關係下直接套用平方伸縮性，分段定義的密度以分段積分求出期望值與平方期望值，混合型則把離散部分與連續部分分開計算。期望值另有一項重要特性: 在所有實數之中，期望值使平方離差的期望值達到最小。若只知道期望值與變異數，$g(X)$ 的期望值與變異數仍可由泰勒級數展開求得近似值。標準差是變異數開根號後的量數，單位與期望值相同，性質由變異數承接而來，只是平方伸縮性在標準差中改為絕對伸縮性。"
 ---
 
-[上一篇](/teaching-topics/variance/)給出[變異數](/teaching-topics/variance/#def-variance)的定義、計算公式、函數變異數與兩項性質，並以兩道例題示範計算。本篇接著看三道例題。一道是[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)之間的線性關係，一道的密度函數分段定義，一道則是混合型隨機變數。
+[上一篇](/lecture-notes/variance/)給出[變異數](/lecture-notes/variance/#def-variance)的定義、計算公式、函數變異數與兩項性質，並以兩道例題示範計算。本篇接著看三道例題。一道是[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)之間的線性關係，一道的密度函數分段定義，一道則是混合型隨機變數。
 
-三道例題之後，我們回頭補上[期望值](/teaching-topics/expectation/#def-expectation)的一項重要特性。在所有的實數之中，期望值是使平方離差的期望值達到最小的那一個。接著討論在只知道期望值與變異數的情形下，如何以泰勒級數展開求出 $g(X)$ 的期望值與變異數的近似值。最後介紹標準差。它是變異數開根號之後的量數，單位與期望值相同，性質可以直接由變異數的性質承接而來。
+三道例題之後，我們回頭補上[期望值](/lecture-notes/expectation/#def-expectation)的一項重要特性。在所有的實數之中，期望值是使平方離差的期望值達到最小的那一個。接著討論在只知道期望值與變異數的情形下，如何以泰勒級數展開求出 $g(X)$ 的期望值與變異數的近似值。最後介紹標準差。它是變異數開根號之後的量數，單位與期望值相同，性質可以直接由變異數的性質承接而來。
 
 <div id="ex-income-linear-variance" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.19</div>
@@ -28,7 +28,7 @@ Suppose that $X$ denotes the number of customer visits recorded in a study of vi
 </ol>
 </div>
 
-(1) 由 [Theorem 2.13](/teaching-topics/variance/#thm-variance-properties) 的平移不變性與平方伸縮性可知
+(1) 由 [Theorem 2.13](/lecture-notes/variance/#thm-variance-properties) 的平移不變性與平方伸縮性可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -170,7 +170,7 @@ $$
 </ol>
 </div>
 
-(3) 由[第 (1) 小題](/teaching-topics/mixed-random-variables/#ex-component-lifetime)已知 $Y$ 為混合型隨機變數，其分配為
+(3) 由[第 (1) 小題](/lecture-notes/mixed-random-variables/#ex-component-lifetime)已知 $Y$ 為混合型隨機變數，其分配為
 {: .topic-paren-item}
 
 $$
@@ -279,7 +279,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-把 $X-a$ 分解成 $(X-\mu_{\sssig X})+(\mu_{\sssig X}-a)$，再由 [Theorem 2.10](/teaching-topics/properties-of-expectation/#thm-expectation-linearity) 可知
+把 $X-a$ 分解成 $(X-\mu_{\sssig X})+(\mu_{\sssig X}-a)$，再由 [Theorem 2.10](/lecture-notes/properties-of-expectation/#thm-expectation-linearity) 可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -318,7 +318,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個性質在 [Definition 2.6](/teaching-topics/expectation/#def-expectation) 之後的說明中就已經提過，是期望值的一個重要特性。由於期望值可以簡單視為分配的中心，故任意的位置與期望值所構成的離差 <span lang="en">(deviation)</span> 平方的平均，將是最小的。
+這個性質在 [Definition 2.6](/lecture-notes/expectation/#def-expectation) 之後的說明中就已經提過，是期望值的一個重要特性。由於期望值可以簡單視為分配的中心，故任意的位置與期望值所構成的離差 <span lang="en">(deviation)</span> 平方的平均，將是最小的。
 
 這個定理的證明過程使用一個技巧，將 $X-a$ 分解為互相正交的兩個部分，分別是 $X-\mu_{\sssig X}$ 與 $\mu_{\sssig X}-a$，我們則借其意，將此方法稱為**正交分解 <span lang="en">(orthogonal decomposition)</span>**，在往後的推導過程中，我們將經常使用這個技巧。
 
@@ -578,7 +578,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-本處的證明我們承接 [Theorem 2.13](/teaching-topics/variance/#thm-variance-properties) 的變異數性質接續證明。
+本處的證明我們承接 [Theorem 2.13](/lecture-notes/variance/#thm-variance-properties) 的變異數性質接續證明。
 
 (1) 由變異數的非負性可知
 {: .topic-paren-item}
@@ -616,7 +616,7 @@ $$
 {: .topic-paren-cont}
 </div>
 
-[Theorem 2.16](#thm-standard-deviation-properties) 中，(1) 是承接了變異數的**非負性**。(2) 的部分則是可以仿照 [Theorem 2.13](/teaching-topics/variance/#thm-variance-properties)，透過設定 $g(\cdot)$ 與 $a, b$ 的值，來得到許多有用的子性質，並將之與 [Theorem 2.13](/teaching-topics/variance/#thm-variance-properties) 比較，見以下設定。
+[Theorem 2.16](#thm-standard-deviation-properties) 中，(1) 是承接了變異數的**非負性**。(2) 的部分則是可以仿照 [Theorem 2.13](/lecture-notes/variance/#thm-variance-properties)，透過設定 $g(\cdot)$ 與 $a, b$ 的值，來得到許多有用的子性質，並將之與 [Theorem 2.13](/lecture-notes/variance/#thm-variance-properties) 比較，見以下設定。
 
 (1) **[ 設定 $a=0$ ]**
 {: .topic-paren-item}
@@ -720,7 +720,7 @@ $$
 
 [Theorem 2.14](#thm-mean-minimizes-squared-deviation) 指出，在所有的實數 $a$ 之中，$\mathbb{E}[(X-a)^{2}]$ 在 $a=\mu_{\sssig X}$ 處達到最小，證明的關鍵是把 $X-a$ 拆成 $(X-\mu_{\sssig X})+(\mu_{\sssig X}-a)$ 的正交分解。[Theorem 2.15](#thm-taylor-approximation) 則處理只知道 $\mu_{\sssig X}$ 與 $\sigma_{\sssig X}^{2}$ 的情形。把 $g(X)$ 在 $\mu_{\sssig X}$ 處作泰勒級數展開，取前三項求期望值、取前兩項求變異數，便得到 $g(X)$ 的期望值與變異數的近似值，[Example 2.21](#ex-log-taylor-approximation) 即以 $g(X)=\ln X$ 示範。
 
-[Definition 2.8](#def-standard-deviation) 把標準差定義為變異數的平方根，它的單位與期望值相同，因此資料分析在呈現上多用標準差；指稱時同樣以母體標準差與樣本標準差 $S$ 區別，計算上則一律先求變異數再開根號。[Theorem 2.16](#thm-standard-deviation-properties) 的兩項性質都由 [Theorem 2.13](/teaching-topics/variance/#thm-variance-properties) 承接而來，其中的複合性質經設定後得到常數不具變異性、平移不變性與絕對伸縮性三個子性質，[Example 2.19 <span lang="en">(Continued)</span>](#ex-income-standard-deviation) 便是絕對伸縮性的直接應用。變異數的平方伸縮性在標準差中改為絕對伸縮性，是兩者性質唯一不同之處。[下一篇](/teaching-topics/mode/)離開離散程度的量數，改談指出分配位置的另一個量數，[眾數](/teaching-topics/mode/#def-mode)。
+[Definition 2.8](#def-standard-deviation) 把標準差定義為變異數的平方根，它的單位與期望值相同，因此資料分析在呈現上多用標準差；指稱時同樣以母體標準差與樣本標準差 $S$ 區別，計算上則一律先求變異數再開根號。[Theorem 2.16](#thm-standard-deviation-properties) 的兩項性質都由 [Theorem 2.13](/lecture-notes/variance/#thm-variance-properties) 承接而來，其中的複合性質經設定後得到常數不具變異性、平移不變性與絕對伸縮性三個子性質，[Example 2.19 <span lang="en">(Continued)</span>](#ex-income-standard-deviation) 便是絕對伸縮性的直接應用。變異數的平方伸縮性在標準差中改為絕對伸縮性，是兩者性質唯一不同之處。[下一篇](/lecture-notes/mode/)離開離散程度的量數，改談指出分配位置的另一個量數，[眾數](/lecture-notes/mode/#def-mode)。
 
 ## 參考文獻與延伸閱讀
 

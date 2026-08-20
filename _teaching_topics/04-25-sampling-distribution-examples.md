@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 4
 topic: 25
 order: 425
-permalink: /teaching-topics/sampling-distribution-examples/
+permalink: /lecture-notes/sampling-distribution-examples/
 date: 2026-08-15
 published: false
-excerpt: "本篇以兩道例題演練前面幾篇所建立的抽樣分配關係。第一題由自由度為 $p$ 的 $t$ 分配出發: 先以 Jacobian 法把值域分成 $X\\geqslant0$ 與 $X<0$ 兩段，各自轉換之後相加，得到 $Y=X^{2}$ 服從自由度為 $1$ 與 $p$ 的 $\\mathcal{F}$ 分配；再以史特靈公式把式中的兩個伽瑪函數換成初等函數，逐項取極限，得到 $t$ 分配的機率函數在自由度趨於無窮時收斂至標準常態分配的機率函數。第二題表面上是單邊的尾機率，實際上問的是兩獨立樣本變異數比值的雙尾機率: 先把取極小值的事件改寫為 $k\\leqslant\\frac{W_1}{W_2}\\leqslant\\frac{1}{k}$ 這個區間，再由分子自由度與分母自由度相同時 $\\mathcal{F}$ 分配取倒數之後仍為同一個分配，得到 $k=\\mathcal{F}_{0.95}(5,5)$ 這個答案。"
+excerpt: "本篇以兩道例題演練前面幾篇所建立的抽樣分配關係。第一題由自由度為 $p$ 的 $t$ 分配出發: 先以 Jacobian 法把值域分成 $X\\geqslant0$ 與 $X\\lt 0$ 兩段，各自轉換之後相加，得到 $Y=X^{2}$ 服從自由度為 $1$ 與 $p$ 的 $\\mathcal{F}$ 分配；再以史特靈公式把式中的兩個伽瑪函數換成初等函數，逐項取極限，得到 $t$ 分配的機率函數在自由度趨於無窮時收斂至標準常態分配的機率函數。第二題表面上是單邊的尾機率，實際上問的是兩獨立樣本變異數比值的雙尾機率: 先把取極小值的事件改寫為 $k\\leqslant\\frac{W_1}{W_2}\\leqslant\\frac{1}{k}$ 這個區間，再由分子自由度與分母自由度相同時 $\\mathcal{F}$ 分配取倒數之後仍為同一個分配，得到 $k=\\mathcal{F}_{0.95}(5,5)$ 這個答案。"
 ---
 
-[上一篇](/teaching-topics/sampling-distribution-tail-points/)把常用抽樣分配之間的尾點關係逐條證明出來，本篇則以兩道例題演練這些關係的用法。兩題都不再引入新的定義，而是把前面幾篇所建立的分配關係與尾點關係實際用在計算上。
+[上一篇](/lecture-notes/sampling-distribution-tail-points/)把常用抽樣分配之間的尾點關係逐條證明出來，本篇則以兩道例題演練這些關係的用法。兩題都不再引入新的定義，而是把前面幾篇所建立的分配關係與尾點關係實際用在計算上。
 
-第一題處理 [$t$ 分配](/teaching-topics/student-t-distribution/#def-t-distribution)與 [$\mathcal{F}$ 分配](/teaching-topics/snedecor-f-distribution/#def-f-distribution)之間的關係。$Y=X^{2}$ 不是一對一的轉換，因此要依[非一對一的函數轉換](/teaching-topics/many-to-one-transformations/)的作法，把 $X$ 的值域分成 $X\geqslant0$ 與 $X<0$ 兩段，兩段各自以 [Jacobian 法](/teaching-topics/one-to-one-transformations/#prop-jacobian-method)轉換之後再相加。該題第二小題則要把兩個[伽瑪函數](/teaching-topics/gamma-function-exponential-distribution/#def-gamma-function)的比值化為初等函數，所依據的是題目所給的近似式，也就是該題之後那則註記所說的史特靈公式。
+第一題處理 [$t$ 分配](/lecture-notes/student-t-distribution/#def-t-distribution)與 [$\mathcal{F}$ 分配](/lecture-notes/snedecor-f-distribution/#def-f-distribution)之間的關係。$Y=X^{2}$ 不是一對一的轉換，因此要依[非一對一的函數轉換](/lecture-notes/many-to-one-transformations/)的作法，把 $X$ 的值域分成 $X\geqslant0$ 與 $X<0$ 兩段，兩段各自以 [Jacobian 法](/lecture-notes/one-to-one-transformations/#prop-jacobian-method)轉換之後再相加。該題第二小題則要把兩個[伽瑪函數](/lecture-notes/gamma-function-exponential-distribution/#def-gamma-function)的比值化為初等函數，所依據的是題目所給的近似式，也就是該題之後那則註記所說的史特靈公式。
 
 第二題所求的是一個常數，使兩個樣本變異數之比值與其倒數之中較小者小於該常數的機率等於 $0.10$ 這個數值。表面上這是單邊的尾機率，把事件改寫之後會發現，問的其實是雙尾的機率，而分子自由度與分母自由度相同這個條件，正是能夠以 $k$ 與 $\frac{1}{\,k\,}$ 兩者表示兩個端點的原因。
 
@@ -357,7 +357,7 @@ $$
 \mathbb{P}\biggl(k\leqslant\frac{\,W_1\,}{W_2}\leqslant\frac{1}{\,k\,}\biggr)=0.9
 $$
 
-且依照題意，$\frac{W_1}{\,W_2\,}\sim\mathcal{F}(5,5)$ [這個關係](/teaching-topics/snedecor-f-distribution/#thm-s-sq-ratio-samp-dist)成立，可知
+且依照題意，$\frac{W_1}{\,W_2\,}\sim\mathcal{F}(5,5)$ [這個關係](/lecture-notes/snedecor-f-distribution/#thm-s-sq-ratio-samp-dist)成立，可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -377,7 +377,7 @@ $$
 
 </div>
 
-又 $\mathcal{F}_{\sssig 0.05}(5,5)=\frac{1}{\,\mathcal{F}_{\sssig 0.95}(5,5)\,}$ [這個關係](/teaching-topics/sampling-distribution-tail-points/#thm-sampling-tail-relations)成立，故可知
+又 $\mathcal{F}_{\sssig 0.05}(5,5)=\frac{1}{\,\mathcal{F}_{\sssig 0.95}(5,5)\,}$ [這個關係](/lecture-notes/sampling-distribution-tail-points/#thm-sampling-tail-relations)成立，故可知
 
 $$
 k=\mathcal{F}_{\sssig 0.95}(5,5)
@@ -423,11 +423,11 @@ $$
 
 [Example 4.58](#ex-sampling-ex-1) 把 $t$ 分配與 $\mathcal{F}$ 分配之間的關係，由機率函數的層次直接算了一次。第一小題的轉換 $Y=X^{2}$ 不是一對一，因此把 $X$ 的值域分成 $X\geqslant0$ 與 $X<0$ 兩段，兩段各自以 Jacobian 法轉換之後得到 $h^{*}(y\mid p)$ 與 <span class="text-nowrap">$h^{**}(y\mid p)$，</span>兩者相加即為 $Y$ 的機率函數。由於 $t$ 分配的機率函數只透過 $x^{2}$ 依賴 <span class="text-nowrap">$x$，</span>兩段所得到的結果完全相同，相加之後恰好把 $\sqrt{\pi p}$ 中的 $\sqrt{\pi}$ 併成 <span class="text-nowrap">$\Gamma\bigl(\frac{1}{2}\bigr)$，</span>得到的正是第一自由度為 $1$、第二自由度為 $p$ 的 $\mathcal{F}$ 分配之機率函數。
 
-第二小題處理的是自由度趨於無窮時的情形。作法是先以史特靈公式把 $\Gamma\bigl(\frac{p+1}{2}\bigr)$ 與 $\Gamma\bigl(\frac{p}{2}\bigr)$ 兩者換成初等函數，整理之後 $f(x\mid p)$ 成為四個因子的乘積: $\bigl(\frac{p-1}{p-2}\bigr)^{\frac{p-1}{2}}$ 這個因子的極限由 $\bigl(1+\frac{1}{k}\bigr)^{k}\to e$ 得到 <span class="text-nowrap">$e^{\frac{1}{2}}$，</span>恰與前面的 $e^{-\frac{1}{2}}$ 相消；$\frac{\sqrt{p-1}}{\sqrt{p}}$ 與 $\bigl(1+\frac{x^{2}}{p}\bigr)^{-\frac{1}{2}}$ 兩者的極限都是 <span class="text-nowrap">$1$；</span>只有 $\bigl(1+\frac{x^{2}}{p}\bigr)^{-\frac{p}{2}}$ 留下 $e^{-\frac{x^{2}}{2}}$ 這一項。四個因子的極限與 $\frac{1}{\,\sqrt{2\pi}\,}$ 這個常數合起來，正是[標準常態分配](/teaching-topics/normal-distribution/#def-normal)的機率函數，此即 $t$ 分配在自由度趨於無窮時[分配收斂](/teaching-topics/convergence-in-distribution/#def-converge-in-distribution) <span lang="en">(convergence in distribution)</span> 至標準常態分配。
+第二小題處理的是自由度趨於無窮時的情形。作法是先以史特靈公式把 $\Gamma\bigl(\frac{p+1}{2}\bigr)$ 與 $\Gamma\bigl(\frac{p}{2}\bigr)$ 兩者換成初等函數，整理之後 $f(x\mid p)$ 成為四個因子的乘積: $\bigl(\frac{p-1}{p-2}\bigr)^{\frac{p-1}{2}}$ 這個因子的極限由 $\bigl(1+\frac{1}{k}\bigr)^{k}\to e$ 得到 <span class="text-nowrap">$e^{\frac{1}{2}}$，</span>恰與前面的 $e^{-\frac{1}{2}}$ 相消；$\frac{\sqrt{p-1}}{\sqrt{p}}$ 與 $\bigl(1+\frac{x^{2}}{p}\bigr)^{-\frac{1}{2}}$ 兩者的極限都是 <span class="text-nowrap">$1$；</span>只有 $\bigl(1+\frac{x^{2}}{p}\bigr)^{-\frac{p}{2}}$ 留下 $e^{-\frac{x^{2}}{2}}$ 這一項。四個因子的極限與 $\frac{1}{\,\sqrt{2\pi}\,}$ 這個常數合起來，正是[標準常態分配](/lecture-notes/normal-distribution/#def-normal)的機率函數，此即 $t$ 分配在自由度趨於無窮時[分配收斂](/lecture-notes/convergence-in-distribution/#def-converge-in-distribution) <span lang="en">(convergence in distribution)</span> 至標準常態分配。
 
 [Example 4.59](#ex-sampling-ex-2) 的關鍵在於把事件寫對。$\min\bigl\lbrace\frac{W_1}{W_2},\frac{W_2}{W_1}\bigr\rbrace\geqslant k$ 這個事件等價於兩個比值都不小於 <span class="text-nowrap">$k$，</span>也就是 $k\leqslant\frac{W_1}{W_2}\leqslant\frac{1}{k}$ 這一段區間，因此表面上的單邊尾機率其實是雙尾機率。兩個樣本各有 $6$ 個觀測值，兩個樣本變異數的比值因而服從 $\mathcal{F}(5,5)$ 這個分配，而區間的兩個端點又互為倒數，正好對上 $\mathcal{F}$ 尾點的倒數關係，所求的常數即為 <span class="text-nowrap">$\mathcal{F}_{\sssig 0.95}(5,5)$。</span>之後那則註記進一步指出，分子自由度與分母自由度不同時雖然不能再以 $k$ 與 $\frac{1}{k}$ 兩者表示兩個端點，但同一條倒數關係仍然使兩種寫法的範圍完全等價，這正是應用統計學在做兩獨立母體變異數比值的檢定時，可以永遠把較大的樣本變異數放在分子而只看右尾的原因。
 
-常用抽樣分配的部分至此告一段落。[下一篇](/teaching-topics/bivariate-normal-distribution/)轉入二元常態分配，由兩個常態隨機變數組成的聯合分配開始，給出它的定義與各項性質。
+常用抽樣分配的部分至此告一段落。[下一篇](/lecture-notes/bivariate-normal-distribution/)轉入二元常態分配，由兩個常態隨機變數組成的聯合分配開始，給出它的定義與各項性質。
 
 ## 參考文獻與延伸閱讀
 

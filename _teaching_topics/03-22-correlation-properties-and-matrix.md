@@ -7,22 +7,22 @@ category: "機率概論"
 chapter: 3
 topic: 22
 order: 322
-permalink: /teaching-topics/correlation-properties-and-matrix/
+permalink: /lecture-notes/correlation-properties-and-matrix/
 date: 2026-08-13
 published: false
 excerpt: "相關係數恆落在 $-1$ 與 $1$ 之間，把這個範圍乘回兩個標準差，馬上得到變異數-共變異數不等式，也就是共變異數必定界在 $-\\sigma_{\\sssig X}\\sigma_{\\sssig Y}$ 與 $\\sigma_{\\sssig X}\\sigma_{\\sssig Y}$ 之間。在了解相關係數以後，共變異數矩陣也可以改寫為相關矩陣: 它同樣是對稱矩陣，但主對角線元素必定為 $1$，非對角線元素為相關係數而界在 $-1$ 到 $1$ 之間，因此主對角線不為 $1$、兩側不對稱或元素超出範圍的矩陣都不是合法的相關矩陣。若另外定義由各個標準差構成的對角矩陣 $\\mathbf{D}$，相關矩陣可以寫成 $\\mathbf{C}=\\mathbf{D}^{-1}\\mathbf{\\Sigma}\\mathbf{D}^{-1}$ 這條式子，這正是對角矩陣的左乘與右乘分別作用在列與行上的結果。本篇的四道例題依序處理最大值期望值的上界、由共變異數建構相關矩陣、旋轉之後兩個新變數的相關係數，以及線性組合之間的相關係數，最後說明即使不算出整個共變異數矩陣，也可以用 $\\boldsymbol{a}^{\\mathrm{T}}\\mathrm{Var}(\\boldsymbol{X})\\boldsymbol{b}$ 求得任意兩個線性組合的共變異數。"
 ---
 
-[上一篇](/teaching-topics/correlation-coefficient/)以 [Definition 3.19](/teaching-topics/correlation-coefficient/#def-corr) 給出[相關係數](/teaching-topics/correlation-coefficient/#def-corr)，並以 [Theorem 3.19](/teaching-topics/correlation-coefficient/#thm-corr-proper) 證明它的六款性質，其中最後一款是相關係數恆落在 $-1$ 與 $1$ 之間。
+[上一篇](/lecture-notes/correlation-coefficient/)以 [Definition 3.19](/lecture-notes/correlation-coefficient/#def-corr) 給出[相關係數](/lecture-notes/correlation-coefficient/#def-corr)，並以 [Theorem 3.19](/lecture-notes/correlation-coefficient/#thm-corr-proper) 證明它的六款性質，其中最後一款是相關係數恆落在 $-1$ 與 $1$ 之間。
 
-本篇先把這個範圍改寫成[共變異數](/teaching-topics/covariance/#def-covariance)的界限，也就是 [Theorem 3.20](#thm-var-cov-ineq) 的變異數-共變異數不等式，並以一道例題示範它在求上界時的用法；接著把[共變異數矩陣](/teaching-topics/covariance-matrix/#def-covar-matrix)改寫為 [Definition 3.20](#def-corr-matrix) 的相關矩陣，說明合法的相關矩陣應具備的條件、推廣到 $n$ 個變數的寫法，以及相關矩陣與共變異數矩陣之間的關係式，最後以三道例題示範相關矩陣的計算。
+本篇先把這個範圍改寫成[共變異數](/lecture-notes/covariance/#def-covariance)的界限，也就是 [Theorem 3.20](#thm-var-cov-ineq) 的變異數-共變異數不等式，並以一道例題示範它在求上界時的用法；接著把[共變異數矩陣](/lecture-notes/covariance-matrix/#def-covar-matrix)改寫為 [Definition 3.20](#def-corr-matrix) 的相關矩陣，說明合法的相關矩陣應具備的條件、推廣到 $n$ 個變數的寫法，以及相關矩陣與共變異數矩陣之間的關係式，最後以三道例題示範相關矩陣的計算。
 
 ## 變異數-共變異數不等式
 
 <div id="thm-var-cov-ineq" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 3.20 (變異數-共變異數不等式, variance-covariance inequality)</div>
 
-若 $X$ 與 $Y$ 為二[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)，則
+若 $X$ 與 $Y$ 為二[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)，則
 
 $$
 -\sigma_{\sssig X}\sigma_{\sssig Y}\leqslant\sigma_{\sssig XY}\leqslant \sigma_{\sssig X}\sigma_{\sssig Y}
@@ -33,7 +33,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-由 [Theorem 3.19](/teaching-topics/correlation-coefficient/#thm-corr-proper) 可知 $-1\leqslant\rho_{\sssig XY}\leqslant 1$ 這個範圍，又 $\rho_{\sssig XY}$ $=$ $\frac{\sigma_{\sssig XY}}{\sqrt{\sigma_{\sssig X}^{2}\,\sigma_{\sssig Y}^{2}}}$ 這條等式，故可知
+由 [Theorem 3.19](/lecture-notes/correlation-coefficient/#thm-corr-proper) 可知 $-1\leqslant\rho_{\sssig XY}\leqslant 1$ 這個範圍，又 $\rho_{\sssig XY}$ $=$ $\frac{\sigma_{\sssig XY}}{\sqrt{\sigma_{\sssig X}^{2}\,\sigma_{\sssig Y}^{2}}}$ 這條等式，故可知
 
 $$
 -\sigma_{\sssig X}\sigma_{\sssig Y}\leqslant\sigma_{\sssig XY}\leqslant \sigma_{\sssig X}\sigma_{\sssig Y}
@@ -220,7 +220,7 @@ $$
 
 相關矩陣有一些地方需要注意:
 
-(1) 上述定義中的 $\rho_{\sssig XY}, \rho_{\sssig XZ}, \rho_{\sssig YZ},$ $\rho_{\sssig YX}, \rho_{\sssig ZX}, \rho_{\sssig ZY}$ 分別表 $X, Y, Z$ 間的相關係數，且由[相關係數的對稱性](/teaching-topics/correlation-coefficient/#thm-corr-proper)，我們可以發現其實 $\rho_{\sssig XY} = \rho_{\sssig YX},$ $\rho_{\sssig XZ} = \rho_{\sssig ZX}$ 及 <span class="text-nowrap">$\rho_{\sssig YZ} = \rho_{\sssig ZY}$。</span>
+(1) 上述定義中的 $\rho_{\sssig XY}, \rho_{\sssig XZ}, \rho_{\sssig YZ},$ $\rho_{\sssig YX}, \rho_{\sssig ZX}, \rho_{\sssig ZY}$ 分別表 $X, Y, Z$ 間的相關係數，且由[相關係數的對稱性](/lecture-notes/correlation-coefficient/#thm-corr-proper)，我們可以發現其實 $\rho_{\sssig XY} = \rho_{\sssig YX},$ $\rho_{\sssig XZ} = \rho_{\sssig ZX}$ 及 <span class="text-nowrap">$\rho_{\sssig YZ} = \rho_{\sssig ZY}$。</span>
 {: .topic-paren-item}
 
 與共變異數矩陣相同，相關矩陣是一個對稱矩陣，但主對角線元素必定為 <span class="text-nowrap">$1$，</span>且由於非對角線元素 <span lang="en">(off-diagonal element)</span> 為相關係數，故其應界在 $-1$ 到 $1$ 之間。
@@ -770,21 +770,21 @@ $$
 \operatorname{Cov}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X},\ \boldsymbol{b}^{\mathrm{T}}\boldsymbol{X})=\boldsymbol{a}^{\mathrm{T}}\mathrm{Var}(\boldsymbol{X})\boldsymbol{b}
 $$
 
-這個做法提供我們一個關於[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector)的各式線性組合間的共變異數的方便算法，而且完全可以對照 $\mathrm{Var}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})$ 的結構，如同我們在 [Theorem 3.15](/teaching-topics/covariance/#thm-covar-proper) 中的性質 (3) 與 (4)，將共變異數與變異數對照的想法一樣。
+這個做法提供我們一個關於[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的各式線性組合間的共變異數的方便算法，而且完全可以對照 $\mathrm{Var}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})$ 的結構，如同我們在 [Theorem 3.15](/lecture-notes/covariance/#thm-covar-proper) 中的性質 (3) 與 (4)，將共變異數與變異數對照的想法一樣。
 
 </div>
 
 ## 本篇小結
 
-[Theorem 3.20](#thm-var-cov-ineq) 的變異數-共變異數不等式，是把[相關係數的範圍](/teaching-topics/correlation-coefficient/#thm-corr-proper)乘回兩個[標準差](/teaching-topics/variance-standard-deviation/#def-standard-deviation)所得的結果。相關係數是共變異數除以兩個標準差之積，既然它落在 $-1$ 與 $1$ 之間，共變異數也就必定界在 $-\sigma_{\sssig X}\sigma_{\sssig Y}$ 與 $\sigma_{\sssig X}\sigma_{\sssig Y}$ 之間。[Example 3.42](#ex-correlation-bound-example) 求的是 $\mathbb{E}\bigl[\max(X^{2}, Y^{2})\bigr]$ 的上界。該題先以 $\max(a, b)$ 的絕對值表示式把最大值化為兩項[期望值](/teaching-topics/expectation/#def-expectation)之和，再對 $\mathbb{E}\bigl[\lvert (X+Y)(X-Y)\rvert\bigr]$ 這一項套用柯西不等式，即得 $1+\sqrt{1-\rho^{2}}$ 這個上界。
+[Theorem 3.20](#thm-var-cov-ineq) 的變異數-共變異數不等式，是把[相關係數的範圍](/lecture-notes/correlation-coefficient/#thm-corr-proper)乘回兩個[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)所得的結果。相關係數是共變異數除以兩個標準差之積，既然它落在 $-1$ 與 $1$ 之間，共變異數也就必定界在 $-\sigma_{\sssig X}\sigma_{\sssig Y}$ 與 $\sigma_{\sssig X}\sigma_{\sssig Y}$ 之間。[Example 3.42](#ex-correlation-bound-example) 求的是 $\mathbb{E}\bigl[\max(X^{2}, Y^{2})\bigr]$ 的上界。該題先以 $\max(a, b)$ 的絕對值表示式把最大值化為兩項[期望值](/lecture-notes/expectation/#def-expectation)之和，再對 $\mathbb{E}\bigl[\lvert (X+Y)(X-Y)\rvert\bigr]$ 這一項套用柯西不等式，即得 $1+\sqrt{1-\rho^{2}}$ 這個上界。
 
 [Definition 3.20](#def-corr-matrix) 把共變異數矩陣改寫為相關矩陣，其中每一個元素都是兩個變數之間的相關係數。它與共變異數矩陣同為對稱矩陣，但多了兩項限制。主對角線元素必定為 <span class="text-nowrap">$1$，</span>非對角線元素則界在 $-1$ 到 $1$ 之間，因此本篇所列的三個矩陣分別因為主對角線不為 <span class="text-nowrap">$1$、</span>兩側不對稱以及元素超出範圍而不合法。相關矩陣同樣可以推廣到 $n$ 個變數；若把各個標準差排成對角矩陣 <span class="text-nowrap">$\mathbf{D}$，</span>相關矩陣即 $\mathbf{C}=\mathbf{D}^{-1}\mathbf{\Sigma}\mathbf{D}^{-1}$ 這條式子，用的是對角矩陣左乘與右乘分別讓矩陣的列與行乘上指定倍數的功能。
 
 三道例題示範相關矩陣的計算。[Example 3.43](#ex-four-dimensional-normal-correlation) 由各個變異數與共變異數逐一算出六個相關係數，再依定義填成一個四階的相關矩陣。[Example 3.44](#ex-linear-combination-correlation) 先把旋轉寫成矩陣乘上隨機向量，求出 $\boldsymbol{Z}$ 的共變異數矩陣，再以 $\mathbf{D}^{-1}\mathbf{\Sigma}\mathbf{D}^{-1}$ 取得相關矩陣，其非對角項即 $\rho$ 這個值，最後以 $\sin^{4}\theta+\cos^{4}\theta$ $=$ $1-2\sin^{2}\theta\cos^{2}\theta$ 與 $\sin^{2}(2\theta)\leqslant 1$ 兩式把分母放大，得到 $\rho^{2}$ 的上界。[Example 3.45](#ex-uncorrelated-equal-variance) 則給出兩種做法，一種直接由共變異數與變異數代入定義，另一種先以矩陣 $\mathbf{A}$ 生成兩個線性組合，再求其相關矩陣。
 
-本篇最後的 Note 指出，即使不計算整個共變異數矩陣，也可以用 $\boldsymbol{a}^{\mathrm{T}}\mathrm{Var}(\boldsymbol{X})\boldsymbol{b}$ 求得任意兩個線性組合之間的共變異數，它正是計算共變異數矩陣時的其中一個步驟，對應的恰好是非對角項。這個寫法可以與 $\mathrm{Var}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})$ 的結構互相對照，如同 [Theorem 3.15](/teaching-topics/covariance/#thm-covar-proper) 的性質 (3) 與 (4) 把共變異數與變異數對照起來一樣。
+本篇最後的 Note 指出，即使不計算整個共變異數矩陣，也可以用 $\boldsymbol{a}^{\mathrm{T}}\mathrm{Var}(\boldsymbol{X})\boldsymbol{b}$ 求得任意兩個線性組合之間的共變異數，它正是計算共變異數矩陣時的其中一個步驟，對應的恰好是非對角項。這個寫法可以與 $\mathrm{Var}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})$ 的結構互相對照，如同 [Theorem 3.15](/lecture-notes/covariance/#thm-covar-proper) 的性質 (3) 與 (4) 把共變異數與變異數對照起來一樣。
 
-[下一篇](/teaching-topics/population-linear-regression/)將由相關係數出發，導出以一個變數預測另一個變數的母體線性迴歸式。
+[下一篇](/lecture-notes/population-linear-regression/)將由相關係數出發，導出以一個變數預測另一個變數的母體線性迴歸式。
 
 ## 參考文獻與延伸閱讀
 

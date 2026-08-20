@@ -7,14 +7,14 @@ category: "機率概論"
 chapter: 2
 topic: 4
 order: 204
-permalink: /teaching-topics/computing-probabilities-from-cdf/
+permalink: /lecture-notes/computing-probabilities-from-cdf/
 date: 2026-08-04
 published: true
 excerpt: "任一隨機變數落在一段區間上的機率，都可由累積分配函數的兩個函數值相減得到，即 $F_{\\sssig X}(b)-F_{\\sssig X}(a)$；離散型可再寫成機率質量函數在該區間上的加總，連續型則為機率密度函數在該區間上的積分。連續型隨機變數的單點機率恆為 $0$，故區間端點的等號可以互換；離散型具有單點機率，端點的等號不可任意省略，其機率質量函數與累積分配函數之間另有五款對應關係。"
 ---
 
 
-前面幾篇已分別介紹離散型[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)的[機率質量函數](/teaching-topics/random-variables-and-pmf/)、兩型共用的[累積分配函數](/teaching-topics/cumulative-distribution-functions/)，以及連續型隨機變數的[機率密度函數](/teaching-topics/probability-density-functions/)。三者各自的定義與性質都已齊備，彼此之間如何換算則尚未整理。
+前面幾篇已分別介紹離散型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的[機率質量函數](/lecture-notes/random-variables-and-pmf/)、兩型共用的[累積分配函數](/lecture-notes/cumulative-distribution-functions/)，以及連續型隨機變數的[機率密度函數](/lecture-notes/probability-density-functions/)。三者各自的定義與性質都已齊備，彼此之間如何換算則尚未整理。
 
 一段區間的機率要如何由 cdf 得到？連續型隨機變數落在單一點上的機率是多少？區間端點的等號可不可以省略？以下依序回答這幾個問題，並以四個例題示範在 cdf 已知時如何計算各種區間的機率。
 
@@ -53,7 +53,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.** 
 
-由於 $a<b$，我們可知 $\lbrace X\leqslant a\rbrace$ 為 $\lbrace X\leqslant b\rbrace$ 的一個子集，故由[全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)之特例知道
+由於 $a<b$，我們可知 $\lbrace X\leqslant a\rbrace$ 為 $\lbrace X\leqslant b\rbrace$ 的一個子集，故由[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)之特例知道
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -87,7 +87,7 @@ $$
 在連續型隨機變數中，上述的機率可以用下圖來理解:
 
 <figure id="fig-interval-area" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/continuous-interval-area.svg" alt="機率密度函數的曲線，橫軸上以刻度與虛線標出 a 與 b 兩點，兩點之間的曲線下方以淡色填滿，區域中標示這一段區間的機率。">
+  <img src="/images/lecture-notes/continuous-interval-area.svg" alt="機率密度函數的曲線，橫軸上以刻度與虛線標出 a 與 b 兩點，兩點之間的曲線下方以淡色填滿，區域中標示這一段區間的機率。">
   <figcaption><span class="topic-figure__label">Fig. 2.6.</span> 連續型隨機變數落在 $a$ 與 $b$ 之間的機率，即為密度曲線在這一段區間下方所圍出的面積。</figcaption>
 </figure>
 
@@ -128,7 +128,7 @@ $$
 我們可以用下圖來理解上面的定理:
 
 <figure id="fig-single-point-zero" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/continuous-point-zero.svg" alt="機率密度函數的曲線，橫軸上以刻度標出單點 a，該處只有一條由橫軸連到曲線、沒有寬度的線段，並以虛線箭頭引出標示，說明該單點的機率為 0。">
+  <img src="/images/lecture-notes/continuous-point-zero.svg" alt="機率密度函數的曲線，橫軸上以刻度標出單點 a，該處只有一條由橫軸連到曲線、沒有寬度的線段，並以虛線箭頭引出標示，說明該單點的機率為 0。">
   <figcaption><span class="topic-figure__label">Fig. 2.7.</span> 區間縮成單點 $a$ 之後，密度曲線下方只剩一條沒有寬度的線段，沒有面積可言，故 $\mathbb{P}(X=a)=0$。</figcaption>
 </figure>
 
@@ -612,7 +612,7 @@ $$
 
 連續型隨機變數的單點定積分恆為 $0$，此即 [Theorem 2.4](#thm-point-probability-zero)；也因為端點的單點機率都是 $0$，[Theorem 2.5](#thm-continuous-interval-endpoints) 才能讓四種區間寫法的機率相等，$F_{\sssig X}(x)$ 亦可寫成 $\mathbb{P}(X<x)$。[Example 2.10](#ex-power-demand-density) 與 [Example 2.11](#ex-cubic-cdf) 都是先取得 cdf，再把區間機率換成兩個函數值之差。
 
-離散型則相反，單點機率不為 $0$，端點的等號因而不可省略。[Theorem 2.6](#thm-discrete-interval-probability) 的五款對應關係都由第 (1) 款出發，單點機率就是 cdf 在該點躍升的高度，其餘四款只是把端點的質點機率加回或扣除。[Example 2.3 <span lang="en">(Continued)</span>](#ex-geometric-interval-probability) 與 [Example 2.12](#ex-basketball-binomial) 即為離散型的計算示範。[下一篇](/teaching-topics/mixed-random-variables/)討論同時具備兩型特性的混合型隨機變數。
+離散型則相反，單點機率不為 $0$，端點的等號因而不可省略。[Theorem 2.6](#thm-discrete-interval-probability) 的五款對應關係都由第 (1) 款出發，單點機率就是 cdf 在該點躍升的高度，其餘四款只是把端點的質點機率加回或扣除。[Example 2.3 <span lang="en">(Continued)</span>](#ex-geometric-interval-probability) 與 [Example 2.12](#ex-basketball-binomial) 即為離散型的計算示範。[下一篇](/lecture-notes/mixed-random-variables/)討論同時具備兩型特性的混合型隨機變數。
 
 ## 參考文獻與延伸閱讀
 

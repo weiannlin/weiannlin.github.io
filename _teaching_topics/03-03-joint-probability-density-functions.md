@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 3
 topic: 3
 order: 303
-permalink: /teaching-topics/joint-probability-density-functions/
+permalink: /lecture-notes/joint-probability-density-functions/
 date: 2026-08-12
 published: false
 excerpt: "二元連續型隨機向量的聯合累積分配函數，若能寫成某個非負函數由 $-\\infty$ 積到 $x$ 與 $y$ 的二重積分，被積分的那個函數即為聯合機率密度函數。它與單變數的機率密度函數一樣不是機率，而是累積機率的變化率；差別在於聯合累積分配函數取的是曲面下所夾的體積，單變數的累積分配函數取的則是曲線下所夾的面積。在可微分的點上，聯合機率密度函數是聯合累積分配函數的二階偏導數，由克萊羅定理可知偏微分的順序不影響結果。它應滿足非負、在整個聯合值域上的二重積分為 $1$，以及落在集合 $A$ 中的機率等於該集合上的二重積分，共三項性質。"
 ---
 
-[上一篇](/teaching-topics/joint-cumulative-distribution-functions/)以 $\mathbb{P}(X\leqslant x,Y\leqslant y)$ 定義了[聯合累積分配函數](/teaching-topics/joint-cumulative-distribution-functions/#def-joint-cdf)，並說明二元離散型[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector)的聯合累積分配函數，是把[聯合機率質量函數](/teaching-topics/random-vectors-joint-pmf/#def-joint-pmf)在指定範圍中做兩重的加總。二元連續型隨機向量沒有辦法以加總處理，須如同單變數的情形改用積分。
+[上一篇](/lecture-notes/joint-cumulative-distribution-functions/)以 $\mathbb{P}(X\leqslant x,Y\leqslant y)$ 定義了[聯合累積分配函數](/lecture-notes/joint-cumulative-distribution-functions/#def-joint-cdf)，並說明二元離散型[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的聯合累積分配函數，是把[聯合機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-joint-pmf)在指定範圍中做兩重的加總。二元連續型隨機向量沒有辦法以加總處理，須如同單變數的情形改用積分。
 
 本篇即由這個積分表示式給出聯合機率密度函數的定義，說明它與聯合累積分配函數之間的積分與偏微分關係，再列出它應該滿足的三項性質，最後就克萊羅定理、單面機率、積空間與富比尼定理四點加以補充。
 
@@ -44,20 +44,20 @@ $$
 
 </div>
 
-joint pdf 的定義，與[單變數的 pdf](/teaching-topics/probability-density-functions/#def-pdf) 仍非常相似，僅是將單變數的函數推廣至雙變數的函數而已，因此一些 pdf 具備的特色在 joint pdf 身上亦可以看見，其中當然包含了 **joint pdf 不是機率**這件事情。
+joint pdf 的定義，與[單變數的 pdf](/lecture-notes/probability-density-functions/#def-pdf) 仍非常相似，僅是將單變數的函數推廣至雙變數的函數而已，因此一些 pdf 具備的特色在 joint pdf 身上亦可以看見，其中當然包含了 **joint pdf 不是機率**這件事情。
 
 joint pdf 與 joint cdf 的關係，亦如 pdf 與 cdf 一般，是彼此的微分與積分，只是 **joint cdf 是在 $X\leqslant x$ 且 $Y\leqslant y$ 的範圍中，$f_{\sssig XY}(x,y)$ 的下方所夾的體積**，這一點與**單變數 cdf 是在 $X\leqslant x$ 的範圍中，$f_{\sssig X}(x)$ 下方所夾的面積**雖然有所不同，但其觀念卻是相同的。
 
 下面便將一個很經典的 joint pdf 畫在下方:
 
 <figure id="fig-joint-pdf-surface" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/joint-pdf-surface.svg" alt="一個聯合機率密度函數的曲面，中央隆起成鐘形，四周向外遞減趨近於零。底面兩軸分別標 x 與 y，縱軸標聯合機率密度函數的函數值。">
+  <img src="/images/lecture-notes/joint-pdf-surface.svg" alt="一個聯合機率密度函數的曲面，中央隆起成鐘形，四周向外遞減趨近於零。底面兩軸分別標 x 與 y，縱軸標聯合機率密度函數的函數值。">
   <figcaption><span class="topic-figure__label">Fig. 3.2.</span> 一個很經典的 joint pdf。曲面在中央隆起，四周遞減；曲面之下所夾的體積即機率。</figcaption>
 </figure>
 
-前述提到的 joint cdf，即是在 [Fig. 3.1](/teaching-topics/joint-cumulative-distribution-functions/#fig-joint-cdf-quadrants) 所提到 joint cdf 的範圍內，[Fig. 3.2](#fig-joint-pdf-surface) 的曲面下所涵蓋的**體積**。若由微積分的觀點理解之，則我們能夠更清楚 joint pdf 與 joint cdf 間的關係。
+前述提到的 joint cdf，即是在 [Fig. 3.1](/lecture-notes/joint-cumulative-distribution-functions/#fig-joint-cdf-quadrants) 所提到 joint cdf 的範圍內，[Fig. 3.2](#fig-joint-pdf-surface) 的曲面下所涵蓋的**體積**。若由微積分的觀點理解之，則我們能夠更清楚 joint pdf 與 joint cdf 間的關係。
 
-當然，如同 [Fig. 2.4](/teaching-topics/probability-density-functions/#fig-cdf-as-area) 曾以微積分的觀點解釋 pdf，此處亦可以同樣的觀點得到以下的關係式:
+當然，如同 [Fig. 2.4](/lecture-notes/probability-density-functions/#fig-cdf-as-area) 曾以微積分的觀點解釋 pdf，此處亦可以同樣的觀點得到以下的關係式:
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -170,7 +170,7 @@ $$
 
 </div>
 
-(2) 性質 (1) 與 (2) 則是繼承了[單變數的 pdf 該有的性質](/teaching-topics/probability-density-functions/#thm-pdf-properties)，只是在性質 (2) 的幾何意義上，則是由曲線下的面積總和為 <span class="text-nowrap">$1$，</span>變為**曲面下的體積總和為 $1$** 這件事情。另外還有許多相同之處，像是**積分範圍是否包含邊界點並不影響結果**與**單點積分仍然為 $0$** 等性質。
+(2) 性質 (1) 與 (2) 則是繼承了[單變數的 pdf 該有的性質](/lecture-notes/probability-density-functions/#thm-pdf-properties)，只是在性質 (2) 的幾何意義上，則是由曲線下的面積總和為 <span class="text-nowrap">$1$，</span>變為**曲面下的體積總和為 $1$** 這件事情。另外還有許多相同之處，像是**積分範圍是否包含邊界點並不影響結果**與**單點積分仍然為 $0$** 等性質。
 {: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -178,7 +178,7 @@ $$
 
 雖然二者的單點機率皆為 <span class="text-nowrap">$0$，</span>但 joint pdf 還多了一個**單面機率亦為 $0$** 的特性，這與過去我們在中學時期曾知道的「點沒有長度」、「線沒有面積」或「面沒有體積」等結果事實上是相同的，其嚴謹的原因都在於其機率測度 <span lang="en">(probability measure)</span> 在更高維度的空間中都是 <span class="text-nowrap">$0$。</span>
 
-讀者可以參照 [Fig. 2.7](/teaching-topics/computing-probabilities-from-cdf/#fig-single-point-zero) 的示意圖，當時我們所指示的機率，若由積分的角度而言，事實上是指 $X=a$ 所在的線段，而這個線段是沒有面積的，故當然沒有機率；此處只是將其往更高一個維度推廣而已。
+讀者可以參照 [Fig. 2.7](/lecture-notes/computing-probabilities-from-cdf/#fig-single-point-zero) 的示意圖，當時我們所指示的機率，若由積分的角度而言，事實上是指 $X=a$ 所在的線段，而這個線段是沒有面積的，故當然沒有機率；此處只是將其往更高一個維度推廣而已。
 
 </div>
 
@@ -230,7 +230,7 @@ $$
 
 [Theorem 3.1](#thm-joint-pdf-proper) 列出 joint pdf 的三項性質: 非負、在整個聯合值域上的二重積分為 <span class="text-nowrap">$1$，</span>以及 $(X,Y)$ 落在集合 $A$ 中的機率等於 $f_{\sssig XY}$ 在 $A$ 上的二重積分。由克萊羅定理可知 joint cdf 的偏微分順序永遠可以交換；單點機率與單面機率都是 <span class="text-nowrap">$0$；</span>集合 $A$ 若不是積空間，第三項性質便回到微積分的重積分，若是積空間則可寫成在兩個區間上依序積分的形式。不論是否為積空間，富比尼定理都保證積分順序可以調換，只是調換之後要留意積分的範圍是否需要修改。
 
-下一篇由聯合機率密度函數出發，介紹[邊際機率密度函數](/teaching-topics/marginal-probability-density-functions/#def-marginal-pdf)。
+下一篇由聯合機率密度函數出發，介紹[邊際機率密度函數](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)。
 
 ## 參考文獻與延伸閱讀
 

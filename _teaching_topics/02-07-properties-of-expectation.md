@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 2
 topic: 7
 order: 207
-permalink: /teaching-topics/properties-of-expectation/
+permalink: /lecture-notes/properties-of-expectation/
 date: 2026-08-06
 published: true
 excerpt: "函數期望值定理指出，$g(X)$ 的期望值不必先求出 $g(X)$ 的分配，只要以 $X$ 的 pmf 或 pdf 對 $g(x)$ 加權求和或積分即可。期望值對線性組合具有可交換性: 期望值內若是線性函數的形式，可以先取期望值再做線性函數，非線性的部分則交由函數期望值定理處理。由這個複合性質設定各常數，可以得到常數的期望值還是自己本身、平移的期望值是期望值的平移、倍數的期望值是期望值的倍數三個子性質。本篇另有兩道例題，說明期望值可能發散，以及期望值如何改寫成累積分配函數的積分。"
 ---
 
-[上一篇](/teaching-topics/expectation/)給出[期望值](/teaching-topics/expectation/#def-expectation)的定義，並以非負[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)的尾機率表示作結。
+[上一篇](/lecture-notes/expectation/)給出[期望值](/lecture-notes/expectation/#def-expectation)的定義，並以非負[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的尾機率表示作結。
 
 本篇分三個部分。**先看期望值的特殊算法**: 有些隨機變數不必先寫出 pmf 或 pdf 再逐項加總，改以尾機率的加總或 cdf 的積分反而好算；兩道例題分別示範非負整數型與連續型的作法，前者順帶說明期望值可能發散，後者把尾機率的表示推廣到一般的連續型隨機變數。**再看函數期望值**: 若我們關心的不是 $X$ 本身，而是 $X$ 經過某個函數轉換之後的 $g(X)$，它的期望值不必先求出 $g(X)$ 的分配，直接以 $X$ 的 pmf 或 pdf 對 $g(x)$ 加權即可。**最後說明期望值的性質**: 期望值對線性組合可以交換，由這個複合性質設定各常數，還能得到三個常用的子性質。
 
@@ -52,7 +52,7 @@ $$
 
 </div>
 
-又 $N$ 為非負整數隨機變數，故由 [Theorem 2.8](/teaching-topics/expectation/#thm-expectation-tail-sum) 可得
+又 $N$ 為非負整數隨機變數，故由 [Theorem 2.8](/lecture-notes/expectation/#thm-expectation-tail-sum) 可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -86,7 +86,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-iid 是我們在[下一章](/teaching-topics/independent-random-variables/)才會提到的性質，是多個隨機變數彼此獨立 <span lang="en">(independent)</span> 且同分配 <span lang="en">(identically distributed)</span> 的意思，在此階段讀者不妨想像成，每個隨機變數不互相影響，且客觀條件皆相同。
+iid 是我們在[下一章](/lecture-notes/independent-random-variables/)才會提到的性質，是多個隨機變數彼此獨立 <span lang="en">(independent)</span> 且同分配 <span lang="en">(identically distributed)</span> 的意思，在此階段讀者不妨想像成，每個隨機變數不互相影響，且客觀條件皆相同。
 
 在這題的加總當中，使用了三個技巧。第一個是藉由 iid 的設定，將隨機變數的問題變回古典機率的問題；第二個是**裂項和 <span lang="en">(telescoping sum)</span>**，將 $\frac{1}{k(k+1)}$ 分解成 $\frac{1}{k}-\frac{1}{k+1}$ 從而完成第一個級數，這個技巧在高中數學中被稱作「分項對消法」，是計算級數的技巧之一；最後一個則是**調和級數 <span lang="en">(harmonic series)</span>**，而調和級數正是這題中，期望值發散的原因。
 
@@ -119,9 +119,9 @@ $$
 
 而上面 $\mathbb{P}(N=k)$ 的表示式在 $k=1$ 給出的是 $\frac{1}{2}$，兩者不等。
 
-要證的 $\mathbb{E}(N)=\infty$ 本身則不需要這個前提。$N\geqslant n$ 等價於 $X_0$ 為 $X_0,X_1,\ldots,X_{n-1}$ 之中最大者，而這 $n$ 個變數獨立且同分配，各自為最大者的機率相同，其中又至少有一個為最大者，這 $n$ 個事件因而必有一個發生。由[布爾不等式](/teaching-topics/probability-rules-from-axioms/#theorem-boole)可得 $1\leqslant n\,\mathbb{P}(N\geqslant n)$，即 $\mathbb{P}(N\geqslant n)\geqslant\frac{1}{n}$，這些下界的加總發散。
+要證的 $\mathbb{E}(N)=\infty$ 本身則不需要這個前提。$N\geqslant n$ 等價於 $X_0$ 為 $X_0,X_1,\ldots,X_{n-1}$ 之中最大者，而這 $n$ 個變數獨立且同分配，各自為最大者的機率相同，其中又至少有一個為最大者，這 $n$ 個事件因而必有一個發生。由[布爾不等式](/lecture-notes/probability-rules-from-axioms/#theorem-boole)可得 $1\leqslant n\,\mathbb{P}(N\geqslant n)$，即 $\mathbb{P}(N\geqslant n)\geqslant\frac{1}{n}$，這些下界的加總發散。
 
-離散型之下還可能沒有任何一個 $X_n$ 超過 $X_0$，此時 $N$ 取不到有限值，只要這件事發生的機率為正，$\mathbb{E}(N)=\infty$ 自然成立；在剛才那個離散型的例子裡，這個機率就是 $\mathbb{P}(X_0=1)=\frac{1}{2}$。共同的分配為連續型時 $\sum_{k=1}^{\infty}\frac{1}{k(k+1)}=1$，$N$ 取到有限值的機率為 $1$，解答中才能直接引用 [Theorem 2.8](/teaching-topics/expectation/#thm-expectation-tail-sum)。
+離散型之下還可能沒有任何一個 $X_n$ 超過 $X_0$，此時 $N$ 取不到有限值，只要這件事發生的機率為正，$\mathbb{E}(N)=\infty$ 自然成立；在剛才那個離散型的例子裡，這個機率就是 $\mathbb{P}(X_0=1)=\frac{1}{2}$。共同的分配為連續型時 $\sum_{k=1}^{\infty}\frac{1}{k(k+1)}=1$，$N$ 取到有限值的機率為 $1$，解答中才能直接引用 [Theorem 2.8](/lecture-notes/expectation/#thm-expectation-tail-sum)。
 
 </div>
 
@@ -191,7 +191,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Theorem 2.8](/teaching-topics/expectation/#thm-expectation-tail-sum) 的連續型版本，在工業領域經常被用來計算產品的故障前平均時間 <span lang="en">(mean time to failure, MTTF)</span>，這個特別的數字其實就是期望值，但在只能失效一次且不可修復的系統中，這個指標具有極重要的意義，多數用於計算產品的平均壽命。
+[Theorem 2.8](/lecture-notes/expectation/#thm-expectation-tail-sum) 的連續型版本，在工業領域經常被用來計算產品的故障前平均時間 <span lang="en">(mean time to failure, MTTF)</span>，這個特別的數字其實就是期望值，但在只能失效一次且不可修復的系統中，這個指標具有極重要的意義，多數用於計算產品的平均壽命。
 
 </div>
 
@@ -252,7 +252,7 @@ $$
 
 </div>
 
-這個定理的計算細節，並不若我們的直覺這麼簡單，其牽涉到[隨機變數變換 <span lang="en">(transformation of random variable)</span>](/teaching-topics/one-to-one-transformations/)，我們將在本章的最後詳談，讀者在此可以直覺地直接計算即可。
+這個定理的計算細節，並不若我們的直覺這麼簡單，其牽涉到[隨機變數變換 <span lang="en">(transformation of random variable)</span>](/lecture-notes/one-to-one-transformations/)，我們將在本章的最後詳談，讀者在此可以直覺地直接計算即可。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -326,7 +326,7 @@ $$
 
 在操作的過程中，讀者應該隱約感覺到這個定理的威力。
 
-事實上，我們曾在 [Definition 2.6](/teaching-topics/expectation/#def-expectation) 之後提到，期望值 (特別是離散型) 的概念中，可以將 $x$ 類比為位置，而 $p_{\sssig X}(x)$ 類比為該點的質量，則期望值就是質心；這個想法若沿用至此，質點的位置經過實值可測函數 $g(\cdot)$ 的轉換之後，函數期望值就是轉換過後的質心位置，由此來思考這個定理，便會容易許多。
+事實上，我們曾在 [Definition 2.6](/lecture-notes/expectation/#def-expectation) 之後提到，期望值 (特別是離散型) 的概念中，可以將 $x$ 類比為位置，而 $p_{\sssig X}(x)$ 類比為該點的質量，則期望值就是質心；這個想法若沿用至此，質點的位置經過實值可測函數 $g(\cdot)$ 的轉換之後，函數期望值就是轉換過後的質心位置，由此來思考這個定理，便會容易許多。
 
 <div id="thm-expectation-linearity" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.10 (期望值的性質, properties of expectation)</div>
@@ -448,7 +448,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個性質與後續要提到的**[變異數](/teaching-topics/variance/#def-variance) <span lang="en">(variance)</span>** 的[**平方伸縮 (scaled by square)**](/teaching-topics/variance/#thm-variance-properties) 性質具有很大的區別，我們將在介紹變異數時一併詳談。
+這個性質與後續要提到的**[變異數](/lecture-notes/variance/#def-variance) <span lang="en">(variance)</span>** 的[**平方伸縮 (scaled by square)**](/lecture-notes/variance/#thm-variance-properties) 性質具有很大的區別，我們將在介紹變異數時一併詳談。
 
 </div>
 
@@ -507,7 +507,7 @@ $$
 
 [Theorem 2.9](#thm-expectation-of-function) 給出函數期望值。在絕對可加總或絕對可積分的前提下，$\mathbb{E}[g(X)]$ 是以 $X$ 的 pmf 或 pdf 對 $g(x)$ 加權求和或積分，不必先求出 $g(X)$ 的分配。以質點的類比來說，這是把質點的位置經過 $g(\cdot)$ 轉換之後的質心。[Example 2.9 <span lang="en">(Continued)</span>](#ex-broken-stick-expected-length) 即以此求出折棒後含中點那一段的期望長度 $\frac{11}{16}$。
 
-[Theorem 2.10](#thm-expectation-linearity) 則說明期望值對線性函數具有可交換性，線性的部分可以先取期望值再做線性函數，非線性的部分交由 [Theorem 2.9](#thm-expectation-of-function) 處理。它是一個複合性質的定理，設定各常數之後可以得到常數的期望值還是自己本身、平移的期望值是期望值的平移、倍數的期望值是期望值的倍數三個子性質，另外還可以知道非負 (或非正) 函數的期望值亦為非負 (或非正)。[Example 2.18](#ex-shifted-linear-density-expectation) 則是函數期望值的直接計算。[下一篇](/teaching-topics/variance/)討論隨機變數的變異數。
+[Theorem 2.10](#thm-expectation-linearity) 則說明期望值對線性函數具有可交換性，線性的部分可以先取期望值再做線性函數，非線性的部分交由 [Theorem 2.9](#thm-expectation-of-function) 處理。它是一個複合性質的定理，設定各常數之後可以得到常數的期望值還是自己本身、平移的期望值是期望值的平移、倍數的期望值是期望值的倍數三個子性質，另外還可以知道非負 (或非正) 函數的期望值亦為非負 (或非正)。[Example 2.18](#ex-shifted-linear-density-expectation) 則是函數期望值的直接計算。[下一篇](/lecture-notes/variance/)討論隨機變數的變異數。
 
 ## 參考文獻與延伸閱讀
 

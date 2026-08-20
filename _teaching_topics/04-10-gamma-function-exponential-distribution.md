@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 4
 topic: 10
 order: 410
-permalink: /teaching-topics/gamma-function-exponential-distribution/
+permalink: /lecture-notes/gamma-function-exponential-distribution/
 date: 2026-08-12
 published: false
 excerpt: "伽瑪函數以 $\\int_{0}^{\\infty}x^{\\alpha-1}e^{-x}\\,dx$ 這個積分定義，把階乘推廣到正實數上，它的一個代換變形會在指數分配與伽瑪分配的推導中反覆出現。指數分配記錄的是卜瓦松過程中，等候直到一次偶發事件發生所需的等待時間，機率函數可以寫成 $\\frac{1}{\\beta}e^{-x/\\beta}$ 或 $\\lambda e^{-\\lambda x}$ 兩種形式，期望值為 $\\beta$、變異數為 $\\beta^{2}$，動差母函數則是 $(1-\\beta t)^{-1}$。本篇先給出伽瑪函數與它的四項特性，再給出指數分配的定義與完整推導，並說明指數分配與卜瓦松分配之間的對偶關係，以及乘上一個正數之後仍為指數分配的比例伸縮性質。最後以兩道例題示範同一個問題如何分別由等待時間與發生次數兩個角度求解。"
 ---
 
-[上一篇](/teaching-topics/poisson-additivity-and-thinning/)以例題演練卜瓦松分配的計算，並給出兩個結果: 兩個獨立的卜瓦松變數相加之後，其中一個在總和給定之下的條件分配為二項分配；以及把偶發事件依固定機率分成兩類之後，兩類的個數各自仍服從卜瓦松分配，而且彼此獨立。這些結果所記錄的，都是一段時間之內偶發事件發生了幾次。本篇改變記錄的對象: 同樣是在[卜瓦松過程](/teaching-topics/poisson-process-and-distribution/#def-poisson-process)之中，這一次要看的是等候直到一次偶發事件發生所需的時間。
+[上一篇](/lecture-notes/poisson-additivity-and-thinning/)以例題演練卜瓦松分配的計算，並給出兩個結果: 兩個獨立的卜瓦松變數相加之後，其中一個在總和給定之下的條件分配為二項分配；以及把偶發事件依固定機率分成兩類之後，兩類的個數各自仍服從卜瓦松分配，而且彼此獨立。這些結果所記錄的，都是一段時間之內偶發事件發生了幾次。本篇改變記錄的對象: 同樣是在[卜瓦松過程](/lecture-notes/poisson-process-and-distribution/#def-poisson-process)之中，這一次要看的是等候直到一次偶發事件發生所需的時間。
 
 推導這個等待時間的期望值與變異數時，所要用到的工具是[伽瑪函數](#def-gamma-function)。本篇因而先由這個函數談起，列出它的四項特性，並給出一個經過代換的變形版本，再進入[指數分配](#def-exponential-distribution)的定義與完整推導。其後說明兩項延伸性質，最後以兩道例題作為演練。
 
@@ -299,7 +299,7 @@ $$
 (2) 由指數分配的定義可以得到以下幾個延伸性質:
 {: .topic-paren-item}
 
-第一，指數分配的參數以 $\lambda$ 表示的時候，這個參數的意義，與[卜瓦松分配](/teaching-topics/poisson-process-and-distribution/#def-poisson-distribution)的 $\lambda$ 是完全相同的，都代表卜瓦松過程中，偶發事件發生的**頻率**，這導致了指數分配與卜瓦松分配間的**對偶關係 <span lang="en">(dual relationship)</span>**，即
+第一，指數分配的參數以 $\lambda$ 表示的時候，這個參數的意義，與[卜瓦松分配](/lecture-notes/poisson-process-and-distribution/#def-poisson-distribution)的 $\lambda$ 是完全相同的，都代表卜瓦松過程中，偶發事件發生的**頻率**，這導致了指數分配與卜瓦松分配間的**對偶關係 <span lang="en">(dual relationship)</span>**，即
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -404,7 +404,7 @@ $$
 
 </div>
 
-則由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+則由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 Y\sim\mathrm{Exp}(a\beta)
@@ -416,7 +416,7 @@ $$
 這個性質被稱作指數分配的**比例伸縮性質**，並且 $\beta$ 由此被稱作比例參數。[^scale]
 {: .topic-paren-cont}
 
-[^scale]: 這個稱呼乃是對應於[伽瑪分配](/teaching-topics/gamma-distribution/#def-gamma-distribution)中的 <span class="text-nowrap">$\beta$，</span>我們將在下一小節看見伽瑪分配與指數分配的高度關聯性。
+[^scale]: 這個稱呼乃是對應於[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)中的 <span class="text-nowrap">$\beta$，</span>我們將在下一小節看見伽瑪分配與指數分配的高度關聯性。
 
 (3) 讀者應特別注意的是，$\beta=\frac{1}{\,\lambda\,}$ 是一個固定的關係，換言之，$\beta$ 與 $\lambda$ 只要其中一個被決定，另一個也會隨之決定，這只是同一個參數的不同詮釋角度，而不應視為兩個相異的參數。
 {: .topic-paren-item}
@@ -542,7 +542,7 @@ $$
 
 兩道例題示範的正是同一個問題的兩個角度。[Example 4.26](#ex-exponential-1) 的法一以指數分配算間隔時間超過 $\frac{1}{\,10\,}$ 小時的機率，法二以卜瓦松分配算六分鐘內一次都沒有發生的機率，兩者都得到 <span class="text-nowrap">$e^{-1}$，</span>這正是對偶關係的具體演練。[Example 4.27](#ex-exponential-2) 則把兩個角度分成兩小題: 第一小題求 $3$ 分鐘內恰有 $2$ 人抵達的機率，用的是 $\mathrm{Poi}(6)$ 這個分配；第二小題求下一位顧客在 $2$ 分鐘之內抵達的機率，用的是 $\mathrm{Exp}(\lambda=2)$ 這個分配。兩小題的參數換算都以「每分鐘 $2$ 人」為準。
 
-[下一篇](/teaching-topics/exponential-memoryless-and-minima/)證明指數分配的無記憶性，說明它是連續型分配之中唯一具有這個性質的分配，並給出兩個獨立指數變數取極小值與比較先後次序的結果。
+[下一篇](/lecture-notes/exponential-memoryless-and-minima/)證明指數分配的無記憶性，說明它是連續型分配之中唯一具有這個性質的分配，並給出兩個獨立指數變數取極小值與比較先後次序的結果。
 
 ## 參考文獻與延伸閱讀
 

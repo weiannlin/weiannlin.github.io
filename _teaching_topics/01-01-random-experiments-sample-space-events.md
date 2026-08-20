@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 1
 topic: 1
 order: 101
-permalink: /teaching-topics/random-experiments-sample-space-events/
+permalink: /lecture-notes/random-experiments-sample-space-events/
 date: 2026-05-05
 published: true
 excerpt: "機率論先由隨機實驗開始，整理實驗所有可能的結果，並以樣本空間、樣本點與事件建立後續機率模型所需的基本定義。"
 ---
 
-在機率論中，我們先要說明正在觀察的現象、實驗所有可能的結果，以及哪些結果構成我們關心的事件。有了這些基本定義，後續才能為事件指定機率，並建立條件機率、獨立性與[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)等內容。
+在機率論中，我們先要說明正在觀察的現象、實驗所有可能的結果，以及哪些結果構成我們關心的事件。有了這些基本定義，後續才能為事件指定機率，並建立條件機率、獨立性與[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)等內容。
 
 本篇依序介紹隨機實驗、樣本空間、樣本點與事件，並說明這些定義之間的關係。
 
@@ -236,7 +236,7 @@ $$
 | 某事件是否發生？ | 檢查實際結果是否屬於該事件 |
 {: .topic-table--chapter-summary}
 
-等到這些定義都被釐清，[下一篇](/teaching-topics/event-set-operations/)將先介紹事件的聯集、交集、差集、餘集、集合序列與互斥，建立後續機率運算所需的集合工具；之後再討論如何把介於 $0$ 與 $1$ 之間的數值指定給事件。
+等到這些定義都被釐清，[下一篇](/lecture-notes/event-set-operations/)將先介紹事件的聯集、交集、差集、餘集、集合序列與互斥，建立後續機率運算所需的集合工具；之後再討論如何把介於 $0$ 與 $1$ 之間的數值指定給事件。
 
 ## 參考文獻與延伸閱讀
 

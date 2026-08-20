@@ -7,22 +7,22 @@ category: "機率概論"
 chapter: 2
 topic: 19
 order: 219
-permalink: /teaching-topics/probability-inequalities/
+permalink: /lecture-notes/probability-inequalities/
 date: 2026-08-06
 published: true
 excerpt: "在不知道機率分配形式、只掌握低階動差的情況下，機率仍然可以被界定。若 $h(\\cdot)$ 為非負可測實值函數且 $\\mathbb{E}[h(X)]$ 有限，則 $\\mathbb{P}(h(X)\\geqslant a)\\leqslant\\mathbb{E}[h(X)]/a$。在這條定理中取 $h(x)=x_{+}$ 得到馬可夫不等式，取 $h(x)=x^{2}$ 並施於 $\\lvert X-\\mu_{X}\\rvert$ 得到柴比雪夫不等式，取 $h(y)=(y+c)^{2}$ 再對 $c$ 取下確界則得到單邊柴比雪夫不等式，亦即坎特利不等式，這三者用到的動差都不超過一階與二階。若改取 $h(x)=e^{tx}$ 而把整個動差母函數用上，得到的則是車諾夫不等式，它的前提嚴格得多，換來的是更貼近真實機率的上界。"
 ---
 
-[上一篇](/teaching-topics/characteristic-functions/)介紹[特徵函數](/teaching-topics/characteristic-functions/#def-characteristic-function)，它與[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)同樣以一個函數表示整個機率分配。從[動差](/teaching-topics/moment-system/#def-population-moment)系統到各種母函數，我們一路上處理的都是分配本身的描述；然而實務上經常遇到另一種處境。分配的形式並不清楚，手上只有[期望值](/teaching-topics/expectation/#def-expectation)，或再加上一個[變異數](/teaching-topics/variance/#def-variance)。
+[上一篇](/lecture-notes/characteristic-functions/)介紹[特徵函數](/lecture-notes/characteristic-functions/#def-characteristic-function)，它與[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)同樣以一個函數表示整個機率分配。從[動差](/lecture-notes/moment-system/#def-population-moment)系統到各種母函數，我們一路上處理的都是分配本身的描述；然而實務上經常遇到另一種處境。分配的形式並不清楚，手上只有[期望值](/lecture-notes/expectation/#def-expectation)，或再加上一個[變異數](/lecture-notes/variance/#def-variance)。
 
-機率不等式及相關法則這一節處理的正是這種處境，在僅知道低階動差的條件下，為機率給出一個可用的範圍。本篇先給出一條以非負函數界定機率的定理，再由它挑選不同的 $h(\cdot)$，依序導出馬可夫不等式、柴比雪夫不等式與單邊柴比雪夫不等式 (亦即坎特利不等式)，並以兩張圖說明前兩者的直觀意義。這三個不等式所用到的動差訊息都不超過一階與二階。最後把 $h(\cdot)$ 取為 $e^{tx}$，整個動差母函數因而一次被用上，得到的是前提嚴格得多、上界也更貼近真實機率的車諾夫不等式。這五條不等式各自怎麼挑、怎麼代入，留到[下一篇](/teaching-topics/probability-inequalities-examples/)以八道例題演練。
+機率不等式及相關法則這一節處理的正是這種處境，在僅知道低階動差的條件下，為機率給出一個可用的範圍。本篇先給出一條以非負函數界定機率的定理，再由它挑選不同的 $h(\cdot)$，依序導出馬可夫不等式、柴比雪夫不等式與單邊柴比雪夫不等式 (亦即坎特利不等式)，並以兩張圖說明前兩者的直觀意義。這三個不等式所用到的動差訊息都不超過一階與二階。最後把 $h(\cdot)$ 取為 $e^{tx}$，整個動差母函數因而一次被用上，得到的是前提嚴格得多、上界也更貼近真實機率的車諾夫不等式。這五條不等式各自怎麼挑、怎麼代入，留到[下一篇](/lecture-notes/probability-inequalities-examples/)以八道例題演練。
 
 ## 機率不等式
 
 <div id="thm-nonnegative-function-bound" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.31 (非負函數的機率界限, a bound for nonnegative functions)</div>
 
-令 $h(\cdot)$ 為一非負可測實值函數，$X$ 為一[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)，$a>0$ 為一常數且 $\mathbb{E}\bigl[h(X)\bigr]<\infty$，則
+令 $h(\cdot)$ 為一非負可測實值函數，$X$ 為一[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)，$a>0$ 為一常數且 $\mathbb{E}\bigl[h(X)\bigr]<\infty$，則
 
 $$
 \mathbb{P}\bigl(h(X)\geqslant a\bigr)\leqslant\frac{\,\mathbb{E}\bigl[h(X)\bigr]\,}{a}
@@ -236,7 +236,7 @@ $$
 若我們用圖示來理解馬可夫不等式，則可以把上述提到的直觀意義化約成下面這張圖:
 
 <figure id="fig-markov-intuition" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/markov-inequality-tail-bound.svg" alt="一條右偏的機率密度曲線畫在一條橫軸之上，曲線旁標為 f_X(x)。曲線上有兩個點各以一條虛線垂直落到橫軸，左邊那條的軸下標為 E(X)，右邊那條的軸下標為 k E(X)。右邊虛線以右、曲線以下的右尾區域填上陰影，一條彎曲的虛線箭頭由該陰影區域指向右上方的標示，標示內容為小於等於 1 除以 k。橫軸末端標為 x，原點標為 0。">
+  <img src="/images/lecture-notes/markov-inequality-tail-bound.svg" alt="一條右偏的機率密度曲線畫在一條橫軸之上，曲線旁標為 f_X(x)。曲線上有兩個點各以一條虛線垂直落到橫軸，左邊那條的軸下標為 E(X)，右邊那條的軸下標為 k E(X)。右邊虛線以右、曲線以下的右尾區域填上陰影，一條彎曲的虛線箭頭由該陰影區域指向右上方的標示，標示內容為小於等於 1 除以 k。橫軸末端標為 x，原點標為 0。">
   <figcaption><span class="topic-figure__label">Fig. 2.19.</span> 馬可夫不等式的圖示。取 <span class="text-nowrap">$k=1.7$，</span>右側界線落在 <span class="text-nowrap">$k\,\mathbb{E}(X)$。</span>加上陰影的右尾是事件 <span class="text-nowrap">$X\geqslant k\,\mathbb{E}(X)$，</span>其機率不超過 $\frac{1}{k}$。</figcaption>
 </figure>
 
@@ -339,7 +339,7 @@ $$
 <div id="note-meaning-of-chebyshev" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-柴比雪夫不等式將隨機變數的機率，與期望值和變異數同時產生了連結，其核心與馬可夫不等式完全相同，都在於**期望值是分配的聚集中心，正常狀況下大多數 $X$ 應在其附近**，只是柴比雪夫不等式使用變異數 (或[標準差](/teaching-topics/variance-standard-deviation/#def-standard-deviation))，來衡量隨機變數與期望值的距離，並且透過這樣的距離及對應的機率範圍，來衡量「所謂的近是多近、所謂的遠是多遠」。
+柴比雪夫不等式將隨機變數的機率，與期望值和變異數同時產生了連結，其核心與馬可夫不等式完全相同，都在於**期望值是分配的聚集中心，正常狀況下大多數 $X$ 應在其附近**，只是柴比雪夫不等式使用變異數 (或[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation))，來衡量隨機變數與期望值的距離，並且透過這樣的距離及對應的機率範圍，來衡量「所謂的近是多近、所謂的遠是多遠」。
 
 用標準差來衡量某個點與一個變數之間的距離，被稱作**統計距離**或是**馬氏距離 <span lang="en">(Mahalanobis distance)</span>**，其概念的直觀，在於將單位所造成的尺度差異消除掉，用以衡量「統計上的遠近」。
 
@@ -388,9 +388,9 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-稍後的小節我們會談到[**鐘形分配經驗法則 <span lang="en">(empirical rule of bell-shaped distribution)</span>**](/teaching-topics/empirical-rule-bell-shaped-distributions/#thm-empirical-rule)，這個經驗法則同樣也談到概略的機率值，但相較於此卻精確得多，甚至是給出一個大約的數字而非一個區間。這個原因是**鐘形分配 <span lang="en">(bell-shaped distribution)</span>** 本身所給的資訊含量，比起只知道一二階動差的隨機變數要來得多很多。
+稍後的小節我們會談到[**鐘形分配經驗法則 <span lang="en">(empirical rule of bell-shaped distribution)</span>**](/lecture-notes/empirical-rule-bell-shaped-distributions/#thm-empirical-rule)，這個經驗法則同樣也談到概略的機率值，但相較於此卻精確得多，甚至是給出一個大約的數字而非一個區間。這個原因是**鐘形分配 <span lang="en">(bell-shaped distribution)</span>** 本身所給的資訊含量，比起只知道一二階動差的隨機變數要來得多很多。
 
-事實上，如果我們知道關於分配的更多訊息，柴比雪夫不等式與馬可夫不等式都能夠被改進，詳見[後面的例題](/teaching-topics/probability-inequalities-examples/)。
+事實上，如果我們知道關於分配的更多訊息，柴比雪夫不等式與馬可夫不等式都能夠被改進，詳見[後面的例題](/lecture-notes/probability-inequalities-examples/)。
 
 </div>
 
@@ -492,7 +492,7 @@ $$
 我們同樣透過圖示，來理解柴比雪夫不等式背後的直觀意義，如下圖:
 
 <figure id="fig-chebyshev-intuition" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/chebyshev-inequality-central-interval.svg" alt="一條雙峰的機率密度曲線畫在一條橫軸之上，曲線旁標為 f_X(x)。曲線上有三個點各以一條虛線垂直落到橫軸，三條虛線的軸下標由左至右分別為 μ_X 減 k σ_X、μ_X、μ_X 加 k σ_X。左右兩條虛線之間、曲線以下的中央區域填上陰影，區域內標有 P(·) 表示該區域所對應的機率，一條彎曲的虛線箭頭由該陰影區域指向右上方的標示，標示內容為大於等於 1 減去 1 除以 k 平方。橫軸末端標為 x。">
+  <img src="/images/lecture-notes/chebyshev-inequality-central-interval.svg" alt="一條雙峰的機率密度曲線畫在一條橫軸之上，曲線旁標為 f_X(x)。曲線上有三個點各以一條虛線垂直落到橫軸，三條虛線的軸下標由左至右分別為 μ_X 減 k σ_X、μ_X、μ_X 加 k σ_X。左右兩條虛線之間、曲線以下的中央區域填上陰影，區域內標有 P(·) 表示該區域所對應的機率，一條彎曲的虛線箭頭由該陰影區域指向右上方的標示，標示內容為大於等於 1 減去 1 除以 k 平方。橫軸末端標為 x。">
   <figcaption><span class="topic-figure__label">Fig. 2.20.</span> 柴比雪夫不等式的圖示。取 <span class="text-nowrap">$k=1.3$，</span>陰影部分為事件 <span class="text-nowrap">$\lvert X-\mu_{\sssig X}\rvert<k\,\sigma_{\sssig X}$，</span>其機率至少為 $1-\frac{1}{k^{2}}$。</figcaption>
 </figure>
 
@@ -729,7 +729,7 @@ $$
 
 </div>
 
-這個結果指出，**對任意分配而言，[中位數](/teaching-topics/median/#def-median) $\eta_{\sssig X}$ 與期望值 $\mu_{\sssig X}$ 位置的差距，前後應不超過一個標準差**。
+這個結果指出，**對任意分配而言，[中位數](/lecture-notes/median/#def-median) $\eta_{\sssig X}$ 與期望值 $\mu_{\sssig X}$ 位置的差距，前後應不超過一個標準差**。
 
 </div>
 
@@ -813,7 +813,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[車諾夫不等式](#thm-chernoff)可以視為是[馬可夫不等式](#thm-markov)的分支，它們都是由 [Theorem 2.31](#thm-nonnegative-function-bound) 延伸而來，但是車諾夫不等式的前提卻嚴格得多。讀者應沒有忘記，[mgf](/teaching-topics/moment-generating-functions/#def-mgf) 若存在，即是要求所有階動差都存在，是一個非常非常強的條件。
+[車諾夫不等式](#thm-chernoff)可以視為是[馬可夫不等式](#thm-markov)的分支，它們都是由 [Theorem 2.31](#thm-nonnegative-function-bound) 延伸而來，但是車諾夫不等式的前提卻嚴格得多。讀者應沒有忘記，[mgf](/lecture-notes/moment-generating-functions/#def-mgf) 若存在，即是要求所有階動差都存在，是一個非常非常強的條件。
 
 就概念上而言，車諾夫不等式由於已知更多關於分配的訊息，因此可以做出更好 (更精確) 的機率上界，此即
 
@@ -851,7 +851,7 @@ $$
 
 [Theorem 2.35](#thm-chernoff) 的車諾夫不等式改以動差母函數界定尾機率，$M_{\sssig X}(t)$ 在以 $0$ 為中心的某個開區間內皆存在時，對該區間內每一個 $t>0$ 皆有 $\mathbb{P}(X\geqslant a)$ $\leqslant$ $e^{-ta}M_{\sssig X}(t)$，每一個 $t<0$ 皆有 $\mathbb{P}(X\leqslant a)$ $\leqslant$ $e^{-ta}M_{\sssig X}(t)$。證明的作法是把 $X\geqslant a$ 改寫成 $e^{tX}\geqslant e^{ta}$，再套用同一條[非負函數的機率界限](#thm-nonnegative-function-bound)，可見它與[馬可夫不等式](#thm-markov)同出一源，差別只在所挑選的函數是 $e^{tx}$，而不是 $x_{+}=\max\lbrace x,0\rbrace$ 或其 $r$ 次方。
 
-由於上尾與下尾兩個版本對每一個合乎範圍的 $t$ 都成立，我們還可以對 $t$ 取下確界，取得其中最小的一個上界。mgf 存在等於要求各階動差都存在，這個前提比前三者都嚴格得多，換來的是更貼近真實機率的上界。這五條不等式的例題集中在[下一篇](/teaching-topics/probability-inequalities-examples/)，共八道。
+由於上尾與下尾兩個版本對每一個合乎範圍的 $t$ 都成立，我們還可以對 $t$ 取下確界，取得其中最小的一個上界。mgf 存在等於要求各階動差都存在，這個前提比前三者都嚴格得多，換來的是更貼近真實機率的上界。這五條不等式的例題集中在[下一篇](/lecture-notes/probability-inequalities-examples/)，共八道。
 
 ## 參考文獻與延伸閱讀
 

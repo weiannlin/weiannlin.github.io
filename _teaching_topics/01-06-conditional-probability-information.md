@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 1
 topic: 6
 order: 106
-permalink: /teaching-topics/conditional-probability-information/
+permalink: /lecture-notes/conditional-probability-information/
 date: 2026-05-05
 published: true
 excerpt: "條件機率描述在已知某個事件已經發生之後，我們如何重新評估另一個事件的機率。本篇從資訊的變化出發，介紹條件機率、乘法原理與廣義乘法原理，並以蒙提霍爾問題示範資訊如何改變機率。"
 ---
 
-[上一篇](/teaching-topics/probability-rules-from-axioms/)整理了由機率公理推出的各種運算規則。這些規則都是在同一個機率空間中評估事件的機率。然而，機率與統計重視的是「資訊的變化」。
+[上一篇](/lecture-notes/probability-rules-from-axioms/)整理了由機率公理推出的各種運算規則。這些規則都是在同一個機率空間中評估事件的機率。然而，機率與統計重視的是「資訊的變化」。
 
 舉例而言，若蘋果公司 (Apple Inc.) 宣布發表新款的 iPhone，消息一出，該公司下週股價上揚的機率，應較平常為高，其原因便是「將發表新款 iPhone」這個資訊流入。
 
@@ -35,7 +35,7 @@ $$
 條件機率的意義在於「在已經確定 $B$ 發生的條件下，尋找 $A$ 發生的機率」，故需要將樣本空間縮小到 $B$ 事件身上，讀者可以如下的圖來幫助理解這句話的意涵。
 
 <figure class="topic-figure topic-figure--medium">
-  <img src="/images/teaching-topics/conditional-probability-region.svg" alt="條件機率的文氏圖。矩形代表樣本空間的機率 P(S)，圓 A 與較粗的圓 B 相交，兩圓交集處標示 P(A cap B)。">
+  <img src="/images/lecture-notes/conditional-probability-region.svg" alt="條件機率的文氏圖。矩形代表樣本空間的機率 P(S)，圓 A 與較粗的圓 B 相交，兩圓交集處標示 P(A cap B)。">
   <figcaption><span class="topic-figure__label">Fig. 1.16.</span> 條件機率將樣本空間縮小到 $B$，$\mathbb{P}(A\mid B)$ 即 $\mathbb{P}(A\cap B)$ 在 $\mathbb{P}(B)$ 中所佔的比例。</figcaption>
 </figure>
 
@@ -54,7 +54,7 @@ $$
 The president of a securities firm is studying the characteristics of stock market investors. A survey shows that $50\%$ of all investors have a net worth exceeding one million dollars, $40\%$ trade through an online trading system, and $35\%$ do both. Let $W$ be the event that an investor’s net worth exceeds one million dollars, and let $T$ be the event that an investor trades through the online trading system. Find $\mathbb{P}(W\cup T)$ and $\mathbb{P}(W^{\prime}\mid T^{\prime})$.
 </div>
 
-依題意知 $\mathbb{P}(W)=0.5$、$\mathbb{P}(T)=0.4$、$\mathbb{P}(W\cap T)=0.35$，由[加法原理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)可知
+依題意知 $\mathbb{P}(W)=0.5$、$\mathbb{P}(T)=0.4$、$\mathbb{P}(W\cap T)=0.35$，由[加法原理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -74,7 +74,7 @@ $$
 
 </div>
 
-又 $\mathbb{P}(T^{\prime})=1-\mathbb{P}(T)=0.6$，且由[狄摩根律](/teaching-topics/event-set-operations/#theorem-de-morgan)知
+又 $\mathbb{P}(T^{\prime})=1-\mathbb{P}(T)=0.6$，且由[狄摩根律](/lecture-notes/event-set-operations/#theorem-de-morgan)知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -129,7 +129,7 @@ $$
 
 以下依序求解。
 
-**(1)** 由[加法原理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)可知
+**(1)** 由[加法原理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -154,7 +154,7 @@ $$
 
 </div>
 
-將兩式相加，其中由[全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)可知 $\mathbb{P}(A\cap B)+\mathbb{P}(A\cap B^{\prime})=\mathbb{P}(A)$，因此
+將兩式相加，其中由[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)可知 $\mathbb{P}(A\cap B)+\mathbb{P}(A\cap B^{\prime})=\mathbb{P}(A)$，因此
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -186,7 +186,7 @@ $$
 \mathbb{P}(A)=0.63
 $$
 
-**(2)** 由[全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)可知
+**(2)** 由[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -302,10 +302,10 @@ $$
 
 <figure class="topic-figure">
   <div class="topic-figure__steps">
-    <img src="/images/teaching-topics/conditional-probability-step1.svg" alt="乘法原理流程圖之一。矩形樣本空間內的虛線箭頭全部收斂到事件 B 的圓，表示樣本空間縮小至 B。">
+    <img src="/images/lecture-notes/conditional-probability-step1.svg" alt="乘法原理流程圖之一。矩形樣本空間內的虛線箭頭全部收斂到事件 B 的圓，表示樣本空間縮小至 B。">
     <span class="topic-figure__step-arrow topic-figure__step-arrow--desktop">$\Longrightarrow$</span>
     <span class="topic-figure__step-arrow topic-figure__step-arrow--mobile">$\Downarrow$</span>
-    <img src="/images/teaching-topics/conditional-probability-step2.svg" alt="乘法原理流程圖之二。圓 B 之內的虛線箭頭收斂到 A 與 B 的交集，交集處標示 P(A cap B)。">
+    <img src="/images/lecture-notes/conditional-probability-step2.svg" alt="乘法原理流程圖之二。圓 B 之內的虛線箭頭收斂到 A 與 B 的交集，交集處標示 P(A cap B)。">
   </div>
   <figcaption><span class="topic-figure__label">Fig. 1.17.</span> 乘法原理的流程: step 1 將樣本空間縮小至 <span class="text-nowrap">$B$，</span>即 $\mathbb{P}(S)$ 乘以 $\mathbb{P}(B)$；step 2 在 $B$ 中尋找 <span class="text-nowrap">$A$，</span>即 $\mathbb{P}(B)$ 再乘以 $\mathbb{P}(A\mid B)$。</figcaption>
 </figure>
@@ -436,7 +436,7 @@ $$
 
 </div>
 
-由[全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)與[乘法原理](#theorem-18)可知
+由[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)與[乘法原理](#theorem-18)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -522,7 +522,7 @@ On a television game show, a contestant is shown three doors; a prize is hidden 
 
 令 $R$ 表示第一次選擇猜中獎品的事件，$W$ 表示贏得獎品的事件。
 
-**策略一: 換門** 若第一次就猜中獎品，換門之後必定失去獎品；若第一次沒猜中，主持人打開另一個沒有獎品的門後，剩下那個未開且未選的門後必有獎品。因此 $\mathbb{P}(W\mid R)=0$、$\mathbb{P}(W\mid R^{\prime})=1$，由[全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)與[乘法原理](#theorem-18)可知
+**策略一: 換門** 若第一次就猜中獎品，換門之後必定失去獎品；若第一次沒猜中，主持人打開另一個沒有獎品的門後，剩下那個未開且未選的門後必有獎品。因此 $\mathbb{P}(W\mid R)=0$、$\mathbb{P}(W\mid R^{\prime})=1$，由[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)與[乘法原理](#theorem-18)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -577,7 +577,7 @@ $$
 選擇換門，得到獎品的機率較高，是較佳策略，應選擇換門。
 </div>
 
-這個例子的關鍵在於，「第一次就猜中」與「第一次沒猜中」是互斥且恰有一個會發生的兩種情況；[全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)把兩種情況下換門策略的貢獻分別算出來，再加總成總勝率。主持人沒有改變獎品的位置，他打開沒有獎品的門的動作改變了資訊狀態。
+這個例子的關鍵在於，「第一次就猜中」與「第一次沒猜中」是互斥且恰有一個會發生的兩種情況；[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)把兩種情況下換門策略的貢獻分別算出來，再加總成總勝率。主持人沒有改變獎品的位置，他打開沒有獎品的門的動作改變了資訊狀態。
 
 這個問題之所以經典，正是因為它很容易騙過直覺。主持人打開一個沒有獎品的門後，眼前只剩兩個未開的門，許多人會自然地認為，既然只剩兩個選項，機率應該各半。但這個想法忽略了主持人的行動帶著資訊，具有篩選效果。據說連數學家艾迪胥 (Paul Erdős) 也曾一度不接受換門策略較好的結論，直到看見電腦模擬後才被說服。若想把這個 $2/3$ 看成長期相對頻率，也可以到 Demos 中的<a class="text-nowrap" href="/demos/monty-hall/">蒙提霍爾問題實作</a>親自操作，改變策略、增加模擬次數，觀察換門策略的勝率如何逐漸穩定在理論值附近。
 
@@ -609,7 +609,7 @@ Monty Hall 問題還有一個等價外衣，稱為三囚徒問題 <span lang="en
 
 一如稍早的例子中，蘋果公司宣布將發表新款的 iPhone，對其未來一週股價上揚的機率顯然是種正面影響；又若今天某科技公司爆發高層捲款潛逃的消息，則該公司未來一週股價上揚的機率應是大幅下修，此類影響應為負面影響。
 
-既然影響有正有負，那麼在各種資訊流入中，比較特別的是，若某一事件的資訊流入**對於另一事件毫無影響**呢？這種狀況便是所謂的兩事件彼此間**獨立 <span lang="en">(independent)</span>**，我們將在[下一篇](/teaching-topics/independence-and-conditional-independence/)詳細介紹。
+既然影響有正有負，那麼在各種資訊流入中，比較特別的是，若某一事件的資訊流入**對於另一事件毫無影響**呢？這種狀況便是所謂的兩事件彼此間**獨立 <span lang="en">(independent)</span>**，我們將在[下一篇](/lecture-notes/independence-and-conditional-independence/)詳細介紹。
 
 ## 參考文獻與延伸閱讀
 

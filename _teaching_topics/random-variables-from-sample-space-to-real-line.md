@@ -4,5 +4,5 @@ layout: redirect
 sitemap: false
 permalink: /teaching-topics/random-variables-from-sample-space-to-real-line/
 redirect:
-  to: /teaching-topics/random-variables-and-pmf/
+  to: /lecture-notes/random-variables-and-pmf/
 ---

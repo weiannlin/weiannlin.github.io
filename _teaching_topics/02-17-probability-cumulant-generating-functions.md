@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 2
 topic: 17
 order: 217
-permalink: /teaching-topics/probability-cumulant-generating-functions/
+permalink: /lecture-notes/probability-cumulant-generating-functions/
 date: 2026-08-06
 published: true
 excerpt: "能夠生成一系列量數的函數不只 mgf 一種。機率母函數 $G_{X}(t)=\\mathbb{E}(t^{X})$ 只對非負整數隨機變數定義，微分 $r$ 次後代入 $t=1$ 生成階乘動差，微分 $k$ 次後代入 $t=0$ 再除以 $k!$ 則還原 $\\mathbb{P}(X=k)$。累積量母函數 $K_{X}(t)=\\ln M_{X}(t)$ 由 mgf 取對數而得，前四個累積量依序是期望值、變異數、三階主動差與 $\\mu_{4}-3\\sigma_{X}^{4}$。最後說明 mgf 與 pgf 之間如何互相改寫。"
 ---
 
-[上一篇](/teaching-topics/uniqueness-of-the-mgf/)以[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)的唯一性作結: 兩個[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)的 mgf 若相等，兩者的機率分配也相等，因此只要由各階原動差湊出 mgf，就能反過來認出分配是哪一個；離散型的 mgf 更可以把各個質點的機率一一取回。
+[上一篇](/lecture-notes/uniqueness-of-the-mgf/)以[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)的唯一性作結: 兩個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的 mgf 若相等，兩者的機率分配也相等，因此只要由各階原動差湊出 mgf，就能反過來認出分配是哪一個；離散型的 mgf 更可以把各個質點的機率一一取回。
 
-本篇要看的是另外兩種母函數。**機率母函數 <span lang="en">(probability generating function, pgf)</span>** 只對非負整數隨機變數定義，它生成的是階乘動差，也能夠直接還原 pmf；**累積量母函數 <span lang="en">(cumulant generating function, cgf)</span>** 則由 mgf 取對數而得，生成的是一系列的累積量，其中前四個依序是[期望值](/teaching-topics/expectation/#def-expectation)、[變異數](/teaching-topics/variance/#def-variance)、三階主動差與 $\mu\_{\sssig 4}-3\sigma^{4}\_{\sssig X}$。最後我們說明 mgf 與 pgf 之間如何互相改寫。
+本篇要看的是另外兩種母函數。**機率母函數 <span lang="en">(probability generating function, pgf)</span>** 只對非負整數隨機變數定義，它生成的是階乘動差，也能夠直接還原 pmf；**累積量母函數 <span lang="en">(cumulant generating function, cgf)</span>** 則由 mgf 取對數而得，生成的是一系列的累積量，其中前四個依序是[期望值](/lecture-notes/expectation/#def-expectation)、[變異數](/lecture-notes/variance/#def-variance)、三階主動差與 $\mu\_{\sssig 4}-3\sigma^{4}\_{\sssig X}$。最後我們說明 mgf 與 pgf 之間如何互相改寫。
 
 事實上，母函數 (或稱生成函數) 並不只有 mgf 一種，其生成的東西各有不同。如同 mgf 可以生成原動差一樣，機率或部分主動差各自都有母函數可以生成，這裡先來看看機率的母函數。
 
@@ -123,12 +123,12 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-- **階乘動差 <span lang="en">(factorial moment)</span>** 也是一種[母體動差](/teaching-topics/moment-system/#def-population-moment)，其特別之處在於，動差的建構方式宛若階乘 <span lang="en">(factorial)</span> 一樣，由 $X$ 開始向下累乘。
+- **階乘動差 <span lang="en">(factorial moment)</span>** 也是一種[母體動差](/lecture-notes/moment-system/#def-population-moment)，其特別之處在於，動差的建構方式宛若階乘 <span lang="en">(factorial)</span> 一樣，由 $X$ 開始向下累乘。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者或許注意到，pgf 生成階乘動差的方式，與 [mgf 生成原動差](/teaching-topics/moment-generating-functions/#thm-mgf-generates-moments)的方式非常相像，但又巧妙地利用指數 ($e^{tX}$) 與多項式 ($t^{X}$) 在微分上的差異，構築出生成對應動差所需的「工具」，而我們要把這些工具給「收起來」的手段，也會因為不同的工具而有不同。mgf 中，「收起」工具變數 $t$ 的做法是在微分完後以 $t=0$ 代入，如此一來可以讓整個指數項都變為 $1$；而 pgf 為了「收起」整個多項式項，必須要代入 $t=1$。
+讀者或許注意到，pgf 生成階乘動差的方式，與 [mgf 生成原動差](/lecture-notes/moment-generating-functions/#thm-mgf-generates-moments)的方式非常相像，但又巧妙地利用指數 ($e^{tX}$) 與多項式 ($t^{X}$) 在微分上的差異，構築出生成對應動差所需的「工具」，而我們要把這些工具給「收起來」的手段，也會因為不同的工具而有不同。mgf 中，「收起」工具變數 $t$ 的做法是在微分完後以 $t=0$ 代入，如此一來可以讓整個指數項都變為 $1$；而 pgf 為了「收起」整個多項式項，必須要代入 $t=1$。
 
 </div>
 
@@ -557,7 +557,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者應該也注意到了，cgf 所生成的累積量，直接與分配的[中央趨勢](/teaching-topics/expectation/#def-expectation)、[分散趨勢](/teaching-topics/variance/#def-variance)以及[形狀量數](/teaching-topics/measures-of-shape/#def-moment-skewness)有關，忘記的讀者不妨往前翻閱相關的小節。
+讀者應該也注意到了，cgf 所生成的累積量，直接與分配的[中央趨勢](/lecture-notes/expectation/#def-expectation)、[分散趨勢](/lecture-notes/variance/#def-variance)以及[形狀量數](/lecture-notes/measures-of-shape/#def-moment-skewness)有關，忘記的讀者不妨往前翻閱相關的小節。
 
 </div>
 
@@ -605,7 +605,7 @@ $$
 
 </div>
 
-(2) 由 [mgf 的定義](/teaching-topics/moment-generating-functions/#def-mgf)可知
+(2) 由 [mgf 的定義](/lecture-notes/moment-generating-functions/#def-mgf)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -636,7 +636,7 @@ $$
 
 [Theorem 2.25](#thm-pgf-recovers-pmf) 則是 pgf 之名的由來。對 pgf 微分 $k$ 次之後代入 $t=0$，低次項全部消失、高次項仍帶著 $t$ 而歸零，只留下 $k!\,p\_{\sssig X}(k)$，再除以 $k!$ 就得到 $\mathbb{P}(X=k)$。[Example 2.35](#ex-negative-binomial-pgf) 以擲硬幣至第一次出現正面所需的次數為例，先求得 pgf 為 $\frac{p\,t}{1-q\,t}$，再由前兩階階乘動差得到 $\mathbb{E}(Y\_{1})=\frac{1}{p}$ 與 $\mathrm{Var}(Y\_{1})=\frac{1-p}{p^{2}}$。
 
-[Definition 2.18](#def-cgf) 的累積量母函數 $K\_{\sssig X}(t)=\ln M\_{\sssig X}(t)$ 由 mgf 取對數而得，逐次微分後代入 $t=0$，前四個累積量依序是 $\mathbb{E}(X)$、$\sigma^{2}\_{\sssig X}$、$\mu\_{\sssig 3}$ 與 $\mu\_{\sssig 4}-3\sigma^{4}\_{\sssig X}$，正好對應分配的中央趨勢、分散趨勢與形狀。[Theorem 2.26](#thm-mgf-pgf-cgf-relation) 說明 mgf 與 pgf 之間只差一個變數的代換，$G\_{\sssig X}(t)=M\_{\sssig X}(\ln t)$ 而 $M\_{\sssig X}(t)=G\_{\sssig X}(e^{t})$。[下一篇](/teaching-topics/characteristic-functions/)介紹的[特徵函數](/teaching-topics/characteristic-functions/#def-characteristic-function)，把工具函數換成 $e^{itX}$，因而對每一個隨機變數都存在。
+[Definition 2.18](#def-cgf) 的累積量母函數 $K\_{\sssig X}(t)=\ln M\_{\sssig X}(t)$ 由 mgf 取對數而得，逐次微分後代入 $t=0$，前四個累積量依序是 $\mathbb{E}(X)$、$\sigma^{2}\_{\sssig X}$、$\mu\_{\sssig 3}$ 與 $\mu\_{\sssig 4}-3\sigma^{4}\_{\sssig X}$，正好對應分配的中央趨勢、分散趨勢與形狀。[Theorem 2.26](#thm-mgf-pgf-cgf-relation) 說明 mgf 與 pgf 之間只差一個變數的代換，$G\_{\sssig X}(t)=M\_{\sssig X}(\ln t)$ 而 $M\_{\sssig X}(t)=G\_{\sssig X}(e^{t})$。[下一篇](/lecture-notes/characteristic-functions/)介紹的[特徵函數](/lecture-notes/characteristic-functions/#def-characteristic-function)，把工具函數換成 $e^{itX}$，因而對每一個隨機變數都存在。
 
 ## 參考文獻與延伸閱讀
 

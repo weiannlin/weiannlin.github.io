@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 2
 order: 302
-permalink: /teaching-topics/joint-cumulative-distribution-functions/
+permalink: /lecture-notes/joint-cumulative-distribution-functions/
 date: 2026-08-12
 published: false
 excerpt: "二元隨機向量的聯合累積分配函數定義為 $F_{\\sssig XY}(x,y)=\\mathbb{P}(X\\leqslant x,Y\\leqslant y)$ 這個機率，定義域是二維實數平面，函數值落在 $[0,1]$ 之中。它所取的機率，來自使 $X(\\omega)\\leqslant x$ 且 $Y(\\omega)\\leqslant y$ 的那些樣本點所構成的集合，故處理聯合 cdf 時最要緊的事情就是弄清楚目前的加總或積分範圍。二元離散型的情形以雙重加總寫出，把橫向不超過 $x$ 且縱向不超過 $y$ 的各個質點機率相加即可。本篇並以機率列聯表示範指定位置上的 cdf 值如何求得。"
 ---
 
-[上一篇](/teaching-topics/random-vectors-joint-pmf/)由[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector)的定義出發，介紹了二元離散型隨機向量的[聯合機率質量函數](/teaching-topics/random-vectors-joint-pmf/#def-joint-pmf)與[邊際機率質量函數](/teaching-topics/random-vectors-joint-pmf/#def-marginal-pmf)。聯合機率質量函數只定義在離散型的隨機向量上，而第二章的[累積分配函數](/teaching-topics/cumulative-distribution-functions/#def-cdf)則是由 $\mathbb{P}(X\leqslant x)$ 出發，離散型與連續型都適用。
+[上一篇](/lecture-notes/random-vectors-joint-pmf/)由[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的定義出發，介紹了二元離散型隨機向量的[聯合機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-joint-pmf)與[邊際機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-marginal-pmf)。聯合機率質量函數只定義在離散型的隨機向量上，而第二章的[累積分配函數](/lecture-notes/cumulative-distribution-functions/#def-cdf)則是由 $\mathbb{P}(X\leqslant x)$ 出發，離散型與連續型都適用。
 
-二元的情形同樣可以這樣做。[Definition 3.1](/teaching-topics/random-vectors-joint-pmf/#def-random-vector) 要求對任意實數 $x_1,x_2,\ldots,x_n$ 而言，能使 $X_i(\omega)\leqslant x_i$ 對每一個 $i$ 都成立的那些樣本點所構成的集合是事件，故在 $n=2$ 的情況中，$\mathbb{P}(X\leqslant x,Y\leqslant y)$ 這個機率對平面上每一個點 $(x,y)$ 都有定義。把 $(x,y)$ 看成變數，這個機率本身就是一個定義在二維實數平面上的函數。
+二元的情形同樣可以這樣做。[Definition 3.1](/lecture-notes/random-vectors-joint-pmf/#def-random-vector) 要求對任意實數 $x_1,x_2,\ldots,x_n$ 而言，能使 $X_i(\omega)\leqslant x_i$ 對每一個 $i$ 都成立的那些樣本點所構成的集合是事件，故在 $n=2$ 的情況中，$\mathbb{P}(X\leqslant x,Y\leqslant y)$ 這個機率對平面上每一個點 $(x,y)$ 都有定義。把 $(x,y)$ 看成變數，這個機率本身就是一個定義在二維實數平面上的函數。
 
 <div id="def-joint-cdf" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.4 (聯合累積分配函數, joint cdf)</div>
@@ -87,7 +87,7 @@ $$
 也就是對使得 $X(\omega)\leqslant x$ 且 $Y(\omega)\leqslant y$ 的 $\omega$ 所構成的集合取機率，其範圍如下圖所示:
 
 <figure id="fig-joint-cdf-quadrants" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/joint-cdf-quadrants.svg" alt="以點 (x, y) 為分割點，一條縱線與一條橫線把平面切成四塊。左下一塊標示 X 小於等於 x 且 Y 小於等於 y，以淡紅色填滿，即聯合累積分配函數所取的範圍；右下標示 X 大於 x 且 Y 小於等於 y；左上標示 X 小於等於 x 且 Y 大於 y；右上標示 X 大於 x 且 Y 大於 y。橫軸右端標 X，縱軸上端標 Y，縱線下端標 X 等於 x，橫線左端標 Y 等於 y，交點畫一個實心圓點。">
+  <img src="/images/lecture-notes/joint-cdf-quadrants.svg" alt="以點 (x, y) 為分割點，一條縱線與一條橫線把平面切成四塊。左下一塊標示 X 小於等於 x 且 Y 小於等於 y，以淡紅色填滿，即聯合累積分配函數所取的範圍；右下標示 X 大於 x 且 Y 小於等於 y；左上標示 X 小於等於 x 且 Y 大於 y；右上標示 X 大於 x 且 Y 大於 y。橫軸右端標 X，縱軸上端標 Y，縱線下端標 X 等於 x，橫線左端標 Y 等於 y，交點畫一個實心圓點。">
   <figcaption><span class="topic-figure__label">Fig. 3.1.</span> 兩條分界線 $X=x$ 與 $Y=y$ 把平面切成四塊，左下角填色的一塊即 $F_{\sssig XY}(x,y)$ 所取的範圍。</figcaption>
 </figure>
 
@@ -117,7 +117,7 @@ $$
 
 </div>
 
-讀者或許已經發現，上列這些性質，事實上與單變數 cdf 相去不遠，很多部分甚至一樣，則我們是不是能夠用與單變數時相同的手法，從而定義二元連續型[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)的**[聯合機率密度函數](/teaching-topics/joint-probability-density-functions/#def-joint-pdf) (joint pdf)** 呢？
+讀者或許已經發現，上列這些性質，事實上與單變數 cdf 相去不遠，很多部分甚至一樣，則我們是不是能夠用與單變數時相同的手法，從而定義二元連續型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的**[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf) (joint pdf)** 呢？
 
 這個答案當然是肯定的，我們稍後便會看到這樣的定義，但在此之前我們先來看一些 joint cdf 的例子。
 
@@ -234,7 +234,7 @@ $$
 
 二元離散型的 joint cdf 以雙重加總寫出，把橫向不超過 $x$ 且縱向不超過 $y$ 的各個質點機率相加即可。[Example 3.1 <span lang="en">(Continued)</span>](#ex-joint-pmf-constant-cdf) 依此求得 $F_{\sssig XY}(1,1)=\frac{1}{2}$ 與 $F_{\sssig XY}(1.5,0.3)=\frac{1}{12}$ 兩個值，其中後者示範了指定位置不是質點時，cdf 值如何退回到兩個座標都不超過該位置的質點；把聯合 pmf 排成機率列聯表，再對應到二維座標，同一個總和也可以半圖示的方式求得。
 
-這些性質與單變數的 cdf 相去不遠，故我們也能用與單變數時相同的手法，定義二元連續型隨機變數的聯合機率密度函數。[下一篇](/teaching-topics/joint-probability-density-functions/)便由聯合機率密度函數的定義開始，並說明它與聯合累積分配函數之間的關係。
+這些性質與單變數的 cdf 相去不遠，故我們也能用與單變數時相同的手法，定義二元連續型隨機變數的聯合機率密度函數。[下一篇](/lecture-notes/joint-probability-density-functions/)便由聯合機率密度函數的定義開始，並說明它與聯合累積分配函數之間的關係。
 
 ## 參考文獻與延伸閱讀
 

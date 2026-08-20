@@ -7,17 +7,17 @@ category: "機率概論"
 chapter: 2
 topic: 23
 order: 223
-permalink: /teaching-topics/one-to-one-transformations/
+permalink: /lecture-notes/one-to-one-transformations/
 date: 2026-08-06
 published: true
 excerpt: "已知 $X$ 的機率分配，令 $Y=g(X)$，要如何求出 $Y$ 的機率分配？只要 $g(\\cdot)$ 是定義在實數上的實值可測函數，$Y$ 便仍然是一個隨機變數。離散型有直接列表法、pmf 法與 mgf 法三種做法；連續型無法列表，改以 cdf 法由累積的機率相等下手，或以 Jacobian 法把原變數的 pdf 以新變數表示後再乘上導數的絕對值，而 mgf 法離散與連續通用。本篇例題所出現的轉換，其 $g(\\cdot)$ 都是一對一函數，反函數直接存在；最後把取 $g$ 為 $X$ 自身 cdf 的情形寫成機率積分轉換。"
 ---
 
-[上一篇](/teaching-topics/empirical-rule-bell-shaped-distributions/)以鐘形分配的經驗法則，直接說出[期望值](/teaching-topics/expectation/#def-expectation)左右一個、兩個與三個[標準差](/teaching-topics/variance-standard-deviation/#def-standard-deviation)之內各涵蓋多少機率。到這裡為止，我們處理的都是同一個[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)自身的機率與量數。
+[上一篇](/lecture-notes/empirical-rule-bell-shaped-distributions/)以鐘形分配的經驗法則，直接說出[期望值](/lecture-notes/expectation/#def-expectation)左右一個、兩個與三個[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)之內各涵蓋多少機率。到這裡為止，我們處理的都是同一個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)自身的機率與量數。
 
-本篇要看的是另一件事情。已知 $X$ 的機率分配，令 $Y=g(X)$，$Y$ 的機率分配是什麼？我們先說明 $Y$ 在什麼條件之下仍然是一個隨機變數，接著分離散型與連續型兩節，各介紹三種求法，並以四道例題示範。這幾道例題所出現的轉換，其 $g(\cdot)$ 都是一對一函數，反函數直接存在；反函數不存在時的做法留到[下一篇](/teaching-topics/many-to-one-transformations/)。
+本篇要看的是另一件事情。已知 $X$ 的機率分配，令 $Y=g(X)$，$Y$ 的機率分配是什麼？我們先說明 $Y$ 在什麼條件之下仍然是一個隨機變數，接著分離散型與連續型兩節，各介紹三種求法，並以四道例題示範。這幾道例題所出現的轉換，其 $g(\cdot)$ 都是一對一函數，反函數直接存在；反函數不存在時的做法留到[下一篇](/lecture-notes/many-to-one-transformations/)。
 
-我們在處理機率問題時，時常會遇到需要將隨機變數取一個函數而進行轉換的情況，若僅是要計算其轉換後的期望值，則 [Theorem 2.9](/teaching-topics/properties-of-expectation/#thm-expectation-of-function) 便已足矣；但若我們進一步地想知道其機率分配，則我們便需要使用這個小節的內容。
+我們在處理機率問題時，時常會遇到需要將隨機變數取一個函數而進行轉換的情況，若僅是要計算其轉換後的期望值，則 [Theorem 2.9](/lecture-notes/properties-of-expectation/#thm-expectation-of-function) 便已足矣；但若我們進一步地想知道其機率分配，則我們便需要使用這個小節的內容。
 
 整體而言，隨機變數的函數轉換之形式如下:
 
@@ -174,7 +174,7 @@ $$
 (3) **mgf 法**
 {: .topic-paren-item}
 
-令 $Y=g(X)$，並且求出 $M\_{\sssig Y}(t)=\mathbb{E}\bigl(e^{tY}\bigr)=\mathbb{E}\bigl(e^{t\,g(X)}\bigr)$，再從 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)得知 $Y$ 的機率分配。然而，欲透過此方法得知 $Y$ 的機率分配，我們必須熟知隨機變數之函數轉換的 mgf，見下列定理。
+令 $Y=g(X)$，並且求出 $M\_{\sssig Y}(t)=\mathbb{E}\bigl(e^{tY}\bigr)=\mathbb{E}\bigl(e^{t\,g(X)}\bigr)$，再從 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)得知 $Y$ 的機率分配。然而，欲透過此方法得知 $Y$ 的機率分配，我們必須熟知隨機變數之函數轉換的 mgf，見下列定理。
 {: .topic-paren-cont}
 
 <div id="thm-mgf-linear-transformation" class="topic-box topic-box--theorem" markdown="1">
@@ -191,7 +191,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-由 [mgf 的定義](/teaching-topics/moment-generating-functions/#def-mgf)可知
+由 [mgf 的定義](/lecture-notes/moment-generating-functions/#def-mgf)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -301,7 +301,7 @@ $$
 
 **mgf 法**
 
-由 [mgf 的定義](/teaching-topics/moment-generating-functions/#def-mgf)可知
+由 [mgf 的定義](/lecture-notes/moment-generating-functions/#def-mgf)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -376,7 +376,7 @@ $$
 
 </div>
 
-則由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知 $Y$ 的 pmf 為
+則由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知 $Y$ 的 pmf 為
 
 $$
 p_{\sssig Y}(y)=
@@ -595,7 +595,7 @@ be the pdf of $X$.
 </ol>
 </div>
 
-(1) 由[函數期望值](/teaching-topics/properties-of-expectation/#thm-expectation-of-function)可知
+(1) 由[函數期望值](/lecture-notes/properties-of-expectation/#thm-expectation-of-function)可知
 {: .topic-paren-item}
 
 $$
@@ -654,7 +654,7 @@ $$
 
 </div>
 
-並可由 [cdf 之定義](/teaching-topics/cumulative-distribution-functions/#def-cdf)可知
+並可由 [cdf 之定義](/lecture-notes/cumulative-distribution-functions/#def-cdf)可知
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -722,7 +722,7 @@ $$
 
 </div>
 
-下面這一題承接 [Example 2.31](/teaching-topics/moment-generating-functions/#ex-logistic-cdf) 的邏輯斯分配。
+下面這一題承接 [Example 2.31](/lecture-notes/moment-generating-functions/#ex-logistic-cdf) 的邏輯斯分配。
 
 <div id="ex-logistic-to-uniform" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.31 <span lang="en">(Continued)</span></div>
@@ -755,7 +755,7 @@ $$
 (4) **cdf 法**
 {: .topic-paren-item}
 
-由 [cdf 之定義](/teaching-topics/cumulative-distribution-functions/#def-cdf)與 [Example 2.31](/teaching-topics/moment-generating-functions/#ex-logistic-cdf) 第 (1) 小題已求得的 $F\_{\sssig X}(x)=\frac{1}{\,1+e^{-x}\,}$ 可知
+由 [cdf 之定義](/lecture-notes/cumulative-distribution-functions/#def-cdf)與 [Example 2.31](/lecture-notes/moment-generating-functions/#ex-logistic-cdf) 第 (1) 小題已求得的 $F\_{\sssig X}(x)=\frac{1}{\,1+e^{-x}\,}$ 可知
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -863,7 +863,7 @@ $$
 <div id="prop-probability-integral-transform" class="topic-box topic-box--proposition" markdown="1">
 <div class="topic-box__label">Proposition 2.4 (機率積分轉換, probability integral transform)</div>
 
-若 $X$ 為連續型隨機變數，其 cdf 為 <span class="text-nowrap">$F\_{\sssig X}(\cdot)$，</span>並依[分位函數](/teaching-topics/quantiles/#quantile-function)的取法令
+若 $X$ 為連續型隨機變數，其 cdf 為 <span class="text-nowrap">$F\_{\sssig X}(\cdot)$，</span>並依[分位函數](/lecture-notes/quantiles/#quantile-function)的取法令
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -978,7 +978,7 @@ $$
 
 連續型無法列表。[Proposition 2.2](#prop-cdf-method) 的 cdf 法改由累積的機率相等下手，先依 $g(\cdot)$ 是保序或反序寫出 $F\_{\sssig Y}(y)$，再微分得到 $f\_{\sssig Y}(y)$；[Proposition 2.3](#prop-jacobian-method) 的 Jacobian 法則把原變數的 pdf 以新變數表示，再乘上 $\lvert\mathbf{J}\rvert$。mgf 法在兩型之間並無不同。[Example 2.49](#ex-reciprocal-transformation) 與 [Example 2.31 <span lang="en">(Continued)</span>](#ex-logistic-to-uniform) 各示範一次，後者取 $g$ 為 $X$ 自身的 cdf，結果是 $\mathcal{U}(0, 1)$，這個現象由 [Proposition 2.4](#prop-probability-integral-transform) 的機率積分轉換正式敘述，它同時給出反方向的走法。由 $\mathcal{U}(0, 1)$ 出發，經分位函數即可回到原來的分配。
 
-本篇所處理的 $Y=2X+1$、$Y=\frac{1}{X}$ 與 $Y=\bigl(1+e^{-X}\bigr)^{-1}$，其中的 $g(\cdot)$ 都是一對一函數，反函數直接存在，套上公式即可。[下一篇](/teaching-topics/many-to-one-transformations/)處理反函數不存在的情形，作法正是前面提過的分段。先把值域分成若干段，使 $g(\cdot)$ 在各段上一對一，分別求出各段的密度之後再合併起來。
+本篇所處理的 $Y=2X+1$、$Y=\frac{1}{X}$ 與 $Y=\bigl(1+e^{-X}\bigr)^{-1}$，其中的 $g(\cdot)$ 都是一對一函數，反函數直接存在，套上公式即可。[下一篇](/lecture-notes/many-to-one-transformations/)處理反函數不存在的情形，作法正是前面提過的分段。先把值域分成若干段，使 $g(\cdot)$ 在各段上一對一，分別求出各段的密度之後再合併起來。
 
 ## 參考文獻與延伸閱讀
 

@@ -4,5 +4,5 @@ layout: redirect
 sitemap: false
 permalink: /teaching-topics/chernoff-inequality/
 redirect:
-  to: /teaching-topics/probability-inequalities/
+  to: /lecture-notes/probability-inequalities/
 ---

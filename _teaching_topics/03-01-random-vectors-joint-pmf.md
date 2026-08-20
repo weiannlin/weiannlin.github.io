@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 1
 order: 301
-permalink: /teaching-topics/random-vectors-joint-pmf/
+permalink: /lecture-notes/random-vectors-joint-pmf/
 date: 2026-08-12
 published: false
 excerpt: "隨機變數的概念並不限於一維。把定義在同一個機率空間上的 $n$ 個隨機變數合起來看成一個向量函數，並要求對任意實數 $x_1,x_2,\\ldots,x_n$ 而言，能使各個 $X_i(\\omega)\\leqslant x_i$ 同時成立的樣本點所形成的集合都是事件，這樣的向量函數即為隨機向量。二元離散型的聯合機率質量函數在聯合值域上記錄 $\\mathbb{P}(X=x,Y=y)$ 這個機率，並滿足三項性質；把其中一個變數的所有可能取值加總，便得到另一個變數的邊際機率質量函數。本篇最後以一道例題示範常數的求法、事件機率的計算與邊際 pmf 的求取。"
 ---
 
-[上一篇](/teaching-topics/many-to-one-transformations/)以三道例題處理了非一對一的函數轉換，第二章到此告一段落。第二章所討論的[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable) <span lang="en">(random variable)</span> 都只有一維，但這個概念當然不僅限於一維，我們可以將其擴展至二維以上的多維空間，代表的意義也會隨之不同。
+[上一篇](/lecture-notes/many-to-one-transformations/)以三道例題處理了非一對一的函數轉換，第二章到此告一段落。第二章所討論的[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable) <span lang="en">(random variable)</span> 都只有一維，但這個概念當然不僅限於一維，我們可以將其擴展至二維以上的多維空間，代表的意義也會隨之不同。
 
-在第一章，我們曾經探討過，若是我們有兩個事件，則我們可以就其關係歸納出[互斥、獨立](/teaching-topics/independence-and-conditional-independence/#互斥與獨立)等觀念；又於第二章，我們曾說過，所謂隨機變數事實上是將樣本空間內的元素，映射到實數上的函數，故在此，我們當然可以將樣本空間分別映射至不同的兩個實數上，此概念即為二元隨機變數。
+在第一章，我們曾經探討過，若是我們有兩個事件，則我們可以就其關係歸納出[互斥、獨立](/lecture-notes/independence-and-conditional-independence/#互斥與獨立)等觀念；又於第二章，我們曾說過，所謂隨機變數事實上是將樣本空間內的元素，映射到實數上的函數，故在此，我們當然可以將樣本空間分別映射至不同的兩個實數上，此概念即為二元隨機變數。
 
 當然，一旦具有二元乃至多元隨機變數的概念，則與複數個事件相同，我們可以探討事件與事件間的關係，在此當然也可以探討變數與變數間的關係，諸如此類的定義與性質，與單元隨機變數相同，我們都需要從二元 (多元) 隨機變數的定義開始出發。
 
@@ -145,7 +145,7 @@ $$
 
 </div>
 
-## 聯合、邊際[機率質量函數](/teaching-topics/random-variables-and-pmf/#def-pmf)
+## 聯合、邊際[機率質量函數](/lecture-notes/random-variables-and-pmf/#def-pmf)
 
 <div id="def-joint-pmf" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.2 (聯合機率質量函數, joint pmf)</div>
@@ -195,7 +195,7 @@ $$
 (1) 與單元的 pmf 相同，$\mathbb{P}(X=x,Y=y)$ **就是機率**。
 {: .topic-paren-item}
 
-(2) 很多時候一個二元離散向量 $(X,Y)$ 的聯合值域 $\mathcal{R}\_{\sssig XY}$ 是有限集合，這種時候我們常常將其聯合機率函數窮舉為表格的形式，其型態與第一章我們所談到的[列聯表](/teaching-topics/independence-and-conditional-independence/#互斥與獨立)非常相似，二者的本質也是相同的，下面我們便來看看這樣的例子:
+(2) 很多時候一個二元離散向量 $(X,Y)$ 的聯合值域 $\mathcal{R}\_{\sssig XY}$ 是有限集合，這種時候我們常常將其聯合機率函數窮舉為表格的形式，其型態與第一章我們所談到的[列聯表](/lecture-notes/independence-and-conditional-independence/#互斥與獨立)非常相似，二者的本質也是相同的，下面我們便來看看這樣的例子:
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -231,7 +231,7 @@ $$
 
 </div>
 
-另外，上表中原先在表邊的總和機率在這邊變成了**邊際機率 <span lang="en">(marginal probability)</span>**，這種機率所構成的機率分配，仍然是一種正規的機率分配，其直觀意義與當時相同，仍是應用了[全機率定理](/teaching-topics/total-probability-bayes-rule/#theorem-law-of-total-probability)。關於這種機率分配的定義與其性質，我們馬上便會看見。
+另外，上表中原先在表邊的總和機率在這邊變成了**邊際機率 <span lang="en">(marginal probability)</span>**，這種機率所構成的機率分配，仍然是一種正規的機率分配，其直觀意義與當時相同，仍是應用了[全機率定理](/lecture-notes/total-probability-bayes-rule/#theorem-law-of-total-probability)。關於這種機率分配的定義與其性質，我們馬上便會看見。
 {: .topic-paren-cont}
 
 <div id="def-marginal-pmf" class="topic-box topic-box--definition" markdown="1">
@@ -411,7 +411,7 @@ $$
 p_{\sssig X}(x)&=\sum_{y\in\mathcal{R}_{\sssig Y}}p_{\sssig XY}(x,y)=\sum_{y=0}^{2}p_{\sssig XY}(x,y)\\[0.45em]
 &=
 \left\lbrace
-\begin{array}{c@{\quad}l}
+\begin{array}{c@{}l}
 \dfrac{1}{\,2\,}, & x=0\\[0.6em]
 \dfrac{1}{\,3\,}, & x=1\\[0.6em]
 \dfrac{1}{\,6\,}, & x=2\\[0.6em]
@@ -450,7 +450,7 @@ $$
 
 回到離散型，[Definition 3.2](#def-joint-pmf) 的聯合機率質量函數在聯合值域上記錄 $\mathbb{P}(X=x,Y=y)$ 這個機率，在聯合值域之外則取 <span class="text-nowrap">$0$，</span>並滿足介於 $0$ 與 $1$ 之間、在聯合值域上加總為 <span class="text-nowrap">$1$，</span>以及任一事件的機率為該事件上之雙重加總這三項性質。聯合值域為有限集合時，聯合機率質量函數可以窮舉成列聯表的形式，表邊的總和機率即為邊際機率。[Definition 3.3](#def-marginal-pmf) 把這件事寫成定義。對另一個變數的所有可能取值加總，所得的 $p\_{\sssig X}(x)$ 與 $p\_{\sssig Y}(y)$ 分別是 $X$ 與 $Y$ 的邊際機率質量函數，它們各自仍是一個機率質量函數。
 
-[Example 3.1](#ex-joint-pmf-constant) 以一組五個質點的聯合機率質量函數示範三件事: 由加總為 $1$ 求出常數 <span class="text-nowrap">$c$、</span>把事件寫成質點的集合再加總以求得事件機率，以及對 $y$ 加總求出 $X$ 的邊際機率質量函數。同一題若先把聯合機率窮舉成列聯表，邊際分配可以直接由表邊得到，兩種算法的原理完全相同。[下一篇](/teaching-topics/joint-cumulative-distribution-functions/)改以累積的機率描述二元隨機向量的分配，介紹[聯合累積分配函數](/teaching-topics/joint-cumulative-distribution-functions/#def-joint-cdf)。
+[Example 3.1](#ex-joint-pmf-constant) 以一組五個質點的聯合機率質量函數示範三件事: 由加總為 $1$ 求出常數 <span class="text-nowrap">$c$、</span>把事件寫成質點的集合再加總以求得事件機率，以及對 $y$ 加總求出 $X$ 的邊際機率質量函數。同一題若先把聯合機率窮舉成列聯表，邊際分配可以直接由表邊得到，兩種算法的原理完全相同。[下一篇](/lecture-notes/joint-cumulative-distribution-functions/)改以累積的機率描述二元隨機向量的分配，介紹[聯合累積分配函數](/lecture-notes/joint-cumulative-distribution-functions/#def-joint-cdf)。
 
 ## 參考文獻與延伸閱讀
 

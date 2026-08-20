@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 2
 topic: 2
 order: 202
-permalink: /teaching-topics/cumulative-distribution-functions/
+permalink: /lecture-notes/cumulative-distribution-functions/
 date: 2026-08-04
 published: true
 excerpt: "累積分配函數定義為 $F_{\\sssig X}(x)=\\mathbb{P}(X\\leqslant x)$，定義域為整個實數線，函數值落在 $[0,1]$ 之中，離散型與連續型隨機變數都適用。它必然非遞減、右連續，兩端的極限分別為 $0$ 與 $1$；離散型的累積分配函數為階梯函數，每一階的躍升高度即為該質點的機率，故亦可由累積分配函數回頭求得機率質量函數。"
 ---
 
-[上一篇](/teaching-topics/random-variables-and-pmf/)以[機率質量函數](/teaching-topics/random-variables-and-pmf/#def-pmf)描述離散型[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)，把機率逐點記在值域的質點上。但機率質量函數只定義在離散型隨機變數上，[Definition 2.2](/teaching-topics/random-variables-and-pmf/#def-support-classification) 所分出的另一型並不適用。
+[上一篇](/lecture-notes/random-variables-and-pmf/)以[機率質量函數](/lecture-notes/random-variables-and-pmf/#def-pmf)描述離散型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)，把機率逐點記在值域的質點上。但機率質量函數只定義在離散型隨機變數上，[Definition 2.2](/lecture-notes/random-variables-and-pmf/#def-support-classification) 所分出的另一型並不適用。
 
-另一方面，[Definition 2.1](/teaching-topics/random-variables-and-pmf/#def-random-variable) 要求對任意 $x\in\mathbb{R}$，能使 $X(\omega)\leqslant x$ 的樣本點所形成的集合都是事件，故 $\mathbb{P}(X\leqslant x)$ 對每一個實數 $x$ 都有定義。把 $x$ 看成變數，這個機率本身就是一個定義在實數上的函數，且不必事先區分 $X$ 屬於哪一型。
+另一方面，[Definition 2.1](/lecture-notes/random-variables-and-pmf/#def-random-variable) 要求對任意 $x\in\mathbb{R}$，能使 $X(\omega)\leqslant x$ 的樣本點所形成的集合都是事件，故 $\mathbb{P}(X\leqslant x)$ 對每一個實數 $x$ 都有定義。把 $x$ 看成變數，這個機率本身就是一個定義在實數上的函數，且不必事先區分 $X$ 屬於哪一型。
 
 <div id="def-cdf" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 2.4 (累積分配函數, cumulative distribution function, cdf)</div>
@@ -117,7 +117,7 @@ $$
 
 故其當然介在 $0$ 至 $1$ 之間。
 
-又因為其機率為累積 (或累加)，隨著 $x$ 的增長，函數值 $F_{\sssig X}(x)$ 只會向上增加或持平，故其累積分配函數當然具有**非遞減**之性質。至於**右連續**，累積本身只保證非遞減，尚須用到機率的連續性: 令 $x_1>x_2>\cdots$ 為任一遞減至 $x$ 的數列，則 $\lbrace X\leqslant x_n\rbrace$ 為一非遞增的事件序列，其極限為 $\lbrace X\leqslant x\rbrace$，故由[單調事件序列的機率極限](/teaching-topics/probability-rules-from-axioms/#theorem-continuity)可得
+又因為其機率為累積 (或累加)，隨著 $x$ 的增長，函數值 $F_{\sssig X}(x)$ 只會向上增加或持平，故其累積分配函數當然具有**非遞減**之性質。至於**右連續**，累積本身只保證非遞減，尚須用到機率的連續性: 令 $x_1>x_2>\cdots$ 為任一遞減至 $x$ 的數列，則 $\lbrace X\leqslant x_n\rbrace$ 為一非遞增的事件序列，其極限為 $\lbrace X\leqslant x\rbrace$，故由[單調事件序列的機率極限](/lecture-notes/probability-rules-from-axioms/#theorem-continuity)可得
 
 $$
 \lim_{n\to\infty}F_{\sssig X}(x_n)=\mathbb{P}(X\leqslant x)=F_{\sssig X}(x)
@@ -128,7 +128,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上在連續型隨機變數中 $F_{\sssig X}(x)$ 是一連續函數 (即左連續且右連續)；而僅右連續的狀況發生在離散型隨機變數，或稍後的章節中會談到的[混合型隨機變數](/teaching-topics/mixed-random-variables/)中。
+事實上在連續型隨機變數中 $F_{\sssig X}(x)$ 是一連續函數 (即左連續且右連續)；而僅右連續的狀況發生在離散型隨機變數，或稍後的章節中會談到的[混合型隨機變數](/lecture-notes/mixed-random-variables/)中。
 
 </div>
 
@@ -146,7 +146,7 @@ $$
 
 若箱中有四顆大小形狀完全相同、分別編號 $0$ 至 $3$ 的球，若 $X$ 表示隨機從中一次抽取兩顆球的號碼總和，則試列出且畫出其 cdf。
 
-$X$ 的 pmf 已於 [Example 2.2](/teaching-topics/random-variables-and-pmf/#ex-two-ball-sum) 求得: <span class="text-nowrap">$p_{\sssig X}(3)=\frac{2}{6}=\frac{1}{3}$，</span>其餘四個質點 $1,2,4,5$ 的機率各為 $\frac{1}{6}$。$F_{\sssig X}(x)$ 為小於等於 $x$ 的各質點機率之總和，以 pmf 寫出即
+$X$ 的 pmf 已於 [Example 2.2](/lecture-notes/random-variables-and-pmf/#ex-two-ball-sum) 求得: <span class="text-nowrap">$p_{\sssig X}(3)=\frac{2}{6}=\frac{1}{3}$，</span>其餘四個質點 $1,2,4,5$ 的機率各為 $\frac{1}{6}$。$F_{\sssig X}(x)$ 為小於等於 $x$ 的各質點機率之總和，以 pmf 寫出即
 
 $$
 F_{\sssig X}(x)=\sum_{t\leqslant x}p_{\sssig X}(t)
@@ -169,7 +169,7 @@ F_{\sssig X}(x)=
 $$
 
 <figure id="fig-two-ball-sum-cdf" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/two-ball-sum-cdf.svg" alt="四球取兩顆之號碼總和的累積分配函數階梯圖。函數值由 0 開始，在 x 等於 1、2、3、4、5 各躍升一階，躍升之後維持水平，最後停在 1。">
+  <img src="/images/lecture-notes/two-ball-sum-cdf.svg" alt="四球取兩顆之號碼總和的累積分配函數階梯圖。函數值由 0 開始，在 x 等於 1、2、3、4、5 各躍升一階，躍升之後維持水平，最後停在 1。">
   <figcaption><span class="topic-figure__label">Fig. 2.1.</span> 號碼總和 $X$ 的 cdf。函數在 $x=1,2,3,4,5$ 五個質點上各躍升一階，兩階之間維持水平。縱軸以 $y=3$ 對應機率 $1$，與 <a href="#fig-cdf-to-pmf">Fig. 2.2</a> 的比例尺不同，兩圖的高度不可直接比較。</figcaption>
 </figure>
 
@@ -185,7 +185,7 @@ $$
 [上圖](#fig-two-ball-sum-cdf)是典型的離散型 cdf，每一階的跳躍點，都對應到原本的 pmf 中的機率質點，且躍升的高度即是該點的機率，故我們可以由離散型 cdf 轉換為其對應的 pmf，如下圖:
 
 <figure id="fig-cdf-to-pmf" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/cdf-to-pmf.svg" alt="由累積分配函數各階躍升高度還原的機率質量函數點圖。x 等於 1、2、4、5 的點高為六分之一，x 等於 3 的點高為三分之一。">
+  <img src="/images/lecture-notes/cdf-to-pmf.svg" alt="由累積分配函數各階躍升高度還原的機率質量函數點圖。x 等於 1、2、4、5 的點高為六分之一，x 等於 3 的點高為三分之一。">
   <figcaption><span class="topic-figure__label">Fig. 2.2.</span> 由 <a href="#fig-two-ball-sum-cdf">Fig. 2.1</a> 各階的躍升高度還原的 pmf。縱軸以 $y=6$ 對應機率 $1$，與 <a href="#fig-two-ball-sum-cdf">Fig. 2.1</a> 的比例尺不同，兩圖的高度不可直接比較。</figcaption>
 </figure>
 
@@ -274,7 +274,7 @@ $$
 則求其 pmf 為何？
 
 <figure id="fig-degenerate-cdf" class="topic-figure topic-figure--narrow">
-  <img src="/images/teaching-topics/degenerate-cdf.svg" alt="退化型隨機變數的累積分配函數圖。x 小於 0 時函數值為 0，在 x 等於 0 處躍升至 1，其後維持水平。">
+  <img src="/images/lecture-notes/degenerate-cdf.svg" alt="退化型隨機變數的累積分配函數圖。x 小於 0 時函數值為 0，在 x 等於 0 處躍升至 1，其後維持水平。">
   <figcaption><span class="topic-figure__label">Fig. 2.3.</span> $F_{\sssig X}$ 只在 $x=0$ 處躍升，躍升的高度為 <span class="text-nowrap">$1$。</span></figcaption>
 </figure>
 
@@ -298,7 +298,7 @@ $$
 
 [Theorem 2.1](#thm-cdf-properties) 列出五項性質: 函數值介於 $0$ 與 $1$ 之間、非遞減、右連續、$X$ 為離散型時是階梯函數，以及兩端的極限分別為 $0$ 與 $1$。前兩項可由「累積」二字直接看出，右連續另需機率的連續性，第 (4) 款另需質點不聚集的前提。
 
-離散型 cdf 的每一階都對應到一個質點，躍升的高度就是該點的機率，故 pmf 與 cdf 之間可以互推。[Example 2.2 <span lang="en">(Continued)</span>](#ex-two-ball-sum-cdf) 由 pmf 累加得到 cdf，[Example 2.5](#ex-degenerate-cdf) 則由 cdf 的單一跳躍回頭求得 pmf。[下一篇](/teaching-topics/probability-density-functions/)進入連續型隨機變數的[機率密度函數](/teaching-topics/probability-density-functions/#def-pdf)。
+離散型 cdf 的每一階都對應到一個質點，躍升的高度就是該點的機率，故 pmf 與 cdf 之間可以互推。[Example 2.2 <span lang="en">(Continued)</span>](#ex-two-ball-sum-cdf) 由 pmf 累加得到 cdf，[Example 2.5](#ex-degenerate-cdf) 則由 cdf 的單一跳躍回頭求得 pmf。[下一篇](/lecture-notes/probability-density-functions/)進入連續型隨機變數的[機率密度函數](/lecture-notes/probability-density-functions/#def-pdf)。
 
 ## 參考文獻與延伸閱讀
 

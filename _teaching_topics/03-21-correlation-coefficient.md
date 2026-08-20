@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 3
 topic: 21
 order: 321
-permalink: /teaching-topics/correlation-coefficient/
+permalink: /lecture-notes/correlation-coefficient/
 date: 2026-08-13
 published: false
 excerpt: "共變異數的正負號說明了兩個變數共同變化的方向，卻沒有範圍限制，因而看不出相關程度的上限，也無法比較兩組不同的二元分配何者的相關程度比較高。相關係數把 $X$ 與 $Y$ 各自的變異程度先行消除，形成一個標準化的形式，所衡量的是線性相關的強度，也就是 $X$ 與 $Y$ 之間的關係有多接近直線，其值恆落在 $-1$ 與 $1$ 之間。由定義可以整理出 $\\rho_{\\sssig XY}$ 等於共變異數除以兩個標準差相乘的簡易表示式，並依取值把相關程度分成完全正相關、正相關、零相關、負相關與完全負相關五類；零相關只表示沒有直線關係，二次曲線那樣明顯的關係仍然可能是零相關。本篇最後證明相關係數的六款性質，其中範圍落在 $-1$ 與 $1$ 之間這一款用到隨機變數版本的柯西-舒瓦茲不等式，並說明相關係數的幾何意義就是兩個隨機變數在變數空間中夾角的餘弦值。"
 ---
 
-[上一篇](/teaching-topics/covariance-matrix/)把[共變異數](/teaching-topics/covariance/#def-covariance)推廣到[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector)之上，以 [Definition 3.17](/teaching-topics/covariance-matrix/#def-covar-matrix) 的[共變異數矩陣](/teaching-topics/covariance-matrix/#def-covar-matrix)收納各個分量兩兩之間的共變異數，並整理了常數向量與矩陣作用在隨機向量上時，[期望值](/teaching-topics/expectation/#def-expectation)與共變異數矩陣的算法。
+[上一篇](/lecture-notes/covariance-matrix/)把[共變異數](/lecture-notes/covariance/#def-covariance)推廣到[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)之上，以 [Definition 3.17](/lecture-notes/covariance-matrix/#def-covar-matrix) 的[共變異數矩陣](/lecture-notes/covariance-matrix/#def-covar-matrix)收納各個分量兩兩之間的共變異數，並整理了常數向量與矩陣作用在隨機向量上時，[期望值](/lecture-notes/expectation/#def-expectation)與共變異數矩陣的算法。
 
 共變異數的正負號說明了 $X$ 與 $Y$ 共同變化的方向，但它沒有範圍限制，因此看不出相關程度的上限，也無法用來比較兩組不同的二元分配間，哪一組的相關程度比較高。本篇要介紹的相關係數即是為此而設，它在共變異數之外，額外把 $X$ 與 $Y$ 各自的變異程度消除掉。本篇先給出定義與一條比較簡易的表示式，再依相關係數的取值把相關程度分成五類並以散佈圖圖示，接著證明相關係數的六款性質，最後說明相關係數的幾何意義。
 
@@ -22,7 +22,7 @@ excerpt: "共變異數的正負號說明了兩個變數共同變化的方向，�
 <div id="def-corr" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.19 (相關係數, correlation coefficient)</div>
 
-若 $X$ 與 $Y$ 為二[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)，且期望值分別為 $\mu_{\sssig X}$ 與 <span class="text-nowrap">$\mu_{\sssig Y}$，</span>變異數分別為 <span class="text-nowrap">$\sigma_{\sssig X}^{2}, \sigma_{\sssig Y}^{2}$，</span>則
+若 $X$ 與 $Y$ 為二[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)，且期望值分別為 $\mu_{\sssig X}$ 與 <span class="text-nowrap">$\mu_{\sssig Y}$，</span>變異數分別為 <span class="text-nowrap">$\sigma_{\sssig X}^{2}, \sigma_{\sssig Y}^{2}$，</span>則
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -87,7 +87,7 @@ $$
 {: .topic-paren-cont}
 
 <figure id="fig-correlation-strength-scatter" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/correlation-strength-scatter.svg" alt="左右並排的兩個面板，共用同一組座標範圍與同一個比例尺。每個面板各有一條橫軸與一條縱軸交於原點，橫軸末端標為 x、縱軸末端標為 y，兩軸各標出 −2、−1、1、2 四個刻度。每個面板畫了數百個小圓點，另有一條通過原點、由左下往右上的直線。左面板的點散成一團橢圓形的雲，沿著那條直線的方向拉長，離線較遠的點不少，面板下方標 ρ_XY = 0.6。右面板的點幾乎都貼著那條直線，排成一條窄帶，面板下方標 ρ_XY = 0.99。">
+  <img src="/images/lecture-notes/correlation-strength-scatter.svg" alt="左右並排的兩個面板，共用同一組座標範圍與同一個比例尺。每個面板各有一條橫軸與一條縱軸交於原點，橫軸末端標為 x、縱軸末端標為 y，兩軸各標出 −2、−1、1、2 四個刻度。每個面板畫了數百個小圓點，另有一條通過原點、由左下往右上的直線。左面板的點散成一團橢圓形的雲，沿著那條直線的方向拉長，離線較遠的點不少，面板下方標 ρ_XY = 0.6。右面板的點幾乎都貼著那條直線，排成一條窄帶，面板下方標 ρ_XY = 0.99。">
   <figcaption><span class="topic-figure__label">Fig. 3.18.</span> 左右兩個面板共用同一組座標範圍與同一個比例尺，各畫一批樣本的散佈，並附同一條斜率為正的參考直線。左面板所標的 $\rho_{\sssig XY}$ 較小，點散得開，離參考直線遠的不少；右面板所標的 <span class="text-nowrap">$\rho_{\sssig XY}$</span> 接近 <span class="text-nowrap">$1$，</span>點幾乎都貼著參考直線排成一條窄帶。<span class="text-nowrap">$\lvert\rho_{\sssig XY}\rvert$</span> 越大，點的散佈就越接近一條直線，這正是相關係數所衡量的線性相關強度。</figcaption>
 </figure>
 
@@ -134,7 +134,7 @@ $$
 {: .topic-paren-item}
 
 <figure id="fig-correlation-types-scatter" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/correlation-types-scatter.svg" alt="六個面板排成三列，每列兩個，共用同一組座標範圍與同一個比例尺。每個面板各有一條橫軸與一條縱軸交於原點，橫軸末端標為 x、縱軸末端標為 y，兩軸都標出整數刻度，面板下方各標一行相關係數的式子。第一列左邊的點全部落在一條由左下往右上的直線上，標 ρ_XY = 1；右邊的點散成一團沿同一方向拉長的橢圓形雲，標 0 &lt; ρ_XY &lt; 1。第二列左邊的點全部落在一條由左上往右下的直線上，標 ρ_XY = −1；右邊的點散成一團沿該方向拉長的橢圓形雲，標 −1 &lt; ρ_XY &lt; 0。這四個面板另各畫一條與點的走向相同的直線。第三列左邊的點散成一團沒有特定方向的圓形雲，標 ρ_XY = 0；右邊的點排成一條開口向上、頂點落在原點的曲線，縱軸只取正值，同樣標 ρ_XY = 0。第三列的兩個面板都沒有那條參考直線。">
+  <img src="/images/lecture-notes/correlation-types-scatter.svg" alt="六個面板排成三列，每列兩個，共用同一組座標範圍與同一個比例尺。每個面板各有一條橫軸與一條縱軸交於原點，橫軸末端標為 x、縱軸末端標為 y，兩軸都標出整數刻度，面板下方各標一行相關係數的式子。第一列左邊的點全部落在一條由左下往右上的直線上，標 ρ_XY = 1；右邊的點散成一團沿同一方向拉長的橢圓形雲，標 0 &lt; ρ_XY &lt; 1。第二列左邊的點全部落在一條由左上往右下的直線上，標 ρ_XY = −1；右邊的點散成一團沿該方向拉長的橢圓形雲，標 −1 &lt; ρ_XY &lt; 0。這四個面板另各畫一條與點的走向相同的直線。第三列左邊的點散成一團沒有特定方向的圓形雲，標 ρ_XY = 0；右邊的點排成一條開口向上、頂點落在原點的曲線，縱軸只取正值，同樣標 ρ_XY = 0。第三列的兩個面板都沒有那條參考直線。">
   <figcaption><span class="topic-figure__label">Fig. 3.19.</span> 六個面板排成三列，每列兩個，畫出五種相關型態，最後一個面板另外畫零相關卻不獨立的情形。第一列左邊是完全正相關，點全落在同一條上升的直線上；右邊是正相關，點散成一團沿上升方向拉長的雲。第二列的方向相反，左邊是完全負相關，右邊是負相關。第三列左邊是零相關，點沒有方向可言。第三列右邊的點排成一條開口向上的二次曲線，$X$ 與 $Y$ 顯然有關係，<span class="text-nowrap">$\rho_{\sssig XY}$</span> 卻與左邊一樣是 <span class="text-nowrap">$0$，</span>因為相關係數只衡量線性的那一部分。前四個面板各附一條與該型態同號的參考直線，後兩個面板沒有參考直線。</figcaption>
 </figure>
 
@@ -261,7 +261,7 @@ $$
 \operatorname{Cov}\bigl(aX+c,\,bY+d\bigr)=ab\,\operatorname{Cov}(X,Y)
 $$
 
-由[變異數的性質](/teaching-topics/variance/#thm-variance-properties)可知
+由[變異數的性質](/lecture-notes/variance/#thm-variance-properties)可知
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
@@ -687,15 +687,15 @@ $$
 
 ## 本篇小結
 
-[Definition 3.19](#def-corr) 把共變異數往前推一步。先把 $X$ 與 $Y$ 分別標準化，再求兩者相乘的期望值，所得即 $X$ 與 $Y$ 的相關係數。由定義可以整理出 $\rho_{\sssig XY}$ 等於共變異數除以兩個[標準差](/teaching-topics/variance-standard-deviation/#def-standard-deviation)相乘的簡易表示式，也就是 $\operatorname{Corr}(X,Y)$ $=$ $\frac{\operatorname{Cov}(X,Y)}{\sqrt{\mathrm{Var}(X)\,\mathrm{Var}(Y)}}$ 這個式子。相關係數所衡量的是線性相關的強度，$\lvert\rho_{\sssig XY}\rvert$ 越大則觀察值的散佈情形越接近一條直線；要留意的是它的正負號雖然與直線斜率的符號一致，數值大小卻與斜率的數值大小沒有關係。
+[Definition 3.19](#def-corr) 把共變異數往前推一步。先把 $X$ 與 $Y$ 分別標準化，再求兩者相乘的期望值，所得即 $X$ 與 $Y$ 的相關係數。由定義可以整理出 $\rho_{\sssig XY}$ 等於共變異數除以兩個[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)相乘的簡易表示式，也就是 $\operatorname{Corr}(X,Y)$ $=$ $\frac{\operatorname{Cov}(X,Y)}{\sqrt{\mathrm{Var}(X)\,\mathrm{Var}(Y)}}$ 這個式子。相關係數所衡量的是線性相關的強度，$\lvert\rho_{\sssig XY}\rvert$ 越大則觀察值的散佈情形越接近一條直線；要留意的是它的正負號雖然與直線斜率的符號一致，數值大小卻與斜率的數值大小沒有關係。
 
 相關係數與共變異數最大的不同在有範圍限制，因此可以看出相關程度的上限，也能夠比較兩組不同的二元分配間哪一組的相關程度比較高，並依 $\rho_{\sssig XY}$ 的取值分成完全正相關、正相關、零相關、負相關與完全負相關五類。本篇的六面板散佈圖除了這五類之外，另畫了一組排成碗形的觀察值。$X$ 與 $Y$ 明明是二次函數的關係，相關係數卻是 <span class="text-nowrap">$0$，</span>因為二次曲線在極值左右兩側的成長趨勢正好相反，整體而言互相抵銷，而相關性只用來衡量線性相關。
 
-[Theorem 3.19](#thm-corr-proper) 的六款性質，前五款都由[共變異數的對應性質](/teaching-topics/covariance/#thm-covar-proper)除以標準差之積而得，其中第四款顯示對 $X$ 與 $Y$ 作伸縮平移之後，相關係數至多只改變正負號，改變與否由 $\operatorname{sgn}(ab)$ 決定，這正是單位尺度已在定義時被消除的結果。第六款的範圍則另有一套作法。把兩個標準化變數的線性組合平方之後取期望值，得到 $t$ 的一個非負二次式，再由判別式非正推出隨機變數版本的柯西-舒瓦茲不等式，最後代回標準化變數即得 $-1\leqslant\rho_{\sssig XY}\leqslant1$ 這個範圍。等號成立的情形對應到觀察值全部落在一條直線上的機率為 $1$ 這件事。
+[Theorem 3.19](#thm-corr-proper) 的六款性質，前五款都由[共變異數的對應性質](/lecture-notes/covariance/#thm-covar-proper)除以標準差之積而得，其中第四款顯示對 $X$ 與 $Y$ 作伸縮平移之後，相關係數至多只改變正負號，改變與否由 $\operatorname{sgn}(ab)$ 決定，這正是單位尺度已在定義時被消除的結果。第六款的範圍則另有一套作法。把兩個標準化變數的線性組合平方之後取期望值，得到 $t$ 的一個非負二次式，再由判別式非正推出隨機變數版本的柯西-舒瓦茲不等式，最後代回標準化變數即得 $-1\leqslant\rho_{\sssig XY}\leqslant1$ 這個範圍。等號成立的情形對應到觀察值全部落在一條直線上的機率為 $1$ 這件事。
 
 相關係數另有幾何意義，即兩個隨機變數在變數空間中夾角的餘弦值: 餘弦值為 $1$ 表示同向、為 $-1$ 表示反向、為 $0$ 則表示垂直，恰好呼應完全正相關、完全負相關與零相關。這個餘弦值是由沒有先減去期望值的動差算出來的，之所以仍然等於 <span class="text-nowrap">$\rho_{\sssig XY}$，</span>靠的是向量平移不改變夾角這一點，這也再一次呼應相關係數的平移不變。
 
-[下一篇](/teaching-topics/correlation-properties-and-matrix/)接著證明變異數-共變異數不等式，並把相關係數的想法推廣到隨機向量上，成為[相關矩陣](/teaching-topics/correlation-properties-and-matrix/#def-corr-matrix)。
+[下一篇](/lecture-notes/correlation-properties-and-matrix/)接著證明變異數-共變異數不等式，並把相關係數的想法推廣到隨機向量上，成為[相關矩陣](/lecture-notes/correlation-properties-and-matrix/#def-corr-matrix)。
 
 ## 參考文獻與延伸閱讀
 

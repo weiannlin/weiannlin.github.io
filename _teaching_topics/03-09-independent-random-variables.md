@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 9
 order: 309
-permalink: /teaching-topics/independent-random-variables/
+permalink: /lecture-notes/independent-random-variables/
 date: 2026-08-12
 published: false
 excerpt: "把條件機率密度函數的定義移項，就得到乘法原理的機率函數版本，也就是聯合機率密度函數等於條件機率密度函數與邊際機率密度函數的乘積。若條件機率密度函數與邊際機率密度函數相同，也就是一個變數的取值不影響另一個變數，則稱這兩個隨機變數獨立，記為 $X\\indep Y$ 這個符號，其等價寫法是聯合機率密度函數等於兩個邊際機率密度函數的乘積。實務上另有一個快速的判斷法: 聯合值域為積空間，且聯合機率密度函數可以拆成一個只含 $x$ 的函數與一個只含 $y$ 的函數之乘積，兩個條件同時滿足才與獨立等價。本篇以五道例題示範獨立與否的判定，最後一題並利用三個變數中兩組的獨立性，把條件機率化為一個面積佔比。"
 ---
 
-[上一篇](/teaching-topics/conditional-distributions-examples/)以五道例題示範了[條件機率質量函數](/teaching-topics/conditional-distributions/#def-conditional-pmf)與[條件機率密度函數](/teaching-topics/conditional-distributions/#def-conditional-pdf)的求法，並把條件放寬到一整段範圍，得到截尾分配。這些例題所處理的，都是在另一個變數取定某個值或落在某個範圍之後，這個變數的機率分配會變成什麼樣子。
+[上一篇](/lecture-notes/conditional-distributions-examples/)以五道例題示範了[條件機率質量函數](/lecture-notes/conditional-distributions/#def-conditional-pmf)與[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)的求法，並把條件放寬到一整段範圍，得到截尾分配。這些例題所處理的，都是在另一個變數取定某個值或落在某個範圍之後，這個變數的機率分配會變成什麼樣子。
 
-本篇處理的則是相反的情形。若這個條件完全沒有改變原本的機率分配，也就是條件機率密度函數與[邊際機率密度函數](/teaching-topics/marginal-probability-density-functions/#def-marginal-pdf)一模一樣，那會是什麼狀況。這正是第一章[事件的獨立](/teaching-topics/independence-and-conditional-independence/#definition-117)推廣到[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)之後的樣子。在進入獨立的定義之前，我們先把條件機率密度函數的定義移項，得到乘法原理的機率函數版本。
+本篇處理的則是相反的情形。若這個條件完全沒有改變原本的機率分配，也就是條件機率密度函數與[邊際機率密度函數](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)一模一樣，那會是什麼狀況。這正是第一章[事件的獨立](/lecture-notes/independence-and-conditional-independence/#definition-117)推廣到[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)之後的樣子。在進入獨立的定義之前，我們先把條件機率密度函數的定義移項，得到乘法原理的機率函數版本。
 
 ## 乘法原理
 
@@ -46,7 +46,7 @@ $$
 
 離散版本只要將其改為 pmf 即可。
 
-這個定理即是第一章的 [Theorem 1.13](/teaching-topics/conditional-probability-information/#theorem-18) 的機率函數版本，二者的本質是一模一樣的，是由條件機率及條件機率函數的定義所轉化過來。
+這個定理即是第一章的 [Theorem 1.13](/lecture-notes/conditional-probability-information/#theorem-18) 的機率函數版本，二者的本質是一模一樣的，是由條件機率及條件機率函數的定義所轉化過來。
 
 ## 獨立隨機變數
 
@@ -80,7 +80,7 @@ $$
 (1) 離散版本只要將其改為 pmf 即可。
 {: .topic-paren-item}
 
-(2) 在第一章探討[事件的獨立](/teaching-topics/independence-and-conditional-independence/#definition-117)時，我們曾理解為 **$A$ 的發生並不影響 $B$ 發生的機率**，推廣到隨機變數時，其直觀意義為 **$X$ (或 $Y$) 的值為多少並不影響 $Y$ (或 $X$) 的值**。
+(2) 在第一章探討[事件的獨立](/lecture-notes/independence-and-conditional-independence/#definition-117)時，我們曾理解為 **$A$ 的發生並不影響 $B$ 發生的機率**，推廣到隨機變數時，其直觀意義為 **$X$ (或 $Y$) 的值為多少並不影響 $Y$ (或 $X$) 的值**。
 {: .topic-paren-item}
 
 (3) 若事件 $\lbrace\,(X,Y)\in A\,\rbrace$ 可以拆解為 $\lbrace\,X\in A_{\sssig X}\,\rbrace$ $\times$ $\lbrace\,Y\in A_{\sssig Y}\,\rbrace$ 這樣的形式，且 <span class="text-nowrap">$X\indep Y$，</span>則
@@ -594,10 +594,10 @@ f_{\sssig XY}(x,y)=
 \right.
 $$
 
-為一種[均勻分配](/teaching-topics/uniform-distribution-integral-transform/#def-uniform-distribution) <span lang="en">(uniform distribution)</span>，故可知 $\mathbb{P}(4X>Y)$ 即為下圖範圍在值域中的面積佔比
+為一種[均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution) <span lang="en">(uniform distribution)</span>，故可知 $\mathbb{P}(4X>Y)$ 即為下圖範圍在值域中的面積佔比
 
 <figure id="fig-independence-range" class="topic-figure topic-figure--narrow">
-  <img src="/images/teaching-topics/independence-range.svg" alt="第一象限中有兩條由原點出發的斜線與一條水平虛線。斜率較小的一條標 x 等於 y，斜率較大的一條標 4x 等於 y，水平虛線自兩條斜線的上端往左畫到縱軸，左端標 y 等於 1。斜率較小的斜線、水平虛線與縱軸圍成一個三角形，這個三角形被斜率較大的斜線切成兩塊，右下方較大的一塊以淡紅色填滿，左上方靠著縱軸的細長一塊沒有填色。橫軸右端標 x，縱軸上端標 y，兩軸都帶箭頭。">
+  <img src="/images/lecture-notes/independence-range.svg" alt="第一象限中有兩條由原點出發的斜線與一條水平虛線。斜率較小的一條標 x 等於 y，斜率較大的一條標 4x 等於 y，水平虛線自兩條斜線的上端往左畫到縱軸，左端標 y 等於 1。斜率較小的斜線、水平虛線與縱軸圍成一個三角形，這個三角形被斜率較大的斜線切成兩塊，右下方較大的一塊以淡紅色填滿，左上方靠著縱軸的細長一塊沒有填色。橫軸右端標 x，縱軸上端標 y，兩軸都帶箭頭。">
   <figcaption><span class="topic-figure__label">Fig. 3.15.</span> 聯合值域是斜線 <span class="text-nowrap">$x=y$、</span>虛線 $y=1$ 與縱軸所圍成的三角形，斜線 $4x=y$ 再把它切成兩塊，填色的一塊即 $4x>y$ 的範圍。</figcaption>
 </figure>
 
@@ -626,7 +626,7 @@ $$
 
 [Example 3.12](#ex-binary-independence-check) 由兩個二元變數的條件機率之比值定義出 <span class="text-nowrap">$\theta$，</span>先證明獨立可推得 <span class="text-nowrap">$\theta=1$，</span>再把 $\theta$ 改寫成四個聯合機率的比值，並由這個形式反過來證明 $\theta=1$ 也可推得獨立，故兩者其實等價。[Example 3.13](#ex-three-variable-independence) 則示範獨立可以發生在成組的變數之間。$(X,Y)$ 與 $Z$ 的值域可以拆成兩塊的乘積，密度也可以拆成兩個函數的乘積，故 $Z$ 的條件不影響 $(X,Y)$ 的機率，所求因而降回二維，再以面積佔比求得。
 
-[下一篇](/teaching-topics/multivariate-expectations/)把[期望值](/teaching-topics/expectation/#def-expectation)推廣到多元隨機變數，並說明兩個隨機變數獨立時，其函數乘積的期望值可以拆成兩個期望值的乘積。
+[下一篇](/lecture-notes/multivariate-expectations/)把[期望值](/lecture-notes/expectation/#def-expectation)推廣到多元隨機變數，並說明兩個隨機變數獨立時，其函數乘積的期望值可以拆成兩個期望值的乘積。
 
 ## 參考文獻與延伸閱讀
 

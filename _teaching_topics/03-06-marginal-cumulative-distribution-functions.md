@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 6
 order: 306
-permalink: /teaching-topics/marginal-cumulative-distribution-functions/
+permalink: /lecture-notes/marginal-cumulative-distribution-functions/
 date: 2026-08-12
 published: false
 excerpt: "一列 iid 標準均勻分配的隨機變數，可以用「首次滿足特定條件的下標」定出一個隨機的 $N$，再求 $N$ 與序列本身的聯合機率。這一類問題的作法是回到 $N$ 的定義，把所求的事件改寫成一組不等式所界定的範圍，再以重積分求該範圍的體積，本篇的兩道例題分別以首次遞增的下標與部分和首次超過 $1$ 的下標示範這個作法。本篇後半給出邊際累積分配函數: 離散型是邊際 pmf 的加總，連續型是邊際 pdf 的積分。若把這個定義與聯合機率密度函數及邊際機率密度函數的定義相結合，則可以得到 $F_{\\sssig X}(x)=F_{\\sssig XY}(x,\\infty)$ 與 $F_{\\sssig Y}(y)=F_{\\sssig XY}(\\infty,y)$ 這個有用的性質。"
 ---
 
-[上一篇](/teaching-topics/region-probabilities-joint-density/)以三道例題示範了[聯合機率密度函數](/teaching-topics/joint-probability-density-functions/#def-joint-pdf)在指定區域上的積分，其中最後一題的三個變數都服從標準均勻分配，機率因而等於所求範圍在整個值域中所佔的比例。
+[上一篇](/lecture-notes/region-probabilities-joint-density/)以三道例題示範了[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)在指定區域上的積分，其中最後一題的三個變數都服從標準均勻分配，機率因而等於所求範圍在整個值域中所佔的比例。
 
-本篇分成兩個部分，兩者所處理的對象並不相同。**前半是兩道序列型的例題**: 題目給的是一列 iid <span lang="en">(independent and identically distributed)</span> 標準均勻分配的[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable) $U_1,U_2,\ldots$ 這個序列，並以某個條件首次成立的下標定出一個隨機的 <span class="text-nowrap">$N$，</span>所求則是 $N$ 與序列本身的聯合機率。這兩題所用的工具正是上一篇的重積分，只是積分的維度由三維推廣到 $n$ 維，而題目本身的關鍵，則在於回到 $N$ 的定義去建構所求機率的範圍。**後半回到分配函數本身**: 二元[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector)的[聯合累積分配函數](/teaching-topics/joint-cumulative-distribution-functions/#def-joint-cdf)、聯合機率密度函數與[邊際機率密度函數](/teaching-topics/marginal-probability-density-functions/#def-marginal-pdf)都已經定義過，還差邊際的累積分配函數尚未給出，本篇把它補上，並說明它與聯合累積分配函數之間的關係。
+本篇分成兩個部分，兩者所處理的對象並不相同。**前半是兩道序列型的例題**: 題目給的是一列 iid <span lang="en">(independent and identically distributed)</span> 標準均勻分配的[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable) $U_1,U_2,\ldots$ 這個序列，並以某個條件首次成立的下標定出一個隨機的 <span class="text-nowrap">$N$，</span>所求則是 $N$ 與序列本身的聯合機率。這兩題所用的工具正是上一篇的重積分，只是積分的維度由三維推廣到 $n$ 維，而題目本身的關鍵，則在於回到 $N$ 的定義去建構所求機率的範圍。**後半回到分配函數本身**: 二元[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的[聯合累積分配函數](/lecture-notes/joint-cumulative-distribution-functions/#def-joint-cdf)、聯合機率密度函數與[邊際機率密度函數](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)都已經定義過，還差邊際的累積分配函數尚未給出，本篇把它補上，並說明它與聯合累積分配函數之間的關係。
 
 ## 標準均勻分配序列與首次滿足特定條件的下標
 
@@ -228,7 +228,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在此處中沿用了[前一道題](/teaching-topics/region-probabilities-joint-density/#ex-three-iid-uniform-order)的計算結果，除此之外，讀者應該會對此處的做法感到熟悉，因為在 [Example 2.16](/teaching-topics/properties-of-expectation/#ex-car-offer-waiting-time) 中，我們就曾經依照 $N$ 的定義，以序列計算所求機率，甚至求出[期望值](/teaching-topics/expectation/#def-expectation)。
+在此處中沿用了[前一道題](/lecture-notes/region-probabilities-joint-density/#ex-three-iid-uniform-order)的計算結果，除此之外，讀者應該會對此處的做法感到熟悉，因為在 [Example 2.16](/lecture-notes/properties-of-expectation/#ex-car-offer-waiting-time) 中，我們就曾經依照 $N$ 的定義，以序列計算所求機率，甚至求出[期望值](/lecture-notes/expectation/#def-expectation)。
 
 類似此處定義 $N$ 為「首次滿足特定條件的序列下標」還有很多變化的題型，甚至 $N$ 本身也可以服從常見機率模型，我們將在稍後看到這種情況衍生的特殊等式，但不論如何，我們總是可以利用 $N$ 的定義，反過來建構出指定的機率範圍，如下面這題。
 
@@ -368,7 +368,7 @@ $$
 
 </div>
 
-(2) 由於 $\mathbb{P}(N>n)=\frac{1}{\,n!\,}$ 成立，故由 [Theorem 2.8](/teaching-topics/expectation/#thm-expectation-tail-sum) 可知
+(2) 由於 $\mathbb{P}(N>n)=\frac{1}{\,n!\,}$ 成立，故由 [Theorem 2.8](/lecture-notes/expectation/#thm-expectation-tail-sum) 可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -437,7 +437,7 @@ $$
 
 </div>
 
-這個定義指出邊際 pdf (或 pmf) 的積分 (或加總) 即為邊際 cdf，應是一個相當符合直覺的定義。然而，這個定義若是與 [Definition 3.5](/teaching-topics/joint-probability-density-functions/#def-joint-pdf) 及 [Definition 3.6](/teaching-topics/marginal-probability-density-functions/#def-marginal-pdf) 相結合，則可以得到以下這個有用的性質:
+這個定義指出邊際 pdf (或 pmf) 的積分 (或加總) 即為邊際 cdf，應是一個相當符合直覺的定義。然而，這個定義若是與 [Definition 3.5](/lecture-notes/joint-probability-density-functions/#def-joint-pdf) 及 [Definition 3.6](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf) 相結合，則可以得到以下這個有用的性質:
 
 <div id="thm-joint-cdf-prob" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 3.2 (邊際累積分配函數的求法, marginal cdf from a joint cdf)</div>
@@ -540,7 +540,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者如果確實將 [Example 3.2](/teaching-topics/marginal-probability-density-functions/#ex-joint-pdf-region-basic) 至 [Example 3.4](/teaching-topics/region-probabilities-joint-density/#ex-joint-pdf-exponential-region) 的積分範圍思考透徹，則應該發現，這些範圍上的積分結果，事實上都能夠與 [Theorem 3.2](#thm-joint-cdf-prob) 的結果相呼應。
+讀者如果確實將 [Example 3.2](/lecture-notes/marginal-probability-density-functions/#ex-joint-pdf-region-basic) 至 [Example 3.4](/lecture-notes/region-probabilities-joint-density/#ex-joint-pdf-exponential-region) 的積分範圍思考透徹，則應該發現，這些範圍上的積分結果，事實上都能夠與 [Theorem 3.2](#thm-joint-cdf-prob) 的結果相呼應。
 
 </div>
 
@@ -550,7 +550,7 @@ $$
 
 [Definition 3.7](#def-marginal-cdf) 把累積分配函數推廣到邊際的情形。離散型是邊際 pmf 由左端累加到 <span class="text-nowrap">$x$，</span>連續型是邊際 pdf 由 $-\infty$ 積分到 <span class="text-nowrap">$x$，</span>兩者都與單變數的 cdf 是同一件事。[Theorem 3.2](#thm-joint-cdf-prob) 則把它接回聯合的分配，邊際 cdf 就是把聯合 cdf 的另一個變數放到 <span class="text-nowrap">$\infty$，</span>也就是不對另一個變數作任何限制。證明只需把邊際 pdf 的定義代入，再交換積分的順序。
 
-回顧這一段的脈絡，我們先以 $\mathbb{P}(X\leqslant x,Y\leqslant y)$ 定出聯合累積分配函數，再由二重積分的表示式定出聯合機率密度函數，接著對其中一個變數積分而得到邊際機率密度函數，並以數道例題練習了[各種區域上的機率](/teaching-topics/region-probabilities-joint-density/)如何求取，最後補上邊際累積分配函數，把四個機率函數與兩個分配函數之間的關係補齊。下一篇把隨機向量中的一個或多個變數固定成常數，看看這時候的機率分配會變成什麼樣子，此即條件機率分配。
+回顧這一段的脈絡，我們先以 $\mathbb{P}(X\leqslant x,Y\leqslant y)$ 定出聯合累積分配函數，再由二重積分的表示式定出聯合機率密度函數，接著對其中一個變數積分而得到邊際機率密度函數，並以數道例題練習了[各種區域上的機率](/lecture-notes/region-probabilities-joint-density/)如何求取，最後補上邊際累積分配函數，把四個機率函數與兩個分配函數之間的關係補齊。下一篇把隨機向量中的一個或多個變數固定成常數，看看這時候的機率分配會變成什麼樣子，此即條件機率分配。
 
 ## 參考文獻與延伸閱讀
 

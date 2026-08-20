@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 4
 topic: 29
 order: 429
-permalink: /teaching-topics/multivariate-normal-independence/
+permalink: /lecture-notes/multivariate-normal-independence/
 date: 2026-08-15
 published: false
 excerpt: "多元常態分配之中，零相關與獨立是等價的，推廣到分塊之後即為 $\\mathbf{\\Sigma}_{12}=\\mathbf{0}$ 若且唯若 $\\boldsymbol{X}_1$ 與 $\\boldsymbol{X}_2$ 獨立。本篇先給出這條充要條件，再以它證明常態母體之下樣本平均數與樣本變異數彼此獨立: 作法是把 $\\overline{X}$ 與各個 $X_i-\\overline{X}$ 排成一個仿射變換，算出共變異數矩陣的非對角分塊為零矩陣。接著把這個算法一般化為 $\\mathbf{A}\\mathbf{B}^{\\mathrm{T}}=\\mathbf{0}$ 時 $\\mathbf{A}\\boldsymbol{X}$ 與 $\\mathbf{B}\\boldsymbol{X}$ 獨立，並由此給出冪等矩陣的二次形式服從卡方分配這條定理，自由度為該矩陣的跡，最直接的應用即 $(n-1)S^{2}/\\sigma^{2}$ 的抽樣分配。最後一題以雙重期望值定理處理階層模型的邊際分配。"
 ---
 
-[上一篇](/teaching-topics/multivariate-normal-distribution/)給出[多元常態分配](/teaching-topics/multivariate-normal-distribution/#def-multivariate-normal)的定義，並依序列出邊際分配、條件分配、仿射變換與二次形式四項性質。本篇處理多元常態分配之中最常被引用的兩條結果: 一是分塊之間零相關與獨立的等價關係，二是冪等矩陣的二次形式所服從的分配。
+[上一篇](/lecture-notes/multivariate-normal-distribution/)給出[多元常態分配](/lecture-notes/multivariate-normal-distribution/#def-multivariate-normal)的定義，並依序列出邊際分配、條件分配、仿射變換與二次形式四項性質。本篇處理多元常態分配之中最常被引用的兩條結果: 一是分塊之間零相關與獨立的等價關係，二是冪等矩陣的二次形式所服從的分配。
 
-這兩條結果所補齊的，正是先前談[卡方分配](/teaching-topics/chi-squared-distribution/#def-chi-distribution)與 $t$ 分配時直接引用而沒有證明的兩個前提: 常態母體之下樣本平均數 $\overline{X}$ 與樣本變異數 $S^{2}$ 彼此獨立，以及 $\frac{\,(n-1)S^{2}\,}{\sigma^{2}}$ 服從自由度為 $n-1$ 的卡方分配。前者由分塊獨立的充要條件得到，後者由二次形式的定理得到，兩者的關鍵都在同一個冪等矩陣 $\mathbb{I}_n-\frac{1}{\,n\,}\boldsymbol{1}\boldsymbol{1}^{\mathrm{T}}$ 身上。本篇最後另以一道階層模型的例題收尾，說明條件分配為多元常態時，邊際分配仍為多元常態，只是變異結構多疊了一層。
+這兩條結果所補齊的，正是先前談[卡方分配](/lecture-notes/chi-squared-distribution/#def-chi-distribution)與 $t$ 分配時直接引用而沒有證明的兩個前提: 常態母體之下樣本平均數 $\overline{X}$ 與樣本變異數 $S^{2}$ 彼此獨立，以及 $\frac{\,(n-1)S^{2}\,}{\sigma^{2}}$ 服從自由度為 $n-1$ 的卡方分配。前者由分塊獨立的充要條件得到，後者由二次形式的定理得到，兩者的關鍵都在同一個冪等矩陣 $\mathbb{I}_n-\frac{1}{\,n\,}\boldsymbol{1}\boldsymbol{1}^{\mathrm{T}}$ 身上。本篇最後另以一道階層模型的例題收尾，說明條件分配為多元常態時，邊際分配仍為多元常態，只是變異結構多疊了一層。
 
 ## 多元常態分配的分塊獨立
 
@@ -116,7 +116,7 @@ $$
 \begin{bmatrix} \frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}\\ \mathbb{I}_n-\mathbf{H} \end{bmatrix}\boldsymbol{\mu}=\begin{bmatrix} \mu\\ 0\\ \vdots\\ 0 \end{bmatrix}_{(n+1)\times 1}
 $$
 
-[共變異數矩陣](/teaching-topics/covariance-matrix/#def-covar-matrix)為
+[共變異數矩陣](/lecture-notes/covariance-matrix/#def-covar-matrix)為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -335,7 +335,7 @@ $$
 \sum_{i=1}^{n}a_ib_i=0
 $$
 
-(3) 由[共變異數](/teaching-topics/covariance/#def-covariance)的定義可得
+(3) 由[共變異數](/lecture-notes/covariance/#def-covariance)的定義可得
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -540,7 +540,7 @@ $$
 Suppose that $\boldsymbol{X}$ and $\boldsymbol{Y}$ are $k$-dimensional random vectors for which the conditional distribution of $\boldsymbol{X}$ given $\boldsymbol{Y}$ is <span class="text-nowrap">$\mathcal{N}_{\sssig k}(\boldsymbol{Y},\mathbf{\Sigma})$,</span> while $\boldsymbol{Y}$ itself has the distribution <span class="text-nowrap">$\mathcal{N}_{\sssig k}(\boldsymbol{\mu},\mathbf{\Lambda})$,</span> where $\boldsymbol{\mu}$ is a constant $k$-dimensional vector and $\mathbf{\Sigma}$ and $\mathbf{\Lambda}$ are both $k\times k$ covariance matrices. Determine the marginal distribution of <span class="text-nowrap">$\boldsymbol{X}$.</span>
 </div>
 
-依題意可知 $\mathbb{E}\bigl(e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{X}}\bigm|\boldsymbol{Y}=\boldsymbol{y}\bigr)=e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{y}+\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}$ 這條式子，則由[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation)可知
+依題意可知 $\mathbb{E}\bigl(e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{X}}\bigm|\boldsymbol{Y}=\boldsymbol{y}\bigr)=e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{y}+\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}$ 這條式子，則由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -568,7 +568,7 @@ $$
 
 </div>
 
-由 [mgf 唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+由 [mgf 唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 \boldsymbol{X}\sim\mathcal{N}_{\sssig k}\bigl(\boldsymbol{\mu},\ \mathbf{\Sigma}+\mathbf{\Lambda}\bigr)
@@ -581,13 +581,13 @@ $$
 
 這個問題有趣的地方在於，這是一個階層模型 <span lang="en">(hierarchical model)</span>，我們必須先知道 $\boldsymbol{Y}$ 的值，進而以其作為 $\boldsymbol{X}$ 的期望值，那麼如果不先給定 $\boldsymbol{Y}$ 的值呢? 平均而言，$\boldsymbol{X}$ 的值將會以 $\boldsymbol{Y}$ 的期望值作為期望值，但是由於多考慮了一層變異 (即 $\boldsymbol{Y}$ 的變異)，故變異數會疊加，也就是 <span class="text-nowrap">$\mathbf{\Sigma}+\mathbf{\Lambda}$，</span>但不改其分配仍為常態的結果。
 
-我們曾經在[貝塔函數與貝塔分配](/teaching-topics/beta-function-and-distribution/)一篇中提到，貝氏統計學派中，常見的共軛分配中，就有**常態-常態**的選擇，而這題正是這樣的例子，且是一個多元常態分配。
+我們曾經在[貝塔函數與貝塔分配](/lecture-notes/beta-function-and-distribution/)一篇中提到，貝氏統計學派中，常見的共軛分配中，就有**常態-常態**的選擇，而這題正是這樣的例子，且是一個多元常態分配。
 
 </div>
 
 [^idempotent]: 冪等矩陣又稱自乘不變矩陣，是一種不論自己經過幾次方，永恆都跟自己相等的矩陣。
 
-[^application]: 這個定理最主要的應用，與[科克蘭定理](/teaching-topics/chi-squared-distribution/#thm-cochran-theorem)很相似，可以用來說明樣本變異數 $S^{2}$ 的抽樣分配。當然，這個定理還有許多進階的應用。
+[^application]: 這個定理最主要的應用，與[科克蘭定理](/lecture-notes/chi-squared-distribution/#thm-cochran-theorem)很相似，可以用來說明樣本變異數 $S^{2}$ 的抽樣分配。當然，這個定理還有許多進階的應用。
 
 ## 本篇小結
 
@@ -601,7 +601,7 @@ $$
 
 [Example 4.68](#ex-multivariate-normal-ind-4) 收在階層模型上。條件分配與邊際分配都是多元常態時，$\boldsymbol{X}$ 的邊際分配仍為多元常態，期望值取 $\boldsymbol{Y}$ 的期望值 <span class="text-nowrap">$\boldsymbol{\mu}$，</span>共變異數矩陣則是兩層變異相加的 <span class="text-nowrap">$\mathbf{\Sigma}+\mathbf{\Lambda}$。</span>推導只用到雙重期望值定理與動差母函數的唯一性，而 $e^{\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}$ 與 $\boldsymbol{Y}$ 無關可以提到期望值之外，是整段計算的關鍵一步。
 
-第四章至此結束。全章由伯努利實驗一路走到多元常態分配，把常用的機率模型逐一建立起來。[第五章](/teaching-topics/convergence-in-distribution/)轉入極限分配，處理的是母體分配未知或不屬於常見模型時，統計量的抽樣分配該如何逼近，內容包含分配收斂、機率收斂與其他收斂型態，以及中央極限定理與弱大數法則。
+第四章至此結束。全章由伯努利實驗一路走到多元常態分配，把常用的機率模型逐一建立起來。[第五章](/lecture-notes/convergence-in-distribution/)轉入極限分配，處理的是母體分配未知或不屬於常見模型時，統計量的抽樣分配該如何逼近，內容包含分配收斂、機率收斂與其他收斂型態，以及中央極限定理與弱大數法則。
 
 ## 參考文獻與延伸閱讀
 

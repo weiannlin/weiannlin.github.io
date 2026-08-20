@@ -7,20 +7,20 @@ category: "機率概論"
 chapter: 2
 topic: 13
 order: 213
-permalink: /teaching-topics/moment-system/
+permalink: /lecture-notes/moment-system/
 date: 2026-08-06
 published: true
 excerpt: "母體動差以一個基準點 $c$ 與一個階數 $r$ 界定為 $\\mathbb{E}[(X-c)^{r}]$: 取 $c=0$ 得到原動差 $\\mu_{r}^{\\prime}=\\mathbb{E}(X^{r})$，取 $c=\\mu_{X}$ 得到主動差 $\\mu_{r}=\\mathbb{E}[(X-\\mu_{X})^{r}]$，改取絕對值則得到絕對動差。一階原動差就是期望值，二階主動差就是變異數。兩種動差可以經由二項式定理互相表示，而高階絕對動差存在時，低階絕對動差同樣存在。"
 ---
 
-[上一篇](/teaching-topics/quantiles/)介紹[分位數](/teaching-topics/quantiles/#def-quantile)，把[中位數](/teaching-topics/median/#def-median)的想法推廣到任意的比例。到這裡為止，[期望值](/teaching-topics/expectation/#def-expectation)、[變異數](/teaching-topics/variance/#def-variance)、[標準差](/teaching-topics/variance-standard-deviation/#def-standard-deviation)、[眾數](/teaching-topics/mode/#def-mode)、中位數與分位數都已經看過，它們各自描述一個分配的某一個面向，彼此之間看起來並沒有共同的來源。
+[上一篇](/lecture-notes/quantiles/)介紹[分位數](/lecture-notes/quantiles/#def-quantile)，把[中位數](/lecture-notes/median/#def-median)的想法推廣到任意的比例。到這裡為止，[期望值](/lecture-notes/expectation/#def-expectation)、[變異數](/lecture-notes/variance/#def-variance)、[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)、[眾數](/lecture-notes/mode/#def-mode)、中位數與分位數都已經看過，它們各自描述一個分配的某一個面向，彼此之間看起來並沒有共同的來源。
 
-動差系統與[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)這一節，就是把其中幾個量數收進同一套架構之下: 選定一個基準點 $c$ 與一個階數 $r$ 之後，$\mathbb{E}[(X-c)^{r}]$ 就是一個母體動差，期望值與變異數分別是取 $c=0$、$r=1$ 與 $c=\mu_{\sssig X}$、$r=2$ 的結果。本篇先給出母體動差的定義，並依基準點與函數形式分出原動差、主動差與絕對動差；接著介紹兩種動差互相轉換時所需要的二項式定理，並證明兩者確實可以互相表示；最後說明高階絕對動差存在時，低階絕對動差同樣存在。
+動差系統與[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)這一節，就是把其中幾個量數收進同一套架構之下: 選定一個基準點 $c$ 與一個階數 $r$ 之後，$\mathbb{E}[(X-c)^{r}]$ 就是一個母體動差，期望值與變異數分別是取 $c=0$、$r=1$ 與 $c=\mu_{\sssig X}$、$r=2$ 的結果。本篇先給出母體動差的定義，並依基準點與函數形式分出原動差、主動差與絕對動差；接著介紹兩種動差互相轉換時所需要的二項式定理，並證明兩者確實可以互相表示；最後說明高階絕對動差存在時，低階絕對動差同樣存在。
 
 <div id="def-population-moment" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 2.12 (母體動差, population moment)</div>
 
-若 $X$ 為一[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)，且 $\mathbb{E}(\lvert X-c\rvert^{r})<\infty$，則稱
+若 $X$ 為一[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)，且 $\mathbb{E}(\lvert X-c\rvert^{r})<\infty$，則稱
 
 $$
 \mu_{\sssig r}=\mathbb{E}\bigl[(X-c)^{r}\bigr]
@@ -70,7 +70,7 @@ $$
 
 </div>
 
-(3) 稍後我們會看到[**動差母函數 <span lang="en">(moment generating function, mgf)</span>**](/teaching-topics/moment-generating-functions/#def-mgf)，這是一個能夠生成任意 $r$ 階**原動差**的函數。
+(3) 稍後我們會看到[**動差母函數 <span lang="en">(moment generating function, mgf)</span>**](/lecture-notes/moment-generating-functions/#def-mgf)，這是一個能夠生成任意 $r$ 階**原動差**的函數。
 {: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -453,7 +453,7 @@ $$
 
 [Theorem 2.18](#thm-binomial) 的二項式定理是兩種動差互相轉換的工具。[Theorem 2.19](#thm-raw-central-moment-conversion) 據此把 $r$ 階主動差寫成各階原動差的組合，也把 $r$ 階原動差寫成各階主動差的組合，兩者因而可以互相求得。實務上描述分配時較常使用主動差，但動差母函數能夠直接生成各階原動差，這個互換的結果讓原動差同樣派得上用場。[Example 2.27](#ex-discrete-uniform-binomial-moment) 以離散均勻分配示範二項式定理在動差計算上的用法，關鍵是把整串含二項式係數的式子併成 $(1+X)^{k}-X^{k}$ 之後再分別求期望值。
 
-[Theorem 2.20](#thm-lower-order-moment-existence) 則處理各階動差之間的存在性。只要高階絕對動差存在，低階絕對動差就必定存在，證明的作法是以 $\lvert x\rvert\leqslant1$ 與 $\lvert x\rvert>1$ 分段放大。反過來並不成立，[Example 2.28](#ex-first-moment-without-second) 的 $f_{\sssig X}(x)=\frac{2}{x^{3}}$ 就是一階動差存在而二階動差不存在的例子。[下一篇](/teaching-topics/measures-of-shape/)以三階與四階主動差為材料，介紹描述分配形狀的偏態係數與[峰態係數](/teaching-topics/measures-of-shape/#def-kurtosis)。
+[Theorem 2.20](#thm-lower-order-moment-existence) 則處理各階動差之間的存在性。只要高階絕對動差存在，低階絕對動差就必定存在，證明的作法是以 $\lvert x\rvert\leqslant1$ 與 $\lvert x\rvert>1$ 分段放大。反過來並不成立，[Example 2.28](#ex-first-moment-without-second) 的 $f_{\sssig X}(x)=\frac{2}{x^{3}}$ 就是一階動差存在而二階動差不存在的例子。[下一篇](/lecture-notes/measures-of-shape/)以三階與四階主動差為材料，介紹描述分配形狀的偏態係數與[峰態係數](/lecture-notes/measures-of-shape/#def-kurtosis)。
 
 ## 參考文獻與延伸閱讀
 

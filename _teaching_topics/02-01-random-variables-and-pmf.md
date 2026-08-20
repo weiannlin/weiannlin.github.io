@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 2
 topic: 1
 order: 201
-permalink: /teaching-topics/random-variables-and-pmf/
+permalink: /lecture-notes/random-variables-and-pmf/
 date: 2026-08-04
 published: true
 excerpt: "隨機變數是定義在樣本空間上的實值函數，把樣本點對應到實數，並要求對任意實數 $x$，能使 $X(\\omega)\\leqslant x$ 的樣本點所形成的集合都是事件。值域中元素個數為有限或可數無限者為離散型；累積機率可寫成非負函數之積分者為連續型。離散型的機率質量函數在值域上記錄每一個點的單點機率，在值域之外為 $0$，並滿足三項性質。"
 ---
 
-[上一章最後一篇文章](/teaching-topics/bayes-rule-posterior-probability/)完成了分割、全機率定理與貝氏定理的討論。第一章的機率都定義在事件上，而事件是樣本空間的子集合，討論時必須逐個事件處理。
+[上一章最後一篇文章](/lecture-notes/bayes-rule-posterior-probability/)完成了分割、全機率定理與貝氏定理的討論。第一章的機率都定義在事件上，而事件是樣本空間的子集合，討論時必須逐個事件處理。
 
 集合論屬於離散數學，比較無法應用微積分之類的數學工具。本章引入隨機變數，把樣本點對應到實數，事件因而能以變數值表示，後續的分析也就能借助數學分析的工具。
 
@@ -103,7 +103,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-正是因為我們關心的是隨機變數值在 $(-\infty,x]$ 的範圍中，我們往後會知道，隨機變數的**機率分配 <span lang="en">(probability distribution)</span>** 最初是由其[累積分配函數 <span lang="en">(cumulative distribution function, cdf)</span>](/teaching-topics/cumulative-distribution-functions/#def-cdf) 所定義的。
+正是因為我們關心的是隨機變數值在 $(-\infty,x]$ 的範圍中，我們往後會知道，隨機變數的**機率分配 <span lang="en">(probability distribution)</span>** 最初是由其[累積分配函數 <span lang="en">(cumulative distribution function, cdf)</span>](/lecture-notes/cumulative-distribution-functions/#def-cdf) 所定義的。
 
 </div>
 
@@ -155,7 +155,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者應可對照第一章[離散樣本空間與連續樣本空間](/teaching-topics/random-experiments-sample-space-events/#離散樣本空間與連續樣本空間)的分類。離散型的判準與離散樣本空間的判準非常相像，兩者都以元素個數為有限或可數無限為準；連續型則不以元素個數為準，改以機率能否寫成積分為準。
+讀者應可對照第一章[離散樣本空間與連續樣本空間](/lecture-notes/random-experiments-sample-space-events/#離散樣本空間與連續樣本空間)的分類。離散型的判準與離散樣本空間的判準非常相像，兩者都以元素個數為有限或可數無限為準；連續型則不以元素個數為準，改以機率能否寫成積分為準。
 
 </div>
 
@@ -231,7 +231,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-許多教科書中亦將 $p_{\sssig X}(x)$ 寫成 $f_{\sssig X}(x)$，這樣的寫法可以與連續型變數的[機率密度函數](/teaching-topics/probability-density-functions/#def-pdf) <span lang="en">(probability density function, pdf)</span> 共通，通稱為機率函數 <span lang="en">(probability function)</span>。此處的機率函數是 pmf 與 pdf 的統稱，與第一章[指稱 $\mathbb{P}(\cdot)$ 的機率函數](/teaching-topics/event-families-sigma-fields/#term-probability-function)所指不同。
+許多教科書中亦將 $p_{\sssig X}(x)$ 寫成 $f_{\sssig X}(x)$，這樣的寫法可以與連續型變數的[機率密度函數](/lecture-notes/probability-density-functions/#def-pdf) <span lang="en">(probability density function, pdf)</span> 共通，通稱為機率函數 <span lang="en">(probability function)</span>。此處的機率函數是 pmf 與 pdf 的統稱，與第一章[指稱 $\mathbb{P}(\cdot)$ 的機率函數](/lecture-notes/event-families-sigma-fields/#term-probability-function)所指不同。
 
 </div>
 
@@ -240,11 +240,11 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-由於其定義就是機率，故當然應滿足[機率三大公理](/teaching-topics/event-families-sigma-fields/#definition-probability-space)，即分別對應到上述定義中的三點性質。
+由於其定義就是機率，故當然應滿足[機率三大公理](/lecture-notes/event-families-sigma-fields/#definition-probability-space)，即分別對應到上述定義中的三點性質。
 
 </div>
 
-讀者也可以打開 [From pmf to cdf](/demos/pmf-cdf/)，自行增刪質點、改變各點的機率值，觀察各點的高度如何變化，以及機率總和是否為 $1$。展示的另一半是累積分配函數，[下一篇](/teaching-topics/cumulative-distribution-functions/)才會正式介紹。
+讀者也可以打開 [From pmf to cdf](/demos/pmf-cdf/)，自行增刪質點、改變各點的機率值，觀察各點的高度如何變化，以及機率總和是否為 $1$。展示的另一半是累積分配函數，[下一篇](/lecture-notes/cumulative-distribution-functions/)才會正式介紹。
 
 <div id="ex-two-ball-sum" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.2</div>
@@ -500,7 +500,7 @@ $$
 
 離散型的機率質量函數以 $p_{\sssig X}(x)=\mathbb{P}(X=x)$ 記錄值域中每一個點的單點機率，在值域之外則取 $0$。由於 $\mathbb{P}(X=x)$ 本身就是機率，其三項性質分別對應機率的三大公理。
 
-[下一篇](/teaching-topics/cumulative-distribution-functions/)改由 $\mathbb{P}(X\leqslant x)$ 出發，介紹對兩種型態都適用的累積分配函數。
+[下一篇](/lecture-notes/cumulative-distribution-functions/)改由 $\mathbb{P}(X\leqslant x)$ 出發，介紹對兩種型態都適用的累積分配函數。
 
 ## 參考文獻與延伸閱讀
 

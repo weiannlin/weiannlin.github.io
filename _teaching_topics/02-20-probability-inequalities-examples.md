@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 2
 topic: 20
 order: 220
-permalink: /teaching-topics/probability-inequalities-examples/
+permalink: /lecture-notes/probability-inequalities-examples/
 date: 2026-08-06
 published: true
 excerpt: "八道例題演練同一系列機率不等式的用法。前兩道不套現成的不等式，改由密度或機率函數本身的單調性造出不等關係，一道用積分、一道用等差級數的和。第三道由非負函數的機率界限取 $h(x)=(x-\\mu_{X})^{2}$ 直接導出柴比雪夫不等式，第四道反過來由兩個尾機率求變異數的下界。第五道比較同一個上界在均勻分配與三點分配之下的鬆緊，第六道把柴比雪夫不等式代入卜瓦松分配。第七道以同一題的兩個小問對照馬可夫不等式與單邊柴比雪夫不等式，看出動差訊息愈多、上界愈精確。最後一道是車諾夫不等式的完整示範，代入卜瓦松分配的動差母函數之後，以一階與二階條件求出使上界最小的 $t^{*}$。"
 ---
 
-[上一篇](/teaching-topics/probability-inequalities/)由一條以非負函數界定機率的定理出發，依序導出[馬可夫不等式](/teaching-topics/probability-inequalities/#thm-markov)、[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)、[單邊柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-one-tailed-chebyshev)與[車諾夫不等式](/teaching-topics/probability-inequalities/#thm-chernoff)。五條不等式的形式各不相同，用上的動差訊息也有多有少，實際遇到一道題目時該挑哪一條、又該怎麼代入，仍要靠例題才看得清楚。
+[上一篇](/lecture-notes/probability-inequalities/)由一條以非負函數界定機率的定理出發，依序導出[馬可夫不等式](/lecture-notes/probability-inequalities/#thm-markov)、[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)、[單邊柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-one-tailed-chebyshev)與[車諾夫不等式](/lecture-notes/probability-inequalities/#thm-chernoff)。五條不等式的形式各不相同，用上的動差訊息也有多有少，實際遇到一道題目時該挑哪一條、又該怎麼代入，仍要靠例題才看得清楚。
 
-本篇以八道例題演練這一系列不等式的用法。前兩道不套現成的不等式，改由密度或機率函數本身的單調性造出不等關係；第三道由[非負函數的機率界限](/teaching-topics/probability-inequalities/#thm-nonnegative-function-bound)直接導出柴比雪夫不等式；其後三道分別由尾機率反求[變異數](/teaching-topics/variance/#def-variance)的下界、檢驗柴比雪夫上界的鬆緊，以及把柴比雪夫不等式代入卜瓦松分配；第七道以同一題的兩個小問對照馬可夫不等式與單邊柴比雪夫不等式；最後一道則是車諾夫不等式的完整示範。
+本篇以八道例題演練這一系列不等式的用法。前兩道不套現成的不等式，改由密度或機率函數本身的單調性造出不等關係；第三道由[非負函數的機率界限](/lecture-notes/probability-inequalities/#thm-nonnegative-function-bound)直接導出柴比雪夫不等式；其後三道分別由尾機率反求[變異數](/lecture-notes/variance/#def-variance)的下界、檢驗柴比雪夫上界的鬆緊，以及把柴比雪夫不等式代入卜瓦松分配；第七道以同一題的兩個小問對照馬可夫不等式與單邊柴比雪夫不等式；最後一道則是車諾夫不等式的完整示範。
 
 
 <div id="ex-decreasing-density-bound" class="topic-box topic-box--example" markdown="1">
@@ -155,7 +155,7 @@ holds for every $k>0$, provided that <span class="text-nowrap">$\sigma_{\sssig X
 
 </div>
 
-(1) 這一小題即 [Theorem 2.31](/teaching-topics/probability-inequalities/#thm-nonnegative-function-bound) 的敘述。我們在此以連續型為例證明，並令 $A=\lbrace\,x\mid h(x)\geqslant c\,\rbrace$，則
+(1) 這一小題即 [Theorem 2.31](/lecture-notes/probability-inequalities/#thm-nonnegative-function-bound) 的敘述。我們在此以連續型為例證明，並令 $A=\lbrace\,x\mid h(x)\geqslant c\,\rbrace$，則
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -256,7 +256,7 @@ $$
 
 </div>
 
-又由[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)可知
+又由[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -345,7 +345,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-題目給的範圍只有 $k>0$，並未再對 $k$ 加上其他限制。第 (2) 小題要說明的是[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)所提供的上界不可改進，而這件事要先有一個機率分配才有意義，所給的 $\mathbb{P}(X=x)$ 卻要在 $k\geqslant1$ 時才是機率分配: $0<k<1$ 時 $\frac{1}{\,k^{2}\,}>1$，$x=0$ 之處的 $1-\frac{1}{\,k^{2}\,}$ 為負，而機率不能為負。$k=1$ 時 $1-\frac{1}{\,k^{2}\,}=0$，$X$ 以各 $\frac{1}{\,2\,}$ 的機率取 $-1$ 與 $1$，仍是一個機率分配。故第 (2) 小題以下另設 $k\geqslant1$。
+題目給的範圍只有 $k>0$，並未再對 $k$ 加上其他限制。第 (2) 小題要說明的是[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)所提供的上界不可改進，而這件事要先有一個機率分配才有意義，所給的 $\mathbb{P}(X=x)$ 卻要在 $k\geqslant1$ 時才是機率分配: $0<k<1$ 時 $\frac{1}{\,k^{2}\,}>1$，$x=0$ 之處的 $1-\frac{1}{\,k^{2}\,}$ 為負，而機率不能為負。$k=1$ 時 $1-\frac{1}{\,k^{2}\,}=0$，$X$ 以各 $\frac{1}{\,2\,}$ 的機率取 $-1$ 與 $1$，仍是一個機率分配。故第 (2) 小題以下另設 $k\geqslant1$。
 
 </div>
 
@@ -395,14 +395,14 @@ $$
 
 </div>
 
-又[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)可提供之機率上界為
+又[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)可提供之機率上界為
 {: .topic-paren-cont}
 
 $$
 \mathbb{P}\bigl(\lvert X-\mu_{\sssig X}\rvert\geqslant\sqrt{3}\,\sigma_{\sssig X}\bigr)\leqslant\frac{1}{\,3\,}
 $$
 
-則可知[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)可提供之機率上界，在此例中並不好。
+則可知[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)可提供之機率上界，在此例中並不好。
 {: .topic-paren-cont}
 
 (2) 由 $X$ 之分配可知
@@ -470,14 +470,14 @@ $$
 
 </div>
 
-又[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)可提供之機率上界為
+又[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)可提供之機率上界為
 {: .topic-paren-cont}
 
 $$
 \mathbb{P}\bigl(\lvert X-\mu_{\sssig X}\rvert\geqslant k\,\sigma_{\sssig X}\bigr)\leqslant\frac{1}{\,k^{2}\,}
 $$
 
-則可知[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)可提供之機率上界，在此例中不可改進。
+則可知[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)可提供之機率上界，在此例中不可改進。
 {: .topic-paren-cont}
 
 </div>
@@ -485,7 +485,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在這題中所謂的「不好」或是「不可改進」，其實都是在指這個上界是不是「貼近」真實的機率，故我們的證明策略在第一小題中，是尋找是否有存在某個 <span class="text-nowrap">$k>0$，</span>使得[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)提供之上界無法貼近同範圍之真實機率；反之，如果要說明其不可改進，便是說明對任何的 $k\geqslant1$ 而言，[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)提供之上界都恰巧是同範圍之真實機率。
+在這題中所謂的「不好」或是「不可改進」，其實都是在指這個上界是不是「貼近」真實的機率，故我們的證明策略在第一小題中，是尋找是否有存在某個 <span class="text-nowrap">$k>0$，</span>使得[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)提供之上界無法貼近同範圍之真實機率；反之，如果要說明其不可改進，便是說明對任何的 $k\geqslant1$ 而言，[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)提供之上界都恰巧是同範圍之真實機率。
 
 </div>
 
@@ -501,7 +501,7 @@ $$
 
 </div>
 
-由 $X\sim\mathrm{Poi}(\lambda)$ 可知 $\mathbb{E}(X)=\mathrm{Var}(X)=\lambda$，則依[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)可知
+由 $X\sim\mathrm{Poi}(\lambda)$ 可知 $\mathbb{E}(X)=\mathrm{Var}(X)=\lambda$，則依[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -541,7 +541,7 @@ Suppose that families in a certain area have an average income of <span class="t
 </ol>
 </div>
 
-(1) 令 $X$ 為該地區的家庭所得，則 $X$ 為非負[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)，故由[馬可夫不等式](/teaching-topics/probability-inequalities/#thm-markov)可以得到下面的界限
+(1) 令 $X$ 為該地區的家庭所得，則 $X$ 為非負[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)，故由[馬可夫不等式](/lecture-notes/probability-inequalities/#thm-markov)可以得到下面的界限
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -563,7 +563,7 @@ $$
 
 </div>
 
-(2) 若已知 $\sigma_{\sssig X}=80{,}000$，且 $500{,}000-\mathbb{E}(X)=400{,}000$，則可由[單邊柴比雪夫不等式 (坎特利不等式)](/teaching-topics/probability-inequalities/#thm-one-tailed-chebyshev)知
+(2) 若已知 $\sigma_{\sssig X}=80{,}000$，且 $500{,}000-\mathbb{E}(X)=400{,}000$，則可由[單邊柴比雪夫不等式 (坎特利不等式)](/lecture-notes/probability-inequalities/#thm-one-tailed-chebyshev)知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -610,7 +610,7 @@ $$
 
 </div>
 
-若 $X\sim\mathrm{Poi}(\lambda)$，則可知 $M_{\sssig X}(t)=e^{\lambda(e^{t}-1)}$，且對一切 $t\in\mathbb{R}$ 皆存在，[Theorem 2.35](/teaching-topics/probability-inequalities/#thm-chernoff) 中的 $h$ 因而可取任意正數。依照[車諾夫不等式](/teaching-topics/probability-inequalities/#thm-chernoff)可知
+若 $X\sim\mathrm{Poi}(\lambda)$，則可知 $M_{\sssig X}(t)=e^{\lambda(e^{t}-1)}$，且對一切 $t\in\mathbb{R}$ 皆存在，[Theorem 2.35](/lecture-notes/probability-inequalities/#thm-chernoff) 中的 $h$ 因而可取任意正數。依照[車諾夫不等式](/lecture-notes/probability-inequalities/#thm-chernoff)可知
 
 $$
 \mathbb{P}(X\geqslant a)\leqslant e^{-ta}\,M_{\sssig X}(t),\quad\forall\,t>0
@@ -737,11 +737,11 @@ $$
 
 ## 本篇小結
 
-八道例題演練的是同一系列不等式的各種用法。[Example 2.36](#ex-decreasing-density-bound) 與 [Example 2.37](#ex-decreasing-pmf-bound) 靠密度或機率函數本身的單調性創造出不等關係，一個用積分、一個用等差級數的和，想法與結論完全相同。[Example 2.38](#ex-general-markov-to-chebyshev) 由[非負函數的機率界限](/teaching-topics/probability-inequalities/#thm-nonnegative-function-bound)出發，取 $h(x)=(x-\mu_{\sssig X})^{2}$ 便導出[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)，[Example 2.39](#ex-variance-lower-bound) 則反過來由兩個尾機率求變異數的下界。
+八道例題演練的是同一系列不等式的各種用法。[Example 2.36](#ex-decreasing-density-bound) 與 [Example 2.37](#ex-decreasing-pmf-bound) 靠密度或機率函數本身的單調性創造出不等關係，一個用積分、一個用等差級數的和，想法與結論完全相同。[Example 2.38](#ex-general-markov-to-chebyshev) 由[非負函數的機率界限](/lecture-notes/probability-inequalities/#thm-nonnegative-function-bound)出發，取 $h(x)=(x-\mu_{\sssig X})^{2}$ 便導出[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)，[Example 2.39](#ex-variance-lower-bound) 則反過來由兩個尾機率求變異數的下界。
 
-[Example 2.40](#ex-chebyshev-sharpness) 說明同一個上界在 $\mathcal{U}(0,1)$ 之下離真實機率甚遠，在三點分配之下卻恰好相等，[Example 2.41](#ex-poisson-chebyshev) 示範[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)在卜瓦松分配上的代入。[Example 2.42](#ex-household-income-bounds) 先以[馬可夫不等式](/teaching-topics/probability-inequalities/#thm-markov)只用[期望值](/teaching-topics/expectation/#def-expectation)求得一個上界，再以[單邊柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-one-tailed-chebyshev)加入[標準差](/teaching-topics/variance-standard-deviation/#def-standard-deviation)求得更小的上界，同一題的兩個小問正好對照出動差訊息愈多、機率上界愈精確。
+[Example 2.40](#ex-chebyshev-sharpness) 說明同一個上界在 $\mathcal{U}(0,1)$ 之下離真實機率甚遠，在三點分配之下卻恰好相等，[Example 2.41](#ex-poisson-chebyshev) 示範[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)在卜瓦松分配上的代入。[Example 2.42](#ex-household-income-bounds) 先以[馬可夫不等式](/lecture-notes/probability-inequalities/#thm-markov)只用[期望值](/lecture-notes/expectation/#def-expectation)求得一個上界，再以[單邊柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-one-tailed-chebyshev)加入[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)求得更小的上界，同一題的兩個小問正好對照出動差訊息愈多、機率上界愈精確。
 
-[Example 2.43](#ex-poisson-chernoff-tail) 是[車諾夫不等式](/teaching-topics/probability-inequalities/#thm-chernoff)的完整示範。代入卜瓦松分配的 mgf 之後，以一階與二階條件求出使上界最小的 $t^{*}=\ln\frac{a}{\,\lambda\,}$，再由 $a^{a}\geqslant a!$ 得到 $\mathbb{P}(X\geqslant a)\leqslant\frac{\,e^{-\lambda}(e\,\lambda)^{a}\,}{a!}$。[下一篇](/teaching-topics/convexity-jensen-inequality/)轉向另一種不等式。它比較的不再是尾機率與動差，而是 $\mathbb{E}[g(X)]$ 與 $g[\mathbb{E}(X)]$ 的大小，[凸函數與凹函數](/teaching-topics/convexity-jensen-inequality/#def-convex-concave)的性質正是其中的關鍵。
+[Example 2.43](#ex-poisson-chernoff-tail) 是[車諾夫不等式](/lecture-notes/probability-inequalities/#thm-chernoff)的完整示範。代入卜瓦松分配的 mgf 之後，以一階與二階條件求出使上界最小的 $t^{*}=\ln\frac{a}{\,\lambda\,}$，再由 $a^{a}\geqslant a!$ 得到 $\mathbb{P}(X\geqslant a)\leqslant\frac{\,e^{-\lambda}(e\,\lambda)^{a}\,}{a!}$。[下一篇](/lecture-notes/convexity-jensen-inequality/)轉向另一種不等式。它比較的不再是尾機率與動差，而是 $\mathbb{E}[g(X)]$ 與 $g[\mathbb{E}(X)]$ 的大小，[凸函數與凹函數](/lecture-notes/convexity-jensen-inequality/#def-convex-concave)的性質正是其中的關鍵。
 
 ## 參考文獻與延伸閱讀
 

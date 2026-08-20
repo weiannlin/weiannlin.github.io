@@ -7,22 +7,22 @@ category: "機率概論"
 chapter: 5
 topic: 5
 order: 505
-permalink: /teaching-topics/weak-law-and-central-limit-theorem/
+permalink: /lecture-notes/weak-law-and-central-limit-theorem/
 date: 2026-08-15
 published: false
 excerpt: "弱大數法則說的是，在期望值 $\\mu$ 與變異數 $\\sigma^{2}$ 皆存在的前提下，iid 序列的樣本平均數 $\\overline{X}$ 機率收斂至 $\\mu$；證明只用到柴比雪夫不等式，因為 $\\mathrm{Var}(\\overline{X})=\\frac{\\sigma^{2}}{n}$ 隨樣本大小遞減至 $0$。中央極限定理則說標準化之後的 $\\frac{\\sqrt{n}(\\overline{X}-\\mu)}{\\sigma}$ 分配收斂至標準常態分配。本篇以六道例題演練這兩條定理: 兩道把弱大數法則推廣到二階動差與配對差的平方和，一道以動差母函數的泰勒展開式搭配列維連續性定理完成大學部教本常見的中央極限定理證明，一道以標準柯西分配說明期望值與變異數不存在時中央極限定理會失效，最後兩道求均勻母體與卡方母體之下的極限分配。其後整理兩條定理的異同、常態隨機樣本不必取極限即為標準常態這一項對照，以及中央極限定理的四種寫法。"
 ---
 
-[上一篇](/teaching-topics/convergence-in-mean-and-almost-sure/)把 $r$ 次均方收斂與幾乎確信收斂放在一起，說明這兩種收斂型態彼此並不蘊含，至此四種收斂型態之間的強弱關係已經完整。本篇轉入這些收斂型態最重要的兩個應用: 弱大數法則與中央極限定理。
+[上一篇](/lecture-notes/convergence-in-mean-and-almost-sure/)把 $r$ 次均方收斂與幾乎確信收斂放在一起，說明這兩種收斂型態彼此並不蘊含，至此四種收斂型態之間的強弱關係已經完整。本篇轉入這些收斂型態最重要的兩個應用: 弱大數法則與中央極限定理。
 
-兩條定理的前提相同，都要求 iid 序列的期望值 $\mu$ 與變異數 $\sigma^{2}$ 存在，結論也都是關於樣本平均數 $\overline{X}$ 的極限行為，但收斂的型態並不相同。弱大數法則說 $\overline{X}$ 本身[機率收斂](/teaching-topics/convergence-in-probability/#def-converge-in-probability)到 $\mu$ 這個常數，中央極限定理說 $\overline{X}$ 經標準化之後[分配收斂](/teaching-topics/convergence-in-distribution/#def-converge-in-distribution)到一個服從標準常態分配的隨機變數。本篇先給出弱大數法則與其證明，再由兩道例題看它的延伸用法；其後給出中央極限定理，並以動差母函數的泰勒展開式示範大學部教本常見的證明，以及標準柯西分配這個前提不成立的反例。
+兩條定理的前提相同，都要求 iid 序列的期望值 $\mu$ 與變異數 $\sigma^{2}$ 存在，結論也都是關於樣本平均數 $\overline{X}$ 的極限行為，但收斂的型態並不相同。弱大數法則說 $\overline{X}$ 本身[機率收斂](/lecture-notes/convergence-in-probability/#def-converge-in-probability)到 $\mu$ 這個常數，中央極限定理說 $\overline{X}$ 經標準化之後[分配收斂](/lecture-notes/convergence-in-distribution/#def-converge-in-distribution)到一個服從標準常態分配的隨機變數。本篇先給出弱大數法則與其證明，再由兩道例題看它的延伸用法；其後給出中央極限定理，並以動差母函數的泰勒展開式示範大學部教本常見的證明，以及標準柯西分配這個前提不成立的反例。
 
 ## 弱大數法則
 
 <div id="thm-weak-law-of-large-numbers" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 5.7 (弱大數法則, Weak Law of Large Numbers, WLLN)</div>
 
-令 $\lbrace X_n\rbrace_{n=1}^{\infty}$ 為一定義在機率空間上之 iid 隨機變數序列，且期望值 $\mu$ 與[變異數](/teaching-topics/variance/#def-variance) $\sigma^{2}$ 皆存在，則當 $n$ 趨近於無窮大，對於樣本平均數 $\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i$ 而言，我們有
+令 $\lbrace X_n\rbrace_{n=1}^{\infty}$ 為一定義在機率空間上之 iid 隨機變數序列，且期望值 $\mu$ 與[變異數](/lecture-notes/variance/#def-variance) $\sigma^{2}$ 皆存在，則當 $n$ 趨近於無窮大，對於樣本平均數 $\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i$ 而言，我們有
 
 $$
 \lim_{n\to\infty}\mathbb{P}\bigl(\lvert\overline{X}-\mu\rvert<\varepsilon\bigr)=1,\ \forall\varepsilon>0
@@ -45,7 +45,7 @@ $$
 \mathbb{E}\bigl(\overline{X}\bigr)=\mu,\ \ \mathrm{Var}\bigl(\overline{X}\bigr)=\frac{\sigma^{2}}{\,n\,}
 $$
 
-故由[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)可知
+故由[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)可知
 
 <div class="topic-math-follow-before" markdown="1">
 
@@ -251,7 +251,7 @@ $$
 m(t)=\mathbb{E}\bigl[e^{t(X-\mu)}\bigr]=e^{-\mu t}M(t)
 $$
 
-則 $m(t)$ 在同一個區間上也存在，而且它正是 $X-\mu$ 的 mgf，故由 [Theorem 2.21](/teaching-topics/moment-generating-functions/#thm-mgf-generates-moments) 可得
+則 $m(t)$ 在同一個區間上也存在，而且它正是 $X-\mu$ 的 mgf，故由 [Theorem 2.21](/lecture-notes/moment-generating-functions/#thm-mgf-generates-moments) 可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -318,7 +318,7 @@ $$
 W_n=\frac{\,\sum_{i=1}^{n}X_i-n\mu\,}{\sqrt{n}\,\sigma}
 $$
 
-的 mgf。把 $W_n$ 看成 $X_1,X_2,\ldots,X_n$ 的線性組合，由 [Theorem 3.23](/teaching-topics/mgf-method-transformations/#thm-mgf-two-to-one) 與 iid 的前提可得
+的 mgf。把 $W_n$ 看成 $X_1,X_2,\ldots,X_n$ 的線性組合，由 [Theorem 3.23](/lecture-notes/mgf-method-transformations/#thm-mgf-two-to-one) 與 iid 的前提可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -402,7 +402,7 @@ $$
 \lim_{n\to\infty}M_{\sssig W_n}(t)=e^{\frac{\,t^{2}\,}{2}},\ t\in\mathbb{R}
 $$
 
-而 $e^{\frac{\,t^{2}\,}{2}}$ 正是標準常態分配的 mgf，故由 [Theorem 5.1](/teaching-topics/levy-continuity-theorem/#thm-levys-continuity-thm) 可知
+而 $e^{\frac{\,t^{2}\,}{2}}$ 正是標準常態分配的 mgf，故由 [Theorem 5.1](/lecture-notes/levy-continuity-theorem/#thm-levys-continuity-thm) 可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -623,7 +623,7 @@ $$
 \lim_{n\to\infty}M_{\sssig W_n}(t)=e^{\frac{\,t^{2}\,}{2}}=M_{\sssig Z}(t),\ t\in\mathbb{R}
 $$
 
-由[列維連續性定理](/teaching-topics/levy-continuity-theorem/#thm-levys-continuity-thm)可知
+由[列維連續性定理](/lecture-notes/levy-continuity-theorem/#thm-levys-continuity-thm)可知
 {: .topic-paren-cont}
 
 $$
@@ -642,7 +642,7 @@ $$
 
 </div>
 
-下面這一題的前半段，也就是由特徵函數的唯一性求出 $\overline{X}$ 的分配這一段，曾以 [Example 2.53](/teaching-topics/characteristic-functions/#ex-cauchy-sample-mean-cf) 出現於特徵函數一篇；此處連同中央極限定理失效的部分完整收錄。
+下面這一題的前半段，也就是由特徵函數的唯一性求出 $\overline{X}$ 的分配這一段，曾以 [Example 2.53](/lecture-notes/characteristic-functions/#ex-cauchy-sample-mean-cf) 出現於特徵函數一篇；此處連同中央極限定理失效的部分完整收錄。
 
 <div id="ex-cauchy-clt-fails" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 5.18</div>
@@ -685,7 +685,7 @@ $$
 
 </div>
 
-由 [cf 之唯一性](/teaching-topics/characteristic-functions/#thm-cf-uniqueness)可知，不論 $n$ 多大，$\overline{X}$ 與 $X_1$ 之分配同為 $\mathrm{Cauchy}(0,1)$ 分配，故 CLT 在此失效。
+由 [cf 之唯一性](/lecture-notes/characteristic-functions/#thm-cf-uniqueness)可知，不論 $n$ 多大，$\overline{X}$ 與 $X_1$ 之分配同為 $\mathrm{Cauchy}(0,1)$ 分配，故 CLT 在此失效。
 
 </div>
 
@@ -731,7 +731,7 @@ $$
 
 </div>
 
-(3) 讀者應記得，我們曾運用[常態分配](/teaching-topics/normal-distribution/#def-normal)的仿射變換特性，指出[一個相當重要的應用](/teaching-topics/normal-distribution/#prop-normal-linear-combination):
+(3) 讀者應記得，我們曾運用[常態分配](/lecture-notes/normal-distribution/#def-normal)的仿射變換特性，指出[一個相當重要的應用](/lecture-notes/normal-distribution/#prop-normal-linear-combination):
 {: .topic-paren-item}
 
 $$
@@ -883,7 +883,7 @@ $$
 
 以上這些版本都能夠稱作中央極限定理。稍後，我們還會再看到基於這些中央極限定理變化版本的一些延伸應用。
 
-[^cf]: 在較為高等的機率論中，我們可以使用**[特徵函數](/teaching-topics/characteristic-functions/#def-characteristic-function) <span lang="en">(characteristic function, cf)</span>** 來進行證明，但在絕大多數的情境中，我們都可以假設 iid 序列，以及期望值與變異數皆存在。關於特徵函數以及相關的極限定理說明，可以參考 Athreya and Lahiri (2006), *Measure Theory and Probability Theory*, 1st ed.，當中有相當深入的探討與說明。
+[^cf]: 在較為高等的機率論中，我們可以使用**[特徵函數](/lecture-notes/characteristic-functions/#def-characteristic-function) <span lang="en">(characteristic function, cf)</span>** 來進行證明，但在絕大多數的情境中，我們都可以假設 iid 序列，以及期望值與變異數皆存在。關於特徵函數以及相關的極限定理說明，可以參考 Athreya and Lahiri (2006), *Measure Theory and Probability Theory*, 1st ed.，當中有相當深入的探討與說明。
 
 ## 本篇小結
 

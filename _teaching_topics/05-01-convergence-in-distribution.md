@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 5
 topic: 1
 order: 501
-permalink: /teaching-topics/convergence-in-distribution/
+permalink: /lecture-notes/convergence-in-distribution/
 date: 2026-08-15
 published: false
 excerpt: "分配收斂是把一列隨機變數的 cdf 逐點與另一個 cdf 比對而得的收斂型態，只要求在極限 cdf 的連續點上相等，收斂的對象因而稱作極限分配，也稱作弱收斂或律收斂。本篇先給出這個定義，再以五道例題演練由 cdf 求極限分配的作法。第一題的機率全部集中在 $2+\\frac{1}{n}$ 這個單點上，其 cdf 的逐點極限並不右連續，正好說明定義為什麼要放寬到連續點；第二題的 pmf 只在三個點上有正機率。其餘三題的序列都是統計量: $Z_n=n[1-F(Y_n)]$ 收斂至指數分配，$\\mathcal{U}(0,\\theta)$ 的極大值退化至 $\\theta$，而 $n$ 倍的極小值收斂至指數分配，指數母體的極大值減去 $\\ln n$ 之後，極限 cdf 為 $e^{-e^{-y}}$ 這個並不常見的分配。"
 ---
 
-[上一篇](/teaching-topics/multivariate-normal-independence/)以多元常態分配的獨立性與二次形式為第四章作結，至此常用的機率模型已經逐一建立完畢。本章要處理的是另外一件事: 母體分配不屬於這些常見模型時，統計量的抽樣分配該怎麼掌握。
+[上一篇](/lecture-notes/multivariate-normal-independence/)以多元常態分配的獨立性與二次形式為第四章作結，至此常用的機率模型已經逐一建立完畢。本章要處理的是另外一件事: 母體分配不屬於這些常見模型時，統計量的抽樣分配該怎麼掌握。
 
 前面的章節裡，我們介紹了各式各樣的常見機率模型，這固然給我們相當程度的方便，但是很多時候，這些機率模型並不適合真實的情況。在這種母體機率分配未知 (或非常見模型) 的情況下，[^normal-assumption]隨機樣本 $X_1,\ldots,X_n$ 與其構成的統計量 $\hat{\theta}(X_1,\ldots,X_n)$，其抽樣分配將很難得知。
 
@@ -21,7 +21,7 @@ excerpt: "分配收斂是把一列隨機變數的 cdf 逐點與另一個 cdf 比
 
 然而，僅是增加訊息含量並不一定表示能夠比較有效地進行推論，統計學家會希望以大樣本進行推論的原因，主要是因為，在大樣本的情況下，統計量的抽樣分配便可能出現各種「極限特性」，或者是收斂到某些常見分配、或者是可以收斂到某個固定的值，以下分別介紹。
 
-本篇先給出分配收斂的定義，再以五道例題演練由 [cdf](/teaching-topics/cumulative-distribution-functions/#def-cdf) 求極限分配的作法。五道題的路徑一致: 先求出 $F_{\sssig X_n}$ 這一列 cdf，再讓 $n$ 趨於無窮大取逐點的極限，最後找一個隨機變數，使它的 cdf 在自己的連續點上與這個極限相等。
+本篇先給出分配收斂的定義，再以五道例題演練由 [cdf](/lecture-notes/cumulative-distribution-functions/#def-cdf) 求極限分配的作法。五道題的路徑一致: 先求出 $F_{\sssig X_n}$ 這一列 cdf，再讓 $n$ 趨於無窮大取逐點的極限，最後找一個隨機變數，使它的 cdf 在自己的連續點上與這個極限相等。
 
 [^normal-assumption]: 現實世界而言，最主要的問題在於無法「假設母體服從常態分配」，這會影響許多推論的正確性。
 
@@ -39,7 +39,7 @@ excerpt: "分配收斂是把一列隨機變數的 cdf 逐點與另一個 cdf 比
 <div id="def-converge-in-distribution" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 5.1 (分配收斂, converge in distribution)</div>
 
-令 $\lbrace X_n\rbrace_{n=1}^{\infty}$ 為一定義在機率空間上之[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)序列，而對應的 cdf 序列為 $\lbrace F_n\rbrace_{n=1}^{\infty}$。若一隨機變數 $X$ 之 cdf 為 <span class="text-nowrap">$F_{\sssig X}$，</span>且對於所有 $F_{\sssig X}$ 的連續點而言，
+令 $\lbrace X_n\rbrace_{n=1}^{\infty}$ 為一定義在機率空間上之[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)序列，而對應的 cdf 序列為 $\lbrace F_n\rbrace_{n=1}^{\infty}$。若一隨機變數 $X$ 之 cdf 為 <span class="text-nowrap">$F_{\sssig X}$，</span>且對於所有 $F_{\sssig X}$ 的連續點而言，
 
 $$
 \lim_{n\to\infty}F_{n}(x)=F_{\sssig X}(x)
@@ -60,7 +60,7 @@ $$
 
 讀者應該記得，在第二章中，我們曾經提到過，機率分配是由 cdf 所定義的，因此分配收斂是針對 cdf 的收斂行為進行定義的。
 
-上述定義中，我們只要求對於所有 $F_{\sssig X}$ 的連續點而言皆有 $\lim_{n\to\infty}F_{n}(x)=F_{\sssig X}(x)$ 這個結果，而非所有的 <span class="text-nowrap">$x$，</span>這與第一章中所談到的[集合的極限](/teaching-topics/event-set-operations/#definition-monotone-set-sequences)有關係，我們稍後會看到一些例子; 此外，在某些教科書中，上述定義會被改寫為
+上述定義中，我們只要求對於所有 $F_{\sssig X}$ 的連續點而言皆有 $\lim_{n\to\infty}F_{n}(x)=F_{\sssig X}(x)$ 這個結果，而非所有的 <span class="text-nowrap">$x$，</span>這與第一章中所談到的[集合的極限](/lecture-notes/event-set-operations/#definition-monotone-set-sequences)有關係，我們稍後會看到一些例子; 此外，在某些教科書中，上述定義會被改寫為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -274,7 +274,7 @@ $$
 
 </div>
 
-[^right-continuous]: 讀者應該記得，不論離散或連續隨機變數，cdf 都應該是一個[右連續](/teaching-topics/cumulative-distribution-functions/#thm-cdf-properties) <span lang="en">(right-continuous)</span> 的函數。
+[^right-continuous]: 讀者應該記得，不論離散或連續隨機變數，cdf 都應該是一個[右連續](/lecture-notes/cumulative-distribution-functions/#thm-cdf-properties) <span lang="en">(right-continuous)</span> 的函數。
 
 <div id="ex-three-point-pmf-limit" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 5.2</div>
@@ -536,7 +536,7 @@ $$
 Suppose that $Y_n$ is the largest order statistic of a random sample of size $n$ drawn from a continuous distribution whose cdf is $F(x)$ and whose pdf is <span class="text-nowrap">$f(x)=F^{\prime}(x)$.</span> Find the limiting distribution of <span class="text-nowrap">$Z_n=n\bigl[1-F(Y_n)\bigr]$.</span>
 </div>
 
-依 $Y_n$ 為[順序統計量](/teaching-topics/order-statistics/#def-order-stat)之中的最大者這一點，並引用 [Theorem 3.25](/teaching-topics/order-statistics-examples/#thm-order-stat-samp-dist-cdf) 所給的最大順序統計量抽樣分配 cdf，可得
+依 $Y_n$ 為[順序統計量](/lecture-notes/order-statistics/#def-order-stat)之中的最大者這一點，並引用 [Theorem 3.25](/lecture-notes/order-statistics-examples/#thm-order-stat-samp-dist-cdf) 所給的最大順序統計量抽樣分配 cdf，可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -698,7 +698,7 @@ $$
 
 </div>
 
-此即 $X$ 服從[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution) <span class="text-nowrap">$\mathrm{Exp}(\beta=1)$。</span>又在 $F_{\sssig X}$ 之連續點上，我們都有 $\lim_{n\to\infty}F_{\sssig Z_n}(x)=F_{\sssig X}(x)$ 這個結果，則可知
+此即 $X$ 服從[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution) <span class="text-nowrap">$\mathrm{Exp}(\beta=1)$。</span>又在 $F_{\sssig X}$ 之連續點上，我們都有 $\lim_{n\to\infty}F_{\sssig Z_n}(x)=F_{\sssig X}(x)$ 這個結果，則可知
 
 $$
 Z_n\dconv X\sim\mathrm{Exp}(\beta=1)
@@ -708,7 +708,7 @@ $$
 
 </div>
 
-## [均勻分配](/teaching-topics/uniform-distribution-integral-transform/#def-uniform-distribution)的極大值與極小值
+## [均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的極大值與極小值
 
 <div id="ex-uniform-max-and-min-limit" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 5.4</div>
@@ -1265,7 +1265,7 @@ $$
 
 [Example 5.5](#ex-exponential-max-shifted-by-log-n) 走的則是平移而不是伸縮。指數母體的極大值 $X_{(n)}$ 本身會趨於無窮大，減去 $\ln n$ 之後才穩得住，極限 cdf 為 $e^{-e^{-y}}$ 這個式子，定義域是整條實數線。這個分配不是前面幾章介紹過的任何一個常見分配，卻仍然完全合乎 [Definition 5.1](#def-converge-in-distribution) 的要求，這也正是最後一則 Note 所要說的: 極限分配不保證漂亮，能寫出一個合法的 cdf 並在其連續點上取到極限，分配收斂就成立了。
 
-五道題共用同一套作法: 求 <span class="text-nowrap">$F_{\sssig X_n}$，</span>取逐點極限，再找一個 cdf 與這個極限在連續點上相等。這套作法的限制也很明顯: 統計量一旦複雜起來，$F_{\sssig X_n}$ 往往寫不出來。[下一篇](/teaching-topics/levy-continuity-theorem/)改由動差母函數下手，以列維連續性定理把「動差母函數收斂」轉譯為「分配收斂」，同樣的五道例題型態便不必再碰 cdf。
+五道題共用同一套作法: 求 <span class="text-nowrap">$F_{\sssig X_n}$，</span>取逐點極限，再找一個 cdf 與這個極限在連續點上相等。這套作法的限制也很明顯: 統計量一旦複雜起來，$F_{\sssig X_n}$ 往往寫不出來。[下一篇](/lecture-notes/levy-continuity-theorem/)改由動差母函數下手，以列維連續性定理把「動差母函數收斂」轉譯為「分配收斂」，同樣的五道例題型態便不必再碰 cdf。
 
 ## 參考文獻與延伸閱讀
 

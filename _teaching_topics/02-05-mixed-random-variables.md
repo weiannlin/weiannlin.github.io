@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 2
 topic: 5
 order: 205
-permalink: /teaching-topics/mixed-random-variables/
+permalink: /lecture-notes/mixed-random-variables/
 date: 2026-08-04
 published: true
 excerpt: "有一部分隨機變數並不純粹是離散型，也不純粹是連續型，它同時具備離散型的單點機率，與連續型的機率函數不是機率這兩項特性，稱作混合型隨機變數。分解定理指出，任一個 cdf 都可以寫成一個離散型 cdf 與一個處處連續的 cdf 之線性組合，係數 $\\alpha$ 等於所有離散質點的機率總和；當兩個部分都不退化時，這樣的分解是唯一的。同樣的分解也適用於 pdf。"
 ---
 
-到目前為止，我們把[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)分為離散型與連續型兩類: 離散型以[機率質量函數](/teaching-topics/random-variables-and-pmf/)記錄每一個質點的單點機率，其 cdf 是在質點上跳躍的階梯函數；連續型以[機率密度函數](/teaching-topics/probability-density-functions/)描述機率的疏密，[任一單點的機率皆為 $0$](/teaching-topics/computing-probabilities-from-cdf/#thm-point-probability-zero)，其 cdf 因而處處連續。
+到目前為止，我們把[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)分為離散型與連續型兩類: 離散型以[機率質量函數](/lecture-notes/random-variables-and-pmf/)記錄每一個質點的單點機率，其 cdf 是在質點上跳躍的階梯函數；連續型以[機率密度函數](/lecture-notes/probability-density-functions/)描述機率的疏密，[任一單點的機率皆為 $0$](/lecture-notes/computing-probabilities-from-cdf/#thm-point-probability-zero)，其 cdf 因而處處連續。
 
 這兩類並沒有涵蓋所有的隨機變數。有些隨機變數的 cdf 既有跳躍，也有連續上升的部分，離散型與連續型的特性同時出現在同一個變數上。以下便介紹這一類隨機變數，以及把它拆解為離散與連續兩個部分的分解定理。
 
@@ -93,7 +93,7 @@ $$
 </div>
 
 <figure id="fig-mixed-cdf" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/mixed-random-variable-cdf.svg" alt="混合型隨機變數的累積分配函數圖。x 小於 0 時函數值為 0，在 x 等於 0 處由空心點跳到實心點，跳躍高度為 0.2，其後沿曲線連續遞增，並以 1 為水平漸近線。">
+  <img src="/images/lecture-notes/mixed-random-variable-cdf.svg" alt="混合型隨機變數的累積分配函數圖。x 小於 0 時函數值為 0，在 x 等於 0 處由空心點跳到實心點，跳躍高度為 0.2，其後沿曲線連續遞增，並以 1 為水平漸近線。">
   <figcaption><span class="topic-figure__label">Fig. 2.8.</span> $X$ 的 cdf: 在 $x=0$ 有一個高度為 $\mathbb{P}(X=0)=0.2$ 的跳躍，其後沿 $1-0.8e^{-x}$ 連續遞增，並以 $1$ 為水平漸近線。</figcaption>
 </figure>
 
@@ -160,7 +160,7 @@ $$
 <div id="note-continuous-cdf" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上列定理只說 $F_{\sssig c}(x)$ 是一個處處連續的 cdf，並沒有說它是連續型隨機變數的 cdf，兩者不是同一件事情。依 [Definition 2.2](/teaching-topics/random-variables-and-pmf/#def-support-classification)，連續型隨機變數是以積分判準界定的: 要存在一個非負且可積分的函數，使 $\mathbb{P}(X\leqslant x)$ 能寫成該函數的積分。而稍後第 (3) 步的建構，只保證 $F_{\sssig c}(x)$ 處處沒有跳躍，並不保證這樣的函數存在；處處連續卻找不到密度函數的 cdf 確實存在，此時 $F_{\sssig c}(x)$ 仍是一個合格的 cdf，卻不是連續型隨機變數的 cdf。至於本篇兩個例子中的 $F_{\sssig c}(x)$，都是指數分配的 cdf，密度函數存在，屬於連續型隨機變數的 cdf。
+上列定理只說 $F_{\sssig c}(x)$ 是一個處處連續的 cdf，並沒有說它是連續型隨機變數的 cdf，兩者不是同一件事情。依 [Definition 2.2](/lecture-notes/random-variables-and-pmf/#def-support-classification)，連續型隨機變數是以積分判準界定的: 要存在一個非負且可積分的函數，使 $\mathbb{P}(X\leqslant x)$ 能寫成該函數的積分。而稍後第 (3) 步的建構，只保證 $F_{\sssig c}(x)$ 處處沒有跳躍，並不保證這樣的函數存在；處處連續卻找不到密度函數的 cdf 確實存在，此時 $F_{\sssig c}(x)$ 仍是一個合格的 cdf，卻不是連續型隨機變數的 cdf。至於本篇兩個例子中的 $F_{\sssig c}(x)$，都是指數分配的 cdf，密度函數存在，屬於連續型隨機變數的 cdf。
 
 </div>
 
@@ -238,7 +238,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者應該沒有忘記，[Theorem 2.1](/teaching-topics/cumulative-distribution-functions/#thm-cdf-properties) (cdf 的性質) 中指出，任何的 cdf (不論離散或連續)，其函數值都是從 $0$ 開始，而以 $1$ 結尾，因此需要進行修正，才能夠將其變為正規的 cdf。
+讀者應該沒有忘記，[Theorem 2.1](/lecture-notes/cumulative-distribution-functions/#thm-cdf-properties) (cdf 的性質) 中指出，任何的 cdf (不論離散或連續)，其函數值都是從 $0$ 開始，而以 $1$ 結尾，因此需要進行修正，才能夠將其變為正規的 cdf。
 
 </div>
 
@@ -434,7 +434,7 @@ $$
 
 [Theorem 2.7](#thm-decomposition) 指出，任一個 cdf 都可以寫成 $\alpha\,F_{\sssig d}(x)+(1-\alpha)\,F_{\sssig c}(x)$ 的形式，其中 $F_{\sssig d}$ 為一離散隨機變數的 cdf、$F_{\sssig c}$ 為一處處連續的 cdf，且當 $0<\alpha<1$ 時這樣的分解必定唯一。實際拆解時先求 $\alpha$，它等於所有離散質點的機率總和，再把 $F_{\sssig 1}$ 與 $F_{\sssig 2}$ 這兩個未必是 cdf 的函數，分別除以 $\alpha$ 與 $1-\alpha$ 修正而得。同樣的分解也適用於 pdf，[Example 2.14](#ex-component-lifetime) 便以 $\frac{1}{4}$ 與 $\frac{3}{4}$ 為權重，把元件壽命的分配寫成離散部分與連續部分的線性組合。
 
-[下一節](/teaching-topics/expectation/)開始討論隨機變數的[期望值](/teaching-topics/expectation/#def-expectation)、[變異數](/teaching-topics/variance/#def-variance)、[標準差](/teaching-topics/variance-standard-deviation/#def-standard-deviation)與其他量數，先由其中的期望值談起。
+[下一節](/lecture-notes/expectation/)開始討論隨機變數的[期望值](/lecture-notes/expectation/#def-expectation)、[變異數](/lecture-notes/variance/#def-variance)、[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)與其他量數，先由其中的期望值談起。
 
 ## 參考文獻與延伸閱讀
 

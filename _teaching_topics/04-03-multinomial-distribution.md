@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 4
 topic: 3
 order: 403
-permalink: /teaching-topics/multinomial-distribution/
+permalink: /lecture-notes/multinomial-distribution/
 date: 2026-08-12
 published: false
 excerpt: "多項實驗把一次實驗的出象分成 $k$ 個互斥的類別，各類別的發生機率固定，而實驗與實驗之間彼此獨立；記錄前 $k-1$ 個類別的發生次數所得到的隨機向量，即服從多項分配。本篇先給出驗證機率函數時所需要的三項式定理，再依序給出多項實驗與多項分配的定義，並以三項分配為例證明其機率函數合法。其後一次證完三項分配的五款性質: 每一個邊際都是二項分配、兩類合併之後仍是二項分配、兩者的共變異數為負、條件分配仍是二項分配，以及相關係數的公式。最後以擲骰子與球放入盒子的兩道例題作為演練。"
 ---
 
-[上一篇](/teaching-topics/binomial-distribution/)把伯努利實驗重複進行 $n$ 次，只記錄「成功類」的發生次數，得到的模型即為二項分配。若一次實驗的出象並不只有成功與失敗兩類，而是被分成 $k$ 個互斥的類別，那麼各個類別的發生次數所構成的隨機向量，服從的便是本篇的多項分配。
+[上一篇](/lecture-notes/binomial-distribution/)把伯努利實驗重複進行 $n$ 次，只記錄「成功類」的發生次數，得到的模型即為二項分配。若一次實驗的出象並不只有成功與失敗兩類，而是被分成 $k$ 個互斥的類別，那麼各個類別的發生次數所構成的隨機向量，服從的便是本篇的多項分配。
 
-驗證二項分配的機率函數合法時，我們用的是 [Theorem 2.18](/teaching-topics/moment-system/#thm-binomial) 的二項式定理；把類別數由兩類推到三類，所需要的工具便是[三項式定理](#thm-trinomial-thm)。本篇因而先由這個定理談起，再給出多項實驗與多項分配的定義，接著以三項分配為例證明機率函數合法，並一次證完三項分配的五款性質，最後以兩道例題作為演練。
+驗證二項分配的機率函數合法時，我們用的是 [Theorem 2.18](/lecture-notes/moment-system/#thm-binomial) 的二項式定理；把類別數由兩類推到三類，所需要的工具便是[三項式定理](#thm-trinomial-thm)。本篇因而先由這個定理談起，再給出多項實驗與多項分配的定義，接著以三項分配為例證明機率函數合法，並一次證完三項分配的五款性質，最後以兩道例題作為演練。
 
 ## 三項式定理
 
@@ -30,7 +30,7 @@ $$
 
 </div>
 
-[三項式定理](#thm-trinomial-thm)即是 [Theorem 2.18](/teaching-topics/moment-system/#thm-binomial) 擴展至三項的版本，若繼續往上推廣，當然可同理得出多項的版本，即多項式定理 <span lang="en">(multinomial theorem)</span>，在此便不贅述，讀者可自行推廣。
+[三項式定理](#thm-trinomial-thm)即是 [Theorem 2.18](/lecture-notes/moment-system/#thm-binomial) 擴展至三項的版本，若繼續往上推廣，當然可同理得出多項的版本，即多項式定理 <span lang="en">(multinomial theorem)</span>，在此便不贅述，讀者可自行推廣。
 
 ## 多項實驗與多項分配
 
@@ -230,7 +230,7 @@ $$
 
 </div>
 
-搭配[由聯合動差母函數取得邊際動差母函數的定理](/teaching-topics/cross-moments-joint-mgf/#thm-marginal-mgf)，我們將有許多有趣且符合直觀的結果，見[下列定理](#thm-trinomial-properties)。
+搭配[由聯合動差母函數取得邊際動差母函數的定理](/lecture-notes/cross-moments-joint-mgf/#thm-marginal-mgf)，我們將有許多有趣且符合直觀的結果，見[下列定理](#thm-trinomial-properties)。
 {: .topic-paren-cont}
 
 ## 三項分配的性質
@@ -465,7 +465,7 @@ $$
 
 </div>
 
-(4) 由[條件 pmf 之定義](/teaching-topics/conditional-distributions/#def-conditional-pmf)可知
+(4) 由[條件 pmf 之定義](/lecture-notes/conditional-distributions/#def-conditional-pmf)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -576,7 +576,7 @@ $$
 
 </div>
 
-由[母體線性迴歸方程式之特性](/teaching-topics/population-linear-regression/#thm-popu-reg)可知
+由[母體線性迴歸方程式之特性](/lecture-notes/population-linear-regression/#thm-popu-reg)可知
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -606,7 +606,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，三項分配的許多特色都符合直觀意義，舉例而言，我們將 $\boldsymbol{X}=\bigl[X_1,X_2\bigr]^{\mathrm{T}}$ 視為某個重複 $n$ 次的三項實驗中，第一類與第二類的成功次數，則 [Theorem 4.2](#thm-trinomial-properties) 的 (1) 指出，若我們只關切第一類的成功次數，可將第一類視為「成功類」，而第二類與第三類可被合併成為「失敗類」，由此轉回[二項分配](/teaching-topics/binomial-distribution/#def-binomial)；而 (2) 則是指出，若第一類與第二類的總成功次數，則可將二者合併為「成功類」，故有此結果。
+事實上，三項分配的許多特色都符合直觀意義，舉例而言，我們將 $\boldsymbol{X}=\bigl[X_1,X_2\bigr]^{\mathrm{T}}$ 視為某個重複 $n$ 次的三項實驗中，第一類與第二類的成功次數，則 [Theorem 4.2](#thm-trinomial-properties) 的 (1) 指出，若我們只關切第一類的成功次數，可將第一類視為「成功類」，而第二類與第三類可被合併成為「失敗類」，由此轉回[二項分配](/lecture-notes/binomial-distribution/#def-binomial)；而 (2) 則是指出，若第一類與第二類的總成功次數，則可將二者合併為「成功類」，故有此結果。
 
 除此之外，我們當然可以發現，則由於實驗總數固定，故第一類的成功次數與第二類的成功次數將產生排擠效應，此即，$X_1$ 與 $X_2$ 應呈現負相關。
 
@@ -749,13 +749,13 @@ $$
 
 ## 本篇小結
 
-[Theorem 4.1](#thm-trinomial-thm) 的三項式定理把 [Theorem 2.18](/teaching-topics/moment-system/#thm-binomial) 的兩項推廣到三項，係數由 $\binom{n}{x}$ 換成 $\frac{n!}{\,x!y!z!\,}$ 這個式子，加總的範圍則是所有滿足 $x+y+z=n$ 的非負整數三元組。同樣的作法可以繼續推到多項式定理。
+[Theorem 4.1](#thm-trinomial-thm) 的三項式定理把 [Theorem 2.18](/lecture-notes/moment-system/#thm-binomial) 的兩項推廣到三項，係數由 $\binom{n}{x}$ 換成 $\frac{n!}{\,x!y!z!\,}$ 這個式子，加總的範圍則是所有滿足 $x+y+z=n$ 的非負整數三元組。同樣的作法可以繼續推到多項式定理。
 
 [Definition 4.4](#def-multinomial-trial) 的多項實驗由三個條件界定: 出象被分成 $k$ 個互斥事件、各事件的發生機率固定且總和為 <span class="text-nowrap">$1$，</span>以及實驗與實驗之間彼此獨立。由於各類次數的總和必定是 <span class="text-nowrap">$n$，</span>[Definition 4.5](#def-multinomial) 只記錄前 $k-1$ 類的次數，最後一類的次數隨即可以得到；機率函數的分母因而多出 $\bigl(n-\sum_{i=1}^{k-1}x_i\bigr)!$ 這一項，而末尾的機率是 $1-\sum_{i=1}^{k-1}p_i$ 這個數。$k=3$ 時稱為三項分配，其機率函數的合法性正好由[三項式定理](#thm-trinomial-thm)一步得出。
 
-[Theorem 4.2](#thm-trinomial-properties) 一次給出三項分配的五款性質，證明的關鍵是三項分配的 mgf: 把 $t_2$ 取為 $0$ 即得 $X_1$ 的邊際 mgf，兩個變數的 mgf 都是二項分配的形式，這是 (1)；把兩個變數的引數都取為 $t$ 即得 $X_1+X_2$ 的 mgf，兩類合併之後仍是二項分配，這是 (2)；(3) 由三個變異數與變異數的加法關係反解出[共變異數](/teaching-topics/covariance/#def-covariance)，結果是 $-n\,p_1\,p_2$ 這個負值；(4) 直接由條件 pmf 的定義相除，約掉之後仍是二項分配，成功機率換成 $\frac{p_1}{\,1-p_2\,}$ 這個比值；(5) 則由條件期望值為 $x_2$ 的一次式，依母體線性迴歸方程式的特性得到[相關係數](/teaching-topics/correlation-coefficient/#def-corr)。
+[Theorem 4.2](#thm-trinomial-properties) 一次給出三項分配的五款性質，證明的關鍵是三項分配的 mgf: 把 $t_2$ 取為 $0$ 即得 $X_1$ 的邊際 mgf，兩個變數的 mgf 都是二項分配的形式，這是 (1)；把兩個變數的引數都取為 $t$ 即得 $X_1+X_2$ 的 mgf，兩類合併之後仍是二項分配，這是 (2)；(3) 由三個變異數與變異數的加法關係反解出[共變異數](/lecture-notes/covariance/#def-covariance)，結果是 $-n\,p_1\,p_2$ 這個負值；(4) 直接由條件 pmf 的定義相除，約掉之後仍是二項分配，成功機率換成 $\frac{p_1}{\,1-p_2\,}$ 這個比值；(5) 則由條件期望值為 $x_2$ 的一次式，依母體線性迴歸方程式的特性得到[相關係數](/lecture-notes/correlation-coefficient/#def-corr)。
 
-這五款性質都可以在直觀上得到解釋: 只關切第一類時，第二類與第三類合併成「失敗類」，於是回到[二項分配](/teaching-topics/binomial-distribution/#def-binomial)；實驗總次數固定，兩類的成功次數彼此排擠，因而呈現負相關；已知第二類的次數之後，剩下的 $n-x_2$ 次實驗只可能落在第一類或第三類，樣本空間縮小，第一類的成功機率隨之變為 $\frac{p_1}{\,1-p_2\,}$ 這個比值。
+這五款性質都可以在直觀上得到解釋: 只關切第一類時，第二類與第三類合併成「失敗類」，於是回到[二項分配](/lecture-notes/binomial-distribution/#def-binomial)；實驗總次數固定，兩類的成功次數彼此排擠，因而呈現負相關；已知第二類的次數之後，剩下的 $n-x_2$ 次實驗只可能落在第一類或第三類，樣本空間縮小，第一類的成功機率隨之變為 $\frac{p_1}{\,1-p_2\,}$ 這個比值。
 
 [Example 4.8](#ex-multinomial-1) 把公正骰子擲 $n$ 次的結果視為六類的多項實驗: 第一小題把未指定的兩次併成一類，係數為 $\frac{20!}{\,6!5!4!3!2!\,}$ 這個數；第二、三小題則只看點數 $1$ 與點數 $2$ 兩類，直接套用 [Theorem 4.2](#thm-trinomial-properties) 的合併性質與共變異數公式。[Example 4.9](#ex-multinomial-2) 把 $2r$ 顆球隨機放入 $r$ 個盒子，各盒的球數服從參數為 $\frac{1}{\,r\,}$ 的多項分配，每盒恰好兩顆的機率即為機率函數在 $x_1=\cdots=x_r=2$ 的值。
 

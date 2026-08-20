@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 4
 topic: 27
 order: 427
-permalink: /teaching-topics/bivariate-normal-examples/
+permalink: /lecture-notes/bivariate-normal-examples/
 date: 2026-08-15
 published: false
 excerpt: "本篇以三道例題演練二元常態分配的性質。第一題由期望值向量與共變異數矩陣得到 $X$ 的邊際分配，再以條件分配 $Y\\mid(X=x)\\sim\\mathcal{N}\\bigl(\\mu_2+\\rho\\frac{\\sigma_2}{\\sigma_1}(x-\\mu_1),\\ (1-\\rho^{2})\\sigma_2^{2}\\bigr)$ 把 $6$ 與 $14$ 認作條件期望值左右各一個條件標準差的位置，反解出 $\\rho=\\frac{3}{5}$，最後由線性組合仍為常態分配求出 $5X+Y$ 與 $5X-Y$ 的分配。第二題給一個兩個邊際都是標準常態、聯合卻不是二元常態的機率密度函數，多出來的那一項在積分時因奇函數而消失，用來說明邊際為常態並不足以保證聯合為二元常態。第三題反過來，由機率函數的 kernel 比對二次形式的係數，解出 $\\sigma_1^{2}=\\sigma_2^{2}=\\frac{2}{3}$ 與 $\\rho=\\frac{1}{2}$，再求得常數 $c$ 與條件期望值 $\\mathbb{E}(Y\\mid X=3)$。"
 ---
 
-[上一篇](/teaching-topics/bivariate-normal-distribution/)給出[二元常態分配](/teaching-topics/bivariate-normal-distribution/#def-bivariate-normal) <span lang="en">(bivariate normal distribution)</span> 的定義，並依序說明其邊際分配均為[常態分配](/teaching-topics/normal-distribution/#def-normal)、條件分配均為常態分配、零相關與[獨立](/teaching-topics/independent-random-variables/#def-indep-r-v)在此等價，以及兩個變數的任意線性組合仍為常態分配這幾項性質。本篇不再增加新的性質，改以三道例題演練上述結果。
+[上一篇](/lecture-notes/bivariate-normal-distribution/)給出[二元常態分配](/lecture-notes/bivariate-normal-distribution/#def-bivariate-normal) <span lang="en">(bivariate normal distribution)</span> 的定義，並依序說明其邊際分配均為[常態分配](/lecture-notes/normal-distribution/#def-normal)、條件分配均為常態分配、零相關與[獨立](/lecture-notes/independent-random-variables/#def-indep-r-v)在此等價，以及兩個變數的任意線性組合仍為常態分配這幾項性質。本篇不再增加新的性質，改以三道例題演練上述結果。
 
-第一道例題給定期望值向量與共變異數矩陣，先由邊際分配得到 $X$ 的分配，再以條件分配把題目所給的條件機率化為條件期望值與條件標準差之間的關係，反解出[相關係數](/teaching-topics/correlation-coefficient/#def-corr)，最後由線性組合仍為常態分配求出兩個線性組合的分配；這一項性質就是常態分配特有的仿射變換 <span lang="en">(affine transformation)</span>。第二道例題給一個兩個邊際都是標準常態、聯合卻不是二元常態的機率密度函數，用來說明「邊際為常態」並不足以保證「聯合為二元常態」。第三道例題反過來，由機率函數的 kernel 比對二次形式的係數，解出兩個變異數與相關係數，再求得機率函數的常數與條件期望值。
+第一道例題給定期望值向量與共變異數矩陣，先由邊際分配得到 $X$ 的分配，再以條件分配把題目所給的條件機率化為條件期望值與條件標準差之間的關係，反解出[相關係數](/lecture-notes/correlation-coefficient/#def-corr)，最後由線性組合仍為常態分配求出兩個線性組合的分配；這一項性質就是常態分配特有的仿射變換 <span lang="en">(affine transformation)</span>。第二道例題給一個兩個邊際都是標準常態、聯合卻不是二元常態的機率密度函數，用來說明「邊際為常態」並不足以保證「聯合為二元常態」。第三道例題反過來，由機率函數的 kernel 比對二次形式的係數，解出兩個變異數與相關係數，再求得機率函數的常數與條件期望值。
 
 ## 二元常態的條件分配與線性組合
 
@@ -179,7 +179,7 @@ for $-\infty<x<\infty$ and <span class="text-nowrap">$-\infty<y<\infty$.</span>
 </ol>
 </div>
 
-(1) 由 [marginal pdf 的性質](/teaching-topics/marginal-probability-density-functions/#def-marginal-pdf)可知
+(1) 由 [marginal pdf 的性質](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -227,9 +227,9 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-關於「邊際是常態分配但聯合不是二元常態」的反例有非常非常多，在許多數統的經典教科書中均有提及，這其中有不少同時身兼「零相關但是不獨立」的反例，譬如 [Example 4.48](/teaching-topics/standard-normal-moments-stein-lemma/#ex-normal-moments-1)。
+關於「邊際是常態分配但聯合不是二元常態」的反例有非常非常多，在許多數統的經典教科書中均有提及，這其中有不少同時身兼「零相關但是不獨立」的反例，譬如 [Example 4.48](/lecture-notes/standard-normal-moments-stein-lemma/#ex-normal-moments-1)。
 
-讀者應特別注意的是，儘管這樣的反例很多，但他們一定都發生在「二者不獨立」時，如果我們找來的兩個常態分配是獨立的，則此時這兩個常態分配必定能夠形成相關係數 $\rho=0$ 的二元常態分配。這個性質可以協助我們證明常態母體下，樣本平均數 $\overline{X}$ 與樣本變異數 $S^{2}$ 獨立，稍後在[多元常態分配](/teaching-topics/multivariate-normal-independence/)的章節中會談到。
+讀者應特別注意的是，儘管這樣的反例很多，但他們一定都發生在「二者不獨立」時，如果我們找來的兩個常態分配是獨立的，則此時這兩個常態分配必定能夠形成相關係數 $\rho=0$ 的二元常態分配。這個性質可以協助我們證明常態母體下，樣本平均數 $\overline{X}$ 與樣本變異數 $S^{2}$ 獨立，稍後在[多元常態分配](/lecture-notes/multivariate-normal-independence/)的章節中會談到。
 
 </div>
 
@@ -379,7 +379,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個問題亦有矩陣求解方式，但我們需要先具備處理矩陣版本的多元常態分配 <span lang="en">(multivariate normal distribution)</span> 的能力，見[下一篇](/teaching-topics/multivariate-normal-distribution/)。
+這個問題亦有矩陣求解方式，但我們需要先具備處理矩陣版本的多元常態分配 <span lang="en">(multivariate normal distribution)</span> 的能力，見[下一篇](/lecture-notes/multivariate-normal-distribution/)。
 
 </div>
 
@@ -391,7 +391,7 @@ $$
 
 [Example 4.62](#ex-bivariate-normal-ex-3) 走的是相反的方向: 題目只給機率函數的形狀，要由它反推參數。作法是把 $\exp\lbrace-x^{2}+xy-y^{2}\rbrace$ 與二元常態密度的指數項逐項比對，$x^{2}$、$y^{2}$ 與 $xy$ 三個係數各給一條方程式，解得 $\rho=\frac{1}{\,2\,}$ 與 $\sigma_1^{2}=\sigma_2^{2}=\frac{2}{\,3\,}$ 這兩組值；指數項中沒有一次項，因此兩個期望值都是 <span class="text-nowrap">$0$。</span>參數確定之後，常數 $c$ 就是二元常態密度前面的那一個係數 $\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^{2}}}$ 這個式子，算得 <span class="text-nowrap">$\frac{\sqrt{3}}{\,2\pi\,}$；</span>條件期望值則直接代入條件分配的期望值公式，得到 <span class="text-nowrap">$\frac{\,3\,}{2}$。</span>這一題另有以矩陣書寫的解法，要等到多元常態分配的矩陣形式建立之後才能使用。
 
-[下一篇](/teaching-topics/multivariate-normal-distribution/)把二元常態分配推廣到 $n$ 個變數，以期望值向量與共變異數矩陣書寫多元常態分配的機率函數，並給出相應的性質與例題。
+[下一篇](/lecture-notes/multivariate-normal-distribution/)把二元常態分配推廣到 $n$ 個變數，以期望值向量與共變異數矩陣書寫多元常態分配的機率函數，並給出相應的性質與例題。
 
 ## 參考文獻與延伸閱讀
 

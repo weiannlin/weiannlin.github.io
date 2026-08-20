@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 4
 topic: 6
 order: 406
-permalink: /teaching-topics/negative-binomial-distribution/
+permalink: /lecture-notes/negative-binomial-distribution/
 date: 2026-08-12
 published: false
 excerpt: "負二項分配描述的是進行伯努利實驗，直到出現第 $r$ 次成功為止所需要的實驗次數。本篇先給出驗證機率函數時所需要的負二項級數，再給出負二項分配的定義，並完整證明其機率函數合法，以及期望值 $r/p$、變異數 $rq/p^2$ 與動差母函數三者的公式。接著說明幾項延伸性質: $r=1$ 時即為幾何分配、成功機率相同且彼此獨立的兩個負二項變數相加仍為負二項分配、$r$ 個獨立的幾何變數相加即為負二項分配，以及實驗負二項與失敗負二項兩種定義的差別；二項分配與負二項分配之間另有對偶關係。最後以射擊、系列賽以及首次達到第 $k$ 次成功的三道例題作為演練。"
 ---
 
-[上一篇](/teaching-topics/geometric-distribution-examples/)以六道例題演練[幾何分配](/teaching-topics/geometric-distribution-memoryless/#def-geometric)的計算，其中的隨機變數記錄的都是進行伯努利實驗，直到出現第一次成功實驗所需要的實驗次數。若把「第一次成功」換成「第 $r$ 次成功」，所需要的實驗次數所服從的分配，就是本篇的負二項分配。
+[上一篇](/lecture-notes/geometric-distribution-examples/)以六道例題演練[幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)的計算，其中的隨機變數記錄的都是進行伯努利實驗，直到出現第一次成功實驗所需要的實驗次數。若把「第一次成功」換成「第 $r$ 次成功」，所需要的實驗次數所服從的分配，就是本篇的負二項分配。
 
-驗證幾何分配的機率函數合法時，我們用的是[幾何級數](/teaching-topics/geometric-distribution-memoryless/#thm-geometric-series)；把成功次數由一次推到 $r$ 次，所需要的工具則是[負二項級數](#thm-negative-binomial-series)。本篇因而先由這個級數談起，再給出負二項分配的定義，完整證明其機率函數為一個合法的機率函數，以及期望值、變異數與動差母函數的公式。接著說明幾項延伸性質，並給出二項分配與負二項分配之間的對偶關係，最後以三道例題作為演練。
+驗證幾何分配的機率函數合法時，我們用的是[幾何級數](/lecture-notes/geometric-distribution-memoryless/#thm-geometric-series)；把成功次數由一次推到 $r$ 次，所需要的工具則是[負二項級數](#thm-negative-binomial-series)。本篇因而先由這個級數談起，再給出負二項分配的定義，完整證明其機率函數為一個合法的機率函數，以及期望值、變異數與動差母函數的公式。接著說明幾項延伸性質，並給出二項分配與負二項分配之間的對偶關係，最後以三道例題作為演練。
 
 ## 負二項級數
 
@@ -141,9 +141,9 @@ $$
 
 </div>
 
-整個形式宛若[二項式定理](/teaching-topics/moment-system/#thm-binomial)一般，只不過 $(1-q)$ 的次方變成負的 (範圍當然也不同)，因此有了**負二項級數**之名。
+整個形式宛若[二項式定理](/lecture-notes/moment-system/#thm-binomial)一般，只不過 $(1-q)$ 的次方變成負的 (範圍當然也不同)，因此有了**負二項級數**之名。
 
-值得注意的是，負二項級數雖然因為形式與二項式定理非常類似因此得名，不過事實上，負二項級數所對應的分配 (負二項分配) 其關係反倒是和[幾何分配](/teaching-topics/geometric-distribution-memoryless/#def-geometric)比較接近，稍後我們馬上會看到原因。
+值得注意的是，負二項級數雖然因為形式與二項式定理非常類似因此得名，不過事實上，負二項級數所對應的分配 (負二項分配) 其關係反倒是和[幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)比較接近，稍後我們馬上會看到原因。
 
 </div>
 
@@ -397,7 +397,7 @@ $$
 \mathrm{Geo}(p)=\mathcal{NB}(r=1,\ p)
 $$
 
-這個性質其實不難理解，因為如果僅要求直到第一次成功實驗出現為止的實驗次數，則負二項分配的敘述會與[幾何分配](/teaching-topics/geometric-distribution-memoryless/#def-geometric)相同。
+這個性質其實不難理解，因為如果僅要求直到第一次成功實驗出現為止的實驗次數，則負二項分配的敘述會與[幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)相同。
 {: .topic-paren-cont}
 
 第二，若 $X\sim\mathcal{NB}(r_1,\ p),\ Y\sim\mathcal{NB}(r_2,\ p)$ 且 <span class="text-nowrap">$X\indep Y$，</span>則
@@ -410,7 +410,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-由[獨立隨機變數線性組合的動差母函數之定理](/teaching-topics/mgf-method-transformations/#thm-mgf-two-to-one)可知
+由[獨立隨機變數線性組合的動差母函數之定理](/lecture-notes/mgf-method-transformations/#thm-mgf-two-to-one)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -434,7 +434,7 @@ $$
 
 </div>
 
-則由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+則由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 W=X+Y\sim\mathcal{NB}(r_1+r_2,\ p)
@@ -530,7 +530,7 @@ $$
 
 </div>
 
-(3) 讀者應該已經發現，負二項分配之於幾何分配的關係，與[二項分配](/teaching-topics/binomial-distribution/#def-binomial)之於[伯努利分配](/teaching-topics/bernoulli-trials-and-distribution/#def-bernoulli)的關係，二者幾乎是相同的，這一點也導致了二項分配與負二項分配間有**對偶關係 <span lang="en">(dual relationship)</span>** 的存在，即
+(3) 讀者應該已經發現，負二項分配之於幾何分配的關係，與[二項分配](/lecture-notes/binomial-distribution/#def-binomial)之於[伯努利分配](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)的關係，二者幾乎是相同的，這一點也導致了二項分配與負二項分配間有**對偶關係 <span lang="en">(dual relationship)</span>** 的存在，即
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -564,7 +564,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-由於這 $r-1$ 次成功可能發生在這 $x-1$ 次中的任意 $r-1$ 次，故引入了組合符號 $\binom{x-1}{r-1}$ 來表示這所有的可能組合，但也正因為這一點，$p_{\sssig X}(a)$ 與 $p_{\sssig X}(a+1)$ 就不再具有等比的性質，故**負二項分配不再具有[無記憶性](/teaching-topics/geometric-distribution-memoryless/#thm-memoryless)**。
+由於這 $r-1$ 次成功可能發生在這 $x-1$ 次中的任意 $r-1$ 次，故引入了組合符號 $\binom{x-1}{r-1}$ 來表示這所有的可能組合，但也正因為這一點，$p_{\sssig X}(a)$ 與 $p_{\sssig X}(a+1)$ 就不再具有等比的性質，故**負二項分配不再具有[無記憶性](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless)**。
 
 </div>
 
@@ -882,17 +882,17 @@ $$
 
 ## 本篇小結
 
-[Theorem 4.7](#thm-negative-binomial-series) 的負二項級數把 $(1-q)^{-r}$ 展開成 $q$ 的冪級數，係數是 $\binom{k+r-1}{k}$ 這個組合數，成立的條件為 <span class="text-nowrap">$\lvert q\rvert<1$。</span>證明的作法是直接對 $(1-q)^{-r}$ 作馬克勞林展開，逐項的係數即為排列數除以階乘。把組合數改寫成 $(-1)^{k}\binom{-r}{k}$ 之後，整個式子的形式與 [Theorem 2.18](/teaching-topics/moment-system/#thm-binomial) 的二項式定理相同，只是次方變成負的，這也是這個級數名稱的由來。
+[Theorem 4.7](#thm-negative-binomial-series) 的負二項級數把 $(1-q)^{-r}$ 展開成 $q$ 的冪級數，係數是 $\binom{k+r-1}{k}$ 這個組合數，成立的條件為 <span class="text-nowrap">$\lvert q\rvert<1$。</span>證明的作法是直接對 $(1-q)^{-r}$ 作馬克勞林展開，逐項的係數即為排列數除以階乘。把組合數改寫成 $(-1)^{k}\binom{-r}{k}$ 之後，整個式子的形式與 [Theorem 2.18](/lecture-notes/moment-system/#thm-binomial) 的二項式定理相同，只是次方變成負的，這也是這個級數名稱的由來。
 
 [Definition 4.7](#def-negative-binomial) 的負二項分配記錄的是進行伯努利實驗，直到出現第 $r$ 次成功實驗所需要的實驗次數，值域自 $r$ 起算，機率函數為 $\binom{x-1}{r-1}p^{r}q^{x-r}$ 這個式子，其中的組合數對應「前 $x-1$ 次之中哪 $r-1$ 次成功」的選法。證明的四個步驟依序是: 以負二項級數驗證機率函數的加總為 <span class="text-nowrap">$1$、</span>把 $x\binom{x-1}{r-1}$ 改寫成 $r\binom{x}{r}$ 這個形式，把加總湊成另一個負二項分配的機率函數而求得 <span class="text-nowrap">$\mathbb{E}(X)=\frac{r}{\,p\,}$、</span>再以 $\mathbb{E}\bigl[(X+1)X\bigr]$ 得到 $\mathbb{E}\bigl(X^{2}\bigr)$ 進而算出 <span class="text-nowrap">$\mathrm{Var}(X)=\frac{\,rq\,}{p^{2}}$，</span>最後直接由定義求得動差母函數。
 
-定義之後的幾點說明依序是: $r=1$ 時負二項分配即為[幾何分配](/teaching-topics/geometric-distribution-memoryless/#def-geometric)、成功機率相同且彼此獨立的兩個負二項變數相加仍為負二項分配 (可加性)、$r$ 個獨立且成功機率相同的幾何變數相加即為負二項分配，以及實驗負二項與失敗負二項兩種定義的差別，後者記錄的是失敗次數 <span class="text-nowrap">$Y=X-r$，</span>值域自 $0$ 起算，期望值少了 $r$ 而變異數不變。可加性的證明只需把兩個動差母函數相乘，指數因而相加，再由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識出結果。
+定義之後的幾點說明依序是: $r=1$ 時負二項分配即為[幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)、成功機率相同且彼此獨立的兩個負二項變數相加仍為負二項分配 (可加性)、$r$ 個獨立且成功機率相同的幾何變數相加即為負二項分配，以及實驗負二項與失敗負二項兩種定義的差別，後者記錄的是失敗次數 <span class="text-nowrap">$Y=X-r$，</span>值域自 $0$ 起算，期望值少了 $r$ 而變異數不變。可加性的證明只需把兩個動差母函數相乘，指數因而相加，再由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識出結果。
 
-負二項分配之於幾何分配的關係，與[二項分配](/teaching-topics/binomial-distribution/#def-binomial)之於[伯努利分配](/teaching-topics/bernoulli-trials-and-distribution/#def-bernoulli)的關係相同，兩者因而有對偶關係: 「$n$ 次實驗中成功不到 $r$ 次」與「第 $r$ 次成功所需的實驗次數超過 $n$ 次」講的是同一件事情。另一方面，負二項分配與幾何分配的最後一次實驗都一定是成功實驗，差別在於前面的 $x-1$ 次之中還有 $r-1$ 次成功，其位置不固定，因而引入了組合數，也因為這個組合數，相鄰兩個機率值不再成等比，負二項分配於是不再具有[無記憶性](/teaching-topics/geometric-distribution-memoryless/#thm-memoryless)。
+負二項分配之於幾何分配的關係，與[二項分配](/lecture-notes/binomial-distribution/#def-binomial)之於[伯努利分配](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)的關係相同，兩者因而有對偶關係: 「$n$ 次實驗中成功不到 $r$ 次」與「第 $r$ 次成功所需的實驗次數超過 $n$ 次」講的是同一件事情。另一方面，負二項分配與幾何分配的最後一次實驗都一定是成功實驗，差別在於前面的 $x-1$ 次之中還有 $r-1$ 次成功，其位置不固定，因而引入了組合數，也因為這個組合數，相鄰兩個機率值不再成等比，負二項分配於是不再具有[無記憶性](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless)。
 
 三道例題各有側重。[Example 4.16](#ex-negative-binomial-1) 在同一個題組中把「成功」的定義換了兩次，前一小題以擊中為成功而用二項分配，後兩小題改以擊丟為成功而分別用幾何分配與負二項分配。[Example 4.17](#ex-negative-binomial-2) 把系列賽的勝負改寫成「取得第 $5$ 勝所需的場次不超過上限」，因而以負二項分配的累積機率計算，值域到無窮大並不妨礙，因為超出上限的場次都代表已經輸掉系列賽。[Example 4.18](#ex-negative-binomial-3) 則由首次達到第 $k$ 次成功的定義出發，把最後一次實驗分離出去，前面的 $n-1$ 次以二項分配計算，兩者相乘之後得到的正是負二項分配的機率函數。
 
-[下一篇](/teaching-topics/hypergeometric-distribution/)把抽樣方式改為取後不放回，先給出汎德蒙等式，再依序介紹超幾何實驗與超幾何分配。
+[下一篇](/lecture-notes/hypergeometric-distribution/)把抽樣方式改為取後不放回，先給出汎德蒙等式，再依序介紹超幾何實驗與超幾何分配。
 
 ## 參考文獻與延伸閱讀
 

@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 4
 topic: 9
 order: 409
-permalink: /teaching-topics/poisson-additivity-and-thinning/
+permalink: /lecture-notes/poisson-additivity-and-thinning/
 date: 2026-08-12
 published: false
 excerpt: "兩個獨立的卜瓦松變數相加之後仍為卜瓦松分配，平均發生率相加；而在兩者的總和固定為 $n$ 的條件下，其中一個變數的條件分配是二項分配，成功機率為兩個平均發生率的比值。反過來看，若卜瓦松變數所計數的每一次發生都以固定機率 $p$ 被歸入某一類，則該類的個數服從 $\\mathrm{Poi}(\\lambda p)$ 這個分配，另一類的個數服從 $\\mathrm{Poi}\\bigl(\\lambda(1-p)\\bigr)$ 這個分配，而且兩者彼此獨立。本篇完整證明這兩個定理，並以六道例題演練卜瓦松機率的計算、二項機率的卜瓦松近似，以及定義在頁數與體積這一類非時間區段上的卜瓦松分配。"
 ---
 
-[上一篇](/teaching-topics/poisson-process-and-distribution/)給出[卜瓦松過程](/teaching-topics/poisson-process-and-distribution/#def-poisson-process)與[卜瓦松分配](/teaching-topics/poisson-process-and-distribution/#def-poisson-distribution)的定義，並完整推導了卜瓦松分配的機率函數、期望值、變異數與動差母函數。本篇先以兩道例題演練卜瓦松機率的計算，其中一道用到二項機率的卜瓦松近似。
+[上一篇](/lecture-notes/poisson-process-and-distribution/)給出[卜瓦松過程](/lecture-notes/poisson-process-and-distribution/#def-poisson-process)與[卜瓦松分配](/lecture-notes/poisson-process-and-distribution/#def-poisson-distribution)的定義，並完整推導了卜瓦松分配的機率函數、期望值、變異數與動差母函數。本篇先以兩道例題演練卜瓦松機率的計算，其中一道用到二項機率的卜瓦松近似。
 
 接著進入兩個定理。第一個定理處理兩個獨立卜瓦松變數的和: 和本身仍是卜瓦松分配，而在總和給定之下，其中一個變數的條件分配是二項分配。第二個定理處理相反的方向: 把一個卜瓦松變數所計數的每一次發生依固定機率分成兩類，兩類的個數各自仍服從卜瓦松分配，並且彼此獨立。最後兩道例題把卜瓦松分配用在頁數與體積這一類非時間的區段上。
 
@@ -220,7 +220,7 @@ $$
 
 </div>
 
-由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 {: .topic-paren-cont}
 
 $$
@@ -349,7 +349,7 @@ $$
 
 </div>
 
-由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知 $W\sim\mathrm{Poi}(m+n)$ 這個結果，故
+由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知 $W\sim\mathrm{Poi}(m+n)$ 這個結果，故
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -886,21 +886,21 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述的兩個問題，是應用在非時間區段的例子，我們曾在[上一篇](/teaching-topics/poisson-process-and-distribution/)中提到，卜瓦松過程可以推廣至任意的區間，包含任意線段、平面、空間等等的區間，這當然導致了其上的卜瓦松分配被定義在非時間區段上，但使用的邏輯與定義在時間區段上的卜瓦松分配是完全相同的。
+上述的兩個問題，是應用在非時間區段的例子，我們曾在[上一篇](/lecture-notes/poisson-process-and-distribution/)中提到，卜瓦松過程可以推廣至任意的區間，包含任意線段、平面、空間等等的區間，這當然導致了其上的卜瓦松分配被定義在非時間區段上，但使用的邏輯與定義在時間區段上的卜瓦松分配是完全相同的。
 
 </div>
 
 ## 本篇小結
 
-[Example 4.21](#ex-poisson-sum-1) 與 [Example 4.3 <span lang="en">(Continued)</span>](#ex-binomial-2-continued) 是卜瓦松機率的兩種基本用法。前者把每半小時平均巡視一次直接當成 <span class="text-nowrap">$\lambda=1$，</span>三個小題依序求 <span class="text-nowrap">$\mathbb{P}(Y=0)$、</span>$\mathbb{P}(Y=1)$ 與 $\mathbb{P}(Y\geqslant1)$ 這三個機率，最後一項以餘事件計算。後者承接[上一篇](/teaching-topics/poisson-process-and-distribution/)所證的二項分配卜瓦松近似: $n=200$ 很大、$p=0.03$ 很小而 <span class="text-nowrap">$np=6$，</span>以 $\mathrm{Poi}(6)$ 求得的 $0.1377$ 與二項分配的精確值 $0.1398$ 相當接近。
+[Example 4.21](#ex-poisson-sum-1) 與 [Example 4.3 <span lang="en">(Continued)</span>](#ex-binomial-2-continued) 是卜瓦松機率的兩種基本用法。前者把每半小時平均巡視一次直接當成 <span class="text-nowrap">$\lambda=1$，</span>三個小題依序求 <span class="text-nowrap">$\mathbb{P}(Y=0)$、</span>$\mathbb{P}(Y=1)$ 與 $\mathbb{P}(Y\geqslant1)$ 這三個機率，最後一項以餘事件計算。後者承接[上一篇](/lecture-notes/poisson-process-and-distribution/)所證的二項分配卜瓦松近似: $n=200$ 很大、$p=0.03$ 很小而 <span class="text-nowrap">$np=6$，</span>以 $\mathrm{Poi}(6)$ 求得的 $0.1377$ 與二項分配的精確值 $0.1398$ 相當接近。
 
-[Theorem 4.10](#thm-poisson-sum-conditional) 給出兩個獨立卜瓦松變數相加之後的兩件事。第一件是可加性，證明只需把兩個動差母函數相乘，指數上的 $\lambda_1$ 與 $\lambda_2$ 因而相加，再由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識出 $\mathrm{Poi}(\lambda_1+\lambda_2)$ 這個分配。第二件是在總和固定為 $n$ 的條件下，$X$ 的條件分配為二項分配，成功機率是 $\frac{\lambda_1}{\,\lambda_1+\lambda_2\,}$ 這個比值；證明把條件機率函數的分子寫成兩個機率函數的乘積、分母寫成和的機率函數，指數項相消之後剩下的正是二項分配的形式。[Example 4.22](#ex-poisson-sum-2) 把同一組推導在參數為 $m$ 與 $n$ 而總和固定為 $50$ 的情形下再作一次。
+[Theorem 4.10](#thm-poisson-sum-conditional) 給出兩個獨立卜瓦松變數相加之後的兩件事。第一件是可加性，證明只需把兩個動差母函數相乘，指數上的 $\lambda_1$ 與 $\lambda_2$ 因而相加，再由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識出 $\mathrm{Poi}(\lambda_1+\lambda_2)$ 這個分配。第二件是在總和固定為 $n$ 的條件下，$X$ 的條件分配為二項分配，成功機率是 $\frac{\lambda_1}{\,\lambda_1+\lambda_2\,}$ 這個比值；證明把條件機率函數的分子寫成兩個機率函數的乘積、分母寫成和的機率函數，指數項相消之後剩下的正是二項分配的形式。[Example 4.22](#ex-poisson-sum-2) 把同一組推導在參數為 $m$ 與 $n$ 而總和固定為 $50$ 的情形下再作一次。
 
 [Theorem 4.11](#thm-poisson-thinning) 處理的是相反的方向: 先有一個服從 $\mathrm{Poi}(\lambda)$ 的變數 <span class="text-nowrap">$X$，</span>再在給定 $X=x$ 之下讓 $Y$ 服從 <span class="text-nowrap">$\mathrm{Bin}(x,p)$，</span>也就是把 $X$ 所計數的每一次發生各以機率 $p$ 歸入 $Y$ 這一類。證明先由條件機率函數與邊際機率函數相乘得到聯合機率函數，再取 $U=Y$ 與 $V=X-Y$ 這組轉換，聯合機率函數隨即分解成 $\mathrm{Poi}(\lambda p)$ 與 $\mathrm{Poi}\bigl(\lambda(1-p)\bigr)$ 兩個機率函數的乘積；分解一旦完成，三個結論同時成立，兩類的個數各自服從卜瓦松分配，而且彼此獨立。[Example 4.23](#ex-poisson-sum-3) 的第一小題由條件期望值與條件變異數求出 $\mathbb{E}(Y)=p\lambda$ 與 <span class="text-nowrap">$\mathrm{Var}(Y)=p\lambda$，</span>與 $Y\sim\mathrm{Poi}(\lambda p)$ 的期望值、變異數一致；第二小題則是 [Theorem 4.11](#thm-poisson-thinning) 第三項的完整重述。
 
 最後兩道例題把卜瓦松分配用在非時間的區段上: [Example 4.24](#ex-poisson-sum-4) 以頁數為區段，每 $10$ 頁平均打錯 $2$ 個字，一頁的平均錯字數因而是 <span class="text-nowrap">$0.2$、</span>兩頁是 <span class="text-nowrap">$0.4$；</span>[Example 4.25](#ex-poisson-sum-5) 以體積為區段，每立方公分平均有 $3$ 隻細菌，兩立方公分因而是 <span class="text-nowrap">$\lambda=6$。</span>兩題都直接套用比例伸縮性質，計算的邏輯與定義在時間區段上的卜瓦松分配完全相同。
 
-[下一篇](/teaching-topics/gamma-function-exponential-distribution/)由伽瑪函數談起，接著給出卜瓦松過程下轄的第二個分配，也就是描述偶發事件發生間隔的指數分配。
+[下一篇](/lecture-notes/gamma-function-exponential-distribution/)由伽瑪函數談起，接著給出卜瓦松過程下轄的第二個分配，也就是描述偶發事件發生間隔的指數分配。
 
 ## 參考文獻與延伸閱讀
 

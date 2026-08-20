@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 26
 order: 326
-permalink: /teaching-topics/mgf-method-examples/
+permalink: /lecture-notes/mgf-method-examples/
 date: 2026-08-13
 published: false
 excerpt: "本篇以三道例題演練動差母函數法。第一題只給出兩個獨立變數的 mgf，先由線性組合的 mgf 認出 $U=3X+2Y$ 的分配，再由 mgf 的唯一性回推兩個 pdf，改以 Jacobian 法求得 $U$ 與 $V$ 的聯合 pdf，進而得到 $V$ 的期望值與變異數。第二題求隨機樣本之樣本平均的分配，樣本平均也是一種針對樣本的線性組合，每個樣本的權重都是 $\\frac{1}{n}$ 這個值，而常態分配的任意線性組合仍為常態分配。第三題以三個小題處理獨立均勻樣本的和、對數乘積與最大值，其中兩個變數之和的 pdf 分別以 Jacobian 法與 cdf 法各解一次，並附上座標系轉換前後的值域圖，最後一則註記則指出「排序」其實也是一種函數轉換。"
 ---
 
-[上一篇](/teaching-topics/mgf-method-transformations/)先以兩道例題示範多對一的作法，即先做一次維度相同的函數轉換，再把不需要的變數積分掉；接著以 [Theorem 3.23](/teaching-topics/mgf-method-transformations/#thm-mgf-two-to-one) 指出，若各變數彼此[獨立](/teaching-topics/independent-random-variables/#def-indep-r-v)且轉換是線性的，則 $W=\sum_{i=1}^{n}a_i\,X_i+b$ 的 mgf 是 $e^{bt}$ 與各項 mgf 的乘積，並以另外兩道例題由 mgf 的唯一性認出轉換後的分配。
+[上一篇](/lecture-notes/mgf-method-transformations/)先以兩道例題示範多對一的作法，即先做一次維度相同的函數轉換，再把不需要的變數積分掉；接著以 [Theorem 3.23](/lecture-notes/mgf-method-transformations/#thm-mgf-two-to-one) 指出，若各變數彼此[獨立](/lecture-notes/independent-random-variables/#def-indep-r-v)且轉換是線性的，則 $W=\sum_{i=1}^{n}a_i\,X_i+b$ 的 mgf 是 $e^{bt}$ 與各項 mgf 的乘積，並以另外兩道例題由 mgf 的唯一性認出轉換後的分配。
 
-本篇以三道例題繼續演練這個做法。[Example 3.57](#ex-independent-mgf-difference) 先由兩個獨立變數的 mgf 認出線性組合的分配，再由 mgf 的唯一性回推出兩個 pdf，改以 [Jacobian 法](/teaching-topics/many-to-many-transformations/#連續型的-jacobian-法)求出另一個變數的[期望值](/teaching-topics/expectation/#def-expectation)與[變異數](/teaching-topics/variance/#def-variance)；[Example 3.58](#ex-random-sample-mgf-mean) 求隨機樣本之樣本平均的分配；[Example 3.59](#ex-independent-mgf-linear) 則以三個小題處理獨立均勻樣本的和、對數乘積與最大值，其中兩個變數之和的 pdf 分別以 Jacobian 法與 cdf 法各解一次。
+本篇以三道例題繼續演練這個做法。[Example 3.57](#ex-independent-mgf-difference) 先由兩個獨立變數的 mgf 認出線性組合的分配，再由 mgf 的唯一性回推出兩個 pdf，改以 [Jacobian 法](/lecture-notes/many-to-many-transformations/#連續型的-jacobian-法)求出另一個變數的[期望值](/lecture-notes/expectation/#def-expectation)與[變異數](/lecture-notes/variance/#def-variance)；[Example 3.58](#ex-random-sample-mgf-mean) 求隨機樣本之樣本平均的分配；[Example 3.59](#ex-independent-mgf-linear) 則以三個小題處理獨立均勻樣本的和、對數乘積與最大值，其中兩個變數之和的 pdf 分別以 Jacobian 法與 cdf 法各解一次。
 
 <div id="ex-independent-mgf-difference" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.57</div>
@@ -312,7 +312,7 @@ $$
 
 樣本平均 (sample mean) 也是一種針對樣本的線性組合，每個樣本的權重同為 <span class="text-nowrap">$\frac{1}{n}$。</span>
 
-事實上，[常態分配](/teaching-topics/normal-distribution/#def-normal)的任意線性組合，其結果都是常態分配，這是常態分配特有的**仿射變換 <span lang="en">(affine transformation)</span>** 性質，在多元常態的矩陣運算中特別有用 (讀者不應忘記，矩陣運算屬於線性運算的一環)。
+事實上，[常態分配](/lecture-notes/normal-distribution/#def-normal)的任意線性組合，其結果都是常態分配，這是常態分配特有的**仿射變換 <span lang="en">(affine transformation)</span>** 性質，在多元常態的矩陣運算中特別有用 (讀者不應忘記，矩陣運算屬於線性運算的一環)。
 
 </div>
 
@@ -470,7 +470,7 @@ $$
 
 $$
 f_{\sssig U}(u)=\left\lbrace
-\begin{array}{ll}
+\begin{array}{c@{\quad}l}
 \displaystyle\int_{0}^{u}f_{\sssig UV}(u,v)\,dv=\int_{0}^{u}1\,dv=u &,\ 0<u<1\\[1.2em]
 \displaystyle\int_{u-1}^{1}f_{\sssig UV}(u,v)\,dv=\int_{u-1}^{1}1\,dv=2-u &,\ 1\leqslant u<2
 \end{array}
@@ -502,14 +502,14 @@ $$
 在考慮 $U$ 與 $V$ 的聯合值域時，我們可以先考慮 $X_1$ 與 $X_2$ 的聯合值域，並做座標系轉換。$X_1$ 與 $X_2$ 的聯合值域如下
 
 <figure id="fig-transform-original-range" class="topic-figure topic-figure--medium">
-  <img src="/images/teaching-topics/transform-original-range.svg" alt="平面上一個正方形以淡紅色填滿，它的左邊與下邊就是兩條帶箭頭的座標軸，上邊與右邊各以一條實線描出。橫軸右端標 x 下標 1，縱軸上端標 x 下標 2。原點下方標 0，橫軸上正方形右邊所在之處標 1，縱軸上正方形上邊所在之處標 1。全圖只有這一個正方形，沒有任何斜線。">
+  <img src="/images/lecture-notes/transform-original-range.svg" alt="平面上一個正方形以淡紅色填滿，它的左邊與下邊就是兩條帶箭頭的座標軸，上邊與右邊各以一條實線描出。橫軸右端標 x 下標 1，縱軸上端標 x 下標 2。原點下方標 0，橫軸上正方形右邊所在之處標 1，縱軸上正方形上邊所在之處標 1。全圖只有這一個正方形，沒有任何斜線。">
   <figcaption><span class="topic-figure__label">Fig. 3.21.</span> 轉換之前 $X_1$ 與 $X_2$ 的聯合值域，是兩軸上 $0$ 與 $1$ 之間所圍出的正方形，圖中填色的部分即此值域。</figcaption>
 </figure>
 
 令 $U=X_1+X_2$ 及 <span class="text-nowrap">$V=X_1$，</span>我們可將 $U$ 與 $V$ 在原始座標系的範圍繪製如下
 
 <figure id="fig-transform-uv-range" class="topic-figure topic-figure--medium">
-  <img src="/images/teaching-topics/transform-uv-range.svg" alt="上下兩個面板，中間是一個朝下的雙線箭號，箭號右方寫著 u 等於 x 下標 1 加 x 下標 2、v 等於 x 下標 1。上面板是轉換之前的平面，橫軸右端標 x 下標 1 等於 v，縱軸上端標 x 下標 2，兩軸各標 0 與 1；淡紅色填滿的正方形即聯合值域，上邊與右邊以實線描出。正方形內有一條由左上角連到右下角的虛線，正方形的左下角之外與右上角之外各有一條與該虛線平行的實線，分別標 u 等於 x 下標 1 加 x 下標 2 等於 0 與 u 等於 x 下標 1 加 x 下標 2 等於 2。下面板是轉換之後的平面，橫軸標 v 並標出 0 與 1，縱軸標 u 並標出 1 與 2；淡紅色填滿的是一個向右上傾斜的平行四邊形，四個頂點依序落在原點、橫一縱一、橫一縱二與橫零縱一。平行四邊形的兩條斜邊各以實線向兩端延長，右上那條標 v 等於 u 減 1，左下那條標 v 等於 u，平行四邊形的右邊亦以實線畫出。另有三條虛線，兩條分別自縱軸的 1 與 2 向右畫到平行四邊形，一條自橫軸的 1 向上畫到平行四邊形的下方頂點。">
+  <img src="/images/lecture-notes/transform-uv-range.svg" alt="上下兩個面板，中間是一個朝下的雙線箭號，箭號右方寫著 u 等於 x 下標 1 加 x 下標 2、v 等於 x 下標 1。上面板是轉換之前的平面，橫軸右端標 x 下標 1 等於 v，縱軸上端標 x 下標 2，兩軸各標 0 與 1；淡紅色填滿的正方形即聯合值域，上邊與右邊以實線描出。正方形內有一條由左上角連到右下角的虛線，正方形的左下角之外與右上角之外各有一條與該虛線平行的實線，分別標 u 等於 x 下標 1 加 x 下標 2 等於 0 與 u 等於 x 下標 1 加 x 下標 2 等於 2。下面板是轉換之後的平面，橫軸標 v 並標出 0 與 1，縱軸標 u 並標出 1 與 2；淡紅色填滿的是一個向右上傾斜的平行四邊形，四個頂點依序落在原點、橫一縱一、橫一縱二與橫零縱一。平行四邊形的兩條斜邊各以實線向兩端延長，右上那條標 v 等於 u 減 1，左下那條標 v 等於 u，平行四邊形的右邊亦以實線畫出。另有三條虛線，兩條分別自縱軸的 1 與 2 向右畫到平行四邊形，一條自橫軸的 1 向上畫到平行四邊形的下方頂點。">
   <figcaption><span class="topic-figure__label">Fig. 3.22.</span> 上面板是轉換之前的 $(x_1,x_2)$ 平面，正方形值域上畫出 $u=x_1+x_2$ 等於 <span class="text-nowrap">$0$、</span>$1$ 與 $2$ 的三條線，中間那條是虛線。下面板是轉換之後的 $(v,u)$ 平面，值域成為 $v=u$ 與 $v=u-1$ 兩條線之間、$v$ 由 $0$ 到 $1$ 的平行四邊形。兩個面板取同一個單位長，正方形的邊與平行四邊形的邊因此可以直接比對。</figcaption>
 </figure>
 
@@ -531,7 +531,7 @@ $$
 {: .topic-paren-cont}
 
 <figure id="fig-sum-range-two-cases" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/sum-range-two-cases.svg" alt="上下兩個面板各畫一個相同的正方形，正方形的上邊與右邊以實線描出，左邊與下邊落在兩條帶箭頭的座標軸上。兩個面板的橫軸右端都標 x 下標 1，縱軸上端都標 x 下標 2，原點下方都標 0，橫軸與縱軸上也各標一個 1。上面板有一條由左上往右下的實線切過正方形的左下角，該線的左上端標 u 等於 x 下標 1 加 x 下標 2，實線與兩軸所圍成的三角形以淡紅色填滿，面板下方標 0 小於 u 小於 1。下面板的實線與上面板平行但位置較高，改為切過正方形的右上角，該線的右下端標 u 等於 x 下標 1 加 x 下標 2，填色的範圍成為整個正方形扣掉右上角的三角形，面板下方標 1 小於等於 u 小於 2。">
+  <img src="/images/lecture-notes/sum-range-two-cases.svg" alt="上下兩個面板各畫一個相同的正方形，正方形的上邊與右邊以實線描出，左邊與下邊落在兩條帶箭頭的座標軸上。兩個面板的橫軸右端都標 x 下標 1，縱軸上端都標 x 下標 2，原點下方都標 0，橫軸與縱軸上也各標一個 1。上面板有一條由左上往右下的實線切過正方形的左下角，該線的左上端標 u 等於 x 下標 1 加 x 下標 2，實線與兩軸所圍成的三角形以淡紅色填滿，面板下方標 0 小於 u 小於 1。下面板的實線與上面板平行但位置較高，改為切過正方形的右上角，該線的右下端標 u 等於 x 下標 1 加 x 下標 2，填色的範圍成為整個正方形扣掉右上角的三角形，面板下方標 1 小於等於 u 小於 2。">
   <figcaption><span class="topic-figure__label">Fig. 3.23.</span> 兩個面板畫的都是 $U\leqslant u$ 在 $(x_1,x_2)$ 平面上所涵蓋的範圍。上面板取 <span class="text-nowrap">$0<u<1$，</span>界線 $u=x_1+x_2$ 與兩軸圍成一個三角形；下面板取 <span class="text-nowrap">$1\leqslant u<2$，</span>界線已越過正方形，涵蓋的範圍成為正方形扣掉右上角的三角形，兩段的積分因而要分開處理。</figcaption>
 </figure>
 
@@ -651,7 +651,7 @@ $$
 
 </div>
 
-此即 <span class="text-nowrap">$W_i\overset{\mathrm{iid}}{\sim}\mathrm{Exp}(\beta=2)$，</span>則由 [Gamma 分配](/teaching-topics/gamma-distribution/#def-gamma-distribution)的可加性可知
+此即 <span class="text-nowrap">$W_i\overset{\mathrm{iid}}{\sim}\mathrm{Exp}(\beta=2)$，</span>則由 [Gamma 分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)的可加性可知
 {: .topic-paren-cont}
 
 $$
@@ -691,7 +691,7 @@ F_{\sssig X_{\sssig (n)}}(x)&=\mathbb{P}(X_{\sssig (n)}\leqslant x)=\mathbb{P}(X
 &=\mathbb{P}(X_1\leqslant x)\,\mathbb{P}(X_2\leqslant x)\cdots\mathbb{P}(X_n\leqslant x) &&\bigl[\ \because X_1,\ldots,X_n\ \text{獨立}\ \bigr]\\[0.45em]
 &=F_{\sssig X_1}(x)\,F_{\sssig X_2}(x)\cdots F_{\sssig X_n}(x)=\bigl[F_{\sssig X_1}(x)\bigr]^{n} &&\bigl[\ \because X_1,\ldots,X_n\ \text{同分配}\ \bigr]\\[0.45em]
 &=\left\lbrace
-\begin{array}{cl}
+\begin{array}{c@{\quad}l}
 0 &,\ x<0\\[0.3em]
 x^{n} &,\ 0\leqslant x<1\\[0.3em]
 1 &,\ x\geqslant1
@@ -713,7 +713,7 @@ F_{\sssig X_{\sssig (n)}}(x)&=\mathbb{P}(X_{\sssig (n)}\leqslant x)\\[0.45em]
 &=\bigl[F_{\sssig X_1}(x)\bigr]^{n}\\[0.25em]
 &\quad \bigl[\ \because X_1,\ldots,X_n\ \text{同分配}\ \bigr]\\[0.45em]
 &=\left\lbrace
-\begin{array}{cl}
+\begin{array}{c@{}l}
 0 &,\ x<0\\[0.3em]
 x^{n} &,\ 0\leqslant x<1\\[0.3em]
 1 &,\ x\geqslant1
@@ -783,13 +783,13 @@ $$
 
 「排序」其實也是一種函數轉換，而「取排序後最大者」則是一種多轉一的轉換。
 
-事實上，「排序」在統計學中被稱作[順序統計量](/teaching-topics/order-statistics/#def-order-stat) <span lang="en">(order statistics)</span>，我們馬上就會看到其相關的性質。
+事實上，「排序」在統計學中被稱作[順序統計量](/lecture-notes/order-statistics/#def-order-stat) <span lang="en">(order statistics)</span>，我們馬上就會看到其相關的性質。
 
 </div>
 
 ## 本篇小結
 
-[Example 3.57](#ex-independent-mgf-difference) 把 mgf 法與 Jacobian 法接在同一道題裡。前半只用到獨立時 mgf 相乘這一點，$M_{\sssig U}(t)$ $=$ $M_{\sssig X}(3t)\,M_{\sssig Y}(2t)$ 化簡之後是 <span class="text-nowrap">$(1-6t)^{-5}$，</span>由唯一性即知 $U$ $=$ $3X+2Y$ 服從 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=5,\beta=6)$。</span>後半要求的是 $V$ 的期望值與變異數，而 $V$ 並不是線性組合，[Theorem 3.23](/teaching-topics/mgf-method-transformations/#thm-mgf-two-to-one) 用不上，作法改為由唯一性回推 $X$ 與 $Y$ 的 pdf，寫出聯合 pdf 之後再以 Jacobian 法轉到 $(U,V)$ 上；轉換後的聯合 pdf 恰好拆成一個只含 $u$ 的因式與一個只含 $v$ 的因式，因此 $U$ 與 $V$ 獨立，而 $V$ 服從 <span class="text-nowrap">$\mathrm{Beta}(\alpha=2,\beta=3)$，</span>期望值與變異數分別為 $\frac{2}{5}$ 與 <span class="text-nowrap">$\frac{1}{25}$。</span>
+[Example 3.57](#ex-independent-mgf-difference) 把 mgf 法與 Jacobian 法接在同一道題裡。前半只用到獨立時 mgf 相乘這一點，$M_{\sssig U}(t)$ $=$ $M_{\sssig X}(3t)\,M_{\sssig Y}(2t)$ 化簡之後是 <span class="text-nowrap">$(1-6t)^{-5}$，</span>由唯一性即知 $U$ $=$ $3X+2Y$ 服從 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=5,\beta=6)$。</span>後半要求的是 $V$ 的期望值與變異數，而 $V$ 並不是線性組合，[Theorem 3.23](/lecture-notes/mgf-method-transformations/#thm-mgf-two-to-one) 用不上，作法改為由唯一性回推 $X$ 與 $Y$ 的 pdf，寫出聯合 pdf 之後再以 Jacobian 法轉到 $(U,V)$ 上；轉換後的聯合 pdf 恰好拆成一個只含 $u$ 的因式與一個只含 $v$ 的因式，因此 $U$ 與 $V$ 獨立，而 $V$ 服從 <span class="text-nowrap">$\mathrm{Beta}(\alpha=2,\beta=3)$，</span>期望值與變異數分別為 $\frac{2}{5}$ 與 <span class="text-nowrap">$\frac{1}{25}$。</span>
 
 [Example 3.58](#ex-random-sample-mgf-mean) 是線性組合的一個特例。樣本平均也是一種針對樣本的線性組合，只是每個樣本的權重同為 <span class="text-nowrap">$\frac{1}{n}$，</span>因此把 $\frac{t}{n}$ 代入每一項的 mgf 再相乘即可，所得的 $e^{\mu t+\frac{\sigma^{2}}{n}\frac{t^{2}}{2}}$ 仍是常態分配的 mgf，只是變異數縮成 <span class="text-nowrap">$\frac{\sigma^{2}}{n}$。</span>常態分配的任意線性組合都仍是常態分配，這是常態分配特有的仿射變換性質。
 
@@ -797,7 +797,7 @@ $$
 
 第一小題的三張圖說明的是同一件事的兩種看法。Jacobian 法的那兩張把單位正方形依 $u=x_1+x_2$ 與 $v=x_1$ 重新畫成 $(v,u)$ 平面上的平行四邊形，$U$ 與 $V$ 的聯合值域一目瞭然；cdf 法的那一張則留在原座標系上，$0<u<1$ 時所求區域是一個三角形，$1\leqslant u<2$ 時改成整個正方形扣掉右上角的三角形，這正是求 $\mathbb{P}(U>u)$ 反而比較好算的原因。
 
-[下一篇](/teaching-topics/order-statistics/)正式給出順序統計量的定義，並以三道例題處理順序統計量的聯合 pdf 與相關的機率計算。
+[下一篇](/lecture-notes/order-statistics/)正式給出順序統計量的定義，並以三道例題處理順序統計量的聯合 pdf 與相關的機率計算。
 
 ## 參考文獻與延伸閱讀
 

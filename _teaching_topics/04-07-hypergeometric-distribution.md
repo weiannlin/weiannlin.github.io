@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 4
 topic: 7
 order: 407
-permalink: /teaching-topics/hypergeometric-distribution/
+permalink: /lecture-notes/hypergeometric-distribution/
 date: 2026-08-12
 published: false
 excerpt: "超幾何分配描述有限母體以取後不放回的方式抽樣時，抽出的 $n$ 個元素中成功類的個數。本篇先給出驗證機率函數合法所需要的汎德蒙等式，再依序給出超幾何實驗與超幾何分配的定義，並完整推導其期望值與變異數。其後的六點說明談到組合符號的定義限制、變異數中的有限母體校正因子、取後放回時超幾何分配與二項分配的對應，以及動差母函數在此略去不談的原因。最後以電視管驗收與大學註冊率兩道例題作為演練。"
 ---
 
-[上一篇](/teaching-topics/negative-binomial-distribution/)的[負二項分配](/teaching-topics/negative-binomial-distribution/#def-negative-binomial)仍然建立在伯努利實驗之上，每一次實驗的成功機率固定，實驗與實驗之間也彼此獨立。本篇要處理的情形則不同: 母體只有有限多個元素，而且抽出的元素不再放回，因此每抽一次，母體的組成就改變一次，成功類所佔的比例也隨之改變。在這樣的抽樣方式之下，抽出的元素中成功類的個數所服從的分配，即為本篇的超幾何分配。
+[上一篇](/lecture-notes/negative-binomial-distribution/)的[負二項分配](/lecture-notes/negative-binomial-distribution/#def-negative-binomial)仍然建立在伯努利實驗之上，每一次實驗的成功機率固定，實驗與實驗之間也彼此獨立。本篇要處理的情形則不同: 母體只有有限多個元素，而且抽出的元素不再放回，因此每抽一次，母體的組成就改變一次，成功類所佔的比例也隨之改變。在這樣的抽樣方式之下，抽出的元素中成功類的個數所服從的分配，即為本篇的超幾何分配。
 
-驗證[二項分配](/teaching-topics/binomial-distribution/#def-binomial)的機率函數合法時，我們用的是 [Theorem 2.18](/teaching-topics/moment-system/#thm-binomial) 的二項式定理；在超幾何分配這裡，所需要的工具則是[汎德蒙等式](#thm-vandermonde-identity)。本篇因而先由這個等式談起，再依序給出超幾何實驗與超幾何分配的定義，接著證明其機率函數合法並推導期望值與變異數，最後以兩道例題作為演練。
+驗證[二項分配](/lecture-notes/binomial-distribution/#def-binomial)的機率函數合法時，我們用的是 [Theorem 2.18](/lecture-notes/moment-system/#thm-binomial) 的二項式定理；在超幾何分配這裡，所需要的工具則是[汎德蒙等式](#thm-vandermonde-identity)。本篇因而先由這個等式談起，再依序給出超幾何實驗與超幾何分配的定義，接著證明其機率函數合法並推導期望值與變異數，最後以兩道例題作為演練。
 
 ## 汎德蒙等式
 
@@ -349,7 +349,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者或許還記得，我們曾在[第三章的一道範例](/teaching-topics/variance-of-linear-combination/#ex-hypergeometric-variance)談過超幾何分配的期望值與變異數的證明，只是由於設計不同的緣故，當時我們的證明方式與現在略有不同，但讀者仍可互相參照。
+讀者或許還記得，我們曾在[第三章的一道範例](/lecture-notes/variance-of-linear-combination/#ex-hypergeometric-variance)談過超幾何分配的期望值與變異數的證明，只是由於設計不同的緣故，當時我們的證明方式與現在略有不同，但讀者仍可互相參照。
 
 </div>
 
@@ -370,7 +370,7 @@ $$
 
 </div>
 
-(3) 在超幾何分配的變異數中有一個 $\Bigl(\frac{N-n}{N-1}\Bigr)$ 的項，這正是我們曾在[第三章的那道範例](/teaching-topics/variance-of-linear-combination/#ex-hypergeometric-variance)談過的**有限母體校正因子 <span lang="en">(finite population correction factor, FPC factor)</span>**。
+(3) 在超幾何分配的變異數中有一個 $\Bigl(\frac{N-n}{N-1}\Bigr)$ 的項，這正是我們曾在[第三章的那道範例](/lecture-notes/variance-of-linear-combination/#ex-hypergeometric-variance)談過的**有限母體校正因子 <span lang="en">(finite population correction factor, FPC factor)</span>**。
 {: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -621,13 +621,13 @@ $$
 
 [Theorem 4.8](#thm-vandermonde-identity) 的汎德蒙等式把 $\binom{N}{n}$ 這個組合數拆成一連串乘積之和，證明的作法是比較 $(1+x)^{K}(1+x)^{N-K}=(1+x)^{N}$ 兩邊 $x^{n}$ 的係數，左邊依二項式定理展開之後再合併同次項，右邊則直接由二項式定理得到。這個等式在本篇一共用了三次: 一次驗證機率函數的加總為 $1$ 這件事，另外兩次分別出現在期望值與階乘動差的最後一步。
 
-[Definition 4.8](#def-hypergeometric-experiment) 的超幾何實驗把有限母體分成成功類與失敗類，並以取後不放回的方式抽出 $n$ 個元素；[Definition 4.9](#def-hypergeometric) 的超幾何分配則以 $X$ 記錄這 $n$ 個元素中成功類的個數。與[二項分配](/teaching-topics/binomial-distribution/#def-binomial)相比，最明顯的差別有兩處: 值域的兩端要受 $\mathrm{max}(0,n+K-N)$ 與 $\mathrm{min}(n,K)$ 這兩個數限制，而變異數比二項分配多出一個因子。期望值為 $n(K/N)$ 這個式子，與二項分配把 $p$ 換成母體中成功類的比例之後完全相同。
+[Definition 4.8](#def-hypergeometric-experiment) 的超幾何實驗把有限母體分成成功類與失敗類，並以取後不放回的方式抽出 $n$ 個元素；[Definition 4.9](#def-hypergeometric) 的超幾何分配則以 $X$ 記錄這 $n$ 個元素中成功類的個數。與[二項分配](/lecture-notes/binomial-distribution/#def-binomial)相比，最明顯的差別有兩處: 值域的兩端要受 $\mathrm{max}(0,n+K-N)$ 與 $\mathrm{min}(n,K)$ 這兩個數限制，而變異數比二項分配多出一個因子。期望值為 $n(K/N)$ 這個式子，與二項分配把 $p$ 換成母體中成功類的比例之後完全相同。
 
 定義之後的六點說明依序處理了幾件事。第一點是完整的證明；第二點指出組合符號的定義限制，抽取數量比其中一類的總數還多時，對應的乘積被定義為零，汎德蒙等式的加總因而可以寫成由 $0$ 到 <span class="text-nowrap">$n$；</span>第三點與第四點指出變異數中多出來的那個因子即為有限母體校正因子，取後放回時它會消失，只抽一個元素時它等於 <span class="text-nowrap">$1$，</span>兩種情形都不需要校正；第五點與第六點分別交代校正在實務上何時可以省去，以及動差母函數為何在此略去不談。
 
 [Example 4.19](#ex-hypergeometric-1) 是直接的驗收計算，把「壞掉的個數不超過兩個」拆成三項相加。[Example 4.20](#ex-hypergeometric-2) 則把同一份資料用了三次: 前兩小題分別以註冊率的四分位數與學校所在地界定成功類，兩者都是取後不放回，因而使用超幾何分配；第三小題改為取後放回，母體結構不再改變，模型隨之換成二項分配，正好與第四點的說明前後呼應。
 
-[下一篇](/teaching-topics/poisson-process-and-distribution/)離開伯努利實驗這一系列的模型，轉入卜瓦松過程，先給出卜瓦松過程的五個條件，再由指數函數的馬克勞林級數導出卜瓦松分配。
+[下一篇](/lecture-notes/poisson-process-and-distribution/)離開伯努利實驗這一系列的模型，轉入卜瓦松過程，先給出卜瓦松過程的五個條件，再由指數函數的馬克勞林級數導出卜瓦松分配。
 
 ## 參考文獻與延伸閱讀
 

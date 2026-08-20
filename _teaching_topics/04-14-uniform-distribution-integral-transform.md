@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 4
 topic: 14
 order: 414
-permalink: /teaching-topics/uniform-distribution-integral-transform/
+permalink: /lecture-notes/uniform-distribution-integral-transform/
 date: 2026-08-12
 published: false
 excerpt: "均勻分配的機率密度在整個值域上處處相同，它的 cdf 是唯一一條直線，而其中的標準均勻分配 $\\mathcal{U}(0,\\ 1)$ 更把這條直線變成恆等函數，變數值本身就是累積機率。本篇先給出均勻分配的定義，完整推導期望值 $\\frac{a+b}{2}$、變異數 $\\frac{(b-a)^{2}}{12}$ 與動差母函數，再證明任何一個均勻分配都可以由標準均勻分配先伸縮 $b-a$ 倍、再平移 $a$ 而得。由於這個轉換所用的函數正是該均勻分配自己的 cdf，同樣的手法可以推廣到任意的連續分配，這就是機率積分轉換與逆機率積分轉換兩個定理的內容。最後以三道例題演練均勻分配的截尾期望值、以自己的 cdf 轉換之後所得變數的分配，以及如何由標準均勻分配生出指數分配。"
 ---
 
-[上一篇](/teaching-topics/weibull-reliability-and-hazard/)以[韋伯分配](/teaching-topics/weibull-reliability-and-hazard/#def-weibull-distribution)、[可靠度函數](/teaching-topics/weibull-reliability-and-hazard/#def-reliability-function)與[風險函數](/teaching-topics/weibull-reliability-and-hazard/#def-hazard-function)作結，卜瓦松過程所衍生的各個機率模型至此全部給出。本篇轉入第三大類的機率模型，也就是與貝塔分配相關的一系列分配，而這一類之中最基本的一個，是值域上每一個點都具有相同機率密度的均勻分配。
+[上一篇](/lecture-notes/weibull-reliability-and-hazard/)以[韋伯分配](/lecture-notes/weibull-reliability-and-hazard/#def-weibull-distribution)、[可靠度函數](/lecture-notes/weibull-reliability-and-hazard/#def-reliability-function)與[風險函數](/lecture-notes/weibull-reliability-and-hazard/#def-hazard-function)作結，卜瓦松過程所衍生的各個機率模型至此全部給出。本篇轉入第三大類的機率模型，也就是與貝塔分配相關的一系列分配，而這一類之中最基本的一個，是值域上每一個點都具有相同機率密度的均勻分配。
 
-均勻分配的 cdf 是一條直線，其中的標準均勻分配更把這條直線變成恆等函數，變數值本身就代表累積機率。本篇先給出均勻分配的定義並完整推導其期望值、變異數與動差母函數，再說明所有的均勻分配都可以由標準均勻分配伸縮平移而得。由於這個轉換所用的函數正是該均勻分配自己的 cdf，同樣的手法可以推廣到任意的連續分配，機率積分轉換與逆機率積分轉換兩個定理就是這樣來的；這兩個定理在第二章的 [Proposition 2.4](/teaching-topics/one-to-one-transformations/#prop-probability-integral-transform) 曾經先行敘述，本篇把它們放回均勻分配的脈絡之中。最後以三道例題作為演練。
+均勻分配的 cdf 是一條直線，其中的標準均勻分配更把這條直線變成恆等函數，變數值本身就代表累積機率。本篇先給出均勻分配的定義並完整推導其期望值、變異數與動差母函數，再說明所有的均勻分配都可以由標準均勻分配伸縮平移而得。由於這個轉換所用的函數正是該均勻分配自己的 cdf，同樣的手法可以推廣到任意的連續分配，機率積分轉換與逆機率積分轉換兩個定理就是這樣來的；這兩個定理在第二章的 [Proposition 2.4](/lecture-notes/one-to-one-transformations/#prop-probability-integral-transform) 曾經先行敘述，本篇把它們放回均勻分配的脈絡之中。最後以三道例題作為演練。
 
 ## 均勻分配
 
@@ -72,7 +72,7 @@ $$
 \mathbb{E}(X)&=\frac{\,a+b\,}{2},\\[0.5em]
 \mathrm{Var}(X)&=\frac{\,(b-a)^{2}\,}{12}\\[0.5em]
 M_{\sssig X}(t)&=\left\lbrace
-\begin{array}{c@{\quad}l}
+\begin{array}{c@{}l}
 \dfrac{\,e^{bt}-e^{at}\,}{(b-a)t}, & t\neq0\\[0.9em]
 1, & t=0
 \end{array}
@@ -200,13 +200,13 @@ $$
 M_{\sssig X}(t)&=\mathbb{E}\bigl(e^{tX}\bigr)\\[0.45em]
 &=\int_{a}^{b}e^{tx}\frac{1}{\,b-a\,}dx=\frac{1}{\,b-a\,}\int_{a}^{b}e^{tx}\,dx\\[0.45em]
 &=\left\lbrace
-\begin{array}{c@{\ \,}l}
+\begin{array}{c@{}l}
 \left[\dfrac{e^{tx}}{\,(b-a)t\,}\right]^{b}_{a}, & t\neq0\\[0.8em]
 1, & t=0
 \end{array}
 \right.\\[0.45em]
 &=\left\lbrace
-\begin{array}{c@{\ \,}l}
+\begin{array}{c@{}l}
 \dfrac{\,e^{bt}-e^{at}\,}{(b-a)t}, & t\neq0\\[0.8em]
 1, & t=0
 \end{array}
@@ -313,7 +313,7 @@ F_{\sssig Y}(y)&=\mathbb{P}(Y\leqslant y)\\[0.45em]
 &=\mathbb{P}\bigl((b-a)U+a\leqslant y\bigr)\\[0.45em]
 &=\mathbb{P}\left(U\leqslant\frac{\,y-a\,}{b-a}\right)\\[0.45em]
 &=\left\lbrace
-\begin{array}{c@{\quad}l}
+\begin{array}{c@{}l}
 0, & y<a\\[0.5em]
 \dfrac{\,y-a\,}{b-a}, & a\leqslant y\leqslant b\\[0.7em]
 1, & y>b
@@ -476,7 +476,7 @@ $$
 至於為什麼是以 $X$ 的 cdf $F_{\sssig X}(\cdot)$ 作為 $\mathcal{U}(0,\ 1)$ 分配與任意 $X$ 的分配間聯繫的橋樑，其實是因為 $X$ 的 cdf $F_{\sssig X}(\cdot)$ 記錄了關於 $X$ 的所有特殊的資訊，其中包含關於伸縮回恆等函數所需要的訊息，都被完整地記錄下來，其概念可以由下方的兩張圖理解:
 
 <figure id="fig-uniform-cdf-identity" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/uniform-cdf-identity.svg" alt="上下兩個面板，各有一條帶箭頭的橫軸與一條帶箭頭的鉛直軸。上面板的鉛直軸頂端標 F_U(u)，橫軸右端標 u，主線是一條由原點往右上、與兩軸各成四十五度的直線段。鉛直軸上兩處刻度由下而上標 F_U(a) 等於 a 與 F_U(b) 等於 b，橫軸上兩處刻度由左至右標 a 與 b。兩組虛線各自由鉛直軸的刻度水平拉到直線上，再由該點垂直落到橫軸的刻度。下面板的鉛直軸頂端標 F_X(x)，橫軸右端標 x，主線是一條先緩後陡再轉緩的 S 形遞增曲線，右端趨近一個固定高度之後不再上升。鉛直軸上兩處刻度由下而上標 F_X(a) 與 F_X(b)，橫軸上兩處刻度由左至右標 a 與 b，兩組虛線同樣由鉛直軸的刻度水平拉到曲線上，再垂直落到橫軸的刻度。兩個面板都沒有其他刻度數值，也沒有填色。">
+  <img src="/images/lecture-notes/uniform-cdf-identity.svg" alt="上下兩個面板，各有一條帶箭頭的橫軸與一條帶箭頭的鉛直軸。上面板的鉛直軸頂端標 F_U(u)，橫軸右端標 u，主線是一條由原點往右上、與兩軸各成四十五度的直線段。鉛直軸上兩處刻度由下而上標 F_U(a) 等於 a 與 F_U(b) 等於 b，橫軸上兩處刻度由左至右標 a 與 b。兩組虛線各自由鉛直軸的刻度水平拉到直線上，再由該點垂直落到橫軸的刻度。下面板的鉛直軸頂端標 F_X(x)，橫軸右端標 x，主線是一條先緩後陡再轉緩的 S 形遞增曲線，右端趨近一個固定高度之後不再上升。鉛直軸上兩處刻度由下而上標 F_X(a) 與 F_X(b)，橫軸上兩處刻度由左至右標 a 與 b，兩組虛線同樣由鉛直軸的刻度水平拉到曲線上，再垂直落到橫軸的刻度。兩個面板都沒有其他刻度數值，也沒有填色。">
   <figcaption><span class="topic-figure__label">Fig. 4.2.</span> 兩個面板各畫一條 cdf。一條在 $0$ 與 $1$ 之間是恆等函數，$a$ 與 $b$ 兩點的 cdf 值 $F_{\sssig U}(a)$ 與 $F_{\sssig U}(b)$ 恰好等於 $a$ 與 $b$ 本身；另一條是一般的 <span class="text-nowrap">cdf，</span>同樣兩點的 $F_{\sssig X}(a)$ 與 $F_{\sssig X}(b)$ 則由曲線的高度決定。把一般的 cdf 伸縮回恆等函數所需要的訊息，全部記在 <span class="text-nowrap">$F_{\sssig X}(\cdot)$ 之中。</span></figcaption>
 </figure>
 
@@ -606,7 +606,7 @@ $$
 \begin{aligned}
 Y&\sim\mathcal{U}(0,\ 1),\\[0.6em]
 f_{\sssig Y}(y)&=\left\lbrace
-\begin{array}{c@{\quad}l}
+\begin{array}{c@{}l}
 1, & 0<y<1\\[0.35em]
 0, & \text{o.w.}
 \end{array}
@@ -714,9 +714,9 @@ $$
 
 把上一段最後這件事推廣到任意的連續分配，就是 [Theorem 4.17](#thm-p-i-t) 與 [Theorem 4.18](#thm-i-p-i-t)。前者說明以 $X$ 自己的 cdf 作轉換所得的 $U=F_{\sssig X}(X)$ 服從標準均勻分配，證明只用到 cdf 非遞減、以及標準均勻分配是唯一一個 cdf 在 $[0,1]$ 上為恆等函數的分配這兩點；後者是它的反敘述，以非遞減函數 $g(\cdot)$ 的反函數轉換標準均勻分配，所得變數的 cdf 就是 $g(\cdot)$ 這個函數。兩者其實是同一組關係式的兩個方向，也就是 $U=F\_{\sssig X}(X)$ 與 $X=F^{-1}\_{\sssig X}(U)$ 這兩個寫法；之所以能夠以 cdf 當作橋樑，是因為把一般的 cdf「拉伸」回恆等函數所需要的資訊，本來就完整地記錄在 cdf 之中。逆機率積分轉換在實務上的用途極廣，因為運算系統所能提供的隨機來源只有 $0$ 到 $1$ 之間的亂數，各式分配的隨機變數都要靠它生出來。
 
-三道例題各練一種用法。[Example 4.38](#ex-uniform-1) 先由截尾分配的定義求出條件密度為常數 <span class="text-nowrap">$4$，</span>再積分得到 <span class="text-nowrap">$\frac{1}{\,8\,}$；</span>由於限制範圍並不改變密度在該範圍內的形狀，均勻分配的截尾分配必定還是均勻分配。[Example 4.39](#ex-uniform-2) 正是機率積分轉換的直接應用，$Y=F_{\sssig X}(X)$ 服從 <span class="text-nowrap">$\mathcal{U}(0,\ 1)$，</span>密度在 $(0,1)$ 上恆為 <span class="text-nowrap">$1$，</span>變異數為 <span class="text-nowrap">$\frac{1}{\,12\,}$。</span>[Example 4.40](#ex-uniform-3) 則把兩個方向各走一次: 先取 $g$ 為[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution)自己的 cdf 而得到標準均勻分配，再反解出 $X=-\lambda\ln(1-U)$ 這個式子，由標準均勻分配生回指數分配；操作逆機率積分轉換時，一定要先求出目標分配的 cdf，才知道該用哪一個反函數。
+三道例題各練一種用法。[Example 4.38](#ex-uniform-1) 先由截尾分配的定義求出條件密度為常數 <span class="text-nowrap">$4$，</span>再積分得到 <span class="text-nowrap">$\frac{1}{\,8\,}$；</span>由於限制範圍並不改變密度在該範圍內的形狀，均勻分配的截尾分配必定還是均勻分配。[Example 4.39](#ex-uniform-2) 正是機率積分轉換的直接應用，$Y=F_{\sssig X}(X)$ 服從 <span class="text-nowrap">$\mathcal{U}(0,\ 1)$，</span>密度在 $(0,1)$ 上恆為 <span class="text-nowrap">$1$，</span>變異數為 <span class="text-nowrap">$\frac{1}{\,12\,}$。</span>[Example 4.40](#ex-uniform-3) 則把兩個方向各走一次: 先取 $g$ 為[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)自己的 cdf 而得到標準均勻分配，再反解出 $X=-\lambda\ln(1-U)$ 這個式子，由標準均勻分配生回指數分配；操作逆機率積分轉換時，一定要先求出目標分配的 cdf，才知道該用哪一個反函數。
 
-[下一篇](/teaching-topics/beta-function-and-distribution/)介紹貝塔函數與貝塔分配，貝塔分配的值域同樣落在 $0$ 與 $1$ 之間，而標準均勻分配正是它的一個特例。
+[下一篇](/lecture-notes/beta-function-and-distribution/)介紹貝塔函數與貝塔分配，貝塔分配的值域同樣落在 $0$ 與 $1$ 之間，而標準均勻分配正是它的一個特例。
 
 ## 參考文獻與延伸閱讀
 

@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 4
 topic: 21
 order: 421
-permalink: /teaching-topics/student-t-distribution/
+permalink: /lecture-notes/student-t-distribution/
 date: 2026-08-15
 published: false
 excerpt: "司徒頓 $t$ 分配的建構有賴於一個標準常態變數與一個與之獨立的卡方變數，兩者相除之後所得的商即服從 $t$ 分配，其自由度就是該卡方變數的自由度。本篇先給出定義與機率函數，再借助這個建構式與兩者的獨立性逐階求出各階原動差: 期望值為 $0$、變異數為 $\\frac{\\nu}{\\nu-2}$、偏態係數為 $0$，而峰態係數為 $\\frac{3(\\nu-2)}{\\nu-4}$，並說明自由度不足時各階動差為何發散。接著依序說明自由度趨於無窮時 $t$ 分配收斂至標準常態分配、自由度為 $1$ 時即為標準柯西分配，以及自由度較大者在相同右尾機率之下右尾點較小這件事。最後轉入常態母體下的抽樣分配，證明 $\\frac{\\overline{X}-\\mu}{S/\\sqrt{n}}$ 服從 $t(n-1)$ 分配，並一併整理 $\\sigma^{2}$ 已知時樣本平均數的抽樣分配與樣本變異數的抽樣分配。"
 ---
 
-[上一篇](/teaching-topics/chi-squared-distribution/)給出[卡方分配](/teaching-topics/chi-squared-distribution/#def-chi-distribution)的定義，並以[科克蘭定理](/teaching-topics/chi-squared-distribution/#thm-cochran-theorem) <span lang="en">(Cochran’s Theorem)</span> 處理常態隨機樣本的平方和如何拆解成兩個獨立的卡方變數。本篇接著介紹常用抽樣分配中的第三個，也就是司徒頓 $t$ 分配。
+[上一篇](/lecture-notes/chi-squared-distribution/)給出[卡方分配](/lecture-notes/chi-squared-distribution/#def-chi-distribution)的定義，並以[科克蘭定理](/lecture-notes/chi-squared-distribution/#thm-cochran-theorem) <span lang="en">(Cochran’s Theorem)</span> 處理常態隨機樣本的平方和如何拆解成兩個獨立的卡方變數。本篇接著介紹常用抽樣分配中的第三個，也就是司徒頓 $t$ 分配。
 
-$t$ 分配的建構有賴於一個標準常態變數與一個與之獨立的卡方變數，其自由度即為該卡方變數的自由度。本篇先給出定義與機率函數，再由這個建構式逐階求出各階原動差，並說明自由度不足時各階動差為何發散。接著依序說明 $t$ 分配與[標準常態分配](/teaching-topics/normal-distribution/#def-normal)的關係、自由度為 $1$ 的特例，以及不同自由度之下密度曲線的形狀。
+$t$ 分配的建構有賴於一個標準常態變數與一個與之獨立的卡方變數，其自由度即為該卡方變數的自由度。本篇先給出定義與機率函數，再由這個建構式逐階求出各階原動差，並說明自由度不足時各階動差為何發散。接著依序說明 $t$ 分配與[標準常態分配](/lecture-notes/normal-distribution/#def-normal)的關係、自由度為 $1$ 的特例，以及不同自由度之下密度曲線的形狀。
 
 其後以一道例題檢驗這幾項性質，並由圖形比較不同自由度的右尾點。最後轉入常態母體下的抽樣分配，證明 $\sigma^{2}$ 未知時樣本平均數所對應的統計量服從 $t$ 分配，並一併整理常態母體下另外三個常用的抽樣分配結果。
 
@@ -251,11 +251,11 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-$t$ 分配各階原動差的證明，使用到卡方分配的 $k$ 階原動差，讀者可以利用卡方分配也是一種[伽瑪分配](/teaching-topics/gamma-distribution/#def-gamma-distribution)的特色，參考該篇中 $k$ 階原動差的證明計算。
+$t$ 分配各階原動差的證明，使用到卡方分配的 $k$ 階原動差，讀者可以利用卡方分配也是一種[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)的特色，參考該篇中 $k$ 階原動差的證明計算。
 
 特別的是，當時我們特別指出 <span class="text-nowrap">$k\in\bigl(\lbrace0\rbrace\cup\mathbb{N}\bigr)$，</span>便是為了避免如此處的狀況，也就是當 $\alpha+k$ 是負值時，原動差將發散，這也是 $t(\nu)$ 分配的 $\nu$ 階動差及更高次的動差都不存在的原因。
 
-此外，在證明各種形狀參數的過程中，有時會使用到標準常態分配的特性，譬如 $\mathbb{E}\bigl(Z^{4}\bigr)=3$ 即為標準常態分配的[峰態係數](/teaching-topics/measures-of-shape/#def-kurtosis)，再搭配原動差轉主動差的計算技巧，可以得到各種形狀參數。這些技巧與知識在稍早的章節中已經提過，便不再贅述。
+此外，在證明各種形狀參數的過程中，有時會使用到標準常態分配的特性，譬如 $\mathbb{E}\bigl(Z^{4}\bigr)=3$ 即為標準常態分配的[峰態係數](/lecture-notes/measures-of-shape/#def-kurtosis)，再搭配原動差轉主動差的計算技巧，可以得到各種形狀參數。這些技巧與知識在稍早的章節中已經提過，便不再贅述。
 
 </div>
 
@@ -303,7 +303,7 @@ $$
 {: .topic-paren-item}
 
 <figure id="fig-student-t-density-family" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/student-t-density-family.svg" alt="一條水平座標軸，兩端各有一個箭頭，軸上有十三個刻度，由左至右標為負 6 到 6 的十三個整數，軸的右端標 t。座標軸上方有四條左右對稱的鐘形密度曲線，全部以 0 為中心，並在正負 2 附近彼此交叉。在中央，由低到高依序是點劃線、點線、虛線與一條較粗的實線；在兩側的尾部順序完全相反，點劃線最高，較粗的實線最低、也最早貼上座標軸。圖的右上角有一個圖例，四段短線由上而下依序標為 t 括號 1、t 括號 3、t 括號 10，以及花體 N 括號 0 逗號 1。">
+  <img src="/images/lecture-notes/student-t-density-family.svg" alt="一條水平座標軸，兩端各有一個箭頭，軸上有十三個刻度，由左至右標為負 6 到 6 的十三個整數，軸的右端標 t。座標軸上方有四條左右對稱的鐘形密度曲線，全部以 0 為中心，並在正負 2 附近彼此交叉。在中央，由低到高依序是點劃線、點線、虛線與一條較粗的實線；在兩側的尾部順序完全相反，點劃線最高，較粗的實線最低、也最早貼上座標軸。圖的右上角有一個圖例，四段短線由上而下依序標為 t 括號 1、t 括號 3、t 括號 10，以及花體 N 括號 0 逗號 1。">
   <figcaption><span class="topic-figure__label">Fig. 4.7.</span> 四條密度曲線畫在同一組座標軸上，都以 $0$ 為中心左右對稱。自由度愈小，中央的高度愈低，兩側的尾部愈厚；自由度愈大，曲線就愈貼近圖例中標為 $\mathcal{N}(0,1)$ 的那一條。</figcaption>
 </figure>
 
@@ -341,7 +341,7 @@ Determine which one of the following statements about the $t$ distribution is **
 關於 (D) 選項的敘述，讀者可以下圖進行比對:
 
 <figure id="fig-student-t-tail-comparison" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/student-t-tail-comparison.svg" alt="同一組座標上畫兩條左右對稱的鐘形密度曲線，只以線型分辨。虛線那一條的峰較高，兩側下降較快；實線那一條的峰較低，在離中央較遠處反而高於虛線，兩端的尾部拖得較長。橫軸右半邊有兩個刻度，較靠近中央的一個由虛線曲線垂直落下一條虛線到橫軸，軸下標 t_α(10)；較遠的一個由實線曲線垂直落下一條實線到橫軸，軸下標 t_α(1)。這兩個落點以右、曲線之下到橫軸之間的區域以淡紅色填滿，靠內的一段以虛線曲線為上界，過了較遠的落點之後改以實線曲線為上界，一路延伸到圖的右緣。橫軸中央另有一個刻度，其下另起一排標 0；橫軸右端有箭頭並標 t，圖中沒有縱軸，也沒有縱軸刻度。右上角的圖例分兩列，上列實線標 t(1)，下列虛線標 t(10)。">
+  <img src="/images/lecture-notes/student-t-tail-comparison.svg" alt="同一組座標上畫兩條左右對稱的鐘形密度曲線，只以線型分辨。虛線那一條的峰較高，兩側下降較快；實線那一條的峰較低，在離中央較遠處反而高於虛線，兩端的尾部拖得較長。橫軸右半邊有兩個刻度，較靠近中央的一個由虛線曲線垂直落下一條虛線到橫軸，軸下標 t_α(10)；較遠的一個由實線曲線垂直落下一條實線到橫軸，軸下標 t_α(1)。這兩個落點以右、曲線之下到橫軸之間的區域以淡紅色填滿，靠內的一段以虛線曲線為上界，過了較遠的落點之後改以實線曲線為上界，一路延伸到圖的右緣。橫軸中央另有一個刻度，其下另起一排標 0；橫軸右端有箭頭並標 t，圖中沒有縱軸，也沒有縱軸刻度。右上角的圖例分兩列，上列實線標 t(1)，下列虛線標 t(10)。">
   <figcaption><span class="topic-figure__label">Fig. 4.8.</span> 兩條密度曲線各取一塊機率相同的右尾，起點分別為 $t_{\alpha}(10)$ 與 <span class="text-nowrap">$t_{\alpha}(1)$，</span>前者落在後者的左邊。</figcaption>
 </figure>
 
@@ -460,7 +460,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-這個結果只要使用[常態分配的線性組合可加性](/teaching-topics/normal-distribution/)就可以很簡單地得到。 <span class="topic-qed">$\square$</span>
+這個結果只要使用[常態分配的線性組合可加性](/lecture-notes/normal-distribution/)就可以很簡單地得到。 <span class="topic-qed">$\square$</span>
 </div>
 
 **樣本變異數 $S^{2}$ 的抽樣分配 ($\mu$ 未知)**:
@@ -533,7 +533,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這些常用的抽樣分配除了前述的標準常態分配、卡方分配與司徒頓 $t$ 分配外，還包含馬上將要提到的**[斯內德克 $\mathcal{F}$ 分配](/teaching-topics/snedecor-f-distribution/#def-f-distribution) <span lang="en">(Snedecor’s $\mathcal{F}$ distribution)</span>**，我們通常將其並稱為統計四大常用抽樣分配。
+這些常用的抽樣分配除了前述的標準常態分配、卡方分配與司徒頓 $t$ 分配外，還包含馬上將要提到的**[斯內德克 $\mathcal{F}$ 分配](/lecture-notes/snedecor-f-distribution/#def-f-distribution) <span lang="en">(Snedecor’s $\mathcal{F}$ distribution)</span>**，我們通常將其並稱為統計四大常用抽樣分配。
 
 </div>
 
@@ -545,7 +545,7 @@ $$
 
 ## 本篇小結
 
-[Definition 4.23](#def-t-distribution) 的司徒頓 $t$ 分配以一個自由度 $\nu$ 界定，值域為整條實數線，機率函數有兩種等價的寫法，其中以[貝塔函數](/teaching-topics/beta-function-and-distribution/#def-beta-function)表達的那一種把常數項寫成 <span class="text-nowrap">$\frac{1}{\mathcal{B}(\frac{\nu}{2},\frac{1}{2})\sqrt{\nu}}$。</span>這個分配的期望值在 $\nu>1$ 時為 <span class="text-nowrap">$0$、</span>變異數在 $\nu>2$ 時為 <span class="text-nowrap">$\frac{\nu}{\nu-2}$，</span>而定義之中沒有列出動差母函數這一項。
+[Definition 4.23](#def-t-distribution) 的司徒頓 $t$ 分配以一個自由度 $\nu$ 界定，值域為整條實數線，機率函數有兩種等價的寫法，其中以[貝塔函數](/lecture-notes/beta-function-and-distribution/#def-beta-function)表達的那一種把常數項寫成 <span class="text-nowrap">$\frac{1}{\mathcal{B}(\frac{\nu}{2},\frac{1}{2})\sqrt{\nu}}$。</span>這個分配的期望值在 $\nu>1$ 時為 <span class="text-nowrap">$0$、</span>變異數在 $\nu>2$ 時為 <span class="text-nowrap">$\frac{\nu}{\nu-2}$，</span>而定義之中沒有列出動差母函數這一項。
 
 五點說明之中，第一點給出建構式 <span class="text-nowrap">$T=\frac{Z}{\sqrt{X/\nu}}$，</span>其中 $Z$ 為標準常態變數、$X$ 為與之獨立的卡方變數，$t$ 分配的自由度就是 $X$ 的自由度。第二點的證明正是靠這個建構式與獨立性完成: 每一階原動差都拆成 $Z$ 的動差與 $X$ 的負次方動差兩者相乘，奇數階因 $\mathbb{E}(Z)=\mathbb{E}\bigl(Z^{3}\bigr)=0$ 而為 <span class="text-nowrap">$0$，</span>二階與四階則由 $\mathbb{E}\bigl(X^{-1}\bigr)=\frac{1}{\nu-2}$ 與 $\mathbb{E}\bigl(X^{-2}\bigr)=\frac{1}{(\nu-2)(\nu-4)}$ 得到 $\mathrm{Var}(T)=\frac{\nu}{\nu-2}$ 與 <span class="text-nowrap">$\alpha_{4}=\frac{3(\nu-2)}{\nu-4}$。</span>各階動差存在與否也由此得知: $\mathbb{E}\bigl(X^{-\frac{k}{2}}\bigr)$ 要在 $\nu>k$ 時才存在，因此自由度不夠大時，該階以上的動差全部發散。
 

@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 8
 order: 308
-permalink: /teaching-topics/conditional-distributions-examples/
+permalink: /lecture-notes/conditional-distributions-examples/
 date: 2026-08-12
 published: false
 excerpt: "本篇以五道例題，把條件機率質量函數與條件機率密度函數的定義實際用過一遍。前兩道例題延續先前求過邊際分配的那兩題，改求 $X$ 在給定 $Y=y$ 之下的條件分配，並由此看出兩題在獨立與否上的差別。接著我們把條件由 $Y=y$ 這個薄薄的切片放寬為一個範圍，第三道例題的第二小題更出現條件只牽涉同一個變數的情形，這種分配稱作截尾分配，其形式是把原本的機率函數除以該段的機率總和，並把值域重新限制在該段之中。最後兩道例題即為截尾分配的計算，其中指數分配的那一題會呈現無記憶性。"
 ---
 
-[上一篇](/teaching-topics/conditional-distributions/)把二元[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector)中的一個變數固定成常數，給出[條件機率質量函數](/teaching-topics/conditional-distributions/#def-conditional-pmf)與[條件機率密度函數](/teaching-topics/conditional-distributions/#def-conditional-pdf)的定義，並說明條件分配仍然是一種機率分配。本篇便以五道例題，把這兩個定義實際用過一遍。
+[上一篇](/lecture-notes/conditional-distributions/)把二元[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)中的一個變數固定成常數，給出[條件機率質量函數](/lecture-notes/conditional-distributions/#def-conditional-pmf)與[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)的定義，並說明條件分配仍然是一種機率分配。本篇便以五道例題，把這兩個定義實際用過一遍。
 
-前兩道例題延續先前求過[邊際機率密度函數](/teaching-topics/marginal-probability-density-functions/#def-marginal-pdf)的那兩題，改求 $X$ 在給定 $Y=y$ 之下的條件分配。兩題所得的結果在形式上有一個明顯的差別，這個差別與兩個變數獨立與否有關。
+前兩道例題延續先前求過[邊際機率密度函數](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)的那兩題，改求 $X$ 在給定 $Y=y$ 之下的條件分配。兩題所得的結果在形式上有一個明顯的差別，這個差別與兩個變數獨立與否有關。
 
 接下來我們把條件由 $Y=y$ 這個薄薄的切片放寬為一個範圍，第三道例題的兩個小題便分別示範條件牽涉另一個變數，以及條件只牽涉同一個變數這兩種情形。後者所得到的分配稱作截尾分配，本篇隨後給出它在離散型與連續型的形式，並以兩張圖說明截尾之後為何要除以該段的機率總和；最後兩道例題即為截尾分配的計算。
 
@@ -168,7 +168,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，在[稍早的段落](/teaching-topics/region-probabilities-joint-density/)裡，我們曾經提過，這題的分配中，$X$ 與 $Y$ 是獨立的，這件事情同樣可以從其條件分配看出一些端倪，稍後我們會有[一個完整的小節](/teaching-topics/independent-random-variables/)，探討這種情況。
+事實上，在[稍早的段落](/lecture-notes/region-probabilities-joint-density/)裡，我們曾經提過，這題的分配中，$X$ 與 $Y$ 是獨立的，這件事情同樣可以從其條件分配看出一些端倪，稍後我們會有[一個完整的小節](/lecture-notes/independent-random-variables/)，探討這種情況。
 
 </div>
 
@@ -329,7 +329,7 @@ Suppose that the joint pmf and the marginal pmfs of a two-dimensional discrete r
 </ol>
 </div>
 
-(1) 由 [conditional pmf 的定義](/teaching-topics/conditional-distributions/#def-conditional-pmf)可知:
+(1) 由 [conditional pmf 的定義](/lecture-notes/conditional-distributions/#def-conditional-pmf)可知:
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -354,7 +354,7 @@ $$
 
 </div>
 
-(2) 由 [conditional pmf 的定義](/teaching-topics/conditional-distributions/#def-conditional-pmf)可知:
+(2) 由 [conditional pmf 的定義](/lecture-notes/conditional-distributions/#def-conditional-pmf)可知:
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -458,14 +458,14 @@ $$
 截尾分配發生的範圍如下所示:
 
 <figure id="fig-truncated-range" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/truncated-range.svg" alt="一條鐘形的機率密度曲線，左右兩端都貼近橫軸，峰頂上方標 f_X(x)。曲線之下有兩條虛線界線各自由曲線垂直落到橫軸，落點在橫軸上各畫一小段刻度，軸下由左至右標為 a 與 b，兩條界線並不對稱於峰頂。兩條界線之間、曲線之下到橫軸之間的整塊區域以淡紅色填滿，區塊之內標 P(a 小於 X 小於 b)；界線之外的曲線之下不填色。橫軸右端有箭頭並標 x，圖中沒有鉛直軸。">
+  <img src="/images/lecture-notes/truncated-range.svg" alt="一條鐘形的機率密度曲線，左右兩端都貼近橫軸，峰頂上方標 f_X(x)。曲線之下有兩條虛線界線各自由曲線垂直落到橫軸，落點在橫軸上各畫一小段刻度，軸下由左至右標為 a 與 b，兩條界線並不對稱於峰頂。兩條界線之間、曲線之下到橫軸之間的整塊區域以淡紅色填滿，區塊之內標 P(a 小於 X 小於 b)；界線之外的曲線之下不填色。橫軸右端有箭頭並標 x，圖中沒有鉛直軸。">
   <figcaption><span class="topic-figure__label">Fig. 3.13.</span> 截尾之後所關心的只剩下 $a$ 與 $b$ 之間這一段，填色的區塊即這一段的機率 <span class="text-nowrap">$\mathbb{P}(a<X<b)$。</span>這一塊的面積小於 <span class="text-nowrap">$1$，</span>故單取這一段還不是一個合法的 pdf。</figcaption>
 </figure>
 
 與條件分配相同，我們應將這一段未完成品，調整為一個合法的 pdf，也就是除以該段的機率總和 <span class="text-nowrap">$\mathbb{P}(a<X<b)$，</span>並且將 $X$ 的範圍重新限制在 $(a,b)$ 區間中，即
 
 <figure id="fig-truncated-normalized" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/truncated-normalized.svg" alt="同一條鐘形密度曲線只留下 a 與 b 之間的一段，這一段之外不畫曲線。曲線的兩個端點各有一條虛線界線垂直落到橫軸，落點在橫軸上各畫一小段刻度，軸下由左至右標為 a 與 b。這一段曲線比前一張圖的同一段來得高，其下方到橫軸之間的整塊區域以淡紅色填滿，區塊的左右兩側就是那兩條垂直的界線。曲線峰頂上方標 f_X(x | a 小於 X 小於 b)。橫軸右端有箭頭並標 x，圖中沒有鉛直軸。">
+  <img src="/images/lecture-notes/truncated-normalized.svg" alt="同一條鐘形密度曲線只留下 a 與 b 之間的一段，這一段之外不畫曲線。曲線的兩個端點各有一條虛線界線垂直落到橫軸，落點在橫軸上各畫一小段刻度，軸下由左至右標為 a 與 b。這一段曲線比前一張圖的同一段來得高，其下方到橫軸之間的整塊區域以淡紅色填滿，區塊的左右兩側就是那兩條垂直的界線。曲線峰頂上方標 f_X(x | a 小於 X 小於 b)。橫軸右端有箭頭並標 x，圖中沒有鉛直軸。">
   <figcaption><span class="topic-figure__label">Fig. 3.14.</span> 把 $a$ 與 $b$ 之間的那一段除以 <span class="text-nowrap">$\mathbb{P}(a<X<b)$，</span>曲線整體被拉高，$X$ 的範圍也重新限制在 $(a,b)$ 之內，填色區塊的面積因此回到 <span class="text-nowrap">$1$，</span>成為合法的 pdf <span class="text-nowrap">$f_{\sssig X}(x\mid a<X<b)$。</span></figcaption>
 </figure>
 
@@ -628,7 +628,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-若讀者另外計算了 <span class="text-nowrap">$\mathbb{P}(X>30)$，</span>會意外地發現，這個結果與本題所求的 $\mathbb{P}\bigl(X>40\bigm\vert X>10\bigr)$ 一模一樣。這是因為這題的分配是**[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution) <span lang="en">(exponential distribution)</span>**，而指數分配是少數具有**[無記憶性](/teaching-topics/exponential-memoryless-and-minima/#thm-memoryless-exp) <span lang="en">(memoryless property)</span>** 的分配，故有此結果。
+若讀者另外計算了 <span class="text-nowrap">$\mathbb{P}(X>30)$，</span>會意外地發現，這個結果與本題所求的 $\mathbb{P}\bigl(X>40\bigm\vert X>10\bigr)$ 一模一樣。這是因為這題的分配是**[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution) <span lang="en">(exponential distribution)</span>**，而指數分配是少數具有**[無記憶性](/lecture-notes/exponential-memoryless-and-minima/#thm-memoryless-exp) <span lang="en">(memoryless property)</span>** 的分配，故有此結果。
 
 </div>
 
@@ -638,9 +638,9 @@ $$
 
 接著我們把「條件」由 $Y=y$ 這個薄薄的切片放寬為 $c<Y<d$ 這樣的範圍，此時的條件機率就是 $a<X<b$ 與 $c<Y<d$ 同時發生的機率除以 $c<Y<d$ 的機率，其意義即為在條件空間之中，所求事件所佔的比例。[Example 3.9](#ex-discrete-conditional-table) 的兩個小題便是這件事在離散型的演練，其中第二小題的條件只牽涉 $X_1$ 自己，屬於自我限制的條件，所得的分配即為截尾分配。離散型是 $p_{\sssig X}(x)$ 除以 <span class="text-nowrap">$\mathbb{P}(a<X<b)$，</span>連續型是 $f_{\sssig X}(x)$ 除以同一個機率，並把值域重新限制在 $(a,b)$ 之中。
 
-[Example 3.10](#ex-uniform-conditional-interval) 與 [Example 3.11](#ex-conditional-pdf-from-pdf) 即為截尾分配的計算: 前者的 $X$ 服從 $(0,1)$ 上的[均勻分配](/teaching-topics/uniform-distribution-integral-transform/#def-uniform-distribution)，截在 $X<\frac{1}{4}$ 之後密度由 $1$ 提高為 <span class="text-nowrap">$4$，</span>所求機率為 <span class="text-nowrap">$\frac{1}{2}$；</span>後者的密度為 $\frac{1}{20}e^{-\frac{x}{20}}$ 這個式子，截在 $X>10$ 之後所求機率為 <span class="text-nowrap">$e^{-\frac{3}{2}}$，</span>而這個值恰好等於 <span class="text-nowrap">$\mathbb{P}(X>30)$，</span>此即指數分配的無記憶性。
+[Example 3.10](#ex-uniform-conditional-interval) 與 [Example 3.11](#ex-conditional-pdf-from-pdf) 即為截尾分配的計算: 前者的 $X$ 服從 $(0,1)$ 上的[均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)，截在 $X<\frac{1}{4}$ 之後密度由 $1$ 提高為 <span class="text-nowrap">$4$，</span>所求機率為 <span class="text-nowrap">$\frac{1}{2}$；</span>後者的密度為 $\frac{1}{20}e^{-\frac{x}{20}}$ 這個式子，截在 $X>10$ 之後所求機率為 <span class="text-nowrap">$e^{-\frac{3}{2}}$，</span>而這個值恰好等於 <span class="text-nowrap">$\mathbb{P}(X>30)$，</span>此即指數分配的無記憶性。
 
-[下一篇](/teaching-topics/independent-random-variables/)接著處理本篇兩度提到的獨立。該篇說明兩個[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)要滿足什麼條件才算獨立，以及獨立時聯合分配、邊際分配與條件分配之間會有什麼樣的關係。
+[下一篇](/lecture-notes/independent-random-variables/)接著處理本篇兩度提到的獨立。該篇說明兩個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)要滿足什麼條件才算獨立，以及獨立時聯合分配、邊際分配與條件分配之間會有什麼樣的關係。
 
 ## 參考文獻與延伸閱讀
 

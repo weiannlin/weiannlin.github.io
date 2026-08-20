@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 2
 topic: 3
 order: 203
-permalink: /teaching-topics/probability-density-functions/
+permalink: /lecture-notes/probability-density-functions/
 date: 2026-08-04
 published: true
 excerpt: "連續型隨機變數的累積分配函數若能寫成某個非負函數由 $-\\infty$ 積到 $x$ 的積分，被積分的那個函數即為機率密度函數。在機率密度函數連續的點上，由微積分基本定理可知它就是累積分配函數的導函數。它是累積機率的變化率而非機率本身，故只要求非負，不必小於 $1$；在整個值域上的積分為 $1$，落在集合 $A$ 中的機率則為 $A$ 與值域交集上的積分。"
 ---
 
-[上一篇](/teaching-topics/cumulative-distribution-functions/)以 $\mathbb{P}(X\leqslant x)$ 定義[累積分配函數](/teaching-topics/cumulative-distribution-functions/#def-cdf)，離散型與連續型[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)都適用。離散型的累積分配函數由[機率質量函數](/teaching-topics/random-variables-and-pmf/#def-pmf)逐點加總而得，連續型則無法以同樣的方式加總。
+[上一篇](/lecture-notes/cumulative-distribution-functions/)以 $\mathbb{P}(X\leqslant x)$ 定義[累積分配函數](/lecture-notes/cumulative-distribution-functions/#def-cdf)，離散型與連續型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)都適用。離散型的累積分配函數由[機率質量函數](/lecture-notes/random-variables-and-pmf/#def-pmf)逐點加總而得，連續型則無法以同樣的方式加總。
 
 連續型隨機變數的累積分配函數改由積分表示，被積分的那個函數就是機率密度函數。以下先給出它的定義，再由微積分基本定理得到它與累積分配函數之間的微分關係，並列出它應該滿足的各項性質。
 
@@ -35,17 +35,17 @@ $$
 
 機率密度函數有一些地方需要注意。
 
-(1) 由此定義可以看出，cdf 的定義在離散型與連續型隨機變數其實是相似的，只是前者為「加」而後者為「積」，由此也衍伸出許多[二者間相似但仍有差異的性質](/teaching-topics/computing-probabilities-from-cdf/)，我們稍後會談到。
+(1) 由此定義可以看出，cdf 的定義在離散型與連續型隨機變數其實是相似的，只是前者為「加」而後者為「積」，由此也衍伸出許多[二者間相似但仍有差異的性質](/lecture-notes/computing-probabilities-from-cdf/)，我們稍後會談到。
 {: .topic-paren-item}
 
 (2) 我們曾經提過，cdf 是一種累積機率，若由微積分的角度來看，機率密度函數應不是一種機率，而是**累積機率的變化率**，此點與 pmf 本身即是機率不同。
 {: .topic-paren-item}
 
-(3) 由此定義再次審視累積分配函數，可以發現連續型隨機變數的累積分配函數事實上是一種**面積**，我們稍後會[細談這個特點](/teaching-topics/computing-probabilities-from-cdf/)，這裡可以先由下圖理解之。
+(3) 由此定義再次審視累積分配函數，可以發現連續型隨機變數的累積分配函數事實上是一種**面積**，我們稍後會[細談這個特點](/lecture-notes/computing-probabilities-from-cdf/)，這裡可以先由下圖理解之。
 {: .topic-paren-item}
 
 <figure id="fig-cdf-as-area" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/continuous-cdf-area.svg" alt="一條鐘形密度曲線與橫軸之間的區域，自左端到橫軸上的門檻 x 的部分以淡色填滿；曲線上方標示 f_X(t)，填色區域之中標示 F_X(x)，橫軸變數為 t。">
+  <img src="/images/lecture-notes/continuous-cdf-area.svg" alt="一條鐘形密度曲線與橫軸之間的區域，自左端到橫軸上的門檻 x 的部分以淡色填滿；曲線上方標示 f_X(t)，填色區域之中標示 F_X(x)，橫軸變數為 t。">
   <figcaption><span class="topic-figure__label">Fig. 2.4.</span> 累積分配函數值 $F_{\sssig X}(x)$ 是密度曲線 $f_{\sssig X}(t)$ 之下，由左側一路累積到 $t=x$ 為止的面積。</figcaption>
 </figure>
 
@@ -145,7 +145,7 @@ $$
 性質 (1) 的成立，乃是由機率密度函數實為累積分配函數的**導函數** (即斜率) 而得，我們可以下圖理解之，亦可以與 [Fig. 2.4](#fig-cdf-as-area) 進行比較，二者事實上是機率密度函數本身的積分與其反導函數的微分二種觀點。
 
 <figure id="fig-pdf-as-derivative" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/pdf-as-derivative.svg" alt="累積分配函數的曲線由左下往右上升，逐漸貼近標示為 1 的水平虛線；橫軸上的 a 以虛線連到曲線上的一點，該點畫有一段切線，並由虛線箭頭指向標示 F 撇 X(a) 等於 f_X(a)。">
+  <img src="/images/lecture-notes/pdf-as-derivative.svg" alt="累積分配函數的曲線由左下往右上升，逐漸貼近標示為 1 的水平虛線；橫軸上的 a 以虛線連到曲線上的一點，該點畫有一段切線，並由虛線箭頭指向標示 F 撇 X(a) 等於 f_X(a)。">
   <figcaption><span class="topic-figure__label">Fig. 2.5.</span> 累積分配函數 $F_{\sssig X}(x)$ 在 $x=a$ 處的切線斜率 $F^{\prime}_{\sssig X}(a)$，就是機率密度函數在該點的值 $f_{\sssig X}(a)$。</figcaption>
 </figure>
 
@@ -454,7 +454,7 @@ $$
 
 pdf 是累積機率的變化率，不是機率本身，故沒有小於等於 $1$ 的限制，只需非負；它在整個值域上的積分為 $1$，而 $X$ 落在集合 $A$ 中的機率，則是 $f_{\sssig X}$ 在 $A$ 與值域交集上的積分。本篇四道例題之中，[Example 2.6](#ex-quadratic-density)、[Example 2.8](#ex-normal-gamma-constants) 與 [Example 2.9](#ex-broken-stick-beta) 都由「總積分為 $1$」這一項性質定出待求的常數，後兩題另外用到高斯積分、伽瑪函數與貝塔函數三個積分式；[Example 2.7](#ex-uniform-real-roots) 沒有待求的常數，求的是一個二次方程式具有二實根的機率。
 
-[下一篇](/teaching-topics/computing-probabilities-from-cdf/)把機率質量函數、機率密度函數與累積分配函數連結起來，用以計算各種區間的機率。
+[下一篇](/lecture-notes/computing-probabilities-from-cdf/)把機率質量函數、機率密度函數與累積分配函數連結起來，用以計算各種區間的機率。
 
 ## 參考文獻與延伸閱讀
 

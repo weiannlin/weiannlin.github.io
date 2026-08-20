@@ -7,20 +7,20 @@ category: "機率概論"
 chapter: 1
 topic: 10
 order: 110
-permalink: /teaching-topics/bayes-rule-posterior-probability/
+permalink: /lecture-notes/bayes-rule-posterior-probability/
 date: 2026-05-06
 published: true
 excerpt: "貝氏定理的分母即是全機率定理，它把事前機率與條件機率轉化為事後機率。本篇介紹貝氏定理、事前與事後機率的意義、計算流程的樹狀圖，以及由觀察結果反推來源的例題。"
 ---
 
-[上一篇](/teaching-topics/group-mixing-simpsons-paradox/)說明，分組內的比較方向與混合後的比較方向未必相同。本篇回到全機率定理，並把它反過來讀: 全機率定理由各個來源 $A_i$ 的機率與條件機率合成事件 $B$ 的機率；貝氏定理則在 $B$ 已經發生的條件下，回頭計算 $B$ 來自各個來源的機率。
+[上一篇](/lecture-notes/group-mixing-simpsons-paradox/)說明，分組內的比較方向與混合後的比較方向未必相同。本篇回到全機率定理，並把它反過來讀: 全機率定理由各個來源 $A_i$ 的機率與條件機率合成事件 $B$ 的機率；貝氏定理則在 $B$ 已經發生的條件下，回頭計算 $B$ 來自各個來源的機率。
 
 ## 貝氏定理
 
 <div id="theorem-bayes-rule" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 1.17 (Bayes’ Rule)</div>
 
-令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，且令 $A_1,A_2,\ldots,A_n\in\mathcal{F}$ 為 $S$ 的一組[分割](/teaching-topics/total-probability-bayes-rule/#definition-partition)，$B\in\mathcal{F}$ 為一事件。若 $\mathbb{P}(B)>0$ 且 $\mathbb{P}(A_i)>0$，$i=1,2,\ldots,n$，則對任意 $i=1,2,\ldots,n$，皆有
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，且令 $A_1,A_2,\ldots,A_n\in\mathcal{F}$ 為 $S$ 的一組[分割](/lecture-notes/total-probability-bayes-rule/#definition-partition)，$B\in\mathcal{F}$ 為一事件。若 $\mathbb{P}(B)>0$ 且 $\mathbb{P}(A_i)>0$，$i=1,2,\ldots,n$，則對任意 $i=1,2,\ldots,n$，皆有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -50,13 +50,13 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-第一個等號即[條件機率](/teaching-topics/conditional-probability-information/#definition-conditional-probability)的定義。由於 $A_1,A_2,\ldots,A_n$ 為 $S$ 的一組分割，由[全機率定理](/teaching-topics/total-probability-bayes-rule/#theorem-law-of-total-probability)可知
+第一個等號即[條件機率](/lecture-notes/conditional-probability-information/#definition-conditional-probability)的定義。由於 $A_1,A_2,\ldots,A_n$ 為 $S$ 的一組分割，由[全機率定理](/lecture-notes/total-probability-bayes-rule/#theorem-law-of-total-probability)可知
 
 $$
 \mathbb{P}(B)=\sum_{j=1}^{n}\mathbb{P}(B\cap A_j)
 $$
 
-將其代入分母，並將分子依交換律改寫為 $\mathbb{P}(B\cap A_i)$，即得第二個等號。最後對分子與分母中的每一個交集機率套用[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)，即
+將其代入分母，並將分子依交換律改寫為 $\mathbb{P}(B\cap A_i)$，即得第二個等號。最後對分子與分母中的每一個交集機率套用[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)，即
 
 $$
 \mathbb{P}(B\cap A_j)=\mathbb{P}(B\mid A_j)\,\mathbb{P}(A_j)
@@ -79,7 +79,7 @@ $$
 所謂的「事前」與「事後」，都是**相對於事件 $B$ 而言**，即「$B$ 發生前」與「$B$ 發生後」。
 </div>
 
-事實上，貝氏定理的計算本身並不困難，其分母的部分即是[全機率定理](/teaching-topics/total-probability-bayes-rule/#theorem-law-of-total-probability)，但其結果卻相當漂亮，簡潔地將事前機率與條件機率轉化為事後機率，並且帶出了**$B$ 事件如何影響研究者認知 $A_i$ 事件**的關係。
+事實上，貝氏定理的計算本身並不困難，其分母的部分即是[全機率定理](/lecture-notes/total-probability-bayes-rule/#theorem-law-of-total-probability)，但其結果卻相當漂亮，簡潔地將事前機率與條件機率轉化為事後機率，並且帶出了**$B$ 事件如何影響研究者認知 $A_i$ 事件**的關係。
 
 ## 事前機率、條件機率與交集機率的關係
 
@@ -94,16 +94,16 @@ $$
 其計算流程可以由下圖理解:
 
 <figure id="fig-bayes-flow" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/bayes-rule-flow.svg" alt="樣本空間 S 的矩形被切成 A_1、A_2 到 A_n 等直條，事件 B 為橫跨各直條的橫帶。上方由 prior probability 方框分出三條箭頭指向各直條，分別標示 P(A_1)、P(A_2) 與 P(A_n)；下方由各直條分出三條箭頭，分別標示 P(B 給定 A_1)、P(B 給定 A_2) 與 P(B 給定 A_n)，箭頭末端為 P(B 交 A_1)、P(B 交 A_2) 與 P(B 交 A_n)。下方三條箭頭之間另有 conditional probability 方框，與上方的 prior probability 方框相對。">
+  <img src="/images/lecture-notes/bayes-rule-flow.svg" alt="樣本空間 S 的矩形被切成 A_1、A_2 到 A_n 等直條，事件 B 為橫跨各直條的橫帶。上方由 prior probability 方框分出三條箭頭指向各直條，分別標示 P(A_1)、P(A_2) 與 P(A_n)；下方由各直條分出三條箭頭，分別標示 P(B 給定 A_1)、P(B 給定 A_2) 與 P(B 給定 A_n)，箭頭末端為 P(B 交 A_1)、P(B 交 A_2) 與 P(B 交 A_n)。下方三條箭頭之間另有 conditional probability 方框，與上方的 prior probability 方框相對。">
   <figcaption><span class="topic-figure__label">Fig. 1.25.</span> 事前機率 $\mathbb{P}(A_i)$ 先決定樣本空間落在哪一個 $A_i$，條件機率 $\mathbb{P}(B\mid A_i)$ 再決定該條件下 $B$ 是否發生，兩者相乘即為交集機率 $\mathbb{P}(B\cap A_i)$。</figcaption>
 </figure>
 
-上圖中，事前機率 $\mathbb{P}(A_i)$ 是指，在沒有任何事件發生下，發生 $A_i$ 事件的機率；而一旦發生 $A_i$ 事件後，樣本空間應縮小至 $A_i$ 內，此時條件機率 $\mathbb{P}(B\mid A_i)$ 是指，在已發生了 $A_i$ 的條件下，再發生 $B$ 事件的機率；若將此二者用[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)相乘，則可得到 $B\cap A_i$ 的交集機率。
+上圖中，事前機率 $\mathbb{P}(A_i)$ 是指，在沒有任何事件發生下，發生 $A_i$ 事件的機率；而一旦發生 $A_i$ 事件後，樣本空間應縮小至 $A_i$ 內，此時條件機率 $\mathbb{P}(B\mid A_i)$ 是指，在已發生了 $A_i$ 的條件下，再發生 $B$ 事件的機率；若將此二者用[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)相乘，則可得到 $B\cap A_i$ 的交集機率。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-(1) 讀者可以回憶，我們曾經在[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)中提過對條件機率的理解，若將其套用在此處，則條件機率可以視為 $A_i$ 中 $B$ 所佔的比例。
+(1) 讀者可以回憶，我們曾經在[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)中提過對條件機率的理解，若將其套用在此處，則條件機率可以視為 $A_i$ 中 $B$ 所佔的比例。
 {: .topic-paren-item}
 
 (2) 乘法原理將條件機率還原回非條件機率 (即交集機率) 的過程，實際上也是在將樣本空間還原回 $S$，故此處交集機率的樣本空間應為 $S$，而不是再限縮於 $A_i$ 內。
@@ -119,7 +119,7 @@ $$
 Suppose that a patient examined at a hospital is free of any disease with probability $0.99$, is affected by Disease $B$ with probability $0.001$, and is affected by Disease $C$ with probability $0.009$. These three states are the only possibilities. Symptom $A$ is observed with probability $0.001$ in a patient free of any disease, and with probability $0.9$ in each of the two diseased states. Given that a patient shows Symptom $A$, what is the probability that this patient is affected by Disease $C$?
 </div>
 
-令 $A$ 表有 $A$ 症狀、$B$ 表感染 $B$ 疾病、$C$ 表感染 $C$ 疾病、$N$ 表沒有感染疾病之事件。前一篇的 [Example 1.25](/teaching-topics/total-probability-bayes-rule/#example-symptoms-and-diseases) 已由[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)求得
+令 $A$ 表有 $A$ 症狀、$B$ 表感染 $B$ 疾病、$C$ 表感染 $C$ 疾病、$N$ 表沒有感染疾病之事件。前一篇的 [Example 1.25](/lecture-notes/total-probability-bayes-rule/#example-symptoms-and-diseases) 已由[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)求得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -231,7 +231,7 @@ $$
 
 </div>
 
-前一篇的 [Example 1.26](/teaching-topics/total-probability-bayes-rule/#example-111) 已由[全機率定理](/teaching-topics/total-probability-bayes-rule/#theorem-law-of-total-probability)求得
+前一篇的 [Example 1.26](/lecture-notes/total-probability-bayes-rule/#example-111) 已由[全機率定理](/lecture-notes/total-probability-bayes-rule/#theorem-law-of-total-probability)求得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -301,7 +301,7 @@ $$
 
 以下依序求解。
 
-(1) 由於 $A_1,A_2,\ldots,A_5$ 為樣本空間的一組[分割](/teaching-topics/total-probability-bayes-rule/#definition-partition)，故由[全機率定理](/teaching-topics/total-probability-bayes-rule/#theorem-law-of-total-probability)可得
+(1) 由於 $A_1,A_2,\ldots,A_5$ 為樣本空間的一組[分割](/lecture-notes/total-probability-bayes-rule/#definition-partition)，故由[全機率定理](/lecture-notes/total-probability-bayes-rule/#theorem-law-of-total-probability)可得
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -379,7 +379,7 @@ $$
 
 </div>
 
-「搜尋區域 $1$ 而未發現飛機」即為 $F_1$ 的餘事件 $F_1^{\prime}$。由於在給定 $A_i$ 之下的條件機率[仍為一個機率測度](/teaching-topics/conditional-probability-information/#theorem-conditional-probability-measure)，故可用餘事件公式求得
+「搜尋區域 $1$ 而未發現飛機」即為 $F_1$ 的餘事件 $F_1^{\prime}$。由於在給定 $A_i$ 之下的條件機率[仍為一個機率測度](/lecture-notes/conditional-probability-information/#theorem-conditional-probability-measure)，故可用餘事件公式求得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -484,7 +484,7 @@ $$
 | [Example 1.29](#example-116) | 失蹤飛機問題與搜救結果所帶來的資訊 |
 | [直覺校準 1.4](#interlude-information-updates) | 搜尋結果改變的是資訊而非飛機的位置 |
 
-條件機率、獨立、分割、全機率定理與貝氏定理合起來，構成第一章處理事件機率的主要工具。到目前為止，我們討論的對象仍然是事件。[下一章](/teaching-topics/random-variables-and-pmf/)將由[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)與[機率質量函數](/teaching-topics/random-variables-and-pmf/#def-pmf)開始，把樣本空間中的結果對應到實數線上，使函數、[期望值](/teaching-topics/expectation/#def-expectation)與分配函數等工具能夠進入機率論。
+條件機率、獨立、分割、全機率定理與貝氏定理合起來，構成第一章處理事件機率的主要工具。到目前為止，我們討論的對象仍然是事件。[下一章](/lecture-notes/random-variables-and-pmf/)將由[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)與[機率質量函數](/lecture-notes/random-variables-and-pmf/#def-pmf)開始，把樣本空間中的結果對應到實數線上，使函數、[期望值](/lecture-notes/expectation/#def-expectation)與分配函數等工具能夠進入機率論。
 
 ## 參考文獻與延伸閱讀
 

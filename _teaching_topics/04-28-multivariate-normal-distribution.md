@@ -7,17 +7,17 @@ category: "機率概論"
 chapter: 4
 topic: 28
 order: 428
-permalink: /teaching-topics/multivariate-normal-distribution/
+permalink: /lecture-notes/multivariate-normal-distribution/
 date: 2026-08-15
 published: false
 excerpt: "多元常態分配把常態分配推廣到 $n$ 維，以期望值向量 $\\boldsymbol{\\mu}$ 與共變異數矩陣 $\\mathbf{\\Sigma}$ 兩個參數界定，動差母函數為 $e^{\\boldsymbol{\\mu}^{\\mathrm{T}}\\boldsymbol{t}+\\frac{1}{2}\\boldsymbol{t}^{\\mathrm{T}}\\mathbf{\\Sigma}\\boldsymbol{t}}$ 這個式子。本篇先給出定義的六個欄位，再依序說明四項性質: 邊際分配均為常態分配，把向量分塊之後每一塊也仍是多元常態分配；條件分配的期望值與變異數可以由分塊後的 $\\mathbf{\\Sigma}$ 直接寫出，其形式與二元常態的結果完全對得起來；任意多個線性組合經仿射變換之後仍為多元常態分配，其等價敘述是任一個多元常態向量都可以由獨立的標準常態向量經 $\\boldsymbol{X}=\\mathbf{D}\\boldsymbol{Z}+\\boldsymbol{\\mu}$ 生成；二次形式 $(\\boldsymbol{X}-\\boldsymbol{\\mu})^{\\mathrm{T}}\\mathbf{\\Sigma}^{-1}(\\boldsymbol{X}-\\boldsymbol{\\mu})$ 服從自由度為 $n$ 的卡方分配，開根號之後即為馬氏距離。最後以三道例題演練仿射變換的用法。"
 ---
 
-[上一篇](/teaching-topics/bivariate-normal-examples/)以三道例題演練[二元常態分配](/teaching-topics/bivariate-normal-distribution/#def-bivariate-normal)的性質，其中最後一題的註記曾經提到，該題另有一種以矩陣求解的作法，只是那需要先具備處理矩陣版本的能力。本篇處理的正是這個矩陣版本，也就是[常態分配](/teaching-topics/normal-distribution/#def-normal)在 $n$ 維空間中的推廣: 多元常態分配。
+[上一篇](/lecture-notes/bivariate-normal-examples/)以三道例題演練[二元常態分配](/lecture-notes/bivariate-normal-distribution/#def-bivariate-normal)的性質，其中最後一題的註記曾經提到，該題另有一種以矩陣求解的作法，只是那需要先具備處理矩陣版本的能力。本篇處理的正是這個矩陣版本，也就是[常態分配](/lecture-notes/normal-distribution/#def-normal)在 $n$ 維空間中的推廣: 多元常態分配。
 
-多元常態分配以期望值向量 $\boldsymbol{\mu}$ 與[共變異數矩陣](/teaching-topics/covariance-matrix/#def-covar-matrix) $\mathbf{\Sigma}$ 這兩個參數界定，機率函數之中的 $(\boldsymbol{x}-\boldsymbol{\mu})^{\mathrm{T}}\mathbf{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{\mu})$ 這個式子，恰好就是單變數常態分配指數上 $\frac{(x-\mu)^{2}}{\sigma^{2}}$ 的矩陣版本。
+多元常態分配以期望值向量 $\boldsymbol{\mu}$ 與[共變異數矩陣](/lecture-notes/covariance-matrix/#def-covar-matrix) $\mathbf{\Sigma}$ 這兩個參數界定，機率函數之中的 $(\boldsymbol{x}-\boldsymbol{\mu})^{\mathrm{T}}\mathbf{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{\mu})$ 這個式子，恰好就是單變數常態分配指數上 $\frac{(x-\mu)^{2}}{\sigma^{2}}$ 的矩陣版本。
 
-本篇先給出定義，再依序說明四項性質: 邊際分配均為常態分配，而且把向量分塊之後每一塊也仍是多元常態分配；條件分配的期望值與變異數可以由分塊後的 $\mathbf{\Sigma}$ 直接寫出；任意多個線性組合經仿射變換之後仍為多元常態分配；二次形式服從[卡方分配](/teaching-topics/chi-squared-distribution/#def-chi-distribution)，其開根號之值即為馬氏距離。最後以三道例題演練這些性質在計算上的用法。
+本篇先給出定義，再依序說明四項性質: 邊際分配均為常態分配，而且把向量分塊之後每一塊也仍是多元常態分配；條件分配的期望值與變異數可以由分塊後的 $\mathbf{\Sigma}$ 直接寫出；任意多個線性組合經仿射變換之後仍為多元常態分配；二次形式服從[卡方分配](/lecture-notes/chi-squared-distribution/#def-chi-distribution)，其開根號之值即為馬氏距離。最後以三道例題演練這些性質在計算上的用法。
 
 ## 多元常態分配
 
@@ -291,7 +291,7 @@ $$
 
 </div>
 
-(4) 多元常態分配的[二次形式](/teaching-topics/covariance-matrix/#thm-vector-operation) <span lang="en">(quadratic form)</span> 為卡方分配:
+(4) 多元常態分配的[二次形式](/lecture-notes/covariance-matrix/#thm-vector-operation) <span lang="en">(quadratic form)</span> 為卡方分配:
 {: .topic-paren-item}
 
 若令 $\boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{\mu},\mathbf{\Sigma})$ 表示 $n$ 維的多元常態分配，則我們有
@@ -429,7 +429,7 @@ $$
 \mathbf{A}\boldsymbol{\mu}=\begin{bmatrix} 5 & 1\\ 5 & -1 \end{bmatrix}\begin{bmatrix} 5\\ 10 \end{bmatrix}=\begin{bmatrix} 35\\ 15 \end{bmatrix}
 $$
 
-又由[前面的小題](/teaching-topics/bivariate-normal-examples/#ex-bivariate-normal-ex-1)已求得 <span class="text-nowrap">$\rho=\frac{3}{\,5\,}$，</span>代入之後可知
+又由[前面的小題](/lecture-notes/bivariate-normal-examples/#ex-bivariate-normal-ex-1)已求得 <span class="text-nowrap">$\rho=\frac{3}{\,5\,}$，</span>代入之後可知
 {: .topic-paren-cont}
 
 $$
@@ -567,7 +567,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述兩個問題，事實上都使用了**二元常態分配中，零相關等價於獨立**這個性質。這個性質事實上能夠推廣至多元常態分配，其中，我們甚至可以將其一個服從多元常態分配的向量分成幾個部分，這些部分間的共變異數 (矩陣) 若是 $0$ (或是零矩陣)，則他們也會獨立，見[下一篇的定理](/teaching-topics/multivariate-normal-independence/#thm-block-independence)。
+上述兩個問題，事實上都使用了**二元常態分配中，零相關等價於獨立**這個性質。這個性質事實上能夠推廣至多元常態分配，其中，我們甚至可以將其一個服從多元常態分配的向量分成幾個部分，這些部分間的共變異數 (矩陣) 若是 $0$ (或是零矩陣)，則他們也會獨立，見[下一篇的定理](/lecture-notes/multivariate-normal-independence/#thm-block-independence)。
 
 </div>
 
@@ -575,7 +575,7 @@ $$
 
 [^affine-scope]: 事實上，仿射變換原先就不僅限於多維轉一維，多個線性組合共同構成的情況同樣稱為仿射變換。
 
-[^matrix-operation]: 其實由 [Theorem 3.18](/teaching-topics/covariance-matrix/#thm-matrix-operation)，我們已經可以知道期望值向量與共變異數矩陣的數值了，只不過多元常態分配的仿射變換性質，保證了在期望值向量與共變異數矩陣已知的基礎上，確保這時候的線性組合結果仍為多元常態分配。
+[^matrix-operation]: 其實由 [Theorem 3.18](/lecture-notes/covariance-matrix/#thm-matrix-operation)，我們已經可以知道期望值向量與共變異數矩陣的數值了，只不過多元常態分配的仿射變換性質，保證了在期望值向量與共變異數矩陣已知的基礎上，確保這時候的線性組合結果仍為多元常態分配。
 
 [^statistical-distance]: 事實上，這個概念也被叫做**統計距離**，也就是透過機率分配來描述「多遠」、「差多少」之類的概念，這也是統計檢定的核心精神。
 
@@ -589,7 +589,7 @@ $$
 
 三道例題都是仿射變換的演練。[Example 4.63](#ex-multivariate-normal-1) 把三個獨立標準常態變數排成 <span class="text-nowrap">$\boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{0},\mathbb{I}_3)$，</span>再以 $\mathbf{A}=\begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 1 \end{bmatrix}$ 這個矩陣取出 $Y_1$ 與 <span class="text-nowrap">$Y_2$，</span>由 $\mathbf{A}\mathbb{I}_3\mathbf{A}^{\mathrm{T}}$ 讀得兩個變異數皆為 $2$ 而共變異數為 <span class="text-nowrap">$1$，</span>相關係數因而是 <span class="text-nowrap">$\frac{1}{\,2\,}$，</span>代回二元常態的機率函數即得所求。[Example 4.60 <span lang="en">(Continued)</span>](#ex-bivariate-normal-ex-1-continued) 則以 $\mathbf{A}=\begin{bmatrix} 5 & 1\\ 5 & -1 \end{bmatrix}$ 同時取得 $U$ 與 <span class="text-nowrap">$V$，</span>算出的 $\mathbf{A}\mathbf{\Sigma}\mathbf{A}^{\mathrm{T}}$ 是一個對角矩陣，兩者零相關；由於它們出自同一個二元常態分配，零相關便等價於獨立。[Example 4.64](#ex-multivariate-normal-2) 的三個小題共用同一個作法: 先由 $\mathbf{A}=\begin{bmatrix} 1 & 1\\ 1 & -1 \end{bmatrix}$ 得知 $Y_1+Y_2$ 與 $Y_1-Y_2$ 各自服從 $\mathcal{N}(0,2)$ 且彼此獨立。第一個統計量本身就是標準常態變數，第二個是兩個獨立卡方變數的比值，第三個則是標準常態變數除以獨立卡方變數開根號之後的比值，答案依序為 <span class="text-nowrap">$\mathcal{N}(0,1)$、</span>$\mathcal{F}(1,1)$ 與 <span class="text-nowrap">$t(1)$。</span>
 
-最後兩道例題都用到二元常態分配中零相關等價於獨立這個性質。[下一篇](/teaching-topics/multivariate-normal-independence/)把這個性質推廣到多元常態分配的分塊之上，並以它證明常態母體之下樣本平均數與樣本變異數彼此獨立。
+最後兩道例題都用到二元常態分配中零相關等價於獨立這個性質。[下一篇](/lecture-notes/multivariate-normal-independence/)把這個性質推廣到多元常態分配的分塊之上，並以它證明常態母體之下樣本平均數與樣本變異數彼此獨立。
 
 ## 參考文獻與延伸閱讀
 

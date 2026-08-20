@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 4
 topic: 5
 order: 405
-permalink: /teaching-topics/geometric-distribution-examples/
+permalink: /lecture-notes/geometric-distribution-examples/
 date: 2026-08-12
 published: false
 excerpt: "本篇以六道例題演練幾何分配。前兩道直接由實驗幾何分配的機率函數求期望值、變異數與指定事件的機率，其中「投擲硬幣直到第一次出現正面，所需次數為奇數」的機率，正好由無窮等比級數求得 $\\frac{1}{\\,2-p\\,}$ 這個結果。接下來兩道把「等到出現若干個不同結果」的總次數寫成一串成功機率遞減的幾何變數之和，期望值即為各項倒數相加。最後兩道分別以輔助變數搭配雙重期望值定理、全機率定理與變異數分解定理求算，以及由失敗幾何分配說明無記憶性。"
 ---
 
-[上一篇](/teaching-topics/geometric-distribution-memoryless/)由幾何級數出發，給出[幾何分配](/teaching-topics/geometric-distribution-memoryless/#def-geometric)的定義，證明了機率函數的合法性與期望值、變異數及動差母函數，接著給出[無記憶性](/teaching-topics/geometric-distribution-memoryless/#thm-memoryless)及其逆敘述，最後說明兩個獨立幾何變數取極小值之後仍為幾何分配。本篇不再新增性質，改以六道例題演練上述結果。
+[上一篇](/lecture-notes/geometric-distribution-memoryless/)由幾何級數出發，給出[幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)的定義，證明了機率函數的合法性與期望值、變異數及動差母函數，接著給出[無記憶性](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless)及其逆敘述，最後說明兩個獨立幾何變數取極小值之後仍為幾何分配。本篇不再新增性質，改以六道例題演練上述結果。
 
 六道例題依序處理四件事: 先直接由實驗幾何分配的機率函數求期望值、變異數與指定事件的機率，再把「等到出現若干個不同結果」的總次數寫成一串幾何變數之和，接著以一個輔助變數把問題化為條件分配之下的計算，最後回到失敗幾何分配，看無記憶性在題目中如何呈現。
 
@@ -39,7 +39,7 @@ $$
 Y\sim\mathrm{Geo}(p=0.6),\ y=1,2,\ldots
 $$
 
-(2) 由[實驗幾何分配](/teaching-topics/geometric-distribution-memoryless/#def-geometric)的性質可知
+(2) 由[實驗幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)的性質可知
 {: .topic-paren-item}
 
 $$
@@ -241,7 +241,7 @@ $$
 
 $$
 X=\left\lbrace
-\begin{array}{c@{\quad}l}
+\begin{array}{c@{}l}
 0, & \text{第一個樣本為女生}\\[0.4em]
 1, & \text{第一個樣本為男生}
 \end{array}
@@ -252,7 +252,7 @@ $$
 
 $$
 \Longrightarrow\ p_{\sssig X}(x)=\left\lbrace
-\begin{array}{c@{\quad}l}
+\begin{array}{c@{}l}
 \frac{1}{\,3\,}, & x=0\\[0.4em]
 \frac{2}{\,3\,}, & x=1\\[0.4em]
 0, & \text{o.w.}
@@ -334,7 +334,7 @@ $$
 
 </div>
 
-則由[雙重期望值](/teaching-topics/double-expectation-theorem/#thm-double-expectation)可知，所求為
+則由[雙重期望值](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知，所求為
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -361,7 +361,7 @@ $$
 
 </div>
 
-(2) 由[全機率定理](/teaching-topics/conditional-law-of-total-probability/#thm-law-of-total-prob-r-v)可知
+(2) 由[全機率定理](/lecture-notes/conditional-law-of-total-probability/#thm-law-of-total-prob-r-v)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -392,7 +392,7 @@ $$
 
 </div>
 
-(3) 由[變異數分解定理](/teaching-topics/variance-decomposition-theorem/#thm-var-decom-thm)可知
+(3) 由[變異數分解定理](/lecture-notes/variance-decomposition-theorem/#thm-var-decom-thm)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -431,7 +431,7 @@ $$
 
 上述 (2) 當中所計算的 <span class="text-nowrap">$\mathbb{P}(N=4\mid X=x),\ x=0,1$，</span>若讀者感到稍微陌生，不妨思考看看此時已知的分配為何，可以得到 <span class="text-nowrap">$\mathbb{P}(N-1=4-1\mid X=x),\ x=0,1$，</span>如此一來便可計算其機率。
 
-而在 (3) 中，我們利用了 $\mathrm{Var}(N\mid X=x)=\mathrm{Var}(N-1\mid X=x)$ 的特性，快速地得到[條件變異數](/teaching-topics/conditional-expectation-and-variance/#def-conditional-variance)，並計算條件變異數的期望值；再由 (1) 所計算的[條件期望值](/teaching-topics/conditional-expectation-and-variance/#def-conditional-expectation)，計算條件期望值的變異數，從而完成變異數分解定理。
+而在 (3) 中，我們利用了 $\mathrm{Var}(N\mid X=x)=\mathrm{Var}(N-1\mid X=x)$ 的特性，快速地得到[條件變異數](/lecture-notes/conditional-expectation-and-variance/#def-conditional-variance)，並計算條件變異數的期望值；再由 (1) 所計算的[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation)，計算條件期望值的變異數，從而完成變異數分解定理。
 
 </div>
 
@@ -522,7 +522,7 @@ $$
 
 </div>
 
-(3) $X$ 與 $Y$ 的分配同為幾何分配，且參數皆為 <span class="text-nowrap">$p=1-p_s$，</span>此類分配不因過去曾成功完成的任務數 $k$ 而改變，稱為[無記憶性](/teaching-topics/geometric-distribution-memoryless/#thm-memoryless)。
+(3) $X$ 與 $Y$ 的分配同為幾何分配，且參數皆為 <span class="text-nowrap">$p=1-p_s$，</span>此類分配不因過去曾成功完成的任務數 $k$ 而改變，稱為[無記憶性](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless)。
 {: .topic-paren-item}
 
 </div>
@@ -535,9 +535,9 @@ $$
 
 [Example 4.14](#ex-geometric-ex-5) 的抽樣要抽到男女都出現才停止，本身不是幾何分配，但只要引入一個輔助變數 $X$ 記錄第一個樣本的性別，在給定 $X$ 之後，剩下要抽的人數 $N-1$ 就是一個幾何變數: 第一個抽到女生時還要等一個男生，成功機率為 <span class="text-nowrap">$\frac{2}{\,3\,}$；</span>第一個抽到男生時還要等一個女生，成功機率為 <span class="text-nowrap">$\frac{1}{\,3\,}$。</span>三個小題因而分別由雙重期望值、全機率定理與變異數分解定理完成，答案依序是 <span class="text-nowrap">$\frac{\,7\,}{2}$、</span>$\frac{10}{\,81\,}$ 與 <span class="text-nowrap">$\frac{\,19\,}{4}$。</span>其中變異數的計算用到 $\mathrm{Var}(N\mid X=x)=\mathrm{Var}(N-1\mid X=x)$ 這個關係，因為兩者只差一個常數。
 
-[Example 4.15](#ex-geometric-ex-6) 記錄的是被擊落之前所能安全完成的任務數，值域自 $0$ 起算，屬於失敗幾何分配。已經安全完成 $k$ 次之後還能再完成幾次，其分配與一開始的 $X$ 完全相同，這正是[無記憶性](/teaching-topics/geometric-distribution-memoryless/#thm-memoryless)所述的性質。
+[Example 4.15](#ex-geometric-ex-6) 記錄的是被擊落之前所能安全完成的任務數，值域自 $0$ 起算，屬於失敗幾何分配。已經安全完成 $k$ 次之後還能再完成幾次，其分配與一開始的 $X$ 完全相同，這正是[無記憶性](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless)所述的性質。
 
-[下一篇](/teaching-topics/negative-binomial-distribution/)把「做到第一次成功為止」改成「做到第 $r$ 次成功為止」，所需要的實驗次數即服從負二項分配；該篇先給出驗證機率函數時所需要的負二項級數。
+[下一篇](/lecture-notes/negative-binomial-distribution/)把「做到第一次成功為止」改成「做到第 $r$ 次成功為止」，所需要的實驗次數即服從負二項分配；該篇先給出驗證機率函數時所需要的負二項級數。
 
 ## 參考文獻與延伸閱讀
 

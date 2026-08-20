@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 27
 order: 327
-permalink: /teaching-topics/order-statistics/
+permalink: /lecture-notes/order-statistics/
 date: 2026-08-13
 published: false
 excerpt: "把一組隨機變數由小到大重新排列，所得的這一組新的隨機變數即為順序統計量，其中最受關注的是最小的 $Y_1$ 與最大的 $Y_n$ 這兩個。求兩個順序統計量的聯合機率密度函數時，必須先把所有可能的大小順序逐一列出，各自作一次函數轉換，再把各種情況的結果加總起來。而在隨機樣本的情況中，同分配的對稱性會使各種情況的結果完全相同，加總因而只剩下一個與階乘有關的倍數，排序的問題也就成了古典機率中的排列組合問題。本篇以三道例題示範這兩件事，其中最後一題甚至不需要知道共同的分配是哪一個，只憑對稱性即可求得機率。"
 ---
 
-[上一篇](/teaching-topics/mgf-method-examples/)以三道例題示範了[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)法的用法，其中最後一道例題的第三小題求的是獨立均勻樣本中最大者的分配，該篇末尾的註記便由此指出，「取排序後最大者」是一種多轉一的轉換。
+[上一篇](/lecture-notes/mgf-method-examples/)以三道例題示範了[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)法的用法，其中最後一道例題的第三小題求的是獨立均勻樣本中最大者的分配，該篇末尾的註記便由此指出，「取排序後最大者」是一種多轉一的轉換。
 
-本篇先以 [Definition 3.21](#def-order-stat) 給出順序統計量，接著以兩道例題示範最小值與最大值的[聯合機率密度函數](/teaching-topics/joint-probability-density-functions/#def-joint-pdf)該怎麼求，說明為什麼必須先把所有可能的大小順序逐一列出，各自以 [Jacobian 法](/teaching-topics/many-to-many-transformations/#連續型的-jacobian-法)轉換之後再行加總，最後以一道例題說明隨機樣本的對稱性如何把排序的問題轉為排列組合的問題。
+本篇先以 [Definition 3.21](#def-order-stat) 給出順序統計量，接著以兩道例題示範最小值與最大值的[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)該怎麼求，說明為什麼必須先把所有可能的大小順序逐一列出，各自以 [Jacobian 法](/lecture-notes/many-to-many-transformations/#連續型的-jacobian-法)轉換之後再行加總，最後以一道例題說明隨機樣本的對稱性如何把排序的問題轉為排列組合的問題。
 
 稍早我們曾經提過，「排序」其實也是一種函數轉換。這個小節所要探討的，便是這種特殊的函數轉換，我們稱之為**順序統計量 <span lang="en">(order statistics)</span>**，並且一併探討順序統計量在特定的母體中所對應的抽樣分配。
 
@@ -24,7 +24,7 @@ excerpt: "把一組隨機變數由小到大重新排列，所得的這一組新�
 <div id="def-order-stat" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.21 (順序統計量, order statistics)</div>
 
-假設 $X_1,\ldots,X_n$ 為一組[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)，且
+假設 $X_1,\ldots,X_n$ 為一組[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)，且
 
 $$
 X_{\sssig (1)}\leqslant X_{\sssig (2)}\leqslant\cdots\leqslant X_{\sssig (n)}
@@ -494,7 +494,7 @@ $$
 
 兩道例題所示範的，是順序統計量在任意聯合分配之中都該有的作法。先討論順序的所有可能情況，逐一對應此時的每一個順序統計量是原本的哪一個隨機變數，分列轉換之後再行加總。而在隨機樣本的情況中，同分配的對稱性會使各種情況的結果完全變為同一個，加總因而只剩下一個與階乘有關的倍數，排序的問題也就成了古典機率中的排列組合問題。[Example 3.62](#ex-three-iid-order-probability) 正是如此。我們甚至不知道 $X_1, X_2, X_3$ 共同的分配是哪一個，只憑獨立且同分配所帶來的對稱性，就可以知道 $\mathbb{P}(X_1>X_2\mid X_1>X_3)$ 這個機率是 <span class="text-nowrap">$\frac{2}{\,3\,}$，</span>而 $\mathbb{P}(X_1>X_2\mid X_1<X_3)$ 這個機率是 <span class="text-nowrap">$\frac{1}{\,3\,}$。</span>
 
-[下一篇](/teaching-topics/order-statistics-distributions/)便由這個對稱性出發，推導隨機樣本的整套順序統計量所具有的聯合機率密度函數，以及其中第 $i$ 個順序統計量的抽樣分配。
+[下一篇](/lecture-notes/order-statistics-distributions/)便由這個對稱性出發，推導隨機樣本的整套順序統計量所具有的聯合機率密度函數，以及其中第 $i$ 個順序統計量的抽樣分配。
 
 ## 參考文獻與延伸閱讀
 

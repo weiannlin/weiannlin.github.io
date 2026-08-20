@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 1
 topic: 8
 order: 108
-permalink: /teaching-topics/total-probability-bayes-rule/
+permalink: /lecture-notes/total-probability-bayes-rule/
 date: 2026-05-05
 published: true
 excerpt: "樣本空間的分割由一組互斥且周延的事件構成。本篇介紹分割的定義、全機率定理及其條件機率版本，並說明兩組分割彼此交集而成的二元分割與列聯表。"
 ---
 
-[上一篇](/teaching-topics/independence-and-conditional-independence/)在介紹列聯表時曾經提到，表內的聯合機率與表邊的邊際機率，與分割及全機率定理有非常高度的相關。本篇便由樣本空間的分割談起，說明一個事件如何依一組分割被切成數個互斥的部分，再逐一加總回來。
+[上一篇](/lecture-notes/independence-and-conditional-independence/)在介紹列聯表時曾經提到，表內的聯合機率與表邊的邊際機率，與分割及全機率定理有非常高度的相關。本篇便由樣本空間的分割談起，說明一個事件如何依一組分割被切成數個互斥的部分，再逐一加總回來。
 
 ## 樣本空間的分割
 
@@ -43,7 +43,7 @@ $$
 分割的概念可以由以下的圖示來理解:
 
 <figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/total-probability-partition-strips.svg" alt="樣本空間 S 的矩形被垂直分線切成 A_1、A_2 到 A_n 等互不重疊的直條。">
+  <img src="/images/lecture-notes/total-probability-partition-strips.svg" alt="樣本空間 S 的矩形被垂直分線切成 A_1、A_2 到 A_n 等互不重疊的直條。">
   <figcaption><span class="topic-figure__label">Fig. 1.23.</span> 樣本空間 $S$ 被 $A_1,A_2,\ldots,A_n$ 切成數個互不重疊的部分，而這些事件的聯集恰為整個樣本空間。</figcaption>
 </figure>
 
@@ -103,7 +103,7 @@ $$
 
 </div>
 
-此外，$B\cap A_1,B\cap A_2,\ldots,B\cap A_n$ 兩兩互斥，故由[有限可加性](/teaching-topics/probability-rules-from-axioms/#theorem-finite-additivity)可得
+此外，$B\cap A_1,B\cap A_2,\ldots,B\cap A_n$ 兩兩互斥，故由[有限可加性](/lecture-notes/probability-rules-from-axioms/#theorem-finite-additivity)可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -126,16 +126,16 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-**全機率定理 <span lang="en">(the law of total probability)</span>** 的概念，我們在[兩事件版本的全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)中即曾經提過；這裡的全機率定理，是將該定理由 $A$ 與 $A^{\prime}$ 這組特別的分割，推廣至一般的 $n$ 個事件所構成的分割，其概念可以由下圖理解:
+**全機率定理 <span lang="en">(the law of total probability)</span>** 的概念，我們在[兩事件版本的全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)中即曾經提過；這裡的全機率定理，是將該定理由 $A$ 與 $A^{\prime}$ 這組特別的分割，推廣至一般的 $n$ 個事件所構成的分割，其概念可以由下圖理解:
 
 <figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/total-probability-partition.svg" alt="樣本空間 S 的矩形被切成 A_1、A_2 到 A_n 等直條，事件 B 為橫跨各直條的圓角橫帶，並被分線切成 B 交 A_1 到 B 交 A_n 等區塊。">
+  <img src="/images/lecture-notes/total-probability-partition.svg" alt="樣本空間 S 的矩形被切成 A_1、A_2 到 A_n 等直條，事件 B 為橫跨各直條的圓角橫帶，並被分線切成 B 交 A_1 到 B 交 A_n 等區塊。">
   <figcaption><span class="topic-figure__label">Fig. 1.24.</span> 事件 $B$ 橫跨分割中的各個事件，因而被切成 $B\cap A_1,B\cap A_2,\ldots,B\cap A_n$ 這些互斥的部分。</figcaption>
 </figure>
 
-上圖中，$B$ 被這組分割交集成 $n$ 個互斥的集合 <span class="text-nowrap">$B\cap A_1,B\cap A_2,\ldots,B\cap A_n$，</span>其聯集即為 $B$ 本身，故由機率的[有限可加性](/teaching-topics/probability-rules-from-axioms/#theorem-finite-additivity)應可以推得上述的結果，且此結果之直觀意義，仍與[兩事件版本的全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)所提到的直觀意義完全一致。
+上圖中，$B$ 被這組分割交集成 $n$ 個互斥的集合 <span class="text-nowrap">$B\cap A_1,B\cap A_2,\ldots,B\cap A_n$，</span>其聯集即為 $B$ 本身，故由機率的[有限可加性](/lecture-notes/probability-rules-from-axioms/#theorem-finite-additivity)應可以推得上述的結果，且此結果之直觀意義，仍與[兩事件版本的全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)所提到的直觀意義完全一致。
 
-特別值得注意的一點是，全機率定理是許多交集機率的總和，故當然可以套用[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)，將交集機率改寫為以條件機率表示的版本。若進一步假設 $\mathbb{P}(A_i)>0$，$i=1,2,\ldots,n$，則有
+特別值得注意的一點是，全機率定理是許多交集機率的總和，故當然可以套用[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)，將交集機率改寫為以條件機率表示的版本。若進一步假設 $\mathbb{P}(A_i)>0$，$i=1,2,\ldots,n$，則有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -160,7 +160,7 @@ $$
 
 ## 二元分割與列聯表
 
-分割的概念可以推廣至兩組分割彼此的交集，我們稱為**二元分割**。二元分割的概念即為上一篇中的[列聯表](/teaching-topics/independence-and-conditional-independence/#互斥與獨立)，如下表:
+分割的概念可以推廣至兩組分割彼此的交集，我們稱為**二元分割**。二元分割的概念即為上一篇中的[列聯表](/lecture-notes/independence-and-conditional-independence/#互斥與獨立)，如下表:
 
 | | $A_1$ | $\cdots$ | $A_n$ | 總和 |
 | :---: | :---: | :---: | :---: | :---: |
@@ -235,7 +235,7 @@ $$
 
 </div>
 
-由[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)可得
+由[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -372,7 +372,7 @@ $$
 | [Theorem 1.16](#theorem-law-of-total-probability) | 全機率定理與其條件機率版本 |
 | [二元分割](#二元分割與列聯表) | 兩組分割彼此交集所構成的列聯表 |
 
-全機率定理把 $\mathbb{P}(B)$ 寫成各個條件機率 $\mathbb{P}(B\mid A_i)$ 以 $\mathbb{P}(A_i)$ 為權重的加權平均。既然整體機率由各組的條件機率混合而成，接下來自然要問，分組之後的比較方向與混合之後的比較方向是否一定相同。這正是[下一篇](/teaching-topics/group-mixing-simpsons-paradox/)要談的分組、混合與辛普森悖論。
+全機率定理把 $\mathbb{P}(B)$ 寫成各個條件機率 $\mathbb{P}(B\mid A_i)$ 以 $\mathbb{P}(A_i)$ 為權重的加權平均。既然整體機率由各組的條件機率混合而成，接下來自然要問，分組之後的比較方向與混合之後的比較方向是否一定相同。這正是[下一篇](/lecture-notes/group-mixing-simpsons-paradox/)要談的分組、混合與辛普森悖論。
 
 ## 參考文獻與延伸閱讀
 

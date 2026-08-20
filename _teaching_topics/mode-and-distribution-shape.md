@@ -4,5 +4,5 @@ layout: redirect
 sitemap: false
 permalink: /teaching-topics/mode-and-distribution-shape/
 redirect:
-  to: /teaching-topics/mode/
+  to: /lecture-notes/mode/
 ---

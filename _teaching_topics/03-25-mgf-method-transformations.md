@@ -7,21 +7,21 @@ category: "機率概論"
 chapter: 3
 topic: 25
 order: 325
-permalink: /teaching-topics/mgf-method-transformations/
+permalink: /lecture-notes/mgf-method-transformations/
 date: 2026-08-13
 published: false
 excerpt: "維度相同的多對多轉換求的是轉換後的聯合分配，但有的時候我們要的只是轉換後其中一個變數的邊際分配。作法是先照樣作一個維度相同的轉換，求出聯合 pdf 之後，再把不需要的那個變數積分掉，本篇的兩道例題即依此求得 $f_{\\sssig Z}(z)$ 與 $f_{\\sssig Y_1}(y_1)$ 這兩個邊際 pdf。若轉換本身是線性的，而且各個變數彼此獨立，另有一條更快的路: $W=\\sum_{i=1}^{n}a_i\\,X_i+b$ 的動差母函數等於 $e^{bt}$ 與各項動差母函數在 $a_i\\,t$ 之處的值連乘，求出來之後再由 mgf 的唯一性認出分配即可。本篇最後兩道例題即以此求出兩個獨立離散變數之和的機率函數，以及三個獨立同分配變數之和的期望值與變異數。"
 ---
 
-[上一篇](/teaching-topics/many-to-many-transformations/)介紹了維度相同的多對多函數轉換: 離散型以 pmf 法解聯立方程式，把原變數以新變數表示；連續型則以 Jacobian 法把原變數的 pdf 以新變數表示，再乘上體積轉換因子的絕對值。兩者求得的都是轉換後的聯合分配。
+[上一篇](/lecture-notes/many-to-many-transformations/)介紹了維度相同的多對多函數轉換: 離散型以 pmf 法解聯立方程式，把原變數以新變數表示；連續型則以 Jacobian 法把原變數的 pdf 以新變數表示，再乘上體積轉換因子的絕對值。兩者求得的都是轉換後的聯合分配。
 
 本篇處理的是另一種需求，也就是轉換之後我們只要其中一個變數的邊際分配。前半先說明多對一的處理流程，即先作一個維度相同的轉換，再把不需要的變數積分掉，並以兩道例題示範；後半則指出當轉換是線性的，且各個變數彼此獨立時，[Theorem 3.23](#thm-mgf-two-to-one) 可以直接由各項的 mgf 求出線性組合的 mgf，最後以兩道例題示範這條路。
 
-## [隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)的多對一函數轉換
+## [隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的多對一函數轉換
 
 有的時候，我們或許不是要求函數轉換後的聯合分配，而是求函數轉換後的多個變數中，其一的邊際分配。
 
-這個時候比較直觀的作法是，一樣假設多對多 (維度相同) 的函數轉換，如同 [Example 3.51](/teaching-topics/many-to-many-transformations/#ex-integral-one-variable) 一樣，隨後再將轉換完後不需要的變數給積分掉，從而得到這個目標變數單獨的邊際分配。
+這個時候比較直觀的作法是，一樣假設多對多 (維度相同) 的函數轉換，如同 [Example 3.51](/lecture-notes/many-to-many-transformations/#ex-integral-one-variable) 一樣，隨後再將轉換完後不需要的變數給積分掉，從而得到這個目標變數單獨的邊際分配。
 
 綜觀來看，這是一個多對一的函數轉換問題，其流程如下:
 
@@ -70,7 +70,7 @@ $$
 $$
 \begin{aligned}
 f_{\sssig XY}(x,y)&=\left\lbrace
-\begin{array}{c@{\quad}l}
+\begin{array}{c@{}l}
 24xy, & 0<x<1,\ 0<y<1,\\[0.2em]
 & x+y<1\\[0.8em]
 0, & \text{o.w.}
@@ -154,7 +154,7 @@ $$
 $$
 \begin{aligned}
 f_{\sssig X}(x)&=\left\lbrace
-\begin{array}{c@{\quad}l}
+\begin{array}{c@{}l}
 e^{-x}, & x>0\\[0.8em]
 0, & \text{o.w.}
 \end{array}
@@ -331,7 +331,7 @@ $$
 
 </div>
 
-## 線性組合的[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)
+## 線性組合的[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)
 
 多轉一的隨機變數變換問題，如果是線性的變換且變數彼此獨立，我們可以由 mgf 法求得其轉換後的結果，見下列定理。
 
@@ -381,7 +381,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，[Theorem 3.23](#thm-mgf-two-to-one) 就是 [Theorem 2.39](/teaching-topics/one-to-one-transformations/#thm-mgf-linear-transformation) 的延伸版本，只不過利用了 $X_1, \ldots, X_n$ 彼此獨立的特性，將分項相乘的[期望值](/teaching-topics/expectation/#def-expectation)，改為先取期望值再相乘，進而變成一個多轉一的方法。
+事實上，[Theorem 3.23](#thm-mgf-two-to-one) 就是 [Theorem 2.39](/lecture-notes/one-to-one-transformations/#thm-mgf-linear-transformation) 的延伸版本，只不過利用了 $X_1, \ldots, X_n$ 彼此獨立的特性，將分項相乘的[期望值](/lecture-notes/expectation/#def-expectation)，改為先取期望值再相乘，進而變成一個多轉一的方法。
 
 </div>
 
@@ -440,7 +440,7 @@ $$
 
 </div>
 
-(2) 由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+(2) 由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 {: .topic-paren-item}
 
 $$
@@ -470,7 +470,7 @@ Suppose that <span class="text-nowrap">$X_1$,</span> $X_2$ and $X_3$ are indepen
 </ol>
 </div>
 
-(1) 由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知 $X_1, X_2, X_3$ $\overset{\mathrm{iid}}{\sim}$ <span class="text-nowrap">[$\mathrm{Poi}(\lambda=1)$](/teaching-topics/poisson-process-and-distribution/#def-poisson-distribution)，</span>故
+(1) 由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知 $X_1, X_2, X_3$ $\overset{\mathrm{iid}}{\sim}$ <span class="text-nowrap">[$\mathrm{Poi}(\lambda=1)$](/lecture-notes/poisson-process-and-distribution/#def-poisson-distribution)，</span>故
 {: .topic-paren-item}
 
 $$
@@ -486,7 +486,7 @@ $$
 (2) $M_{\sssig Y}(t)$ $=$ $M_{\sssig X_1}(t)\,M_{\sssig X_2}(t)\,M_{\sssig X_3}(t)$ $=$ <span class="text-nowrap">$e^{3(e^{t}-1)}$,</span> for all $t\in\mathbb{R}$
 {: .topic-paren-item}
 
-由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知 $Y=X_1+X_2+X_3$ $\sim$ <span class="text-nowrap">$\mathrm{Poi}(\lambda=1+1+1=3)$，</span>故可知
+由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知 $Y=X_1+X_2+X_3$ $\sim$ <span class="text-nowrap">$\mathrm{Poi}(\lambda=1+1+1=3)$，</span>故可知
 {: .topic-paren-cont}
 
 $$
@@ -519,11 +519,11 @@ $$
 
 多對一的函數轉換並不需要新的工具。作法是先照樣假設一個維度相同的多對多轉換，求出轉換後的聯合 pdf，再把不需要的那個變數積分掉，剩下的就是我們所要的那一個變數的邊際 pdf。[Example 3.51 <span lang="en">(Continued)</span>](#ex-integral-one-variable-many-to-one) 承接前一篇已經求得的 $f_{\sssig ZW}(z,w)$ $=$ <span class="text-nowrap">$24w(z-w)$，</span>把 $w$ 自 $0$ 積到 $z$ 便得到 <span class="text-nowrap">$f_{\sssig Z}(z)=4z^{3}$；</span>[Example 3.54](#ex-iid-sum-transformation) 則先反解出 $X_1=Y_1Y_2$ 與 <span class="text-nowrap">$X_2=Y_1-Y_1Y_2$，</span>算得 Jacobian 為 <span class="text-nowrap">$-y_1$，</span>得到聯合 pdf $y_1e^{-y_1}$ 之後，各積掉另一個變數，分別求得 $f_{\sssig Y_1}(y_1)=y_1e^{-y_1}$ 與 $f_{\sssig Y_2}(y_2)=1$ 這兩個邊際 pdf，其中後者的積分用到了伽瑪函數。
 
-當轉換是線性的，而且各個變數彼此獨立時，另有一條不必動用積分的路。[Theorem 3.23](#thm-mgf-two-to-one) 指出 $W$ $=$ $\sum_{i=1}^{n}a_i\,X_i+b$ 的動差母函數是 $e^{bt}$ <span class="text-nowrap">$\prod_{i=1}^{n}M_{\sssig X_i}(a_i\,t)$，</span>證明只有兩個關鍵步驟。先把指數上的加總拆成各項相乘，再由獨立性把乘積的期望值改寫成期望值的乘積。常數項 $e^{bt}$ 則直接提到外面。它與單變數的 [Theorem 2.39](/teaching-topics/one-to-one-transformations/#thm-mgf-linear-transformation) 是同一件事的延伸版本，差別只在多了「先取期望值再相乘」這一步。
+當轉換是線性的，而且各個變數彼此獨立時，另有一條不必動用積分的路。[Theorem 3.23](#thm-mgf-two-to-one) 指出 $W$ $=$ $\sum_{i=1}^{n}a_i\,X_i+b$ 的動差母函數是 $e^{bt}$ <span class="text-nowrap">$\prod_{i=1}^{n}M_{\sssig X_i}(a_i\,t)$，</span>證明只有兩個關鍵步驟。先把指數上的加總拆成各項相乘，再由獨立性把乘積的期望值改寫成期望值的乘積。常數項 $e^{bt}$ 則直接提到外面。它與單變數的 [Theorem 2.39](/lecture-notes/one-to-one-transformations/#thm-mgf-linear-transformation) 是同一件事的延伸版本，差別只在多了「先取期望值再相乘」這一步。
 
-兩道例題示範這條路怎麼走。[Example 3.55](#ex-mgf-discrete-sum) 把兩個獨立變數的 mgf 直接相乘，再把乘開後的六項各自看成一個機率乘上 <span class="text-nowrap">$e^{wt}$，</span>由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)即可把 $W$ 的機率函數完整寫出來。[Example 3.56](#ex-poisson-mgf-sum) 反過來由 mgf 認出各項的分配，三項相乘之後所得的 $e^{3(e^{t}-1)}$ 仍是同一個分配族的 mgf，只是參數由 $1$ 變成 <span class="text-nowrap">$3$，</span>因而不必再算積分或加總，直接就能寫出 $\mathbb{P}(Y=0)=e^{-3}$ 以及 $Y$ 的期望值與[變異數](/teaching-topics/variance/#def-variance)。兩題所倚靠的都是同一件事，線性組合的 mgf 算得出來，分配就認得出來。
+兩道例題示範這條路怎麼走。[Example 3.55](#ex-mgf-discrete-sum) 把兩個獨立變數的 mgf 直接相乘，再把乘開後的六項各自看成一個機率乘上 <span class="text-nowrap">$e^{wt}$，</span>由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)即可把 $W$ 的機率函數完整寫出來。[Example 3.56](#ex-poisson-mgf-sum) 反過來由 mgf 認出各項的分配，三項相乘之後所得的 $e^{3(e^{t}-1)}$ 仍是同一個分配族的 mgf，只是參數由 $1$ 變成 <span class="text-nowrap">$3$，</span>因而不必再算積分或加總，直接就能寫出 $\mathbb{P}(Y=0)=e^{-3}$ 以及 $Y$ 的期望值與[變異數](/lecture-notes/variance/#def-variance)。兩題所倚靠的都是同一件事，線性組合的 mgf 算得出來，分配就認得出來。
 
-[下一篇](/teaching-topics/mgf-method-examples/)將以三道例題繼續示範 mgf 法在多轉一問題上的用法。
+[下一篇](/lecture-notes/mgf-method-examples/)將以三道例題繼續示範 mgf 法在多轉一問題上的用法。
 
 ## 參考文獻與延伸閱讀
 

@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 3
 topic: 4
 order: 304
-permalink: /teaching-topics/marginal-probability-density-functions/
+permalink: /lecture-notes/marginal-probability-density-functions/
 date: 2026-08-12
 published: false
 excerpt: "二元連續型隨機向量沒有辦法以加總取得邊際分配，而要改以積分完成: 把聯合機率密度函數對其中一個變數在該變數的值域上積分，所得的單變數函數就是另一個變數的邊際機率密度函數。它仍然是一個正規的單變數機率密度函數，並且不再殘留被積分的那個變數。這件事的直觀意義，是沿著一個變數的軸把原本的聯合機率密度疊加起來，也就是把曲面壓扁成一條曲線。本篇並以兩道例題示範常數的求法、兩個邊際機率密度函數的求取，以及聯合累積分配函數的分段計算。"
 ---
 
-[上一篇](/teaching-topics/joint-probability-density-functions/)由[聯合累積分配函數](/teaching-topics/joint-cumulative-distribution-functions/#def-joint-cdf)的積分表示式給出[聯合機率密度函數](/teaching-topics/joint-probability-density-functions/#def-joint-pdf)的定義，並列出它應具備的[三項性質](/teaching-topics/joint-probability-density-functions/#thm-joint-pdf-proper)。在二元離散型的情形中，我們曾把[聯合機率質量函數](/teaching-topics/random-vectors-joint-pmf/#def-joint-pmf)對其中一個變數的所有可能取值加總，得到另一個變數的[邊際機率質量函數](/teaching-topics/random-vectors-joint-pmf/#def-marginal-pmf)；二元連續型[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector)沒有辦法以加總處理，如同單變數的情形，同樣要改以積分完成。
+[上一篇](/lecture-notes/joint-probability-density-functions/)由[聯合累積分配函數](/lecture-notes/joint-cumulative-distribution-functions/#def-joint-cdf)的積分表示式給出[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)的定義，並列出它應具備的[三項性質](/lecture-notes/joint-probability-density-functions/#thm-joint-pdf-proper)。在二元離散型的情形中，我們曾把[聯合機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-joint-pmf)對其中一個變數的所有可能取值加總，得到另一個變數的[邊際機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-marginal-pmf)；二元連續型[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)沒有辦法以加總處理，如同單變數的情形，同樣要改以積分完成。
 
 本篇即依此給出邊際機率密度函數的定義，說明「沿著另一個變數的軸把聯合機率密度疊加起來」這個直觀意義，並以兩道例題示範常數的求法、兩個邊際機率密度函數的求取，以及聯合累積分配函數的分段計算。
 
@@ -36,12 +36,12 @@ $$
 
 </div>
 
-與離散型的 [marginal pmf](/teaching-topics/random-vectors-joint-pmf/#def-marginal-pmf) 相同，marginal pdf 是一種正規的單變數的 pdf，過去在[單變數的 pdf](/teaching-topics/probability-density-functions/#def-pdf) 中所談過的性質，marginal pdf 也都具備，並且 marginal pdf 不應殘存任何被積分的變數，例如: $Y$ 的 marginal pdf 並不再殘留 <span class="text-nowrap">$X$，</span>反之亦然。
+與離散型的 [marginal pmf](/lecture-notes/random-vectors-joint-pmf/#def-marginal-pmf) 相同，marginal pdf 是一種正規的單變數的 pdf，過去在[單變數的 pdf](/lecture-notes/probability-density-functions/#def-pdf) 中所談過的性質，marginal pdf 也都具備，並且 marginal pdf 不應殘存任何被積分的變數，例如: $Y$ 的 marginal pdf 並不再殘留 <span class="text-nowrap">$X$，</span>反之亦然。
 
 marginal pdf 的直觀意義是「沿著另一個變數的軸把原本的聯合機率密度做疊加」，舉例來說，$X$ 的邊際分配就是沿著 $Y$ 軸，把本來的聯合機率密度「壓扁」。下面就來看看這個直觀意義的圖示。
 
 <figure id="fig-marginal-pdf-from-surface" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/marginal-pdf-from-surface.svg" alt="一個聯合機率密度函數的曲面，中央隆起、四周向外遞減，底面兩軸分別標 x 與 y，左側標示聯合機率密度函數的函數值。曲面後方的兩個鉛直平面上各畫一條紅色曲線: 左邊那一條是 Y 的邊際機率密度函數，右邊那一條是 X 的邊際機率密度函數，兩條曲線的峰頂都比曲面的峰頂高。">
+  <img src="/images/lecture-notes/marginal-pdf-from-surface.svg" alt="一個聯合機率密度函數的曲面，中央隆起、四周向外遞減，底面兩軸分別標 x 與 y，左側標示聯合機率密度函數的函數值。曲面後方的兩個鉛直平面上各畫一條紅色曲線: 左邊那一條是 Y 的邊際機率密度函數，右邊那一條是 X 的邊際機率密度函數，兩條曲線的峰頂都比曲面的峰頂高。">
   <figcaption><span class="topic-figure__label">Fig. 3.3.</span> marginal pdf 是把 joint pdf 沿著另一個變數的軸積分之後所留下的函數。曲面後方左邊的那一條曲線為 <span class="text-nowrap">$f_{\sssig Y}(y)$，</span>右邊的那一條為 <span class="text-nowrap">$f_{\sssig X}(x)$。</span></figcaption>
 </figure>
 
@@ -83,7 +83,7 @@ where $c$ is a constant.
 </ol>
 </div>
 
-(1) 由 [joint pdf 之性質](/teaching-topics/joint-probability-density-functions/#thm-joint-pdf-proper)可知
+(1) 由 [joint pdf 之性質](/lecture-notes/joint-probability-density-functions/#thm-joint-pdf-proper)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -197,7 +197,7 @@ f_{\sssig Y}(y)=
 \right.
 $$
 
-(3) 由 [joint cdf 的定義](/teaching-topics/joint-cumulative-distribution-functions/#def-joint-cdf)可知
+(3) 由 [joint cdf 的定義](/lecture-notes/joint-cumulative-distribution-functions/#def-joint-cdf)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -248,17 +248,12 @@ F_{\sssig XY}(x,y)&=\mathbb{P}(X\leqslant x,Y\leqslant y)\\[0.45em]
 \end{array}
 \right.\\[0.6em]
 &=\left\lbrace
-\begin{array}{l}
-0,\\[0.25em]
-\quad x\leqslant0\ \text{或}\ y\leqslant0\\[0.5em]
-(3-2x)x^{2}y^{2},\\[0.25em]
-\quad 0<x<1,\ 0<y<1\\[0.5em]
-y^{2},\\[0.25em]
-\quad x\geqslant1,\ 0<y<1\\[0.5em]
-3x^{2}-2x^{3},\\[0.25em]
-\quad 0<x<1,\ y\geqslant1\\[0.5em]
-1,\\[0.25em]
-\quad x\geqslant1,\ y\geqslant1
+\begin{array}{c@{}l}
+0, & x\leqslant0\ \text{或}\ y\leqslant0\\[0.5em]
+(3-2x)x^{2}y^{2}, & 0<x<1,\ 0<y<1\\[0.5em]
+y^{2}, & x\geqslant1,\ 0<y<1\\[0.5em]
+3x^{2}-2x^{3}, & 0<x<1,\ y\geqslant1\\[0.5em]
+1, & x\geqslant1,\ y\geqslant1
 \end{array}
 \right.
 \end{aligned}
@@ -295,7 +290,7 @@ $$
 {: .topic-paren-item}
 
 <figure id="fig-triangle-range-integration" class="topic-figure topic-figure--narrow">
-  <img src="/images/teaching-topics/triangle-range-integration.svg" alt="平面上的一個三角形區域，以淡紅色填滿。三角形由原點出發的斜線、左側的縱軸與上方的水平虛線所圍成。斜線標 x 等於 y，水平虛線的左端標 y 等於 1。橫軸右端標 x，縱軸上端標 y。">
+  <img src="/images/lecture-notes/triangle-range-integration.svg" alt="平面上的一個三角形區域，以淡紅色填滿。三角形由原點出發的斜線、左側的縱軸與上方的水平虛線所圍成。斜線標 x 等於 y，水平虛線的左端標 y 等於 1。橫軸右端標 x，縱軸上端標 y。">
   <figcaption><span class="topic-figure__label">Fig. 3.4.</span> 聯合值域 $0\leqslant x\leqslant y\leqslant 1$ 是斜線 <span class="text-nowrap">$x=y$、</span>縱軸與虛線 $y=1$ 所圍成的三角形，填色的部分即積分範圍。</figcaption>
 </figure>
 
@@ -428,7 +423,7 @@ f_{\sssig Y}(y)=
 \right.
 $$
 
-(3) 由 [joint cdf 之定義](/teaching-topics/joint-cumulative-distribution-functions/#def-joint-cdf)可知
+(3) 由 [joint cdf 之定義](/lecture-notes/joint-cumulative-distribution-functions/#def-joint-cdf)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -479,17 +474,12 @@ F_{\sssig XY}(x,y)&=\mathbb{P}(X\leqslant x,Y\leqslant y)\\[0.45em]
 \end{array}
 \right.\\[0.6em]
 &=\left\lbrace
-\begin{array}{l}
-0,\\[0.25em]
-\quad x<0\ \text{或}\ y<0\\[0.5em]
--x^{3}+yx^{2}+y^{2}x,\\[0.25em]
-\quad 0\leqslant x\leqslant y\leqslant 1\\[0.5em]
--x^{3}+x^{2}+x,\\[0.25em]
-\quad 0\leqslant x\leqslant 1,\ y>1\\[0.5em]
-y^{3},\\[0.25em]
-\quad x>y,\ 0\leqslant y\leqslant 1\\[0.5em]
-1,\\[0.25em]
-\quad x\geqslant1,\ y\geqslant1
+\begin{array}{c@{}l}
+0, & x<0\ \text{或}\ y<0\\[0.5em]
+-x^{3}+yx^{2}+y^{2}x, & 0\leqslant x\leqslant y\leqslant 1\\[0.5em]
+-x^{3}+x^{2}+x, & 0\leqslant x\leqslant 1,\ y>1\\[0.5em]
+y^{3}, & x>y,\ 0\leqslant y\leqslant 1\\[0.5em]
+1, & x\geqslant1,\ y\geqslant1
 \end{array}
 \right.
 \end{aligned}
@@ -508,13 +498,13 @@ $$
 
 ## 本篇小結
 
-[Definition 3.6](#def-marginal-pdf) 把邊際分配推廣到二元連續型的情形。對二元連續型隨機向量 $(X,Y)$ 而言，把 joint pdf 對 $y$ 在 $\mathcal{R}\_{\sssig Y}$ 上積分所得的 $f_{\sssig X}(x)$ 是 $X$ 的 marginal pdf，對 $x$ 在 $\mathcal{R}\_{\sssig X}$ 上積分所得的 $f_{\sssig Y}(y)$ 則是 $Y$ 的 marginal pdf。這與離散型的 [marginal pmf](/teaching-topics/random-vectors-joint-pmf/#def-marginal-pmf) 只差在把加總換成積分。這裡的 marginal pdf 仍是一種正規的單變數的 pdf，也不應殘存任何被積分的變數。
+[Definition 3.6](#def-marginal-pdf) 把邊際分配推廣到二元連續型的情形。對二元連續型隨機向量 $(X,Y)$ 而言，把 joint pdf 對 $y$ 在 $\mathcal{R}\_{\sssig Y}$ 上積分所得的 $f_{\sssig X}(x)$ 是 $X$ 的 marginal pdf，對 $x$ 在 $\mathcal{R}\_{\sssig X}$ 上積分所得的 $f_{\sssig Y}(y)$ 則是 $Y$ 的 marginal pdf。這與離散型的 [marginal pmf](/lecture-notes/random-vectors-joint-pmf/#def-marginal-pmf) 只差在把加總換成積分。這裡的 marginal pdf 仍是一種正規的單變數的 pdf，也不應殘存任何被積分的變數。
 
 [Fig. 3.3](#fig-marginal-pdf-from-surface) 給出這件事的直觀意義。$X$ 的 marginal pdf 就是沿著 $Y$ 軸把聯合機率密度「壓扁」，原本落在同一個 $X$ 值上的那些機率密度隨之「疊加」，疊加後的高度即 $f_{\sssig X}(x)$ 的函數值。也因為是疊加，marginal pdf 的主峰高度會比 joint pdf 來得高；而它的圖形與單變數的 pdf 一模一樣，正是「marginal pdf 仍是一個 pdf」的體現。
 
 [Example 3.2](#ex-joint-pdf-region-basic) 的聯合值域是一個正方形，由積分為 $1$ 求得 <span class="text-nowrap">$c=12$，</span>再各自對一個變數積分得到 $6\,x(1-x)$ 與 $2y$ 兩個 marginal pdf，最後把平面依 $(x,y)$ 所在的範圍切成五段寫出 joint cdf。[Example 3.3](#ex-joint-pdf-triangle-region) 的聯合值域則是 [Fig. 3.4](#fig-triangle-range-integration) 的三角形，積分的上下限因而隨另一個變數而變: 求 $f_{\sssig X}(x)$ 時 $y$ 由 $x$ 積到 <span class="text-nowrap">$1$，</span>求 $f_{\sssig Y}(y)$ 時 $x$ 由 $0$ 積到 <span class="text-nowrap">$y$；</span>求 joint cdf 時也需要調換積分順序，這正是富比尼定理的用處。
 
-[下一篇](/teaching-topics/region-probabilities-joint-density/)先以一道聯合值域為 $y>x>0$ 的例題求取邊際機率密度函數，再回頭比較三道例題在聯合值域與積分範圍上的差別，並以圖示說明聯合累積分配函數為何需要分段。
+[下一篇](/lecture-notes/region-probabilities-joint-density/)先以一道聯合值域為 $y>x>0$ 的例題求取邊際機率密度函數，再回頭比較三道例題在聯合值域與積分範圍上的差別，並以圖示說明聯合累積分配函數為何需要分段。
 
 ## 參考文獻與延伸閱讀
 

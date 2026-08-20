@@ -7,20 +7,20 @@ category: "機率概論"
 chapter: 2
 topic: 12
 order: 212
-permalink: /teaching-topics/quantiles/
+permalink: /lecture-notes/quantiles/
 date: 2026-08-06
 published: true
 excerpt: "分位數把中位數的想法推廣到任意比例: 給定一個介於 $0$ 與 $1$ 之間的 $p$，同時滿足 $\\mathbb{P}(X\\leqslant x_{p})\\geqslant p$ 與 $\\mathbb{P}(X\\geqslant x_{p})\\geqslant1-p$ 的 $x_{p}$ 稱為 $p$-分位數，直觀上它把整個分配切成前後兩段，前段佔全部的 $p$、後段佔全部的 $1-p$。換一個角度來看，$q-1$ 個分位數可以把一個分配均分為 $q$ 個等份，第 $k$ 個分界點記為 $q_{k}$；取 $q=4$、$q=10$ 與 $q=100$，便分別得到四分位數、十分位數與百分位數。"
 ---
 
-[上一篇](/teaching-topics/median/)介紹[中位數](/teaching-topics/median/#def-median)，它把一個分配切成機率各佔一半的前後兩段。這一刀切在正中央，但正中央並不是唯一值得關心的位置。我們也常想知道有四分之一的機率落在哪一個點以下，或是把一個分配均分成十份、一百份之後，各個分界點分別落在哪裡。
+[上一篇](/lecture-notes/median/)介紹[中位數](/lecture-notes/median/#def-median)，它把一個分配切成機率各佔一半的前後兩段。這一刀切在正中央，但正中央並不是唯一值得關心的位置。我們也常想知道有四分之一的機率落在哪一個點以下，或是把一個分配均分成十份、一百份之後，各個分界點分別落在哪裡。
 
 本篇介紹的分位數，就是把中位數的想法推廣到任意的比例。以下先給出分位數的兩種定義，說明如何由 cdf 找到其中一個分位數，再以兩張圖分別呈現兩種定義的直觀意涵，接著看四分位數、十分位數與百分位數這三種常見的設定，最後以五道例題示範離散型、連續型與混合型的求算。
 
 <div id="def-quantile" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 2.11 (分位數, quantile)</div>
 
-令 $X$ 為一[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)且 $0<p<1$，若 $x\_{\sssig p}\in\mathbb{R}$ 滿足
+令 $X$ 為一[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)且 $0<p<1$，若 $x\_{\sssig p}\in\mathbb{R}$ 滿足
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -117,14 +117,14 @@ $$
 下面就用圖示來理解 $p$-分位數的直觀意涵。
 
 <figure id="fig-quantile-intuition" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/quantile-intuition.svg" alt="一條右偏的機率密度曲線，橫軸為 x。曲線下方有一條虛線界線自曲線垂直落到橫軸，軸下標為 x_p。界線左側到曲線起點之間的面積畫上淡色陰影並標為 p，界線右側到曲線右端之間的面積標為 1 減 p。">
+  <img src="/images/lecture-notes/quantile-intuition.svg" alt="一條右偏的機率密度曲線，橫軸為 x。曲線下方有一條虛線界線自曲線垂直落到橫軸，軸下標為 x_p。界線左側到曲線起點之間的面積畫上淡色陰影並標為 p，界線右側到曲線右端之間的面積標為 1 減 p。">
   <figcaption><span class="topic-figure__label">Fig. 2.15.</span> $p$-分位數 $x_{\sssig p}$ 把分配切成前後兩段: 界線左側的面積為 $p$、右側的面積為 $1-p$。</figcaption>
 </figure>
 
 或是以第二種定義來理解第 $k$ 個 $q$-分位數的直觀意涵。
 
 <figure id="fig-kth-q-quantile" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/quartiles-equal-areas.svg" alt="一條右偏的機率密度曲線，橫軸為 x。曲線下方有三條虛線界線自曲線垂直落到橫軸，軸下由左至右標為 q1、q2、q3。三條界線把曲線下的面積分成四塊，四塊深淺交替上色，每一塊各標四分之一。四塊的寬度並不相等，最左一塊最窄，最右一塊一路延伸到曲線的右端。">
+  <img src="/images/lecture-notes/quartiles-equal-areas.svg" alt="一條右偏的機率密度曲線，橫軸為 x。曲線下方有三條虛線界線自曲線垂直落到橫軸，軸下由左至右標為 q1、q2、q3。三條界線把曲線下的面積分成四塊，四塊深淺交替上色，每一塊各標四分之一。四塊的寬度並不相等，最左一塊最窄，最右一塊一路延伸到曲線的右端。">
   <figcaption><span class="topic-figure__label">Fig. 2.16.</span> 取 $q=4$ 時，三個分位數 $q_{1}$、$q_{2}$、$q_{3}$ 把整個分配均分為四個等份，每一份的機率各為 $\frac{1}{4}$。</figcaption>
 </figure>
 
@@ -348,7 +348,7 @@ $$
 
 </div>
 
-[Definition 2.10](/teaching-topics/median/#def-median) 提過中位數未必唯一，下面就是一個中位數不唯一的例子。
+[Definition 2.10](/lecture-notes/median/#def-median) 提過中位數未必唯一，下面就是一個中位數不唯一的例子。
 
 <div id="ex-nonunique-median" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.26</div>
@@ -460,7 +460,7 @@ $$
 </ol>
 </div>
 
-(4) 由[第 (1) 小題](/teaching-topics/mixed-random-variables/#ex-component-lifetime)已求得 $Y$ 的 cdf 為
+(4) 由[第 (1) 小題](/lecture-notes/mixed-random-variables/#ex-component-lifetime)已求得 $Y$ 的 cdf 為
 {: .topic-paren-item}
 
 $$
@@ -510,7 +510,7 @@ $$
 
 兩種定義各有一個直觀意涵。[Fig. 2.15](#fig-quantile-intuition) 對應第一種。分位數把分配切成前後兩段，前段佔全部的 $p$、後段佔全部的 $1-p$。[Fig. 2.16](#fig-kth-q-quantile) 對應第二種。$q-1$ 個分位數把分配均分為 $q$ 個等份，$q_{\sssig k}$ 是第 $k$ 份與第 $k+1$ 份的分界點。設定 <span class="text-nowrap">$q=4$、</span><span class="text-nowrap">$q=10$ 與</span><span class="text-nowrap">$q=100$，</span>便分別得到四分位數 $Q_{\sssig k}$、十分位數 $D_{\sssig k}$ 與百分位數 $P_{\sssig r}$，三者在 $P_{50}=D_5=Q_2=\eta_{\sssig X}$ 這一點上會合。
 
-五道例題涵蓋三種型態: [Example 2.23](#ex-discrete-percentile) 是離散型，直接由定義的兩個不等式驗證；[Example 2.24](#ex-uniform-upper-quartile) 與 [Example 2.25](#ex-exponential-decile) 是連續型，先求 cdf 再解方程式；[Example 2.26](#ex-nonunique-median) 的密度在 $[2, 4]$ 上為零，該區間內的每一個實數都是中位數，是中位數不唯一的實例；[Example 2.14 <span lang="en">(Continued)</span>](#ex-component-lifetime-first-quartile) 則是混合型，第一四分位數落在質點 $0$ 上。至此，[期望值](/teaching-topics/expectation/#def-expectation)、[變異數](/teaching-topics/variance/#def-variance)、[標準差](/teaching-topics/variance-standard-deviation/#def-standard-deviation)、[眾數](/teaching-topics/mode/#def-mode)、中位數與分位數這幾個量數都已介紹完畢，[下一節](/teaching-topics/moment-system/)要把其中的期望值與變異數收進同一套架構之下，也就是動差系統。
+五道例題涵蓋三種型態: [Example 2.23](#ex-discrete-percentile) 是離散型，直接由定義的兩個不等式驗證；[Example 2.24](#ex-uniform-upper-quartile) 與 [Example 2.25](#ex-exponential-decile) 是連續型，先求 cdf 再解方程式；[Example 2.26](#ex-nonunique-median) 的密度在 $[2, 4]$ 上為零，該區間內的每一個實數都是中位數，是中位數不唯一的實例；[Example 2.14 <span lang="en">(Continued)</span>](#ex-component-lifetime-first-quartile) 則是混合型，第一四分位數落在質點 $0$ 上。至此，[期望值](/lecture-notes/expectation/#def-expectation)、[變異數](/lecture-notes/variance/#def-variance)、[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)、[眾數](/lecture-notes/mode/#def-mode)、中位數與分位數這幾個量數都已介紹完畢，[下一節](/lecture-notes/moment-system/)要把其中的期望值與變異數收進同一套架構之下，也就是動差系統。
 
 ## 參考文獻與延伸閱讀
 

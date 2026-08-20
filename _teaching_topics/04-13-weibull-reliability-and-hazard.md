@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 4
 topic: 13
 order: 413
-permalink: /teaching-topics/weibull-reliability-and-hazard/
+permalink: /lecture-notes/weibull-reliability-and-hazard/
 date: 2026-08-12
 published: false
 excerpt: "韋伯分配由 $(X/\\alpha)^{\\gamma}$ 服從 $\\mathrm{Exp}(1)$ 這個分配所界定，其中 $\\alpha$ 為比例參數、$\\gamma$ 為形狀參數，期望值與變異數都要用伽瑪函數表示。本篇先證明其機率函數為合法的機率函數並求得期望值與變異數，再給出可靠度函數與風險函數的定義: 前者是壽命超過 $t$ 的機率，後者是已知在 $t$ 尚未故障之下，下一瞬間故障的機率密度。韋伯分配的風險函數為 $\\frac{\\gamma}{\\alpha}(t/\\alpha)^{\\gamma-1}$ 這個式子，因而在 $\\gamma$ 大於、等於、小於 $1$ 時分別遞增、恆定與遞減，其中恆定的情形正是無記憶性。最後證明由風險函數可以還原出 cdf 與 pdf，並以三道例題演練壽命期望值與條件存活機率的計算。"
 ---
 
-[上一篇](/teaching-topics/gamma-distribution/)介紹[伽瑪分配](/teaching-topics/gamma-distribution/#def-gamma-distribution)，把等待第一次偶發事件的[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution)推廣為等待第 $\alpha$ 次偶發事件所需要的時間。本篇的韋伯分配是另一個方向的推廣: 偶發事件的次數不變，改為要求 $X$ 除以 $\alpha$ 之後再取 $\gamma$ 次方，所得到的量服從 $\mathrm{Exp}(1)$ 這個分配。
+[上一篇](/lecture-notes/gamma-distribution/)介紹[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)，把等待第一次偶發事件的[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)推廣為等待第 $\alpha$ 次偶發事件所需要的時間。本篇的韋伯分配是另一個方向的推廣: 偶發事件的次數不變，改為要求 $X$ 除以 $\alpha$ 之後再取 $\gamma$ 次方，所得到的量服從 $\mathrm{Exp}(1)$ 這個分配。
 
-韋伯分配的期望值與變異數都要用[伽瑪函數](/teaching-topics/gamma-function-exponential-distribution/#def-gamma-function)表示，本篇先證明其機率函數為合法的機率函數並求出這兩個量，再說明形狀參數取 $1$ 與取 $2$ 時分別對應到哪一個分配。接著給出可靠度函數與風險函數這兩個定義，它們是描述壽命的兩個基本工具，也正是韋伯分配比指數分配更適合描述壽命的原因所在。最後證明風險函數足以反推出 cdf 與 pdf，並以三道例題作為演練。
+韋伯分配的期望值與變異數都要用[伽瑪函數](/lecture-notes/gamma-function-exponential-distribution/#def-gamma-function)表示，本篇先證明其機率函數為合法的機率函數並求出這兩個量，再說明形狀參數取 $1$ 與取 $2$ 時分別對應到哪一個分配。接著給出可靠度函數與風險函數這兩個定義，它們是描述壽命的兩個基本工具，也正是韋伯分配比指數分配更適合描述壽命的原因所在。最後證明風險函數足以反推出 cdf 與 pdf，並以三道例題作為演練。
 
 ## 韋伯分配
 
@@ -196,7 +196,7 @@ $$
 
 [^normal-later]: 常態分配 <span lang="en">(normal distribution)</span> 在稍後馬上將會提到，讀者在此可以不必心急。
 
-(4) 韋伯分配相較於[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution)而言，更適合用來描述生物或機件的壽命，主要的原因與死亡或損壞的風險有關，見下列關於[可靠度](#def-reliability-function)與[風險](#def-hazard-function)的討論。
+(4) 韋伯分配相較於[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)而言，更適合用來描述生物或機件的壽命，主要的原因與死亡或損壞的風險有關，見下列關於[可靠度](#def-reliability-function)與[風險](#def-hazard-function)的討論。
 {: .topic-paren-item}
 
 ## 可靠度函數
@@ -382,7 +382,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者應該記得，在[韋伯分配的第 (2) 點](#weibull-exp-relation)中我們曾經提過，當 $\gamma=1$ 時，韋伯分配服從指數分配，又當 $\gamma=1$ 時，韋伯分配的風險函數是常數函數，此即稍早所提到的**風險恆定**，亦即風險不隨時間變化。事實上，風險恆定的性質正是[無記憶性](/teaching-topics/exponential-memoryless-and-minima/#thm-memoryless-exp)，此即，只要沒有壞的話，無論現在的時點 (壽命) $t$ 為何，下一個瞬間故障失效的機率密度是固定的，不與 $t$ 有關。
+讀者應該記得，在[韋伯分配的第 (2) 點](#weibull-exp-relation)中我們曾經提過，當 $\gamma=1$ 時，韋伯分配服從指數分配，又當 $\gamma=1$ 時，韋伯分配的風險函數是常數函數，此即稍早所提到的**風險恆定**，亦即風險不隨時間變化。事實上，風險恆定的性質正是[無記憶性](/lecture-notes/exponential-memoryless-and-minima/#thm-memoryless-exp)，此即，只要沒有壞的話，無論現在的時點 (壽命) $t$ 為何，下一個瞬間故障失效的機率密度是固定的，不與 $t$ 有關。
 
 </div>
 
@@ -561,7 +561,7 @@ $$
 
 </div>
 
-(2) 由[順序統計量的性質](/teaching-topics/order-statistics-examples/#thm-order-stat-samp-dist-cdf)，我們有
+(2) 由[順序統計量的性質](/lecture-notes/order-statistics-examples/#thm-order-stat-samp-dist-cdf)，我們有
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -661,15 +661,15 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-本題的題幹指出，壽命期望值就是故障前平均時間 <span lang="en">(mean time to failure, MTTF)</span>，讀者應該不會感到陌生，因為早在[第二章討論期望值的時候](/teaching-topics/properties-of-expectation/)，我們便曾經提過這件事。
+本題的題幹指出，壽命期望值就是故障前平均時間 <span lang="en">(mean time to failure, MTTF)</span>，讀者應該不會感到陌生，因為早在[第二章討論期望值的時候](/lecture-notes/properties-of-expectation/)，我們便曾經提過這件事。
 
-更甚者，我們在當時也曾提過，[Theorem 2.8](/teaching-topics/expectation/#thm-expectation-tail-sum) 的連續型版本可以用來計算 MTTF，此即可靠度函數在值域範圍上的積分，也就是
+更甚者，我們在當時也曾提過，[Theorem 2.8](/lecture-notes/expectation/#thm-expectation-tail-sum) 的連續型版本可以用來計算 MTTF，此即可靠度函數在值域範圍上的積分，也就是
 
 $$
 \mathbb{E}(X)=\int_{0}^{\infty}R_{\sssig X}(x)\,dx
 $$
 
-因此若本題並不是給 pdf，而是給了 cdf 或可靠度函數 (甚至是風險函數)，我們同樣可以先求得可靠度函數 <span class="text-nowrap">$R_{\sssig X}(x)$，</span>再透過 [Theorem 2.8](/teaching-topics/expectation/#thm-expectation-tail-sum) 求得壽命之 MTTF。
+因此若本題並不是給 pdf，而是給了 cdf 或可靠度函數 (甚至是風險函數)，我們同樣可以先求得可靠度函數 <span class="text-nowrap">$R_{\sssig X}(x)$，</span>再透過 [Theorem 2.8](/lecture-notes/expectation/#thm-expectation-tail-sum) 求得壽命之 MTTF。
 
 </div>
 
@@ -871,11 +871,11 @@ $$
 
 ## 本篇小結
 
-[Definition 4.15](#def-weibull-distribution) 由 $\left(\frac{\,X\,}{\alpha}\right)^{\gamma}\sim\mathrm{Exp}(1)$ 這條關係界定韋伯分配，其中 $\alpha$ 是比例參數、$\gamma$ 是形狀參數，機率函數為 $\frac{\gamma}{\,\alpha\,}\left(\frac{\,x\,}{\,\alpha\,}\right)^{\gamma-1}e^{-\left(\frac{x}{\alpha}\right)^{\gamma}}$ 這個式子。證明的三個步驟依序是: 把積分變數換成 $\left(\frac{x}{\alpha}\right)^{\gamma}$ 之後直接驗證積分為 <span class="text-nowrap">$1$、</span>由 $Y\sim\mathrm{Exp}(1)$ 的 $k$ 階原動差 $\Gamma(k+1)$ 得到 $X$ 的一二階原動差，再相減得到變異數。期望值與變異數因而都要用[伽瑪函數](/teaching-topics/gamma-function-exponential-distribution/#def-gamma-function)表示。定義之後的四點說明指出: $\gamma=1$ 時韋伯分配即為 <span class="text-nowrap">$\mathrm{Exp}(\beta=\alpha)$、</span>$\gamma=2$ 時被稱作雷利分配並可用來描述兩個獨立同分配的常態變數所構成之隨機向量的長度，以及韋伯分配比[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution)更適合描述壽命的原因在於風險。
+[Definition 4.15](#def-weibull-distribution) 由 $\left(\frac{\,X\,}{\alpha}\right)^{\gamma}\sim\mathrm{Exp}(1)$ 這條關係界定韋伯分配，其中 $\alpha$ 是比例參數、$\gamma$ 是形狀參數，機率函數為 $\frac{\gamma}{\,\alpha\,}\left(\frac{\,x\,}{\,\alpha\,}\right)^{\gamma-1}e^{-\left(\frac{x}{\alpha}\right)^{\gamma}}$ 這個式子。證明的三個步驟依序是: 把積分變數換成 $\left(\frac{x}{\alpha}\right)^{\gamma}$ 之後直接驗證積分為 <span class="text-nowrap">$1$、</span>由 $Y\sim\mathrm{Exp}(1)$ 的 $k$ 階原動差 $\Gamma(k+1)$ 得到 $X$ 的一二階原動差，再相減得到變異數。期望值與變異數因而都要用[伽瑪函數](/lecture-notes/gamma-function-exponential-distribution/#def-gamma-function)表示。定義之後的四點說明指出: $\gamma=1$ 時韋伯分配即為 <span class="text-nowrap">$\mathrm{Exp}(\beta=\alpha)$、</span>$\gamma=2$ 時被稱作雷利分配並可用來描述兩個獨立同分配的常態變數所構成之隨機向量的長度，以及韋伯分配比[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)更適合描述壽命的原因在於風險。
 
 [Definition 4.16](#def-reliability-function) 的可靠度函數是 $1-F_{\sssig X}(t)$ 這個尾機率，讀作該物品能使用超過 $t$ 時間的機率；生物統計學上把它記為 $S_{\sssig X}(t)$ 並稱為存活函數。無記憶性正是以它定義的，寫成可靠度函數的形式即 $R_{\sssig X}(a+b)=R_{\sssig X}(a)\,R_{\sssig X}(b)$ 這條乘法關係。[Definition 4.17](#def-hazard-function) 的風險函數則是 $\frac{f_{\sssig X}(t)}{R_{\sssig X}(t)}$ 這個比值，也就是已知在 $t$ 尚未故障的條件下，下一瞬間故障的機率密度；把條件機率的極限寫開來，得到的正是同一個式子。
 
-韋伯分配的風險函數為 $\frac{\gamma}{\,\alpha\,}\left(\frac{\,t\,}{\,\alpha\,}\right)^{\gamma-1}$ 這個式子，指數上的 $\gamma-1$ 決定它是遞增、常數還是遞減: $\gamma>1$ 時風險隨壽命增高，稱為正時間相關性；$\gamma=1$ 時風險恆定，這正是[無記憶性](/teaching-topics/exponential-memoryless-and-minima/#thm-memoryless-exp)，也對應到 $\gamma=1$ 時韋伯分配退回指數分配這件事；$\gamma<1$ 時風險遞減，稱為負時間相關性。機件的損傷只會隨使用而累積，通常較貼近 $\gamma>1$ 的情況，這就是韋伯分配比指數分配更適合描述壽命的理由。[Theorem 4.16](#thm-hazard-to-distribution) 反過來說明風險函數本身就足以決定分配: 把風險函數看成 $-\ln\bigl[1-F_{\sssig X}(t)\bigr]$ 的導數，積分之後即得 cdf，再微分一次即得 pdf。
+韋伯分配的風險函數為 $\frac{\gamma}{\,\alpha\,}\left(\frac{\,t\,}{\,\alpha\,}\right)^{\gamma-1}$ 這個式子，指數上的 $\gamma-1$ 決定它是遞增、常數還是遞減: $\gamma>1$ 時風險隨壽命增高，稱為正時間相關性；$\gamma=1$ 時風險恆定，這正是[無記憶性](/lecture-notes/exponential-memoryless-and-minima/#thm-memoryless-exp)，也對應到 $\gamma=1$ 時韋伯分配退回指數分配這件事；$\gamma<1$ 時風險遞減，稱為負時間相關性。機件的損傷只會隨使用而累積，通常較貼近 $\gamma>1$ 的情況，這就是韋伯分配比指數分配更適合描述壽命的理由。[Theorem 4.16](#thm-hazard-to-distribution) 反過來說明風險函數本身就足以決定分配: 把風險函數看成 $-\ln\bigl[1-F_{\sssig X}(t)\bigr]$ 的導數，積分之後即得 cdf，再微分一次即得 pdf。
 
 三道例題各練一種用法。[Example 4.35](#ex-weibull-1) 先以 $Y\sim\mathrm{Exp}(1)$ 求得韋伯分配的壽命期望值，再說明 $n$ 個獨立同分配的韋伯變數取極小值之後仍為韋伯分配，比例參數縮成原來的 $n^{-\frac{1}{\nu}}$ 倍，因此串聯系統的故障前平均時間不會比單一元件來得長。[Example 4.36](#ex-weibull-2) 由風險函數 $\lambda(t)=t^{3}$ 出發，先用 [Theorem 4.16](#thm-hazard-to-distribution) 還原出 cdf 與可靠度函數，再算條件存活機率。[Example 4.37](#ex-weibull-3) 則不必求出分配: 兩個時點的可靠度相除，指數上只剩下風險函數在該時間段上的積分，抽菸者的風險是兩倍，答案因而是不抽菸者機率的平方。
 

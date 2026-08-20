@@ -4,5 +4,5 @@ layout: redirect
 sitemap: false
 permalink: /teaching-topics/continuous-random-variables-pdf/
 redirect:
-  to: /teaching-topics/probability-density-functions/
+  to: /lecture-notes/probability-density-functions/
 ---

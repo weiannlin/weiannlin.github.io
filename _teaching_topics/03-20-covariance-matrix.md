@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 20
 order: 320
-permalink: /teaching-topics/covariance-matrix/
+permalink: /lecture-notes/covariance-matrix/
 date: 2026-08-13
 published: false
 excerpt: "把一組隨機變數兩兩之間的變異數與共變異數收在同一個矩陣裡，就是共變異數矩陣；它的主對角線是各個變數自己的變異數，而由共變異數的對稱性可知它必為對稱矩陣。若改以隨機向量的形式書寫，同一個矩陣可以寫成 $\\mathbf{\\Sigma}=\\mathbb{E}\\bigl[(\\boldsymbol{X}-\\boldsymbol{\\mu})(\\boldsymbol{X}-\\boldsymbol{\\mu})^{\\mathrm{T}}\\bigr]$ 這一條式子，也就是隨機向量的變異數，兩個定義事實上是同一件事情。本篇接著介紹隨機向量在向量與矩陣上的運算: 常數向量與隨機向量相乘之後，期望值為 $\\boldsymbol{a}^{\\mathrm{T}}\\boldsymbol{\\mu}$ 這個純量，變異數則為 $\\boldsymbol{a}^{\\mathrm{T}}\\mathbf{\\Sigma}\\boldsymbol{a}$ 這個二次形式，後者恰好可以用來證明共變異數矩陣必為正半定；把常數向量換成常數矩陣之後，所得的結果則是一個維度比 $1$ 還高的隨機向量。最後以一道二元常態的例題示範這些結果在計算上的用法。"
 ---
 
-[上一篇](/teaching-topics/variance-of-linear-combination/)以 [Theorem 3.16](/teaching-topics/variance-of-linear-combination/#thm-covar-proper2) 給出線性組合的[變異數](/teaching-topics/variance/#def-variance)展開式，並在最後指出，多元[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)的表示與運算會隨著變數個數增加而越來越複雜，因此在多變量分析與迴歸分析的領域中，我們更常改以向量的形式來處理一組多元隨機變數。
+[上一篇](/lecture-notes/variance-of-linear-combination/)以 [Theorem 3.16](/lecture-notes/variance-of-linear-combination/#thm-covar-proper2) 給出線性組合的[變異數](/lecture-notes/variance/#def-variance)展開式，並在最後指出，多元[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的表示與運算會隨著變數個數增加而越來越複雜，因此在多變量分析與迴歸分析的領域中，我們更常改以向量的形式來處理一組多元隨機變數。
 
-本篇即由此出發，先以 [Definition 3.17](#def-covar-matrix) 把所有變數之間的變異數與[共變異數](/teaching-topics/covariance/#def-covariance)收在同一個矩陣裡，再以 [Definition 3.18](#def-var-of-r-vvec) 說明這個矩陣其實就是[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector)的變異數，兩者事實上是同一件事情。接著介紹隨機向量在向量與矩陣上的運算: [Theorem 3.17](#thm-vector-operation) 處理常數向量與隨機向量的乘積，其中變異數的結果稱為二次形式，並由此證明共變異數矩陣必為正半定矩陣；[Theorem 3.18](#thm-matrix-operation) 則把常數向量換成常數矩陣，所得的結果是一個維度比 $1$ 還高的隨機向量。最後以一道二元常態的例題示範這些結果在計算上的用法。
+本篇即由此出發，先以 [Definition 3.17](#def-covar-matrix) 把所有變數之間的變異數與[共變異數](/lecture-notes/covariance/#def-covariance)收在同一個矩陣裡，再以 [Definition 3.18](#def-var-of-r-vvec) 說明這個矩陣其實就是[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的變異數，兩者事實上是同一件事情。接著介紹隨機向量在向量與矩陣上的運算: [Theorem 3.17](#thm-vector-operation) 處理常數向量與隨機向量的乘積，其中變異數的結果稱為二次形式，並由此證明共變異數矩陣必為正半定矩陣；[Theorem 3.18](#thm-matrix-operation) 則把常數向量換成常數矩陣，所得的結果是一個維度比 $1$ 還高的隨機向量。最後以一道二元常態的例題示範這些結果在計算上的用法。
 
 ## 共變異數矩陣
 
@@ -70,10 +70,10 @@ $$
 (1) 上述定義中的 $\sigma^{2}_{\sssig X}, \sigma^{2}_{\sssig Y}, \sigma^{2}_{\sssig Z}$ 分別表 $X, Y, Z$ 的變異數；而 $\sigma_{\sssig XY}, \sigma_{\sssig XZ}, \sigma_{\sssig YZ},$ $\sigma_{\sssig YX}, \sigma_{\sssig ZX}, \sigma_{\sssig ZY}$ 則分別表 $X, Y, Z$ 間的共變異數，我們可以透過得知一個共變異數矩陣，得知所有變數間的變異數與共變異數。
 {: .topic-paren-item}
 
-(2) 由[共變異數的對稱性](/teaching-topics/covariance/#thm-covar-proper)，我們可以發現其實 $\sigma_{\sssig XY} = \sigma_{\sssig YX},$ $\sigma_{\sssig XZ} = \sigma_{\sssig ZX}$ 及 <span class="text-nowrap">$\sigma_{\sssig YZ} = \sigma_{\sssig ZY}$，</span>換言之，$\mathbf{\Sigma}$ 是一個對稱矩陣 <span lang="en">(symmetric matrix)</span>。
+(2) 由[共變異數的對稱性](/lecture-notes/covariance/#thm-covar-proper)，我們可以發現其實 $\sigma_{\sssig XY} = \sigma_{\sssig YX},$ $\sigma_{\sssig XZ} = \sigma_{\sssig ZX}$ 及 <span class="text-nowrap">$\sigma_{\sssig YZ} = \sigma_{\sssig ZY}$，</span>換言之，$\mathbf{\Sigma}$ 是一個對稱矩陣 <span lang="en">(symmetric matrix)</span>。
 {: .topic-paren-item}
 
-另外，由於我們曾經知道[變異數非負](/teaching-topics/variance/#thm-variance-properties)的特色，故一個合法的共變異數矩陣的主對角線 <span lang="en">(main diagonal)</span> 不應出現負數。例如以下的矩陣即不為合法的共變異數矩陣:
+另外，由於我們曾經知道[變異數非負](/lecture-notes/variance/#thm-variance-properties)的特色，故一個合法的共變異數矩陣的主對角線 <span lang="en">(main diagonal)</span> 不應出現負數。例如以下的矩陣即不為合法的共變異數矩陣:
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -126,7 +126,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者或許好奇，前二個矩陣不能當作共變異數矩陣的原因很明顯，但第三個矩陣為何不能作為共變異數矩陣呢？這個原因在稍後我們介紹[**相關係數 <span lang="en">(correlation coefficient)</span>**](/teaching-topics/correlation-coefficient/#def-corr)的時候會談到。
+讀者或許好奇，前二個矩陣不能當作共變異數矩陣的原因很明顯，但第三個矩陣為何不能作為共變異數矩陣呢？這個原因在稍後我們介紹[**相關係數 <span lang="en">(correlation coefficient)</span>**](/lecture-notes/correlation-coefficient/#def-corr)的時候會談到。
 
 </div>
 
@@ -213,7 +213,7 @@ $$
 
 </div>
 
-表示 $\boldsymbol{X}$ 的[期望值](/teaching-topics/expectation/#def-expectation)。
+表示 $\boldsymbol{X}$ 的[期望值](/lecture-notes/expectation/#def-expectation)。
 
 </div>
 
@@ -254,7 +254,7 @@ $$
 
 ## 常數向量與隨機向量的乘積
 
-讀者在此應該特別注意的地方是，與矩陣相關的運算，都可以算是線性 (linear) 的運算，因此如果我們對隨機向量乘上某個向量 <span class="text-nowrap">$\boldsymbol{a}^{\mathrm{T}}$，</span>則其運算完全可以承襲過去我們所學的隨機變數的線性變換性質，包含[期望值的線性轉換](/teaching-topics/properties-of-expectation/#thm-expectation-linearity)，與[變異數平方擴充](/teaching-topics/variance/#thm-variance-properties)等等特性。我們在此以向量及矩陣的形式呈現。
+讀者在此應該特別注意的地方是，與矩陣相關的運算，都可以算是線性 (linear) 的運算，因此如果我們對隨機向量乘上某個向量 <span class="text-nowrap">$\boldsymbol{a}^{\mathrm{T}}$，</span>則其運算完全可以承襲過去我們所學的隨機變數的線性變換性質，包含[期望值的線性轉換](/lecture-notes/properties-of-expectation/#thm-expectation-linearity)，與[變異數平方擴充](/lecture-notes/variance/#thm-variance-properties)等等特性。我們在此以向量及矩陣的形式呈現。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -604,11 +604,11 @@ $$
 
 </div>
 
-讀者目前應該已經能夠理解與掌握共變異數，但是，作為刻畫 $X$ 與 $Y$ 共變關係的共變異數，卻沒有範圍上的限制，僅知道共同變化的「方向」，不知道「程度」，這該如何是好呢？為了解決這個問題，我們將會介紹[**相關係數**](/teaching-topics/correlation-coefficient/#def-corr)。
+讀者目前應該已經能夠理解與掌握共變異數，但是，作為刻畫 $X$ 與 $Y$ 共變關係的共變異數，卻沒有範圍上的限制，僅知道共同變化的「方向」，不知道「程度」，這該如何是好呢？為了解決這個問題，我們將會介紹[**相關係數**](/lecture-notes/correlation-coefficient/#def-corr)。
 
 ## 本篇小結
 
-[Definition 3.17](#def-covar-matrix) 把三個隨機變數兩兩之間的變異數與共變異數收在同一個矩陣裡，主對角線上的 $\sigma^{2}_{\sssig X}, \sigma^{2}_{\sssig Y}, \sigma^{2}_{\sssig Z}$ 是各個變數自己的變異數，其餘位置則是變數之間的共變異數，因此知道一個共變異數矩陣，就等於知道所有變數之間的變異數與共變異數。由[共變異數的對稱性](/teaching-topics/covariance/#thm-covar-proper)可知 $\mathbf{\Sigma}$ 必為對稱矩陣，又由[變異數非負](/teaching-topics/variance/#thm-variance-properties)可知主對角線不應出現負數，這兩件事各排除了一類不合法的矩陣；至於主對角線為正、又對稱的矩陣為何仍可能不合法，要等到相關係數才能回答。同樣的定義並不限於三個變數，$n$ 個變數的版本只是把矩陣擴充為 $n \times n$ 而已。
+[Definition 3.17](#def-covar-matrix) 把三個隨機變數兩兩之間的變異數與共變異數收在同一個矩陣裡，主對角線上的 $\sigma^{2}_{\sssig X}, \sigma^{2}_{\sssig Y}, \sigma^{2}_{\sssig Z}$ 是各個變數自己的變異數，其餘位置則是變數之間的共變異數，因此知道一個共變異數矩陣，就等於知道所有變數之間的變異數與共變異數。由[共變異數的對稱性](/lecture-notes/covariance/#thm-covar-proper)可知 $\mathbf{\Sigma}$ 必為對稱矩陣，又由[變異數非負](/lecture-notes/variance/#thm-variance-properties)可知主對角線不應出現負數，這兩件事各排除了一類不合法的矩陣；至於主對角線為正、又對稱的矩陣為何仍可能不合法，要等到相關係數才能回答。同樣的定義並不限於三個變數，$n$ 個變數的版本只是把矩陣擴充為 $n \times n$ 而已。
 
 [Definition 3.18](#def-var-of-r-vvec) 改以隨機向量書寫同一件事情，也就是 $\mathbf{\Sigma}$ $=$ $\mathrm{Var}(\boldsymbol{X})$ $=$ $\mathbb{E}\bigl[(\boldsymbol{X}-\boldsymbol{\mu})(\boldsymbol{X}-\boldsymbol{\mu})^{\mathrm{T}}\bigr]$ 這一條式子。兩個定義之所以一樣，是因為矩陣與向量的期望值都是「直接對每個元都取期望值」，把定義中兩個向量相乘所得的矩陣逐元取期望值，得到的正是 [Definition 3.17](#def-covar-matrix) 的那個矩陣。共變異數矩陣還必須是正半定的，而要證明這件事，得先學會隨機向量在向量與矩陣上的運算。
 
@@ -616,7 +616,7 @@ $$
 
 [Example 3.41](#ex-bivariate-normal-covariance) 以一組二元常態示範上述結果的用法。由共變異數矩陣得到兩個變異數與一個共變異數之後，可以逐項展開求得 $\mathrm{Var}(3X+2Y)$ 這個值，也可以直接把係數排成一個列向量，以二次形式一步算出同樣的 $72$ 這個答案。
 
-[下一篇](/teaching-topics/correlation-coefficient/)將介紹相關係數，它把共變異數除以兩個[標準差](/teaching-topics/variance-standard-deviation/#def-standard-deviation)，使共同變化的「程度」也有範圍上的限制。
+[下一篇](/lecture-notes/correlation-coefficient/)將介紹相關係數，它把共變異數除以兩個[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)，使共同變化的「程度」也有範圍上的限制。
 
 ## 參考文獻與延伸閱讀
 

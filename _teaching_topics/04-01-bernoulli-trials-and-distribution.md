@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 4
 topic: 1
 order: 401
-permalink: /teaching-topics/bernoulli-trials-and-distribution/
+permalink: /lecture-notes/bernoulli-trials-and-distribution/
 date: 2026-08-12
 published: false
 excerpt: "伯努利實驗是只有成功與失敗兩種結果、成功機率固定，而且各次實驗彼此獨立的隨機實驗，二項、多項、幾何與負二項這幾個分配都由它而來。本篇先給出伯努利實驗的定義，說明成功與失敗只是研究者對兩類出象的稱呼，再進入其中最簡單的伯努利分配: 只進行一次伯努利實驗，並以成功實驗的發生次數作為隨機變數，其機率函數為 $p_{\\sssig X}(x)=p^{x}q^{1-x}$ 這個式子，期望值等於成功機率，變異數則是成功機率與失敗機率的乘積。文中證明這個機率函數為合法的機率函數，並推導其期望值、變異數與動差母函數，說明失敗機率 $q$ 並不是另一個參數，最後指出任意隨機變數是否落在給定範圍的指標函數也服從伯努利分配。"
 ---
 
-第三章把隨機變數的概念推廣到[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector)，處理的是多個隨機變數合在一起時的聯合分配，以及變數與變數之間的關係。第一章到第三章所建立的，都是機率與隨機變數的一般性定義與性質；本章要談的則是幾個特別常見的機率分配模型。
+第三章把隨機變數的概念推廣到[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)，處理的是多個隨機變數合在一起時的聯合分配，以及變數與變數之間的關係。第一章到第三章所建立的，都是機率與隨機變數的一般性定義與性質；本章要談的則是幾個特別常見的機率分配模型。
 
 統計學及其相關的學科，大多都是為了解決生活中的問題而生，而在嘗試解決問題時，經常會透過合適的描述，來尋找與問題相符的機率分配，從而幫助我們解決問題。
 
@@ -234,7 +234,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，伯努利分配的所有階原動差都是成功機率 <span class="text-nowrap">$p$，</span>並且這一點在 [Example 2.32 <span lang="en">(Continued)</span>](/teaching-topics/uniqueness-of-the-mgf/#ex-constant-moments-bernoulli) 曾出現過。
+事實上，伯努利分配的所有階原動差都是成功機率 <span class="text-nowrap">$p$，</span>並且這一點在 [Example 2.32 <span lang="en">(Continued)</span>](/lecture-notes/uniqueness-of-the-mgf/#ex-constant-moments-bernoulli) 曾出現過。
 
 </div>
 
@@ -278,7 +278,7 @@ $$
 Let the moment-generating function of random variable $X$ be <span class="text-nowrap">$M_{\sssig X}(t)=0.25+0.75e^{t}$,</span> what is the expectation and variance of <span class="text-nowrap">$X$?</span>
 </div>
 
-由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 <div class="topic-math-follow-before" markdown="1">
 
@@ -322,7 +322,7 @@ $$
 
 另外兩點值得記住: 一是失敗機率 $q=1-p$ 在 $p$ 決定之後就跟著決定，並不是另一個參數；二是對任意隨機變數 $X$ 與任一給定的範圍 $A$ 而言，指標函數 $\mathbb{I}_{\sssig A}(X)$ 都服從成功機率為 $\mathbb{P}(X\in A)$ 的伯努利分配，因為這個做法等於把 $X$ 分成落在 $A$ 之內與之外兩類。
 
-[下一篇](/teaching-topics/binomial-distribution/)介紹二項分配，也就是把同一個伯努利實驗獨立重複 $n$ 次之後，成功次數所服從的分配，屆時也會回答為什麼在只有成敗兩種結果的情境下，要刻意以成功次數定義隨機變數。
+[下一篇](/lecture-notes/binomial-distribution/)介紹二項分配，也就是把同一個伯努利實驗獨立重複 $n$ 次之後，成功次數所服從的分配，屆時也會回答為什麼在只有成敗兩種結果的情境下，要刻意以成功次數定義隨機變數。
 
 ## 參考文獻與延伸閱讀
 

@@ -7,17 +7,17 @@ category: "機率概論"
 chapter: 4
 topic: 22
 order: 422
-permalink: /teaching-topics/snedecor-f-distribution/
+permalink: /lecture-notes/snedecor-f-distribution/
 date: 2026-08-15
 published: false
 excerpt: "斯內德克 $\\mathcal{F}$ 分配正比於兩個獨立卡方分配的比值，因此常被當作變異數相關之檢定的抽樣分配。本篇先給出它的定義，說明由兩個獨立卡方變數各除以自身自由度再相除的建構方式，並證明其期望值為 $\\frac{\\nu_2}{\\nu_2-2}$。接著轉入常態母體之下統計量的抽樣分配，證明兩組獨立常態隨機樣本的樣本變異數比值除以母體變異數比值服從 $\\mathcal{F}(n_1-1,\\ n_2-1)$ 分配，並附上母體期望值皆已知時的對應版本。其後給出 $\\mathcal{F}$ 分配與貝塔分配的關係，指出 $\\frac{1}{1+\\frac{\\nu_1}{\\nu_2}F}$ 與 $\\frac{\\frac{\\nu_1}{\\nu_2}F}{1+\\frac{\\nu_1}{\\nu_2}F}$ 分別服從兩個參數互換的貝塔分配。最後以三道例題演練，依序處理卡方與 $\\mathcal{F}$ 分配的辨識、常態母體之下 $t$ 與 $\\mathcal{F}$ 的抽樣分配，以及以貝塔分配求算兩段長度比較的機率。"
 ---
 
-[上一篇](/teaching-topics/student-t-distribution/)給出[司徒頓 $t$ 分配](/teaching-topics/student-t-distribution/#def-t-distribution)的定義，並在常態母體之下推導了樣本平均數 $\overline{X}$ 在母體變異數未知時的抽樣分配。四大常用抽樣分配之中，只剩下斯內德克 $\mathcal{F}$ 分配尚未介紹，本篇處理的就是這一個分配。
+[上一篇](/lecture-notes/student-t-distribution/)給出[司徒頓 $t$ 分配](/lecture-notes/student-t-distribution/#def-t-distribution)的定義，並在常態母體之下推導了樣本平均數 $\overline{X}$ 在母體變異數未知時的抽樣分配。四大常用抽樣分配之中，只剩下斯內德克 $\mathcal{F}$ 分配尚未介紹，本篇處理的就是這一個分配。
 
-$\mathcal{F}$ 分配的建構方式與司徒頓 $t$ 分配相似，都是由標準常態分配與[卡方分配](/teaching-topics/chi-squared-distribution/#def-chi-distribution)這兩塊材料組合而成，差別在於 $t$ 分配取的是一個標準常態變數與一個卡方變數的比值，而 $\mathcal{F}$ 分配取的是兩個卡方變數各自除以自身自由度之後的比值。這個建構方式直接對應到統計推論的需求: 兩個常態母體的分散程度都是非負的量，比較兩者時用的是比值而不是差。
+$\mathcal{F}$ 分配的建構方式與司徒頓 $t$ 分配相似，都是由標準常態分配與[卡方分配](/lecture-notes/chi-squared-distribution/#def-chi-distribution)這兩塊材料組合而成，差別在於 $t$ 分配取的是一個標準常態變數與一個卡方變數的比值，而 $\mathcal{F}$ 分配取的是兩個卡方變數各自除以自身自由度之後的比值。這個建構方式直接對應到統計推論的需求: 兩個常態母體的分散程度都是非負的量，比較兩者時用的是比值而不是差。
 
-本篇先給出 $\mathcal{F}$ 分配的定義，說明其建構方式並證明其期望值，再轉入常態母體之下統計量的抽樣分配，證明兩獨立樣本的變異數比值所服從的分配。其後給出 $\mathcal{F}$ 分配與[貝塔分配](/teaching-topics/beta-function-and-distribution/#def-beta-distribution)之間的關係，這項關係所依據的正是 [Theorem 4.19](/teaching-topics/gamma-beta-relationship/#thm-gamma-to-beta) 獨立[伽瑪分配](/teaching-topics/gamma-distribution/#def-gamma-distribution)的比值與和。全篇另有三道例題作為演練。
+本篇先給出 $\mathcal{F}$ 分配的定義，說明其建構方式並證明其期望值，再轉入常態母體之下統計量的抽樣分配，證明兩獨立樣本的變異數比值所服從的分配。其後給出 $\mathcal{F}$ 分配與[貝塔分配](/lecture-notes/beta-function-and-distribution/#def-beta-distribution)之間的關係，這項關係所依據的正是 [Theorem 4.19](/lecture-notes/gamma-beta-relationship/#thm-gamma-to-beta) 獨立[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)的比值與和。全篇另有三道例題作為演練。
 
 ## 斯內德克 $\mathcal{F}$ 分配
 
@@ -175,13 +175,13 @@ $$
 {: .topic-paren-item}
 
 <figure id="fig-snedecor-f-density-family" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/snedecor-f-density-family.svg" alt="一條向右延伸的水平座標軸，軸上有五個刻度，由左至右標為 0、1、2、3、4，軸的右端標 f。座標軸上方有四條密度曲線。一條實線與一條點線都貼著座標軸的左端急速上升並穿出圖的上緣，之後一路下降，尾部貼著座標軸向右延伸，點線的下降比實線快。一條虛線由原點附近升起，在 0 與 1 之間形成一個又低又寬的隆起，之後緩緩下降，是右端最高的一條。另一條較粗的實線也由原點附近升起，在 1 附近形成一個又高又窄的尖峰，兩側迅速落回座標軸。圖的右上角有一個圖例，四段短線由上而下依序標為花體 F 括號 ν 下標 1 等於 1 逗號 ν 下標 2 等於 1、花體 F 括號 ν 下標 1 等於 1 逗號 ν 下標 2 等於 100、花體 F 括號 ν 下標 1 等於 100 逗號 ν 下標 2 等於 1，以及花體 F 括號 ν 下標 1 等於 100 逗號 ν 下標 2 等於 100。">
+  <img src="/images/lecture-notes/snedecor-f-density-family.svg" alt="一條向右延伸的水平座標軸，軸上有五個刻度，由左至右標為 0、1、2、3、4，軸的右端標 f。座標軸上方有四條密度曲線。一條實線與一條點線都貼著座標軸的左端急速上升並穿出圖的上緣，之後一路下降，尾部貼著座標軸向右延伸，點線的下降比實線快。一條虛線由原點附近升起，在 0 與 1 之間形成一個又低又寬的隆起，之後緩緩下降，是右端最高的一條。另一條較粗的實線也由原點附近升起，在 1 附近形成一個又高又窄的尖峰，兩側迅速落回座標軸。圖的右上角有一個圖例，四段短線由上而下依序標為花體 F 括號 ν 下標 1 等於 1 逗號 ν 下標 2 等於 1、花體 F 括號 ν 下標 1 等於 1 逗號 ν 下標 2 等於 100、花體 F 括號 ν 下標 1 等於 100 逗號 ν 下標 2 等於 1，以及花體 F 括號 ν 下標 1 等於 100 逗號 ν 下標 2 等於 100。">
   <figcaption><span class="topic-figure__label">Fig. 4.9.</span> 四條密度曲線畫在同一組座標軸上，圖例標出各條的分子自由度 $\nu_1$ 與分母自由度 <span class="text-nowrap">$\nu_2$。</span>$\nu_1$ 小的兩條在靠近 $0$ 的一端往上發散，$\nu_1$ 大的兩條則由 $0$ 升起而成單峰，其中 $\nu_2$ 大的那一條的峰又高又窄。</figcaption>
 </figure>
 
 ## 兩獨立樣本變異數比值的抽樣分配
 
-以下轉入常態母體之下統計量的抽樣分配。下列定理談的是兩組獨立的隨機樣本各自來自[常態分配](/teaching-topics/normal-distribution/#def-normal)時，其樣本變異數的比值所服從的分配，層次與上面所談 $\mathcal{F}$ 分配自身的性質不同。
+以下轉入常態母體之下統計量的抽樣分配。下列定理談的是兩組獨立的隨機樣本各自來自[常態分配](/lecture-notes/normal-distribution/#def-normal)時，其樣本變異數的比值所服從的分配，層次與上面所談 $\mathcal{F}$ 分配自身的性質不同。
 
 <div id="thm-s-sq-ratio-samp-dist" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 4.25 (兩獨立樣本變異數比值的抽樣分配, 兩母體期望值皆未知)</div>
@@ -575,7 +575,7 @@ $$
 
 </div>
 
-又由[科克蘭定理](/teaching-topics/chi-squared-distribution/#thm-cochran-theorem)知道
+又由[科克蘭定理](/lecture-notes/chi-squared-distribution/#thm-cochran-theorem)知道
 
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
 
@@ -847,17 +847,17 @@ $$
 
 ## 本篇小結
 
-[Definition 4.24](#def-f-distribution) 的斯內德克 $\mathcal{F}$ 分配以分子自由度 $\nu_1$ 與分母自由度 $\nu_2$ 兩個自由度界定，值域為正實數線，機率函數可以寫成伽瑪函數的形式，也可以寫成[貝塔函數](/teaching-topics/beta-function-and-distribution/#def-beta-function)的形式。它的期望值為 <span class="text-nowrap">$\frac{\nu_2}{\,\nu_2-2\,}$，</span>在 $\nu_2\leqslant2$ 時發散；變異數為 <span class="text-nowrap">$\frac{\,2\nu_2^{2}(\nu_1+\nu_2-2)\,}{\nu_1(\nu_2-2)^{2}(\nu_2-4)}$，</span>在 $\nu_2\leqslant4$ 時發散。與貝塔分配、司徒頓 $t$ 分配相同，這個定義沒有列出動差母函數。
+[Definition 4.24](#def-f-distribution) 的斯內德克 $\mathcal{F}$ 分配以分子自由度 $\nu_1$ 與分母自由度 $\nu_2$ 兩個自由度界定，值域為正實數線，機率函數可以寫成伽瑪函數的形式，也可以寫成[貝塔函數](/lecture-notes/beta-function-and-distribution/#def-beta-function)的形式。它的期望值為 <span class="text-nowrap">$\frac{\nu_2}{\,\nu_2-2\,}$，</span>在 $\nu_2\leqslant2$ 時發散；變異數為 <span class="text-nowrap">$\frac{\,2\nu_2^{2}(\nu_1+\nu_2-2)\,}{\nu_1(\nu_2-2)^{2}(\nu_2-4)}$，</span>在 $\nu_2\leqslant4$ 時發散。與貝塔分配、司徒頓 $t$ 分配相同，這個定義沒有列出動差母函數。
 
 定義之後的三點說明，第一點交代建構方式: 取兩個獨立的卡方變數，各自除以自身的自由度之後再相除，得到的即為 $\mathcal{F}$ 分配，分子與分母的自由度分別承襲兩個卡方變數的自由度。這個建構方式對應到兩個獨立常態母體的推論需求，因為分散程度是非負的量，比較時用的是比值而不是差。第二點只證明期望值，作法是先由獨立性把 $\mathbb{E}\bigl(\frac{X_1}{X_2}\bigr)$ 拆成 $\mathbb{E}(X_1)$ 與 $\mathbb{E}\bigl(\frac{1}{X_2}\bigr)$ 的乘積，再代入卡方分配的期望值與其倒數的期望值，同時看出 $\nu_2\leqslant2$ 時後者不存在。第三點則以密度曲線圖說明不同自由度組合之下圖形的差異。
 
 [Theorem 4.25](#thm-s-sq-ratio-samp-dist) 轉入常態母體之下統計量的抽樣分配。兩組獨立的常態隨機樣本，其樣本變異數的比值 $S_1^{2}/S_2^{2}$ 除以母體變異數的比值 $\sigma_1^{2}/\sigma_2^{2}$ 之後，服從 $\mathcal{F}(n_1-1,\ n_2-1)$ 分配。證明的關鍵只有一步: 兩個 $\frac{(n_i-1)S_i^{2}}{\sigma_i^{2}}$ 各自服從自由度為 $n_i-1$ 的卡方分配而且彼此獨立，再把它們各除以自身自由度並相除，恰好把 $\sigma_1^{2}$ 與 $\sigma_2^{2}$ 留在該留的位置上。隨後的 Note 給出母體期望值皆已知時的對應版本，此時分母改除以 $n_i$ 而不是 <span class="text-nowrap">$n_i-1$，</span>自由度也隨之改為 $n_1$ 與 <span class="text-nowrap">$n_2$，</span>這個版本在實務上不會用到。
 
-[Theorem 4.26](#thm-f-to-beta) 給出 $\mathcal{F}$ 分配與貝塔分配的關係。把 $F$ 寫回兩個獨立卡方變數的比值之後，$\frac{1}{1+\frac{\nu_1}{\nu_2}F}$ 恰好等於 $\frac{X_2}{X_1+X_2}$ 這個比例，而 $X_1$ 與 $X_2$ 分別是形狀參數為 $\frac{\nu_1}{2}$ 與 $\frac{\nu_2}{2}$、比例參數同為 $2$ 的獨立伽瑪變數，因此由 [Theorem 4.19](/teaching-topics/gamma-beta-relationship/#thm-gamma-to-beta) 可知該比例服從 $\mathrm{Beta}\bigl(\frac{\nu_2}{2},\frac{\nu_1}{2}\bigr)$ 分配。另一項只要取 $1$ 減去它，即得參數互換的 $\mathrm{Beta}\bigl(\frac{\nu_1}{2},\frac{\nu_2}{2}\bigr)$ 分配。
+[Theorem 4.26](#thm-f-to-beta) 給出 $\mathcal{F}$ 分配與貝塔分配的關係。把 $F$ 寫回兩個獨立卡方變數的比值之後，$\frac{1}{1+\frac{\nu_1}{\nu_2}F}$ 恰好等於 $\frac{X_2}{X_1+X_2}$ 這個比例，而 $X_1$ 與 $X_2$ 分別是形狀參數為 $\frac{\nu_1}{2}$ 與 $\frac{\nu_2}{2}$、比例參數同為 $2$ 的獨立伽瑪變數，因此由 [Theorem 4.19](/lecture-notes/gamma-beta-relationship/#thm-gamma-to-beta) 可知該比例服從 $\mathrm{Beta}\bigl(\frac{\nu_2}{2},\frac{\nu_1}{2}\bigr)$ 分配。另一項只要取 $1$ 減去它，即得參數互換的 $\mathrm{Beta}\bigl(\frac{\nu_1}{2},\frac{\nu_2}{2}\bigr)$ 分配。
 
-三道例題各自演練一個方向。[Example 4.55](#ex-snedecor-f-1) 檢查的是 $\mathcal{F}$ 分配定義中「各除以自身自由度」這件事有沒有被漏掉: $\frac{X_1^{2}}{W_2}$ 與 $\frac{X_1^{2}/1}{W_2/10}$ 差了一個 $10$ 倍，前者並不服從 $\mathcal{F}(1,10)$ 分配。[Example 4.56](#ex-snedecor-f-2) 同時用到 $t$ 與 $\mathcal{F}$ 兩條抽樣分配: 樣本平均數標準化之後除以樣本標準差得到的是 $t(4)$ 而不是 $t(5)$，其平方則為 $\mathcal{F}(1,4)$ 分配。[Example 4.57](#ex-snedecor-f-3) 表面上是兩段長度的比較，實際上把兩邊平方之後就是兩個獨立卡方變數的比較，再由上述的貝塔關係化為[標準均勻分配](/teaching-topics/uniform-distribution-integral-transform/#def-uniform-distribution)的機率，答案為 <span class="text-nowrap">$\frac{1}{\,5\,}$。</span>
+三道例題各自演練一個方向。[Example 4.55](#ex-snedecor-f-1) 檢查的是 $\mathcal{F}$ 分配定義中「各除以自身自由度」這件事有沒有被漏掉: $\frac{X_1^{2}}{W_2}$ 與 $\frac{X_1^{2}/1}{W_2/10}$ 差了一個 $10$ 倍，前者並不服從 $\mathcal{F}(1,10)$ 分配。[Example 4.56](#ex-snedecor-f-2) 同時用到 $t$ 與 $\mathcal{F}$ 兩條抽樣分配: 樣本平均數標準化之後除以樣本標準差得到的是 $t(4)$ 而不是 $t(5)$，其平方則為 $\mathcal{F}(1,4)$ 分配。[Example 4.57](#ex-snedecor-f-3) 表面上是兩段長度的比較，實際上把兩邊平方之後就是兩個獨立卡方變數的比較，再由上述的貝塔關係化為[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的機率，答案為 <span class="text-nowrap">$\frac{1}{\,5\,}$。</span>
 
-至此，標準常態分配、卡方分配、司徒頓 $t$ 分配與斯內德克 $\mathcal{F}$ 分配這四大常用抽樣分配都已經介紹完畢。[下一篇](/teaching-topics/sampling-distribution-relationships/)把這四個分配之間的關係集中整理成一條定理，並定出各分配右尾點的寫法。
+至此，標準常態分配、卡方分配、司徒頓 $t$ 分配與斯內德克 $\mathcal{F}$ 分配這四大常用抽樣分配都已經介紹完畢。[下一篇](/lecture-notes/sampling-distribution-relationships/)把這四個分配之間的關係集中整理成一條定理，並定出各分配右尾點的寫法。
 
 ## 參考文獻與延伸閱讀
 

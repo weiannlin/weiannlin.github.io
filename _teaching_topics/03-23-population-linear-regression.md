@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 23
 order: 323
-permalink: /teaching-topics/population-linear-regression/
+permalink: /lecture-notes/population-linear-regression/
 date: 2026-08-13
 published: false
 excerpt: "相關係數衡量的是兩個隨機變數之間線性相關的強度，但這條直線本身的截距與斜率究竟是什麼，到目前為止還沒有寫出來。本篇的定理指出，當條件期望值恰好是條件變數的線性函數時，這條直線的截距與斜率完全由兩個變數的期望值、標準差與相關係數決定，此即母體線性迴歸式；證明的作法是先把條件期望值寫成 $\\beta_0+\\beta_1x$ 的形式，再由雙重期望值定理列出兩條式子解聯立方程式。把 $X$ 與 $Y$ 的角色對調可以得到逆迴歸，而正逆迴歸兩條斜率相乘恰好等於相關係數的平方，這給了一個由兩條迴歸式求相關係數的辦法。本篇最後以三道例題示範這條定理的用法。"
 ---
 
-[上一篇](/teaching-topics/correlation-properties-and-matrix/)由[相關係數](/teaching-topics/correlation-coefficient/#def-corr)的範圍推得 [Theorem 3.20](/teaching-topics/correlation-properties-and-matrix/#thm-var-cov-ineq) 的[變異數](/teaching-topics/variance/#def-variance)-[共變異數](/teaching-topics/covariance/#def-covariance)不等式，再以 [Definition 3.20](/teaching-topics/correlation-properties-and-matrix/#def-corr-matrix) 把數個[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)兩兩之間的相關係數收成[相關矩陣](/teaching-topics/correlation-properties-and-matrix/#def-corr-matrix)。
+[上一篇](/lecture-notes/correlation-properties-and-matrix/)由[相關係數](/lecture-notes/correlation-coefficient/#def-corr)的範圍推得 [Theorem 3.20](/lecture-notes/correlation-properties-and-matrix/#thm-var-cov-ineq) 的[變異數](/lecture-notes/variance/#def-variance)-[共變異數](/lecture-notes/covariance/#def-covariance)不等式，再以 [Definition 3.20](/lecture-notes/correlation-properties-and-matrix/#def-corr-matrix) 把數個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)兩兩之間的相關係數收成[相關矩陣](/lecture-notes/correlation-properties-and-matrix/#def-corr-matrix)。
 
-相關係數衡量的是 $X$ 與 $Y$ 之間線性相關的強度，但這條直線本身的截距與斜率是什麼，到目前為止還沒有寫出來。本篇要處理的正是這件事。當[條件期望值](/teaching-topics/conditional-expectation-and-variance/#def-conditional-expectation)恰好是條件變數的線性函數時，這條直線的截距與斜率完全由兩個變數的期望值、[標準差](/teaching-topics/variance-standard-deviation/#def-standard-deviation)與相關係數決定。本篇先給出這條定理與它的證明，接著說明它與[迴歸函數](/teaching-topics/double-expectation-theorem/#thm-regression-function)的關係，以及把 $X$ 與 $Y$ 的角色對調之後所得的正迴歸與逆迴歸，最後以三道例題示範它的用法。
+相關係數衡量的是 $X$ 與 $Y$ 之間線性相關的強度，但這條直線本身的截距與斜率是什麼，到目前為止還沒有寫出來。本篇要處理的正是這件事。當[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation)恰好是條件變數的線性函數時，這條直線的截距與斜率完全由兩個變數的期望值、[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)與相關係數決定。本篇先給出這條定理與它的證明，接著說明它與[迴歸函數](/lecture-notes/double-expectation-theorem/#thm-regression-function)的關係，以及把 $X$ 與 $Y$ 的角色對調之後所得的正迴歸與逆迴歸，最後以三道例題示範它的用法。
 
 ## 母體線性迴歸式
 
@@ -60,7 +60,7 @@ $$
 
 其中 $\beta_0$ 與 $\beta_1$ 是二常數，分別表截距與斜率
 
-由[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation)可知
+由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -153,7 +153,7 @@ $$
 
 母體線性迴歸式 <span lang="en">(population linear regression equation)</span> 有一些地方需要注意:
 
-(1) 在 [Theorem 3.8](/teaching-topics/double-expectation-theorem/#thm-regression-function) 中，我們曾稱條件期望值 $\mathbb{E}(Y\mid X=x)$ <span class="text-nowrap">(或 $\mathbb{E}(X\mid Y=y)$)</span> 為 $Y$ 對 $X$ <span class="text-nowrap">(或 $X$ 對 $Y$)</span> 的迴歸函數 <span lang="en">(regression function)</span>。
+(1) 在 [Theorem 3.8](/lecture-notes/double-expectation-theorem/#thm-regression-function) 中，我們曾稱條件期望值 $\mathbb{E}(Y\mid X=x)$ <span class="text-nowrap">(或 $\mathbb{E}(X\mid Y=y)$)</span> 為 $Y$ 對 $X$ <span class="text-nowrap">(或 $X$ 對 $Y$)</span> 的迴歸函數 <span lang="en">(regression function)</span>。
 {: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -323,7 +323,7 @@ $$
 
 </div>
 
-(2) 再由[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation)可知
+(2) 再由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -521,13 +521,13 @@ $$
 
 ## 本篇小結
 
-[Theorem 3.21](#thm-popu-reg) 處理的是條件期望值恰好為條件變數線性函數的情形。此時這條直線的截距與斜率完全由兩個變數的期望值、標準差與相關係數決定，寫出來就是 $\mathbb{E}(Y\mid X=x)$ $=$ $\mu_{\sssig Y}+\rho_{\sssig XY}\frac{\sigma_{\sssig Y}}{\sigma_{\sssig X}}(x-\mu_{\sssig X})$ 這條式子。證明的作法是先把條件期望值寫成 $\beta_0+\beta_1x$ 的形式，再由[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation)分別算出 $\mathbb{E}(Y)$ 與 $\mathbb{E}(XY)$ 這兩個值，兩條式子解聯立方程式即得截距與斜率。
+[Theorem 3.21](#thm-popu-reg) 處理的是條件期望值恰好為條件變數線性函數的情形。此時這條直線的截距與斜率完全由兩個變數的期望值、標準差與相關係數決定，寫出來就是 $\mathbb{E}(Y\mid X=x)$ $=$ $\mu_{\sssig Y}+\rho_{\sssig XY}\frac{\sigma_{\sssig Y}}{\sigma_{\sssig X}}(x-\mu_{\sssig X})$ 這條式子。證明的作法是先把條件期望值寫成 $\beta_0+\beta_1x$ 的形式，再由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)分別算出 $\mathbb{E}(Y)$ 與 $\mathbb{E}(XY)$ 這兩個值，兩條式子解聯立方程式即得截距與斜率。
 
-我們在 [Theorem 3.8](/teaching-topics/double-expectation-theorem/#thm-regression-function) 就已經稱條件期望值為迴歸函數，此處若要強調母體的性質，應稱其為母體迴歸式；而條件期望值雖然一定是條件變數的函數，卻未必是線性函數，只有在它是線性函數的時候才有上述的形式，因而另外冠上「線性」二字。把 $X$ 與 $Y$ 的角色對調可以得到逆迴歸 $\mathbb{E}(X\mid Y=y)$ $=$ <span class="text-nowrap">$\alpha_0+\alpha_1y$，</span>它的截距與斜率只要把上面的式子中 $X$ 與 $Y$ 的位置互換即可。正逆迴歸兩條斜率相乘恰好是 <span class="text-nowrap">$\rho^{2}_{\sssig XY}$，</span>再配上斜率的正負號就能求得 <span class="text-nowrap">$\rho_{\sssig XY}$，</span>這是一個由兩條迴歸式反求相關係數的辦法。
+我們在 [Theorem 3.8](/lecture-notes/double-expectation-theorem/#thm-regression-function) 就已經稱條件期望值為迴歸函數，此處若要強調母體的性質，應稱其為母體迴歸式；而條件期望值雖然一定是條件變數的函數，卻未必是線性函數，只有在它是線性函數的時候才有上述的形式，因而另外冠上「線性」二字。把 $X$ 與 $Y$ 的角色對調可以得到逆迴歸 $\mathbb{E}(X\mid Y=y)$ $=$ <span class="text-nowrap">$\alpha_0+\alpha_1y$，</span>它的截距與斜率只要把上面的式子中 $X$ 與 $Y$ 的位置互換即可。正逆迴歸兩條斜率相乘恰好是 <span class="text-nowrap">$\rho^{2}_{\sssig XY}$，</span>再配上斜率的正負號就能求得 <span class="text-nowrap">$\rho_{\sssig XY}$，</span>這是一個由兩條迴歸式反求相關係數的辦法。
 
-三道例題都用到這個結構。[Example 3.46](#ex-two-regression-lines) 直接把兩條迴歸式的斜率相乘，開根號即得相關係數的絕對值為 <span class="text-nowrap">$0.9$。</span>[Example 3.47](#ex-height-weight-regression) 由斜率 $0.25$ 與相關係數 $0.65$ 反推兩個標準差的比值，進而得到兩個變數變異數的比值，第二小題則直接由[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation)求得 $\mathbb{E}(Y)$ 的值。[Example 3.48](#ex-joint-pdf-regression-line) 由聯合 pmf 依序求出兩個邊際 pmf 與兩個條件 pmf，兩個條件期望值都是條件變數的線性函數且斜率同為 <span class="text-nowrap">$\frac{1}{2}$，</span>兩者相乘再開根號即得 $\rho_{\sssig XY}$ 的值。
+三道例題都用到這個結構。[Example 3.46](#ex-two-regression-lines) 直接把兩條迴歸式的斜率相乘，開根號即得相關係數的絕對值為 <span class="text-nowrap">$0.9$。</span>[Example 3.47](#ex-height-weight-regression) 由斜率 $0.25$ 與相關係數 $0.65$ 反推兩個標準差的比值，進而得到兩個變數變異數的比值，第二小題則直接由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)求得 $\mathbb{E}(Y)$ 的值。[Example 3.48](#ex-joint-pdf-regression-line) 由聯合 pmf 依序求出兩個邊際 pmf 與兩個條件 pmf，兩個條件期望值都是條件變數的線性函數且斜率同為 <span class="text-nowrap">$\frac{1}{2}$，</span>兩者相乘再開根號即得 $\rho_{\sssig XY}$ 的值。
 
-[下一篇](/teaching-topics/many-to-many-transformations/)離開共變異數與相關係數的主題，開始處理[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector)的函數轉換，先介紹多對多的情形。
+[下一篇](/lecture-notes/many-to-many-transformations/)離開共變異數與相關係數的主題，開始處理[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的函數轉換，先介紹多對多的情形。
 
 ## 參考文獻與延伸閱讀
 

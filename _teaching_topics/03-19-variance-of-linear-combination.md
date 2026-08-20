@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 19
 order: 319
-permalink: /teaching-topics/variance-of-linear-combination/
+permalink: /lecture-notes/variance-of-linear-combination/
 date: 2026-08-13
 published: false
 excerpt: "共變異數的性質裡，有一款說一個變數與自己的共變異數就是變異數，另一款說常數的伸縮會原封不動地反映在共變異數上；把這兩款整合起來，便得到一組隨機變數線性組合的變異數: 它等於各項變異數的加權和，再加上兩倍的各對共變異數之和。當各項彼此獨立或零相關時，所有的共變異數都是 $0$，式子簡化為 $\\mathrm{Var}\\bigl(\\sum a_iX_i\\bigr)=\\sum a_i^{2}\\mathrm{Var}(X_i)$，這是變異數平方伸縮性的推廣，也是 $\\mathrm{Var}(\\overline{X})=\\sigma_{\\sssig X}^{2}/n$ 的由來。本篇的兩道例題所處理的加總，各項都不是彼此獨立的: 一道給定任兩項同時取值為 $1$ 的機率，另一道是有限母體之下的取後不放回抽樣，其期望值與變異數很像二項分配，只差了一個有限母體校正因子。"
 ---
 
-[上一篇](/teaching-topics/covariance/)以 [Definition 3.16](/teaching-topics/covariance/#def-covariance) 給出[共變異數](/teaching-topics/covariance/#def-covariance)，並以 [Theorem 3.15](/teaching-topics/covariance/#thm-covar-proper) 列出它的六款性質，其中第 (3) 款說一個變數與自己的共變異數就是變異數，第 (4) 款說常數的伸縮會原封不動地反映在共變異數上。
+[上一篇](/lecture-notes/covariance/)以 [Definition 3.16](/lecture-notes/covariance/#def-covariance) 給出[共變異數](/lecture-notes/covariance/#def-covariance)，並以 [Theorem 3.15](/lecture-notes/covariance/#thm-covar-proper) 列出它的六款性質，其中第 (3) 款說一個變數與自己的共變異數就是變異數，第 (4) 款說常數的伸縮會原封不動地反映在共變異數上。
 
-本篇把這兩款整合起來，得到 [Theorem 3.16](#thm-covar-proper2) 的線性組合的變異數展開式。一組[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)的線性組合，其變異數等於各項變異數的加權和，再加上兩倍的各對共變異數之和。接著說明各項彼此獨立或零相關的時候這個式子如何簡化，並由這個特例得到 $\mathrm{Var}\bigl(\overline{X}\bigr)$ $=$ $\frac{\,\sigma_{\sssig X}^{2}\,}{n}$ 這個往後經常用到的結果。
+本篇把這兩款整合起來，得到 [Theorem 3.16](#thm-covar-proper2) 的線性組合的變異數展開式。一組[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的線性組合，其變異數等於各項變異數的加權和，再加上兩倍的各對共變異數之和。接著說明各項彼此獨立或零相關的時候這個式子如何簡化，並由這個特例得到 $\mathrm{Var}\bigl(\overline{X}\bigr)$ $=$ $\frac{\,\sigma_{\sssig X}^{2}\,}{n}$ 這個往後經常用到的結果。
 
 本篇最後有兩道例題，兩題所加總的各項都不是彼此獨立的。第一道給定任兩項同時取值為 $1$ 的機率，求 $n$ 項加總的變異數，並說明 $X_i-\overline{X}$ 與 $\overline{X}$ 的共變異數為 <span class="text-nowrap">$0$；</span>第二道則是有限母體之下的取後不放回抽樣。
 
@@ -78,18 +78,18 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-讀者應特別注意，當 $X_1, \ldots, X_n$ 彼此皆[獨立](/teaching-topics/independent-random-variables/#def-indep-r-v)或零相關的時候，[上述定理](#thm-covar-proper2)可以簡化成
+讀者應特別注意，當 $X_1, \ldots, X_n$ 彼此皆[獨立](/lecture-notes/independent-random-variables/#def-indep-r-v)或零相關的時候，[上述定理](#thm-covar-proper2)可以簡化成
 
 $$
 \mathrm{Var}\Bigl(\sum_{i=1}^{n}a_i\,X_i\Bigr)=\sum_{i=1}^{n}a_i^{2}\,\mathrm{Var}(X_i)
 $$
 
-因為 <span class="text-nowrap">$\operatorname{Cov}(X_i,X_j)=0,\ \forall i\neq j$，</span>並且這其實就是變異數的[**平方伸縮性**](/teaching-topics/variance/#thm-variance-properties)的推廣。
+因為 <span class="text-nowrap">$\operatorname{Cov}(X_i,X_j)=0,\ \forall i\neq j$，</span>並且這其實就是變異數的[**平方伸縮性**](/lecture-notes/variance/#thm-variance-properties)的推廣。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個特例就是在 [Theorem 3.12](/teaching-topics/wald-identity-gamblers-ruin/#thm-wald-identity) 的沃德等式第二式中，$\mathrm{Var}(S_{\sssig N}\mid N=n)$ $=$ $n\sigma_{\sssig X}^{2}$ 的原因。
+這個特例就是在 [Theorem 3.12](/lecture-notes/wald-identity-gamblers-ruin/#thm-wald-identity) 的沃德等式第二式中，$\mathrm{Var}(S_{\sssig N}\mid N=n)$ $=$ $n\sigma_{\sssig X}^{2}$ 的原因。
 
 </div>
 
@@ -390,25 +390,25 @@ $$
 
 這一題的情境設計，是**有限母體 <span lang="en">(finite element population)</span>** 下的取後不放回抽樣。
 
-讀者會發現，單看每一個 <span class="text-nowrap">$X_i$，</span>它們都是 $\mathrm{Ber}(p)$ 分配，其中的 <span class="text-nowrap">$p=M/N$，</span>但由於抽樣設計的緣故，每一個 $X_i$ 並沒有彼此獨立，因此無法以稍後會提到的**[二項分配可加性](/teaching-topics/binomial-distribution/)**來處理這個問題；儘管如此，讀者仍會發現 $Y=\sum_{i=1}^{n}X_i$ 的[期望值](/teaching-topics/expectation/#def-expectation)與變異數仍然很像二項分配，只是差了一個 <span class="text-nowrap">$(N-n)/(N-1)$，</span>這被稱作**有限母體校正因子 <span lang="en">(finite population correction factor, FPC factor)</span>**。
+讀者會發現，單看每一個 <span class="text-nowrap">$X_i$，</span>它們都是 $\mathrm{Ber}(p)$ 分配，其中的 <span class="text-nowrap">$p=M/N$，</span>但由於抽樣設計的緣故，每一個 $X_i$ 並沒有彼此獨立，因此無法以稍後會提到的**[二項分配可加性](/lecture-notes/binomial-distribution/)**來處理這個問題；儘管如此，讀者仍會發現 $Y=\sum_{i=1}^{n}X_i$ 的[期望值](/lecture-notes/expectation/#def-expectation)與變異數仍然很像二項分配，只是差了一個 <span class="text-nowrap">$(N-n)/(N-1)$，</span>這被稱作**有限母體校正因子 <span lang="en">(finite population correction factor, FPC factor)</span>**。
 
-事實上，這題的結果正是**[超幾何分配](/teaching-topics/hypergeometric-distribution/#def-hypergeometric) <span lang="en">(hypergeometric distribution)</span>**，在稍後的章節會一併談到。
+事實上，這題的結果正是**[超幾何分配](/lecture-notes/hypergeometric-distribution/#def-hypergeometric) <span lang="en">(hypergeometric distribution)</span>**，在稍後的章節會一併談到。
 
 </div>
 
-多元隨機變數由於表示上與運算上的複雜度，會隨著變數個數越來越多而越來越複雜，故除了機率論與數理統計外，在多變量分析 <span lang="en">(multivariate analysis)</span> 及迴歸分析 <span lang="en">(regression analysis)</span> 的領域中，我們更常以向量的形式來表示一組多元隨機變數 (即[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector))，並且基於線性代數 <span lang="en">(linear algebra)</span> 性質來操作。
+多元隨機變數由於表示上與運算上的複雜度，會隨著變數個數越來越多而越來越複雜，故除了機率論與數理統計外，在多變量分析 <span lang="en">(multivariate analysis)</span> 及迴歸分析 <span lang="en">(regression analysis)</span> 的領域中，我們更常以向量的形式來表示一組多元隨機變數 (即[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector))，並且基於線性代數 <span lang="en">(linear algebra)</span> 性質來操作。
 
-這其中的基礎，當屬隨機向量的**[共變異數矩陣](/teaching-topics/covariance-matrix/#def-covar-matrix) <span lang="en">(covariance matrix)</span>**，見[下列定義](/teaching-topics/covariance-matrix/#def-covar-matrix):
+這其中的基礎，當屬隨機向量的**[共變異數矩陣](/lecture-notes/covariance-matrix/#def-covar-matrix) <span lang="en">(covariance matrix)</span>**，見[下列定義](/lecture-notes/covariance-matrix/#def-covar-matrix):
 
 ## 本篇小結
 
-[Theorem 3.16](#thm-covar-proper2) 由[共變異數性質](/teaching-topics/covariance/#thm-covar-proper)的第 (3) 與 (4) 兩款整合而得。線性組合的變異數，等於各項變異數乘上係數平方之後的加總，再加上兩倍的各對共變異數乘上兩個係數之後的加總。證明的作法是先把變異數寫成同一個線性組合與自己的共變異數，再逐項展開。兩個指標相同的那 $n$ 項各給出一個 <span class="text-nowrap">$a_i^{2}\mathrm{Var}(X_i)$，</span>指標不同的則兩兩成對，因而是 $i<j$ 之和的兩倍。
+[Theorem 3.16](#thm-covar-proper2) 由[共變異數性質](/lecture-notes/covariance/#thm-covar-proper)的第 (3) 與 (4) 兩款整合而得。線性組合的變異數，等於各項變異數乘上係數平方之後的加總，再加上兩倍的各對共變異數乘上兩個係數之後的加總。證明的作法是先把變異數寫成同一個線性組合與自己的共變異數，再逐項展開。兩個指標相同的那 $n$ 項各給出一個 <span class="text-nowrap">$a_i^{2}\mathrm{Var}(X_i)$，</span>指標不同的則兩兩成對，因而是 $i<j$ 之和的兩倍。
 
-當各項彼此[獨立](/teaching-topics/independent-random-variables/#def-indep-r-v)或零相關的時候，所有的共變異數都是 <span class="text-nowrap">$0$，</span>式子簡化為 $\mathrm{Var}\bigl(\sum_{i=1}^{n}a_iX_i\bigr)$ $=$ <span class="text-nowrap">$\sum_{i=1}^{n}a_i^{2}\mathrm{Var}(X_i)$，</span>這正是變異數[平方伸縮性](/teaching-topics/variance/#thm-variance-properties)的推廣；[沃德等式](/teaching-topics/wald-identity-gamblers-ruin/#thm-wald-identity)第二式在推導過程中所用到的 $\mathrm{Var}(S_{\sssig N}\mid N=n)$ $=$ $n\sigma_{\sssig X}^{2}$ 也由此而來。這個特例又衍生出 $\mathrm{Var}\bigl(\overline{X}\bigr)$ $=$ $\frac{\,\sigma_{\sssig X}^{2}\,}{n}$ 這個往後經常用到的結果。
+當各項彼此[獨立](/lecture-notes/independent-random-variables/#def-indep-r-v)或零相關的時候，所有的共變異數都是 <span class="text-nowrap">$0$，</span>式子簡化為 $\mathrm{Var}\bigl(\sum_{i=1}^{n}a_iX_i\bigr)$ $=$ <span class="text-nowrap">$\sum_{i=1}^{n}a_i^{2}\mathrm{Var}(X_i)$，</span>這正是變異數[平方伸縮性](/lecture-notes/variance/#thm-variance-properties)的推廣；[沃德等式](/lecture-notes/wald-identity-gamblers-ruin/#thm-wald-identity)第二式在推導過程中所用到的 $\mathrm{Var}(S_{\sssig N}\mid N=n)$ $=$ $n\sigma_{\sssig X}^{2}$ 也由此而來。這個特例又衍生出 $\mathrm{Var}\bigl(\overline{X}\bigr)$ $=$ $\frac{\,\sigma_{\sssig X}^{2}\,}{n}$ 這個往後經常用到的結果。
 
 兩道例題所加總的各項都不是彼此獨立的。[Example 3.39](#ex-bernoulli-sum-covariance) 由 $\mathbb{P}(X_i=1,X_j=1)=q$ 求得每一對的共變異數為 <span class="text-nowrap">$q-p^{2}$，</span>$n$ 項加總的變異數因而是 <span class="text-nowrap">$n\,p(1-p)+n(n-1)(q-p^{2})$；</span>該題的第二小題則說明 $X_i-\overline{X}$ 與 $\overline{X}$ 的共變異數為 <span class="text-nowrap">$0$，</span>關鍵是獨立使 $\operatorname{Cov}(X_i,\overline{X})$ 只留下 $\mathrm{Var}(X_i)$ 這一項，恰好與 $\mathrm{Var}\bigl(\overline{X}\bigr)$ 相消。[Example 3.40](#ex-hypergeometric-variance) 的取後不放回使各次抽取不獨立，變異數因而多出共變異數的部分，整理之後為 <span class="text-nowrap">$n\frac{\,M\,}{N}\bigl(1-\frac{\,M\,}{N}\bigr)\frac{\,N-n\,}{N-1}$，</span>其中的 $\frac{\,N-n\,}{N-1}$ 即有限母體校正因子，而這一題的結果正是超幾何分配。
 
-[下一篇](/teaching-topics/covariance-matrix/)改以向量與矩陣的形式來表示一組多元隨機變數，並由此給出共變異數矩陣的定義。
+[下一篇](/lecture-notes/covariance-matrix/)改以向量與矩陣的形式來表示一組多元隨機變數，並由此給出共變異數矩陣的定義。
 
 ## 參考文獻與延伸閱讀
 

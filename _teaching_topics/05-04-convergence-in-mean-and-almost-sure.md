@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 5
 topic: 4
 order: 504
-permalink: /teaching-topics/convergence-in-mean-and-almost-sure/
+permalink: /lecture-notes/convergence-in-mean-and-almost-sure/
 date: 2026-08-15
 published: false
 excerpt: "$r$ 次均方收斂要求 $\\mathbb{E}\\bigl[\\lvert X_n-X\\rvert^{r}\\bigr]$ 在 $n\\to\\infty$ 時趨於零，幾乎確信收斂則要求那些不收斂的樣本點所構成的例外集合，其發生機率必須是零。本篇先給出這兩個定義，再以馬可夫不等式證明 $r$ 次均方收斂導致機率收斂，並由此推得只要期望值收斂至常數 $c$ 且變異數趨於零，序列就二次均方收斂至 $c$，這正是數理統計中均方一致性的由來。例題方面，取值為 $0$ 與 $n$ 而機率分別為 $1-\\frac{1}{n}$ 與 $\\frac{1}{n}$ 的序列機率收斂至零卻不一次均方收斂；逐段指標序列機率收斂卻不幾乎確信收斂；把機率改為 $\\frac{1}{n^{2}}$ 或把取值改為 $1$ 之後，兩種收斂又各自一成一敗，可見這兩個收斂型態之間並沒有強弱關係。"
 ---
 
-[上一篇](/teaching-topics/convergence-in-probability/)給出[機率收斂](/teaching-topics/convergence-in-probability/#def-converge-in-probability)的定義，並說明它與[分配收斂](/teaching-topics/convergence-in-distribution/#def-converge-in-distribution)之間的強弱關係。本篇接著給出另外兩種收斂型態: [Definition 5.3](#def-converge-in-r-mean) 的 $r$ 次均方收斂以「距離的 $r$ 次方的期望值是否趨於零」來界定，[Definition 5.4](#def-converge-almost-surely) 的幾乎確信收斂則轉而探討那些不收斂的樣本點所構成的例外集合，要求這個集合的發生機率必須是零。
+[上一篇](/lecture-notes/convergence-in-probability/)給出[機率收斂](/lecture-notes/convergence-in-probability/#def-converge-in-probability)的定義，並說明它與[分配收斂](/lecture-notes/convergence-in-distribution/#def-converge-in-distribution)之間的強弱關係。本篇接著給出另外兩種收斂型態: [Definition 5.3](#def-converge-in-r-mean) 的 $r$ 次均方收斂以「距離的 $r$ 次方的期望值是否趨於零」來界定，[Definition 5.4](#def-converge-almost-surely) 的幾乎確信收斂則轉而探討那些不收斂的樣本點所構成的例外集合，要求這個集合的發生機率必須是零。
 
-這兩種收斂都比機率收斂強。[Theorem 5.4](#thm-rconv-implies-pconv) 由[馬可夫不等式](/teaching-topics/probability-inequalities/#thm-markov)證明 $r$ 次均方收斂導致機率收斂，[Theorem 5.5](#thm-2conv-implies-pconv) 再把這件事用在二次均方收斂上，給出一條只要檢查期望值與變異數就能判定機率收斂的判準；[Theorem 5.6](#thm-asconv-implies-pconv) 則交代幾乎確信收斂同樣導致機率收斂。四道例題分別說明機率收斂不足以保證一次均方收斂、二次均方收斂如何用來求機率極限、機率收斂不足以保證幾乎確信收斂，以及 $r$ 次均方收斂與幾乎確信收斂之間並沒有互相導致的關係。
+這兩種收斂都比機率收斂強。[Theorem 5.4](#thm-rconv-implies-pconv) 由[馬可夫不等式](/lecture-notes/probability-inequalities/#thm-markov)證明 $r$ 次均方收斂導致機率收斂，[Theorem 5.5](#thm-2conv-implies-pconv) 再把這件事用在二次均方收斂上，給出一條只要檢查期望值與變異數就能判定機率收斂的判準；[Theorem 5.6](#thm-asconv-implies-pconv) 則交代幾乎確信收斂同樣導致機率收斂。四道例題分別說明機率收斂不足以保證一次均方收斂、二次均方收斂如何用來求機率極限、機率收斂不足以保證幾乎確信收斂，以及 $r$ 次均方收斂與幾乎確信收斂之間並沒有互相導致的關係。
 
 ## $r$ 次均方收斂
 
@@ -529,7 +529,7 @@ $$
 A_n\subseteq\lbrace\lvert X_n-X\rvert<\varepsilon\rbrace
 $$
 
-由 [Theorem 1.7](/teaching-topics/probability-rules-from-axioms/#theorem-monotonicity) 的單調性可得
+由 [Theorem 1.7](/lecture-notes/probability-rules-from-axioms/#theorem-monotonicity) 的單調性可得
 
 $$
 \mathbb{P}(A_n)\leqslant\mathbb{P}\bigl(\lvert X_n-X\rvert<\varepsilon\bigr)\leqslant1
@@ -909,7 +909,7 @@ $$
 
 </div>
 
-至此，我們已經看過不少收斂的型態與例子，現在就讓我們來看看統計中相當實用的兩個與收斂有關係的定理，分別是**[弱大數法則](/teaching-topics/weak-law-and-central-limit-theorem/#thm-weak-law-of-large-numbers) <span lang="en">(Weak Law of Large Numbers, WLLN)</span>** 與**[中央極限定理](/teaching-topics/weak-law-and-central-limit-theorem/#thm-central-limit-theorem) <span lang="en">(Central Limit Theorem, CLT)</span>**。
+至此，我們已經看過不少收斂的型態與例子，現在就讓我們來看看統計中相當實用的兩個與收斂有關係的定理，分別是**[弱大數法則](/lecture-notes/weak-law-and-central-limit-theorem/#thm-weak-law-of-large-numbers) <span lang="en">(Weak Law of Large Numbers, WLLN)</span>** 與**[中央極限定理](/lecture-notes/weak-law-and-central-limit-theorem/#thm-central-limit-theorem) <span lang="en">(Central Limit Theorem, CLT)</span>**。
 
 [^offset]: 我們並不是在此要求機率或機率密度為 <span class="text-nowrap">$0$，</span>而是要求 $\lvert X_n-X\rvert^{r}$ 必須被機率密度「抵銷」，這其中的條件也包含了 <span class="text-nowrap">$n\to\infty$，</span>因此，即便距離不為 $0$ 的地方，機率密度不是 <span class="text-nowrap">$0$，</span>只要當 $n\to\infty$ 時可以收斂至 <span class="text-nowrap">$0$，</span>那也同樣沒有問題。
 
@@ -923,13 +923,13 @@ $$
 
 [Example 5.13](#ex-pconv-without-first-mean) 說明反方向不成立: 取值為 $0$ 與 $n$ 而機率分別為 $1-\frac{1}{\,n\,}$ 與 $\frac{1}{\,n\,}$ 的序列，機率收斂至零，但 $\mathbb{E}\bigl[\lvert X_n-0\rvert\bigr]$ 恆等於 <span class="text-nowrap">$1$，</span>不會趨於零。這一題是刻意設計的: 取值隨 $n$ 成長的速度，恰好與機率隨 $n$ 遞減的速度一樣快，兩者相乘之後不隨 $n$ 改變。把機率改成 $\frac{1}{\,n^{m}\,}$ 之後，$m$ 次均方收斂仍然失敗，但一切 $0<r<m$ 的 $r$ 次均方收斂都成立。
 
-[Theorem 5.5](#thm-2conv-implies-pconv) 把 $r=2$ 的情形單獨拿出來: 只要期望值收斂至常數 $c$ 而變異數收斂至零，序列就二次均方收斂至 <span class="text-nowrap">$c$，</span>因而也機率收斂至 <span class="text-nowrap">$c$。</span>證明的作法是把 $\mathbb{E}\bigl[(X_n-c)^{2}\bigr]$ 展開，再以 [Theorem 2.11](/teaching-topics/variance/#thm-variance-formula) 的 $\mathrm{Var}(X)=\mathbb{E}(X^{2})-[\mathbb{E}(X)]^{2}$ 這條公式把二階原動差換掉，湊成 $\mathrm{Var}(X_n)+\bigl[\mathbb{E}(X_n)-c\bigr]^{2}$ 這個形式，兩項各自趨於零。二次均方收斂至母體參數的序列在數理統計中另有均方一致性這個名字，它比一般的一致性強。[Example 5.10 <span lang="en">(Continued)</span>](#ex-s-squared-mean-square-consistency) 即以這條判準重解一次 $S^{2}$ 的機率極限: 在[常態分配](/teaching-topics/normal-distribution/#def-normal)的母體之下，由[伽瑪分配](/teaching-topics/gamma-distribution/#def-gamma-distribution)算出 $\mathbb{E}\bigl(S^{2}\bigr)=\sigma^{2}$ 與 <span class="text-nowrap">$\mathrm{Var}\bigl(S^{2}\bigr)=\frac{2\sigma^{4}}{\,n-1\,}$，</span>後者在 $n\to\infty$ 時趨於零，故 <span class="text-nowrap">$S^{2}\pconv\sigma^{2}$。</span>其中 $S^{2}$ 的伽瑪分配來自 [Theorem 4.23](/teaching-topics/chi-squared-distribution/#thm-cochran-theorem) 的 <span class="text-nowrap">$\frac{(n-1)S^{2}}{\sigma^{2}}\sim\chi^{2}(n-1)$。</span>
+[Theorem 5.5](#thm-2conv-implies-pconv) 把 $r=2$ 的情形單獨拿出來: 只要期望值收斂至常數 $c$ 而變異數收斂至零，序列就二次均方收斂至 <span class="text-nowrap">$c$，</span>因而也機率收斂至 <span class="text-nowrap">$c$。</span>證明的作法是把 $\mathbb{E}\bigl[(X_n-c)^{2}\bigr]$ 展開，再以 [Theorem 2.11](/lecture-notes/variance/#thm-variance-formula) 的 $\mathrm{Var}(X)=\mathbb{E}(X^{2})-[\mathbb{E}(X)]^{2}$ 這條公式把二階原動差換掉，湊成 $\mathrm{Var}(X_n)+\bigl[\mathbb{E}(X_n)-c\bigr]^{2}$ 這個形式，兩項各自趨於零。二次均方收斂至母體參數的序列在數理統計中另有均方一致性這個名字，它比一般的一致性強。[Example 5.10 <span lang="en">(Continued)</span>](#ex-s-squared-mean-square-consistency) 即以這條判準重解一次 $S^{2}$ 的機率極限: 在[常態分配](/lecture-notes/normal-distribution/#def-normal)的母體之下，由[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)算出 $\mathbb{E}\bigl(S^{2}\bigr)=\sigma^{2}$ 與 <span class="text-nowrap">$\mathrm{Var}\bigl(S^{2}\bigr)=\frac{2\sigma^{4}}{\,n-1\,}$，</span>後者在 $n\to\infty$ 時趨於零，故 <span class="text-nowrap">$S^{2}\pconv\sigma^{2}$。</span>其中 $S^{2}$ 的伽瑪分配來自 [Theorem 4.23](/lecture-notes/chi-squared-distribution/#thm-cochran-theorem) 的 <span class="text-nowrap">$\frac{(n-1)S^{2}}{\sigma^{2}}\sim\chi^{2}(n-1)$。</span>
 
-[Definition 5.4](#def-converge-almost-surely) 的幾乎確信收斂換一個角度: 它不看機率本身怎麼變化，而是看那些使 $\lim_{n\to\infty}X_n(\omega)$ 與 $X(\omega)$ 不相等的樣本點 $\omega$ 收集而成的「例外集合」，要求這個集合的發生機率是零。[Theorem 5.6](#thm-asconv-implies-pconv) 指出它同樣導致機率收斂。[Example 5.14](#ex-indicator-block-sequence) 給出反方向的反例: 以[均勻分配](/teaching-topics/uniform-distribution-integral-transform/#def-uniform-distribution)的 $X$ 加上一段一段往右移動的指標函數，每一段的長度為 <span class="text-nowrap">$\frac{1}{\,m\,}$，</span>因此 $\mathbb{P}(\lvert X_n-X\rvert\geqslant\varepsilon)=\frac{1}{\,m\,}$ 會趨於零，機率收斂成立；但每一個 $X\in[0,1]$ 都會被無窮多段掃到，$\lim_{n\to\infty}X_n$ 根本不存在，幾乎確信收斂因而不成立。
+[Definition 5.4](#def-converge-almost-surely) 的幾乎確信收斂換一個角度: 它不看機率本身怎麼變化，而是看那些使 $\lim_{n\to\infty}X_n(\omega)$ 與 $X(\omega)$ 不相等的樣本點 $\omega$ 收集而成的「例外集合」，要求這個集合的發生機率是零。[Theorem 5.6](#thm-asconv-implies-pconv) 指出它同樣導致機率收斂。[Example 5.14](#ex-indicator-block-sequence) 給出反方向的反例: 以[均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的 $X$ 加上一段一段往右移動的指標函數，每一段的長度為 <span class="text-nowrap">$\frac{1}{\,m\,}$，</span>因此 $\mathbb{P}(\lvert X_n-X\rvert\geqslant\varepsilon)=\frac{1}{\,m\,}$ 會趨於零，機率收斂成立；但每一個 $X\in[0,1]$ 都會被無窮多段掃到，$\lim_{n\to\infty}X_n$ 根本不存在，幾乎確信收斂因而不成立。
 
 最後，[Example 5.13 <span lang="en">(Continued)</span>](#ex-r-mean-and-almost-sure-are-independent) 把 $r$ 次均方收斂與幾乎確信收斂擺在一起比較。同一個序列既不幾乎確信收斂至零，也不一次均方收斂至零；把機率改為 $\frac{1}{\,n^{2}\,}$ 之後，$\prod_{k=n}^{\infty}\bigl(1-\frac{1}{k^{2}}\bigr)$ 的極限為 <span class="text-nowrap">$1$，</span>幾乎確信收斂成立，二次均方收斂卻失敗；把取值由 $n$ 改為 $1$ 之後，二次均方收斂成立，幾乎確信收斂又失敗。可見這兩個收斂型態之間並沒有互相導致的關係。
 
-至此，四種收斂型態與它們之間的關係都已經給齊。[下一篇](/teaching-topics/weak-law-and-central-limit-theorem/)轉入兩條直接用得上的極限定理，分別是弱大數法則與中央極限定理，前者說的是樣本平均數機率收斂至母體期望值，後者說的是標準化之後的樣本平均數分配收斂至標準常態分配。
+至此，四種收斂型態與它們之間的關係都已經給齊。[下一篇](/lecture-notes/weak-law-and-central-limit-theorem/)轉入兩條直接用得上的極限定理，分別是弱大數法則與中央極限定理，前者說的是樣本平均數機率收斂至母體期望值，後者說的是標準化之後的樣本平均數分配收斂至標準常態分配。
 
 ## 參考文獻與延伸閱讀
 

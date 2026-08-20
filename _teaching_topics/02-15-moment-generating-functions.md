@@ -7,20 +7,20 @@ category: "機率概論"
 chapter: 2
 topic: 15
 order: 215
-permalink: /teaching-topics/moment-generating-functions/
+permalink: /lecture-notes/moment-generating-functions/
 date: 2026-08-06
 published: true
 excerpt: "動差母函數把 $e^{tX}$ 的期望值看成 $t$ 的函數: 只要存在某個 $h>0$，使 $\\mathbb{E}(e^{tX})$ 對一切 $t\\in(-h,h)$ 皆存在，這個期望值就稱為 $X$ 的動差母函數 $M_{X}(t)$。它起先是以工具函數的角色被引入。對 $t$ 微分 $r$ 次後在 $t=0$ 取值，所得的 $M_{X}^{(r)}(0)$ 正是 $r$ 階原動差 $\\mathbb{E}(X^{r})$；反過來把 $M_{X}(t)$ 在 $t=0$ 泰勒展開，$\\frac{t^{r}}{r!}$ 的係數也正是各階原動差。由於 $e^{tX}$ 無限可微，動差母函數一旦存在便保證各階動差都存在，但它並不是任何時候都存在。"
 ---
 
-[上一篇](/teaching-topics/measures-of-shape/)以三階與四階主動差建立了偏態係數與[峰態係數](/teaching-topics/measures-of-shape/#def-kurtosis)，用來描述一個分配的形狀。在前面兩篇，我們已經看到動差是如何描述一個分配的各種特徵。讀者可能會思考，動差既然能用以描述一個分配，那如果我們知道一個分配的各階動差，我們應能夠掌握關於這個分配的所有資訊。
+[上一篇](/lecture-notes/measures-of-shape/)以三階與四階主動差建立了偏態係數與[峰態係數](/lecture-notes/measures-of-shape/#def-kurtosis)，用來描述一個分配的形狀。在前面兩篇，我們已經看到動差是如何描述一個分配的各種特徵。讀者可能會思考，動差既然能用以描述一個分配，那如果我們知道一個分配的各階動差，我們應能夠掌握關於這個分配的所有資訊。
 
-這個想法基本上是正確的，但問題在於很多時候直接求取各階動差，並不是一件容易達成的事情，這個時候數學家引入了**動差母函數 <span lang="en">(moment generating function, mgf)</span>**，或名**動差生成函數**，作為一個工具函數，進而幫我們達成求取所有動差的可能性。本篇先給出動差母函數的定義與三點須注意之處，再看它如何以微分生成各階原動差、它的存在與各階動差的存在之間有何關係，接著看它在 $t=0$ 的泰勒展開，最後以三道例題示範動差母函數的求算與運用。這三道例題分別由 pmf 求動差母函數並據以算出[變異數](/teaching-topics/variance/#def-variance)、由已知的動差母函數逐階微分求變異數，以及由 pdf 求動差母函數。
+這個想法基本上是正確的，但問題在於很多時候直接求取各階動差，並不是一件容易達成的事情，這個時候數學家引入了**動差母函數 <span lang="en">(moment generating function, mgf)</span>**，或名**動差生成函數**，作為一個工具函數，進而幫我們達成求取所有動差的可能性。本篇先給出動差母函數的定義與三點須注意之處，再看它如何以微分生成各階原動差、它的存在與各階動差的存在之間有何關係，接著看它在 $t=0$ 的泰勒展開，最後以三道例題示範動差母函數的求算與運用。這三道例題分別由 pmf 求動差母函數並據以算出[變異數](/lecture-notes/variance/#def-variance)、由已知的動差母函數逐階微分求變異數，以及由 pdf 求動差母函數。
 
 <div id="def-mgf" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 2.16 (動差母函數, moment generating function, mgf)</div>
 
-若 $X$ 為離散型[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)，值域為 $\mathcal{R}\_{\sssig X}$、pmf 為 $p\_{\sssig X}(x)$，且存在某個 <span class="text-nowrap">$h>0$，</span>使得下列[期望值](/teaching-topics/expectation/#def-expectation)在 $-h<t<h$ 區間內皆存在，則
+若 $X$ 為離散型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)，值域為 $\mathcal{R}\_{\sssig X}$、pmf 為 $p\_{\sssig X}(x)$，且存在某個 <span class="text-nowrap">$h>0$，</span>使得下列[期望值](/lecture-notes/expectation/#def-expectation)在 $-h<t<h$ 區間內皆存在，則
 
 $$
 M_{\sssig X}(t)=\mathbb{E}\bigl(e^{tX}\bigr)=\sum_{x\in\mathcal{R}_{\sssig X}}e^{tx}\,p_{\sssig X}(x)
@@ -53,7 +53,7 @@ $$
 
 動差母函數有一些地方需要注意:
 
-(1) 動差母函數又被譯為**動差生成函數**，其原因是它能夠幫我們「生成」所有的[原動差](/teaching-topics/moment-system/#def-population-moment)。
+(1) 動差母函數又被譯為**動差生成函數**，其原因是它能夠幫我們「生成」所有的[原動差](/lecture-notes/moment-system/#def-population-moment)。
 {: .topic-paren-item}
 
 (2) 純粹以微積分的角度而言，動差母函數的定義中已經將所有的 $X$ 都積分 (加總) 完了，故其結果並不會再殘存有任何 $X$。
@@ -72,7 +72,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-然而動差母函數後來被發現一個更有用的用途，即**動差母函數的唯一性**，這個定理讓動差母函數不僅僅是工具函數，而有了更多的用途，[下一篇](/teaching-topics/uniqueness-of-the-mgf/)我們便會看到這些實用之處。
+然而動差母函數後來被發現一個更有用的用途，即**動差母函數的唯一性**，這個定理讓動差母函數不僅僅是工具函數，而有了更多的用途，[下一篇](/lecture-notes/uniqueness-of-the-mgf/)我們便會看到這些實用之處。
 
 </div>
 
@@ -149,7 +149,7 @@ $$
 
 </div>
 
-然而 mgf 雖然看似方便，能夠幫我們生出各階原動差，但細心一點的讀者或許已經產生一個疑惑: 稍早在 [Theorem 2.20](/teaching-topics/moment-system/#thm-lower-order-moment-existence) 之後不是曾說過，一個隨機變數的各階動差未必都存在嗎？難道有了 mgf 就能夠忽略這個限制嗎？
+然而 mgf 雖然看似方便，能夠幫我們生出各階原動差，但細心一點的讀者或許已經產生一個疑惑: 稍早在 [Theorem 2.20](/lecture-notes/moment-system/#thm-lower-order-moment-existence) 之後不是曾說過，一個隨機變數的各階動差未必都存在嗎？難道有了 mgf 就能夠忽略這個限制嗎？
 
 這個答案當然是否定的，mgf 並沒有如此萬能。mgf 最大的問題在於，由於 $e^{tX}$ 對 $t$ 來說是一個**無限可微 <span lang="en">(infinitely differentiable)</span>** 的函數，故若其定義的這個特殊的期望值存在，則保證了該隨機變數的各階動差都存在；反之，若一隨機變數並非各階動差皆存在，則其動差母函數不存在。簡而言之，**動差母函數不是任何時候都存在**。
 
@@ -342,7 +342,7 @@ $$
 \mathbb{E}\bigl(Y^{2}\bigr)=M^{\prime\prime}_{\sssig Y}(0)=6
 $$
 
-再由 [Theorem 2.11](/teaching-topics/variance/#thm-variance-formula) 可知，所求為
+再由 [Theorem 2.11](/lecture-notes/variance/#thm-variance-formula) 可知，所求為
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -434,7 +434,7 @@ $$
 
 </div>
 
-再由 [Theorem 2.11](/teaching-topics/variance/#thm-variance-formula) 可知，所求為
+再由 [Theorem 2.11](/lecture-notes/variance/#thm-variance-formula) 可知，所求為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -599,7 +599,7 @@ $$
 
 動差母函數的初始角色是工具函數。[Theorem 2.21](#thm-mgf-generates-moments) 說明它如何生成原動差。對 $t$ 微分 $r$ 次後在 $t=0$ 取值，所得的 $M^{(r)}\_{\sssig X}(0)$ 正是 $r$ 階原動差 $\mathbb{E}(X^{r})$，證明的關鍵在於微分與積分可以交換順序。由於 $e^{tX}$ 對 $t$ 無限可微，動差母函數一旦存在就保證各階動差都存在；反過來說，各階動差不全存在的隨機變數沒有動差母函數，可見動差母函數不是任何時候都存在。[Theorem 2.22](#thm-mgf-moment-series) 則走另一個方向。動差母函數存在時，把它在 $t=0$ 泰勒展開，$\frac{\,t^{r}\,}{r!}$ 的係數正是 $\mathbb{E}(X^{r})$。
 
-三道例題示範了三種出發點: [Example 2.29](#ex-geometric-mgf) 由 pmf 出發，以幾何級數求和得到 $M\_{\sssig Y}(t)=\frac{e^{t}}{\,2-e^{t}\,}$ 並附上收斂條件 $t<\ln2$，再由前兩階導數求得變異數；[Example 2.30](#ex-discrete-mgf-variance) 直接由已知的動差母函數逐階微分求變異數；[Example 2.31](#ex-logistic-cdf) 由邏輯斯 pdf 出發，先求 cdf 與 $f\_{\sssig X}=F\_{\sssig X}(1-F\_{\sssig X})$ 的關係，再連續兩次代換並套用貝塔積分求出動差母函數。到這裡動差母函數都還只是生成動差的工具，[下一篇](/teaching-topics/uniqueness-of-the-mgf/)要介紹的唯一性，才是它真正被大量使用的原因。兩個隨機變數的動差母函數若都存在且相等，它們的分配也就相等，於是我們可以反過來由動差母函數認出一個分配。
+三道例題示範了三種出發點: [Example 2.29](#ex-geometric-mgf) 由 pmf 出發，以幾何級數求和得到 $M\_{\sssig Y}(t)=\frac{e^{t}}{\,2-e^{t}\,}$ 並附上收斂條件 $t<\ln2$，再由前兩階導數求得變異數；[Example 2.30](#ex-discrete-mgf-variance) 直接由已知的動差母函數逐階微分求變異數；[Example 2.31](#ex-logistic-cdf) 由邏輯斯 pdf 出發，先求 cdf 與 $f\_{\sssig X}=F\_{\sssig X}(1-F\_{\sssig X})$ 的關係，再連續兩次代換並套用貝塔積分求出動差母函數。到這裡動差母函數都還只是生成動差的工具，[下一篇](/lecture-notes/uniqueness-of-the-mgf/)要介紹的唯一性，才是它真正被大量使用的原因。兩個隨機變數的動差母函數若都存在且相等，它們的分配也就相等，於是我們可以反過來由動差母函數認出一個分配。
 
 ## 參考文獻與延伸閱讀
 

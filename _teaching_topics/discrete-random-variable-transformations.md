@@ -4,5 +4,5 @@ layout: redirect
 sitemap: false
 permalink: /teaching-topics/discrete-random-variable-transformations/
 redirect:
-  to: /teaching-topics/one-to-one-transformations/
+  to: /lecture-notes/one-to-one-transformations/
 ---

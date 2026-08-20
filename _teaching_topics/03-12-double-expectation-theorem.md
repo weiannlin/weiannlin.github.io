@@ -7,19 +7,19 @@ category: "機率概論"
 chapter: 3
 topic: 12
 order: 312
-permalink: /teaching-topics/double-expectation-theorem/
+permalink: /lecture-notes/double-expectation-theorem/
 date: 2026-08-13
 published: false
 excerpt: "條件期望值算完之後，被給定的那個值會留下來，因此條件期望值是條件的函數，這個函數即稱為迴歸函數。若把條件本身看成隨機的，$\\mathbb{E}(X\\mid Y)$ 便是 $Y$ 的函數，也就是一個隨機變數，我們因而可以再取一次期望值；雙重期望值定理指出，這一次期望值恰好等於 $X$ 的邊際期望值 $\\mathbb{E}(X)$。它背後的直觀是加權平均: 先把 $X$ 的分配依 $Y$ 的取值切成一片一片的條件分配，在每一片上找到重心，再以 $f_{\\sssig Y}(y)$ 為權重把這些重心平均起來，所得的就是原始空間中的重心。本篇並把這條定理推廣到 $g(X)$ 的版本。"
 ---
 
-[上一篇](/teaching-topics/conditional-expectation-and-variance/)以 [Definition 3.11](/teaching-topics/conditional-expectation-and-variance/#def-conditional-expectation) 與 [Definition 3.13](/teaching-topics/conditional-expectation-and-variance/#def-conditional-variance) 給出[條件期望值](/teaching-topics/conditional-expectation-and-variance/#def-conditional-expectation)與[條件變異數](/teaching-topics/conditional-expectation-and-variance/#def-conditional-variance)，並在最後指出條件期望值是「給定的條件」的函數。
+[上一篇](/lecture-notes/conditional-expectation-and-variance/)以 [Definition 3.11](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation) 與 [Definition 3.13](/lecture-notes/conditional-expectation-and-variance/#def-conditional-variance) 給出[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation)與[條件變異數](/lecture-notes/conditional-expectation-and-variance/#def-conditional-variance)，並在最後指出條件期望值是「給定的條件」的函數。
 
 本篇先列出把條件當成常數所得到的三個特例，再以 [Theorem 3.8](#thm-regression-function) 為「條件期望值是條件的函數」中的那個函數取名為迴歸函數，接著討論條件本身是隨機的情形，並由此得到 [Theorem 3.9](#thm-double-expectation) 的雙重期望值定理，最後以一張立體圖說明這條定理背後的加權平均。
 
-在[上一篇](/teaching-topics/conditional-expectation-and-variance/)我們曾經提過一個特別的觀點，即一旦給定了某個變數 $Y=y$ (或 $X=x$) 後，在這個條件期望值之中，$Y=y$ (或 $X=x$) 即**被視為常數**。我們在此詳細探討這個觀點。
+在[上一篇](/lecture-notes/conditional-expectation-and-variance/)我們曾經提過一個特別的觀點，即一旦給定了某個變數 $Y=y$ (或 $X=x$) 後，在這個條件期望值之中，$Y=y$ (或 $X=x$) 即**被視為常數**。我們在此詳細探討這個觀點。
 
-讀者可以回想一下，我們在[初次介紹期望值](/teaching-topics/expectation/#def-expectation)的時候曾說過，期望值對常數的運算結果就是該常數本身，及變異數對常數的運算結果必定為 $0$ (因為常數沒有變異性)，故我們馬上可以得到以下幾個有用的特例:
+讀者可以回想一下，我們在[初次介紹期望值](/lecture-notes/expectation/#def-expectation)的時候曾說過，期望值對常數的運算結果就是該常數本身，及變異數對常數的運算結果必定為 $0$ (因為常數沒有變異性)，故我們馬上可以得到以下幾個有用的特例:
 
 - $\mathbb{E}(X\mid X=x)$ $=$ $\mathbb{E}(x\mid X=x)$ $=$ $x\mathbb{E}(1\mid X=x)$ $=$ $x$
 - $\mathrm{Var}(X\mid X=x)$ $=$ $\mathrm{Var}(x\mid X=x)$ $=$ $0$
@@ -87,7 +87,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個差異即是 $g(y)$ 與 $g(Y)$ 的差異，前者只是數字，後者卻是[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)。
+這個差異即是 $g(y)$ 與 $g(Y)$ 的差異，前者只是數字，後者卻是[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)。
 
 </div>
 
@@ -170,7 +170,7 @@ $$
 而在計算 $\mathbb{E}(X\mid Y)$ 的期望值時，由於 $\mathbb{E}(X\mid Y)$ 是 $Y$ 的函數轉換，故當然也要乘上 $Y$ 的機率函數以符合定義，這也是上列證明的小細節。然而，這個關鍵的小步驟即是看出為何[雙重期望值定理](#thm-double-expectation)是一種加權平均的關鍵，我們將其圖解如下:
 
 <figure id="fig-regression-function-surface" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/regression-function-surface.svg" alt="一個三維曲面圖。曲面在中央隆起成鐘形，四周向外遞減趨近於零，底面兩軸分別標 x 與 y，鉛直軸標聯合機率密度函數的函數值。y 軸上依序標出 y_1、y_2 與 y_n 三個位置，每一處各有一片沿 x 方向的截面立在曲面上，截面的輪廓以深色曲線描出，其下以淡紅色填滿。三片截面的高低不同，位在 y_2 的那一片最高，位在 y_1 的那一片最矮。">
+  <img src="/images/lecture-notes/regression-function-surface.svg" alt="一個三維曲面圖。曲面在中央隆起成鐘形，四周向外遞減趨近於零，底面兩軸分別標 x 與 y，鉛直軸標聯合機率密度函數的函數值。y 軸上依序標出 y_1、y_2 與 y_n 三個位置，每一處各有一片沿 x 方向的截面立在曲面上，截面的輪廓以深色曲線描出，其下以淡紅色填滿。三片截面的高低不同，位在 y_2 的那一片最高，位在 y_1 的那一片最矮。">
   <figcaption><span class="topic-figure__label">Fig. 3.16.</span> joint pdf 的曲面沿 $y$ 切成薄片，圖中在 <span class="text-nowrap">$y_1$、</span>$y_2$ 與 $y_n$ 三處各切出一片，每一片的形狀就是 $X$ 給定 $Y=y$ 的條件分配，其重心即 <span class="text-nowrap">$\mathbb{E}(X\mid Y=y)$。</span>三片的高低不同，正是加權平均中各片權重不同的來源。</figcaption>
 </figure>
 
@@ -187,13 +187,13 @@ $$
 
 ## 本篇小結
 
-把條件當成常數，馬上可以得到三個有用的特例: $\mathbb{E}(X\mid X=x)$ $=$ $x$ 與 $\mathrm{Var}(X\mid X=x)$ $=$ $0$ 這兩條，說的是給定之後 $X$ 已經沒有隨機性；$\mathbb{E}(XY\mid X=x)$ $=$ $x\mathbb{E}(Y\mid X=x)$ 這一條，說的是給定的那個值可以像常數一樣提到期望值的外面。[Theorem 3.8](#thm-regression-function) 則為這個函數取了名字。條件期望值是條件的函數，即 $\mathbb{E}(X\mid Y=y)$ $=$ <span class="text-nowrap">$g(y)$，</span>我們稱其為 $X$ 對 $Y$ 的迴歸函數。證明只用到[條件機率密度函數](/teaching-topics/conditional-distributions/#def-conditional-pdf)的定義，把 $f_{\sssig Y}(y)$ 提到積分之外，剩下的積分便只與 $y$ 有關。
+把條件當成常數，馬上可以得到三個有用的特例: $\mathbb{E}(X\mid X=x)$ $=$ $x$ 與 $\mathrm{Var}(X\mid X=x)$ $=$ $0$ 這兩條，說的是給定之後 $X$ 已經沒有隨機性；$\mathbb{E}(XY\mid X=x)$ $=$ $x\mathbb{E}(Y\mid X=x)$ 這一條，說的是給定的那個值可以像常數一樣提到期望值的外面。[Theorem 3.8](#thm-regression-function) 則為這個函數取了名字。條件期望值是條件的函數，即 $\mathbb{E}(X\mid Y=y)$ $=$ <span class="text-nowrap">$g(y)$，</span>我們稱其為 $X$ 對 $Y$ 的迴歸函數。證明只用到[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)的定義，把 $f_{\sssig Y}(y)$ 提到積分之外，剩下的積分便只與 $y$ 有關。
 
-若把條件本身看成隨機的，$\mathbb{E}(X\mid Y)$ $=$ $g(Y)$ 就是 $Y$ 的函數，也是一個隨機變數，因此還可以再取一次期望值。[Theorem 3.9](#thm-double-expectation) 的雙重期望值定理指出，這一次期望值恰好等於 $X$ 的邊際期望值，即 $\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]$ $=$ <span class="text-nowrap">$\mathbb{E}(X)$。</span>證明的關鍵一步是把 $\mathbb{E}(X\mid Y=y)$ 乘上 $f_{\sssig Y}(y)$ 之後，$f_{\sssig X\mid Y}(x\mid y)$ 分母上的 $f_{\sssig Y}(y)$ 恰好被消掉，只剩下 $X$ 與 $Y$ 的[聯合機率密度函數](/teaching-topics/joint-probability-density-functions/#def-joint-pdf)。這條定理另有 $g(X)$ 的版本，其中 $\mathbb{E}\bigl[\mathbb{E}(X^{2}\mid Y)\bigr]$ $=$ $\mathbb{E}(X^{2})$ 這個特例後續會經常用到。
+若把條件本身看成隨機的，$\mathbb{E}(X\mid Y)$ $=$ $g(Y)$ 就是 $Y$ 的函數，也是一個隨機變數，因此還可以再取一次期望值。[Theorem 3.9](#thm-double-expectation) 的雙重期望值定理指出，這一次期望值恰好等於 $X$ 的邊際期望值，即 $\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]$ $=$ <span class="text-nowrap">$\mathbb{E}(X)$。</span>證明的關鍵一步是把 $\mathbb{E}(X\mid Y=y)$ 乘上 $f_{\sssig Y}(y)$ 之後，$f_{\sssig X\mid Y}(x\mid y)$ 分母上的 $f_{\sssig Y}(y)$ 恰好被消掉，只剩下 $X$ 與 $Y$ 的[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)。這條定理另有 $g(X)$ 的版本，其中 $\mathbb{E}\bigl[\mathbb{E}(X^{2}\mid Y)\bigr]$ $=$ $\mathbb{E}(X^{2})$ 這個特例後續會經常用到。
 
 這條定理背後的直觀就是加權平均。本篇的立體圖把整個原始空間依 $Y$ 的取值切成不同的薄片，每一片都是 $X$ 給定 $Y=y$ 的條件分配；先在每一片上找到重心 $\mathbb{E}(X\mid Y=y)$ 這個值，再以該片自己發生的可能性 $f_{\sssig Y}(y)$ 為權重把這些重心平均起來，所得的就是原始空間中 $X$ 的重心 $\mathbb{E}(X)$ 這個值。乘上 $f_{\sssig Y}(y)$ 這一步之所以是關鍵，正是因為它同時扮演了定義所要求的機率函數與加權平均所要求的權重。
 
-[下一篇](/teaching-topics/double-expectation-examples/)以五道例題示範這條定理怎麼用，其中包含期望值不存在時等式不成立的例子，以及讓所求的期望值在等式兩側同時出現、解一條方程式即可求得的作法。
+[下一篇](/lecture-notes/double-expectation-examples/)以五道例題示範這條定理怎麼用，其中包含期望值不存在時等式不成立的例子，以及讓所求的期望值在等式兩側同時出現、解一條方程式即可求得的作法。
 
 ## 參考文獻與延伸閱讀
 

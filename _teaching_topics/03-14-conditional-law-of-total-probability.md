@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 14
 order: 314
-permalink: /teaching-topics/conditional-law-of-total-probability/
+permalink: /lecture-notes/conditional-law-of-total-probability/
 date: 2026-08-13
 published: false
 excerpt: "雙重期望值定理是以條件變數的分配對條件期望值加權平均，得到邊際的期望值；同樣的加權方式也可以直接用在機率函數上，這就是隨機變數版本的全機率定理: 邊際 pmf 是條件 pmf 對條件變數取期望值所得的結果，邊際 pdf 亦然。它與第一章事件版本的全機率定理互相對照，當時是先以 $A_i$ 分割整個樣本空間，此處則是以條件變數 $Y$ 分割值域空間。這條定理寫成 $\\mathbb{P}(Z\\leqslant Y^{2})=\\mathbb{E}\\bigl[\\mathbb{P}(Z\\leqslant Y^{2}\\mid Y)\\bigr]$ 這種形式之後，許多機率的計算都可以先給定一部分的變數，再以該部分的分配加權求得。本篇的三道例題，第一道求一元二次方程式有實根的機率，另外兩道求一個均勻分配的變數大於另外兩個變數乘積的機率，其中最後一題說明條件的選擇完全可以依照計算的方便來決定。"
 ---
 
-[上一篇](/teaching-topics/double-expectation-examples/)以五道例題示範了[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation)的用法，其中的共同手法是先給定一個變數、求出[條件期望值](/teaching-topics/conditional-expectation-and-variance/#def-conditional-expectation)，再以該變數的分配對條件期望值加權平均，得到邊際的期望值。
+[上一篇](/lecture-notes/double-expectation-examples/)以五道例題示範了[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)的用法，其中的共同手法是先給定一個變數、求出[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation)，再以該變數的分配對條件期望值加權平均，得到邊際的期望值。
 
-既然加權平均可以由條件期望值得到邊際期望值，同樣的做法能不能直接用在分配本身上呢？本篇的定理給出肯定的回答，邊際的 pmf 與 pdf 都可以寫成條件 pmf 與條件 pdf 的期望值，這就是[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)版本的全機率定理。本篇先給出這條定理與它的證明，說明它與第一章事件版本的全機率定理如何對照，再以三道例題示範它在機率計算上的用法，並說明條件的選擇可以依照計算的方便來決定。
+既然加權平均可以由條件期望值得到邊際期望值，同樣的做法能不能直接用在分配本身上呢？本篇的定理給出肯定的回答，邊際的 pmf 與 pdf 都可以寫成條件 pmf 與條件 pdf 的期望值，這就是[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)版本的全機率定理。本篇先給出這條定理與它的證明，說明它與第一章事件版本的全機率定理如何對照，再以三道例題示範它在機率計算上的用法，並說明條件的選擇可以依照計算的方便來決定。
 
 ## 隨機變數版本的全機率定理
 
@@ -96,7 +96,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述全機率定理，與第一章 [Theorem 1.16](/teaching-topics/total-probability-bayes-rule/#theorem-law-of-total-probability) 所敘述的全機率定理的連結是，當時 $\mathbb{P}(B\mid A_i)$ 是以 $\mathbb{P}(A_i)$ 為權重進行加權，從而得到 <span class="text-nowrap">$\mathbb{P}(B)$；</span>而此處，$f_{\sssig X\mid Y}(x\mid y)$ 則是以 $f_{\sssig Y}(y)$ 為權重進行加權，從而得到 <span class="text-nowrap">$f_{\sssig X}(x)$。</span>
+上述全機率定理，與第一章 [Theorem 1.16](/lecture-notes/total-probability-bayes-rule/#theorem-law-of-total-probability) 所敘述的全機率定理的連結是，當時 $\mathbb{P}(B\mid A_i)$ 是以 $\mathbb{P}(A_i)$ 為權重進行加權，從而得到 <span class="text-nowrap">$\mathbb{P}(B)$；</span>而此處，$f_{\sssig X\mid Y}(x\mid y)$ 則是以 $f_{\sssig Y}(y)$ 為權重進行加權，從而得到 <span class="text-nowrap">$f_{\sssig X}(x)$。</span>
 
 此二者的相像之處在於，事件版本的全機率定理，是以 $A_i$ 先行分割整個樣本空間；而隨機變數版本的全機率定理，是以條件變數 $Y$ 分割值域空間。
 
@@ -263,7 +263,7 @@ $$
 \text{又}\ \ \mathbb{P}(X\geqslant 3YZ\mid Z=z)&=\mathbb{P}(X\geqslant 3Yz\mid Z=z)\\[0.45em]
 &=\mathbb{P}(X\geqslant 3Yz)\\[0.45em]
 &=\left\lbrace
-\begin{array}{c@{\quad}l}
+\begin{array}{c@{}l}
 1-\frac{3}{\,2\,}z, & 0<z\leqslant\frac{1}{\,3\,}\\[0.8em]
 \frac{1}{\,6z\,}, & \frac{1}{\,3\,}<z<1
 \end{array}
@@ -305,7 +305,7 @@ $$
 此外，在給定 $Z=z$ 的情況下，依照 $z$ 的範圍，積分範圍將有以下兩種:
 
 <figure id="fig-total-probability-regions" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/total-probability-regions.svg" alt="兩個並排的面板，各有一組帶箭頭的座標軸與兩條淡色虛線。直虛線的下端標 x 等於 1，橫虛線的左端標 y 等於 1，兩條虛線與兩軸圍成一個方形。左面板自原點畫一條斜率大於 1 的斜線，與方形的上邊相交，交點上方標 x 等於 3zy，斜線右下方的四邊形以淡紅色填滿，面板下方標 0 小於 z 小於等於三分之一。右面板自原點畫一條斜率小於 1 的斜線，與方形的右邊相交，交點左上方標 x 等於 3zy，斜線下方的三角形以淡紅色填滿，面板下方標三分之一小於 z 小於 1。兩面板的橫軸右端都標 x，縱軸上端都標 y。">
+  <img src="/images/lecture-notes/total-probability-regions.svg" alt="兩個並排的面板，各有一組帶箭頭的座標軸與兩條淡色虛線。直虛線的下端標 x 等於 1，橫虛線的左端標 y 等於 1，兩條虛線與兩軸圍成一個方形。左面板自原點畫一條斜率大於 1 的斜線，與方形的上邊相交，交點上方標 x 等於 3zy，斜線右下方的四邊形以淡紅色填滿，面板下方標 0 小於 z 小於等於三分之一。右面板自原點畫一條斜率小於 1 的斜線，與方形的右邊相交，交點左上方標 x 等於 3zy，斜線下方的三角形以淡紅色填滿，面板下方標三分之一小於 z 小於 1。兩面板的橫軸右端都標 x，縱軸上端都標 y。">
   <figcaption><span class="topic-figure__label">Fig. 3.17.</span> 兩條虛線 $x=1$ 與 $y=1$ 和兩軸圍出一個方形，斜線 $x=3zy$ 的斜率隨 $z$ 而變，左圖的斜線與方形的上邊相交、右圖的斜線與方形的右邊相交，兩圖填色的一塊都是 $x\geqslant 3zy$ 的範圍。</figcaption>
 </figure>
 
@@ -317,13 +317,13 @@ $$
 
 ## 本篇小結
 
-[Theorem 3.10](#thm-law-of-total-prob-r-v) 把加權平均的做法由期望值移到機率函數本身。邊際 pmf 是條件 pmf 以條件變數的分配加權所得，即 $p_{\sssig X}(x)$ $=$ $\mathbb{E}\bigl[p_{\sssig X\mid Y}(x\mid Y)\bigr]$ 這一條等式，連續型的邊際 pdf 亦然。證明只需把外層的期望值寫成對 $y$ 的積分，被積分的兩項相乘正是 <span class="text-nowrap">$f_{\sssig XY}(x,y)$，</span>再對 $y$ 積分就得到 <span class="text-nowrap">$f_{\sssig X}(x)$。</span>這條定理與第一章 [Theorem 1.16](/teaching-topics/total-probability-bayes-rule/#theorem-law-of-total-probability) 的對照相當清楚: 當時是以 $A_i$ 先行分割整個樣本空間、以 $\mathbb{P}(A_i)$ 為權重，此處則是以條件變數 $Y$ 分割值域空間、以 $f_{\sssig Y}(y)$ 為權重。
+[Theorem 3.10](#thm-law-of-total-prob-r-v) 把加權平均的做法由期望值移到機率函數本身。邊際 pmf 是條件 pmf 以條件變數的分配加權所得，即 $p_{\sssig X}(x)$ $=$ $\mathbb{E}\bigl[p_{\sssig X\mid Y}(x\mid Y)\bigr]$ 這一條等式，連續型的邊際 pdf 亦然。證明只需把外層的期望值寫成對 $y$ 的積分，被積分的兩項相乘正是 <span class="text-nowrap">$f_{\sssig XY}(x,y)$，</span>再對 $y$ 積分就得到 <span class="text-nowrap">$f_{\sssig X}(x)$。</span>這條定理與第一章 [Theorem 1.16](/lecture-notes/total-probability-bayes-rule/#theorem-law-of-total-probability) 的對照相當清楚: 當時是以 $A_i$ 先行分割整個樣本空間、以 $\mathbb{P}(A_i)$ 為權重，此處則是以條件變數 $Y$ 分割值域空間、以 $f_{\sssig Y}(y)$ 為權重。
 
 三道例題示範這條定理在機率計算上的用法。[Example 3.26](#ex-quadratic-real-root-probability) 先把「有實根」化為判別式非負的條件，所求機率因而是 <span class="text-nowrap">$\mathbb{P}(Z\leqslant Y^{2})$，</span>給定 $Y=y$ 之後再對 $y$ 加權積分，得到 <span class="text-nowrap">$\frac{1}{3}$；</span>這個做法寫成 $\mathbb{E}\bigl[\mathbb{P}(Z\leqslant Y^{2}\mid Y)\bigr]$ 之後，就是全機率定理本身。[Example 3.27](#ex-three-uniform-comparison) 說明條件可以同時擺上多於一個的變數，此時外層的期望值使用的是 $Y$ 與 $Z$ 的聯合分配，答案為 <span class="text-nowrap">$\frac{3}{4}$；</span>這個算法與直接以三重積分計算是等價的，差別只在先知道的是 joint pdf 還是 conditional pdf。
 
 [Example 3.28](#ex-three-uniform-product-inequality) 的三倍使積分範圍需要分段討論，若把 $Y$ 與 $Z$ 都給定反而更難算，因此只給定 <span class="text-nowrap">$Z$，</span>並依 $z$ 落在 $0<z\leqslant\frac{1}{3}$ 或 $\frac{1}{3}<z<1$ 分成兩種範圍，各以面積求得條件機率，最後加權積分得到 $\frac{1}{4}+\frac{1}{6}\ln 3$ 這個值。由此可見全機率定理在條件的選擇上相當靈活，完全可以依照計算上的方便來決定。
 
-[下一篇](/teaching-topics/variance-decomposition-theorem/)將把同樣的加權做法用在[變異數](/teaching-topics/variance/#def-variance)上，介紹變異數分解定理。
+[下一篇](/lecture-notes/variance-decomposition-theorem/)將把同樣的加權做法用在[變異數](/lecture-notes/variance/#def-variance)上，介紹變異數分解定理。
 
 ## 參考文獻與延伸閱讀
 

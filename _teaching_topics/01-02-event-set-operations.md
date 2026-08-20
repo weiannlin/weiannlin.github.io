@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 1
 topic: 2
 order: 102
-permalink: /teaching-topics/event-set-operations/
+permalink: /lecture-notes/event-set-operations/
 date: 2026-07-26
 published: true
 excerpt: "事件是樣本空間的子集合。本篇介紹聯集、交集、差集與餘集等集合運算及其基本性質，並推廣至有限與可數的聯集與交集、單調集合序列的極限，最後說明互斥與加集。"
 ---
 
-[上一篇](/teaching-topics/random-experiments-sample-space-events/)將事件定義為樣本空間的子集合。由於事件就是集合，我們在探討事件之間的關係時，自然可以引入集合之間的關係，因此本篇正式引入集合算子的概念。
+[上一篇](/lecture-notes/random-experiments-sample-space-events/)將事件定義為樣本空間的子集合。由於事件就是集合，我們在探討事件之間的關係時，自然可以引入集合之間的關係，因此本篇正式引入集合算子的概念。
 
 ## 聯集、交集、差集與餘集
 
@@ -57,7 +57,7 @@ $$
 集合與集合間的關係時常能夠用**文氏圖 <span lang="en">(Venn diagram)</span>** (或譯為溫氏圖) 來協助理解，例如上述四種關係所表示的範圍，即可由下圖的暗紅色區塊來理解。文氏圖多用於說明二或三個集合彼此間的交互情形；四個集合以上時已不容易看出背後的直覺，但其交互情形仍可由二或三個集合的結果代數推廣得到。
 
 <figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/event-set-operations.svg" alt="事件聯集、交集、差集與餘集的四面板文氏圖。每個面板都以矩形表示樣本空間 S，內含代表 A 與 B 的兩個圓，三個區域分別標示 A 交 B 的餘集、A 交 B 與 A 的餘集交 B，暗紅色區域表示各運算所得的集合。第四個面板只畫一個圓，圓內標示 A，圓外標示 A 的餘集。">
+  <img src="/images/lecture-notes/event-set-operations.svg" alt="事件聯集、交集、差集與餘集的四面板文氏圖。每個面板都以矩形表示樣本空間 S，內含代表 A 與 B 的兩個圓，三個區域分別標示 A 交 B 的餘集、A 交 B 與 A 的餘集交 B，暗紅色區域表示各運算所得的集合。第四個面板只畫一個圓，圓內標示 A，圓外標示 A 的餘集。">
   <figcaption><span class="topic-figure__label">Fig. 1.1.</span> 聯集、交集、差集與餘集在樣本空間 $S$ 中所對應的範圍。</figcaption>
 </figure>
 
@@ -82,7 +82,7 @@ $$
 
 若投擲一顆骰子一次，且令 $A$ 表示其點數大於等於 $4$ 點之事件、$B$ 表示其點數小於等於 $3$ 點之事件、$C$ 表示其點數恰巧為 $5$ 點之事件。
 
-沿用[上一篇](/teaching-topics/random-experiments-sample-space-events/)的結果，可知 $S=\lbrace1,2,3,4,5,6\rbrace$、$A=\lbrace4,5,6\rbrace$、$B=\lbrace1,2,3\rbrace$ 與 $C=\lbrace5\rbrace$，故由 [Definition 1.7](#definition-set-operations) 可得
+沿用[上一篇](/lecture-notes/random-experiments-sample-space-events/)的結果，可知 $S=\lbrace1,2,3,4,5,6\rbrace$、$A=\lbrace4,5,6\rbrace$、$B=\lbrace1,2,3\rbrace$ 與 $C=\lbrace5\rbrace$，故由 [Definition 1.7](#definition-set-operations) 可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -264,7 +264,7 @@ $$
 我們可以用下圖來表示其所指示的範圍。
 
 <figure class="topic-figure topic-figure--medium">
-  <img src="/images/teaching-topics/event-symmetric-difference.svg" alt="對稱差集的文氏圖。矩形表示樣本空間 S，內含代表 A 與 B 的兩個相交圓，兩圓相重疊以外的部分以暗紅色標示。">
+  <img src="/images/lecture-notes/event-symmetric-difference.svg" alt="對稱差集的文氏圖。矩形表示樣本空間 S，內含代表 A 與 B 的兩個相交圓，兩圓相重疊以外的部分以暗紅色標示。">
   <figcaption><span class="topic-figure__label">Fig. 1.2.</span> 對稱差集 $A\mathbin{\triangle}B$ 是 $A$ 與 $B$ 之中恰有一個發生所對應的範圍。</figcaption>
 </figure>
 
@@ -336,7 +336,7 @@ $$
 狄摩根律亦能用文氏圖來理解，如以下二組對照圖中的暗紅色部分所示。
 
 <figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/event-de-morgan.svg" alt="狄摩根律的四面板文氏圖。上排左側標示 A 聯集 B 的範圍，右側標示其餘集，也就是兩圓以外的範圍。下排左側標示 A 交集 B 的範圍，右側標示其餘集，也就是兩圓重疊處以外的範圍。">
+  <img src="/images/lecture-notes/event-de-morgan.svg" alt="狄摩根律的四面板文氏圖。上排左側標示 A 聯集 B 的範圍，右側標示其餘集，也就是兩圓以外的範圍。下排左側標示 A 交集 B 的範圍，右側標示其餘集，也就是兩圓重疊處以外的範圍。">
   <figcaption><span class="topic-figure__label">Fig. 1.3.</span> $A\cup B$ 與 $A\cap B$ 各自取餘集之後所對應的範圍。</figcaption>
 </figure>
 
@@ -443,7 +443,7 @@ $$
 我們將 $A_1,A_2,\ldots,A_k$ 都畫出來比較，以便讀者理解為何其有限聯集與有限交集的結果如此。
 
 <figure id="fig-set-sequence-a" class="topic-figure">
-  <img src="/images/teaching-topics/event-set-sequence-a.svg" alt="集合序列 A_i 的數線圖。四條數線分別標示 A_1 為單點 1，A_2 為二分之一到 1 的閉區間，A_3 為三分之一到 1 的閉區間，A_k 的左端點更靠近 0，各區間以暗紅色線段標示，端點為實心圓點。">
+  <img src="/images/lecture-notes/event-set-sequence-a.svg" alt="集合序列 A_i 的數線圖。四條數線分別標示 A_1 為單點 1，A_2 為二分之一到 1 的閉區間，A_3 為三分之一到 1 的閉區間，A_k 的左端點更靠近 0，各區間以暗紅色線段標示，端點為實心圓點。">
   <figcaption><span class="topic-figure__label">Fig. 1.4.</span> 集合序列 $\lbrace A_i\rbrace$ 的前幾項與一般項 $A_k$，其左端點隨 $i$ 增大而越來越靠近 $0$。</figcaption>
 </figure>
 
@@ -511,7 +511,7 @@ $$
 我們同樣將 $B_1,B_2,\ldots,B_n$ 畫出來。
 
 <figure id="fig-set-sequence-b" class="topic-figure">
-  <img src="/images/teaching-topics/event-set-sequence-b.svg" alt="集合序列 B_k 的數線圖。四條數線分別標示 B_1 為 0 到 2 的半開區間，B_2 為 0 到 1.5 的半開區間，B_3 為 0 到三分之四的半開區間，B_n 的右端點更靠近 1，各區間以暗紅色線段標示，左端點為實心圓點，右端點為空心圓點。">
+  <img src="/images/lecture-notes/event-set-sequence-b.svg" alt="集合序列 B_k 的數線圖。四條數線分別標示 B_1 為 0 到 2 的半開區間，B_2 為 0 到 1.5 的半開區間，B_3 為 0 到三分之四的半開區間，B_n 的右端點更靠近 1，各區間以暗紅色線段標示，左端點為實心圓點，右端點為空心圓點。">
   <figcaption><span class="topic-figure__label">Fig. 1.5.</span> 集合序列 $\lbrace B_k\rbrace$ 的前幾項與一般項 $B_n$，其上界隨 $k$ 增大而越來越靠近 $1$。</figcaption>
 </figure>
 
@@ -520,7 +520,7 @@ $$
 $C_1,C_2,\ldots,C_n$ 的序列則同時有兩端變化，下界越來越小，上界越來越大。
 
 <figure id="fig-set-sequence-c" class="topic-figure">
-  <img src="/images/teaching-topics/event-set-sequence-c.svg" alt="集合序列 C_k 的數線圖。四條數線分別標示 C_1 為 1 到 2 的閉區間，C_2 為 0.5 到 2.5 的閉區間，C_3 為三分之一到三分之八的閉區間，C_n 的左端點更靠近 0、右端點更靠近 3，各區間以暗紅色線段標示，端點為實心圓點。">
+  <img src="/images/lecture-notes/event-set-sequence-c.svg" alt="集合序列 C_k 的數線圖。四條數線分別標示 C_1 為 1 到 2 的閉區間，C_2 為 0.5 到 2.5 的閉區間，C_3 為三分之一到三分之八的閉區間，C_n 的左端點更靠近 0、右端點更靠近 3，各區間以暗紅色線段標示，端點為實心圓點。">
   <figcaption><span class="topic-figure__label">Fig. 1.6.</span> 集合序列 $\lbrace C_k\rbrace$ 的前幾項與一般項 $C_n$，其下界越來越靠近 $0$，上界則越來越靠近 $3$。</figcaption>
 </figure>
 
@@ -658,11 +658,11 @@ $$
 兩事件互斥的直覺是「二者必定不會同時發生」，由其定義即可看出這個直覺，表示該二個事件並沒有共同之處，其直覺亦能以文氏圖表示為「沒有重疊的兩個集合」，如下圖。
 
 <figure class="topic-figure topic-figure--medium">
-  <img src="/images/teaching-topics/event-disjoint.svg" alt="互斥事件的文氏圖。矩形表示樣本空間 S，內含代表 A 與 B 的兩個彼此分離的圓，兩圓沒有任何重疊。">
+  <img src="/images/lecture-notes/event-disjoint.svg" alt="互斥事件的文氏圖。矩形表示樣本空間 S，內含代表 A 與 B 的兩個彼此分離的圓，兩圓沒有任何重疊。">
   <figcaption><span class="topic-figure__label">Fig. 1.7.</span> 互斥事件 $A$ 與 $B$ 在樣本空間 $S$ 中沒有任何重疊的部分。</figcaption>
 </figure>
 
-互斥這個概念，時常被讀者與本章後面要提到的事件關係[**獨立 <span lang="en">(independent)</span>**](/teaching-topics/independence-and-conditional-independence/#definition-117)混淆。互斥的定義僅在於集合之間的關係，而獨立的定義需要用到**機率函數 <span lang="en">(probability function)</span>**，二者實為完全不同的關係，不應混為一談。
+互斥這個概念，時常被讀者與本章後面要提到的事件關係[**獨立 <span lang="en">(independent)</span>**](/lecture-notes/independence-and-conditional-independence/#definition-117)混淆。互斥的定義僅在於集合之間的關係，而獨立的定義需要用到**機率函數 <span lang="en">(probability function)</span>**，二者實為完全不同的關係，不應混為一談。
 
 互斥雖然是兩個事件間的關係，但其使用上並不僅限於兩個事件，我們當然可以推廣至多個事件，再抓取其中任兩個事件來觀察是否互斥。若給定三個以上的事件，其中任兩個事件彼此皆互斥，則這個概念為**成對互斥 <span lang="en">(pairwise disjoint)</span>**。
 
@@ -682,7 +682,7 @@ $$
 $A+B$ 的範圍，我們可以如下表示。
 
 <figure class="topic-figure topic-figure--medium">
-  <img src="/images/teaching-topics/event-addition.svg" alt="加集的文氏圖。矩形表示樣本空間 S，內含代表 A 與 B 的兩個彼此分離的圓，兩圓內部皆以暗紅色標示。">
+  <img src="/images/lecture-notes/event-addition.svg" alt="加集的文氏圖。矩形表示樣本空間 S，內含代表 A 與 B 的兩個彼此分離的圓，兩圓內部皆以暗紅色標示。">
   <figcaption><span class="topic-figure__label">Fig. 1.8.</span> 兩個互斥事件的加集 $A+B$ 所對應的範圍。</figcaption>
 </figure>
 
@@ -711,7 +711,7 @@ $$
 | 互斥 | $A\cap B=\varnothing$ | $A$ 與 $B$ 不可能同時發生 |
 | 加集 | $A+B$ | 互斥前提下的聯集 |
 
-有限與可數聯交集把這些運算推廣到多個事件；單調集合序列則以可數聯集或可數交集定義極限。在有了集合及事件的基本關係後，我們便可以正式進入機率的世界，[下一篇](/teaching-topics/probability-assignment-classical-geometric/)將依序介紹古典機率、幾何機率、客觀機率與主觀機率。
+有限與可數聯交集把這些運算推廣到多個事件；單調集合序列則以可數聯集或可數交集定義極限。在有了集合及事件的基本關係後，我們便可以正式進入機率的世界，[下一篇](/lecture-notes/probability-assignment-classical-geometric/)將依序介紹古典機率、幾何機率、客觀機率與主觀機率。
 
 ## 參考文獻與延伸閱讀
 

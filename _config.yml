@@ -246,7 +246,7 @@ collections:
     permalink: /:collection/:path/
   teaching_topics:
     output: true
-    permalink: /teaching-topics/:path/
+    permalink: /lecture-notes/:path/
   publications:
     output: true
     permalink: /:collection/:path/

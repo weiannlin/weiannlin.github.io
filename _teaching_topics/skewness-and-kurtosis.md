@@ -4,5 +4,5 @@ layout: redirect
 sitemap: false
 permalink: /teaching-topics/skewness-and-kurtosis/
 redirect:
-  to: /teaching-topics/measures-of-shape/
+  to: /lecture-notes/measures-of-shape/
 ---

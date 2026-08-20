@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 4
 topic: 18
 order: 418
-permalink: /teaching-topics/normal-probability-computation/
+permalink: /lecture-notes/normal-probability-computation/
 date: 2026-08-12
 published: false
 excerpt: "上一篇給出常態分配的定義、標準化與線性組合可加性，本篇接著以四道例題演練常態機率的實際計算。前三題的作法一致: 先把常態變數標準化，再把所求化為標準常態的機率，分別處理裝瓶容量的不合格率、兩支股票年報酬的比較，以及以 $\\Phi(\\cdot)$ 表達一段區間的機率。最後一題換一個方向，先驗證 $2\\,\\phi(z)\\Phi(\\lambda z)$ 是一個合法的 pdf，再以 cdf 法與 Jacobian 法兩種作法證明其平方服從 $\\chi^{2}(1)$ 分配。過程中會看到滿足 $h(x)+h(-x)=1$ 的偏斜函數，以及標準常態的對稱關係在其中的用處。"
 ---
 
-[上一篇](/teaching-topics/normal-distribution/)給出[常態分配](/teaching-topics/normal-distribution/#def-normal)的定義，並依序說明標準常態分配、標準化、反標準化與線性組合可加性這幾項性質。本篇不再增加新的定義，而是把這些性質用在實際的機率計算上。
+[上一篇](/lecture-notes/normal-distribution/)給出[常態分配](/lecture-notes/normal-distribution/#def-normal)的定義，並依序說明標準常態分配、標準化、反標準化與線性組合可加性這幾項性質。本篇不再增加新的定義，而是把這些性質用在實際的機率計算上。
 
-前三道例題的作法一致: 先把常態變數減去期望值再除以標準差，化為標準常態變數 <span class="text-nowrap">$Z$，</span>所求的機率便可以由標準常態的機率表達，其中第二題另外用到兩個獨立常態變數相減之後仍為常態分配這一項性質。第四道例題則換一個方向，給定 $f_{\sssig Z}(z)=2\,\phi(z)\Phi(\lambda z)$ 這個函數，先驗證它是一個合法的 pdf，再以 [cdf 法](/teaching-topics/one-to-one-transformations/#prop-cdf-method)與 [Jacobian 法](/teaching-topics/one-to-one-transformations/#prop-jacobian-method)各證明一次 $Y=Z^{2}$ 服從 $\chi^{2}(1)$ 分配；兩處的關鍵都是 $\phi$ 為偶函數以及 $\Phi(-z)=1-\Phi(z)$ 這兩件事。
+前三道例題的作法一致: 先把常態變數減去期望值再除以標準差，化為標準常態變數 <span class="text-nowrap">$Z$，</span>所求的機率便可以由標準常態的機率表達，其中第二題另外用到兩個獨立常態變數相減之後仍為常態分配這一項性質。第四道例題則換一個方向，給定 $f_{\sssig Z}(z)=2\,\phi(z)\Phi(\lambda z)$ 這個函數，先驗證它是一個合法的 pdf，再以 [cdf 法](/lecture-notes/one-to-one-transformations/#prop-cdf-method)與 [Jacobian 法](/lecture-notes/one-to-one-transformations/#prop-jacobian-method)各證明一次 $Y=Z^{2}$ 服從 $\chi^{2}(1)$ 分配；兩處的關鍵都是 $\phi$ 為偶函數以及 $\Phi(-z)=1-\Phi(z)$ 這兩件事。
 
 ## 常態機率的計算
 
@@ -613,7 +613,7 @@ $\mathrm{Gamma}\bigl(\alpha=\frac{1}{\,2\,},\ \beta=2\bigr)$ 分配事實上就�
 
 [Example 4.44](#ex-normal-prob-1) 到 [Example 4.46](#ex-normal-prob-3) 三題的作法一致: 把常態變數減去期望值再除以標準差，化為標準常態變數 <span class="text-nowrap">$Z$，</span>所求的機率便可以由標準常態的機率表達。[Example 4.44](#ex-normal-prob-1) 的第一小題把「不合格」寫成 $X>605$ 或 $X<595$ 這兩個互斥事件，標準化之後兩側各得 <span class="text-nowrap">$0.0062$，</span>合計為 <span class="text-nowrap">$0.0124$；</span>第二小題反過來，把不合格的機率固定為 <span class="text-nowrap">$1\%$，</span>由對稱性得到單側機率為 <span class="text-nowrap">$0.005$，</span>再由 $\frac{5}{\,\sigma\,}=2.575$ 這條等式解出所需要的標準差。
 
-[Example 4.45](#ex-normal-prob-2) 的第一小題只是單一常態變數的機率計算。第二小題要比較兩支股票的年報酬，作法是把 $\mathbb{P}(Y>X)$ 改寫成 $\mathbb{P}(Y-X>0)$ 這個形式，再由[上一篇](/teaching-topics/normal-distribution/)的線性組合可加性得知 $Y-X$ 仍為常態分配，其期望值為兩者的期望值之差、變異數為兩者的變異數之和。第三小題則先以條件機率的定義展開，再由獨立性把分子拆成兩個機率相乘，與分母約去之後只剩下 B 公司的那一項。[Example 4.46](#ex-normal-prob-3) 要求以 $\Phi(\cdot)$ 表達答案，因此標準化之後把結果留在 $\Phi(1)-\Phi(-0.5)$ 這個差，不再換算為數值。
+[Example 4.45](#ex-normal-prob-2) 的第一小題只是單一常態變數的機率計算。第二小題要比較兩支股票的年報酬，作法是把 $\mathbb{P}(Y>X)$ 改寫成 $\mathbb{P}(Y-X>0)$ 這個形式，再由[上一篇](/lecture-notes/normal-distribution/)的線性組合可加性得知 $Y-X$ 仍為常態分配，其期望值為兩者的期望值之差、變異數為兩者的變異數之和。第三小題則先以條件機率的定義展開，再由獨立性把分子拆成兩個機率相乘，與分母約去之後只剩下 B 公司的那一項。[Example 4.46](#ex-normal-prob-3) 要求以 $\Phi(\cdot)$ 表達答案，因此標準化之後把結果留在 $\Phi(1)-\Phi(-0.5)$ 這個差，不再換算為數值。
 
 [Example 4.47](#ex-normal-prob-4) 換一個方向。第一小題驗證 $2\,\phi(z)\Phi(\lambda z)$ 是一個合法的 pdf: 非負性由 $\phi$ 與 $\Phi$ 的非負性直接得到，積分為 $1$ 則是把積分範圍拆成負半線與正半線兩段，在負半線上代換 <span class="text-nowrap">$z=-t$，</span>再利用 $\phi$ 為偶函數以及 $\Phi(-\lambda t)=1-\Phi(\lambda t)$ 這條關係，使兩段的被積分函數合併為 <span class="text-nowrap">$2\,\phi(z)$，</span>其在正半線上的積分正好是 <span class="text-nowrap">$1$。</span>第二小題給了兩種作法: cdf 法先把 $F_{\sssig Y}(y)$ 化為 $2\int_{0}^{\sqrt{y}}\phi(z)\,dz$ 這個式子，再對 $y$ 微分；Jacobian 法則把 $Z\geqslant0$ 與 $Z<0$ 兩段各自轉換，兩個密度相加之後 $\Phi(\lambda\sqrt{y})$ 與 $1-\Phi(\lambda\sqrt{y})$ 恰好相消。兩種作法所得到的密度相同，都是 $\mathrm{Gamma}\bigl(\alpha=\frac{1}{\,2\,},\ \beta=2\bigr)$ 這個分配，也就是 $\chi^{2}(\nu=1)$ 分配。
 

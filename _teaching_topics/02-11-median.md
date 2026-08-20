@@ -7,20 +7,20 @@ category: "機率概論"
 chapter: 2
 topic: 11
 order: 211
-permalink: /teaching-topics/median/
+permalink: /lecture-notes/median/
 date: 2026-08-06
 published: true
 excerpt: "中位數是把一個分配切成前後兩段的量數: 只要 $\\mathbb{P}(X\\leqslant\\eta_{X})$ 與 $\\mathbb{P}(X\\geqslant\\eta_{X})$ 都不小於 $\\frac{1}{2}$，$\\eta_{X}$ 就是 $X$ 的中位數。它可能不唯一，甚至可能不在值域內，取 $\\inf\\lbrace x\\mid F_{X}(x)\\geqslant\\frac{1}{2}\\rbrace$ 可以找到其中一個；若 $F_{X}$ 連續且在值域上嚴格遞增，中位數唯一且等於 $F_{X}^{-1}(\\frac{1}{2})$。衡量離散程度時若把平方換成距離，則使 $\\mathbb{E}(\\lvert X-a\\rvert)$ 達到最小的 $a$ 正是中位數，這與期望值使平方離差的期望值達到最小恰成對照。"
 ---
 
-[上一篇](/teaching-topics/mode/)介紹[眾數](/teaching-topics/mode/#def-mode)，也就是使機率函數在值域的閉包上取到最大值的那些點。眾數關心的是一個分配的哪一處最可能發生，但要指出一個分配的中央位置，還有另一種常見的作法，找一個點，使它左右兩側的機率各佔一半。
+[上一篇](/lecture-notes/mode/)介紹[眾數](/lecture-notes/mode/#def-mode)，也就是使機率函數在值域的閉包上取到最大值的那些點。眾數關心的是一個分配的哪一處最可能發生，但要指出一個分配的中央位置，還有另一種常見的作法，找一個點，使它左右兩側的機率各佔一半。
 
-本篇介紹的中位數就是這樣的量數。以下先給出定義，接著說明中位數可能不唯一、如何由[累積分配函數](/teaching-topics/cumulative-distribution-functions/#def-cdf)找到其中一個，以及它把分配切成前後兩段的直觀；然後介紹一個與[期望值](/teaching-topics/expectation/#def-expectation)恰成對照的性質: [期望值使平方離差的期望值達到最小](/teaching-topics/variance-standard-deviation/#thm-mean-minimizes-squared-deviation)，中位數則使絕對離差的期望值達到最小，並附上證明與逐步的說明；最後以一張圖說明中位數的直觀意涵。
+本篇介紹的中位數就是這樣的量數。以下先給出定義，接著說明中位數可能不唯一、如何由[累積分配函數](/lecture-notes/cumulative-distribution-functions/#def-cdf)找到其中一個，以及它把分配切成前後兩段的直觀；然後介紹一個與[期望值](/lecture-notes/expectation/#def-expectation)恰成對照的性質: [期望值使平方離差的期望值達到最小](/lecture-notes/variance-standard-deviation/#thm-mean-minimizes-squared-deviation)，中位數則使絕對離差的期望值達到最小，並附上證明與逐步的說明；最後以一張圖說明中位數的直觀意涵。
 
 <div id="def-median" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 2.10 (中位數, median)</div>
 
-令 $X$ 為一[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)，若 $\eta\_{\sssig X}$ 滿足
+令 $X$ 為一[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)，若 $\eta\_{\sssig X}$ 滿足
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -76,7 +76,7 @@ $$
 
 </div>
 
-(3) 直觀上來說，中位數的意義在於**該點將整個分配分成前後兩半**，這套定義與直觀，能夠直接推廣至[**分位數 <span lang="en">(quantile)</span>**](/teaching-topics/quantiles/#def-quantile) 上，我們稍後會談到。
+(3) 直觀上來說，中位數的意義在於**該點將整個分配分成前後兩半**，這套定義與直觀，能夠直接推廣至[**分位數 <span lang="en">(quantile)</span>**](/lecture-notes/quantiles/#def-quantile) 上，我們稍後會談到。
 {: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -86,7 +86,7 @@ $$
 
 </div>
 
-在 [Theorem 2.14](/teaching-topics/variance-standard-deviation/#thm-mean-minimizes-squared-deviation) 中我們曾提過，$\mathbb{E}\bigl[(X-a)^{2}\bigr]$ 是一種 $X$ 與 $a$ 之間的平均離散程度，但離散程度未必要使用平方作為考量。某些時候我們會使用 $X$ 和 $a$ 的**距離**，也就是 $\lvert X-a\rvert$，作為離散程度的依據，此時我們會有以下定理。
+在 [Theorem 2.14](/lecture-notes/variance-standard-deviation/#thm-mean-minimizes-squared-deviation) 中我們曾提過，$\mathbb{E}\bigl[(X-a)^{2}\bigr]$ 是一種 $X$ 與 $a$ 之間的平均離散程度，但離散程度未必要使用平方作為考量。某些時候我們會使用 $X$ 和 $a$ 的**距離**，也就是 $\lvert X-a\rvert$，作為離散程度的依據，此時我們會有以下定理。
 
 <div id="thm-median-minimizes-absolute-deviation" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.17 (中位數使絕對離差的期望值最小, the median minimizes the mean absolute deviation)</div>
@@ -426,7 +426,7 @@ $$
 下面就用圖示來理解中位數的直觀意涵。
 
 <figure id="fig-median-intuition" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/median-intuition.svg" alt="一條右偏的機率密度曲線，橫軸為 x，曲線自左端升起、達到峰值之後緩緩落回。曲線下方由一條垂直虛線分成左右兩塊，虛線與橫軸相交處標為 η_X。虛線左側的區域加上陰影並標示二分之一，虛線右側未加陰影，同樣標示二分之一，表示兩塊面積相等。">
+  <img src="/images/lecture-notes/median-intuition.svg" alt="一條右偏的機率密度曲線，橫軸為 x，曲線自左端升起、達到峰值之後緩緩落回。曲線下方由一條垂直虛線分成左右兩塊，虛線與橫軸相交處標為 η_X。虛線左側的區域加上陰影並標示二分之一，虛線右側未加陰影，同樣標示二分之一，表示兩塊面積相等。">
   <figcaption><span class="topic-figure__label">Fig. 2.14.</span> 中位數 $\eta_{\sssig X}$ 把密度曲線下方的面積切成相等的兩塊，左右各為 $\frac{1}{2}$，圖中以陰影標出左邊那一塊。</figcaption>
 </figure>
 
@@ -434,9 +434,9 @@ $$
 
 [Definition 2.10](#def-median) 以 $\mathbb{P}(X\leqslant\eta_{\sssig X})\geqslant\frac{1}{2}$ 與 $\mathbb{P}(X\geqslant\eta_{\sssig X})\geqslant\frac{1}{2}$ 兩個不等式界定中位數 $\eta_{\sssig X}$，指稱時以母體中位數與樣本中位數區別。中位數可能不唯一，甚至可能不在值域內；由累積分配函數取下確界 $\inf\lbrace x\in\mathbb{R}\mid F_{\sssig X}(x)\geqslant\frac{1}{2}\rbrace$ 可以找到其中一個，而在 $F_{\sssig X}$ 連續且於值域上嚴格遞增時，中位數唯一且等於 $F^{-1}_{\sssig X}(\frac{1}{2})$。它把整個分配切成前後兩段的直觀，稍後會直接推廣到分位數；在對稱分配上它落在正中間，若又是單峰對稱分配，則與期望值和眾數同在一點。
 
-[Theorem 2.17](#thm-median-minimizes-absolute-deviation) 與 [Theorem 2.14](/teaching-topics/variance-standard-deviation/#thm-mean-minimizes-squared-deviation) 恰成對照: 平均離散程度若以平方衡量，使它最小的是期望值；若改以距離衡量，使 $\mathbb{E}\bigl[\lvert X-a\rvert\bigr]$ 最小的則是中位數。證明的作法是把 $\lvert x-a\rvert$ 的積分依 $a$ 與 $\eta_{\sssig X}$ 拆成四段，合併之後餘下一個非負的項，該項在 $a=\eta_{\sssig X}$ 時為零。[Fig. 2.14](#fig-median-intuition) 則畫出了中位數把密度曲線下方的面積切成相等兩塊的樣子。
+[Theorem 2.17](#thm-median-minimizes-absolute-deviation) 與 [Theorem 2.14](/lecture-notes/variance-standard-deviation/#thm-mean-minimizes-squared-deviation) 恰成對照: 平均離散程度若以平方衡量，使它最小的是期望值；若改以距離衡量，使 $\mathbb{E}\bigl[\lvert X-a\rvert\bigr]$ 最小的則是中位數。證明的作法是把 $\lvert x-a\rvert$ 的積分依 $a$ 與 $\eta_{\sssig X}$ 拆成四段，合併之後餘下一個非負的項，該項在 $a=\eta_{\sssig X}$ 時為零。[Fig. 2.14](#fig-median-intuition) 則畫出了中位數把密度曲線下方的面積切成相等兩塊的樣子。
 
-[下一篇](/teaching-topics/quantiles/)接著把中位數推廣為分位數，其中的 [Example 2.26](/teaching-topics/quantiles/#ex-nonunique-median) 會給出一個中位數不唯一的具體例子。
+[下一篇](/lecture-notes/quantiles/)接著把中位數推廣為分位數，其中的 [Example 2.26](/lecture-notes/quantiles/#ex-nonunique-median) 會給出一個中位數不唯一的具體例子。
 
 ## 參考文獻與延伸閱讀
 

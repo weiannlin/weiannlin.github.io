@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 13
 order: 313
-permalink: /teaching-topics/double-expectation-examples/
+permalink: /lecture-notes/double-expectation-examples/
 date: 2026-08-13
 published: false
 excerpt: "本篇以五道例題示範雙重期望值定理的用法。第一道題由聯合機率密度函數依序求出邊際密度、條件期望值與 $\\mathbb{E}(Y)$ 的值，是這條定理最直接的一種用法；第二道題的 $X$ 在給定 $Y=y$ 之下為常態分配、$Y$ 本身為伽瑪分配，兩者合起來所得的邊際密度在 $k=1$ 時即為 $\\mathrm{Cauchy}(0,1)$ 分配，此時 $\\mathbb{E}(X)$ 不存在，定理的等式因而不成立。第三道題只給了兩個已知數值與一條迴歸函數，仍然求得 $\\mathbb{E}(Y)$ 與 $\\mathbb{E}(XY)$ 兩個值。最後兩道題是礦工脫困與擲銅板的問題，兩者都先設一個輔助變數把實驗切成幾種情形，再讓所求的期望值在等式的兩側同時出現，解一條方程式即可求得。"
 ---
 
-[上一篇](/teaching-topics/double-expectation-theorem/)由[條件期望值](/teaching-topics/conditional-expectation-and-variance/#def-conditional-expectation)是條件的函數這一點出發，先以[迴歸函數](/teaching-topics/double-expectation-theorem/#thm-regression-function)為這種函數取了名字，再給出[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation) <span lang="en">(double expectation theorem)</span>，並說明這條定理背後的直觀就是加權平均。先把原始空間依 $Y$ 的取值切成一片一片，在每一片的條件分配上找到重心，再以 $f_{\sssig Y}(y)$ 為權重把這些重心平均起來，所得的就是 $X$ 自己的重心。
+[上一篇](/lecture-notes/double-expectation-theorem/)由[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation)是條件的函數這一點出發，先以[迴歸函數](/lecture-notes/double-expectation-theorem/#thm-regression-function)為這種函數取了名字，再給出[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation) <span lang="en">(double expectation theorem)</span>，並說明這條定理背後的直觀就是加權平均。先把原始空間依 $Y$ 的取值切成一片一片，在每一片的條件分配上找到重心，再以 $f_{\sssig Y}(y)$ 為權重把這些重心平均起來，所得的就是 $X$ 自己的重心。
 
-本篇以五道例題示範這條定理的用法。前三道題是直接的計算: 第一道由[聯合機率密度函數](/teaching-topics/joint-probability-density-functions/#def-joint-pdf)依序求出邊際密度與條件期望值，再取一次期望值即得 $\mathbb{E}(Y)$ 的值；第二道說明 $\mathbb{E}(X)$ 不存在時，定理的等式會不成立；第三道只給了兩個已知數值與一條迴歸函數，仍然可以求出 $\mathbb{E}(Y)$ 與 $\mathbb{E}(XY)$ 兩個值。後兩道題的型態不同，都是先設一個輔助變數把整個實驗切成幾種情形，再讓所求的期望值在等式的兩側同時出現，解一條方程式即可求得。
+本篇以五道例題示範這條定理的用法。前三道題是直接的計算: 第一道由[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)依序求出邊際密度與條件期望值，再取一次期望值即得 $\mathbb{E}(Y)$ 的值；第二道說明 $\mathbb{E}(X)$ 不存在時，定理的等式會不成立；第三道只給了兩個已知數值與一條迴歸函數，仍然可以求出 $\mathbb{E}(Y)$ 與 $\mathbb{E}(XY)$ 兩個值。後兩道題的型態不同，都是先設一個輔助變數把整個實驗切成幾種情形，再讓所求的期望值在等式的兩側同時出現，解一條方程式即可求得。
 
 <div id="ex-conditional-expectation-density" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.21</div>
@@ -41,7 +41,7 @@ $$
 $$
 \begin{aligned}
 f_{\sssig XY}(x,y)&=\left\lbrace
-\begin{array}{c@{\quad}l}
+\begin{array}{c@{}l}
 \dfrac{6}{\,5\,}\bigl(x+y^{2}\bigr), & 0<x<1,\ 0<y<1\\[0.8em]
 0, & \text{o.w.}
 \end{array}
@@ -135,7 +135,7 @@ $$
 
 </div>
 
-(3) 由[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation)可知
+(3) 由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -337,7 +337,7 @@ $$
 Suppose that $X$ and $Y$ are random variables for which <span class="text-nowrap">$\mathbb{E}(X)=0$,</span> $\mathrm{Var}(X)=4$ and <span class="text-nowrap">$\mathbb{E}(Y\mid X)=2-3X$.</span> Find $\mathbb{E}(Y)$ and <span class="text-nowrap">$\mathbb{E}(XY)$.</span>
 </div>
 
-由[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation)可知
+由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -454,14 +454,14 @@ $$
 $$
 \begin{aligned}
 Y&=\left\lbrace
-\begin{array}{c@{\quad}l}
+\begin{array}{c@{}l}
 1, & \text{選擇第一扇門}\\[0.3em]
 2, & \text{選擇第二扇門}\\[0.3em]
 3, & \text{選擇第三扇門}
 \end{array}
 \right.\\[0.9em]
 \text{則}\ f_{\sssig Y}(y)&=\left\lbrace
-\begin{array}{c@{\quad}l}
+\begin{array}{c@{}l}
 \dfrac{1}{\,3\,}, & y=1,2,3\\[0.8em]
 0, & \text{o.w.}
 \end{array}
@@ -495,7 +495,7 @@ $$
 
 </div>
 
-由[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation)可知
+由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -607,7 +607,7 @@ $$
 
 </div>
 
-則由[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation)可知
+則由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -650,17 +650,17 @@ $$
 
 </div>
 
-至此，讀者應該已經熟悉[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation)，是如何以加權平均的方式做出邊際期望值。然而，讀者也許會猜想，這樣透過加權平均得到邊際產物的過程，能不能用在分配本身身上呢？事實上是可以的，這正是接下來要介紹的定理。
+至此，讀者應該已經熟悉[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)，是如何以加權平均的方式做出邊際期望值。然而，讀者也許會猜想，這樣透過加權平均得到邊際產物的過程，能不能用在分配本身身上呢？事實上是可以的，這正是接下來要介紹的定理。
 
 ## 本篇小結
 
-[Example 3.21](#ex-conditional-expectation-density) 是[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation)最直接的一種用法。由聯合機率密度函數先積出 <span class="text-nowrap">$f_{\sssig X}(x)$，</span>再由[條件機率密度函數](/teaching-topics/conditional-distributions/#def-conditional-pdf)求得 $\mathbb{E}(Y\mid X=x)=\frac{6x+3}{12x+4}$ 這一條迴歸函數，最後以 $f_{\sssig X}(x)$ 為權重把這個條件期望值平均起來，得到 $\mathbb{E}(Y)=\frac{3}{5}$ 這個值。[Example 3.22](#ex-beta-conditional-expectation) 則提醒讀者定理的前提: $X$ 在給定 $Y=y$ 之下為常態分配、$Y$ 本身為伽瑪分配，兩者合起來所得的邊際密度在 $k=1$ 時是 $t(1)$ 分配，也就是 $\mathrm{Cauchy}(0,1)$ 分配，其尾部機率過厚而使一階絕對動差不存在，$\mathbb{E}(X)$ 因而不存在；但 $\mathbb{E}(X\mid Y=y)$ 恆為 <span class="text-nowrap">$0$，</span>因此 $\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]$ 仍然算得出來，兩者於是不相等。
+[Example 3.21](#ex-conditional-expectation-density) 是[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)最直接的一種用法。由聯合機率密度函數先積出 <span class="text-nowrap">$f_{\sssig X}(x)$，</span>再由[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)求得 $\mathbb{E}(Y\mid X=x)=\frac{6x+3}{12x+4}$ 這一條迴歸函數，最後以 $f_{\sssig X}(x)$ 為權重把這個條件期望值平均起來，得到 $\mathbb{E}(Y)=\frac{3}{5}$ 這個值。[Example 3.22](#ex-beta-conditional-expectation) 則提醒讀者定理的前提: $X$ 在給定 $Y=y$ 之下為常態分配、$Y$ 本身為伽瑪分配，兩者合起來所得的邊際密度在 $k=1$ 時是 $t(1)$ 分配，也就是 $\mathrm{Cauchy}(0,1)$ 分配，其尾部機率過厚而使一階絕對動差不存在，$\mathbb{E}(X)$ 因而不存在；但 $\mathbb{E}(X\mid Y=y)$ 恆為 <span class="text-nowrap">$0$，</span>因此 $\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]$ 仍然算得出來，兩者於是不相等。
 
-[Example 3.23](#ex-conditional-expectation-linear) 所給的條件只有 $\mathbb{E}(X)=0$ 與 $\mathrm{Var}(X)=4$ 兩個數值，以及 $\mathbb{E}(Y\mid X)$ $=$ $2-3X$ 這一條迴歸函數，並不知道分配是什麼，但[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation)只需要對這條迴歸函數取一次期望值便得到 <span class="text-nowrap">$\mathbb{E}(Y)=2$；</span>再配合把 $X$ 視為常數提到條件期望值之外的性質，$\mathbb{E}(XY)$ 也可以化成 $\mathbb{E}(2X-3X^{2})$ 而求得 $-12$ 這個值。
+[Example 3.23](#ex-conditional-expectation-linear) 所給的條件只有 $\mathbb{E}(X)=0$ 與 $\mathrm{Var}(X)=4$ 兩個數值，以及 $\mathbb{E}(Y\mid X)$ $=$ $2-3X$ 這一條迴歸函數，並不知道分配是什麼，但[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)只需要對這條迴歸函數取一次期望值便得到 <span class="text-nowrap">$\mathbb{E}(Y)=2$；</span>再配合把 $X$ 視為常數提到條件期望值之外的性質，$\mathbb{E}(XY)$ 也可以化成 $\mathbb{E}(2X-3X^{2})$ 而求得 $-12$ 這個值。
 
 [Example 3.24](#ex-miner-three-doors) 與 [Example 3.25](#ex-coin-until-two-heads) 是同一種型態。先設一個輔助變數把整個實驗切成幾種情形，礦工題切成三扇門、銅板題切成前幾次的結果，接著寫出每一種情形之下的條件期望值。由於部分情形會使實驗回到原先的狀態，所求的期望值在等式的兩側同時出現，解一條方程式便得到 $\mathbb{E}(X)=10$ 與 <span class="text-nowrap">$\mathbb{E}(N)=\frac{14}{3}$。</span>礦工題之所以是 $\mathbb{E}(X\mid Y=2)=\mathbb{E}(X+3)$ 而不是別的式子，關鍵在於該礦工無法記憶上次的選擇，回到選擇點之後平均還要花掉的時間與尚未選擇時一模一樣，只是白白多花了 $3$ 小時；銅板題則要先羅列前幾次的結果，才能確定實驗是否還要進行，以及累積的正面是否歸零。
 
-[下一篇](/teaching-topics/conditional-law-of-total-probability/)把同一套加權平均用在分配本身上，也就是[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)版本的全機率定理，並以三道例題示範它在機率計算上的用法。
+[下一篇](/lecture-notes/conditional-law-of-total-probability/)把同一套加權平均用在分配本身上，也就是[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)版本的全機率定理，並以三道例題示範它在機率計算上的用法。
 
 ## 參考文獻與延伸閱讀
 

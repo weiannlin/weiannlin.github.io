@@ -7,22 +7,22 @@ category: "機率概論"
 chapter: 5
 topic: 3
 order: 503
-permalink: /teaching-topics/convergence-in-probability/
+permalink: /lecture-notes/convergence-in-probability/
 date: 2026-08-15
 published: false
-excerpt: "機率收斂要求的是兩個隨機變數的取值任意接近，而不是兩個機率分配趨於一致: 若對任意的 $\\varepsilon>0$ 都有 $\\lim_{n\\to\\infty}\\mathbb{P}(\\lvert X_n-X\\rvert<\\varepsilon)=1$，則稱 $X_n$ 機率收斂至 $X$，並稱 $X$ 為 $X_n$ 的機率極限。本篇先說明這個定義為什麼要求 $X$ 與整個序列落在同一個機率空間，再給出機率收斂與分配收斂之間的兩條關係。第一條是機率收斂必然導致分配收斂而反之不然，反例取一組把機率平均放在 $(1,2)$、$(2,3)$ 與 $(3,1)$ 三點的聯合 pmf，兩個邊際分配完全相同，取值卻永遠不相等。第二條是收斂對象若為一常數則兩者等價，證明的作法是把 $\\mathbb{P}(\\lvert X_n-c\\rvert<\\varepsilon)$ 寫成兩個 cdf 值之差。最後以伽瑪分配退化至 $1$ 的例題，以及常態隨機樣本的樣本平均數與樣本變異數，示範這條等價關係怎麼用來求機率極限。"
+excerpt: "機率收斂要求的是兩個隨機變數的取值任意接近，而不是兩個機率分配趨於一致: 若對任意的 $\\varepsilon>0$ 都有 $\\lim_{n\\to\\infty}\\mathbb{P}(\\lvert X_n-X\\rvert\\lt \\varepsilon)=1$，則稱 $X_n$ 機率收斂至 $X$，並稱 $X$ 為 $X_n$ 的機率極限。本篇先說明這個定義為什麼要求 $X$ 與整個序列落在同一個機率空間，再給出機率收斂與分配收斂之間的兩條關係。第一條是機率收斂必然導致分配收斂而反之不然，反例取一組把機率平均放在 $(1,2)$、$(2,3)$ 與 $(3,1)$ 三點的聯合 pmf，兩個邊際分配完全相同，取值卻永遠不相等。第二條是收斂對象若為一常數則兩者等價，證明的作法是把 $\\mathbb{P}(\\lvert X_n-c\\rvert\\lt \\varepsilon)$ 寫成兩個 cdf 值之差。最後以伽瑪分配退化至 $1$ 的例題，以及常態隨機樣本的樣本平均數與樣本變異數，示範這條等價關係怎麼用來求機率極限。"
 ---
 
-[上一篇](/teaching-topics/levy-continuity-theorem/)以列維連續性定理把[分配收斂](/teaching-topics/convergence-in-distribution/#def-converge-in-distribution)的判定改由動差母函數的極限來處理，五道例題都不必先求出極限 cdf。本篇轉入另一種收斂型態: 機率收斂。
+[上一篇](/lecture-notes/levy-continuity-theorem/)以列維連續性定理把[分配收斂](/lecture-notes/convergence-in-distribution/#def-converge-in-distribution)的判定改由動差母函數的極限來處理，五道例題都不必先求出極限 cdf。本篇轉入另一種收斂型態: 機率收斂。
 
-這兩種收斂型態關心的不是同一件事情。分配收斂比較的是兩個 cdf，只要極限 cdf 與收斂對象的 cdf 在連續點上相等即可，兩個[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)的取值可以毫不相干；機率收斂比較的則是取值本身，它要求 $X_n$ 與 $X$ 的隨機變數值任意地接近。本篇先給出機率收斂的定義與它的直觀，再給出兩條把這兩種收斂型態接起來的定理: 一條說機率收斂必然導致分配收斂而反之不然，另一條說收斂對象若是一個常數，兩者反而等價。最後以三道例題示範這兩條定理怎麼用來求機率極限。
+這兩種收斂型態關心的不是同一件事情。分配收斂比較的是兩個 cdf，只要極限 cdf 與收斂對象的 cdf 在連續點上相等即可，兩個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的取值可以毫不相干；機率收斂比較的則是取值本身，它要求 $X_n$ 與 $X$ 的隨機變數值任意地接近。本篇先給出機率收斂的定義與它的直觀，再給出兩條把這兩種收斂型態接起來的定理: 一條說機率收斂必然導致分配收斂而反之不然，另一條說收斂對象若是一個常數，兩者反而等價。最後以三道例題示範這兩條定理怎麼用來求機率極限。
 
 ## 機率收斂的定義
 
 <div id="def-converge-in-probability" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 5.2 (機率收斂, converge in probability)</div>
 
-令 $\lbrace X_n\rbrace_{n=1}^{\infty}$ 為一定義在[機率空間](/teaching-topics/event-families-sigma-fields/#definition-probability-space)上之隨機變數序列，若 $X$ 為定義在相同機率空間中之隨機變數，且滿足
+令 $\lbrace X_n\rbrace_{n=1}^{\infty}$ 為一定義在[機率空間](/lecture-notes/event-families-sigma-fields/#definition-probability-space)上之隨機變數序列，若 $X$ 為定義在相同機率空間中之隨機變數，且滿足
 
 $$
 \lim_{n\to\infty}\mathbb{P}\bigl(\lvert X_n-X\rvert<\varepsilon\bigr)=1,\ \forall\varepsilon>0
@@ -75,7 +75,7 @@ $$
 \lim_{n\to\infty}\mathbb{P}(A_n)=1,\quad\lim_{n\to\infty}\mathbb{P}(A_n^{\prime})=0
 $$
 
-接著把事件 $\lbrace X_n\leqslant x\rbrace$ 依 $A_n$ 發生與否切成兩塊，由 [Theorem 1.6](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition) 可得
+接著把事件 $\lbrace X_n\leqslant x\rbrace$ 依 $A_n$ 發生與否切成兩塊，由 [Theorem 1.6](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition) 可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -95,7 +95,7 @@ $$
 
 </div>
 
-其中第一塊之內同時有 $X_n\leqslant x$ 與 $X<X_n+\varepsilon$，故該塊落在 $\lbrace X\leqslant x+\varepsilon\rbrace$ 之內；第二塊則整個落在 $A_n^{\prime}$ 之內。故由 [Theorem 1.7](/teaching-topics/probability-rules-from-axioms/#theorem-monotonicity) 的單調性可得
+其中第一塊之內同時有 $X_n\leqslant x$ 與 $X<X_n+\varepsilon$，故該塊落在 $\lbrace X\leqslant x+\varepsilon\rbrace$ 之內；第二塊則整個落在 $A_n^{\prime}$ 之內。故由 [Theorem 1.7](/lecture-notes/probability-rules-from-axioms/#theorem-monotonicity) 的單調性可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -248,7 +248,7 @@ $$
 Show that $X_n$ converges in distribution to <span class="text-nowrap">$X$,</span> but that it does not converge in probability to <span class="text-nowrap">$X$.</span>
 </div>
 
-可先計算 $X_n$ 與 $X$ 之[邊際分配](/teaching-topics/random-vectors-joint-pmf/#def-marginal-pmf)如下
+可先計算 $X_n$ 與 $X$ 之[邊際分配](/lecture-notes/random-vectors-joint-pmf/#def-marginal-pmf)如下
 
 $$
 \begin{aligned}
@@ -257,7 +257,7 @@ p_{\sssig X}(x)&=\frac{1}{\,3\,},\ x=1,2,3
 \end{aligned}
 $$
 
-故 $X_n$ 與 $X$ 的 [cdf](/teaching-topics/cumulative-distribution-functions/#def-cdf) 分別為
+故 $X_n$ 與 $X$ 的 [cdf](/lecture-notes/cumulative-distribution-functions/#def-cdf) 分別為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -633,7 +633,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個定理其實很容易理解，稍早我們提過機率收斂與分配收斂最大的不同在於，機率收斂要求隨機變數序列的值，要與收斂對象的值「任意地接近」，那麼如果收斂的對象是一個常數，也就能反過來說，當 $n\to\infty$，則 $X_n$ 幾乎就是一個常數，代表其隨機性已經退化掉了；反之，若知道 $X_n$ 分配收斂至某個常數 (或[退化的隨機變數](/teaching-topics/variance/#thm-variance-properties))，則此時，不僅是分配相同，由於隨機性退化的緣故，$X_n$ 的值也會幾乎永遠都與該常數任意地接近 (甚至相同)，當然也就導致了機率收斂的結果。
+這個定理其實很容易理解，稍早我們提過機率收斂與分配收斂最大的不同在於，機率收斂要求隨機變數序列的值，要與收斂對象的值「任意地接近」，那麼如果收斂的對象是一個常數，也就能反過來說，當 $n\to\infty$，則 $X_n$ 幾乎就是一個常數，代表其隨機性已經退化掉了；反之，若知道 $X_n$ 分配收斂至某個常數 (或[退化的隨機變數](/lecture-notes/variance/#thm-variance-properties))，則此時，不僅是分配相同，由於隨機性退化的緣故，$X_n$ 的值也會幾乎永遠都與該常數任意地接近 (甚至相同)，當然也就導致了機率收斂的結果。
 
 </div>
 
@@ -660,7 +660,7 @@ $$
 X_n\sim\mathrm{Gamma}\Bigl(\alpha=n,\ \beta=\frac{1}{\,n\,}\Bigr)
 $$
 
-故可知其[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)為
+故可知其[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)為
 {: .topic-paren-cont}
 
 <div class="topic-math-follow-before" markdown="1">
@@ -697,7 +697,7 @@ $$
 \lim_{n\to\infty}M_{\sssig X_n}(t)=M_{\sssig X}(t),\ t\in\mathbb{R}
 $$
 
-由[列維連續性定理](/teaching-topics/levy-continuity-theorem/#thm-levys-continuity-thm)可知
+由[列維連續性定理](/lecture-notes/levy-continuity-theorem/#thm-levys-continuity-thm)可知
 {: .topic-paren-cont}
 
 $$
@@ -724,7 +724,7 @@ Suppose that $X_1,\ldots,X_n\iidto\mathcal{N}(\mu,\sigma^{2})$ and let $\overlin
 
 **[法一]**
 
-由於[前一篇已求得](/teaching-topics/levy-continuity-theorem/#ex-xbar-consistency-mgf) $\overline{X}\dconv W\equiv\mu$，故可知
+由於[前一篇已求得](/lecture-notes/levy-continuity-theorem/#ex-xbar-consistency-mgf) $\overline{X}\dconv W\equiv\mu$，故可知
 
 $$
 \overline{X}\pconv\mu
@@ -732,7 +732,7 @@ $$
 
 **[法二]**
 
-由[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)可知
+由[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)可知
 
 $$
 \mathbb{P}\bigl(\lvert\overline{X}-\mu\rvert\geqslant\varepsilon\bigr)\leqslant\frac{\sigma^{2}}{\,n\varepsilon^{2}\,},\ \varepsilon>0
@@ -768,7 +768,7 @@ Suppose that $X_1,\ldots,X_n\iidto\mathcal{N}(\mu,\sigma^{2})$ and let $S^{2}=\f
 
 **[法一]**
 
-由於[前一篇已求得](/teaching-topics/levy-continuity-theorem/#ex-s-squared-consistency-mgf) $S^{2}\dconv W\equiv\sigma^{2}$，故可知
+由於[前一篇已求得](/lecture-notes/levy-continuity-theorem/#ex-s-squared-consistency-mgf) $S^{2}\dconv W\equiv\sigma^{2}$，故可知
 
 $$
 S^{2}\pconv\sigma^{2}
@@ -776,7 +776,7 @@ $$
 
 </div>
 
-關於分配收斂與機率收斂的一些衍生特性，我們將在後續講到[中央極限定理](/teaching-topics/weak-law-and-central-limit-theorem/#thm-central-limit-theorem) <span lang="en">(Central Limit Theorem)</span> 與[弱大數法則](/teaching-topics/weak-law-and-central-limit-theorem/#thm-weak-law-of-large-numbers)時再次談到，屆時會有更多的搭配應用。[^clt-and-wlln]
+關於分配收斂與機率收斂的一些衍生特性，我們將在後續講到[中央極限定理](/lecture-notes/weak-law-and-central-limit-theorem/#thm-central-limit-theorem) <span lang="en">(Central Limit Theorem)</span> 與[弱大數法則](/lecture-notes/weak-law-and-central-limit-theorem/#thm-weak-law-of-large-numbers)時再次談到，屆時會有更多的搭配應用。[^clt-and-wlln]
 
 接下來，讓我們來看一下其他型態的收斂。
 
@@ -784,11 +784,11 @@ $$
 
 [Definition 5.2](#def-converge-in-probability) 把機率收斂寫成 $\lim_{n\to\infty}\mathbb{P}(\lvert X_n-X\rvert<\varepsilon)=1$ 這條對任意 $\varepsilon>0$ 都要成立的等式，比的是 $X_n$ 與 $X$ 的取值而不是兩者的分配，因此它要求 $X$ 與整個序列定義在同一個機率空間之上，否則 $X_n(\omega)-X(\omega)$ 這個差根本寫不出來。滿足這條等式時，$X$ 稱為 $X_n$ 的機率極限。
 
-[Theorem 5.2](#thm-pconv-implies-dconv) 給出兩種收斂型態的強弱: 機率收斂導致分配收斂，反之不成立。[Example 5.11](#ex-dconv-without-pconv) 就是反向不成立的反例，該題的[聯合 pmf](/teaching-topics/random-vectors-joint-pmf/#def-joint-pmf) 把機率平均放在 $(1,2)$、$(2,3)$ 與 $(3,1)$ 三個點上，兩個邊際 pmf 都是 $\frac{1}{\,3\,}$、cdf 因而完全相同，可是 $X_n$ 與 $X$ 的取值永遠差一個單位以上，取 $\varepsilon=0.5$ 即得 $\mathbb{P}(\lvert X_n-X\rvert<\varepsilon)=0$。要否定機率收斂，找到一個這樣的 $\varepsilon$ 就足夠了。
+[Theorem 5.2](#thm-pconv-implies-dconv) 給出兩種收斂型態的強弱: 機率收斂導致分配收斂，反之不成立。[Example 5.11](#ex-dconv-without-pconv) 就是反向不成立的反例，該題的[聯合 pmf](/lecture-notes/random-vectors-joint-pmf/#def-joint-pmf) 把機率平均放在 $(1,2)$、$(2,3)$ 與 $(3,1)$ 三個點上，兩個邊際 pmf 都是 $\frac{1}{\,3\,}$、cdf 因而完全相同，可是 $X_n$ 與 $X$ 的取值永遠差一個單位以上，取 $\varepsilon=0.5$ 即得 $\mathbb{P}(\lvert X_n-X\rvert<\varepsilon)=0$。要否定機率收斂，找到一個這樣的 $\varepsilon$ 就足夠了。
 
 [Theorem 5.3](#thm-pconv-iff-dconv) 則指出，收斂對象若是一個常數 $c$，兩種收斂型態反而等價。證明的關鍵是把 $\mathbb{P}(\lvert X_n-c\rvert<\varepsilon)$ 改寫成 $F_{\sssig X_n}(c+\varepsilon)^{-}-F_{\sssig X_n}(c-\varepsilon)$ 這個差，再配合 $0\leqslant F_{\sssig X_n}(x)\leqslant1$，兩個方向都由這條恆等式讀得出來。[Example 5.12](#ex-gamma-degenerating-to-one) 是這條定理的直接應用: $\mathrm{Gamma}\bigl(n,\frac{1}{\,n\,}\bigr)$ 的 mgf 在 $n\to\infty$ 時趨於 $e^{t}$，也就是退化在 $1$ 上的隨機變數之 mgf，於是分配收斂與機率收斂同時成立。[Example 5.9](#ex-xbar-probability-limit) 與 [Example 5.10](#ex-s-squared-probability-limit) 把同一條定理用在常態隨機樣本上，分別得到 $\overline{X}\pconv\mu$ 與 $S^{2}\pconv\sigma^{2}$，這正是這兩個統計量具備一致性的意思；$\overline{X}$ 的部分另有一條不經過分配收斂的路，直接由柴比雪夫不等式配合 $\mathrm{Var}(\overline{X})=\frac{\sigma^{2}}{\,n\,}$ 得到，這條路稍後會再出現於弱大數法則的證明之中。
 
-[下一篇](/teaching-topics/convergence-in-mean-and-almost-sure/)接著給出 $r$ 次均方收斂與幾乎確信收斂這兩種收斂型態，並說明它們與機率收斂之間的蘊含關係。
+[下一篇](/lecture-notes/convergence-in-mean-and-almost-sure/)接著給出 $r$ 次均方收斂與幾乎確信收斂這兩種收斂型態，並說明它們與機率收斂之間的蘊含關係。
 
 ## 參考文獻與延伸閱讀
 

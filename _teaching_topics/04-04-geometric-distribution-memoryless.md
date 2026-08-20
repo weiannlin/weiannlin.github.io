@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 4
 topic: 4
 order: 404
-permalink: /teaching-topics/geometric-distribution-memoryless/
+permalink: /lecture-notes/geometric-distribution-memoryless/
 date: 2026-08-12
 published: false
 excerpt: "幾何分配記錄的是伯努利實驗一直進行到第一次成功為止所需要的實驗次數，其機率函數的前後項比值恆為失敗機率，驗證機率函數合法與推導期望值、變異數、動差母函數所依靠的工具便是幾何級數。本篇先給出幾何級數，再給出幾何分配的定義與完整推導，並說明以失敗次數計數的另一種版本。接著證明幾何分配的無記憶性: 已知實驗次數超過 $a$ 次之後，再多超過 $b$ 次的機率，與重新開始做實驗而超過 $b$ 次的機率相同。最後給出兩個延伸結果: 非負整數值的隨機變數只要具備無記憶性便服從幾何分配，以及兩個獨立幾何變數的極小值仍為幾何分配。"
 ---
 
-[上一篇](/teaching-topics/multinomial-distribution/)把伯努利實驗的兩個類別推廣為 $k$ 個互斥類別，得到多項分配。本篇回到只有成功與失敗兩類的情形，但改變記錄的對象: [二項分配](/teaching-topics/binomial-distribution/#def-binomial)先固定實驗次數，再數其中成功了幾次；本篇的幾何分配則反過來，一直做下去直到第一次成功為止，記錄的是所需要的實驗次數。
+[上一篇](/lecture-notes/multinomial-distribution/)把伯努利實驗的兩個類別推廣為 $k$ 個互斥類別，得到多項分配。本篇回到只有成功與失敗兩類的情形，但改變記錄的對象: [二項分配](/lecture-notes/binomial-distribution/#def-binomial)先固定實驗次數，再數其中成功了幾次；本篇的幾何分配則反過來，一直做下去直到第一次成功為止，記錄的是所需要的實驗次數。
 
-驗證二項分配的機率函數合法時，我們用的是 [Theorem 2.18](/teaching-topics/moment-system/#thm-binomial) 的二項式定理；幾何分配的機率函數前後項比值固定，所需要的工具因而是[幾何級數](#thm-geometric-series)。本篇先由這個級數談起，再給出幾何分配的定義並完整推導其期望值、變異數與動差母函數，接著證明幾何分配的[無記憶性](#thm-memoryless)，說明這個性質反過來也足以決定分配，最後給出兩個獨立幾何變數取極小值的結果。
+驗證二項分配的機率函數合法時，我們用的是 [Theorem 2.18](/lecture-notes/moment-system/#thm-binomial) 的二項式定理；幾何分配的機率函數前後項比值固定，所需要的工具因而是[幾何級數](#thm-geometric-series)。本篇先由這個級數談起，再給出幾何分配的定義並完整推導其期望值、變異數與動差母函數，接著證明幾何分配的[無記憶性](#thm-memoryless)，說明這個性質反過來也足以決定分配，最後給出兩個獨立幾何變數取極小值的結果。
 
 ## 幾何級數
 
@@ -421,7 +421,7 @@ $$
 
 </div>
 
-[^gambler]: 這個敘述便與 [Example 3.24](/teaching-topics/double-expectation-examples/#ex-miner-three-doors) 相同，該礦工並無法回想起上次的選擇，**每次選擇都宛若重新開始**，此即無記憶性；事實上，這個性質也可以用來解釋**賭徒謬誤 <span lang="en">(The Gambler’s Fallacy)</span>**，也就是賭徒常常認為「連輸一段時間之後必有大爆發之時」的謬誤。
+[^gambler]: 這個敘述便與 [Example 3.24](/lecture-notes/double-expectation-examples/#ex-miner-three-doors) 相同，該礦工並無法回想起上次的選擇，**每次選擇都宛若重新開始**，此即無記憶性；事實上，這個性質也可以用來解釋**賭徒謬誤 <span lang="en">(The Gambler’s Fallacy)</span>**，也就是賭徒常常認為「連輸一段時間之後必有大爆發之時」的謬誤。
 
 事實上，幾何分配是唯二具有無記憶性的分配，且是離散分配中唯一具有這個性質的分配；另一個具有無記憶性的分配是**指數分配 <span lang="en">(exponential distribution)</span>**。
 
@@ -747,7 +747,7 @@ $$
 
 [Theorem 4.5](#thm-geometric-memoryless-converse) 把這件事反過來說: 非負整數值的隨機變數只要具備無記憶性，尾機率便滿足 $\mathbb{P}(X>a+b)=\mathbb{P}(X>a)\,\mathbb{P}(X>b)$ 這條乘法關係，逐步遞推得到 $\mathbb{P}(X>k)=\bigl[\mathbb{P}(X>1)\bigr]^{k}$ 這個式子，令 $\mathbb{P}(X>1)=1-p$ 之後由 cdf 相減即還原出幾何分配的機率函數。兩個定理合起來，說明服從幾何分配與具備無記憶性互為充要條件。[Theorem 4.6](#thm-min-of-geometrics) 則指出兩個獨立幾何變數的極小值仍為幾何分配，成功機率為 <span class="text-nowrap">$1-(1-p_1)(1-p_2)$，</span>其直觀意義是把兩組實驗併看成一組，只要任一組成功即算成功，失敗類的機率因獨立而相乘。
 
-[下一篇](/teaching-topics/geometric-distribution-examples/)以六道例題演練幾何分配的計算，其中包括第一次抽到指定貼紙所需要的次數、擲硬幣至第一次出現正面而所需次數為奇數的機率，以及把「等到湊齊若干種不同結果」的等待次數拆成數段幾何分配相加的作法。
+[下一篇](/lecture-notes/geometric-distribution-examples/)以六道例題演練幾何分配的計算，其中包括第一次抽到指定貼紙所需要的次數、擲硬幣至第一次出現正面而所需次數為奇數的機率，以及把「等到湊齊若干種不同結果」的等待次數拆成數段幾何分配相加的作法。
 
 ## 參考文獻與延伸閱讀
 

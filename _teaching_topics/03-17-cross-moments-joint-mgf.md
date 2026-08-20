@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 17
 order: 317
-permalink: /teaching-topics/cross-moments-joint-mgf/
+permalink: /lecture-notes/cross-moments-joint-mgf/
 date: 2026-08-13
 published: false
 excerpt: "動差可以描述一個機率分配的各種特徵，而 $\\mathbb{E}(X^nY^m)$ 這種交叉動差描述的則是兩個隨機變數共同變化的各種特徵。生成交叉動差的工具，是把單變數的動差母函數推廣到兩個變數之後所得到的聯合動差母函數: 它對 $t_1$ 微分 $n$ 次、對 $t_2$ 微分 $m$ 次再代入零，即得 $(n+m)$ 階交叉動差；只把 $t_1$ 與 $t_2$ 其中一個代入零，則得到該變數的邊際動差母函數。本篇並以兩道例題示範它的用法，一道由聯合動差母函數求共變異數，另一道由展開式認出離散型的聯合與邊際機率質量函數。"
 ---
 
-[上一篇](/teaching-topics/wald-identity-gamblers-ruin/)以[沃德等式](/teaching-topics/wald-identity-gamblers-ruin/#thm-wald-identity)處理了加總的項數本身也是[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)的情形。本篇轉而處理兩個隨機變數共同變化的情況。
+[上一篇](/lecture-notes/wald-identity-gamblers-ruin/)以[沃德等式](/lecture-notes/wald-identity-gamblers-ruin/#thm-wald-identity)處理了加總的項數本身也是[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的情形。本篇轉而處理兩個隨機變數共同變化的情況。
 
-我們在第二章曾以[母體動差](/teaching-topics/moment-system/#def-population-moment)描述單一機率分配的各種特徵，也曾以[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)協助生成各階的原動差。本篇先把動差推廣為交叉動差，再把動差母函數推廣為聯合動差母函數，接著看聯合動差母函數如何生成各階交叉動差、又如何轉為邊際動差母函數，最後以兩道例題示範它在計算上的用法。
+我們在第二章曾以[母體動差](/lecture-notes/moment-system/#def-population-moment)描述單一機率分配的各種特徵，也曾以[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)協助生成各階的原動差。本篇先把動差推廣為交叉動差，再把動差母函數推廣為聯合動差母函數，接著看聯合動差母函數如何生成各階交叉動差、又如何轉為邊際動差母函數，最後以兩道例題示範它在計算上的用法。
 
 ## 交叉動差
 
@@ -37,7 +37,7 @@ $\mathbb{E}\bigl(X^nY^m\bigr)$ 被稱為 $X$ 與 $Y$ 的 **$(n+m)$ 階交叉動�
 <div id="def-joint-mgf" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.15 (聯合動差母函數, joint mgf)</div>
 
-若 $X$ 與 $Y$ 為**離散**變數，且對任意正數 <span class="text-nowrap">$h$，</span>下列[期望值](/teaching-topics/expectation/#def-expectation)在 $-h < t_1, t_2 < h$ 皆存在，則
+若 $X$ 與 $Y$ 為**離散**變數，且對任意正數 <span class="text-nowrap">$h$，</span>下列[期望值](/lecture-notes/expectation/#def-expectation)在 $-h < t_1, t_2 < h$ 皆存在，則
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -112,12 +112,12 @@ $$
 
 </div>
 
-這個定理的證明是 [Theorem 2.21](/teaching-topics/moment-generating-functions/#thm-mgf-generates-moments) 的簡單推廣，故將這個定理的證明省略。有興趣的讀者可自行嘗試推導。
+這個定理的證明是 [Theorem 2.21](/lecture-notes/moment-generating-functions/#thm-mgf-generates-moments) 的簡單推廣，故將這個定理的證明省略。有興趣的讀者可自行嘗試推導。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Theorem 3.13](#thm-generate-cross-moment) 說明了 joint mgf 如何生出兩個隨機變數之間的各階交叉動差。一個簡單的應用是當 $n=m=1$ 時，我們會得到 <span class="text-nowrap">$\mathbb{E}(XY)$，</span>也就是 $X$ 與 $Y$ 的二階交叉動差，這個交叉動差在後續的小節所介紹的[共變異數](/teaching-topics/covariance/#def-covariance) <span lang="en">(covariance)</span> 會起到關鍵的作用。
+[Theorem 3.13](#thm-generate-cross-moment) 說明了 joint mgf 如何生出兩個隨機變數之間的各階交叉動差。一個簡單的應用是當 $n=m=1$ 時，我們會得到 <span class="text-nowrap">$\mathbb{E}(XY)$，</span>也就是 $X$ 與 $Y$ 的二階交叉動差，這個交叉動差在後續的小節所介紹的[共變異數](/lecture-notes/covariance/#def-covariance) <span lang="en">(covariance)</span> 會起到關鍵的作用。
 
 </div>
 
@@ -200,7 +200,7 @@ $$
 
 </div>
 
-## 由聯合動差母函數求共變異數與[聯合機率質量函數](/teaching-topics/random-vectors-joint-pmf/#def-joint-pmf)
+## 由聯合動差母函數求共變異數與[聯合機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-joint-pmf)
 
 <div id="ex-joint-mgf-two-variables" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.35</div>
@@ -368,7 +368,7 @@ $$
 
 </div>
 
-由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知，$X$ 與 $Y$ 具聯合與[邊際機率質量函數](/teaching-topics/random-vectors-joint-pmf/#def-marginal-pmf)如下
+由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知，$X$ 與 $Y$ 具聯合與[邊際機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-marginal-pmf)如下
 
 | $Y\backslash X$ | $0$ | $1$ | $2$ | $p_{\sssig Y}(y)$ |
 | :---: | :---: | :---: | :---: | :---: |
@@ -383,7 +383,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，joint mgf 與 marginal mgf 一樣，能夠刻畫整個分配的所有特徵，因此也具有如 [Theorem 2.23](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness) 的唯一性定理能夠使用，特別是在離散型[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector)上，辨認方式完全類同過去，即將 $X, Y$ 的 joint mgf $M_{\sssig XY}(t_1, t_2)$ $=$ $\sum_{(x, y)\in\mathbb{R}^{2}}e^{t_1x+t_2y}\,p_{\sssig XY}(x,y)$ 展開，看成是 $p_{\sssig 1}e^{a_{11}\,t_1+a_{12}\,t_2}$ $+$ $...$ $+$ $p_{\sssig n}e^{a_{n1}\,t_1+a_{n2}\,t_2}$ 的形式，並認出其分配為
+事實上，joint mgf 與 marginal mgf 一樣，能夠刻畫整個分配的所有特徵，因此也具有如 [Theorem 2.23](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness) 的唯一性定理能夠使用，特別是在離散型[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)上，辨認方式完全類同過去，即將 $X, Y$ 的 joint mgf $M_{\sssig XY}(t_1, t_2)$ $=$ $\sum_{(x, y)\in\mathbb{R}^{2}}e^{t_1x+t_2y}\,p_{\sssig XY}(x,y)$ 展開，看成是 $p_{\sssig 1}e^{a_{11}\,t_1+a_{12}\,t_2}$ $+$ $...$ $+$ $p_{\sssig n}e^{a_{n1}\,t_1+a_{n2}\,t_2}$ 的形式，並認出其分配為
 
 $$
 p_{\sssig XY}(x,y)=\left\lbrace
@@ -399,13 +399,13 @@ $$
 
 ## 本篇小結
 
-[Definition 3.14](#def-cross-moment) 把單變數的動差推廣為 $\mathbb{E}(X^nY^m)$ 這種交叉動差，用來描述 $X$ 與 $Y$ 共同變化的各種特徵；[Definition 3.15](#def-joint-mgf) 則把動差母函數推廣為聯合動差母函數，離散型以聯合機率質量函數加權求和、連續型以[聯合機率密度函數](/teaching-topics/joint-probability-density-functions/#def-joint-pdf)加權積分。與單變數的 mgf 相同，joint mgf 必須在 $-h < t_1, t_2 < h$ 的整個區間內皆有定義才算存在，而一旦它存在，各階交叉動差也就都跟著存在。
+[Definition 3.14](#def-cross-moment) 把單變數的動差推廣為 $\mathbb{E}(X^nY^m)$ 這種交叉動差，用來描述 $X$ 與 $Y$ 共同變化的各種特徵；[Definition 3.15](#def-joint-mgf) 則把動差母函數推廣為聯合動差母函數，離散型以聯合機率質量函數加權求和、連續型以[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)加權積分。與單變數的 mgf 相同，joint mgf 必須在 $-h < t_1, t_2 < h$ 的整個區間內皆有定義才算存在，而一旦它存在，各階交叉動差也就都跟著存在。
 
-生成的方式由 [Theorem 3.13](#thm-generate-cross-moment) 給出。對 $t_1$ 微分 $n$ 次、對 $t_2$ 微分 $m$ 次，再代入 <span class="text-nowrap">$t_1=t_2=0$，</span>所得即為 $(n+m)$ 階交叉動差。其中 $n=m=1$ 的情形給出 $\mathbb{E}(XY)$ 這個量，它是[下一篇](/teaching-topics/covariance/)定義共變異數時所需的關鍵一項。[Theorem 3.14](#thm-marginal-mgf) 則指出，只要把 $t_1$ 與 $t_2$ 其中一個代入 <span class="text-nowrap">$0$，</span>該變數在指數上的那一項就整個消去，剩下的正是另一個變數自己的動差母函數；證明只需把聯合機率密度函數對其中一個變數積分，得到的就是[邊際機率密度函數](/teaching-topics/marginal-probability-density-functions/#def-marginal-pdf)。
+生成的方式由 [Theorem 3.13](#thm-generate-cross-moment) 給出。對 $t_1$ 微分 $n$ 次、對 $t_2$ 微分 $m$ 次，再代入 <span class="text-nowrap">$t_1=t_2=0$，</span>所得即為 $(n+m)$ 階交叉動差。其中 $n=m=1$ 的情形給出 $\mathbb{E}(XY)$ 這個量，它是[下一篇](/lecture-notes/covariance/)定義共變異數時所需的關鍵一項。[Theorem 3.14](#thm-marginal-mgf) 則指出，只要把 $t_1$ 與 $t_2$ 其中一個代入 <span class="text-nowrap">$0$，</span>該變數在指數上的那一項就整個消去，剩下的正是另一個變數自己的動差母函數；證明只需把聯合機率密度函數對其中一個變數積分，得到的就是[邊際機率密度函數](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)。
 
-兩道例題示範它在計算上的用法。[Example 3.35](#ex-joint-mgf-two-variables) 先對 $t_2$ 再對 $t_1$ 微分求得 <span class="text-nowrap">$\mathbb{E}(X_1X_2)=-80$，</span>再由 $M_{\sssig X_1X_2}(t_1, 0)$ 與 $M_{\sssig X_1X_2}(0, t_2)$ 取得兩個邊際動差母函數，各微分一次得到 $9$ 與 <span class="text-nowrap">$-8$，</span>合起來即得共變異數為 <span class="text-nowrap">$-8$。</span>[Example 3.36](#ex-joint-mgf-covariance) 則把聯合動差母函數的平方展開成九項，每一項的係數就是一個機率、指數上的兩個係數就是一組取值，由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)即可把整張聯合與邊際機率質量函數的表填出來。離散型的辨認方式與單變數時完全相同，差別只在指數上由一個變數變成兩個。
+兩道例題示範它在計算上的用法。[Example 3.35](#ex-joint-mgf-two-variables) 先對 $t_2$ 再對 $t_1$ 微分求得 <span class="text-nowrap">$\mathbb{E}(X_1X_2)=-80$，</span>再由 $M_{\sssig X_1X_2}(t_1, 0)$ 與 $M_{\sssig X_1X_2}(0, t_2)$ 取得兩個邊際動差母函數，各微分一次得到 $9$ 與 <span class="text-nowrap">$-8$，</span>合起來即得共變異數為 <span class="text-nowrap">$-8$。</span>[Example 3.36](#ex-joint-mgf-covariance) 則把聯合動差母函數的平方展開成九項，每一項的係數就是一個機率、指數上的兩個係數就是一組取值，由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)即可把整張聯合與邊際機率質量函數的表填出來。離散型的辨認方式與單變數時完全相同，差別只在指數上由一個變數變成兩個。
 
-[下一篇](/teaching-topics/covariance/)正式給出共變異數的定義，並說明它與二階交叉動差 $\mathbb{E}(XY)$ 之間的關係。
+[下一篇](/lecture-notes/covariance/)正式給出共變異數的定義，並說明它與二階交叉動差 $\mathbb{E}(XY)$ 之間的關係。
 
 ## 參考文獻與延伸閱讀
 

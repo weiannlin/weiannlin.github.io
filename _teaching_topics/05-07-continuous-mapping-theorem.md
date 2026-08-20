@@ -7,17 +7,17 @@ category: "機率概論"
 chapter: 5
 topic: 7
 order: 507
-permalink: /teaching-topics/continuous-mapping-theorem/
+permalink: /lecture-notes/continuous-mapping-theorem/
 date: 2026-08-15
 published: false
 excerpt: "前面幾篇處理的都是單一序列的收斂，本篇轉而處理兩個機率收斂的序列之間的運算。Theorem 5.10 給出三款結果: 線性組合 $aX_n+bY_n$ 機率收斂至 $ac+bd$、乘積 $X_nY_n$ 機率收斂至 $cd$，以及連續函數轉換 $g(X_n)$ 機率收斂至 $g(c)$，最後一款即連續映射定理。三款的證明都建立在同一個集合包含關係之上，也就是兩項的和偏離其極限之和超過 $a+b$ 時，兩項之中至少有一項各自偏離超過 $a$ 或 $b$，本篇以一則註記把它單獨證明一次。由這三款還可以再得到差與商的結果。其後三道例題演練這些性質與弱大數法則的搭配: 不假設常態母體時樣本變異數仍然機率收斂至 $\\sigma^{2}$、對稱密度之下三次方和的極限分配與樣本二階動差的機率極限，以及伯努利樣本平均數倒數平方根的極限。"
 ---
 
-[上一篇](/teaching-topics/normal-approximation-continuity-correction/)談常態近似與連續性校正。至此，讀者已經掌握了單一序列的收斂性質，也理解基於[中央極限定理](/teaching-topics/weak-law-and-central-limit-theorem/#thm-central-limit-theorem) <span lang="en">(central limit theorem, CLT)</span>，所得到與[常態分配](/teaching-topics/normal-distribution/#def-normal)相關的一些漸近特性。
+[上一篇](/lecture-notes/normal-approximation-continuity-correction/)談常態近似與連續性校正。至此，讀者已經掌握了單一序列的收斂性質，也理解基於[中央極限定理](/lecture-notes/weak-law-and-central-limit-theorem/#thm-central-limit-theorem) <span lang="en">(central limit theorem, CLT)</span>，所得到與[常態分配](/lecture-notes/normal-distribution/#def-normal)相關的一些漸近特性。
 
 然而，有的時候我們會好奇一些更進階的延伸特性，比如序列取了函數轉換後，在極限之下，收斂的對象會發生怎樣的改變呢? 會不會因此就不收斂了呢? 這些問題的解答，便是我們此處要探討的極限相關定理。
 
-本篇先給出[機率收斂](/teaching-topics/convergence-in-probability/#def-converge-in-probability)之下的三項運算性質，其中第三項就是連續映射定理，並在一則註記中補上證明所倚賴的集合包含關係，以及由這三項再導出的差與商。其後以三道例題演練這些性質與[弱大數法則](/teaching-topics/weak-law-and-central-limit-theorem/#thm-weak-law-of-large-numbers) <span lang="en">(weak law of large numbers, WLLN)</span> 的搭配。
+本篇先給出[機率收斂](/lecture-notes/convergence-in-probability/#def-converge-in-probability)之下的三項運算性質，其中第三項就是連續映射定理，並在一則註記中補上證明所倚賴的集合包含關係，以及由這三項再導出的差與商。其後以三道例題演練這些性質與[弱大數法則](/lecture-notes/weak-law-and-central-limit-theorem/#thm-weak-law-of-large-numbers) <span lang="en">(weak law of large numbers, WLLN)</span> 的搭配。
 
 ## 機率收斂的三項運算性質
 
@@ -589,7 +589,7 @@ $$
 
 </div>
 
-其中 $\mathbb{E}(X\_{i}^{2})=\sigma^{2}+\mu^{2}$ 來自[變異數的計算公式](/teaching-topics/variance/#thm-variance-formula)。若令 $g(x)=x^{2}$，則 $g(x)$ 在 $x=\mu$ 上連續，由 CMT 可知
+其中 $\mathbb{E}(X\_{i}^{2})=\sigma^{2}+\mu^{2}$ 來自[變異數的計算公式](/lecture-notes/variance/#thm-variance-formula)。若令 $g(x)=x^{2}$，則 $g(x)$ 在 $x=\mu$ 上連續，由 CMT 可知
 
 $$
 g(\overline{X})=\overline{X}^{2}\pconv\mu^{2}
@@ -621,7 +621,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個問題和[範例 5.10](/teaching-topics/levy-continuity-theorem/#ex-s-squared-consistency-mgf)不同的地方在於，這題並沒有常態假設，但 $S^{2}\pconv\sigma^{2}$ 的結果卻仍然不變。
+這個問題和[範例 5.10](/lecture-notes/levy-continuity-theorem/#ex-s-squared-consistency-mgf)不同的地方在於，這題並沒有常態假設，但 $S^{2}\pconv\sigma^{2}$ 的結果卻仍然不變。
 
 當然，我們也可以由此結果，搭配 CMT，令 $g(x)=\sqrt{x}$ 在 $x>0$ 連續，則我們有
 
@@ -645,7 +645,7 @@ Suppose that $X_{1},\ldots,X_{n}$ are independent and identically distributed wi
 </ol>
 </div>
 
-(1) 由於 $f$ 為對稱於 $0$ 之分配，故其奇數階[母體動差](/teaching-topics/moment-system/#def-population-moment)皆為零，即
+(1) 由於 $f$ 為對稱於 $0$ 之分配，故其奇數階[母體動差](/lecture-notes/moment-system/#def-population-moment)皆為零，即
 {: .topic-paren-item}
 
 $$
@@ -751,7 +751,7 @@ $$
 Suppose that <span class="text-nowrap">$X_{1},\ldots,X_{n}\iidto\mathrm{Bernoulli}(p)$,</span> where <span class="text-nowrap">$0<p<1$,</span> and let <span class="text-nowrap">$U_{n}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_{i}$.</span> Find the limiting distribution of $\frac{1}{\,\sqrt{U_{n}}\,}$.
 </div>
 
-由 WLLN 可知 $U\_{n}=\frac{1}{\,n\,}\sum\_{i=1}^{n}X\_{i}\pconv p$，其中 $X\_{i}$ 服從[伯努利分配](/teaching-topics/bernoulli-trials-and-distribution/#def-bernoulli)，又由 CMT 可令 $g(x)=\frac{1}{\,\sqrt{x}\,}$ 在 $x=p$ 上連續，則可知
+由 WLLN 可知 $U\_{n}=\frac{1}{\,n\,}\sum\_{i=1}^{n}X\_{i}\pconv p$，其中 $X\_{i}$ 服從[伯努利分配](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)，又由 CMT 可令 $g(x)=\frac{1}{\,\sqrt{x}\,}$ 在 $x=p$ 上連續，則可知
 
 $$
 g(U_{n})=\frac{1}{\,\sqrt{U_{n}}\,}\pconv\frac{1}{\,\sqrt{p}\,}

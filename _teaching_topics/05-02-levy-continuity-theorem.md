@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 5
 topic: 2
 order: 502
-permalink: /teaching-topics/levy-continuity-theorem/
+permalink: /lecture-notes/levy-continuity-theorem/
 date: 2026-08-15
 published: false
 excerpt: "上一篇以 cdf 求極限分配，本篇改用動差母函數。列維連續性定理指出，若隨機變數序列的動差母函數在原點的一個鄰域上逐點收斂至某個隨機變數的動差母函數，則該序列即分配收斂至該隨機變數，這個極限稱為極限動差母函數。五道例題全部依這一條定理施作: 伯努利樣本和在 $np=\\lambda$ 固定而 $p\\to0$ 之下趨於卜瓦松分配；同一組樣本標準化之後，以泰勒展開式把動差母函數併成 $\\bigl[1+\\frac{t^{2}}{2n}+o(\\frac{1}{n})\\bigr]^{n}$ 這個形式，因而趨於標準常態分配，不用中央極限定理；負二項分配在 $r\\to\\infty$、$p\\to1$ 且 $r(1-p)=\\lambda$ 之下同樣趨於卜瓦松分配。最後兩題的極限是常數: 常態隨機樣本的樣本平均數與樣本變異數，其動差母函數分別收斂至 $e^{\\mu t}$ 與 $e^{\\sigma^{2}t}$，也就是退化在 $\\mu$ 與 $\\sigma^{2}$ 兩點上，這正是兩者的一致性。"
 ---
 
-[上一篇](/teaching-topics/convergence-in-distribution/)給出[分配收斂](/teaching-topics/convergence-in-distribution/#def-converge-in-distribution)的定義，其中的五道例題一律以 cdf 求極限分配。本篇改用另一項工具，也就是[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)。
+[上一篇](/lecture-notes/convergence-in-distribution/)給出[分配收斂](/lecture-notes/convergence-in-distribution/#def-converge-in-distribution)的定義，其中的五道例題一律以 cdf 求極限分配。本篇改用另一項工具，也就是[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)。
 
 本篇先給出列維連續性定理: 只要隨機變數序列的 mgf 逐點收斂至某個隨機變數的 mgf，分配收斂就跟著成立，而這個極限的 mgf 稱為極限動差母函數。其後五道例題全部依這一條定理施作，前三道處理常見分配之間的極限關係，後兩道的極限則是一個常數。
 
@@ -45,7 +45,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個定理的核心想法很單純，只要序列的 mgf 能夠收斂至某個隨機變數的 mgf，則從利用 mgf 與分配間對應的[唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)，我們不難想像到，這個序列的極限分配就會是該隨機變數所服從的分配。
+這個定理的核心想法很單純，只要序列的 mgf 能夠收斂至某個隨機變數的 mgf，則從利用 mgf 與分配間對應的[唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)，我們不難想像到，這個序列的極限分配就會是該隨機變數所服從的分配。
 
 利用這個定理，我們可以發現一些常見分配之間的關係，見下列問題。
 
@@ -60,7 +60,7 @@ $$
 Suppose that $X_1,X_2,\ldots,X_n$ form a random sample from a Bernoulli distribution with success probability <span class="text-nowrap">$p$,</span> and put <span class="text-nowrap">$Y_n=\sum_{i=1}^{n}X_i$.</span> Let $p$ tend to $0$ as $n$ grows without bound, in such a manner that $np$ stays equal to a fixed constant <span class="text-nowrap">$\lambda>0$.</span> Show that the limiting distribution of $Y_n$ is a Poisson distribution whose mean equals <span class="text-nowrap">$\lambda$.</span>
 </div>
 
-由[伯努利分配](/teaching-topics/bernoulli-trials-and-distribution/#def-bernoulli)之可加性知
+由[伯努利分配](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)之可加性知
 
 <div class="topic-math-follow-before" markdown="1">
 
@@ -119,9 +119,9 @@ $$
 
 本題能夠收斂的關鍵在於，當 $n\to\infty$ 時，$p$ 將趨近於 $0$ 而 $np=\lambda>0$ 為一個定值，有此要件，我們才能夠完成此收斂。
 
-這個收斂的結果可以被想像為，在[卜瓦松過程](/teaching-topics/poisson-process-and-distribution/#def-poisson-process)的每一個「瞬間」，我們都進行一次成敗實驗，則基於卜瓦松過程的假設，每次的實驗中，成功機率都趨近於 $0$；由於單位時間是一段時間，當中包含無窮多個「瞬間」，因此需要 $n\to\infty$ 而 <span class="text-nowrap">$p\to0$，</span>並且此過程的期望值就是 <span class="text-nowrap">$np=\lambda$。</span>
+這個收斂的結果可以被想像為，在[卜瓦松過程](/lecture-notes/poisson-process-and-distribution/#def-poisson-process)的每一個「瞬間」，我們都進行一次成敗實驗，則基於卜瓦松過程的假設，每次的實驗中，成功機率都趨近於 $0$；由於單位時間是一段時間，當中包含無窮多個「瞬間」，因此需要 $n\to\infty$ 而 <span class="text-nowrap">$p\to0$，</span>並且此過程的期望值就是 <span class="text-nowrap">$np=\lambda$。</span>
 
-然而，由於 $n\to\infty$ 僅僅是存在於數學中的概念，在實務上，我們會認為只要 $n$ 足夠大，而 $np$ 是某個定值，則我們可以將這個過程中的總成功次數的機率值，由原先的[二項分配](/teaching-topics/binomial-distribution/#def-binomial)機率值，以[卜瓦松分配](/teaching-topics/poisson-process-and-distribution/#def-poisson-distribution)的機率值「近似」求算，二者的結果不會相差太遠。
+然而，由於 $n\to\infty$ 僅僅是存在於數學中的概念，在實務上，我們會認為只要 $n$ 足夠大，而 $np$ 是某個定值，則我們可以將這個過程中的總成功次數的機率值，由原先的[二項分配](/lecture-notes/binomial-distribution/#def-binomial)機率值，以[卜瓦松分配](/lecture-notes/poisson-process-and-distribution/#def-poisson-distribution)的機率值「近似」求算，二者的結果不會相差太遠。
 
 </div>
 
@@ -387,7 +387,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個問題牽涉到 $\overline{X}$ 的一致性，此即保證，對於用以推論 $\mu$ 的統計量 <span class="text-nowrap">$\overline{X}$，</span>只要可以取得一組無窮大的樣本，這時的樣本平均必定就是母體平均。事實上，即便 $X_1,\ldots,X_n$ 並不是來自[常態母體](/teaching-topics/normal-distribution/#def-normal)，只要期望值與變異數存在，$\overline{X}$ 仍具備一致性，在數理統計的章節中，我們將會談到這一點。
+這個問題牽涉到 $\overline{X}$ 的一致性，此即保證，對於用以推論 $\mu$ 的統計量 <span class="text-nowrap">$\overline{X}$，</span>只要可以取得一組無窮大的樣本，這時的樣本平均必定就是母體平均。事實上，即便 $X_1,\ldots,X_n$ 並不是來自[常態母體](/lecture-notes/normal-distribution/#def-normal)，只要期望值與變異數存在，$\overline{X}$ 仍具備一致性，在數理統計的章節中，我們將會談到這一點。
 
 與 $\overline{X}$ 相對，另一個常見的統計量是樣本變異數 <span class="text-nowrap">$S^{2}$，</span>用以推論 <span class="text-nowrap">$\sigma^{2}$，</span>其實也具備一致性，見下列這題。
 
@@ -486,11 +486,11 @@ $$
 
 [Theorem 5.1](#thm-levys-continuity-thm) 把求極限分配的工具由 cdf 換成 mgf: 若 $\lbrace X_n\rbrace_{n=1}^{\infty}$ 的 mgf 在 $-h<t<h$ 這一段區間上逐點收斂至某個隨機變數 $X$ 的 mgf，則在 $F_{\sssig X}$ 的每一個連續點上 $F_n$ 都收斂至 <span class="text-nowrap">$F_{\sssig X}$，</span>也就是 <span class="text-nowrap">$X_n\dconv X$，</span>而這個極限的 mgf 稱為極限動差母函數。之所以能這樣做，靠的是 mgf 與分配之間的一一對應。
 
-前三道例題示範的是常見分配之間的極限關係。[Example 5.6](#ex-binomial-to-poisson) 由伯努利分配的可加性得到 <span class="text-nowrap">$Y_n\sim\mathrm{Bin}(n,p)$，</span>再把 $p$ 代換為 $\frac{\lambda}{\,n\,}$ 而湊出 $\bigl[1+\frac{\lambda(e^{t}-1)}{n}\bigr]^{n}$ 這個形式，取極限即得卜瓦松分配的 mgf。[Example 5.8](#ex-negative-binomial-to-poisson) 的結構相同，只是把條件由 $p\to0$ 與 $np=\lambda$ 換成 $p\to1$ 與 <span class="text-nowrap">$r(1-p)=\lambda$，</span>因為負二項分配在這裡記錄的是失敗次數而非成功次數。[Example 5.7](#ex-standardized-bernoulli-sum-to-normal) 則是把伯努利樣本和標準化: 先由[線性組合的動差母函數](/teaching-topics/mgf-method-transformations/#thm-mgf-two-to-one)把期望值拆成連乘，再對兩個指數項各作一次泰勒展開，三次方以後的項一律併入 <span class="text-nowrap">$o\bigl(\frac{1}{\,n\,}\bigr)$，</span>整條式子因而收成 $\bigl[1+\frac{t^{2}}{2n}+o\bigl(\frac{1}{\,n\,}\bigr)\bigr]^{n}$ 這個形式，極限為 $e^{\frac{t^{2}}{2}}$ 而得標準常態分配。這一題不用中央極限定理，靠的全是 mgf 的計算。
+前三道例題示範的是常見分配之間的極限關係。[Example 5.6](#ex-binomial-to-poisson) 由伯努利分配的可加性得到 <span class="text-nowrap">$Y_n\sim\mathrm{Bin}(n,p)$，</span>再把 $p$ 代換為 $\frac{\lambda}{\,n\,}$ 而湊出 $\bigl[1+\frac{\lambda(e^{t}-1)}{n}\bigr]^{n}$ 這個形式，取極限即得卜瓦松分配的 mgf。[Example 5.8](#ex-negative-binomial-to-poisson) 的結構相同，只是把條件由 $p\to0$ 與 $np=\lambda$ 換成 $p\to1$ 與 <span class="text-nowrap">$r(1-p)=\lambda$，</span>因為負二項分配在這裡記錄的是失敗次數而非成功次數。[Example 5.7](#ex-standardized-bernoulli-sum-to-normal) 則是把伯努利樣本和標準化: 先由[線性組合的動差母函數](/lecture-notes/mgf-method-transformations/#thm-mgf-two-to-one)把期望值拆成連乘，再對兩個指數項各作一次泰勒展開，三次方以後的項一律併入 <span class="text-nowrap">$o\bigl(\frac{1}{\,n\,}\bigr)$，</span>整條式子因而收成 $\bigl[1+\frac{t^{2}}{2n}+o\bigl(\frac{1}{\,n\,}\bigr)\bigr]^{n}$ 這個形式，極限為 $e^{\frac{t^{2}}{2}}$ 而得標準常態分配。這一題不用中央極限定理，靠的全是 mgf 的計算。
 
-後兩道例題的極限不是一個分配，而是一個常數。[Example 5.9](#ex-xbar-consistency-mgf) 由常態分配的 mgf 求得 <span class="text-nowrap">$M_{\sssig \overline{X}}(t)=e^{\mu t+\frac{\sigma^{2}}{2}\frac{t^{2}}{n}}$，</span>其中的 $\frac{t^{2}}{\,n\,}$ 這一項隨 $n$ 消去，極限 $e^{\mu t}$ 正是退化在 $\mu$ 這一點上的隨機變數的 mgf。[Example 5.10](#ex-s-squared-consistency-mgf) 的作法一樣，先由[科克蘭定理](/teaching-topics/chi-squared-distribution/#thm-cochran-theorem)得到 <span class="text-nowrap">$\frac{(n-1)S^{2}}{\sigma^{2}}\sim\chi^{2}(n-1)$，</span>改寫為[伽瑪分配](/teaching-topics/gamma-distribution/#def-gamma-distribution)之後取其 mgf，以 $m=n-1$ 代換再取極限，得到 $e^{\sigma^{2}t}$ 這個結果。兩者分別是 $\overline{X}$ 與 $S^{2}$ 的一致性: 樣本大到無窮時，這兩個統計量的隨機性完全消失，各自退化為它們所要推論的母體參數。
+後兩道例題的極限不是一個分配，而是一個常數。[Example 5.9](#ex-xbar-consistency-mgf) 由常態分配的 mgf 求得 <span class="text-nowrap">$M_{\sssig \overline{X}}(t)=e^{\mu t+\frac{\sigma^{2}}{2}\frac{t^{2}}{n}}$，</span>其中的 $\frac{t^{2}}{\,n\,}$ 這一項隨 $n$ 消去，極限 $e^{\mu t}$ 正是退化在 $\mu$ 這一點上的隨機變數的 mgf。[Example 5.10](#ex-s-squared-consistency-mgf) 的作法一樣，先由[科克蘭定理](/lecture-notes/chi-squared-distribution/#thm-cochran-theorem)得到 <span class="text-nowrap">$\frac{(n-1)S^{2}}{\sigma^{2}}\sim\chi^{2}(n-1)$，</span>改寫為[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)之後取其 mgf，以 $m=n-1$ 代換再取極限，得到 $e^{\sigma^{2}t}$ 這個結果。兩者分別是 $\overline{X}$ 與 $S^{2}$ 的一致性: 樣本大到無窮時，這兩個統計量的隨機性完全消失，各自退化為它們所要推論的母體參數。
 
-[下一篇](/teaching-topics/convergence-in-probability/)轉入機率收斂，那是一種比分配收斂更強的收斂型態，並會說明兩者之間的蘊含關係，以及極限為常數時兩者何以等價。
+[下一篇](/lecture-notes/convergence-in-probability/)轉入機率收斂，那是一種比分配收斂更強的收斂型態，並會說明兩者之間的蘊含關係，以及極限為常數時兩者何以等價。
 
 ## 參考文獻與延伸閱讀
 

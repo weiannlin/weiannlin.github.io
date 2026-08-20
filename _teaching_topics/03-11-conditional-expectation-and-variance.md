@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 3
 topic: 11
 order: 311
-permalink: /teaching-topics/conditional-expectation-and-variance/
+permalink: /lecture-notes/conditional-expectation-and-variance/
 date: 2026-08-12
 published: false
 excerpt: "條件分配還是一個分配，而且是單變數的分配，這種分配的期望值便稱為條件期望值: 離散型以條件機率質量函數對各個取值加權求和，連續型則以條件機率密度函數加權積分，同一套作法套在 $g(X)$ 上便得到函數的條件期望值。條件期望值本質上仍是一種期望值，故期望值所具有的各種性質它都順勢繼承，其中也包含變異數，這種變異數即為條件變異數，同樣有平方的條件期望值減去條件期望值的平方這一條速算公式。條件期望值有一個一般期望值沒有的特色，就是它是「給定的條件」的函數。本篇並以三道例題示範離散型與連續型的計算。"
 ---
 
-[上一篇](/teaching-topics/multivariate-expectations/)把[期望值](/teaching-topics/expectation/#def-expectation)與[變異數](/teaching-topics/variance/#def-variance)推廣到二元[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)的函數 <span class="text-nowrap">$g(X,Y)$，</span>其中所使用的機率分配是聯合分配。但在[條件機率質量函數](/teaching-topics/conditional-distributions/#def-conditional-pmf)與[條件機率密度函數](/teaching-topics/conditional-distributions/#def-conditional-pdf)之中，我們已經看過另一種機率分配。它就是把其中一個變數固定成常數之後所得到的條件分配。
+[上一篇](/lecture-notes/multivariate-expectations/)把[期望值](/lecture-notes/expectation/#def-expectation)與[變異數](/lecture-notes/variance/#def-variance)推廣到二元[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的函數 <span class="text-nowrap">$g(X,Y)$，</span>其中所使用的機率分配是聯合分配。但在[條件機率質量函數](/lecture-notes/conditional-distributions/#def-conditional-pmf)與[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)之中，我們已經看過另一種機率分配。它就是把其中一個變數固定成常數之後所得到的條件分配。
 
 既然條件分配仍然是一種機率分配，我們當然也可以談它的期望值與變異數。本篇便由此出發，先分別對離散與連續的情形給出條件期望值的定義，再把它推廣到函數 $g(X)$ 的條件期望值，接著給出條件變異數並導出它的速算公式，最後以三道例題示範離散型與連續型的計算。
 
@@ -128,7 +128,7 @@ $$
 (2) 由於條件期望值繼承了期望值的所有性質，這當中是否包含我們曾提過的特殊期望值，也就是**變異數**呢？這是當然的，這種變異數稱作**條件變異數**，我們馬上會看到[其定義](#def-conditional-variance)。
 {: .topic-paren-item}
 
-(3) 條件期望值有一個一般期望值沒有的特色，是**條件期望值是「給定的條件」的函數**，這一點在稍後提到**[雙重期望值定理](/teaching-topics/double-expectation-theorem/#thm-double-expectation) <span lang="en">(double expectation theorem)</span>** 時我們會有更詳細的了解。
+(3) 條件期望值有一個一般期望值沒有的特色，是**條件期望值是「給定的條件」的函數**，這一點在稍後提到**[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation) <span lang="en">(double expectation theorem)</span>** 時我們會有更詳細的了解。
 {: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -190,7 +190,7 @@ $$
 (1) 條件變異數的直觀意義，是**在 $Y=y$ (或 $X=x$) 的空間中的離散程度**。
 {: .topic-paren-item}
 
-(2) 變異數有[速算公式](/teaching-topics/variance/#thm-variance-formula):
+(2) 變異數有[速算公式](/lecture-notes/variance/#thm-variance-formula):
 {: .topic-paren-item}
 
 $$
@@ -702,7 +702,7 @@ $$
 
 [Example 3.18](#ex-price-quantity-joint-table) 由一張三乘三的聯合機率表出發，先由邊際分配判定兩個變數並不獨立，再取 $Y=20$ 的那一行求出條件分配，並依速算公式求得條件期望值 $8.75$ 與條件變異數 $17.1875$ 兩個結果。[Example 3.19](#ex-joint-pdf-product-expectation) 這一題的聯合值域為 <span class="text-nowrap">$0<y<x<2$，</span>先由積分為 $1$ 求得 <span class="text-nowrap">$c=\frac{3}{4}$，</span>再依序求出兩個 marginal pdf 與兩個 conditional pdf，最後求得 $\mathbb{E}(Y\mid X=1)$ 與 $\mathbb{E}(X\mid Y=1)$ 分別為 $\frac{2}{3}$ 與 $\frac{3}{2}$ 兩個值。[Example 3.20](#ex-joint-pdf-variance-of-sum) 則示範條件變異數的求法，並在第二小題中把變異數的性質用在條件變異數上。給定 $X=x$ 之後 $3X+4$ 已是常數，只有 $2Y$ 這一項有作用，故所求的條件變異數是 $\mathrm{Var}(Y\mid X=x)$ 的四倍。
 
-[下一篇](/teaching-topics/double-expectation-theorem/)將由條件期望值是「給定的條件」的函數這一點出發，介紹雙重期望值定理。
+[下一篇](/lecture-notes/double-expectation-theorem/)將由條件期望值是「給定的條件」的函數這一點出發，介紹雙重期望值定理。
 
 ## 參考文獻與延伸閱讀
 

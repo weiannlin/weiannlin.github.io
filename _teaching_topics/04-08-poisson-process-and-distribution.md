@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 4
 topic: 8
 order: 408
-permalink: /teaching-topics/poisson-process-and-distribution/
+permalink: /lecture-notes/poisson-process-and-distribution/
 date: 2026-08-12
 published: false
 excerpt: "卜瓦松過程用來描述偶發事件的發生行為，由五個條件界定，其中最要緊的是不重疊時間區間內的發生次數彼此獨立，而且極短區間內幾乎不會發生兩次以上。單位時間內偶發事件的發生次數即服從卜瓦松分配，機率函數為 $\\frac{e^{-\\lambda}\\lambda^{x}}{x!}$ 這個式子，期望值與變異數都等於 $\\lambda$，動差母函數則是 $e^{\\lambda(e^{t}-1)}$。本篇先給出驗證機率函數合法所需要的馬克勞林級數，再完整推導期望值、變異數與動差母函數，並證明兩個獨立的卜瓦松變數相加仍為卜瓦松分配。最後證明二項分配在 $n$ 趨近於無限大、$p$ 趨近於 $0$ 且 $np=\\lambda$ 之下會收斂到卜瓦松分配，這正是實務上以卜瓦松機率近似二項機率的依據。"
 ---
 
-[上一篇](/teaching-topics/hypergeometric-distribution/)介紹[超幾何分配](/teaching-topics/hypergeometric-distribution/#def-hypergeometric)，至此伯努利實驗相關的機率模型已經全部給出。這一類模型所記錄的，都是在指定次數的實驗之中成功發生了幾次，或者為了取得指定次數的成功而必須做幾次實驗。本篇轉入第二大類的機率模型，也就是由卜瓦松過程所衍生的各個分配。
+[上一篇](/lecture-notes/hypergeometric-distribution/)介紹[超幾何分配](/lecture-notes/hypergeometric-distribution/#def-hypergeometric)，至此伯努利實驗相關的機率模型已經全部給出。這一類模型所記錄的，都是在指定次數的實驗之中成功發生了幾次，或者為了取得指定次數的成功而必須做幾次實驗。本篇轉入第二大類的機率模型，也就是由卜瓦松過程所衍生的各個分配。
 
 卜瓦松過程描述的是偶發事件在一段時間之內的發生行為，它所關心的量是一段長度為 $t$ 的時間之內，偶發事件的發生次數。本篇先給出卜瓦松過程的定義，列出它下轄的四個分配，再進入其中最基本的卜瓦松分配；由於驗證卜瓦松分配的機率函數合法時要用到指數函數的馬克勞林級數，這個級數會排在定義之前給出。
 
@@ -385,7 +385,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-由[獨立隨機變數線性組合的動差母函數之定理](/teaching-topics/mgf-method-transformations/#thm-mgf-two-to-one)可知
+由[獨立隨機變數線性組合的動差母函數之定理](/lecture-notes/mgf-method-transformations/#thm-mgf-two-to-one)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -406,7 +406,7 @@ $$
 
 </div>
 
-則由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+則由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 W=X+Y\sim\mathrm{Poi}(\lambda_1+\lambda_2)
@@ -418,7 +418,7 @@ $$
 這個性質被稱作卜瓦松分配的**可加性**，其限制是 $X$ 與 $Y$ 必須獨立。
 {: .topic-paren-cont}
 
-第二，在[二項分配](/teaching-topics/binomial-distribution/#def-binomial)中，若 $n\to\infty,\ p\to0$ 且 <span class="text-nowrap">$np=\lambda$，</span>則有
+第二，在[二項分配](/lecture-notes/binomial-distribution/#def-binomial)中，若 $n\to\infty,\ p\to0$ 且 <span class="text-nowrap">$np=\lambda$，</span>則有
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -451,7 +451,7 @@ $$
 p=\frac{\lambda}{\,n\,}
 $$
 
-則由[二項分配](/teaching-topics/binomial-distribution/#def-binomial)的 pmf，我們有
+則由[二項分配](/lecture-notes/binomial-distribution/#def-binomial)的 pmf，我們有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -536,7 +536,7 @@ $$
 
 [Theorem 4.9](#thm-maclaurin-series) 給出指數函數的馬克勞林級數，也就是把 $e^{\lambda}$ 寫成 $\sum_{x=0}^{\infty}\frac{\lambda^{x}}{\,x!\,}$ 這個級數；它是泰勒級數在 $0$ 展開的特例，而 [Definition 4.11](#def-poisson-distribution) 之後的推導多次靠它把無窮級數化成一個指數函數。卜瓦松分配記錄的是單位時間內偶發事件的發生次數，值域為 <span class="text-nowrap">$\lbrace\,0,1,2,\ldots,\infty\,\rbrace$，</span>機率函數為 $\frac{e^{-\lambda}\lambda^{x}}{\,x!\,}$ 這個式子，參數只有平均發生率 $\lambda$ 一個。證明依序驗證機率函數的加總為 <span class="text-nowrap">$1$、</span>求得 <span class="text-nowrap">$\mathbb{E}(X)=\lambda$、</span>再以階乘動差 $\mathbb{E}\bigl[X(X-1)\bigr]=\lambda^{2}$ 得到 $\mathbb{E}\bigl(X^{2}\bigr)=\lambda^{2}+\lambda$ 進而算出 $\mathrm{Var}(X)=\lambda$ 這個結果，最後直接由定義求得動差母函數 $M_{\sssig X}(t)=e^{\lambda(e^{t}-1)}$ 這一式。期望值與變異數同為 $\lambda$ 是這個分配最好記的特徵。
 
-定義之後的四點說明，前兩點是延伸性質。可加性只需把兩個 mgf 相乘，指數上的 $\lambda_1$ 與 $\lambda_2$ 因而相加，再由[動差母函數的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識出 <span class="text-nowrap">$\mathrm{Poi}(\lambda_1+\lambda_2)$；</span>它的限制只有 $X$ 與 $Y$ 必須獨立。二項分配的極限則把 $p$ 代換成 $\frac{\lambda}{\,n\,}$ 之後取 $n$ 趨近於無限大，三個因子分別趨近於 <span class="text-nowrap">$1$、</span>$e^{-\lambda}$ 與 <span class="text-nowrap">$1$，</span>剩下的正是卜瓦松分配的機率函數；其直觀是把過程中的每一個瞬間都看成一次伯努利實驗，實務上因而可以在 $n$ 很大、$p$ 很小而 $np$ 為定值時，以卜瓦松機率近似二項機率。後兩點回到卜瓦松過程: 卜瓦松分配的 $X$ 就是過程中的 <span class="text-nowrap">$N(1)$，</span>而所謂的單位時間可由使用者自行定義；由比例伸縮性質，$t$ 個單位時長內的發生次數則服從 $\mathrm{Poi}(\lambda t)$ 這個分配。
+定義之後的四點說明，前兩點是延伸性質。可加性只需把兩個 mgf 相乘，指數上的 $\lambda_1$ 與 $\lambda_2$ 因而相加，再由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識出 <span class="text-nowrap">$\mathrm{Poi}(\lambda_1+\lambda_2)$；</span>它的限制只有 $X$ 與 $Y$ 必須獨立。二項分配的極限則把 $p$ 代換成 $\frac{\lambda}{\,n\,}$ 之後取 $n$ 趨近於無限大，三個因子分別趨近於 <span class="text-nowrap">$1$、</span>$e^{-\lambda}$ 與 <span class="text-nowrap">$1$，</span>剩下的正是卜瓦松分配的機率函數；其直觀是把過程中的每一個瞬間都看成一次伯努利實驗，實務上因而可以在 $n$ 很大、$p$ 很小而 $np$ 為定值時，以卜瓦松機率近似二項機率。後兩點回到卜瓦松過程: 卜瓦松分配的 $X$ 就是過程中的 <span class="text-nowrap">$N(1)$，</span>而所謂的單位時間可由使用者自行定義；由比例伸縮性質，$t$ 個單位時長內的發生次數則服從 $\mathrm{Poi}(\lambda t)$ 這個分配。
 
 下一篇以例題演練卜瓦松分配的計算，並進一步給出兩個結果: 兩個獨立卜瓦松變數相加之後，其中一個在總和給定之下的條件分配為二項分配；以及把卜瓦松過程的偶發事件依固定機率分成兩類之後，兩類的個數各自仍服從卜瓦松分配而且彼此獨立。
 

@@ -7,17 +7,17 @@ category: "機率概論"
 chapter: 3
 topic: 24
 order: 324
-permalink: /teaching-topics/many-to-many-transformations/
+permalink: /lecture-notes/many-to-many-transformations/
 date: 2026-08-13
 published: false
 excerpt: "已知隨機向量 $\\boldsymbol{X}$ 的分配，若令 $\\boldsymbol{Y}=g(\\boldsymbol{X})$ 則 $\\boldsymbol{Y}$ 的分配是什麼？只要 $g(\\cdot)$ 是由 $\\mathbb{R}^n$ 映到 $\\mathbb{R}^m$ 的實值可測向量函數，$\\boldsymbol{Y}$ 就仍然是一個隨機向量。多對多的情形可以由二對二推廣，故本篇只處理二對二: 離散型採 pmf 法，把兩條函數關係當成二元聯立方程式反解，再代回原來的聯合 pmf；連續型採 Jacobian 法，將原變數的 pdf 以新變數表示，再乘上原變數對新變數偏微分所成行列式的絕對值。本篇的五道例題，先以三個伯努利變數示範樣本平均數、中位數與眾數的抽樣分配，接著以 pmf 法反解出兩個變數之和與差的聯合 pmf，再以 Jacobian 法處理三道連續型的轉換，其中包含由均勻與指數分配造出兩個獨立標準常態的作法，以及著名的 Box-Muller 轉換。"
 ---
 
-[上一篇](/teaching-topics/population-linear-regression/)以母體線性迴歸式，把兩個[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)之間的線性關係寫成一條直線，並以三道例題示範它的求法。到這裡為止，我們所處理的都是[隨機向量](/teaching-topics/random-vectors-joint-pmf/#def-random-vector)自身的分配、條件分配與由這些分配所導出的各種量數。
+[上一篇](/lecture-notes/population-linear-regression/)以母體線性迴歸式，把兩個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)之間的線性關係寫成一條直線，並以三道例題示範它的求法。到這裡為止，我們所處理的都是[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)自身的分配、條件分配與由這些分配所導出的各種量數。
 
 本篇要看的是另一件事情。已知 $(X_1,X_2)$ 的聯合分配，令 $Y_1$ 與 $Y_2$ 各為 $X_1$ 與 $X_2$ 的函數，$(Y_1,Y_2)$ 的聯合分配是什麼？我們先說明 $\boldsymbol{Y}=g(\boldsymbol{X})$ 在什麼條件之下仍然是一個隨機向量，接著分離散型與連續型兩個部分，各給出一種求法，最後以五道例題示範。
 
-在[隨機變數的函數轉換](/teaching-topics/one-to-one-transformations/)小節時，我們曾提過隨機變數的轉換。而事實上，我們更常會遇到需要將隨機向量取函數進行轉換的情況，例如**抽樣分配 <span lang="en">(sampling distribution)</span>** 即是在探討**統計量 <span lang="en">(statistics)</span>** 的分配，而**統計量是樣本的函數組合**，所以我們必須先具備求取隨機變數經過函數轉換後的分配的能力，才有辦法進行更深入的探討。
+在[隨機變數的函數轉換](/lecture-notes/one-to-one-transformations/)小節時，我們曾提過隨機變數的轉換。而事實上，我們更常會遇到需要將隨機向量取函數進行轉換的情況，例如**抽樣分配 <span lang="en">(sampling distribution)</span>** 即是在探討**統計量 <span lang="en">(statistics)</span>** 的分配，而**統計量是樣本的函數組合**，所以我們必須先具備求取隨機變數經過函數轉換後的分配的能力，才有辦法進行更深入的探討。
 
 隨機向量的函數轉換的形式如下:
 
@@ -61,7 +61,7 @@ $$
 
 ## 隨機變數的多對多函數轉換
 
-我們在[隨機變數的函數轉換](/teaching-topics/one-to-one-transformations/)小節所介紹的方法，主要是一對一的函數轉換，但若遇到二對二甚至是多對多的函數轉換時，之前的方法在使用上多半會有點問題，因此我們特別介紹多對多的函數轉換該如何處理。
+我們在[隨機變數的函數轉換](/lecture-notes/one-to-one-transformations/)小節所介紹的方法，主要是一對一的函數轉換，但若遇到二對二甚至是多對多的函數轉換時，之前的方法在使用上多半會有點問題，因此我們特別介紹多對多的函數轉換該如何處理。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -135,7 +135,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，在多維度對多維度的問題中，[直接列表法](/teaching-topics/one-to-one-transformations/#離散型的函數轉換)雖然還是可以使用，但是多數情況會因為值域結構龐大而導致窮舉的耗時及困難，故 pmf 法以方程式反解的概念反而會是比較簡單的做法。
+事實上，在多維度對多維度的問題中，[直接列表法](/lecture-notes/one-to-one-transformations/#離散型的函數轉換)雖然還是可以使用，但是多數情況會因為值域結構龐大而導致窮舉的耗時及困難，故 pmf 法以方程式反解的概念反而會是比較簡單的做法。
 
 </div>
 
@@ -205,7 +205,7 @@ $$
 
 表示體積轉換因子 <span lang="en">(Jacobian)</span>。
 
-事實上，這個 Jacobian 法仍與[一維的 Jacobian 法](/teaching-topics/one-to-one-transformations/#prop-jacobian-method)沒有二致，這在微積分中就是多維度對多維度的變數變換。
+事實上，這個 Jacobian 法仍與[一維的 Jacobian 法](/lecture-notes/one-to-one-transformations/#prop-jacobian-method)沒有二致，這在微積分中就是多維度對多維度的變數變換。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -235,7 +235,7 @@ $$
 </ol>
 </div>
 
-(1) 由題意可知，$X_1,X_2,X_3$ $\overset{\mathrm{iid}}{\sim}$ [$\mathrm{Ber}(p=0.5)$](/teaching-topics/bernoulli-trials-and-distribution/#def-bernoulli)
+(1) 由題意可知，$X_1,X_2,X_3$ $\overset{\mathrm{iid}}{\sim}$ [$\mathrm{Ber}(p=0.5)$](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)
 {: .topic-paren-item}
 
 <!-- 版面待量: 本表桌面版八欄, 手機版依 EDITORIAL 二之一與第四節「手機版表格不得需要橫向捲動」
@@ -652,7 +652,7 @@ $$
 其圖形如下:
 
 <figure id="fig-many-to-many-range" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/many-to-many-range.svg" alt="兩個並排的面板，中間有一個指向右方的雙線箭頭，箭頭上方分兩行標 w 等於 x 與 z 等於 x 加 y。左面板的橫軸標 x、縱軸標 y，一條斜線自縱軸上的一點落到橫軸上的一點，與兩軸圍成一個直角三角形並以淡紅色填滿，斜線旁由一條彎曲的虛線引出標示 z 等於 x 加 y 等於 1。右面板的橫軸標 z、縱軸標 w，一條通過原點且斜率為 1 的斜線標 z 減 w 等於 0，其右下方另有一條平行的短斜線標 z 減 w 等於 1，還有一條直虛線，下端標 z 等於 1。通過原點的斜線、直虛線與橫軸圍成的直角三角形以淡紅色填滿。">
+  <img src="/images/lecture-notes/many-to-many-range.svg" alt="兩個並排的面板，中間有一個指向右方的雙線箭頭，箭頭上方分兩行標 w 等於 x 與 z 等於 x 加 y。左面板的橫軸標 x、縱軸標 y，一條斜線自縱軸上的一點落到橫軸上的一點，與兩軸圍成一個直角三角形並以淡紅色填滿，斜線旁由一條彎曲的虛線引出標示 z 等於 x 加 y 等於 1。右面板的橫軸標 z、縱軸標 w，一條通過原點且斜率為 1 的斜線標 z 減 w 等於 0，其右下方另有一條平行的短斜線標 z 減 w 等於 1，還有一條直虛線，下端標 z 等於 1。通過原點的斜線、直虛線與橫軸圍成的直角三角形以淡紅色填滿。">
   <figcaption><span class="topic-figure__label">Fig. 3.20.</span> 左圖填色的三角形是轉換前 $x$ 與 $y$ 的聯合值域，斜邊落在 $z=x+y=1$ 上。令 $w=x$ 與 $z=x+y$ 之後得到右圖，填色的三角形是 $z$ 與 $w$ 的值域，三條界線分別是 <span class="text-nowrap">$z-w=0$、</span>$z-w=1$ 與 <span class="text-nowrap">$z=1$，</span>其中 $z-w=1$ 落在值域之外。</figcaption>
 </figure>
 
@@ -922,7 +922,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-本題是著名的 Box-Muller 轉換，這個轉換的用途在於，電腦亂數僅能生成 [$\mathcal{U}(0,1)$](/teaching-topics/uniform-distribution-integral-transform/#def-uniform-distribution) 的隨機亂數，而[標準常態分配](/teaching-topics/normal-distribution/#def-normal)的 cdf 又不具備解析解形式，因而導致[機率積分轉換](/teaching-topics/one-to-one-transformations/#prop-probability-integral-transform) <span lang="en">(probability integral transformation, PIT)</span> 計算不易，導致難以生成標準常態分配的隨機變數值；此時便可透過這個二轉二的特殊轉換，一口氣利用兩個獨立的 $\mathcal{U}(0,1)$ 亂數，得到兩個獨立的標準常態分配亂數。
+本題是著名的 Box-Muller 轉換，這個轉換的用途在於，電腦亂數僅能生成 [$\mathcal{U}(0,1)$](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution) 的隨機亂數，而[標準常態分配](/lecture-notes/normal-distribution/#def-normal)的 cdf 又不具備解析解形式，因而導致[機率積分轉換](/lecture-notes/one-to-one-transformations/#prop-probability-integral-transform) <span lang="en">(probability integral transformation, PIT)</span> 計算不易，導致難以生成標準常態分配的隨機變數值；此時便可透過這個二轉二的特殊轉換，一口氣利用兩個獨立的 $\mathcal{U}(0,1)$ 亂數，得到兩個獨立的標準常態分配亂數。
 
 </div>
 
@@ -932,11 +932,11 @@ $$
 
 離散型採 pmf 法。把 $Y_1=g_1(X_1,X_2)$ 與 $Y_2=g_2(X_1,X_2)$ 當成二元聯立方程式反解，得到 $X_1=h_1(Y_1,Y_2)$ 與 $X_2=h_2(Y_1,Y_2)$ 這兩條反解式，再把它們代回原本的聯合 pmf。維度一高，直接列表法會因為值域結構龐大而難以窮舉，方程式反解反而簡單。連續型採 Jacobian 法。同樣先反解，再把原變數的 pdf 以新變數表示，並乘上原變數對新變數偏微分所成行列式的絕對值。一維的 Jacobian 法只是它的特例，把一維的 $\mathbf{J}$ 看成一維度的行列式即可；但這個做法要求轉換前後的維度相同。
 
-五道例題分成兩組。[Example 3.49](#ex-three-independent-transformation) 以三個獨立的伯努利變數窮舉八種結果，一次求得樣本平均數、[中位數](/teaching-topics/median/#def-median)、[眾數](/teaching-topics/mode/#def-mode)與三個排序後變數的抽樣分配，並由其中前三個統計量的分配算出各自的[期望值](/teaching-topics/expectation/#def-expectation)與[變異數](/teaching-topics/variance/#def-variance)。[Example 3.50](#ex-discrete-joint-transformation) 是 pmf 法的標準用法。由 $Y_1=X_1+X_2$ 與 $Y_2=X_1-X_2$ 反解得 $X_1=\frac{y_1+y_2}{2}$ 與 $X_2=\frac{y_1-y_2}{2}$ 這兩式，代回之後指數相加相消，聯合 pmf 只剩下 $y_1$ 而與 $y_2$ 無關，但 $(y_1,y_2)$ 的可能取值仍受原本值域的限制。
+五道例題分成兩組。[Example 3.49](#ex-three-independent-transformation) 以三個獨立的伯努利變數窮舉八種結果，一次求得樣本平均數、[中位數](/lecture-notes/median/#def-median)、[眾數](/lecture-notes/mode/#def-mode)與三個排序後變數的抽樣分配，並由其中前三個統計量的分配算出各自的[期望值](/lecture-notes/expectation/#def-expectation)與[變異數](/lecture-notes/variance/#def-variance)。[Example 3.50](#ex-discrete-joint-transformation) 是 pmf 法的標準用法。由 $Y_1=X_1+X_2$ 與 $Y_2=X_1-X_2$ 反解得 $X_1=\frac{y_1+y_2}{2}$ 與 $X_2=\frac{y_1-y_2}{2}$ 這兩式，代回之後指數相加相消，聯合 pmf 只剩下 $y_1$ 而與 $y_2$ 無關，但 $(y_1,y_2)$ 的可能取值仍受原本值域的限制。
 
-[Example 3.51](#ex-integral-one-variable) 是 Jacobian 法的第一個例子，其中 $\mathbf{J}=-1$ 這個值說明體積並未被拉伸；本篇的區域圖把轉換前後的值域並列，讀者可以看出原本的三角形在新的兩個變數之下仍是一塊三角形，只是頂點的位置換了。[Example 3.52](#ex-uniform-to-exponential) 與 [Example 3.53](#ex-two-uniform-transformation) 都是由兩個容易生成的變數造出兩個獨立的標準常態。前者取一個 $\mathcal{U}(0,2\pi)$ 與一個平均數為 $1$ 的[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution)，後者取兩個獨立的 $\mathcal{U}(0,1)$ 亂數，兩題的 $\mathbf{J}$ 算完之後，聯合 pdf 都成為兩個標準常態密度的乘積，再各自積分得到兩個邊際 pdf，兩者相乘恰為聯合 pdf，獨立性因而成立。後者即是著名的 Box-Muller 轉換，它讓電腦只憑均勻亂數就能產生標準常態亂數。
+[Example 3.51](#ex-integral-one-variable) 是 Jacobian 法的第一個例子，其中 $\mathbf{J}=-1$ 這個值說明體積並未被拉伸；本篇的區域圖把轉換前後的值域並列，讀者可以看出原本的三角形在新的兩個變數之下仍是一塊三角形，只是頂點的位置換了。[Example 3.52](#ex-uniform-to-exponential) 與 [Example 3.53](#ex-two-uniform-transformation) 都是由兩個容易生成的變數造出兩個獨立的標準常態。前者取一個 $\mathcal{U}(0,2\pi)$ 與一個平均數為 $1$ 的[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)，後者取兩個獨立的 $\mathcal{U}(0,1)$ 亂數，兩題的 $\mathbf{J}$ 算完之後，聯合 pdf 都成為兩個標準常態密度的乘積，再各自積分得到兩個邊際 pdf，兩者相乘恰為聯合 pdf，獨立性因而成立。後者即是著名的 Box-Muller 轉換，它讓電腦只憑均勻亂數就能產生標準常態亂數。
 
-[下一篇](/teaching-topics/mgf-method-transformations/)處理轉換前後維度不同的情形，也就是多對一的函數轉換，並介紹在這種情形下特別好用的[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)法。
+[下一篇](/lecture-notes/mgf-method-transformations/)處理轉換前後維度不同的情形，也就是多對一的函數轉換，並介紹在這種情形下特別好用的[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)法。
 
 ## 參考文獻與延伸閱讀
 

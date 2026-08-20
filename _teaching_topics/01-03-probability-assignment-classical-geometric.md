@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 1
 topic: 3
 order: 103
-permalink: /teaching-topics/probability-assignment-classical-geometric/
+permalink: /lecture-notes/probability-assignment-classical-geometric/
 date: 2026-05-05
 published: true
 excerpt: "機率最早是為了解決生活中遇到的隨機問題而發展。本篇介紹古典機率、幾何機率、客觀機率與主觀機率四種指定方式，以及它們各自的假設與限制。"
 ---
 
-[上一篇](/teaching-topics/event-set-operations/)整理了事件的集合運算。在有了集合及事件的基本關係後，我們便可以正式進入機率的世界，或準確地說，進入「古典機率」的世界。
+[上一篇](/lecture-notes/event-set-operations/)整理了事件的集合運算。在有了集合及事件的基本關係後，我們便可以正式進入機率的世界，或準確地說，進入「古典機率」的世界。
 
 機率的起源時常被認為是由賭博而來。這個說法當然未必正確，但卻能夠讓我們得知一件事情: 機率最早是為了解決生活中遇到的隨機問題而發展的。讀者應能細細回想生活中遇到的機率問題，例如: 玩撲克牌在五張手牌中拿到一組鐵支 (四條) 的機率、明天某地下雨的機率、罹患某一疾病後痊癒的機率。
 
@@ -41,7 +41,7 @@ $$
 
 古典機率即是高中數學裡所講的機率，其精神是認為樣本空間 $S$ 中的每一個樣本點都具有同樣的發生機率，此即**均等可能性 <span lang="en">(equally likely)</span>**。例如: 投擲一枚「公正的」骰子，則出現 $1$ 點到 $6$ 點的機率皆相同。如此一來，我們可以用某一事件 $A$ 的樣本點數，相對於樣本空間 $S$ 的樣本點數的比例，作為發生該事件的機率。
 
-從上面的敘述來看，我們便能夠理解為何古典機率的定義需要假定樣本空間 $S$ 為有限的。因為我們必須點算樣本空間中樣本點的個數，若是[無限樣本空間](/teaching-topics/random-experiments-sample-space-events/#離散樣本空間與連續樣本空間) (可數或不可數)，便無法點算。
+從上面的敘述來看，我們便能夠理解為何古典機率的定義需要假定樣本空間 $S$ 為有限的。因為我們必須點算樣本空間中樣本點的個數，若是[無限樣本空間](/lecture-notes/random-experiments-sample-space-events/#離散樣本空間與連續樣本空間) (可數或不可數)，便無法點算。
 
 <div id="example-two-dice" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.5 (Two Dice)</div>
@@ -143,7 +143,7 @@ $$
 
 ## 幾何機率與幾何測度
 
-雖然稍早在 [Definition 1.11](#definition-classical-probability) 中，我們要求樣本空間為有限，但事實上我們可以將這個定義進行推廣，從而成為**幾何機率 <span lang="en">(geometric probability)</span>**。幾何機率的概念，也可以與後面主題將介紹的**[連續均勻分配](/teaching-topics/uniform-distribution-integral-transform/#def-uniform-distribution) <span lang="en">(continuous uniform distribution)</span>** 相呼應。我們來看看其定義。
+雖然稍早在 [Definition 1.11](#definition-classical-probability) 中，我們要求樣本空間為有限，但事實上我們可以將這個定義進行推廣，從而成為**幾何機率 <span lang="en">(geometric probability)</span>**。幾何機率的概念，也可以與後面主題將介紹的**[連續均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution) <span lang="en">(continuous uniform distribution)</span>** 相呼應。我們來看看其定義。
 
 <div id="definition-geometric-probability" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.12</div>
@@ -164,7 +164,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-各種的**測度 <span lang="en">(measure)</span>** 都是在「度量」某件事的大小。當測度被用在集合上，則代表衡量集合在該測度所關心的面向上的大小，例如: 數量的大小、長度的大小、面積的大小。事實上，後面的文章將正式介紹的[**機率測度 <span lang="en">(probability measure)</span>**](/teaching-topics/event-families-sigma-fields/#機率空間)同樣也屬於一種測度，而機率測度所衡量的，是**事件發生的可能性的大小**。
+各種的**測度 <span lang="en">(measure)</span>** 都是在「度量」某件事的大小。當測度被用在集合上，則代表衡量集合在該測度所關心的面向上的大小，例如: 數量的大小、長度的大小、面積的大小。事實上，後面的文章將正式介紹的[**機率測度 <span lang="en">(probability measure)</span>**](/lecture-notes/event-families-sigma-fields/#機率空間)同樣也屬於一種測度，而機率測度所衡量的，是**事件發生的可能性的大小**。
 </div>
 
 <div id="example-bombing-target" class="topic-box topic-box--example" markdown="1">
@@ -229,7 +229,7 @@ $$
 (3) 在不能重複的事件中 (例如: 預測一特定日子的天氣) 並無法使用。
 {: .topic-paren-item}
 
-關於相對次數是否隨重複次數增加而逐漸穩定，讀者可以在 Demos 的[蒙提霍爾問題實作](/demos/monty-hall/)中，實際觀察其模擬部分的相對次數變化。蒙提霍爾問題 <span lang="en">(Monty Hall problem)</span> 的完整敘述，會在稍後的[條件機率](/teaching-topics/conditional-probability-information/#example-monty-hall)中提到。
+關於相對次數是否隨重複次數增加而逐漸穩定，讀者可以在 Demos 的[蒙提霍爾問題實作](/demos/monty-hall/)中，實際觀察其模擬部分的相對次數變化。蒙提霍爾問題 <span lang="en">(Monty Hall problem)</span> 的完整敘述，會在稍後的[條件機率](/lecture-notes/conditional-probability-information/#example-monty-hall)中提到。
 
 <div id="example-three-point-shooting" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.8 <span lang="en">(Three-Point Shooting)</span></div>
@@ -267,7 +267,7 @@ $$
 | 客觀機率 | 長期重複觀察的極限 | 極限未必存在，且事件須可重複 |
 | 主觀機率 | 專業知識與證據 | 因研究者而異 |
 
-如此的特性，導致這幾種機率定義在嚴謹的數學世界中，並無法具有過多的發展。為此，在接下來的文章中，我們將開始介紹**公理化機率系統 <span lang="en">(axiomatized probability system)</span>**，並帶讀者認識現代機率論的根源。它的起點，是先說明哪些集合可以被賦予機率，這正是[下一篇](/teaching-topics/event-families-sigma-fields/)要談的域、$\sigma$-域與機率空間。
+如此的特性，導致這幾種機率定義在嚴謹的數學世界中，並無法具有過多的發展。為此，在接下來的文章中，我們將開始介紹**公理化機率系統 <span lang="en">(axiomatized probability system)</span>**，並帶讀者認識現代機率論的根源。它的起點，是先說明哪些集合可以被賦予機率，這正是[下一篇](/lecture-notes/event-families-sigma-fields/)要談的域、$\sigma$-域與機率空間。
 
 ## 參考文獻與延伸閱讀
 

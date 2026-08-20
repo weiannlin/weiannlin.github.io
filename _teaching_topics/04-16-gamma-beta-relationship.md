@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 4
 topic: 16
 order: 416
-permalink: /teaching-topics/gamma-beta-relationship/
+permalink: /lecture-notes/gamma-beta-relationship/
 date: 2026-08-12
 published: false
 excerpt: "兩個比例參數相同且彼此獨立的伽瑪變數，其中一個在兩者之和中所佔的比例服從貝塔分配，兩者之和則仍為伽瑪分配，而且這兩個新變數彼此獨立。本篇以 Jacobian 法完整證明這個結果: 先寫出兩個伽瑪變數的聯合機率密度函數，換元之後求得新變數的聯合機率密度函數，再分別對另一個變數積分而得到兩個邊際機率密度函數。這個結果背後有一個簡單直接的想法，即比例的平均為 $\\frac{a}{\\,a+b\\,}$，恰好是貝塔分配的期望值；其特例是兩個獨立同分配的指數變數，其比例服從標準均勻分配。最後以三道例題演練，依序處理指數變數的比例與和、標準均勻分配之順序統計量的共變異數與全距，以及三個獨立標準均勻變數的極大值與極小值。"
 ---
 
-[上一篇](/teaching-topics/beta-function-and-distribution/)由[貝塔函數](/teaching-topics/beta-function-and-distribution/#def-beta-function)出發，給出[貝塔分配](/teaching-topics/beta-function-and-distribution/#def-beta-distribution)的定義。貝塔函數本身就是由兩個[伽瑪函數](/teaching-topics/gamma-function-exponential-distribution/#def-gamma-function)的乘積除以另一個伽瑪函數而來，因此貝塔分配與[伽瑪分配](/teaching-topics/gamma-distribution/#def-gamma-distribution)之間存在一項直接的關係，本篇處理的就是這項關係。
+[上一篇](/lecture-notes/beta-function-and-distribution/)由[貝塔函數](/lecture-notes/beta-function-and-distribution/#def-beta-function)出發，給出[貝塔分配](/lecture-notes/beta-function-and-distribution/#def-beta-distribution)的定義。貝塔函數本身就是由兩個[伽瑪函數](/lecture-notes/gamma-function-exponential-distribution/#def-gamma-function)的乘積除以另一個伽瑪函數而來，因此貝塔分配與[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)之間存在一項直接的關係，本篇處理的就是這項關係。
 
-本篇先以 [Jacobian 法](/teaching-topics/many-to-many-transformations/#連續型的-jacobian-法)證明: 兩個比例參數相同且彼此獨立的伽瑪變數，其中一個在兩者之和中所佔的比例服從貝塔分配，兩者之和則仍為伽瑪分配，而且這兩個新變數彼此獨立。接著說明這項關係背後的想法，以及它在[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution)上的特例。最後以三道例題作為演練，其中兩道涉及[標準均勻分配](/teaching-topics/uniform-distribution-integral-transform/#def-uniform-distribution)的順序統計量 <span lang="en">(order statistic)</span>。
+本篇先以 [Jacobian 法](/lecture-notes/many-to-many-transformations/#連續型的-jacobian-法)證明: 兩個比例參數相同且彼此獨立的伽瑪變數，其中一個在兩者之和中所佔的比例服從貝塔分配，兩者之和則仍為伽瑪分配，而且這兩個新變數彼此獨立。接著說明這項關係背後的想法，以及它在[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)上的特例。最後以三道例題作為演練，其中兩道涉及[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的順序統計量 <span lang="en">(order statistic)</span>。
 
 ## 伽瑪分配與貝塔分配的關係
 
@@ -321,7 +321,7 @@ Suppose that $X_1$ and $X_2$ are independent and identically distributed random 
 </ol>
 </div>
 
-(1) 由 [pdf 的性質](/teaching-topics/probability-density-functions/#thm-pdf-properties)檢查可知
+(1) 由 [pdf 的性質](/lecture-notes/probability-density-functions/#thm-pdf-properties)檢查可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -474,7 +474,7 @@ $$
 
 </div>
 
-(4) 由 [marginal pdf 的定義](/teaching-topics/marginal-probability-density-functions/#def-marginal-pdf)可知
+(4) 由 [marginal pdf 的定義](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -590,7 +590,7 @@ denote the associated order statistics.
 </ol>
 </div>
 
-(1) 由[順序統計量](/teaching-topics/order-statistics-distributions/#thm-order-stat-samp-dist-pdf)，我們可知 $Y_{\sssig (r)}$ 與 $Y_{\sssig (s)}$ 之 joint pdf 為
+(1) 由[順序統計量](/lecture-notes/order-statistics-distributions/#thm-order-stat-samp-dist-pdf)，我們可知 $Y_{\sssig (r)}$ 與 $Y_{\sssig (s)}$ 之 joint pdf 為
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -735,7 +735,7 @@ $$
 
 </div>
 
-(3) 經由[機率積分轉換](/teaching-topics/uniform-distribution-integral-transform/#thm-p-i-t)可知
+(3) 經由[機率積分轉換](/lecture-notes/uniform-distribution-integral-transform/#thm-p-i-t)可知
 {: .topic-paren-item}
 
 $$
@@ -789,7 +789,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，這個問題並不需要如此繁複的做法，我們可以利用[順序統計量的性質](/teaching-topics/order-statistics-distributions/#標準均勻分配的順序統計量與貝塔分配)來處理這個問題，作法如下:
+事實上，這個問題並不需要如此繁複的做法，我們可以利用[順序統計量的性質](/lecture-notes/order-statistics-distributions/#標準均勻分配的順序統計量與貝塔分配)來處理這個問題，作法如下:
 
 由下列事實
 
@@ -907,7 +907,7 @@ Suppose that $X_1,X_2,X_3$ are independent random variables, each having the $\m
 </ol>
 </div>
 
-(1) 由[順序統計量的性質](/teaching-topics/order-statistics-distributions/#標準均勻分配的順序統計量與貝塔分配)可知
+(1) 由[順序統計量的性質](/lecture-notes/order-statistics-distributions/#標準均勻分配的順序統計量與貝塔分配)可知
 {: .topic-paren-item}
 
 $$
@@ -993,13 +993,13 @@ $$
 
 ## 本篇小結
 
-[Theorem 4.19](#thm-gamma-to-beta) 把[伽瑪分配](/teaching-topics/gamma-distribution/#def-gamma-distribution)與[貝塔分配](/teaching-topics/beta-function-and-distribution/#def-beta-distribution)接了起來: 兩個比例參數同為 $\beta$ 而形狀參數分別為 $a$ 與 $b$ 的獨立伽瑪變數，其中一個在兩者之和中所佔的比例 $U=\frac{X}{\,X+Y\,}$ 服從 <span class="text-nowrap">$\mathrm{Beta}(\alpha=a,\ \beta=b)$，</span>兩者之和 $V=X+Y$ 則服從 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=a+b,\ \beta)$，</span>而且 $U$ 與 $V$ 彼此獨立。證明採 Jacobian 法，先寫出兩個伽瑪變數的聯合機率密度函數，換元之後所得到的聯合機率密度函數恰好可以拆成只含 $u$ 的一段與只含 $v$ 的一段，兩段各自積分之後，貝塔分配與伽瑪分配的機率函數就分別出現在 $U$ 與 $V$ 的邊際機率密度函數上。
+[Theorem 4.19](#thm-gamma-to-beta) 把[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)與[貝塔分配](/lecture-notes/beta-function-and-distribution/#def-beta-distribution)接了起來: 兩個比例參數同為 $\beta$ 而形狀參數分別為 $a$ 與 $b$ 的獨立伽瑪變數，其中一個在兩者之和中所佔的比例 $U=\frac{X}{\,X+Y\,}$ 服從 <span class="text-nowrap">$\mathrm{Beta}(\alpha=a,\ \beta=b)$，</span>兩者之和 $V=X+Y$ 則服從 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=a+b,\ \beta)$，</span>而且 $U$ 與 $V$ 彼此獨立。證明採 Jacobian 法，先寫出兩個伽瑪變數的聯合機率密度函數，換元之後所得到的聯合機率密度函數恰好可以拆成只含 $u$ 的一段與只含 $v$ 的一段，兩段各自積分之後，貝塔分配與伽瑪分配的機率函數就分別出現在 $U$ 與 $V$ 的邊際機率密度函數上。
 
-定理之後的說明給出一個稍不嚴謹但簡單直接的想法: 比例的平均是兩個期望值之間的比例，也就是 $\frac{a\beta}{\,a\beta+b\beta\,}=\frac{a}{\,a+b\,}$ 這個比值，恰好是貝塔分配的期望值。同一段也指出一個特例，即兩個比例參數相同且彼此獨立的[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution)變數，其比例服從[標準均勻分配](/teaching-topics/uniform-distribution-integral-transform/#def-uniform-distribution)。
+定理之後的說明給出一個稍不嚴謹但簡單直接的想法: 比例的平均是兩個期望值之間的比例，也就是 $\frac{a\beta}{\,a\beta+b\beta\,}=\frac{a}{\,a+b\,}$ 這個比值，恰好是貝塔分配的期望值。同一段也指出一個特例，即兩個比例參數相同且彼此獨立的[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)變數，其比例服從[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)。
 
 三道例題各練一種用法。[Example 4.41](#ex-gamma-beta-1) 先由機率密度函數的合法性定出 <span class="text-nowrap">$k=1$，</span>辨識出兩個變數服從 <span class="text-nowrap">$\mathrm{Exp}(\beta=1)$，</span>再依 Jacobian 法逐步算出 $Y_1=X_1+X_2$ 與 $Y_2=\frac{X_1}{\,X_1+X_2\,}$ 的聯合與邊際機率密度函數，最後由聯合機率密度函數可以拆成兩個邊際機率密度函數的乘積、且範圍互不影響，判定兩者獨立，這正是 [Theorem 4.19](#thm-gamma-to-beta) 在 $a=b=1$ 時的情形。[Example 4.42](#ex-gamma-beta-2) 處理標準均勻分配的順序統計量: 由兩個順序統計量的聯合機率密度函數算出共變異數 <span class="text-nowrap">$\frac{r(n+1-s)}{\,(n+1)^2(n+2)\,}$，</span>再以變數變換求得全距 $R=Y_{\sssig (n)}-Y_{\sssig (1)}$ 服從 <span class="text-nowrap">$\mathrm{Beta}(\alpha=n-1,\ \beta=2)$；</span>第三小題則以機率積分轉換把韋伯變數換成標準均勻變數，所求的量因而與第二小題完全相同。該題之後的說明另給一個省事的作法: 直接引用順序統計量之差服從貝塔分配這個結果，再由變異數的展開式反解共變異數。[Example 4.43](#ex-gamma-beta-3) 是同一組結果在 $n=3$ 上的演練，$Y_3-Y_1$ 服從 <span class="text-nowrap">$\mathrm{Beta}(\alpha=2,\ \beta=2)$，</span>而極小值與極大值之平均的期望值為 <span class="text-nowrap">$\frac{1}{\,2\,}$、</span>變異數為 <span class="text-nowrap">$\frac{1}{\,40\,}$。</span>
 
-[下一篇](/teaching-topics/normal-distribution/)轉入常態相關的機率模型，先給出高斯積分，再定義常態分配，並說明標準化與線性組合的可加性。
+[下一篇](/lecture-notes/normal-distribution/)轉入常態相關的機率模型，先給出高斯積分，再定義常態分配，並說明標準化與線性組合的可加性。
 
 ## 參考文獻與延伸閱讀
 

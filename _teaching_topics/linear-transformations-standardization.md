@@ -4,5 +4,5 @@ layout: redirect
 sitemap: false
 permalink: /teaching-topics/linear-transformations-standardization/
 redirect:
-  to: /teaching-topics/properties-of-expectation/
+  to: /lecture-notes/properties-of-expectation/
 ---

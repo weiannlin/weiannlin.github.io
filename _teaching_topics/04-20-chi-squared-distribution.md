@@ -7,17 +7,17 @@ category: "機率概論"
 chapter: 4
 topic: 20
 order: 420
-permalink: /teaching-topics/chi-squared-distribution/
+permalink: /lecture-notes/chi-squared-distribution/
 date: 2026-08-15
 published: false
 excerpt: "卡方分配是伽瑪分配把比例參數固定為 $2$、形狀參數寫成 $\\frac{\\nu}{2}$ 之後的特例，能夠變動的參數只剩下自由度 $\\nu$ 一個，期望值為 $\\nu$、變異數為 $2\\nu$，動差母函數則是 $(1-2t)^{-\\frac{\\nu}{2}}$。本篇先給出定義，再以動差母函數證明三項性質: 任意伽瑪分配乘上 $\\frac{2}{\\beta}$ 之後即為卡方分配、彼此獨立的卡方分配相加之後自由度亦相加，以及標準常態分配的平方服從自由度為 $1$ 的卡方分配，三者合起來給出 $n$ 個獨立標準常態變數的平方和服從 $\\chi^{2}(n)$ 這個結果。其後以兩道例題比較指數、卡方與伽瑪三個分配的關係。最後給出科克蘭定理，並以它說明常態母體之下樣本變異數的抽樣分配，以及樣本平均數與樣本變異數彼此獨立這兩件事。"
 ---
 
-[上一篇](/teaching-topics/standard-normal-moments-stein-lemma/)由標準常態分配的各階原動差談到斯泰因引理，處理的都是[常態分配](/teaching-topics/normal-distribution/#def-normal)本身的動差。本篇轉入由常態分配衍生出來的抽樣分配，其中的第一個就是卡方分配。
+[上一篇](/lecture-notes/standard-normal-moments-stein-lemma/)由標準常態分配的各階原動差談到斯泰因引理，處理的都是[常態分配](/lecture-notes/normal-distribution/#def-normal)本身的動差。本篇轉入由常態分配衍生出來的抽樣分配，其中的第一個就是卡方分配。
 
-卡方分配是[伽瑪分配](/teaching-topics/gamma-distribution/#def-gamma-distribution)把比例參數固定為 $2$、形狀參數寫成 $\frac{\,\nu\,}{2}$ 之後的特例，因此它的性質幾乎都可以由伽瑪分配推得，而能夠變動的參數只剩下一個，我們稱之為自由度。本篇先給出定義與四點說明，其中三點各附一個以[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)進行的證明: 任意伽瑪分配乘上 $\frac{2}{\,\beta\,}$ 之後即為卡方分配、彼此獨立的卡方分配相加之後自由度亦相加，以及標準常態分配的平方服從自由度為 $1$ 的卡方分配。
+卡方分配是[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)把比例參數固定為 $2$、形狀參數寫成 $\frac{\,\nu\,}{2}$ 之後的特例，因此它的性質幾乎都可以由伽瑪分配推得，而能夠變動的參數只剩下一個，我們稱之為自由度。本篇先給出定義與四點說明，其中三點各附一個以[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)進行的證明: 任意伽瑪分配乘上 $\frac{2}{\,\beta\,}$ 之後即為卡方分配、彼此獨立的卡方分配相加之後自由度亦相加，以及標準常態分配的平方服從自由度為 $1$ 的卡方分配。
 
-其後的兩道例題比較[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution)、卡方分配與伽瑪分配三者的機率函數與其間的關係。最後給出[科克蘭定理](#thm-cochran-theorem)，並以它說明常態母體之下樣本變異數的抽樣分配，以及樣本平均數與樣本變異數彼此獨立這兩件事。
+其後的兩道例題比較[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)、卡方分配與伽瑪分配三者的機率函數與其間的關係。最後給出[科克蘭定理](#thm-cochran-theorem)，並以它說明常態母體之下樣本變異數的抽樣分配，以及樣本平均數與樣本變異數彼此獨立這兩件事。
 
 ## 卡方分配
 
@@ -93,7 +93,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在 [Example 4.47](/teaching-topics/normal-probability-computation/#ex-normal-prob-4) 中，我們就曾經提過，$\mathrm{Gamma}\bigl(\alpha=\frac{1}{\,2\,},\ \beta=2\bigr)$ 分配事實上就是 $\chi^{2}(\nu=1)$ 分配。
+在 [Example 4.47](/lecture-notes/normal-probability-computation/#ex-normal-prob-4) 中，我們就曾經提過，$\mathrm{Gamma}\bigl(\alpha=\frac{1}{\,2\,},\ \beta=2\bigr)$ 分配事實上就是 $\chi^{2}(\nu=1)$ 分配。
 
 除此之外，我們也可以將任意的 Gamma 分配轉換為卡方分配，這在很多情境中 (特別是在樞紐量與檢定統計量的建構中) 非常有用，見下列敘述:
 
@@ -136,7 +136,7 @@ $$
 M_{\sssig Y}(t)=(1-2t)^{-\frac{2\alpha}{2}},\ t<\frac{1}{\,2\,}
 $$
 
-由 [mgf 的唯一性](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
 
 $$
 Y\sim\chi^{2}(2\alpha)
@@ -241,7 +241,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在 [Example 4.47](/teaching-topics/normal-probability-computation/#ex-normal-prob-4) 中我們曾經提過，標準常態分配的平方將服從 $\chi^{2}(\nu=1)$ 分配，是一個重要的固定結果，在此便給了一個相對正式的證明。
+在 [Example 4.47](/lecture-notes/normal-probability-computation/#ex-normal-prob-4) 中我們曾經提過，標準常態分配的平方將服從 $\chi^{2}(\nu=1)$ 分配，是一個重要的固定結果，在此便給了一個相對正式的證明。
 
 此外，將此性質與前述性質結合，我們可知，若 <span class="text-nowrap">$Z_1,\ldots,Z_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(0,1)$，</span>則
 
@@ -255,7 +255,7 @@ $$
 {: .topic-paren-item}
 
 <figure id="fig-chi-square-density-family" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/chi-square-density-family.svg" alt="一條向右延伸的水平座標軸，軸上有七個刻度，由左至右標為 0、10、20、30、40、50、60，軸的右端標 x。座標軸上方有三條密度曲線，都由座標軸左端附近升起，各自到達一個最高點之後向右緩緩落回並貼近座標軸。第一條是實線，最高點最靠左也最高，最高點正上方標 ν 等於 10；第二條是點線，最高點居中，高度次之，最高點正上方標 ν 等於 20；第三條是虛線，最高點最靠右也最低，形狀最寬最平，最高點正上方標 ν 等於 30。">
+  <img src="/images/lecture-notes/chi-square-density-family.svg" alt="一條向右延伸的水平座標軸，軸上有七個刻度，由左至右標為 0、10、20、30、40、50、60，軸的右端標 x。座標軸上方有三條密度曲線，都由座標軸左端附近升起，各自到達一個最高點之後向右緩緩落回並貼近座標軸。第一條是實線，最高點最靠左也最高，最高點正上方標 ν 等於 10；第二條是點線，最高點居中，高度次之，最高點正上方標 ν 等於 20；第三條是虛線，最高點最靠右也最低，形狀最寬最平，最高點正上方標 ν 等於 30。">
   <figcaption><span class="topic-figure__label">Fig. 4.6.</span> 三條密度曲線畫在同一組座標軸上，每一條的最高點上方標出它的自由度 <span class="text-nowrap">$\nu$。</span>$\nu$ 愈大，最高點愈往右移、也愈低，整條曲線隨之愈寬愈平坦。</figcaption>
 </figure>
 
@@ -664,7 +664,7 @@ $$
 
 </div>
 
-[^additive]: 讀者不應忘記，伽瑪分配的可加性所要求的前提，除了隨機變數間彼此要獨立，也要求比例參數相同，見 [Definition 4.14](/teaching-topics/gamma-distribution/#def-gamma-distribution) 之後的第三項性質；而卡方分配由於比例參數固定為 $2$ 的緣故，必定具有可加性。
+[^additive]: 讀者不應忘記，伽瑪分配的可加性所要求的前提，除了隨機變數間彼此要獨立，也要求比例參數相同，見 [Definition 4.14](/lecture-notes/gamma-distribution/#def-gamma-distribution) 之後的第三項性質；而卡方分配由於比例參數固定為 $2$ 的緣故，必定具有可加性。
 
 ## 本篇小結
 
@@ -676,7 +676,7 @@ $$
 
 [Theorem 4.23](#thm-cochran-theorem) 的科克蘭定理處理的是卡方分配的分解: 若一個 $\chi^{2}(\nu)$ 變數可以拆成一個 $\chi^{2}(\nu_1)$ 變數與另一個非負的變數之和，則後者必為 <span class="text-nowrap">$\chi^{2}(\nu-\nu_1)$，</span>而且兩者獨立。它的實務用途是把 $\frac{\sum_{i=1}^{n}(X_i-\mu)^{2}}{\sigma^{2}}$ 拆成 $\frac{n(\overline{X}-\mu)^{2}}{\sigma^{2}}$ 與 $\frac{(n-1)S^{2}}{\sigma^{2}}$ 兩項，前者服從 <span class="text-nowrap">$\chi^{2}(1)$、</span>整體服從 <span class="text-nowrap">$\chi^{2}(n)$，</span>由定理立得 $\frac{(n-1)S^{2}}{\sigma^{2}}\sim\chi^{2}(n-1)$ 以及 $\overline{X}\indep S^{2}$ 這兩個結果。科克蘭定理本身的證明遠超大學部的難度，本篇不證；但若把「$Q_2$ 非負」換成「$Q_1$ 與 $Q_2$ 獨立」，證明就只是動差母函數相除而已，[Example 4.53](#ex-chi-square-3) 即為此例。
 
-[下一篇](/teaching-topics/student-t-distribution/)給出[司徒頓 $t$ 分配](/teaching-topics/student-t-distribution/#def-t-distribution)，它由一個標準常態變數除以一個卡方變數開根號之後的比值構成，本篇的 $\overline{X}\indep S^{2}$ 與 $\frac{(n-1)S^{2}}{\sigma^{2}}\sim\chi^{2}(n-1)$ 正是該分配用在常態母體抽樣分配上的兩個前提。
+[下一篇](/lecture-notes/student-t-distribution/)給出[司徒頓 $t$ 分配](/lecture-notes/student-t-distribution/#def-t-distribution)，它由一個標準常態變數除以一個卡方變數開根號之後的比值構成，本篇的 $\overline{X}\indep S^{2}$ 與 $\frac{(n-1)S^{2}}{\sigma^{2}}\sim\chi^{2}(n-1)$ 正是該分配用在常態母體抽樣分配上的兩個前提。
 
 ## 參考文獻與延伸閱讀
 

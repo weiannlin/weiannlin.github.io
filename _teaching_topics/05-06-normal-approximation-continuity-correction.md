@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 5
 topic: 6
 order: 506
-permalink: /teaching-topics/normal-approximation-continuity-correction/
+permalink: /lecture-notes/normal-approximation-continuity-correction/
 date: 2026-08-15
 published: false
 excerpt: "中央極限定理要求樣本大小趨於無窮大，實務上不可能達成，但它所描述的是一個逐步逼近的過程: 只要 $n$ 足夠大，標準化之後的樣本平均數就足夠接近標準常態，因而可以直接以標準常態計算機率，這時稱標準常態分配是它的漸近分配。本篇先寫出漸近的記法，並交代仍應由中央極限定理出發的三個步驟，再說明在有限的 $n$ 之下反標準化不會受到退化或發散的困擾，於是樣本平均數與樣本和各有一個常態近似。接著把同一套作法用在五個具有可加性的常用分配上，分別給出其標準化形式與實務上常用的參數門檻。最後給出連續性校正: 以連續分配近似定義在整數上的離散分配時，區間的端點各挪動 $0.5$，並以樣本比例的例題比較校正前後的兩個答案。"
 ---
 
-[上一篇](/teaching-topics/weak-law-and-central-limit-theorem/)給出弱大數法則與[中央極限定理](/teaching-topics/weak-law-and-central-limit-theorem/#thm-central-limit-theorem)，並以例題說明標準化之後的樣本平均數如何[分配收斂](/teaching-topics/convergence-in-distribution/#def-converge-in-distribution)至標準常態。本篇處理的是同一件事在實務上的用法。
+[上一篇](/lecture-notes/weak-law-and-central-limit-theorem/)給出弱大數法則與[中央極限定理](/lecture-notes/weak-law-and-central-limit-theorem/#thm-central-limit-theorem)，並以例題說明標準化之後的樣本平均數如何[分配收斂](/lecture-notes/convergence-in-distribution/#def-converge-in-distribution)至標準常態。本篇處理的是同一件事在實務上的用法。
 
-中央極限定理所要求的條件之中，最難達成的是樣本大小趨於無窮大這一項，因為在實務上我們其實不可能達成這個要求。本篇先寫出「$n$ 足夠大時以標準常態計算」這個漸近的記法，並交代使用它時仍應由中央極限定理出發的三個步驟；接著說明在有限的 $n$ 之下反標準化不會受到退化或發散的困擾，因而樣本平均數與樣本和各有一個常態近似；再把同一套作法用在五個具有可加性的常用分配上，說明它們在什麼條件之下可以漸近為[常態分配](/teaching-topics/normal-distribution/#def-normal)。最後給出連續性校正，處理以連續分配近似離散分配時端點的位置。
+中央極限定理所要求的條件之中，最難達成的是樣本大小趨於無窮大這一項，因為在實務上我們其實不可能達成這個要求。本篇先寫出「$n$ 足夠大時以標準常態計算」這個漸近的記法，並交代使用它時仍應由中央極限定理出發的三個步驟；接著說明在有限的 $n$ 之下反標準化不會受到退化或發散的困擾，因而樣本平均數與樣本和各有一個常態近似；再把同一套作法用在五個具有可加性的常用分配上，說明它們在什麼條件之下可以漸近為[常態分配](/lecture-notes/normal-distribution/#def-normal)。最後給出連續性校正，處理以連續分配近似離散分配時端點的位置。
 
 ## 漸近分配與常態近似
 
@@ -101,7 +101,7 @@ $$
 Suppose that $X_1,X_2,\ldots,X_{48}$ are independent and identically distributed random variables, each following the uniform distribution <span class="text-nowrap">$\mathcal{U}(0,1)$.</span> What is the probability that $\sum_{i=1}^{48}X_i\geqslant26$?
 </div>
 
-令 $\lbrace X_i\rbrace_{i=1}^{\infty}\iidto\mathcal{U}(0,1)$，則由[均勻分配](/teaching-topics/uniform-distribution-integral-transform/#def-uniform-distribution)的期望值與變異數可知
+令 $\lbrace X_i\rbrace_{i=1}^{\infty}\iidto\mathcal{U}(0,1)$，則由[均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的期望值與變異數可知
 
 $$
 \mu=\frac{1}{\,2\,},\quad\sigma^{2}=\frac{1}{\,12\,}
@@ -180,7 +180,7 @@ $$
 
 因為上述的近似結果都是源自於樣本平均數或樣本和，故針對具有可加性的常用分配，在某些參數足夠大的時候，我們可以將其漸近為常態分配，再行求算其機率，見下列結果。
 
-(1) [二項分配](/teaching-topics/binomial-distribution/#def-binomial) <span lang="en">(binomial distribution)</span> 漸近常態分配: 若 <span class="text-nowrap">$X\sim\mathrm{Bin}(n,p)$，</span>則有
+(1) [二項分配](/lecture-notes/binomial-distribution/#def-binomial) <span lang="en">(binomial distribution)</span> 漸近常態分配: 若 <span class="text-nowrap">$X\sim\mathrm{Bin}(n,p)$，</span>則有
 {: .topic-paren-item}
 
 $$
@@ -208,7 +208,7 @@ $$
 
 </div>
 
-(2) [卜瓦松分配](/teaching-topics/poisson-process-and-distribution/#def-poisson-distribution) <span lang="en">(Poisson distribution)</span> 漸近常態分配: 若 <span class="text-nowrap">$X\sim\mathrm{Poi}(\lambda)$，</span>則有
+(2) [卜瓦松分配](/lecture-notes/poisson-process-and-distribution/#def-poisson-distribution) <span lang="en">(Poisson distribution)</span> 漸近常態分配: 若 <span class="text-nowrap">$X\sim\mathrm{Poi}(\lambda)$，</span>則有
 {: .topic-paren-item}
 
 $$
@@ -236,7 +236,7 @@ $$
 
 </div>
 
-(3) [負二項分配](/teaching-topics/negative-binomial-distribution/#def-negative-binomial) <span lang="en">(negative binomial distribution)</span> 漸近常態分配: 若 <span class="text-nowrap">$X\sim\mathcal{NB}(r,p)$，</span>則有
+(3) [負二項分配](/lecture-notes/negative-binomial-distribution/#def-negative-binomial) <span lang="en">(negative binomial distribution)</span> 漸近常態分配: 若 <span class="text-nowrap">$X\sim\mathcal{NB}(r,p)$，</span>則有
 {: .topic-paren-item}
 
 $$
@@ -264,7 +264,7 @@ $$
 
 </div>
 
-(4) [卡方分配](/teaching-topics/chi-squared-distribution/#def-chi-distribution) <span lang="en">(chi-square distribution)</span> 漸近常態分配: 若 <span class="text-nowrap">$X\sim\chi^{2}(\nu)$，</span>則有
+(4) [卡方分配](/lecture-notes/chi-squared-distribution/#def-chi-distribution) <span lang="en">(chi-square distribution)</span> 漸近常態分配: 若 <span class="text-nowrap">$X\sim\chi^{2}(\nu)$，</span>則有
 {: .topic-paren-item}
 
 $$
@@ -292,7 +292,7 @@ $$
 
 </div>
 
-(5) [伽瑪分配](/teaching-topics/gamma-distribution/#def-gamma-distribution) <span lang="en">(gamma distribution)</span> 漸近常態分配: 若 <span class="text-nowrap">$X\sim\mathrm{Gamma}(\alpha,\beta)$，</span>則有
+(5) [伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution) <span lang="en">(gamma distribution)</span> 漸近常態分配: 若 <span class="text-nowrap">$X\sim\mathrm{Gamma}(\alpha,\beta)$，</span>則有
 {: .topic-paren-item}
 
 $$
@@ -444,7 +444,7 @@ $$
 Y_1,Y_2,\ldots,Y_n\iidto\mathrm{Exp}(\lambda)
 $$
 
-則由[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution)的期望值與變異數可知
+則由[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)的期望值與變異數可知
 
 $$
 \mathbb{E}(Y_i)=\frac{1}{\,\lambda\,},\quad\mathrm{Var}(Y_i)=\frac{1}{\,\lambda^{2}\,}
@@ -485,7 +485,7 @@ Suppose that $X_1,X_2,\ldots,X_n$ are independent and identically distributed Be
 </ol>
 </div>
 
-(1) 由題意可知 <span class="text-nowrap">$X_1,X_2,\ldots,X_n\iidto\mathrm{Ber}(p)$，</span>則由[伯努利分配](/teaching-topics/bernoulli-trials-and-distribution/#def-bernoulli)的可加性可知
+(1) 由題意可知 <span class="text-nowrap">$X_1,X_2,\ldots,X_n\iidto\mathrm{Ber}(p)$，</span>則由[伯努利分配](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)的可加性可知
 {: .topic-paren-item}
 
 $$
@@ -611,7 +611,7 @@ $$
 X_1,X_2,\ldots,X_{300}\iidto\mathrm{Ber}(p=0.4)
 $$
 
-表示該次抽樣的 $300$ 個樣本，並令 $\hat{p}=\frac{1}{\,300\,}\sum_{i=1}^{300}X_i$ 為樣本比例，則由[線性組合的變異數](/teaching-topics/variance-of-linear-combination/#thm-covar-proper2)可得
+表示該次抽樣的 $300$ 個樣本，並令 $\hat{p}=\frac{1}{\,300\,}\sum_{i=1}^{300}X_i$ 為樣本比例，則由[線性組合的變異數](/lecture-notes/variance-of-linear-combination/#thm-covar-proper2)可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 

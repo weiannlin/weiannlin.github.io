@@ -4,5 +4,5 @@ layout: redirect
 sitemap: false
 permalink: /teaching-topics/probability-accumulates/
 redirect:
-  to: /teaching-topics/cumulative-distribution-functions/
+  to: /lecture-notes/cumulative-distribution-functions/
 ---

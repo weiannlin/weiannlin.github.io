@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 1
 topic: 9
 order: 109
-permalink: /teaching-topics/group-mixing-simpsons-paradox/
+permalink: /lecture-notes/group-mixing-simpsons-paradox/
 date: 2026-05-17
 published: true
 excerpt: "同一個比較在每個分組內都成立，混合後卻可能反轉。辛普森悖論說明，條件機率與全機率定理不只用來計算，也用來檢查比較是否公平。"
 ---
 
-[上一篇](/teaching-topics/total-probability-bayes-rule/)討論了分割與全機率定理。當樣本空間被切成幾個互斥且沒有遺漏的來源時，整體機率可以看成各來源條件機率的加權平均。
+[上一篇](/lecture-notes/total-probability-bayes-rule/)討論了分割與全機率定理。當樣本空間被切成幾個互斥且沒有遺漏的來源時，整體機率可以看成各來源條件機率的加權平均。
 
 先想一個看似直覺的問題。若一位外科醫師整體的手術成功率比另一位醫師更高，我們就應該選擇這位醫師替自己動手術嗎？這件事真的有那麼自然嗎？事實上，另一位醫師在每種病況中的手術成功率，或許都比這位整體成功率較高的醫師還要高。
 
@@ -21,11 +21,11 @@ excerpt: "同一個比較在每個分組內都成立，混合後卻可能反轉�
 
 **辛普森悖論 <span lang="en">(Simpson’s paradox)</span>** 則說明另一件事。即使每個分組裡的比較方向都相同，把分組混合起來以後，整體比較仍可能反轉。這種反轉來自混合權重的改變，使我們實際比較的對象也跟著改變。
 
-以下固定令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。令 $C_1,\ldots,C_k$ 為樣本空間的一組[分割](/teaching-topics/total-probability-bayes-rule/#definition-partition)，也就是這些事件彼此互斥，且合起來沒有遺漏。
+以下固定令 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間。令 $C_1,\ldots,C_k$ 為樣本空間的一組[分割](/lecture-notes/total-probability-bayes-rule/#definition-partition)，也就是這些事件彼此互斥，且合起來沒有遺漏。
 
 ## 混合後的機率是加權平均
 
-令 $A$ 表示某個處理方式，令 $Y$ 表示成功事件。假設 $\mathbb{P}(A)>0$，且只針對 $\mathbb{P}(A\cap C_i)>0$ 的分組計算條件成功率。若 $A$ 已經發生，則在分割 $C_1,\ldots,C_k$ 下，由於 [$\mathbb{P}(\,\cdot\,\mid A)$ 仍是一個機率測度](/teaching-topics/conditional-probability-information/#theorem-conditional-probability-measure)，可將[全機率定理](/teaching-topics/total-probability-bayes-rule/#theorem-law-of-total-probability)套用其上，再由[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)可得
+令 $A$ 表示某個處理方式，令 $Y$ 表示成功事件。假設 $\mathbb{P}(A)>0$，且只針對 $\mathbb{P}(A\cap C_i)>0$ 的分組計算條件成功率。若 $A$ 已經發生，則在分割 $C_1,\ldots,C_k$ 下，由於 [$\mathbb{P}(\,\cdot\,\mid A)$ 仍是一個機率測度](/lecture-notes/conditional-probability-information/#theorem-conditional-probability-measure)，可將[全機率定理](/lecture-notes/total-probability-bayes-rule/#theorem-law-of-total-probability)套用其上，再由[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)可得
 
 $$
 \begin{aligned}
@@ -149,7 +149,7 @@ Colin R. Blyth 在 1972 年把這個現象與決策理論中的 sure-thing princ
 
 在本篇的醫師案例中，分組內的成功率與混合後的成功率給出不同方向，差別來自低風險與高風險病患所占比例不同。也就是說，混合不是把資訊變少而已，它也會改變比較時使用的權重。
 
-[下一篇](/teaching-topics/bayes-rule-posterior-probability/)會把全機率定理反過來讀。若我們已經觀察到某個結果，該如何回頭判斷它最可能來自哪個來源？這會自然導向貝氏定理。
+[下一篇](/lecture-notes/bayes-rule-posterior-probability/)會把全機率定理反過來讀。若我們已經觀察到某個結果，該如何回頭判斷它最可能來自哪個來源？這會自然導向貝氏定理。
 
 ## 參考文獻與延伸閱讀
 

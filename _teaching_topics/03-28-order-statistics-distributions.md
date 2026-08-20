@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 28
 order: 328
-permalink: /teaching-topics/order-statistics-distributions/
+permalink: /lecture-notes/order-statistics-distributions/
 date: 2026-08-13
 published: false
 excerpt: "隨機樣本的順序統計量有一組固定的抽樣分配公式: 最小的 $Y_1$、最大的 $Y_n$、第 $i$ 個的 $Y_i$、任意兩個所組成的聯合 pdf，以及整組的聯合 pdf，全部都可以用原始分配的 pdf 與 cdf 寫出來，與原始分配究竟是哪一個完全沒有關係。本篇先證明最小與最大這兩式，作法是先由「所有樣本都大於」或「所有樣本都小於等於」求出 cdf，再對它微分；接著改由排列組合的觀點重新理解全部五式，把落在某一點左右兩側的樣本個數與各段的機率對應起來，再把同一段之內的順序除掉。最後以標準均勻分配為例，說明它的順序統計量為什麼會是貝塔分配，以及第 $i$ 個順序統計量的機率密度為什麼會集中在 $\\frac{i}{\\,n+1\\,}$ 的附近。"
 ---
 
-[上一篇](/teaching-topics/order-statistics/)以 [Definition 3.21](/teaching-topics/order-statistics/#def-order-stat) 給出[順序統計量](/teaching-topics/order-statistics/#def-order-stat)，並以三道例題說明在任意的聯合分配之中，求順序統計量的分配必須先把所有可能的大小順序逐一列出、各自轉換再行加總；而在隨機樣本的情況中，同分配的對稱性會使各種情況的結果完全相同，加總因而只剩下一個與階乘有關的倍數。
+[上一篇](/lecture-notes/order-statistics/)以 [Definition 3.21](/lecture-notes/order-statistics/#def-order-stat) 給出[順序統計量](/lecture-notes/order-statistics/#def-order-stat)，並以三道例題說明在任意的聯合分配之中，求順序統計量的分配必須先把所有可能的大小順序逐一列出、各自轉換再行加總；而在隨機樣本的情況中，同分配的對稱性會使各種情況的結果完全相同，加總因而只剩下一個與階乘有關的倍數。
 
-本篇便由這個對稱性出發，先以 [Theorem 3.24](#thm-order-stat-samp-dist-pdf) 列出隨機樣本之順序統計量的五個 pdf 並證明其中的前兩個，接著以四張圖改由排列組合的觀點重新理解這五個結果，最後以[標準均勻分配](/teaching-topics/uniform-distribution-integral-transform/#def-uniform-distribution)為例，說明它的順序統計量為什麼會是[貝塔分配](/teaching-topics/beta-function-and-distribution/#def-beta-distribution)。
+本篇便由這個對稱性出發，先以 [Theorem 3.24](#thm-order-stat-samp-dist-pdf) 列出隨機樣本之順序統計量的五個 pdf 並證明其中的前兩個，接著以四張圖改由排列組合的觀點重新理解這五個結果，最後以[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)為例，說明它的順序統計量為什麼會是[貝塔分配](/lecture-notes/beta-function-and-distribution/#def-beta-distribution)。
 
 ## 順序統計量的抽樣分配 pdf
 
@@ -199,7 +199,7 @@ $$
 順序統計量的抽樣分配規則，與其本身是什麼分配是**沒有關係**的，我們總是可以把順序統計量的 pdf 與 cdf 用原始分配的 pdf 和 cdf 來表示，且每個順序統計量的值域 $\mathcal{R}_{\sssig X}$ 應與原本的分配完全相同。事實上這是有原因的，我們可以用下面幾張圖來理解這件事情:
 
 <figure id="fig-order-stat-min" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/order-stat-min.svg" alt="一條向右延伸的水平數線，線上有一道垂直的分界線把數線切成左右兩段，分界線的頂端標 y 下標 1。左段的上方標 0，右段的上方標 n 減 1，是落在該段的樣本個數。數線下方有兩條虛線畫成的弧，左邊那條由數線左端彎到分界線，弧的下方標 F 下標 X 括號 y 下標 1；右邊那條由分界線彎到數線右端，弧的下方標 1 減 F 下標 X 括號 y 下標 1。">
+  <img src="/images/lecture-notes/order-stat-min.svg" alt="一條向右延伸的水平數線，線上有一道垂直的分界線把數線切成左右兩段，分界線的頂端標 y 下標 1。左段的上方標 0，右段的上方標 n 減 1，是落在該段的樣本個數。數線下方有兩條虛線畫成的弧，左邊那條由數線左端彎到分界線，弧的下方標 F 下標 X 括號 y 下標 1；右邊那條由分界線彎到數線右端，弧的下方標 1 減 F 下標 X 括號 y 下標 1。">
   <figcaption><span class="topic-figure__label">Fig. 3.24.</span> 切點 $y_1$ 把數線分成兩段，線上方的數字是落在該段的樣本個數，左段沒有樣本、右段有 $n-1$ 個，線下方的兩條虛線則各標出一個樣本落在該段的機率。</figcaption>
 </figure>
 
@@ -210,7 +210,7 @@ $$
 同理，我們可以畫出 (2) 式的示意圖如下:
 
 <figure id="fig-order-stat-max" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/order-stat-max.svg" alt="一條向右延伸的水平數線，線上有一道垂直的分界線把數線切成左右兩段，分界線的頂端標 y 下標 n。左段的上方標 n 減 1，右段的上方標 0，是落在該段的樣本個數。數線下方有兩條虛線畫成的弧，左邊那條由數線左端彎到分界線，弧的下方標 F 下標 X 括號 y 下標 n；右邊那條由分界線彎到數線右端，弧的下方標 1 減 F 下標 X 括號 y 下標 n。">
+  <img src="/images/lecture-notes/order-stat-max.svg" alt="一條向右延伸的水平數線，線上有一道垂直的分界線把數線切成左右兩段，分界線的頂端標 y 下標 n。左段的上方標 n 減 1，右段的上方標 0，是落在該段的樣本個數。數線下方有兩條虛線畫成的弧，左邊那條由數線左端彎到分界線，弧的下方標 F 下標 X 括號 y 下標 n；右邊那條由分界線彎到數線右端，弧的下方標 1 減 F 下標 X 括號 y 下標 n。">
   <figcaption><span class="topic-figure__label">Fig. 3.25.</span> 切點 $y_n$ 把數線分成兩段，左段有 $n-1$ 個樣本、右段沒有樣本，線下方的兩條虛線則各標出一個樣本落在該段的機率。</figcaption>
 </figure>
 
@@ -223,7 +223,7 @@ $$
 更一般化的情況會是，對於 $Y_i$ 來說，比 $Y_i$ 小的樣本有 $i-1$ 個，而比 $Y_i$ 大的樣本有 $n-i$ 個，如下圖:
 
 <figure id="fig-order-stat-ith" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/order-stat-ith.svg" alt="一條向右延伸的水平數線，線上有一道垂直的分界線把數線切成左右兩段，分界線的頂端標 y 下標 i。左段的上方標 i 減 1，右段的上方標 n 減 i，是落在該段的樣本個數。數線下方有兩條虛線畫成的弧，左邊那條由數線左端彎到分界線，弧的下方標 F 下標 X 括號 y 下標 i；右邊那條由分界線彎到數線右端，弧的下方標 1 減 F 下標 X 括號 y 下標 i。">
+  <img src="/images/lecture-notes/order-stat-ith.svg" alt="一條向右延伸的水平數線，線上有一道垂直的分界線把數線切成左右兩段，分界線的頂端標 y 下標 i。左段的上方標 i 減 1，右段的上方標 n 減 i，是落在該段的樣本個數。數線下方有兩條虛線畫成的弧，左邊那條由數線左端彎到分界線，弧的下方標 F 下標 X 括號 y 下標 i；右邊那條由分界線彎到數線右端，弧的下方標 1 減 F 下標 X 括號 y 下標 i。">
   <figcaption><span class="topic-figure__label">Fig. 3.26.</span> 切點 $y_i$ 把數線分成兩段，左段有 $i-1$ 個樣本、右段有 $n-i$ 個，線下方的兩條虛線則各標出一個樣本落在該段的機率。</figcaption>
 </figure>
 
@@ -254,7 +254,7 @@ $$
 用同樣的邏輯來理解 (4) 式，首先會得到下圖:
 
 <figure id="fig-order-stat-ij" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/order-stat-ij.svg" alt="一條向右延伸的水平數線，線上有兩道垂直的分界線把數線切成三段，左邊那道的頂端標 y 下標 i，右邊那道的頂端標 y 下標 j。三段的上方由左至右分別標 i 減 1、j 減 i 減 1 與 n 減 j，是落在該段的樣本個數。數線下方有三條虛線畫成的弧，各對應一段，弧的下方由左至右分別標 F 下標 X 括號 y 下標 i、F 下標 X 括號 y 下標 j 減 F 下標 X 括號 y 下標 i，以及 1 減 F 下標 X 括號 y 下標 j。">
+  <img src="/images/lecture-notes/order-stat-ij.svg" alt="一條向右延伸的水平數線，線上有兩道垂直的分界線把數線切成三段，左邊那道的頂端標 y 下標 i，右邊那道的頂端標 y 下標 j。三段的上方由左至右分別標 i 減 1、j 減 i 減 1 與 n 減 j，是落在該段的樣本個數。數線下方有三條虛線畫成的弧，各對應一段，弧的下方由左至右分別標 F 下標 X 括號 y 下標 i、F 下標 X 括號 y 下標 j 減 F 下標 X 括號 y 下標 i，以及 1 減 F 下標 X 括號 y 下標 j。">
   <figcaption><span class="topic-figure__label">Fig. 3.27.</span> 兩個切點 $y_i$ 與 $y_j$ 把數線分成三段，各段的樣本個數依序是 <span class="text-nowrap">$i-1$、</span>$j-i-1$ 與 <span class="text-nowrap">$n-j$，</span>線下方的三條虛線則各標出一個樣本落在該段的機率。</figcaption>
 </figure>
 
@@ -286,13 +286,13 @@ $$
 所謂的順序統計量，是在樣本觀察到觀察值之前就先排序好的，意思是指**不論等一下整組隨機樣本觀察到什麼數值，我們都只取大小排第 $i$ 的那一個**，在這個限制下，雖然還是有可能出現很極端的狀況 (例如: 所有的樣本數值都是 <span class="text-nowrap">$1$，</span>則排第 $i$ 的當然也是 $1$)，但這種狀況畢竟比較難發生，因此直觀上來說順序統計量具有較大機率密度的地方會被限縮在它的排序所在的位置，也就是下圖:
 
 <figure id="fig-order-stat-presorted" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/order-stat-presorted.svg" alt="一條機率密度曲線，由左端貼近橫軸開始，先陡升到偏左處的最高點，再向右緩降回貼近橫軸，形成左陡右緩的單峰形狀。橫軸每隔一小段畫一個刻度，只在 0、0.5 與 1 三處標出數字，縱軸不畫。">
+  <img src="/images/lecture-notes/order-stat-presorted.svg" alt="一條機率密度曲線，由左端貼近橫軸開始，先陡升到偏左處的最高點，再向右緩降回貼近橫軸，形成左陡右緩的單峰形狀。橫軸每隔一小段畫一個刻度，只在 0、0.5 與 1 三處標出數字，縱軸不畫。">
   <figcaption><span class="topic-figure__label">Fig. 3.28.</span> 順序統計量的機率密度集中在它的排序所在的位置，兩端則相對較低。</figcaption>
 </figure>
 
 由於標準均勻分配在 $0$ 到 $1$ 之間的機率密度都相同，故若進行抽樣的話，粗淺的平均而言，我們應該會在 $0$ 到 $1$ 之間均等地分散這 $n$ 個樣本 (也就是在 $[0, 1]$ 之間等距切 $n$ 刀，分成 $n+1$ 份)。
 
-那麼，在這 $n$ 個等分點中的第 $i$ 個的所在位置就應該在 $\frac{i}{\,n+1\,}$ 的位置，這正好是 $\mathrm{Beta}(i, n-i+1)$ 的[期望值](/teaching-topics/expectation/#def-expectation)所在，從貝塔分配的圖形也可以看出，其機率密度在 $\frac{i}{\,n+1\,}$ 的附近特別高，而兩端的位置則相對較低。這一點正好解釋了標準均勻分配的順序統計量會是貝塔分配的直觀意義。
+那麼，在這 $n$ 個等分點中的第 $i$ 個的所在位置就應該在 $\frac{i}{\,n+1\,}$ 的位置，這正好是 $\mathrm{Beta}(i, n-i+1)$ 的[期望值](/lecture-notes/expectation/#def-expectation)所在，從貝塔分配的圖形也可以看出，其機率密度在 $\frac{i}{\,n+1\,}$ 的附近特別高，而兩端的位置則相對較低。這一點正好解釋了標準均勻分配的順序統計量會是貝塔分配的直觀意義。
 
 ## 本篇小結
 
@@ -304,7 +304,7 @@ $$
 
 最後以標準均勻分配為例。它的 cdf 是 $F_{\sssig X}(x)$ $=$ <span class="text-nowrap">$x$，</span>代回上述各式即可得到 $Y_1$ 為 <span class="text-nowrap">$\mathrm{Beta}(1, n)$、</span>$Y_n$ 為 <span class="text-nowrap">$\mathrm{Beta}(n, 1)$、</span>$Y_i$ 為 <span class="text-nowrap">$\mathrm{Beta}(i, n-i+1)$，</span>以及 $Y_j - Y_i$ 為 $\mathrm{Beta}(j-i, n+i-j+1)$ 這幾個結果。這件事在直觀上也說得通: 順序統計量是在觀察到值之前就先排好序的，因此其機率密度會集中在它的排序所在的位置；而標準均勻分配的密度處處相同，$n$ 個樣本粗淺的平均而言會把 $[0, 1]$ 等距切成 $n+1$ 份，第 $i$ 個等分點落在 $\frac{i}{\,n+1\,}$ 的位置，這恰好就是 $\mathrm{Beta}(i, n-i+1)$ 的期望值所在。
 
-[下一篇](/teaching-topics/order-statistics-examples/)先以一道例題把本篇的五款 pdf 公式在標準均勻分配上實際用過一遍，一併求出全距的分配，並說明順序統計量還可以定義出樣本全距與樣本[中位數](/teaching-topics/median/#def-median)這一類的統計量，接著由指數分配的隨機樣本求最小值與最大值的分配；其後給出順序統計量的抽樣分配 cdf，最後以兩道離散型的例題作結。
+[下一篇](/lecture-notes/order-statistics-examples/)先以一道例題把本篇的五款 pdf 公式在標準均勻分配上實際用過一遍，一併求出全距的分配，並說明順序統計量還可以定義出樣本全距與樣本[中位數](/lecture-notes/median/#def-median)這一類的統計量，接著由指數分配的隨機樣本求最小值與最大值的分配；其後給出順序統計量的抽樣分配 cdf，最後以兩道離散型的例題作結。
 
 ## 參考文獻與延伸閱讀
 

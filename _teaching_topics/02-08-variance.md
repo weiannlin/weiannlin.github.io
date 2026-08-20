@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 2
 topic: 8
 order: 208
-permalink: /teaching-topics/variance/
+permalink: /lecture-notes/variance/
 date: 2026-08-06
 published: true
 excerpt: "變異數是離差平方的期望值，用來衡量一個隨機變數平均的分散程度: 離散型以 pmf 對各個離差平方加權求和，連續型以 pdf 加權積分。實際計算時多改用平方的期望值減期望值的平方，也就是 $\\mathrm{Var}(X)=\\mathbb{E}(X^{2})-[\\mathbb{E}(X)]^{2}$；同一套作法延伸到函數 $g(X)$ 便得到函數變異數。變異數恆為非負，對隨機變數平移一個常數不改變它的值，伸縮 $a$ 倍則使它成為原先的 $a^{2}$ 倍。"
 ---
 
-[上一篇](/teaching-topics/properties-of-expectation/)把[期望值](/teaching-topics/expectation/#def-expectation)的計算推廣到[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)的函數 $g(X)$，並給出期望值與線性組合可以交換的性質。期望值指出一個分配的聚集中心，但只有中心並不足以描述一個分配。兩個期望值完全相同的隨機變數，取值散開的程度可以相差很多。
+[上一篇](/lecture-notes/properties-of-expectation/)把[期望值](/lecture-notes/expectation/#def-expectation)的計算推廣到[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的函數 $g(X)$，並給出期望值與線性組合可以交換的性質。期望值指出一個分配的聚集中心，但只有中心並不足以描述一個分配。兩個期望值完全相同的隨機變數，取值散開的程度可以相差很多。
 
 本篇介紹用來衡量這種分散程度的量數，也就是變異數。以下先分別對離散型與連續型給出定義，再導出一個便於計算的公式，接著把它延伸到函數 $g(X)$，然後列出變異數的兩項性質，並由其中的複合性質設定出三個常用的子性質，最後以一張比較圖說明變異數的大小在一個分配上的意義，並以兩道例題示範計算。
 
@@ -111,7 +111,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-由 [Definition 2.7](#def-variance) 與 [Theorem 2.10](/teaching-topics/properties-of-expectation/#thm-expectation-linearity) 可知
+由 [Definition 2.7](#def-variance) 與 [Theorem 2.10](/lecture-notes/properties-of-expectation/#thm-expectation-linearity) 可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -199,12 +199,12 @@ $$
 
 </div>
 
-[Theorem 2.12](#thm-variance-of-function) 與 [Definition 2.7](#def-variance) 之間的關係，就如同 [Theorem 2.9](/teaching-topics/properties-of-expectation/#thm-expectation-of-function) 與 [Definition 2.6](/teaching-topics/expectation/#def-expectation) 之間一樣，是一種延伸的性質，但卻給我們相當程度的方便。
+[Theorem 2.12](#thm-variance-of-function) 與 [Definition 2.7](#def-variance) 之間的關係，就如同 [Theorem 2.9](/lecture-notes/properties-of-expectation/#thm-expectation-of-function) 與 [Definition 2.6](/lecture-notes/expectation/#def-expectation) 之間一樣，是一種延伸的性質，但卻給我們相當程度的方便。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-稍後將會提到[**隨機變數變換 <span lang="en">(transformation of random variable)</span>**](/teaching-topics/one-to-one-transformations/) 的技巧，在轉換出 $g(X)$ 的分配後，再計算其期望值與變異數。然而，其結果與這裡的延伸性質卻是殊途同歸，屆時更能看出此二個性質給我們的方便之處。
+稍後將會提到[**隨機變數變換 <span lang="en">(transformation of random variable)</span>**](/lecture-notes/one-to-one-transformations/) 的技巧，在轉換出 $g(X)$ 的分配後，再計算其期望值與變異數。然而，其結果與這裡的延伸性質卻是殊途同歸，屆時更能看出此二個性質給我們的方便之處。
 
 </div>
 
@@ -262,7 +262,7 @@ $$
 \mathbb{E}\bigl(X^{2}\bigr)=\sigma_{\sssig X}^{2}+\mu_{\sssig X}^{2}
 $$
 
-這個結果在很多統計推論上相當有用，因為許多隨機變數的機率分配雖然母數已知，但其二階原動差並不好算，若有此結果，則我們就能夠繞過繁複的計算。其中，$\mathbb{E}(X^{r})$ 稱作 $X$ 的 $r$ 階原動差，是由卡爾・皮爾森 (Karl Pearson, 1857-1936) 所創立之[**動差系統 (moment system)**](/teaching-topics/moment-system/#def-population-moment) 中的一員，本章稍後介紹[**動差母函數 <span lang="en">(moment generating function, mgf)</span>**](/teaching-topics/moment-generating-functions/#def-mgf) 時會對此詳加介紹。
+這個結果在很多統計推論上相當有用，因為許多隨機變數的機率分配雖然母數已知，但其二階原動差並不好算，若有此結果，則我們就能夠繞過繁複的計算。其中，$\mathbb{E}(X^{r})$ 稱作 $X$ 的 $r$ 階原動差，是由卡爾・皮爾森 (Karl Pearson, 1857-1936) 所創立之[**動差系統 (moment system)**](/lecture-notes/moment-system/#def-population-moment) 中的一員，本章稍後介紹[**動差母函數 <span lang="en">(moment generating function, mgf)</span>**](/lecture-notes/moment-generating-functions/#def-mgf) 時會對此詳加介紹。
 
 </div>
 
@@ -324,7 +324,7 @@ $$
 
 </div>
 
-(2) 由 [Theorem 2.12](#thm-variance-of-function) 及 [Theorem 2.10](/teaching-topics/properties-of-expectation/#thm-expectation-linearity) 可知
+(2) 由 [Theorem 2.12](#thm-variance-of-function) 及 [Theorem 2.10](/lecture-notes/properties-of-expectation/#thm-expectation-linearity) 可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -362,7 +362,7 @@ $$
 
 [Theorem 2.13](#thm-variance-properties) 中，(1) 被稱為變異數的**非負性**，這個性質相當直觀，因為變異數是用來衡量一個隨機變數的離散程度的母數，故變異數非負是可以想見的。
 
-此外，與 [Theorem 2.10](/teaching-topics/properties-of-expectation/#thm-expectation-linearity) 相仿，[Theorem 2.13](#thm-variance-properties) 的 (2) 是一個複合性質的定理，我們可以透過設定 $g(\cdot)$ 與 $a, b$ 的值，來得到許多有用的子性質，見以下設定。
+此外，與 [Theorem 2.10](/lecture-notes/properties-of-expectation/#thm-expectation-linearity) 相仿，[Theorem 2.13](#thm-variance-properties) 的 (2) 是一個複合性質的定理，我們可以透過設定 $g(\cdot)$ 與 $a, b$ 的值，來得到許多有用的子性質，見以下設定。
 
 (1) **[ 設定 $a=0$ ]**
 {: .topic-paren-item}
@@ -418,7 +418,7 @@ $$
 下面我們便以圖示來理解「變異數的大小」在一個隨機變數的分配上的意義。
 
 <figure id="fig-variance-comparison" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/variance-same-mean-different-spread.svg" alt="兩條機率密度曲線畫在同一組座標軸上，峰位都落在同一點，該點以虛線向下延伸並標為 μ_X。較寬而矮的一條曲線標示變異數較大，在離該點較遠的地方仍有相當的高度；較窄而高的一條曲線標示變異數較小，高度集中在該點附近。">
+  <img src="/images/lecture-notes/variance-same-mean-different-spread.svg" alt="兩條機率密度曲線畫在同一組座標軸上，峰位都落在同一點，該點以虛線向下延伸並標為 μ_X。較寬而矮的一條曲線標示變異數較大，在離該點較遠的地方仍有相當的高度；較窄而高的一條曲線標示變異數較小，高度集中在該點附近。">
   <figcaption><span class="topic-figure__label">Fig. 2.11.</span> 二個期望值完全相同的隨機變數之機率分配，共用同一組座標軸: 較寬的一條變異數較大，較窄的一條變異數較小。</figcaption>
 </figure>
 
@@ -440,7 +440,7 @@ Suppose that $X$ denotes the number of accidents occurring in Ankang City in a w
 </ol>
 </div>
 
-(2) 由[前一小題](/teaching-topics/expectation/#ex-weekly-accidents)已求得 $\mathbb{E}(X)=4.5$，而
+(2) 由[前一小題](/lecture-notes/expectation/#ex-weekly-accidents)已求得 $\mathbb{E}(X)=4.5$，而
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -516,7 +516,7 @@ $$
 </ol>
 </div>
 
-(4) 承[前三小題](/teaching-topics/computing-probabilities-from-cdf/#ex-power-demand-density)的密度函數，先算出期望值為
+(4) 承[前三小題](/lecture-notes/computing-probabilities-from-cdf/#ex-power-demand-density)的密度函數，先算出期望值為
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -588,7 +588,7 @@ $$
 
 直接由定義計算並不方便，[Theorem 2.11](#thm-variance-formula) 給出 $\mathrm{Var}(X)=\mathbb{E}(X^{2})-[\mathbb{E}(X)]^{2}$ 這條公式，也就是平方的期望值減期望值的平方；同一套作法延伸到函數，便得到 [Theorem 2.12](#thm-variance-of-function) 的函數變異數。至於 $\sigma_{\sssig X}^{2}=\mathbb{E}(X^{2})-\mu_{\sssig X}^{2}$ 移項後所得的 $\mathbb{E}(X^{2})=\sigma_{\sssig X}^{2}+\mu_{\sssig X}^{2}$ 這層關係，讓我們得以繞過二階原動差的計算。
 
-[Theorem 2.13](#thm-variance-properties) 的兩項性質，其一是非負性，其二是複合性質 $\mathrm{Var}[ag(X)+b]=a^{2}\mathrm{Var}[g(X)]$ 這一條；由後者設定 $a$、$b$ 與 $g(\cdot)$，依序得到常數不具變異性、平移不變性與平方伸縮性三個子性質。[Fig. 2.11](#fig-variance-comparison) 畫出期望值相同而變異數不同的兩個分配，變異數大者在離期望值較遠處仍有較大的密度。[Example 2.15 <span lang="en">(Continued)</span>](#ex-weekly-accidents-variance) 與 [Example 2.10 <span lang="en">(Continued)</span>](#ex-power-demand-variance) 分別以離散型的加總與連續型的積分示範計算公式的用法。[下一篇](/teaching-topics/variance-standard-deviation/)繼續以例題示範變異數的求算，並介紹期望值使平方離差的期望值達到最小的性質、泰勒近似，以及[標準差](/teaching-topics/variance-standard-deviation/#def-standard-deviation)。
+[Theorem 2.13](#thm-variance-properties) 的兩項性質，其一是非負性，其二是複合性質 $\mathrm{Var}[ag(X)+b]=a^{2}\mathrm{Var}[g(X)]$ 這一條；由後者設定 $a$、$b$ 與 $g(\cdot)$，依序得到常數不具變異性、平移不變性與平方伸縮性三個子性質。[Fig. 2.11](#fig-variance-comparison) 畫出期望值相同而變異數不同的兩個分配，變異數大者在離期望值較遠處仍有較大的密度。[Example 2.15 <span lang="en">(Continued)</span>](#ex-weekly-accidents-variance) 與 [Example 2.10 <span lang="en">(Continued)</span>](#ex-power-demand-variance) 分別以離散型的加總與連續型的積分示範計算公式的用法。[下一篇](/lecture-notes/variance-standard-deviation/)繼續以例題示範變異數的求算，並介紹期望值使平方離差的期望值達到最小的性質、泰勒近似，以及[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)。
 
 ## 參考文獻與延伸閱讀
 

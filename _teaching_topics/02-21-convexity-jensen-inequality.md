@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 2
 topic: 21
 order: 221
-permalink: /teaching-topics/convexity-jensen-inequality/
+permalink: /lecture-notes/convexity-jensen-inequality/
 date: 2026-08-06
 published: true
 excerpt: "凸函數的定義是: 函數在任兩點所連之弦上的值，不低於同一位置的函數值；凹函數則恰好相反。延森不等式據此比較兩個動差: 若 $g$ 為凸函數則 $\\mathbb{E}[g(X)]\\geqslant g[\\mathbb{E}(X)]$，若 $h$ 為凹函數則 $\\mathbb{E}[h(X)]\\leqslant h[\\mathbb{E}(X)]$，兩邊都是動差，不再是尾機率的上界。由它可以直接得到算術平均數不小於幾何平均數、幾何平均數不小於調和平均數，期望值與中位數的距離不超過一個標準差，以及 KL 訊息數非負這三個結果。"
 ---
 
-[上一篇](/teaching-topics/probability-inequalities-examples/)介紹車諾夫不等式，以[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)為工具，替尾機率取得比[柴比雪夫不等式](/teaching-topics/probability-inequalities/#thm-chebyshev)更緊的上界。從[馬可夫不等式](/teaching-topics/probability-inequalities/#thm-markov)一路看下來，這幾篇的不等式都在做同一件事，由少量的動差資訊出發，替一個尾機率找出上界。
+[上一篇](/lecture-notes/probability-inequalities-examples/)介紹車諾夫不等式，以[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)為工具，替尾機率取得比[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)更緊的上界。從[馬可夫不等式](/lecture-notes/probability-inequalities/#thm-markov)一路看下來，這幾篇的不等式都在做同一件事，由少量的動差資訊出發，替一個尾機率找出上界。
 
-本篇的延森不等式換了一個比較的對象。它比較的是 $\mathbb{E}\bigl[g(X)\bigr]$ 與 $g\bigl[\mathbb{E}(X)\bigr]$，兩邊都是動差，不再是尾機率的上界，而決定這兩者大小的，是函數 $g$ 的凸性或凹性。以下先給出凸函數與凹函數的定義，再以圖示說明凸函數的切線落在函數下方、凹函數的切線落在函數上方；接著給出延森不等式與其證明，並說明它與「先平均再取函數值」和「先取函數值再平均」誰大誰小的關係；最後以三道例題示範它在算術幾何調和三種平均數、[期望值](/teaching-topics/expectation/#def-expectation)與[中位數](/teaching-topics/median/#def-median)之距離，以及 KL 訊息數非負這三個問題上的用法。
+本篇的延森不等式換了一個比較的對象。它比較的是 $\mathbb{E}\bigl[g(X)\bigr]$ 與 $g\bigl[\mathbb{E}(X)\bigr]$，兩邊都是動差，不再是尾機率的上界，而決定這兩者大小的，是函數 $g$ 的凸性或凹性。以下先給出凸函數與凹函數的定義，再以圖示說明凸函數的切線落在函數下方、凹函數的切線落在函數上方；接著給出延森不等式與其證明，並說明它與「先平均再取函數值」和「先取函數值再平均」誰大誰小的關係；最後以三道例題示範它在算術幾何調和三種平均數、[期望值](/lecture-notes/expectation/#def-expectation)與[中位數](/lecture-notes/median/#def-median)之距離，以及 KL 訊息數非負這三個問題上的用法。
 
 <div id="def-convex-concave" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 2.20 (凸函數與凹函數, convex and concave function)</div>
@@ -99,7 +99,7 @@ $$
 凸函數具有一個特別的性質，即**凸函數上任一點，其切線必定在該函數下方**，而凹函數則與之相反，即**凹函數上任一點，其切線必定在該函數上方**，這兩個性質我們以 [Fig. 2.21](#fig-convexity-tangent) 的上下兩個面板理解之。
 
 <figure id="fig-convexity-tangent" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/convexity-tangent-lines.svg" alt="上下並排的兩個面板，共用同一段橫軸範圍與同一個縱向比例尺，每個面板只畫一條橫軸，橫軸末端標為 x，沒有縱軸。上面的面板有一條開口向上的曲線，末端標為 g(x)；曲線上有一個實心點，標為 (a, g(a))，通過該點另有一條直線，標為 ℓ(x)，這條直線只在該實心點與曲線相接，其餘各處都在曲線下方。下面的面板有一條開口向下的曲線，末端標為 h(x)；曲線上有一個實心點，標為 (a, h(a))，通過該點的直線同樣標為 ℓ(x)，這條直線只在該實心點與曲線相接，其餘各處都在曲線上方。">
+  <img src="/images/lecture-notes/convexity-tangent-lines.svg" alt="上下並排的兩個面板，共用同一段橫軸範圍與同一個縱向比例尺，每個面板只畫一條橫軸，橫軸末端標為 x，沒有縱軸。上面的面板有一條開口向上的曲線，末端標為 g(x)；曲線上有一個實心點，標為 (a, g(a))，通過該點另有一條直線，標為 ℓ(x)，這條直線只在該實心點與曲線相接，其餘各處都在曲線下方。下面的面板有一條開口向下的曲線，末端標為 h(x)；曲線上有一個實心點，標為 (a, h(a))，通過該點的直線同樣標為 ℓ(x)，這條直線只在該實心點與曲線相接，其餘各處都在曲線上方。">
   <figcaption><span class="topic-figure__label">Fig. 2.21.</span> 上下兩個面板共用同一段橫軸範圍與同一個縱向比例尺。上面的面板是凸函數 <span class="text-nowrap">$g(x)$，</span>通過 $(a, g(a))$ 的切線 $\ell(x)$ 除該點之外都在曲線下方；下面的面板是凹函數 <span class="text-nowrap">$h(x)$，</span>通過 $(a, h(a))$ 的切線 $\ell(x)$ 除該點之外都在曲線上方。</figcaption>
 </figure>
 
@@ -112,7 +112,7 @@ $$
 <div id="thm-jensen" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.36 (延森不等式, Jensen’s inequality)</div>
 
-若 $X$ 為一[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)，且 $\mathbb{E}(X)$ 為有限，則有以下二個性質:
+若 $X$ 為一[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)，且 $\mathbb{E}(X)$ 為有限，則有以下二個性質:
 
 (1) 若令 $g(\cdot)$ 為一凸函數，則有
 {: .topic-paren-item}
@@ -133,7 +133,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-(1) 令 $g(\cdot)$ 為一個凸函數。依 [Definition 2.20](#def-convex-concave)，$g$ 的定義域為一個區間，記為 $D$；$g(X)$ 要有定義，$X$ 必須以機率 $1$ 落在 $D$ 之內，因此 $\mathbb{E}(X)$ 只可能是 $D$ 的端點或內點。若 $\mathbb{E}(X)$ 恰為 $D$ 的端點，則 $X-\mathbb{E}(X)$ 以機率 $1$ 不改變正負號，故 $\lvert X-\mathbb{E}(X)\rvert$ 為非負隨機變數而其期望值為 $0$，對任意 $\varepsilon>0$ 由[馬可夫不等式](/teaching-topics/probability-inequalities/#thm-markov)可得 $\mathbb{P}\bigl(\lvert X-\mathbb{E}(X)\rvert\geqslant\varepsilon\bigr)=0$，故 $X$ 以機率 $1$ 等於 $\mathbb{E}(X)$，不等式兩側相等；以下設 $\mathbb{E}(X)$ 落在 $D$ 的內部。
+(1) 令 $g(\cdot)$ 為一個凸函數。依 [Definition 2.20](#def-convex-concave)，$g$ 的定義域為一個區間，記為 $D$；$g(X)$ 要有定義，$X$ 必須以機率 $1$ 落在 $D$ 之內，因此 $\mathbb{E}(X)$ 只可能是 $D$ 的端點或內點。若 $\mathbb{E}(X)$ 恰為 $D$ 的端點，則 $X-\mathbb{E}(X)$ 以機率 $1$ 不改變正負號，故 $\lvert X-\mathbb{E}(X)\rvert$ 為非負隨機變數而其期望值為 $0$，對任意 $\varepsilon>0$ 由[馬可夫不等式](/lecture-notes/probability-inequalities/#thm-markov)可得 $\mathbb{P}\bigl(\lvert X-\mathbb{E}(X)\rvert\geqslant\varepsilon\bigr)=0$，故 $X$ 以機率 $1$ 等於 $\mathbb{E}(X)$，不等式兩側相等；以下設 $\mathbb{E}(X)$ 落在 $D$ 的內部。
 {: .topic-paren-item}
 
 [Fig. 2.21](#fig-convexity-tangent) 畫的是可微的情形，凸函數卻未必處處可微，以下改用不要求可微的支撐直線。凸函數在其定義域的內部，每一點 $a$ 都有一條**支撐直線 <span lang="en">(supporting line)</span>**，也就是通過 $\bigl(a,\,g(a)\bigr)$ 而在整個 $D$ 上都不高於 $g$ 的直線。取通過 $\bigl(\mathbb{E}(X),\,g[\mathbb{E}(X)]\bigr)$ 的支撐直線，並記其斜率為 $s$，則有
@@ -241,7 +241,7 @@ $$
 [Fig. 2.22](#fig-jensen-convex) 的上下兩個面板便將上述的直觀化約成圖形來理解。
 
 <figure id="fig-jensen-convex" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/jensen-inequality.svg" alt="上下並排的兩個面板，各畫一條橫軸，末端標為 x，沒有縱軸，軸上三個刻度由左至右標為 X_1、E(X) 與 X_2。上面的面板有一條開口向上的曲線，右端標為 g(x)，曲線上三個實心點由左至右標為 (X_1, g(X_1))、(E(X), g[E(X)]) 與 (X_2, g(X_2))；最左與最右兩點間的直線除兩端外都在曲線上方，直線上另有一個實心點，標為 (E(X), E[g(X)])，高於曲線上的中間那一點，兩者以一段垂直虛線相連。下面的面板結構相同，曲線開口向下、右端標為 h(x)，各點標示改用 h，直線除兩端外都在曲線下方，直線上那一點低於曲線上的中間那一點，兩者同樣以垂直虛線相連。">
+  <img src="/images/lecture-notes/jensen-inequality.svg" alt="上下並排的兩個面板，各畫一條橫軸，末端標為 x，沒有縱軸，軸上三個刻度由左至右標為 X_1、E(X) 與 X_2。上面的面板有一條開口向上的曲線，右端標為 g(x)，曲線上三個實心點由左至右標為 (X_1, g(X_1))、(E(X), g[E(X)]) 與 (X_2, g(X_2))；最左與最右兩點間的直線除兩端外都在曲線上方，直線上另有一個實心點，標為 (E(X), E[g(X)])，高於曲線上的中間那一點，兩者以一段垂直虛線相連。下面的面板結構相同，曲線開口向下、右端標為 h(x)，各點標示改用 h，直線除兩端外都在曲線下方，直線上那一點低於曲線上的中間那一點，兩者同樣以垂直虛線相連。">
   <figcaption><span class="topic-figure__label">Fig. 2.22.</span> 上下兩個面板共用同一段橫軸範圍與同一個縱向比例尺，圖示對應的是 $X$ 只取 $X_1$ 與 $X_2$ 兩個值、機率各為 $\frac{1}{2}$ 的分配，$\mathbb{E}(X)$ 因而落在兩點的正中間。上面的面板是凸函數 <span class="text-nowrap">$g(x)$，</span>$\mathbb{E}[g(X)]$ 是連接 $(X_1, g(X_1))$ 與 $(X_2, g(X_2))$ 之弦的中點，落在曲線上的 $g[\mathbb{E}(X)]$ 之上；下面的面板是凹函數 <span class="text-nowrap">$h(x)$，</span>弦的中點 $\mathbb{E}[h(X)]$ 落在曲線上的 $h[\mathbb{E}(X)]$ 之下，不等號的方向恰好相反。兩者的落差都是圖中垂直虛線的長度。</figcaption>
 </figure>
 
@@ -385,7 +385,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者應該還記得，在[坎特利不等式的筆記](/teaching-topics/probability-inequalities/#note-median-mean-distance)中，我們便曾提過這個性質，即一個機率分配的中位數與期望值之距離，並不會超過一個[標準差](/teaching-topics/variance-standard-deviation/#def-standard-deviation)；此外，這題的證明中，還使用到 [Theorem 2.17](/teaching-topics/median/#thm-median-minimizes-absolute-deviation) 的性質，即中位數是使得 $\mathbb{E}\bigl[\lvert X-a\rvert\bigr]$ 達到最小值之 $a$ 值，是一個非常有意思的題目。
+讀者應該還記得，在[坎特利不等式的筆記](/lecture-notes/probability-inequalities/#note-median-mean-distance)中，我們便曾提過這個性質，即一個機率分配的中位數與期望值之距離，並不會超過一個[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)；此外，這題的證明中，還使用到 [Theorem 2.17](/lecture-notes/median/#thm-median-minimizes-absolute-deviation) 的性質，即中位數是使得 $\mathbb{E}\bigl[\lvert X-a\rvert\bigr]$ 達到最小值之 $a$ 值，是一個非常有意思的題目。
 
 </div>
 
@@ -419,7 +419,7 @@ Show that $K(f_{0}, f_{1})\geqslant0$.
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-題目只說 $f_{0}$ 與 $f_{1}$ 是兩個[機率密度函數](/teaching-topics/probability-density-functions/#def-pdf)，並未說明兩者取正值的範圍之間有什麼關係。上面的積分範圍寫成 $\lbrace f_{0}>0\rbrace$，是因為在 $f_{0}(x)=0$ 之處，被積函數帶有 $f_{0}(x)$ 這個為零的因子，依慣例整項取 $0$，這些位置對積分沒有貢獻。
+題目只說 $f_{0}$ 與 $f_{1}$ 是兩個[機率密度函數](/lecture-notes/probability-density-functions/#def-pdf)，並未說明兩者取正值的範圍之間有什麼關係。上面的積分範圍寫成 $\lbrace f_{0}>0\rbrace$，是因為在 $f_{0}(x)=0$ 之處，被積函數帶有 $f_{0}(x)$ 這個為零的因子，依慣例整項取 $0$，這些位置對積分沒有貢獻。
 
 下面的解答令 $W=\frac{\,f_{1}(X)\,}{\,f_{0}(X)\,}$，再對凸函數 $g(y)=-\ln y$ 使用 [Theorem 2.36](#thm-jensen)。依 [Definition 2.20](#def-convex-concave)，凸函數的定義域為一個區間，而 $g$ 的定義域是 $(0,\infty)$；要把定理用在 $W$ 之上，$W$ 必須以機率 $1$ 落在這個區間之內。若 $f_{1}$ 在 $\lbrace f_{0}>0\rbrace$ 之中某一塊區域上為零，而該區域在 $f_{0}$ 之下的機率為正，$W$ 便以正機率取到 $0$，$g(W)$ 在該處沒有定義，這條定理便無從引用。故以下另設在 $f_{0}(x)>0$ 之處皆有 $f_{1}(x)>0$。有了這個前提，$W>0$ 以機率 $1$ 成立，<span class="text-nowrap">$\mathbb{E}\_{0}(W)>0$，</span>$-\ln\bigl[\mathbb{E}\_{0}(W)\bigr]$ 才有定義；而 $\mathbb{E}\_{0}(W)$ 等於 $\int_{\lbrace f_{0}>0\rbrace}f_{1}(x)\,dx$，不超過 $1$，本來就為有限，正是 [Theorem 2.36](#thm-jensen) 前提所要求的期望值為有限。
 
@@ -536,7 +536,7 @@ $$
 
 [Theorem 2.36](#thm-jensen) 的延森不等式，把上述性質由兩點的加權平均推廣到期望值。凸函數滿足 $\mathbb{E}[g(X)]\geqslant g[\mathbb{E}(X)]$，凹函數滿足 $\mathbb{E}[h(X)]\leqslant h[\mathbb{E}(X)]$。它與前面幾篇的不等式不同之處在於，兩側比較的都是動差，而不是尾機率的上界。證明的作法是在 $(\mathbb{E}(X), g[\mathbb{E}(X)])$ 這一點取支撐直線，先把 $g(X)$ 縮小 (或放大) 為一條直線，再對整條直線取期望值，此時一次項因 $\mathbb{E}[X-\mathbb{E}(X)]=0$ 而消去，只留下常數項；證明只用到支撐直線，不要求 $g$ 可微，而 $g$ 於該點可微時，這條支撐直線就是切線。[Fig. 2.22](#fig-jensen-convex) 的上下兩個面板則以兩點分配畫出這個落差，弦的中點就是 $\mathbb{E}[g(X)]$，曲線上的點就是 $g[\mathbb{E}(X)]$。
 
-三道例題示範了它的用法。[Example 2.44](#ex-am-gm-hm) 對取值機率均等的隨機變數用凹函數 $\ln x$，一次得到算幾不等式，再把算幾不等式用到 $\frac{1}{a_i}$ 上便補上調和平均數；[Example 2.45](#ex-mean-median-distance) 先用凸函數 $\lvert x-m\rvert$，再用凹函數 $\sqrt{x}$，兩次延森加上中位數使絕對離差期望值最小的性質，得到期望值與中位數相距不超過一個標準差；[Example 2.46](#ex-kullback-leibler-nonnegative) 令 $W=f_{1}(X)/f_{0}(X)$ 之後對凸函數 $-\ln$ 用延森，證得 KL 訊息數非負。機率不等式在只有少量動差資訊時能給出大致的機率範圍，[下一篇](/teaching-topics/empirical-rule-bell-shaped-distributions/)轉而介紹另一種來自經驗的判斷方式，也就是經驗法則。
+三道例題示範了它的用法。[Example 2.44](#ex-am-gm-hm) 對取值機率均等的隨機變數用凹函數 $\ln x$，一次得到算幾不等式，再把算幾不等式用到 $\frac{1}{a_i}$ 上便補上調和平均數；[Example 2.45](#ex-mean-median-distance) 先用凸函數 $\lvert x-m\rvert$，再用凹函數 $\sqrt{x}$，兩次延森加上中位數使絕對離差期望值最小的性質，得到期望值與中位數相距不超過一個標準差；[Example 2.46](#ex-kullback-leibler-nonnegative) 令 $W=f_{1}(X)/f_{0}(X)$ 之後對凸函數 $-\ln$ 用延森，證得 KL 訊息數非負。機率不等式在只有少量動差資訊時能給出大致的機率範圍，[下一篇](/lecture-notes/empirical-rule-bell-shaped-distributions/)轉而介紹另一種來自經驗的判斷方式，也就是經驗法則。
 
 ## 參考文獻與延伸閱讀
 

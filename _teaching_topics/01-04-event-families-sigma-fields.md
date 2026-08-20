@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 1
 topic: 4
 order: 104
-permalink: /teaching-topics/event-families-sigma-fields/
+permalink: /lecture-notes/event-families-sigma-fields/
 date: 2026-05-05
 published: true
 excerpt: '機率公理要建立在哪裡？本篇依序介紹域、$\sigma$-域、可測空間與機率空間，說明哪些事件可以被測度機率，以及一個機率測度至少應滿足的三大公理。'
 ---
 
-[上一篇](/teaching-topics/probability-assignment-classical-geometric/)說明了古典機率、幾何機率、客觀機率與主觀機率等指定方式，也看到這些定義各有其對應的問題，因此無法作為一個嚴謹的數學學科而有較深入的發展。俄羅斯數學家柯爾莫哥洛夫 (Andrey N. Kolmogorov) 便由此提出**機率公理 <span lang="en">(probability axioms)</span>** 作為機率論的基石，他曾說: 「機率論作為數學學科，可以、而且應該，從公理開始建設，和幾何、代數的路一樣。」
+[上一篇](/lecture-notes/probability-assignment-classical-geometric/)說明了古典機率、幾何機率、客觀機率與主觀機率等指定方式，也看到這些定義各有其對應的問題，因此無法作為一個嚴謹的數學學科而有較深入的發展。俄羅斯數學家柯爾莫哥洛夫 (Andrey N. Kolmogorov) 便由此提出**機率公理 <span lang="en">(probability axioms)</span>** 作為機率論的基石，他曾說: 「機率論作為數學學科，可以、而且應該，從公理開始建設，和幾何、代數的路一樣。」
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -50,7 +50,7 @@ excerpt: '機率公理要建立在哪裡？本篇依序介紹域、$\sigma$-域�
 
 [Definition 1.15](#definition-field) 在定義機率公理方面，有幾個意義與需要注意的事情:
 
-(1) 在[隨機實驗、樣本空間與事件](/teaching-topics/random-experiments-sample-space-events/#事件與事件的發生)中我們曾經提過，所謂事件就是指樣本空間的子集合。從這個角度切入可以發現，所謂的域，事實上就是由各式各樣的事件所構成的集合。換言之，這個特殊的集合刻畫了可能發生的各種事件。
+(1) 在[隨機實驗、樣本空間與事件](/lecture-notes/random-experiments-sample-space-events/#事件與事件的發生)中我們曾經提過，所謂事件就是指樣本空間的子集合。從這個角度切入可以發現，所謂的域，事實上就是由各式各樣的事件所構成的集合。換言之，這個特殊的集合刻畫了可能發生的各種事件。
 {: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -98,10 +98,10 @@ $$
 \end{gathered}
 $$
 
-在[有限樣本空間中的事件數量](/teaching-topics/random-experiments-sample-space-events/#有限樣本空間中的事件數量)中我們曾經提過，這個符號代表的是 $S$ 的**冪集合 (power set)**，也就是由 $S$ 的所有可能子集所構成的集合。
+在[有限樣本空間中的事件數量](/lecture-notes/random-experiments-sample-space-events/#有限樣本空間中的事件數量)中我們曾經提過，這個符號代表的是 $S$ 的**冪集合 (power set)**，也就是由 $S$ 的所有可能子集所構成的集合。
 {: .topic-paren-cont}
 
-(5) 由條件 (2)、(3) 再搭配[狄摩根律](/teaching-topics/event-set-operations/#狄摩根律)，可知域對有限交集也具有封閉性: 若 <span class="text-nowrap">$A_1,\ldots,A_n\in\mathcal{F}$，</span>則 $A_1^{\prime},\ldots,A_n^{\prime}\in\mathcal{F}$，故
+(5) 由條件 (2)、(3) 再搭配[狄摩根律](/lecture-notes/event-set-operations/#狄摩根律)，可知域對有限交集也具有封閉性: 若 <span class="text-nowrap">$A_1,\ldots,A_n\in\mathcal{F}$，</span>則 $A_1^{\prime},\ldots,A_n^{\prime}\in\mathcal{F}$，故
 {: .topic-paren-item}
 
 $$
@@ -126,7 +126,7 @@ $$
 
 </div>
 
-(6) 若 $S$ 為有限樣本空間，佈於其上最大可能的域 $\mathcal{F}=2^{S}$ 也必定是有限的。此時 [Definition 1.15](#definition-field) 中的域已經相當夠用，因為我們只需要考慮至多有限個集合的情況。但在[離散樣本空間與連續樣本空間](/teaching-topics/random-experiments-sample-space-events/#離散樣本空間與連續樣本空間)中我們已經很清楚地看見，樣本空間可能是無窮的。這種時候，僅考慮有限聯集與有限交集的話，$\mathcal{F}$ 很可能不足以涵蓋所有可能的情況，因此我們要將條件 (3) 的性質進行推廣，而成底下的定義。
+(6) 若 $S$ 為有限樣本空間，佈於其上最大可能的域 $\mathcal{F}=2^{S}$ 也必定是有限的。此時 [Definition 1.15](#definition-field) 中的域已經相當夠用，因為我們只需要考慮至多有限個集合的情況。但在[離散樣本空間與連續樣本空間](/lecture-notes/random-experiments-sample-space-events/#離散樣本空間與連續樣本空間)中我們已經很清楚地看見，樣本空間可能是無窮的。這種時候，僅考慮有限聯集與有限交集的話，$\mathcal{F}$ 很可能不足以涵蓋所有可能的情況，因此我們要將條件 (3) 的性質進行推廣，而成底下的定義。
 {: .topic-paren-item}
 
 ## $\sigma$-域
@@ -356,7 +356,7 @@ $$
 事實上，探討何謂機率，要從隨機實驗本身講起；隨之而來，便會想到隨機實驗的可能結果，也就是樣本空間 $S$；再來是想到在這些結果中，誰需要被測度機率，也就是 $\mathcal{F}$；最後是測度機率的方式，或是測度機率的結果，也就是 $\mathbb{P}(\cdot)$。從這裡來思考就會發現，$(S,\mathcal{F},\mathbb{P})$ 構築出整套機率的前因後果，因此才被稱為「機率空間」或「機率三要素」。
 </div>
 
-(4) 讀者應該記得，在[互斥與加集](/teaching-topics/event-set-operations/#互斥與加集)中，我們曾經提過有限加集與可數加集，而 Axiom 3 的前提正好與之相同，故 Axiom 3 可以寫為: 若 <span class="text-nowrap">$A_1,A_2,\ldots\in\mathcal{F}$，</span>且 $A_i\cap A_j=\varnothing$ 對所有 $i\neq j$ 成立，則
+(4) 讀者應該記得，在[互斥與加集](/lecture-notes/event-set-operations/#互斥與加集)中，我們曾經提過有限加集與可數加集，而 Axiom 3 的前提正好與之相同，故 Axiom 3 可以寫為: 若 <span class="text-nowrap">$A_1,A_2,\ldots\in\mathcal{F}$，</span>且 $A_i\cap A_j=\varnothing$ 對所有 $i\neq j$ 成立，則
 {: .topic-paren-item}
 
 $$
@@ -377,7 +377,7 @@ $$
 | 可測空間 | $(S,\mathcal{F})$ | 指出在哪裡測度機率 |
 | 機率空間 | $(S,\mathcal{F},\mathbb{P})$ | 加入滿足三大公理的機率測度 |
 
-藉由機率公理，我們能夠衍伸出一些相當有用的機率等式與不等式。[下一篇](/teaching-topics/probability-rules-from-axioms/)要談機率公理及其推論，便從單一事件所構成的一些式子開始說明起。
+藉由機率公理，我們能夠衍伸出一些相當有用的機率等式與不等式。[下一篇](/lecture-notes/probability-rules-from-axioms/)要談機率公理及其推論，便從單一事件所構成的一些式子開始說明起。
 
 ## 參考文獻與延伸閱讀
 

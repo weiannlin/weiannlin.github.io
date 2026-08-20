@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 1
 topic: 7
 order: 107
-permalink: /teaching-topics/independence-and-conditional-independence/
+permalink: /lecture-notes/independence-and-conditional-independence/
 date: 2026-05-17
 published: true
 excerpt: "獨立性描述資訊進來後機率仍然不變的情形。本篇依序介紹獨立事件、互斥與獨立的關係、列聯表、完全獨立與成對獨立，以及可靠度的串聯與並聯系統，最後補充條件獨立。"
 ---
 
-[上一篇](/teaching-topics/conditional-probability-information/)的結尾提到，資訊的流入對某件事情發生的機率，影響可能為正、也可能為負；而比較特別的情況，是某一事件的資訊流入對另一事件毫無影響，這種狀況便是兩事件彼此獨立。本篇就從這個概念的正式定義說起。
+[上一篇](/lecture-notes/conditional-probability-information/)的結尾提到，資訊的流入對某件事情發生的機率，影響可能為正、也可能為負；而比較特別的情況，是某一事件的資訊流入對另一事件毫無影響，這種狀況便是兩事件彼此獨立。本篇就從這個概念的正式定義說起。
 
 ## 獨立事件
 
@@ -47,7 +47,7 @@ $$
 
 上述的條件其實都是在說，給定發生 $A$ (或 $B$) 的條件之下，發生 $B$ (或 $A$) 的條件機率，與沒有給定此條件時相同；換言之，即**發生 $A$ <span class="text-nowrap">(或 $B$)</span> 並不影響 $B$ <span class="text-nowrap">(或 $A$)</span> 發生的機率**，這個概念即為二者**獨立**。
 
-由[條件機率的定義](/teaching-topics/conditional-probability-information/#definition-conditional-probability)及[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)可知，若 (1) 或 (2) 成立，我們當然能夠順勢得到 (3)。
+由[條件機率的定義](/lecture-notes/conditional-probability-information/#definition-conditional-probability)及[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)可知，若 (1) 或 (2) 成立，我們當然能夠順勢得到 (3)。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -97,7 +97,7 @@ $$
 
 </div>
 
-則由[加法原理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)可知
+則由[加法原理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -208,7 +208,7 @@ $$
 
 以下依序求解。
 
-**(1)** 由[加法原理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)可知
+**(1)** 由[加法原理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -281,7 +281,7 @@ $$
 
 ## 互斥與獨立
 
-我們在稍早[介紹互斥](/teaching-topics/event-set-operations/#definition-disjoint-events)時曾經提過，獨立與互斥實為兩個不同的定義，因為獨立需要使用機率，而互斥僅是就集合的角度在探討兩者的關係。
+我們在稍早[介紹互斥](/lecture-notes/event-set-operations/#definition-disjoint-events)時曾經提過，獨立與互斥實為兩個不同的定義，因為獨立需要使用機率，而互斥僅是就集合的角度在探討兩者的關係。
 
 事實上，大部分的時候，互斥的事件都不獨立，其直觀意義亦很容易理解，因為兩事件若互斥，則可將其視為**必定不會同時發生**，這在機率上應該是一個很強的互相影響關係。
 
@@ -324,13 +324,13 @@ Prove the following two statements, assuming that every conditioning event has p
 
 以下依序求解。
 
-**(1)** 由[全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)可知
+**(1)** 由[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)可知
 
 $$
 \mathbb{P}(A\cap B)=\mathbb{P}(A)-\mathbb{P}(A\cap B^{\prime})
 $$
 
-且由於 $\mathbb{P}(B)=1$，故知 $\mathbb{P}(B^{\prime})=1-\mathbb{P}(B)=0$。由[單調性](/teaching-topics/probability-rules-from-axioms/#theorem-monotonicity)可知
+且由於 $\mathbb{P}(B)=1$，故知 $\mathbb{P}(B^{\prime})=1-\mathbb{P}(B)=0$。由[單調性](/lecture-notes/probability-rules-from-axioms/#theorem-monotonicity)可知
 
 $$
 \mathbb{P}(A\cap B^{\prime})\leqslant\mathbb{P}(B^{\prime})=0
@@ -356,7 +356,7 @@ $$
 
 </div>
 
-又由[條件機率之定義](/teaching-topics/conditional-probability-information/#definition-conditional-probability)可知，對所有 $A\in\mathcal{F}$ 皆有
+又由[條件機率之定義](/lecture-notes/conditional-probability-information/#definition-conditional-probability)可知，對所有 $A\in\mathcal{F}$ 皆有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -458,7 +458,7 @@ $$
 
 </div>
 
-在上述表格中，表內的機率如 $\mathbb{P}(A_1\cap B_1)$ 等，稱作**聯合機率 <span lang="en">(joint probability)</span>**，而表邊的機率如 $\mathbb{P}(A_1)$ 等，稱作**邊際機率 <span lang="en">(marginal probability)</span>**，這二者的概念與分割及全機率定理具有非常高度的相關，我們將在[下一篇](/teaching-topics/total-probability-bayes-rule/)與後續章節詳細介紹。
+在上述表格中，表內的機率如 $\mathbb{P}(A_1\cap B_1)$ 等，稱作**聯合機率 <span lang="en">(joint probability)</span>**，而表邊的機率如 $\mathbb{P}(A_1)$ 等，稱作**邊際機率 <span lang="en">(marginal probability)</span>**，這二者的概念與分割及全機率定理具有非常高度的相關，我們將在[下一篇](/lecture-notes/total-probability-bayes-rule/)與後續章節詳細介紹。
 
 ## 獨立事件的餘事件
 
@@ -481,7 +481,7 @@ $$
 
 **(1)** 由 $A\indep B$ 可知 $\mathbb{P}(A\cap B)=\mathbb{P}(A)\,\mathbb{P}(B)$ 成立。
 
-又由[全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)可知
+又由[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -537,7 +537,7 @@ $$
 
 **(3)** 由 $A\indep B$ 可知 $\mathbb{P}(A\cap B)=\mathbb{P}(A)\,\mathbb{P}(B)$ 成立。
 
-又由[狄摩根律](/teaching-topics/event-set-operations/#theorem-de-morgan)與餘事件公式可知
+又由[狄摩根律](/lecture-notes/event-set-operations/#theorem-de-morgan)與餘事件公式可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -756,7 +756,7 @@ $$
 **串聯系統**:
 
 <figure class="topic-figure topic-figure--compact">
-  <img src="/images/teaching-topics/independence-series-system.svg" alt="串聯系統示意圖。元件 1 與元件 2 沿同一條線路前後相接。">
+  <img src="/images/lecture-notes/independence-series-system.svg" alt="串聯系統示意圖。元件 1 與元件 2 沿同一條線路前後相接。">
   <figcaption><span class="topic-figure__label">Fig. 1.18.</span> 兩個元件的串聯系統。</figcaption>
 </figure>
 
@@ -780,7 +780,7 @@ $$
 **並聯系統**:
 
 <figure class="topic-figure topic-figure--compact">
-  <img src="/images/teaching-topics/independence-parallel-system.svg" alt="並聯系統示意圖。線路分成上下兩條支線，分別通過元件 1 與元件 2 後再會合。">
+  <img src="/images/lecture-notes/independence-parallel-system.svg" alt="並聯系統示意圖。線路分成上下兩條支線，分別通過元件 1 與元件 2 後再會合。">
   <figcaption><span class="topic-figure__label">Fig. 1.19.</span> 兩個元件的並聯系統。</figcaption>
 </figure>
 
@@ -825,7 +825,7 @@ A system consists of three components $1$, $2$, and $3$, arranged as in the figu
 </div>
 
 <figure class="topic-figure topic-figure--medium">
-  <img src="/images/teaching-topics/independence-three-component-system.svg" alt="三元件系統示意圖。元件 1 位於上方支線，元件 2 與 3 串接於下方支線，兩條支線並聯。">
+  <img src="/images/lecture-notes/independence-three-component-system.svg" alt="三元件系統示意圖。元件 1 位於上方支線，元件 2 與 3 串接於下方支線，兩條支線並聯。">
   <figcaption><span class="topic-figure__label">Fig. 1.20.</span> 元件 $2$ 與 $3$ 串聯後，再與元件 $1$ 並聯。</figcaption>
 </figure>
 
@@ -882,7 +882,7 @@ $$
 
 </div>
 
-**(2)** 由題目敘述可知 $\mathbb{P}(A_2^{\prime}\mid A_3^{\prime})=\mathbb{P}(A_3^{\prime}\mid A_2^{\prime})=0.4$，則由[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)可知
+**(2)** 由題目敘述可知 $\mathbb{P}(A_2^{\prime}\mid A_3^{\prime})=\mathbb{P}(A_3^{\prime}\mid A_2^{\prime})=0.4$，則由[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -902,13 +902,13 @@ $$
 
 </div>
 
-再由[狄摩根律](/teaching-topics/event-set-operations/#theorem-de-morgan)可知
+再由[狄摩根律](/lecture-notes/event-set-operations/#theorem-de-morgan)可知
 
 $$
 \mathbb{P}(A_2\cup A_3)=1-\mathbb{P}(A_2^{\prime}\cap A_3^{\prime})=0.96
 $$
 
-且由[加法原理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)可知
+且由[加法原理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -964,14 +964,14 @@ Consider the power transmission system composed of the components shown in the f
 </div>
 
 <figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/independence-power-grid-system.svg" alt="電力傳輸系統示意圖。0.8 元件先串聯，接著兩個 0.9 元件並聯，最後 0.9、0.7、0.8 三個元件並聯。">
+  <img src="/images/lecture-notes/independence-power-grid-system.svg" alt="電力傳輸系統示意圖。0.8 元件先串聯，接著兩個 0.9 元件並聯，最後 0.9、0.7、0.8 三個元件並聯。">
   <figcaption><span class="topic-figure__label">Fig. 1.21.</span> 電力傳輸系統，方塊內的數字為各元件正常運作的機率。</figcaption>
 </figure>
 
 假設本題中，所有元件之可運作事件彼此獨立。由圖可知，題目為三個子系統的串聯，分別為
 
 <figure class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/independence-power-grid-subsystems.svg" alt="三個子系統示意圖。第一個為單一 0.8 元件，第二個為兩個 0.9 元件並聯，第三個為 0.9、0.7、0.8 三個元件並聯。">
+  <img src="/images/lecture-notes/independence-power-grid-subsystems.svg" alt="三個子系統示意圖。第一個為單一 0.8 元件，第二個為兩個 0.9 元件並聯，第三個為 0.9、0.7、0.8 三個元件並聯。">
   <figcaption><span class="topic-figure__label">Fig. 1.22.</span> 依串並聯結構拆解出的三個子系統。</figcaption>
 </figure>
 
@@ -1073,7 +1073,7 @@ $$
 
 假設在 $C_1$ 下，$A$ 與 $B$ 各自發生的條件機率都是 $9/10$；在 $C_2$ 下，$A$ 與 $B$ 各自發生的條件機率都是 $1/10$。再假設在 $C_1$ 與 $C_2$ 下，$A$ 與 $B$ 都條件獨立。
 
-於是由[全機率定理](/teaching-topics/probability-rules-from-axioms/#theorem-total-and-addition)可得
+於是由[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)可得
 
 $$
 \mathbb{P}(A)=\mathbb{P}(B)
@@ -1109,7 +1109,7 @@ $$
 
 </div>
 
-再由[乘法原理](/teaching-topics/conditional-probability-information/#theorem-18)與條件獨立性可得
+再由[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)與條件獨立性可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -1186,7 +1186,7 @@ Naive Bayes 分類法常用條件獨立近似。給定類別 $C_k$ 後，若可�
 | [可靠度](#可靠度與串並聯系統) | 串聯與並聯系統的成功機率 |
 | [Definition 1.22](#definition-conditional-independence) | 條件獨立 |
 
-接著若樣本空間被一組互斥且沒有遺漏的事件切開，便可把整體事件拆成幾個來源來加總。這會導向[分割與全機率定理](/teaching-topics/total-probability-bayes-rule/)。
+接著若樣本空間被一組互斥且沒有遺漏的事件切開，便可把整體事件拆成幾個來源來加總。這會導向[分割與全機率定理](/lecture-notes/total-probability-bayes-rule/)。
 
 ## 參考文獻與延伸閱讀
 

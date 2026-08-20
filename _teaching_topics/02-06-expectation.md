@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 2
 topic: 6
 order: 206
-permalink: /teaching-topics/expectation/
+permalink: /lecture-notes/expectation/
 date: 2026-08-05
 published: true
 excerpt: "期望值是隨機變數的加權平均: 離散型以機率質量函數對各個取值加權求和，連續型以機率密度函數對取值加權積分，兩者都以絕對收斂為存在的條件。它是一個分配的聚集中心，在質點的類比之下即為物理學的質心，也是使平方離差的期望值達到最小的那個位置，故亦稱為母體平均數。若隨機變數非負，期望值還可以改由尾機率求得，離散型加總 $\\mathbb{P}(X\\geqslant x)$，連續型則積分 $\\mathbb{P}(X>x)$。"
 ---
 
-[上一篇](/teaching-topics/mixed-random-variables/)談混合型[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)與分解定理。至此，離散型、連續型與混合型的機率函數都已經介紹完畢，一個隨機變數的分配可以由 pmf、pdf 或 cdf 完整描述。
+[上一篇](/lecture-notes/mixed-random-variables/)談混合型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)與分解定理。至此，離散型、連續型與混合型的機率函數都已經介紹完畢，一個隨機變數的分配可以由 pmf、pdf 或 cdf 完整描述。
 
 完整的分配包含了全部的資訊，但在許多場合，我們只需要幾個數字就能掌握一個分配的主要特色。本篇介紹其中最基本的一個，期望值。以下先分別給出離散型與連續型的定義，說明它作為加權平均與分配聚集中心的意義，接著以四個例題示範計算，最後介紹非負隨機變數的期望值如何改由尾機率求得。
 
@@ -113,7 +113,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在稍後[**變異數 <span lang="en">(variance)</span>**](/teaching-topics/variance/#def-variance) 的小節我們可以知道，前述的這種期望值是衡量 $X$ 與 $a$ 這個位置的平均離散程度，然而由於期望值是一個隨機變數的**聚集中心**，故直觀意義上來說，**平均而言所有 $X$ 與期望值 $\mu_{\sssig X}$ 以平方衡量的離散程度是最小的**。
+在稍後[**變異數 <span lang="en">(variance)</span>**](/lecture-notes/variance/#def-variance) 的小節我們可以知道，前述的這種期望值是衡量 $X$ 與 $a$ 這個位置的平均離散程度，然而由於期望值是一個隨機變數的**聚集中心**，故直觀意義上來說，**平均而言所有 $X$ 與期望值 $\mu_{\sssig X}$ 以平方衡量的離散程度是最小的**。
 
 </div>
 
@@ -430,7 +430,7 @@ $$
 </ol>
 </div>
 
-(2) 由[第 (1) 小題](/teaching-topics/mixed-random-variables/#ex-component-lifetime)已知 $Y$ 為混合型隨機變數，其分配為
+(2) 由[第 (1) 小題](/lecture-notes/mixed-random-variables/#ex-component-lifetime)已知 $Y$ 為混合型隨機變數，其分配為
 {: .topic-paren-item}
 
 $$
@@ -475,7 +475,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[混合型隨機變數](/teaching-topics/mixed-random-variables/)的期望值計算，便是很直覺地將離散部分與連續部分分開計算即可；但事實上，混合型隨機變數的期望值，亦會是離散部分的隨機變數期望值 <span class="text-nowrap">$\mu_{\sssig d}$，</span>與連續部分的隨機變數期望值 $\mu_{\sssig c}$ 之加權平均，權重正好是 $\alpha$ 與 $1-\alpha$，此即
+[混合型隨機變數](/lecture-notes/mixed-random-variables/)的期望值計算，便是很直覺地將離散部分與連續部分分開計算即可；但事實上，混合型隨機變數的期望值，亦會是離散部分的隨機變數期望值 <span class="text-nowrap">$\mu_{\sssig d}$，</span>與連續部分的隨機變數期望值 $\mu_{\sssig c}$ 之加權平均，權重正好是 $\alpha$ 與 $1-\alpha$，此即
 
 $$
 \mu_{\sssig X}=\alpha\,\mu_{\sssig d}+(1-\alpha)\,\mu_{\sssig c}
@@ -570,7 +570,7 @@ $$
 我們是先將 $\mathbb{P}(X=k)$ 沿著 $k$ 軸，從 $k=x$ 開始加總至 $\infty$，再沿著 $x$ 軸，從 $1$ 開始加總至 $\infty$，從圖形上而言，可以[如下](#fig-double-sum-original-order)理解。
 
 <figure id="fig-double-sum-original-order" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/double-sum-original-order.svg" alt="雙重加總的示意圖。橫軸為 k、縱軸為 x，圖中的黑點是滿足 k 大於等於 x 的整數數對，斜的虛線 k 等於 x 是它們的邊界。每一列都有一支由 k 等於 x 出發向右延伸的實線箭頭，表示先沿 k 軸加總；圖形右側另有一支向上的虛線箭頭，表示再沿 x 軸由 1 加總至無窮大。">
+  <img src="/images/lecture-notes/double-sum-original-order.svg" alt="雙重加總的示意圖。橫軸為 k、縱軸為 x，圖中的黑點是滿足 k 大於等於 x 的整數數對，斜的虛線 k 等於 x 是它們的邊界。每一列都有一支由 k 等於 x 出發向右延伸的實線箭頭，表示先沿 k 軸加總；圖形右側另有一支向上的虛線箭頭，表示再沿 x 軸由 1 加總至無窮大。">
   <figcaption><span class="topic-figure__label">Fig. 2.9.</span> 雙重加總 $\sum_{x=1}^{\infty}\sum_{k=x}^{\infty}\mathbb{P}(X=k)$ 的加總順序: 先固定 $x$，沿 $k$ 軸由 $k=x$ 加總至 $\infty$，再沿 $x$ 軸由 $1$ 加總至 $\infty$。圖中的實線箭頭是內層的 $\sum_{k=x}^{\infty}$，虛線箭頭是外層的 $\sum_{x=1}^{\infty}$。</figcaption>
 </figure>
 
@@ -583,7 +583,7 @@ $$
 其加總順序則對應到[下圖](#fig-double-sum-swapped-order)，沿 $x$ 軸先開始加總，從 $x=1$ 到 $x=k$，再來才沿 $k$ 軸進行加總，從 $k=1$ 到 $\infty$。
 
 <figure id="fig-double-sum-swapped-order" class="topic-figure topic-figure--wide">
-  <img src="/images/teaching-topics/double-sum-swapped-order.svg" alt="換序後的雙重加總示意圖。橫軸為 k、縱軸為 x，黑點與前一張圖相同，斜的虛線 x 等於 k 是它們的邊界。每一行都有一支由 x 等於 1 向上延伸至 x 等於 k 的實線箭頭，表示先沿 x 軸加總；圖形下方另有一支向右的虛線箭頭，表示再沿 k 軸由 1 加總至無窮大。">
+  <img src="/images/lecture-notes/double-sum-swapped-order.svg" alt="換序後的雙重加總示意圖。橫軸為 k、縱軸為 x，黑點與前一張圖相同，斜的虛線 x 等於 k 是它們的邊界。每一行都有一支由 x 等於 1 向上延伸至 x 等於 k 的實線箭頭，表示先沿 x 軸加總；圖形下方另有一支向右的虛線箭頭，表示再沿 k 軸由 1 加總至無窮大。">
   <figcaption><span class="topic-figure__label">Fig. 2.10.</span> 換序後的加總 $\sum_{k=1}^{\infty}\sum_{x=1}^{k}\mathbb{P}(X=k)$: 先固定 $k$，沿 $x$ 軸由 $1$ 加總至 $k$，再沿 $k$ 軸由 $1$ 加總至 $\infty$。圖中的實線箭頭是內層的 $\sum_{x=1}^{k}$，虛線箭頭是外層的 <span class="text-nowrap">$\sum_{k=1}^{\infty}$。</span>所加總的黑點與 <a href="#fig-double-sum-original-order">Fig. 2.9</a> 完全相同。</figcaption>
 </figure>
 
@@ -629,7 +629,7 @@ $$
 
 四個例題示範了不同型態的計算。[Example 2.15](#ex-weekly-accidents) 是有限個質點的直接加權，[Example 2.3 <span lang="en">(Continued)</span>](#ex-geometric-expectation) 是無窮級數，並列出級數錯位相減、微分與加總交換，以及尾機率三種做法，[Example 2.6 <span lang="en">(Continued)</span>](#ex-quadratic-density-expectation) 是連續型的積分，[Example 2.14 <span lang="en">(Continued)</span>](#ex-component-lifetime-expectation) 則是混合型，把離散部分與連續部分分開計算，其結果亦為 $\mu_{\sssig d}$ 與 $\mu_{\sssig c}$ 以 $\alpha$ 與 $1-\alpha$ 為權重的加權平均。
 
-[Theorem 2.8](#thm-expectation-tail-sum) 給出非負隨機變數期望值的另一種表示，離散型為尾機率 $\mathbb{P}(X\geqslant x)$ 的加總，連續型為 $1-F_{\sssig X}(x)$ 的積分。它的證明是把雙重加總與二重積分的順序交換，[Fig. 2.9](#fig-double-sum-original-order) 與 [Fig. 2.10](#fig-double-sum-swapped-order) 畫出了交換前後所加總的同一組數對。[下一篇](/teaching-topics/properties-of-expectation/)討論隨機變數之函數的期望值，以及期望值本身的性質。
+[Theorem 2.8](#thm-expectation-tail-sum) 給出非負隨機變數期望值的另一種表示，離散型為尾機率 $\mathbb{P}(X\geqslant x)$ 的加總，連續型為 $1-F_{\sssig X}(x)$ 的積分。它的證明是把雙重加總與二重積分的順序交換，[Fig. 2.9](#fig-double-sum-original-order) 與 [Fig. 2.10](#fig-double-sum-swapped-order) 畫出了交換前後所加總的同一組數對。[下一篇](/lecture-notes/properties-of-expectation/)討論隨機變數之函數的期望值，以及期望值本身的性質。
 
 ## 參考文獻與延伸閱讀
 

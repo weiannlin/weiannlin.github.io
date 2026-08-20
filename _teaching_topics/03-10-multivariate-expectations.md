@@ -7,15 +7,15 @@ category: "機率概論"
 chapter: 3
 topic: 10
 order: 310
-permalink: /teaching-topics/multivariate-expectations/
+permalink: /lecture-notes/multivariate-expectations/
 date: 2026-08-12
 published: false
 excerpt: "本篇把期望值推廣到二元的情形: 離散型以 joint pmf 作雙重加總，連續型以 joint pdf 作二重積分，被加總或被積分的都是實值函數 $g(x,y)$ 的值。把 $g$ 設定為 $X$ 或 $Y$，所得的正是邊際分配的期望值 $\\mathbb{E}(X)$ 與 $\\mathbb{E}(Y)$。線性組合仍然可以與期望值交換，相乘這種非線性的設定則不然，只有在 $X$ 與 $Y$ 獨立時，$\\mathbb{E}\\bigl[g(X)h(Y)\\bigr]$ 才會等於兩個期望值相乘；反過來說並不成立。最後以四道例題求兩個獨立隨機變數乘積的變異數、空盒個數的期望值與變異數，以及以一階泰勒展式求得的變異數近似值。"
 ---
 
-[上一篇](/teaching-topics/independent-random-variables/)先以 [Theorem 3.3](/teaching-topics/independent-random-variables/#thm-multiplication-rule-r-v) 說明聯合機率函數如何由條件機率函數與邊際機率函數相乘而得，再以 [Definition 3.10](/teaching-topics/independent-random-variables/#def-indep-r-v) 給出[獨立隨機變數](/teaching-topics/independent-random-variables/#def-indep-r-v)的定義。本篇把[期望值](/teaching-topics/expectation/#def-expectation)推廣到二元的情形。
+[上一篇](/lecture-notes/independent-random-variables/)先以 [Theorem 3.3](/lecture-notes/independent-random-variables/#thm-multiplication-rule-r-v) 說明聯合機率函數如何由條件機率函數與邊際機率函數相乘而得，再以 [Definition 3.10](/lecture-notes/independent-random-variables/#def-indep-r-v) 給出[獨立隨機變數](/lecture-notes/independent-random-variables/#def-indep-r-v)的定義。本篇把[期望值](/lecture-notes/expectation/#def-expectation)推廣到二元的情形。
 
-單變數的時候，[Theorem 2.9](/teaching-topics/properties-of-expectation/#thm-expectation-of-function) 說明 $g(X)$ 的期望值如何由 $X$ 的機率函數求得，[Theorem 2.10](/teaching-topics/properties-of-expectation/#thm-expectation-linearity) 則給出期望值與線性組合可以交換的性質。本篇的四個定理依同樣的次序排列。先說明二元的期望值如何由[聯合機率質量函數](/teaching-topics/random-vectors-joint-pmf/#def-joint-pmf)或[聯合機率密度函數](/teaching-topics/joint-probability-density-functions/#def-joint-pdf)求得，再給出線性組合的性質，接著處理相乘這種非線性的設定在兩個變數獨立之下的特例，最後把[變異數](/teaching-topics/variance/#def-variance)的定義一併推廣。
+單變數的時候，[Theorem 2.9](/lecture-notes/properties-of-expectation/#thm-expectation-of-function) 說明 $g(X)$ 的期望值如何由 $X$ 的機率函數求得，[Theorem 2.10](/lecture-notes/properties-of-expectation/#thm-expectation-linearity) 則給出期望值與線性組合可以交換的性質。本篇的四個定理依同樣的次序排列。先說明二元的期望值如何由[聯合機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-joint-pmf)或[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)求得，再給出線性組合的性質，接著處理相乘這種非線性的設定在兩個變數獨立之下的特例，最後把[變異數](/lecture-notes/variance/#def-variance)的定義一併推廣。
 
 本篇最後有四道例題。前兩道都在求兩個獨立隨機變數乘積的變異數，第三道求 $n$ 個球投入 $r$ 個盒子之後空盒個數的期望值與變異數，第四道則以一階泰勒展式求一個四變數函數的變異數近似值。
 
@@ -81,7 +81,7 @@ $$
 
 [Theorem 3.4](#thm-multi-exp) 有一些地方需要注意:
 
-(1) 與 [Theorem 2.9](/teaching-topics/properties-of-expectation/#thm-expectation-of-function) 相同，這裡的 $g(\cdot, \cdot)$ 可以是任意的實值函數，一旦我們設定了 $g(X, Y) = X$ 或 $g(X, Y) = Y$ 這樣的函數，則 [Theorem 3.4](#thm-multi-exp) 的期望值將會變成 $\mathbb{E}(X)$ 與 <span class="text-nowrap">$\mathbb{E}(Y)$。</span>
+(1) 與 [Theorem 2.9](/lecture-notes/properties-of-expectation/#thm-expectation-of-function) 相同，這裡的 $g(\cdot, \cdot)$ 可以是任意的實值函數，一旦我們設定了 $g(X, Y) = X$ 或 $g(X, Y) = Y$ 這樣的函數，則 [Theorem 3.4](#thm-multi-exp) 的期望值將會變成 $\mathbb{E}(X)$ 與 <span class="text-nowrap">$\mathbb{E}(Y)$。</span>
 {: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -124,7 +124,7 @@ $$
 
 </div>
 
-(2) 有了多元隨機變數的期望值，我們便能夠進行許多運算，但我們應該先關心的是，如同 [Theorem 2.9](/teaching-topics/properties-of-expectation/#thm-expectation-of-function) 與 [Theorem 2.10](/teaching-topics/properties-of-expectation/#thm-expectation-linearity) 的關係一般，[Theorem 3.4](#thm-multi-exp) 也有類似 [Theorem 2.10](/teaching-topics/properties-of-expectation/#thm-expectation-linearity) 的性質，下面馬上就來看看這個性質。
+(2) 有了多元隨機變數的期望值，我們便能夠進行許多運算，但我們應該先關心的是，如同 [Theorem 2.9](/lecture-notes/properties-of-expectation/#thm-expectation-of-function) 與 [Theorem 2.10](/lecture-notes/properties-of-expectation/#thm-expectation-linearity) 的關係一般，[Theorem 3.4](#thm-multi-exp) 也有類似 [Theorem 2.10](/lecture-notes/properties-of-expectation/#thm-expectation-linearity) 的性質，下面馬上就來看看這個性質。
 {: .topic-paren-item}
 
 <div id="thm-multi-exp-proper" class="topic-box topic-box--theorem" markdown="1">
@@ -213,16 +213,16 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-稍後我們會看見，$X$ $\indep$ $Y$ $\Longrightarrow$ $\mathbb{E}(XY)$ $=$ <span class="text-nowrap">$\mathbb{E}(X)\mathbb{E}(Y)$，</span>此即 $X$ 與 $Y$ 獨立導致 $X$ 與 $Y$ **[零相關](/teaching-topics/covariance/#def-covariance) <span lang="en">(uncorrelated)</span>**，但這個敘述的逆命題一般而言卻是不對的。
+稍後我們會看見，$X$ $\indep$ $Y$ $\Longrightarrow$ $\mathbb{E}(XY)$ $=$ <span class="text-nowrap">$\mathbb{E}(X)\mathbb{E}(Y)$，</span>此即 $X$ 與 $Y$ 獨立導致 $X$ 與 $Y$ **[零相關](/lecture-notes/covariance/#def-covariance) <span lang="en">(uncorrelated)</span>**，但這個敘述的逆命題一般而言卻是不對的。
 
 </div>
 
-上述定理常見的用途在於，尋找 $X$ 與 $Y$ 的**[交叉動差](/teaching-topics/cross-moments-joint-mgf/#def-cross-moment) (cross moment)**，即 <span class="text-nowrap">$\mathbb{E}(XY)$，</span>在 $X$ $\indep$ $Y$ 的狀況下，$\mathbb{E}(XY)$ $=$ <span class="text-nowrap">$\mathbb{E}(X)\mathbb{E}(Y)$。</span>
+上述定理常見的用途在於，尋找 $X$ 與 $Y$ 的**[交叉動差](/lecture-notes/cross-moments-joint-mgf/#def-cross-moment) (cross moment)**，即 <span class="text-nowrap">$\mathbb{E}(XY)$，</span>在 $X$ $\indep$ $Y$ 的狀況下，$\mathbb{E}(XY)$ $=$ <span class="text-nowrap">$\mathbb{E}(X)\mathbb{E}(Y)$。</span>
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個特例在稍後的小節介紹**[共變異數](/teaching-topics/covariance/#def-covariance) <span lang="en">(covariance)</span>** 的時候會談到。
+這個特例在稍後的小節介紹**[共變異數](/lecture-notes/covariance/#def-covariance) <span lang="en">(covariance)</span>** 的時候會談到。
 
 </div>
 
@@ -250,7 +250,7 @@ $$
 
 </div>
 
-這個定理事實上就是 [Theorem 2.12](/teaching-topics/variance/#thm-variance-of-function) 的延伸版本。
+這個定理事實上就是 [Theorem 2.12](/lecture-notes/variance/#thm-variance-of-function) 的延伸版本。
 
 <div id="ex-independent-product-expectation" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.14</div>
@@ -305,7 +305,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在[第二章談變異數的性質](/teaching-topics/variance/#thm-variance-properties)中，我們曾經提過退化隨機變數 <span lang="en">(degenerate random variable)</span>，此處的 $X$ 正是這個概念。直觀上而言，讀者不妨將其視為一個常數 <span class="text-nowrap">$0$，</span>如此一來，這個問題就幾乎等同於在問 <span class="text-nowrap">$\mathrm{Var}(0\,Y)$，</span>其結果便顯得很直觀。
+在[第二章談變異數的性質](/lecture-notes/variance/#thm-variance-properties)中，我們曾經提過退化隨機變數 <span lang="en">(degenerate random variable)</span>，此處的 $X$ 正是這個概念。直觀上而言，讀者不妨將其視為一個常數 <span class="text-nowrap">$0$，</span>如此一來，這個問題就幾乎等同於在問 <span class="text-nowrap">$\mathrm{Var}(0\,Y)$，</span>其結果便顯得很直觀。
 
 </div>
 
@@ -619,7 +619,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述問題事實上是 [Theorem 2.15](/teaching-topics/variance-standard-deviation/#thm-taylor-approximation) 的延伸，只是此處由於變數變多了，故將微分改為偏微分，其他原理皆相同。
+上述問題事實上是 [Theorem 2.15](/lecture-notes/variance-standard-deviation/#thm-taylor-approximation) 的延伸，只是此處由於變數變多了，故將微分改為偏微分，其他原理皆相同。
 
 </div>
 
@@ -631,7 +631,7 @@ $$
 
 四道例題之中，[Example 3.14](#ex-independent-product-expectation) 與 [Example 3.15](#ex-exponential-product-expectation) 都在求兩個獨立隨機變數乘積的變異數，前者的 $X$ 期望值與變異數皆為 $0$ 而使結果為 <span class="text-nowrap">$0$，</span>後者則求得 $\mu_1^2\,\sigma_2^2$ $+$ $\mu_2^2\,\sigma_1^2$ $+$ $\sigma_1^2\,\sigma_2^2$ 這個式子，可見即便兩者獨立，$\mathrm{Var}(XY)$ 也不等於 $\mathrm{Var}(X)$ 與 $\mathrm{Var}(Y)$ 相乘之值。[Example 3.16](#ex-balls-into-boxes-empty) 把空盒總數寫成只取 $0$ 與 $1$ 的變數之和，再以交叉項的期望值求得變異數；[Example 3.17](#ex-structure-load-expectation) 則把一階泰勒展開推廣到四個變數，微分因而改為偏微分。
 
-[下一篇](/teaching-topics/conditional-expectation-and-variance/)把期望值放到條件分配之上，介紹[條件期望值](/teaching-topics/conditional-expectation-and-variance/#def-conditional-expectation)與[條件變異數](/teaching-topics/conditional-expectation-and-variance/#def-conditional-variance)。
+[下一篇](/lecture-notes/conditional-expectation-and-variance/)把期望值放到條件分配之上，介紹[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation)與[條件變異數](/lecture-notes/conditional-expectation-and-variance/#def-conditional-variance)。
 
 ## 參考文獻與延伸閱讀
 

@@ -7,17 +7,17 @@ category: "機率概論"
 chapter: 2
 topic: 18
 order: 218
-permalink: /teaching-topics/characteristic-functions/
+permalink: /lecture-notes/characteristic-functions/
 date: 2026-08-08
 published: true
 excerpt: "特徵函數把工具函數換成 $e^{itX}$。由歐拉公式可知 $\\lvert e^{itX}\\rvert=1$，因此 $\\mathbb{E}(e^{itX})$ 對每一個實值隨機變數與每一個 $t$ 都存在，這正是它與動差母函數最大的差別。它同樣以微分生成原動差，$r$ 階動差存在時 $\\phi_{X}^{(r)}(0)=i^{r}\\mathbb{E}(X^{r})$；也同樣具有唯一性，兩個分配相同若且唯若兩者的特徵函數處處相等，而且還能由反演公式反過來求出 cdf 與 pdf。標準柯西分配沒有 mgf，卻有形式簡單的 $\\phi_{X}(t)=e^{-\\lvert t\\rvert}$，其樣本平均數與單一觀測值同分配正是由唯一性得到的。"
 ---
 
-[上一篇](/teaching-topics/probability-cumulant-generating-functions/)介紹了[機率母函數](/teaching-topics/probability-cumulant-generating-functions/#def-pgf)與[累積量母函數](/teaching-topics/probability-cumulant-generating-functions/#def-cgf)。前者把工具函數取為 $t^{X}$ 而生成階乘動差與機率，後者由 mgf 取對數而生成累積量，[Theorem 2.26](/teaching-topics/probability-cumulant-generating-functions/#thm-mgf-pgf-cgf-relation) 並說明 mgf 與 pgf 之間只差一個變數的代換。
+[上一篇](/lecture-notes/probability-cumulant-generating-functions/)介紹了[機率母函數](/lecture-notes/probability-cumulant-generating-functions/#def-pgf)與[累積量母函數](/lecture-notes/probability-cumulant-generating-functions/#def-cgf)。前者把工具函數取為 $t^{X}$ 而生成階乘動差與機率，後者由 mgf 取對數而生成累積量，[Theorem 2.26](/lecture-notes/probability-cumulant-generating-functions/#thm-mgf-pgf-cgf-relation) 並說明 mgf 與 pgf 之間只差一個變數的代換。
 
-母函數的家族還有一位成員。我們在[動差母函數](/teaching-topics/moment-generating-functions/#def-mgf)一篇曾說過，動差母函數不是任何時候都存在。它要求存在某個 $h>0$，使 $\mathbb{E}(e^{tX})$ 在 $-h<t<h$ 之內皆為有限，而 $e^{tX}$ 會隨著 $tX$ 增大而無界地增長，一旦分配的尾巴夠厚，這個[期望值](/teaching-topics/expectation/#def-expectation)便發散。問題既然出在 $e^{tX}$ 無界，一個自然的想法是把工具函數換成一個有界的東西。
+母函數的家族還有一位成員。我們在[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)一篇曾說過，動差母函數不是任何時候都存在。它要求存在某個 $h>0$，使 $\mathbb{E}(e^{tX})$ 在 $-h<t<h$ 之內皆為有限，而 $e^{tX}$ 會隨著 $tX$ 增大而無界地增長，一旦分配的尾巴夠厚，這個[期望值](/lecture-notes/expectation/#def-expectation)便發散。問題既然出在 $e^{tX}$ 無界，一個自然的想法是把工具函數換成一個有界的東西。
 
-把指數的自變數乘上一個平方等於 $-1$ 的數之後，$e^{itX}$ 的絕對值恆為 $1$，於是 $\mathbb{E}(e^{itX})$ 對每一個實值[隨機變數](/teaching-topics/random-variables-and-pmf/#def-random-variable)與每一個 $t$ 都存在，這個期望值便是**特徵函數 <span lang="en">(characteristic function, cf)</span>**。本篇先交代複數指數所需的歐拉公式，再給出特徵函數的定義與三點須注意之處，接著依序看它的五項基本性質、如何以微分生成原動差、它與 mgf 及 pgf 的關係，以及它的唯一性，最後以**標準柯西分配 <span lang="en">(standard Cauchy distribution)</span>** 的樣本平均數示範唯一性的用法。
+把指數的自變數乘上一個平方等於 $-1$ 的數之後，$e^{itX}$ 的絕對值恆為 $1$，於是 $\mathbb{E}(e^{itX})$ 對每一個實值[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)與每一個 $t$ 都存在，這個期望值便是**特徵函數 <span lang="en">(characteristic function, cf)</span>**。本篇先交代複數指數所需的歐拉公式，再給出特徵函數的定義與三點須注意之處，接著依序看它的五項基本性質、如何以微分生成原動差、它與 mgf 及 pgf 的關係，以及它的唯一性，最後以**標準柯西分配 <span lang="en">(standard Cauchy distribution)</span>** 的樣本平均數示範唯一性的用法。
 
 在進入定義之前，先交代複數指數的兩個基本事實。以 $i$ 表**虛數單位 <span lang="en">(imaginary unit)</span>**，即 $i^{2}=-1$。對任意實數 $u$，複數指數 $e^{iu}$ 可由**歐拉公式 <span lang="en">(Euler’s formula)</span>** 寫成三角函數的組合，即
 
@@ -438,14 +438,14 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-(1) 由[動差母函數的定義](/teaching-topics/moment-generating-functions/#def-mgf)，把 $M\_{\sssig X}$ 的自變數取為純虛數 $it$ 可得
+(1) 由[動差母函數的定義](/lecture-notes/moment-generating-functions/#def-mgf)，把 $M\_{\sssig X}$ 的自變數取為純虛數 $it$ 可得
 {: .topic-paren-item}
 
 $$
 M_{\sssig X}(it)=\mathbb{E}\bigl(e^{itX}\bigr)=\phi_{\sssig X}(t)
 $$
 
-(2) 由[機率母函數的定義](/teaching-topics/probability-cumulant-generating-functions/#def-pgf)，把 $G\_{\sssig X}$ 的自變數取為 $e^{it}$ 可得
+(2) 由[機率母函數的定義](/lecture-notes/probability-cumulant-generating-functions/#def-pgf)，把 $G\_{\sssig X}$ 的自變數取為 $e^{it}$ 可得
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -476,7 +476,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Definition 2.16](/teaching-topics/moment-generating-functions/#def-mgf) 只把 $M\_{\sssig X}$ 定義在實自變數上，並且要求該期望值在 $-h<t<h$ 之內皆存在。因此 $M\_{\sssig X}(it)$ 不是把 $it$ 直接代進一個已經定義好的函數，而是把定義式 $\mathbb{E}(e^{tX})$ 中的自變數容許取複數值之後才有的延伸寫法，[Theorem 2.29](#thm-cf-mgf-pgf-relation) 第 (1) 款所說的也正是延伸之後的兩式相等。特徵函數則不需要這一層延伸，它本來就直接定義在實自變數 $t$ 上。
+[Definition 2.16](/lecture-notes/moment-generating-functions/#def-mgf) 只把 $M\_{\sssig X}$ 定義在實自變數上，並且要求該期望值在 $-h<t<h$ 之內皆存在。因此 $M\_{\sssig X}(it)$ 不是把 $it$ 直接代進一個已經定義好的函數，而是把定義式 $\mathbb{E}(e^{tX})$ 中的自變數容許取複數值之後才有的延伸寫法，[Theorem 2.29](#thm-cf-mgf-pgf-relation) 第 (1) 款所說的也正是延伸之後的兩式相等。特徵函數則不需要這一層延伸，它本來就直接定義在實自變數 $t$ 上。
 
 </div>
 
@@ -562,7 +562,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-**[獨立](/teaching-topics/independent-random-variables/#def-indep-r-v) <span lang="en">(independent)</span>** 與**同分配 <span lang="en">(identically distributed)</span>** 是我們在下一個章節才會提到的性質，在此階段讀者不妨想像成，每個隨機變數不互相影響，且客觀條件皆相同。在彼此獨立的前提之下，$e^{itX\_{1}},\ldots,e^{itX\_{n}}$ 也彼此不互相影響，期望值因而可以逐項相乘，即
+**[獨立](/lecture-notes/independent-random-variables/#def-indep-r-v) <span lang="en">(independent)</span>** 與**同分配 <span lang="en">(identically distributed)</span>** 是我們在下一個章節才會提到的性質，在此階段讀者不妨想像成，每個隨機變數不互相影響，且客觀條件皆相同。在彼此獨立的前提之下，$e^{itX\_{1}},\ldots,e^{itX\_{n}}$ 也彼此不互相影響，期望值因而可以逐項相乘，即
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -638,9 +638,9 @@ $$
 
 第一是存在性。mgf 要求 $\mathbb{E}(e^{tX})$ 在 $t=0$ 的某個鄰域之內為有限，並不是每個分配都滿足；cf 則由 $\lvert e^{itX}\rvert=1$ 保證對每一個實值隨機變數與每一個 $t$ 都存在。[Example 2.53](#ex-cauchy-sample-mean-cf) 的標準柯西分配正是一個例子: 它連期望值都不存在，自然沒有 mgf，卻有 $\phi\_{\sssig X}(t)=e^{-\lvert t\rvert}$ 這個形式簡單的 cf。
 
-第二是生成動差。[Theorem 2.21](/teaching-topics/moment-generating-functions/#thm-mgf-generates-moments) 說 mgf 微分 $r$ 次後在 $t=0$ 取值即得 <span class="text-nowrap">$\mathbb{E}(X^{r})$，</span>[Theorem 2.28](#thm-cf-generates-moments) 說 cf 的對應結果多一個 $i^{r}$。兩者的前提也不同: mgf 一旦存在便保證各階動差都存在，cf 這一邊則是逐階要求 $\mathbb{E}(\lvert X\rvert^{r})<\infty$，只換得到 $r$ 階為止。
+第二是生成動差。[Theorem 2.21](/lecture-notes/moment-generating-functions/#thm-mgf-generates-moments) 說 mgf 微分 $r$ 次後在 $t=0$ 取值即得 <span class="text-nowrap">$\mathbb{E}(X^{r})$，</span>[Theorem 2.28](#thm-cf-generates-moments) 說 cf 的對應結果多一個 $i^{r}$。兩者的前提也不同: mgf 一旦存在便保證各階動差都存在，cf 這一邊則是逐階要求 $\mathbb{E}(\lvert X\rvert^{r})<\infty$，只換得到 $r$ 階為止。
 
-第三是唯一性。兩者都有: [Theorem 2.23](/teaching-topics/uniqueness-of-the-mgf/#thm-mgf-uniqueness) 說 mgf 相等則分配相等，[Theorem 2.30](#thm-cf-uniqueness) 說 cf 相等則分配相等。差別在於前者附帶了兩個 mgf 都要存在的條件，後者沒有這個附帶條件。
+第三是唯一性。兩者都有: [Theorem 2.23](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness) 說 mgf 相等則分配相等，[Theorem 2.30](#thm-cf-uniqueness) 說 cf 相等則分配相等。差別在於前者附帶了兩個 mgf 都要存在的條件，後者沒有這個附帶條件。
 
 第四是能不能反過來求出分配的密度。mgf 做不到，離散型至多由 $p\_{\sssig 1}e^{a\_{1}t}+\cdots+p\_{\sssig n}e^{a\_{n}t}$ 的形式直接寫出 pmf，連續型只能回頭比對各個常見機率模型的 mgf；cf 則有反演公式，在 $\int\_{-\infty}^{\infty}\lvert\phi\_{\sssig X}(t)\rvert\,dt<\infty$ 之下可以直接算出 pdf。
 
@@ -650,7 +650,7 @@ $$
 
 [Theorem 2.27](#thm-cf-properties) 給了五項基本性質: $\phi\_{\sssig X}(0)=1$、$\lvert\phi\_{\sssig X}(t)\rvert\leqslant1$、在 $\mathbb{R}$ 上均勻連續、$\phi\_{\sssig X}(-t)=\overline{\phi\_{\sssig X}(t)}$，以及 $Y=aX+b$ 之下的 $\phi\_{\sssig Y}(t)=e^{ibt}\phi\_{\sssig X}(at)$。[Theorem 2.28](#thm-cf-generates-moments) 的前提是動差存在，而結論是導數可求得動差，只是每微分一次多出一個 $i$，因而在 $t=0$ 取值時得到 $i^{r}\mathbb{E}(X^{r})$；反過來僅由導數存在就直接得到動差則要分奇偶。[Theorem 2.29](#thm-cf-mgf-pgf-relation) 把它接回前兩篇的兩個母函數。在自變數延伸到複數的意義之下 $\phi\_{\sssig X}(t)=M\_{\sssig X}(it)$，而非負整數隨機變數另有 $\phi\_{\sssig X}(t)=G\_{\sssig X}(e^{it})$。[Theorem 2.30](#thm-cf-uniqueness) 則是本篇的重點。特徵函數相等若且唯若分配相同，並且由反演公式可以把 cdf 反算回來，在絕對可積的條件之下還可以算出 pdf。[Example 2.53](#ex-cauchy-sample-mean-cf) 示範了這項性質的用法，標準柯西分配的 $n$ 個獨立觀測值取平均之後，特徵函數仍是 <span class="text-nowrap">$e^{-\lvert t\rvert}$，</span>因此樣本平均數與單一觀測值同分配。
 
-到這裡，動差、動差母函數、機率母函數、累積量母函數與特徵函數已經把「以一個函數表示整個分配」這條線走完。[下一篇](/teaching-topics/probability-inequalities/)換一個處境。分配的形式並不清楚，手上只有期望值，或再加上一個[變異數](/teaching-topics/variance/#def-variance)，這時候能對機率說出什麼。
+到這裡，動差、動差母函數、機率母函數、累積量母函數與特徵函數已經把「以一個函數表示整個分配」這條線走完。[下一篇](/lecture-notes/probability-inequalities/)換一個處境。分配的形式並不清楚，手上只有期望值，或再加上一個[變異數](/lecture-notes/variance/#def-variance)，這時候能對機率說出什麼。
 
 ## 參考文獻與延伸閱讀
 

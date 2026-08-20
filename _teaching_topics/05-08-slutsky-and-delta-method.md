@@ -7,13 +7,13 @@ category: "機率概論"
 chapter: 5
 topic: 8
 order: 508
-permalink: /teaching-topics/slutsky-and-delta-method/
+permalink: /lecture-notes/slutsky-and-delta-method/
 date: 2026-08-15
 published: false
 excerpt: "上一篇的定理都是為機率收斂而生的，本篇把其中一個序列改為分配收斂，得到史拉斯基定理: 若 $X_n\\pconv c$ 且 $Y_n\\dconv W$，則和、積與商仍然分配收斂，極限分別為 $c+W$、$cW$ 與 $\\frac{W}{c}$。三道例題依序處理兩組樣本的比值、標準常態樣本的比值，以及 $t$ 統計量分配收斂至標準常態這件事，並由最後一題得知自由度趨於無窮時 $t$ 分配的極限分配就是標準常態分配。其後給出 Delta 法，把 $\\sqrt{n}\\,(X_n-\\theta)$ 的極限分配推廣到 $\\sqrt{n}\\,[g(X_n)-g(\\theta)]$，變異數多乘一個 $[g^{\\prime}(\\theta)]^{2}$。四道例題分別取 $g(x)=x^{2}$、$g(x)=e^{x}$、$g(x)=\\frac{x-1}{x^{2}}$ 與 $g(x)=\\sqrt{x}$，用來求樣本平均數平方、均勻樣本乘積、幾何母體樣本與卡方變數平方根的極限分配。"
 ---
 
-[上一篇](/teaching-topics/continuous-mapping-theorem/)給出[機率收斂的運算性質與連續映射定理](/teaching-topics/continuous-mapping-theorem/#thm-pconv-related)，其中每一條的前提都是[機率收斂](/teaching-topics/convergence-in-probability/#def-converge-in-probability)。本篇把其中一個序列的前提換成[分配收斂](/teaching-topics/convergence-in-distribution/#def-converge-in-distribution)，這些運算性質的結論會隨之改變。
+[上一篇](/lecture-notes/continuous-mapping-theorem/)給出[機率收斂的運算性質與連續映射定理](/lecture-notes/continuous-mapping-theorem/#thm-pconv-related)，其中每一條的前提都是[機率收斂](/lecture-notes/convergence-in-probability/#def-converge-in-probability)。本篇把其中一個序列的前提換成[分配收斂](/lecture-notes/convergence-in-distribution/#def-converge-in-distribution)，這些運算性質的結論會隨之改變。
 
 本篇有兩個定理。第一個是史拉斯基定理，處理的是一個序列機率收斂到常數、另一個序列分配收斂到隨機變數時，兩者的和、積與商各自收斂到什麼；三道例題依序求兩組樣本的比值、標準常態樣本的比值，以及 $t$ 統計量的極限分配。第二個是 Delta 法，處理的是一般化的函數轉換: 已知 $\sqrt{n}\,(X_n-\theta)$ 的極限分配，要求 $\sqrt{n}\,[g(X_n)-g(\theta)]$ 的極限分配；四道例題分別取平方、指數、有理函數與平方根四種 $g$ 來演練。
 
@@ -82,7 +82,7 @@ $$
 </ol>
 </div>
 
-(1) 由於 <span class="text-nowrap">$X_1,\ldots,X_n\iidto\mathcal{U}(0,\ 1)$，</span>由[均勻分配](/teaching-topics/uniform-distribution-integral-transform/#def-uniform-distribution)的期望值與變異數可得
+(1) 由於 <span class="text-nowrap">$X_1,\ldots,X_n\iidto\mathcal{U}(0,\ 1)$，</span>由[均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的期望值與變異數可得
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -103,7 +103,7 @@ $$
 
 </div>
 
-由[弱大數法則](/teaching-topics/weak-law-and-central-limit-theorem/#thm-weak-law-of-large-numbers)可知
+由[弱大數法則](/lecture-notes/weak-law-and-central-limit-theorem/#thm-weak-law-of-large-numbers)可知
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -145,7 +145,7 @@ $$
 
 </div>
 
-(2) 由於 <span class="text-nowrap">$Y_1,\ldots,Y_n\iidto(0,\ 1)$，</span>由[中央極限定理](/teaching-topics/weak-law-and-central-limit-theorem/#thm-central-limit-theorem)可知
+(2) 由於 <span class="text-nowrap">$Y_1,\ldots,Y_n\iidto(0,\ 1)$，</span>由[中央極限定理](/lecture-notes/weak-law-and-central-limit-theorem/#thm-central-limit-theorem)可知
 {: .topic-paren-item}
 
 $$
@@ -271,7 +271,7 @@ $$
 Z=\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}
 $$
 
-則由[常態分配的線性組合可加性](/teaching-topics/normal-distribution/#prop-normal-linear-combination)可知，不論 $n$ 多大，我們都有
+則由[常態分配的線性組合可加性](/lecture-notes/normal-distribution/#prop-normal-linear-combination)可知，不論 $n$ 多大，我們都有
 
 $$
 Z\sim\mathcal{N}(0,\ 1)
@@ -314,11 +314,11 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上面這一題說明了一個很重要的事實，也就是當自由度趨近無窮大時，[司徒頓 $t$ 分配](/teaching-topics/student-t-distribution/#def-t-distribution)將會分配收斂至標準常態分配，也就是指，若 <span class="text-nowrap">$T_n\sim t(n)$，</span>則 $T_n$ 之極限分配就是標準常態分配。
+上面這一題說明了一個很重要的事實，也就是當自由度趨近無窮大時，[司徒頓 $t$ 分配](/lecture-notes/student-t-distribution/#def-t-distribution)將會分配收斂至標準常態分配，也就是指，若 <span class="text-nowrap">$T_n\sim t(n)$，</span>則 $T_n$ 之極限分配就是標準常態分配。
 
 </div>
 
-讀者應該會發現，相較於 [Theorem 5.10](/teaching-topics/continuous-mapping-theorem/#thm-pconv-related)，將其中一個序列的收斂改為分配收斂至某個隨機變數後，史拉斯基定理的結果，原則上與 Theorem 5.10 的內容相呼應，只是其結果由機率收斂改為分配收斂。
+讀者應該會發現，相較於 [Theorem 5.10](/lecture-notes/continuous-mapping-theorem/#thm-pconv-related)，將其中一個序列的收斂改為分配收斂至某個隨機變數後，史拉斯基定理的結果，原則上與 Theorem 5.10 的內容相呼應，只是其結果由機率收斂改為分配收斂。
 
 然而，這個結果獨漏了一般化的函數轉換，那麼，一般化的函數轉換，其分配收斂的狀況又如何呢? 這個問題的結果，是馬上將要談到的 **Delta 法 (Delta method)**。
 
@@ -372,7 +372,7 @@ $$
 X_n-\theta\dconv0\times W\equiv0
 $$
 
-收斂的對象是一個常數，故由 [Theorem 5.3](/teaching-topics/convergence-in-probability/#thm-pconv-iff-dconv) 可知
+收斂的對象是一個常數，故由 [Theorem 5.3](/lecture-notes/convergence-in-probability/#thm-pconv-iff-dconv) 可知
 
 $$
 X_n\pconv\theta
@@ -417,13 +417,13 @@ $$
 g^{\prime}(\theta)\,\sqrt{n}\,(X_n-\theta)\dconv g^{\prime}(\theta)\,W
 $$
 
-右側第二項則由 $h$ 在 $\theta$ 上連續與 $X_n\pconv\theta$，依 [Theorem 5.10](/teaching-topics/continuous-mapping-theorem/#thm-pconv-related) 的連續映射定理可得
+右側第二項則由 $h$ 在 $\theta$ 上連續與 $X_n\pconv\theta$，依 [Theorem 5.10](/lecture-notes/continuous-mapping-theorem/#thm-pconv-related) 的連續映射定理可得
 
 $$
 h(X_n)\pconv h(\theta)=0
 $$
 
-再由 [Theorem 5.11](#thm-slutsky) 的第 (2) 款與 [Theorem 5.3](/teaching-topics/convergence-in-probability/#thm-pconv-iff-dconv) 可知
+再由 [Theorem 5.11](#thm-slutsky) 的第 (2) 款與 [Theorem 5.3](/lecture-notes/convergence-in-probability/#thm-pconv-iff-dconv) 可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -522,7 +522,7 @@ $$
 Suppose that $X_1,X_2,\ldots,X_n$ are iid random variables having the uniform distribution on <span class="text-nowrap">$(0,\ 1)$,</span> and put <span class="text-nowrap">$Y_n=\bigl(\prod_{i=1}^{n}X_i\bigr)^{-\frac{1}{n}}$.</span> Show that $\sqrt{n}\,(Y_n-e)$ converges in distribution to <span class="text-nowrap">$\mathcal{N}(0,\ e^{2})$.</span>
 </div>
 
-令 <span class="text-nowrap">$W_i=-\ln X_i$，</span>則由 [cdf 法](/teaching-topics/one-to-one-transformations/#prop-cdf-method)可得
+令 <span class="text-nowrap">$W_i=-\ln X_i$，</span>則由 [cdf 法](/lecture-notes/one-to-one-transformations/#prop-cdf-method)可得
 
 $$
 \begin{aligned}
@@ -537,7 +537,7 @@ $$
 W_i\iidto\mathrm{Exp}(\beta=1),\ i=1,\ldots,n
 $$
 
-也就是說 $W_i$ 服從[指數分配](/teaching-topics/gamma-function-exponential-distribution/#def-exponential-distribution)。則由中央極限定理可知
+也就是說 $W_i$ 服從[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)。則由中央極限定理可知
 
 $$
 \sqrt{n}\,(\overline{W}-1)\dconv Z\sim\mathcal{N}(0,\ 1)
@@ -584,7 +584,7 @@ $$
 Determine the asymptotic distribution of <span class="text-nowrap">$\frac{\,\overline{X}_n-1\,}{\overline{X}_n^{2}}$.</span>
 </div>
 
-由題意可知樣本抽自[幾何分配](/teaching-topics/geometric-distribution-memoryless/#def-geometric)，也就是
+由題意可知樣本抽自[幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)，也就是
 
 $$
 X_1,\ldots,X_n\iidto\mathrm{Geo}(p),\ x=1,2,3,\ldots
@@ -698,7 +698,7 @@ $$
 Suppose that the random variable $Y$ has a chi-squared distribution with $n$ degrees of freedom. Find the limiting distribution of <span class="text-nowrap">$\sqrt{Y}-\sqrt{n}$.</span>
 </div>
 
-由[卡方分配](/teaching-topics/chi-squared-distribution/#def-chi-distribution)的可加性，可令
+由[卡方分配](/lecture-notes/chi-squared-distribution/#def-chi-distribution)的可加性，可令
 
 $$
 Y=\sum_{i=1}^{n}X_i
@@ -746,7 +746,7 @@ $$
 
 ## 本篇小結
 
-[Theorem 5.11](#thm-slutsky) 的前提是一個序列機率收斂到常數、另一個序列分配收斂到隨機變數，結論則是兩者的和、積與商各自分配收斂到 $c+W$、$cW$ 與 <span class="text-nowrap">$\frac{\,W\,}{c}$，</span>其中商的部分另外要求 <span class="text-nowrap">$c\neq0$。</span>這與 [Theorem 5.10](/teaching-topics/continuous-mapping-theorem/#thm-pconv-related) 的各條相呼應，差別只在結論由機率收斂改為分配收斂。
+[Theorem 5.11](#thm-slutsky) 的前提是一個序列機率收斂到常數、另一個序列分配收斂到隨機變數，結論則是兩者的和、積與商各自分配收斂到 $c+W$、$cW$ 與 <span class="text-nowrap">$\frac{\,W\,}{c}$，</span>其中商的部分另外要求 <span class="text-nowrap">$c\neq0$。</span>這與 [Theorem 5.10](/lecture-notes/continuous-mapping-theorem/#thm-pconv-related) 的各條相呼應，差別只在結論由機率收斂改為分配收斂。
 
 三道例題的作法一致: 先把整個統計量拆成「分配收斂的部分」與「機率收斂到常數的部分」，再各自處理。[Example 5.30](#ex-slutsky-uniform-ratio) 的兩小題都靠這一步，第一小題把 $Z_n$ 的分子分母同除以 <span class="text-nowrap">$n$，</span>兩者各自由弱大數法則得到機率極限 $\frac{\,1\,}{2}$ 與 <span class="text-nowrap">$\frac{1}{\,3\,}$；</span>第二小題的分子由中央極限定理得到 <span class="text-nowrap">$\sqrt{n}\,\overline{Y}\dconv Z$，</span>分母機率收斂到 <span class="text-nowrap">$\frac{1}{\,3\,}$，</span>兩者相除得到 <span class="text-nowrap">$3Z\sim\mathcal{N}(0,\ 9)$。</span>[Example 5.31](#ex-slutsky-normal-ratio) 是同一個作法，分母的機率極限為 <span class="text-nowrap">$1$，</span>因此極限分配就是標準常態分配本身。
 
