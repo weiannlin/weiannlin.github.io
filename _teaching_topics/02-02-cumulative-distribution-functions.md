@@ -117,7 +117,7 @@ $$
 
 故其當然介在 $0$ 至 $1$ 之間。
 
-又因為其機率為累積 (或累加)，隨著 $x$ 的增長，函數值 $F_{\sssig X}(x)$ 只會向上增加或持平，故其累積分配函數當然具有**非遞減**之性質。至於**右連續**，累積本身只保證非遞減，尚須用到機率的連續性: 令 $x_1>x_2>\cdots$ 為任一遞減至 $x$ 的數列，則 $\lbrace X\leqslant x_n\rbrace$ 為一非遞增的事件序列，其極限為 $\lbrace X\leqslant x\rbrace$，故由[單調事件序列的機率極限](/lecture-notes/probability-rules-from-axioms/#theorem-continuity)可得
+又因為其機率為累積 (或累加)，隨著 $x$ 的增長，函數值 $F_{\sssig X}(x)$ 只會向上增加或持平，故其累積分配函數當然具有**非遞減**之性質。至於**右連續**，累積本身只保證非遞減，尚須用到機率的連續性。令 $x_1>x_2>\cdots$ 為任一遞減至 $x$ 的數列，則 $\lbrace X\leqslant x_n\rbrace$ 為一非遞增的事件序列，其極限為 $\lbrace X\leqslant x\rbrace$，故由[單調事件序列的機率極限](/lecture-notes/probability-rules-from-axioms/#theorem-continuity)可得
 
 $$
 \lim_{n\to\infty}F_{\sssig X}(x_n)=\mathbb{P}(X\leqslant x)=F_{\sssig X}(x)
@@ -137,7 +137,7 @@ $$
 <div id="note-step-function-isolated-points" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Theorem 2.1](#thm-cdf-properties) 第 (4) 款尚需一個前提: 值域中的質點在每一個有界區間內都只有有限多個，等價於值域在 $\mathbb{R}$ 中沒有聚點。只要求每一個質點都是孤立點並不夠。取值域為 $\lbrace\,1/n\mid n=1,2,\ldots\,\rbrace$、$p_{\sssig X}(1/n)=2^{-n}$，每一個質點都有一個不含其他質點的鄰域，但 $0$ 的右側任一鄰域內都有無窮多個跳躍，含 $0$ 的區間無法分成有限多段水平線段，$F_{\sssig X}$ 因而不是階梯函數；此時第 (1)、(2)、(3)、(5) 四款仍然成立。
+[Theorem 2.1](#thm-cdf-properties) 第 (4) 款尚需一個前提，即值域中的質點在每一個有界區間內都只有有限多個，這等價於值域在 $\mathbb{R}$ 中沒有聚點。只要求每一個質點都是孤立點並不夠。取值域為 $\lbrace\,1/n\mid n=1,2,\ldots\,\rbrace$、$p_{\sssig X}(1/n)=2^{-n}$，每一個質點都有一個不含其他質點的鄰域，但 $0$ 的右側任一鄰域內都有無窮多個跳躍，含 $0$ 的區間無法分成有限多段水平線段，$F_{\sssig X}$ 因而不是階梯函數；此時第 (1)、(2)、(3)、(5) 四款仍然成立。
 
 </div>
 
@@ -295,7 +295,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-本題的 $X$ 把全部機率都放在單一質點 $x=0$ 上，也就是 <span class="text-nowrap">$\mathbb{P}(X=0)=1$，</span>它其實就是常數 $0$。這一類隨機變數稱為**退化隨機變數 <span lang="en">(degenerate random variable)</span>**，其 cdf 只有一個跳躍，高度恰為 <span class="text-nowrap">$1$。</span>我們在[第二章談變異數的性質](/lecture-notes/variance/#thm-variance-properties)時會再談到它: 常數沒有隨機性，變異數為 <span class="text-nowrap">$0$。</span>
+本題的 $X$ 把全部機率都放在單一質點 $x=0$ 上，也就是 <span class="text-nowrap">$\mathbb{P}(X=0)=1$，</span>它其實就是常數 $0$。這一類隨機變數稱為**退化隨機變數 <span lang="en">(degenerate random variable)</span>**，其 cdf 只有一個跳躍，高度恰為 <span class="text-nowrap">$1$。</span>我們在[第二章談變異數的性質](/lecture-notes/variance/#thm-variance-properties)時會再談到它。常數沒有隨機性，變異數為 <span class="text-nowrap">$0$。</span>
 
 </div>
 

@@ -160,7 +160,7 @@ $$
 <div id="note-continuous-cdf" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上列定理只說 $F_{\sssig c}(x)$ 是一個處處連續的 cdf，並沒有說它是連續型隨機變數的 cdf，兩者不是同一件事情。依 [Definition 2.2](/lecture-notes/random-variables-and-pmf/#def-support-classification)，連續型隨機變數是以積分判準界定的: 要存在一個非負且可積分的函數，使 $\mathbb{P}(X\leqslant x)$ 能寫成該函數的積分。而稍後第 (3) 步的建構，只保證 $F_{\sssig c}(x)$ 處處沒有跳躍，並不保證這樣的函數存在；處處連續卻找不到密度函數的 cdf 確實存在，此時 $F_{\sssig c}(x)$ 仍是一個合格的 cdf，卻不是連續型隨機變數的 cdf。至於本篇兩個例子中的 $F_{\sssig c}(x)$，都是指數分配的 cdf，密度函數存在，屬於連續型隨機變數的 cdf。
+上列定理只說 $F_{\sssig c}(x)$ 是一個處處連續的 cdf，並沒有說它是連續型隨機變數的 cdf，兩者不是同一件事情。依 [Definition 2.2](/lecture-notes/random-variables-and-pmf/#def-support-classification)，連續型隨機變數是以積分判準界定的，也就是要存在一個非負且可積分的函數，使 $\mathbb{P}(X\leqslant x)$ 能寫成該函數的積分。而稍後第 (3) 步的建構，只保證 $F_{\sssig c}(x)$ 處處沒有跳躍，並不保證這樣的函數存在；處處連續卻找不到密度函數的 cdf 確實存在，此時 $F_{\sssig c}(x)$ 仍是一個合格的 cdf，卻不是連續型隨機變數的 cdf。至於本篇兩個例子中的 $F_{\sssig c}(x)$，都是指數分配的 cdf，密度函數存在，屬於連續型隨機變數的 cdf。
 
 </div>
 
@@ -430,7 +430,7 @@ $$
 
 ## 本篇小結
 
-混合型隨機變數同時具備離散型與連續型的特性: 它在某些單點上有正機率，其 cdf 在該處跳躍；在其餘的範圍則以密度描述機率的疏密，機率函數的值不是機率。[Example 2.13](#ex-mixed-cdf-density) 的 $F_{\sssig X}$ 即為一例，它在 $x=0$ 跳躍 $0.2$，其後沿 $1-0.8e^{-x}$ 連續遞增。
+混合型隨機變數同時具備離散型與連續型的特性。它在某些單點上有正機率，其 cdf 在該處跳躍；在其餘的範圍則以密度描述機率的疏密，機率函數的值不是機率。[Example 2.13](#ex-mixed-cdf-density) 的 $F_{\sssig X}$ 即為一例，它在 $x=0$ 跳躍 $0.2$，其後沿 $1-0.8e^{-x}$ 連續遞增。
 
 [Theorem 2.7](#thm-decomposition) 指出，任一個 cdf 都可以寫成 $\alpha\,F_{\sssig d}(x)+(1-\alpha)\,F_{\sssig c}(x)$ 的形式，其中 $F_{\sssig d}$ 為一離散隨機變數的 cdf、$F_{\sssig c}$ 為一處處連續的 cdf，且當 $0<\alpha<1$ 時這樣的分解必定唯一。實際拆解時先求 $\alpha$，它等於所有離散質點的機率總和，再把 $F_{\sssig 1}$ 與 $F_{\sssig 2}$ 這兩個未必是 cdf 的函數，分別除以 $\alpha$ 與 $1-\alpha$ 修正而得。同樣的分解也適用於 pdf，[Example 2.14](#ex-component-lifetime) 便以 $\frac{1}{4}$ 與 $\frac{3}{4}$ 為權重，把元件壽命的分配寫成離散部分與連續部分的線性組合。
 

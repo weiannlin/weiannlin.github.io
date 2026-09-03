@@ -149,7 +149,7 @@ $$
 
 </div>
 
-然而 mgf 雖然看似方便，能夠幫我們生出各階原動差，但細心一點的讀者或許已經產生一個疑惑: 稍早在 [Theorem 2.20](/lecture-notes/moment-system/#thm-lower-order-moment-existence) 之後不是曾說過，一個隨機變數的各階動差未必都存在嗎？難道有了 mgf 就能夠忽略這個限制嗎？
+然而 mgf 雖然看似方便，能夠幫我們生出各階原動差，但細心一點的讀者或許已經產生一個疑惑。稍早在 [Theorem 2.20](/lecture-notes/moment-system/#thm-lower-order-moment-existence) 之後不是曾說過，一個隨機變數的各階動差未必都存在嗎？難道有了 mgf 就能夠忽略這個限制嗎？
 
 這個答案當然是否定的，mgf 並沒有如此萬能。mgf 最大的問題在於，由於 $e^{tX}$ 對 $t$ 來說是一個**無限可微 <span lang="en">(infinitely differentiable)</span>** 的函數，故若其定義的這個特殊的期望值存在，則保證了該隨機變數的各階動差都存在；反之，若一隨機變數並非各階動差皆存在，則其動差母函數不存在。簡而言之，**動差母函數不是任何時候都存在**。
 
@@ -166,7 +166,7 @@ $$
 
 </div>
 
-讀者可能會有疑問，若我們有一個隨機變數 <span class="text-nowrap">$X$，</span>且其有存在的 mgf <span class="text-nowrap">$M\_{\sssig X}(t)$，</span>則我們可以由 $M\_{\sssig X}(t)$ 生出 $X$ 的各階原動差；但若情況反過來，已知 $X$ 的各階原動差，我們可以由此組合出 $M\_{\sssig X}(t)$ 嗎？這個答案是有條件的: 只要 $M\_{\sssig X}(t)$ 本身存在，它在 $t=0$ 的泰勒展開就正是由各階原動差組成的級數，我們便來看下面的定理。
+讀者可能會有疑問，若我們有一個隨機變數 <span class="text-nowrap">$X$，</span>且其有存在的 mgf <span class="text-nowrap">$M\_{\sssig X}(t)$，</span>則我們可以由 $M\_{\sssig X}(t)$ 生出 $X$ 的各階原動差；但若情況反過來，已知 $X$ 的各階原動差，我們可以由此組合出 $M\_{\sssig X}(t)$ 嗎？這個答案是有條件的，只要 $M\_{\sssig X}(t)$ 本身存在，它在 $t=0$ 的泰勒展開就正是由各階原動差組成的級數，我們便來看下面的定理。
 
 <div id="thm-mgf-moment-series" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.22 (mgf 的動差級數展開, moment series expansion of the mgf)</div>

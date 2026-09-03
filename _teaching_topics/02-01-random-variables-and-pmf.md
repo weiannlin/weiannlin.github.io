@@ -148,7 +148,7 @@ $$
 <div id="note-continuous-criterion" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-第 (2) 款以積分表示式界定連續型，而不以值域中元素的個數界定。元素個數只是必要條件，不是充分條件: 值域為不可數無限的隨機變數，未必能把 $\mathbb{P}(X\leqslant x)$ 寫成積分。一種情形是某些單點仍具有正機率，此時 $\mathbb{P}(X\leqslant x)$ 在該點跳躍，積分式不成立；另一種情形是每一個單點的機率皆為 $0$，卻仍找不到能使 $\mathbb{P}(X\leqslant x)$ 寫成積分的非負函數 $f_{\sssig X}$。
+第 (2) 款以積分表示式界定連續型，而不以值域中元素的個數界定。元素個數只是必要條件，不是充分條件，因為值域為不可數無限的隨機變數，未必能把 $\mathbb{P}(X\leqslant x)$ 寫成積分。一種情形是某些單點仍具有正機率，此時 $\mathbb{P}(X\leqslant x)$ 在該點跳躍，積分式不成立；另一種情形是每一個單點的機率皆為 $0$，卻仍找不到能使 $\mathbb{P}(X\leqslant x)$ 寫成積分的非負函數 $f_{\sssig X}$。
 
 </div>
 

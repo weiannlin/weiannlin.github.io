@@ -571,7 +571,7 @@ $$
 
 <figure id="fig-double-sum-original-order" class="topic-figure topic-figure--wide">
   <img src="/images/lecture-notes/double-sum-original-order.svg" alt="雙重加總的示意圖。橫軸為 k、縱軸為 x，圖中的黑點是滿足 k 大於等於 x 的整數數對，斜的虛線 k 等於 x 是它們的邊界。每一列都有一支由 k 等於 x 出發向右延伸的實線箭頭，表示先沿 k 軸加總；圖形右側另有一支向上的虛線箭頭，表示再沿 x 軸由 1 加總至無窮大。">
-  <figcaption><span class="topic-figure__label">Fig. 2.9.</span> 雙重加總 $\sum_{x=1}^{\infty}\sum_{k=x}^{\infty}\mathbb{P}(X=k)$ 的加總順序: 先固定 $x$，沿 $k$ 軸由 $k=x$ 加總至 $\infty$，再沿 $x$ 軸由 $1$ 加總至 $\infty$。圖中的實線箭頭是內層的 $\sum_{k=x}^{\infty}$，虛線箭頭是外層的 $\sum_{x=1}^{\infty}$。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 2.9.</span> 雙重加總 $\sum_{x=1}^{\infty}\sum_{k=x}^{\infty}\mathbb{P}(X=k)$ 的加總順序。先固定 $x$，沿 $k$ 軸由 $k=x$ 加總至 $\infty$，再沿 $x$ 軸由 $1$ 加總至 $\infty$。圖中的實線箭頭是內層的 $\sum_{k=x}^{\infty}$，虛線箭頭是外層的 $\sum_{x=1}^{\infty}$。</figcaption>
 </figure>
 
 [上圖](#fig-double-sum-original-order)中的黑點部分，代表在該雙重加總中，需要被加總的 $(k,x)$ 數對，而每一個點對應的機率 $\mathbb{P}(X=k)$ 都只與其 $k$ 座標有關。如果將加總的變數順序調換之後，會變成如下。

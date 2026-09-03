@@ -108,7 +108,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Theorem 2.17](#thm-median-minimizes-absolute-deviation) 的前提限定為連續型，是為了與下面的證明相符: 證明中會用到下面這條性質
+[Theorem 2.17](#thm-median-minimizes-absolute-deviation) 的前提限定為連續型，是為了與下面的證明相符，證明中會用到下面這條性質
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -434,7 +434,7 @@ $$
 
 [Definition 2.10](#def-median) 以 $\mathbb{P}(X\leqslant\eta_{\sssig X})\geqslant\frac{1}{2}$ 與 $\mathbb{P}(X\geqslant\eta_{\sssig X})\geqslant\frac{1}{2}$ 兩個不等式界定中位數 $\eta_{\sssig X}$，指稱時以母體中位數與樣本中位數區別。中位數可能不唯一，甚至可能不在值域內；由累積分配函數取下確界 $\inf\lbrace x\in\mathbb{R}\mid F_{\sssig X}(x)\geqslant\frac{1}{2}\rbrace$ 可以找到其中一個，而在 $F_{\sssig X}$ 連續且於值域上嚴格遞增時，中位數唯一且等於 $F^{-1}_{\sssig X}(\frac{1}{2})$。它把整個分配切成前後兩段的直觀，稍後會直接推廣到分位數；在對稱分配上它落在正中間，若又是單峰對稱分配，則與期望值和眾數同在一點。
 
-[Theorem 2.17](#thm-median-minimizes-absolute-deviation) 與 [Theorem 2.14](/lecture-notes/variance-standard-deviation/#thm-mean-minimizes-squared-deviation) 恰成對照: 平均離散程度若以平方衡量，使它最小的是期望值；若改以距離衡量，使 $\mathbb{E}\bigl[\lvert X-a\rvert\bigr]$ 最小的則是中位數。證明的作法是把 $\lvert x-a\rvert$ 的積分依 $a$ 與 $\eta_{\sssig X}$ 拆成四段，合併之後餘下一個非負的項，該項在 $a=\eta_{\sssig X}$ 時為零。[Fig. 2.14](#fig-median-intuition) 則畫出了中位數把密度曲線下方的面積切成相等兩塊的樣子。
+[Theorem 2.17](#thm-median-minimizes-absolute-deviation) 與 [Theorem 2.14](/lecture-notes/variance-standard-deviation/#thm-mean-minimizes-squared-deviation) 恰成對照。平均離散程度若以平方衡量，使它最小的是期望值；若改以距離衡量，使 $\mathbb{E}\bigl[\lvert X-a\rvert\bigr]$ 最小的則是中位數。證明的作法是把 $\lvert x-a\rvert$ 的積分依 $a$ 與 $\eta_{\sssig X}$ 拆成四段，合併之後餘下一個非負的項，該項在 $a=\eta_{\sssig X}$ 時為零。[Fig. 2.14](#fig-median-intuition) 則畫出了中位數把密度曲線下方的面積切成相等兩塊的樣子。
 
 [下一篇](/lecture-notes/quantiles/)接著把中位數推廣為分位數，其中的 [Example 2.26](/lecture-notes/quantiles/#ex-nonunique-median) 會給出一個中位數不唯一的具體例子。
 

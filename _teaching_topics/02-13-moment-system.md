@@ -15,7 +15,7 @@ excerpt: "母體動差以一個基準點 $c$ 與一個階數 $r$ 界定為 $\\ma
 
 [上一篇](/lecture-notes/quantiles/)介紹[分位數](/lecture-notes/quantiles/#def-quantile)，把[中位數](/lecture-notes/median/#def-median)的想法推廣到任意的比例。到這裡為止，[期望值](/lecture-notes/expectation/#def-expectation)、[變異數](/lecture-notes/variance/#def-variance)、[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)、[眾數](/lecture-notes/mode/#def-mode)、中位數與分位數都已經看過，它們各自描述一個分配的某一個面向，彼此之間看起來並沒有共同的來源。
 
-動差系統與[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)這一節，就是把其中幾個量數收進同一套架構之下: 選定一個基準點 $c$ 與一個階數 $r$ 之後，$\mathbb{E}[(X-c)^{r}]$ 就是一個母體動差，期望值與變異數分別是取 $c=0$、$r=1$ 與 $c=\mu_{\sssig X}$、$r=2$ 的結果。本篇先給出母體動差的定義，並依基準點與函數形式分出原動差、主動差與絕對動差；接著介紹兩種動差互相轉換時所需要的二項式定理，並證明兩者確實可以互相表示；最後說明高階絕對動差存在時，低階絕對動差同樣存在。
+動差系統與[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)這一節，就是把其中幾個量數收進同一套架構之下。選定一個基準點 $c$ 與一個階數 $r$ 之後，$\mathbb{E}[(X-c)^{r}]$ 就是一個母體動差，期望值與變異數分別是取 $c=0$、$r=1$ 與 $c=\mu_{\sssig X}$、$r=2$ 的結果。本篇先給出母體動差的定義，並依基準點與函數形式分出原動差、主動差與絕對動差；接著介紹兩種動差互相轉換時所需要的二項式定理，並證明兩者確實可以互相表示；最後說明高階絕對動差存在時，低階絕對動差同樣存在。
 
 <div id="def-population-moment" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 2.12 (母體動差, population moment)</div>

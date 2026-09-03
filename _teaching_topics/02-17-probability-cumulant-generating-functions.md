@@ -13,7 +13,7 @@ published: true
 excerpt: "能夠生成一系列量數的函數不只 mgf 一種。機率母函數 $G_{X}(t)=\\mathbb{E}(t^{X})$ 只對非負整數隨機變數定義，微分 $r$ 次後代入 $t=1$ 生成階乘動差，微分 $k$ 次後代入 $t=0$ 再除以 $k!$ 則還原 $\\mathbb{P}(X=k)$。累積量母函數 $K_{X}(t)=\\ln M_{X}(t)$ 由 mgf 取對數而得，前四個累積量依序是期望值、變異數、三階主動差與 $\\mu_{4}-3\\sigma_{X}^{4}$。最後說明 mgf 與 pgf 之間如何互相改寫。"
 ---
 
-[上一篇](/lecture-notes/uniqueness-of-the-mgf/)以[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)的唯一性作結: 兩個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的 mgf 若相等，兩者的機率分配也相等，因此只要由各階原動差湊出 mgf，就能反過來認出分配是哪一個；離散型的 mgf 更可以把各個質點的機率一一取回。
+[上一篇](/lecture-notes/uniqueness-of-the-mgf/)以[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)的唯一性作結。兩個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的 mgf 若相等，兩者的機率分配也相等，因此只要由各階原動差湊出 mgf，就能反過來認出分配是哪一個；離散型的 mgf 更可以把各個質點的機率一一取回。
 
 本篇要看的是另外兩種母函數。**機率母函數 <span lang="en">(probability generating function, pgf)</span>** 只對非負整數隨機變數定義，它生成的是階乘動差，也能夠直接還原 pmf；**累積量母函數 <span lang="en">(cumulant generating function, cgf)</span>** 則由 mgf 取對數而得，生成的是一系列的累積量，其中前四個依序是[期望值](/lecture-notes/expectation/#def-expectation)、[變異數](/lecture-notes/variance/#def-variance)、三階主動差與 $\mu\_{\sssig 4}-3\sigma^{4}\_{\sssig X}$。最後我們說明 mgf 與 pgf 之間如何互相改寫。
 

@@ -90,9 +90,9 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-微積分基本定理只在 $f_{\sssig X}$ 於 $x$ 處連續時給出 $F^{\prime}\_{\sssig X}(x)=f_{\sssig X}(x)$，$f_{\sssig X}$ 不連續的點不在它的保證範圍內。整體而言仍有一個較弱的結論: [Definition 2.5](#def-pdf) 要求 $F_{\sssig X}$ 能寫成 $f_{\sssig X}$ 的積分，$F_{\sssig X}$ 因而**絕對連續 <span lang="en">(absolutely continuous)</span>**，由 Lebesgue 微分定理可知該等式**幾乎處處 <span lang="en">(almost everywhere, a.e.)</span>** 成立。不成立的點至多構成一個 Lebesgue 測度為零的集合，$f_{\sssig X}$ 在其上的取值不改變任何一個積分，因此不影響任何機率。
+微積分基本定理只在 $f_{\sssig X}$ 於 $x$ 處連續時給出 $F^{\prime}\_{\sssig X}(x)=f_{\sssig X}(x)$，$f_{\sssig X}$ 不連續的點不在它的保證範圍內。整體而言仍有一個較弱的結論。[Definition 2.5](#def-pdf) 要求 $F_{\sssig X}$ 能寫成 $f_{\sssig X}$ 的積分，$F_{\sssig X}$ 因而**絕對連續 <span lang="en">(absolutely continuous)</span>**，由 Lebesgue 微分定理可知該等式**幾乎處處 <span lang="en">(almost everywhere, a.e.)</span>** 成立。不成立的點至多構成一個 Lebesgue 測度為零的集合，$f_{\sssig X}$ 在其上的取值不改變任何一個積分，因此不影響任何機率。
 
-絕對連續這個前提不能省: 單憑 $F_{\sssig X}$ 連續且幾乎處處可微，並不足以求得密度。存在連續而不絕對連續的 cdf，其導數幾乎處處為 $0$，積分起來得到 $0$ 而不是 $1$。上式之所以成立，正是因為 [Definition 2.5](#def-pdf) 已經給出積分表示式。
+絕對連續這個前提不能省，因為單憑 $F_{\sssig X}$ 連續且幾乎處處可微，並不足以求得密度。存在連續而不絕對連續的 cdf，其導數幾乎處處為 $0$，積分起來得到 $0$ 而不是 $1$。上式之所以成立，正是因為 [Definition 2.5](#def-pdf) 已經給出積分表示式。
 
 </div>
 

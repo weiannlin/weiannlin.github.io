@@ -176,7 +176,7 @@ $$
 \phi_{\sssig X}(0)=\mathbb{E}\bigl(e^{0}\bigr)=\mathbb{E}(1)=1
 $$
 
-第 (2) 款用到一項關於**複數值隨機變數 <span lang="en">(complex-valued random variable)</span>** 的事實: 這一型隨機變數 $Z$ 的期望值是實部與虛部各自取期望值，而 $\lvert\mathbb{E}(Z)\rvert\leqslant\mathbb{E}(\lvert Z\rvert)$ 在這一型同樣成立。取 $Z=e^{itX}$ 並代入 $\lvert e^{itX}\rvert=1$ 可得
+第 (2) 款用到一項關於**複數值隨機變數 <span lang="en">(complex-valued random variable)</span>** 的事實。這一型隨機變數 $Z$ 的期望值是實部與虛部各自取期望值，而 $\lvert\mathbb{E}(Z)\rvert\leqslant\mathbb{E}(\lvert Z\rvert)$ 在這一型同樣成立。取 $Z=e^{itX}$ 並代入 $\lvert e^{itX}\rvert=1$ 可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -410,7 +410,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Theorem 2.28](#thm-cf-generates-moments) 的前提是動差存在，而結論是導數可求得動差。反過來想僅由導數存在就直接得到動差時，結論會弱一些，而且要分奇偶兩種情形: 若 $\phi\_{\sssig X}(t)$ 在 $t=0$ 的 $r$ 階導數存在，則 $r$ 為偶數時可得 $\mathbb{E}(\lvert X\rvert^{r})<\infty$，即 $r$ 階動差存在；$r$ 為奇數時一般只能得到 $r-1$ 階動差存在。也就是說，這個定理的逆命題只在偶數階完全成立。
+[Theorem 2.28](#thm-cf-generates-moments) 的前提是動差存在，而結論是導數可求得動差。反過來想僅由導數存在就直接得到動差時，結論會弱一些，而且要分奇偶兩種情形。若 $\phi\_{\sssig X}(t)$ 在 $t=0$ 的 $r$ 階導數存在，則 $r$ 為偶數時可得 $\mathbb{E}(\lvert X\rvert^{r})<\infty$，即 $r$ 階動差存在；$r$ 為奇數時一般只能得到 $r-1$ 階動差存在。也就是說，這個定理的逆命題只在偶數階完全成立。
 
 </div>
 
@@ -466,7 +466,7 @@ $$
 
 </div>
 
-此處的代入是合法的: 由 $\lvert e^{it}\rvert=1$ 可知該級數各項的絕對值之和為 $\sum\_{x=0}^{\infty}p\_{\sssig X}(x)=1$，級數絕對收斂。
+此處的代入是合法的，因為由 $\lvert e^{it}\rvert=1$ 可知該級數各項的絕對值之和為 $\sum\_{x=0}^{\infty}p\_{\sssig X}(x)=1$，級數絕對收斂。
 {: .topic-paren-cont}
 
 原式得證。 <span class="topic-qed">$\square$</span>
@@ -636,11 +636,11 @@ $$
 
 最後把特徵函數與動差母函數放在一起，比較四件事。
 
-第一是存在性。mgf 要求 $\mathbb{E}(e^{tX})$ 在 $t=0$ 的某個鄰域之內為有限，並不是每個分配都滿足；cf 則由 $\lvert e^{itX}\rvert=1$ 保證對每一個實值隨機變數與每一個 $t$ 都存在。[Example 2.53](#ex-cauchy-sample-mean-cf) 的標準柯西分配正是一個例子: 它連期望值都不存在，自然沒有 mgf，卻有 $\phi\_{\sssig X}(t)=e^{-\lvert t\rvert}$ 這個形式簡單的 cf。
+第一是存在性。mgf 要求 $\mathbb{E}(e^{tX})$ 在 $t=0$ 的某個鄰域之內為有限，並不是每個分配都滿足；cf 則由 $\lvert e^{itX}\rvert=1$ 保證對每一個實值隨機變數與每一個 $t$ 都存在。[Example 2.53](#ex-cauchy-sample-mean-cf) 的標準柯西分配正是一個例子，它連期望值都不存在，自然沒有 mgf，卻有 $\phi\_{\sssig X}(t)=e^{-\lvert t\rvert}$ 這個形式簡單的 cf。
 
 第二是生成動差。[Theorem 2.21](/lecture-notes/moment-generating-functions/#thm-mgf-generates-moments) 說 mgf 微分 $r$ 次後在 $t=0$ 取值即得 <span class="text-nowrap">$\mathbb{E}(X^{r})$，</span>[Theorem 2.28](#thm-cf-generates-moments) 說 cf 的對應結果多一個 $i^{r}$。兩者的前提也不同: mgf 一旦存在便保證各階動差都存在，cf 這一邊則是逐階要求 $\mathbb{E}(\lvert X\rvert^{r})<\infty$，只換得到 $r$ 階為止。
 
-第三是唯一性。兩者都有: [Theorem 2.23](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness) 說 mgf 相等則分配相等，[Theorem 2.30](#thm-cf-uniqueness) 說 cf 相等則分配相等。差別在於前者附帶了兩個 mgf 都要存在的條件，後者沒有這個附帶條件。
+第三是唯一性，兩者都有。[Theorem 2.23](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness) 說 mgf 相等則分配相等，[Theorem 2.30](#thm-cf-uniqueness) 說 cf 相等則分配相等。差別在於前者附帶了兩個 mgf 都要存在的條件，後者沒有這個附帶條件。
 
 第四是能不能反過來求出分配的密度。mgf 做不到，離散型至多由 $p\_{\sssig 1}e^{a\_{1}t}+\cdots+p\_{\sssig n}e^{a\_{n}t}$ 的形式直接寫出 pmf，連續型只能回頭比對各個常見機率模型的 mgf；cf 則有反演公式，在 $\int\_{-\infty}^{\infty}\lvert\phi\_{\sssig X}(t)\rvert\,dt<\infty$ 之下可以直接算出 pdf。
 

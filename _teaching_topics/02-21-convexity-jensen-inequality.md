@@ -225,7 +225,7 @@ $$
 
 凸函數未必處處可微，例如 $g(x)=\lvert x-c\rvert$ 在 $x=c$ 便不可微，其中 $c$ 為任一常數。上述證明只用到支撐直線，沒有用到 $g$ 或 $h$ 可微，因此這一類函數也在 [Theorem 2.36](#thm-jensen) 的適用範圍之內，[Example 2.45](#ex-mean-median-distance) 用的正是這樣的一個函數。[Fig. 2.21](#fig-convexity-tangent) 與其前後的說明以可微的凸函數與凹函數為例；在不可微之處，取代切線的正是支撐直線，而且這樣的直線不只一條，任取一條即可。支撐直線的存在，可由凸函數的差商 $\frac{g(x)-g(y)}{x-y}$ 在固定 $y$ 之下對 $x$ 非遞減這個性質導出，讀者應可自行驗證，本篇不另證明。
 
-[Theorem 2.36](#thm-jensen) 也沒有另外要求 $\mathbb{E}\bigl[g(X)\bigr]$ 存在，這是因為在定理的前提與證明中所設的條件之下，它必定有意義。前提要求 $\mathbb{E}(X)$ 為有限，否則 $g\bigl[\mathbb{E}(X)\bigr]$ 無從定義；此時 $\mathbb{E}\bigl(\lvert X\rvert\bigr)$ 亦為有限，這是期望值存在的等價條件。令 $\ell(x)$ $=$ $s\,\bigl(x-\mathbb{E}(X)\bigr)+g\bigl[\mathbb{E}(X)\bigr]$ 為證明中所取的支撐直線，則 $\mathbb{E}\bigl[\lvert\ell(X)\rvert\bigr]$ 為有限；又 $g(X)\geqslant\ell(X)$，故 $\max\lbrace-g(X),\,0\rbrace$ $\leqslant$ $\max\lbrace-\ell(X),\,0\rbrace$，也就是 $g(X)$ 取負值的那一部分，其期望值必為有限。因此 $\mathbb{E}\bigl[g(X)\bigr]$ 必定是 $(-\infty,+\infty]$ 之中一個確定的值: 若它等於 $+\infty$，不等式成為 $+\infty$ $\geqslant$ $g\bigl[\mathbb{E}(X)\bigr]$，自動成立，定理依然為真，只是沒有給出有用的界限。凹函數的情形對稱，$\mathbb{E}\bigl[h(X)\bigr]$ 必定是 $[-\infty,+\infty)$ 之中一個確定的值。
+[Theorem 2.36](#thm-jensen) 也沒有另外要求 $\mathbb{E}\bigl[g(X)\bigr]$ 存在，這是因為在定理的前提與證明中所設的條件之下，它必定有意義。前提要求 $\mathbb{E}(X)$ 為有限，否則 $g\bigl[\mathbb{E}(X)\bigr]$ 無從定義；此時 $\mathbb{E}\bigl(\lvert X\rvert\bigr)$ 亦為有限，這是期望值存在的等價條件。令 $\ell(x)$ $=$ $s\,\bigl(x-\mathbb{E}(X)\bigr)+g\bigl[\mathbb{E}(X)\bigr]$ 為證明中所取的支撐直線，則 $\mathbb{E}\bigl[\lvert\ell(X)\rvert\bigr]$ 為有限；又 $g(X)\geqslant\ell(X)$，故 $\max\lbrace-g(X),\,0\rbrace$ $\leqslant$ $\max\lbrace-\ell(X),\,0\rbrace$，也就是 $g(X)$ 取負值的那一部分，其期望值必為有限。因此 $\mathbb{E}\bigl[g(X)\bigr]$ 必定是 $(-\infty,+\infty]$ 之中一個確定的值。若它等於 $+\infty$，不等式成為 $+\infty$ $\geqslant$ $g\bigl[\mathbb{E}(X)\bigr]$，自動成立，定理依然為真，只是沒有給出有用的界限。凹函數的情形對稱，$\mathbb{E}\bigl[h(X)\bigr]$ 必定是 $[-\infty,+\infty)$ 之中一個確定的值。
 
 </div>
 
@@ -423,7 +423,7 @@ Show that $K(f_{0}, f_{1})\geqslant0$.
 
 下面的解答令 $W=\frac{\,f_{1}(X)\,}{\,f_{0}(X)\,}$，再對凸函數 $g(y)=-\ln y$ 使用 [Theorem 2.36](#thm-jensen)。依 [Definition 2.20](#def-convex-concave)，凸函數的定義域為一個區間，而 $g$ 的定義域是 $(0,\infty)$；要把定理用在 $W$ 之上，$W$ 必須以機率 $1$ 落在這個區間之內。若 $f_{1}$ 在 $\lbrace f_{0}>0\rbrace$ 之中某一塊區域上為零，而該區域在 $f_{0}$ 之下的機率為正，$W$ 便以正機率取到 $0$，$g(W)$ 在該處沒有定義，這條定理便無從引用。故以下另設在 $f_{0}(x)>0$ 之處皆有 $f_{1}(x)>0$。有了這個前提，$W>0$ 以機率 $1$ 成立，<span class="text-nowrap">$\mathbb{E}\_{0}(W)>0$，</span>$-\ln\bigl[\mathbb{E}\_{0}(W)\bigr]$ 才有定義；而 $\mathbb{E}\_{0}(W)$ 等於 $\int_{\lbrace f_{0}>0\rbrace}f_{1}(x)\,dx$，不超過 $1$，本來就為有限，正是 [Theorem 2.36](#thm-jensen) 前提所要求的期望值為有限。
 
-要證的 $K(f_{0}, f_{1})\geqslant0$ 本身則不需要這個前提。少了它時，$\ln\frac{\,f_{0}(x)\,}{f_{1}(x)}$ 在上述那塊區域上依慣例取 $+\infty$；而被積函數取負值的那一部分，其積分必為有限: 在那一部分上 $\ln\frac{\,f_{1}(x)\,}{f_{0}(x)}$ 為正，由 $\ln t\leqslant t-1$ 可得它不超過 $\frac{\,f_{1}(x)\,}{f_{0}(x)}$，故這一部分乘上 $f_{0}(x)$ 之後的積分不超過 $\int_{\lbrace f_{0}>0\rbrace}f_{1}(x)\,dx$，也就是不超過 $1$。
+要證的 $K(f_{0}, f_{1})\geqslant0$ 本身則不需要這個前提。少了它時，$\ln\frac{\,f_{0}(x)\,}{f_{1}(x)}$ 在上述那塊區域上依慣例取 $+\infty$；而被積函數取負值的那一部分，其積分必為有限，因為在那一部分上 $\ln\frac{\,f_{1}(x)\,}{f_{0}(x)}$ 為正，由 $\ln t\leqslant t-1$ 可得它不超過 $\frac{\,f_{1}(x)\,}{f_{0}(x)}$，故這一部分乘上 $f_{0}(x)$ 之後的積分不超過 $\int_{\lbrace f_{0}>0\rbrace}f_{1}(x)\,dx$，也就是不超過 $1$。
 
 $K(f_{0}, f_{1})$ 因此必定是 $(-\infty,+\infty]$ 之中一個確定的值，而在上述情形之下它等於 $+\infty$，$K(f_{0}, f_{1})\geqslant0$ 自動成立，只是沒有給出有用的資訊。這與 [Theorem 2.36](#thm-jensen) 之後那則 [Note](#note-jensen-supporting-line) 所談的是同一類情形，期望值容許取 $+\infty$ 時，不等式依然為真。補上前提不是為了讓結論成立，而是為了讓下面每一步都有定義。
 
@@ -532,7 +532,7 @@ $$
 
 ## 本篇小結
 
-[Definition 2.20](#def-convex-concave) 以任兩點的加權平均界定凸函數與凹函數: 在定義域這個凸集合中任取兩點 $x, y$ 與權重 $t\in[0,1]$，若 $f(t\,x+(1-t)\,y)$ 不超過 $t\,f(x)+(1-t)\,f(y)$ 則 $f$ 為凸函數，不等號反向則為凹函數；兩式各自改為嚴格不等式，並把兩點限為相異、權重限為 $t\in(0,1)$，就是嚴格凸函數與嚴格凹函數。[Fig. 2.21](#fig-convexity-tangent) 以可微的情形畫出這個定義的一個特別的性質。凸函數上任一點的切線都在函數下方，凹函數上任一點的切線都在函數上方。
+[Definition 2.20](#def-convex-concave) 以任兩點的加權平均界定凸函數與凹函數。在定義域這個凸集合中任取兩點 $x, y$ 與權重 $t\in[0,1]$，若 $f(t\,x+(1-t)\,y)$ 不超過 $t\,f(x)+(1-t)\,f(y)$ 則 $f$ 為凸函數，不等號反向則為凹函數；兩式各自改為嚴格不等式，並把兩點限為相異、權重限為 $t\in(0,1)$，就是嚴格凸函數與嚴格凹函數。[Fig. 2.21](#fig-convexity-tangent) 以可微的情形畫出這個定義的一個特別的性質。凸函數上任一點的切線都在函數下方，凹函數上任一點的切線都在函數上方。
 
 [Theorem 2.36](#thm-jensen) 的延森不等式，把上述性質由兩點的加權平均推廣到期望值。凸函數滿足 $\mathbb{E}[g(X)]\geqslant g[\mathbb{E}(X)]$，凹函數滿足 $\mathbb{E}[h(X)]\leqslant h[\mathbb{E}(X)]$。它與前面幾篇的不等式不同之處在於，兩側比較的都是動差，而不是尾機率的上界。證明的作法是在 $(\mathbb{E}(X), g[\mathbb{E}(X)])$ 這一點取支撐直線，先把 $g(X)$ 縮小 (或放大) 為一條直線，再對整條直線取期望值，此時一次項因 $\mathbb{E}[X-\mathbb{E}(X)]=0$ 而消去，只留下常數項；證明只用到支撐直線，不要求 $g$ 可微，而 $g$ 於該點可微時，這條支撐直線就是切線。[Fig. 2.22](#fig-jensen-convex) 的上下兩個面板則以兩點分配畫出這個落差，弦的中點就是 $\mathbb{E}[g(X)]$，曲線上的點就是 $g[\mathbb{E}(X)]$。
 
