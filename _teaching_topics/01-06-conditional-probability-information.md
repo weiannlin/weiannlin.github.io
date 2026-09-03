@@ -511,7 +511,7 @@ $$
 
 ## 蒙提霍爾問題
 
-蒙提霍爾問題 <span lang="en">(Monty Hall problem)</span> 是一個源自真實歷史故事的數學問題。它得名自美國電視遊戲節目 Let’s Make a Deal；節目主持人正是 Monty Hall。這個實境節目自 1963 年開始播出，節目的張力在於「交易」。參賽者可以保留手上的東西，也可以相信主持人的邀請，換成門後、箱子裡或布幕後的未知獎品。這種舞台效果後來被整理成三扇門的標準機率問題；看起來像是剩下兩扇門各半，實際上主持人掌握資訊並刻意打開沒有獎品的門，才是計算時不能忽略的線索。
+蒙提霍爾問題 <span lang="en">(Monty Hall problem)</span> 是一個源自真實歷史故事的數學問題。它得名自美國電視遊戲節目 Let’s Make a Deal；節目主持人正是 Monty Hall。這個實境節目自 1963 年開始播出，節目的重點在於「交易」。參賽者可以保留手上的東西，也可以相信主持人的邀請，換成門後、箱子裡或布幕後的未知獎品。這種節目效果後來被整理成三扇門的標準機率問題；看起來像是剩下兩扇門各半，實際上主持人掌握資訊並刻意打開沒有獎品的門，才是計算時不能忽略的線索。
 
 <div id="example-monty-hall" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.17 <span lang="en">(The Monty Hall Problem)</span></div>
@@ -579,12 +579,12 @@ $$
 
 這個例子的關鍵在於，「第一次就猜中」與「第一次沒猜中」是互斥且恰有一個會發生的兩種情況；[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)把兩種情況下換門策略的貢獻分別算出來，再加總成總勝率。主持人沒有改變獎品的位置，他打開沒有獎品的門的動作改變了資訊狀態。
 
-這個問題之所以經典，正是因為它很容易騙過直覺。主持人打開一個沒有獎品的門後，眼前只剩兩個未開的門，許多人會自然地認為，既然只剩兩個選項，機率應該各半。但這個想法忽略了主持人的行動帶著資訊，具有篩選效果。據說連數學家艾迪胥 (Paul Erdős) 也曾一度不接受換門策略較好的結論，直到看見電腦模擬後才被說服。若想把這個 $2/3$ 看成長期相對頻率，也可以到 Demos 中的<a class="text-nowrap" href="/demos/monty-hall/">蒙提霍爾問題實作</a>親自操作，改變策略、增加模擬次數，觀察換門策略的勝率如何逐漸穩定在理論值附近。
+這個問題之所以經典，正是因為它很容易讓直覺出錯。主持人打開一個沒有獎品的門後，眼前只剩兩個未開的門，許多人會自然地認為，既然只剩兩個選項，機率應該各半。但這個想法忽略了主持人的行動帶著資訊，具有篩選效果。據說連數學家艾迪胥 (Paul Erdős) 也曾一度不接受換門策略較好的結論，直到看見電腦模擬後才被說服。若想把這個 $2/3$ 看成長期相對頻率，也可以到 Demos 中的<a class="text-nowrap" href="/demos/monty-hall/">蒙提霍爾問題實作</a>親自操作，改變策略、增加模擬次數，觀察換門策略的勝率如何逐漸穩定在理論值附近。
 
 <div id="interlude-three-prisoners" class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 1.1</div>
 
-Monty Hall 問題還有一個等價外衣，稱為三囚徒問題 <span lang="en">(three prisoners problem)</span>。
+Monty Hall 問題還有一個結構相同的版本，稱為三囚徒問題 <span lang="en">(three prisoners problem)</span>。
 
 想像有三位囚徒 $A,B,C$，其中一人將獲赦免，另外兩人會被處決。囚徒 $A$ 不知道誰會獲赦，於是請知道結果的守衛在 $B,C$ 之中，說出一位「確定不會獲赦」的人。守衛回答「$B$ 不會獲赦」。
 

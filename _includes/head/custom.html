@@ -27,9 +27,10 @@
       macros: {
         indep: '\\mathrel{\\perp\\!\\!\\!\\perp}',
         sssig: '\\scriptscriptstyle',
-        // 第五章的收斂箭頭。定義逐字取自書稿的 preamble
-        // (/Users/sagalin/Dropbox/MathStat/elegantProbability.tex 第 258 至 262、274 行)，
-        // 網頁不自訂另一套寫法。
+        /* 第五章的收斂箭頭。定義逐字取自書稿的 preamble
+           (/Users/sagalin/Dropbox/MathStat/elegantProbability.tex 第 258 至 262、274 行)，
+           網頁不自訂另一套寫法。此處只能用區塊註解: 正式站的 compress 版面會把整頁壓成一行，
+           單行註解會把後面的設定一起註解掉，使 MathJax 退回預設，單錢號行內數學不再處理。 */
         dconv: '\\xrightarrow{~~d~~}',
         pconv: '\\xrightarrow{~~p~~}',
         asconv: '\\xrightarrow{~~a.s.~~}',
