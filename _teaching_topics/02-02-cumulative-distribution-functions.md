@@ -292,6 +292,14 @@ $$
 
 </div>
 
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+本題的 $X$ 把全部機率都放在單一質點 $x=0$ 上，也就是 <span class="text-nowrap">$\mathbb{P}(X=0)=1$，</span>它其實就是常數 $0$。這一類隨機變數稱為**退化隨機變數 <span lang="en">(degenerate random variable)</span>**，其 cdf 只有一個跳躍，高度恰為 <span class="text-nowrap">$1$。</span>我們在[第二章談變異數的性質](/lecture-notes/variance/#thm-variance-properties)時會再談到它: 常數沒有隨機性，變異數為 <span class="text-nowrap">$0$。</span>
+
+</div>
+
+
 ## 本篇小結
 
 累積分配函數定義為 $F_{\sssig X}(x)=\mathbb{P}(X\leqslant x)$，定義域是整條實數線，函數值落在 $[0,1]$ 之中。它的定義並不限制 $X$ 的型態，離散型與連續型都適用，這是它與只定義在離散型上的機率質量函數最大的不同。
