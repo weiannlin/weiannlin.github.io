@@ -108,7 +108,7 @@ $$
 
 上述的例子裡可以發現，樣本空間的型態很多樣，因此可對樣本空間分類。
 
-若將隨機實驗與微積分中的**函數 <span lang="en">(function)</span>** 做聯想，則可以將樣本空間想像成該函數的**對應域 <span lang="en">(codomain)</span>**；依照對應域的不同，函數能被分成**實值函數 <span lang="en">(real-valued function)</span>** 等不同函數。同理，我們也能夠以此為樣本空間進行分類，並將其分為二大類。
+若將隨機實驗與微積分中的**函數 <span lang="en">(function)</span>** 做聯想，則可以將樣本空間想像成該函數的**值域 <span lang="en">(range)</span>**；依照值域的不同，函數能被分成**實值函數 <span lang="en">(real-valued function)</span>** 等不同函數。同理，我們也能夠以此為樣本空間進行分類，並將其分為二大類。
 
 <div class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.5</div>

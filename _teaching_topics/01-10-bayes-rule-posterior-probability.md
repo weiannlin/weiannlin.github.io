@@ -47,24 +47,6 @@ $$
 此性質稱為**貝氏定理 (Bayes’ rule)**。
 </div>
 
-<div class="topic-proof" markdown="1">
-**Proof.**
-
-第一個等號即[條件機率](/lecture-notes/conditional-probability-information/#definition-conditional-probability)的定義。由於 $A_1,A_2,\ldots,A_n$ 為 $S$ 的一組分割，由[全機率定理](/lecture-notes/total-probability-bayes-rule/#theorem-law-of-total-probability)可知
-
-$$
-\mathbb{P}(B)=\sum_{j=1}^{n}\mathbb{P}(B\cap A_j)
-$$
-
-將其代入分母，並將分子依交換律改寫為 $\mathbb{P}(B\cap A_i)$，即得第二個等號。最後對分子與分母中的每一個交集機率套用[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)，即
-
-$$
-\mathbb{P}(B\cap A_j)=\mathbb{P}(B\mid A_j)\,\mathbb{P}(A_j)
-$$
-
-便得第三個等號。原式得證。 <span class="topic-qed">$\square$</span>
-</div>
-
 上述定理中有幾個特別需要注意的地方:
 
 <ol class="topic-list-paren">
@@ -423,12 +405,6 @@ $$
 
 </div>
 
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-[Example 1.29](#example-116) 為**失蹤飛機問題 <span lang="en">(missing plane problem)</span>**，是貝氏定理中一個著名的問題。其問題的關鍵在於，如果該飛機事實上並沒有在區域 $i$，則在該區域進行搜救是不可能會找到的；但即便飛機真的在<span class="text-nowrap">區域 $i$，</span>在該區域搜救也未必就會找到。由於這個原因，我們可以從某次搜救的結果得到一些資訊，針對「飛機可能在哪個區域」的機率進行調整，是一個事後機率的典型例子。
 </div>
 
 <div id="interlude-information-updates" class="topic-box topic-box--interlude" markdown="1">

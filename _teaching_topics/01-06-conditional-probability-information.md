@@ -360,7 +360,7 @@ $$
 **[法一]** 令 $N$ 表示五張牌中沒有 King 的事件，則所求為
 
 $$
-\mathbb{P}(N)=\frac{\binom{4}{0}\binom{48}{5}}{\binom{52}{5}}=0.6588
+\mathbb{P}(N)=\frac{\binom{4}{0}\binom{48}{5}}{\binom{52}{5}}\fallingdotseq 0.6588
 $$
 
 **[法二]** 令 $N_i$ 表示第 $i$ 張牌不為 King 之事件，$i=1,2,3,4,5$，則 $N=\bigcap_{i=1}^{5}N_i$ 表示五張牌中沒有任何 King 之事件，由[廣義乘法原理](#theorem-general-multiplication-rule)可知所求為
@@ -372,7 +372,7 @@ $$
 \mathbb{P}(N)&=\mathbb{P}(N_1)\times\prod_{i=2}^{5}\mathbb{P}\left(N_i\,\middle|\,\bigcap_{m=1}^{i-1}N_m\right)\\[0.4em]
 &=\mathbb{P}(N_1)\times\mathbb{P}(N_2\mid N_1)\times\mathbb{P}(N_3\mid N_1\cap N_2)\\[0.4em]
 &\qquad\times\mathbb{P}(N_4\mid N_1\cap N_2\cap N_3)\times\mathbb{P}(N_5\mid N_1\cap N_2\cap N_3\cap N_4)\\[0.4em]
-&=\frac{48}{52}\times\frac{47}{51}\times\frac{46}{50}\times\frac{45}{49}\times\frac{44}{48}=0.6588
+&=\frac{48}{52}\times\frac{47}{51}\times\frac{46}{50}\times\frac{45}{49}\times\frac{44}{48}\fallingdotseq 0.6588
 \end{aligned}
 $$
 
@@ -387,7 +387,7 @@ $$
 &\qquad\times\mathbb{P}(N_4\mid N_1\cap N_2\cap N_3)\\[0.4em]
 &\qquad\times\mathbb{P}(N_5\mid N_1\cap N_2\cap N_3\cap N_4)\\[0.4em]
 &=\frac{48}{52}\times\frac{47}{51}\times\frac{46}{50}\times\frac{45}{49}\times\frac{44}{48}\\[0.4em]
-&=0.6588
+&\fallingdotseq 0.6588
 \end{aligned}
 $$
 

@@ -65,7 +65,7 @@ $$
 
 **交集**對應到邏輯學中「且 (and)」與四則運算中「乘 <span lang="en">(multiplication)</span>」的概念，是兩個集合中均有的元素所構成的新集合。就事件而言，交集表示兩事件皆發生才可。部分寫法會把 $A\cap B$ 簡寫為 $AB$，與其「乘」的概念互相呼應。
 
-**差集 <span lang="en">(difference)</span>** 又稱相對餘集 <span lang="en">(relative complement)</span>，本系列一律用差集；差集亦記為 $A\backslash B$，本系列以 $A-B$ 為主要記號。差集對應到「減」的概念，就事件而言表示 $A$ 發生但 $B$ 沒有發生，由定義亦可寫為
+**差集 <span lang="en">(difference)</span>** 又稱相對餘集 <span lang="en">(relative complement)</span>，本系列一律用差集；差集在集合論中的標準記法為 $A\backslash B$，本系列以 $A-B$ 為主要記號。差集對應到「減」的概念，就事件而言表示 $A$ 發生但 $B$ 沒有發生，由定義亦可寫為
 
 $$
 A-B=A\cap B^{\prime}

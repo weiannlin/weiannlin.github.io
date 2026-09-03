@@ -668,7 +668,7 @@ $$
 \mathbb{P}(A_1\cup A_2)\leqslant\mathbb{P}(A_1)+\mathbb{P}(A_2)
 $$
 
-**(2)** 由 (1) 知道 $n=2$ 時原式顯然成立。又令 $n=k$ 時原式成立，即
+**(2)** $n=1$ 時兩側同為 $\mathbb{P}(A_1)$，原式成立；由 (1) 知道 $n=2$ 時原式顯然成立。又令 $n=k$ 時原式成立，即
 
 $$
 \mathbb{P}\left(\bigcup_{i=1}^{k}A_i\right)\leqslant\sum_{i=1}^{k}\mathbb{P}(A_i)
@@ -794,7 +794,7 @@ $$
 \mathbb{P}(A_1\cap A_2)\geqslant\mathbb{P}(A_1)+\mathbb{P}(A_2)-1
 $$
 
-**(2)** 由 (1) 知道 $n=2$ 時原式顯然成立。又令 $n=k$ 時原式成立，即
+**(2)** $n=1$ 時兩側同為 $\mathbb{P}(A_1)$，原式成立；由 (1) 知道 $n=2$ 時原式顯然成立。又令 $n=k$ 時原式成立，即
 
 $$
 \mathbb{P}\left(\bigcap_{i=1}^{k}A_i\right)\geqslant\sum_{i=1}^{k}\mathbb{P}(A_i)-(k-1)
