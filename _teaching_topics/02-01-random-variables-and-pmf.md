@@ -490,7 +490,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-題目只設 $X$ 的分配帶有參數 $\theta$，並未指明 $\theta$ 的範圍；這一點可由 pmf 的非負性補足。由題意之遞迴性質可得 $p_{\sssig X}(1)=\theta\,\mathbb{P}(X=0)$，而 $\mathbb{P}(X=0)=e^{-\theta}>0$，非負性因而要求 $\theta\geqslant0$。$\theta=0$ 是這個範圍的邊界情形，非負性並未將它排除: 此時 $\mathbb{P}(X=0)=1$，$X$ 退化為恆取 $0$ 的隨機變數，已不具有隨機性。本題的參數範圍取 <span class="text-nowrap">$\theta>0$，</span>不含這個退化的情形。
+題目只設 $X$ 的分配帶有參數 $\theta$，並未指明 $\theta$ 的範圍；這一點可由 pmf 的非負性補足。由題意之遞迴性質可得 $p_{\sssig X}(1)=\theta\,\mathbb{P}(X=0)$，而 $\mathbb{P}(X=0)=e^{-\theta}>0$，非負性因而要求 $\theta\geqslant0$。$\theta=0$ 是這個範圍的邊界情形，非負性並未將它排除，此時 $\mathbb{P}(X=0)=1$，$X$ 退化為恆取 $0$ 的隨機變數，已不具有隨機性。本題的參數範圍取 <span class="text-nowrap">$\theta>0$，</span>不含這個退化的情形。
 
 </div>
 

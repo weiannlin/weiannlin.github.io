@@ -178,7 +178,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-五個質點 $1,2,3,4,5$ 同時是各段的分界，由於定義取的是小於等於，分界一律歸入右側的那一段: $x=1$ 時 $p_{\sssig X}(1)$ 已計入，<span class="text-nowrap">$F_{\sssig X}(1)=\frac{1}{6}$，</span>與 $x$ 自右側趨近 $1$ 的極限相同，此即 [Theorem 2.1](#thm-cdf-properties) 第 (3) 款右連續在本題的具體情形。最外側的 $x<1$ 與 $5\leqslant x$ 兩段則分別恆為 $0$ 與 $1$，[Theorem 2.1](#thm-cdf-properties) 第 (5) 款的兩個極限在本題即由這兩段給出。
+五個質點 $1,2,3,4,5$ 同時是各段的分界，由於定義取的是小於等於，分界一律歸入右側的那一段: $x=1$ 時 $p_{\sssig X}(1)$ 已經被算進來，所以 <span class="text-nowrap">$F_{\sssig X}(1)=\frac{1}{6}$，</span>與 $x$ 自右側趨近 $1$ 的極限相同，此即 [Theorem 2.1](#thm-cdf-properties) 第 (3) 款右連續在本題的具體情形。最外側的 $x<1$ 與 $5\leqslant x$ 兩段則分別恆為 $0$ 與 $1$，[Theorem 2.1](#thm-cdf-properties) 第 (5) 款的兩個極限在本題即由這兩段給出。
 
 </div>
 

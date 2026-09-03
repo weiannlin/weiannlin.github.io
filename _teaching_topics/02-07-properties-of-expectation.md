@@ -252,7 +252,7 @@ $$
 
 </div>
 
-這個定理的計算細節，並不若我們的直覺這麼簡單，其牽涉到[隨機變數變換 <span lang="en">(transformation of random variable)</span>](/lecture-notes/one-to-one-transformations/)，我們將在本章的最後詳談，讀者在此可以直覺地直接計算即可。
+這個定理的計算細節，並不若我們的直覺這麼簡單，其牽涉到[隨機變數變換 <span lang="en">(transformation of random variable)</span>](/lecture-notes/one-to-one-transformations/)，我們將在本章的最後詳談，讀者在此可直覺地計算即可。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -368,7 +368,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Theorem 2.10](#thm-expectation-linearity) 之所以要求各 $g_i(X)$ 的期望值存在，是因為結論的右側逐項寫出了 $\mathbb{E}[g_i(X)]$: 少了絕對可加總或絕對可積分的前提，這些期望值未必存在，右側的線性組合便無從定義。下面的證明把一個加總拆成 $k+1$ 個加總、再逐項把常數提到加總之外，這一步也要在每一個加總都收斂時才成立。這個前提與 [Theorem 2.9](#thm-expectation-of-function) 所要求的完全相同，只是逐一施加在 $g_1(\cdot),\ldots,g_k(\cdot)$ 之上。
+[Theorem 2.10](#thm-expectation-linearity) 之所以要求各 $g_i(X)$ 的期望值存在，是因為結論的右側逐項寫出了 $\mathbb{E}[g_i(X)]$，少了絕對可加總或絕對可積分的前提，這些期望值未必存在，右側的線性組合便無從定義。下面的證明把一個加總拆成 $k+1$ 個加總、再逐項把常數提到加總之外，這一步也要在每一個加總都收斂時才成立。這個前提與 [Theorem 2.9](#thm-expectation-of-function) 所要求的完全相同，只是逐一施加在 $g_1(\cdot),\ldots,g_k(\cdot)$ 之上。
 
 </div>
 
