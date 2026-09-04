@@ -18,7 +18,7 @@ excerpt: "$g(\\cdot)$ 不是一對一函數時反函數並不存在，Jacobian �
 然而 $g(\cdot)$ 的反函數並不是任何時候都存在。該篇在 [Jacobian 法](/lecture-notes/one-to-one-transformations/#prop-jacobian-method)之後已經先交代過這時候的作法。我們只需將原先的隨機變數分段，直到該段中 $g(\cdot)$ 的反函數存在，分段轉換為新變數的 pdf 後，再以分段隨機變數的概念將各段連接起來即可。本篇的三道例題都要用到這個作法，$Y=Z^{2}$、$Y\_{i}=\lvert X\_{i}\rvert$ 與 $Y=X^{2}$ 都不是一對一的轉換，每一題都以 cdf 法與 Jacobian 法各解一次。Jacobian 法正是分段之後再相加，cdf 法則不必先取反函數，直接由 cdf 的定義把 $\lbrace Y\leqslant y\rbrace$ 改寫成 $X$ 的事件即可。
 
 <div id="ex-chi-square-from-normal" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.50</div>
+<div class="topic-box__label">Example 2.51</div>
 
 <div lang="en" markdown="1">
 Suppose that $Z$ has the probability density function (pdf)
@@ -230,7 +230,7 @@ $$
 </div>
 
 <div id="ex-laplace-absolute-exponential" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.51</div>
+<div class="topic-box__label">Example 2.52</div>
 
 <div lang="en" markdown="1">
 Suppose that $X\_{1},\ldots,X\_{n}$ is a random sample from the Laplace distribution whose location parameter is $\mu=0$ and whose scale parameter is $b=1$. Show that $\lvert X\_{1}\rvert,\ldots,\lvert X\_{n}\rvert$ follow an exponential distribution, and determine the value of its rate parameter.
@@ -509,7 +509,7 @@ $$
 </div>
 
 <div id="ex-uniform-square-transformation" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.52</div>
+<div class="topic-box__label">Example 2.53</div>
 
 <div lang="en" markdown="1">
 Suppose that $X$ has the probability density function
@@ -755,7 +755,7 @@ $$
 
 ## 本篇小結
 
-$g(\cdot)$ 不是一對一函數時，反函數並不存在，作法是將原先的隨機變數分段，直到該段中反函數存在，各段分別轉換之後再連接起來。本篇的三道例題都用上了這個作法。[Example 2.50](#ex-chi-square-from-normal) 由標準常態分配的平方得到 $\chi^{2}(1)$，[Example 2.51](#ex-laplace-absolute-exponential) 由拉普拉斯分配的絕對值得到 $\mathrm{Exp}(1)$，[Example 2.52](#ex-uniform-square-transformation) 則由均勻分配在 $(-2,1)$ 上的平方得到一個分成兩段的密度。cdf 法在這三題之中都不必先取反函數，而是直接由 cdf 的定義把 $\lbrace Y\leqslant y\rbrace$ 改寫成 $X$ 的一個事件再求機率；Jacobian 法則是在每一段上各求一個密度 $f^{*}$ 與 $f^{**}$，再把兩者相加。[Example 2.52](#ex-uniform-square-transformation) 最能看出分段的必要。$X$ 的值域 $(-2,1)$ 對原點並不對稱，$Y$ 落在 $[1,4)$ 之間時只有 $X<0$ 那一段有貢獻，密度因而由 $\frac{1}{\,3\sqrt{y}\,}$ 減為 $\frac{1}{\,6\sqrt{y}\,}$，cdf 也隨之分成四段。
+$g(\cdot)$ 不是一對一函數時，反函數並不存在，作法是將原先的隨機變數分段，直到該段中反函數存在，各段分別轉換之後再連接起來。本篇的三道例題都用上了這個作法。[Example 2.51](#ex-chi-square-from-normal) 由標準常態分配的平方得到 $\chi^{2}(1)$，[Example 2.52](#ex-laplace-absolute-exponential) 由拉普拉斯分配的絕對值得到 $\mathrm{Exp}(1)$，[Example 2.53](#ex-uniform-square-transformation) 則由均勻分配在 $(-2,1)$ 上的平方得到一個分成兩段的密度。cdf 法在這三題之中都不必先取反函數，而是直接由 cdf 的定義把 $\lbrace Y\leqslant y\rbrace$ 改寫成 $X$ 的一個事件再求機率；Jacobian 法則是在每一段上各求一個密度 $f^{*}$ 與 $f^{**}$，再把兩者相加。[Example 2.53](#ex-uniform-square-transformation) 最能看出分段的必要。$X$ 的值域 $(-2,1)$ 對原點並不對稱，$Y$ 落在 $[1,4)$ 之間時只有 $X<0$ 那一段有貢獻，密度因而由 $\frac{1}{\,3\sqrt{y}\,}$ 減為 $\frac{1}{\,6\sqrt{y}\,}$，cdf 也隨之分成四段。
 
 第二章到此結束。全章先由樣本空間上的實值函數定出[隨機變數](/lecture-notes/random-variables-and-pmf/)，再以 pmf、[cdf](/lecture-notes/cumulative-distribution-functions/) 與 [pdf](/lecture-notes/probability-density-functions/) 描述它的機率分配，接著[由 cdf 計算各種區間的機率](/lecture-notes/computing-probabilities-from-cdf/)，並處理離散型與連續型兼具的[混合型](/lecture-notes/mixed-random-variables/)。有了分配之後，[期望值](/lecture-notes/expectation/)、[變異數](/lecture-notes/variance/)、[標準差](/lecture-notes/variance-standard-deviation/)、[眾數](/lecture-notes/mode/)、[中位數](/lecture-notes/median/)與[分位數](/lecture-notes/quantiles/)各自摘要分配的一個面向，[函數期望值與期望值的性質](/lecture-notes/properties-of-expectation/)一篇則回頭處理期望值本身，說明 $\mathbb{E}[g(X)]$ 不必先求出 $g(X)$ 的分配，直接由 $X$ 的分配即可算得，期望值對線性函數也具有可交換性；[動差系統](/lecture-notes/moment-system/)把其中幾個量數收進同一套架構之下，[形狀量數](/lecture-notes/measures-of-shape/)則由三階與四階動差刻畫偏斜的方向與尾巴的厚薄。[動差母函數](/lecture-notes/moment-generating-functions/)換了一個角度，以一個 $t$ 的函數同時生成各階原動差，並在[唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)之下反過來認出分配是哪一個；[機率母函數與累積量母函數](/lecture-notes/probability-cumulant-generating-functions/)則一個把工具函數換成 $t^{X}$、一個由 mgf 取對數，分別生成階乘動差與累積量，[特徵函數](/lecture-notes/characteristic-functions/)再把工具函數換成 $e^{itX}$，因而對每一個隨機變數都存在。機率不等式及相關法則一節回到機率本身。[馬可夫、柴比雪夫與坎特利不等式](/lecture-notes/probability-inequalities/)只用一階與二階動差就替尾機率取得上界，[車諾夫不等式](/lecture-notes/probability-inequalities-examples/)改用整個 mgf 而取得更緊的上界，[延森不等式](/lecture-notes/convexity-jensen-inequality/#thm-jensen)所比較的則是 $\mathbb{E}[g(X)]$ 與 $g[\mathbb{E}(X)]$ 兩者的大小，而[鐘形分配經驗法則](/lecture-notes/empirical-rule-bell-shaped-distributions/#thm-empirical-rule)改由分配的形狀直接說出中央區間的機率。最後這兩篇處理函數轉換，回答已知 $X$ 的分配時 $Y=g(X)$ 的分配要怎麼求，[一對一時直接套公式](/lecture-notes/one-to-one-transformations/)，不是一對一時先分段再合併。[下一章](/lecture-notes/random-vectors-joint-pmf/)把討論的對象由一個隨機變數推廣到多個隨機變數所組成的[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)。
 

@@ -223,7 +223,7 @@ $$
 <div id="note-jensen-supporting-line" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-凸函數未必處處可微，例如 $g(x)=\lvert x-c\rvert$ 在 $x=c$ 便不可微，其中 $c$ 為任一常數。上述證明只用到支撐直線，沒有用到 $g$ 或 $h$ 可微，因此這一類函數也在 [Theorem 2.36](#thm-jensen) 的適用範圍之內，[Example 2.45](#ex-mean-median-distance) 用的正是這樣的一個函數。[Fig. 2.21](#fig-convexity-tangent) 與其前後的說明以可微的凸函數與凹函數為例；在不可微之處，取代切線的正是支撐直線，而且這樣的直線不只一條，任取一條即可。支撐直線的存在，可由凸函數的差商 $\frac{g(x)-g(y)}{x-y}$ 在固定 $y$ 之下對 $x$ 非遞減這個性質導出，讀者應可自行驗證，本篇不另證明。
+凸函數未必處處可微，例如 $g(x)=\lvert x-c\rvert$ 在 $x=c$ 便不可微，其中 $c$ 為任一常數。上述證明只用到支撐直線，沒有用到 $g$ 或 $h$ 可微，因此這一類函數也在 [Theorem 2.36](#thm-jensen) 的適用範圍之內，[Example 2.46](#ex-mean-median-distance) 用的正是這樣的一個函數。[Fig. 2.21](#fig-convexity-tangent) 與其前後的說明以可微的凸函數與凹函數為例；在不可微之處，取代切線的正是支撐直線，而且這樣的直線不只一條，任取一條即可。支撐直線的存在，可由凸函數的差商 $\frac{g(x)-g(y)}{x-y}$ 在固定 $y$ 之下對 $x$ 非遞減這個性質導出，讀者應可自行驗證，本篇不另證明。
 
 [Theorem 2.36](#thm-jensen) 也沒有另外要求 $\mathbb{E}\bigl[g(X)\bigr]$ 存在，這是因為在定理的前提與證明中所設的條件之下，它必定有意義。前提要求 $\mathbb{E}(X)$ 為有限，否則 $g\bigl[\mathbb{E}(X)\bigr]$ 無從定義；此時 $\mathbb{E}\bigl(\lvert X\rvert\bigr)$ 亦為有限，這是期望值存在的等價條件。令 $\ell(x)$ $=$ $s\,\bigl(x-\mathbb{E}(X)\bigr)+g\bigl[\mathbb{E}(X)\bigr]$ 為證明中所取的支撐直線，則 $\mathbb{E}\bigl[\lvert\ell(X)\rvert\bigr]$ 為有限；又 $g(X)\geqslant\ell(X)$，故 $\max\lbrace-g(X),\,0\rbrace$ $\leqslant$ $\max\lbrace-\ell(X),\,0\rbrace$，也就是 $g(X)$ 取負值的那一部分，其期望值必為有限。因此 $\mathbb{E}\bigl[g(X)\bigr]$ 必定是 $(-\infty,+\infty]$ 之中一個確定的值。若它等於 $+\infty$，不等式成為 $+\infty$ $\geqslant$ $g\bigl[\mathbb{E}(X)\bigr]$，自動成立，定理依然為真，只是沒有給出有用的界限。凹函數的情形對稱，$\mathbb{E}\bigl[h(X)\bigr]$ 必定是 $[-\infty,+\infty)$ 之中一個確定的值。
 
@@ -246,7 +246,7 @@ $$
 </figure>
 
 <div id="ex-am-gm-hm" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.44</div>
+<div class="topic-box__label">Example 2.45</div>
 
 <div lang="en" markdown="1">
 Suppose that $a_{1},\ldots,a_{n}$ are positive numbers whose arithmetic, geometric and harmonic means are $m_{\sssig A}$, $m_{\sssig G}$ and $m_{\sssig H}$. Using Jensen’s inequality, show that $m_{\sssig A}\geqslant m_{\sssig G}\geqslant m_{\sssig H}$.
@@ -326,7 +326,7 @@ $$
 </div>
 
 <div id="ex-mean-median-distance" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.45</div>
+<div class="topic-box__label">Example 2.46</div>
 
 <div lang="en" markdown="1">
 Suppose that $X$ is a continuous random variable whose mean, median and standard deviation are $\mu$, $m$ and $\sigma$. Show that the distance between the mean and the median is at most one standard deviation, that is, $\lvert\mu-m\rvert\leqslant\sigma$.
@@ -390,7 +390,7 @@ $$
 </div>
 
 <div id="ex-kullback-leibler-nonnegative" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.46</div>
+<div class="topic-box__label">Example 2.47</div>
 
 <div lang="en" markdown="1">
 Suppose that $f_{0}$ and $f_{1}$ are probability density functions. The Kullback-Leibler information number is defined as
@@ -536,7 +536,7 @@ $$
 
 [Theorem 2.36](#thm-jensen) 的延森不等式，把上述性質由兩點的加權平均推廣到期望值。凸函數滿足 $\mathbb{E}[g(X)]\geqslant g[\mathbb{E}(X)]$，凹函數滿足 $\mathbb{E}[h(X)]\leqslant h[\mathbb{E}(X)]$。它與前面幾篇的不等式不同之處在於，兩側比較的都是動差，而不是尾機率的上界。證明的作法是在 $(\mathbb{E}(X), g[\mathbb{E}(X)])$ 這一點取支撐直線，先把 $g(X)$ 縮小 (或放大) 為一條直線，再對整條直線取期望值，此時一次項因 $\mathbb{E}[X-\mathbb{E}(X)]=0$ 而消去，只留下常數項；證明只用到支撐直線，不要求 $g$ 可微，而 $g$ 於該點可微時，這條支撐直線就是切線。[Fig. 2.22](#fig-jensen-convex) 的上下兩個面板則以兩點分配畫出這個落差，弦的中點就是 $\mathbb{E}[g(X)]$，曲線上的點就是 $g[\mathbb{E}(X)]$。
 
-三道例題示範了它的用法。[Example 2.44](#ex-am-gm-hm) 對取值機率均等的隨機變數用凹函數 $\ln x$，一次得到算幾不等式，再把算幾不等式用到 $\frac{1}{a_i}$ 上便補上調和平均數；[Example 2.45](#ex-mean-median-distance) 先用凸函數 $\lvert x-m\rvert$，再用凹函數 $\sqrt{x}$，兩次延森加上中位數使絕對離差期望值最小的性質，得到期望值與中位數相距不超過一個標準差；[Example 2.46](#ex-kullback-leibler-nonnegative) 令 $W=f_{1}(X)/f_{0}(X)$ 之後對凸函數 $-\ln$ 用延森，證得 KL 訊息數非負。機率不等式在只有少量動差資訊時能給出大致的機率範圍，[下一篇](/lecture-notes/empirical-rule-bell-shaped-distributions/)轉而介紹另一種來自經驗的判斷方式，也就是經驗法則。
+三道例題示範了它的用法。[Example 2.45](#ex-am-gm-hm) 對取值機率均等的隨機變數用凹函數 $\ln x$，一次得到算幾不等式，再把算幾不等式用到 $\frac{1}{a_i}$ 上便補上調和平均數；[Example 2.46](#ex-mean-median-distance) 先用凸函數 $\lvert x-m\rvert$，再用凹函數 $\sqrt{x}$，兩次延森加上中位數使絕對離差期望值最小的性質，得到期望值與中位數相距不超過一個標準差；[Example 2.47](#ex-kullback-leibler-nonnegative) 令 $W=f_{1}(X)/f_{0}(X)$ 之後對凸函數 $-\ln$ 用延森，證得 KL 訊息數非負。機率不等式在只有少量動差資訊時能給出大致的機率範圍，[下一篇](/lecture-notes/empirical-rule-bell-shaped-distributions/)轉而介紹另一種來自經驗的判斷方式，也就是經驗法則。
 
 ## 參考文獻與延伸閱讀
 

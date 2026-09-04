@@ -642,7 +642,7 @@ $$
 
 </div>
 
-下面這一題的前半段，也就是由特徵函數的唯一性求出 $\overline{X}$ 的分配這一段，曾以 [Example 2.53](/lecture-notes/characteristic-functions/#ex-cauchy-sample-mean-cf) 出現於特徵函數一篇；此處連同中央極限定理失效的部分完整收錄。
+下面這一題的前半段，也就是由特徵函數的唯一性求出 $\overline{X}$ 的分配這一段，曾以 [Example 2.36](/lecture-notes/characteristic-functions/#ex-cauchy-sample-mean-cf) 出現於特徵函數一篇；此處連同中央極限定理失效的部分完整收錄。
 
 <div id="ex-cauchy-clt-fails" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 5.18</div>

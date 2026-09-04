@@ -221,7 +221,7 @@ $$
 </div>
 
 <div id="ex-linear-transform-pmf" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.47</div>
+<div class="topic-box__label">Example 2.48</div>
 
 令 $X$ 為一離散型隨機變數，且 pmf 為
 
@@ -391,7 +391,7 @@ $$
 </div>
 
 <div id="ex-chip-parity-mgf" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.48</div>
+<div class="topic-box__label">Example 2.49</div>
 
 <div lang="en" markdown="1">
 An urn contains five chips numbered $1$ through $5$. Suppose that two of the chips are selected at random and without replacement, and let $X=5$ when the sum of the two numbers drawn is even and $X=-3$ when that sum is odd. Determine the moment generating function of $X$.
@@ -571,7 +571,7 @@ $$
 {: .topic-paren-cont}
 
 <div id="ex-reciprocal-transformation" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.49</div>
+<div class="topic-box__label">Example 2.50</div>
 
 <div lang="en" markdown="1">
 Let
@@ -974,9 +974,9 @@ $$
 
 本篇處理的是已知 $X$ 的機率分配之後，如何求出 $Y=g(X)$ 的機率分配。[Theorem 2.38](#thm-measurable-transformation) 先確定了 $Y$ 的身分，只要 $g(\cdot)$ 是定義在實數上的實值可測函數，$Y$ 就仍然是一個隨機變數。
 
-離散型有三種做法。直接列表法把每個質點轉換後的位置列出來，再把落在同一位置者合併，適用於質點數量有限的時候；[Proposition 2.1](#prop-discrete-transformation-pmf) 的 pmf 法則在 $g(\cdot)$ 一對一時，直接以 $p\_{\sssig Y}(y)=p\_{\sssig X}(g^{-1}(y))$ 求得，因為 $\lbrace Y=y\rbrace$ 與 $\lbrace X=g^{-1}(y)\rbrace$ 是等價事件；mgf 法先求出 $M\_{\sssig Y}(t)$ 再由唯一性認出分配，[Theorem 2.39](#thm-mgf-linear-transformation) 的 $M\_{\sssig Y}(t)=e^{bt}M\_{\sssig X}(at)$ 正是線性轉換時所需的工具。[Example 2.47](#ex-linear-transform-pmf) 以同一題並陳三種做法，[Example 2.48](#ex-chip-parity-mgf) 則由列表求出 pmf 之後直接寫出 mgf。
+離散型有三種做法。直接列表法把每個質點轉換後的位置列出來，再把落在同一位置者合併，適用於質點數量有限的時候；[Proposition 2.1](#prop-discrete-transformation-pmf) 的 pmf 法則在 $g(\cdot)$ 一對一時，直接以 $p\_{\sssig Y}(y)=p\_{\sssig X}(g^{-1}(y))$ 求得，因為 $\lbrace Y=y\rbrace$ 與 $\lbrace X=g^{-1}(y)\rbrace$ 是等價事件；mgf 法先求出 $M\_{\sssig Y}(t)$ 再由唯一性認出分配，[Theorem 2.39](#thm-mgf-linear-transformation) 的 $M\_{\sssig Y}(t)=e^{bt}M\_{\sssig X}(at)$ 正是線性轉換時所需的工具。[Example 2.48](#ex-linear-transform-pmf) 以同一題並陳三種做法，[Example 2.49](#ex-chip-parity-mgf) 則由列表求出 pmf 之後直接寫出 mgf。
 
-連續型無法列表。[Proposition 2.2](#prop-cdf-method) 的 cdf 法改由累積的機率相等下手，先依 $g(\cdot)$ 是保序或反序寫出 $F\_{\sssig Y}(y)$，再微分得到 $f\_{\sssig Y}(y)$；[Proposition 2.3](#prop-jacobian-method) 的 Jacobian 法則把原變數的 pdf 以新變數表示，再乘上 $\lvert\mathbf{J}\rvert$。mgf 法在兩型之間並無不同。[Example 2.49](#ex-reciprocal-transformation) 與 [Example 2.31 <span lang="en">(Continued)</span>](#ex-logistic-to-uniform) 各示範一次，後者取 $g$ 為 $X$ 自身的 cdf，結果是 $\mathcal{U}(0, 1)$，這個現象由 [Proposition 2.4](#prop-probability-integral-transform) 的機率積分轉換正式敘述，它同時給出反方向的走法。由 $\mathcal{U}(0, 1)$ 出發，經分位函數即可回到原來的分配。
+連續型無法列表。[Proposition 2.2](#prop-cdf-method) 的 cdf 法改由累積的機率相等下手，先依 $g(\cdot)$ 是保序或反序寫出 $F\_{\sssig Y}(y)$，再微分得到 $f\_{\sssig Y}(y)$；[Proposition 2.3](#prop-jacobian-method) 的 Jacobian 法則把原變數的 pdf 以新變數表示，再乘上 $\lvert\mathbf{J}\rvert$。mgf 法在兩型之間並無不同。[Example 2.50](#ex-reciprocal-transformation) 與 [Example 2.31 <span lang="en">(Continued)</span>](#ex-logistic-to-uniform) 各示範一次，後者取 $g$ 為 $X$ 自身的 cdf，結果是 $\mathcal{U}(0, 1)$，這個現象由 [Proposition 2.4](#prop-probability-integral-transform) 的機率積分轉換正式敘述，它同時給出反方向的走法。由 $\mathcal{U}(0, 1)$ 出發，經分位函數即可回到原來的分配。
 
 本篇所處理的 $Y=2X+1$、$Y=\frac{1}{X}$ 與 $Y=\bigl(1+e^{-X}\bigr)^{-1}$，其中的 $g(\cdot)$ 都是一對一函數，反函數直接存在，套上公式即可。[下一篇](/lecture-notes/many-to-one-transformations/)處理反函數不存在的情形，作法正是前面提過的分段。先把值域分成若干段，使 $g(\cdot)$ 在各段上一對一，分別求出各段的密度之後再合併起來。
 

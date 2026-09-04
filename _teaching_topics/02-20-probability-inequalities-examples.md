@@ -19,7 +19,7 @@ excerpt: "八道例題演練同一系列機率不等式的用法。前兩道不�
 
 
 <div id="ex-decreasing-density-bound" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.36</div>
+<div class="topic-box__label">Example 2.37</div>
 
 <div lang="en" markdown="1">
 Suppose that $X$ is a continuous random variable taking only positive values, and that its probability density function $f_{\sssig X}(x)$ is non-increasing on <span class="text-nowrap">$x>0$.</span> Show that
@@ -74,7 +74,7 @@ $$
 </div>
 
 <div id="ex-decreasing-pmf-bound" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.37</div>
+<div class="topic-box__label">Example 2.38</div>
 
 <div lang="en" markdown="1">
 Suppose that $X$ takes values in the positive integers and that $\mathbb{P}(X=a)$ is a decreasing function of <span class="text-nowrap">$a$.</span> Show that
@@ -126,12 +126,12 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這題中，除了應用了等差級數的和之外，其實基本的想法與概念 (甚至是結論) 都與 [Example 2.36](#ex-decreasing-density-bound) 完全相同，讀者不妨細細品味其中的奧妙。
+這題中，除了應用了等差級數的和之外，其實基本的想法與概念 (甚至是結論) 都與 [Example 2.37](#ex-decreasing-density-bound) 完全相同，讀者不妨細細品味其中的奧妙。
 
 </div>
 
 <div id="ex-general-markov-to-chebyshev" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.38</div>
+<div class="topic-box__label">Example 2.39</div>
 
 <div lang="en" markdown="1">
 Suppose that $X$ is a random variable with $\mathbb{E}(X)=\mu_{\sssig X}$ and $\mathrm{Var}(X)=\sigma_{\sssig X}^{2}$, that $h(x)$ is a non-negative real-valued function, and that $c$ is a positive constant.
@@ -226,7 +226,7 @@ $$
 </div>
 
 <div id="ex-variance-lower-bound" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.39</div>
+<div class="topic-box__label">Example 2.40</div>
 
 <div lang="en" markdown="1">
 Suppose that a random variable $X$ satisfies $\mathbb{E}(X)=15$, $\mathbb{P}(X\geqslant20)=0.5$ and <span class="text-nowrap">$\mathbb{P}(X\leqslant10)=0.2$.</span> Determine a lower bound for <span class="text-nowrap">$\mathrm{Var}(X)$.</span>
@@ -296,7 +296,7 @@ $$
 </div>
 
 <div id="ex-chebyshev-sharpness" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.40</div>
+<div class="topic-box__label">Example 2.41</div>
 
 <div lang="en" markdown="1">
 Suppose that a random variable $X$ has mean $\mu_{\sssig X}$ and variance <span class="text-nowrap">$0<\sigma_{\sssig X}^{2}<\infty$.</span> Chebyshev’s inequality states that
@@ -490,7 +490,7 @@ $$
 </div>
 
 <div id="ex-poisson-chebyshev" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.41</div>
+<div class="topic-box__label">Example 2.42</div>
 
 <div lang="en" markdown="1">
 Suppose that $X$ has a Poisson distribution with parameter <span class="text-nowrap">$\lambda$.</span> Using Chebyshev’s inequality, show that
@@ -530,7 +530,7 @@ $$
 </div>
 
 <div id="ex-household-income-bounds" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.42</div>
+<div class="topic-box__label">Example 2.43</div>
 
 <div lang="en" markdown="1">
 Suppose that families in a certain area have an average income of <span class="text-nowrap">$100{,}000$.</span>
@@ -599,7 +599,7 @@ $$
 </div>
 
 <div id="ex-poisson-chernoff-tail" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.43</div>
+<div class="topic-box__label">Example 2.44</div>
 
 <div lang="en" markdown="1">
 Suppose that $X$ has a Poisson distribution with parameter $\lambda$, and let $a$ be a positive integer with <span class="text-nowrap">$a>\lambda$.</span> Using the Chernoff inequality, show that
@@ -737,11 +737,11 @@ $$
 
 ## 本篇小結
 
-八道例題演練的是同一系列不等式的各種用法。[Example 2.36](#ex-decreasing-density-bound) 與 [Example 2.37](#ex-decreasing-pmf-bound) 靠密度或機率函數本身的單調性創造出不等關係，一個用積分、一個用等差級數的和，想法與結論完全相同。[Example 2.38](#ex-general-markov-to-chebyshev) 由[非負函數的機率界限](/lecture-notes/probability-inequalities/#thm-nonnegative-function-bound)出發，取 $h(x)=(x-\mu_{\sssig X})^{2}$ 便導出[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)，[Example 2.39](#ex-variance-lower-bound) 則反過來由兩個尾機率求變異數的下界。
+八道例題演練的是同一系列不等式的各種用法。[Example 2.37](#ex-decreasing-density-bound) 與 [Example 2.38](#ex-decreasing-pmf-bound) 靠密度或機率函數本身的單調性創造出不等關係，一個用積分、一個用等差級數的和，想法與結論完全相同。[Example 2.39](#ex-general-markov-to-chebyshev) 由[非負函數的機率界限](/lecture-notes/probability-inequalities/#thm-nonnegative-function-bound)出發，取 $h(x)=(x-\mu_{\sssig X})^{2}$ 便導出[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)，[Example 2.40](#ex-variance-lower-bound) 則反過來由兩個尾機率求變異數的下界。
 
-[Example 2.40](#ex-chebyshev-sharpness) 說明同一個上界在 $\mathcal{U}(0,1)$ 之下離真實機率甚遠，在三點分配之下卻恰好相等，[Example 2.41](#ex-poisson-chebyshev) 示範[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)在卜瓦松分配上的代入。[Example 2.42](#ex-household-income-bounds) 先以[馬可夫不等式](/lecture-notes/probability-inequalities/#thm-markov)只用[期望值](/lecture-notes/expectation/#def-expectation)求得一個上界，再以[單邊柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-one-tailed-chebyshev)加入[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)求得更小的上界，同一題的兩個小問正好對照出動差訊息愈多、機率上界愈精確。
+[Example 2.41](#ex-chebyshev-sharpness) 說明同一個上界在 $\mathcal{U}(0,1)$ 之下離真實機率甚遠，在三點分配之下卻恰好相等，[Example 2.42](#ex-poisson-chebyshev) 示範[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)在卜瓦松分配上的代入。[Example 2.43](#ex-household-income-bounds) 先以[馬可夫不等式](/lecture-notes/probability-inequalities/#thm-markov)只用[期望值](/lecture-notes/expectation/#def-expectation)求得一個上界，再以[單邊柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-one-tailed-chebyshev)加入[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)求得更小的上界，同一題的兩個小問正好對照出動差訊息愈多、機率上界愈精確。
 
-[Example 2.43](#ex-poisson-chernoff-tail) 是[車諾夫不等式](/lecture-notes/probability-inequalities/#thm-chernoff)的完整示範。代入卜瓦松分配的 mgf 之後，以一階與二階條件求出使上界最小的 $t^{*}=\ln\frac{a}{\,\lambda\,}$，再由 $a^{a}\geqslant a!$ 得到 $\mathbb{P}(X\geqslant a)\leqslant\frac{\,e^{-\lambda}(e\,\lambda)^{a}\,}{a!}$。[下一篇](/lecture-notes/convexity-jensen-inequality/)轉向另一種不等式。它比較的不再是尾機率與動差，而是 $\mathbb{E}[g(X)]$ 與 $g[\mathbb{E}(X)]$ 的大小，[凸函數與凹函數](/lecture-notes/convexity-jensen-inequality/#def-convex-concave)的性質正是其中的關鍵。
+[Example 2.44](#ex-poisson-chernoff-tail) 是[車諾夫不等式](/lecture-notes/probability-inequalities/#thm-chernoff)的完整示範。代入卜瓦松分配的 mgf 之後，以一階與二階條件求出使上界最小的 $t^{*}=\ln\frac{a}{\,\lambda\,}$，再由 $a^{a}\geqslant a!$ 得到 $\mathbb{P}(X\geqslant a)\leqslant\frac{\,e^{-\lambda}(e\,\lambda)^{a}\,}{a!}$。[下一篇](/lecture-notes/convexity-jensen-inequality/)轉向另一種不等式。它比較的不再是尾機率與動差，而是 $\mathbb{E}[g(X)]$ 與 $g[\mathbb{E}(X)]$ 的大小，[凸函數與凹函數](/lecture-notes/convexity-jensen-inequality/#def-convex-concave)的性質正是其中的關鍵。
 
 ## 參考文獻與延伸閱讀
 

@@ -586,7 +586,7 @@ $$
 </div>
 
 <div id="ex-cauchy-sample-mean-cf" class="topic-box topic-box--example" markdown="1">
-<div class="topic-box__label">Example 2.53</div>
+<div class="topic-box__label">Example 2.36</div>
 
 <div lang="en" markdown="1">
 Suppose that $X\_{1}, X\_{2}, \ldots, X\_{n}$ are independent and identically distributed random variables, each having the standard Cauchy pdf
@@ -636,7 +636,7 @@ $$
 
 最後把特徵函數與動差母函數放在一起，比較四件事。
 
-第一是存在性。mgf 要求 $\mathbb{E}(e^{tX})$ 在 $t=0$ 的某個鄰域之內為有限，並不是每個分配都滿足；cf 則由 $\lvert e^{itX}\rvert=1$ 保證對每一個實值隨機變數與每一個 $t$ 都存在。[Example 2.53](#ex-cauchy-sample-mean-cf) 的標準柯西分配正是一個例子，它連期望值都不存在，自然沒有 mgf，卻有 $\phi\_{\sssig X}(t)=e^{-\lvert t\rvert}$ 這個形式簡單的 cf。
+第一是存在性。mgf 要求 $\mathbb{E}(e^{tX})$ 在 $t=0$ 的某個鄰域之內為有限，並不是每個分配都滿足；cf 則由 $\lvert e^{itX}\rvert=1$ 保證對每一個實值隨機變數與每一個 $t$ 都存在。[Example 2.36](#ex-cauchy-sample-mean-cf) 的標準柯西分配正是一個例子，它連期望值都不存在，自然沒有 mgf，卻有 $\phi\_{\sssig X}(t)=e^{-\lvert t\rvert}$ 這個形式簡單的 cf。
 
 第二是生成動差。[Theorem 2.21](/lecture-notes/moment-generating-functions/#thm-mgf-generates-moments) 說 mgf 微分 $r$ 次後在 $t=0$ 取值即得 <span class="text-nowrap">$\mathbb{E}(X^{r})$，</span>[Theorem 2.28](#thm-cf-generates-moments) 說 cf 的對應結果多一個 $i^{r}$。兩者的前提也不同: mgf 一旦存在便保證各階動差都存在，cf 這一邊則是逐階要求 $\mathbb{E}(\lvert X\rvert^{r})<\infty$，只換得到 $r$ 階為止。
 
@@ -648,7 +648,7 @@ $$
 
 [Definition 2.19](#def-characteristic-function) 把 $\mathbb{E}(e^{itX})$ 定義為 $X$ 的特徵函數 $\phi\_{\sssig X}(t)$。由歐拉公式可知 $\lvert e^{itX}\rvert=1$，因此這個期望值不必附加任何存在性條件，對每一個實值隨機變數與每一個 $t$ 都有定義，這正是它與動差母函數最大的差別。
 
-[Theorem 2.27](#thm-cf-properties) 給了五項基本性質: $\phi\_{\sssig X}(0)=1$、$\lvert\phi\_{\sssig X}(t)\rvert\leqslant1$、在 $\mathbb{R}$ 上均勻連續、$\phi\_{\sssig X}(-t)=\overline{\phi\_{\sssig X}(t)}$，以及 $Y=aX+b$ 之下的 $\phi\_{\sssig Y}(t)=e^{ibt}\phi\_{\sssig X}(at)$。[Theorem 2.28](#thm-cf-generates-moments) 的前提是動差存在，而結論是導數可求得動差，只是每微分一次多出一個 $i$，因而在 $t=0$ 取值時得到 $i^{r}\mathbb{E}(X^{r})$；反過來僅由導數存在就直接得到動差則要分奇偶。[Theorem 2.29](#thm-cf-mgf-pgf-relation) 把它接回前兩篇的兩個母函數。在自變數延伸到複數的意義之下 $\phi\_{\sssig X}(t)=M\_{\sssig X}(it)$，而非負整數隨機變數另有 $\phi\_{\sssig X}(t)=G\_{\sssig X}(e^{it})$。[Theorem 2.30](#thm-cf-uniqueness) 則是本篇的重點。特徵函數相等若且唯若分配相同，並且由反演公式可以把 cdf 反算回來，在絕對可積的條件之下還可以算出 pdf。[Example 2.53](#ex-cauchy-sample-mean-cf) 示範了這項性質的用法，標準柯西分配的 $n$ 個獨立觀測值取平均之後，特徵函數仍是 <span class="text-nowrap">$e^{-\lvert t\rvert}$，</span>因此樣本平均數與單一觀測值同分配。
+[Theorem 2.27](#thm-cf-properties) 給了五項基本性質: $\phi\_{\sssig X}(0)=1$、$\lvert\phi\_{\sssig X}(t)\rvert\leqslant1$、在 $\mathbb{R}$ 上均勻連續、$\phi\_{\sssig X}(-t)=\overline{\phi\_{\sssig X}(t)}$，以及 $Y=aX+b$ 之下的 $\phi\_{\sssig Y}(t)=e^{ibt}\phi\_{\sssig X}(at)$。[Theorem 2.28](#thm-cf-generates-moments) 的前提是動差存在，而結論是導數可求得動差，只是每微分一次多出一個 $i$，因而在 $t=0$ 取值時得到 $i^{r}\mathbb{E}(X^{r})$；反過來僅由導數存在就直接得到動差則要分奇偶。[Theorem 2.29](#thm-cf-mgf-pgf-relation) 把它接回前兩篇的兩個母函數。在自變數延伸到複數的意義之下 $\phi\_{\sssig X}(t)=M\_{\sssig X}(it)$，而非負整數隨機變數另有 $\phi\_{\sssig X}(t)=G\_{\sssig X}(e^{it})$。[Theorem 2.30](#thm-cf-uniqueness) 則是本篇的重點。特徵函數相等若且唯若分配相同，並且由反演公式可以把 cdf 反算回來，在絕對可積的條件之下還可以算出 pdf。[Example 2.36](#ex-cauchy-sample-mean-cf) 示範了這項性質的用法，標準柯西分配的 $n$ 個獨立觀測值取平均之後，特徵函數仍是 <span class="text-nowrap">$e^{-\lvert t\rvert}$，</span>因此樣本平均數與單一觀測值同分配。
 
 到這裡，動差、動差母函數、機率母函數、累積量母函數與特徵函數已經把「以一個函數表示整個分配」這條線走完。[下一篇](/lecture-notes/probability-inequalities/)換一個處境。分配的形式並不清楚，手上只有期望值，或再加上一個[變異數](/lecture-notes/variance/#def-variance)，這時候能對機率說出什麼。
 
