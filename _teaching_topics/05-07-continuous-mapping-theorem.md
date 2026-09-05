@@ -15,29 +15,30 @@ excerpt: "前面幾篇處理的都是單一序列的收斂，本篇轉而處理�
 
 [上一篇](/lecture-notes/normal-approximation-continuity-correction/)談常態近似與連續性校正。至此，讀者已經掌握了單一序列的收斂性質，也理解基於[中央極限定理](/lecture-notes/weak-law-and-central-limit-theorem/#thm-central-limit-theorem) <span lang="en">(central limit theorem, CLT)</span>，所得到與[常態分配](/lecture-notes/normal-distribution/#def-normal)相關的一些漸近特性。
 
-然而，有的時候我們會好奇一些更進階的延伸特性，比如序列取了函數轉換後，在極限之下，收斂的對象會發生怎樣的改變呢? 會不會因此就不收斂了呢? 這些問題的解答，便是我們此處要探討的極限相關定理。
+然而，有的時候我們會好奇一些更進階的延伸特性，比如序列取了函數轉換後，在極限之下，收斂的對象會發生怎樣的改變呢？會不會因此就不收斂了呢？這些問題的解答，便是我們此處要探討的極限相關定理。
 
 本篇先給出[機率收斂](/lecture-notes/convergence-in-probability/#def-converge-in-probability)之下的三項運算性質，其中第三項就是連續映射定理，並在一則註記中補上證明所倚賴的集合包含關係，以及由這三項再導出的差與商。其後以三道例題演練這些性質與[弱大數法則](/lecture-notes/weak-law-and-central-limit-theorem/#thm-weak-law-of-large-numbers) <span lang="en">(weak law of large numbers, WLLN)</span> 的搭配。
 
 ## 機率收斂的三項運算性質
 
 <div id="thm-pconv-related" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 5.10 (機率收斂的運算性質與連續映射定理, operations on convergence in probability and the continuous mapping theorem)</div>
+<div class="topic-box__label">Theorem 5.10 (機率收斂的運算性質與連續映射定理)</div>
 
 若 $X\_{n}\pconv c$、$Y\_{n}\pconv d$，且 $a,b,c$ 與 $d$ 皆為常數，則我們有
 
-<ol class="topic-list-paren topic-list-paren--math">
-  <li>
-  $$
-  aX_{n}+bY_{n}\pconv ac+bd
-  $$
-  </li>
-  <li>
-  $$
-  X_{n}Y_{n}\pconv cd
-  $$
-  </li>
-</ol>
+(1)
+{: .topic-paren-item}
+
+$$
+aX_{n}+bY_{n}\pconv ac+bd
+$$
+
+(2)
+{: .topic-paren-item}
+
+$$
+X_{n}Y_{n}\pconv cd
+$$
 
 (3) 若 $g(\cdot)$ 在 $c$ 上連續，則
 {: .topic-paren-item}
@@ -621,7 +622,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個問題和[範例 5.10](/lecture-notes/levy-continuity-theorem/#ex-s-squared-consistency-mgf)不同的地方在於，這題並沒有常態假設，但 $S^{2}\pconv\sigma^{2}$ 的結果卻仍然不變。
+這個問題和 [Example 5.10](/lecture-notes/levy-continuity-theorem/#ex-s-squared-consistency-mgf) 不同的地方在於，這題並沒有常態假設，但 $S^{2}\pconv\sigma^{2}$ 的結果卻仍然不變。
 
 當然，我們也可以由此結果，搭配 CMT，令 $g(x)=\sqrt{x}$ 在 $x>0$ 連續，則我們有
 
@@ -775,7 +776,7 @@ $$
 
 [Example 5.28](#ex-symmetric-density-moments) 與 [Example 5.29](#ex-bernoulli-inverse-square-root) 則示範這兩條定理如何分工。前者的第一小題要的是極限分配，因此用中央極限定理，對稱性讓 $\mathbb{E}(X^{3})=0$，變異數則化為 $\mathbb{E}(X^{6})$；第二小題要的是機率極限，因此用弱大數法則求出三個樣本動差的極限，再以連續映射定理處理平方項。後者的作法相同，$U\_{n}\pconv p$ 之後取 $g(x)=\frac{1}{\,\sqrt{x}\,}$，得到的極限是一個退化隨機變數，因此收斂到常數 $\frac{1}{\,\sqrt{p}\,}$ 這件事，同時也是分配收斂。
 
-以上各款都是針對機率收斂而生的。如果把分配收斂一併考慮進來，這些運算的結果將稍有變化，下一篇的史拉斯基定理處理的正是這件事，其後並由此發展出 Delta 法。
+以上各款都是針對機率收斂而生的。如果把分配收斂一併考慮進來，這些運算的結果將稍有變化，[下一篇](/lecture-notes/slutsky-and-delta-method/)的史拉斯基定理處理的正是這件事，其後並由此發展出 Delta 法。
 
 ## 參考文獻與延伸閱讀
 

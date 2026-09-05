@@ -26,26 +26,23 @@ excerpt: "上一篇的定理都是為機率收斂而生的，本篇把其中一�
 
 若 $X_n\pconv c$ 且 <span class="text-nowrap">$Y_n\dconv W$，</span>其中 $c$ 為常數、$W$ 為隨機變數，則我們有
 
-(1)
-{: .topic-paren-item}
-
-$$
-X_n+Y_n\dconv c+W
-$$
-
-(2)
-{: .topic-paren-item}
-
-$$
-X_nY_n\dconv cW
-$$
-
-(3)
-{: .topic-paren-item}
-
-$$
-\frac{Y_n}{X_n}\dconv\frac{\,W\,}{c}
-$$
+<ol class="topic-list-paren topic-list-paren--math">
+  <li>
+  $$
+  X_n+Y_n\dconv c+W
+  $$
+  </li>
+  <li>
+  $$
+  X_nY_n\dconv cW
+  $$
+  </li>
+  <li>
+  $$
+  \frac{Y_n}{X_n}\dconv\frac{\,W\,}{c}
+  $$
+  </li>
+</ol>
 
 其中 $c\neq0$。
 {: .topic-paren-cont}
@@ -320,7 +317,7 @@ $$
 
 讀者應該會發現，相較於 [Theorem 5.10](/lecture-notes/continuous-mapping-theorem/#thm-pconv-related)，將其中一個序列的收斂改為分配收斂至某個隨機變數後，史拉斯基定理的結果，原則上與 Theorem 5.10 的內容相呼應，只是其結果由機率收斂改為分配收斂。
 
-然而，這個結果獨漏了一般化的函數轉換，那麼，一般化的函數轉換，其分配收斂的狀況又如何呢? 這個問題的結果，是馬上將要談到的 **Delta 法 (Delta method)**。
+然而，這個結果獨漏了一般化的函數轉換，那麼，一般化的函數轉換，其分配收斂的狀況又如何呢？這個問題的結果，是馬上將要談到的 **Delta 法 (Delta method)**。
 
 ## Delta 法
 
@@ -754,11 +751,11 @@ $$
 
 [Theorem 5.12](#thm-delta-method) 處理的是史拉斯基定理沒有涵蓋的一般化函數轉換: 已知 <span class="text-nowrap">$\sqrt{n}\,(X_n-\theta)\dconv W\sim\mathcal{N}(0,\ \sigma^{2})$，</span>則 $\sqrt{n}\,[g(X_n)-g(\theta)]$ 的極限分配仍是常態分配，變異數多乘一個 <span class="text-nowrap">$[g^{\prime}(\theta)]^{2}$。</span>四道例題的差別只在 $g$ 取什麼: [Example 5.33](#ex-delta-method-squared-mean) 取 <span class="text-nowrap">$g(x)=x^{2}$，</span>得到 <span class="text-nowrap">$\mathcal{N}(0,\ 4\mu^{2}\sigma^{2})$；</span>[Example 5.34](#ex-delta-method-product-of-uniforms) 先令 $W_i=-\ln X_i$ 把均勻樣本的乘積化為指數樣本的平均數，再取 <span class="text-nowrap">$g(x)=e^{x}$；</span>[Example 5.35](#ex-delta-method-geometric-distribution) 取 <span class="text-nowrap">$g(x)=\frac{\,x-1\,}{x^{2}}$，</span>並在最後把極限分配改寫為 $n$ 有限時的漸近分配；[Example 5.36](#ex-delta-method-chi-square-root) 取 <span class="text-nowrap">$g(x)=\sqrt{x}$，</span>並把自由度為 $n$ 的卡方變數看成 $n$ 個自由度為 $1$ 的卡方變數之和，才有辦法套用中央極限定理。
 
-機率論的部分至此告一段落。讀者已經具備足夠的基礎，可以進入數理統計的內容。
+機率論的環節至此已經全部結束，此刻讀者應已經具備足夠的基礎，可以邁向數理統計的環節。
 
 ## 參考文獻與延伸閱讀
 
 - 黃文璋，2010，《機率論》，二版，華泰文化。
-- George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury. (Delta 法的證明見頁 240)
+- George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury. (Delta 法的證明見頁 240 至 243)
 - Robert V. Hogg, Joseph W. McKean, and Allen T. Craig. 2019. *Introduction to Mathematical Statistics*. 8th ed. Pearson.
 - Sheldon Ross. 2019. *A First Course in Probability*. 10th ed. Pearson.

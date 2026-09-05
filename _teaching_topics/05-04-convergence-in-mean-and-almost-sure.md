@@ -52,7 +52,7 @@ $r$ 次均方收斂是以「隨機變數值之間距離 $r$ 次方的期望值�
 ## $r$ 次均方收斂導致機率收斂
 
 <div id="thm-rconv-implies-pconv" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 5.4 ($r$ 次均方收斂導致機率收斂, convergence in $r$-th mean implies convergence in probability)</div>
+<div class="topic-box__label">Theorem 5.4 ($r$ 次均方收斂導致機率收斂)</div>
 
 若 <span class="text-nowrap">$X_n\rconv X$，</span>則有
 
@@ -248,7 +248,7 @@ $$
 在眾多的 $r$-次均方收斂中，有一種較為特別，就是 $2$-次均方收斂，見下列定理。
 
 <div id="thm-2conv-implies-pconv" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 5.5 (期望值收斂且變異數趨零則二次均方收斂, convergence in second mean from the mean and the variance)</div>
+<div class="topic-box__label">Theorem 5.5 (期望值收斂且變異數趨零則二次均方收斂)</div>
 
 令 $\lbrace X_n\rbrace_{n=1}^{\infty}$ 為一定義在機率空間上之隨機變數序列，且
 
@@ -368,7 +368,7 @@ $$
 Suppose that <span class="text-nowrap">$X_1,\ldots,X_n\iidto\mathcal{N}(\mu,\sigma^{2})$,</span> and let $S^{2}=\frac{1}{\,n-1\,}\sum_{i=1}^{n}\bigl(X_i-\overline{X}\bigr)^{2}$ be the sample variance. Find the probability limit of <span class="text-nowrap">$S^{2}$.</span>
 </div>
 
-**[ 法二 ]**
+**[法二]**
 
 由於
 
@@ -469,7 +469,7 @@ $$
 
 此二個定義的不同之處在於，機率收斂允許 $X_n$ 和 $X$ 到處都「長得不一樣」 (或精確地說，距離不小於 <span class="text-nowrap">$\varepsilon>0$)，</span>只是這個「不一樣」發生的機率在 $n\to\infty$ 時，必須能隨著 $n$ 的成長而收斂至 $0$。[^pconv-tolerance]
 
-另一方面，幾乎確信收斂的概念是，對於每一個位於樣本空間中的樣本點 <span class="text-nowrap">$\omega\in S$，</span>我們並不希望 $\lim_{n\to\infty}X_n(\omega)$ 與 $X(\omega)$ 長得不一樣，如果有這樣的 $\omega\in S$ 使得 $\lim_{n\to\infty}X_n(\omega)$ 與 $X(\omega)$ 的距離不小於 <span class="text-nowrap">$\varepsilon$，</span>那這樣的 $\omega$ 收集而成的「例外集合」，其發生機率必須是 $0$；相對於機率收斂允許這樣的集合機率不是 <span class="text-nowrap">$0$，</span>只是必須慢慢趨近於 $0$ 來說，是一個明顯比較強的收斂性質。
+另一方面，幾乎確信收斂的概念是，對於樣本空間中的每一個樣本點 <span class="text-nowrap">$\omega\in S$，</span>我們並不希望 $\lim_{n\to\infty}X_n(\omega)$ 與 $X(\omega)$ 長得不一樣，如果有這樣的 $\omega\in S$ 使得 $\lim_{n\to\infty}X_n(\omega)$ 與 $X(\omega)$ 的距離不小於 <span class="text-nowrap">$\varepsilon$，</span>那這樣的 $\omega$ 收集而成的「例外集合」，其發生機率必須是 $0$；相對於機率收斂允許這樣的集合機率不是 <span class="text-nowrap">$0$，</span>只是必須慢慢趨近於 $0$ 來說，是一個明顯比較強的收斂性質。
 
 </div>
 
@@ -482,7 +482,7 @@ $$
 ## 幾乎確信收斂導致機率收斂
 
 <div id="thm-asconv-implies-pconv" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 5.6 (幾乎確信收斂導致機率收斂, almost sure convergence implies convergence in probability)</div>
+<div class="topic-box__label">Theorem 5.6 (幾乎確信收斂導致機率收斂)</div>
 
 若 <span class="text-nowrap">$X_n\asconv X$，</span>則有
 
@@ -640,7 +640,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-也許有讀者會疑惑，這個收斂型態看起來已經非常強大了，為什麼其名字卻仍有點保留地說是「幾乎確信」或「幾乎處處」呢? 這是因為，幾乎確信收斂雖然要求 $X_n$ 在 $n\to\infty$ 的情況下不可以與 $X$ 有所不同，但畢竟只是定義這種情況發生的機率是 <span class="text-nowrap">$1$，</span>我們只能說此二者「幾乎不會有不同的狀況產生」。
+也許有讀者會疑惑，這個收斂型態看起來已經非常強大了，為什麼其名字卻仍有點保留地說是「幾乎確信」或「幾乎處處」呢？這是因為，幾乎確信收斂雖然要求 $X_n$ 在 $n\to\infty$ 的情況下不可以與 $X$ 有所不同，但畢竟只是定義這種情況發生的機率是 <span class="text-nowrap">$1$，</span>我們只能說此二者「幾乎不會有不同的狀況產生」。
 
 另一方面，在其上還有一個**確信收斂 <span lang="en">(converge surely)</span>**，也就是
 
@@ -675,12 +675,6 @@ $$
 
 (4) 依題意可得
 {: .topic-paren-item}
-
-<!-- errata-pending: 書稿 mathstatch5.tex 第 859 行把這一列的連乘寫成
-     \prod_{k=n}^{\infty}\left(1-\frac{1}{\,n\,}\right)，分母應為 k 而非 n:
-     該列前一步已寫明 \prod_{k=n}^{\infty}\P(X_k=0)，而 \P(X_k=0)=1-\frac{1}{k}。
-     同一份書稿第 880 行 (本篇第 (6) 小題) 的對應寫法即為 1-\frac{1}{\,k\,}，可為佐證。
-     依 SITE_STYLE_CANON 第〇節第 5 點，網頁採正確寫法，待作者裁定後登錄 ERRATA.md。 -->
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 

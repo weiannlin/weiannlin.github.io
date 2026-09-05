@@ -39,16 +39,16 @@ $$
 
 讀者可以思考看看，為什麼機率收斂的定義，要刻意要求作為收斂對象的 $X$，必須與 $\lbrace X_i\rbrace_{i=1}^{\infty}$ 在同一個機率空間中呢？
 
-這是因為，機率收斂的定義，事實上是在要求，對於樣本空間中的每一個樣本點 $\omega\in S$ 而言，$X_n(\omega)$ 與 $X(\omega)$ 所對應的「隨機變數值」必須要非常接近，至於有多接近呢？ 這是一個 $\varepsilon-\delta$ 的定義，也就是，「要多接近就有多接近」，但我們也沒有要求這個「要多接近就有多接近」的事件一定發生，只是要求這件事情發生的機率，在 $n\to\infty$ 時必須為 $1$。[^prob-one] 因此，機率收斂的概念是，這個隨機變數的序列，在 $n\to\infty$ 時，其隨機變數值與 $X$ 的隨機變數值「任意地接近」的機率為 $1$。
+這是因為，機率收斂的定義，事實上是在要求，對於樣本空間中的每一個樣本點 $\omega\in S$ 而言，$X_n(\omega)$ 與 $X(\omega)$ 所對應的「隨機變數值」必須要非常接近，至於有多接近呢？這是一個 $\varepsilon-\delta$ 的定義，也就是，「要多接近就有多接近」，但我們也沒有要求這個「要多接近就有多接近」的事件一定發生，只是要求這件事情發生的機率，在 $n\to\infty$ 時必須為 $1$。[^prob-one] 因此，機率收斂的概念是，這個隨機變數的序列，在 $n\to\infty$ 時，其隨機變數值與 $X$ 的隨機變數值「任意地接近」的機率為 $1$。
 
-另一方面，讀者可以思考看看，機率收斂與分配收斂的定義，是哪一個比較強、哪一個比較弱呢？ 有沒有誰成立導致誰成立的關係呢？ 見下列這個定理。
+另一方面，讀者可以思考看看，機率收斂與分配收斂的定義，是哪一個比較強、哪一個比較弱呢？有沒有誰成立導致誰成立的關係呢？見下列這個定理。
 
 </div>
 
 ## 機率收斂與分配收斂的強弱關係
 
 <div id="thm-pconv-implies-dconv" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 5.2 (機率收斂導致分配收斂, convergence in probability implies convergence in distribution)</div>
+<div class="topic-box__label">Theorem 5.2 (機率收斂導致分配收斂)</div>
 
 若 $X_n\pconv X$，則有
 
@@ -399,7 +399,7 @@ $$
 雖然機率收斂是一個比分配收斂要更強的性質，但有的時候，分配收斂還是可以導致機率收斂的，見下列這一個定理。
 
 <div id="thm-pconv-iff-dconv" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 5.3 (收斂至常數時兩種收斂等價, equivalence of the two modes when the limit is a constant)</div>
+<div class="topic-box__label">Theorem 5.3 (收斂至常數時兩種收斂等價)</div>
 
 $$
 X_n\pconv c\ \text{若且唯若}\ X_n\dconv X\equiv c
@@ -780,6 +780,12 @@ $$
 
 接下來，讓我們來看一下其他型態的收斂。
 
+[^prob-one]: 讀者應該還記得，機率為 $0$ 的事件不一定不會發生，而機率為 $1$ 的事件也不一定必然發生。
+
+[^same-distribution]: 最簡單的例子就是一組隨機樣本，他們的機率分配是相同的，故 cdf 肯定是一樣的，但是隨機樣本的每一個值卻沒有被保證一定一樣。
+
+[^clt-and-wlln]: 事實上，中央極限定理本身就是分配收斂的概念，而弱大數法則則是機率收斂的概念，稍後詳談。
+
 ## 本篇小結
 
 [Definition 5.2](#def-converge-in-probability) 把機率收斂寫成 $\lim_{n\to\infty}\mathbb{P}(\lvert X_n-X\rvert<\varepsilon)=1$ 這條對任意 $\varepsilon>0$ 都要成立的等式，比的是 $X_n$ 與 $X$ 的取值而不是兩者的分配，因此它要求 $X$ 與整個序列定義在同一個機率空間之上，否則 $X_n(\omega)-X(\omega)$ 這個差根本寫不出來。滿足這條等式時，$X$ 稱為 $X_n$ 的機率極限。
@@ -796,9 +802,3 @@ $$
 - Kai Lai Chung. 2001. *A Course in Probability Theory*. 3rd ed. Academic Press.
 - Robert V. Hogg, Joseph W. McKean, and Allen T. Craig. 2019. *Introduction to Mathematical Statistics*. 8th ed. Pearson.
 - George Casella and Roger L. Berger. 2002. *Statistical Inference*. 2nd ed. Duxbury.
-
-[^prob-one]: 讀者應該還記得，機率為 $0$ 的事件不一定不會發生，而機率為 $1$ 的事件也不一定必然發生。
-
-[^same-distribution]: 最簡單的例子就是一組隨機樣本，他們的機率分配是相同的，故 cdf 肯定是一樣的，但是隨機樣本的每一個值卻沒有被保證一定一樣。
-
-[^clt-and-wlln]: 事實上，中央極限定理本身就是分配收斂的概念，而弱大數法則則是機率收斂的概念，稍後詳談。

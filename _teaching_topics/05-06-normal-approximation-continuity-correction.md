@@ -15,13 +15,13 @@ excerpt: "中央極限定理要求樣本大小趨於無窮大，實務上不可�
 
 [上一篇](/lecture-notes/weak-law-and-central-limit-theorem/)給出弱大數法則與[中央極限定理](/lecture-notes/weak-law-and-central-limit-theorem/#thm-central-limit-theorem)，並以例題說明標準化之後的樣本平均數如何[分配收斂](/lecture-notes/convergence-in-distribution/#def-converge-in-distribution)至標準常態。本篇處理的是同一件事在實務上的用法。
 
-中央極限定理所要求的條件之中，最難達成的是樣本大小趨於無窮大這一項，因為在實務上我們其實不可能達成這個要求。本篇先寫出「$n$ 足夠大時以標準常態計算」這個漸近的記法，並交代使用它時仍應由中央極限定理出發的三個步驟；接著說明在有限的 $n$ 之下反標準化不會受到退化或發散的困擾，因而樣本平均數與樣本和各有一個常態近似；再把同一套作法用在五個具有可加性的常用分配上，說明它們在什麼條件之下可以漸近為[常態分配](/lecture-notes/normal-distribution/#def-normal)。最後給出連續性校正，處理以連續分配近似離散分配時端點的位置。
+中央極限定理所要求的條件中，最為困難的當屬樣本大小趨於無窮大這個條件，因為在實務上，我們其實不可能達成這個要求。本篇先寫出「$n$ 足夠大時以標準常態計算」這個漸近的記法，並交代使用它時仍應由中央極限定理出發的三個步驟；接著說明在有限的 $n$ 之下反標準化不會受到退化或發散的困擾，因而樣本平均數與樣本和各有一個常態近似；再把同一套作法用在五個具有可加性的常用分配上，說明它們在什麼條件之下可以漸近為[常態分配](/lecture-notes/normal-distribution/#def-normal)。最後給出連續性校正，處理以連續分配近似離散分配時端點的位置。
 
 ## 漸近分配與常態近似
 
-中央極限定理事實上描述的是一個過程，也就是隨著樣本大小越來越大，樣本平均數經由標準化之後會越來越接近標準常態，最終分配收斂至標準常態的過程。
+然而，中央極限定理事實上可以理解為一個過程，即隨著樣本大小越來越大，樣本平均數經由標準化後會越來越接近標準常態，最終分配收斂至標準常態的過程。
 
-這個過程指出，只要樣本大小**足夠大**，我們應該可以得到**足夠接近**標準常態的結果，也就是直接使用標準常態來計算的結果，將落在可允許的誤差範圍之內。我們將這件事表示為
+這個過程指出，只要樣本大小**足夠大**，我們應該可以得到**足夠接近**標準常態的結果，也就是直接使用標準常態來計算的結果，將在可允許的誤差範圍內，我們將其表示為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -46,11 +46,11 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-但讀者應注意的是，這並不能算是一個嚴謹的數學表示式。雖然部分教科書也採用這樣的寫法，但多半只是在說明這個形式所服從的分配「很接近常態」。
+但讀者應注意的是，這並不能算是一個嚴謹的數學表示式，雖然部分教科書亦有採用這樣的寫法，但多半只是在說明這個形式所服從的分配「很接近常態」。
 
 </div>
 
-在嚴謹的數學論證之中，上述結果通常會是在計算機率時使用，但是讀者應注意，使用這個表示法仍應由中央極限定理出發，也就是依下列的步驟處理:
+在嚴謹的數學論證中，上述結果通常會是在「計算機率」時使用，但是讀者應注意，使用這個表示法仍應從中央極限定理出發，也就是以下的流程:
 
 (1) 欲求取 $\mathbb{P}(a<\overline{X}<b)$
 {: .topic-paren-item}
@@ -88,7 +88,7 @@ $$
 
 </div>
 
-這個流程可以簡便地化約為上述的漸近記法，從而直接以下式處理所求的 $\mathbb{P}(a<\overline{X}<b)$
+這個流程可以簡便地被化約為上述 $\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}\xrightarrow[~n~\text{足夠大}~]{~\mathrm{a}~}\mathcal{N}(0,1)$ 的表示法，從而直接把所求的 $\mathbb{P}(a<\overline{X}<b)$ 近似為下式來處理
 
 $$
 \mathbb{P}\Biggl(\frac{a-\mu}{\frac{\sigma}{\sqrt{n}}}<Z<\frac{b-\mu}{\frac{\sigma}{\sqrt{n}}}\Biggr)
@@ -141,9 +141,9 @@ $$
 
 ## 樣本平均數與樣本和的常態近似
 
-中央極限定理的精妙之處在於，$n\to\infty$ 時分子與分母原本是一起收斂到 $0$ 或一起發散，**但由於兩者斂散的速率相同，因此可以將退化或發散的情形相互抵銷**。這個結構是不可以任意更動的，換言之，**我們不可以對這個標準化的形式任意移項而進行反標準化**。
+中央極限定理的精妙之處在於，$n\to\infty$ 時分子跟分母原本是一起收斂到 $0$ 或一起發散，**但由於二者斂散的速率相同，因此可以將退化或發散的情形相互抵銷**，這個結構是不可以任意更動的，換言之，**我們不可以對這個標準化的形式任意移項進行反標準化**。
 
-前述由中央極限定理所衍生的漸近結果，是樣本平均數 $\overline{X}$ 經標準化之後，在有限但足夠大的 $n$ 之下所得到的。由於此時的 $n$ 為有限，故在上述的漸近結果之下，即使反標準化，也不會受到 $n\to\infty$ 所帶來的退化或發散的困擾，換言之，我們有
+前述由中央極限定理所衍生的漸近結果，是樣本平均數 $\overline{X}$ 經標準化過後，在有限但足夠大的 $n$ 之下所得到的，由於此時的 $n$ 為有限的，故在 $\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}\xrightarrow[~n~\text{足夠大}~]{~\mathrm{a}~}\mathcal{N}(0,1)$ 的結果之下，即使反標準化，也不會受到 $n\to\infty$ 所帶來的退化或發散的困擾，換言之，我們有
 
 $$
 \overline{X}\xrightarrow[~n~\text{足夠大}~]{~\mathrm{a}~}\mathcal{N}\biggl(\mu,\frac{\sigma^{2}}{n}\biggr)
@@ -172,7 +172,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-我們還是要特別強調，上述是基於中央極限定理，在 $n\to\infty$ 這個條件不可得的實務情況之下所得到的漸近結果，並不是確切服從常態分配。
+我們還是要特別強調，上述是基於 CLT，在 $n\to\infty$ 這個條件不可得的實務情況下所得到的漸近結果，並不是確切服從常態分配。
 
 </div>
 
@@ -323,7 +323,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-具可加性的分配在漸近為常態分配時，流程其實都是相同的，就是先透過標準化的結構，由中央極限定理得知分配收斂於標準常態，再在有限的 $n$ 之下使用近似的結果反標準化。
+具可加性的分配，在漸近常態分配時，其實流程都是相同的，就是先透過標準化的結構，由中央極限定理得知分配收斂於標準常態，再在有限的 $n$ 之下使用近似的結果反標準化。
 
 實務上而言，只要 $n$ 很大，這個近似的結果不至於偏離太多，但至於多大的 $n$ 才能使得這個近似的結果足夠精確，則完全取決於實際的使用情境，[^cost] 沒有一個標準的說法。以實務上而言，普遍認為 $n\geqslant30$ 算是一個「大樣本」的分界點。
 
@@ -390,13 +390,13 @@ $$
 Suppose that a gambler stakes $5$ dollars on each of $50$ independent fair games. Determine, by means of the central limit theorem, an approximation to the probability that the gambler loses more than $75$ dollars in total.
 </div>
 
-令 $X$ 表示 $50$ 次賭局之中贏的次數，可知
+令 $X$ 表示 $50$ 次賭局中贏的次數，可知
 
 $$
 X\sim\mathrm{Bin}\biggl(50,\ p=\frac{1}{\,2\,}\biggr)
 $$
 
-由題意敘述，輸超過 $75$ 元即表示 <span class="text-nowrap">$X-(50-X)<-15$，</span>其中 $(50-X)$ 表示輸的次數。又由中央極限定理的延伸可知
+由題意敘述，輸超過 $75$ 元即表示 <span class="text-nowrap">$X-(50-X)<-15$，</span>其中 $(50-X)$ 表輸之次數。又由 CLT 延伸可知
 
 $$
 \frac{\,X-50\times\frac{1}{\,2\,}\,}{\sqrt{50\times\frac{1}{\,2\,}\times\bigl(1-\frac{1}{\,2\,}\bigr)}}\xrightarrow[~\text{CLT}~]{~\mathrm{a}~}\mathcal{N}(0,1)
@@ -575,26 +575,23 @@ $$
 
 若 $X$ 為定義在連續整數上的離散隨機變數，且 $X$ 可以連續隨機變數近似，則對任意整數 $a,b$ 且 <span class="text-nowrap">$a<b$，</span>我們有
 
-(1)
-{: .topic-paren-item}
-
-$$
-\mathbb{P}(a<X<b)\fallingdotseq\mathbb{P}(a+0.5<X<b-0.5)
-$$
-
-(2)
-{: .topic-paren-item}
-
-$$
-\mathbb{P}(a\leqslant X\leqslant b)\fallingdotseq\mathbb{P}(a-0.5<X<b+0.5)
-$$
-
-(3)
-{: .topic-paren-item}
-
-$$
-\mathbb{P}(X=a)\fallingdotseq\mathbb{P}(a-0.5<X<a+0.5)
-$$
+<ol class="topic-list-paren topic-list-paren--math">
+  <li>
+  $$
+  \mathbb{P}(a<X<b)\fallingdotseq\mathbb{P}(a+0.5<X<b-0.5)
+  $$
+  </li>
+  <li>
+  $$
+  \mathbb{P}(a\leqslant X\leqslant b)\fallingdotseq\mathbb{P}(a-0.5<X<b+0.5)
+  $$
+  </li>
+  <li>
+  $$
+  \mathbb{P}(X=a)\fallingdotseq\mathbb{P}(a-0.5<X<a+0.5)
+  $$
+  </li>
+</ol>
 
 </div>
 
@@ -699,6 +696,8 @@ $$
 
 </div>
 
+[^cost]: 當然，越大的樣本大小能夠得到越精確的結果，但受限於成本考量，我們往往只能在樣本大小上折衷。如何在有限的成本之下取得足夠精確的近似結果，是一個熱門的**統計最佳化 <span lang="en">(statistical optimization)</span>** 問題。
+
 ## 本篇小結
 
 本篇處理的是中央極限定理在有限樣本之下的用法。$n\to\infty$ 這個條件實務上無法達成，但中央極限定理本身描述的是一個逐步逼近的過程，因此只要 $n$ 足夠大，直接以標準常態計算所得的機率就落在可允許的誤差範圍之內，這時稱標準常態分配是 $\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}$ 的漸近分配。這個記法並不嚴謹，使用時仍應由中央極限定理出發，依「寫出所求、由定理得到分配收斂、在有限而足夠大的 $n$ 之下改以標準常態計算」這三個步驟處理，[Example 5.21](#ex-uniform-sum-normal-approximation) 即為一次完整的示範。
@@ -711,9 +710,7 @@ $$
 
 最後的 [Theorem 5.9](#thm-continuity-correction) 處理的是以連續隨機變數近似定義在連續整數上的離散隨機變數時，區間端點應該放在哪裡: 嚴格不等式的兩端各向內挪 $0.5$、非嚴格不等式的兩端各向外挪 $0.5$，單點機率則換成寬度為 $1$ 的區間。[Example 5.26](#ex-sample-proportion-continuity-correction) 把同一個樣本比例的機率算了兩次，未經校正時得 $0.922$，經連續性校正之後得 $0.932$。
 
-下一篇離開常態近似，回到機率收斂本身，處理機率收斂的運算性質與連續映射定理。
-
-[^cost]: 當然，越大的樣本大小能夠得到越精確的結果，但受限於成本考量，我們往往只能在樣本大小上折衷。如何在有限的成本之下取得足夠精確的近似結果，是一個熱門的**統計最佳化 <span lang="en">(statistical optimization)</span>** 問題。
+[下一篇](/lecture-notes/continuous-mapping-theorem/)離開常態近似，回到機率收斂本身，處理機率收斂的運算性質與連續映射定理。
 
 ## 參考文獻與延伸閱讀
 

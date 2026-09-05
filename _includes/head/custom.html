@@ -27,15 +27,16 @@
       macros: {
         indep: '\\mathrel{\\perp\\!\\!\\!\\perp}',
         sssig: '\\scriptscriptstyle',
-        /* 第五章的收斂箭頭。定義逐字取自書稿的 preamble
-           (/Users/sagalin/Dropbox/MathStat/elegantProbability.tex 第 258 至 262、274 行)，
-           網頁不自訂另一套寫法。此處只能用區塊註解: 正式站的 compress 版面會把整頁壓成一行，
+        /* 第五章的收斂箭頭。定義逐字取自書稿主檔的 preamble，網頁不自訂另一套寫法。
+           2026-09-05 作者裁定箭頭上的字母是收斂型態的名稱而非變數，一律正體，書稿同日改齊；
+           五行原本作 '\\xrightarrow{~~d~~}' 一類，字母未包 \mathrm，印出為斜體。
+           此處只能用區塊註解: 正式站的 compress 版面會把整頁壓成一行，
            單行註解會把後面的設定一起註解掉，使 MathJax 退回預設，單錢號行內數學不再處理。 */
-        dconv: '\\xrightarrow{~~d~~}',
-        pconv: '\\xrightarrow{~~p~~}',
-        asconv: '\\xrightarrow{~~a.s.~~}',
-        rconv: '\\xrightarrow{~~r~~}',
-        aconv: '\\xrightarrow{~~a~~}',
+        dconv: '\\xrightarrow{~~\\mathrm{d}~~}',
+        pconv: '\\xrightarrow{~~\\mathrm{p}~~}',
+        asconv: '\\xrightarrow{~~\\mathrm{a.s.}~~}',
+        rconv: '\\xrightarrow{~~\\mathrm{r}~~}',
+        aconv: '\\xrightarrow{~~\\mathrm{a}~~}',
         iidto: '\\overset{\\mathrm{iid}}{\\sim}'
       }
     }

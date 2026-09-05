@@ -27,10 +27,10 @@ excerpt: "分配收斂是把一列隨機變數的 cdf 逐點與另一個 cdf 比
 
 [^parameter-information]: 這其中最重要的是關於母體分配中參數的資訊，關於這個概念，我們會在稍後**數理統計學**的部分談到。
 
-[^large-sample]: 概念上，**大樣本 <span lang="en">(large sample)</span>** 指的事情是**樣本大小 <span lang="en">(sample size)</span>** 趨於無窮大 <span class="text-nowrap">($n\to\infty$)，</span>但實務上並沒有無限大這回事，而只有「足夠大」。那麼，多大才叫大呢? 「大」與「小」的分界要設在哪裡才好哪? 答案眾說紛紜，但在管中閔 (2004)，《統計學：觀念與方法》，二版，頁 213 至 220 與頁 227 至 233 中，有一段相當精彩的說明。
+[^large-sample]: 概念上，**大樣本 <span lang="en">(large sample)</span>** 指的事情是**樣本大小 <span lang="en">(sample size)</span>** 趨於無窮大 <span class="text-nowrap">($n\to\infty$)，</span>但實務上並沒有無限大這回事，而只有「足夠大」。那麼，多大才叫大呢？「大」與「小」的分界要設在哪裡才好呢？答案眾說紛紜，但在管中閔 (2004)，《統計學：觀念與方法》，二版，頁 213 至 220 與頁 227 至 233 中，有一段相當精彩的說明。
 
-<!-- errata-pending: 上一則腳註的「要設在哪裡才好哪?」，書稿 mathstatch5.tex 第 33 行原文即作「才好哪」，
-     依上下文應為語尾助詞「呢」之誤植。此處照錄書稿原文未改，待作者裁定後決定是否改字並登錄 ERRATA.md。
+<!-- 上一則腳註的「要設在哪裡才好呢？」: 書稿原文作「才好哪」，作者 2026-09-05 裁定採用「呢」，
+     書稿已依裁定改字，網頁同步改為「呢」。
      另: 該腳註的年份照書稿寫 2004，與書稿 reference.bib 的 statKuan 條目所記的 2005 不一致；
      經查該書二版出版日為 2004 年 7 月，行文與參考文獻均取 2004，bib 條目屬書稿側待辦。 -->
 
@@ -53,7 +53,7 @@ $$
 
 </div>
 
-分配收斂的概念是，這個隨機變數的序列，其「機率分配」收斂至「$X$ 的機率分配」，屬於機率分配與機率分配之間的關係。此時 $X$ 的機率分配也被稱作**極限分配 <span lang="en">(limiting distribution)</span>**。此外，分配收斂也被稱作**弱收斂 <span lang="en">(converge weakly)</span>** 或**律收斂 <span lang="en">(converge in law)</span>**。
+分配收斂的概念是，這個隨機變數的序列，其「機率分配」收斂至「$X$ 的機率分配」，屬於機率分配與機率分配之間的關係。此時 $X$ 的機率分配也被稱作 $X_n$ 的**極限分配 <span lang="en">(limiting distribution)</span>**。此外，分配收斂也被稱作**弱收斂 <span lang="en">(converge weakly)</span>** 或**律收斂 <span lang="en">(converge in law)</span>**。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -908,13 +908,6 @@ $$
 
 由此可得
 {: .topic-paren-cont}
-
-<!-- errata-pending: 下面這個分段函數的第三個分支，書稿 mathstatch5.tex 第 233 行原文作
-     `1 &, z \geqslant n`，條件漏了 $\theta$。同一式第二個分支的範圍是 $0<z<n\theta$，
-     第 224 行的推導也給出 $0<z<n\theta$，可見第三個分支應為 $z\geqslant n\theta$，
-     否則 $n\theta>n$ 時 $z\in[n,n\theta)$ 會落在兩個分支上而 cdf 無定義。
-     網頁改為 $z\geqslant n\theta$: 桌面與手機版面各一處，共兩處。
-     待作者裁定後登錄 ERRATA.md。 -->
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
