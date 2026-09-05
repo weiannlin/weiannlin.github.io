@@ -10,7 +10,7 @@ order: 329
 permalink: /lecture-notes/order-statistics-examples/
 date: 2026-08-13
 published: false
-excerpt: "標準均勻分配的五個順序統計量，其聯合 pdf 恆為 $120$ 這個常數，但值域限定在 $0\\lt y_1\\lt y_2\\lt y_3\\lt y_4\\lt y_5\\lt 1$ 之上，因此彼此並不獨立；最小值與最大值分別服從 $\\mathrm{Beta}(1,5)$ 與 $\\mathrm{Beta}(5,1)$，全距 $R=Y_5-Y_1$ 則服從 $\\mathrm{Beta}(4,2)$。順序統計量還可以定義出樣本全距與樣本中位數等統計量，而指數分配的隨機樣本，其最小值與最大值的分配則可以直接由事件的定義求出 cdf 再微分而得。本篇並給出順序統計量的抽樣分配 cdf，其中第 $i$ 個順序統計量的 cdf 是一組二項機率之和，最小值與最大值的聯合 cdf 則由兩個機率相減而得。最後兩道例題把同一套作法用在離散型之上，一題求取值為 $1$ 至 $6$、機率均為 $\\frac{1}{6}$ 的分配之中五個觀測值最小者的 pmf，一題證明非負整數型隨機樣本最小值的期望值可以寫成尾機率的 $m$ 次方之和。"
+excerpt: "標準均勻分配的五個順序統計量，其聯合 pdf 恆為 $120$ 這個常數，但值域限定在 $0\\lt y_1\\lt y_2\\lt y_3\\lt y_4\\lt y_5\\lt 1$ 之上，因此彼此並不獨立；最小值與最大值分別服從 $\\mathrm{Beta}(1,5)$ 與 $\\mathrm{Beta}(5,1)$，全距 $R=Y_5-Y_1$ 則服從 $\\mathrm{Beta}(4,2)$。順序統計量還可以定義出樣本全距與樣本中位數等統計量，而指數分配的隨機樣本，其最小值與最大值的分配則可以直接由事件的定義求出 cdf 再微分而得。本篇並給出順序統計量的抽樣分配 cdf，其中第 $i$ 個順序統計量的 cdf 是一組二項機率之和，最小值與最大值的聯合 cdf 則由兩個機率相減而得。"
 ---
 
 [上一篇](/lecture-notes/order-statistics-distributions/)以 [Theorem 3.24](/lecture-notes/order-statistics-distributions/#thm-order-stat-samp-dist-pdf) 給出隨機樣本之[順序統計量](/lecture-notes/order-statistics/#def-order-stat)的抽樣分配 pdf，並以幾張圖說明其中的排列組合是怎麼數出來的，最後指出標準均勻分配的順序統計量都是[貝塔分配](/lecture-notes/beta-function-and-distribution/#def-beta-distribution)。
@@ -94,7 +94,7 @@ $$
 $$
 \begin{aligned}
 \Longrightarrow f_{\sssig Y_1\cdots Y_5}(y_1,y_2,y_3,y_4,y_5)&=5!\times f_{\sssig X}(y_1)\times f_{\sssig X}(y_2)\times f_{\sssig X}(y_3)\\[0.45em]
-&\quad\times f_{\sssig X}(y_4)\times f_{\sssig X}(y_5)\\[0.45em]
+&\qquad\times f_{\sssig X}(y_4)\times f_{\sssig X}(y_5)\\[0.45em]
 &=5!\times 1^{5}=120,\ \ 0<y_1<y_2<y_3<y_4<y_5<1
 \end{aligned}
 $$
@@ -120,13 +120,6 @@ $\Longrightarrow$ $(Y_1,Y_2,Y_3,Y_4,Y_5)$ 彼此並不獨立
 
 (2) 最小者的邊際 pdf 為
 {: .topic-paren-item}
-
-<!-- errata-pending: 書稿第 5484 與 5486 行把 $Y_1$ 與 $Y_n$ 邊際 pdf 的係數印成 $5!$，
-     但同兩行的下一步就寫成 $5(1-y_1)^4$ 與 $5y_n^4$，可見 $5!$ 為誤植。
-     依 Theorem 3.24 (1) 與 (2)，$n=5$ 時的係數是 $n=5$ 而非 $5!=120$
-     (若照 Theorem 3.24 (3) 的一般式寫則為 $\frac{5!}{(1-1)!(5-1)!}=5$)。
-     網頁均改為 $5$: 兩式各兩處，桌面與手機版面各一份，共八處。
-     待作者裁定後登錄 ERRATA.md。 -->
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -164,8 +157,8 @@ $$
 
 $$
 \begin{aligned}
-f_{\sssig Y_n}(y_n)&=5\,f_{\sssig X}(y_n)\bigl[F_{\sssig X}(y_n)\bigr]^{5-1}\\[0.45em]
-&=5\times 1\times\bigl[y_n\bigr]^{4}=5y_n^{4},\ \ 0<y_n<1
+f_{\sssig Y_5}(y_5)&=5\,f_{\sssig X}(y_5)\bigl[F_{\sssig X}(y_5)\bigr]^{5-1}\\[0.45em]
+&=5\times 1\times\bigl[y_5\bigr]^{4}=5y_5^{4},\ \ 0<y_5<1
 \end{aligned}
 $$
 
@@ -174,9 +167,9 @@ $$
 
 $$
 \begin{aligned}
-f_{\sssig Y_n}(y_n)&=5\,f_{\sssig X}(y_n)\bigl[F_{\sssig X}(y_n)\bigr]^{5-1}\\[0.45em]
-&=5\times 1\times\bigl[y_n\bigr]^{4}\\[0.45em]
-&=5y_n^{4},\ \ 0<y_n<1
+f_{\sssig Y_5}(y_5)&=5\,f_{\sssig X}(y_5)\bigl[F_{\sssig X}(y_5)\bigr]^{5-1}\\[0.45em]
+&=5\times 1\times\bigl[y_5\bigr]^{4}\\[0.45em]
+&=5y_5^{4},\ \ 0<y_5<1
 \end{aligned}
 $$
 
@@ -186,7 +179,7 @@ $$
 {: .topic-paren-cont}
 
 $$
-Y_n\sim\mathrm{Beta}(5,1)
+Y_5\sim\mathrm{Beta}(5,1)
 $$
 
 (3) 首先先算出 $Y_1$ 與 $Y_5$ 的聯合 pdf 為
@@ -248,8 +241,8 @@ $$
 \mathbf{J}=
 \left\lvert
 \begin{array}{cc}
-\dfrac{dw}{dw} & \dfrac{dw}{dr}\\[0.9em]
-\dfrac{d(w+r)}{dw} & \dfrac{d(w+r)}{dr}
+\dfrac{\partial w}{\partial w} & \dfrac{\partial w}{\partial r}\\[0.9em]
+\dfrac{\partial(w+r)}{\partial w} & \dfrac{\partial(w+r)}{\partial r}
 \end{array}
 \right\rvert=
 \left\lvert
@@ -268,8 +261,8 @@ $$
 \mathbf{J}&=
 \left\lvert
 \begin{array}{cc}
-\dfrac{dw}{dw} & \dfrac{dw}{dr}\\[0.9em]
-\dfrac{d(w+r)}{dw} & \dfrac{d(w+r)}{dr}
+\dfrac{\partial w}{\partial w} & \dfrac{\partial w}{\partial r}\\[0.9em]
+\dfrac{\partial(w+r)}{\partial w} & \dfrac{\partial(w+r)}{\partial r}
 \end{array}
 \right\rvert\\[0.8em]
 &=
@@ -345,10 +338,6 @@ R=Y_n-Y_1
 $$
 
 另一個例子是樣本中位數 (sample median)，即
-
-<!-- errata-pending: 書稿第 5506 行的樣本中位數，兩個分支都寫「當 $n$ 為奇數」，
-     第二個分支 $\frac{1}{2}(Y_{\frac{n}{2}}+Y_{\frac{n}{2}+1})$ 顯然是 $n$ 為偶數的情形。
-     網頁改為「當 $n$ 為偶數」。待作者裁定後登錄 ERRATA.md。 -->
 
 $$
 m_{\sssig e}=
@@ -521,7 +510,7 @@ $$
 ## 順序統計量的抽樣分配 cdf
 
 <div id="thm-order-stat-samp-dist-cdf" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 3.25 (隨機樣本之順序統計量的抽樣分配 cdf, cdf of the sampling distribution of order statistics)</div>
+<div class="topic-box__label">Theorem 3.25 (隨機樣本之順序統計量的抽樣分配 cdf, cdf of order statistics)</div>
 
 令 $Y_1$ $\leqslant\cdots\leqslant$ $Y_n$ 為隨機樣本 $X_1,\ldots,X_n$ 之順序統計量，則
 
@@ -631,7 +620,7 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-## 最小順序統計量的 pmf 與[期望值](/lecture-notes/expectation/#def-expectation)
+## 最小順序統計量的 pmf 與期望值
 
 <div id="ex-discrete-order-statistics-die" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.65</div>
@@ -762,13 +751,13 @@ $$
 
 ## 本篇小結
 
-[Example 3.63](#ex-uniform-order-statistics-five) 把 [Theorem 3.24](/lecture-notes/order-statistics-distributions/#thm-order-stat-samp-dist-pdf) 的公式在標準均勻分配上實際用過一遍。由於這個分配的 pdf 在 $0<x<1$ 之上恆為 <span class="text-nowrap">$1$、</span>cdf 恰好是 <span class="text-nowrap">$x$，</span>整組順序統計量的聯合 pdf 因而是 $5!$ 這個常數，也就是 <span class="text-nowrap">$120$；</span>但它的值域限定在 $0<y_1<y_2<y_3<y_4<y_5<1$ 之上，五個變數的取值互相牽制，因此彼此並不獨立。最小者與最大者的邊際 pdf 分別為 $5(1-y_1)^{4}$ 與 $5y_n^{4}$ 這兩個式子，即 $\mathrm{Beta}(1,5)$ 與 <span class="text-nowrap">$\mathrm{Beta}(5,1)$。</span>全距 $R=Y_5-Y_1$ 的分配則要先求出 $Y_1$ 與 $Y_5$ 的聯合 <span class="text-nowrap">pdf，</span>再令 $W=Y_1$ 湊足維度、以 Jacobian 法轉到 $(W,R)$ 之上，最後把 $W$ 積分掉，所得的 $20r^{3}(1-r)$ 即 <span class="text-nowrap">$\mathrm{Beta}(4,2)$，</span>期望值與[變異數](/lecture-notes/variance/#def-variance)分別是 $\frac{2}{\,3\,}$ 與 <span class="text-nowrap">$\frac{2}{\,63\,}$。</span>
+[Example 3.63](#ex-uniform-order-statistics-five) 把 [Theorem 3.24](/lecture-notes/order-statistics-distributions/#thm-order-stat-samp-dist-pdf) 的公式在標準均勻分配上實際用過一遍。由於這個分配的 pdf 在 $0<x<1$ 之上恆為 <span class="text-nowrap">$1$、</span>cdf 恰好是 <span class="text-nowrap">$x$，</span>整組順序統計量的聯合 pdf 因而是 $5!$ 這個常數，也就是 <span class="text-nowrap">$120$；</span>但它的值域限定在 $0<y_1<y_2<y_3<y_4<y_5<1$ 之上，五個變數的取值互相牽制，因此彼此並不獨立。最小者與最大者的邊際 pdf 分別為 $5(1-y_1)^{4}$ 與 $5y_5^{4}$ 這兩個式子，即 $\mathrm{Beta}(1,5)$ 與 <span class="text-nowrap">$\mathrm{Beta}(5,1)$。</span>全距 $R=Y_5-Y_1$ 的分配則要先求出 $Y_1$ 與 $Y_5$ 的聯合 <span class="text-nowrap">pdf，</span>再令 $W=Y_1$ 湊足維度、以 Jacobian 法轉到 $(W,R)$ 之上，最後把 $W$ 積分掉，所得的 $20r^{3}(1-r)$ 即 <span class="text-nowrap">$\mathrm{Beta}(4,2)$，</span>期望值與[變異數](/lecture-notes/variance/#def-variance)分別是 $\frac{2}{\,3\,}$ 與 <span class="text-nowrap">$\frac{2}{\,63\,}$。</span>
 
 由順序統計量所定義出來的統計量相當多元，樣本全距與樣本中位數都是很好的例子，後者在 $n$ 為奇數時取正中間的那一個順序統計量，$n$ 為偶數時取中間兩個的平均。[Example 3.64](#ex-three-iid-order-pdf) 換成指數分配的隨機樣本，作法則回到事件本身。最小者大於 $y$ 這件事等於三個變數都大於 <span class="text-nowrap">$y$，</span>最大者小於等於 $y$ 這件事等於三個變數都小於等於 <span class="text-nowrap">$y$，</span>各以獨立性拆成三個機率相乘之後即得 <span class="text-nowrap">cdf，</span>再對 $y$ 微分就是 pdf。最小者的 pdf 是 <span class="text-nowrap">$3e^{-3y}$，</span>仍為指數分配，只是平均數縮成原本的三分之一；最大者的 pdf 則是 <span class="text-nowrap">$3[1-e^{-y}]^{2}(e^{-y})$，</span>已經不是指數分配。
 
 [Theorem 3.25](#thm-order-stat-samp-dist-cdf) 把同一組結果改寫成 cdf 的形式。最小者與最大者的 cdf 分別是 $1-\bigl[1-F_{\sssig X}(y_1)\bigr]^{n}$ 與 $\bigl[F_{\sssig X}(y_n)\bigr]^{n}$ 這兩個式子，證明與 [Theorem 3.24](/lecture-notes/order-statistics-distributions/#thm-order-stat-samp-dist-pdf) 的前兩款相同。第 $i$ 個順序統計量的 cdf 則換一個角度來數。$Y_i\leqslant y_i$ 這件事等於至少有 $i$ 個樣本比 $y_i$ 小，而每一個樣本比 $y_i$ 小的機率都是 <span class="text-nowrap">$F_{\sssig X}(y_i)$，</span>因此所求就是一組二項機率由 $k=i$ 加到 $k=n$ 的和。最小者與最大者的聯合 cdf 則以相減求得。先取 $Y_n\leqslant y_n$ 的機率，再扣掉其中 $Y_1>y_1$ 的那一部分，後者表示所有樣本都落在 $y_1$ 與 $y_n$ 之間，機率為 $\bigl[F_{\sssig X}(y_n)-F_{\sssig X}(y_1)\bigr]^{n}$ 這個式子。
 
-最後兩道例題把同一套作法用在離散型之上。[Example 3.65](#ex-discrete-order-statistics-die) 的 cdf 是 <span class="text-nowrap">$\frac{\,x_i\,}{6}$，</span>代入 [Theorem 3.25](#thm-order-stat-samp-dist-cdf) 的第一款即得最小者的 <span class="text-nowrap">cdf，</span>離散型的 pmf 再由相鄰兩個 cdf 相減求得。[Example 3.66](#ex-order-statistics-minimum) 求的是最小者的期望值，非負整數型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的期望值可以寫成尾機率之和，而 $Y\geqslant k$ 這件事等於每一個樣本都大於等於 <span class="text-nowrap">$k$，</span>機率因而是 $r_{\sssig k}$ 的 $m$ 次方，加總之後即得所求。這兩題所用的都是同一個觀點，最小者的事件可以拆成 $m$ 個獨立事件的交集。
+最後兩道例題把同一套作法用在離散型之上。[Example 3.65](#ex-discrete-order-statistics-die) 的 cdf 是 <span class="text-nowrap">$\frac{\,x_i\,}{6}$，</span>代入 [Theorem 3.25](#thm-order-stat-samp-dist-cdf) 的第一款即得最小者的 <span class="text-nowrap">cdf，</span>離散型的 pmf 再由相鄰兩個 cdf 相減求得。[Example 3.66](#ex-order-statistics-minimum) 求的是最小者的[期望值](/lecture-notes/expectation/#def-expectation)，非負整數型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的期望值可以寫成尾機率之和，而 $Y\geqslant k$ 這件事等於每一個樣本都大於等於 <span class="text-nowrap">$k$，</span>機率因而是 $r_{\sssig k}$ 的 $m$ 次方，加總之後即得所求。這兩題所用的都是同一個觀點，最小者的事件可以拆成 $m$ 個獨立事件的交集。
 
 第三章到此結束。全章先以[隨機向量與聯合 pmf](/lecture-notes/random-vectors-joint-pmf/) 把討論的對象由一個隨機變數推廣到多個，再依序給出[聯合 cdf](/lecture-notes/joint-cumulative-distribution-functions/)、[聯合 pdf](/lecture-notes/joint-probability-density-functions/) 與[邊際 pdf](/lecture-notes/marginal-probability-density-functions/)，並以[區域機率](/lecture-notes/region-probabilities-joint-density/)與[序列型例題](/lecture-notes/marginal-cumulative-distribution-functions/)示範聯合密度的積分怎麼算。接著是[條件分配](/lecture-notes/conditional-distributions/)與[它的例題](/lecture-notes/conditional-distributions-examples/)，以及聯合分配可以拆成兩個邊際分配相乘的[獨立隨機變數](/lecture-notes/independent-random-variables/)。有了這些之後，[多元隨機變數的期望值](/lecture-notes/multivariate-expectations/)、[條件期望值與條件變異數](/lecture-notes/conditional-expectation-and-variance/)各自把單變數的量數推廣到多變數，[雙重期望值定理](/lecture-notes/double-expectation-theorem/)、[它的例題](/lecture-notes/double-expectation-examples/)、[條件版全機率定理](/lecture-notes/conditional-law-of-total-probability/)、[變異數分解定理](/lecture-notes/variance-decomposition-theorem/)與[沃德等式](/lecture-notes/wald-identity-gamblers-ruin/)則圍繞著同一個加權平均的想法展開。[交叉動差與聯合 mgf](/lecture-notes/cross-moments-joint-mgf/) 之後進入兩個變數之間的關聯: [共變異數](/lecture-notes/covariance/)、[線性組合的變異數](/lecture-notes/variance-of-linear-combination/)、[共變異數矩陣](/lecture-notes/covariance-matrix/)、[相關係數](/lecture-notes/correlation-coefficient/)、[相關矩陣](/lecture-notes/correlation-properties-and-matrix/)與[母體線性迴歸式](/lecture-notes/population-linear-regression/)。全章最後處理的是多變數的函數轉換與排序: [多對多](/lecture-notes/many-to-many-transformations/)、[多對一與動差母函數法](/lecture-notes/mgf-method-transformations/)、[動差母函數法的例題](/lecture-notes/mgf-method-examples/)，以及[順序統計量的定義](/lecture-notes/order-statistics/)、[它的抽樣分配](/lecture-notes/order-statistics-distributions/)與本篇的例題。
 

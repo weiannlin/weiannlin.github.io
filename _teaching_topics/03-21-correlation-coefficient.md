@@ -391,15 +391,6 @@ $$
 
 </div>
 
-<!-- errata-pending: 上一則 Note 的兩處，書稿 mathstatch3.tex 第 3965 行原文有誤，網頁改正。
-     一、書稿作「但相關性的方向卻會係數的影響」，漏一個「受」字，句子沒有動詞；
-     網頁作「但相關性的方向卻會受係數的影響」。
-     二、書稿作「僅需要考慮考慮其方向 (即符號)」，「考慮」二字重出；
-     網頁作「僅需要考慮其方向 (即符號)」。
-     兩處均屬 ERRATA.md 欄位說明所列的 (3) 用詞與體例類，同型前例為 C2-84 (贅字)
-     與 C2-108 (漏字誤植)，待作者裁定後登錄 ERRATA.md。
--->
-
 (6) 令
 {: .topic-paren-item}
 
@@ -669,21 +660,9 @@ $$
 a_i=t\,b_i,\quad i=1,\ldots,n,\ \exists t
 $$
 
-然讀者或許有些疑惑，這上述的 $\cos(\boldsymbol{a},\boldsymbol{b})$ 分明是對應到 <span class="text-nowrap">$\frac{\mathbb{E}(XY)}{\sqrt{\mathbb{E}(X^{2})\,\mathbb{E}(Y^{2})}}$，</span>如何能說是 $\rho_{\sssig XY}$ 呢？這其實是利用了向量平移不改變夾角的原理，才使得二者相等；而這一點亦可呼應相關係數的平移不變。
+然讀者或許有些疑惑，這上述的 $\cos(\boldsymbol{a},\boldsymbol{b})$ 分明是對應到 $\frac{\mathbb{E}(XY)}{\sqrt{\mathbb{E}(X^{2})\,\mathbb{E}(Y^{2})}}$，如何能說是 $\rho_{\sssig XY}$ 呢？這其實是利用了向量平移不改變夾角的原理，才使得二者相等；而這一點亦可呼應相關係數的平移不變。
 
 </div>
-
-<!-- errata-pending: 上一段的分式，書稿 mathstatch3.tex 第 4006 行原文作
-     \frac{\cov(X, Y)}{\,\E(X^2)\,\E(Y^2)\,}，網頁改為
-     \frac{\mathbb{E}(XY)}{\sqrt{\mathbb{E}(X^{2})\,\mathbb{E}(Y^{2})}}。
-     兩處更動的依據: 一、以該段自己的簡例代入，
-     \cos(a, b) = a^T b / (||a|| ||b||)，而 E(XY) = (1/n) a^T b、
-     E(X^2) = (1/n)||a||^2、E(Y^2) = (1/n)||b||^2，故分子應為 E(XY)、
-     分母應開平方根。二、該段的設問是「這個由沒有先減去期望值的動差算出來的量，
-     為何可以說成 rho」，若分子寫成 cov 就已經減去了期望值，設問本身不成立。
-     屬 SITE_STYLE_CANON.md 第〇節第 3 點第 (1) 類 (書稿數學有誤)，
-     待作者裁定後登錄 ERRATA.md。
--->
 
 ## 本篇小結
 

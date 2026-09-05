@@ -201,7 +201,7 @@ $$
 </ol>
 </div>
 
-(1) 依題意可知 $X\mid(P=p)$ $\sim$ <span class="text-nowrap">$\mathrm{Bin}(n,p)$，</span>由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可以知道
+(1) 依題意可知 $X\mid(P=p)$ $\sim$ <span class="text-nowrap">$\mathrm{Bin}(n,p)$，</span>由雙重期望值定理可以知道
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -239,17 +239,18 @@ $\mathrm{Bin}(n,p)$ 是[二項分配](/lecture-notes/binomial-distribution/#def-
 (2)
 {: .topic-paren-item}
 
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+<div class="topic-math-follow-before" markdown="1">
 
 $$
-\mathrm{Var}(P)=\mathbb{E}\bigl(P^{2}\bigr)-\bigl[\mathbb{E}(P)\bigr]^{2}=\frac{1}{\,12\,}\qquad\therefore\, \mathbb{E}\bigl(P^{2}\bigr)=\frac{1}{12}+\Bigl(\frac{1}{2}\Bigr)^{2}=\frac{1}{\,3\,}
+\mathrm{Var}(P)=\mathbb{E}\bigl(P^{2}\bigr)-\bigl[\mathbb{E}(P)\bigr]^{2}=\frac{1}{\,12\,}
 $$
 
 </div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+<div class="topic-math-follow" markdown="1">
 
 $$
-\mathrm{Var}(P)=\mathbb{E}\bigl(P^{2}\bigr)-\bigl[\mathbb{E}(P)\bigr]^{2}=\frac{1}{\,12\,}\qquad\therefore\, \mathbb{E}\bigl(P^{2}\bigr)=\frac{1}{12}+\Bigl(\frac{1}{2}\Bigr)^{2}=\frac{1}{\,3\,}
+\Longrightarrow\ \ \mathbb{E}\bigl(P^{2}\bigr)=\frac{1}{12}+\Bigl(\frac{1}{2}\Bigr)^{2}=\frac{1}{\,3\,}
 $$
 
 </div>
@@ -292,7 +293,7 @@ $$
 
 $$
 \begin{aligned}
-p_{\sssig X}(x)&=\mathbb{E}\bigl[p_{\sssig X\mid P}(x, P)\bigr]=\int_{0}^{1}p_{\sssig X\mid P}(x, p)\,f_{\sssig P}(p)\,dp\\[0.45em]
+p_{\sssig X}(x)&=\mathbb{E}\bigl[p_{\sssig X\mid P}(x\mid P)\bigr]=\int_{0}^{1}p_{\sssig X\mid P}(x\mid p)\,f_{\sssig P}(p)\,dp\\[0.45em]
 &=\int_{0}^{1}\binom{n}{x}p^{x}(1-p)^{(n-x)}\,dp=\binom{n}{x}\int_{0}^{1}p^{x}(1-p)^{(n-x)}\,dp\\[0.45em]
 &=\binom{n}{x}\frac{\Gamma(x+1)\Gamma(n-x+1)}{\Gamma(n+2)}\\[0.45em]
 &=\frac{n!}{x!(n-x)!}\frac{x!(n-x)!}{(n+1)!}=\frac{1}{n+1},\ x=0,1,\ldots,n
@@ -304,8 +305,8 @@ $$
 
 $$
 \begin{aligned}
-p_{\sssig X}(x)&=\mathbb{E}\bigl[p_{\sssig X\mid P}(x, P)\bigr]\\[0.45em]
-&=\int_{0}^{1}p_{\sssig X\mid P}(x, p)\,f_{\sssig P}(p)\,dp\\[0.45em]
+p_{\sssig X}(x)&=\mathbb{E}\bigl[p_{\sssig X\mid P}(x\mid P)\bigr]\\[0.45em]
+&=\int_{0}^{1}p_{\sssig X\mid P}(x\mid p)\,f_{\sssig P}(p)\,dp\\[0.45em]
 &=\int_{0}^{1}\binom{n}{x}p^{x}(1-p)^{(n-x)}\,dp\\[0.45em]
 &=\binom{n}{x}\int_{0}^{1}p^{x}(1-p)^{(n-x)}\,dp\\[0.45em]
 &=\binom{n}{x}\frac{\Gamma(x+1)\Gamma(n-x+1)}{\Gamma(n+2)}\\[0.45em]
@@ -321,13 +322,13 @@ $$
 <div id="note-hierarchical-model" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[這道題目](#ex-uniform-p-binomial)包含幾個很重要的觀念，其中 $X$ 是一個**參數為隨機變數的分配**，換言之即**需要先給定參數的值才是我們所認知的分配**，這種狀況便是[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)、[全機率定理](/lecture-notes/conditional-law-of-total-probability/#thm-law-of-total-prob-r-v)與[變異數分解定理](#thm-var-decom-thm)的最佳使用時機。
+[這道題目](#ex-uniform-p-binomial)包含幾個很重要的觀念，其中 $X$ 是一個**參數為隨機變數的分配**，換言之即**需要先給定參數的值才是我們所認知的分配**，這種狀況便是雙重期望值定理、全機率定理與[變異數分解定理](#thm-var-decom-thm)的最佳使用時機。
 
 另外，在**階層模型 <span lang="en">(hierarchical model)</span>** 中，這樣的狀況更是必然會出現，讀者不妨在此將此觀念熟悉，以便未來在進行研究時，方能夠由此進階更深入的情況。
 
 </div>
 
-事實上，關於[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)與[變異數分解定理](#thm-var-decom-thm)，還有一些衍生的特殊應用，見[下列定理](/lecture-notes/wald-identity-gamblers-ruin/#thm-wald-identity)。
+事實上，關於雙重期望值定理與[變異數分解定理](#thm-var-decom-thm)，還有一些衍生的特殊應用，這正是下一篇要介紹的定理。
 
 ## 本篇小結
 

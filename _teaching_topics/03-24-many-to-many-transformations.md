@@ -10,7 +10,7 @@ order: 324
 permalink: /lecture-notes/many-to-many-transformations/
 date: 2026-08-13
 published: false
-excerpt: "已知隨機向量 $\\boldsymbol{X}$ 的分配，若令 $\\boldsymbol{Y}=g(\\boldsymbol{X})$ 則 $\\boldsymbol{Y}$ 的分配是什麼？只要 $g(\\cdot)$ 是由 $\\mathbb{R}^n$ 映到 $\\mathbb{R}^m$ 的實值可測向量函數，$\\boldsymbol{Y}$ 就仍然是一個隨機向量。多對多的情形可以由二對二推廣，故本篇只處理二對二: 離散型採 pmf 法，把兩條函數關係當成二元聯立方程式反解，再代回原來的聯合 pmf；連續型採 Jacobian 法，將原變數的 pdf 以新變數表示，再乘上原變數對新變數偏微分所成行列式的絕對值。本篇的五道例題，先以三個伯努利變數示範樣本平均數、中位數與眾數的抽樣分配，接著以 pmf 法反解出兩個變數之和與差的聯合 pmf，再以 Jacobian 法處理三道連續型的轉換，其中包含由均勻與指數分配造出兩個獨立標準常態的作法，以及著名的 Box-Muller 轉換。"
+excerpt: "已知隨機向量 $\\boldsymbol{X}$ 的分配，若令 $\\boldsymbol{Y}=g(\\boldsymbol{X})$ 則 $\\boldsymbol{Y}$ 的分配是什麼？多對多的情形可以由二對二推廣，故本篇只處理二對二: 離散型採 pmf 法，把兩條函數關係當成二元聯立方程式反解，再代回原來的聯合 pmf；連續型採 Jacobian 法，將原變數的 pdf 以新變數表示，再乘上原變數對新變數偏微分所成行列式的絕對值。本篇的五道例題，先以三個伯努利變數示範樣本平均數、中位數與眾數的抽樣分配，接著以 pmf 法反解出兩個變數之和與差的聯合 pmf，再以 Jacobian 法處理三道連續型的轉換，其中包含由均勻與指數分配造出兩個獨立標準常態的作法，以及著名的 Box-Muller 轉換。"
 ---
 
 [上一篇](/lecture-notes/population-linear-regression/)以母體線性迴歸式，把兩個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)之間的線性關係寫成一條直線，並以三道例題示範它的求法。到這裡為止，我們所處理的都是[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)自身的分配、條件分配與由這些分配所導出的各種量數。
@@ -225,7 +225,7 @@ $$
 Suppose that <span class="text-nowrap">$X_1$,</span> $X_2$ and $X_3$ are independent random variables, each of which records the outcome of a single Bernoulli trial, so that
 
 $$
-\mathbb{P}(X_i=0)=\mathbb{P}(X_i=1)=0.5,\quad i=1,2,3
+\mathbb{P}(X_i=0)=\mathbb{P}(X_i=1)=0.5
 $$
 
 <ol class="topic-list-paren">
@@ -244,7 +244,7 @@ $$
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
-| prob. | $(X_1,X_2,X_3)$ | $\bar{X}=\frac{1}{3}\sum_{i=1}^{3}X_i$ | $m_e$ | $m_o$ | $X_{\sssig (1)}$ | $X_{\sssig (2)}$ | $X_{\sssig (3)}$ |
+| prob. | $(X_1,X_2,X_3)$ | $\overline{X}=\frac{1}{3}\sum_{i=1}^{3}X_i$ | $m_e$ | $m_o$ | $X_{\sssig (1)}$ | $X_{\sssig (2)}$ | $X_{\sssig (3)}$ |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | $1/8$ | $(0,0,0)$ | $0$ | $0$ | $0$ | $0$ | $0$ | $0$ |
 | $1/8$ | $(0,0,1)$ | $1/3$ | $0$ | $0$ | $0$ | $0$ | $1$ |
@@ -258,7 +258,7 @@ $$
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
-| prob. | $(X_1,$<br>$X_2,X_3)$ | $\bar{X}=$<br>$\frac{1}{3}\sum_{i=1}^{3}X_i$ | $m_e$ | $m_o$ |
+| prob. | $(X_1,$<br>$X_2,X_3)$ | $\overline{X}=$<br>$\frac{1}{3}\sum_{i=1}^{3}X_i$ | $m_e$ | $m_o$ |
 | :---: | :---: | :---: | :---: | :---: |
 | $1/8$ | $(0,0,0)$ | $0$ | $0$ | $0$ |
 | $1/8$ | $(0,0,1)$ | $1/3$ | $0$ | $0$ |
@@ -284,10 +284,10 @@ $$
 
 $$
 \begin{gathered}
-p_{\sssig \bar{X}}(\bar{x})=\left\lbrace
+p_{\sssig \overline{X}}(\overline{x})=\left\lbrace
 \begin{array}{c@{\quad}l}
-\frac{3}{\,8\,}, & \bar{x}=\frac{1}{\,3\,},\frac{2}{\,3\,}\\[0.7em]
-\frac{1}{\,8\,}, & \bar{x}=0,1\\[0.7em]
+\frac{3}{\,8\,}, & \overline{x}=\frac{1}{\,3\,},\frac{2}{\,3\,}\\[0.7em]
+\frac{1}{\,8\,}, & \overline{x}=0,1\\[0.7em]
 0, & \text{o.w.}
 \end{array}
 \right.\\[1.1em]
@@ -320,8 +320,8 @@ $$
 
 $$
 \begin{aligned}
-&\mathbb{E}(\bar{X})=0\times\frac{1}{\,8\,}+\frac{1}{\,3\,}\times\frac{3}{\,8\,}+\frac{2}{\,3\,}\times\frac{3}{\,8\,}+1\times\frac{1}{\,8\,}=\frac{1}{\,2\,}\\[0.9em]
-&\mathbb{E}\bigl(\bar{X}^{2}\bigr)=(0)^{2}\times\frac{1}{\,8\,}+\Bigl(\frac{1}{\,3\,}\Bigr)^{2}\times\frac{3}{\,8\,}+\Bigl(\frac{2}{\,3\,}\Bigr)^{2}\times\frac{3}{\,8\,}+(1)^{2}\times\frac{1}{\,8\,}=\frac{1}{\,3\,}
+&\mathbb{E}(\overline{X})=0\times\frac{1}{\,8\,}+\frac{1}{\,3\,}\times\frac{3}{\,8\,}+\frac{2}{\,3\,}\times\frac{3}{\,8\,}+1\times\frac{1}{\,8\,}=\frac{1}{\,2\,}\\[0.9em]
+&\mathbb{E}\bigl(\overline{X}^{2}\bigr)=(0)^{2}\times\frac{1}{\,8\,}+\Bigl(\frac{1}{\,3\,}\Bigr)^{2}\times\frac{3}{\,8\,}+\Bigl(\frac{2}{\,3\,}\Bigr)^{2}\times\frac{3}{\,8\,}+(1)^{2}\times\frac{1}{\,8\,}=\frac{1}{\,3\,}
 \end{aligned}
 $$
 
@@ -330,9 +330,9 @@ $$
 
 $$
 \begin{aligned}
-&\mathbb{E}(\bar{X})=0\times\frac{1}{\,8\,}+\frac{1}{\,3\,}\times\frac{3}{\,8\,}\\[0.2em]
+&\mathbb{E}(\overline{X})=0\times\frac{1}{\,8\,}+\frac{1}{\,3\,}\times\frac{3}{\,8\,}\\[0.2em]
 &\qquad +\frac{2}{\,3\,}\times\frac{3}{\,8\,}+1\times\frac{1}{\,8\,}=\frac{1}{\,2\,}\\[0.9em]
-&\mathbb{E}\bigl(\bar{X}^{2}\bigr)=(0)^{2}\times\frac{1}{\,8\,}+\Bigl(\frac{1}{\,3\,}\Bigr)^{2}\times\frac{3}{\,8\,}\\[0.2em]
+&\mathbb{E}\bigl(\overline{X}^{2}\bigr)=(0)^{2}\times\frac{1}{\,8\,}+\Bigl(\frac{1}{\,3\,}\Bigr)^{2}\times\frac{3}{\,8\,}\\[0.2em]
 &\qquad +\Bigl(\frac{2}{\,3\,}\Bigr)^{2}\times\frac{3}{\,8\,}+(1)^{2}\times\frac{1}{\,8\,}=\frac{1}{\,3\,}
 \end{aligned}
 $$
@@ -342,7 +342,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow" markdown="1">
 
 $$
-\Longrightarrow\ \mathrm{Var}(\bar{X})=\mathbb{E}\bigl(\bar{X}^{2}\bigr)-\bigl[\mathbb{E}(\bar{X})\bigr]^{2}=\frac{1}{\,12\,}
+\Longrightarrow\ \mathrm{Var}(\overline{X})=\mathbb{E}\bigl(\overline{X}^{2}\bigr)-\bigl[\mathbb{E}(\overline{X})\bigr]^{2}=\frac{1}{\,12\,}
 $$
 
 </div>
@@ -350,7 +350,7 @@ $$
 
 $$
 \begin{aligned}
-&\Longrightarrow\ \mathrm{Var}(\bar{X})=\mathbb{E}\bigl(\bar{X}^{2}\bigr)-\bigl[\mathbb{E}(\bar{X})\bigr]^{2}\\[0.2em]
+&\Longrightarrow\ \mathrm{Var}(\overline{X})=\mathbb{E}\bigl(\overline{X}^{2}\bigr)-\bigl[\mathbb{E}(\overline{X})\bigr]^{2}\\[0.2em]
 &\qquad =\frac{1}{\,12\,}
 \end{aligned}
 $$
@@ -442,7 +442,7 @@ A joint probability mass function
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-f_{\sssig X_1X_2}(x_1,x_2)=p^{x_1+x_2}(1-p)^{4-x_1-x_2}\ \text{ with }\ x_1=0,1,2,\ x_2=0,1,2
+p_{\sssig X_1X_2}(x_1,x_2)=p^{x_1+x_2}(1-p)^{4-x_1-x_2}\ \text{ with }\ x_1=0,1,2,\ x_2=0,1,2
 $$
 
 </div>
@@ -450,7 +450,7 @@ $$
 
 $$
 \begin{aligned}
-f_{\sssig X_1X_2}(x_1,x_2)&=p^{x_1+x_2}(1-p)^{4-x_1-x_2}\\[0.55em]
+p_{\sssig X_1X_2}(x_1,x_2)&=p^{x_1+x_2}(1-p)^{4-x_1-x_2}\\[0.55em]
 &\quad \text{with }x_1=0,1,2,\ x_2=0,1,2
 \end{aligned}
 $$
@@ -534,19 +534,11 @@ $$
 {: .topic-paren-cont}
 
 $$
-Z=X+Y,\ W=X\qquad\therefore\, X=W,\ Y=Z-W
+Z=X+Y,\ W=X\ \ \Longrightarrow\ \ X=W,\ Y=Z-W
 $$
 
 第二個步驟為
 {: .topic-paren-cont}
-
-<!-- errata-pending: 書稿 mathstatch3.tex 第 4465 行此式寫作
-     $f_{\sssig ZW}(z, w) = f_{\sssig X_1X_2}\big(x+y, x)\big|\mathbf{J}\big|$，
-     函數下標與代入的引數均有誤: 本題的原變數是 $X$ 與 $Y$ (不是 $X_1,X_2$)，
-     且 Jacobian 法要代入的是反解式 $x=h_1(z,w)=w$ 與 $y=h_2(z,w)=z-w$，
-     故應為 $f_{\sssig XY}(w,z-w)$。書稿同行的右括號另漏了 `\big` 這個尺寸巨集
-     (原文寫作 `\big(x+y, x)`)，屬純排版。
-     網頁採正確寫法，待登錄 ERRATA.md，請作者裁定條號。 -->
 
 $$
 f_{\sssig ZW}(z,w)=f_{\sssig XY}(w,z-w)\bigl\lvert\mathbf{J}\bigr\rvert

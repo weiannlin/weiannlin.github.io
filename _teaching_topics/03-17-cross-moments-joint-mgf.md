@@ -20,11 +20,15 @@ excerpt: "動差可以描述一個機率分配的各種特徵，而 $\\mathbb{E}
 ## 交叉動差
 
 <div id="def-cross-moment" class="topic-box topic-box--definition" markdown="1">
-<div class="topic-box__label">Definition 3.14 (交差動差, cross moment)</div>
+<div class="topic-box__label">Definition 3.14 (交叉動差, cross moment)</div>
 
 令 $(X, Y)$ 為二元隨機變數，且 <span class="text-nowrap">$n, m \in \mathbb{N}$，</span>則
 
-$\mathbb{E}\bigl(X^nY^m\bigr)$ 被稱為 $X$ 與 $Y$ 的 **$(n+m)$ 階交叉動差 ($(n+m)$-th cross moment)**
+$$
+\mathbb{E}\bigl(X^nY^m\bigr)
+$$
+
+被稱為 $X$ 與 $Y$ 的 **$(n+m)$ 階交叉動差 ($(n+m)$-th cross moment)**
 
 </div>
 
@@ -32,7 +36,7 @@ $\mathbb{E}\bigl(X^nY^m\bigr)$ 被稱為 $X$ 與 $Y$ 的 **$(n+m)$ 階交叉動�
 
 ## 聯合動差母函數
 
-在介紹單變數隨機變數的動差時，我們曾引入 mgf 來協助我們生成各階的原動差。事實上，mgf 的功能，當然不僅止於生成一個變數的動差，像上面所定義的交叉動差，也能夠由 mgf 協助生成，但是在介紹 mgf 要如何生成兩個變數的交叉動差之前，我們首先要定義兩個或多個隨機變數的**聯合動差母函數 <span lang="en">(joint moment-generating function, joint mgf)</span>**。
+在介紹單變數隨機變數的動差時，我們曾引入 mgf 來協助我們生成各階的原動差。事實上，mgf 的功能，當然不僅止於生成一個變數的動差，像上面所定義的交叉動差，也能夠由 mgf 協助生成，但是在介紹 mgf 要如何生成兩個變數的交叉動差之前，我們首先要定義兩個或多個隨機變數的**聯合動差母函數 <span lang="en">(joint moment generating function, joint mgf)</span>**。
 
 <div id="def-joint-mgf" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.15 (聯合動差母函數, joint mgf)</div>
@@ -193,20 +197,20 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
+<div id="note-joint-mgf-independence" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
 當然，若是 <span class="text-nowrap">$X\indep Y$，</span>若且唯若我們有 $M_{\sssig XY}(t_1, t_2)$ $=$ $M_{\sssig X}(t_1)\,M_{\sssig Y}(t_2)$ 的結果，讀者應可自行嘗試推導。
 
 </div>
 
-## 由聯合動差母函數求共變異數與[聯合機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-joint-pmf)
+## 由聯合動差母函數求共變異數與聯合機率質量函數
 
 <div id="ex-joint-mgf-two-variables" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.35</div>
 
 <div lang="en" markdown="1">
-Suppose that the random variables $X_1$ and $X_2$ have the joint moment-generating function
+Suppose that the random variables $X_1$ and $X_2$ have the joint moment generating function
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -319,7 +323,7 @@ $$
 <div class="topic-box__label">Example 3.36</div>
 
 <div lang="en" markdown="1">
-Suppose that the two random variables $X$ and $Y$ have the joint moment-generating function
+Suppose that the two random variables $X$ and $Y$ have the joint moment generating function
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -399,7 +403,7 @@ $$
 
 ## 本篇小結
 
-[Definition 3.14](#def-cross-moment) 把單變數的動差推廣為 $\mathbb{E}(X^nY^m)$ 這種交叉動差，用來描述 $X$ 與 $Y$ 共同變化的各種特徵；[Definition 3.15](#def-joint-mgf) 則把動差母函數推廣為聯合動差母函數，離散型以聯合機率質量函數加權求和、連續型以[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)加權積分。與單變數的 mgf 相同，joint mgf 必須在 $-h < t_1, t_2 < h$ 的整個區間內皆有定義才算存在，而一旦它存在，各階交叉動差也就都跟著存在。
+[Definition 3.14](#def-cross-moment) 把單變數的動差推廣為 $\mathbb{E}(X^nY^m)$ 這種交叉動差，用來描述 $X$ 與 $Y$ 共同變化的各種特徵；[Definition 3.15](#def-joint-mgf) 則把動差母函數推廣為聯合動差母函數，離散型以[聯合機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-joint-pmf)加權求和、連續型以[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)加權積分。與單變數的 mgf 相同，joint mgf 必須在 $-h < t_1, t_2 < h$ 的整個區間內皆有定義才算存在，而一旦它存在，各階交叉動差也就都跟著存在。
 
 生成的方式由 [Theorem 3.13](#thm-generate-cross-moment) 給出。對 $t_1$ 微分 $n$ 次、對 $t_2$ 微分 $m$ 次，再代入 <span class="text-nowrap">$t_1=t_2=0$，</span>所得即為 $(n+m)$ 階交叉動差。其中 $n=m=1$ 的情形給出 $\mathbb{E}(XY)$ 這個量，它是[下一篇](/lecture-notes/covariance/)定義共變異數時所需的關鍵一項。[Theorem 3.14](#thm-marginal-mgf) 則指出，只要把 $t_1$ 與 $t_2$ 其中一個代入 <span class="text-nowrap">$0$，</span>該變數在指數上的那一項就整個消去，剩下的正是另一個變數自己的動差母函數；證明只需把聯合機率密度函數對其中一個變數積分，得到的就是[邊際機率密度函數](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)。
 

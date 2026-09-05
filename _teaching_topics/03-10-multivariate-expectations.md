@@ -128,7 +128,7 @@ $$
 {: .topic-paren-item}
 
 <div id="thm-multi-exp-proper" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 3.5 (多元隨機變數期望值的性質, properties of expectations of multivariate random variables)</div>
+<div class="topic-box__label">Theorem 3.5 (多元隨機變數期望值的性質, properties of multivariate expectations)</div>
 
 若 $(X, Y)$ 為二元隨機變數，$g_1(\cdot,\cdot),\ldots,g_k(\cdot,\cdot)$ 為實值函數且 $a_1,\ldots,a_k,b$ 為常數，則
 
@@ -165,7 +165,7 @@ $$
 當然，相乘不是線性函數，所以一般的狀況下，我們只能利用 [Theorem 3.5](#thm-multi-exp-proper)，將係數與常數提出去，再利用 [Theorem 3.4](#thm-multi-exp) 計算，但在 $X$ $\indep$ $Y$ 的前提以及特殊的相乘設定之下，這個計算將變得容易許多，詳見下列定理。
 
 <div id="thm-indep-exp" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 3.6 (獨立隨機變數函數乘積的期望值, expectation of a product under independence)</div>
+<div class="topic-box__label">Theorem 3.6 (獨立隨機變數函數乘積的期望值, product expectation under independence)</div>
 
 若 $X$ $\indep$ <span class="text-nowrap">$Y$，</span>且 $g(X)$ 與 $h(Y)$ 分別為 $X$ 與 $Y$ 的任意函數轉換，則
 

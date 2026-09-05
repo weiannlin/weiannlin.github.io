@@ -10,7 +10,7 @@ order: 314
 permalink: /lecture-notes/conditional-law-of-total-probability/
 date: 2026-08-13
 published: false
-excerpt: "雙重期望值定理是以條件變數的分配對條件期望值加權平均，得到邊際的期望值；同樣的加權方式也可以直接用在機率函數上，這就是隨機變數版本的全機率定理: 邊際 pmf 是條件 pmf 對條件變數取期望值所得的結果，邊際 pdf 亦然。它與第一章事件版本的全機率定理互相對照，當時是先以 $A_i$ 分割整個樣本空間，此處則是以條件變數 $Y$ 分割值域空間。這條定理寫成 $\\mathbb{P}(Z\\leqslant Y^{2})=\\mathbb{E}\\bigl[\\mathbb{P}(Z\\leqslant Y^{2}\\mid Y)\\bigr]$ 這種形式之後，許多機率的計算都可以先給定一部分的變數，再以該部分的分配加權求得。本篇的三道例題，第一道求一元二次方程式有實根的機率，另外兩道求一個均勻分配的變數大於另外兩個變數乘積的機率，其中最後一題說明條件的選擇完全可以依照計算的方便來決定。"
+excerpt: "雙重期望值定理是以條件變數的分配對條件期望值加權平均，得到邊際的期望值；同樣的加權方式也可以直接用在機率函數上，這就是隨機變數版本的全機率定理: 邊際 pmf 是條件 pmf 對條件變數取期望值所得的結果，邊際 pdf 亦然。它與第一章事件版本的全機率定理互相對照，當時是先以 $A_i$ 分割整個樣本空間，此處則是以條件變數 $Y$ 分割值域空間。這條定理寫成 $\\mathbb{P}(Z\\leqslant Y^{2})=\\mathbb{E}\\bigl[\\mathbb{P}(Z\\leqslant Y^{2}\\mid Y)\\bigr]$ 這種形式之後，許多機率的計算都可以先給定一部分的變數，再以該部分的分配加權求得。本篇的三道例題，第一道求一元二次方程式有實根的機率，另外兩道求一個均勻分配的變數大於另外兩個變數乘積的機率。"
 ---
 
 [上一篇](/lecture-notes/double-expectation-examples/)以五道例題示範了[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)的用法，其中的共同手法是先給定一個變數、求出[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation)，再以該變數的分配對條件期望值加權平均，得到邊際的期望值。
@@ -22,7 +22,7 @@ excerpt: "雙重期望值定理是以條件變數的分配對條件期望值加�
 <div id="thm-law-of-total-prob-r-v" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 3.10 (全機率定理, the law of total probability)</div>
 
-若 $X$ 與 $Y$ 之條件 pmf 為 $p_{\sssig X\mid Y}(x\mid y)$ 與 <span class="text-nowrap">$p_{\sssig Y\mid X}(y\mid x)$，</span>邊際 pmf 為 $p_{\sssig X}(x)$ 與 $p_{\sssig Y}(y)$ 則
+若 $X$ 與 $Y$ 之 conditional pmf 為 $p_{\sssig X\mid Y}(x\mid y)$ 與 <span class="text-nowrap">$p_{\sssig Y\mid X}(y\mid x)$，</span>邊際 pmf 為 $p_{\sssig X}(x)$ 與 $p_{\sssig Y}(y)$ 則
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -142,7 +142,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，上述的做法也可以寫成 $\mathbb{P}\bigl(Z\leqslant Y^{2}\bigr)$ $=$ <span class="text-nowrap">$\mathbb{E}\bigl[\mathbb{P}(Z\leqslant Y^{2}\mid Y)\bigr]$，</span>而這正是全機率定理的應用，甚至可以說，這才是真正的全「機率」定理。
+事實上，上述的做法也可以寫成 $\mathbb{P}\bigl(Z\leqslant Y^{2}\bigr)$ $=$ $\mathbb{E}\bigl[\mathbb{P}(Z\leqslant Y^{2}\mid Y)\bigr]$，而這正是全機率定理的應用，甚至可以說，這才是真正的全「機率」定理。
 
 </div>
 

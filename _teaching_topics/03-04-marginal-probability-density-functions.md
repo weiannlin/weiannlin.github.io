@@ -232,21 +232,35 @@ $$
 $$
 \begin{aligned}
 F_{\sssig XY}(x,y)&=\mathbb{P}(X\leqslant x,Y\leqslant y)\\[0.45em]
-&=\int_{-\infty}^{y}\int_{-\infty}^{x}f_{\sssig XY}(t,s)\,dt\,ds\\[0.45em]
-&=\left\lbrace
-\begin{array}{l}
-0,\\[0.25em]
-\quad x\leqslant0\ \text{或}\ y\leqslant0\\[0.5em]
-\int_{0}^{y}\int_{0}^{x}12\,ts(1-t)\,dt\,ds,\\[0.25em]
-\quad 0<x<1,\ 0<y<1\\[0.5em]
-\int_{0}^{y}\int_{0}^{1}12\,ts(1-t)\,dt\,ds,\\[0.25em]
-\quad x\geqslant1,\ 0<y<1\\[0.5em]
-\int_{0}^{1}\int_{0}^{x}12\,ts(1-t)\,dt\,ds,\\[0.25em]
-\quad 0<x<1,\ y\geqslant1\\[0.5em]
-1,\\[0.25em]
-\quad x\geqslant1,\ y\geqslant1
-\end{array}
-\right.\\[0.6em]
+&=\int_{-\infty}^{y}\int_{-\infty}^{x}f_{\sssig XY}(t,s)\,dt\,ds
+\end{aligned}
+$$
+
+<div class="topic-cases topic-cases--stack">
+  <div class="topic-cases__lhs">$=$</div>
+  <div class="topic-cases__brace" aria-hidden="true">
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 11 0.8 C 7.6 0.8 6 2.4 6 5.2 L 6 12" vector-effect="non-scaling-stroke"/></svg>
+    <span class="topic-cases__brace-bar"></span>
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 6 0 L 6 3.4 C 6 5 4.6 6 1 6 C 4.6 6 6 7 6 8.6 L 6 12" vector-effect="non-scaling-stroke"/></svg>
+    <span class="topic-cases__brace-bar"></span>
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 6 0 L 6 6.8 C 6 9.6 7.6 11.2 11 11.2" vector-effect="non-scaling-stroke"/></svg>
+  </div>
+  <div class="topic-cases__rows">
+    <div class="topic-cases__val">$0,$</div>
+    <div class="topic-cases__cond">$x\leqslant0$ 或 $y\leqslant0$</div>
+    <div class="topic-cases__val">$\int_{0}^{y}\int_{0}^{x}12\,ts(1-t)\,dt\,ds,$</div>
+    <div class="topic-cases__cond">$0<x<1,\ 0<y<1$</div>
+    <div class="topic-cases__val">$\int_{0}^{y}\int_{0}^{1}12\,ts(1-t)\,dt\,ds,$</div>
+    <div class="topic-cases__cond">$x\geqslant1,\ 0<y<1$</div>
+    <div class="topic-cases__val">$\int_{0}^{1}\int_{0}^{x}12\,ts(1-t)\,dt\,ds,$</div>
+    <div class="topic-cases__cond">$0<x<1,\ y\geqslant1$</div>
+    <div class="topic-cases__val">$1,$</div>
+    <div class="topic-cases__cond">$x\geqslant1,\ y\geqslant1$</div>
+  </div>
+</div>
+
+$$
+\begin{aligned}
 &=\left\lbrace
 \begin{array}{c@{}l}
 0, & x\leqslant0\ \text{或}\ y\leqslant0\\[0.5em]
@@ -458,21 +472,35 @@ $$
 $$
 \begin{aligned}
 F_{\sssig XY}(x,y)&=\mathbb{P}(X\leqslant x,Y\leqslant y)\\[0.45em]
-&=\int_{-\infty}^{y}\int_{-\infty}^{x}f_{\sssig XY}(t,s)\,dt\,ds\\[0.45em]
-&=\left\lbrace
-\begin{array}{l}
-0,\\[0.25em]
-\quad x<0\ \text{或}\ y<0\\[0.5em]
-\int_{0}^{x}\int_{t}^{y}2(t+s)\,ds\,dt,\\[0.25em]
-\quad 0\leqslant x\leqslant y\leqslant 1\\[0.5em]
-\int_{0}^{x}\int_{t}^{1}2(t+s)\,ds\,dt,\\[0.25em]
-\quad 0\leqslant x\leqslant 1,\ y>1\\[0.5em]
-\int_{0}^{y}\int_{0}^{s}2(t+s)\,dt\,ds,\\[0.25em]
-\quad x>y,\ 0\leqslant y\leqslant 1\\[0.5em]
-1,\\[0.25em]
-\quad x\geqslant1,\ y\geqslant1
-\end{array}
-\right.\\[0.6em]
+&=\int_{-\infty}^{y}\int_{-\infty}^{x}f_{\sssig XY}(t,s)\,dt\,ds
+\end{aligned}
+$$
+
+<div class="topic-cases topic-cases--stack">
+  <div class="topic-cases__lhs">$=$</div>
+  <div class="topic-cases__brace" aria-hidden="true">
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 11 0.8 C 7.6 0.8 6 2.4 6 5.2 L 6 12" vector-effect="non-scaling-stroke"/></svg>
+    <span class="topic-cases__brace-bar"></span>
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 6 0 L 6 3.4 C 6 5 4.6 6 1 6 C 4.6 6 6 7 6 8.6 L 6 12" vector-effect="non-scaling-stroke"/></svg>
+    <span class="topic-cases__brace-bar"></span>
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 6 0 L 6 6.8 C 6 9.6 7.6 11.2 11 11.2" vector-effect="non-scaling-stroke"/></svg>
+  </div>
+  <div class="topic-cases__rows">
+    <div class="topic-cases__val">$0,$</div>
+    <div class="topic-cases__cond">$x<0$ 或 $y<0$</div>
+    <div class="topic-cases__val">$\int_{0}^{x}\int_{t}^{y}2(t+s)\,ds\,dt,$</div>
+    <div class="topic-cases__cond">$0\leqslant x\leqslant y\leqslant 1$</div>
+    <div class="topic-cases__val">$\int_{0}^{x}\int_{t}^{1}2(t+s)\,ds\,dt,$</div>
+    <div class="topic-cases__cond">$0\leqslant x\leqslant 1,\ y>1$</div>
+    <div class="topic-cases__val">$\int_{0}^{y}\int_{0}^{s}2(t+s)\,dt\,ds,$</div>
+    <div class="topic-cases__cond">$x>y,\ 0\leqslant y\leqslant 1$</div>
+    <div class="topic-cases__val">$1,$</div>
+    <div class="topic-cases__cond">$x\geqslant1,\ y\geqslant1$</div>
+  </div>
+</div>
+
+$$
+\begin{aligned}
 &=\left\lbrace
 \begin{array}{c@{}l}
 0, & x<0\ \text{或}\ y<0\\[0.5em]

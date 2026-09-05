@@ -354,7 +354,7 @@ $$
 
 </div>
 
-(2) 由 [conditional pmf 的定義](/lecture-notes/conditional-distributions/#def-conditional-pmf)可知:
+(2) 由 conditional pmf 的定義可知:
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -382,6 +382,7 @@ $$
 </div>
 
 上述[第 (2) 小題](#ex-discrete-conditional-table)比較特別，該條件與 $X_2$ 沒有關係，是 $X_1$ 的自我限制條件，所求的機率也是 $X_1$ 的範圍。這種分配稱作**截尾分配 <span lang="en">(truncated distribution)</span>**，形式如下:
+{: #def-truncated-distribution}
 
 **[ 離散型 ]**
 
@@ -491,7 +492,7 @@ $$
 且由截尾分配的定義可知
 
 $$
-f_{\sssig X}\Bigl(x\Bigm\vert x<\frac{1}{4}\Bigr)=\frac{f_{\sssig X}(x)}{\,\mathbb{P}\bigl(X<\frac{1}{4}\bigr)\,},\ x<\frac{1}{4}
+f_{\sssig X}\Bigl(x\Bigm\vert X<\frac{1}{4}\Bigr)=\frac{f_{\sssig X}(x)}{\,\mathbb{P}\bigl(X<\frac{1}{4}\bigr)\,},\ x<\frac{1}{4}
 $$
 
 又可求得
@@ -499,7 +500,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}\Bigl(X<\frac{1}{4}\Bigr)=\int_{0}^{\frac{1}{4}}1\,dx=\bigl[x\bigr]_{0}^{\frac{1}{4}}=\frac{1}{4}\qquad\therefore\, f_{\sssig X}\Bigl(x\Bigm\vert x<\frac{1}{4}\Bigr)=4\times 1=4,\ x<\frac{1}{4}
+\mathbb{P}\Bigl(X<\frac{1}{4}\Bigr)=\int_{0}^{\frac{1}{4}}1\,dx=\bigl[x\bigr]_{0}^{\frac{1}{4}}=\frac{1}{4}\qquad\therefore\, f_{\sssig X}\Bigl(x\Bigm\vert X<\frac{1}{4}\Bigr)=4\times 1=4,\ x<\frac{1}{4}
 $$
 
 </div>
@@ -508,7 +509,7 @@ $$
 $$
 \begin{aligned}
 \mathbb{P}\Bigl(X<\frac{1}{4}\Bigr)&=\int_{0}^{\frac{1}{4}}1\,dx=\bigl[x\bigr]_{0}^{\frac{1}{4}}=\frac{1}{4}\\[0.45em]
-&\qquad\therefore\, f_{\sssig X}\Bigl(x\Bigm\vert x<\frac{1}{4}\Bigr)=4\times 1=4,\\[0.45em]
+&\qquad\therefore\, f_{\sssig X}\Bigl(x\Bigm\vert X<\frac{1}{4}\Bigr)=4\times 1=4,\\[0.45em]
 &\qquad\qquad x<\frac{1}{4}
 \end{aligned}
 $$
@@ -521,7 +522,7 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{P}\Bigl(X<\frac{1}{8}\Bigm\vert X<\frac{1}{4}\Bigr)&=\int_{0}^{\frac{1}{8}}f_{\sssig X}\Bigl(x\Bigm\vert x<\frac{1}{4}\Bigr)\,dx\\[0.45em]
+\mathbb{P}\Bigl(X<\frac{1}{8}\Bigm\vert X<\frac{1}{4}\Bigr)&=\int_{0}^{\frac{1}{8}}f_{\sssig X}\Bigl(x\Bigm\vert X<\frac{1}{4}\Bigr)\,dx\\[0.45em]
 &=\int_{0}^{\frac{1}{8}}4\,dx=\bigl[4x\bigr]_{0}^{\frac{1}{8}}=\frac{1}{\,2\,}
 \end{aligned}
 $$
@@ -531,7 +532,7 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{P}\Bigl(X<\frac{1}{8}\Bigm\vert X<\frac{1}{4}\Bigr)&=\int_{0}^{\frac{1}{8}}f_{\sssig X}\Bigl(x\Bigm\vert x<\frac{1}{4}\Bigr)\,dx\\[0.45em]
+\mathbb{P}\Bigl(X<\frac{1}{8}\Bigm\vert X<\frac{1}{4}\Bigr)&=\int_{0}^{\frac{1}{8}}f_{\sssig X}\Bigl(x\Bigm\vert X<\frac{1}{4}\Bigr)\,dx\\[0.45em]
 &=\int_{0}^{\frac{1}{8}}4\,dx=\bigl[4x\bigr]_{0}^{\frac{1}{8}}=\frac{1}{\,2\,}
 \end{aligned}
 $$
@@ -556,7 +557,7 @@ Find <span class="text-nowrap">$\mathbb{P}\bigl(X>40\bigm\vert X>10\bigr)$.</spa
 由截尾分配的定義可知
 
 $$
-f_{\sssig X}\bigl(x\bigm\vert x>10\bigr)=\frac{f_{\sssig X}(x)}{\,\mathbb{P}(X>10)\,}
+f_{\sssig X}\bigl(x\bigm\vert X>10\bigr)=\frac{f_{\sssig X}(x)}{\,\mathbb{P}(X>10)\,}
 $$
 
 又可求得
@@ -584,7 +585,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-f_{\sssig X}\bigl(x\bigm\vert x>10\bigr)=\frac{\,f_{\sssig X}(x)\,}{e^{-\frac{1}{2}}}=e^{\frac{1}{2}}\times\frac{1}{20}e^{-\frac{x}{20}}
+f_{\sssig X}\bigl(x\bigm\vert X>10\bigr)=\frac{\,f_{\sssig X}(x)\,}{e^{-\frac{1}{2}}}=e^{\frac{1}{2}}\times\frac{1}{20}e^{-\frac{x}{20}}
 $$
 
 </div>
@@ -592,7 +593,7 @@ $$
 
 $$
 \begin{aligned}
-f_{\sssig X}\bigl(x\bigm\vert x>10\bigr)&=\frac{\,f_{\sssig X}(x)\,}{e^{-\frac{1}{2}}}\\[0.45em]
+f_{\sssig X}\bigl(x\bigm\vert X>10\bigr)&=\frac{\,f_{\sssig X}(x)\,}{e^{-\frac{1}{2}}}\\[0.45em]
 &=e^{\frac{1}{2}}\times\frac{1}{20}e^{-\frac{x}{20}}
 \end{aligned}
 $$

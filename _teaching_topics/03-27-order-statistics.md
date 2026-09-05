@@ -40,12 +40,6 @@ $$
 
 </div>
 
-<!-- errata-pending: 下面這一句，書稿 mathstatch3.tex 第 5142 行原文作
-     「順序統計量僅單純針地對一組隨機變數進行排序」，「針地對」三字語序倒置，
-     應為「地針對」；網頁作「順序統計量僅單純地針對一組隨機變數進行排序」。
-     同型前例為 C1-35 (「需要注意特別的」語序倒置)，屬 (1) 書稿有誤，
-     待作者裁定後登錄 ERRATA.md。同一句在 mathstatch3supp.tex 第 5143 行重出。 -->
-
 順序統計量僅單純地針對一組隨機變數進行排序，故其具有大小關係是一定的。
 
 通常，比較重要的順序統計量，是樣本中最小的和最大的，也就是 $Y_1$ $=$ $X_{\sssig (1)}$ $=$ $\min\lbrace X_1,\ldots,X_n\rbrace$ 與 $Y_n$ $=$ $X_{\sssig (n)}$ $=$ $\max\lbrace X_1,\ldots,X_n\rbrace$ 二者，但我們也會關心其中任意兩個順序統計量所組成的聯合分配。下面便來看看這些順序統計量該具有什麼抽樣分配。
@@ -89,8 +83,8 @@ $$
 \text{且}\ \ \mathbf{J}=
 \left\lvert
 \begin{array}{cc}
-\dfrac{dx}{du} & \dfrac{dx}{dv}\\[0.8em]
-\dfrac{dy}{du} & \dfrac{dy}{dv}
+\dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\[0.8em]
+\dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
 \end{array}
 \right\rvert=
 \left\lvert
@@ -143,8 +137,8 @@ $$
 \text{且}\ \ \mathbf{J}=
 \left\lvert
 \begin{array}{cc}
-\dfrac{dx}{du} & \dfrac{dx}{dv}\\[0.8em]
-\dfrac{dy}{du} & \dfrac{dy}{dv}
+\dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\[0.8em]
+\dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
 \end{array}
 \right\rvert=
 \left\lvert
@@ -270,8 +264,8 @@ $$
 \text{且}\ \ \mathbf{J}=
 \left\lvert
 \begin{array}{cc}
-\dfrac{dx}{du} & \dfrac{dx}{dv}\\[0.8em]
-\dfrac{dy}{du} & \dfrac{dy}{dv}
+\dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\[0.8em]
+\dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
 \end{array}
 \right\rvert=
 \left\lvert
@@ -310,8 +304,8 @@ $$
 \text{且}\ \ \mathbf{J}=
 \left\lvert
 \begin{array}{cc}
-\dfrac{dx}{du} & \dfrac{dx}{dv}\\[0.8em]
-\dfrac{dy}{du} & \dfrac{dy}{dv}
+\dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\\[0.8em]
+\dfrac{\partial y}{\partial u} & \dfrac{\partial y}{\partial v}
 \end{array}
 \right\rvert=
 \left\lvert

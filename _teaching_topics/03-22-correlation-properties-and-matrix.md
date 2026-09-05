@@ -10,7 +10,7 @@ order: 322
 permalink: /lecture-notes/correlation-properties-and-matrix/
 date: 2026-08-13
 published: false
-excerpt: "相關係數恆落在 $-1$ 與 $1$ 之間，把這個範圍乘回兩個標準差，馬上得到變異數-共變異數不等式，也就是共變異數必定界在 $-\\sigma_{\\sssig X}\\sigma_{\\sssig Y}$ 與 $\\sigma_{\\sssig X}\\sigma_{\\sssig Y}$ 之間。在了解相關係數以後，共變異數矩陣也可以改寫為相關矩陣: 它同樣是對稱矩陣，但主對角線元素必定為 $1$，非對角線元素為相關係數而界在 $-1$ 到 $1$ 之間，因此主對角線不為 $1$、兩側不對稱或元素超出範圍的矩陣都不是合法的相關矩陣。若另外定義由各個標準差構成的對角矩陣 $\\mathbf{D}$，相關矩陣可以寫成 $\\mathbf{C}=\\mathbf{D}^{-1}\\mathbf{\\Sigma}\\mathbf{D}^{-1}$ 這條式子，這正是對角矩陣的左乘與右乘分別作用在列與行上的結果。本篇的四道例題依序處理最大值期望值的上界、由共變異數建構相關矩陣、旋轉之後兩個新變數的相關係數，以及線性組合之間的相關係數，最後說明即使不算出整個共變異數矩陣，也可以用 $\\boldsymbol{a}^{\\mathrm{T}}\\mathrm{Var}(\\boldsymbol{X})\\boldsymbol{b}$ 求得任意兩個線性組合的共變異數。"
+excerpt: "相關係數恆落在 $-1$ 與 $1$ 之間，把這個範圍乘回兩個標準差，馬上得到變異數-共變異數不等式，也就是共變異數必定界在 $-\\sigma_{\\sssig X}\\sigma_{\\sssig Y}$ 與 $\\sigma_{\\sssig X}\\sigma_{\\sssig Y}$ 之間。在了解相關係數以後，共變異數矩陣也可以改寫為相關矩陣: 它同樣是對稱矩陣，但主對角線元素必定為 $1$，非對角線元素為相關係數而界在 $-1$ 到 $1$ 之間，因此主對角線不為 $1$、兩側不對稱或元素超出範圍的矩陣都不是合法的相關矩陣。本篇的四道例題依序處理最大值期望值的上界、由共變異數建構相關矩陣、旋轉之後兩個新變數的相關係數，以及線性組合之間的相關係數。"
 ---
 
 [上一篇](/lecture-notes/correlation-coefficient/)以 [Definition 3.19](/lecture-notes/correlation-coefficient/#def-corr) 給出[相關係數](/lecture-notes/correlation-coefficient/#def-corr)，並以 [Theorem 3.19](/lecture-notes/correlation-coefficient/#thm-corr-proper) 證明它的六款性質，其中最後一款是相關係數恆落在 $-1$ 與 $1$ 之間。
@@ -315,10 +315,9 @@ $$
 \end{bmatrix}\\[0.55em]
 &=
 \begin{bmatrix}
-1 & \rho_{\sssig 12} & \cdots & \rho_{\sssig 1n}\\
-\rho_{\sssig 21} & 1 & \cdots & \rho_{\sssig 2n}\\
-\vdots & \vdots & \ddots & \vdots\\
-\rho_{\sssig n1} & \rho_{\sssig n2} & \cdots & 1
+1 & \cdots & \rho_{\sssig 1n}\\
+\vdots & \ddots & \vdots\\
+\rho_{\sssig n1} & \cdots & 1
 \end{bmatrix}
 \end{aligned}
 $$
@@ -358,15 +357,15 @@ $$
 <div class="topic-box__label">Example 3.43</div>
 
 <div lang="en" markdown="1">
-Suppose that $\boldsymbol{X}=\bigl[\,X_1, X_2, X_3, X_4\,\bigr]^{\mathrm{T}}$ follows a 4-dimensional normal distribution whose means are <span class="text-nowrap">$\mathbb{E}(X_1)=2$,</span> <span class="text-nowrap">$\mathbb{E}(X_2)=1$,</span> $\mathbb{E}(X_3)=3$ and <span class="text-nowrap">$\mathbb{E}(X_4)=6$,</span> whose variances are <span class="text-nowrap">$\mathrm{Var}(X_1)=1$,</span> <span class="text-nowrap">$\mathrm{Var}(X_2)=2$,</span> $\mathrm{Var}(X_3)=3$ and <span class="text-nowrap">$\mathrm{Var}(X_4)=4$,</span> and whose covariances satisfy $\operatorname{Cov}(X_i,\,X_j)=1$ for every <span class="text-nowrap">$i\neq j$.</span> Find the correlation matrix of <span class="text-nowrap">$\boldsymbol{X}$.</span>
+Suppose that $\boldsymbol{X}=\bigl[\,X_1, X_2, X_3, X_4\,\bigr]^{\mathrm{T}}$ follows a $4$-dimensional normal distribution whose means are <span class="text-nowrap">$\mathbb{E}(X_1)=2$,</span> <span class="text-nowrap">$\mathbb{E}(X_2)=1$,</span> $\mathbb{E}(X_3)=3$ and <span class="text-nowrap">$\mathbb{E}(X_4)=6$,</span> whose variances are <span class="text-nowrap">$\mathrm{Var}(X_1)=1$,</span> <span class="text-nowrap">$\mathrm{Var}(X_2)=2$,</span> $\mathrm{Var}(X_3)=3$ and <span class="text-nowrap">$\mathrm{Var}(X_4)=4$,</span> and whose covariances satisfy $\operatorname{Cov}(X_i,\,X_j)=1$ for every <span class="text-nowrap">$i\neq j$.</span> Find the correlation matrix of <span class="text-nowrap">$\boldsymbol{X}$.</span>
 </div>
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 \begin{gathered}
-\rho_{12}=\frac{\sigma_{12}}{\sigma_1\sigma_2}=\frac{1}{\sqrt{2}},\ \rho_{13}=\frac{\sigma_{13}}{\sigma_1\sigma_3}=\frac{1}{\sqrt{3}},\ \rho_{14}=\frac{\sigma_{14}}{\sigma_1\sigma_4}=\frac{1}{\sqrt{4}}\\[0.55em]
-\rho_{23}=\frac{\sigma_{23}}{\sigma_2\sigma_3}=\frac{1}{\sqrt{6}},\ \rho_{24}=\frac{\sigma_{24}}{\sigma_2\sigma_4}=\frac{1}{\sqrt{8}},\ \rho_{34}=\frac{\sigma_{34}}{\sigma_3\sigma_4}=\frac{1}{\sqrt{12}}
+\rho_{\sssig 12}=\frac{\sigma_{12}}{\sigma_1\sigma_2}=\frac{1}{\sqrt{2}},\ \rho_{\sssig 13}=\frac{\sigma_{13}}{\sigma_1\sigma_3}=\frac{1}{\sqrt{3}},\ \rho_{\sssig 14}=\frac{\sigma_{14}}{\sigma_1\sigma_4}=\frac{1}{\sqrt{4}},\\[0.55em]
+\rho_{\sssig 23}=\frac{\sigma_{23}}{\sigma_2\sigma_3}=\frac{1}{\sqrt{6}},\ \rho_{\sssig 24}=\frac{\sigma_{24}}{\sigma_2\sigma_4}=\frac{1}{\sqrt{8}},\ \rho_{\sssig 34}=\frac{\sigma_{34}}{\sigma_3\sigma_4}=\frac{1}{\sqrt{12}}
 \end{gathered}
 $$
 
@@ -375,9 +374,9 @@ $$
 
 $$
 \begin{aligned}
-\rho_{12}&=\frac{\sigma_{12}}{\sigma_1\sigma_2}=\frac{1}{\sqrt{2}},\ \rho_{13}=\frac{\sigma_{13}}{\sigma_1\sigma_3}=\frac{1}{\sqrt{3}}\\[0.55em]
-\rho_{14}&=\frac{\sigma_{14}}{\sigma_1\sigma_4}=\frac{1}{\sqrt{4}},\ \rho_{23}=\frac{\sigma_{23}}{\sigma_2\sigma_3}=\frac{1}{\sqrt{6}}\\[0.55em]
-\rho_{24}&=\frac{\sigma_{24}}{\sigma_2\sigma_4}=\frac{1}{\sqrt{8}},\ \rho_{34}=\frac{\sigma_{34}}{\sigma_3\sigma_4}=\frac{1}{\sqrt{12}}
+\rho_{\sssig 12}&=\frac{\sigma_{12}}{\sigma_1\sigma_2}=\frac{1}{\sqrt{2}},\ \rho_{\sssig 13}=\frac{\sigma_{13}}{\sigma_1\sigma_3}=\frac{1}{\sqrt{3}},\\[0.55em]
+\rho_{\sssig 14}&=\frac{\sigma_{14}}{\sigma_1\sigma_4}=\frac{1}{\sqrt{4}},\ \rho_{\sssig 23}=\frac{\sigma_{23}}{\sigma_2\sigma_3}=\frac{1}{\sqrt{6}},\\[0.55em]
+\rho_{\sssig 24}&=\frac{\sigma_{24}}{\sigma_2\sigma_4}=\frac{1}{\sqrt{8}},\ \rho_{\sssig 34}=\frac{\sigma_{34}}{\sigma_3\sigma_4}=\frac{1}{\sqrt{12}}
 \end{aligned}
 $$
 
@@ -479,7 +478,7 @@ $$
 $$
 \begin{aligned}
 \mathbf{C}_{\sssig \boldsymbol{Z}}&=\mathbf{D}^{-1}\begin{bmatrix} \cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2} & -\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})\\ -\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2}) & \sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2} \end{bmatrix}\mathbf{D}^{-1}\\[0.45em]
-&=\begin{bmatrix} 1 & \frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{\begin{array}{c}(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})\\ (\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})\end{array}}}\\[1.2em] \frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{\begin{array}{c}(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})\\ (\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})\end{array}}} & 1 \end{bmatrix}
+&=\begin{bmatrix} 1 & \frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})(\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})}}\\[1.2em] \frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})(\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})}} & 1 \end{bmatrix}
 \end{aligned}
 $$
 
@@ -489,7 +488,7 @@ $$
 $$
 \begin{aligned}
 \mathbf{C}_{\sssig \boldsymbol{Z}}&=\mathbf{D}^{-1}\begin{bmatrix} \cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2} & -\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})\\ -\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2}) & \sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2} \end{bmatrix}\mathbf{D}^{-1}\\[0.55em]
-&=\begin{bmatrix} 1 & \frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{\begin{array}{c}(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})\\ (\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})\end{array}}}\\[1.2em] \frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{\begin{array}{c}(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})\\ (\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})\end{array}}} & 1 \end{bmatrix}
+&=\begin{bmatrix} 1 & \frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})(\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})}}\\[1.2em] \frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})(\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})}} & 1 \end{bmatrix}
 \end{aligned}
 $$
 
@@ -507,7 +506,7 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\rho=\frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{\begin{array}{c}(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})\\ (\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})\end{array}}}
+\rho=\frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})(\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})}}
 $$
 
 </div>
@@ -528,8 +527,8 @@ $$
 
 $$
 \begin{aligned}
-\rho^{2}&=\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{\begin{array}{c}(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})\\ (\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})\end{array}}\\[0.45em]
-&=\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{\begin{array}{c}(\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}+(\cos^{4}\theta+\sin^{4}\theta)\sigma_1^{2}\sigma_2^{2}\\ +\cos^{2}\theta\sin^{2}\theta\sigma_2^{4})\end{array}}
+\rho^{2}&=\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})(\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})}\\[0.45em]
+&=\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{(\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}+(\cos^{4}\theta+\sin^{4}\theta)\sigma_1^{2}\sigma_2^{2}+\cos^{2}\theta\sin^{2}\theta\sigma_2^{4})}
 \end{aligned}
 $$
 
@@ -546,8 +545,6 @@ $$
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
-<div class="topic-math-follow-before" markdown="1">
-
 $$
 \begin{aligned}
 1&=(\sin^{2}\theta+\cos^{2}\theta)^{2}\\[0.45em]
@@ -555,8 +552,6 @@ $$
 &\qquad\therefore\, \sin^{4}\theta+\cos^{4}\theta=1-2\sin^{2}\theta\cos^{2}\theta
 \end{aligned}
 $$
-
-</div>
 
 </div>
 
@@ -584,9 +579,9 @@ $$
 
 $$
 \begin{aligned}
-\rho^{2}&=\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{\begin{array}{c}(\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}+(\cos^{4}\theta+\sin^{4}\theta)\sigma_1^{2}\sigma_2^{2}\\ +\cos^{2}\theta\sin^{2}\theta\sigma_2^{4})\end{array}}\\[0.45em]
-&=\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{\begin{array}{c}(\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}+(1-2\cos^{2}\theta\sin^{2}\theta)\sigma_1^{2}\sigma_2^{2}\\ +\cos^{2}\theta\sin^{2}\theta\sigma_2^{4})\end{array}}\\[0.45em]
-&\leqslant\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{\begin{array}{c}(\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}+2\sin^{2}\theta\cos^{2}\theta\sigma_1^{2}\sigma_2^{2}\\ +\cos^{2}\theta\sin^{2}\theta\sigma_2^{4})\end{array}}\\[0.45em]
+\rho^{2}&=\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{(\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}+(\cos^{4}\theta+\sin^{4}\theta)\sigma_1^{2}\sigma_2^{2}+\cos^{2}\theta\sin^{2}\theta\sigma_2^{4})}\\[0.45em]
+&=\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{(\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}+(1-2\cos^{2}\theta\sin^{2}\theta)\sigma_1^{2}\sigma_2^{2}+\cos^{2}\theta\sin^{2}\theta\sigma_2^{4})}\\[0.45em]
+&\leqslant\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{(\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}+2\sin^{2}\theta\cos^{2}\theta\sigma_1^{2}\sigma_2^{2}+\cos^{2}\theta\sin^{2}\theta\sigma_2^{4})}\\[0.45em]
 &=\frac{(\sigma_1^{2}-\sigma_2^{2})^{2}}{(\sigma_1^{4}+2\sigma_1^{2}\sigma_2^{2}+\sigma_2^{4})}=\biggl(\frac{\sigma_1^{2}-\sigma_2^{2}}{\sigma_1^{2}+\sigma_2^{2}}\biggr)^{2}
 \end{aligned}
 $$
@@ -643,16 +638,6 @@ $$
 $$
 
 </div>
-
-<!-- errata-pending: 上一組數式的分母，書稿 mathstatch3.tex 第 4189 行原文作
-     \frac{\cov(X_1+X_2, X_2+X_3)}{\,\V(X_1+X_2)\V(X_2+X_3)\,}，少了根號；
-     網頁改為 \sqrt{\mathrm{Var}(X_1+X_2)\mathrm{Var}(X_2+X_3)}。
-     依據: 一、相關係數的定義 (mathstatch3.tex 第 3675 行的 Definition 3.19) 分母
-     是兩個標準差之積，即兩個變異數之積開平方根。二、書稿自己的下一步即寫成
-     \frac{\sigma^2}{\,\sqrt{2\sigma^2\cdot2\sigma^2}\,}，已帶根號，故原式的漏根號
-     是排版時的脫字，非另一種寫法。屬 SITE_STYLE_CANON.md 第〇節第 3 點第 (1) 類
-     (書稿數學有誤)，待作者裁定後登錄 ERRATA.md。
--->
 
 **[ 法二 ]**
 

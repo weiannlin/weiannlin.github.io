@@ -225,7 +225,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-U\sim\mathrm{Gamma}(\alpha=5,\beta=6)\ \indep\ V\sim\mathrm{Beta}(\alpha=2,\beta=3)
+U\sim\mathrm{Gamma}(\alpha=5,\beta=6)\ \indep\ V\sim\mathrm{Beta}(a=2,b=3)
 $$
 
 </div>
@@ -234,7 +234,7 @@ $$
 $$
 \begin{aligned}
 U&\sim\mathrm{Gamma}(\alpha=5,\beta=6)\\[0.45em]
-\indep\ V&\sim\mathrm{Beta}(\alpha=2,\beta=3)
+\indep\ V&\sim\mathrm{Beta}(a=2,b=3)
 \end{aligned}
 $$
 
@@ -307,7 +307,7 @@ $$
 
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
+<div id="note-affine-transformation" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
 樣本平均 (sample mean) 也是一種針對樣本的線性組合，每個樣本的權重同為 <span class="text-nowrap">$\frac{1}{n}$。</span>
@@ -325,8 +325,8 @@ Suppose that $X_1, \ldots, X_n$ are independent random variables sharing the com
 $$
 f_{\sssig X}(x)=\left\lbrace
 \begin{array}{cl}
-1 &,\ 0<x<1\\[0.2em]
-0 &,\ \text{otherwise.}
+1, &\ 0<x<1\\[0.2em]
+0, &\ \text{otherwise.}
 \end{array}
 \right.
 $$
@@ -471,28 +471,31 @@ $$
 $$
 f_{\sssig U}(u)=\left\lbrace
 \begin{array}{c@{\quad}l}
-\displaystyle\int_{0}^{u}f_{\sssig UV}(u,v)\,dv=\int_{0}^{u}1\,dv=u &,\ 0<u<1\\[1.2em]
-\displaystyle\int_{u-1}^{1}f_{\sssig UV}(u,v)\,dv=\int_{u-1}^{1}1\,dv=2-u &,\ 1\leqslant u<2
+\displaystyle\int_{0}^{u}f_{\sssig UV}(u,v)\,dv=\int_{0}^{u}1\,dv=u, &\ 0<u<1\\[1.2em]
+\displaystyle\int_{u-1}^{1}f_{\sssig UV}(u,v)\,dv=\int_{u-1}^{1}1\,dv=2-u, &\ 1\leqslant u<2
 \end{array}
 \right.
 $$
 
 </div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+<div class="topic-math-layout topic-math-layout--mobile">
 
-$$
-\begin{aligned}
-f_{\sssig U}(u)&=\left\lbrace
-\begin{array}{l}
-\displaystyle\int_{0}^{u}f_{\sssig UV}(u,v)\,dv\\[0.4em]
-\quad =\displaystyle\int_{0}^{u}1\,dv=u,\ \ 0<u<1\\[1.1em]
-\displaystyle\int_{u-1}^{1}f_{\sssig UV}(u,v)\,dv\\[0.4em]
-\quad =\displaystyle\int_{u-1}^{1}1\,dv=2-u,\\[0.4em]
-\qquad 1\leqslant u<2
-\end{array}
-\right.
-\end{aligned}
-$$
+<div class="topic-cases topic-cases--stack">
+  <div class="topic-cases__lhs">$f_{\sssig U}(u)=$</div>
+  <div class="topic-cases__brace" aria-hidden="true">
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 11 0.8 C 7.6 0.8 6 2.4 6 5.2 L 6 12" vector-effect="non-scaling-stroke"/></svg>
+    <span class="topic-cases__brace-bar"></span>
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 6 0 L 6 3.4 C 6 5 4.6 6 1 6 C 4.6 6 6 7 6 8.6 L 6 12" vector-effect="non-scaling-stroke"/></svg>
+    <span class="topic-cases__brace-bar"></span>
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 6 0 L 6 6.8 C 6 9.6 7.6 11.2 11 11.2" vector-effect="non-scaling-stroke"/></svg>
+  </div>
+  <div class="topic-cases__rows">
+    <div class="topic-cases__val">$\displaystyle\int_{0}^{u}f_{\sssig UV}(u,v)\,dv=\int_{0}^{u}1\,dv=u,$</div>
+    <div class="topic-cases__cond">$0<u<1$</div>
+    <div class="topic-cases__val">$\displaystyle\int_{u-1}^{1}f_{\sssig UV}(u,v)\,dv=\int_{u-1}^{1}1\,dv=2-u,$</div>
+    <div class="topic-cases__cond">$1\leqslant u<2$</div>
+  </div>
+</div>
 
 </div>
 
@@ -602,10 +605,10 @@ $$
 $$
 F_{\sssig U}(u)=\left\lbrace
 \begin{array}{cl}
-0 &,\ u\leqslant0\\[0.4em]
-\dfrac{u^{2}}{2} &,\ 0<u<1\\[0.7em]
--\dfrac{1}{2}u^{2}+2u-1 &,\ 1\leqslant u<2\\[0.7em]
-1 &,\ u\geqslant2
+0, &\ u\leqslant0\\[0.4em]
+\dfrac{u^{2}}{2}, &\ 0<u<1\\[0.7em]
+-\dfrac{1}{2}u^{2}+2u-1, &\ 1\leqslant u<2\\[0.7em]
+1, &\ u\geqslant2
 \end{array}
 \right.
 $$
@@ -616,8 +619,8 @@ $$
 $$
 f_{\sssig U}(u)=\frac{d\,F_{\sssig U}(u)}{d\,u}=\left\lbrace
 \begin{array}{cl}
-u &,\ 0<u<1\\[0.4em]
-2-u &,\ 1\leqslant u<2
+u, &\ 0<u<1\\[0.4em]
+2-u, &\ 1\leqslant u<2
 \end{array}
 \right.
 $$
@@ -651,7 +654,7 @@ $$
 
 </div>
 
-此即 <span class="text-nowrap">$W_i\overset{\mathrm{iid}}{\sim}\mathrm{Exp}(\beta=2)$，</span>則由 [Gamma 分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)的可加性可知
+此即 $W_i\overset{\mathrm{iid}}{\sim}\mathrm{Exp}(\beta=2)$，則由 [Gamma 分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)的可加性可知
 {: .topic-paren-cont}
 
 $$
@@ -692,9 +695,9 @@ F_{\sssig X_{\sssig (n)}}(x)&=\mathbb{P}(X_{\sssig (n)}\leqslant x)=\mathbb{P}(X
 &=F_{\sssig X_1}(x)\,F_{\sssig X_2}(x)\cdots F_{\sssig X_n}(x)=\bigl[F_{\sssig X_1}(x)\bigr]^{n} &&\bigl[\ \because X_1,\ldots,X_n\ \text{同分配}\ \bigr]\\[0.45em]
 &=\left\lbrace
 \begin{array}{c@{\quad}l}
-0 &,\ x<0\\[0.3em]
-x^{n} &,\ 0\leqslant x<1\\[0.3em]
-1 &,\ x\geqslant1
+0, &\ x<0\\[0.3em]
+x^{n}, &\ 0\leqslant x<1\\[0.3em]
+1, &\ x\geqslant1
 \end{array}
 \right.
 \end{aligned}
@@ -714,9 +717,9 @@ F_{\sssig X_{\sssig (n)}}(x)&=\mathbb{P}(X_{\sssig (n)}\leqslant x)\\[0.45em]
 &\quad \bigl[\ \because X_1,\ldots,X_n\ \text{同分配}\ \bigr]\\[0.45em]
 &=\left\lbrace
 \begin{array}{c@{}l}
-0 &,\ x<0\\[0.3em]
-x^{n} &,\ 0\leqslant x<1\\[0.3em]
-1 &,\ x\geqslant1
+0, &\ x<0\\[0.3em]
+x^{n}, &\ 0\leqslant x<1\\[0.3em]
+1, &\ x\geqslant1
 \end{array}
 \right.
 \end{aligned}
@@ -749,7 +752,7 @@ $$
 {: .topic-paren-cont}
 
 $$
-X_{\sssig (n)}\sim\mathrm{Beta}(\alpha=n,\beta=1)
+X_{\sssig (n)}\sim\mathrm{Beta}(a=n,b=1)
 $$
 
 故
@@ -776,7 +779,7 @@ $$
 
 </div>
 
-<!-- ref-point: 待第四章的均勻分配、指數分配、伽瑪分配與貝塔分配主題發布後，將 Example 3.59 解答中的 $\mathcal{U}(0,1)$、$\mathrm{Exp}(\beta=2)$、Gamma 分配的可加性與 $\mathrm{Beta}(\alpha=n,\beta=1)$ 各改為指向該處的站內連結。 -->
+<!-- ref-point: 待第四章的均勻分配、指數分配、伽瑪分配與貝塔分配主題發布後，將 Example 3.59 解答中的 $\mathcal{U}(0,1)$、$\mathrm{Exp}(\beta=2)$、Gamma 分配的可加性與 $\mathrm{Beta}(a=n,b=1)$ 各改為指向該處的站內連結。 -->
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -789,11 +792,11 @@ $$
 
 ## 本篇小結
 
-[Example 3.57](#ex-independent-mgf-difference) 把 mgf 法與 Jacobian 法接在同一道題裡。前半只用到獨立時 mgf 相乘這一點，$M_{\sssig U}(t)$ $=$ $M_{\sssig X}(3t)\,M_{\sssig Y}(2t)$ 化簡之後是 <span class="text-nowrap">$(1-6t)^{-5}$，</span>由唯一性即知 $U$ $=$ $3X+2Y$ 服從 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=5,\beta=6)$。</span>後半要求的是 $V$ 的期望值與變異數，而 $V$ 並不是線性組合，[Theorem 3.23](/lecture-notes/mgf-method-transformations/#thm-mgf-two-to-one) 用不上，作法改為由唯一性回推 $X$ 與 $Y$ 的 pdf，寫出聯合 pdf 之後再以 Jacobian 法轉到 $(U,V)$ 上；轉換後的聯合 pdf 恰好拆成一個只含 $u$ 的因式與一個只含 $v$ 的因式，因此 $U$ 與 $V$ 獨立，而 $V$ 服從 <span class="text-nowrap">$\mathrm{Beta}(\alpha=2,\beta=3)$，</span>期望值與變異數分別為 $\frac{2}{5}$ 與 <span class="text-nowrap">$\frac{1}{25}$。</span>
+[Example 3.57](#ex-independent-mgf-difference) 把 mgf 法與 Jacobian 法接在同一道題裡。前半只用到獨立時 mgf 相乘這一點，$M_{\sssig U}(t)$ $=$ $M_{\sssig X}(3t)\,M_{\sssig Y}(2t)$ 化簡之後是 <span class="text-nowrap">$(1-6t)^{-5}$，</span>由唯一性即知 $U$ $=$ $3X+2Y$ 服從 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=5,\beta=6)$。</span>後半要求的是 $V$ 的期望值與變異數，而 $V$ 並不是線性組合，[Theorem 3.23](/lecture-notes/mgf-method-transformations/#thm-mgf-two-to-one) 用不上，作法改為由唯一性回推 $X$ 與 $Y$ 的 pdf，寫出聯合 pdf 之後再以 Jacobian 法轉到 $(U,V)$ 上；轉換後的聯合 pdf 恰好拆成一個只含 $u$ 的因式與一個只含 $v$ 的因式，因此 $U$ 與 $V$ 獨立，而 $V$ 服從 <span class="text-nowrap">$\mathrm{Beta}(a=2,b=3)$，</span>期望值與變異數分別為 $\frac{2}{5}$ 與 <span class="text-nowrap">$\frac{1}{25}$。</span>
 
 [Example 3.58](#ex-random-sample-mgf-mean) 是線性組合的一個特例。樣本平均也是一種針對樣本的線性組合，只是每個樣本的權重同為 <span class="text-nowrap">$\frac{1}{n}$，</span>因此把 $\frac{t}{n}$ 代入每一項的 mgf 再相乘即可，所得的 $e^{\mu t+\frac{\sigma^{2}}{n}\frac{t^{2}}{2}}$ 仍是常態分配的 mgf，只是變異數縮成 <span class="text-nowrap">$\frac{\sigma^{2}}{n}$。</span>常態分配的任意線性組合都仍是常態分配，這是常態分配特有的仿射變換性質。
 
-[Example 3.59](#ex-independent-mgf-linear) 的三個小題各走一條路。第一小題求兩個獨立均勻變數之和的 pdf，Jacobian 法補上 $V=X_1$ 這個輔助變數以湊足維度，轉換後再把 $V$ 積分掉，積分的上下限依 $u$ 落在 $0<u<1$ 或 $1\leqslant u<2$ 而不同；cdf 法則不必補變數，直接把 $\lbrace U\leqslant u\rbrace$ 畫在 $(x_1,x_2)$ 平面上求面積，同樣分成兩段，微分之後得到同一個三角形密度。第二小題先對每一項作 $W_i=-2\ln X_i$ 的轉換得到 <span class="text-nowrap">$\mathrm{Exp}(\beta=2)$，</span>再由 Gamma 分配的可加性得到 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=n,\beta=2)$。</span>第三小題則利用最大值的事件可以拆成 $n$ 個獨立事件的交集這一點，直接由 cdf 相乘得到 $F_{\sssig X_1}(x)$ 的 $n$ 次方，微分之後即 <span class="text-nowrap">$\mathrm{Beta}(\alpha=n,\beta=1)$。</span>
+[Example 3.59](#ex-independent-mgf-linear) 的三個小題各走一條路。第一小題求兩個獨立均勻變數之和的 pdf，Jacobian 法補上 $V=X_1$ 這個輔助變數以湊足維度，轉換後再把 $V$ 積分掉，積分的上下限依 $u$ 落在 $0<u<1$ 或 $1\leqslant u<2$ 而不同；cdf 法則不必補變數，直接把 $\lbrace U\leqslant u\rbrace$ 畫在 $(x_1,x_2)$ 平面上求面積，同樣分成兩段，微分之後得到同一個三角形密度。第二小題先對每一項作 $W_i=-2\ln X_i$ 的轉換得到 <span class="text-nowrap">$\mathrm{Exp}(\beta=2)$，</span>再由 Gamma 分配的可加性得到 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=n,\beta=2)$。</span>第三小題則利用最大值的事件可以拆成 $n$ 個獨立事件的交集這一點，直接由 cdf 相乘得到 $F_{\sssig X_1}(x)$ 的 $n$ 次方，微分之後即 <span class="text-nowrap">$\mathrm{Beta}(a=n,b=1)$。</span>
 
 第一小題的三張圖說明的是同一件事的兩種看法。Jacobian 法的那兩張把單位正方形依 $u=x_1+x_2$ 與 $v=x_1$ 重新畫成 $(v,u)$ 平面上的平行四邊形，$U$ 與 $V$ 的聯合值域一目瞭然；cdf 法的那一張則留在原座標系上，$0<u<1$ 時所求區域是一個三角形，$1\leqslant u<2$ 時改成整個正方形扣掉右上角的三角形，這正是求 $\mathbb{P}(U>u)$ 反而比較好算的原因。
 

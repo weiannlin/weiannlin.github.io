@@ -326,7 +326,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-第二小題使用到的分配是 $t(1)$ 分配，也是 $\mathrm{Cauchy}(0,1)$ 分配。這個分配的特色是，雖然他是一個單峰對稱於 $0$ 的分配，但由於尾部機率過厚，其一階絕對動差是不存在的，這也導致期望值不存在，讀者不妨以 $\mathbb{E}\bigl(\lvert X\rvert\bigr)$ 的定義驗證看看。
+第二小題使用到的分配是 $t(1)$ 分配，也是 $\mathrm{Cauchy}(0,1)$ 分配。這個分配的特色是，雖然它是一個單峰對稱於 $0$ 的分配，但由於尾部機率過厚，其一階絕對動差是不存在的，這也導致期望值不存在，讀者不妨以 $\mathbb{E}\bigl(\lvert X\rvert\bigr)$ 的定義驗證看看。
 
 </div>
 
@@ -337,7 +337,7 @@ $$
 Suppose that $X$ and $Y$ are random variables for which <span class="text-nowrap">$\mathbb{E}(X)=0$,</span> $\mathrm{Var}(X)=4$ and <span class="text-nowrap">$\mathbb{E}(Y\mid X)=2-3X$.</span> Find $\mathbb{E}(Y)$ and <span class="text-nowrap">$\mathbb{E}(XY)$.</span>
 </div>
 
-由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
+由雙重期望值定理可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -495,7 +495,7 @@ $$
 
 </div>
 
-由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
+由雙重期望值定理可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -607,7 +607,7 @@ $$
 
 </div>
 
-則由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
+則由雙重期望值定理可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -650,7 +650,7 @@ $$
 
 </div>
 
-至此，讀者應該已經熟悉[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)，是如何以加權平均的方式做出邊際期望值。然而，讀者也許會猜想，這樣透過加權平均得到邊際產物的過程，能不能用在分配本身身上呢？事實上是可以的，這正是接下來要介紹的定理。
+至此，讀者應該已經熟悉雙重期望值定理，是如何以加權平均的方式做出邊際期望值。然而，讀者也許會猜想，這樣透過加權平均得到邊際產物的過程，能不能用在分配本身身上呢？事實上是可以的，這正是接下來要介紹的定理。
 
 ## 本篇小結
 

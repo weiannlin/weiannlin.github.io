@@ -135,7 +135,7 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 3.11.</span> joint pdf 的曲面在 $Y=1.5$ 處切一刀，所得的截面就是圖中填色的那一片薄片。樣本空間縮小到這一片之上，再討論 $X$ 的機率密度，即 conditional pdf。</figcaption>
 </figure>
 
-上方圖例中灰色部分，代表 $Y=1.5$ 的空間，而將樣本空間縮小到這個空間上來探討 $X$ 的機率分配，即為 conditional pdf。
+上方圖例中填色的那一片，代表 $Y=1.5$ 的空間，而將樣本空間縮小到這個空間上來探討 $X$ 的機率分配，即為 conditional pdf。
 
 但是，上圖所顯示的，其實只是 <span class="text-nowrap">$f_{\sssig XY}(x,1.5)$，</span>而不是真正的 pdf，因為真正的 pdf 需要滿足許多條件，而上述範圍未必恰巧滿足；將 $f_{\sssig XY}(x,1.5)$ 轉為一個真正的 pdf 的做法，就是將其所處的空間 (也就是 $Y=1.5$) 本身的邊際機率密度給除掉，將這個未完成品「拉高」(或降低) 至該有的高度，如下所示:
 

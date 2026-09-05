@@ -102,31 +102,21 @@ $$
 
 一二元連續型隨機向量 $(X,Y)$ 之**聯合機率密度函數** $f_{\sssig XY}(x,y)$ 應滿足以下性質:
 
-<ol class="topic-list-paren topic-list-paren--math">
+<ol class="topic-list-paren">
   <li>
 $$
 f_{\sssig XY}(x,y)\geqslant 0,\quad\forall (x,y)\in\mathcal{R}_{\sssig XY}
 $$
   </li>
   <li>
-<div class="topic-math-layout topic-math-layout--desktop">
 $$
 \begin{aligned}
 \mathbb{P}\bigl((X,Y)\in\mathcal{R}_{\sssig XY}\bigr)&=\iint_{(x,y)\in\mathcal{R}_{\sssig XY}}f_{\sssig XY}(x,y)\,dx\,dy\\[0.45em]
 &=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f_{\sssig XY}(x,y)\,dx\,dy=1
 \end{aligned}
 $$
-</div>
-<div class="topic-math-layout topic-math-layout--mobile">
-$$
-\begin{aligned}
-\mathbb{P}\bigl((X,Y)\in\mathcal{R}_{\sssig XY}\bigr)&=\iint_{(x,y)\in\mathcal{R}_{\sssig XY}}f_{\sssig XY}(x,y)\,dx\,dy\\[0.45em]
-&=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f_{\sssig XY}(x,y)\,dx\,dy=1
-\end{aligned}
-$$
-</div>
   </li>
-  <li>
+  <li>對任意波雷爾集合 $A$，皆有
 $$
 \mathbb{P}\bigl((X,Y)\in A\bigr)=\iint_{(x,y)\in A}f_{\sssig XY}(x,y)\,dx\,dy
 $$
@@ -228,9 +218,9 @@ $$
 
 [Definition 3.5](#def-joint-pdf) 以積分給出聯合機率密度函數。二元連續型隨機向量 $(X,Y)$ 的 joint cdf 若能寫成某個非負函數 $f_{\sssig XY}$ 由 $-\infty$ 積到 $x$ 與 $y$ 的二重積分，該非負函數即為 $(X,Y)$ 的 joint pdf。它與單變數的 pdf 一樣不是機率，而是累積機率的變化率；差別在於 joint cdf 取的是曲面下所夾的體積，單變數的 cdf 取的則是曲線下所夾的面積。在 $\mathcal{R}\_{\sssig XY}$ 中的可微分點上，joint pdf 是 joint cdf 先後對兩個變數微分所得的二階偏導數，其餘各點取 <span class="text-nowrap">$0$。</span>
 
-[Theorem 3.1](#thm-joint-pdf-proper) 列出 joint pdf 的三項性質: 非負、在整個聯合值域上的二重積分為 <span class="text-nowrap">$1$，</span>以及 $(X,Y)$ 落在集合 $A$ 中的機率等於 $f_{\sssig XY}$ 在 $A$ 上的二重積分。由克萊羅定理可知 joint cdf 的偏微分順序永遠可以交換；單點機率與單面機率都是 <span class="text-nowrap">$0$；</span>集合 $A$ 若不是積空間，第三項性質便回到微積分的重積分，若是積空間則可寫成在兩個區間上依序積分的形式。不論是否為積空間，富比尼定理都保證積分順序可以調換，只是調換之後要留意積分的範圍是否需要修改。
+[Theorem 3.1](#thm-joint-pdf-proper) 列出 joint pdf 的三項性質: 非負、在整個聯合值域上的二重積分為 <span class="text-nowrap">$1$，</span>以及對任意波雷爾集合 $A$，$(X,Y)$ 落在 $A$ 中的機率等於 $f_{\sssig XY}$ 在 $A$ 上的二重積分。由克萊羅定理可知 joint cdf 的偏微分順序永遠可以交換；單點機率與單面機率都是 <span class="text-nowrap">$0$；</span>集合 $A$ 若不是積空間，第三項性質便回到微積分的重積分，若是積空間則可寫成在兩個區間上依序積分的形式。不論是否為積空間，富比尼定理都保證積分順序可以調換，只是調換之後要留意積分的範圍是否需要修改。
 
-下一篇由聯合機率密度函數出發，介紹[邊際機率密度函數](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)。
+[下一篇](/lecture-notes/marginal-probability-density-functions/)由聯合機率密度函數出發，介紹[邊際機率密度函數](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)。
 
 ## 參考文獻與延伸閱讀
 

@@ -200,7 +200,7 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{P}(U_1\leqslant u,\ N\ \text{偶數})&=\sum_{k=1}^{\infty}\mathbb{P}(U_1\leqslant u,N=2k)=\sum_{k=1}^{\infty}\left[\frac{\,u^{2k-1}\,}{\,(2k-1)!\,}-\frac{\,u^{2k}\,}{\,(2k)!\,}\right]\\[0.45em]
+\mathbb{P}(U_1\leqslant u,\ N\ \text{為偶數})&=\sum_{k=1}^{\infty}\mathbb{P}(U_1\leqslant u,N=2k)=\sum_{k=1}^{\infty}\left[\frac{\,u^{2k-1}\,}{\,(2k-1)!\,}-\frac{\,u^{2k}\,}{\,(2k)!\,}\right]\\[0.45em]
 &=\frac{\,u\,}{1!}-\frac{\,u^2\,}{2!}+\frac{\,u^3\,}{3!}-\frac{\,u^4\,}{4!}+\cdots\\[0.45em]
 &=1-\left(1-\frac{\,u\,}{1!}+\frac{\,u^2\,}{2!}-\frac{\,u^3\,}{3!}+\frac{\,u^4\,}{4!}-\cdots\right)\\[0.45em]
 &=1-e^{-u},\quad 0<u\leqslant 1
@@ -212,7 +212,7 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{P}(U_1\leqslant u,\ N\ \text{偶數})&=\sum_{k=1}^{\infty}\mathbb{P}(U_1\leqslant u,N=2k)\\[0.45em]
+\mathbb{P}(U_1\leqslant u,\ N\ \text{為偶數})&=\sum_{k=1}^{\infty}\mathbb{P}(U_1\leqslant u,N=2k)\\[0.45em]
 &=\sum_{k=1}^{\infty}\left[\frac{\,u^{2k-1}\,}{\,(2k-1)!\,}-\frac{\,u^{2k}\,}{\,(2k)!\,}\right]\\[0.45em]
 &=\frac{\,u\,}{1!}-\frac{\,u^2\,}{2!}+\frac{\,u^3\,}{3!}-\frac{\,u^4\,}{4!}+\cdots\\[0.45em]
 &=1-\biggl(1-\frac{\,u\,}{1!}+\frac{\,u^2\,}{2!}\\[0.2em]
@@ -550,7 +550,7 @@ $$
 
 [Definition 3.7](#def-marginal-cdf) 把累積分配函數推廣到邊際的情形。離散型是邊際 pmf 由左端累加到 <span class="text-nowrap">$x$，</span>連續型是邊際 pdf 由 $-\infty$ 積分到 <span class="text-nowrap">$x$，</span>兩者都與單變數的 cdf 是同一件事。[Theorem 3.2](#thm-joint-cdf-prob) 則把它接回聯合的分配，邊際 cdf 就是把聯合 cdf 的另一個變數放到 <span class="text-nowrap">$\infty$，</span>也就是不對另一個變數作任何限制。證明只需把邊際 pdf 的定義代入，再交換積分的順序。
 
-回顧這一段的脈絡，我們先以 $\mathbb{P}(X\leqslant x,Y\leqslant y)$ 定出聯合累積分配函數，再由二重積分的表示式定出聯合機率密度函數，接著對其中一個變數積分而得到邊際機率密度函數，並以數道例題練習了[各種區域上的機率](/lecture-notes/region-probabilities-joint-density/)如何求取，最後補上邊際累積分配函數，把四個機率函數與兩個分配函數之間的關係補齊。下一篇把隨機向量中的一個或多個變數固定成常數，看看這時候的機率分配會變成什麼樣子，此即條件機率分配。
+回顧這一段的脈絡，我們先以 $\mathbb{P}(X\leqslant x,Y\leqslant y)$ 定出聯合累積分配函數，再由二重積分的表示式定出聯合機率密度函數，接著對其中一個變數積分而得到邊際機率密度函數，並以數道例題練習了[各種區域上的機率](/lecture-notes/region-probabilities-joint-density/)如何求取，最後補上邊際累積分配函數，把四個機率函數與兩個分配函數之間的關係補齊。[下一篇](/lecture-notes/conditional-distributions/)把隨機向量中的一個或多個變數固定成常數，看看這時候的機率分配會變成什麼樣子，此即條件機率分配。
 
 ## 參考文獻與延伸閱讀
 

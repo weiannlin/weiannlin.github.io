@@ -10,7 +10,7 @@ order: 320
 permalink: /lecture-notes/covariance-matrix/
 date: 2026-08-13
 published: false
-excerpt: "把一組隨機變數兩兩之間的變異數與共變異數收在同一個矩陣裡，就是共變異數矩陣；它的主對角線是各個變數自己的變異數，而由共變異數的對稱性可知它必為對稱矩陣。若改以隨機向量的形式書寫，同一個矩陣可以寫成 $\\mathbf{\\Sigma}=\\mathbb{E}\\bigl[(\\boldsymbol{X}-\\boldsymbol{\\mu})(\\boldsymbol{X}-\\boldsymbol{\\mu})^{\\mathrm{T}}\\bigr]$ 這一條式子，也就是隨機向量的變異數，兩個定義事實上是同一件事情。本篇接著介紹隨機向量在向量與矩陣上的運算: 常數向量與隨機向量相乘之後，期望值為 $\\boldsymbol{a}^{\\mathrm{T}}\\boldsymbol{\\mu}$ 這個純量，變異數則為 $\\boldsymbol{a}^{\\mathrm{T}}\\mathbf{\\Sigma}\\boldsymbol{a}$ 這個二次形式，後者恰好可以用來證明共變異數矩陣必為正半定；把常數向量換成常數矩陣之後，所得的結果則是一個維度比 $1$ 還高的隨機向量。最後以一道二元常態的例題示範這些結果在計算上的用法。"
+excerpt: "把一組隨機變數兩兩之間的變異數與共變異數收在同一個矩陣裡，就是共變異數矩陣；它的主對角線是各個變數自己的變異數，而由共變異數的對稱性可知它必為對稱矩陣。本篇接著介紹隨機向量在向量與矩陣上的運算: 常數向量與隨機向量相乘之後，期望值為 $\\boldsymbol{a}^{\\mathrm{T}}\\boldsymbol{\\mu}$ 這個純量，變異數則為 $\\boldsymbol{a}^{\\mathrm{T}}\\mathbf{\\Sigma}\\boldsymbol{a}$ 這個二次形式，後者恰好可以用來證明共變異數矩陣必為正半定；把常數向量換成常數矩陣之後，所得的結果則是一個維度比 $1$ 還高的隨機向量。最後以一道二元常態的例題示範這些結果在計算上的用法。"
 ---
 
 [上一篇](/lecture-notes/variance-of-linear-combination/)以 [Theorem 3.16](/lecture-notes/variance-of-linear-combination/#thm-covar-proper2) 給出線性組合的[變異數](/lecture-notes/variance/#def-variance)展開式，並在最後指出，多元[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的表示與運算會隨著變數個數增加而越來越複雜，因此在多變量分析與迴歸分析的領域中，我們更常改以向量的形式來處理一組多元隨機變數。
@@ -170,10 +170,9 @@ $$
 \end{bmatrix}\\[0.55em]
 &=
 \begin{bmatrix}
-\sigma^{2}_{1} & \sigma_{12} & \cdots & \sigma_{1n}\\
-\sigma_{21} & \sigma^{2}_{2} & \cdots & \sigma_{2n}\\
-\vdots & \vdots & \ddots & \vdots\\
-\sigma_{n1} & \sigma_{n2} & \cdots & \sigma^{2}_{n}
+\sigma^{2}_{1} & \cdots & \sigma_{1n}\\
+\vdots & \ddots & \vdots\\
+\sigma_{n1} & \cdots & \sigma^{2}_{n}
 \end{bmatrix}
 \end{aligned}
 $$
@@ -355,7 +354,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者可以嘗試令 $\boldsymbol{a} = [\,a_1, a_2\,]^{\mathrm{T}}$ 而 <span class="text-nowrap">$\boldsymbol{X} = \bigl[\,X_1, X_2\,\bigr]^{\mathrm{T}}$，</span>作為最簡單的隨機向量，則我們有
+讀者可以嘗試令 $\boldsymbol{a} = [\,a_1, a_2\,]^{\mathrm{T}}$ 而 $\boldsymbol{X} = \bigl[\,X_1, X_2\,\bigr]^{\mathrm{T}}$，作為最簡單的隨機向量，則我們有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -416,7 +415,7 @@ $\therefore \mathbf{\Sigma} = \mathrm{Var}(\boldsymbol{X})$ 為正半定矩陣�
 
 ## 常數矩陣與隨機向量的乘積
 
-至此，讀者或許會有點疑惑: 透過常數向量與隨機向量的乘積，我們得到的結果，維度永遠都是 <span class="text-nowrap">$1$，</span>那要如何透過線性組合得到更高維度的結果呢？這個問題的答案是**矩陣**。
+至此，讀者或許會有點疑惑。透過常數向量與隨機向量的乘積，我們得到的結果，維度永遠都是 <span class="text-nowrap">$1$，</span>那要如何透過線性組合得到更高維度的結果呢？這個問題的答案是**矩陣**。
 
 <div id="thm-matrix-operation" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 3.18 (矩陣的線性形式, matrix forms of a random vector)</div>

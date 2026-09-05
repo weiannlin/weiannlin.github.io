@@ -20,7 +20,7 @@ excerpt: "隨機樣本的順序統計量有一組固定的抽樣分配公式: �
 ## 順序統計量的抽樣分配 pdf
 
 <div id="thm-order-stat-samp-dist-pdf" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 3.24 (隨機樣本之順序統計量的抽樣分配 pdf, pdf of the sampling distribution of order statistics)</div>
+<div class="topic-box__label">Theorem 3.24 (隨機樣本之順序統計量的抽樣分配 pdf, pdf of order statistics)</div>
 
 令 $Y_1$ $\leqslant\cdots\leqslant$ $Y_n$ 為隨機樣本 $X_1,\ldots,X_n$ 之順序統計量，則
 
@@ -286,7 +286,7 @@ $$
 所謂的順序統計量，是在樣本觀察到觀察值之前就先排序好的，意思是指**不論等一下整組隨機樣本觀察到什麼數值，我們都只取大小排第 $i$ 的那一個**，在這個限制下，雖然還是有可能出現很極端的狀況 (例如: 所有的樣本數值都是 <span class="text-nowrap">$1$，</span>則排第 $i$ 的當然也是 $1$)，但這種狀況畢竟比較難發生，因此直觀上來說順序統計量具有較大機率密度的地方會被限縮在它的排序所在的位置，也就是下圖:
 
 <figure id="fig-order-stat-presorted" class="topic-figure topic-figure--wide">
-  <img src="/images/lecture-notes/order-stat-presorted.svg" alt="一條機率密度曲線，由左端貼近橫軸開始，先陡升到偏左處的最高點，再向右緩降回貼近橫軸，形成左陡右緩的單峰形狀。橫軸每隔一小段畫一個刻度，只在 0、0.5 與 1 三處標出數字，縱軸不畫。">
+  <img src="/images/lecture-notes/order-stat-presorted.svg" alt="一條機率密度曲線，由左端貼近橫軸開始，先陡升到偏左處的最高點，再向右緩降回貼近橫軸，形成左陡右緩的單峰形狀。橫軸每隔一小段畫一個刻度，只在 0、0.5 與 1 三處標出數字，縱軸不畫。右上角有一段與曲線同樣式的短線作為圖例，其後標著貝塔分配的參數 a 等於 3、b 等於 8。">
   <figcaption><span class="topic-figure__label">Fig. 3.28.</span> 順序統計量的機率密度集中在它的排序所在的位置，兩端則相對較低。</figcaption>
 </figure>
 

@@ -163,7 +163,7 @@ $$
 
 </div>
 
-(2) 由於線性模型 (linear model) 的領域時常將 $X$ 視為解釋變數 <span lang="en">(explanatory variable)</span>、將 $Y$ 視為反應變數 <span lang="en">(response variable)</span>，故我們會認為 $\mathbb{E}(Y\mid X=x)$ $=$ $\beta_0+\beta_1x$ 是**正迴歸 <span lang="en">(direct regression)</span>** 而 $\mathbb{E}(X\mid Y=y)$ $=$ $\alpha_0+\alpha_1y$ 是**逆迴歸 <span lang="en">(reverse regression)</span>**，其中:
+(2) 由於線性模型 <span lang="en">(linear model)</span> 的領域時常將 $X$ 視為解釋變數 <span lang="en">(explanatory variable)</span>、將 $Y$ 視為反應變數 <span lang="en">(response variable)</span>，故我們會認為 $\mathbb{E}(Y\mid X=x)$ $=$ $\beta_0+\beta_1x$ 是**正迴歸 <span lang="en">(direct regression)</span>** 而 $\mathbb{E}(X\mid Y=y)$ $=$ $\alpha_0+\alpha_1y$ 是**逆迴歸 <span lang="en">(reverse regression)</span>**，其中:
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -269,7 +269,7 @@ Determine the absolute value of the correlation coefficient between $X$ and <spa
 
 $$
 \begin{aligned}
-\rho^{2}_{\sssig XY}&=(-1.5)\times(-0.54)=0.81
+\rho^{2}_{\sssig XY}&=(-1.5)\times(-0.54)=0.81\qquad\therefore\, \lvert\rho_{\sssig XY}\rvert=\sqrt{0.81}=0.9
 \end{aligned}
 $$
 
@@ -278,7 +278,8 @@ $$
 
 $$
 \begin{aligned}
-\rho^{2}_{\sssig XY}&=(-1.5)\times(-0.54)=0.81\qquad\therefore\, \lvert\rho_{\sssig XY}\rvert=\sqrt{0.81}=0.9
+\rho^{2}_{\sssig XY}&=(-1.5)\times(-0.54)=0.81\\[0.4em]
+&\qquad\therefore\, \lvert\rho_{\sssig XY}\rvert=\sqrt{0.81}=0.9
 \end{aligned}
 $$
 
@@ -308,7 +309,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
 
 $$
-0.25=\rho_{\sssig XY}\frac{\,\sigma_{\sssig Y}\,}{\sigma_{\sssig X}}\quad\text{故}\quad\frac{\,\sigma_{\sssig Y}\,}{\sigma_{\sssig X}}=\frac{0.25}{\,0.65\,}=\frac{5}{\,13\,}
+0.25=\rho_{\sssig XY}\frac{\,\sigma_{\sssig Y}\,}{\sigma_{\sssig X}}\quad\text{故}\quad\frac{\,\sigma_{\sssig Y}\,}{\sigma_{\sssig X}}=\frac{0.25}{\,0.65\,}=\frac{5}{\,13\,}\qquad\therefore\, \frac{\,\mathrm{Var}(Y)\,}{\mathrm{Var}(X)}=\frac{5^{2}}{\,13^{2}\,}=\frac{25}{\,169\,}
 $$
 
 </div>
@@ -317,13 +318,14 @@ $$
 $$
 \begin{aligned}
 0.25&=\rho_{\sssig XY}\frac{\,\sigma_{\sssig Y}\,}{\sigma_{\sssig X}}\\[0.55em]
-\text{故}\quad\frac{\,\sigma_{\sssig Y}\,}{\sigma_{\sssig X}}&=\frac{0.25}{\,0.65\,}=\frac{5}{\,13\,}\qquad\therefore\, \frac{\,\mathrm{Var}(Y)\,}{\mathrm{Var}(X)}=\frac{5^{2}}{\,13^{2}\,}=\frac{25}{\,169\,}
+\text{故}\quad\frac{\,\sigma_{\sssig Y}\,}{\sigma_{\sssig X}}&=\frac{0.25}{\,0.65\,}=\frac{5}{\,13\,}\\[0.4em]
+&\qquad\therefore\, \frac{\,\mathrm{Var}(Y)\,}{\mathrm{Var}(X)}=\frac{5^{2}}{\,13^{2}\,}=\frac{25}{\,169\,}
 \end{aligned}
 $$
 
 </div>
 
-(2) 再由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
+(2)
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -359,7 +361,7 @@ Suppose that the random variables $X$ and $Y$ have the joint pmf
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-p_{\sssig XY}(x,y)=\frac{2}{\,n(n+1)\,},\quad y=1,2,\ldots,x,\ \ x=1,2,\ldots,n
+p_{\sssig XY}(x,y)=\frac{2}{\,n(n+1)\,},\quad \text{where}\ \ y=1,2,\ldots,x,\ \ x=1,2,\ldots,n
 $$
 
 </div>
@@ -368,7 +370,8 @@ $$
 $$
 \begin{aligned}
 p_{\sssig XY}(x,y)&=\frac{2}{\,n(n+1)\,},\\[0.55em]
-&\quad y=1,2,\ldots,x,\ \ x=1,2,\ldots,n
+&\quad \text{where}\ \ y=1,2,\ldots,x,\\[0.2em]
+&\qquad\ \ x=1,2,\ldots,n
 \end{aligned}
 $$
 

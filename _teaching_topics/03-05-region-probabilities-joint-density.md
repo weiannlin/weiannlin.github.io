@@ -182,7 +182,7 @@ $$
 
 </div>
 
-若令 <span class="text-nowrap">$A=\lbrace\,(x,y)\mid x^{2}+y^{2}\leqslant 1\,\rbrace$，</span>則有
+若令 $A=\lbrace\,(x,y)\mid x^{2}+y^{2}\leqslant 1\,\rbrace$，則有
 {: .topic-paren-cont}
 
 $$
@@ -208,8 +208,8 @@ $$
 \mathbf{J}=
 \left\lvert
 \begin{array}{cc}
-\dfrac{dx}{dr} & \dfrac{dx}{d\theta}\\[0.8em]
-\dfrac{dy}{dr} & \dfrac{dy}{d\theta}
+\dfrac{\partial x}{\partial r} & \dfrac{\partial x}{\partial\theta}\\[0.8em]
+\dfrac{\partial y}{\partial r} & \dfrac{\partial y}{\partial\theta}
 \end{array}
 \right\rvert=r
 $$
@@ -288,8 +288,8 @@ $$
 \mathbf{J}=
 \left\lvert
 \begin{array}{cc}
-\dfrac{dx}{dr} & \dfrac{dx}{d\theta}\\[0.8em]
-\dfrac{dy}{dr} & \dfrac{dy}{d\theta}
+\dfrac{\partial x}{\partial r} & \dfrac{\partial x}{\partial\theta}\\[0.8em]
+\dfrac{\partial y}{\partial r} & \dfrac{\partial y}{\partial\theta}
 \end{array}
 \right\rvert=r
 $$
@@ -300,7 +300,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-B=\lbrace\,(x,y)\mid x\geqslant y\,\rbrace=\lbrace\,(r,\theta)\mid 0\leqslant r\leqslant\infty,\ -\tfrac{3}{4}\pi\leqslant\theta\leqslant\tfrac{1}{4}\pi\,\rbrace
+B=\lbrace\,(x,y)\mid x\geqslant y\,\rbrace=\lbrace\,(r,\theta)\mid 0\leqslant r<\infty,\ -\tfrac{3}{4}\pi\leqslant\theta\leqslant\tfrac{1}{4}\pi\,\rbrace
 $$
 
 </div>
@@ -309,7 +309,7 @@ $$
 $$
 \begin{aligned}
 B&=\lbrace\,(x,y)\mid x\geqslant y\,\rbrace\\[0.45em]
-&=\lbrace\,(r,\theta)\mid 0\leqslant r\leqslant\infty,\\[0.2em]
+&=\lbrace\,(r,\theta)\mid 0\leqslant r<\infty,\\[0.2em]
 &\qquad\quad -\tfrac{3}{4}\pi\leqslant\theta\leqslant\tfrac{1}{4}\pi\,\rbrace
 \end{aligned}
 $$
@@ -347,7 +347,7 @@ $$
 <div id="ex-three-iid-uniform-order" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.6</div>
 
-令 <span class="text-nowrap">$X_1,X_2,X_3\overset{\mathrm{iid}}{\sim}\mathcal{U}(0,1)$，</span>則回答以下問題:
+令 $X_1,X_2,X_3\overset{\mathrm{iid}}{\sim}\mathcal{U}(0,1)$，則回答以下問題:
 
 <ol class="topic-list-paren">
   <li>試求 <span class="text-nowrap">$\mathbb{P}(X_1<X_2)$。</span></li>
@@ -407,8 +407,8 @@ $$
 本題所求範圍如下圖所示
 {: .topic-paren-cont}
 
-<figure id="fig-independent-normal-region" class="topic-figure topic-figure--wide">
-  <img src="/images/lecture-notes/independent-normal-region.svg" alt="第一象限中畫一條由原點出發並通過 (1, 1) 的斜線，斜線左上方的三角形以淡紅色填滿。斜線的右上端標 x1 等於 x2。由 (1, 1) 各拉一條虛線到兩軸，橫軸上的虛線端點標 1，縱軸上的虛線端點標 1。橫軸右端標 x1，縱軸上端標 x2。">
+<figure id="fig-x1-less-than-x2-region" class="topic-figure topic-figure--wide">
+  <img src="/images/lecture-notes/x1-less-than-x2-region.svg" alt="第一象限中畫一條由原點出發並通過 (1, 1) 的斜線，斜線左上方的三角形以淡紅色填滿。斜線的右上端標 x1 等於 x2。由 (1, 1) 各拉一條虛線到兩軸，橫軸上的虛線端點標 1，縱軸上的虛線端點標 1。橫軸右端標 x1，縱軸上端標 x2。">
   <figcaption><span class="topic-figure__label">Fig. 3.8.</span> 直線 $x_1=x_2$ 把值域切成兩塊，填色的一塊就是 $x_1<x_2$ 所對應的範圍。</figcaption>
 </figure>
 

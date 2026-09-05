@@ -24,13 +24,13 @@
 %    marks 0.44cm wide, i.e. 0.26cm of clear space, against the 0.6cm of
 %    spec 1.3.  No label is invented; the ones kept are the manuscript's own.
 %
-% 3. The manuscript's \addlegendentry names a distribution and a pair of
-%    parameters, and names them inconsistently with the curve it draws
-%    (Beta(a=3,b=7) against eee(x,3,8)).  Per the author's ruling of
-%    2026-08-13 the figure is a schematic and neither the picture nor the
-%    caption is to carry the name of the distribution or its parameters, so
-%    there is no legend and the question of which pair to print does not
-%    arise.
+% 3. The manuscript's \addlegendentry named the wrong pair of parameters
+%    (Beta(a=3,b=7) against the curve eee(x,3,8)).  The manuscript has since
+%    been corrected to Beta(a=3,b=8) (ERRATA C3-20), and the mainline ruling
+%    of 2026-09-05 restores the legend here with that corrected pair, so the
+%    picture again names the distribution it draws.  The legend is a short
+%    sample of the curve plus the label, set inside the drawing range so the
+%    native width is unchanged.
 %
 % 4. The curve is journalink 0.8pt, per spec 1.2, in place of the
 %    manuscript's black.
@@ -74,5 +74,9 @@
   \node[anchor=north] at ([yshift=-0.25cm]0,0)   {$0$};
   \node[anchor=north] at ([yshift=-0.25cm]0.5,0) {$0.5$};
   \node[anchor=north] at ([yshift=-0.25cm]1,0)   {$1$};
+
+  % ---- legend ----------------------------------------------------------
+  \draw[curve] (0.55,2.9) -- (0.63,2.9);
+  \node[anchor=west] at (0.65,2.9) {$\mathrm{Beta}(a=3,\, b=8)$};
 \end{tikzpicture}
 \end{document}

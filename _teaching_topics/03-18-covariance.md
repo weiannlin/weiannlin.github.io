@@ -148,20 +148,9 @@ $$
 
 <div class="topic-math-follow-before" markdown="1">
 
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
-
 $$
 \mathbb{E}(XY)=\mathbb{E}(X)\mathbb{E}(Y)
 $$
-
-</div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
-
-$$
-\mathbb{E}(XY)=\mathbb{E}(X)\mathbb{E}(Y)
-$$
-
-</div>
 
 </div>
 
@@ -350,7 +339,7 @@ $$
 
 $\mathbb{E}(Y\mid X)=\mathbb{E}(Y)$ 在一些地方被稱為**期望值上獨立**，是指**平均而言，$X$ 對 $Y$ 沒有影響**。
 
-讀者不妨回想，介紹[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)時的[立體圖形](/lecture-notes/double-expectation-theorem/#fig-regression-function-surface)中，給定不同的條件，會得到不同的條件分配重心位置 (即[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation))，而 $\mathbb{E}(Y\mid X)=\mathbb{E}(Y)$ 即是說明，儘管條件分配可能各有千秋，但是重心位置卻總是相同的；這當然比不上獨立的要求，也就是在每個條件下皆同分配；另一方面，零相關只是指出，$X$ 與 $Y$ 的共同變化關係可以被互相抵銷。
+讀者不妨回想，介紹雙重期望值定理時的[立體圖形](/lecture-notes/double-expectation-theorem/#fig-regression-function-surface)中，給定不同的條件，會得到不同的條件分配重心位置 (即[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation))，而 $\mathbb{E}(Y\mid X)=\mathbb{E}(Y)$ 即是說明，儘管條件分配可能各有千秋，但是重心位置卻總是相同的；這當然比不上獨立的要求 (在每個條件下皆同分配)；另一方面，零相關只是指出，$X$ 與 $Y$ 的共同變化關係可以被互相抵銷。
 
 這些條件的強弱關係，可以被歸納成一連串逆不真的敘述，即:
 

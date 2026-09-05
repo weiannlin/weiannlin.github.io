@@ -10,7 +10,7 @@ order: 319
 permalink: /lecture-notes/variance-of-linear-combination/
 date: 2026-08-13
 published: false
-excerpt: "共變異數的性質裡，有一款說一個變數與自己的共變異數就是變異數，另一款說常數的伸縮會原封不動地反映在共變異數上；把這兩款整合起來，便得到一組隨機變數線性組合的變異數: 它等於各項變異數的加權和，再加上兩倍的各對共變異數之和。當各項彼此獨立或零相關時，所有的共變異數都是 $0$，式子簡化為 $\\mathrm{Var}\\bigl(\\sum a_iX_i\\bigr)=\\sum a_i^{2}\\mathrm{Var}(X_i)$，這是變異數平方伸縮性的推廣，也是 $\\mathrm{Var}(\\overline{X})=\\sigma_{\\sssig X}^{2}/n$ 的由來。本篇的兩道例題所處理的加總，各項都不是彼此獨立的: 一道給定任兩項同時取值為 $1$ 的機率，另一道是有限母體之下的取後不放回抽樣，其期望值與變異數很像二項分配，只差了一個有限母體校正因子。"
+excerpt: "共變異數的性質裡，有一款說一個變數與自己的共變異數就是變異數，另一款說常數的伸縮會原封不動地反映在共變異數上；把這兩款整合起來，便得到一組隨機變數線性組合的變異數: 它等於各項變異數的加權和，再加上兩倍的各對共變異數之和。當各項彼此獨立或零相關時，所有的共變異數都是 $0$，式子簡化為 $\\mathrm{Var}\\bigl(\\sum a_iX_i\\bigr)=\\sum a_i^{2}\\mathrm{Var}(X_i)$，也是 $\\mathrm{Var}(\\overline{X})=\\sigma_{\\sssig X}^{2}/n$ 的由來。本篇的兩道例題所處理的加總，各項都不是彼此獨立的: 一道給定任兩項同時取值為 $1$ 的機率，另一道是有限母體之下的取後不放回抽樣，其期望值與變異數很像二項分配，只差了一個有限母體校正因子。"
 ---
 
 [上一篇](/lecture-notes/covariance/)以 [Definition 3.16](/lecture-notes/covariance/#def-covariance) 給出[共變異數](/lecture-notes/covariance/#def-covariance)，並以 [Theorem 3.15](/lecture-notes/covariance/#thm-covar-proper) 列出它的六款性質，其中第 (3) 款說一個變數與自己的共變異數就是變異數，第 (4) 款說常數的伸縮會原封不動地反映在共變異數上。
@@ -121,7 +121,7 @@ $$
 <div lang="en" markdown="1">
 <ol class="topic-list-paren">
   <li>Suppose that $X_1,\ldots,X_n$ are random variables for which $\mathbb{P}(X_i=1)=p$ and $\mathbb{P}(X_i=0)=1-p$, while $\mathbb{P}(X_i=1,X_j=1)=q$ holds for every pair with <span class="text-nowrap">$i\neq j$.</span> Find <span class="text-nowrap">$\mathrm{Var}(X_1+\cdots+X_n)$.</span></li>
-  <li>Suppose that $X_1,\ldots,X_n$ are independent and identically distributed random variables with finite variance <span class="text-nowrap">$\sigma^{2}$.</span> Show that <span class="text-nowrap">$\operatorname{Cov}(X_i-\overline{X},\overline{X})=0$.</span></li>
+  <li>Suppose that $X_1,\ldots,X_n$ are independent and identically distributed random variables with finite variance <span class="text-nowrap">$\sigma^{2}$.</span> Show that $\operatorname{Cov}(X_i-\overline{X},\overline{X})=0$.</li>
 </ol>
 </div>
 
@@ -273,8 +273,6 @@ $$
 
 且由於取後不放回，我們可知
 
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
-
 <div class="topic-math-follow-before" markdown="1">
 
 $$
@@ -291,30 +289,6 @@ $$
 &=\frac{\,M(M-1)\,}{N(N-1)}-\frac{\,M^{2}\,}{N^{2}}
 \end{aligned}
 $$
-
-</div>
-
-</div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
-
-<div class="topic-math-follow-before" markdown="1">
-
-$$
-\mathbb{E}(X_i\,X_j)=\frac{\,M(M-1)\,}{N(N-1)}
-$$
-
-</div>
-
-<div class="topic-math-follow" markdown="1">
-
-$$
-\begin{aligned}
-\Longrightarrow\ \operatorname{Cov}(X_i,X_j)&=\mathbb{E}(X_iX_j)-\mathbb{E}(X_i)\,\mathbb{E}(X_j)\\[0.2em]
-&=\frac{\,M(M-1)\,}{N(N-1)}-\frac{\,M^{2}\,}{N^{2}}
-\end{aligned}
-$$
-
-</div>
 
 </div>
 
@@ -373,8 +347,8 @@ $$
 &\qquad-n^{2}\,\frac{\,M^{2}\,}{N^{2}}+n\,\frac{\,M^{2}\,}{N^{2}}\\[0.45em]
 &=n\,\frac{\,M\,}{N}\,\biggl[1+(n-1)\,\frac{\,(M-1)\,}{(N-1)}\\[0.2em]
 &\qquad -n\,\frac{\,M\,}{N}\biggr]\\[0.45em]
-&=n\,\frac{\,M\,}{N}\times\\[0.2em]
-&\ \ \frac{\,\begin{aligned}N(N-1)&+(n-1)N(M-1)\\[0.1em] &-\,nM(N-1)\end{aligned}\,}{N(N-1)}\\[0.45em]
+&=n\,\frac{\,M\,}{N}\\[0.2em]
+&\qquad\times\frac{\,N(N-1)+(n-1)N(M-1)-nM(N-1)\,}{N(N-1)}\\[0.45em]
 &=n\,\frac{\,M\,}{N}\,\frac{\,N^{2}-MN-nN+nM\,}{N(N-1)}\\[0.45em]
 &=n\,\frac{\,M\,}{N}\,\frac{\,(N-M)(N-n)\,}{N(N-1)}\\[0.45em]
 &=n\,\frac{\,M\,}{N}\,\biggl(1-\frac{\,M\,}{N}\biggr)\,\biggl(\frac{\,N-n\,}{N-1}\biggr)
@@ -406,7 +380,7 @@ $$
 
 當各項彼此[獨立](/lecture-notes/independent-random-variables/#def-indep-r-v)或零相關的時候，所有的共變異數都是 <span class="text-nowrap">$0$，</span>式子簡化為 $\mathrm{Var}\bigl(\sum_{i=1}^{n}a_iX_i\bigr)$ $=$ <span class="text-nowrap">$\sum_{i=1}^{n}a_i^{2}\mathrm{Var}(X_i)$，</span>這正是變異數[平方伸縮性](/lecture-notes/variance/#thm-variance-properties)的推廣；[沃德等式](/lecture-notes/wald-identity-gamblers-ruin/#thm-wald-identity)第二式在推導過程中所用到的 $\mathrm{Var}(S_{\sssig N}\mid N=n)$ $=$ $n\sigma_{\sssig X}^{2}$ 也由此而來。這個特例又衍生出 $\mathrm{Var}\bigl(\overline{X}\bigr)$ $=$ $\frac{\,\sigma_{\sssig X}^{2}\,}{n}$ 這個往後經常用到的結果。
 
-兩道例題所加總的各項都不是彼此獨立的。[Example 3.39](#ex-bernoulli-sum-covariance) 由 $\mathbb{P}(X_i=1,X_j=1)=q$ 求得每一對的共變異數為 <span class="text-nowrap">$q-p^{2}$，</span>$n$ 項加總的變異數因而是 <span class="text-nowrap">$n\,p(1-p)+n(n-1)(q-p^{2})$；</span>該題的第二小題則說明 $X_i-\overline{X}$ 與 $\overline{X}$ 的共變異數為 <span class="text-nowrap">$0$，</span>關鍵是獨立使 $\operatorname{Cov}(X_i,\overline{X})$ 只留下 $\mathrm{Var}(X_i)$ 這一項，恰好與 $\mathrm{Var}\bigl(\overline{X}\bigr)$ 相消。[Example 3.40](#ex-hypergeometric-variance) 的取後不放回使各次抽取不獨立，變異數因而多出共變異數的部分，整理之後為 <span class="text-nowrap">$n\frac{\,M\,}{N}\bigl(1-\frac{\,M\,}{N}\bigr)\frac{\,N-n\,}{N-1}$，</span>其中的 $\frac{\,N-n\,}{N-1}$ 即有限母體校正因子，而這一題的結果正是超幾何分配。
+兩道例題所加總的各項都不是彼此獨立的。[Example 3.39](#ex-bernoulli-sum-covariance) 由 $\mathbb{P}(X_i=1,X_j=1)=q$ 求得每一對的共變異數為 <span class="text-nowrap">$q-p^{2}$，</span>$n$ 項加總的變異數因而是 <span class="text-nowrap">$n\,p(1-p)+n(n-1)(q-p^{2})$；</span>該題的第二小題則說明 $X_i-\overline{X}$ 與 $\overline{X}$ 的共變異數為 <span class="text-nowrap">$0$，</span>關鍵是獨立使 $\operatorname{Cov}(X_i,\overline{X})$ 只留下 $\mathrm{Var}(X_i)$ 這一項，恰好與 $\mathrm{Var}\bigl(\overline{X}\bigr)$ 相消。[Example 3.40](#ex-hypergeometric-variance) 的取後不放回使各次抽取不獨立，變異數因而多出共變異數的部分，整理之後為 $n\frac{\,M\,}{N}\bigl(1-\frac{\,M\,}{N}\bigr)\frac{\,N-n\,}{N-1}$，其中的 $\frac{\,N-n\,}{N-1}$ 即有限母體校正因子，而這一題的結果正是超幾何分配。
 
 [下一篇](/lecture-notes/covariance-matrix/)改以向量與矩陣的形式來表示一組多元隨機變數，並由此給出共變異數矩陣的定義。
 

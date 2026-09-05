@@ -227,12 +227,8 @@ $$
 
 </div>
 
-且 $0<x<1,\ 0<y<1$ 確實是一個積空間，此即
+且 $0<x<1,\ 0<y<1$ 確實是一個積空間 $\ \Longleftrightarrow\ X\indep Y$
 {: .topic-paren-cont}
-
-$$
-X\indep Y
-$$
 
 </div>
 

@@ -13,7 +13,7 @@ published: false
 excerpt: "隨機變數的概念並不限於一維。把定義在同一個機率空間上的 $n$ 個隨機變數合起來看成一個向量函數，並要求對任意實數 $x_1,x_2,\\ldots,x_n$ 而言，能使各個 $X_i(\\omega)\\leqslant x_i$ 同時成立的樣本點所形成的集合都是事件，這樣的向量函數即為隨機向量。二元離散型的聯合機率質量函數在聯合值域上記錄 $\\mathbb{P}(X=x,Y=y)$ 這個機率，並滿足三項性質；把其中一個變數的所有可能取值加總，便得到另一個變數的邊際機率質量函數。本篇最後以一道例題示範常數的求法、事件機率的計算與邊際 pmf 的求取。"
 ---
 
-[上一篇](/lecture-notes/many-to-one-transformations/)以三道例題處理了非一對一的函數轉換，第二章到此告一段落。第二章所討論的[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable) <span lang="en">(random variable)</span> 都只有一維，但這個概念當然不僅限於一維，我們可以將其擴展至二維以上的多維空間，代表的意義也會隨之不同。
+[上一篇](/lecture-notes/many-to-one-transformations/)以三道例題處理了非一對一的函數轉換，第二章到此告一段落。第二章所討論的[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable) <span lang="en">(random variable)</span> 都只有一維，但這個概念當然不僅限於一維 <span lang="en">($1$-dimension)</span>，我們可以將其擴展至二維 <span lang="en">($2$-dimension)</span> 以上的多維 <span lang="en">(multi-dimension)</span> 空間，代表的意義也會隨之不同。
 
 在第一章，我們曾經探討過，若是我們有兩個事件，則我們可以就其關係歸納出[互斥、獨立](/lecture-notes/independence-and-conditional-independence/#互斥與獨立)等觀念；又於第二章，我們曾說過，所謂隨機變數事實上是將樣本空間內的元素，映射到實數上的函數，故在此，我們當然可以將樣本空間分別映射至不同的兩個實數上，此概念即為二元隨機變數。
 
@@ -102,7 +102,7 @@ $$
 
 </div>
 
-事實上，這二個等價定義都在說明同一件事情，也就是，只要我們有實數 $x_1,x_2,\ldots,x_n$ 這 $n$ 個數，則**能夠使得 $X_1(\omega)\leqslant x_1,X_2(\omega)\leqslant x_2,\ldots,X_n(\omega)\leqslant x_n$ 的那些樣本點所收集而成的集合，必須是個能夠被定義機率的事件**。
+事實上，這二個等價定義都在說明同一件事情，也就是，只要我們有實數 $x_1,x_2,\ldots,x_n$，則**能夠使得 $X_1(\omega)\leqslant x_1,X_2(\omega)\leqslant x_2,\ldots,X_n(\omega)\leqslant x_n$ 的那些樣本點所收集而成的集合，必須是個能夠被定義機率的事件**。
 {: .topic-paren-cont}
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -145,7 +145,7 @@ $$
 
 </div>
 
-## 聯合、邊際[機率質量函數](/lecture-notes/random-variables-and-pmf/#def-pmf)
+## 聯合、邊際機率質量函數
 
 <div id="def-joint-pmf" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.2 (聯合機率質量函數, joint pmf)</div>
@@ -227,7 +227,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者應該記得，不論是 $X=x$ 或 <span class="text-nowrap">$Y=y$，</span>其實都分別表示一個事件，因此上表的理解理應與過去我們所知道的機率列聯表完全相同；而表內的交集事件原先應為 $\lbrace X=x\rbrace\cap\lbrace Y=y\rbrace$ 這樣的形式，但在隨機向量中，我們一般以逗號代替交集符號，因此改為 <span class="text-nowrap">$X=x,Y=y$。</span>
+讀者應該記得，不論是 $X=x$ 或 <span class="text-nowrap">$Y=y$，</span>其實都分別表示一個事件，因此上表的理解理應與過去我們所知道的機率列聯表完全相同；而表內的交集事件原先應為 $\lbrace X=x\rbrace\cap\lbrace Y=y\rbrace$，但在隨機向量中，我們一般以逗號代替交集符號，因此改為 <span class="text-nowrap">$X=x,Y=y$。</span>
 
 </div>
 
@@ -281,7 +281,7 @@ $$
 
 </div>
 
-讀者應特別注意的是，邊際機率質量函數仍然是一種機率質量函數，例如: $X$ 的邊際機率質量函數便可以視為是 $X$ 自己的機率函數，**而與 $Y$ 完全無關**。
+讀者應特別注意的是，邊際機率質量函數仍然是一種[機率質量函數](/lecture-notes/random-variables-and-pmf/#def-pmf)，例如: $X$ 的邊際機率質量函數便可以視為是 $X$ 自己的機率函數，**而與 $Y$ 完全無關**。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
@@ -398,7 +398,7 @@ p_{\sssig X}(x)=\sum_{y\in\mathcal{R}_{\sssig Y}}p_{\sssig XY}(x,y)=\sum_{y=0}^{
 \dfrac{1}{\,2\,}, & x=0\\[0.6em]
 \dfrac{1}{\,3\,}, & x=1\\[0.6em]
 \dfrac{1}{\,6\,}, & x=2\\[0.6em]
-0, & \text{otherwise}
+0, & \text{o.w.}
 \end{array}
 \right.
 $$
@@ -415,7 +415,7 @@ p_{\sssig X}(x)&=\sum_{y\in\mathcal{R}_{\sssig Y}}p_{\sssig XY}(x,y)=\sum_{y=0}^
 \dfrac{1}{\,2\,}, & x=0\\[0.6em]
 \dfrac{1}{\,3\,}, & x=1\\[0.6em]
 \dfrac{1}{\,6\,}, & x=2\\[0.6em]
-0, & \text{otherwise}
+0, & \text{o.w.}
 \end{array}
 \right.
 \end{aligned}

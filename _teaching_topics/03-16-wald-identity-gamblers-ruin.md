@@ -208,7 +208,10 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
 
 $$
-\mathrm{Var}(X)=\mathrm{Var}(Y_i)\,\mathbb{E}(N)+\bigl[\mathbb{E}(Y_i)\bigr]^{2}\,\mathrm{Var}(N)=\lambda p(1-p)+\lambda p^{2}=\lambda p
+\begin{aligned}
+\mathrm{Var}(X)&=\mathrm{Var}(Y_i)\,\mathbb{E}(N)+\bigl[\mathbb{E}(Y_i)\bigr]^{2}\,\mathrm{Var}(N)\\[0.45em]
+&=\lambda p(1-p)+\lambda p^{2}=\lambda p\qquad\therefore\, \operatorname{SD}(X)=\sqrt{\mathrm{Var}(X)}=\sqrt{\lambda p}
+\end{aligned}
 $$
 
 </div>
@@ -260,7 +263,7 @@ $$
 
 </div>
 
-(3) 由[全機率定理](/lecture-notes/conditional-law-of-total-probability/#thm-law-of-total-prob-r-v)可知
+(3) 由全機率定理可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -304,9 +307,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述的[全機率定理](/lecture-notes/conditional-law-of-total-probability/#thm-law-of-total-prob-r-v)中，之所以 $n$ 的範圍從 $x$ 開始而非從 $0$ 開始，乃是因為其 conditional pmf 的範圍如下
-
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+上述的全機率定理中，之所以 $n$ 的範圍從 $x$ 開始而非從 $0$ 開始，乃是因為其 conditional pmf 的範圍如下
 
 $$
 \begin{aligned}
@@ -334,38 +335,7 @@ n=x,x+1,\ldots,\infty
 \end{aligned}
 $$
 
-</div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
-
-$$
-\begin{aligned}
-&\left\lbrace
-\begin{array}{l}
-n=0,1,\ldots,\infty\\[0.2em]
-x=0,1,\ldots,n
-\end{array}
-\right.\\[0.9em]
-\Longrightarrow\
-&\left\lbrace
-\begin{array}{l}
-0\leqslant x\leqslant n<\infty\\[0.2em]
-n\in\lbrace 0\rbrace\cup\mathbb{N}\\[0.2em]
-x\in\lbrace 0\rbrace\cup\mathbb{N}
-\end{array}
-\right.\\[0.9em]
-\Longrightarrow\
-&\left\lbrace
-\begin{array}{l}
-x=0,1,\ldots,\infty\\[0.2em]
-n=x,x+1,\ldots,\infty
-\end{array}
-\right.
-\end{aligned}
-$$
-
-</div>
-
-這意味著，雖然是給定了 $N=n$ 且 <span class="text-nowrap">$n\in\lbrace 0\rbrace\cup\mathbb{N}$，</span>但是在固定 $X=x$ 時，$n$ 不可能是一個比 $x$ 還要更小的非負整數，所以在上述的[全機率定理](/lecture-notes/conditional-law-of-total-probability/#thm-law-of-total-prob-r-v)中，加總的起點是 $x$ 而非 <span class="text-nowrap">$0$。</span>
+這意味著，雖然是給定了 $N=n$ 且 <span class="text-nowrap">$n\in\lbrace 0\rbrace\cup\mathbb{N}$，</span>但是在固定 $X=x$ 時，$n$ 不可能是一個比 $x$ 還要更小的非負整數，所以在上述的全機率定理中，加總的起點是 $x$ 而非 <span class="text-nowrap">$0$。</span>
 
 </div>
 
@@ -375,19 +345,19 @@ $$
 <div class="topic-box__label">Example 3.32</div>
 
 <div lang="en" markdown="1">
-Suppose that $Y,X_1,X_2,\ldots$ are mutually independent random variables, that the distribution of $Y$ is
+Suppose that $\lbrace Y,X_1,X_2,\ldots\rbrace$ are mutually independent random variables, that the distribution of $Y$ is
 
 $$
 \mathbb{P}(Y=n)=\frac{\,e^{-\lambda}\lambda^{n}\,}{n!},\ n=0,1,2,\ldots
 $$
 
-and that $X_1,X_2,\ldots$ share the common distribution
+and that $\lbrace X_1,X_2,\ldots\rbrace$ share the common distribution
 
 $$
 \mathbb{P}(X=x)=p^{x}(1-p)^{1-x},\ x=0,1
 $$
 
-For every real number <span class="text-nowrap">$t$,</span> write
+For every <span class="text-nowrap">$t\in\mathbb{R}$,</span> write
 
 $$
 \phi(t,y)=\mathbb{E}\Bigl(e^{t(X_1+X_2+\cdots+X_{\sssig Y})}\Bigm\vert Y=y\Bigr)
@@ -483,7 +453,7 @@ $$
 
 事實上，這題是[上一個問題](#ex-store-laptop-purchases)第 (3) 小題的另一種做法，也就是由 [mgf](/lecture-notes/moment-generating-functions/#def-mgf) 來確認 $\sum_{i=1}^{Y}X_i$ 的分配。
 
-儘管我們還沒有正式講到多元隨機變數的 mgf 以及其衍生的計算方式，但是讀者仍然可以把 $e^{t(X_1+X_2+\cdots+X_{\sssig Y})}$ 當成 $X_1, X_2, \ldots, X_{\sssig Y}$ 的函數，並且利用彼此獨立的性質，改為邊際的 mgf 相乘，從而得到所求結果；而這也是[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)的另一個應用，即
+儘管我們還沒有正式講到多元隨機變數的 mgf 以及其衍生的計算方式，但是讀者仍然可以把 $e^{t(X_1+X_2+\cdots+X_{\sssig Y})}$ 當成 $X_1, X_2, \ldots, X_{\sssig Y}$ 的函數，並且利用彼此獨立的性質，改為邊際的 mgf 相乘，從而得到所求結果；而這也是雙重期望值定理的另一個應用，即
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -845,7 +815,10 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
 
 $$
-\mathrm{Var}(S_{\sssig T})=\mathrm{Var}(X_i)\,\mathbb{E}(T)+\bigl[\mathbb{E}(X_i)\bigr]^{2}\,\mathrm{Var}(T)=\mathrm{Var}(X)\,\mathbb{E}(T)
+\begin{aligned}
+\mathrm{Var}(S_{\sssig T})&=\mathrm{Var}(X_i)\,\mathbb{E}(T)+\bigl[\mathbb{E}(X_i)\bigr]^{2}\,\mathrm{Var}(T)\\[0.45em]
+&=\mathrm{Var}(X)\,\mathbb{E}(T)\qquad\therefore\, \mathbb{E}(T)=\frac{\,\mathrm{Var}(S_{\sssig T})\,}{\mathrm{Var}(X)}=\frac{ab}{\,\mathrm{Var}(X)\,}
+\end{aligned}
 $$
 
 </div>
@@ -875,7 +848,7 @@ $$
 
 ## 本篇小結
 
-[Theorem 3.12](#thm-wald-identity) 處理的是加總的項數本身也是隨機變數的情形。若 $X_1, X_2, \ldots$ 為獨立同分配的隨機變數，$N$ 是一個與它們獨立的非負整數隨機變數，則 $S_{\sssig N}=\sum_{i=1}^{N}X_i$ 的期望值為 <span class="text-nowrap">$\mu_{\sssig X}\mu_{\sssig N}$，</span>變異數則為 <span class="text-nowrap">$\sigma_{\sssig X}^{2}\mu_{\sssig N}+\mu_{\sssig X}^{2}\sigma_{\sssig N}^{2}$。</span>它的證明分別以[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)與[變異數分解定理](/lecture-notes/variance-decomposition-theorem/#thm-var-decom-thm)完成，所需的兩個條件量是 $\mathbb{E}(S_{\sssig N}\mid N=n)$ $=$ $n\mu_{\sssig X}$ 與 $\mathrm{Var}(S_{\sssig N}\mid N=n)$ $=$ $n\sigma_{\sssig X}^{2}$ 這兩條式子。
+[Theorem 3.12](#thm-wald-identity) 處理的是加總的項數本身也是隨機變數的情形。若 $X_1, X_2, \ldots$ 為獨立同分配的隨機變數，$N$ 是一個與它們獨立的非負整數隨機變數，則 $S_{\sssig N}=\sum_{i=1}^{N}X_i$ 的期望值為 <span class="text-nowrap">$\mu_{\sssig X}\mu_{\sssig N}$，</span>變異數則為 $\sigma_{\sssig X}^{2}\mu_{\sssig N}+\mu_{\sssig X}^{2}\sigma_{\sssig N}^{2}$。它的證明分別以[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)與[變異數分解定理](/lecture-notes/variance-decomposition-theorem/#thm-var-decom-thm)完成，所需的兩個條件量是 $\mathbb{E}(S_{\sssig N}\mid N=n)$ $=$ $n\mu_{\sssig X}$ 與 $\mathrm{Var}(S_{\sssig N}\mid N=n)$ $=$ $n\sigma_{\sssig X}^{2}$ 這兩條式子。
 
 [Example 3.31](#ex-store-laptop-purchases) 是沃德等式最直接的用法: 每日進入商店的人數為卜瓦松分配，每位顧客購買 laptop PC 之數量則為 <span class="text-nowrap">$\mathrm{Ber}(p)$，</span>兩者合起來得到 $\mathbb{E}(X)=\lambda p$ 與 <span class="text-nowrap">$\operatorname{SD}(X)=\sqrt{\lambda p}$；</span>再以[全機率定理](/lecture-notes/conditional-law-of-total-probability/#thm-law-of-total-prob-r-v)把條件 pmf 依 $N$ 的機率加權，可得 $\mathbb{P}(X=0)$ $=$ $e^{-\lambda p}$ 以及 <span class="text-nowrap">$X\sim\mathrm{Poi}(\lambda p)$。</span>這裡的加總起點之所以是 $x$ 而非 <span class="text-nowrap">$0$，</span>是因為在固定 $X=x$ 之後，$n$ 不可能小於 <span class="text-nowrap">$x$。</span>[Example 3.32](#ex-poisson-random-sum) 改用另一種做法。先求出給定 $Y=y$ 之下的 $\phi(t,y)$ $=$ $\bigl[\,pe^{t}+(1-p)\,\bigr]^{y}$ 這條式子，再對 $Y$ 取一次期望值，得到 <span class="text-nowrap">$e^{\lambda p(e^{t}-1)}$，</span>正是同一個分配的 mgf。
 
