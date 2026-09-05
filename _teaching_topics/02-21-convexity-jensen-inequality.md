@@ -10,7 +10,7 @@ order: 221
 permalink: /lecture-notes/convexity-jensen-inequality/
 date: 2026-08-06
 published: true
-excerpt: "凸函數的定義是: 函數在任兩點所連之弦上的值，不低於同一位置的函數值；凹函數則恰好相反。延森不等式據此比較兩個動差: 若 $g$ 為凸函數則 $\\mathbb{E}[g(X)]\\geqslant g[\\mathbb{E}(X)]$，若 $h$ 為凹函數則 $\\mathbb{E}[h(X)]\\leqslant h[\\mathbb{E}(X)]$，兩邊都是動差，不再是尾機率的上界。由它可以直接得到算術平均數不小於幾何平均數、幾何平均數不小於調和平均數，期望值與中位數的距離不超過一個標準差，以及 KL 訊息數非負這三個結果。"
+excerpt: "凸函數的定義，是函數在任兩點所連之弦上的值，不低於同一位置的函數值；凹函數則恰好相反。延森不等式據此比較兩個動差。若 $g$ 為凸函數則 $\\mathbb{E}[g(X)]\\geqslant g[\\mathbb{E}(X)]$，若 $h$ 為凹函數則 $\\mathbb{E}[h(X)]\\leqslant h[\\mathbb{E}(X)]$，兩邊都是動差，不再是尾機率的上界。由它可以直接得到算術平均數不小於幾何平均數、幾何平均數不小於調和平均數，期望值與中位數的距離不超過一個標準差，以及 KL 訊息數非負這三個結果。"
 ---
 
 [上一篇](/lecture-notes/probability-inequalities-examples/)介紹車諾夫不等式，以[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)為工具，替尾機率取得比[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)更緊的上界。從[馬可夫不等式](/lecture-notes/probability-inequalities/#thm-markov)一路看下來，這幾篇的不等式都在做同一件事，由少量的動差資訊出發，替一個尾機率找出上界。

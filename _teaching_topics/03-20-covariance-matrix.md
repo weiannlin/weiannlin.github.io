@@ -10,7 +10,7 @@ order: 320
 permalink: /lecture-notes/covariance-matrix/
 date: 2026-08-13
 published: false
-excerpt: "把一組隨機變數兩兩之間的變異數與共變異數收在同一個矩陣裡，就是共變異數矩陣；它的主對角線是各個變數自己的變異數，而由共變異數的對稱性可知它必為對稱矩陣。本篇接著介紹隨機向量在向量與矩陣上的運算: 常數向量與隨機向量相乘之後，期望值為 $\\boldsymbol{a}^{\\mathrm{T}}\\boldsymbol{\\mu}$ 這個純量，變異數則為 $\\boldsymbol{a}^{\\mathrm{T}}\\mathbf{\\Sigma}\\boldsymbol{a}$ 這個二次形式，後者恰好可以用來證明共變異數矩陣必為正半定；把常數向量換成常數矩陣之後，所得的結果則是一個維度比 $1$ 還高的隨機向量。最後以一道二元常態的例題示範這些結果在計算上的用法。"
+excerpt: "把一組隨機變數兩兩之間的變異數與共變異數收在同一個矩陣裡，就是共變異數矩陣；它的主對角線是各個變數自己的變異數，而由共變異數的對稱性可知它必為對稱矩陣。本篇接著介紹隨機向量在向量與矩陣上的運算。常數向量與隨機向量相乘之後，期望值為 $\\boldsymbol{a}^{\\mathrm{T}}\\boldsymbol{\\mu}$ 這個純量，變異數則為 $\\boldsymbol{a}^{\\mathrm{T}}\\mathbf{\\Sigma}\\boldsymbol{a}$ 這個二次形式，後者恰好可以用來證明共變異數矩陣必為正半定；把常數向量換成常數矩陣之後，所得的結果則是一個維度比 $1$ 還高的隨機向量。最後以一道二元常態的例題示範這些結果在計算上的用法。"
 ---
 
 [上一篇](/lecture-notes/variance-of-linear-combination/)以 [Theorem 3.16](/lecture-notes/variance-of-linear-combination/#thm-covar-proper2) 給出線性組合的[變異數](/lecture-notes/variance/#def-variance)展開式，並在最後指出，多元[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的表示與運算會隨著變數個數增加而越來越複雜，因此在多變量分析與迴歸分析的領域中，我們更常改以向量的形式來處理一組多元隨機變數。

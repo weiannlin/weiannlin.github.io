@@ -10,7 +10,7 @@ order: 324
 permalink: /lecture-notes/many-to-many-transformations/
 date: 2026-08-13
 published: false
-excerpt: "已知隨機向量 $\\boldsymbol{X}$ 的分配，若令 $\\boldsymbol{Y}=g(\\boldsymbol{X})$ 則 $\\boldsymbol{Y}$ 的分配是什麼？多對多的情形可以由二對二推廣，故本篇只處理二對二: 離散型採 pmf 法，把兩條函數關係當成二元聯立方程式反解，再代回原來的聯合 pmf；連續型採 Jacobian 法，將原變數的 pdf 以新變數表示，再乘上原變數對新變數偏微分所成行列式的絕對值。本篇的五道例題，先以三個伯努利變數示範樣本平均數、中位數與眾數的抽樣分配，接著以 pmf 法反解出兩個變數之和與差的聯合 pmf，再以 Jacobian 法處理三道連續型的轉換，其中包含由均勻與指數分配造出兩個獨立標準常態的作法，以及著名的 Box-Muller 轉換。"
+excerpt: "已知隨機向量 $\\boldsymbol{X}$ 的分配，若令 $\\boldsymbol{Y}=g(\\boldsymbol{X})$ 則 $\\boldsymbol{Y}$ 的分配是什麼？多對多的情形可以由二對二推廣，故本篇只處理二對二。離散型採 pmf 法，把兩條函數關係當成二元聯立方程式反解，再代回原來的聯合 pmf；連續型採 Jacobian 法，將原變數的 pdf 以新變數表示，再乘上原變數對新變數偏微分所成行列式的絕對值。本篇的五道例題，先以三個伯努利變數示範樣本平均數、中位數與眾數的抽樣分配，接著以 pmf 法反解出兩個變數之和與差的聯合 pmf，再以 Jacobian 法處理三道連續型的轉換，其中包含由均勻與指數分配造出兩個獨立標準常態的作法，以及著名的 Box-Muller 轉換。"
 ---
 
 [上一篇](/lecture-notes/population-linear-regression/)以母體線性迴歸式，把兩個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)之間的線性關係寫成一條直線，並以三道例題示範它的求法。到這裡為止，我們所處理的都是[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)自身的分配、條件分配與由這些分配所導出的各種量數。

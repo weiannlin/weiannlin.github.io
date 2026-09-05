@@ -10,7 +10,7 @@ order: 311
 permalink: /lecture-notes/conditional-expectation-and-variance/
 date: 2026-08-12
 published: false
-excerpt: "條件分配還是一個分配，而且是單變數的分配，這種分配的期望值便稱為條件期望值: 離散型以條件機率質量函數對各個取值加權求和，連續型則以條件機率密度函數加權積分，同一套作法套在 $g(X)$ 上便得到函數的條件期望值。條件期望值本質上仍是一種期望值，故期望值所具有的各種性質它都順勢繼承，其中也包含變異數，這種變異數即為條件變異數，同樣有平方的條件期望值減去條件期望值的平方這一條速算公式。條件期望值有一個一般期望值沒有的特色，就是它是「給定的條件」的函數。本篇並以三道例題示範離散型與連續型的計算。"
+excerpt: "條件分配還是一個分配，而且是單變數的分配，這種分配的期望值便稱為條件期望值。離散型以條件機率質量函數對各個取值加權求和，連續型則以條件機率密度函數加權積分，同一套作法套在 $g(X)$ 上便得到函數的條件期望值。條件期望值本質上仍是一種期望值，故期望值所具有的各種性質它都順勢繼承，其中也包含變異數，這種變異數即為條件變異數，同樣有平方的條件期望值減去條件期望值的平方這一條速算公式。條件期望值有一個一般期望值沒有的特色，就是它是「給定的條件」的函數。本篇並以三道例題示範離散型與連續型的計算。"
 ---
 
 [上一篇](/lecture-notes/multivariate-expectations/)把[期望值](/lecture-notes/expectation/#def-expectation)與[變異數](/lecture-notes/variance/#def-variance)推廣到二元[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的函數 <span class="text-nowrap">$g(X,Y)$，</span>其中所使用的機率分配是聯合分配。但在[條件機率質量函數](/lecture-notes/conditional-distributions/#def-conditional-pmf)與[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)之中，我們已經看過另一種機率分配。它就是把其中一個變數固定成常數之後所得到的條件分配。

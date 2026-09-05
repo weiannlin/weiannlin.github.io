@@ -10,7 +10,7 @@ order: 216
 permalink: /lecture-notes/uniqueness-of-the-mgf/
 date: 2026-08-06
 published: true
-excerpt: "動差母函數的唯一性指出: 兩個隨機變數的 mgf 若存在且相等，則兩者的 pdf (或 pmf) 也會相等。有了這一項性質，只要把各階動差所組成的級數求和，得到一個認得出來的 mgf，就能反過來指出原本的分配是哪一個: 各階原動差皆為 $0.8$ 的是伯努利分配，偶階動差為 $\\frac{(2m)!}{2^{m}m!}$ 而奇階動差為 $0$ 的是標準常態分配。離散型的 mgf 還可以展開成 $p_{1}e^{a_{1}t}+\\cdots+p_{n}e^{a_{n}t}$，由各項的係數與指數直接還原 pmf。"
+excerpt: "動差母函數的唯一性指出，兩個隨機變數的 mgf 若存在且相等，則兩者的 pdf (或 pmf) 也會相等。有了這一項性質，只要把各階動差所組成的級數求和，得到一個認得出來的 mgf，就能反過來指出原本的分配是哪一個。各階原動差皆為 $0.8$ 的是伯努利分配，偶階動差為 $\\frac{(2m)!}{2^{m}m!}$ 而奇階動差為 $0$ 的是標準常態分配。離散型的 mgf 還可以展開成 $p_{1}e^{a_{1}t}+\\cdots+p_{n}e^{a_{n}t}$，由各項的係數與指數直接還原 pmf。"
 ---
 
 [上一篇](/lecture-notes/moment-generating-functions/)給了[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)的定義，說明它如何以微分生成各階原動差，也給了它的動差級數展開；三道例題或由已知的分配求出 mgf，或由已知的 mgf 求出動差與[變異數](/lecture-notes/variance/#def-variance)。

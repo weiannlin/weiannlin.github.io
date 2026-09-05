@@ -10,7 +10,7 @@ order: 304
 permalink: /lecture-notes/marginal-probability-density-functions/
 date: 2026-08-12
 published: false
-excerpt: "二元連續型隨機向量沒有辦法以加總取得邊際分配，而要改以積分完成: 把聯合機率密度函數對其中一個變數在該變數的值域上積分，所得的單變數函數就是另一個變數的邊際機率密度函數。它仍然是一個正規的單變數機率密度函數，並且不再殘留被積分的那個變數。這件事的直觀意義，是沿著一個變數的軸把原本的聯合機率密度疊加起來，也就是把曲面壓扁成一條曲線。本篇並以兩道例題示範常數的求法、兩個邊際機率密度函數的求取，以及聯合累積分配函數的分段計算。"
+excerpt: "二元連續型隨機向量沒有辦法以加總取得邊際分配，而要改以積分完成。把聯合機率密度函數對其中一個變數在該變數的值域上積分，所得的單變數函數就是另一個變數的邊際機率密度函數。它仍然是一個正規的單變數機率密度函數，並且不再殘留被積分的那個變數。這件事的直觀意義，是沿著一個變數的軸把原本的聯合機率密度疊加起來，也就是把曲面壓扁成一條曲線。本篇並以兩道例題示範常數的求法、兩個邊際機率密度函數的求取，以及聯合累積分配函數的分段計算。"
 ---
 
 [上一篇](/lecture-notes/joint-probability-density-functions/)由[聯合累積分配函數](/lecture-notes/joint-cumulative-distribution-functions/#def-joint-cdf)的積分表示式給出[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)的定義，並列出它應具備的[三項性質](/lecture-notes/joint-probability-density-functions/#thm-joint-pdf-proper)。在二元離散型的情形中，我們曾把[聯合機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-joint-pmf)對其中一個變數的所有可能取值加總，得到另一個變數的[邊際機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-marginal-pmf)；二元連續型[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)沒有辦法以加總處理，如同單變數的情形，同樣要改以積分完成。

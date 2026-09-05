@@ -10,7 +10,7 @@ order: 429
 permalink: /lecture-notes/multivariate-normal-independence/
 date: 2026-08-15
 published: false
-excerpt: "多元常態分配之中，零相關與獨立是等價的，推廣到分塊之後即為 $\\mathbf{\\Sigma}_{12}=\\mathbf{0}$ 若且唯若 $\\boldsymbol{X}_1$ 與 $\\boldsymbol{X}_2$ 獨立。本篇先給出這條充要條件，再以它證明常態母體之下樣本平均數與樣本變異數彼此獨立: 作法是把 $\\overline{X}$ 與各個 $X_i-\\overline{X}$ 排成一個仿射變換，算出共變異數矩陣的非對角分塊為零矩陣。接著把這個算法一般化為 $\\mathbf{A}\\mathbf{B}^{\\mathrm{T}}=\\mathbf{0}$ 時 $\\mathbf{A}\\boldsymbol{X}$ 與 $\\mathbf{B}\\boldsymbol{X}$ 獨立，並由此給出冪等矩陣的二次形式服從卡方分配這條定理，自由度為該矩陣的跡，最直接的應用即 $(n-1)S^{2}/\\sigma^{2}$ 的抽樣分配。最後一題以雙重期望值定理處理階層模型的邊際分配。"
+excerpt: "多元常態分配之中，零相關與獨立是等價的，推廣到分塊之後即為 $\\mathbf{\\Sigma}_{12}=\\mathbf{0}$ 若且唯若 $\\boldsymbol{X}_1$ 與 $\\boldsymbol{X}_2$ 獨立。本篇先給出這條充要條件，再以它證明常態母體之下樣本平均數與樣本變異數彼此獨立。作法是把 $\\overline{X}$ 與各個 $X_i-\\overline{X}$ 排成一個仿射變換，算出共變異數矩陣的非對角分塊為零矩陣。接著把這個算法一般化為 $\\mathbf{A}\\mathbf{B}^{\\mathrm{T}}=\\mathbf{0}$ 時 $\\mathbf{A}\\boldsymbol{X}$ 與 $\\mathbf{B}\\boldsymbol{X}$ 獨立，並由此給出冪等矩陣的二次形式服從卡方分配這條定理，自由度為該矩陣的跡，最直接的應用即 $(n-1)S^{2}/\\sigma^{2}$ 的抽樣分配。最後一題以雙重期望值定理處理階層模型的邊際分配。"
 ---
 
 [上一篇](/lecture-notes/multivariate-normal-distribution/)給出[多元常態分配](/lecture-notes/multivariate-normal-distribution/#def-multivariate-normal)的定義，並依序列出邊際分配、條件分配、仿射變換與二次形式四項性質。本篇處理多元常態分配之中最常被引用的兩條結果: 一是分塊之間零相關與獨立的等價關係，二是冪等矩陣的二次形式所服從的分配。

@@ -10,7 +10,7 @@ order: 322
 permalink: /lecture-notes/correlation-properties-and-matrix/
 date: 2026-08-13
 published: false
-excerpt: "相關係數恆落在 $-1$ 與 $1$ 之間，把這個範圍乘回兩個標準差，馬上得到變異數-共變異數不等式，也就是共變異數必定界在 $-\\sigma_{\\sssig X}\\sigma_{\\sssig Y}$ 與 $\\sigma_{\\sssig X}\\sigma_{\\sssig Y}$ 之間。在了解相關係數以後，共變異數矩陣也可以改寫為相關矩陣: 它同樣是對稱矩陣，但主對角線元素必定為 $1$，非對角線元素為相關係數而界在 $-1$ 到 $1$ 之間，因此主對角線不為 $1$、兩側不對稱或元素超出範圍的矩陣都不是合法的相關矩陣。本篇的四道例題依序處理最大值期望值的上界、由共變異數建構相關矩陣、旋轉之後兩個新變數的相關係數，以及線性組合之間的相關係數。"
+excerpt: "相關係數恆落在 $-1$ 與 $1$ 之間，把這個範圍乘回兩個標準差，馬上得到變異數-共變異數不等式，也就是共變異數必定界在 $-\\sigma_{\\sssig X}\\sigma_{\\sssig Y}$ 與 $\\sigma_{\\sssig X}\\sigma_{\\sssig Y}$ 之間。在了解相關係數以後，共變異數矩陣也可以改寫為相關矩陣。它同樣是對稱矩陣，但主對角線元素必定為 $1$，非對角線元素為相關係數而界在 $-1$ 到 $1$ 之間，因此主對角線不為 $1$、兩側不對稱或元素超出範圍的矩陣都不是合法的相關矩陣。本篇的四道例題依序處理最大值期望值的上界、由共變異數建構相關矩陣、旋轉之後兩個新變數的相關係數，以及線性組合之間的相關係數。"
 ---
 
 [上一篇](/lecture-notes/correlation-coefficient/)以 [Definition 3.19](/lecture-notes/correlation-coefficient/#def-corr) 給出[相關係數](/lecture-notes/correlation-coefficient/#def-corr)，並以 [Theorem 3.19](/lecture-notes/correlation-coefficient/#thm-corr-proper) 證明它的六款性質，其中最後一款是相關係數恆落在 $-1$ 與 $1$ 之間。

@@ -10,7 +10,7 @@ order: 310
 permalink: /lecture-notes/multivariate-expectations/
 date: 2026-08-12
 published: false
-excerpt: "本篇把期望值推廣到二元的情形: 離散型以 joint pmf 作雙重加總，連續型以 joint pdf 作二重積分，被加總或被積分的都是實值函數 $g(x,y)$ 的值。把 $g$ 設定為 $X$ 或 $Y$，所得的正是邊際分配的期望值 $\\mathbb{E}(X)$ 與 $\\mathbb{E}(Y)$。線性組合仍然可以與期望值交換，相乘這種非線性的設定則不然，只有在 $X$ 與 $Y$ 獨立時，$\\mathbb{E}\\bigl[g(X)h(Y)\\bigr]$ 才會等於兩個期望值相乘；反過來說並不成立。最後以四道例題求兩個獨立隨機變數乘積的變異數、空盒個數的期望值與變異數，以及以一階泰勒展式求得的變異數近似值。"
+excerpt: "本篇把期望值推廣到二元的情形。離散型以 joint pmf 作雙重加總，連續型以 joint pdf 作二重積分，被加總或被積分的都是實值函數 $g(x,y)$ 的值。把 $g$ 設定為 $X$ 或 $Y$，所得的正是邊際分配的期望值 $\\mathbb{E}(X)$ 與 $\\mathbb{E}(Y)$。線性組合仍然可以與期望值交換，相乘這種非線性的設定則不然，只有在 $X$ 與 $Y$ 獨立時，$\\mathbb{E}\\bigl[g(X)h(Y)\\bigr]$ 才會等於兩個期望值相乘；反過來說並不成立。最後以四道例題求兩個獨立隨機變數乘積的變異數、空盒個數的期望值與變異數，以及以一階泰勒展式求得的變異數近似值。"
 ---
 
 [上一篇](/lecture-notes/independent-random-variables/)先以 [Theorem 3.3](/lecture-notes/independent-random-variables/#thm-multiplication-rule-r-v) 說明聯合機率函數如何由條件機率函數與邊際機率函數相乘而得，再以 [Definition 3.10](/lecture-notes/independent-random-variables/#def-indep-r-v) 給出[獨立隨機變數](/lecture-notes/independent-random-variables/#def-indep-r-v)的定義。本篇把[期望值](/lecture-notes/expectation/#def-expectation)推廣到二元的情形。

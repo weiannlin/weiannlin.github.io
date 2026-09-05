@@ -10,7 +10,7 @@ order: 416
 permalink: /lecture-notes/gamma-beta-relationship/
 date: 2026-08-12
 published: false
-excerpt: "兩個比例參數相同且彼此獨立的伽瑪變數，其中一個在兩者之和中所佔的比例服從貝塔分配，兩者之和則仍為伽瑪分配，而且這兩個新變數彼此獨立。本篇以 Jacobian 法完整證明這個結果: 先寫出兩個伽瑪變數的聯合機率密度函數，換元之後求得新變數的聯合機率密度函數，再分別對另一個變數積分而得到兩個邊際機率密度函數。這個結果背後有一個簡單直接的想法，即比例的平均為 $\\frac{a}{\\,a+b\\,}$，恰好是貝塔分配的期望值；其特例是兩個獨立同分配的指數變數，其比例服從標準均勻分配。最後以三道例題演練，依序處理指數變數的比例與和、標準均勻分配之順序統計量的共變異數與全距，以及三個獨立標準均勻變數的極大值與極小值。"
+excerpt: "兩個比例參數相同且彼此獨立的伽瑪變數，其中一個在兩者之和中所佔的比例服從貝塔分配，兩者之和則仍為伽瑪分配，而且這兩個新變數彼此獨立。本篇以 Jacobian 法完整證明這個結果。先寫出兩個伽瑪變數的聯合機率密度函數，換元之後求得新變數的聯合機率密度函數，再分別對另一個變數積分而得到兩個邊際機率密度函數。這個結果背後有一個簡單直接的想法，即比例的平均為 $\\frac{a}{\\,a+b\\,}$，恰好是貝塔分配的期望值；其特例是兩個獨立同分配的指數變數，其比例服從標準均勻分配。最後以三道例題演練，依序處理指數變數的比例與和、標準均勻分配之順序統計量的共變異數與全距，以及三個獨立標準均勻變數的極大值與極小值。"
 ---
 
 [上一篇](/lecture-notes/beta-function-and-distribution/)由[貝塔函數](/lecture-notes/beta-function-and-distribution/#def-beta-function)出發，給出[貝塔分配](/lecture-notes/beta-function-and-distribution/#def-beta-distribution)的定義。貝塔函數本身就是由兩個[伽瑪函數](/lecture-notes/gamma-function-exponential-distribution/#def-gamma-function)的乘積除以另一個伽瑪函數而來，因此貝塔分配與[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)之間存在一項直接的關係，本篇處理的就是這項關係。

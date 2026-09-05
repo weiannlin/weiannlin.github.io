@@ -10,7 +10,7 @@ order: 508
 permalink: /lecture-notes/slutsky-and-delta-method/
 date: 2026-08-15
 published: false
-excerpt: "上一篇的定理都是為機率收斂而生的，本篇把其中一個序列改為分配收斂，得到史拉斯基定理: 若 $X_n\\pconv c$ 且 $Y_n\\dconv W$，則和、積與商仍然分配收斂，極限分別為 $c+W$、$cW$ 與 $\\frac{W}{c}$。三道例題依序處理兩組樣本的比值、標準常態樣本的比值，以及 $t$ 統計量分配收斂至標準常態這件事，並由最後一題得知自由度趨於無窮時 $t$ 分配的極限分配就是標準常態分配。其後給出 Delta 法，把 $\\sqrt{n}\\,(X_n-\\theta)$ 的極限分配推廣到 $\\sqrt{n}\\,[g(X_n)-g(\\theta)]$，變異數多乘一個 $[g^{\\prime}(\\theta)]^{2}$。四道例題分別取 $g(x)=x^{2}$、$g(x)=e^{x}$、$g(x)=\\frac{x-1}{x^{2}}$ 與 $g(x)=\\sqrt{x}$，用來求樣本平均數平方、均勻樣本乘積、幾何母體樣本與卡方變數平方根的極限分配。"
+excerpt: "上一篇的定理都是為機率收斂而生的，本篇把其中一個序列改為分配收斂，得到史拉斯基定理。若 $X_n\\pconv c$ 且 $Y_n\\dconv W$，則和、積與商仍然分配收斂，極限分別為 $c+W$、$cW$ 與 $\\frac{W}{c}$。三道例題依序處理兩組樣本的比值、標準常態樣本的比值，以及 $t$ 統計量分配收斂至標準常態這件事，並由最後一題得知自由度趨於無窮時 $t$ 分配的極限分配就是標準常態分配。其後給出 Delta 法，把 $\\sqrt{n}\\,(X_n-\\theta)$ 的極限分配推廣到 $\\sqrt{n}\\,[g(X_n)-g(\\theta)]$，變異數多乘一個 $[g^{\\prime}(\\theta)]^{2}$。四道例題分別取 $g(x)=x^{2}$、$g(x)=e^{x}$、$g(x)=\\frac{x-1}{x^{2}}$ 與 $g(x)=\\sqrt{x}$，用來求樣本平均數平方、均勻樣本乘積、幾何母體樣本與卡方變數平方根的極限分配。"
 ---
 
 [上一篇](/lecture-notes/continuous-mapping-theorem/)給出[機率收斂的運算性質與連續映射定理](/lecture-notes/continuous-mapping-theorem/#thm-pconv-related)，其中每一條的前提都是[機率收斂](/lecture-notes/convergence-in-probability/#def-converge-in-probability)。本篇把其中一個序列的前提換成[分配收斂](/lecture-notes/convergence-in-distribution/#def-converge-in-distribution)，這些運算性質的結論會隨之改變。

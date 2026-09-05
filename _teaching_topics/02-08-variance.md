@@ -10,7 +10,7 @@ order: 208
 permalink: /lecture-notes/variance/
 date: 2026-08-06
 published: true
-excerpt: "變異數是離差平方的期望值，用來衡量一個隨機變數平均的分散程度: 離散型以 pmf 對各個離差平方加權求和，連續型以 pdf 加權積分。實際計算時多改用平方的期望值減期望值的平方，也就是 $\\mathrm{Var}(X)=\\mathbb{E}(X^{2})-[\\mathbb{E}(X)]^{2}$；同一套作法延伸到函數 $g(X)$ 便得到函數變異數。變異數恆為非負，對隨機變數平移一個常數不改變它的值，伸縮 $a$ 倍則使它成為原先的 $a^{2}$ 倍。"
+excerpt: "變異數是離差平方的期望值，用來衡量一個隨機變數平均的分散程度。離散型以 pmf 對各個離差平方加權求和，連續型以 pdf 加權積分。實際計算時多改用平方的期望值減期望值的平方，也就是 $\\mathrm{Var}(X)=\\mathbb{E}(X^{2})-[\\mathbb{E}(X)]^{2}$；同一套作法延伸到函數 $g(X)$ 便得到函數變異數。變異數恆為非負，對隨機變數平移一個常數不改變它的值，伸縮 $a$ 倍則使它成為原先的 $a^{2}$ 倍。"
 ---
 
 [上一篇](/lecture-notes/properties-of-expectation/)把[期望值](/lecture-notes/expectation/#def-expectation)的計算推廣到[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的函數 $g(X)$，並給出期望值與線性組合可以交換的性質。期望值指出一個分配的聚集中心，但只有中心並不足以描述一個分配。兩個期望值完全相同的隨機變數，取值散開的程度可以相差很多。

@@ -10,7 +10,7 @@ order: 306
 permalink: /lecture-notes/marginal-cumulative-distribution-functions/
 date: 2026-08-12
 published: false
-excerpt: "一列 iid 標準均勻分配的隨機變數，可以用「首次滿足特定條件的下標」定出一個隨機的 $N$，再求 $N$ 與序列本身的聯合機率。這一類問題的作法是回到 $N$ 的定義，把所求的事件改寫成一組不等式所界定的範圍，再以重積分求該範圍的體積，本篇的兩道例題分別以首次遞增的下標與部分和首次超過 $1$ 的下標示範這個作法。本篇後半給出邊際累積分配函數: 離散型是邊際 pmf 的加總，連續型是邊際 pdf 的積分。若把這個定義與聯合機率密度函數及邊際機率密度函數的定義相結合，則可以得到 $F_{\\sssig X}(x)=F_{\\sssig XY}(x,\\infty)$ 與 $F_{\\sssig Y}(y)=F_{\\sssig XY}(\\infty,y)$ 這個有用的性質。"
+excerpt: "一列 iid 標準均勻分配的隨機變數，可以用「首次滿足特定條件的下標」定出一個隨機的 $N$，再求 $N$ 與序列本身的聯合機率。這一類問題的作法是回到 $N$ 的定義，把所求的事件改寫成一組不等式所界定的範圍，再以重積分求該範圍的體積，本篇的兩道例題分別以首次遞增的下標與部分和首次超過 $1$ 的下標示範這個作法。本篇後半給出邊際累積分配函數。離散型是邊際 pmf 的加總，連續型是邊際 pdf 的積分。若把這個定義與聯合機率密度函數及邊際機率密度函數的定義相結合，則可以得到 $F_{\\sssig X}(x)=F_{\\sssig XY}(x,\\infty)$ 與 $F_{\\sssig Y}(y)=F_{\\sssig XY}(\\infty,y)$ 這個有用的性質。"
 ---
 
 [上一篇](/lecture-notes/region-probabilities-joint-density/)以三道例題示範了[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)在指定區域上的積分，其中最後一題的三個變數都服從標準均勻分配，機率因而等於所求範圍在整個值域中所佔的比例。

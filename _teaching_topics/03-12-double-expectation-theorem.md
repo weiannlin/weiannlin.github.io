@@ -10,7 +10,7 @@ order: 312
 permalink: /lecture-notes/double-expectation-theorem/
 date: 2026-08-13
 published: false
-excerpt: "條件期望值算完之後，被給定的那個值會留下來，因此條件期望值是條件的函數，這個函數即稱為迴歸函數。若把條件本身看成隨機的，$\\mathbb{E}(X\\mid Y)$ 便是 $Y$ 的函數，也就是一個隨機變數，我們因而可以再取一次期望值；雙重期望值定理指出，這一次期望值恰好等於 $X$ 的邊際期望值 $\\mathbb{E}(X)$。它背後的直觀是加權平均: 先把 $X$ 的分配依 $Y$ 的取值切成一片一片的條件分配，在每一片上找到重心，再以 $f_{\\sssig Y}(y)$ 為權重把這些重心平均起來，所得的就是原始空間中的重心。本篇並把這條定理推廣到 $g(X)$ 的版本。"
+excerpt: "條件期望值算完之後，被給定的那個值會留下來，因此條件期望值是條件的函數，這個函數即稱為迴歸函數。若把條件本身看成隨機的，$\\mathbb{E}(X\\mid Y)$ 便是 $Y$ 的函數，也就是一個隨機變數，我們因而可以再取一次期望值；雙重期望值定理指出，這一次期望值恰好等於 $X$ 的邊際期望值 $\\mathbb{E}(X)$。它背後的直觀是加權平均。先把 $X$ 的分配依 $Y$ 的取值切成一片一片的條件分配，在每一片上找到重心，再以 $f_{\\sssig Y}(y)$ 為權重把這些重心平均起來，所得的就是原始空間中的重心。本篇並把這條定理推廣到 $g(X)$ 的版本。"
 ---
 
 [上一篇](/lecture-notes/conditional-expectation-and-variance/)以 [Definition 3.11](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation) 與 [Definition 3.13](/lecture-notes/conditional-expectation-and-variance/#def-conditional-variance) 給出[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation)與[條件變異數](/lecture-notes/conditional-expectation-and-variance/#def-conditional-variance)，並在最後指出條件期望值是「給定的條件」的函數。

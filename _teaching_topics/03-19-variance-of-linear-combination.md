@@ -10,7 +10,7 @@ order: 319
 permalink: /lecture-notes/variance-of-linear-combination/
 date: 2026-08-13
 published: false
-excerpt: "共變異數的性質裡，有一款說一個變數與自己的共變異數就是變異數，另一款說常數的伸縮會原封不動地反映在共變異數上；把這兩款整合起來，便得到一組隨機變數線性組合的變異數: 它等於各項變異數的加權和，再加上兩倍的各對共變異數之和。當各項彼此獨立或零相關時，所有的共變異數都是 $0$，式子簡化為 $\\mathrm{Var}\\bigl(\\sum a_iX_i\\bigr)=\\sum a_i^{2}\\mathrm{Var}(X_i)$，也是 $\\mathrm{Var}(\\overline{X})=\\sigma_{\\sssig X}^{2}/n$ 的由來。本篇的兩道例題所處理的加總，各項都不是彼此獨立的: 一道給定任兩項同時取值為 $1$ 的機率，另一道是有限母體之下的取後不放回抽樣，其期望值與變異數很像二項分配，只差了一個有限母體校正因子。"
+excerpt: "共變異數的性質裡，有一款說一個變數與自己的共變異數就是變異數，另一款說常數的伸縮會原封不動地反映在共變異數上；把這兩款整合起來，便得到一組隨機變數線性組合的變異數。它等於各項變異數的加權和，再加上兩倍的各對共變異數之和。當各項彼此獨立或零相關時，所有的共變異數都是 $0$，式子簡化為 $\\mathrm{Var}\\bigl(\\sum a_iX_i\\bigr)=\\sum a_i^{2}\\mathrm{Var}(X_i)$，也是 $\\mathrm{Var}(\\overline{X})=\\sigma_{\\sssig X}^{2}/n$ 的由來。本篇的兩道例題所處理的加總，各項都不是彼此獨立的: 一道給定任兩項同時取值為 $1$ 的機率，另一道是有限母體之下的取後不放回抽樣，其期望值與變異數很像二項分配，只差了一個有限母體校正因子。"
 ---
 
 [上一篇](/lecture-notes/covariance/)以 [Definition 3.16](/lecture-notes/covariance/#def-covariance) 給出[共變異數](/lecture-notes/covariance/#def-covariance)，並以 [Theorem 3.15](/lecture-notes/covariance/#thm-covar-proper) 列出它的六款性質，其中第 (3) 款說一個變數與自己的共變異數就是變異數，第 (4) 款說常數的伸縮會原封不動地反映在共變異數上。

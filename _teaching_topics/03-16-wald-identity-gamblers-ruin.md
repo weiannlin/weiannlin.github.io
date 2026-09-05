@@ -10,7 +10,7 @@ order: 316
 permalink: /lecture-notes/wald-identity-gamblers-ruin/
 date: 2026-08-13
 published: false
-excerpt: "沃德等式處理的是加總的項數本身也是隨機變數的情形: 若 $X_1,X_2,\\ldots$ 為獨立同分配的隨機變數，$N$ 是與它們獨立的非負整數隨機變數，則 $S_{\\sssig N}=\\sum_{i=1}^{N}X_i$ 的期望值是兩個期望值相乘，變異數則由兩項相加而得。它的證明正是雙重期望值定理與變異數分解定理的直接應用。本篇以四道例題示範它的用法: 前兩道處理同一個問題，一道由沃德等式與全機率定理求出每日售出 laptop PC 的期望值、標準差與分配，另一道改以動差母函數確認同一個分配；後兩道是賭徒破產問題，公平賭局的版本可由沃德等式一步得解，不公平賭局的版本則須逐項相減再以等比級數求和。"
+excerpt: "沃德等式處理的是加總的項數本身也是隨機變數的情形。若 $X_1,X_2,\\ldots$ 為獨立同分配的隨機變數，$N$ 是與它們獨立的非負整數隨機變數，則 $S_{\\sssig N}=\\sum_{i=1}^{N}X_i$ 的期望值是兩個期望值相乘，變異數則由兩項相加而得。它的證明正是雙重期望值定理與變異數分解定理的直接應用。本篇以四道例題示範它的用法: 前兩道處理同一個問題，一道由沃德等式與全機率定理求出每日售出 laptop PC 的期望值、標準差與分配，另一道改以動差母函數確認同一個分配；後兩道是賭徒破產問題，公平賭局的版本可由沃德等式一步得解，不公平賭局的版本則須逐項相減再以等比級數求和。"
 ---
 
 [上一篇](/lecture-notes/variance-decomposition-theorem/)以 [Theorem 3.11](/lecture-notes/variance-decomposition-theorem/#thm-var-decom-thm) 把一個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的[變異數](/lecture-notes/variance/#def-variance)拆成組內變異與組間變異兩個部分。[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)與[變異數分解定理](/lecture-notes/variance-decomposition-theorem/#thm-var-decom-thm)，都是把條件之下的產物依條件變數的機率加權平均，從而得到邊際的產物；這兩條定理還有一個很典型的衍生應用，就是加總的項數本身也是隨機變數的情形。

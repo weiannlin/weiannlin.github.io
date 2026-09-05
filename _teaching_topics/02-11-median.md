@@ -10,7 +10,7 @@ order: 211
 permalink: /lecture-notes/median/
 date: 2026-08-06
 published: true
-excerpt: "中位數是把一個分配切成前後兩段的量數: 只要 $\\mathbb{P}(X\\leqslant\\eta_{X})$ 與 $\\mathbb{P}(X\\geqslant\\eta_{X})$ 都不小於 $\\frac{1}{2}$，$\\eta_{X}$ 就是 $X$ 的中位數。它可能不唯一，甚至可能不在值域內，取 $\\inf\\lbrace x\\mid F_{X}(x)\\geqslant\\frac{1}{2}\\rbrace$ 可以找到其中一個；若 $F_{X}$ 連續且在值域上嚴格遞增，中位數唯一且等於 $F_{X}^{-1}(\\frac{1}{2})$。衡量離散程度時若把平方換成距離，則使 $\\mathbb{E}(\\lvert X-a\\rvert)$ 達到最小的 $a$ 正是中位數，這與期望值使平方離差的期望值達到最小恰成對照。"
+excerpt: "中位數是把一個分配切成前後兩段的量數。只要 $\\mathbb{P}(X\\leqslant\\eta_{X})$ 與 $\\mathbb{P}(X\\geqslant\\eta_{X})$ 都不小於 $\\frac{1}{2}$，$\\eta_{X}$ 就是 $X$ 的中位數。它可能不唯一，甚至可能不在值域內，取 $\\inf\\lbrace x\\mid F_{X}(x)\\geqslant\\frac{1}{2}\\rbrace$ 可以找到其中一個；若 $F_{X}$ 連續且在值域上嚴格遞增，中位數唯一且等於 $F_{X}^{-1}(\\frac{1}{2})$。衡量離散程度時若把平方換成距離，則使 $\\mathbb{E}(\\lvert X-a\\rvert)$ 達到最小的 $a$ 正是中位數，這與期望值使平方離差的期望值達到最小恰成對照。"
 ---
 
 [上一篇](/lecture-notes/mode/)介紹[眾數](/lecture-notes/mode/#def-mode)，也就是使機率函數在值域的閉包上取到最大值的那些點。眾數關心的是一個分配的哪一處最可能發生，但要指出一個分配的中央位置，還有另一種常見的作法，找一個點，使它左右兩側的機率各佔一半。

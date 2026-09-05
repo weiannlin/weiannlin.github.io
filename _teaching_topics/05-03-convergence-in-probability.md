@@ -10,7 +10,7 @@ order: 503
 permalink: /lecture-notes/convergence-in-probability/
 date: 2026-08-15
 published: false
-excerpt: "機率收斂要求的是兩個隨機變數的取值任意接近，而不是兩個機率分配趨於一致: 若對任意的 $\\varepsilon>0$ 都有 $\\lim_{n\\to\\infty}\\mathbb{P}(\\lvert X_n-X\\rvert\\lt \\varepsilon)=1$，則稱 $X_n$ 機率收斂至 $X$，並稱 $X$ 為 $X_n$ 的機率極限。本篇先說明這個定義為什麼要求 $X$ 與整個序列落在同一個機率空間，再給出機率收斂與分配收斂之間的兩條關係。第一條是機率收斂必然導致分配收斂而反之不然，反例取一組把機率平均放在 $(1,2)$、$(2,3)$ 與 $(3,1)$ 三點的聯合 pmf，兩個邊際分配完全相同，取值卻永遠不相等。第二條是收斂對象若為一常數則兩者等價，證明的作法是把 $\\mathbb{P}(\\lvert X_n-c\\rvert\\lt \\varepsilon)$ 寫成兩個 cdf 值之差。最後以伽瑪分配退化至 $1$ 的例題，以及常態隨機樣本的樣本平均數與樣本變異數，示範這條等價關係怎麼用來求機率極限。"
+excerpt: "機率收斂要求的是兩個隨機變數的取值任意接近，而不是兩個機率分配趨於一致。若對任意的 $\\varepsilon>0$ 都有 $\\lim_{n\\to\\infty}\\mathbb{P}(\\lvert X_n-X\\rvert\\lt \\varepsilon)=1$，則稱 $X_n$ 機率收斂至 $X$，並稱 $X$ 為 $X_n$ 的機率極限。本篇先說明這個定義為什麼要求 $X$ 與整個序列落在同一個機率空間，再給出機率收斂與分配收斂之間的兩條關係。第一條是機率收斂必然導致分配收斂而反之不然，反例取一組把機率平均放在 $(1,2)$、$(2,3)$ 與 $(3,1)$ 三點的聯合 pmf，兩個邊際分配完全相同，取值卻永遠不相等。第二條是收斂對象若為一常數則兩者等價，證明的作法是把 $\\mathbb{P}(\\lvert X_n-c\\rvert\\lt \\varepsilon)$ 寫成兩個 cdf 值之差。最後以伽瑪分配退化至 $1$ 的例題，以及常態隨機樣本的樣本平均數與樣本變異數，示範這條等價關係怎麼用來求機率極限。"
 ---
 
 [上一篇](/lecture-notes/levy-continuity-theorem/)以列維連續性定理把[分配收斂](/lecture-notes/convergence-in-distribution/#def-converge-in-distribution)的判定改由動差母函數的極限來處理，五道例題都不必先求出極限 cdf。本篇轉入另一種收斂型態: 機率收斂。
