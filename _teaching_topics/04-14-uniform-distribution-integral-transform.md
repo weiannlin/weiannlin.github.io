@@ -258,7 +258,7 @@ u, & 0\leqslant u\leqslant1\\[0.35em]
 \right.
 $$
 
-這個 cdf 非常特別，除了線性的特色外，在 $u\in[0,1]$ 時是**恆等函數 <span lang="en">(identical function)</span>**，其變數值本身就代表累積機率，這種特色只有標準均勻分配才有。
+這個 cdf 非常特別，除了線性的特色外，在 $u\in[0,1]$ 時是**恆等函數 <span lang="en">(identity function)</span>**，其變數值本身就代表累積機率，這種特色只有標準均勻分配才有。
 {: .topic-paren-cont}
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -397,7 +397,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-此定理指出，任意隨機變數以「自己的 cdf」進行轉換[^pure-function]後會變為標準均勻分配，且其證明有賴以下兩點:
+此定理指出，任意隨機變數以「自己的 cdf」進行轉換後會變為標準均勻分配，且其證明有賴以下兩點:
 
 (1) $F\_{\sssig X}(\cdot)$ 是一個非遞減函數，故若 $F^{-1}\_{\sssig X}(\cdot)$ 存在，則 $F^{-1}\_{\sssig X}(\cdot)$ 也會是一個非遞減函數。
 {: .topic-paren-item}
@@ -407,7 +407,12 @@ $$
 
 </div>
 
-[^pure-function]: 這裡要注意的是，我們是將 $F_{\sssig X}(\cdot)$ 當成一個純粹的函數，而令 $U=F_{\sssig X}(X)$ 為 $X$ 的一個函數轉換。例如: 若 <span class="text-nowrap">$X\sim\mathrm{Exp}(\beta=1)$，</span>則我們是將其在 $[0,\infty)$ 區間內的部分 $F_{\sssig X}(x)=1-e^{-x},\ 0\leqslant x<\infty$ 當成一個純粹的函數，而令 $U=F_{\sssig X}(X)=1-e^{-X}$ 為 $X$ 的函數轉換，而後求取 $U$ 的 cdf。
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+這裡要注意的是，我們是將 $F_{\sssig X}(\cdot)$ 當成一個純粹的函數，而令 $U=F_{\sssig X}(X)$ 為 $X$ 的一個函數轉換。例如: 若 <span class="text-nowrap">$X\sim\mathrm{Exp}(\beta=1)$，</span>則我們是將其在 $[0,\infty)$ 區間內的部分 $F_{\sssig X}(x)=1-e^{-x},\ 0\leqslant x<\infty$ 當成一個純粹的函數，而令 $U=F_{\sssig X}(X)=1-e^{-X}$ 為 $X$ 的函數轉換，而後求取 $U$ 的 cdf。
+
+</div>
 
 ## 逆機率積分轉換
 
@@ -461,7 +466,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個定理也被稱作逆抽樣轉換，其內容事實上是第一部分的反敘述。我們對標準均勻分配以 $g^{-1}(\cdot)$ 進行函數轉換，則轉換後變數的 cdf 就是 $g(\cdot)$ 這個函數，換句話說，若以「欲求取之分配的 cdf 的反函數」對標準均勻分配進行函數轉換，則轉換後的分配即是欲求取的分配。
+這個定理也被稱作逆抽樣轉換，其內容事實上是第一部分的反敘述。我們對標準均勻分配以 $g^{-1}(\cdot)$ 進行函數轉換，則轉換後變數的 cdf 就是 $g(\cdot)$，換句話說，若以「欲求取之分配的 cdf 的反函數」對標準均勻分配進行函數轉換，則轉換後的分配即是欲求取的分配。
 
 這個性質在實務上的用途非常廣泛，因為在較底層的運算系統中，所謂的「隨機數」就是標準均勻分配的隨機變數，也就是 $0$ 到 $1$ 之間的隨機亂數，若要以這個僅有的隨機系統生出具有各式分配的「隨機變數」，便要借助此定理來達成。
 
@@ -480,9 +485,9 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 4.2.</span> 兩個面板各畫一條 cdf。一條在 $0$ 與 $1$ 之間是恆等函數，$a$ 與 $b$ 兩點的 cdf 值 $F_{\sssig U}(a)$ 與 $F_{\sssig U}(b)$ 恰好等於 $a$ 與 $b$ 本身；另一條是一般的 <span class="text-nowrap">cdf，</span>同樣兩點的 $F_{\sssig X}(a)$ 與 $F_{\sssig X}(b)$ 則由曲線的高度決定。把一般的 cdf 伸縮回恆等函數所需要的訊息，全部記在 <span class="text-nowrap">$F_{\sssig X}(\cdot)$ 之中。</span></figcaption>
 </figure>
 
-左側是標準均勻分配的 cdf <span class="text-nowrap">$F_{\sssig U}(u)$，</span>在 $[0,1]$ 的範圍內是恆等函數，不論給任何的 $a$ 與 <span class="text-nowrap">$b$，</span>我們總是可以得到恰好一樣的 cdf 值 $F_{\sssig U}(a)=a$ 與 <span class="text-nowrap">$F_{\sssig U}(b)=b$，</span>一般任意的分配如果要得到這種結果，要將 $U$ 經過妥善的「拉伸」，才能夠從右側的一般化圖示，變成左側的標準均勻分配。
+上方是標準均勻分配的 cdf <span class="text-nowrap">$F_{\sssig U}(u)$，</span>在 $[0,1]$ 的範圍內是恆等函數，不論給任何的 $a$ 與 <span class="text-nowrap">$b$，</span>我們總是可以得到恰好一樣的 cdf 值 $F_{\sssig U}(a)=a$ 與 <span class="text-nowrap">$F_{\sssig U}(b)=b$，</span>一般任意的分配如果要得到這種結果，要將 $U$ 經過妥善的「拉伸」，才能夠從下方的一般化圖示，變成上方的標準均勻分配。
 
-然而，每個隨機變數的分配各有特色，我們一般很難知道該怎麼「拉伸」才能夠從右側漂亮地變到左側，但所幸這個資訊被完整地刻劃在 $X$ 的 cdf $F_{\sssig X}(x)$ 當中，所以選用這個 cdf 當作這個橋樑，便能夠很漂亮地得到這個結果；而機率積分轉換與逆機率積分轉換則分別只是這組關係式在方向上的不同而已。
+然而，每個隨機變數的分配各有特色，我們一般很難知道該怎麼「拉伸」才能夠從下方漂亮地變到上方，但所幸這個資訊被完整地刻劃在 $X$ 的 cdf $F_{\sssig X}(x)$ 當中，所以選用這個 cdf 當作這個橋樑，便能夠很漂亮地得到這個結果；而機率積分轉換與逆機率積分轉換則分別只是這組關係式在方向上的不同而已。
 
 ## 均勻分配與機率積分轉換的例題
 
@@ -493,12 +498,7 @@ $$
 Suppose that $X$ follows the uniform distribution on the interval <span class="text-nowrap">$(0,1)$.</span> Evaluate the conditional expectation <span class="text-nowrap">$\mathbb{E}\left[X\,\middle|\,X<\frac{1}{\,4\,}\right]$.</span>
 </div>
 
-<!-- ref-point: 待第三章第 8 篇 (條件分配的例題; 截尾分配的定義在書稿 mathstatch3.tex
-     第 1506 至 1513 行的註記，該註記給出離散型與連續型兩式，網頁 anchor 於該篇撰寫時
-     依 CH3_NUMBERING.md 定案) 發布後，將下一句的「截尾分配的定義」改為指向該 anchor
-     的站內連結。 -->
-
-由截尾分配的定義可知
+由[截尾分配的定義](/lecture-notes/conditional-distributions-examples/#def-truncated-distribution)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -702,7 +702,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在操作逆機率積分轉換時，讀者要特別注意，我們在操作流程上，必須先求取「目標分配的 cdf」，如此才能夠知道要透過怎樣的變換，將 $\mathcal{U}(0,\ 1)$ 轉換為該分配，因此以本題而言，我們儘管一看就知道目標分配是 $\mathrm{Exp}(\beta=\lambda)$ 這個分配，仍然需要以這個資訊先行求取其 cdf <span class="text-nowrap">$F_{\sssig X}(x)$。</span>
+在操作逆機率積分轉換時，讀者要特別注意，我們在操作流程上，必須先求取「目標分配的 cdf」，如此才能夠知道要透過怎樣的變換，將 $\mathcal{U}(0,\ 1)$ 轉換為該分配，因此以本題而言，我們儘管一看就知道目標分配是 $\mathrm{Exp}(\beta=\lambda)$，仍然需要以這個資訊先行求取其 cdf <span class="text-nowrap">$F_{\sssig X}(x)$。</span>
 
 </div>
 
@@ -714,7 +714,7 @@ $$
 
 把上一段最後這件事推廣到任意的連續分配，就是 [Theorem 4.17](#thm-p-i-t) 與 [Theorem 4.18](#thm-i-p-i-t)。前者說明以 $X$ 自己的 cdf 作轉換所得的 $U=F_{\sssig X}(X)$ 服從標準均勻分配，證明只用到 cdf 非遞減、以及標準均勻分配是唯一一個 cdf 在 $[0,1]$ 上為恆等函數的分配這兩點；後者是它的反敘述，以非遞減函數 $g(\cdot)$ 的反函數轉換標準均勻分配，所得變數的 cdf 就是 $g(\cdot)$ 這個函數。兩者其實是同一組關係式的兩個方向，也就是 $U=F\_{\sssig X}(X)$ 與 $X=F^{-1}\_{\sssig X}(U)$ 這兩個寫法；之所以能夠以 cdf 當作橋樑，是因為把一般的 cdf「拉伸」回恆等函數所需要的資訊，本來就完整地記錄在 cdf 之中。逆機率積分轉換在實務上的用途極廣，因為運算系統所能提供的隨機來源只有 $0$ 到 $1$ 之間的亂數，各式分配的隨機變數都要靠它生出來。
 
-三道例題各練一種用法。[Example 4.38](#ex-uniform-1) 先由截尾分配的定義求出條件密度為常數 <span class="text-nowrap">$4$，</span>再積分得到 <span class="text-nowrap">$\frac{1}{\,8\,}$；</span>由於限制範圍並不改變密度在該範圍內的形狀，均勻分配的截尾分配必定還是均勻分配。[Example 4.39](#ex-uniform-2) 正是機率積分轉換的直接應用，$Y=F_{\sssig X}(X)$ 服從 <span class="text-nowrap">$\mathcal{U}(0,\ 1)$，</span>密度在 $(0,1)$ 上恆為 <span class="text-nowrap">$1$，</span>變異數為 <span class="text-nowrap">$\frac{1}{\,12\,}$。</span>[Example 4.40](#ex-uniform-3) 則把兩個方向各走一次: 先取 $g$ 為[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)自己的 cdf 而得到標準均勻分配，再反解出 $X=-\lambda\ln(1-U)$ 這個式子，由標準均勻分配生回指數分配；操作逆機率積分轉換時，一定要先求出目標分配的 cdf，才知道該用哪一個反函數。
+三道例題各練一種用法。[Example 4.38](#ex-uniform-1) 先由截尾分配的定義求出條件密度為常數 <span class="text-nowrap">$4$，</span>再積分得到 <span class="text-nowrap">$\frac{1}{\,8\,}$；</span>由於限制範圍並不改變密度在該範圍內的形狀，均勻分配的截尾分配必定還是均勻分配。[Example 4.39](#ex-uniform-2) 正是機率積分轉換的直接應用，$Y=F_{\sssig X}(X)$ 服從 <span class="text-nowrap">$\mathcal{U}(0,\ 1)$，</span>密度在 $(0,1)$ 上恆為 <span class="text-nowrap">$1$，</span>變異數為 <span class="text-nowrap">$\frac{1}{\,12\,}$。</span>[Example 4.40](#ex-uniform-3) 則把兩個方向各走一次。先取 $g$ 為[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)自己的 cdf 而得到標準均勻分配，再反解出 $X=-\lambda\ln(1-U)$ 這個式子，由標準均勻分配生回指數分配；操作逆機率積分轉換時，一定要先求出目標分配的 cdf，才知道該用哪一個反函數。
 
 [下一篇](/lecture-notes/beta-function-and-distribution/)介紹貝塔函數與貝塔分配，貝塔分配的值域同樣落在 $0$ 與 $1$ 之間，而標準均勻分配正是它的一個特例。
 

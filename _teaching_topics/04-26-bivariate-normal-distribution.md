@@ -304,9 +304,16 @@ $$
 
 </div>
 
-這個結果讀者應該感到相當熟悉，因為條件期望值的部分正好是先前提到的[母體線性迴歸方程式](/lecture-notes/population-linear-regression/#thm-popu-reg) <span lang="en">(population linear regression equation)</span>。[^econometrics]
+這個結果讀者應該感到相當熟悉，因為條件期望值的部分正好是先前提到的[母體線性迴歸方程式](/lecture-notes/population-linear-regression/#thm-popu-reg) <span lang="en">(population linear regression equation)</span>。
 
 此外，透過這個結果，我們也可以搭配母體線性迴歸方程式中的正逆迴歸，證明相關係數確實為 <span class="text-nowrap">$\rho$。</span>
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+事實上，這個結果格外重要，因為在諸如計量經濟學 <span lang="en">(econometrics)</span> 等領域，並不會將線性迴歸中的自變數視為常數，而是視為隨機變數之一，故如果有自變數 $X$ 與反應變數 $Y$ 共同服從二元 (或是多元) 常態分配的話，則我們還是可以透過給定 $X$ 的方式重新獲得線性迴歸模型的所有好處。
 
 </div>
 
@@ -326,7 +333,7 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 4.16.</span> 由正上方俯瞰 <a href="#fig-bivariate-normal-surface">Fig. 4.15</a> 的兩個曲面，橫軸標為 <span class="text-nowrap">$x$、</span>縱軸標為 <span class="text-nowrap">$y$，</span>墨色越深的地方機率密度越大。左面板所標的 $\rho$ 為零，深色的一團是正圓形；右面板所標的 $\rho$ 為負，同一團被拉成一個由左上往右下傾斜的橢圓形。<span class="text-nowrap">$\lvert\rho\rvert$</span> 越大，橢圓就越狹長。</figcaption>
 </figure>
 
-上述圖形可以發現，二元常態形狀的結果相當受到參數設定的影響，尤其是相關係數，但整體而言，相關係數的絕對值越大，$X$ 與 $Y$ 的分配就越接近一條直線。[^scatter]
+上述圖形可以發現，二元常態形狀的結果相當受到參數設定的影響，尤其是相關係數，但整體而言，相關係數的絕對值越大，$X$ 與 $Y$ 的分配就越接近一條直線。
 {: .topic-paren-cont}
 
 <div class="topic-box topic-box--note" markdown="1">
@@ -335,6 +342,13 @@ $$
 二元常態呈橢圓形的趨勢，是受到其 pdf 指數項上的二次形式的影響。事實上，二次形式 $Q(x,y)$ 本身就是一個斜橢圓的函數，隨著每一個點以斜橢圓的方式遠離橢圓中心，其機率密度會以指數的平方倍快速下降，因此俯瞰圖顯示，中間大致在一個橢圓形的內部，具有比較高的機率密度。
 
 此外，橢圓的軸線斜率除了受到相關係數的影響以外，更受到 $X$ 與 $Y$ 各自標準差的影響，這一點與母體線性迴歸方程式有關，讀者不妨觀察看看其中的奧秘。
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+事實上，[Fig. 3.18](/lecture-notes/correlation-coefficient/#fig-correlation-strength-scatter) 的相關係數圖，正是由抽自二元常態分配的樣本所繪製而成，讀者不妨與此處的結論互相對照。
 
 </div>
 
@@ -454,34 +468,25 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
+<div id="note-affine-transformation" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在先前的筆記中，我們曾經提過，常態分配的任意線性組合，其結果都是常態分配，這是常態分配特有的**仿射變換 <span lang="en">(affine transformation)</span>** 性質，在多元常態的矩陣運算中特別有用，而這個性質雖不是矩陣運算的版本，但確實與當時提到的仿射變換是同一個性質。
-
-<!-- ref-point: 書稿此處以「頁 \pageref{affineFirst} 中的筆記」指向書稿 mathstatch3.tex
-     第 4825 行的註記 (第三章 3.3.2 小節，落在第三章第 25 篇「多對一與動差母函數法」，
-     slug 為 mgf-method-transformations)。該篇尚未定出這一則註記的 anchor，
-     anchor 定出之後，把上一段的「在先前的筆記中」改為指向該 anchor 的連結。 -->
+在[先前的筆記](/lecture-notes/mgf-method-examples/#note-affine-transformation)中，我們曾經提過，常態分配的任意線性組合，其結果都是常態分配，這是常態分配特有的**仿射變換 <span lang="en">(affine transformation)</span>** 性質，在多元常態的矩陣運算中特別有用，而這個性質雖不是矩陣運算的版本，但確實與當時提到的仿射變換是同一個性質。
 
 </div>
 
 (6) 二元常態分配可以推廣至更多常態分配的情況，也就是**[多元常態分配](/lecture-notes/multivariate-normal-distribution/#def-multivariate-normal) <span lang="en">(multivariate normal distribution)</span>**，稍後我們馬上就會看到。
 {: .topic-paren-item}
 
-[^econometrics]: 事實上，這個結果格外重要，因為在諸如計量經濟學 <span lang="en">(econometrics)</span> 等領域，並不會將線性迴歸中的自變數視為常數，而是視為隨機變數之一，故如果有自變數 $X$ 與反應變數 $Y$ 共同服從二元 (或是多元) 常態分配的話，則我們還是可以透過給定 $X$ 的方式重新獲得線性迴歸模型的所有好處。
-
-[^scatter]: 事實上，[Fig. 3.18](/lecture-notes/correlation-coefficient/#fig-correlation-strength-scatter) 的相關係數圖，正是由抽自二元常態分配的樣本所繪製而成，讀者不妨與此處的結論互相對照。
-
 ## 本篇小結
 
 [Definition 4.25](#def-bivariate-normal) 的二元常態分配以五個參數界定: $\mu_1$ 與 $\mu_2$ 是兩個期望值、$\sigma_1^{2}$ 與 $\sigma_2^{2}$ 是兩個變異數、$\rho$ 是兩者之間的相關係數，值域為整個平面。它的機率密度函數是 $\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^{2}}}e^{-\frac{Q(x,y)}{2}}$ 這個式子，其中 $Q(x,y)$ 是一個把 $\frac{x-\mu_1}{\sigma_1}$ 與 $\frac{y-\mu_2}{\sigma_2}$ 兩項標準化變數配起來的二次形式，[聯合動差母函數](/lecture-notes/cross-moments-joint-mgf/#def-joint-mgf)則是 $e^{\mu_1t_1+\mu_2t_2+\frac{1}{2}(\sigma^{2}_1t_1^{2}+2\rho\sigma_1\sigma_2t_1t_2+\sigma^{2}_2t_2^{2})}$ 這個函數。
 
-定義之後的六點說明，前五點各給一項性質。第一點是邊際分配: 把 $Q(x,y)$ 對 $y$ 配成完全平方，剩下的一項恰好只含 <span class="text-nowrap">$x$，</span>對 $y$ 積分之後那個常態核心給出 <span class="text-nowrap">$\sqrt{2\pi\sigma_2^{2}(1-\rho^{2})}$，</span>與前面的常數相約之後正好剩下 $\mathcal{N}(\mu_1,\sigma_1^{2})$ 的機率密度函數。要留意的是反過來並不成立: 兩個常態分配未必能組成一個二元常態分配，不獨立的時候尤其如此。
+定義之後的六點說明，前五點各給一項性質。第一點是邊際分配。把 $Q(x,y)$ 對 $y$ 配成完全平方，剩下的一項恰好只含 <span class="text-nowrap">$x$，</span>對 $y$ 積分之後那個常態核心給出 <span class="text-nowrap">$\sqrt{2\pi\sigma_2^{2}(1-\rho^{2})}$，</span>與前面的常數相約之後正好剩下 $\mathcal{N}(\mu_1,\sigma_1^{2})$ 的機率密度函數。要留意的是反過來並不成立。兩個常態分配未必能組成一個二元常態分配，不獨立的時候尤其如此。
 
-第二點是條件分配。把聯合機率密度函數除以邊際機率密度函數，指數上兩個 $(y-\mu_2)^{2}$ 的項相消，剩下的正是以 $\mu_1+\rho\frac{\sigma_1}{\sigma_2}(y-\mu_2)$ 為期望值、以 $\sigma_1^{2}(1-\rho^{2})$ 為變異數的常態機率密度函數。這裡的條件期望值就是[母體線性迴歸方程式](/lecture-notes/population-linear-regression/#thm-popu-reg)，而條件變異數不隨 $y$ 改變，$\lvert\rho\rvert$ 越大則條件變異數越小。
+第二點是條件分配。把聯合機率密度函數除以邊際機率密度函數，指數上兩個 $(y-\mu_2)^{2}$ 的項相消，剩下的正是以 $\mu_1+\rho\frac{\sigma_1}{\sigma_2}(y-\mu_2)$ 為期望值、以 $\sigma_1^{2}(1-\rho^{2})$ 為變異數的常態機率密度函數。這裡的條件期望值就是母體線性迴歸方程式，而條件變異數不隨 $y$ 改變，$\lvert\rho\rvert$ 越大則條件變異數越小。
 
-第三點回到圖形。機率密度呈立體鐘形，由正上方俯瞰則呈橢圓形，這是因為 $Q(x,y)$ 本身就是一個斜橢圓的函數，離橢圓中心越遠，機率密度下降得越快；橢圓軸線的斜率不只受相關係數影響，也受兩個標準差影響。第四點是二元常態分配特有的結果: 令 $\rho=0$ 之後機率密度函數恰好拆成兩個邊際機率密度函數的乘積，故在二元常態分配之中零相關與獨立等價，這件事在一般的機率分配並不成立。第五點則由聯合動差母函數直接得到 <span class="text-nowrap">$M_{\sssig W}(t)=M_{\sssig XY}(at,bt)$，</span>代入之後仍是常態分配的動差母函數形式，因而任意線性組合 $aX+bY$ 服從 <span class="text-nowrap">$\mathcal{N}\bigl(a\mu_1+b\mu_2,\ a^{2}\sigma_1^{2}+b^{2}\sigma_2^{2}+2ab\rho\sigma_1\sigma_2\bigr)$，</span>其變異數比獨立時多出 $2ab\rho\sigma_1\sigma_2$ 這一項。第六點預告了後文的多元常態分配。
+第三點回到圖形。機率密度呈立體鐘形，由正上方俯瞰則呈橢圓形，這是因為 $Q(x,y)$ 本身就是一個斜橢圓的函數，離橢圓中心越遠，機率密度下降得越快；橢圓軸線的斜率不只受相關係數影響，也受兩個標準差影響。第四點是二元常態分配特有的結果。令 $\rho=0$ 之後機率密度函數恰好拆成兩個邊際機率密度函數的乘積，故在二元常態分配之中零相關與獨立等價，這件事在一般的機率分配並不成立。第五點則由聯合動差母函數直接得到 <span class="text-nowrap">$M_{\sssig W}(t)=M_{\sssig XY}(at,bt)$，</span>代入之後仍是常態分配的動差母函數形式，因而任意線性組合 $aX+bY$ 服從 $\mathcal{N}\bigl(a\mu_1+b\mu_2,\ a^{2}\sigma_1^{2}+b^{2}\sigma_2^{2}+2ab\rho\sigma_1\sigma_2\bigr)$ 這個分配，其變異數比獨立時多出 $2ab\rho\sigma_1\sigma_2$ 這一項。第六點預告了後文的多元常態分配。
 
 [下一篇](/lecture-notes/bivariate-normal-examples/)以三道例題演練二元常態分配，依序處理由條件分配的機率反求相關係數並求線性組合的分配、邊際皆為常態而聯合並非二元常態的反例，以及由機率密度函數的核辨認五個參數再求條件期望值。
 

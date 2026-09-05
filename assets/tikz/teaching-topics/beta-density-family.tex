@@ -1,5 +1,5 @@
 % Fig. 4.3 -- 五條不同參數的貝塔分配密度曲線疊在同一張圖上。
-% 書稿來源: mathstatch4.tex 第 3049 至 3077 行的 tikzpicture (置於 center 之內，內容
+% 書稿來源: mathstatch4.tex 第 3363 至 3393 行的 tikzpicture (置於 center 之內，內容
 %   全部由 pgfplots 的 axis 環境畫出，width = .8\textwidth、height = .55\textwidth)。
 %   書稿以 declare function 定義 (a+b-1)!/((a-1)!(b-1)!) * k^(a-1) * (1-k)^(b-1)，
 %   即五組參數皆為正整數時的貝塔密度，samples = 600、domain 0:1、smooth;
@@ -35,6 +35,8 @@
 %      個數值，在網頁的原生寬之下相鄰標籤只差 0.6cm，會相碰。書稿 xtick 到 1.1，
 %      該處已在密度的定義域之外，只是軸線的延伸，故刻度線畫到 1.0 為止。
 %   4. x 軸末端補上軸名 $x$ (書稿 xlabel 為空)，記號取候選稿內文的 f_X(x) 之 x。
+%   5. 圖例的參數符號依候選稿 2026-09-05 的貝塔記號裁定，由 $\alpha,\beta$ 改為
+%      $a, b$ (書稿第 3387 至 3391 行的 \addlegendentry 同日改定)。
 %
 % 取樣數由書稿的 600 降為 200，即 CH2_FIGURE_SPECS.md 1.6 所定的下限。三個取樣數各
 % 產一次 SVG 的實測: 600 為 174,086 位元組 (gzip 72,521)、300 為 99,106 (gzip 32,451)、
@@ -47,7 +49,7 @@
 %
 % 產製:
 %   pdflatex beta-density-family.tex
-%   pdftocairo -svg beta-density-family.pdf ../../images/teaching-topics/beta-density-family.svg
+%   pdftocairo -svg beta-density-family.pdf ../../../images/lecture-notes/beta-density-family.svg
 
 \documentclass[tikz,border=2pt]{standalone}
 \usepackage{amsmath}
@@ -103,19 +105,19 @@
   %% ---- 圖例，左上角 -------------------------------------------------
   %% 短線段樣本 0.5cm，自 x = -0.10 到 x = -0.0166667。
   \draw[sOne]     (-0.1,3.95) -- (-0.0166667,3.95);
-  \node[anchor=west, inner sep=1.5pt] at (0.005,3.95) {$\alpha=1,\ \beta=1$};
+  \node[anchor=west, inner sep=1.5pt] at (0.005,3.95) {$a=1,\ b=1$};
 
   \draw[sTwoFour] (-0.1,3.58) -- (-0.0166667,3.58);
-  \node[anchor=west, inner sep=1.5pt] at (0.005,3.58) {$\alpha=2,\ \beta=4$};
+  \node[anchor=west, inner sep=1.5pt] at (0.005,3.58) {$a=2,\ b=4$};
 
   \draw[sTwoTwo]  (-0.1,3.21) -- (-0.0166667,3.21);
-  \node[anchor=west, inner sep=1.5pt] at (0.005,3.21) {$\alpha=2,\ \beta=2$};
+  \node[anchor=west, inner sep=1.5pt] at (0.005,3.21) {$a=2,\ b=2$};
 
   \draw[sFourTwo] (-0.1,2.84) -- (-0.0166667,2.84);
-  \node[anchor=west, inner sep=1.5pt] at (0.005,2.84) {$\alpha=4,\ \beta=2$};
+  \node[anchor=west, inner sep=1.5pt] at (0.005,2.84) {$a=4,\ b=2$};
 
   \draw[sEight]   (-0.1,2.47) -- (-0.0166667,2.47);
-  \node[anchor=west, inner sep=1.5pt] at (0.005,2.47) {$\alpha=8,\ \beta=8$};
+  \node[anchor=west, inner sep=1.5pt] at (0.005,2.47) {$a=8,\ b=8$};
 
 \end{tikzpicture}
 \end{document}

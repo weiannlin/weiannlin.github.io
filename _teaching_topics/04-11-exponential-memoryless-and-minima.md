@@ -13,7 +13,7 @@ published: false
 excerpt: "指數分配的無記憶性說的是，已經等了 $a$ 單位時間而偶發事件仍未發生時，再多等 $b$ 單位時間仍然沒有發生的機率，與從頭開始等 $b$ 單位時間的機率完全相同。本篇先證明這個性質，再證明它的逆敘述: 非負連續隨機變數只要具備無記憶性，就一定服從指數分配，兩者因而互為充要條件。接著轉入兩個獨立指數分配的比較，先指出兩者取極小值之後仍為指數分配，頻率參數為兩者相加，再求出 $Y$ 先發生的機率為 $\\frac{\\lambda_2}{\\,\\lambda_1+\\lambda_2\\,}$ 這個比值。最後以三道例題演練無記憶性的計算、極小值與指標函數的獨立性，以及參數 $\\theta$ 所對應的百分位數。"
 ---
 
-[上一篇](/lecture-notes/gamma-function-exponential-distribution/)先給出伽瑪函數，再以卜瓦松過程中的等待時間定義[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)，並說明它與卜瓦松分配之間的對偶關係。本篇處理指數分配最具代表性的一項性質，也就是無記憶性 <span lang="en">(memoryless property)</span>: 只要偶發事件還沒有發生，已經等了多久，都不會改變往後還要再等多久的機率。
+[上一篇](/lecture-notes/gamma-function-exponential-distribution/)先給出伽瑪函數，再以卜瓦松過程中的等待時間定義[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)，並說明它與卜瓦松分配之間的對偶關係。本篇處理指數分配最具代表性的一項性質，也就是無記憶性 <span lang="en">(memoryless property)</span>。只要偶發事件還沒有發生，已經等了多久，都不會改變往後還要再等多久的機率。
 
 [幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)那一篇已經證明過離散型的無記憶性，也說明了幾何分配與指數分配是唯二具有這個性質的分配。本篇先證明指數分配的版本，再證明它的逆敘述，說明無記憶性反過來也足以決定分配。其後轉入兩個獨立指數分配的比較，分別求出兩者取極小值之後的分配，以及兩者之中哪一個先發生的機率，最後以三道例題作為演練。
 
@@ -93,10 +93,10 @@ $$
 
 ## 連續型無記憶性的逆敘述
 
-我們稍微在此打住。既然指數分配與幾何分配是唯二具有無記憶性的分配，且當時我們曾經證明過，[一個具有無記憶性的非負整數值隨機變數必定是幾何分配](/lecture-notes/geometric-distribution-memoryless/#thm-geometric-memoryless-converse)，那我們能不能在這裡說明，如果有一非負連續隨機變數具有無記憶性，則這個分配必定是指數分配呢? 答案同樣是可以的，見[下列定理](#thm-exponential-memoryless-converse)。
+我們稍微在此打住。既然指數分配與幾何分配是唯二具有無記憶性的分配，且當時我們曾經證明過，[一個具有無記憶性的正整數值隨機變數必定是幾何分配](/lecture-notes/geometric-distribution-memoryless/#thm-geometric-memoryless-converse)，那我們能不能在這裡說明，如果有一非負連續隨機變數具有無記憶性，則這個分配必定是指數分配呢? 答案同樣是可以的，見[下列定理](#thm-exponential-memoryless-converse)。
 
 <div id="thm-exponential-memoryless-converse" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 4.13 (連續型無記憶性的逆敘述, converse of the memoryless property (continuous))</div>
+<div class="topic-box__label">Theorem 4.13 (連續型無記憶性的逆敘述, converse of the memoryless property)</div>
 
 若 $X$ 為一非負連續隨機變數，且已知
 
@@ -221,8 +221,16 @@ $$
 其中，若令 <span class="text-nowrap">$R^{\prime}(0)=-\frac{1}{\,\beta\,}$，</span>則可知
 
 $$
-\frac{\,R^{\prime}(x)\,}{R(x)}=R^{\prime}(0)=-\frac{1}{\,\beta\,}\qquad\therefore\, \ln R(x)=-\frac{1}{\,\beta\,}x+C
+\frac{\,R^{\prime}(x)\,}{R(x)}=R^{\prime}(0)=-\frac{1}{\,\beta\,}
 $$
+
+<div class="topic-math-follow" markdown="1">
+
+$$
+\Longrightarrow\ \ln R(x)=-\frac{1}{\,\beta\,}x+C
+$$
+
+</div>
 
 (由微分方程求解，$C$ 為積分常數)
 
@@ -343,7 +351,7 @@ $$
 <div id="thm-min-of-exponentials" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 4.14 (兩個獨立指數分配的極小值, minimum of two exponential variables)</div>
 
-若 <span class="text-nowrap">$X\sim\mathrm{Exp}(\lambda_1)\indep Y\sim\mathrm{Exp}(\lambda_2)$，</span>則
+若 $X\sim\mathrm{Exp}(\lambda_1)\indep Y\sim\mathrm{Exp}(\lambda_2)$ 成立，則
 
 $$
 \min\lbrace X,Y\rbrace\sim\mathrm{Exp}(\lambda_1+\lambda_2)
@@ -422,9 +430,9 @@ $$
 ## 兩個獨立指數分配的先後次序
 
 <div id="thm-exponential-race" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 4.15 (兩個獨立指數分配的先後次序, which of two exponential variables comes first)</div>
+<div class="topic-box__label">Theorem 4.15 (兩個獨立指數分配的先後次序, which of the two comes first)</div>
 
-若 <span class="text-nowrap">$X\sim\mathrm{Exp}(\lambda_1)\indep Y\sim\mathrm{Exp}(\lambda_2)$，</span>則
+若 $X\sim\mathrm{Exp}(\lambda_1)\indep Y\sim\mathrm{Exp}(\lambda_2)$ 成立，則
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -674,11 +682,11 @@ $$
 
 [Theorem 4.12](#thm-memoryless-exp) 把 [Theorem 4.4](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless) 的無記憶性由幾何分配換成指數分配，敘述仍然是 $\mathbb{P}(X>a+b\mid X>a)=\mathbb{P}(X>b)$ 這條等式，只是 $a$ 與 $b$ 由正整數換成正實數。證明的關鍵同樣只有一步，即 $\mathbb{P}(X>x)=e^{-\frac{x}{\beta}}$ 這個機率，兩者相除時 $e^{-\frac{a}{\beta}}$ 恰好被約掉。直觀上，只要還沒有等到偶發事件，就永遠像是重新等一次一樣。
 
-[Theorem 4.13](#thm-exponential-memoryless-converse) 把這件事反過來說。已知條件先化為 $\mathbb{P}(X>a+b)=\mathbb{P}(X>a)\,\mathbb{P}(X>b)$ 這條乘法關係，令 $R(x)=\mathbb{P}(X>x)$ 之後即為 $R(a+b)=R(a)\,R(b)$ 這個函數方程式。把增量為 $h$ 的差商寫出來再取極限，得到 $R^{\prime}(x)=R(x)\,R^{\prime}(0)$ 這條微分方程式；令 $R^{\prime}(0)=-\frac{1}{\beta}$ 並以 $R(0)=1$ 定出積分常數，還原出來的正是指數分配的 cdf。兩個定理合起來，說明非負連續隨機變數服從指數分配與具備無記憶性互為充要條件。[Example 4.28](#ex-exponential-memoryless-1) 即是這個性質最直接的用法: 由 $\mathbb{P}(X>5\mid X>2)$ 直接改寫為 $\mathbb{P}(X>3)$ 這個尾機率，不必再做一次條件機率的積分。
+[Theorem 4.13](#thm-exponential-memoryless-converse) 把這件事反過來說。已知條件先化為 $\mathbb{P}(X>a+b)=\mathbb{P}(X>a)\,\mathbb{P}(X>b)$ 這條乘法關係，令 $R(x)=\mathbb{P}(X>x)$ 之後即為 $R(a+b)=R(a)\,R(b)$ 這個函數方程式。把增量為 $h$ 的差商寫出來再取極限，得到 $R^{\prime}(x)=R(x)\,R^{\prime}(0)$ 這條微分方程式；令 $R^{\prime}(0)=-\frac{1}{\beta}$ 並以 $R(0)=1$ 定出積分常數，還原出來的正是指數分配的 cdf。兩個定理合起來，說明非負連續隨機變數服從指數分配與具備無記憶性互為充要條件。[Example 4.28](#ex-exponential-memoryless-1) 即是這個性質最直接的用法。由 $\mathbb{P}(X>5\mid X>2)$ 直接改寫為 $\mathbb{P}(X>3)$ 這個尾機率，不必再做一次條件機率的積分。
 
-[Theorem 4.14](#thm-min-of-exponentials) 指出兩個獨立指數分配取極小值之後仍為指數分配，頻率參數為 $\lambda_1+\lambda_2$ 這個和。證明由極小值的餘事件下手: $\min\lbrace X,Y\rbrace>z$ 等價於 $X$ 與 $Y$ 都大於 <span class="text-nowrap">$z$，</span>兩個尾機率因獨立而相乘，指數上的頻率因而相加。其直觀意義與[幾何分配的版本](/lecture-notes/geometric-distribution-memoryless/#note-min-geometric-intuition)完全相同: 兩種偶發事件只要任一者發生即視為發生，發生的頻率自然疊加。
+[Theorem 4.14](#thm-min-of-exponentials) 指出兩個獨立指數分配取極小值之後仍為指數分配，頻率參數為 $\lambda_1+\lambda_2$ 這個和。證明由極小值的餘事件下手: $\min\lbrace X,Y\rbrace>z$ 等價於 $X$ 與 $Y$ 都大於 <span class="text-nowrap">$z$，</span>兩個尾機率因獨立而相乘，指數上的頻率因而相加。其直觀意義與幾何分配的版本完全相同。兩種偶發事件只要任一者發生即視為發生，發生的頻率自然疊加。
 
-[Theorem 4.15](#thm-exponential-race) 則回答兩者之中哪一個先發生: 以 $Y$ 為條件再取期望值，$\mathbb{P}(X>Y)$ 化為一個可直接積出的積分，結果為 $\frac{\lambda_2}{\,\lambda_1+\lambda_2\,}$ 這個比值，$Y$ 的頻率越高，這個機率越接近 <span class="text-nowrap">$1$。</span>同一組論證可以推廣到 $n$ 個獨立的指數分配，極小值的頻率為各頻率之和，而極小值恰好由第 $k$ 個變數取到的機率為 $\lambda_k$ 在總和之中所佔的比例。[Example 4.29](#ex-exponential-memoryless-2) 把這兩個結果放在一起: 第一小題求的就是 <span class="text-nowrap">$\mathbb{P}(X\leqslant Y)$，</span>第二小題則把 $T$ 的尾機率與其在 $\delta=1$ 之下的條件尾機率算出來，兩者相同因而 $T$ 與 $\delta$ 獨立。[Example 4.30](#ex-exponential-memoryless-3) 換一個角度看參數 $\theta$ 這個量: 它既是期望值，同時也是第 $100\times(1-e^{-1})$ 百分位數。
+[Theorem 4.15](#thm-exponential-race) 則回答兩者之中哪一個先發生。以 $Y$ 為條件再取期望值，$\mathbb{P}(X>Y)$ 化為一個可直接積出的積分，結果為 $\frac{\lambda_2}{\,\lambda_1+\lambda_2\,}$ 這個比值，$Y$ 的頻率越高，這個機率越接近 <span class="text-nowrap">$1$。</span>同一組論證可以推廣到 $n$ 個獨立的指數分配，極小值的頻率為各頻率之和，而極小值恰好由第 $k$ 個變數取到的機率為 $\lambda_k$ 在總和之中所佔的比例。[Example 4.29](#ex-exponential-memoryless-2) 把這兩個結果放在一起。第一小題求的就是 <span class="text-nowrap">$\mathbb{P}(X\leqslant Y)$，</span>第二小題則把 $T$ 的尾機率與其在 $\delta=1$ 之下的條件尾機率算出來，兩者相同因而 $T$ 與 $\delta$ 獨立。[Example 4.30](#ex-exponential-memoryless-3) 換一個角度看參數 $\theta$ 這個量。它既是期望值，同時也是第 $100\times(1-e^{-1})$ 百分位數。
 
 [下一篇](/lecture-notes/gamma-distribution/)把指數分配所描述的「等到一次偶發事件」推廣為「等到第 $\alpha$ 次偶發事件」，得到的即為伽瑪分配。
 

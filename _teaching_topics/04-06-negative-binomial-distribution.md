@@ -143,7 +143,7 @@ $$
 
 整個形式宛若[二項式定理](/lecture-notes/moment-system/#thm-binomial)一般，只不過 $(1-q)$ 的次方變成負的 (範圍當然也不同)，因此有了**負二項級數**之名。
 
-值得注意的是，負二項級數雖然因為形式與二項式定理非常類似因此得名，不過事實上，負二項級數所對應的分配 (負二項分配) 其關係反倒是和[幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)比較接近，稍後我們馬上會看到原因。
+值得注意的是，負二項級數雖然因為形式與二項式定理非常類似因此得名，不過事實上，負二項級數所對應的分配 (負二項分配) 其關係反倒是和幾何分配比較接近，稍後我們馬上會看到原因。
 
 </div>
 
@@ -397,7 +397,7 @@ $$
 \mathrm{Geo}(p)=\mathcal{NB}(r=1,\ p)
 $$
 
-這個性質其實不難理解，因為如果僅要求直到第一次成功實驗出現為止的實驗次數，則負二項分配的敘述會與[幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)相同。
+這個性質其實不難理解，因為如果僅要求直到第一次成功實驗出現為止的實驗次數，則負二項分配的敘述會與幾何分配相同。
 {: .topic-paren-cont}
 
 第二，若 $X\sim\mathcal{NB}(r_1,\ p),\ Y\sim\mathcal{NB}(r_2,\ p)$ 且 <span class="text-nowrap">$X\indep Y$，</span>則
@@ -446,14 +446,14 @@ $$
 這個性質被稱作負二項分配的可加性，其限制是 $X$ 與 $Y$ 必須獨立，而且**成功機率必須相同**。
 {: .topic-paren-cont}
 
-第三，若 <span class="text-nowrap">$X\sim\mathrm{Geo}(p),\ Y\sim\mathrm{Geo}(p)$，</span>則
+第三，若 $X\sim\mathrm{Geo}(p),\ Y\sim\mathrm{Geo}(p)$ 成立，則
 {: .topic-paren-cont}
 
 $$
 W=X+Y\sim\mathcal{NB}(r=2,\ p)
 $$
 
-讀者當然可由這個前述二個性質結合而得到上面這個性質，我們便不另外證明。而事實上，我們可以將這個性質推廣至更多獨立的幾何分配的加總，即若 <span class="text-nowrap">$X_1,\ldots,X_r\overset{\mathrm{iid}}{\sim}\mathrm{Geo}(p)$，</span>則
+讀者當然可由這個前述二個性質結合而得到上面這個性質，我們便不另外證明。而事實上，我們可以將這個性質推廣至更多獨立的幾何分配的加總，即若 $X_1,\ldots,X_r\overset{\mathrm{iid}}{\sim}\mathrm{Geo}(p)$ 成立，則
 {: .topic-paren-cont}
 
 $$
@@ -536,17 +536,19 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\text{令 }X\sim\mathrm{Bin}(n,\ p)\ \text{且}\ Y\sim\mathcal{NB}(r,\ p)\text{，則 }\mathbb{P}(X<r)=\mathbb{P}(Y>n)
+\boxed{\ \text{令 }X\sim\mathrm{Bin}(n,\ p)\ \text{且}\ Y\sim\mathcal{NB}(r,\ p)\text{，則 }\mathbb{P}(X<r)=\mathbb{P}(Y>n)\ }
 $$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+\boxed{
 \begin{aligned}
 \text{令 }X&\sim\mathrm{Bin}(n,\ p)\ \text{且}\ Y\sim\mathcal{NB}(r,\ p)，\\[0.45em]
 \text{則 }\mathbb{P}(X<r)&=\mathbb{P}(Y>n)
 \end{aligned}
+}
 $$
 
 </div>
@@ -771,11 +773,16 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-本題組比較容易混淆的地方在於，BO 9 賽制[^bo9]至多只會打 $9$ 場，先搶到 $5$ 勝的隊伍勝出，那為什麼可以用值域範圍到無窮大的負二項分配來描述呢？其原因在於，我們可以想像成，即使 $A$ 隊已經輸了系列賽 (亦即 $B$ 隊已經先於 $A$ 隊在 $9$ 戰當中取得第 $5$ 勝)，兩隊還是在互相較勁，直到 $A$ 隊取得 $5$ 勝為止。這聽起來有一點弔詭，因為在這個模型中，$A$ 隊被允許在第 $9$ 場過後仍能繼續比賽，但事實上，不論 $A$ 隊是在第 $9$ 場過後的哪一場取得第 $5$ 勝都沒關係，因為這都代表 $A$ 隊已經輸了系列賽。
+本題組比較容易混淆的地方在於，BO $9$ 賽制至多只會打 $9$ 場，先搶到 $5$ 勝的隊伍勝出，那為什麼可以用值域範圍到無窮大的負二項分配來描述呢？其原因在於，我們可以想像成，即使 $A$ 隊已經輸了系列賽 (亦即 $B$ 隊已經先於 $A$ 隊在 $9$ 戰當中取得第 $5$ 勝)，兩隊還是在互相較勁，直到 $A$ 隊取得 $5$ 勝為止。這聽起來有一點弔詭，因為在這個模型中，$A$ 隊被允許在第 $9$ 場過後仍能繼續比賽，但事實上，不論 $A$ 隊是在第 $9$ 場過後的哪一場取得第 $5$ 勝都沒關係，因為這都代表 $A$ 隊已經輸了系列賽。
 
 </div>
 
-[^bo9]: BO 9 賽制 (Best of 9 games) 就是常見的 $9$ 戰 $5$ 勝制，其中 $9$ 戰可以改成任意的奇數 <span class="text-nowrap">$k$，</span>而兩隊的目標是先於另一隊搶到 $(k+1)/2$ 勝；在運動賽事常見的設定是 BO 5 賽制或是 BO 7 賽制。
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+BO $9$ 賽制 (Best of $9$ games) 就是常見的 $9$ 戰 $5$ 勝制，其中 $9$ 戰可以改成任意的奇數 <span class="text-nowrap">$k$，</span>而兩隊的目標是先於另一隊搶到 $(k+1)/2$ 勝；在運動賽事常見的設定是 BO $5$ 賽制或是 BO $7$ 賽制。
+
+</div>
 
 <div id="ex-negative-binomial-3" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 4.18</div>
@@ -853,7 +860,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
 
 $$
-p_{\sssig T_k}(t)=\binom{t-1}{k-1}p^{k}(1-p)^{t-k},\ t=k,k+1,\ldots
+p_{\sssig T_k}(t)=\binom{t-1}{k-1}p^{k}(1-p)^{t-k},\ t=k,k+1,\ldots\qquad\therefore\, T_{k}\sim\mathcal{NB}(k,\ p)
 $$
 
 </div>
@@ -886,9 +893,9 @@ $$
 
 [Definition 4.7](#def-negative-binomial) 的負二項分配記錄的是進行伯努利實驗，直到出現第 $r$ 次成功實驗所需要的實驗次數，值域自 $r$ 起算，機率函數為 $\binom{x-1}{r-1}p^{r}q^{x-r}$ 這個式子，其中的組合數對應「前 $x-1$ 次之中哪 $r-1$ 次成功」的選法。證明的四個步驟依序是: 以負二項級數驗證機率函數的加總為 <span class="text-nowrap">$1$、</span>把 $x\binom{x-1}{r-1}$ 改寫成 $r\binom{x}{r}$ 這個形式，把加總湊成另一個負二項分配的機率函數而求得 <span class="text-nowrap">$\mathbb{E}(X)=\frac{r}{\,p\,}$、</span>再以 $\mathbb{E}\bigl[(X+1)X\bigr]$ 得到 $\mathbb{E}\bigl(X^{2}\bigr)$ 進而算出 <span class="text-nowrap">$\mathrm{Var}(X)=\frac{\,rq\,}{p^{2}}$，</span>最後直接由定義求得動差母函數。
 
-定義之後的幾點說明依序是: $r=1$ 時負二項分配即為[幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)、成功機率相同且彼此獨立的兩個負二項變數相加仍為負二項分配 (可加性)、$r$ 個獨立且成功機率相同的幾何變數相加即為負二項分配，以及實驗負二項與失敗負二項兩種定義的差別，後者記錄的是失敗次數 <span class="text-nowrap">$Y=X-r$，</span>值域自 $0$ 起算，期望值少了 $r$ 而變異數不變。可加性的證明只需把兩個動差母函數相乘，指數因而相加，再由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識出結果。
+定義之後的幾點說明依序是: $r=1$ 時負二項分配即為幾何分配、成功機率相同且彼此獨立的兩個負二項變數相加仍為負二項分配 (可加性)、$r$ 個獨立且成功機率相同的幾何變數相加即為負二項分配，以及實驗負二項與失敗負二項兩種定義的差別，後者記錄的是失敗次數 <span class="text-nowrap">$Y=X-r$，</span>值域自 $0$ 起算，期望值少了 $r$ 而變異數不變。可加性的證明只需把兩個動差母函數相乘，指數因而相加，再由動差母函數的唯一性辨識出結果。
 
-負二項分配之於幾何分配的關係，與[二項分配](/lecture-notes/binomial-distribution/#def-binomial)之於[伯努利分配](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)的關係相同，兩者因而有對偶關係: 「$n$ 次實驗中成功不到 $r$ 次」與「第 $r$ 次成功所需的實驗次數超過 $n$ 次」講的是同一件事情。另一方面，負二項分配與幾何分配的最後一次實驗都一定是成功實驗，差別在於前面的 $x-1$ 次之中還有 $r-1$ 次成功，其位置不固定，因而引入了組合數，也因為這個組合數，相鄰兩個機率值不再成等比，負二項分配於是不再具有[無記憶性](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless)。
+負二項分配之於幾何分配的關係，與二項分配之於伯努利分配的關係相同，兩者因而有對偶關係。「$n$ 次實驗中成功不到 $r$ 次」與「第 $r$ 次成功所需的實驗次數超過 $n$ 次」講的是同一件事情。另一方面，負二項分配與幾何分配的最後一次實驗都一定是成功實驗，差別在於前面的 $x-1$ 次之中還有 $r-1$ 次成功，其位置不固定，因而引入了組合數，也因為這個組合數，相鄰兩個機率值不再成等比，負二項分配於是不再具有無記憶性。
 
 三道例題各有側重。[Example 4.16](#ex-negative-binomial-1) 在同一個題組中把「成功」的定義換了兩次，前一小題以擊中為成功而用二項分配，後兩小題改以擊丟為成功而分別用幾何分配與負二項分配。[Example 4.17](#ex-negative-binomial-2) 把系列賽的勝負改寫成「取得第 $5$ 勝所需的場次不超過上限」，因而以負二項分配的累積機率計算，值域到無窮大並不妨礙，因為超出上限的場次都代表已經輸掉系列賽。[Example 4.18](#ex-negative-binomial-3) 則由首次達到第 $k$ 次成功的定義出發，把最後一次實驗分離出去，前面的 $n-1$ 次以二項分配計算，兩者相乘之後得到的正是負二項分配的機率函數。
 

@@ -10,7 +10,7 @@ order: 415
 permalink: /lecture-notes/beta-function-and-distribution/
 date: 2026-08-12
 published: false
-excerpt: "貝塔函數以 $\\int_{0}^{1}x^{\\alpha-1}(1-x)^{\\beta-1}\\,dx$ 這個積分定義，並可寫成 $\\frac{\\Gamma(\\alpha)\\Gamma(\\beta)}{\\Gamma(\\alpha+\\beta)}$ 這個由伽瑪函數構成的比值，貝塔分配的一切推導都由這條關係式而來。貝塔分配的值域落在 $0$ 到 $1$ 之間，因此經常被用來描述一個機率的分配，期望值為 $\\frac{\\alpha}{\\alpha+\\beta}$、變異數為 $\\frac{\\alpha\\beta}{(\\alpha+\\beta)^{2}(\\alpha+\\beta+1)}$，$k$ 階原動差亦可一併求得。本篇先給出貝塔函數與它的兩項特性，再給出貝塔分配的定義與完整推導，並說明它在貝氏統計學派中作為共軛先驗分配的角色。最後列出三項衍伸性質: $\\alpha=\\beta=1$ 時退回標準均勻分配、標準均勻分配的順序統計量服從貝塔分配，以及機率密度在 $\\frac{\\alpha}{\\alpha+\\beta}$ 附近聚集，而 $\\alpha$ 與 $\\beta$ 的大小決定聚集的程度。"
+excerpt: "貝塔函數以 $\\int_{0}^{1}x^{a-1}(1-x)^{b-1}\\,dx$ 這個積分定義，並可寫成 $\\frac{\\Gamma(a)\\Gamma(b)}{\\Gamma(a+b)}$ 這個由伽瑪函數構成的比值，貝塔分配的一切推導都由這條關係式而來。貝塔分配的值域落在 $0$ 到 $1$ 之間，因此經常被用來描述一個機率的分配，期望值為 $\\frac{a}{a+b}$、變異數為 $\\frac{ab}{(a+b)^{2}(a+b+1)}$，$k$ 階原動差亦可一併求得。本篇先給出貝塔函數與它的兩項特性，再給出貝塔分配的定義與完整推導，並說明它在貝氏統計學派中作為共軛先驗分配的角色。最後列出三項衍伸性質: $a=b=1$ 時退回標準均勻分配、標準均勻分配的順序統計量服從貝塔分配，以及機率密度在 $\\frac{a}{a+b}$ 附近聚集，而 $a$ 與 $b$ 的大小決定聚集的程度。"
 ---
 
 [上一篇](/lecture-notes/uniform-distribution-integral-transform/)以[均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)為主軸，說明它在值域之內每一處的機率密度都相同，並由這個性質給出[機率積分轉換](/lecture-notes/uniform-distribution-integral-transform/#thm-p-i-t)與[逆機率積分轉換](/lecture-notes/uniform-distribution-integral-transform/#thm-i-p-i-t)兩個定理。本篇要看的，同樣是一個取值落在 $0$ 到 $1$ 之間的連續隨機變數，但這一次容許不同位置上的機率密度高低不同，這就是貝塔分配。
@@ -27,7 +27,7 @@ excerpt: "貝塔函數以 $\\int_{0}^{1}x^{\\alpha-1}(1-x)^{\\beta-1}\\,dx$ 這�
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathcal{B}(\alpha,\beta)\equiv\int_{0}^{1}x^{\alpha-1}(1-x)^{\beta-1}\,dx,\ \alpha,\beta>0
+\mathcal{B}(a,b)\equiv\int_{0}^{1}x^{a-1}(1-x)^{b-1}\,dx,\ a,b>0
 $$
 
 </div>
@@ -35,8 +35,8 @@ $$
 
 $$
 \begin{aligned}
-\mathcal{B}(\alpha,\beta)&\equiv\int_{0}^{1}x^{\alpha-1}(1-x)^{\beta-1}\,dx,\\[0.25em]
-&\alpha,\beta>0
+\mathcal{B}(a,b)&\equiv\int_{0}^{1}x^{a-1}(1-x)^{b-1}\,dx,\\[0.25em]
+&a,b>0
 \end{aligned}
 $$
 
@@ -48,8 +48,8 @@ $$
 
 $$
 \begin{gathered}
-\mathcal{B}(\alpha,\beta)=\frac{\,\Gamma(\alpha)\Gamma(\beta)\,}{\Gamma(\alpha+\beta)},\ \alpha,\beta>0\\[0.7em]
-\mathcal{B}(\alpha,\beta)=\mathcal{B}(\beta,\alpha)
+\mathcal{B}(a,b)=\frac{\,\Gamma(a)\Gamma(b)\,}{\Gamma(a+b)},\ a,b>0\\[0.7em]
+\mathcal{B}(a,b)=\mathcal{B}(b,a)
 \end{gathered}
 $$
 
@@ -76,14 +76,14 @@ $$
 
 **參數與參數範圍**:
 
-$\alpha,\beta>0$ 為形狀參數。
+$a,b>0$ 為形狀參數。
 
 **機率函數**:
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-f_{\sssig X}(x)=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}x^{\alpha-1}(1-x)^{\beta-1}=\frac{1}{\,\mathcal{B}(\alpha,\beta)\,}x^{\alpha-1}(1-x)^{\beta-1},\ 0\leqslant x\leqslant1
+f_{\sssig X}(x)=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}x^{a-1}(1-x)^{b-1}=\frac{1}{\,\mathcal{B}(a,b)\,}x^{a-1}(1-x)^{b-1},\ 0\leqslant x\leqslant1
 $$
 
 </div>
@@ -91,8 +91,8 @@ $$
 
 $$
 \begin{aligned}
-f_{\sssig X}(x)&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}x^{\alpha-1}(1-x)^{\beta-1}\\[0.45em]
-&=\frac{1}{\,\mathcal{B}(\alpha,\beta)\,}x^{\alpha-1}(1-x)^{\beta-1},\\[0.25em]
+f_{\sssig X}(x)&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}x^{a-1}(1-x)^{b-1}\\[0.45em]
+&=\frac{1}{\,\mathcal{B}(a,b)\,}x^{a-1}(1-x)^{b-1},\\[0.25em]
 &\qquad 0\leqslant x\leqslant1
 \end{aligned}
 $$
@@ -104,7 +104,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{E}(X)=\frac{\alpha}{\,\alpha+\beta\,},\quad \mathrm{Var}(X)=\frac{\alpha\,\beta}{\,(\alpha+\beta)^{2}(\alpha+\beta+1)\,}
+\mathbb{E}(X)=\frac{a}{\,a+b\,},\quad \mathrm{Var}(X)=\frac{a\,b}{\,(a+b)^{2}(a+b+1)\,}
 $$
 
 </div>
@@ -112,8 +112,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}(X)&=\frac{\alpha}{\,\alpha+\beta\,},\\[0.45em]
-\mathrm{Var}(X)&=\frac{\alpha\,\beta}{\,(\alpha+\beta)^{2}(\alpha+\beta+1)\,}
+\mathbb{E}(X)&=\frac{a}{\,a+b\,},\\[0.45em]
+\mathrm{Var}(X)&=\frac{a\,b}{\,(a+b)^{2}(a+b+1)\,}
 \end{aligned}
 $$
 
@@ -135,8 +135,8 @@ $$
 
 $$
 \begin{aligned}
-\int_{x\in\mathcal{R}_{\sssig X}}f_{\sssig X}(x)\,dx&=\int_{0}^{1}\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}x^{\alpha-1}(1-x)^{\beta-1}\,dx\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\int_{0}^{1}x^{\alpha-1}(1-x)^{\beta-1}\,dx=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\cdot\frac{\,\Gamma(\alpha)\Gamma(\beta)\,}{\Gamma(\alpha+\beta)}=1
+\int_{x\in\mathcal{R}_{\sssig X}}f_{\sssig X}(x)\,dx&=\int_{0}^{1}\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}x^{a-1}(1-x)^{b-1}\,dx\\[0.45em]
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\int_{0}^{1}x^{a-1}(1-x)^{b-1}\,dx=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\cdot\frac{\,\Gamma(a)\Gamma(b)\,}{\Gamma(a+b)}=1
 \end{aligned}
 $$
 
@@ -146,9 +146,9 @@ $$
 $$
 \begin{aligned}
 &\int_{x\in\mathcal{R}_{\sssig X}}f_{\sssig X}(x)\,dx\\[0.45em]
-&=\int_{0}^{1}\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}x^{\alpha-1}(1-x)^{\beta-1}\,dx\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\int_{0}^{1}x^{\alpha-1}(1-x)^{\beta-1}\,dx\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\cdot\frac{\,\Gamma(\alpha)\Gamma(\beta)\,}{\Gamma(\alpha+\beta)}=1
+&=\int_{0}^{1}\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}x^{a-1}(1-x)^{b-1}\,dx\\[0.45em]
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\int_{0}^{1}x^{a-1}(1-x)^{b-1}\,dx\\[0.45em]
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\cdot\frac{\,\Gamma(a)\Gamma(b)\,}{\Gamma(a+b)}=1
 \end{aligned}
 $$
 
@@ -160,8 +160,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}(X)&=\int_{x\in\mathcal{R}_{\sssig X}}xf_{\sssig X}(x)\,dx=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\int_{0}^{1}x^{(\alpha+1)-1}(1-x)^{\beta-1}\,dx\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\cdot\frac{\,\Gamma(\alpha+1)\Gamma(\beta)\,}{\Gamma(\alpha+\beta+1)}=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\cdot\frac{\,\alpha\Gamma(\alpha)\Gamma(\beta)\,}{\,(\alpha+\beta)\Gamma(\alpha+\beta)\,}=\frac{\alpha}{\,\alpha+\beta\,}
+\mathbb{E}(X)&=\int_{x\in\mathcal{R}_{\sssig X}}xf_{\sssig X}(x)\,dx=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\int_{0}^{1}x^{(a+1)-1}(1-x)^{b-1}\,dx\\[0.45em]
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\cdot\frac{\,\Gamma(a+1)\Gamma(b)\,}{\Gamma(a+b+1)}=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\cdot\frac{\,a\Gamma(a)\Gamma(b)\,}{\,(a+b)\Gamma(a+b)\,}=\frac{a}{\,a+b\,}
 \end{aligned}
 $$
 
@@ -171,10 +171,10 @@ $$
 $$
 \begin{aligned}
 \mathbb{E}(X)&=\int_{x\in\mathcal{R}_{\sssig X}}xf_{\sssig X}(x)\,dx\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\int_{0}^{1}x^{(\alpha+1)-1}(1-x)^{\beta-1}\,dx\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\cdot\frac{\,\Gamma(\alpha+1)\Gamma(\beta)\,}{\Gamma(\alpha+\beta+1)}\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\cdot\frac{\,\alpha\Gamma(\alpha)\Gamma(\beta)\,}{\,(\alpha+\beta)\Gamma(\alpha+\beta)\,}\\[0.45em]
-&=\frac{\alpha}{\,\alpha+\beta\,}
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\int_{0}^{1}x^{(a+1)-1}(1-x)^{b-1}\,dx\\[0.45em]
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\cdot\frac{\,\Gamma(a+1)\Gamma(b)\,}{\Gamma(a+b+1)}\\[0.45em]
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\cdot\frac{\,a\Gamma(a)\Gamma(b)\,}{\,(a+b)\Gamma(a+b)\,}\\[0.45em]
+&=\frac{a}{\,a+b\,}
 \end{aligned}
 $$
 
@@ -186,9 +186,9 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}\bigl(X^{2}\bigr)&=\int_{x\in\mathcal{R}_{\sssig X}}x^{2}f_{\sssig X}(x)\,dx=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\int_{0}^{1}x^{(\alpha+2)-1}(1-x)^{\beta-1}\,dx\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\cdot\frac{\,\Gamma(\alpha+2)\Gamma(\beta)\,}{\Gamma(\alpha+\beta+2)}=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\cdot\frac{\,(\alpha+1)\alpha\Gamma(\alpha)\Gamma(\beta)\,}{\,(\alpha+\beta+1)(\alpha+\beta)\Gamma(\alpha+\beta)\,}\\[0.45em]
-&=\frac{\alpha(\alpha+1)}{(\alpha+\beta)(\alpha+\beta+1)}
+\mathbb{E}\bigl(X^{2}\bigr)&=\int_{x\in\mathcal{R}_{\sssig X}}x^{2}f_{\sssig X}(x)\,dx=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\int_{0}^{1}x^{(a+2)-1}(1-x)^{b-1}\,dx\\[0.45em]
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\cdot\frac{\,\Gamma(a+2)\Gamma(b)\,}{\Gamma(a+b+2)}=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\cdot\frac{\,(a+1)a\Gamma(a)\Gamma(b)\,}{\,(a+b+1)(a+b)\Gamma(a+b)\,}\\[0.45em]
+&=\frac{a(a+1)}{(a+b)(a+b+1)}
 \end{aligned}
 $$
 
@@ -198,11 +198,11 @@ $$
 $$
 \begin{aligned}
 \mathbb{E}\bigl(X^{2}\bigr)&=\int_{x\in\mathcal{R}_{\sssig X}}x^{2}f_{\sssig X}(x)\,dx\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\int_{0}^{1}x^{(\alpha+2)-1}(1-x)^{\beta-1}\,dx\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\cdot\frac{\,\Gamma(\alpha+2)\Gamma(\beta)\,}{\Gamma(\alpha+\beta+2)}\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\\[0.25em]
-&\qquad\cdot\frac{\,(\alpha+1)\alpha\Gamma(\alpha)\Gamma(\beta)\,}{\,(\alpha+\beta+1)(\alpha+\beta)\Gamma(\alpha+\beta)\,}\\[0.45em]
-&=\frac{\alpha(\alpha+1)}{(\alpha+\beta)(\alpha+\beta+1)}
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\int_{0}^{1}x^{(a+2)-1}(1-x)^{b-1}\,dx\\[0.45em]
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\cdot\frac{\,\Gamma(a+2)\Gamma(b)\,}{\Gamma(a+b+2)}\\[0.45em]
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\\[0.25em]
+&\qquad\cdot\frac{\,(a+1)a\Gamma(a)\Gamma(b)\,}{\,(a+b+1)(a+b)\Gamma(a+b)\,}\\[0.45em]
+&=\frac{a(a+1)}{(a+b)(a+b+1)}
 \end{aligned}
 $$
 
@@ -214,8 +214,8 @@ $$
 
 $$
 \begin{aligned}
-\mathrm{Var}(X)&=\mathbb{E}\bigl(X^{2}\bigr)-\bigl[\mathbb{E}(X)\bigr]^{2}=\frac{\alpha(\alpha+1)}{(\alpha+\beta)(\alpha+\beta+1)}-\Bigl(\frac{\alpha}{\alpha+\beta}\Bigr)^{2}\\[0.45em]
-&=\frac{\alpha\,\beta}{(\alpha+\beta)^{2}(\alpha+\beta+1)}
+\mathrm{Var}(X)&=\mathbb{E}\bigl(X^{2}\bigr)-\bigl[\mathbb{E}(X)\bigr]^{2}=\frac{a(a+1)}{(a+b)(a+b+1)}-\Bigl(\frac{a}{a+b}\Bigr)^{2}\\[0.45em]
+&=\frac{a\,b}{(a+b)^{2}(a+b+1)}
 \end{aligned}
 $$
 
@@ -225,8 +225,8 @@ $$
 $$
 \begin{aligned}
 \mathrm{Var}(X)&=\mathbb{E}\bigl(X^{2}\bigr)-\bigl[\mathbb{E}(X)\bigr]^{2}\\[0.45em]
-&=\frac{\alpha(\alpha+1)}{(\alpha+\beta)(\alpha+\beta+1)}-\Bigl(\frac{\alpha}{\alpha+\beta}\Bigr)^{2}\\[0.45em]
-&=\frac{\alpha\,\beta}{(\alpha+\beta)^{2}(\alpha+\beta+1)}
+&=\frac{a(a+1)}{(a+b)(a+b+1)}-\Bigl(\frac{a}{a+b}\Bigr)^{2}\\[0.45em]
+&=\frac{a\,b}{(a+b)^{2}(a+b+1)}
 \end{aligned}
 $$
 
@@ -249,8 +249,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}\bigl(X^{k}\bigr)&=\int_{x\in\mathcal{R}_{\sssig X}}x^{k}f_{\sssig X}(x)\,dx=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\int_{0}^{1}x^{(\alpha+k)-1}(1-x)^{\beta-1}\,dx\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\cdot\frac{\,\Gamma(\alpha+k)\Gamma(\beta)\,}{\Gamma(\alpha+\beta+k)}=\frac{\,\Gamma(\alpha+\beta)\Gamma(\alpha+k)\,}{\,\Gamma(\alpha)\Gamma(\alpha+\beta+k)\,}
+\mathbb{E}\bigl(X^{k}\bigr)&=\int_{x\in\mathcal{R}_{\sssig X}}x^{k}f_{\sssig X}(x)\,dx=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\int_{0}^{1}x^{(a+k)-1}(1-x)^{b-1}\,dx\\[0.45em]
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\cdot\frac{\,\Gamma(a+k)\Gamma(b)\,}{\Gamma(a+b+k)}=\frac{\,\Gamma(a+b)\Gamma(a+k)\,}{\,\Gamma(a)\Gamma(a+b+k)\,}
 \end{aligned}
 $$
 
@@ -260,9 +260,9 @@ $$
 $$
 \begin{aligned}
 \mathbb{E}\bigl(X^{k}\bigr)&=\int_{x\in\mathcal{R}_{\sssig X}}x^{k}f_{\sssig X}(x)\,dx\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\int_{0}^{1}x^{(\alpha+k)-1}(1-x)^{\beta-1}\,dx\\[0.45em]
-&=\frac{\Gamma(\alpha+\beta)}{\,\Gamma(\alpha)\Gamma(\beta)\,}\cdot\frac{\,\Gamma(\alpha+k)\Gamma(\beta)\,}{\Gamma(\alpha+\beta+k)}\\[0.45em]
-&=\frac{\,\Gamma(\alpha+\beta)\Gamma(\alpha+k)\,}{\,\Gamma(\alpha)\Gamma(\alpha+\beta+k)\,}
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\int_{0}^{1}x^{(a+k)-1}(1-x)^{b-1}\,dx\\[0.45em]
+&=\frac{\Gamma(a+b)}{\,\Gamma(a)\Gamma(b)\,}\cdot\frac{\,\Gamma(a+k)\Gamma(b)\,}{\Gamma(a+b+k)}\\[0.45em]
+&=\frac{\,\Gamma(a+b)\Gamma(a+k)\,}{\,\Gamma(a)\Gamma(a+b+k)\,}
 \end{aligned}
 $$
 
@@ -279,7 +279,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-貝塔分配在貝氏統計學派中，經常被用來當作成敗伯努利實驗中成功機率的**先驗分配 <span lang="en">(prior distribution)</span>**，其原因在於這貝塔分配是所有成敗實驗相關分配的**共軛先驗分配 <span lang="en">(conjugate prior distribution)</span>**，換言之即**先驗分配與後驗分配 <span lang="en">(posterior distribution)</span> 是同一種分配**。例如: $P\sim\mathrm{Beta}(\alpha,\beta)$ 且 <span class="text-nowrap">$X\mid(P=p)\sim\mathrm{Bin}(n,\ p)$，</span>則後驗分配 $P\mid(X=x)$ 仍是貝塔分配。
+貝塔分配在貝氏統計學派中，經常被用來當作成敗伯努利實驗中成功機率的**先驗分配 <span lang="en">(prior distribution)</span>**，其原因在於貝塔分配是所有成敗實驗相關分配的**共軛先驗分配 <span lang="en">(conjugate prior distribution)</span>**，換言之即**先驗分配與後驗分配 <span lang="en">(posterior distribution)</span> 是同一種分配**。例如: $P\sim\mathrm{Beta}(a,b)$ 且 <span class="text-nowrap">$X\mid(P=p)\sim\mathrm{Bin}(n,\ p)$，</span>則後驗分配 $P\mid(X=x)$ 仍是貝塔分配。
 
 除此之外，常見的**先驗-後驗**共軛組合還有**伽瑪-卜瓦松**與**常態-常態**。
 
@@ -288,7 +288,7 @@ $$
 (3) 前述眾多原因刻劃了貝塔分配的一些性質，我們將其衍伸性質列在下方:
 {: .topic-paren-item}
 
-第一，若 <span class="text-nowrap">$U\sim\mathrm{Beta}(\alpha=1,\ \beta=1)$，</span>則
+第一，若 <span class="text-nowrap">$U\sim\mathrm{Beta}(a=1,\ b=1)$，</span>則
 {: .topic-paren-cont}
 
 $$
@@ -298,7 +298,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-已知 <span class="text-nowrap">$U\sim\mathrm{Beta}(\alpha=1,\ \beta=1)$，</span>則
+已知 <span class="text-nowrap">$U\sim\mathrm{Beta}(a=1,\ b=1)$，</span>則
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -330,7 +330,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-貝塔分配與[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的關係匪淺。標準均勻分配可以理解為，在 $[0,1]$ 之間沒有特別可能出現的位置，而貝塔分配則恰巧相反，強調了在 $[0,1]$ 之間比較容易出現的位置，但我們當然也可以經過一些設定，從而讓貝塔分配「退化」回標準均勻分配，這個設定方式就是 <span class="text-nowrap">$\alpha=\beta=1$。</span>
+貝塔分配與[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的關係匪淺。標準均勻分配可以理解為，在 $[0,1]$ 之間沒有特別可能出現的位置，而貝塔分配則恰巧相反，強調了在 $[0,1]$ 之間比較容易出現的位置，但我們當然也可以經過一些設定，從而讓貝塔分配「退化」回標準均勻分配，這個設定方式就是 <span class="text-nowrap">$a=b=1$。</span>
 
 </div>
 
@@ -344,13 +344,13 @@ $$
 
 </div>
 
-第三，$\mathrm{Beta}(\alpha,\beta)$ 分配在 $\frac{\alpha}{\,\alpha+\beta\,}$ 的附近具有較高的機率密度，而 $\alpha,\beta$ 的大小則決定了在 $\frac{\alpha}{\,\alpha+\beta\,}$ 週遭離散的程度 (即變異數)。
+第三，$\mathrm{Beta}(a,b)$ 分配在 $\frac{a}{\,a+b\,}$ 的附近具有較高的機率密度，而 $a,b$ 的大小則決定了在 $\frac{a}{\,a+b\,}$ 週遭離散的程度 (即變異數)。
 {: .topic-paren-cont}
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在貝氏統計學派的領域中，標準均勻分配被視為無法提供任何訊息的先驗分配 <span lang="en">(non-informative prior)</span>，這個原因其實很簡單，因為當我們指定一個機率的先驗分配服從標準均勻分配時，相當於我們對這個分配比較有可能出現的值完全沒有想法；相反地，如果我們設定了較為一般的貝塔分配，說明我們對於這個機率是有事先的想法的，至於這個想法的「強度」可以透過調控 $\alpha$ 與 $\beta$ 數值的大小來決定，見下方圖示的比較。
+在貝氏統計學派的領域中，標準均勻分配被視為無法提供任何訊息的先驗分配 <span lang="en">(non-informative prior)</span>，這個原因其實很簡單，因為當我們指定一個機率的先驗分配服從標準均勻分配時，相當於我們對這個分配比較有可能出現的值完全沒有想法；相反地，如果我們設定了較為一般的貝塔分配，說明我們對於這個機率是有事先的想法的，至於這個想法的「強度」可以透過調控 $a$ 與 $b$ 數值的大小來決定，見下方圖示的比較。
 
 </div>
 
@@ -358,28 +358,28 @@ $$
 {: .topic-paren-cont}
 
 <figure id="fig-beta-density-family" class="topic-figure topic-figure--wide">
-  <img src="/images/lecture-notes/beta-density-family.svg" alt="一條帶箭頭的橫軸，右端標 x，軸上每隔 0.1 畫一小段刻度，刻度數值由左至右標 0、0.2、0.4、0.6、0.8、1，圖中沒有鉛直軸，也沒有縱向的刻度數值。橫軸上方畫五條線，全部同一個深色，只以線型互相區分。一條實線在 0 與 1 之間維持同一個高度，兩端都停在該高度上，不落到橫軸。一條點線在 0.5 處最高，高度約為實線的一倍半。一條長劃與點相間的線在 0.25 處最高，一條長劃與兩點相間的線在 0.75 處最高，兩者形狀左右相反、最高處的高度相同，約為實線的兩倍。一條虛線在 0.5 處形成最高最窄的一個峰，高度約為實線的三倍，兩側下降得比其他各線都陡。除實線之外的四條線，在 0 與 1 兩端都降到橫軸上。圖的左上角有一個五列的圖例，每一列先畫一小段該線的線型，再依序標 α=1, β=1、α=2, β=4、α=2, β=2、α=4, β=2、α=8, β=8。">
-  <figcaption><span class="topic-figure__label">Fig. 4.3.</span> 五條密度曲線畫在同一組座標上，每一條的機率密度都集中在 $\frac{\alpha}{\,\alpha+\beta\,}$ 附近。$\alpha$ 與 $\beta$ 相等時曲線左右對稱，一大一小時則偏向其中一側；兩者同時放大時曲線更高更窄，集中的情況更為明顯。$\alpha=\beta=1$ 那一條是一整段水平線，機率密度在 $0$ 與 $1$ 之間完全均勻。</figcaption>
+  <img src="/images/lecture-notes/beta-density-family.svg" alt="一條帶箭頭的橫軸，右端標 x，軸上每隔 0.1 畫一小段刻度，刻度數值由左至右標 0、0.2、0.4、0.6、0.8、1，圖中沒有鉛直軸，也沒有縱向的刻度數值。橫軸上方畫五條線，全部同一個深色，只以線型互相區分。一條實線在 0 與 1 之間維持同一個高度，兩端都停在該高度上，不落到橫軸。一條點線在 0.5 處最高，高度約為實線的一倍半。一條長劃與點相間的線在 0.25 處最高，一條長劃與兩點相間的線在 0.75 處最高，兩者形狀左右相反、最高處的高度相同，約為實線的兩倍。一條虛線在 0.5 處形成最高最窄的一個峰，高度約為實線的三倍，兩側下降得比其他各線都陡。除實線之外的四條線，在 0 與 1 兩端都降到橫軸上。圖的左上角有一個五列的圖例，每一列先畫一小段該線的線型，再依序標 a=1, b=1、a=2, b=4、a=2, b=2、a=4, b=2、a=8, b=8。">
+  <figcaption><span class="topic-figure__label">Fig. 4.3.</span> 五條密度曲線畫在同一組座標上，每一條的機率密度都集中在 $\frac{a}{\,a+b\,}$ 附近。$a$ 與 $b$ 相等時曲線左右對稱，一大一小時則偏向其中一側；兩者同時放大時曲線更高更窄，集中的情況更為明顯。$a=b=1$ 那一條是一整段水平線，機率密度在 $0$ 與 $1$ 之間完全均勻。</figcaption>
 </figure>
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-從上圖便可以看出，貝塔分配在 $[0,1]$ 區間之內，機率密度大多都在期望值 $\frac{\alpha}{\alpha+\beta}$ 聚集，而即使是一樣的期望值，依照 $\alpha$ 與 $\beta$ 的不同，聚集在期望值周遭的離散程度也不同；若 $\alpha$ 與 $\beta$ 都比較大的時候，則聚集的情況也比較明顯，如 $\alpha=\beta=8$ 與 $\alpha=\beta=2$ 的比較。
+從上圖便可以看出，貝塔分配在 $[0,1]$ 區間之內，機率密度大多都在期望值 $\frac{a}{a+b}$ 聚集，而即使是一樣的期望值，依照 $a$ 與 $b$ 的不同，聚集在期望值周遭的離散程度也不同；若 $a$ 與 $b$ 都比較大的時候，則聚集的情況也比較明顯，如 $a=b=8$ 與 $a=b=2$ 的比較。
 
-此外，我們也可以看出，當 $\alpha=\beta=1$ 的時候，貝塔分配在 $[0,1]$ 之間的機率密度是完全均勻的，也就是標準均勻分配。
+此外，我們也可以看出，當 $a=b=1$ 的時候，貝塔分配在 $[0,1]$ 之間的機率密度是完全均勻的，也就是標準均勻分配。
 
 </div>
 
 ## 本篇小結
 
-[Definition 4.19](#def-beta-function) 的貝塔函數由一個積分界定，也就是 $\int_{0}^{1}x^{\alpha-1}(1-x)^{\beta-1}\,dx$ 這個式子，它的兩項特性一是可以寫成 $\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$ 這個由[伽瑪函數](/lecture-notes/gamma-function-exponential-distribution/#def-gamma-function)構成的比值，二是兩個參數對調之後函數值不變。本篇其後的每一步推導，用到的都是第一項特性。
+[Definition 4.19](#def-beta-function) 的貝塔函數由一個積分界定，也就是 $\int_{0}^{1}x^{a-1}(1-x)^{b-1}\,dx$ 這個式子，它的兩項特性一是可以寫成 $\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$ 這個由伽瑪函數構成的比值，二是兩個參數對調之後函數值不變。本篇其後的每一步推導，用到的都是第一項特性。
 
-[Definition 4.20](#def-beta-distribution) 的貝塔分配以 $\alpha$ 與 $\beta$ 兩個形狀參數界定，值域為 <span class="text-nowrap">$0\leqslant x\leqslant1$，</span>機率函數的常數項正是貝塔函數的倒數，這使得密度在值域上的積分等於 <span class="text-nowrap">$1$。</span>期望值與變異數的求法完全相同: 把 $x$ 或 $x^{2}$ 併入被積函數，指數上的 $\alpha$ 因而變成 $\alpha+1$ 或 <span class="text-nowrap">$\alpha+2$，</span>積分之後仍是一個貝塔函數，再以 $\Gamma(\alpha+1)=\alpha\Gamma(\alpha)$ 化簡，得到 $\mathbb{E}(X)=\frac{\alpha}{\alpha+\beta}$ 與 $\mathrm{Var}(X)=\frac{\alpha\beta}{(\alpha+\beta)^{2}(\alpha+\beta+1)}$ 這兩個公式。同一個作法對任意的 $k$ 都成立，因而可以一次求得 $k$ 階原動差 $\frac{\Gamma(\alpha+\beta)\Gamma(\alpha+k)}{\Gamma(\alpha)\Gamma(\alpha+\beta+k)}$ 這個式子。
+[Definition 4.20](#def-beta-distribution) 的貝塔分配以 $a$ 與 $b$ 兩個形狀參數界定，值域為 <span class="text-nowrap">$0\leqslant x\leqslant1$，</span>機率函數的常數項正是貝塔函數的倒數，這使得密度在值域上的積分等於 <span class="text-nowrap">$1$。</span>期望值與變異數的求法完全相同。把 $x$ 或 $x^{2}$ 併入被積函數，指數上的 $a$ 因而變成 $a+1$ 或 <span class="text-nowrap">$a+2$，</span>積分之後仍是一個貝塔函數，再以 $\Gamma(a+1)=a\Gamma(a)$ 化簡，得到 $\mathbb{E}(X)=\frac{a}{a+b}$ 與 $\mathrm{Var}(X)=\frac{ab}{(a+b)^{2}(a+b+1)}$ 這兩個公式。同一個作法對任意的 $k$ 都成立，因而可以一次求得 $k$ 階原動差 $\frac{\Gamma(a+b)\Gamma(a+k)}{\Gamma(a)\Gamma(a+b+k)}$ 這個式子。
 
-定義之後的三點說明依序是: 貝塔分配的值域使它適合描述一個成功機率，這正是貝氏統計學派中共軛先驗分配的用法，先驗分配取貝塔分配、觀測值取二項分配時，後驗分配仍是貝塔分配；三項衍伸性質則是 $\alpha=\beta=1$ 時退回[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)、標準均勻分配的順序統計量服從貝塔分配，以及機率密度在 $\frac{\alpha}{\alpha+\beta}$ 附近聚集。最後一項也說明了貝塔分配與標準均勻分配的分別: 標準均勻分配對值域上的每一處一視同仁，貝塔分配則指出比較容易出現的位置，而 $\alpha$ 與 $\beta$ 的大小決定了聚集的程度，兩者都大時聚集得比較明顯。
+定義之後的三點說明依序是: 貝塔分配的值域使它適合描述一個成功機率，這正是貝氏統計學派中共軛先驗分配的用法，先驗分配取貝塔分配、觀測值取二項分配時，後驗分配仍是貝塔分配；三項衍伸性質則是 $a=b=1$ 時退回標準均勻分配、標準均勻分配的順序統計量服從貝塔分配，以及機率密度在 $\frac{a}{a+b}$ 附近聚集。最後一項也說明了貝塔分配與標準均勻分配的分別。標準均勻分配對值域上的每一處一視同仁，貝塔分配則指出比較容易出現的位置，而 $a$ 與 $b$ 的大小決定了聚集的程度，兩者都大時聚集得比較明顯。
 
-[下一篇](/lecture-notes/gamma-beta-relationship/)給出伽瑪分配與貝塔分配之間的關係: 兩個獨立的伽瑪變數，其中一個除以兩者之和會服從貝塔分配，兩者之和則仍是伽瑪分配，而且這兩個新的變數彼此獨立。
+[下一篇](/lecture-notes/gamma-beta-relationship/)給出伽瑪分配與貝塔分配之間的關係。兩個獨立的伽瑪變數，其中一個除以兩者之和會服從貝塔分配，兩者之和則仍是伽瑪分配，而且這兩個新的變數彼此獨立。
 
 ## 參考文獻與延伸閱讀
 

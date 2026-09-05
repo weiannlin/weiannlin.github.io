@@ -15,20 +15,20 @@ excerpt: "常態、卡方、司徒頓 $t$ 與斯內德克 $\\mathcal{F}$ 這四�
 
 [上一篇](/lecture-notes/snedecor-f-distribution/)給出[斯內德克 $\mathcal{F}$ 分配](/lecture-notes/snedecor-f-distribution/#def-f-distribution)的定義，並以它處理兩個獨立樣本變異數比值的抽樣分配。到這裡為止，[常態分配](/lecture-notes/normal-distribution/#def-normal)、[卡方分配](/lecture-notes/chi-squared-distribution/#def-chi-distribution)、[司徒頓 $t$ 分配](/lecture-notes/student-t-distribution/#def-t-distribution)與斯內德克 $\mathcal{F}$ 分配這四個常用的抽樣分配都已經給出，本篇處理的是它們彼此之間的關係。
 
-本篇分成兩個部分。前半把四個分配之間的數學關係整理成一條定理並逐項證明，證明的作法一致，都是把 $\mathcal{F}$ 變數寫回兩個獨立卡方變數各除以自身自由度之後的比值，再由定義認出所得的分配。後半轉入尾點的記法: 以標準常態分配的圖形說明右尾點的意義，並交代同一個點在右尾表示法與左尾表示法之下的兩種寫法。
+本篇分成兩個部分。前半把四個分配之間的數學關係整理成一條定理並逐項證明，證明的作法一致，都是把 $\mathcal{F}$ 變數寫回兩個獨立卡方變數各除以自身自由度之後的比值，再由定義認出所得的分配。後半轉入尾點的記法。以標準常態分配的圖形說明右尾點的意義，並交代同一個點在右尾表示法與左尾表示法之下的兩種寫法。
 
 ## 常用抽樣分配間的關係
 
 前面的四個常用的抽樣分配彼此之間，具有一些數學上的關係，這些關係是「分配與分配」的關係，是前述的[隨機變數轉換](/lecture-notes/one-to-one-transformations/)的範疇。
 
 <div id="thm-sampling-distribution-relations" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 4.27 (常用抽樣分配的分配關係)</div>
+<div class="topic-box__label">Theorem 4.27 (常用抽樣分配的分配關係, relations among sampling distributions)</div>
 
 (1)
 {: .topic-paren-item}
 
 $$
-T\sim t(\nu)\qquad\therefore\, T^{2}\sim\mathcal{F}(1,\nu)
+T\sim t(\nu)\qquad\Longrightarrow\ T^{2}\sim\mathcal{F}(1,\nu)
 $$
 
 (2)
@@ -37,7 +37,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-Z\sim\mathcal{N}(0,1)\qquad\therefore\, Z^{2}\sim\chi^{2}(1)\ \text{且}\ Z^{2}\sim\mathcal{F}(1,\infty)
+Z\sim\mathcal{N}(0,1)\qquad\Longrightarrow\ Z^{2}\sim\chi^{2}(1)\ \text{且}\ Z^{2}\sim\mathcal{F}(1,\infty)
 $$
 
 </div>
@@ -46,7 +46,7 @@ $$
 $$
 \begin{aligned}
 Z&\sim\mathcal{N}(0,1)\\[0.45em]
-&\qquad\therefore\, Z^{2}\sim\chi^{2}(1)\\[0.45em]
+&\qquad\Longrightarrow\ Z^{2}\sim\chi^{2}(1)\\[0.45em]
 &\qquad\text{且}\ Z^{2}\sim\mathcal{F}(1,\infty)
 \end{aligned}
 $$
@@ -57,14 +57,14 @@ $$
 {: .topic-paren-item}
 
 $$
-F\sim\mathcal{F}(\nu_1,\nu_2)\qquad\therefore\, \frac{1}{\,F\,}\sim\mathcal{F}(\nu_2,\nu_1)
+F\sim\mathcal{F}(\nu_1,\nu_2)\qquad\Longrightarrow\ \frac{1}{\,F\,}\sim\mathcal{F}(\nu_2,\nu_1)
 $$
 
 (4)
 {: .topic-paren-item}
 
 $$
-F\sim\mathcal{F}(\nu_1,\infty)\qquad\therefore\, \nu_1F\sim\chi^{2}(\nu_1)
+F\sim\mathcal{F}(\nu_1,\infty)\qquad\Longrightarrow\ \nu_1F\sim\chi^{2}(\nu_1)
 $$
 
 (5)
@@ -73,14 +73,14 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-F\sim\mathcal{F}(\nu_1,\nu_2)\qquad\therefore\, F\xrightarrow[\nu_1\to\infty,\ \nu_2\to\infty]{\mathrm{p}}\frac{\,1\,}{1}=1
+F\sim\mathcal{F}(\nu_1,\nu_2)\qquad\Longrightarrow\ F\xrightarrow[\nu_1\to\infty,\ \nu_2\to\infty]{\mathrm{p}}\frac{\,1\,}{1}=1
 $$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-F\sim\mathcal{F}(\nu_1,\nu_2)\qquad\therefore\, F\xrightarrow[\nu_1\to\infty,\ \nu_2\to\infty]{\mathrm{p}}\frac{\,1\,}{1}=1
+F\sim\mathcal{F}(\nu_1,\nu_2)\qquad\Longrightarrow\ F\xrightarrow[\nu_1\to\infty,\ \nu_2\to\infty]{\mathrm{p}}\frac{\,1\,}{1}=1
 $$
 
 </div>
@@ -146,12 +146,19 @@ $$
 F=\frac{\,X_1/\nu_1\,}{X_2/\nu_2}\sim\mathcal{F}(\nu_1,\nu_2)
 $$
 
-其中我們有[^wlln]
+其中我們有
 {: .topic-paren-cont}
 
 $$
 \mathop{\mathrm{plim}}\limits_{\nu_2\to\infty}\frac{X_2}{\,\nu_2\,}=1
 $$
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+這裡使用到了稍後會談到的[弱大數法則](/lecture-notes/weak-law-and-central-limit-theorem/#thm-weak-law-of-large-numbers) (WLLN) 的結果，在此先不贅述。
+
+</div>
 
 故當 $\nu_2\to\infty$ 的時候，則
 {: .topic-paren-cont}
@@ -222,7 +229,7 @@ $$
 
 ## 右尾機率與右尾點
 
-在此之前，不妨幫讀者複習一下: 在[常態分配那一篇](/lecture-notes/normal-distribution/#fig-normal-right-tail-point)之中，我們曾經提過，常態分配右邊的尾部所具有的一小塊機率被稱作**右尾機率 <span lang="en">(right-tail probability)</span>**，而其分界點正是**右尾點**。
+在此之前，不妨幫讀者複習一下。在[常態分配那一篇](/lecture-notes/normal-distribution/#fig-normal-right-tail-point)之中，我們曾經提過，常態分配右邊的尾部所具有的一小塊機率被稱作**右尾機率 <span lang="en">(right-tail probability)</span>**，而其分界點正是**右尾點**。
 
 在各種常用的抽樣分配之中，尾點之間會有一些特定的恆等關係，我們將這些常用的恆等關係列在下方；但在列出這些恆等關係之前，我們先以標準常態分配的圖形來理解**右尾點**在分配上的關係與其它表示式。
 
@@ -244,13 +251,11 @@ $$
 
 [下一篇](/lecture-notes/sampling-distribution-tail-points/)便正式來看各種常用抽樣分配之間的尾點關係，這些關係是基於稍早曾提過的分配間的數學關係而來，讀者應將這兩組關係進行對照來比對。
 
-[^wlln]: 這裡使用到了稍後會談到的[弱大數法則](/lecture-notes/weak-law-and-central-limit-theorem/#thm-weak-law-of-large-numbers) (WLLN) 的結果，在此先不贅述。
-
 ## 本篇小結
 
 [Theorem 4.27](#thm-sampling-distribution-relations) 把四個常用抽樣分配之間的數學關係整理成五項。第 (1) 項說 $t$ 變數的平方服從 <span class="text-nowrap">$\mathcal{F}(1,\nu)$；</span>第 (2) 項說標準常態變數的平方同時服從 $\chi^{2}(1)$ 與 <span class="text-nowrap">$\mathcal{F}(1,\infty)$；</span>第 (3) 項說 $\mathcal{F}$ 變數取倒數之後，兩個自由度互換位置；第 (4) 項說分母自由度為無窮時，$\nu_1F$ 服從 <span class="text-nowrap">$\chi^{2}(\nu_1)$；</span>第 (5) 項說兩個自由度同時趨於無窮時，$F$ 機率收斂到 $1$ 這個值。
 
-五項的證明作法一致: 先把 $\mathcal{F}$ 變數還原成兩個獨立卡方變數各除以自身自由度之後的比值，再依定義認出所得的分配。第 (1) 項把 $T=\frac{Z}{\sqrt{X/\nu}}$ 平方，分子的 $Z^{2}$ 本身就是自由度為 $1$ 的卡方變數，因而湊成 $\mathcal{F}$ 分配的形式；第 (2) 項由 $t(\infty)$ 即為標準常態分配這件事情，接上第 (1) 項的結果；第 (3) 項把比值上下顛倒；第 (4) 項與第 (5) 項則用到 $\frac{X_i}{\nu_i}$ 在自由度趨於無窮時的機率極限為 $1$ 這個結果，該結果來自後面才會談到的弱大數法則。
+五項的證明作法一致。先把 $\mathcal{F}$ 變數還原成兩個獨立卡方變數各除以自身自由度之後的比值，再依定義認出所得的分配。第 (1) 項把 $T=\frac{Z}{\sqrt{X/\nu}}$ 平方，分子的 $Z^{2}$ 本身就是自由度為 $1$ 的卡方變數，因而湊成 $\mathcal{F}$ 分配的形式；第 (2) 項由 $t(\infty)$ 即為標準常態分配這件事情，接上第 (1) 項的結果；第 (3) 項把比值上下顛倒；第 (4) 項與第 (5) 項則用到 $\frac{X_i}{\nu_i}$ 在自由度趨於無窮時的機率極限為 $1$ 這個結果，該結果來自後面才會談到的弱大數法則。
 
 本篇後半轉入尾點的記法。右尾點 $z_{\sssig \alpha}$ 指的是右邊剩下 $\alpha$ 的機率的那一個點；由於標準常態分配對稱於 <span class="text-nowrap">$0$，</span>$z_{\sssig 1-\alpha}$ 與 $-z_{\sssig \alpha}$ 是同一個點。要留意兩件事情: 其一，右尾表示法的 $z_{\sssig 1-\alpha}$ 與左尾表示法的 $z_{\sssig \alpha}$ 指的是同一個點，兩種表示法所固定的是分界點哪一側的機率；其二，$\alpha$ 通常取 $0.05$ 或 $0.1$ 一類的小數字，因此 $z_{\sssig \alpha}$ 落在分配的右半部，而 $z_{\sssig 1-\alpha}$ 落在左半部並且是一個負數。
 

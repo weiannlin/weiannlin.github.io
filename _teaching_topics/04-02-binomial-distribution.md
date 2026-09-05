@@ -13,7 +13,7 @@ published: false
 excerpt: "二項分配是 $n$ 次伯努利實驗中，成功次數所服從的分配，其機率函數中的組合數來自「哪幾次成功」的選法。本篇先證明這個機率函數確實合法，並以階乘動差求得期望值 $np$、變異數 $npq$ 與動差母函數 $\\bigl(pe^{t}+q\\bigr)^{n}$。接著給出幾項延伸: 取 $n=1$ 即為伯努利分配、成功機率相同且彼此獨立的兩個二項變數相加仍為二項分配，以及 $p$ 大於、等於或小於 $0.5$ 時，分配分別呈左偏、對稱與右偏。最後以六道例題示範由動差母函數辨識分配、至少一次的機率，以及雙重期望值定理與全機率定理在二項分配上的用法。"
 ---
 
-[上一篇](/lecture-notes/bernoulli-trials-and-distribution/)由[伯努利實驗](/lecture-notes/bernoulli-trials-and-distribution/#def-ber-trial)出發，給出[伯努利分配](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)的定義，並在最後留下一個問題: 只有成功與失敗兩種結果的情境下，為什麼要刻意把 $X$ 定義成一次伯努利實驗中的「成功次數」。本篇的二項分配就是這個問題的答案。伯努利實驗的定義本來就包含「每次實驗的成功機率固定」與「實驗與實驗之間彼此獨立」這兩點，因此把同一個伯努利實驗連續進行 $n$ 次是很自然的做法，而此時值得記錄的量，就是這 $n$ 次之中成功的總次數。
+[上一篇](/lecture-notes/bernoulli-trials-and-distribution/)由[伯努利實驗](/lecture-notes/bernoulli-trials-and-distribution/#def-ber-trial)出發，給出[伯努利分配](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)的定義，並在最後留下一個問題。只有成功與失敗兩種結果的情境下，為什麼要刻意把 $X$ 定義成一次伯努利實驗中的「成功次數」。本篇的二項分配就是這個問題的答案。伯努利實驗的定義本來就包含「每次實驗的成功機率固定」與「實驗與實驗之間彼此獨立」這兩點，因此把同一個伯努利實驗連續進行 $n$ 次是很自然的做法，而此時值得記錄的量，就是這 $n$ 次之中成功的總次數。
 
 本篇先給出二項分配的定義，並完整證明其機率函數為一個合法的機率函數，以及期望值、變異數與動差母函數的公式。接著說明三件事: 二項分配在 $n=1$ 時就是伯努利分配、成功機率相同且彼此獨立的兩個二項變數相加仍為二項分配，以及機率函數中的組合數所對應的直觀意義。最後看 $p$ 的大小如何改變分配的形狀，並以六道例題練習二項分配的計算。
 
@@ -311,14 +311,19 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-這個性質被稱作二項分配的**可加性 (<span lang="en">additive property</span>**，或譯**加成性)**[^additive]，其限制是 $X$ 與 $Y$ 必須獨立，而且**成功機率必須相同**。當然，在這個性質下，我們很自然地有，若 <span class="text-nowrap">$X_1,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathrm{Ber}(p)$，</span>則
+這個性質被稱作二項分配的**可加性 <span lang="en">(additive property)</span>**，或譯**加成性**，其限制是 $X$ 與 $Y$ 必須獨立，而且**成功機率必須相同**。當然，在這個性質下，我們很自然地有，若 $X_1,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathrm{Ber}(p)$ 成立，則
 {: .topic-paren-cont}
 
 $$
 W=\sum_{i=1}^{n}X_i\sim\mathrm{Bin}(n,\ p)
 $$
 
-[^additive]: 所謂可加性 <span lang="en">(additive property)</span> 指的是兩個屬於某種分配的變數在指定條件下相加仍然是該種分配 (但允許部分常數或參數不同)，則稱此種分配具有可加性。通常而言，具有可加性的分配，其 mgf 都會在次方上產生變化，讀者不妨思考看看為何。
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+所謂可加性指的是兩個屬於某種分配的變數在指定條件下相加仍然是該種分配 (但允許部分常數或參數不同)，則稱此種分配具有可加性。通常而言，具有可加性的分配，其 mgf 都會在次方上產生變化，讀者不妨思考看看為何。
+
+</div>
 
 (3) 二項分配與伯努利分配的關聯是很顯然的，其直觀意義是「$n$ 次伯努利實驗中『挑』了 $x$ 次為成功，剩下的 $n-x$ 次為失敗」。
 {: .topic-paren-item}
@@ -332,7 +337,7 @@ $$
 
 </div>
 
-(4) $p$ 的數值不同時，二項分配的**偏態**亦會產生變化，當 $p$ 分別在大於、等於、小於 $0.5$ 時，整個二項分配會分別對應變化成左偏、對稱以及右偏分配，下面我們便來看看不同的 $n$ 與 $p$ 會如何讓二項分配產生改變。
+(4) $p$ 的數值不同時，二項分配的**偏態**亦會產生變化，當 $p$ 分別在大於、等於、小於 $0.5$ 時，整個二項分配會分別對應變化成左偏、對稱以及右偏分配，下面我們便來看看不同的 $p$ 會如何讓二項分配產生改變。
 {: .topic-paren-item}
 
 <figure id="fig-binomial-pmf-shapes" class="topic-figure topic-figure--wide">
@@ -356,7 +361,7 @@ $$
 </ol>
 </div>
 
-(1) 由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+(1) 由 mgf 的唯一性可知
 {: .topic-paren-item}
 
 <div class="topic-math-follow-before" markdown="1">
@@ -649,14 +654,14 @@ $$
 </ol>
 </div>
 
-(1) 依 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知 <span class="text-nowrap">$X_1\sim\mathrm{Bin}\bigl(4,\ \frac{2}{\,3\,}\bigr)$，</span>又 $X_2$ 的機率函數為
+(1) 依 mgf 的唯一性可知 $X_1\sim\mathrm{Bin}\bigl(4,\ \frac{2}{\,3\,}\bigr)$ 這個分配，又 $X_2$ 的機率函數為
 {: .topic-paren-item}
 
 $$
 p_{\sssig X_2}(x_2)=\left\lbrace
 \begin{array}{c@{\quad}l}
-\dfrac{2}{\,5\,}, & x=1,3\\[0.7em]
-\dfrac{1}{\,5\,}, & x=2
+\dfrac{2}{\,5\,}, & x_2=1,3\\[0.7em]
+\dfrac{1}{\,5\,}, & x_2=2
 \end{array}
 \right.
 $$
@@ -721,9 +726,9 @@ $$
 
 [Definition 4.3](#def-binomial) 把伯努利分配推廣到 $n$ 次實驗: $X$ 記錄 $n$ 次伯努利實驗中成功的次數，值域為 <span class="text-nowrap">$\lbrace\,0,1,\ldots,n\,\rbrace$，</span>機率函數為 <span class="text-nowrap">$\binom{n}{x}p^{x}q^{n-x}$，</span>其中的組合數對應「哪幾次成功」的選法，而 $n$ 是一個固定的常數，不是參數。證明的四個步驟依序驗證機率函數的加總為 <span class="text-nowrap">$1$、</span>求得 <span class="text-nowrap">$\mathbb{E}(X)=np$、</span>再以階乘動差 $\mathbb{E}\bigl[X(X-1)\bigr]=n(n-1)p^{2}$ 得到 $\mathbb{E}\bigl(X^{2}\bigr)$ 進而算出 <span class="text-nowrap">$\mathrm{Var}(X)=npq$，</span>最後直接由定義求得 <span class="text-nowrap">$M_{\sssig X}(t)=\bigl(pe^{t}+q\bigr)^{n}$。</span>其中機率函數的加總、兩個動差的計算與動差母函數的推導，都用到 [Theorem 2.18](/lecture-notes/moment-system/#thm-binomial) 的二項式定理。
 
-定義之後的幾點說明依序是: $n=1$ 時二項分配即為伯努利分配、成功機率相同且彼此獨立的兩個二項變數相加仍為二項分配 (可加性)、機率函數中的組合數所對應的直觀意義，以及 $p$ 的大小決定分配的形狀，$p$ 大於、等於、小於 $0.5$ 時分別為左偏、對稱與右偏。可加性的證明只需把兩個 mgf 相乘，指數因而相加，再由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識出結果；同一個論證也給出 $n$ 個獨立同分配的伯努利變數相加即為二項分配。
+定義之後的幾點說明依序是: $n=1$ 時二項分配即為伯努利分配、成功機率相同且彼此獨立的兩個二項變數相加仍為二項分配 (可加性)、機率函數中的組合數所對應的直觀意義，以及 $p$ 的大小決定分配的形狀，$p$ 大於、等於、小於 $0.5$ 時分別為左偏、對稱與右偏。可加性的證明只需把兩個 mgf 相乘，指數因而相加，再由 mgf 的唯一性辨識出結果；同一個論證也給出 $n$ 個獨立同分配的伯努利變數相加即為二項分配。
 
-六道例題涵蓋三種常見的用法。[Example 4.2](#ex-binomial-1) 與 [Example 4.7](#ex-binomial-6) 由 mgf 的形狀反推分配，前者辨識出 <span class="text-nowrap">$\mathrm{Bin}(16,\ 0.75)$，</span>後者則在辨識之後再以獨立性把兩個 mgf 相乘。[Example 4.3](#ex-binomial-2) 與 [Example 4.4](#ex-binomial-3) 是直接的機率計算，前者以餘事件處理「至少一個」，後者則把「至少 $7$ 位」拆成兩項相加。[Example 4.5](#ex-binomial-4) 與 [Example 4.6](#ex-binomial-5) 則把成功機率或實驗次數本身當成隨機的: 前者先以伯努利變數表示挑到哪一個硬幣，再用雙重期望值定理求 <span class="text-nowrap">$\mathbb{E}(X)$；</span>後者以全機率定理把條件二項分配對 $N$ 加總，最後得到 <span class="text-nowrap">$Y\sim\mathrm{Bin}(m,\ pq)$，</span>仍然是一個二項分配。
+六道例題涵蓋三種常見的用法。[Example 4.2](#ex-binomial-1) 與 [Example 4.7](#ex-binomial-6) 由 mgf 的形狀反推分配，前者辨識出 <span class="text-nowrap">$\mathrm{Bin}(16,\ 0.75)$，</span>後者則在辨識之後再以獨立性把兩個 mgf 相乘。[Example 4.3](#ex-binomial-2) 與 [Example 4.4](#ex-binomial-3) 是直接的機率計算，前者以餘事件處理「至少一個」，後者則把「至少 $7$ 位」拆成兩項相加。[Example 4.5](#ex-binomial-4) 與 [Example 4.6](#ex-binomial-5) 則把成功機率或實驗次數本身當成隨機的。前者先以伯努利變數表示挑到哪一個硬幣，再用雙重期望值定理求 <span class="text-nowrap">$\mathbb{E}(X)$；</span>後者以全機率定理把條件二項分配對 $N$ 加總，最後得到 <span class="text-nowrap">$Y\sim\mathrm{Bin}(m,\ pq)$，</span>仍然是一個二項分配。
 
 [下一篇](/lecture-notes/multinomial-distribution/)把伯努利實驗的兩個類別推廣為 $k$ 個互斥類別，先給出三項式定理，再定義多項實驗與多項分配。
 

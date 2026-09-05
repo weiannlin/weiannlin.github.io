@@ -240,17 +240,19 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{E}\bigl(X^{k}\bigr)=\beta^{k}\frac{\,\Gamma(\alpha+k)\,}{\Gamma(\alpha)},\ \alpha,\beta>0,\ k\in\bigl(\lbrace0\rbrace\cup\mathbb{N}\bigr)
+\boxed{\ \mathbb{E}\bigl(X^{k}\bigr)=\beta^{k}\frac{\,\Gamma(\alpha+k)\,}{\Gamma(\alpha)},\ \alpha,\beta>0,\ k\in\bigl(\lbrace0\rbrace\cup\mathbb{N}\bigr)\ }
 $$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+\boxed{
 \begin{aligned}
 \mathbb{E}\bigl(X^{k}\bigr)&=\beta^{k}\frac{\,\Gamma(\alpha+k)\,}{\Gamma(\alpha)},\\[0.35em]
 &\qquad \alpha,\beta>0,\ k\in\bigl(\lbrace0\rbrace\cup\mathbb{N}\bigr)
 \end{aligned}
+}
 $$
 
 </div>
@@ -299,17 +301,19 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\text{令 }T\sim\mathrm{Gamma}(n,\lambda)\ \text{且}\ Y\sim\mathrm{Poi}(t\lambda)\text{，則 }\mathbb{P}(T>t)=\mathbb{P}(Y<n)
+\boxed{\ \text{令 }T\sim\mathrm{Gamma}(n,\lambda)\ \text{且}\ Y\sim\mathrm{Poi}(t\lambda)\text{，則 }\mathbb{P}(T>t)=\mathbb{P}(Y<n)\ }
 $$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+\boxed{
 \begin{aligned}
 &\text{令 }T\sim\mathrm{Gamma}(n,\lambda)\ \text{且}\ Y\sim\mathrm{Poi}(t\lambda)，\\[0.45em]
 &\text{則 }\mathbb{P}(T>t)=\mathbb{P}(Y<n)
 \end{aligned}
+}
 $$
 
 </div>
@@ -424,7 +428,7 @@ $$
 若 <span class="text-nowrap">$\alpha=1$，</span>則
 
 $$
-M_{\sssig X}(t)=(1-\beta t)^{-1},\ t<\frac{1}{\,\beta\,}\qquad\therefore\, X\sim\mathrm{Exp}(\beta)
+M_{\sssig X}(t)=(1-\beta t)^{-1},\ t<\frac{1}{\,\beta\,}\qquad\Longrightarrow\ X\sim\mathrm{Exp}(\beta)
 $$
 
 原式得證。 <span class="topic-qed">$\square$</span>
@@ -515,7 +519,7 @@ $$
 
 </div>
 
-則由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+則由動差母函數的唯一性可知
 
 $$
 Y\sim\mathrm{Gamma}(\alpha,\ a\beta)
@@ -639,7 +643,7 @@ $$
 
 </div>
 
-(2) 由伽瑪分配可加性可知 <span class="text-nowrap">$X_1+X_2\sim\mathrm{Gamma}(\alpha=2,\ \lambda)$，</span>又令 $Y\equiv N(10)$ 表示 $10$ 單位時間內之偶發事件發生個數，則 <span class="text-nowrap">$Y\sim\mathrm{Poi}(10\lambda)$，</span>由伽瑪分配與卜瓦松分配的對偶性知
+(2) 由伽瑪分配可加性可知 $X_1+X_2\sim\mathrm{Gamma}(\alpha=2,\ \lambda)$ 這個分配，又令 $Y\equiv N(10)$ 表示 $10$ 單位時間內之偶發事件發生個數，則 <span class="text-nowrap">$Y\sim\mathrm{Poi}(10\lambda)$，</span>由伽瑪分配與卜瓦松分配的對偶性知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -836,7 +840,7 @@ $$
 
 上述問題中，收斂條件的由來是因為等比級數的公比 $\frac{1-p}{\,1-\theta t\,}$ 必須小於 <span class="text-nowrap">$1$，</span>由此整理而得。
 
-此外，本題特別註明參數的單位是時間，意指 $\theta$ 是期望值。但若以頻率參數來思考本題，會發現一個有趣的結果，也就是 <span class="text-nowrap">$S_{\sssig N}\sim\mathrm{Exp}(\lambda=p/\theta)$，</span>這個結果可以思考成，如果我們在眾多偶發事件中尋找某類特定的偶發事件，則直到尋找到該類偶發事件為止所需要的等待時間，其頻率將降低 (平均等待時間將提高)，但仍然服從指數分配，而不會因為加總而變成伽瑪分配。
+此外，本題特別註明參數的單位是時間，意指 $\theta$ 是期望值。但若以頻率參數來思考本題，會發現一個有趣的結果，也就是 $S_{\sssig N}\sim\mathrm{Exp}(\lambda=p/\theta)$ 這個分配，這個結果可以思考成，如果我們在眾多偶發事件中尋找某類特定的偶發事件，則直到尋找到該類偶發事件為止所需要的等待時間，其頻率將降低 (平均等待時間將提高)，但仍然服從指數分配，而不會因為加總而變成伽瑪分配。
 
 </div>
 
@@ -844,9 +848,9 @@ $$
 
 [Definition 4.14](#def-gamma-distribution) 的伽瑪分配以兩個參數界定: $\alpha$ 為形狀參數、$\beta$ 為比例參數，而頻率參數 $\lambda$ 就是 $\beta$ 的倒數，兩者只是同一個參數的兩種寫法。機率函數的分母是 $\beta^{\alpha}\Gamma(\alpha)$ 這個常數，其中的[伽瑪函數](/lecture-notes/gamma-function-exponential-distribution/#def-gamma-function)正是讓整條密度在值域上的積分等於 $1$ 的關鍵。證明的四個步驟依序驗證積分為 <span class="text-nowrap">$1$、</span>求得 <span class="text-nowrap">$\mathbb{E}(X)=\alpha\beta$、</span>再由二階原動差得到 <span class="text-nowrap">$\mathrm{Var}(X)=\alpha\beta^{2}$，</span>最後直接由定義求得 <span class="text-nowrap">$M_{\sssig X}(t)=(1-\beta t)^{-\alpha}$。</span>若先求出 $k$ 階原動差的公式，期望值與變異數都只是它在 $k=1$ 與 $k=2$ 的兩個特例。
 
-定義之後的四項延伸性質，第一項是伽瑪分配與卜瓦松分配的對偶關係: $\alpha=n$ 為正整數時，$T>t$ 這個事件說的是「直到第 $n$ 次偶發事件發生所需的時間比 $t$ 還要長」，換句話說，$t$ 時長內的發生次數不到 $n$ 次，兩者是同一件事情，因而有 $\mathbb{P}(T>t)=\mathbb{P}(Y<n)$ 這條等式。由這條等式對 $t$ 微分，加總的兩項彼此相消之後只剩一項，得到的正是伽瑪分配的密度。第二項指出 $\alpha=1$ 時伽瑪分配即為[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)。第三項是可加性: 兩個 mgf 相乘使指數上的 $\alpha_1$ 與 $\alpha_2$ 相加，前提是兩個變數獨立且比例參數相同；$\alpha_1=\alpha_2=1$ 時，它說的就是兩個 iid 的指數變數相加會變成伽瑪分配。第四項是比例伸縮性質，$Y=aX$ 只把比例參數乘上 <span class="text-nowrap">$a$，</span>形狀參數不變。
+定義之後的四項延伸性質，第一項是伽瑪分配與卜瓦松分配的對偶關係: $\alpha=n$ 為正整數時，$T>t$ 這個事件說的是「直到第 $n$ 次偶發事件發生所需的時間比 $t$ 還要長」，換句話說，$t$ 時長內的發生次數不到 $n$ 次，兩者是同一件事情，因而有 $\mathbb{P}(T>t)=\mathbb{P}(Y<n)$ 這條等式。由這條等式對 $t$ 微分，加總的兩項彼此相消之後只剩一項，得到的正是伽瑪分配的密度。第二項指出 $\alpha=1$ 時伽瑪分配即為指數分配。第三項是可加性。兩個 mgf 相乘使指數上的 $\alpha_1$ 與 $\alpha_2$ 相加，前提是兩個變數獨立且比例參數相同；$\alpha_1=\alpha_2=1$ 時，它說的就是兩個 iid 的指數變數相加會變成伽瑪分配。第四項是比例伸縮性質，$Y=aX$ 只把比例參數乘上 <span class="text-nowrap">$a$，</span>形狀參數不變。
 
-四道例題分成兩組。[Example 4.31](#ex-gamma-1) 以分部積分把 $h(\alpha)$ 一層一層往上遞推，得到 $\mathbb{P}(X\leqslant x)=\mathbb{P}(Y\geqslant\alpha)$ 這條等式，這是前面對偶關係的餘事件版本；[Example 4.33](#ex-gamma-3) 則把卜瓦松過程中第 $k$ 次到達的時刻寫成 <span class="text-nowrap">$T_k$，</span>其密度的求法與對偶關係的證明完全相同。[Example 4.32](#ex-gamma-2) 把兩個獨立的指數變數相加，先由可加性認出伽瑪分配，再由對偶關係換成卜瓦松機率來計算。[Example 4.34](#ex-gamma-4) 的兩個小題則把相加的個數本身當成隨機的: 個數固定為 $n$ 時，$n$ 個 iid 的指數變數之和是伽瑪分配；個數服從幾何分配時，等比級數加總之後所得到的 mgf 仍是指數分配的形式，只是平均等待時間由 $\theta$ 變為 $\theta/p$ 這個值。
+四道例題分成兩組。[Example 4.31](#ex-gamma-1) 以分部積分把 $h(\alpha)$ 一層一層往上遞推，得到 $\mathbb{P}(X\leqslant x)=\mathbb{P}(Y\geqslant\alpha)$ 這條等式，這是前面對偶關係的餘事件版本；[Example 4.33](#ex-gamma-3) 則把卜瓦松過程中第 $k$ 次到達的時刻寫成 <span class="text-nowrap">$T_k$，</span>其密度的求法與對偶關係的證明完全相同。[Example 4.32](#ex-gamma-2) 把兩個獨立的指數變數相加，先由可加性認出伽瑪分配，再由對偶關係換成卜瓦松機率來計算。[Example 4.34](#ex-gamma-4) 的兩個小題則把相加的個數本身當成隨機的。個數固定為 $n$ 時，$n$ 個 iid 的指數變數之和是伽瑪分配；個數服從幾何分配時，等比級數加總之後所得到的 mgf 仍是指數分配的形式，只是平均等待時間由 $\theta$ 變為 $\theta/p$ 這個值。
 
 [下一篇](/lecture-notes/weibull-reliability-and-hazard/)介紹韋伯分配，並依序給出可靠度函數與風險函數的定義。
 

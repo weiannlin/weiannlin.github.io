@@ -1,7 +1,7 @@
 % Fig. 4.16 -- 二元常態聯合 pdf 由正上方俯瞰的灰階填色，兩面板。
-% 書稿來源: mathstatch4.tex 第 5331 至 5380 行 (左面板) 與第 5383 至 5432 行
+% 書稿來源: mathstatch4.tex 第 6154 至 6209 行 (左面板) 與第 6212 至 6262 行
 %   (右面板)。書稿把兩個 tikzpicture 各放進一個 .49\textwidth 的 minipage
-%   橫排成一列 (第 5329 至 5434 行)，網頁併為一張兩面板圖。
+%   橫排成一列 (第 6153 至 6263 行)，網頁併為一張兩面板圖。
 %
 % 這一張畫的就是 Fig. 4.15 那兩個曲面由正上方看下去的樣子: 函數、參數、
 %   繪圖範圍、取樣點數與色階全部與 Fig. 4.15 的對應面板相同，只把視角改為
@@ -9,9 +9,9 @@
 %   灰階填色，圖上並沒有等高線，本檔照書稿保留灰階填色的作法 (候選稿的
 %   fig-pending 註解已把改畫等高線列為待作者裁定，預設照書稿)。
 %
-% 繪圖函數同樣照書稿原樣保留，未改為真正的機率密度函數，理由與待裁定事項
-%   見 bivariate-normal-surface.tex 的檔頭。俯瞰圖只看形狀不看高度，這一點
-%   對本圖的外觀沒有影響。
+% 繪圖函數同樣依候選稿 2026-09-05 (候-A-15) 的改正，與 Fig. 4.15 的對應面板
+%   逐字相同，說明見 bivariate-normal-surface.tex 的檔頭。rho=0 面板的繪圖
+%   範圍亦一併由 0:4 放大到 -1:5，正圓形因而變大。
 %
 % 書稿以 % 註解掉而未畫的部分一律不畫，項目與 Fig. 4.15 相同。
 %
@@ -31,7 +31,7 @@
 %
 % 產製 (CH3 規格 3.2 的三維曲面路徑，-O 不可省):
 %   latex -interaction=nonstopmode '\def\pgfsysdriver{pgfsys-dvisvgm.def}\input{bivariate-normal-contours.tex}'
-%   dvisvgm -O -d2 -n -o ../../images/teaching-topics/bivariate-normal-contours.svg bivariate-normal-contours.dvi
+%   dvisvgm -O -d2 -n -o ../../../images/lecture-notes/bivariate-normal-contours.svg bivariate-normal-contours.dvi
 
 \documentclass[tikz,border=2pt]{standalone}
 \usepackage{amsmath}
@@ -82,17 +82,17 @@
     declare function={mu2=2;},
     %% 零相關的那一個: 書稿第 5337 至 5338 行
     declare function={bivarA(\ma,\sa,\mb,\sb)=
-        1/(2*pi*\sa*\sb) * exp(-((x-\ma)^2/\sa^2 + (y-\mb)^2/\sb^2))/2;},
+        1/(2*pi*\sa*\sb) * exp(-((x-\ma)^2/\sa^2 + (y-\mb)^2/\sb^2)/2);},
     %% 負相關的那一個: 書稿第 5389 至 5390 行
     declare function={bivarB(\ma,\sa,\mb,\sb,\rr)=
-        1/(2*pi*\sa*\sb*sqrt(1-\rr^2)) * exp(-((x-\ma)^2/\sa^2 + (y-\mb)^2/\sb^2 - 2*\rr*((x-\ma)/\sa)*((y-\mb)/\sb)))/2;}]
+        1/(2*pi*\sa*\sb*sqrt(1-\rr^2)) * exp(-((x-\ma)^2/\sa^2 + (y-\mb)^2/\sb^2 - 2*\rr*((x-\ma)/\sa)*((y-\mb)/\sb))/(2*(1-\rr^2)));}]
 \begin{groupplot}[
   group style={group name=g, group size=2 by 1, horizontal sep=1.3cm},
   toppanel,
 ]
 
 %% 左面板: 相關係數為零，俯瞰所見為一團正圓形
-\nextgroupplot[xlabel={\shortstack{$x$ \\ $(\rho = 0)$}}]
+\nextgroupplot[xlabel={\shortstack{$x$ \\ $(\rho = 0)$}}, domain=-1:5, y domain=-1:5]
 \addplot3[surf, draw=journalink, line width=0.2pt] {bivarA(mu1,1,mu2,1)};
 
 %% 右面板: 相關係數為負，俯瞰所見為一團由左上往右下傾斜的橢圓形

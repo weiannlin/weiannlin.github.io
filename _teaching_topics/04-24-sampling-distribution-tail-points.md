@@ -17,12 +17,12 @@ excerpt: "四種常用抽樣分配之間既然有分配上的關係，尾點之�
 
 本篇只有一個定理，其中列出六條關係: 前五條是等式，依序把 [$t$ 分配](/lecture-notes/student-t-distribution/#def-t-distribution)與 [$\mathcal{F}$ 分配](/lecture-notes/snedecor-f-distribution/#def-f-distribution)、$t$ 分配與標準常態分配、標準常態分配與[卡方分配](/lecture-notes/chi-squared-distribution/#def-chi-distribution)及 $\mathcal{F}$ 分配、$\mathcal{F}$ 分配與其倒數、卡方分配與 $\mathcal{F}$ 分配的尾點互相換算；第六條是不等式，說明自由度較大的 $t$ 分配，在相同的右尾機率之下右尾點較小。
 
-六條的證明逐條進行，作法一致: 先取出上一篇的一條分配關係，由它指出兩個分配的尾部區域其實描述同一個事件，兩邊的機率因而相等，再把機率的等式改寫成尾點的等式。其中 $t$ 分配與[標準常態分配](/lecture-notes/normal-distribution/#def-normal)這兩個對稱於 $0$ 的分配還要多用一次對稱性，把雙尾的機率折半。證明之中另有四處以圖形說明尾機率區塊在平方或取倒數之後如何互相對應。
+六條的證明逐條進行，作法一致。先取出上一篇的一條分配關係，由它指出兩個分配的尾部區域其實描述同一個事件，兩邊的機率因而相等，再把機率的等式改寫成尾點的等式。其中 $t$ 分配與[標準常態分配](/lecture-notes/normal-distribution/#def-normal)這兩個對稱於 $0$ 的分配還要多用一次對稱性，把雙尾的機率折半。證明之中另有四處以圖形說明尾機率區塊在平方或取倒數之後如何互相對應。
 
 ## 常用抽樣分配的尾點關係
 
 <div id="thm-sampling-tail-relations" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 4.28 (常用抽樣分配的尾點關係)</div>
+<div class="topic-box__label">Theorem 4.28 (常用抽樣分配的尾點關係, relations among their tail points)</div>
 
 (1)
 {: .topic-paren-item}
@@ -75,7 +75,7 @@ $$
 {: .topic-paren-item}
 
 $$
-T\sim t(\nu)\qquad\therefore\, T^{2}\sim\mathcal{F}(1,\nu)
+T\sim t(\nu)\qquad\Longrightarrow\ T^{2}\sim\mathcal{F}(1,\nu)
 $$
 
 則可知道
@@ -134,7 +134,7 @@ $$
 
 <figure id="fig-tail-identity-t-to-f" class="topic-figure topic-figure--wide">
   <img src="/images/lecture-notes/tail-identity-t-to-f.svg" alt="左右兩個面板，中間以一個雙線的向右箭頭相連，箭頭上方標 F = T^2。左面板畫一條左右對稱的鐘形密度曲線，峰頂上方標 t(ν)；橫軸上左右對稱的兩個刻度各由曲線垂直落下一條線到橫軸，軸下由左至右標 −t_{α/2}(ν) 與 t_{α/2}(ν)，中央另有一個刻度，其下另起一排標 0。兩個落點之外、曲線之下到橫軸之間的兩塊尾部以淡紅色填滿，左右對稱。橫軸右端有箭頭，圖中沒有縱軸。右面板畫一條由左上往右下一路遞減的密度曲線，左端在圖頂截斷，右端貼近橫軸，曲線右上方標 F(1, ν)；橫軸靠右處有一個刻度，由曲線垂直落下一條線到橫軸，軸下標 F_α(1, ν)，該刻度以右、曲線之下到橫軸之間的一塊尾部以淡紅色填滿。橫軸原點處另有一個刻度，其下另起一排標 0，該處並立起一條縱軸，兩軸末端都有箭頭。">
-  <figcaption><span class="topic-figure__label">Fig. 4.11.</span> 左圖的兩塊對稱尾機率平方之後落在同一個位置，疊起來正好是右圖的那一塊右尾機率，兩邊的尾點因此滿足 <span class="text-nowrap">$t_{\frac{\alpha}{2}}(\nu)=\sqrt{\mathcal{F}_{\alpha}(1,\nu)}$。</span></figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 4.11.</span> 左圖的兩塊對稱尾機率平方之後落在同一個位置，疊起來正好是右圖的那一塊右尾機率，兩邊的尾點因此滿足 $t_{\frac{\alpha}{2}}(\nu)=\sqrt{\mathcal{F}_{\alpha}(1,\nu)}$ 這條等式。</figcaption>
 </figure>
 
 這個恆等式在上圖中的直觀意義是，左圖的兩個對稱的尾機率區塊，在平方過後都會位在正的部分，而這兩部分平方之後的位置是相同的，疊加之後，正好是右圖的右尾機率。
@@ -151,14 +151,14 @@ $$
 {: .topic-paren-cont}
 
 $$
-t_{\alpha}(\infty)=z_{\alpha}
+t_{\alpha}(\infty)=z_{\sssig \alpha}
 $$
 
 (3) 在卡方分配的小節中我們已知
 {: .topic-paren-item}
 
 $$
-Z\sim\mathcal{N}(0,1)\qquad\therefore\, Z^{2}\sim\chi^{2}(1)
+Z\sim\mathcal{N}(0,1)\qquad\Longrightarrow\ Z^{2}\sim\chi^{2}(1)
 $$
 
 則可知道
@@ -169,7 +169,7 @@ $$
 $$
 \begin{aligned}
 \alpha&=\mathbb{P}\bigl(Z^{2}>\chi^{2}_{\alpha}(1)\bigr)=\mathbb{P}\bigl(Z<-\sqrt{\chi^{2}_{\alpha}(1)}\ \text{或}\ Z>\sqrt{\chi^{2}_{\alpha}(1)}\bigr)\\[0.45em]
-&=2\times\mathbb{P}\bigl(Z>\sqrt{\chi^{2}_{\alpha}(1)}\bigr)\qquad(\,\because\ \text{標準分配對稱於}\ 0\,)
+&=2\times\mathbb{P}\bigl(Z>\sqrt{\chi^{2}_{\alpha}(1)}\bigr)\qquad(\,\because\ \text{標準常態分配對稱於}\ 0\,)
 \end{aligned}
 $$
 
@@ -182,7 +182,7 @@ $$
 &=\mathbb{P}\bigl(Z<-\sqrt{\chi^{2}_{\alpha}(1)}\\[0.25em]
 &\qquad\ \text{或}\ Z>\sqrt{\chi^{2}_{\alpha}(1)}\bigr)\\[0.45em]
 &=2\times\mathbb{P}\bigl(Z>\sqrt{\chi^{2}_{\alpha}(1)}\bigr)\\[0.25em]
-&\qquad(\,\because\ \text{標準分配對稱於}\ 0\,)
+&\qquad(\,\because\ \text{標準常態分配對稱於}\ 0\,)
 \end{aligned}
 $$
 
@@ -227,7 +227,7 @@ $$
 {: .topic-paren-cont}
 
 $$
-F\sim\mathcal{F}(\nu_1,\infty)\qquad\therefore\, \nu_1F\sim\chi^{2}(\nu_1)
+F\sim\mathcal{F}(\nu_1,\infty)\qquad\Longrightarrow\ \nu_1F\sim\chi^{2}(\nu_1)
 $$
 
 此處令 <span class="text-nowrap">$\nu_1=1$，</span>則可得到 $\chi^{2}(1)$ 分配就是 $\mathcal{F}(1,\infty)$ 分配，因此
@@ -236,14 +236,14 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\chi^{2}_{\alpha}(1)=\mathcal{F}_{\alpha}(1,\infty)\qquad\therefore\, \sqrt{\chi^{2}_{\alpha}(1)}=\sqrt{\mathcal{F}_{\alpha}(1,\infty)}
+\chi^{2}_{\alpha}(1)=\mathcal{F}_{\alpha}(1,\infty)\qquad\Longrightarrow\ \sqrt{\chi^{2}_{\alpha}(1)}=\sqrt{\mathcal{F}_{\alpha}(1,\infty)}
 $$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\chi^{2}_{\alpha}(1)=\mathcal{F}_{\alpha}(1,\infty)\qquad\therefore\, \sqrt{\chi^{2}_{\alpha}(1)}=\sqrt{\mathcal{F}_{\alpha}(1,\infty)}
+\chi^{2}_{\alpha}(1)=\mathcal{F}_{\alpha}(1,\infty)\qquad\Longrightarrow\ \sqrt{\chi^{2}_{\alpha}(1)}=\sqrt{\mathcal{F}_{\alpha}(1,\infty)}
 $$
 
 </div>
@@ -259,7 +259,7 @@ $$
 {: .topic-paren-item}
 
 $$
-F\sim\mathcal{F}(\nu_1,\nu_2)\qquad\therefore\, \frac{1}{\,F\,}\sim\mathcal{F}(\nu_2,\nu_1)
+F\sim\mathcal{F}(\nu_1,\nu_2)\qquad\Longrightarrow\ \frac{1}{\,F\,}\sim\mathcal{F}(\nu_2,\nu_1)
 $$
 
 則可知道
@@ -289,14 +289,14 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\frac{1}{\,F\,}\sim\mathcal{F}(\nu_2,\nu_1)\qquad\therefore\, \frac{1}{\,\mathcal{F}_{\alpha}(\nu_1,\nu_2)\,}=\mathcal{F}_{1-\alpha}(\nu_2,\nu_1)
+\frac{1}{\,F\,}\sim\mathcal{F}(\nu_2,\nu_1)\qquad\Longrightarrow\ \frac{1}{\,\mathcal{F}_{\alpha}(\nu_1,\nu_2)\,}=\mathcal{F}_{1-\alpha}(\nu_2,\nu_1)
 $$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\frac{1}{\,F\,}\sim\mathcal{F}(\nu_2,\nu_1)\qquad\therefore\, \frac{1}{\,\mathcal{F}_{\alpha}(\nu_1,\nu_2)\,}=\mathcal{F}_{1-\alpha}(\nu_2,\nu_1)
+\frac{1}{\,F\,}\sim\mathcal{F}(\nu_2,\nu_1)\qquad\Longrightarrow\ \frac{1}{\,\mathcal{F}_{\alpha}(\nu_1,\nu_2)\,}=\mathcal{F}_{1-\alpha}(\nu_2,\nu_1)
 $$
 
 </div>
@@ -309,11 +309,11 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 4.13.</span> 取倒數把右尾換成左尾。左面板填色的一塊在界點 $\mathcal{F}_{\alpha}(10,50)$ 的右邊，右面板填色的一塊在界點 $\mathcal{F}_{1-\alpha}(50,10)$ 的左邊，兩塊的機率相同，兩個界點互為倒數。</figcaption>
 </figure>
 
-由前述關係可知
-{: .topic-paren-cont}
+(5) 由前述關係已知
+{: .topic-paren-item}
 
 $$
-F\sim\mathcal{F}(\nu_1,\infty)\qquad\therefore\, \nu_1F\sim\chi^{2}(\nu_1)
+F\sim\mathcal{F}(\nu_1,\infty)\qquad\Longrightarrow\ \nu_1F\sim\chi^{2}(\nu_1)
 $$
 
 則可知道
@@ -322,39 +322,21 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\alpha=\mathbb{P}\bigl(F>\mathcal{F}_{\alpha}(\nu_1,\infty)\bigr)=\mathbb{P}\bigl(\nu_1F>\nu_1\mathcal{F}_{\alpha}(\nu_1,\infty)\bigr)\qquad\therefore\, \nu_1\mathcal{F}_{\alpha}(\nu_1,\infty)=\chi^{2}_{\alpha}(\nu_1)
+\alpha=\mathbb{P}\bigl(F>\mathcal{F}_{\alpha}(\nu_1,\infty)\bigr)=\mathbb{P}\bigl(\nu_1F>\nu_1\mathcal{F}_{\alpha}(\nu_1,\infty)\bigr)\qquad\Longrightarrow\ \nu_1\mathcal{F}_{\alpha}(\nu_1,\infty)=\chi^{2}_{\alpha}(\nu_1)
 $$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
-<div class="topic-math-follow-before" markdown="1">
-
 $$
 \begin{aligned}
 \alpha&=\mathbb{P}\bigl(F>\mathcal{F}_{\alpha}(\nu_1,\infty)\bigr)\\[0.45em]
 &=\mathbb{P}\bigl(\nu_1F>\nu_1\mathcal{F}_{\alpha}(\nu_1,\infty)\bigr)\\[0.4em]
-&\qquad\therefore\, \nu_1\mathcal{F}_{\alpha}(\nu_1,\infty)=\chi^{2}_{\alpha}(\nu_1)
+&\qquad\Longrightarrow\ \nu_1\mathcal{F}_{\alpha}(\nu_1,\infty)=\chi^{2}_{\alpha}(\nu_1)
 \end{aligned}
 $$
 
 </div>
-
-</div>
-
-(5) 由前述關係已知
-{: .topic-paren-item}
-
-$$
-F\sim\mathcal{F}(\nu_1,\infty)\qquad\therefore\, \nu_1F\sim\chi^{2}(\nu_1)
-$$
-
-因此
-{: .topic-paren-cont}
-
-$$
-\chi^{2}_{\alpha}(\nu_1)=\nu_1\mathcal{F}_{\alpha}(\nu_1,\infty)
-$$
 
 (6) 我們將兩種自由度的 $t$ 分配在完全相同的座標尺度上分別畫出來:
 {: .topic-paren-item}
@@ -378,11 +360,11 @@ $$
 
 [Theorem 4.28](#thm-sampling-tail-relations) 把上一篇的分配關係逐條翻譯成尾點的關係。第 (1) 條由 $T\sim t(\nu)$ 蘊含 $T^{2}\sim\mathcal{F}(1,\nu)$ 出發: $T^{2}$ 落在 $\mathcal{F}_{\alpha}(1,\nu)$ 右邊，等同於 $T$ 落在 $\pm\sqrt{\mathcal{F}_{\alpha}(1,\nu)}$ 之外，而 $t$ 分配對稱於 <span class="text-nowrap">$0$，</span>兩側各佔 <span class="text-nowrap">$\frac{\,\alpha\,}{2}$，</span>因此 $\sqrt{\mathcal{F}_{\alpha}(1,\nu)}$ 正是 $t$ 分配的 $\frac{\,\alpha\,}{2}$ 右尾點。第 (3) 條的作法與此完全相同，只是把 $t$ 換成標準常態、把 $\mathcal{F}(1,\nu)$ 換成 <span class="text-nowrap">$\chi^{2}(1)$；</span>再由 $\mathcal{F}(1,\infty)$ 就是 $\chi^{2}(1)$ 這件事，把 $z_{\frac{\alpha}{2}}$ 同時接上卡方與 $\mathcal{F}$ 兩種尾點。
 
-第 (2) 條不必計算: $t$ 分配的自由度趨於無窮時分配收斂到標準常態分配，尾點自然也跟著相等。第 (4) 條用的是取倒數會把兩個自由度對調這件事: 事件 $F>\mathcal{F}_{\alpha}(\nu_1,\nu_2)$ 與 $\frac{1}{\,F\,}<\frac{1}{\,\mathcal{F}_{\alpha}(\nu_1,\nu_2)\,}$ 是同一個事件，兩者的機率同為 <span class="text-nowrap">$\alpha$；</span>由 $\frac{1}{\,F\,}$ 這一側來看，$\frac{1}{\,\mathcal{F}_{\alpha}(\nu_1,\nu_2)\,}$ 就是 $\mathcal{F}(\nu_2,\nu_1)$ 之下左尾機率為 $\alpha$ 的那個點，也就是 <span class="text-nowrap">$\mathcal{F}_{1-\alpha}(\nu_2,\nu_1)$。</span>第 (5) 條同樣直接: 由 $F\sim\mathcal{F}(\nu_1,\infty)$ 可知 <span class="text-nowrap">$\nu_1F\sim\chi^{2}(\nu_1)$，</span>而不等式 $F>\mathcal{F}_{\alpha}(\nu_1,\infty)$ 兩邊同乘正數 $\nu_1$ 並不改變事件，尾點因而相差 $\nu_1$ 倍。
+第 (2) 條不必計算: $t$ 分配的自由度趨於無窮時分配收斂到標準常態分配，尾點自然也跟著相等。第 (4) 條用的是取倒數會把兩個自由度對調這件事。事件 $F>\mathcal{F}_{\alpha}(\nu_1,\nu_2)$ 與 $\frac{1}{\,F\,}<\frac{1}{\,\mathcal{F}_{\alpha}(\nu_1,\nu_2)\,}$ 是同一個事件，兩者的機率同為 <span class="text-nowrap">$\alpha$；</span>由 $\frac{1}{\,F\,}$ 這一側來看，$\frac{1}{\,\mathcal{F}_{\alpha}(\nu_1,\nu_2)\,}$ 就是 $\mathcal{F}(\nu_2,\nu_1)$ 之下左尾機率為 $\alpha$ 的那個點，也就是 <span class="text-nowrap">$\mathcal{F}_{1-\alpha}(\nu_2,\nu_1)$。</span>第 (5) 條同樣直接。由 $F\sim\mathcal{F}(\nu_1,\infty)$ 可知 <span class="text-nowrap">$\nu_1F\sim\chi^{2}(\nu_1)$，</span>而不等式 $F>\mathcal{F}_{\alpha}(\nu_1,\infty)$ 兩邊同乘正數 $\nu_1$ 並不改變事件，尾點因而相差 $\nu_1$ 倍。
 
-第 (6) 條是一條不等式。它的證明是把兩種自由度的 $t$ 分配畫在完全相同的座標尺度上直接比較: 自由度較小者的尾巴較厚，同樣的右尾機率 $\alpha$ 所對應的分界點就得往右移，右尾點因而較大。
+第 (6) 條是一條不等式。它的證明是把兩種自由度的 $t$ 分配畫在完全相同的座標尺度上直接比較。自由度較小者的尾巴較厚，同樣的右尾機率 $\alpha$ 所對應的分界點就得往右移，右尾點因而較大。
 
-四張圖之中，前三張分別配在第 (1)、(3) 與 (4) 條上。$t$ 與 $\mathcal{F}$ 那一張、標準常態與卡方那一張，呈現的是同一件事: 平方會把左右兩塊對稱的尾機率折到同一側疊起來，所以雙尾的 $\frac{\,\alpha\,}{2}$ 變成單尾的 <span class="text-nowrap">$\alpha$。</span>$\mathcal{F}$ 與其倒數那一張則呈現右尾與左尾的互換。這六條關係使四種分配的尾點可以互相換算，因此手上只要有其中一種分配的數值表，其餘幾種的尾點都可以推得。
+四張圖之中，前三張分別配在第 (1)、(3) 與 (4) 條上。$t$ 與 $\mathcal{F}$ 那一張、標準常態與卡方那一張，呈現的是同一件事。平方會把左右兩塊對稱的尾機率折到同一側疊起來，所以雙尾的 $\frac{\,\alpha\,}{2}$ 變成單尾的 <span class="text-nowrap">$\alpha$。</span>$\mathcal{F}$ 與其倒數那一張則呈現右尾與左尾的互換。這六條關係使四種分配的尾點可以互相換算，因此手上只要有其中一種分配的數值表，其餘幾種的尾點都可以推得。
 
 [下一篇](/lecture-notes/sampling-distribution-examples/)以兩道例題演練這些分配關係與尾點關係的用法。
 

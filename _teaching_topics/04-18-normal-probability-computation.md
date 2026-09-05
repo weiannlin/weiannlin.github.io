@@ -15,7 +15,7 @@ excerpt: "上一篇給出常態分配的定義、標準化與線性組合可加�
 
 [上一篇](/lecture-notes/normal-distribution/)給出[常態分配](/lecture-notes/normal-distribution/#def-normal)的定義，並依序說明標準常態分配、標準化、反標準化與線性組合可加性這幾項性質。本篇不再增加新的定義，而是把這些性質用在實際的機率計算上。
 
-前三道例題的作法一致: 先把常態變數減去期望值再除以標準差，化為標準常態變數 <span class="text-nowrap">$Z$，</span>所求的機率便可以由標準常態的機率表達，其中第二題另外用到兩個獨立常態變數相減之後仍為常態分配這一項性質。第四道例題則換一個方向，給定 $f_{\sssig Z}(z)=2\,\phi(z)\Phi(\lambda z)$ 這個函數，先驗證它是一個合法的 pdf，再以 [cdf 法](/lecture-notes/one-to-one-transformations/#prop-cdf-method)與 [Jacobian 法](/lecture-notes/one-to-one-transformations/#prop-jacobian-method)各證明一次 $Y=Z^{2}$ 服從 $\chi^{2}(1)$ 分配；兩處的關鍵都是 $\phi$ 為偶函數以及 $\Phi(-z)=1-\Phi(z)$ 這兩件事。
+前三道例題的作法一致。先把常態變數減去期望值再除以標準差，化為標準常態變數 <span class="text-nowrap">$Z$，</span>所求的機率便可以由標準常態的機率表達，其中第二題另外用到兩個獨立常態變數相減之後仍為常態分配這一項性質。第四道例題則換一個方向，給定 $f_{\sssig Z}(z)=2\,\phi(z)\Phi(\lambda z)$ 這個函數，先驗證它是一個合法的 pdf，再以 [cdf 法](/lecture-notes/one-to-one-transformations/#prop-cdf-method)與 [Jacobian 法](/lecture-notes/one-to-one-transformations/#prop-jacobian-method)各證明一次 $Y=Z^{2}$ 服從 $\chi^{2}(1)$ 分配；兩處的關鍵都是 $\phi$ 為偶函數以及 $\Phi(-z)=1-\Phi(z)$ 這兩件事。
 
 ## 常態機率的計算
 
@@ -35,7 +35,7 @@ Suppose that the content filled by a bottling process is normally distributed wi
 {: .topic-paren-item}
 
 $$
-X\sim\mathcal{N}(\mu=600,\ \sigma=2)
+X\sim\mathcal{N}(\mu=600,\ \sigma^{2}=4)
 $$
 
 又題目敘述中表示，不合格的情況為 $X>605$ 或 <span class="text-nowrap">$X<595$，</span>則不合格的機率為
@@ -67,7 +67,7 @@ $$
 
 </div>
 
-(2) 題目的敘述是求取標準差 $\sigma$ 使不合格事件 $X>605$ 或 $X<595$ 的事件機率下降至 <span class="text-nowrap">$1\%$，</span>此即令 $X\sim\mathcal{N}(600,\ \sigma)$ 這個分配，並且使得
+(2) 題目的敘述是求取標準差 $\sigma$ 使不合格事件 $X>605$ 或 $X<595$ 的事件機率下降至 <span class="text-nowrap">$1\%$，</span>此即令 <span class="text-nowrap">$X\sim\mathcal{N}(600,\ \sigma^{2})$，</span>並且使得
 {: .topic-paren-item}
 
 $$
@@ -134,7 +134,7 @@ Suppose that an analyst on Wall Street treats the annual return on the stock of 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-X\sim\mathcal{N}(\mu=\mu_{\sssig A}=0.08,\ \sigma=\sigma_{\sssig A}=0.015)
+X\sim\mathcal{N}(\mu=\mu_{\sssig A}=0.08,\ \sigma^{2}=\sigma^{2}_{\sssig A}=0.015^{2})
 $$
 
 </div>
@@ -143,7 +143,7 @@ $$
 $$
 \begin{aligned}
 X\sim\mathcal{N}\bigl(&\mu=\mu_{\sssig A}=0.08,\\[0.3em]
-&\sigma=\sigma_{\sssig A}=0.015\bigr)
+&\sigma^{2}=\sigma^{2}_{\sssig A}=0.015^{2}\bigr)
 \end{aligned}
 $$
 
@@ -176,7 +176,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-Y\sim\mathcal{N}(\mu=\mu_{\sssig B}=0.095,\ \sigma=\sigma_{\sssig B}=0.02)
+Y\sim\mathcal{N}(\mu=\mu_{\sssig B}=0.095,\ \sigma^{2}=\sigma^{2}_{\sssig B}=0.02^{2})
 $$
 
 </div>
@@ -185,7 +185,7 @@ $$
 $$
 \begin{aligned}
 Y\sim\mathcal{N}\bigl(&\mu=\mu_{\sssig B}=0.095,\\[0.3em]
-&\sigma=\sigma_{\sssig B}=0.02\bigr)
+&\sigma^{2}=\sigma^{2}_{\sssig B}=0.02^{2}\bigr)
 \end{aligned}
 $$
 
@@ -480,7 +480,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-[\,Z\geqslant0\,]\quad Y=Z^{2}\qquad\therefore\, Z=\sqrt{Y}\ \text{且}\ \mathbf{J}=\frac{\,d\,z\,}{\,d\,y\,}=\frac{1}{\,\sqrt{2y}\,}
+[\,Z\geqslant0\,]\quad Y=Z^{2}\qquad\therefore\, Z=\sqrt{Y}\ \text{且}\ \mathbf{J}=\frac{\,d\,z\,}{\,d\,y\,}=\frac{1}{\,2\sqrt{y}\,}
 $$
 
 </div>
@@ -490,7 +490,7 @@ $$
 \begin{aligned}
 [\,Z\geqslant0\,]\quad Y&=Z^{2}\\[0.35em]
 &\qquad\therefore\, Z=\sqrt{Y}\\[0.35em]
-&\qquad\text{且}\ \mathbf{J}=\frac{\,d\,z\,}{\,d\,y\,}=\frac{1}{\,\sqrt{2y}\,}
+&\qquad\text{且}\ \mathbf{J}=\frac{\,d\,z\,}{\,d\,y\,}=\frac{1}{\,2\sqrt{y}\,}
 \end{aligned}
 $$
 
@@ -502,7 +502,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-f_{\sssig Y}^{*}(y)=f_{\sssig Z}(\sqrt{y})\left\lvert\frac{1}{\,\sqrt{2y}\,}\right\rvert=2\,\phi(\sqrt{y})\Phi(\lambda\sqrt{y})\,\frac{1}{\,2\sqrt{y}\,}
+f_{\sssig Y}^{*}(y)=f_{\sssig Z}(\sqrt{y})\left\lvert\frac{1}{\,2\sqrt{y}\,}\right\rvert=2\,\phi(\sqrt{y})\Phi(\lambda\sqrt{y})\,\frac{1}{\,2\sqrt{y}\,}
 $$
 
 </div>
@@ -510,7 +510,7 @@ $$
 
 $$
 \begin{aligned}
-f_{\sssig Y}^{*}(y)&=f_{\sssig Z}(\sqrt{y})\left\lvert\frac{1}{\,\sqrt{2y}\,}\right\rvert\\[0.3em]
+f_{\sssig Y}^{*}(y)&=f_{\sssig Z}(\sqrt{y})\left\lvert\frac{1}{\,2\sqrt{y}\,}\right\rvert\\[0.3em]
 &=2\,\phi(\sqrt{y})\Phi(\lambda\sqrt{y})\,\frac{1}{\,2\sqrt{y}\,}
 \end{aligned}
 $$
@@ -520,7 +520,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-[\,Z<0\,]\quad Y=Z^{2}\qquad\therefore\, Z=-\sqrt{Y}\ \text{且}\ \mathbf{J}=\frac{\,d\,z\,}{\,d\,y\,}=\frac{-1}{\,\sqrt{2y}\,}
+[\,Z<0\,]\quad Y=Z^{2}\qquad\therefore\, Z=-\sqrt{Y}\ \text{且}\ \mathbf{J}=\frac{\,d\,z\,}{\,d\,y\,}=\frac{-1}{\,2\sqrt{y}\,}
 $$
 
 </div>
@@ -530,7 +530,7 @@ $$
 \begin{aligned}
 [\,Z<0\,]\quad Y&=Z^{2}\\[0.35em]
 &\qquad\therefore\, Z=-\sqrt{Y}\\[0.35em]
-&\qquad\text{且}\ \mathbf{J}=\frac{\,d\,z\,}{\,d\,y\,}=\frac{-1}{\,\sqrt{2y}\,}
+&\qquad\text{且}\ \mathbf{J}=\frac{\,d\,z\,}{\,d\,y\,}=\frac{-1}{\,2\sqrt{y}\,}
 \end{aligned}
 $$
 
@@ -543,7 +543,7 @@ $$
 
 $$
 \begin{aligned}
-f_{\sssig Y}^{**}(y)&=f_{\sssig Z}(-\sqrt{y})\left\lvert\frac{-1}{\,\sqrt{2y}\,}\right\rvert=2\,\phi(-\sqrt{y})\Phi(-\lambda\sqrt{y})\,\frac{1}{\,2\sqrt{y}\,}\\[0.45em]
+f_{\sssig Y}^{**}(y)&=f_{\sssig Z}(-\sqrt{y})\left\lvert\frac{-1}{\,2\sqrt{y}\,}\right\rvert=2\,\phi(-\sqrt{y})\Phi(-\lambda\sqrt{y})\,\frac{1}{\,2\sqrt{y}\,}\\[0.45em]
 &=2\,\phi(\sqrt{y})\bigl[1-\Phi(\lambda\sqrt{y})\bigr]\,\frac{1}{\,2\sqrt{y}\,}
 \end{aligned}
 $$
@@ -553,7 +553,7 @@ $$
 
 $$
 \begin{aligned}
-f_{\sssig Y}^{**}(y)&=f_{\sssig Z}(-\sqrt{y})\left\lvert\frac{-1}{\,\sqrt{2y}\,}\right\rvert\\[0.3em]
+f_{\sssig Y}^{**}(y)&=f_{\sssig Z}(-\sqrt{y})\left\lvert\frac{-1}{\,2\sqrt{y}\,}\right\rvert\\[0.3em]
 &=2\,\phi(-\sqrt{y})\Phi(-\lambda\sqrt{y})\,\frac{1}{\,2\sqrt{y}\,}\\[0.3em]
 &=2\,\phi(\sqrt{y})\bigl[1-\Phi(\lambda\sqrt{y})\bigr]\,\frac{1}{\,2\sqrt{y}\,}
 \end{aligned}
@@ -611,15 +611,15 @@ $\mathrm{Gamma}\bigl(\alpha=\frac{1}{\,2\,},\ \beta=2\bigr)$ 分配事實上就�
 
 ## 本篇小結
 
-[Example 4.44](#ex-normal-prob-1) 到 [Example 4.46](#ex-normal-prob-3) 三題的作法一致: 把常態變數減去期望值再除以標準差，化為標準常態變數 <span class="text-nowrap">$Z$，</span>所求的機率便可以由標準常態的機率表達。[Example 4.44](#ex-normal-prob-1) 的第一小題把「不合格」寫成 $X>605$ 或 $X<595$ 這兩個互斥事件，標準化之後兩側各得 <span class="text-nowrap">$0.0062$，</span>合計為 <span class="text-nowrap">$0.0124$；</span>第二小題反過來，把不合格的機率固定為 <span class="text-nowrap">$1\%$，</span>由對稱性得到單側機率為 <span class="text-nowrap">$0.005$，</span>再由 $\frac{5}{\,\sigma\,}=2.575$ 這條等式解出所需要的標準差。
+[Example 4.44](#ex-normal-prob-1) 到 [Example 4.46](#ex-normal-prob-3) 三題的作法一致。把常態變數減去期望值再除以標準差，化為標準常態變數 <span class="text-nowrap">$Z$，</span>所求的機率便可以由標準常態的機率表達。[Example 4.44](#ex-normal-prob-1) 的第一小題把「不合格」寫成 $X>605$ 或 $X<595$ 這兩個互斥事件，標準化之後兩側各得 <span class="text-nowrap">$0.0062$，</span>合計為 <span class="text-nowrap">$0.0124$；</span>第二小題反過來，把不合格的機率固定為 <span class="text-nowrap">$1\%$，</span>由對稱性得到單側機率為 <span class="text-nowrap">$0.005$，</span>再由 $\frac{5}{\,\sigma\,}=2.575$ 這條等式解出所需要的標準差。
 
 [Example 4.45](#ex-normal-prob-2) 的第一小題只是單一常態變數的機率計算。第二小題要比較兩支股票的年報酬，作法是把 $\mathbb{P}(Y>X)$ 改寫成 $\mathbb{P}(Y-X>0)$ 這個形式，再由[上一篇](/lecture-notes/normal-distribution/)的線性組合可加性得知 $Y-X$ 仍為常態分配，其期望值為兩者的期望值之差、變異數為兩者的變異數之和。第三小題則先以條件機率的定義展開，再由獨立性把分子拆成兩個機率相乘，與分母約去之後只剩下 B 公司的那一項。[Example 4.46](#ex-normal-prob-3) 要求以 $\Phi(\cdot)$ 表達答案，因此標準化之後把結果留在 $\Phi(1)-\Phi(-0.5)$ 這個差，不再換算為數值。
 
-[Example 4.47](#ex-normal-prob-4) 換一個方向。第一小題驗證 $2\,\phi(z)\Phi(\lambda z)$ 是一個合法的 pdf: 非負性由 $\phi$ 與 $\Phi$ 的非負性直接得到，積分為 $1$ 則是把積分範圍拆成負半線與正半線兩段，在負半線上代換 <span class="text-nowrap">$z=-t$，</span>再利用 $\phi$ 為偶函數以及 $\Phi(-\lambda t)=1-\Phi(\lambda t)$ 這條關係，使兩段的被積分函數合併為 <span class="text-nowrap">$2\,\phi(z)$，</span>其在正半線上的積分正好是 <span class="text-nowrap">$1$。</span>第二小題給了兩種作法: cdf 法先把 $F_{\sssig Y}(y)$ 化為 $2\int_{0}^{\sqrt{y}}\phi(z)\,dz$ 這個式子，再對 $y$ 微分；Jacobian 法則把 $Z\geqslant0$ 與 $Z<0$ 兩段各自轉換，兩個密度相加之後 $\Phi(\lambda\sqrt{y})$ 與 $1-\Phi(\lambda\sqrt{y})$ 恰好相消。兩種作法所得到的密度相同，都是 $\mathrm{Gamma}\bigl(\alpha=\frac{1}{\,2\,},\ \beta=2\bigr)$ 這個分配，也就是 $\chi^{2}(\nu=1)$ 分配。
+[Example 4.47](#ex-normal-prob-4) 換一個方向。第一小題驗證 $2\,\phi(z)\Phi(\lambda z)$ 是一個合法的 pdf。非負性由 $\phi$ 與 $\Phi$ 的非負性直接得到，積分為 $1$ 則是把積分範圍拆成負半線與正半線兩段，在負半線上代換 <span class="text-nowrap">$z=-t$，</span>再利用 $\phi$ 為偶函數以及 $\Phi(-\lambda t)=1-\Phi(\lambda t)$ 這條關係，使兩段的被積分函數合併為 <span class="text-nowrap">$2\,\phi(z)$，</span>其在正半線上的積分正好是 <span class="text-nowrap">$1$。</span>第二小題給了兩種作法。cdf 法先把 $F_{\sssig Y}(y)$ 化為 $2\int_{0}^{\sqrt{y}}\phi(z)\,dz$ 這個式子，再對 $y$ 微分；Jacobian 法則把 $Z\geqslant0$ 與 $Z<0$ 兩段各自轉換，兩個密度相加之後 $\Phi(\lambda\sqrt{y})$ 與 $1-\Phi(\lambda\sqrt{y})$ 恰好相消。兩種作法所得到的密度相同，都是 $\mathrm{Gamma}\bigl(\alpha=\frac{1}{\,2\,},\ \beta=2\bigr)$ 這個分配，也就是 $\chi^{2}(\nu=1)$ 分配。
 
 值得留意的是，讓 $\lambda$ 完全消失的關鍵在於 $\Phi(-z)=1-\Phi(z)$ 這條關係。凡滿足 $h(x)+h(-x)=1$ 且 $0\leqslant h(x)\leqslant1$ 的函數都具有這項性質，這種函數稱作偏斜函數。也因為如此，[Example 4.47](#ex-normal-prob-4) 中的分配並不是標準常態分配，其平方卻同樣服從 $\chi^{2}(1)$ 分配。
 
-下一篇回到標準常態分配本身，先求出它的各階原動差，再由此給出斯泰因引理。
+[下一篇](/lecture-notes/standard-normal-moments-stein-lemma/)回到標準常態分配本身，先求出它的各階原動差，再由此給出斯泰因引理。
 
 ## 參考文獻與延伸閱讀
 

@@ -135,7 +135,7 @@ $$
 $$
 \begin{gathered}
 \mathbb{E}(X_i)=np_i,\qquad \mathrm{Var}(X_i)=np_i(1-p_i),\\[0.35em]
-0\leqslant p_i\leqslant 1,\ i=1,\ldots,k-1\\[0.7em]
+0<p_i<1,\ i=1,\ldots,k-1\\[0.7em]
 M_{\sssig \boldsymbol{X}}(\boldsymbol{t})=\left[\sum_{i=1}^{k-1}p_ie^{t_i}+\biggl(1-\sum_{i=1}^{k-1}p_i\biggr)\right]^{n},\\[0.35em]
 \boldsymbol{t}=\bigl[t_1,\ldots,t_{k-1}\bigr]\in\mathbb{R}^{k-1}
 \end{gathered}
@@ -148,7 +148,7 @@ $$
 \begin{aligned}
 \mathbb{E}(X_i)&=np_i,\\[0.5em]
 \mathrm{Var}(X_i)&=np_i(1-p_i),\\[0.3em]
-&\quad 0\leqslant p_i\leqslant 1,\ i=1,\ldots,k-1\\[0.5em]
+&\quad 0<p_i<1,\ i=1,\ldots,k-1\\[0.5em]
 M_{\sssig \boldsymbol{X}}(\boldsymbol{t})&=\left[\sum_{i=1}^{k-1}p_ie^{t_i}+\biggl(1-\sum_{i=1}^{k-1}p_i\biggr)\right]^{n},\\[0.3em]
 &\quad \boldsymbol{t}=\bigl[t_1,\ldots,t_{k-1}\bigr]\in\mathbb{R}^{k-1}
 \end{aligned}
@@ -606,9 +606,9 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，三項分配的許多特色都符合直觀意義，舉例而言，我們將 $\boldsymbol{X}=\bigl[X_1,X_2\bigr]^{\mathrm{T}}$ 視為某個重複 $n$ 次的三項實驗中，第一類與第二類的成功次數，則 [Theorem 4.2](#thm-trinomial-properties) 的 (1) 指出，若我們只關切第一類的成功次數，可將第一類視為「成功類」，而第二類與第三類可被合併成為「失敗類」，由此轉回[二項分配](/lecture-notes/binomial-distribution/#def-binomial)；而 (2) 則是指出，若第一類與第二類的總成功次數，則可將二者合併為「成功類」，故有此結果。
+事實上，三項分配的許多特色都符合直觀意義，舉例而言，我們將 $\boldsymbol{X}=\bigl[X_1,X_2\bigr]^{\mathrm{T}}$ 視為某個重複 $n$ 次的三項實驗中，第一類與第二類的成功次數，則 [Theorem 4.2](#thm-trinomial-properties) 的 (1) 指出，若我們只關切第一類的成功次數，可將第一類視為「成功類」，而第二類與第三類可被合併成為「失敗類」，由此轉回[二項分配](/lecture-notes/binomial-distribution/#def-binomial)；而 (2) 則是指出，若我們關切第一類與第二類的總成功次數，則可將二者合併為「成功類」，故有此結果。
 
-除此之外，我們當然可以發現，則由於實驗總數固定，故第一類的成功次數與第二類的成功次數將產生排擠效應，此即，$X_1$ 與 $X_2$ 應呈現負相關。
+除此之外，我們當然可以發現，由於實驗總數固定，故第一類的成功次數與第二類的成功次數將產生排擠效應，此即，$X_1$ 與 $X_2$ 應呈現負相關。
 
 [Theorem 4.2](#thm-trinomial-properties) 中 (4) 的結果則更為精彩，譬如，在已經知道第二類成功次數為 $x_2$ 的前提下，觀測第一類的成功次數時，我們只需要考慮剩下的 $n-x_2$ 次「非第二類成功」的實驗，且此時由於可能的選項只剩下第一類或第三類成功，實質上我們是在考慮樣本空間縮小的情況，故此時，第一類的成功機率將變為 <span class="text-nowrap">$\frac{p_1}{\,1-p_2\,}$，</span>其中的 $1-p_2$ 為第一類與第三類的成功機率總和，非常符合直觀意義。
 
@@ -753,13 +753,13 @@ $$
 
 [Definition 4.4](#def-multinomial-trial) 的多項實驗由三個條件界定: 出象被分成 $k$ 個互斥事件、各事件的發生機率固定且總和為 <span class="text-nowrap">$1$，</span>以及實驗與實驗之間彼此獨立。由於各類次數的總和必定是 <span class="text-nowrap">$n$，</span>[Definition 4.5](#def-multinomial) 只記錄前 $k-1$ 類的次數，最後一類的次數隨即可以得到；機率函數的分母因而多出 $\bigl(n-\sum_{i=1}^{k-1}x_i\bigr)!$ 這一項，而末尾的機率是 $1-\sum_{i=1}^{k-1}p_i$ 這個數。$k=3$ 時稱為三項分配，其機率函數的合法性正好由[三項式定理](#thm-trinomial-thm)一步得出。
 
-[Theorem 4.2](#thm-trinomial-properties) 一次給出三項分配的五款性質，證明的關鍵是三項分配的 mgf: 把 $t_2$ 取為 $0$ 即得 $X_1$ 的邊際 mgf，兩個變數的 mgf 都是二項分配的形式，這是 (1)；把兩個變數的引數都取為 $t$ 即得 $X_1+X_2$ 的 mgf，兩類合併之後仍是二項分配，這是 (2)；(3) 由三個變異數與變異數的加法關係反解出[共變異數](/lecture-notes/covariance/#def-covariance)，結果是 $-n\,p_1\,p_2$ 這個負值；(4) 直接由條件 pmf 的定義相除，約掉之後仍是二項分配，成功機率換成 $\frac{p_1}{\,1-p_2\,}$ 這個比值；(5) 則由條件期望值為 $x_2$ 的一次式，依母體線性迴歸方程式的特性得到[相關係數](/lecture-notes/correlation-coefficient/#def-corr)。
+[Theorem 4.2](#thm-trinomial-properties) 一次給出三項分配的五款性質，證明的關鍵是三項分配的 mgf。把 $t_2$ 取為 $0$ 即得 $X_1$ 的邊際 mgf，兩個變數的 mgf 都是二項分配的形式，這是 (1)；把兩個變數的引數都取為 $t$ 即得 $X_1+X_2$ 的 mgf，兩類合併之後仍是二項分配，這是 (2)；(3) 由三個變異數與變異數的加法關係反解出[共變異數](/lecture-notes/covariance/#def-covariance)，結果是 $-n\,p_1\,p_2$ 這個負值；(4) 直接由條件 pmf 的定義相除，約掉之後仍是二項分配，成功機率換成 $\frac{p_1}{\,1-p_2\,}$ 這個比值；(5) 則由條件期望值為 $x_2$ 的一次式，依母體線性迴歸方程式的特性得到[相關係數](/lecture-notes/correlation-coefficient/#def-corr)。
 
-這五款性質都可以在直觀上得到解釋: 只關切第一類時，第二類與第三類合併成「失敗類」，於是回到[二項分配](/lecture-notes/binomial-distribution/#def-binomial)；實驗總次數固定，兩類的成功次數彼此排擠，因而呈現負相關；已知第二類的次數之後，剩下的 $n-x_2$ 次實驗只可能落在第一類或第三類，樣本空間縮小，第一類的成功機率隨之變為 $\frac{p_1}{\,1-p_2\,}$ 這個比值。
+這五款性質都可以在直觀上得到解釋。只關切第一類時，第二類與第三類合併成「失敗類」，於是回到二項分配；實驗總次數固定，兩類的成功次數彼此排擠，因而呈現負相關；已知第二類的次數之後，剩下的 $n-x_2$ 次實驗只可能落在第一類或第三類，樣本空間縮小，第一類的成功機率隨之變為 $\frac{p_1}{\,1-p_2\,}$ 這個比值。
 
-[Example 4.8](#ex-multinomial-1) 把公正骰子擲 $n$ 次的結果視為六類的多項實驗: 第一小題把未指定的兩次併成一類，係數為 $\frac{20!}{\,6!5!4!3!2!\,}$ 這個數；第二、三小題則只看點數 $1$ 與點數 $2$ 兩類，直接套用 [Theorem 4.2](#thm-trinomial-properties) 的合併性質與共變異數公式。[Example 4.9](#ex-multinomial-2) 把 $2r$ 顆球隨機放入 $r$ 個盒子，各盒的球數服從參數為 $\frac{1}{\,r\,}$ 的多項分配，每盒恰好兩顆的機率即為機率函數在 $x_1=\cdots=x_r=2$ 的值。
+[Example 4.8](#ex-multinomial-1) 把公正骰子擲 $n$ 次的結果視為六類的多項實驗。第一小題把未指定的兩次併成一類，係數為 $\frac{20!}{\,6!5!4!3!2!\,}$ 這個數；第二、三小題則只看點數 $1$ 與點數 $2$ 兩類，直接套用 [Theorem 4.2](#thm-trinomial-properties) 的合併性質與共變異數公式。[Example 4.9](#ex-multinomial-2) 把 $2r$ 顆球隨機放入 $r$ 個盒子，各盒的球數服從參數為 $\frac{1}{\,r\,}$ 的多項分配，每盒恰好兩顆的機率即為機率函數在 $x_1=\cdots=x_r=2$ 的值。
 
-下一篇回到只有成功與失敗兩類的伯努利實驗，但改為一直做到第一次成功為止，所需要的實驗次數即服從幾何分配；該篇並會介紹幾何分配最具代表性的無記憶性。
+[下一篇](/lecture-notes/geometric-distribution-memoryless/)回到只有成功與失敗兩類的伯努利實驗，但改為一直做到第一次成功為止，所需要的實驗次數即服從幾何分配；該篇並會介紹幾何分配最具代表性的無記憶性。
 
 ## 參考文獻與延伸閱讀
 

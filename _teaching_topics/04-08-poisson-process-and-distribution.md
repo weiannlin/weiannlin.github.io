@@ -98,7 +98,14 @@ $$
 
 </div>
 
-卜瓦松過程是以法國數學家 Siméon Denis Poisson (1781-1840) 的姓氏命名。[^poisson-name]
+卜瓦松過程是以法國數學家 Siméon Denis Poisson (1781-1840) 的姓氏命名。
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+一個有趣的事實是，Poisson 本人其實從未研究過這個過程，他研究的是卜瓦松分配。至於為什麼卜瓦松過程以其姓氏命名，是因為此過程被發現，在特定的條件下，其描述偶發事件個數的變數，將服從卜瓦松分配，因而得名。
+
+</div>
 
 卜瓦松過程有一些地方需要注意:
 
@@ -108,11 +115,18 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在嚴謹的數學定義中我們會特別指出 $\mathbb{P}\bigl(N(t)\geqslant2\bigr)=o(t)$ 這個等式，其中的 $o(\cdot)$ 是小 o 符號 <span lang="en">(little o notation)</span>，[^little-o]但在本系列的範圍中，讀者可以僅理解為 $\lim_{t\to0}\mathbb{P}\bigl(N(t)\geqslant2\bigr)=0$ 即可。
+在嚴謹的數學定義中我們會特別指出 $\mathbb{P}\bigl(N(t)\geqslant2\bigr)=o(t)$ 這個等式，其中的 $o(\cdot)$ 是小 o 符號 <span lang="en">(little o notation)</span>，但在本系列的範圍中，讀者可以僅理解為 $\lim_{t\to0}\mathbb{P}\bigl(N(t)\geqslant2\bigr)=0$ 即可。
 
 </div>
 
-(2) 卜瓦松過程是一種定義在時間區段的隨機過程，但事實上，我們也可以將其定義的範圍推廣至任意的**正實數區間**或甚至是任意的**有限維度正實數區間**，實務上的例子是任意線段、平面、空間等等的區間，這也給了卜瓦松過程在使用上相當程度的方便。
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+小 o 符號與大 O 符號是用來描述函數的漸近行為的數學符號，以前述等式為例，即代表當 $t$ 趨近於 $0$ 時，$o(t)$ 趨近於 $0$ 的速度將比 $t$ 本身趨近於 $0$ 的速度來得更快。這樣的漸近符號在描述運算複雜度的時候相當有用，但在本系列中並不會使用到太多這類的漸近符號。
+
+</div>
+
+(2) 卜瓦松過程是一種定義在時間區段的隨機過程，但事實上，我們也可以將其定義的範圍推廣至任意的**正實數區間**或甚至是任意的**有限維度正實數區間**，實務上的例子是任意線段、平面、空間 ... 等等的區間，這也給了卜瓦松過程在使用上相當程度的方便。
 {: .topic-paren-item}
 
 (3) 上述 (5) 中，$\lambda$ 是卜瓦松過程的參數，代表**平均發生率 <span lang="en">(mean occurrence rate)</span>**。
@@ -451,7 +465,7 @@ $$
 p=\frac{\lambda}{\,n\,}
 $$
 
-則由[二項分配](/lecture-notes/binomial-distribution/#def-binomial)的 pmf，我們有
+則由二項分配的 pmf，我們有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -495,7 +509,14 @@ $$
 
 這個性質是把卜瓦松過程內的每一個瞬間，都考慮成一個偶發事件的伯努利實驗，只有發生與不發生，且這段時間內期望發生的次數是 $np=\lambda$ 次。
 
-當然，這是一個**以有限的瞬間近似真實的時間區間**的狀況，且我們不可能真的執行無限多次成敗實驗，但這個證明確實讓我們在實務上有一個使用法則是**當 $n$ 很大、$p$ 很小而且 $np$ 為一個定值 $\lambda$ 時**[^rule-of-thumb]可以使用卜瓦松分配來「近似求解」二項分配的機率。
+當然，這是一個**以有限的瞬間近似真實的時間區間**的狀況，且我們不可能真的執行無限多次成敗實驗，但這個證明確實讓我們在實務上有一個使用法則是**當 $n$ 很大、$p$ 很小而且 $np$ 為一個定值 $\lambda$ 時**可以使用卜瓦松分配來「近似求解」二項分配的機率。
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+通常的實務法則是 $n\geqslant100$ 且 <span class="text-nowrap">$np\leqslant10$。</span>
 
 </div>
 
@@ -509,9 +530,16 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-所謂的**單位時間**可由使用者自行定義，[^unit-time]例如: 以 $15$ 分鐘為一個單位，則 $15$ 分鐘內的偶發事件發生次數同樣服從卜瓦松分配。
+所謂的**單位時間**可由使用者自行定義，例如: 以 $15$ 分鐘為一個單位，則 $15$ 分鐘內的偶發事件發生次數同樣服從卜瓦松分配。
 
-此外，與卜瓦松過程相同，我們也可以將其推廣至任意線段、任意平面、任意空間等等的區間，並且同樣具有**不重疊的單位時間內的卜瓦松分配隨機變數會彼此獨立**的特性。
+此外，與卜瓦松過程相同，我們也可以將其推廣至任意線段、任意平面、任意空間 ... 等等的區間，並且同樣具有**不重疊的單位時間內的卜瓦松分配隨機變數會彼此獨立**的特性。
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+此處所謂的「單位」未必是指我們所認知的單位，只要自行定義清楚，則像是 $2.3$ 分鐘這類的不規則時間長同樣可以被當作單位時間，而 $4.6$ 分鐘便代表兩個單位的時間長。
 
 </div>
 
@@ -522,23 +550,15 @@ $$
 Y\sim\mathrm{Poi}(\lambda t)
 $$
 
-[^poisson-name]: 一個有趣的事實是，Poisson 本人其實從未研究過這個過程，他研究的是卜瓦松分配。至於為什麼卜瓦松過程以其姓氏命名，是因為此過程被發現，在特定的條件下，其描述偶發事件個數的變數，將服從卜瓦松分配，因而得名。
-
-[^little-o]: 小 o 符號與大 O 符號是用來描述函數的漸近行為的數學符號，以前述等式為例，即代表當 $t$ 趨近於 $0$ 時，$o(t)$ 趨近於 $0$ 的速度將比 $t$ 本身趨近於 $0$ 的速度來得更快。這樣的漸近符號在描述運算複雜度的時候相當有用，但在本系列中並不會使用到太多這類的漸近符號。
-
-[^rule-of-thumb]: 通常的實務法則是 $n\geqslant100$ 且 <span class="text-nowrap">$np\leqslant10$。</span>
-
-[^unit-time]: 此處所謂的「單位」未必是指我們所認知的單位，只要自行定義清楚，則像是 $2.3$ 分鐘這類的不規則時間長同樣可以被當作單位時間，而 $4.6$ 分鐘便代表兩個單位的時間長。
-
 ## 本篇小結
 
 [Definition 4.10](#def-poisson-process) 以五個條件界定卜瓦松過程: 長度為 $0$ 的時間區間內不會有偶發事件、發生機率只與區間長度有關而與起點無關、不重疊區間內的發生次數彼此獨立、極短區間內發生兩次以上的機率趨近於 <span class="text-nowrap">$0$，</span>以及發生一次的機率與區間長度成正比，比例常數 $\lambda$ 即為平均發生率。後兩條在嚴謹的寫法中要用小 o 符號表述，本系列取極限的寫法即可。卜瓦松過程雖然定義在時間區段上，其範圍可以推廣到任意的正實數區間，甚至是任意的有限維度正實數區間，它下轄的分配包含卜瓦松分配、指數分配、伽瑪分配與韋伯分配。
 
 [Theorem 4.9](#thm-maclaurin-series) 給出指數函數的馬克勞林級數，也就是把 $e^{\lambda}$ 寫成 $\sum_{x=0}^{\infty}\frac{\lambda^{x}}{\,x!\,}$ 這個級數；它是泰勒級數在 $0$ 展開的特例，而 [Definition 4.11](#def-poisson-distribution) 之後的推導多次靠它把無窮級數化成一個指數函數。卜瓦松分配記錄的是單位時間內偶發事件的發生次數，值域為 <span class="text-nowrap">$\lbrace\,0,1,2,\ldots,\infty\,\rbrace$，</span>機率函數為 $\frac{e^{-\lambda}\lambda^{x}}{\,x!\,}$ 這個式子，參數只有平均發生率 $\lambda$ 一個。證明依序驗證機率函數的加總為 <span class="text-nowrap">$1$、</span>求得 <span class="text-nowrap">$\mathbb{E}(X)=\lambda$、</span>再以階乘動差 $\mathbb{E}\bigl[X(X-1)\bigr]=\lambda^{2}$ 得到 $\mathbb{E}\bigl(X^{2}\bigr)=\lambda^{2}+\lambda$ 進而算出 $\mathrm{Var}(X)=\lambda$ 這個結果，最後直接由定義求得動差母函數 $M_{\sssig X}(t)=e^{\lambda(e^{t}-1)}$ 這一式。期望值與變異數同為 $\lambda$ 是這個分配最好記的特徵。
 
-定義之後的四點說明，前兩點是延伸性質。可加性只需把兩個 mgf 相乘，指數上的 $\lambda_1$ 與 $\lambda_2$ 因而相加，再由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識出 <span class="text-nowrap">$\mathrm{Poi}(\lambda_1+\lambda_2)$；</span>它的限制只有 $X$ 與 $Y$ 必須獨立。二項分配的極限則把 $p$ 代換成 $\frac{\lambda}{\,n\,}$ 之後取 $n$ 趨近於無限大，三個因子分別趨近於 <span class="text-nowrap">$1$、</span>$e^{-\lambda}$ 與 <span class="text-nowrap">$1$，</span>剩下的正是卜瓦松分配的機率函數；其直觀是把過程中的每一個瞬間都看成一次伯努利實驗，實務上因而可以在 $n$ 很大、$p$ 很小而 $np$ 為定值時，以卜瓦松機率近似二項機率。後兩點回到卜瓦松過程: 卜瓦松分配的 $X$ 就是過程中的 <span class="text-nowrap">$N(1)$，</span>而所謂的單位時間可由使用者自行定義；由比例伸縮性質，$t$ 個單位時長內的發生次數則服從 $\mathrm{Poi}(\lambda t)$ 這個分配。
+定義之後的四點說明，前兩點是延伸性質。可加性只需把兩個 mgf 相乘，指數上的 $\lambda_1$ 與 $\lambda_2$ 因而相加，再由動差母函數的唯一性辨識出 <span class="text-nowrap">$\mathrm{Poi}(\lambda_1+\lambda_2)$；</span>它的限制只有 $X$ 與 $Y$ 必須獨立。二項分配的極限則把 $p$ 代換成 $\frac{\lambda}{\,n\,}$ 之後取 $n$ 趨近於無限大，三個因子分別趨近於 <span class="text-nowrap">$1$、</span>$e^{-\lambda}$ 與 <span class="text-nowrap">$1$，</span>剩下的正是卜瓦松分配的機率函數；其直觀是把過程中的每一個瞬間都看成一次伯努利實驗，實務上因而可以在 $n$ 很大、$p$ 很小而 $np$ 為定值時，以卜瓦松機率近似二項機率。後兩點回到卜瓦松過程。卜瓦松分配的 $X$ 就是過程中的 <span class="text-nowrap">$N(1)$，</span>而所謂的單位時間可由使用者自行定義；由比例伸縮性質，$t$ 個單位時長內的發生次數則服從 $\mathrm{Poi}(\lambda t)$ 這個分配。
 
-下一篇以例題演練卜瓦松分配的計算，並進一步給出兩個結果: 兩個獨立卜瓦松變數相加之後，其中一個在總和給定之下的條件分配為二項分配；以及把卜瓦松過程的偶發事件依固定機率分成兩類之後，兩類的個數各自仍服從卜瓦松分配而且彼此獨立。
+[下一篇](/lecture-notes/poisson-additivity-and-thinning/)以例題演練卜瓦松分配的計算，並進一步給出兩個結果: 兩個獨立卜瓦松變數相加之後，其中一個在總和給定之下的條件分配為二項分配；以及把卜瓦松過程的偶發事件依固定機率分成兩類之後，兩類的個數各自仍服從卜瓦松分配而且彼此獨立。
 
 ## 參考文獻與延伸閱讀
 

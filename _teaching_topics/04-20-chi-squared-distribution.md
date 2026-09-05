@@ -147,7 +147,7 @@ $$
 
 </div>
 
-(2) 由於卡方分配的比例參數都是 <span class="text-nowrap">$2$，</span>滿足伽瑪分配的可加性，[^additive] 故若 <span class="text-nowrap">$X_1,\ldots,X_n\overset{\mathrm{ind}}{\sim}\chi^{2}(\nu_i)$，</span>令 <span class="text-nowrap">$Y=\sum_{i=1}^{n}X_i$，</span>則
+(2) 由於卡方分配的比例參數都是 <span class="text-nowrap">$2$，</span>滿足伽瑪分配的可加性，故若 $X_1,\ldots,X_n\overset{\mathrm{ind}}{\sim}\chi^{2}(\nu_i)$ 成立，令 <span class="text-nowrap">$Y=\sum_{i=1}^{n}X_i$，</span>則
 {: .topic-paren-item}
 
 $$
@@ -190,6 +190,13 @@ Y=\sum_{i=1}^{n}X_i\sim\chi^{2}\Bigl(\sum_{i=1}^{n}\nu_i\Bigr)
 $$
 
 原式得證。 <span class="topic-qed">$\square$</span>
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+讀者不應忘記，伽瑪分配的可加性所要求的前提，除了隨機變數間彼此要獨立，也要求比例參數相同，見 [Definition 4.14](/lecture-notes/gamma-distribution/#def-gamma-distribution) 之後的第三項性質；而卡方分配由於比例參數固定為 $2$ 的緣故，必定具有可加性。
+
 </div>
 
 (3) 若 <span class="text-nowrap">$Z\sim\mathcal{N}(0,1)$，</span>令 <span class="text-nowrap">$Y=Z^{2}$，</span>則
@@ -243,7 +250,7 @@ $$
 
 在 [Example 4.47](/lecture-notes/normal-probability-computation/#ex-normal-prob-4) 中我們曾經提過，標準常態分配的平方將服從 $\chi^{2}(\nu=1)$ 分配，是一個重要的固定結果，在此便給了一個相對正式的證明。
 
-此外，將此性質與前述性質結合，我們可知，若 <span class="text-nowrap">$Z_1,\ldots,Z_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(0,1)$，</span>則
+此外，將此性質與前述性質結合，我們可知，若 $Z_1,\ldots,Z_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(0,1)$ 成立，則
 
 $$
 \sum_{i=1}^{n}Z_i^{2}\sim\chi^{2}(n)
@@ -664,17 +671,15 @@ $$
 
 </div>
 
-[^additive]: 讀者不應忘記，伽瑪分配的可加性所要求的前提，除了隨機變數間彼此要獨立，也要求比例參數相同，見 [Definition 4.14](/lecture-notes/gamma-distribution/#def-gamma-distribution) 之後的第三項性質；而卡方分配由於比例參數固定為 $2$ 的緣故，必定具有可加性。
-
 ## 本篇小結
 
-[Definition 4.22](#def-chi-distribution) 的卡方分配只有自由度 $\nu$ 一個參數，值域為 <span class="text-nowrap">$x\geqslant0$，</span>機率函數為 $\frac{x^{\frac{\nu}{2}-1}e^{-\frac{x}{2}}}{2^{\frac{\nu}{2}}\Gamma(\frac{\nu}{2})}$ 這個式子，期望值為 <span class="text-nowrap">$\nu$、</span>變異數為 <span class="text-nowrap">$2\nu$，</span>動差母函數則是 <span class="text-nowrap">$(1-2t)^{-\frac{\nu}{2}}$。</span>這些結果不必另外推導: 把伽瑪分配的形狀參數取 $\frac{\nu}{2}$ 且比例參數取 <span class="text-nowrap">$2$，</span>代入伽瑪分配的對應公式即得。
+[Definition 4.22](#def-chi-distribution) 的卡方分配只有自由度 $\nu$ 一個參數，值域為 <span class="text-nowrap">$x\geqslant0$，</span>機率函數為 $\frac{x^{\frac{\nu}{2}-1}e^{-\frac{x}{2}}}{2^{\frac{\nu}{2}}\Gamma(\frac{\nu}{2})}$ 這個式子，期望值為 <span class="text-nowrap">$\nu$、</span>變異數為 <span class="text-nowrap">$2\nu$，</span>動差母函數則是 <span class="text-nowrap">$(1-2t)^{-\frac{\nu}{2}}$。</span>這些結果不必另外推導。把伽瑪分配的形狀參數取 $\frac{\nu}{2}$ 且比例參數取 <span class="text-nowrap">$2$，</span>代入伽瑪分配的對應公式即得。
 
-定義之後的四點說明，前三點各附一個證明，作法一律是求出動差母函數再由 mgf 的唯一性辨識分配。第一點指出任意的 $\mathrm{Gamma}(\alpha,\ \beta)$ 乘上 $\frac{2}{\beta}$ 之後即為 <span class="text-nowrap">$\chi^{2}(2\alpha)$，</span>這條轉換在樞紐量與檢定統計量的建構中很常用。第二點是可加性: 比例參數固定為 $2$ 使卡方分配之間必定滿足伽瑪分配可加性的前提，故彼此獨立的卡方變數相加之後，自由度也跟著相加。第三點指出標準常態分配的平方服從 <span class="text-nowrap">$\chi^{2}(1)$，</span>與第二點合起來即得 $n$ 個獨立標準常態變數的平方和服從 $\chi^{2}(n)$ 這個結果。第四點則以密度曲線呈現自由度的作用。
+定義之後的四點說明，前三點各附一個證明，作法一律是求出動差母函數再由 mgf 的唯一性辨識分配。第一點指出任意的 $\mathrm{Gamma}(\alpha,\ \beta)$ 乘上 $\frac{2}{\beta}$ 之後即為 <span class="text-nowrap">$\chi^{2}(2\alpha)$，</span>這條轉換在樞紐量與檢定統計量的建構中很常用。第二點是可加性。比例參數固定為 $2$ 使卡方分配之間必定滿足伽瑪分配可加性的前提，故彼此獨立的卡方變數相加之後，自由度也跟著相加。第三點指出標準常態分配的平方服從 <span class="text-nowrap">$\chi^{2}(1)$，</span>與第二點合起來即得 $n$ 個獨立標準常態變數的平方和服從 $\chi^{2}(n)$ 這個結果。第四點則以密度曲線呈現自由度的作用。
 
-[Example 4.51](#ex-chi-square-1) 把指數、卡方與伽瑪三個分配的機率函數並列，再指出三者的關係: 指數分配是 $\alpha=1$ 的伽瑪分配、卡方分配是 $\alpha=\frac{\nu}{2}$ 且 $\beta=2$ 的伽瑪分配，而 $\nu=2$ 時兩者重合。[Example 4.52](#ex-chi-square-2) 則是這幾條關係的一次演練: 先把 $Y$ 標準化得到 <span class="text-nowrap">$Z$，</span>由 $Z^{2}\sim\chi^{2}(1)$ 換成伽瑪分配的寫法，再以比例伸縮性把 $Y^{2}=10Z^{2}$ 的分配寫成 <span class="text-nowrap">$\mathrm{Gamma}\bigl(\frac{1}{2},20\bigr)$，</span>變異數因而是 $\frac{1}{2}\times20^{2}=200$ 這個值。
+[Example 4.51](#ex-chi-square-1) 把指數、卡方與伽瑪三個分配的機率函數並列，再指出三者的關係: 指數分配是 $\alpha=1$ 的伽瑪分配、卡方分配是 $\alpha=\frac{\nu}{2}$ 且 $\beta=2$ 的伽瑪分配，而 $\nu=2$ 時兩者重合。[Example 4.52](#ex-chi-square-2) 則是這幾條關係的一次演練。先把 $Y$ 標準化得到 <span class="text-nowrap">$Z$，</span>由 $Z^{2}\sim\chi^{2}(1)$ 換成伽瑪分配的寫法，再以比例伸縮性把 $Y^{2}=10Z^{2}$ 的分配寫成 <span class="text-nowrap">$\mathrm{Gamma}\bigl(\frac{1}{2},20\bigr)$，</span>變異數因而是 $\frac{1}{2}\times20^{2}=200$ 這個值。
 
-[Theorem 4.23](#thm-cochran-theorem) 的科克蘭定理處理的是卡方分配的分解: 若一個 $\chi^{2}(\nu)$ 變數可以拆成一個 $\chi^{2}(\nu_1)$ 變數與另一個非負的變數之和，則後者必為 <span class="text-nowrap">$\chi^{2}(\nu-\nu_1)$，</span>而且兩者獨立。它的實務用途是把 $\frac{\sum_{i=1}^{n}(X_i-\mu)^{2}}{\sigma^{2}}$ 拆成 $\frac{n(\overline{X}-\mu)^{2}}{\sigma^{2}}$ 與 $\frac{(n-1)S^{2}}{\sigma^{2}}$ 兩項，前者服從 <span class="text-nowrap">$\chi^{2}(1)$、</span>整體服從 <span class="text-nowrap">$\chi^{2}(n)$，</span>由定理立得 $\frac{(n-1)S^{2}}{\sigma^{2}}\sim\chi^{2}(n-1)$ 以及 $\overline{X}\indep S^{2}$ 這兩個結果。科克蘭定理本身的證明遠超大學部的難度，本篇不證；但若把「$Q_2$ 非負」換成「$Q_1$ 與 $Q_2$ 獨立」，證明就只是動差母函數相除而已，[Example 4.53](#ex-chi-square-3) 即為此例。
+[Theorem 4.23](#thm-cochran-theorem) 的科克蘭定理處理的是卡方分配的分解。若一個 $\chi^{2}(\nu)$ 變數可以拆成一個 $\chi^{2}(\nu_1)$ 變數與另一個非負的變數之和，則後者必為 <span class="text-nowrap">$\chi^{2}(\nu-\nu_1)$，</span>而且兩者獨立。它的實務用途是把 $\frac{\sum_{i=1}^{n}(X_i-\mu)^{2}}{\sigma^{2}}$ 拆成 $\frac{n(\overline{X}-\mu)^{2}}{\sigma^{2}}$ 與 $\frac{(n-1)S^{2}}{\sigma^{2}}$ 兩項，前者服從 <span class="text-nowrap">$\chi^{2}(1)$、</span>整體服從 <span class="text-nowrap">$\chi^{2}(n)$，</span>由定理立得 $\frac{(n-1)S^{2}}{\sigma^{2}}\sim\chi^{2}(n-1)$ 以及 $\overline{X}\indep S^{2}$ 這兩個結果。科克蘭定理本身的證明遠超大學部的難度，本篇不證；但若把「$Q_2$ 非負」換成「$Q_1$ 與 $Q_2$ 獨立」，證明就只是動差母函數相除而已，[Example 4.53](#ex-chi-square-3) 即為此例。
 
 [下一篇](/lecture-notes/student-t-distribution/)給出[司徒頓 $t$ 分配](/lecture-notes/student-t-distribution/#def-t-distribution)，它由一個標準常態變數除以一個卡方變數開根號之後的比值構成，本篇的 $\overline{X}\indep S^{2}$ 與 $\frac{(n-1)S^{2}}{\sigma^{2}}\sim\chi^{2}(n-1)$ 正是該分配用在常態母體抽樣分配上的兩個前提。
 

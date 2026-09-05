@@ -147,7 +147,7 @@ $$
 
 </div>
 
-其中，$\mathbb{E}\bigl(X^{-\frac{1}{2}}\bigr)$ 在 $\nu=1$ 時並不存在，故 $\mathbb{E}(T)$ 不存在。
+其中，$\mathbb{E}\bigl(X^{-\frac{1}{2}}\bigr)$ 在 $\nu\leqslant1$ 時並不存在，故 $\mathbb{E}(T)$ 不存在。
 
 接著求二階原動差，可得
 
@@ -285,7 +285,14 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在自由度足夠大的前提下，由於標準常態分配與司徒頓 $t$ 分配的期望值都是 <span class="text-nowrap">$0$，</span>峰態係數向下趨近於 $3$ 說明了「在分配的尾部，同樣的位置，$t$ 分配具有較大的機率密度，也具有較大的**尾機率 <span lang="en">(tail-probability)</span>**」；而隨著自由度越來越大，$t$ 分配會越來越接近於標準常態。[^slutsky]
+在自由度足夠大的前提下，由於標準常態分配與司徒頓 $t$ 分配的期望值都是 <span class="text-nowrap">$0$，</span>峰態係數向下趨近於 $3$ 說明了「在分配的尾部，同樣的位置，$t$ 分配具有較大的機率密度，也具有較大的**尾機率 <span lang="en">(tail-probability)</span>**」；而隨著自由度越來越大，$t$ 分配會越來越接近於標準常態。
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+這個性質的證明需要使用下一章會提到的**史拉斯基定理 <span lang="en">(Slutsky’s theorem)</span>** 與**連續映射定理 <span lang="en">(continuous mapping theorem)</span>**，並搭配 $X/\nu\xrightarrow[\,\nu\to\infty\,]{\mathrm{p}}1$ 的結果，我們會在稍後將提到的**弱大數法則 (Weak Law of Large Number, WLLN)** 中提到。
 
 </div>
 
@@ -296,8 +303,15 @@ $$
 f_{\sssig X}(x)=\frac{1}{\,\pi(1+x^{2})\,},\ -\infty<x<\infty
 $$
 
-且這個分配期望值與變異數皆發散。[^cauchy]
+且這個分配期望值與變異數皆發散。
 {: .topic-paren-cont}
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+其發散的原因正是 $t$ 分配在特定自由度下，高階動差發散的原因。直觀意義上來說，是因為尾部機率過為肥厚，導致 $\mathbb{E}(\lvert X\rvert)$ 發散，就定義上而言即表示期望值不存在，並導致更高階的動差也不存在。
+
+</div>
 
 (5) 司徒頓 $t$ 分配在不同自由度與標準常態分配的圖形如下所示:
 {: .topic-paren-item}
@@ -361,12 +375,12 @@ $$
 
 ## 常態母體下的抽樣分配
 
-以下轉入常態母體下統計量的抽樣分配: 下列各項結果談的是常態隨機樣本所算出的統計量服從什麼分配，而 $t$ 分配在其中扮演的角色，正是 $\sigma^{2}$ 未知時樣本平均數所對應的分配。
+以下轉入常態母體下統計量的抽樣分配。下列各項結果談的是常態隨機樣本所算出的統計量服從什麼分配，而 $t$ 分配在其中扮演的角色，正是 $\sigma^{2}$ 未知時樣本平均數所對應的分配。
 
 <div id="thm-xbar-samp-dist" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 4.24 (樣本平均數 $\overline{X}$ 的抽樣分配 ($\sigma^{2}$ 未知))</div>
+<div class="topic-box__label">Theorem 4.24 (樣本平均數 $\overline{X}$ 的抽樣分配 ($\sigma^{2}$ 未知), sampling distribution of $\overline{X}$)</div>
 
-若 <span class="text-nowrap">$X_1,X_2,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})$，</span>其中 $\mu$ 為待估參數，且 $\sigma^{2}$ 未知，則
+若 $X_1,X_2,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})$ 成立，其中 $\mu$ 為待估參數，且 $\sigma^{2}$ 未知，則
 
 $$
 T=\frac{\,\overline{X}-\mu\,}{\frac{S}{\,\sqrt{n}\,}}\sim t(n-1)
@@ -451,7 +465,7 @@ $$
 
 **樣本平均數 $\overline{X}$ 的抽樣分配 ($\sigma^{2}$ 已知)**:
 
-若 <span class="text-nowrap">$X_1,X_2,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})$，</span>其中 $\mu$ 為待估參數，且 $\sigma^{2}$ 已知，則我們有
+若 $X_1,X_2,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})$ 成立，其中 $\mu$ 為待估參數，且 $\sigma^{2}$ 已知，則我們有
 
 $$
 Z=\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\,\sqrt{n}\,}}\sim\mathcal{N}(0,1)
@@ -465,7 +479,7 @@ $$
 
 **樣本變異數 $S^{2}$ 的抽樣分配 ($\mu$ 未知)**:
 
-若 <span class="text-nowrap">$X_1,X_2,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})$，</span>其中 $\sigma^{2}$ 為待估參數，且 $\mu$ 未知，則我們有
+若 $X_1,X_2,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})$ 成立，其中 $\sigma^{2}$ 為待估參數，且 $\mu$ 未知，則我們有
 
 $$
 \frac{\,(n-1)S^{2}\,}{\sigma^{2}}\sim\chi^{2}(n-1)
@@ -492,7 +506,7 @@ $$
 
 **樣本變異數 $S^{\prime2}$ 的抽樣分配 ($\mu$ 已知)**:
 
-若 <span class="text-nowrap">$X_1,X_2,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})$，</span>其中 $\sigma^{2}$ 為待估參數，且 $\mu$ 已知，則我們有
+若 $X_1,X_2,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})$ 成立，其中 $\sigma^{2}$ 為待估參數，且 $\mu$ 已知，則我們有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -524,7 +538,14 @@ $$
 這個結果純粹地由常態分配的標準化，搭配卡方分配的特性即可得到。 <span class="topic-qed">$\square$</span>
 </div>
 
-這個結果的特別之處在於，實務上不可能用得到這個結果，因為我們不會遇到「已知母體期望值 $\mu$ 卻需要估計母體變異數 $\sigma^{2}$」的情況，[^mu-known] 因此這是個僅存於理論中，可作為推導的橋樑，卻不怎麼實用的結果。
+這個結果的特別之處在於，實務上不可能用得到這個結果，因為我們不會遇到「已知母體期望值 $\mu$ 卻需要估計母體變異數 $\sigma^{2}$」的情況，因此這是個僅存於理論中，可作為推導的橋樑，卻不怎麼實用的結果。
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+現實世界中，如果我們能知道母體期望值 <span class="text-nowrap">$\mu$，</span>多半表示我們知道母體資料 <span class="text-nowrap">$X_1,X_2,\ldots,X_N$，</span>那麼為何不將母體變異數 $\sigma^{2}$ 一併算出來呢?
 
 </div>
 
@@ -537,25 +558,17 @@ $$
 
 </div>
 
-[^slutsky]: 這個性質的證明需要使用下一章會提到的**史拉斯基定理 <span lang="en">(Slutsky’s theorem)</span>** 與**連續映射定理 <span lang="en">(continuous mapping theorem)</span>**，並搭配 $X/\nu\xrightarrow[\,\nu\to\infty\,]{\mathrm{p}}1$ 的結果，我們會在稍後將提到的**弱大數法則 (Weak Law of Large Number, WLLN)** 中提到。
-
-[^cauchy]: 其發散的原因正是 $t$ 分配在特定自由度下，高階動差發散的原因。直觀意義上來說，是因為尾部機率過為肥厚，導致 $\mathbb{E}(\lvert X\rvert)$ 發散，就定義上而言即表示期望值不存在，並導致更高階的動差也不存在。
-
-[^mu-known]: 現實世界中，如果我們能知道母體期望值 <span class="text-nowrap">$\mu$，</span>多半表示我們知道母體資料 <span class="text-nowrap">$X_1,X_2,\ldots,X_N$，</span>那麼為何不將母體變異數 $\sigma^{2}$ 一併算出來呢?
-
 ## 本篇小結
 
 [Definition 4.23](#def-t-distribution) 的司徒頓 $t$ 分配以一個自由度 $\nu$ 界定，值域為整條實數線，機率函數有兩種等價的寫法，其中以[貝塔函數](/lecture-notes/beta-function-and-distribution/#def-beta-function)表達的那一種把常數項寫成 <span class="text-nowrap">$\frac{1}{\mathcal{B}(\frac{\nu}{2},\frac{1}{2})\sqrt{\nu}}$。</span>這個分配的期望值在 $\nu>1$ 時為 <span class="text-nowrap">$0$、</span>變異數在 $\nu>2$ 時為 <span class="text-nowrap">$\frac{\nu}{\nu-2}$，</span>而定義之中沒有列出動差母函數這一項。
 
-五點說明之中，第一點給出建構式 <span class="text-nowrap">$T=\frac{Z}{\sqrt{X/\nu}}$，</span>其中 $Z$ 為標準常態變數、$X$ 為與之獨立的卡方變數，$t$ 分配的自由度就是 $X$ 的自由度。第二點的證明正是靠這個建構式與獨立性完成: 每一階原動差都拆成 $Z$ 的動差與 $X$ 的負次方動差兩者相乘，奇數階因 $\mathbb{E}(Z)=\mathbb{E}\bigl(Z^{3}\bigr)=0$ 而為 <span class="text-nowrap">$0$，</span>二階與四階則由 $\mathbb{E}\bigl(X^{-1}\bigr)=\frac{1}{\nu-2}$ 與 $\mathbb{E}\bigl(X^{-2}\bigr)=\frac{1}{(\nu-2)(\nu-4)}$ 得到 $\mathrm{Var}(T)=\frac{\nu}{\nu-2}$ 與 <span class="text-nowrap">$\alpha_{4}=\frac{3(\nu-2)}{\nu-4}$。</span>各階動差存在與否也由此得知: $\mathbb{E}\bigl(X^{-\frac{k}{2}}\bigr)$ 要在 $\nu>k$ 時才存在，因此自由度不夠大時，該階以上的動差全部發散。
+五點說明之中，第一點給出建構式 <span class="text-nowrap">$T=\frac{Z}{\sqrt{X/\nu}}$，</span>其中 $Z$ 為標準常態變數、$X$ 為與之獨立的卡方變數，$t$ 分配的自由度就是 $X$ 的自由度。第二點的證明正是靠這個建構式與獨立性完成。每一階原動差都拆成 $Z$ 的動差與 $X$ 的負次方動差兩者相乘，奇數階因 $\mathbb{E}(Z)=\mathbb{E}\bigl(Z^{3}\bigr)=0$ 而為 <span class="text-nowrap">$0$，</span>二階與四階則由 $\mathbb{E}\bigl(X^{-1}\bigr)=\frac{1}{\nu-2}$ 與 $\mathbb{E}\bigl(X^{-2}\bigr)=\frac{1}{(\nu-2)(\nu-4)}$ 得到 $\mathrm{Var}(T)=\frac{\nu}{\nu-2}$ 與 <span class="text-nowrap">$\alpha_{4}=\frac{3(\nu-2)}{\nu-4}$。</span>各階動差存在與否也由此得知: $\mathbb{E}\bigl(X^{-\frac{k}{2}}\bigr)$ 要在 $\nu>k$ 時才存在，因此自由度不夠大時，該階以上的動差全部發散。
 
-第三點到第五點把 $t$ 分配放回標準常態分配旁邊比較。$\nu$ 上升時變異數向下趨近 $1$ 而峰態係數向下趨近 <span class="text-nowrap">$3$，</span>極限即為標準常態分配；$\nu=1$ 時則為標準柯西分配，期望值與變異數皆發散。[Example 4.54](#ex-student-t-1) 逐項檢驗這幾件事，答案是期望值那一項: $t$ 分配的期望值只要存在就必定為 <span class="text-nowrap">$0$。</span>其後那則註記由圖形說明另一項: 相同的右尾機率之下，自由度較大者的右尾點較小，也就是 <span class="text-nowrap">$t_{\alpha}(\nu_1)>t_{\alpha}(\nu_2)$</span> 對一切 $0<\nu_1<\nu_2$ 成立，並因此有 <span class="text-nowrap">$z_{\sssig \alpha}<t_{\alpha}(\nu)$。</span>
+第三點到第五點把 $t$ 分配放回標準常態分配旁邊比較。$\nu$ 上升時變異數向下趨近 $1$ 而峰態係數向下趨近 <span class="text-nowrap">$3$，</span>極限即為標準常態分配；$\nu=1$ 時則為標準柯西分配，期望值與變異數皆發散。[Example 4.54](#ex-student-t-1) 逐項檢驗這幾件事，答案是期望值那一項: $t$ 分配的期望值只要存在就必定為 <span class="text-nowrap">$0$。</span>其後那則註記由圖形說明另一項。相同的右尾機率之下，自由度較大者的右尾點較小，也就是 <span class="text-nowrap">$t_{\alpha}(\nu_1)>t_{\alpha}(\nu_2)$</span> 對一切 $0<\nu_1<\nu_2$ 成立，並因此有 <span class="text-nowrap">$z_{\sssig \alpha}<t_{\alpha}(\nu)$。</span>
 
-最後一節轉入常態母體下的抽樣分配。[Theorem 4.24](#thm-xbar-samp-dist) 把 $\sigma$ 換成樣本標準差 $S$ 之後，$\frac{\overline{X}-\mu}{S/\sqrt{n}}$ 服從 $t(n-1)$ 分配，證明的作法是指出它正好符合建構式: 分子是標準化過的樣本平均數，分母是 $\frac{(n-1)S^{2}}{\sigma^{2}}$ 除以自由度之後開根號，而兩者的獨立性由科克蘭定理保證。同一節另外整理了三個結果: $\sigma^{2}$ 已知時 $\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}$ 為標準常態分配、$\mu$ 未知時 $\frac{(n-1)S^{2}}{\sigma^{2}}$ 服從 $\chi^{2}(n-1)$ 分配，以及 $\mu$ 已知時 $\frac{nS^{\prime2}}{\sigma^{2}}$ 服從 $\chi^{2}(n)$ 分配，最後這一個只作為推導的橋樑，實務上用不到。
+最後一節轉入常態母體下的抽樣分配。[Theorem 4.24](#thm-xbar-samp-dist) 把 $\sigma$ 換成樣本標準差 $S$ 之後，$\frac{\overline{X}-\mu}{S/\sqrt{n}}$ 服從 $t(n-1)$ 分配，證明的作法是指出它正好符合建構式。分子是標準化過的樣本平均數，分母是 $\frac{(n-1)S^{2}}{\sigma^{2}}$ 除以自由度之後開根號，而兩者的獨立性由科克蘭定理保證。同一節另外整理了三個結果: $\sigma^{2}$ 已知時 $\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}$ 為標準常態分配、$\mu$ 未知時 $\frac{(n-1)S^{2}}{\sigma^{2}}$ 服從 $\chi^{2}(n-1)$ 分配，以及 $\mu$ 已知時 $\frac{nS^{\prime2}}{\sigma^{2}}$ 服從 $\chi^{2}(n)$ 分配，最後這一個只作為推導的橋樑，實務上用不到。
 
-<!-- ref-point: 下一篇是第四章第 22 篇 (斯內德克 $\mathcal{F}$ 分配與變異數比值的抽樣分配，
-     書稿 mathstatch4.tex 第 4344 至 4565 行，其中的 Definition 4.24 anchor 為
-     #def-f-distribution)。該篇寫成之後，在此補一段銜接語，連結掛在「下一篇」三個字上。 -->
+[下一篇](/lecture-notes/snedecor-f-distribution/)介紹斯內德克 $\mathcal{F}$ 分配，它由兩個獨立卡方變數各自除以自由度之後的比值構成，正是兩獨立樣本變異數比值所服從的抽樣分配；該篇並給出 $\mathcal{F}$ 分配與貝塔分配的關係。
 
 ## 參考文獻與延伸閱讀
 

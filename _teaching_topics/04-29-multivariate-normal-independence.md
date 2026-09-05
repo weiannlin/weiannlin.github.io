@@ -136,7 +136,7 @@ $$
 
 </div>
 
-其中 $\mathbb{I}_{n}-\mathbf{H}=\mathbb{I}_{n}-\frac{1}{\,n\,}\boldsymbol{1}\boldsymbol{1}^{\mathrm{T}}$ 為一冪等矩陣 <span lang="en">(idempotent matrix)</span>，[^idempotent] 故可知共變異數矩陣為
+其中 $\mathbb{I}_{n}-\mathbf{H}=\mathbb{I}_{n}-\frac{1}{\,n\,}\boldsymbol{1}\boldsymbol{1}^{\mathrm{T}}$ 為一冪等矩陣 <span lang="en">(idempotent matrix)</span>，故可知共變異數矩陣為
 
 $$
 \begin{bmatrix} \frac{\,\sigma^{2}\,}{n} & \boldsymbol{0}^{\mathrm{T}}\\ \boldsymbol{0} & \sigma^{2}(\mathbb{I}_n-\mathbf{H}) \end{bmatrix}
@@ -167,6 +167,13 @@ $$
 $$
 \overline{X}\indep S^{2}=\frac{1}{\,n-1\,}\sum_{i=1}^{n}(X_i-\overline{X})^{2}
 $$
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+冪等矩陣又稱自乘不變矩陣，是一種不論自己經過幾次方，永恆都跟自己相等的矩陣。
 
 </div>
 
@@ -208,13 +215,6 @@ $$
 $$
 
 </div>
-
-<!-- ref-point: 下面 Example 4.66 第 (2) 小題所說的「由定理可知」，指的是聯合動差母函數可分解為
-     兩個邊際動差母函數之乘積等價於獨立這件事。該敘述目前只出現在第三章第 17 篇
-     (交叉動差與聯合動差母函數) 的一則 Note 之中 (_teaching_topics/cross-moments-joint-mgf.md
-     第 199 行)，該處沒有 id 可以連。待該篇補上 anchor 之後，把「由定理可知」接上站內連結。
-     另，第 (3) 小題的「二元常態分配」待第四章第 26 篇 (書稿 mathstatch4.tex 第 5137 行的
-     Definition 4.25，anchor 為 #def-bivariate-normal) 發布後接上連結。 -->
 
 <div id="ex-multivariate-normal-ind-2" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 4.66</div>
@@ -302,7 +302,7 @@ $$
 
 </div>
 
-則由定理可知 $Y\indep Z$ 之充要條件為 <span class="text-nowrap">$M_{\sssig YZ}(t,s)=M_{\sssig Y}(t)M_{\sssig Z}(s)$，</span>此即
+則由[定理](/lecture-notes/cross-moments-joint-mgf/#note-joint-mgf-independence)可知 $Y\indep Z$ 之充要條件為 $M_{\sssig YZ}(t,s)=M_{\sssig Y}(t)M_{\sssig Z}(s)$ 這條等式，此即
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -357,7 +357,7 @@ $$
 
 </div>
 
-由於 $X_1,\ldots,X_n$ 可構成一組多元常態分配，且 $Y$ 與 $Z$ 皆為 $X_i$ 之仿射變換 <span lang="en">(affine transformation)</span>，故可知 $Y$ 與 $Z$ 共同形成一二元常態分配，搭配 (2) 與本題前半之結果可知，在二元常態分配中，零相關與獨立為充要條件。
+由於 $X_1,\ldots,X_n$ 可構成一組多元常態分配，且 $Y$ 與 $Z$ 皆為 $X_i$ 之仿射變換 <span lang="en">(affine transformation)</span>，故可知 $Y$ 與 $Z$ 共同形成一[二元常態分配](/lecture-notes/bivariate-normal-distribution/#def-bivariate-normal)，搭配 (2) 與本題前半之結果可知，在二元常態分配中，零相關與獨立為充要條件。
 {: .topic-paren-cont}
 
 </div>
@@ -365,7 +365,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在這個問題中，可以令 $\mathbf{A}=\bigl[\,a_1\ \cdots\ a_n\,\bigr]$ 與 <span class="text-nowrap">$\mathbf{B}=\bigl[\,b_1\ \cdots\ b_n\,\bigr]$，</span>則關於 $Y=\mathbf{A}\boldsymbol{X}$ 與 $Z=\mathbf{B}\boldsymbol{X}$ 之共變異數，可以由前一題所提到的算法計算，此即
+在這個問題中，可以令 $\mathbf{A}=\bigl[\,a_1\ \cdots\ a_n\,\bigr]$ 與 $\mathbf{B}=\bigl[\,b_1\ \cdots\ b_n\,\bigr]$ 這個向量，則關於 $Y=\mathbf{A}\boldsymbol{X}$ 與 $Z=\mathbf{B}\boldsymbol{X}$ 之共變異數，可以由前一題所提到的算法計算，此即
 
 $$
 \mathbf{A}\sigma^{2}\mathbb{I}_n\mathbf{B}^{\mathrm{T}}=\sigma^{2}\sum_{i=1}^{n}a_ib_i
@@ -386,7 +386,7 @@ $$
 <div id="thm-idempotent-quadratic-form" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 4.30 (冪等矩陣的二次形式, quadratic forms with an idempotent matrix)</div>
 
-令 <span class="text-nowrap">$\boldsymbol{X}\sim\mathcal{MN}\bigl(\boldsymbol{\mu},\ \sigma^{2}\mathbb{I}_{n}\bigr)$，</span>且 $\mathbf{A}$ 為一冪等矩陣，且 <span class="text-nowrap">$\mathrm{tr}(\mathbf{A})=k$，</span>並滿足 <span class="text-nowrap">$\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$，</span>則我們有
+令 $\boldsymbol{X}\sim\mathcal{MN}\bigl(\boldsymbol{\mu},\ \sigma^{2}\mathbb{I}_{n}\bigr)$ 這個分配，且 $\mathbf{A}$ 為一冪等矩陣，且 <span class="text-nowrap">$\mathrm{tr}(\mathbf{A})=k$，</span>並滿足 <span class="text-nowrap">$\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$，</span>則我們有
 
 $$
 \boldsymbol{X}^{\mathrm{T}}\mathbf{A}\boldsymbol{X}/\sigma^{2}\sim\chi^{2}(k)
@@ -394,7 +394,7 @@ $$
 
 </div>
 
-**實務上的應用**: (說明常態母體下，$S^{2}$ 之抽樣分配)[^application]
+**實務上的應用**: (說明常態母體下，$S^{2}$ 之抽樣分配)
 
 <div class="topic-proof" markdown="1">
 **Proof.**
@@ -464,6 +464,13 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+這個定理最主要的應用，與[科克蘭定理](/lecture-notes/chi-squared-distribution/#thm-cochran-theorem)很相似，可以用來說明樣本變異數 $S^{2}$ 的抽樣分配。當然，這個定理還有許多進階的應用。
+
+</div>
+
 <div id="ex-multivariate-normal-ind-3" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 4.67</div>
 
@@ -522,7 +529,7 @@ $$
 \mathbf{A}=\begin{bmatrix} 1 & 0 & 0 & 0\\ 0 & \frac{1}{\,2\,} & -\frac{1}{\,2\,} & 0\\ 0 & -\frac{1}{\,2\,} & \frac{1}{\,2\,} & 0\\ 0 & 0 & 0 & 1 \end{bmatrix}
 $$
 
-且 $\mathbf{A}$ 為一冪等矩陣，且具以下性質: $\mathrm{tr}\left(\mathbf{A}\right)=3$ 且 <span class="text-nowrap">$\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$，</span>又 <span class="text-nowrap">$\bigl[\,X_1, X_2, X_3, X_4\,\bigr]^{\mathrm{T}}\sim\mathcal{MN}\bigl(\boldsymbol{0},\ \mathbb{I}_4\bigr)$，</span>故可知
+且 $\mathbf{A}$ 為一冪等矩陣，且具以下性質: $\mathrm{tr}\left(\mathbf{A}\right)=3$ 且 <span class="text-nowrap">$\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$，</span>又 $\bigl[\,X_1, X_2, X_3, X_4\,\bigr]^{\mathrm{T}}\sim\mathcal{MN}\bigl(\boldsymbol{0},\ \mathbb{I}_4\bigr)$ 成立，故可知
 {: .topic-paren-cont}
 
 $$
@@ -585,19 +592,15 @@ $$
 
 </div>
 
-[^idempotent]: 冪等矩陣又稱自乘不變矩陣，是一種不論自己經過幾次方，永恆都跟自己相等的矩陣。
-
-[^application]: 這個定理最主要的應用，與[科克蘭定理](/lecture-notes/chi-squared-distribution/#thm-cochran-theorem)很相似，可以用來說明樣本變異數 $S^{2}$ 的抽樣分配。當然，這個定理還有許多進階的應用。
-
 ## 本篇小結
 
-[Theorem 4.29](#thm-block-independence) 把二元常態分配中「零相關等價於獨立」這件事推廣到分塊的層次: 把 $\boldsymbol{X}$ 切成 $\boldsymbol{X}_1$ 與 $\boldsymbol{X}_2$ 兩塊之後，共變異數矩陣也跟著切成四塊，而非對角的那一塊 $\mathbf{\Sigma}_{12}$ 是否為零矩陣，恰好就決定了兩塊之間獨立與否。這條性質為多元常態分配所獨有，一般的分配只有「獨立可推出零相關」這一個方向。
+[Theorem 4.29](#thm-block-independence) 把二元常態分配中「零相關等價於獨立」這件事推廣到分塊的層次。把 $\boldsymbol{X}$ 切成 $\boldsymbol{X}_1$ 與 $\boldsymbol{X}_2$ 兩塊之後，共變異數矩陣也跟著切成四塊，而非對角的那一塊 $\mathbf{\Sigma}_{12}$ 是否為零矩陣，恰好就決定了兩塊之間獨立與否。這條性質為多元常態分配所獨有，一般的分配只有「獨立可推出零相關」這一個方向。
 
 [Example 4.65](#ex-multivariate-normal-ind-1) 是這條性質最重要的應用。作法是把 $\overline{X}$ 與 $n$ 個離差 $X_i-\overline{X}$ 併成一個 $(n+1)$ 維的隨機向量，並把它寫成 $\begin{bmatrix} \frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}\\ \mathbb{I}_n-\mathbf{H} \end{bmatrix}\boldsymbol{X}$ 這個仿射變換，於是新向量仍為多元常態分配，其共變異數矩陣即 $\mathbf{A}\mathbf{\Sigma}\mathbf{A}^{\mathrm{T}}$ 這個式子。由於 $\frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}(\mathbb{I}_n-\mathbf{H})^{\mathrm{T}}=\boldsymbol{0}^{\mathrm{T}}$ 這條等式，非對角分塊為零，因此 $\overline{X}$ 與全部的離差獨立；$S^{2}$ 只是這些離差的函數，故 $\overline{X}$ 與 $S^{2}$ 獨立。同一段推導也給出了一條一般化的準則: $\mathbf{A}\mathbf{B}^{\mathrm{T}}=\mathbf{0}$ 時 $\mathbf{A}\boldsymbol{X}$ 與 $\mathbf{B}\boldsymbol{X}$ 獨立。
 
-[Example 4.66](#ex-multivariate-normal-ind-2) 換一條路走同一件事。它不動矩陣，改由動差母函數下手: 先算出 $Y=\sum_{i=1}^{n}a_iX_i$ 與 $Z=\sum_{i=1}^{n}b_iX_i$ 的聯合動差母函數，再比對它與兩個邊際動差母函數的乘積，兩者相等的充要條件恰好是 <span class="text-nowrap">$\sum_{i=1}^{n}a_ib_i=0$。</span>第三小題算出 $\mathrm{Cov}(Y,Z)=\sigma^{2}\sum_{i=1}^{n}a_ib_i$ 這個結果，與第二小題合起來看，正是零相關與獨立在二元常態分配中等價的又一個實例。若把兩組係數排成 $\mathbf{A}$ 與 $\mathbf{B}$ 兩個列向量，這個條件就寫成 <span class="text-nowrap">$\mathbf{A}\mathbf{B}^{\mathrm{T}}=0$，</span>與前一題的準則完全一致。
+[Example 4.66](#ex-multivariate-normal-ind-2) 換一條路走同一件事。它不動矩陣，改由動差母函數下手。先算出 $Y=\sum_{i=1}^{n}a_iX_i$ 與 $Z=\sum_{i=1}^{n}b_iX_i$ 的聯合動差母函數，再比對它與兩個邊際動差母函數的乘積，兩者相等的充要條件恰好是 <span class="text-nowrap">$\sum_{i=1}^{n}a_ib_i=0$。</span>第三小題算出 $\mathrm{Cov}(Y,Z)=\sigma^{2}\sum_{i=1}^{n}a_ib_i$ 這個結果，與第二小題合起來看，正是零相關與獨立在二元常態分配中等價的又一個實例。若把兩組係數排成 $\mathbf{A}$ 與 $\mathbf{B}$ 兩個列向量，這個條件就寫成 <span class="text-nowrap">$\mathbf{A}\mathbf{B}^{\mathrm{T}}=0$，</span>與前一題的準則完全一致。
 
-[Theorem 4.30](#thm-idempotent-quadratic-form) 則把矩陣運算用在另一個方向。$\boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{\mu},\sigma^{2}\mathbb{I}_n)$ 而 $\mathbf{A}$ 為冪等矩陣時，二次形式 $\boldsymbol{X}^{\mathrm{T}}\mathbf{A}\boldsymbol{X}/\sigma^{2}$ 服從卡方分配，自由度即 <span class="text-nowrap">$\mathrm{tr}(\mathbf{A})$，</span>條件是 $\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$ 這一項。把 $\mathbf{A}$ 取為 [Example 4.65](#ex-multivariate-normal-ind-1) 中的同一個冪等矩陣 <span class="text-nowrap">$\mathbb{I}_n-\frac{1}{\,n\,}\boldsymbol{1}\boldsymbol{1}^{\mathrm{T}}$，</span>其跡為 $n-1$ 而 $\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$ 成立，於是由這條定理即得 <span class="text-nowrap">$\frac{\,(n-1)S^{2}\,}{\sigma^{2}}\sim\chi^{2}(n-1)$。</span>[Example 4.67](#ex-multivariate-normal-ind-3) 是同一條定理的操作演練: 先把 $Q$ 展開並整理成二次形式以求得 $\mathbf{A}$，再驗證它冪等、跡為 $3$ 且 $\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$，即得 <span class="text-nowrap">$Q\sim\chi^{2}(3)$。</span>
+[Theorem 4.30](#thm-idempotent-quadratic-form) 則把矩陣運算用在另一個方向。$\boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{\mu},\sigma^{2}\mathbb{I}_n)$ 而 $\mathbf{A}$ 為冪等矩陣時，二次形式 $\boldsymbol{X}^{\mathrm{T}}\mathbf{A}\boldsymbol{X}/\sigma^{2}$ 服從卡方分配，自由度即 <span class="text-nowrap">$\mathrm{tr}(\mathbf{A})$，</span>條件是 $\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$ 這一項。把 $\mathbf{A}$ 取為 [Example 4.65](#ex-multivariate-normal-ind-1) 中的同一個冪等矩陣 <span class="text-nowrap">$\mathbb{I}_n-\frac{1}{\,n\,}\boldsymbol{1}\boldsymbol{1}^{\mathrm{T}}$，</span>其跡為 $n-1$ 而 $\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$ 成立，於是由這條定理即得 $\frac{\,(n-1)S^{2}\,}{\sigma^{2}}\sim\chi^{2}(n-1)$ 這個結果。[Example 4.67](#ex-multivariate-normal-ind-3) 是同一條定理的操作演練。先把 $Q$ 展開並整理成二次形式以求得 $\mathbf{A}$，再驗證它冪等、跡為 $3$ 且 $\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$，即得 <span class="text-nowrap">$Q\sim\chi^{2}(3)$。</span>
 
 [Example 4.68](#ex-multivariate-normal-ind-4) 收在階層模型上。條件分配與邊際分配都是多元常態時，$\boldsymbol{X}$ 的邊際分配仍為多元常態，期望值取 $\boldsymbol{Y}$ 的期望值 <span class="text-nowrap">$\boldsymbol{\mu}$，</span>共變異數矩陣則是兩層變異相加的 <span class="text-nowrap">$\mathbf{\Sigma}+\mathbf{\Lambda}$。</span>推導只用到雙重期望值定理與動差母函數的唯一性，而 $e^{\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}$ 與 $\boldsymbol{Y}$ 無關可以提到期望值之外，是整段計算的關鍵一步。
 

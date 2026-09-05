@@ -23,7 +23,7 @@ excerpt: "本篇以三道例題演練二元常態分配的性質。第一題由�
 <div class="topic-box__label">Example 4.60</div>
 
 <div lang="en" markdown="1">
-Suppose that the random vector $(X,Y)$ follows a multivariate normal distribution whose mean vector and covariance matrix are
+Suppose that the random vector $\begin{bmatrix} X\\ Y \end{bmatrix}$ follows a multivariate normal distribution whose mean vector and covariance matrix are
 
 $$
 \boldsymbol{\mu}=\begin{bmatrix} 5\\ 10 \end{bmatrix},\quad
@@ -85,7 +85,7 @@ $$
 {: .topic-paren-cont}
 
 $$
-\sqrt{(1-\rho^{2})\sigma^{2}_{\sssig Y}}=4\qquad\therefore\, \rho=\pm\frac{3}{\,5\,}
+\sqrt{(1-\rho^{2})\sigma^{2}_{\sssig Y}}=4\qquad\Longrightarrow\ \rho=\pm\frac{3}{\,5\,}
 $$
 
 但由題目已知 <span class="text-nowrap">$\rho>0$，</span>故知道
@@ -229,7 +229,7 @@ $$
 
 關於「邊際是常態分配但聯合不是二元常態」的反例有非常非常多，在許多數統的經典教科書中均有提及，這其中有不少同時身兼「零相關但是不獨立」的反例，譬如 [Example 4.48](/lecture-notes/standard-normal-moments-stein-lemma/#ex-normal-moments-1)。
 
-讀者應特別注意的是，儘管這樣的反例很多，但他們一定都發生在「二者不獨立」時，如果我們找來的兩個常態分配是獨立的，則此時這兩個常態分配必定能夠形成相關係數 $\rho=0$ 的二元常態分配。這個性質可以協助我們證明常態母體下，樣本平均數 $\overline{X}$ 與樣本變異數 $S^{2}$ 獨立，稍後在[多元常態分配](/lecture-notes/multivariate-normal-independence/)的章節中會談到。
+讀者應特別注意的是，儘管這樣的反例很多，但它們一定都發生在「二者不獨立」時，如果我們找來的兩個常態分配是獨立的，則此時這兩個常態分配必定能夠形成相關係數 $\rho=0$ 的二元常態分配。這個性質可以協助我們證明常態母體下，樣本平均數 $\overline{X}$ 與樣本變異數 $S^{2}$ 獨立，稍後在[多元常態分配](/lecture-notes/multivariate-normal-independence/)的章節中會談到。
 
 </div>
 
@@ -385,11 +385,11 @@ $$
 
 ## 本篇小結
 
-[Example 4.60](#ex-bivariate-normal-ex-1) 的三個小題各用一項性質。第一小題只需要邊際分配為常態分配這一項，由期望值向量與共變異數矩陣的第一個對角元素即得 <span class="text-nowrap">$X\sim\mathcal{N}(5,1)$。</span>第二小題的關鍵在於認出題目所給的 $0.6827$ 是一個標準差以內的機率: 由條件分配可知 $\mathbb{E}(Y\mid X=5)=\mu_{\sssig Y}=10$ 而條件變異數為 $(1-\rho^{2})\sigma^{2}_{\sssig Y}$ 這個式子，因此 $6$ 與 $14$ 分別是條件期望值減去與加上一個條件標準差的位置，由 $\sqrt{(1-\rho^{2})\times25}=4$ 這條等式解得 <span class="text-nowrap">$\rho=\pm\frac{3}{\,5\,}$，</span>再由題目給定的 $\rho>0$ 取正根。第三小題用的是線性組合仍為常態分配這一項，兩個線性組合的變異數只差在 $2ab\rho\sigma_1\sigma_2$ 這一項的正負號，因此 $U=5X+Y$ 的變異數為 $80$ 而 $V=5X-Y$ 的變異數為 <span class="text-nowrap">$20$。</span>
+[Example 4.60](#ex-bivariate-normal-ex-1) 的三個小題各用一項性質。第一小題只需要邊際分配為常態分配這一項，由期望值向量與共變異數矩陣的第一個對角元素即得 <span class="text-nowrap">$X\sim\mathcal{N}(5,1)$。</span>第二小題的關鍵在於認出題目所給的 $0.6827$ 是一個標準差以內的機率。由條件分配可知 $\mathbb{E}(Y\mid X=5)=\mu_{\sssig Y}=10$ 而條件變異數為 $(1-\rho^{2})\sigma^{2}_{\sssig Y}$ 這個式子，因此 $6$ 與 $14$ 分別是條件期望值減去與加上一個條件標準差的位置，由 $\sqrt{(1-\rho^{2})\times25}=4$ 這條等式解得 <span class="text-nowrap">$\rho=\pm\frac{3}{\,5\,}$，</span>再由題目給定的 $\rho>0$ 取正根。第三小題用的是線性組合仍為常態分配這一項，兩個線性組合的變異數只差在 $2ab\rho\sigma_1\sigma_2$ 這一項的正負號，因此 $U=5X+Y$ 的變異數為 $80$ 而 $V=5X-Y$ 的變異數為 <span class="text-nowrap">$20$。</span>
 
 [Example 4.61](#ex-bivariate-normal-ex-2) 的作用是給出一個反例。所給的機率密度函數是一個標準二元常態密度乘上 $1+xy\exp\bigl[-\frac{1}{2}(x^{2}+y^{2}-2)\bigr]$ 這個因子，把它展開之後多出來的那一項含有 $y\,e^{-y^{2}}$ 這個奇函數，對 $y$ 在整條實數線上積分之後為 <span class="text-nowrap">$0$，</span>剩下的正是標準常態的密度，$f_{\sssig Y}(y)$ 同理。兩個邊際都是 $\mathcal{N}(0,1)$ 而聯合的機率密度函數並不是二元常態的形式，因此「兩個邊際為常態則聯合必為二元常態」這個陳述並不成立。反過來說，若兩個常態變數彼此獨立，其聯合分配必定是相關係數為 $0$ 的二元常態分配，這一點在證明常態母體下樣本平均數與樣本變異數獨立時會用到。
 
-[Example 4.62](#ex-bivariate-normal-ex-3) 走的是相反的方向: 題目只給機率函數的形狀，要由它反推參數。作法是把 $\exp\lbrace-x^{2}+xy-y^{2}\rbrace$ 與二元常態密度的指數項逐項比對，$x^{2}$、$y^{2}$ 與 $xy$ 三個係數各給一條方程式，解得 $\rho=\frac{1}{\,2\,}$ 與 $\sigma_1^{2}=\sigma_2^{2}=\frac{2}{\,3\,}$ 這兩組值；指數項中沒有一次項，因此兩個期望值都是 <span class="text-nowrap">$0$。</span>參數確定之後，常數 $c$ 就是二元常態密度前面的那一個係數 $\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^{2}}}$ 這個式子，算得 <span class="text-nowrap">$\frac{\sqrt{3}}{\,2\pi\,}$；</span>條件期望值則直接代入條件分配的期望值公式，得到 <span class="text-nowrap">$\frac{\,3\,}{2}$。</span>這一題另有以矩陣書寫的解法，要等到多元常態分配的矩陣形式建立之後才能使用。
+[Example 4.62](#ex-bivariate-normal-ex-3) 走的是相反的方向。題目只給機率函數的形狀，要由它反推參數。作法是把 $\exp\lbrace-x^{2}+xy-y^{2}\rbrace$ 與二元常態密度的指數項逐項比對，$x^{2}$、$y^{2}$ 與 $xy$ 三個係數各給一條方程式，解得 $\rho=\frac{1}{\,2\,}$ 與 $\sigma_1^{2}=\sigma_2^{2}=\frac{2}{\,3\,}$ 這兩組值；指數項中沒有一次項，因此兩個期望值都是 <span class="text-nowrap">$0$。</span>參數確定之後，常數 $c$ 就是二元常態密度前面的那一個係數 $\frac{1}{2\pi\sigma_1\sigma_2\sqrt{1-\rho^{2}}}$ 這個式子，算得 <span class="text-nowrap">$\frac{\sqrt{3}}{\,2\pi\,}$；</span>條件期望值則直接代入條件分配的期望值公式，得到 <span class="text-nowrap">$\frac{\,3\,}{2}$。</span>這一題另有以矩陣書寫的解法，要等到多元常態分配的矩陣形式建立之後才能使用。
 
 [下一篇](/lecture-notes/multivariate-normal-distribution/)把二元常態分配推廣到 $n$ 個變數，以期望值向量與共變異數矩陣書寫多元常態分配的機率函數，並給出相應的性質與例題。
 

@@ -131,7 +131,7 @@ $$
 
 $$
 \begin{aligned}
-h^{**}(y\mid p)&=f(\sqrt{y}\mid p)\left\lvert\frac{-1}{\,2\sqrt{y}\,}\right\rvert\\[0.45em]
+h^{**}(y\mid p)&=f(-\sqrt{y}\mid p)\left\lvert\frac{-1}{\,2\sqrt{y}\,}\right\rvert\\[0.45em]
 &=\frac{\Gamma\bigl(\frac{p+1}{2}\bigr)}{\,\Gamma\bigl(\frac{p}{2}\bigr)\sqrt{\pi p}\,}\biggl(1+\frac{\,y\,}{p}\biggr)^{-\frac{p+1}{2}}\times\frac{1}{\,2\sqrt{y}\,}
 \end{aligned}
 $$
@@ -141,7 +141,7 @@ $$
 
 $$
 \begin{aligned}
-h^{**}(y\mid p)&=f(\sqrt{y}\mid p)\left\lvert\frac{-1}{\,2\sqrt{y}\,}\right\rvert\\[0.3em]
+h^{**}(y\mid p)&=f(-\sqrt{y}\mid p)\left\lvert\frac{-1}{\,2\sqrt{y}\,}\right\rvert\\[0.3em]
 &=\frac{\Gamma\bigl(\frac{p+1}{2}\bigr)}{\,\Gamma\bigl(\frac{p}{2}\bigr)\sqrt{\pi p}\,}\biggl(1+\frac{\,y\,}{p}\biggr)^{-\frac{p+1}{2}}\\[0.3em]
 &\qquad\times\frac{1}{\,2\sqrt{y}\,}
 \end{aligned}
@@ -390,7 +390,7 @@ $$
 
 這個問題有意思的地方在於，雖然表面上是單邊的尾機率，但事實上這個問題在問的問題是一個雙尾的機率；但要注意的是，由於分子自由度與分母自由度相同，這個問題中的 $\mathcal{F}$ 分配即使經過倒數也會是一樣的分配，因此才能夠用 $k$ 與 $\frac{1}{\,k\,}$ 來表示。
 
-然而，雖然分子自由度與分母自由度不同時，我們不能如上表示，但若將上題改為 <span class="text-nowrap">$F=\frac{\,W_1\,}{W_2}\sim\mathcal{F}(\nu_1,\nu_2)$，</span>則考慮
+然而，雖然分子自由度與分母自由度不同時，我們不能如上表示，但若將上題改為 $F=\frac{\,W_1\,}{W_2}\sim\mathcal{F}(\nu_1,\nu_2)$ 這個分配，則考慮
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 

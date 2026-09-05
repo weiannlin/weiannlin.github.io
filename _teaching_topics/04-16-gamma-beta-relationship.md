@@ -15,7 +15,7 @@ excerpt: "兩個比例參數相同且彼此獨立的伽瑪變數，其中一個�
 
 [上一篇](/lecture-notes/beta-function-and-distribution/)由[貝塔函數](/lecture-notes/beta-function-and-distribution/#def-beta-function)出發，給出[貝塔分配](/lecture-notes/beta-function-and-distribution/#def-beta-distribution)的定義。貝塔函數本身就是由兩個[伽瑪函數](/lecture-notes/gamma-function-exponential-distribution/#def-gamma-function)的乘積除以另一個伽瑪函數而來，因此貝塔分配與[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)之間存在一項直接的關係，本篇處理的就是這項關係。
 
-本篇先以 [Jacobian 法](/lecture-notes/many-to-many-transformations/#連續型的-jacobian-法)證明: 兩個比例參數相同且彼此獨立的伽瑪變數，其中一個在兩者之和中所佔的比例服從貝塔分配，兩者之和則仍為伽瑪分配，而且這兩個新變數彼此獨立。接著說明這項關係背後的想法，以及它在[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)上的特例。最後以三道例題作為演練，其中兩道涉及[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的順序統計量 <span lang="en">(order statistic)</span>。
+本篇先以 [Jacobian 法](/lecture-notes/many-to-many-transformations/#連續型的-jacobian-法)證明，兩個比例參數相同且彼此獨立的伽瑪變數，其中一個在兩者之和中所佔的比例服從貝塔分配，兩者之和則仍為伽瑪分配，而且這兩個新變數彼此獨立。接著說明這項關係背後的想法，以及它在[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)上的特例。最後以三道例題作為演練，其中兩道涉及[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的順序統計量 <span lang="en">(order statistic)</span>。
 
 ## 伽瑪分配與貝塔分配的關係
 
@@ -47,7 +47,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-U\sim\mathrm{Beta}(\alpha=a,\ \beta=b)\indep V\sim\mathrm{Gamma}(\alpha=a+b,\ \beta)
+U\sim\mathrm{Beta}(a,\ b)\indep V\sim\mathrm{Gamma}(\alpha=a+b,\ \beta)
 $$
 
 </div>
@@ -55,7 +55,7 @@ $$
 
 $$
 \begin{aligned}
-U&\sim\mathrm{Beta}(\alpha=a,\ \beta=b)\\[0.5em]
+U&\sim\mathrm{Beta}(a,\ b)\\[0.5em]
 \indep\ V&\sim\mathrm{Gamma}(\alpha=a+b,\ \beta)
 \end{aligned}
 $$
@@ -72,14 +72,14 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-U=\frac{X}{\,X+Y\,},\ V=X+Y\qquad\therefore\, X=UV,\ Y=V(1-U)
+U=\frac{X}{\,X+Y\,},\ V=X+Y\qquad\Longrightarrow\ X=UV,\ Y=V(1-U)
 $$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-U=\frac{X}{\,X+Y\,},\ V=X+Y\qquad\therefore\, X=UV,\ Y=V(1-U)
+U=\frac{X}{\,X+Y\,},\ V=X+Y\qquad\Longrightarrow\ X=UV,\ Y=V(1-U)
 $$
 
 </div>
@@ -253,7 +253,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-U\sim\mathrm{Beta}(\alpha=a,\ \beta=b)\indep V\sim\mathrm{Gamma}(\alpha=a+b,\ \beta)
+U\sim\mathrm{Beta}(a,\ b)\indep V\sim\mathrm{Gamma}(\alpha=a+b,\ \beta)
 $$
 
 </div>
@@ -261,7 +261,7 @@ $$
 
 $$
 \begin{aligned}
-U&\sim\mathrm{Beta}(\alpha=a,\ \beta=b)\\[0.5em]
+U&\sim\mathrm{Beta}(a,\ b)\\[0.5em]
 \indep\ V&\sim\mathrm{Gamma}(\alpha=a+b,\ \beta)
 \end{aligned}
 $$
@@ -328,7 +328,7 @@ Suppose that $X_1$ and $X_2$ are independent and identically distributed random 
 
 $$
 \begin{aligned}
-1&=\int_{0}^{\infty}\frac{e^{-kx}}{\,k!\,}\,dx=\left[\frac{e^{-kx}}{\,(-k)\cdot k!\,}\right]_{0}^{\infty}=-\frac{1}{\,(-k)\cdot k!\,}\qquad\therefore\, k=1
+1&=\int_{0}^{\infty}\frac{e^{-kx}}{\,k!\,}\,dx=\left[\frac{e^{-kx}}{\,(-k)\cdot k!\,}\right]_{0}^{\infty}=-\frac{1}{\,(-k)\cdot k!\,}\qquad\Longrightarrow\ k=1
 \end{aligned}
 $$
 
@@ -338,7 +338,7 @@ $$
 $$
 \begin{aligned}
 1&=\int_{0}^{\infty}\frac{e^{-kx}}{\,k!\,}\,dx=\left[\frac{e^{-kx}}{\,(-k)\cdot k!\,}\right]_{0}^{\infty}\\[0.45em]
-&=-\frac{1}{\,(-k)\cdot k!\,}\qquad\therefore\, k=1
+&=-\frac{1}{\,(-k)\cdot k!\,}\qquad\Longrightarrow\ k=1
 \end{aligned}
 $$
 
@@ -379,14 +379,14 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-Y_1=X_1+X_2,\ Y_2=\frac{X_1}{\,X_1+X_2\,}\qquad\therefore\, X_1=Y_1Y_2,\ X_2=Y_1(1-Y_2)
+Y_1=X_1+X_2,\ Y_2=\frac{X_1}{\,X_1+X_2\,}\qquad\Longrightarrow\ X_1=Y_1Y_2,\ X_2=Y_1(1-Y_2)
 $$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-Y_1=X_1+X_2,\ Y_2=\frac{X_1}{\,X_1+X_2\,}\qquad\therefore\, X_1=Y_1Y_2,\ X_2=Y_1(1-Y_2)
+Y_1=X_1+X_2,\ Y_2=\frac{X_1}{\,X_1+X_2\,}\qquad\Longrightarrow\ X_1=Y_1Y_2,\ X_2=Y_1(1-Y_2)
 $$
 
 </div>
@@ -530,7 +530,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-Y_2\sim\mathrm{Beta}(\alpha=1,\ \beta=1)\ \text{或}\ Y_2\sim\mathcal{U}(0,1)
+Y_2\sim\mathrm{Beta}(a=1,\ b=1)\ \text{或}\ Y_2\sim\mathcal{U}(0,1)
 $$
 
 </div>
@@ -538,7 +538,7 @@ $$
 
 $$
 \begin{aligned}
-Y_2&\sim\mathrm{Beta}(\alpha=1,\ \beta=1)\\[0.5em]
+Y_2&\sim\mathrm{Beta}(a=1,\ b=1)\\[0.5em]
 \text{或}\ Y_2&\sim\mathcal{U}(0,1)
 \end{aligned}
 $$
@@ -719,7 +719,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-R=Y_{\sssig (n)}-Y_{\sssig (1)}\sim\mathrm{Beta}(\alpha=n-1,\ \beta=2),\quad \mathrm{Var}(R)=\frac{2(n-1)}{\,(n+1)^2(n+2)\,}
+R=Y_{\sssig (n)}-Y_{\sssig (1)}\sim\mathrm{Beta}(a=n-1,\ b=2),\quad \mathrm{Var}(R)=\frac{2(n-1)}{\,(n+1)^2(n+2)\,}
 $$
 
 </div>
@@ -728,7 +728,7 @@ $$
 $$
 \begin{aligned}
 R&=Y_{\sssig (n)}-Y_{\sssig (1)}\\[0.5em]
-&\sim\mathrm{Beta}(\alpha=n-1,\ \beta=2),\\[0.5em]
+&\sim\mathrm{Beta}(a=n-1,\ b=2),\\[0.5em]
 \mathrm{Var}(R)&=\frac{2(n-1)}{\,(n+1)^2(n+2)\,}
 \end{aligned}
 $$
@@ -748,7 +748,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-Z=\max\bigl[G(X_i)\bigr]-\min\bigl[G(X_i)\bigr]\sim\mathrm{Beta}(\alpha=n-1,\ \beta=2)
+Z=\max\bigl[G(X_i)\bigr]-\min\bigl[G(X_i)\bigr]\sim\mathrm{Beta}(a=n-1,\ b=2)
 $$
 
 </div>
@@ -757,7 +757,7 @@ $$
 $$
 \begin{aligned}
 Z&=\max\bigl[G(X_i)\bigr]-\min\bigl[G(X_i)\bigr]\\[0.5em]
-&\sim\mathrm{Beta}(\alpha=n-1,\ \beta=2)
+&\sim\mathrm{Beta}(a=n-1,\ b=2)
 \end{aligned}
 $$
 
@@ -796,7 +796,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-Y_{\sssig (s)}-Y_{\sssig (r)}\sim\mathrm{Beta}(\alpha=s-r,\ \beta=n-s+r+1)
+Y_{\sssig (s)}-Y_{\sssig (r)}\sim\mathrm{Beta}(a=s-r,\ b=n-s+r+1)
 $$
 
 </div>
@@ -805,7 +805,7 @@ $$
 $$
 \begin{aligned}
 &Y_{\sssig (s)}-Y_{\sssig (r)}\\[0.5em]
-&\sim\mathrm{Beta}(\alpha=s-r,\ \beta=n-s+r+1)
+&\sim\mathrm{Beta}(a=s-r,\ b=n-s+r+1)
 \end{aligned}
 $$
 
@@ -836,7 +836,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-Y_{\sssig (s)}\sim\mathrm{Beta}(\alpha=s,\ \beta=n-s+1),\quad Y_{\sssig (r)}\sim\mathrm{Beta}(\alpha=r,\ \beta=n-r+1)
+Y_{\sssig (s)}\sim\mathrm{Beta}(a=s,\ b=n-s+1),\quad Y_{\sssig (r)}\sim\mathrm{Beta}(a=r,\ b=n-r+1)
 $$
 
 </div>
@@ -844,8 +844,8 @@ $$
 
 $$
 \begin{aligned}
-Y_{\sssig (s)}&\sim\mathrm{Beta}(\alpha=s,\ \beta=n-s+1),\\[0.5em]
-Y_{\sssig (r)}&\sim\mathrm{Beta}(\alpha=r,\ \beta=n-r+1)
+Y_{\sssig (s)}&\sim\mathrm{Beta}(a=s,\ b=n-s+1),\\[0.5em]
+Y_{\sssig (r)}&\sim\mathrm{Beta}(a=r,\ b=n-r+1)
 \end{aligned}
 $$
 
@@ -907,11 +907,11 @@ Suppose that $X_1,X_2,X_3$ are independent random variables, each having the $\m
 </ol>
 </div>
 
-(1) 由[順序統計量的性質](/lecture-notes/order-statistics-distributions/#標準均勻分配的順序統計量與貝塔分配)可知
+(1) 由順序統計量的性質可知
 {: .topic-paren-item}
 
 $$
-Y_3-Y_1\sim\mathrm{Beta}(\alpha=2,\ \beta=2)
+Y_3-Y_1\sim\mathrm{Beta}(a=2,\ b=2)
 $$
 
 因此
@@ -921,7 +921,7 @@ $$
 f_{\sssig Y_3-Y_1}(y)=6y(1-y),\ 0<y<1
 $$
 
-(2) 由 $Y_1\sim\mathrm{Beta}(\alpha=1,\ \beta=3)$ 與 $Y_3\sim\mathrm{Beta}(\alpha=3,\ \beta=1)$ 可知
+(2) 由 $Y_1\sim\mathrm{Beta}(a=1,\ b=3)$ 與 $Y_3\sim\mathrm{Beta}(a=3,\ b=1)$ 可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -993,11 +993,11 @@ $$
 
 ## 本篇小結
 
-[Theorem 4.19](#thm-gamma-to-beta) 把[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)與[貝塔分配](/lecture-notes/beta-function-and-distribution/#def-beta-distribution)接了起來: 兩個比例參數同為 $\beta$ 而形狀參數分別為 $a$ 與 $b$ 的獨立伽瑪變數，其中一個在兩者之和中所佔的比例 $U=\frac{X}{\,X+Y\,}$ 服從 <span class="text-nowrap">$\mathrm{Beta}(\alpha=a,\ \beta=b)$，</span>兩者之和 $V=X+Y$ 則服從 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=a+b,\ \beta)$，</span>而且 $U$ 與 $V$ 彼此獨立。證明採 Jacobian 法，先寫出兩個伽瑪變數的聯合機率密度函數，換元之後所得到的聯合機率密度函數恰好可以拆成只含 $u$ 的一段與只含 $v$ 的一段，兩段各自積分之後，貝塔分配與伽瑪分配的機率函數就分別出現在 $U$ 與 $V$ 的邊際機率密度函數上。
+[Theorem 4.19](#thm-gamma-to-beta) 把伽瑪分配與貝塔分配接了起來。兩個比例參數同為 $\beta$ 而形狀參數分別為 $a$ 與 $b$ 的獨立伽瑪變數，其中一個在兩者之和中所佔的比例 $U=\frac{X}{\,X+Y\,}$ 服從 <span class="text-nowrap">$\mathrm{Beta}(a,\ b)$，</span>兩者之和 $V=X+Y$ 則服從 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=a+b,\ \beta)$，</span>而且 $U$ 與 $V$ 彼此獨立。證明採 Jacobian 法，先寫出兩個伽瑪變數的聯合機率密度函數，換元之後所得到的聯合機率密度函數恰好可以拆成只含 $u$ 的一段與只含 $v$ 的一段，兩段各自積分之後，貝塔分配與伽瑪分配的機率函數就分別出現在 $U$ 與 $V$ 的邊際機率密度函數上。
 
-定理之後的說明給出一個稍不嚴謹但簡單直接的想法: 比例的平均是兩個期望值之間的比例，也就是 $\frac{a\beta}{\,a\beta+b\beta\,}=\frac{a}{\,a+b\,}$ 這個比值，恰好是貝塔分配的期望值。同一段也指出一個特例，即兩個比例參數相同且彼此獨立的[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)變數，其比例服從[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)。
+定理之後的說明給出一個稍不嚴謹但簡單直接的想法。比例的平均是兩個期望值之間的比例，也就是 $\frac{a\beta}{\,a\beta+b\beta\,}=\frac{a}{\,a+b\,}$ 這個比值，恰好是貝塔分配的期望值。同一段也指出一個特例，即兩個比例參數相同且彼此獨立的指數分配變數，其比例服從標準均勻分配。
 
-三道例題各練一種用法。[Example 4.41](#ex-gamma-beta-1) 先由機率密度函數的合法性定出 <span class="text-nowrap">$k=1$，</span>辨識出兩個變數服從 <span class="text-nowrap">$\mathrm{Exp}(\beta=1)$，</span>再依 Jacobian 法逐步算出 $Y_1=X_1+X_2$ 與 $Y_2=\frac{X_1}{\,X_1+X_2\,}$ 的聯合與邊際機率密度函數，最後由聯合機率密度函數可以拆成兩個邊際機率密度函數的乘積、且範圍互不影響，判定兩者獨立，這正是 [Theorem 4.19](#thm-gamma-to-beta) 在 $a=b=1$ 時的情形。[Example 4.42](#ex-gamma-beta-2) 處理標準均勻分配的順序統計量: 由兩個順序統計量的聯合機率密度函數算出共變異數 <span class="text-nowrap">$\frac{r(n+1-s)}{\,(n+1)^2(n+2)\,}$，</span>再以變數變換求得全距 $R=Y_{\sssig (n)}-Y_{\sssig (1)}$ 服從 <span class="text-nowrap">$\mathrm{Beta}(\alpha=n-1,\ \beta=2)$；</span>第三小題則以機率積分轉換把韋伯變數換成標準均勻變數，所求的量因而與第二小題完全相同。該題之後的說明另給一個省事的作法: 直接引用順序統計量之差服從貝塔分配這個結果，再由變異數的展開式反解共變異數。[Example 4.43](#ex-gamma-beta-3) 是同一組結果在 $n=3$ 上的演練，$Y_3-Y_1$ 服從 <span class="text-nowrap">$\mathrm{Beta}(\alpha=2,\ \beta=2)$，</span>而極小值與極大值之平均的期望值為 <span class="text-nowrap">$\frac{1}{\,2\,}$、</span>變異數為 <span class="text-nowrap">$\frac{1}{\,40\,}$。</span>
+三道例題各練一種用法。[Example 4.41](#ex-gamma-beta-1) 先由機率密度函數的合法性定出 <span class="text-nowrap">$k=1$，</span>辨識出兩個變數服從 <span class="text-nowrap">$\mathrm{Exp}(\beta=1)$，</span>再依 Jacobian 法逐步算出 $Y_1=X_1+X_2$ 與 $Y_2=\frac{X_1}{\,X_1+X_2\,}$ 的聯合與邊際機率密度函數，最後由聯合機率密度函數可以拆成兩個邊際機率密度函數的乘積、且範圍互不影響，判定兩者獨立，這正是 [Theorem 4.19](#thm-gamma-to-beta) 在 $a=b=1$ 時的情形。[Example 4.42](#ex-gamma-beta-2) 處理標準均勻分配的順序統計量。由兩個順序統計量的聯合機率密度函數算出共變異數 <span class="text-nowrap">$\frac{r(n+1-s)}{\,(n+1)^2(n+2)\,}$，</span>再以變數變換求得全距 $R=Y_{\sssig (n)}-Y_{\sssig (1)}$ 服從 <span class="text-nowrap">$\mathrm{Beta}(a=n-1,\ b=2)$；</span>第三小題則以機率積分轉換把韋伯變數換成標準均勻變數，所求的量因而與第二小題完全相同。該題之後的說明另給一個省事的作法。直接引用順序統計量之差服從貝塔分配這個結果，再由變異數的展開式反解共變異數。[Example 4.43](#ex-gamma-beta-3) 是同一組結果在 $n=3$ 上的演練，$Y_3-Y_1$ 服從 <span class="text-nowrap">$\mathrm{Beta}(a=2,\ b=2)$，</span>而極小值與極大值之平均的期望值為 <span class="text-nowrap">$\frac{1}{\,2\,}$、</span>變異數為 <span class="text-nowrap">$\frac{1}{\,40\,}$。</span>
 
 [下一篇](/lecture-notes/normal-distribution/)轉入常態相關的機率模型，先給出高斯積分，再定義常態分配，並說明標準化與線性組合的可加性。
 

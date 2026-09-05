@@ -13,7 +13,7 @@ published: false
 excerpt: "超幾何分配描述有限母體以取後不放回的方式抽樣時，抽出的 $n$ 個元素中成功類的個數。本篇先給出驗證機率函數合法所需要的汎德蒙等式，再依序給出超幾何實驗與超幾何分配的定義，並完整推導其期望值與變異數。其後的六點說明談到組合符號的定義限制、變異數中的有限母體校正因子、取後放回時超幾何分配與二項分配的對應，以及動差母函數在此略去不談的原因。最後以電視管驗收與大學註冊率兩道例題作為演練。"
 ---
 
-[上一篇](/lecture-notes/negative-binomial-distribution/)的[負二項分配](/lecture-notes/negative-binomial-distribution/#def-negative-binomial)仍然建立在伯努利實驗之上，每一次實驗的成功機率固定，實驗與實驗之間也彼此獨立。本篇要處理的情形則不同: 母體只有有限多個元素，而且抽出的元素不再放回，因此每抽一次，母體的組成就改變一次，成功類所佔的比例也隨之改變。在這樣的抽樣方式之下，抽出的元素中成功類的個數所服從的分配，即為本篇的超幾何分配。
+[上一篇](/lecture-notes/negative-binomial-distribution/)的[負二項分配](/lecture-notes/negative-binomial-distribution/#def-negative-binomial)仍然建立在伯努利實驗之上，每一次實驗的成功機率固定，實驗與實驗之間也彼此獨立。本篇要處理的情形則不同。母體只有有限多個元素，而且抽出的元素不再放回，因此每抽一次，母體的組成就改變一次，成功類所佔的比例也隨之改變。在這樣的抽樣方式之下，抽出的元素中成功類的個數所服從的分配，即為本篇的超幾何分配。
 
 驗證[二項分配](/lecture-notes/binomial-distribution/#def-binomial)的機率函數合法時，我們用的是 [Theorem 2.18](/lecture-notes/moment-system/#thm-binomial) 的二項式定理；在超幾何分配這裡，所需要的工具則是[汎德蒙等式](#thm-vandermonde-identity)。本篇因而先由這個等式談起，再依序給出超幾何實驗與超幾何分配的定義，接著證明其機率函數合法並推導期望值與變異數，最後以兩道例題作為演練。
 
@@ -376,11 +376,16 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-其出現的原因是，我們在進行取後不放回的抽樣時，若對象是有限母體，則每次抽樣時母體結構都在改變，當然也會影響到母體的平均變異程度，因此需要進行**有限母體校正**。[^fpc]
+其出現的原因是，我們在進行取後不放回的抽樣時，若對象是有限母體，則每次抽樣時母體結構都在改變，當然也會影響到母體的平均變異程度，因此需要進行**有限母體校正**。
 
 </div>
 
-[^fpc]: 事實上這個校正因子其實很接近 $(N-n)/N$ 這個比值，也就是抽樣過後剩餘的元素在整個母體中的比例，因此為了推導方便，在抽樣調查的領域中便常常透過一些改寫而將有限母體校正因子改為 $(N-n)/N$ 這個形式，從而得到一些方便。
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+事實上這個校正因子其實很接近 $(N-n)/N$ 這個比值，也就是抽樣過後剩餘的元素在整個母體中的比例，因此為了推導方便，在抽樣調查的領域中便常常透過一些改寫而將有限母體校正因子改為 $(N-n)/N$ 這個形式，從而得到一些方便。
+
+</div>
 
 (4) 讀者可以發現，若採用取後放回的方式抽樣，我們便不需要有限母體校正因子，這時候超幾何分配的期望值與變異數會變為
 {: .topic-paren-item}
@@ -426,7 +431,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-但是，當所抽取的樣本數量，相對於整個母體的總元素個數來說是很小的比例時，這個校正便不見得需要，因為母體結構的改變相對不明顯。實務使用上，在 $n/N<5\%$ 時會將整個抽樣的過程以無限母體「近似」以取得運算上的方便。
+但是，當所抽取的樣本大小，相對於整個母體的總元素個數來說是很小的比例時，這個校正便不見得需要，因為母體結構的改變相對不明顯。實務使用上，在 $n/N<5\%$ 時會將整個抽樣的過程以無限母體「近似」以取得運算上的方便。
 
 </div>
 
@@ -479,18 +484,19 @@ The table below records the registration rates of the PhD programs of $12$ unive
 
 | University | Registration Rate (%) |
 |:---:|:---:|
-| 台灣大學 | 73.00 |
-| 清華大學 | 81.93 |
-| 中央大學 | 83.89 |
-| 中山大學 | 80.58 |
-| 台灣師範大學 | 88.89 |
-| 政治大學 | 66.26 |
-| 成功大學 | 63.00 |
-| 交通大學 | 72.38 |
-| 陽明大學 | 72.22 |
-| 中興大學 | 74.49 |
-| 長庚大學 | 77.78 |
-| 台灣科技大學 | 80.75 |
+| 台灣大學 | $73.00$ |
+| 清華大學 | $81.93$ |
+| 中央大學 | $83.89$ |
+| 中山大學 | $80.58$ |
+| 台灣師範大學 | $88.89$ |
+| 政治大學 | $66.26$ |
+| 成功大學 | $63.00$ |
+| 交通大學 | $72.38$ |
+| 陽明大學 | $72.22$ |
+| 中興大學 | $74.49$ |
+| 長庚大學 | $77.78$ |
+| 台灣科技大學 | $80.75$ |
+{: .topic-table--matrix}
 
 <ol class="topic-list-paren">
   <li>Suppose that five distinct universities are drawn at random from the table. What is the probability that exactly three of them have registration rates lying between the first and the third quartiles?</li>
@@ -621,7 +627,7 @@ $$
 
 [Theorem 4.8](#thm-vandermonde-identity) 的汎德蒙等式把 $\binom{N}{n}$ 這個組合數拆成一連串乘積之和，證明的作法是比較 $(1+x)^{K}(1+x)^{N-K}=(1+x)^{N}$ 兩邊 $x^{n}$ 的係數，左邊依二項式定理展開之後再合併同次項，右邊則直接由二項式定理得到。這個等式在本篇一共用了三次: 一次驗證機率函數的加總為 $1$ 這件事，另外兩次分別出現在期望值與階乘動差的最後一步。
 
-[Definition 4.8](#def-hypergeometric-experiment) 的超幾何實驗把有限母體分成成功類與失敗類，並以取後不放回的方式抽出 $n$ 個元素；[Definition 4.9](#def-hypergeometric) 的超幾何分配則以 $X$ 記錄這 $n$ 個元素中成功類的個數。與[二項分配](/lecture-notes/binomial-distribution/#def-binomial)相比，最明顯的差別有兩處: 值域的兩端要受 $\mathrm{max}(0,n+K-N)$ 與 $\mathrm{min}(n,K)$ 這兩個數限制，而變異數比二項分配多出一個因子。期望值為 $n(K/N)$ 這個式子，與二項分配把 $p$ 換成母體中成功類的比例之後完全相同。
+[Definition 4.8](#def-hypergeometric-experiment) 的超幾何實驗把有限母體分成成功類與失敗類，並以取後不放回的方式抽出 $n$ 個元素；[Definition 4.9](#def-hypergeometric) 的超幾何分配則以 $X$ 記錄這 $n$ 個元素中成功類的個數。與二項分配相比，最明顯的差別有兩處: 值域的兩端要受 $\mathrm{max}(0,n+K-N)$ 與 $\mathrm{min}(n,K)$ 這兩個數限制，而變異數比二項分配多出一個因子。期望值為 $n(K/N)$ 這個式子，與二項分配把 $p$ 換成母體中成功類的比例之後完全相同。
 
 定義之後的六點說明依序處理了幾件事。第一點是完整的證明；第二點指出組合符號的定義限制，抽取數量比其中一類的總數還多時，對應的乘積被定義為零，汎德蒙等式的加總因而可以寫成由 $0$ 到 <span class="text-nowrap">$n$；</span>第三點與第四點指出變異數中多出來的那個因子即為有限母體校正因子，取後放回時它會消失，只抽一個元素時它等於 <span class="text-nowrap">$1$，</span>兩種情形都不需要校正；第五點與第六點分別交代校正在實務上何時可以省去，以及動差母函數為何在此略去不談。
 

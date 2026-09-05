@@ -450,7 +450,7 @@ Suppose that, during the Second World War, a bomber of the British Air Force is 
 </ol>
 </div>
 
-(1) 依題意可知 <span class="text-nowrap">$X\sim\mathrm{Geo}(p=1-p_s)$，</span>且可知
+(1) 依題意可知 <span class="text-nowrap">$X\sim\mathrm{Geo}(p=1-p_s)$</span> (此處為失敗幾何，$\mathcal{R}_{\sssig X}=\lbrace\,0,1,\ldots,\infty\,\rbrace$ 這個集合，兩種定義的區分見[幾何分配](/lecture-notes/geometric-distribution-memoryless/#geo-two-definitions))，且可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -486,7 +486,7 @@ $$
 
 </div>
 
-(2) <span class="text-nowrap">$Y\sim\mathrm{Geo}(p=1-p_s)$，</span>且可知
+(2) <span class="text-nowrap">$Y\sim\mathrm{Geo}(p=1-p_s)$</span> (同為失敗幾何，$\mathcal{R}_{\sssig Y}=\lbrace\,0,1,\ldots,\infty\,\rbrace$ 這個集合)，且可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -522,7 +522,7 @@ $$
 
 </div>
 
-(3) $X$ 與 $Y$ 的分配同為幾何分配，且參數皆為 <span class="text-nowrap">$p=1-p_s$，</span>此類分配不因過去曾成功完成的任務數 $k$ 而改變，稱為[無記憶性](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless)。
+(3) $X$ 與 $Y$ 的分配同為幾何分配，且參數皆為 <span class="text-nowrap">$p=1-p_s$，</span>此類分配不因過去曾成功完成的任務數 $k$ 而改變，稱為無記憶性。
 {: .topic-paren-item}
 
 </div>
@@ -531,11 +531,11 @@ $$
 
 [Example 4.10](#ex-geometric-ex-1) 與 [Example 4.11](#ex-geometric-ex-2) 是實驗幾何分配的直接計算。前者的成功機率為 <span class="text-nowrap">$0.6$，</span>期望值 $\frac{1}{\,p\,}$ 與變異數 $\frac{\,1-p\,}{p^{2}}$ 代入即得，而「至少需抽取 $2$ 次」由餘事件處理，只要扣掉第一次就抽中的機率。後者所求的是「所需次數為奇數」的機率，把 $p_{\sssig X}(1),\ p_{\sssig X}(3),\ p_{\sssig X}(5),\ldots$ 逐項相加，得到的是首項為 $p$ 而公比為 $(1-p)^{2}$ 的無窮等比級數，總和為 $\frac{1}{\,2-p\,}$ 這個結果。
 
-[Example 4.12](#ex-geometric-ex-3) 與 [Example 4.13](#ex-geometric-ex-4) 用的是同一個手法: 「等到出現 $6$ 個不同的面」或「等到記錄下 $k$ 個不同的號碼」，都可以把總次數切成一段一段，每一段是「從已經出現 $i-1$ 個不同結果，到出現第 $i$ 個不同結果」所需的次數。每一段各自服從一個幾何分配，成功機率是尚未出現的結果所佔的比例，因而隨著 $i$ 遞減；總期望值就是各段期望值相加，也就是一串倒數之和。擲公正骰子的情形算出來是 $14.7$ 次，$r$ 個球取到 $k$ 個不同號碼的情形則是 $k$ 個形如 $\frac{r}{\,r+1-i\,}$ 的分數相加。
+[Example 4.12](#ex-geometric-ex-3) 與 [Example 4.13](#ex-geometric-ex-4) 用的是同一個手法。「等到出現 $6$ 個不同的面」或「等到記錄下 $k$ 個不同的號碼」，都可以把總次數切成一段一段，每一段是「從已經出現 $i-1$ 個不同結果，到出現第 $i$ 個不同結果」所需的次數。每一段各自服從一個幾何分配，成功機率是尚未出現的結果所佔的比例，因而隨著 $i$ 遞減；總期望值就是各段期望值相加，也就是一串倒數之和。擲公正骰子的情形算出來是 $14.7$ 次，$r$ 個球取到 $k$ 個不同號碼的情形則是 $k$ 個形如 $\frac{r}{\,r+1-i\,}$ 的分數相加。
 
-[Example 4.14](#ex-geometric-ex-5) 的抽樣要抽到男女都出現才停止，本身不是幾何分配，但只要引入一個輔助變數 $X$ 記錄第一個樣本的性別，在給定 $X$ 之後，剩下要抽的人數 $N-1$ 就是一個幾何變數: 第一個抽到女生時還要等一個男生，成功機率為 <span class="text-nowrap">$\frac{2}{\,3\,}$；</span>第一個抽到男生時還要等一個女生，成功機率為 <span class="text-nowrap">$\frac{1}{\,3\,}$。</span>三個小題因而分別由雙重期望值、全機率定理與變異數分解定理完成，答案依序是 <span class="text-nowrap">$\frac{\,7\,}{2}$、</span>$\frac{10}{\,81\,}$ 與 <span class="text-nowrap">$\frac{\,19\,}{4}$。</span>其中變異數的計算用到 $\mathrm{Var}(N\mid X=x)=\mathrm{Var}(N-1\mid X=x)$ 這個關係，因為兩者只差一個常數。
+[Example 4.14](#ex-geometric-ex-5) 的抽樣要抽到男女都出現才停止，本身不是幾何分配，但只要引入一個輔助變數 $X$ 記錄第一個樣本的性別，在給定 $X$ 之後，剩下要抽的人數 $N-1$ 就是一個幾何變數。第一個抽到女生時還要等一個男生，成功機率為 <span class="text-nowrap">$\frac{2}{\,3\,}$；</span>第一個抽到男生時還要等一個女生，成功機率為 <span class="text-nowrap">$\frac{1}{\,3\,}$。</span>三個小題因而分別由雙重期望值、全機率定理與變異數分解定理完成，答案依序是 <span class="text-nowrap">$\frac{\,7\,}{2}$、</span>$\frac{10}{\,81\,}$ 與 <span class="text-nowrap">$\frac{\,19\,}{4}$。</span>其中變異數的計算用到 $\mathrm{Var}(N\mid X=x)=\mathrm{Var}(N-1\mid X=x)$ 這個關係，因為兩者只差一個常數。
 
-[Example 4.15](#ex-geometric-ex-6) 記錄的是被擊落之前所能安全完成的任務數，值域自 $0$ 起算，屬於失敗幾何分配。已經安全完成 $k$ 次之後還能再完成幾次，其分配與一開始的 $X$ 完全相同，這正是[無記憶性](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless)所述的性質。
+[Example 4.15](#ex-geometric-ex-6) 記錄的是被擊落之前所能安全完成的任務數，值域自 $0$ 起算，屬於失敗幾何分配。已經安全完成 $k$ 次之後還能再完成幾次，其分配與一開始的 $X$ 完全相同，這正是無記憶性所述的性質。
 
 [下一篇](/lecture-notes/negative-binomial-distribution/)把「做到第一次成功為止」改成「做到第 $r$ 次成功為止」，所需要的實驗次數即服從負二項分配；該篇先給出驗證機率函數時所需要的負二項級數。
 

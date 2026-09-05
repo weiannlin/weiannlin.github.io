@@ -1,21 +1,22 @@
 % Fig. 4.15 -- 二元常態聯合 pdf 的立體鐘形，兩面板。
-% 書稿來源: mathstatch4.tex 第 5219 至 5267 行 (左面板) 與第 5270 至 5319 行
+% 書稿來源: mathstatch4.tex 第 6035 至 6089 行 (左面板) 與第 6092 至 6142 行
 %   (右面板)。書稿把兩個 tikzpicture 各放進一個 .49\textwidth 的 minipage
-%   橫排成一列 (第 5217 至 5321 行)，網頁併為一張兩面板圖。
+%   橫排成一列 (第 6034 至 6143 行)，網頁併為一張兩面板圖。
 %
-% 幾何一律照書稿: view={50}{45}、domain 0:4、y domain 0:4、座標軸線不畫、
+% 幾何一律照書稿: view={50}{45}、座標軸線不畫、
+%   繪圖範圍 $\rho=0$ 面板 -1:5、$\rho=-0.8$ 面板 0:4、
 %   三軸都不標刻度，只留 x、y 與 z 三個軸名。
 %   左面板 mu1=mu2=2、sigma1=sigma2=1、rho=0;
 %   右面板 mu1=mu2=2、sigma1=0.5、sigma2=0.7、rho=-0.8。
 %   兩個面板的 z 範圍各自獨立 (書稿是兩張分開的圖，各自取自己的峰值)，
 %   groupplot 預設即如此，不另設 zmax。
 %
-% 繪圖函數照書稿原樣保留，未改為真正的機率密度函數。書稿把 1/2 乘在指數
-%   函數之外而不是放進指數之內，rho=-0.8 的那一個另外少了 1/(1-rho^2)，
-%   畫出來的曲面仍是鐘形，只是比真正的機率密度窄而矮。候選稿的 fig-pending
-%   註解已把這一點列為待作者裁定，預設照書稿保留，本檔即依該預設。
-%   兩個面板的標準差不同 (1 與 1 對 0.5 與 0.7) 亦照書稿保留，同屬該註解
-%   所列的待裁定事項。
+% 繪圖函數依候選稿 2026-09-05 (候-A-15) 的改正: 1/2 移進指數之內，
+%   rho=-0.8 的那一個指數改為除以 2(1-rho^2)，兩者都是 Definition 4.25 的
+%   聯合機率密度函數本身。rho=0 面板的繪圖範圍亦依候選稿由 0:4 放大到
+%   -1:5 (即 mu 加減 3 sigma)，裙襬收到零，不再於四邊留下直角折邊;
+%   rho=-0.8 面板的 0:4 已達 mu 加減 4 sigma_1，照書稿不動。
+%   兩個面板的標準差不同 (1 與 1 對 0.5 與 0.7) 照書稿保留。
 %
 % 書稿以 % 註解掉而未畫的部分一律不畫: 兩條沿邊界的邊際常態密度曲線、
 %   兩條沿座標平面的細線、兩個 pin 標示，以及 colorbar。
@@ -38,7 +39,7 @@
 %
 % 產製 (CH3 規格 3.2 的三維曲面路徑，-O 不可省):
 %   latex -interaction=nonstopmode '\def\pgfsysdriver{pgfsys-dvisvgm.def}\input{bivariate-normal-surface.tex}'
-%   dvisvgm -O -d2 -n -o ../../images/teaching-topics/bivariate-normal-surface.svg bivariate-normal-surface.dvi
+%   dvisvgm -O -d2 -n -o ../../../images/lecture-notes/bivariate-normal-surface.svg bivariate-normal-surface.dvi
 
 \documentclass[tikz,border=2pt]{standalone}
 \usepackage{amsmath}
@@ -97,17 +98,17 @@
     declare function={mu2=2;},
     %% 零相關的那一個: 書稿第 5225 至 5226 行
     declare function={bivarA(\ma,\sa,\mb,\sb)=
-        1/(2*pi*\sa*\sb) * exp(-((x-\ma)^2/\sa^2 + (y-\mb)^2/\sb^2))/2;},
+        1/(2*pi*\sa*\sb) * exp(-((x-\ma)^2/\sa^2 + (y-\mb)^2/\sb^2)/2);},
     %% 負相關的那一個: 書稿第 5278 至 5279 行
     declare function={bivarB(\ma,\sa,\mb,\sb,\rr)=
-        1/(2*pi*\sa*\sb*sqrt(1-\rr^2)) * exp(-((x-\ma)^2/\sa^2 + (y-\mb)^2/\sb^2 - 2*\rr*((x-\ma)/\sa)*((y-\mb)/\sb)))/2;}]
+        1/(2*pi*\sa*\sb*sqrt(1-\rr^2)) * exp(-((x-\ma)^2/\sa^2 + (y-\mb)^2/\sb^2 - 2*\rr*((x-\ma)/\sa)*((y-\mb)/\sb))/(2*(1-\rr^2)));}]
 \begin{groupplot}[
   group style={group name=g, group size=2 by 1, horizontal sep=0.4cm},
   surfacepanel,
 ]
 
-%% 左面板: 相關係數為零，隆起沿兩軸對稱
-\nextgroupplot
+%% 左面板: 相關係數為零，隆起沿兩軸對稱; 繪圖範圍依候選稿放大到 -1:5
+\nextgroupplot[domain=-1:5, y domain=-1:5]
 \addplot3[surf, draw=journalink, line width=0.2pt] {bivarA(mu1,1,mu2,1)};
 
 %% 右面板: 相關係數為負，隆起沿一條斜線拉長

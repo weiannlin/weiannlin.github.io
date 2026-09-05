@@ -15,7 +15,14 @@ excerpt: "常態分配的機率函數為 $\\frac{1}{\\sqrt{2\\pi\\sigma^{2}}}e^{
 
 [上一篇](/lecture-notes/gamma-beta-relationship/)談伽瑪分配與貝塔分配之間的關係，至此貝塔相關的機率模型已經全部給出。本篇轉入第四大類的機率模型，也就是常態相關的機率模型。
 
-常態分配相關的機率模型，在統計學中的地位主要用於統計量 <span lang="en">(statistic)</span> 的**抽樣分配 <span lang="en">(sampling distribution)</span>**。基於隨機樣本來自常態分配的前提，我們可以針對母體參數進行許多有用的推論。[^statistic]
+常態分配相關的機率模型，在統計學中的地位主要用於統計量 <span lang="en">(statistic)</span> 的**抽樣分配 <span lang="en">(sampling distribution)</span>**。基於隨機樣本來自常態分配的前提，我們可以針對母體參數進行許多有用的推論。
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+事實上，統計量的定義就是隨機樣本的函數組合，因此探討統計量的抽樣分配，就機率的角度而言，只是隨機向量函數變換的一環。
+
+</div>
 
 要知道，統計的核心是處理資料 (data)，將其轉換為有用的資訊 <span lang="en">(information)</span>。在這個過程中，受限於成本等各種考量，我們通常無法得到母體資料，此時將會需要針對由母體分配 <span lang="en">(population distribution)</span> 經抽樣 <span lang="en">(sampling)</span> 所得到的樣本 (sample) 進行處理，因此探討統計量所具有的抽樣分配便是相當重要的事情，最關鍵的理由乃是因為，我們能夠透過這個機率分配，評估我們推論的成效如何。
 
@@ -307,7 +314,7 @@ $$
 
 - 表示式: $Z\sim\mathcal{N}(0,1)$
 - 機率密度函數: $\phi(z)=\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}z^{2}},\ -\infty<z<\infty$
-- 累積機率函數: $\Phi(z)=\int_{-\infty}^{z}\phi(t)\,dt,\ z\in\mathbb{R}$
+- 累積分配函數: $\Phi(z)=\int_{-\infty}^{z}\phi(t)\,dt,\ z\in\mathbb{R}$
 - $\mathbb{E}(Z)=0$
 - $\mathrm{Var}(Z)=1$
 - $M_{\sssig Z}(t)=e^{\frac{1}{2}t^{2}}$
@@ -382,7 +389,14 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述假設的 $\frac{\,X-\mu\,}{\sigma}$ 被稱作**標準化 <span lang="en">(standardizing)</span>**。[^standardizing] 我們可以將一個任意的常態分配，經由標準化轉為標準常態分配，當然也能反過來，將標準常態分配轉為任意期望值與變異數的常態分配，如下列性質。
+上述假設的 $\frac{\,X-\mu\,}{\sigma}$ 被稱作**標準化**。我們可以將一個任意的常態分配，經由標準化轉為標準常態分配，當然也能反過來，將標準常態分配轉為任意期望值與變異數的常態分配，如下列性質。
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+事實上，這個動作並不僅限於常態分配才能使用，只要是將一個隨機變數平移至期望值為 $0$ 並且伸縮至變異數為 $1$ 者都可以稱作標準化。而標準化過後的隨機變數，其期望值必定為 $0$ 且變異數必定為 <span class="text-nowrap">$1$。</span>
 
 </div>
 
@@ -430,7 +444,7 @@ $$
 
 </div>
 
-由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+由 mgf 的唯一性可知
 
 $$
 X\sim\mathcal{N}(\mu,\sigma^{2})
@@ -500,7 +514,7 @@ $$
 
 </div>
 
-由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)可知
+由 mgf 的唯一性可知
 
 $$
 Y\sim\mathcal{N}\Bigl(\sum_{i=1}^{n}a_i\mu_i+b,\ \sum_{i=1}^{n}a_i^{2}\sigma_i^{2}\Bigr)
@@ -539,27 +553,36 @@ $$
 
 </div>
 
-但是，大多數的情形之下，「樣本平均」這個線性轉換未必能夠保證這組隨機樣本的機率分配，在經過轉換過後還是與原先相同。[^same-family] 但是，常態分配卻不同，上述定理即保證了，在「樣本平均」這個線性組合的轉換之下，**常態分配的樣本平均仍然會是常態分配**，也就是
+但是，大多數的情形之下，「樣本平均」這個線性轉換未必能夠保證這組隨機樣本的機率分配，在經過轉換過後還是與原先相同。但是，常態分配卻不同，上述定理即保證了，在「樣本平均」這個線性組合的轉換之下，**常態分配的樣本平均仍然會是常態分配**，也就是
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\text{若}\ X_1,X_2,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})\text{，則}\ \overline{X}\sim\mathcal{N}\biggl(\mu,\frac{\sigma^{2}}{n}\biggr)
+\boxed{\ \text{若}\ X_1,X_2,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})\text{，則}\ \overline{X}\sim\mathcal{N}\biggl(\mu,\frac{\sigma^{2}}{n}\biggr)\ }
 $$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+\boxed{
 \begin{aligned}
 \text{若}\ X_1,X_2,\ldots,X_n&\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})，\\[0.45em]
 \text{則}\ \overline{X}&\sim\mathcal{N}\biggl(\mu,\frac{\sigma^{2}}{n}\biggr)
 \end{aligned}
+}
 $$
 
 </div>
 
 這個結果在後續的統計推論中，將具有舉足輕重的地位。
+
+</div>
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+即使我們允許參數不同，而僅要求分配相同，也未必能夠有這個結果。
 
 </div>
 
@@ -571,7 +594,7 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 4.4.</span> 密度曲線左右對稱於 <span class="text-nowrap">$\mu$，</span>六條虛線的落點依序是 <span class="text-nowrap">$\mu\pm\sigma$、</span>$\mu\pm2\sigma$ 與 <span class="text-nowrap">$\mu\pm3\sigma$，</span>由內而外圈出三段對稱的區間，每往外一層所加進來的面積都比前一層少。</figcaption>
 </figure>
 
-這個圖形正是 [Theorem 2.37](/lecture-notes/empirical-rule-bell-shaped-distributions/#thm-empirical-rule) 所敘述的鐘形分配經驗法則。[^empirical-rule] 若我們將鐘形分配經驗法則中的期望用在標準常態分配身上，可以得到如下的結果:
+這個圖形正是 [Theorem 2.37](/lecture-notes/empirical-rule-bell-shaped-distributions/#thm-empirical-rule) 所敘述的鐘形分配經驗法則。若我們將鐘形分配經驗法則中的期望用在標準常態分配身上，可以得到如下的結果:
 {: .topic-paren-cont}
 
 $$
@@ -582,6 +605,13 @@ $$
 \end{gathered}
 $$
 
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+在當時，我們便曾提過，鐘形分配的經驗法則是由常態分配所計算出來的經驗法則，雖然只要是「長得像鐘」的分配都適用，但是用在常態分配時會特別精準。
+
+</div>
+
 事實上，這個法則背後的原理，就是應用統計學中所用到的常態分配常用尾點的由來，只是**其概念是固定了等式右側的機率，反求等式左側機率函數中的端點**，即如下表示:
 {: .topic-paren-cont}
 
@@ -590,7 +620,7 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 4.5.</span> 曲線右端的填色區塊就是右尾機率 <span class="text-nowrap">$\alpha$，</span>它的左界 $z_{\sssig \alpha}$ 是使右方面積等於 $\alpha$ 的那一個點，先固定 $\alpha$ 再反求端點。</figcaption>
 </figure>
 
-上列的圖形所指的範圍稱作**右尾機率 <span lang="en">(right-tail probability)</span>**，若轉化為數學式，[^left-tail]即為
+上列的圖形所指的範圍稱作**右尾機率 <span lang="en">(right-tail probability)</span>**，若轉化為數學式，即為
 {: .topic-paren-cont}
 
 $$
@@ -599,6 +629,13 @@ $$
 
 其中 <span class="text-nowrap">$Z\sim\mathcal{N}(0,1)$。</span>
 {: .topic-paren-cont}
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+在部分的教科書中，這個尾點的表示式恰巧與此處相反，為**左尾機率 <span lang="en">(left-tail probability)</span>**，即 $\mathbb{P}(Z\leqslant z_{\sssig \alpha})=\Phi(z_{\sssig \alpha})=\alpha$ 這條等式。
+
+</div>
 
 除了上述與圖形及機率有關的性質外，下面再列出一些與圖形相關的性質:
 {: .topic-paren-cont}
@@ -611,8 +648,15 @@ $$
 (4) 標準常態分配是許多分配在滿足特定條件下的**極限分配 <span lang="en">(limiting distribution)</span>**，這是基於**中央極限定理 <span lang="en">(central limit theorem, CLT)</span>** 所衍生的結果，細節與常見的範例將在稍後的章節中談到。
 {: .topic-paren-item}
 
-(5) 標準常態分配由於在 $0$ 的左右對稱，故對任意的實數 <span class="text-nowrap">$z$，</span>我們有 $\mathbb{P}(Z<-z)=\mathbb{P}(Z>z)$ 的關係，亦可以寫成 <span class="text-nowrap">$\Phi(-z)=1-\Phi(z)$，</span>這個關係式在推導如**常態機率模型 (probit model)**[^probit] 等較為複雜的模型時具有關鍵的用途。
+(5) 標準常態分配由於在 $0$ 的左右對稱，故對任意的實數 <span class="text-nowrap">$z$，</span>我們有 $\mathbb{P}(Z<-z)=\mathbb{P}(Z>z)$ 的關係，亦可以寫成 <span class="text-nowrap">$\Phi(-z)=1-\Phi(z)$，</span>這個關係式在推導如**常態機率模型 (probit model)** 等較為複雜的模型時具有關鍵的用途。
 {: .topic-paren-item}
+
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+**常態機率模型**是一種二元結果的模型，其概念是針對反應變數 $Y$ 只有成敗兩種結果的情況，以解釋變數 $X$ 來估計或預測成功結果的機率，不應因其名字而與單純的「機率模型 <span lang="en">(probability model)</span>」這個統稱搞混。與其相似的模型還有**邏輯斯模型 <span lang="en">(logistic model)</span>**，或稱**邏輯斯迴歸式 <span lang="en">(logistic regression)</span>**。
+
+</div>
 
 (6) 若 $X\sim\mathcal{N}(\mu_1,\sigma^{2}_1)$ 與 $Y\sim\mathcal{N}(\mu_2,\sigma^{2}_2)$ 為出自多元常態的二個常態分配，二者不獨立且相關係數為 <span class="text-nowrap">$\rho$，</span>則我們有
 {: .topic-paren-item}
@@ -635,32 +679,25 @@ $$
 
 </div>
 
-特別是當 $\rho=0$ 時，此即性質 (2) 中的線性可加性。[^multivariate]
+特別是當 $\rho=0$ 時，此即性質 (2) 中的線性可加性。
 {: .topic-paren-cont}
 
-[^statistic]: 事實上，統計量的定義就是隨機樣本的函數組合，因此探討統計量的抽樣分配，就機率的角度而言，只是隨機向量函數變換的一環。
+<div class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
 
-[^standardizing]: 事實上，這個動作並不僅限於常態分配才能使用，只要是將一個隨機變數平移至期望值為 $0$ 並且伸縮至變異數為 $1$ 者都可以稱作標準化。而標準化過後的隨機變數，其期望值必定為 $0$ 且變異數必定為 <span class="text-nowrap">$1$。</span>
+稍後我們將會看到，常態分配有多維度的版本，即**多元常態分配 <span lang="en">(multivariate Normal distribution)</span>**。多元常態分配的一個重要特例是二元常態分配，在二元常態分配中，零相關 (即 <span class="text-nowrap">$\rho=0$)</span> 與獨立是等價的。
 
-[^same-family]: 即使我們允許參數不同，而僅要求分配相同，也未必能夠有這個結果。
-
-[^empirical-rule]: 在當時，我們便曾提過，鐘形分配的經驗法則是由常態分配所計算出來的經驗法則，雖然只要是「長得像鐘」的分配都適用，但是用在常態分配時會特別精準。
-
-[^left-tail]: 在部分的教科書中，這個尾點的表示式恰巧與此處相反，為**左尾機率 <span lang="en">(left-tail probability)</span>**，即 <span class="text-nowrap">$\mathbb{P}(Z\leqslant z_{\sssig \alpha})=\Phi(z_{\sssig \alpha})=\alpha$。</span>
-
-[^probit]: **常態機率模型 (probit model)** 是一種二元結果的模型，其概念是針對反應變數 $Y$ 只有成敗兩種結果的情況，以解釋變數 $X$ 來估計或預測成功結果的機率，不應因其名字而與單純的「機率模型 <span lang="en">(probability model)</span>」這個統稱搞混。與其相似的模型還有**邏輯斯模型 (<span lang="en">logistic model</span>**，或稱**邏輯斯迴歸式 <span lang="en">logistic regression</span>)**。
-
-[^multivariate]: 稍後我們將會看到，常態分配有多維度的版本，即**多元常態分配 <span lang="en">(multivariate Normal distribution)</span>**。多元常態分配的一個重要特例是二元常態分配，在二元常態分配中，零相關 (即 <span class="text-nowrap">$\rho=0$)</span> 與獨立是等價的。
+</div>
 
 ## 本篇小結
 
-本篇由 [Theorem 4.20](#thm-gaussian-integral) 的高斯積分開場，這條積分恆等式是後續一切常態分配計算的基礎: 把兩個相同的積分相乘化為平面上的重積分，再以極座標轉換算出 <span class="text-nowrap">$I^{2}=2\pi$，</span>因而得到 $\int_{-\infty}^{\infty}e^{-\frac{1}{2}x^{2}}\,dx=\sqrt{2\pi}$ 這個結果。一般所稱的高斯積分指的是 $e^{-x^{2}}$ 在整個實數域上的定積分，本篇用的是為了計算方便而改寫過的版本。
+本篇由 [Theorem 4.20](#thm-gaussian-integral) 的高斯積分開場，這條積分恆等式是後續一切常態分配計算的基礎。把兩個相同的積分相乘化為平面上的重積分，再以極座標轉換算出 <span class="text-nowrap">$I^{2}=2\pi$，</span>因而得到 $\int_{-\infty}^{\infty}e^{-\frac{1}{2}x^{2}}\,dx=\sqrt{2\pi}$ 這個結果。一般所稱的高斯積分指的是 $e^{-x^{2}}$ 在整個實數域上的定積分，本篇用的是為了計算方便而改寫過的版本。
 
-[Definition 4.21](#def-normal) 的常態分配以 $\mu$ 與 $\sigma^{2}$ 兩個參數界定，值域為整條實數線，機率函數為 $\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}$ 這個式子。證明的四個步驟依序是: 以 $u=\frac{x-\mu}{\sigma}$ 的代換把積分化到標準形，再套高斯積分驗證積分為 <span class="text-nowrap">$1$；</span>把指數上的兩項併成完全平方，湊出另一個常態密度而得到 <span class="text-nowrap">$M_{\sssig X}(t)=e^{\mu t+\frac{1}{2}\sigma^{2}t^{2}}$；</span>再由這個動差母函數的一階與二階導數在 $t=0$ 的值得到 $\mathbb{E}(X)$ 與 <span class="text-nowrap">$\mathbb{E}\bigl(X^{2}\bigr)$；</span>最後相減得到 <span class="text-nowrap">$\mathrm{Var}(X)=\sigma^{2}$。</span>由於直接積分相當繁複，這裡採用的次序是先求動差母函數，再由它回頭算期望值與變異數。
+[Definition 4.21](#def-normal) 的常態分配以 $\mu$ 與 $\sigma^{2}$ 兩個參數界定，值域為整條實數線，機率函數為 $\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}$ 這個式子。證明的四個步驟依序是: 以 $u=\frac{x-\mu}{\sigma}$ 的代換把積分化到標準形，再套高斯積分驗證積分為 <span class="text-nowrap">$1$；</span>把指數上的兩項併成完全平方，湊出另一個常態密度而得到 $M_{\sssig X}(t)=e^{\mu t+\frac{1}{2}\sigma^{2}t^{2}}$ 這個式子；再由這個動差母函數的一階與二階導數在 $t=0$ 的值得到 $\mathbb{E}(X)$ 與 <span class="text-nowrap">$\mathbb{E}\bigl(X^{2}\bigr)$；</span>最後相減得到 <span class="text-nowrap">$\mathrm{Var}(X)=\sigma^{2}$。</span>由於直接積分相當繁複，這裡採用的次序是先求動差母函數，再由它回頭算期望值與變異數。
 
-定義之後的六點說明之中，第二點給出四款延伸性質。取 $\mu=0$ 與 $\sigma^{2}=1$ 得到的標準常態分配另有專屬的記號 $\phi(z)$ 與 <span class="text-nowrap">$\Phi(z)$，</span>其中 $\Phi(z)$ 只能以積分式存在，沒有解析解。標準化 $Z=\frac{X-\mu}{\sigma}$ 與反標準化 $X=\sigma Z+\mu$ 是一對互逆的線性轉換，兩者的證明都是把 [Theorem 2.39](/lecture-notes/one-to-one-transformations/#thm-mgf-linear-transformation) 的線性轉換公式套上去，算出來的動差母函數再由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)辨識分配。線性組合可加性把這件事推到 $n$ 個彼此獨立的常態變數: $Y=\sum_{i=1}^{n}a_iX_i+b$ 仍為常態分配，期望值與變異數分別是 $\sum_{i=1}^{n}a_i\mu_i+b$ 與 <span class="text-nowrap">$\sum_{i=1}^{n}a_i^{2}\sigma_i^{2}$。</span>取 $a_i=\frac{1}{n}$ 與 $b=0$ 即得常態隨機樣本的樣本平均數服從 $\mathcal{N}\bigl(\mu,\frac{\sigma^{2}}{n}\bigr)$ 這個結果，它在後續的統計推論中舉足輕重。
+定義之後的六點說明之中，第二點給出四款延伸性質。取 $\mu=0$ 與 $\sigma^{2}=1$ 得到的標準常態分配另有專屬的記號 $\phi(z)$ 與 <span class="text-nowrap">$\Phi(z)$，</span>其中 $\Phi(z)$ 只能以積分式存在，沒有解析解。標準化 $Z=\frac{X-\mu}{\sigma}$ 與反標準化 $X=\sigma Z+\mu$ 是一對互逆的線性轉換，兩者的證明都是把 [Theorem 2.39](/lecture-notes/one-to-one-transformations/#thm-mgf-linear-transformation) 的線性轉換公式套上去，算出來的動差母函數再由 mgf 的唯一性辨識分配。線性組合可加性把這件事推到 $n$ 個彼此獨立的常態變數: $Y=\sum_{i=1}^{n}a_iX_i+b$ 仍為常態分配，期望值與變異數分別是 $\sum_{i=1}^{n}a_i\mu_i+b$ 與 <span class="text-nowrap">$\sum_{i=1}^{n}a_i^{2}\sigma_i^{2}$。</span>取 $a_i=\frac{1}{n}$ 與 $b=0$ 即得常態隨機樣本的樣本平均數服從 $\mathcal{N}\bigl(\mu,\frac{\sigma^{2}}{n}\bigr)$ 這個結果，它在後續的統計推論中舉足輕重。
 
-其餘各點回到圖形與尾機率。常態分配的密度曲線正是 [Theorem 2.37](/lecture-notes/empirical-rule-bell-shaped-distributions/#thm-empirical-rule) 鐘形分配經驗法則所描述的形狀，用在標準常態分配上分別給出 <span class="text-nowrap">$0.6826$、</span><span class="text-nowrap">$0.9544$</span> 與 $0.9974$ 這三個涵蓋比例。把同一件事反過來看，固定右側的機率 $\alpha$ 再反求端點，得到的即為右尾點的定義式 <span class="text-nowrap">$\mathbb{P}(Z>z_{\sssig \alpha})=\alpha$。</span>此外，常態分配的期望值、中位數與眾數三者相等，反曲點落在 <span class="text-nowrap">$\mu\pm\sigma$，</span>偏態係數為 $0$ 而峰態係數為 <span class="text-nowrap">$3$。</span>最後兩點則預告了後文: 標準常態分配是許多分配在中央極限定理之下的極限分配，而不獨立的兩個常態變數若出自多元常態，其線性組合的變異數還要再加上 $2ab\rho\sigma_1\sigma_2$ 這一項。
+其餘各點回到圖形與尾機率。常態分配的密度曲線正是 [Theorem 2.37](/lecture-notes/empirical-rule-bell-shaped-distributions/#thm-empirical-rule) 鐘形分配經驗法則所描述的形狀，用在標準常態分配上分別給出 <span class="text-nowrap">$0.6826$、</span><span class="text-nowrap">$0.9544$</span> 與 $0.9974$ 這三個涵蓋比例。把同一件事反過來看，固定右側的機率 $\alpha$ 再反求端點，得到的即為右尾點的定義式 <span class="text-nowrap">$\mathbb{P}(Z>z_{\sssig \alpha})=\alpha$。</span>此外，常態分配的期望值、中位數與眾數三者相等，反曲點落在 <span class="text-nowrap">$\mu\pm\sigma$，</span>偏態係數為 $0$ 而峰態係數為 <span class="text-nowrap">$3$。</span>最後兩點則預告了後文。標準常態分配是許多分配在中央極限定理之下的極限分配，而不獨立的兩個常態變數若出自多元常態，其線性組合的變異數還要再加上 $2ab\rho\sigma_1\sigma_2$ 這一項。
 
 [下一篇](/lecture-notes/normal-probability-computation/)以四道例題演練常態機率的計算，前三道的作法一致，都是先標準化再把所求化為標準常態的機率；最後一道則由 $2\,\phi(z)\Phi(\lambda z)$ 這個函數出發，先驗證它是一個合法的 pdf，再求其平方所服從的分配。
 
