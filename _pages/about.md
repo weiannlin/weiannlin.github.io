@@ -27,6 +27,7 @@ Wei-Ann Lin received a Ph.D. at the Department of Statistics at National Cheng K
 News
 ======
 - **[Dec 2026]** I am scheduled to give an invited talk at the 2026 Annual Meeting of the Chinese Statistical Association and NCCU Department of Statistics 60th Anniversary International Conference.
+- **[Jul 2026]** I gave an invited talk at the 2026 INFORMS Conference on Quality, Statistics, and Reliability (ICQSR 2026) at City University of Hong Kong.
 - **[Jun 2026]** I gave an invited talk at the 35th South Taiwan Statistics Conference.
 - **[May 2026]** I gave a contributed talk at the IMS/ASA Spring Research Conference on Statistics in Engineering, Science and Technology.
 - I am happy to share that I have joined the Department of Mathematics at National Central University as an **Assistant Professor** since August, 2025.
