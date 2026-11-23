@@ -9,7 +9,7 @@ topic: 18
 order: 318
 permalink: /lecture-notes/covariance/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "共變異數 $\\operatorname{Cov}(X,Y)=\\mathbb{E}[(X-\\mu_{\\sssig X})(Y-\\mu_{\\sssig Y})]$ 衡量兩隨機變數共同變化的方向。本篇推導其計算公式與六款性質，釐清獨立、期望值上獨立與零相關三者間逆不真的強弱關係，並舉出零相關卻不獨立的反例。"
 ---
 

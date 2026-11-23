@@ -9,7 +9,7 @@ topic: 2
 order: 502
 permalink: /lecture-notes/levy-continuity-theorem/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "列維連續性定理指出，若隨機變數序列的動差母函數在原點鄰域逐點收斂至某個隨機變數的動差母函數，則該序列分配收斂至該極限分配。本篇以二項與負二項趨於卜瓦松、標準化伯努利和趨於標準常態等五道例題示範應用。"
 ---
 

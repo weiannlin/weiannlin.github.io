@@ -9,7 +9,7 @@ topic: 7
 order: 307
 permalink: /lecture-notes/conditional-distributions/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "固定隨機向量中部分變數的取值後，其餘變數所服從的分配稱為條件機率分配。本篇定義二元離散型的條件 pmf 與連續型的條件 pdf，並從幾何截面說明連續型條件密度為何須除以邊際密度。"
 ---
 

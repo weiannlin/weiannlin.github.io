@@ -9,7 +9,7 @@ topic: 6
 order: 306
 permalink: /lecture-notes/marginal-cumulative-distribution-functions/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "本篇前半以兩道獨立同分配均勻序列例題，示範如何將首次滿足條件的下標事件化為重積分求算機率。後半定義邊際累積分配函數，並推導由聯合 cdf 令另一變數趨於無窮大求邊際 cdf 的性質。"
 ---
 

@@ -9,7 +9,7 @@ topic: 16
 order: 416
 permalink: /lecture-notes/gamma-beta-relationship/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "兩個獨立且同比例參數的伽瑪變數，其和仍服從伽瑪分配，而其中一者佔總和的比例則服從貝塔分配，且和與比例彼此獨立。本篇以二元 Jacobian 法完整證明此定理，並應用於指數比例與均勻順序統計量的計算。"
 ---
 

@@ -9,7 +9,7 @@ topic: 13
 order: 313
 permalink: /lecture-notes/double-expectation-examples/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "本篇以五道例題演練雙重期望值定理，涵蓋階層模型的邊際期望值計算、邊際為柯西分配時因期望值不存在而失效的反例，以及透過第一步條件化建立遞迴方程式求解的礦工困井與連續投擲問題。"
 ---
 

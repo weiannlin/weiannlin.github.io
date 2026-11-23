@@ -9,7 +9,7 @@ topic: 4
 order: 504
 permalink: /lecture-notes/convergence-in-mean-and-almost-sure/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "對正數 $r$ 而言，$r$ 次均方收斂要求 $\\mathbb{E}(\\lvert X_n-X\\rvert^{r})$ 隨 $n\\to\\infty$ 趨於零，幾乎確信收斂則要求序列不收斂之例外事件的機率為零。本篇證明兩者皆強於機率收斂、介紹二次均方收斂判準，並以反例說明均方收斂與幾乎確信收斂之間沒有強弱關係。"
 ---
 

@@ -9,7 +9,7 @@ topic: 8
 order: 508
 permalink: /lecture-notes/slutsky-and-delta-method/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "史拉斯基定理給出一序列機率收斂至常數 $c$ 與另一序列分配收斂時的和、積及 $c\\neq 0$ 下商的極限分配；而 Delta 法結合一階泰勒展開，在 $g^{\\prime}(\\theta)\\neq 0$ 下將 $\\sqrt{n}(X_n-\\theta)$ 的常態極限分配推廣至 $\\sqrt{n}[g(X_n)-g(\\theta)]$ 的形式。本篇證明 Delta 法並以七道例題演練。"
 ---
 

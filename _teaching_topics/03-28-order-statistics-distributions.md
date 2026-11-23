@@ -9,7 +9,7 @@ topic: 28
 order: 328
 permalink: /lecture-notes/order-statistics-distributions/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "獨立同分配連續隨機樣本的順序統計量具有通用的抽樣分配公式。本篇列出極值、第 $i$ 個、任意兩個與整組順序統計量的機率密度函數，證明最小值與最大值兩式並說明全部五式的排列組合直觀，最後指出標準均勻樣本的順序統計量服從貝塔分配。"
 ---
 

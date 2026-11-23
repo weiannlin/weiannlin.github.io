@@ -9,7 +9,7 @@ topic: 3
 order: 503
 permalink: /lecture-notes/convergence-in-probability/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "機率收斂要求隨機變數序列 $X_n$ 與 $X$ 偏離超過任意正數 $\\varepsilon$ 的機率隨 $n\\to\\infty$ 趨於零。本篇證明機率收斂必導致分配收斂而反之不成立，並證明當極限對象為常數時兩種收斂互為充要條件。"
 ---
 

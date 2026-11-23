@@ -9,7 +9,7 @@ topic: 11
 order: 411
 permalink: /lecture-notes/exponential-memoryless-and-minima/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "指數分配是唯一具備無記憶性的非負連續分配，已等待 $a$ 單位時間仍未發生之下的剩餘等待分配與從頭等待完全相同。本篇證明此充要性質，並推導獨立指數變數極小值的分配與先後發生機率。"
 ---
 

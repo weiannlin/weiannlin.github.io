@@ -9,7 +9,7 @@ topic: 26
 order: 426
 permalink: /lecture-notes/bivariate-normal-distribution/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "二元常態分配以兩個期望值、兩個變異數與相關係數 $\\rho$ 共五個參數刻畫二維聯合鐘形密度。本篇證明其邊際與條件分配皆為常態分配、條件期望值即母體線性迴歸式、零相關與獨立等價，以及任意線性組合仍為常態分配。"
 ---
 

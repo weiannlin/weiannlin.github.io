@@ -9,7 +9,7 @@ topic: 5
 order: 505
 permalink: /lecture-notes/weak-law-and-central-limit-theorem/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "在期望值 $\\mu$ 與正且有限的變異數 $\\sigma^{2}$ 存在下，弱大數法則保證獨立同分配樣本平均數 $\\overline{X}$ 機率收斂至 $\\mu$ 這一常數，中央極限定理則指出標準化後的 $\\sqrt{n}(\\overline{X}-\\mu)/\\sigma$ 分配收斂至標準常態分配。本篇給出證明、失效反例與四種等價寫法。"
 ---
 

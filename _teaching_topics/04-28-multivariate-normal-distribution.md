@@ -9,7 +9,7 @@ topic: 28
 order: 428
 permalink: /lecture-notes/multivariate-normal-distribution/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "多元常態分配將常態模型推廣至 $n$ 維隨機向量，由期望值向量 $\\boldsymbol{\\mu}$ 與共變異數矩陣 $\\mathbf{\\Sigma}$ 完全決定。本篇介紹其密度與動差母函數，並說明子向量邊際與條件常態性、經仿射變換仍為多元常態分配，以及二次形式服從卡方分配的性質。"
 ---
 

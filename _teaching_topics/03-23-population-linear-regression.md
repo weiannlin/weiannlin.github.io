@@ -9,7 +9,7 @@ topic: 23
 order: 323
 permalink: /lecture-notes/population-linear-regression/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "當條件期望值 $\\mathbb{E}(Y\\mid X=x)$ 為 $x$ 的線性函數時，其截距與斜率完全由兩變數的期望值、標準差與相關係數決定，稱為母體線性迴歸式。本篇推導正迴歸與逆迴歸係數，說明兩斜率乘積等於 $\\rho_{\\sssig XY}^{2}$ 這個關係，並以例題演練。"
 ---
 

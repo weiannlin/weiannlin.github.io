@@ -9,7 +9,7 @@ topic: 2
 order: 302
 permalink: /lecture-notes/joint-cumulative-distribution-functions/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "二元隨機向量的聯合累積分配函數定義為 $F_{\\sssig XY}(x,y)=\\mathbb{P}(X\\leqslant x,Y\\leqslant y)$ 這個機率。本篇說明其對應的左下區域事件幾何，並以二元離散型機率列聯表示範雙重加總的計算。"
 ---
 

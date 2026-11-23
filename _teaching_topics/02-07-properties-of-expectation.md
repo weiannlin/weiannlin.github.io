@@ -86,7 +86,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-iid 將於下一章正式定義，指多個隨機變數彼此獨立 <span lang="en">(independent)</span> 且同分配 <span lang="en">(identically distributed)</span>；現階段可先視為各次出價互不影響，且遵循相同的機率分配。此外，題幹雖未明言出價金額為連續型分配，解答中補充連續型的假設，是為確保任意兩次出價金額相同的機率為零，使 $k+1$ 個變數具有嚴格大小順序且 $(k+1)!$ 種排列機率均等 (若為可能出現平手的離散型分配，$\mathbb{E}(N)=\infty$ 的結論依然成立，僅推導時須另行處理平手事件)。
+iid 將於[下一章](/lecture-notes/independent-random-variables/)正式定義，指多個隨機變數彼此獨立 <span lang="en">(independent)</span> 且同分配 <span lang="en">(identically distributed)</span>；現階段可先視為各次出價互不影響，且遵循相同的機率分配。此外，題幹雖未明言出價金額為連續型分配，解答中補充連續型的假設，是為確保任意兩次出價金額相同的機率為零，使 $k+1$ 個變數具有嚴格大小順序且 $(k+1)!$ 種排列機率均等 (若為可能出現平手的離散型分配，$\mathbb{E}(N)=\infty$ 的結論依然成立，僅推導時須另行處理平手事件)。
 
 本題求和運用三項技巧。其一是以 iid 對稱性將隨機變數問題化為古典機率排列計數；其二是利用**裂項和 <span lang="en">(telescoping sum)</span>** (高中數學亦稱「分項對消法」)，將 $\frac{1}{k(k+1)}$ 拆為 $\frac{1}{k}-\frac{1}{k+1}$ 求得內層級數；其三是利用**調和級數 <span lang="en">(harmonic series)</span>** 的發散性，證得期望值為無限大。
 

@@ -9,7 +9,7 @@ topic: 7
 order: 407
 permalink: /lecture-notes/hypergeometric-distribution/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "超幾何分配描述自有限母體取後不放回抽取 $n$ 個元素時，其中成功類的個數。本篇運用汎德蒙等式驗證其機率質量函數並推導期望值與變異數，說明有限母體校正因子及改採取後放回時與二項分配的對應關係。"
 ---
 

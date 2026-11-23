@@ -9,7 +9,7 @@ topic: 1
 order: 401
 permalink: /lecture-notes/bernoulli-trials-and-distribution/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "伯努利實驗是僅有成功與失敗兩種出象、成功機率固定且各次獨立的隨機實驗。本篇介紹單次實驗對應的伯努利分配，推導其期望值 $p$ 與變異數 $pq$ 及動差母函數，並說明它與事件指標函數的對應。"
 ---
 

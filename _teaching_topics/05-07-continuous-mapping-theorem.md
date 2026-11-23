@@ -9,7 +9,7 @@ topic: 7
 order: 507
 permalink: /lecture-notes/continuous-mapping-theorem/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "本篇建立機率收斂序列的運算性質與連續映射定理，證明若 $X_n\\pconv c$ 與 $Y_n\\pconv d$ 成立，則線性組合、乘積與 $d\\neq 0$ 時的商仍機率收斂，且在 $c$ 處連續的 $g$ 滿足 $g(X_n)\\pconv g(c)$ 的性質，最後以樣本變異數一致性等例題演練。"
 ---
 

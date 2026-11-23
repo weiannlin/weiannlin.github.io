@@ -9,7 +9,7 @@ topic: 1
 order: 501
 permalink: /lecture-notes/convergence-in-distribution/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "當母體分配未知或難以求得抽樣分配時，大樣本極限理論提供了漸近推論的基礎。本篇定義分配收斂，說明為何僅要求 cdf 序列在極限 cdf 的連續點上逐點收斂，並以五道例題演練極限分配的求法。"
 ---
 

@@ -9,7 +9,7 @@ topic: 16
 order: 316
 permalink: /lecture-notes/wald-identity-gamblers-ruin/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "當獨立同分配隨機變數的加總項數 $N$ 為與各項獨立的非負整數隨機變數時，沃德等式給出隨機和 $S_{\\sssig N}$ 的期望值與變異數公式。本篇由雙重期望值與變異數分解證明此定理，並應用於隨機和問題與賭徒破產問題。"
 ---
 

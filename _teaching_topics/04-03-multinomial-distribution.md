@@ -9,7 +9,7 @@ topic: 3
 order: 403
 permalink: /lecture-notes/multinomial-distribution/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "多項分配將二項分配推廣至每次實驗具有 $k$ 個互斥類別的情形。本篇介紹三項式定理與多項分配的定義，並以三項分配為例完整證明邊際二項性、類別合併、負共變異數、條件二項性與相關係數等五款性質。"
 ---
 

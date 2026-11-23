@@ -9,7 +9,7 @@ topic: 25
 order: 425
 permalink: /lecture-notes/sampling-distribution-examples/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "本篇以兩道例題綜合演練抽樣分配與尾點恆等式，第一題由 Jacobian 法證得 $t$ 變數平方服從 $\\mathcal{F}(1,p)$ 分配並以史特靈公式導出大自由度下的標準常態極限，第二題則運用同自由度 $\\mathcal{F}$ 分配的倒數對稱性求取尾點。"
 ---
 

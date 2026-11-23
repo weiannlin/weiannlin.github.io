@@ -9,7 +9,7 @@ topic: 29
 order: 329
 permalink: /lecture-notes/order-statistics-examples/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "本篇將順序統計量的累積分配函數表為二項機率的加總，介紹樣本全距與樣本中位數的求法，並以標準均勻樣本與指數樣本演練極值、全距與聯合分配的計算。"
 ---
 

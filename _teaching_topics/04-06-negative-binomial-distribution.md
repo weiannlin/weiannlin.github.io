@@ -9,7 +9,7 @@ topic: 6
 order: 406
 permalink: /lecture-notes/negative-binomial-distribution/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "負二項分配描述獨立伯努利實驗直到累計第 $r$ 次成功所需的實驗次數。本篇藉負二項級數推導其期望值 $r/p$ 與變異數 $rq/p^{2}$ 及動差母函數，說明它作為獨立同參數幾何變數之和的可加性及與二項分配的對偶關係。"
 ---
 

@@ -9,7 +9,7 @@ topic: 20
 order: 320
 permalink: /lecture-notes/covariance-matrix/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "共變異數矩陣 $\\mathbf{\\Sigma}$ 將隨機向量各分量的變異數與成對共變異數收錄於同一對稱矩陣。本篇推導常數向量線性形式的二次形式變異數 $\\boldsymbol{a}^{\\mathrm{T}}\\mathbf{\\Sigma}\\boldsymbol{a}$ 以證明 $\\mathbf{\\Sigma}$ 必為正半定，並推廣至常數矩陣轉換下的期望值向量與共變異數矩陣。"
 ---
 

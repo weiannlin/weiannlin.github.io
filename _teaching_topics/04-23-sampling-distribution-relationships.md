@@ -9,7 +9,7 @@ topic: 23
 order: 423
 permalink: /lecture-notes/sampling-distribution-relationships/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "常態、卡方、司徒頓 $t$ 與斯內德克 $\\mathcal{F}$ 四大抽樣分配彼此緊密相連。本篇系統整理並證明平方關係、倒數自由度對調與自由度趨於無窮時的極限關係，後半則建立右尾點記號與對稱尾點換算。"
 ---
 

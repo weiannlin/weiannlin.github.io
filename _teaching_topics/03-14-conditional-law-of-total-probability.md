@@ -9,7 +9,7 @@ topic: 14
 order: 314
 permalink: /lecture-notes/conditional-law-of-total-probability/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "把雙重期望值的加權平均直接施於條件機率或條件機率函數，即得隨機變數版本的全機率定理。本篇說明它與第一章事件分割版的對應關係，並以三道例題示範先固定部分變數再取期望值的機率求法。"
 ---
 

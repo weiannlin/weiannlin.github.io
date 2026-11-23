@@ -9,7 +9,7 @@ topic: 19
 order: 419
 permalink: /lecture-notes/standard-normal-moments-stein-lemma/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "本篇先以隨機正負號與隨機權數兩道例題探討標準常態的構造與零相關不獨立現象，再由動差母函數展開求得標準常態各階原動差。後半在 $g$ 可微且導數期望值有限下，證明斯泰因引理 $\\mathbb{E}[g(X)(X-\\mu)]=\\sigma^{2}\\mathbb{E}[g^{\\prime}(X)]$ 並演練期望值計算。"
 ---
 

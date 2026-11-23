@@ -9,7 +9,7 @@ topic: 17
 order: 317
 permalink: /lecture-notes/cross-moments-joint-mgf/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "交叉動差 $\\mathbb{E}(X^{n}Y^{m})$ 描述兩個隨機變數共同變化的動差結構，可由聯合動差母函數 $M_{\\sssig XY}(t_1,t_2)$ 對兩個自變數偏微分後代入原點求得。本篇介紹聯合 mgf 與邊際 mgf 的關係、獨立判準及計算例題。"
 ---
 

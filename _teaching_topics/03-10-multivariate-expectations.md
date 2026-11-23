@@ -9,7 +9,7 @@ topic: 10
 order: 310
 permalink: /lecture-notes/multivariate-expectations/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "多元隨機變數函數 $g(X,Y)$ 的期望值，在離散型與連續型分別由聯合 pmf 的雙重加總與聯合 pdf 的二重積分定義。本篇介紹期望值對線性組合的可交換性，並證明獨立條件下函數乘積期望值可拆解的性質與相關例題。"
 ---
 

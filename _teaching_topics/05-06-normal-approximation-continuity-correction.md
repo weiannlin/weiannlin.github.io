@@ -9,7 +9,7 @@ topic: 6
 order: 506
 permalink: /lecture-notes/normal-approximation-continuity-correction/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "當樣本大小足夠大時，可依中央極限定理將標準常態分配視為標準化樣本平均數的漸近分配，進而導出樣本平均數與樣本和的常態近似。本篇整理五個具可加性常用分配的常態近似公式與經驗門檻，並說明以連續分配近似整數值離散分配時的連續性校正。"
 ---
 

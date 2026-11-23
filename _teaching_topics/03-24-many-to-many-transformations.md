@@ -9,7 +9,7 @@ topic: 24
 order: 324
 permalink: /lecture-notes/many-to-many-transformations/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "本篇介紹多元隨機向量的多對多函數轉換，離散型透過聯立反解代回聯合 pmf，連續型則結合逆轉換與偏導數行列式絕對值套用多變數 Jacobian 法，並以和差轉換及 Box-Muller 轉換等五道例題示範。"
 ---
 

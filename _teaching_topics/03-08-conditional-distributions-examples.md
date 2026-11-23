@@ -9,7 +9,7 @@ topic: 8
 order: 308
 permalink: /lecture-notes/conditional-distributions-examples/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "本篇以五道例題演練條件機率質量函數與條件機率密度函數的求算，並進一步介紹單一變數限制在區間條件下的截尾分配，以及指數分配在截尾條件下呈現的無記憶性。"
 ---
 

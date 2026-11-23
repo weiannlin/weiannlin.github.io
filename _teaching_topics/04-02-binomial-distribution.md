@@ -9,7 +9,7 @@ topic: 2
 order: 402
 permalink: /lecture-notes/binomial-distribution/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "二項分配描述 $n$ 次獨立伯努利實驗中的成功總次數。本篇驗證其機率質量函數，推導期望值 $np$ 與變異數 $npq$ 及動差母函數 $(pe^{t}+q)^{n}$ 的形式，並討論同成功機率下獨立二項變數的可加性、分配偏態與計算例題。"
 ---
 

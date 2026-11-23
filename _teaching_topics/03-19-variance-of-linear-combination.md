@@ -9,7 +9,7 @@ topic: 19
 order: 319
 permalink: /lecture-notes/variance-of-linear-combination/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "一組隨機變數線性組合的變異數，等於各項變異數的加權和加上兩倍的成對共變異數加權和；當各項獨立或零相關時，交叉項全數歸零。本篇證明此通式，並以相依指標變數之和與有限母體不放回抽樣為例演練。"
 ---
 

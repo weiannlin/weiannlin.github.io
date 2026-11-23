@@ -9,7 +9,7 @@ topic: 5
 order: 405
 permalink: /lecture-notes/geometric-distribution-examples/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "本篇以六道例題演練幾何分配的計算，包含首次成功落在奇數次實驗的無窮級數求和、集滿多類結果所需次數的分解求和，以及結合雙重期望值定理、變異數分解定理與無記憶性的應用。"
 ---
 

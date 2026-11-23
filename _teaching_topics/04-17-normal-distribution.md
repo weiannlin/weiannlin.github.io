@@ -9,7 +9,7 @@ topic: 17
 order: 417
 permalink: /lecture-notes/normal-distribution/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "常態分配 $\\mathcal{N}(\\mu,\\sigma^{2})$ 是機率論與統計推論的核心模型。本篇由高斯積分驗證其機率密度函數，推導動差母函數、期望值與變異數，並證明標準化轉換、獨立常態線性組合的可加性，最後定義標準常態右尾點 $z_{\\sssig \\alpha}$ 的記號。"
 ---
 

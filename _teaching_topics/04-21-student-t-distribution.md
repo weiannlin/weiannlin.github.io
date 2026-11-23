@@ -9,7 +9,7 @@ topic: 21
 order: 421
 permalink: /lecture-notes/student-t-distribution/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "司徒頓 $t$ 分配由標準常態變數除以獨立卡方變數與其自由度比值的平方根所建構。本篇給出其機率密度函數並推導各階動差與存在條件，最後證明常態母體在變異數未知時，樣本平均數標準化統計量 $(\\overline{X}-\\mu)/(S/\\sqrt{n})$ 服從 $t(n-1)$ 分配。"
 ---
 

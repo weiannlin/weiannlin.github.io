@@ -545,7 +545,7 @@ $$
 
 </div>
 
-下例將考慮多個隨機變數滿足**獨立 <span lang="en">(independent)</span>** 且**同分配 <span lang="en">(identically distributed)</span>** 的情形。這兩個性質的嚴格定義與證明將於下一章給出；現階段可先理解為各隨機變數彼此互不影響且服從相同的機率分配。在彼此獨立的前提下，$e^{itX\_{1}},\ldots,e^{itX\_{n}}$ 亦互不影響，其乘積的期望值可拆為個別期望值的乘積，故獨立隨機變數和的特徵函數滿足
+下例將考慮多個隨機變數滿足**[獨立](/lecture-notes/independent-random-variables/#def-indep-r-v) <span lang="en">(independent)</span>** 且**同分配 <span lang="en">(identically distributed)</span>** 的情形。這兩個性質的嚴格定義與證明將於下一章給出；現階段可先理解為各隨機變數彼此互不影響且服從相同的機率分配。在彼此獨立的前提下，$e^{itX\_{1}},\ldots,e^{itX\_{n}}$ 亦互不影響，其乘積的期望值可拆為個別期望值的乘積，故獨立隨機變數和的特徵函數滿足
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 

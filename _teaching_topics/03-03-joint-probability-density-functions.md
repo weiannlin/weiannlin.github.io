@@ -9,7 +9,7 @@ topic: 3
 order: 303
 permalink: /lecture-notes/joint-probability-density-functions/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "二元連續型隨機向量的聯合累積分配函數若可表為非負函數由 $-\\infty$ 積至 $x$ 與 $y$ 的二重積分，該被積函數即為聯合機率密度函數。本篇說明曲面下體積的機率詮釋、二階混合偏導數與聯合 pdf 的關係及三項基本性質。"
 ---
 

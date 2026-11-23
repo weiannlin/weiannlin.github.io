@@ -9,7 +9,7 @@ topic: 20
 order: 420
 permalink: /lecture-notes/chi-squared-distribution/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "卡方分配 $\\chi^{2}(\\nu)$ 是比例參數為 $2$ 且形狀參數為 $\\nu/2$ 的伽瑪分配特例。本篇由動差母函數證明標準常態平方服從 $\\chi^{2}(1)$ 分配及獨立卡方變數的可加性，並介紹科克蘭定理與常態隨機樣本變異數的抽樣分配及獨立性。"
 ---
 

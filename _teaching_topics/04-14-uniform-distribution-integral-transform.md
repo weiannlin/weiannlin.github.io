@@ -9,7 +9,7 @@ topic: 14
 order: 414
 permalink: /lecture-notes/uniform-distribution-integral-transform/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "連續均勻分配在區間 $(a,b)$ 上具有常數密度與線性累積分配函數。本篇推導其期望值、變異數與線性伸縮關係，並進一步建立任意連續分配與標準均勻分配 $\\mathcal{U}(0,1)$ 互相轉換的機率積分轉換與逆機率積分轉換。"
 ---
 

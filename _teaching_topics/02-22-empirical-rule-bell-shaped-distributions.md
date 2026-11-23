@@ -51,7 +51,7 @@ excerpt: "鐘形分配經驗法則指出，服從常態分配或可合理以常�
 (1) 凡是「分配形狀長得像鐘」或是「分配形狀長得像土丘」，我們都稱作**鐘形分配 <span lang="en">(bell-shaped distribution)</span>** 或**土丘形分配 <span lang="en">(mound-shaped distribution)</span>**，但**這不代表它是某種確切的分配，而是一個概括的稱呼**。不過嚴格來說，單憑外觀大致對稱、中央有一個高峰，並不足以保證三個中央區間的機率都落在上述數值附近 (例如 $t$ 分配與拉普拉斯分配的外觀也呈現鐘形，但其尾端機率與常態分配仍有所差異)，因此 [Theorem 2.37](#thm-empirical-rule) 是以「常態分配或可合理以常態分配近似的分配」作為前提。
 {: .topic-paren-item}
 
-(2) 此經驗法則源自**常態分配 <span lang="en">(normal distribution)</span>**，對一般鐘形分配僅提供近似機率；當隨機變數確實服從常態分配時，上列三個數值即為將理論機率四捨五入至小數點後第四位的結果。
+(2) 此經驗法則源自**[常態分配](/lecture-notes/normal-distribution/#def-normal) <span lang="en">(normal distribution)</span>**，對一般鐘形分配僅提供近似機率；當隨機變數確實服從常態分配時，上列三個數值即為將理論機率四捨五入至小數點後第四位的結果。
 {: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">

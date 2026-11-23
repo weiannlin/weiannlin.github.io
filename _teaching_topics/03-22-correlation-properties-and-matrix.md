@@ -9,7 +9,7 @@ topic: 22
 order: 322
 permalink: /lecture-notes/correlation-properties-and-matrix/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "由相關係數界於 $-1$ 與 $1$ 之間可直接導出變異數-共變異數不等式，並將共變異數矩陣標準化為主對角線皆為 $1$ 的相關矩陣。本篇說明合法相關矩陣的條件，並以四道例題演練期望值上界與線性組合的相關係數。"
 ---
 

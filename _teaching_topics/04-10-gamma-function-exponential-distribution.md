@@ -9,7 +9,7 @@ topic: 10
 order: 410
 permalink: /lecture-notes/gamma-function-exponential-distribution/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "本篇先介紹將階乘推廣至正實數的伽瑪函數，再定義卜瓦松過程中首次偶發事件發生前的等待時間分配，即指數分配。文中對照比例參數 $\\beta$ 與頻率參數 $\\lambda$ 兩種寫法，推導動差與動差母函數，並說明與卜瓦松分配的對偶關係。"
 ---
 

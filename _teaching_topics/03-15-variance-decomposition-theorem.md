@@ -9,7 +9,7 @@ topic: 15
 order: 315
 permalink: /lecture-notes/variance-decomposition-theorem/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "變異數分解定理將 $\\mathrm{Var}(X)$ 拆解為條件變異數的期望值 $\\mathbb{E}[\\mathrm{Var}(X\\mid Y)]$ 與條件期望值的變異數 $\\mathrm{Var}[\\mathbb{E}(X\\mid Y)]$ 之和，分別對應組內變異與組間變異。本篇給出證明並以階層模型例題示範應用。"
 ---
 

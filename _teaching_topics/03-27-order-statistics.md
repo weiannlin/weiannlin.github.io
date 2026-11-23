@@ -9,7 +9,7 @@ topic: 27
 order: 327
 permalink: /lecture-notes/order-statistics/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "將一組隨機變數依數值由小到大排序所得的序列稱為順序統計量。本篇說明如何由排列對稱性與多對多函數轉換求取順序統計量的聯合分配，並以三道例題演練極值與排序機率的計算。"
 ---
 

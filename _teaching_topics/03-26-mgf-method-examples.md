@@ -9,7 +9,7 @@ topic: 26
 order: 326
 permalink: /lecture-notes/mgf-method-examples/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "本篇以三道綜合例題演練動差母函數法、Jacobian 法與 cdf 法的搭配運用，包含由獨立變數的 mgf 辨識線性組合分配、推導常態隨機樣本平均數的分配，以及求取獨立均勻變數之和與最大值的分配。"
 ---
 

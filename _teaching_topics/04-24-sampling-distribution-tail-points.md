@@ -9,7 +9,7 @@ topic: 24
 order: 424
 permalink: /lecture-notes/sampling-distribution-tail-points/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "承接四大抽樣分配的變換關係，本篇推導標準常態、卡方、$t$ 與 $\\mathcal{F}$ 分配右尾點之間的五條換算恆等式與一條自由度單調不等式，並搭配尾機率區域圖說明雙尾折半與倒數對應的幾何意義。"
 ---
 

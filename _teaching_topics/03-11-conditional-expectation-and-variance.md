@@ -9,7 +9,7 @@ topic: 11
 order: 311
 permalink: /lecture-notes/conditional-expectation-and-variance/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "以條件機率函數對變數加權平均即得條件期望值 $\\mathbb{E}(X\\mid Y=y)$ 這個量數，進而可定義條件變異數 $\\mathrm{Var}(X\\mid Y=y)$ 的形式。本篇整理兩者由期望值與變異數延續而來的運算性質，並指出它們皆為給定條件 $y$ 的函數。"
 ---
 

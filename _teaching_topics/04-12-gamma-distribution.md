@@ -9,7 +9,7 @@ topic: 12
 order: 412
 permalink: /lecture-notes/gamma-distribution/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "伽瑪分配在形狀參數 $\\alpha=n$ 為正整數時，描述卜瓦松過程中第 $n$ 次事件發生前的總等待時間。本篇驗證其機率密度函數，推導各階原動差、期望值 $\\alpha\\beta$ 與變異數 $\\alpha\\beta^{2}$ 及動差母函數，並整理對偶關係與同比例參數下的獨立可加性。"
 ---
 

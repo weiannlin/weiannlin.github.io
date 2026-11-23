@@ -9,7 +9,7 @@ topic: 29
 order: 429
 permalink: /lecture-notes/multivariate-normal-independence/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "多元常態分配下，子向量獨立若且唯若跨區塊共變異數矩陣為零矩陣；對獨立同分配常態樣本，當 $\\mathbf{A}\\mathbf{B}^{\\mathrm{T}}=\\mathbf{0}$ 時線性轉換 $\\mathbf{A}\\boldsymbol{X}$ 與 $\\mathbf{B}\\boldsymbol{X}$ 獨立。本篇據此證明樣本平均數與樣本變異數獨立，並引用冪等矩陣二次形式的卡方分配定理推導樣本變異數的抽樣分配。"
 ---
 

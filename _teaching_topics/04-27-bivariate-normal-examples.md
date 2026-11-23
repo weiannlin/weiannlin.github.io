@@ -9,7 +9,7 @@ topic: 27
 order: 427
 permalink: /lecture-notes/bivariate-normal-examples/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "本篇以三道例題演練二元常態分配，包含由條件機率區間反推相關係數與線性組合分配、構造邊際皆為標準常態但聯合非二元常態的反例，以及由二次形式核心比對係數求取常數與條件期望值。"
 ---
 

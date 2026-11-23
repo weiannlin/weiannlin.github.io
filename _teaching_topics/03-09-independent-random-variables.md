@@ -9,7 +9,7 @@ topic: 9
 order: 309
 permalink: /lecture-notes/independent-random-variables/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "由條件機率函數移項可得機率函數版本的乘法原理；當條件分配恆等於邊際分配時，稱隨機變數彼此獨立。本篇建立聯合機率函數分解判準，強調聯合值域為積空間與公式可拆解兩項條件缺一不可。"
 ---
 

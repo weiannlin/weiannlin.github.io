@@ -9,7 +9,7 @@ topic: 21
 order: 321
 permalink: /lecture-notes/correlation-coefficient/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "相關係數 $\\rho_{\\sssig XY}=\\operatorname{Cov}(X,Y)/(\\sigma_{\\sssig X}\\sigma_{\\sssig Y})$ 消除了變數單位與尺度，衡量兩隨機變數間線性相關的強度與方向。本篇運用隨機變數版柯西-舒瓦茲不等式證明 $-1\\leqslant\\rho_{\\sssig XY}\\leqslant 1$ 恆成立，並討論等號成立的充要條件與幾何夾角意義。"
 ---
 

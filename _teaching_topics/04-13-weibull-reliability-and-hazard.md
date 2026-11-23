@@ -9,7 +9,7 @@ topic: 13
 order: 413
 permalink: /lecture-notes/weibull-reliability-and-hazard/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "韋伯分配由指數分配經冪次轉換界定，常用於壽命與可靠度分析。本篇推導韋伯分配的期望值與變異數，引入可靠度函數與風險函數，並說明形狀參數 $\\gamma$ 大於、等於或小於 $1$ 時如何對應遞增、恆定與遞減風險。"
 ---
 

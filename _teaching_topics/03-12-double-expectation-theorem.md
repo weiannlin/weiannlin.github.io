@@ -9,7 +9,7 @@ topic: 12
 order: 312
 permalink: /lecture-notes/double-expectation-theorem/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "將條件期望值視為條件變數 $Y$ 的函數，在 $\\mathbb{E}(X)$ 存在下對 $Y$ 再取一次期望值，即得雙重期望值定理 $\\mathbb{E}[\\mathbb{E}(X\\mid Y)]=\\mathbb{E}(X)$ 這條恆等式。本篇介紹迴歸函數的概念，證明此定理及其函數推廣形式，並說明分層加權平均的直觀意義。"
 ---
 

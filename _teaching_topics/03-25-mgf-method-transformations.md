@@ -9,7 +9,7 @@ topic: 25
 order: 325
 permalink: /lecture-notes/mgf-method-transformations/
 date: 2026-08-13
-published: false
+published: true
 excerpt: "求多元函數轉換後單一變數的分配時，可先補齊維度作多對多轉換再積分消去輔助變數。若變數彼此獨立且為線性組合，動差母函數法可將組合後的 mgf 拆為各項代換引數後的乘積並由唯一性辨識分配，本篇分別以例題示範兩種作法。"
 ---
 

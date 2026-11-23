@@ -9,7 +9,7 @@ topic: 4
 order: 304
 permalink: /lecture-notes/marginal-probability-density-functions/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "將二元聯合機率密度函數對其中一個變數在其值域上積分，即可得另一變數的邊際機率密度函數。本篇說明此積分在幾何上的疊加意義，並以例題演練常數、邊際密度與分段聯合 cdf 的求法。"
 ---
 

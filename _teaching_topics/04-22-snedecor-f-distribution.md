@@ -9,7 +9,7 @@ topic: 22
 order: 422
 permalink: /lecture-notes/snedecor-f-distribution/
 date: 2026-08-15
-published: false
+published: true
 excerpt: "斯內德克 $\\mathcal{F}$ 分配定義為兩個獨立卡方變數各除以自身自由度後的比值。本篇推導其期望值、兩獨立常態母體樣本變異數比值的抽樣分配，以及 $\\mathcal{F}$ 分配經分式轉換化為貝塔分配的關係與例題。"
 ---
 

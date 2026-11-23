@@ -9,7 +9,7 @@ topic: 15
 order: 415
 permalink: /lecture-notes/beta-function-and-distribution/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "貝塔函數可表為伽瑪函數的比值 $\\Gamma(a)\\Gamma(b)/\\Gamma(a+b)$ 這個形式，據此定義於 $(0,1)$ 區間上的貝塔分配常用於描述比例或機率的分配。本篇推導其各階原動差、期望值與變異數，並說明它與標準均勻分配、順序統計量及貝氏共軛先驗的連結。"
 ---
 

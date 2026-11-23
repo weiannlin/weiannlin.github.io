@@ -9,7 +9,7 @@ topic: 9
 order: 409
 permalink: /lecture-notes/poisson-additivity-and-thinning/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "兩個獨立卜瓦松變數給定總和為 $n$ 時，條件分配為二項分配；反之將每次發生以固定機率 $p$ 獨立分類，所得兩類計數仍為彼此獨立的卜瓦松變數。本篇證明這兩項性質並以六道例題演練。"
 ---
 

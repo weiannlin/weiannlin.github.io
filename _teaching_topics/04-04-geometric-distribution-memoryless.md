@@ -9,7 +9,7 @@ topic: 4
 order: 404
 permalink: /lecture-notes/geometric-distribution-memoryless/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "幾何分配記錄獨立伯努利實驗直到首次成功所需的實驗次數，另有計數失敗次數的版本。本篇運用幾何級數推導其期望值、變異數與動差母函數，並證明幾何分配與離散無記憶性互為充要條件及獨立極小值仍服從幾何分配。"
 ---
 

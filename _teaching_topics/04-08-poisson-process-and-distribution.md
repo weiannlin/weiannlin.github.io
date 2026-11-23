@@ -9,7 +9,7 @@ topic: 8
 order: 408
 permalink: /lecture-notes/poisson-process-and-distribution/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "卜瓦松過程以獨立增量與極短區間內單次發生等五項條件刻畫偶發事件，單位時間內的發生次數即服從卜瓦松分配。本篇推導其期望值與變異數皆為 $\\lambda$ 的性質、動差母函數與可加性，並證明二項分配在 $n\\to\\infty$ 與 $p\\to 0$ 且 $np=\\lambda$ 固定下收斂至卜瓦松分配。"
 ---
 

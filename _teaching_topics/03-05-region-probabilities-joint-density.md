@@ -9,7 +9,7 @@ topic: 5
 order: 305
 permalink: /lecture-notes/region-probabilities-joint-density/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "已知聯合機率密度函數時，事件機率可由事件對應區域上的重積分求得。本篇透過楔形非積空間、極座標圓盤與標準均勻變數排序三類例題，說明積分上下限的設定與聯合 cdf 的分區討論。"
 ---
 

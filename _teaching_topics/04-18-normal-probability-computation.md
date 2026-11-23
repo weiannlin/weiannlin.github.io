@@ -9,7 +9,7 @@ topic: 18
 order: 418
 permalink: /lecture-notes/normal-probability-computation/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "本篇以四道例題演練常態分配的標準化機率計算與密度轉換，包含區間不良率、兩獨立常態組合的比較，以及證明偏斜常態形式 $2\\phi(z)\\Phi(\\lambda z)$ 為合法密度且其平方服從自由度為 $1$ 的卡方分配。"
 ---
 

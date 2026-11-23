@@ -9,7 +9,7 @@ topic: 1
 order: 301
 permalink: /lecture-notes/random-vectors-joint-pmf/
 date: 2026-08-12
-published: false
+published: true
 excerpt: "把定義在同一機率空間上的 $n$ 個隨機變數合為向量函數，即構成隨機向量。本篇介紹隨機向量的定義，以及二元離散型的聯合機率質量函數、三項基本性質與邊際機率質量函數的求法。"
 ---
 

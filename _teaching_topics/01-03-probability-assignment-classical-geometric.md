@@ -143,7 +143,7 @@ $$
 
 ## 幾何機率與幾何測度
 
-雖然 [Definition 1.11](#definition-classical-probability) 要求樣本空間為有限，我們仍可將此概念推廣至連續的幾何區域，定義**幾何機率 <span lang="en">(geometric probability)</span>**；此概念亦與後續章節介紹的**連續均勻分配 <span lang="en">(continuous uniform distribution)</span>** 相呼應。
+雖然 [Definition 1.11](#definition-classical-probability) 要求樣本空間為有限，我們仍可將此概念推廣至連續的幾何區域，定義**幾何機率 <span lang="en">(geometric probability)</span>**；此概念亦與後續章節介紹的**[連續均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution) <span lang="en">(continuous uniform distribution)</span>** 相呼應。
 
 <div id="definition-geometric-probability" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.12</div>
