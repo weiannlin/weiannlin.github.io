@@ -13,7 +13,7 @@ published: true
 excerpt: "樣本空間的分割由一組互斥且周延的事件構成。本篇介紹分割的定義、全機率定理及其條件機率版本，並說明兩組分割彼此交集而成的二元分割與列聯表。"
 ---
 
-[上一篇](/lecture-notes/independence-and-conditional-independence/)在介紹列聯表時曾經提到，表內的聯合機率與表邊的邊際機率，與分割及全機率定理有非常高度的相關。本篇便由樣本空間的分割談起，說明一個事件如何依一組分割被切成數個互斥的部分，再逐一加總回來。
+[上一篇](/lecture-notes/independence-and-conditional-independence/)介紹列聯表時曾提到，表內的聯合機率與表邊的邊際機率，背後其實對應著樣本空間的分割與全機率定理。本篇便由分割的定義談起，說明如何依一組互斥且周延的事件將任一事件拆成數個部分，再逐項加總求得其機率。
 
 ## 樣本空間的分割
 
@@ -26,7 +26,7 @@ excerpt: "樣本空間的分割由一組互斥且周延的事件構成。本篇�
 {: .topic-paren-item}
 
 $$
-A_i\cap A_j=\varnothing,\ \forall i\neq j
+A_i\cap A_j=\varnothing,\ \forall\,i\neq j
 $$
 
 (2) **周延 <span lang="en">(collectively exhaustive)</span>**:
@@ -38,9 +38,9 @@ $$
 
 </div>
 
-分割的定義，即是把樣本空間「分割成數個不重複的事件」，故其應滿足兩兩**互斥**與彼此**周延**的條件，其中**周延**是指各個事件的聯集等於樣本空間者。
+分割是將樣本空間切分為數個互不重疊且不遺漏的事件，故須同時滿足兩兩**互斥**與整體**周延**兩項條件，其中**周延**即指所有事件的聯集等於樣本空間 <span class="text-nowrap">$S$。</span>
 
-分割的概念可以由以下的圖示來理解:
+分割的概念可由下圖理解。
 
 <figure class="topic-figure topic-figure--wide">
   <img src="/images/lecture-notes/total-probability-partition-strips.svg" alt="樣本空間 S 的矩形被垂直分線切成 A_1、A_2 到 A_n 等互不重疊的直條。">
@@ -52,7 +52,7 @@ $$
 <div id="theorem-law-of-total-probability" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 1.16 <span lang="en">(The Law of Total Probability)</span></div>
 
-令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，且令 $A_1,A_2,\ldots,A_n\in\mathcal{F}$ 為 $S$ 的一組[分割](#definition-partition)，$B\in\mathcal{F}$ 為一事件，則
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，且令 $A_1,A_2,\ldots,A_n\in\mathcal{F}$ 為 $S$ 的一組分割，$B\in\mathcal{F}$ 為一事件，則
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -80,7 +80,7 @@ $$
 由於 $A_1,A_2,\ldots,A_n$ 為 $S$ 的一組分割，故
 
 $$
-A_i\cap A_j=\varnothing,\ \forall i\neq j
+A_i\cap A_j=\varnothing,\ \forall\,i\neq j
 $$
 
 且
@@ -126,16 +126,16 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-**全機率定理 <span lang="en">(the law of total probability)</span>** 的概念，我們在[兩事件版本的全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)中即曾經提過；這裡的全機率定理，是將該定理由 $A$ 與 $A^{\prime}$ 這組特別的分割，推廣至一般的 $n$ 個事件所構成的分割，其概念可以由下圖理解:
+**全機率定理 <span lang="en">(the law of total probability)</span>** 的概念已在前文[兩事件版本的全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)中出現；此處則將分割由 $A$ 與 $A^{\prime}$ 兩個事件推廣至一般 $n$ 個事件所構成的分割，其概念可由下圖理解。
 
 <figure class="topic-figure topic-figure--wide">
   <img src="/images/lecture-notes/total-probability-partition.svg" alt="樣本空間 S 的矩形被切成 A_1、A_2 到 A_n 等直條，事件 B 為橫跨各直條的圓角橫帶，並被分線切成 B 交 A_1 到 B 交 A_n 等區塊。">
   <figcaption><span class="topic-figure__label">Fig. 1.24.</span> 事件 $B$ 橫跨分割中的各個事件，因而被切成 $B\cap A_1,B\cap A_2,\ldots,B\cap A_n$ 這些互斥的部分。</figcaption>
 </figure>
 
-上圖中，$B$ 被這組分割交集成 $n$ 個互斥的集合 <span class="text-nowrap">$B\cap A_1,B\cap A_2,\ldots,B\cap A_n$，</span>其聯集即為 $B$ 本身，故由機率的[有限可加性](/lecture-notes/probability-rules-from-axioms/#theorem-finite-additivity)應可以推得上述的結果，且此結果之直觀意義，仍與[兩事件版本的全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)所提到的直觀意義完全一致。
+上圖中，$B$ 與這組分割逐一取交集後，形成 $B\cap A_1,B\cap A_2,\ldots,B\cap A_n$ 共 $n$ 個互斥的集合，其聯集即為 $B$ 本身，故由機率的有限可加性即可推得上述結果，其直觀意義亦與兩事件版本的全機率定理完全一致。
 
-特別值得注意的一點是，全機率定理是許多交集機率的總和，故當然可以套用[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)，將交集機率改寫為以條件機率表示的版本。若進一步假設 $\mathbb{P}(A_i)>0$，$i=1,2,\ldots,n$，則有
+由於全機率定理將 $\mathbb{P}(B)$ 表為各交集機率的總和，若進一步假設對所有 $i=1,2,\ldots,n$ 皆有 <span class="text-nowrap">$\mathbb{P}(A_i)>0$，</span>即可套用[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)將交集機率改寫為條件機率的版本，寫為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -156,7 +156,7 @@ $$
 
 </div>
 
-這個表示式與乘法原理的好處相同，在某些僅知道條件機率的時候相當有用。
+當問題已知各分組的機率與條件機率時，此表示式尤為實用。
 
 ## 二元分割與列聯表
 
@@ -173,15 +173,13 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者應不難發現，聯合機率所對應的集合，如 $A_1\cap B_1$、$A_1\cap B_2$ 等，皆為彼此互斥的集合，其理由在於 $A_1,A_2,\ldots,A_n$ 與 $B_1,B_2,\ldots,B_m$ 分別是樣本空間 $S$ 中的兩組分割，故其彼此交集後的集合應仍為互斥集合。
-
-進一步我們可以驗證，聯合機率的所有集合之聯集即是樣本空間，即
+由於 $A_1,A_2,\ldots,A_n$ 與 $B_1,B_2,\ldots,B_m$ 各自為樣本空間 $S$ 的分割，兩組事件逐一取交集所得的 $A_i\cap B_j$ 仍兩兩互斥，且各交集事件的聯集恰等於樣本空間，即
 
 $$
 \bigcup_{i=1}^{n}\bigcup_{j=1}^{m}(A_i\cap B_j)=S
 $$
 
-故這些集合應仍為一組分割，我們稱其為二元分割。
+因此這 $nm$ 個交集事件也滿足互斥與周延條件，構成 $S$ 的二元分割。
 </div>
 
 ## 全機率定理的應用
@@ -205,11 +203,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{P}(A\mid N)&=0.001,\\[0.4em]
-\mathbb{P}(A\mid B)&=0.9,\\[0.4em]
-\mathbb{P}(A\mid C)&=0.9
-\end{aligned}
+\begin{gathered}
+\mathbb{P}(A\mid N)=0.001,\\[0.4em]
+\mathbb{P}(A\mid B)=0.9,\\[0.4em]
+\mathbb{P}(A\mid C)=0.9
+\end{gathered}
 $$
 
 </div>
@@ -226,11 +224,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{P}(N)&=0.99,\\[0.4em]
-\mathbb{P}(B)&=0.001,\\[0.4em]
-\mathbb{P}(C)&=0.009
-\end{aligned}
+\begin{gathered}
+\mathbb{P}(N)=0.99,\\[0.4em]
+\mathbb{P}(B)=0.001,\\[0.4em]
+\mathbb{P}(C)=0.009
+\end{gathered}
 $$
 
 </div>
@@ -253,9 +251,19 @@ $$
 $$
 \begin{aligned}
 \mathbb{P}(N\cap A)&=\mathbb{P}(A\mid N)\,\mathbb{P}(N)\\[0.4em]
-&=0.001\times 0.99=0.00099\\[0.6em]
+&=0.001\times 0.99=0.00099
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \mathbb{P}(B\cap A)&=\mathbb{P}(A\mid B)\,\mathbb{P}(B)\\[0.4em]
-&=0.9\times 0.001=0.0009\\[0.6em]
+&=0.9\times 0.001=0.0009
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \mathbb{P}(C\cap A)&=\mathbb{P}(A\mid C)\,\mathbb{P}(C)\\[0.4em]
 &=0.9\times 0.009=0.0081
 \end{aligned}
@@ -263,7 +271,7 @@ $$
 
 </div>
 
-由於 $N$、$B$、$C$ 兩兩互斥，且三者的聯集為整個樣本空間，故此三個事件為 $S$ 的一組[分割](#definition-partition)，因此由[全機率定理](#theorem-law-of-total-probability)可得
+由於 $N$、$B$、$C$ 兩兩互斥，且三者的聯集為整個樣本空間，故此三個事件為 $S$ 的一組分割，因此由全機率定理可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -277,7 +285,8 @@ $$
 $$
 \begin{aligned}
 \mathbb{P}(A)&=\mathbb{P}(N\cap A)+\mathbb{P}(B\cap A)\\[0.4em]
-&\qquad+\mathbb{P}(C\cap A)=0.00999
+&\qquad+\mathbb{P}(C\cap A)\\[0.4em]
+&=0.00999
 \end{aligned}
 $$
 
@@ -304,11 +313,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{P}(A)&=0.2,\\[0.4em]
-\mathbb{P}(B)&=0.3,\\[0.4em]
-\mathbb{P}(C)&=0.5
-\end{aligned}
+\begin{gathered}
+\mathbb{P}(A)=0.2,\\[0.4em]
+\mathbb{P}(B)=0.3,\\[0.4em]
+\mathbb{P}(C)=0.5
+\end{gathered}
 $$
 
 </div>
@@ -325,16 +334,16 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{P}(R\mid A)&=0.05,\\[0.4em]
-\mathbb{P}(R\mid B)&=0.04,\\[0.4em]
-\mathbb{P}(R\mid C)&=0.02
-\end{aligned}
+\begin{gathered}
+\mathbb{P}(R\mid A)=0.05,\\[0.4em]
+\mathbb{P}(R\mid B)=0.04,\\[0.4em]
+\mathbb{P}(R\mid C)=0.02
+\end{gathered}
 $$
 
 </div>
 
-由於抽出的產品必來自 $A$、$B$、$C$ 三台機器之一，此三個事件恰為樣本空間的一組[分割](#definition-partition)，故由[全機率定理](#theorem-law-of-total-probability)可知，所求為
+由於抽出的產品必來自 $A$、$B$、$C$ 三台機器之一，此三個事件恰為樣本空間的一組分割，故由全機率定理可知，所求為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -350,9 +359,8 @@ $$
 
 $$
 \begin{aligned}
-&\mathbb{P}(R)=\mathbb{P}(R\mid A)\,\mathbb{P}(A)\\[0.4em]
-&\hphantom{\mathbb{P}(R)=}+\mathbb{P}(R\mid B)\,\mathbb{P}(B)\\[0.4em]
-&\hphantom{\mathbb{P}(R)=}+\mathbb{P}(R\mid C)\,\mathbb{P}(C)\\[0.4em]
+\mathbb{P}(R)&=\mathbb{P}(R\mid A)\,\mathbb{P}(A)+\mathbb{P}(R\mid B)\,\mathbb{P}(B)\\[0.4em]
+&\qquad+\mathbb{P}(R\mid C)\,\mathbb{P}(C)\\[0.4em]
 &=0.05\times 0.2+0.04\times 0.3+0.02\times 0.5\\[0.4em]
 &=0.032
 \end{aligned}
@@ -364,7 +372,7 @@ $$
 
 ## 本篇小結
 
-本篇由樣本空間的分割出發，依序整理下列結果:
+本篇由樣本空間的分割出發，整理下列結果:
 
 | 結果 | 內容 |
 | :---: | :---: |

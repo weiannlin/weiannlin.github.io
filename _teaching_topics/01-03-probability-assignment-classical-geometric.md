@@ -13,17 +13,17 @@ published: true
 excerpt: "機率最早是為了解決生活中遇到的隨機問題而發展。本篇介紹古典機率、幾何機率、客觀機率與主觀機率四種指定方式，以及它們各自的假設與限制。"
 ---
 
-[上一篇](/lecture-notes/event-set-operations/)整理了事件的集合運算。在有了集合及事件的基本關係後，我們便可以正式進入機率的世界，或準確地說，進入「古典機率」的世界。
+[上一篇](/lecture-notes/event-set-operations/)整理了事件的集合運算。有了集合及事件的基本關係後，我們便可進入機率的世界，或準確地說，進入「古典機率」的世界。
 
-機率的起源時常被認為是由賭博而來。這個說法當然未必正確，但卻能夠讓我們得知一件事情: 機率最早是為了解決生活中遇到的隨機問題而發展的。讀者應能細細回想生活中遇到的機率問題，例如: 玩撲克牌在五張手牌中拿到一組鐵支 (四條) 的機率、明天某地下雨的機率、罹患某一疾病後痊癒的機率。
+機率的起源常被認為與賭博有關；此說雖未必完全準確，卻反映機率最早是為了解決日常遇到的隨機問題而發展。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-「機率起源於賭博」的說法，可能是因為在數學史上，促使機率論蓬勃發展最廣為人知的事件是: 十七世紀中葉，法國貴族梅雷 (Antoine Gombaud, chevalier de Méré) 向數學家帕斯卡 (Blaise Pascal) 提出賭局中遇到的問題，帕斯卡便與其朋友費馬 (Pierre de Fermat) 以書信進行討論，進而使歐洲的數學家們產生興趣，並以數學工具研究機率理論。
+「機率起源於賭博」的說法，源於十七世紀中葉數學史上一樁廣為人知的事件。當時法國貴族梅雷 (Antoine Gombaud, chevalier de Méré) 向數學家帕斯卡 (Blaise Pascal) 請教賭局分彩的問題，帕斯卡遂與友人費馬 (Pierre de Fermat) 以書信往返討論，進而引發歐洲數學家運用數學工具研究機率理論。
 </div>
 
-若讀者進一步仔細思考前述三種機率應如何得出，便可以發現這三種機率事實上是完全不同的三種機率。若以一個相同的定義來解釋這三種機率，未免稍嫌不精準，故數學家便給予這三種類型的機率各自不同的定義。以下就直接以這三種定義來探討。其中，古典機率可再推廣出幾何機率，因此本篇將依序介紹四種指定方式。
+日常生活中處處可見不同性質的機率問題，例如玩撲克牌在五張手牌中拿到鐵支 (四條) 的機率、明天某地下雨的機率，以及罹患某一疾病後痊癒的機率。仔細比較便會發現，這三種機率的取得方式截然不同，難以用單一定義一體解釋，數學家因而針對不同情境給出各自的定義；其中古典機率又可推廣出幾何機率，本篇便依序介紹這四種指定方式。
 
 ## 古典機率
 
@@ -39,9 +39,9 @@ $$
 其中 $\mathrm{n}(\cdot)$ 為點算集合中元素個數之函數。
 </div>
 
-古典機率即是高中數學裡所講的機率，其精神是認為樣本空間 $S$ 中的每一個樣本點都具有同樣的發生機率，此即**均等可能性 <span lang="en">(equally likely)</span>**。例如: 投擲一枚「公正的」骰子，則出現 $1$ 點到 $6$ 點的機率皆相同。如此一來，我們可以用某一事件 $A$ 的樣本點數，相對於樣本空間 $S$ 的樣本點數的比例，作為發生該事件的機率。
+古典機率即是高中數學裡所講的機率，其精神是認為樣本空間 $S$ 中的每一個樣本點都具有同樣的發生機率，此即**均等可能性**。例如投擲一枚「公正的」骰子，出現 $1$ 點到 $6$ 點的機率皆相同。如此一來，我們可以用某一事件 $A$ 的樣本點數，相對於樣本空間 $S$ 的樣本點數的比例，作為發生該事件的機率。
 
-從上面的敘述來看，我們便能夠理解為何古典機率的定義需要假定樣本空間 $S$ 為有限的。因為我們必須點算樣本空間中樣本點的個數，若是[無限樣本空間](/lecture-notes/random-experiments-sample-space-events/#離散樣本空間與連續樣本空間) (可數或不可數)，便無法點算。
+由上述說明來看，我們便能理解為何古典機率的定義須假定樣本空間 $S$ 為有限。因為我們必須點算樣本空間中樣本點的個數，若是[無限樣本空間](/lecture-notes/random-experiments-sample-space-events/#離散樣本空間與連續樣本空間) (可數或不可數)，便無法點算。
 
 <div id="example-two-dice" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.5 (Two Dice)</div>
@@ -92,7 +92,7 @@ $$
 
 在一副均勻洗牌的 $52$ 張撲克牌中抽取五張牌作為手牌，則此五張牌恰為同花順的機率為何？
 
-令 $A$ 表示同花順之事件。一手同花順可由「選定一種花色」與「選定連續五張點數的起點 (A 至 10，共十種)」完全決定，故
+令 $A$ 表示同花順之事件。一手同花順可由「選定一種花色」與「選定連續五張點數的起點 (A 至 $10$，共十種)」完全決定，故
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -105,10 +105,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathrm{n}(A)&=\binom{4}{1}\binom{10}{1}=4\times 10=40,\\[0.4em]
-\mathrm{n}(S)&=\binom{52}{5}=2{,}598{,}960
-\end{aligned}
+\begin{gathered}
+\mathrm{n}(A)=\binom{4}{1}\binom{10}{1}=4\times 10=40,\\[0.4em]
+\mathrm{n}(S)=\binom{52}{5}=2{,}598{,}960
+\end{gathered}
 $$
 
 </div>
@@ -138,33 +138,33 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-古典機率的核心概念，是計算事件的樣本點個數與有限樣本空間的樣本點個數之比值，並以其作為該事件發生之機率。在此精神之下，我們必須具有均等可能性假設，並且**透過點算樣本點個數來當作衡量該事件大小的工具**。在此概念與假設之下，很自然地需要引入各種能夠點算事件樣本點數的工具，這正是**組合分析 <span lang="en">(combinatorial analysis)</span>** 中排列與組合所扮演的角色。
+古典機率以事件與有限樣本空間的元素個數比值定義機率，前提是各樣本點滿足均等可能性假設，並**以點算樣本點個數作為衡量事件大小的工具**。因此計算古典機率時，常須借助**組合分析 <span lang="en">(combinatorial analysis)</span>** 中的排列與組合方法來計數。
 </div>
 
 ## 幾何機率與幾何測度
 
-雖然稍早在 [Definition 1.11](#definition-classical-probability) 中，我們要求樣本空間為有限，但事實上我們可以將這個定義進行推廣，從而成為**幾何機率 <span lang="en">(geometric probability)</span>**。幾何機率的概念，也可以與後面主題將介紹的**[連續均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution) <span lang="en">(continuous uniform distribution)</span>** 相呼應。我們來看看其定義。
+雖然 [Definition 1.11](#definition-classical-probability) 要求樣本空間為有限，我們仍可將此概念推廣至連續的幾何區域，定義**幾何機率 <span lang="en">(geometric probability)</span>**；此概念亦與後續章節介紹的**連續均勻分配 <span lang="en">(continuous uniform distribution)</span>** 相呼應。
 
 <div id="definition-geometric-probability" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.12</div>
 
-令樣本空間 $S$ 為一幾何範圍，而 $A\subseteq S$ 為樣本空間 $S$ 中其中一部分 (亦為 $S$ 中之一事件)，則 $A$ 之**幾何機率 <span lang="en">(geometric probability)</span>** 為
+令樣本空間 $S$ 為一幾何範圍，而 $A\subseteq S$ 為樣本空間 $S$ 中的一部分 (亦為 $S$ 中之一事件)，則 $A$ 之**幾何機率**為
 
 $$
 \mathbb{P}(A)=\frac{\mathrm{m}(A)}{\mathrm{m}(S)}
 $$
 
-其中 $\mathrm{m}(\cdot)$ 為**幾何測度 <span lang="en">(geometric measure)</span>**，且要求 $0<\mathrm{m}(S)<\infty$，使上式的比值有意義。
+其中 $\mathrm{m}(\cdot)$ 為**幾何測度 <span lang="en">(geometric measure)</span>**，且滿足 $0<\mathrm{m}(S)<\infty$ 之條件。
 </div>
 
-事實上，幾何測度大家都很熟悉，例如: 一維空間中的幾何測度為長度、二維空間中的幾何測度為面積、三維空間中的幾何測度為體積。在此理解之下，**幾何機率的意義即為某事件之幾何測度相對於樣本空間的幾何測度的比例**。
+一維空間的長度、二維空間的面積與三維空間的體積皆為常見幾何測度；依此定義，**幾何機率即為某事件之幾何測度相對於樣本空間幾何測度的比例**。
 
-當我們有了幾何測度的概念後，回頭來看 [Definition 1.11](#definition-classical-probability)，我們會發現其中的 $\mathrm{n}(\cdot)$ 事實上是一種**計數測度 <span lang="en">(counting measure)</span>**，不過這已經屬於**測度論 <span lang="en">(measure theory)</span>** 的範圍，我們在此不討論。
+由此回顧 [Definition 1.11](#definition-classical-probability) 可見，點算元素個數的 $\mathrm{n}(\cdot)$ 實為一種**計數測度 <span lang="en">(counting measure)</span>**，相關的嚴謹理論屬於**測度論 <span lang="en">(measure theory)</span>** 的範圍，此處不展開討論。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-各種的**測度 <span lang="en">(measure)</span>** 都是在「度量」某件事的大小。當測度被用在集合上，則代表衡量集合在該測度所關心的面向上的大小，例如: 數量的大小、長度的大小、面積的大小。事實上，後面的文章將正式介紹的[**機率測度 <span lang="en">(probability measure)</span>**](/lecture-notes/event-families-sigma-fields/#機率空間)同樣也屬於一種測度，而機率測度所衡量的，是**事件發生的可能性的大小**。
+各類**測度 <span lang="en">(measure)</span>** 的核心功能皆在於衡量集合在特定面向上的「大小」，例如個數、長度或面積。下一篇將正式引入的[**機率測度 <span lang="en">(probability measure)</span>**](/lecture-notes/event-families-sigma-fields/#機率空間)同樣屬於測度的一種，其所衡量的正是**事件發生的可能性的大小**。
 </div>
 
 <div id="example-bombing-target" class="topic-box topic-box--example" markdown="1">
@@ -194,7 +194,7 @@ $$
 
 </div>
 
-以上的機率，都還是建立在某種「均勻」的假設下所得到的: 古典機率假設有限樣本空間中的每一個樣本點均等可能；幾何機率則假設落點不偏向 $S$ 中的任何位置，事件的機率只取決於其幾何測度的比例。若是這類假設不成立，則我們會需要其他的機率定義。
+以上的機率，都還是建立在某種「均勻」的假設下所得到的。古典機率假設有限樣本空間中的每個樣本點發生機會均等，而幾何機率則假設樣本點落入某事件的機會與該事件之幾何測度成比例；但它們背後的精神其實一致，也就是**在均勻的假設下，事件的機率正比於事件的「大小」**。然而，若是這類均勻的假設不成立，則我們會需要其他的機率定義。
 
 ## 客觀機率
 
@@ -226,15 +226,15 @@ $$
 (2) 其定義本身未必具有一穩定收斂的值。
 {: .topic-paren-item}
 
-(3) 在不能重複的事件中 (例如: 預測一特定日子的天氣) 並無法使用。
+(3) 在不能重複的事件中 (例如預測一特定日子的天氣) 並無法使用。
 {: .topic-paren-item}
 
-關於相對次數是否隨重複次數增加而逐漸穩定，讀者可以在 Demos 的[蒙提霍爾問題實作](/demos/monty-hall/)中，實際觀察其模擬部分的相對次數變化。蒙提霍爾問題 <span lang="en">(Monty Hall problem)</span> 的完整敘述，會在稍後的[條件機率](/lecture-notes/conditional-probability-information/#example-monty-hall)中提到。
+關於相對次數是否隨重複次數增加而逐漸穩定，讀者可在互動展示 [The Monty Hall Problem](/demos/monty-hall/) 中觀察模擬次數增加時相對次數的變化。蒙提霍爾問題 <span lang="en">(Monty Hall problem)</span> 的完整敘述，會在稍後的[條件機率](/lecture-notes/conditional-probability-information/#example-monty-hall)中提到。
 
 <div id="example-three-point-shooting" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.8 <span lang="en">(Three-Point Shooting)</span></div>
 
-截至 2021 年 5 月 20 日，NBA 籃球員 Stephen Curry 在其生涯 $6540$ 次的三分球出手中，命中了 $2832$ 球，試求其三分球命中的機率。
+截至 $2021$ 年 $5$ 月 $20$ 日，NBA 籃球員 Stephen Curry 在其生涯 $6540$ 次的三分球出手中，命中了 $2832$ 球，試求其三分球命中的機率。
 
 令 $A$ 表示 Stephen Curry 命中三分球之事件。以其生涯至該日的出手紀錄，作為長期相對次數的近似，可得
 
@@ -244,7 +244,7 @@ $$
 
 </div>
 
-客觀機率解決了古典機率定義遇到的最大難題，也就是**樣本空間中的樣本點需假設發生機率相同**；但卻衍伸出新的問題，其中最大的困難點，當屬無法應用在不能重複的事件中。在這樣的情況下，數學家給了第三種機率定義。
+客觀機率雖免除了古典機率要求**樣本空間中各樣本點發生機率相同**的假設，卻也受限於事件必須能夠重複觀察的前提。面對無法重複進行的事件，便需要第三種機率的指定方式。
 
 ## 主觀機率
 
@@ -254,7 +254,7 @@ $$
 研究者依照其專業知識或相關證據，主觀地認定事件 $A$ 發生之機率 $\mathbb{P}(A)\in[0,1]$，即為**主觀機率 <span lang="en">(subjective probability)</span>**。
 </div>
 
-本篇的開端舉例了幾種不同的機率，但在現實世界中，我們經常使用的機率往往是主觀機率與客觀機率的結合。例如: 明天的降雨機率，事實上是氣象專家**參考了過去相當長時間以來對於該地的氣象觀察**，並且**結合專家個人的專業知識主觀認定**所產生的結果。
+本篇的開端舉了幾個不同的機率例子，但在現實世界中，我們經常使用的機率往往是主觀機率與客觀機率的結合。例如明天的降雨機率，事實上是氣象專家**參考了過去相當長時間以來對於該地的氣象觀察**，並且**結合專家個人的專業知識主觀認定**所產生的結果。
 
 ## 本篇小結
 
@@ -267,7 +267,7 @@ $$
 | 客觀機率 | 長期重複觀察的極限 | 極限未必存在，且事件須可重複 |
 | 主觀機率 | 專業知識與證據 | 因研究者而異 |
 
-如此的特性，導致這幾種機率定義在嚴謹的數學世界中，並無法具有過多的發展。為此，在接下來的文章中，我們將開始介紹**公理化機率系統 <span lang="en">(axiomatized probability system)</span>**，並帶讀者認識現代機率論的根源。它的起點，是先說明哪些集合可以被賦予機率，這正是[下一篇](/lecture-notes/event-families-sigma-fields/)要談的域、$\sigma$-域與機率空間。
+如此的特性，使這幾種機率定義在嚴謹的數學體系中難以進一步推展。為此，接下來我們將介紹**公理化機率系統 <span lang="en">(axiomatized probability system)</span>**，認識現代機率論的根基。[下一篇](/lecture-notes/event-families-sigma-fields/)便從域、$\sigma$-域與機率空間談起，先釐清哪些集合可以賦予機率。
 
 ## 參考文獻與延伸閱讀
 

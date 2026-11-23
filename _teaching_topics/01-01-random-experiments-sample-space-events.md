@@ -15,7 +15,7 @@ excerpt: "機率論先由隨機實驗開始，整理實驗所有可能的結果�
 
 在機率論中，我們先要說明正在觀察的現象、實驗所有可能的結果，以及哪些結果構成我們關心的事件。有了這些基本定義，後續才能為事件指定機率，並建立條件機率、獨立性與[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)等內容。
 
-本篇依序介紹隨機實驗、樣本空間、樣本點與事件，並說明這些定義之間的關係。
+本篇依序介紹隨機實驗、樣本空間、樣本點與事件，並說明四者間的關係。
 
 ## 確定現象與隨機現象
 
@@ -24,7 +24,7 @@ excerpt: "機率論先由隨機實驗開始，整理實驗所有可能的結果�
 <div class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.1</div>
 
-**確定現象 <span lang="en">(deterministic phenomenon)</span>** 是指在一定條件之下進行，就一定會發生，或者一定不會發生的現象。例如，在一大氣壓之下，將水加熱至 $100^\circ\mathrm{C}$ 便會沸騰。過去我們所學過的諸多自然定律都符合這個現象。
+**確定現象 <span lang="en">(deterministic phenomenon)</span>** 是指在一定條件之下進行，就一定會發生，或者一定不會發生的現象。例如在一大氣壓下，將水加熱至 $100^\circ\mathrm{C}$ 便會沸騰。過去我們所學的諸多自然定律都符合這個現象。
 </div>
 
 <div class="topic-box topic-box--definition" markdown="1">
@@ -33,7 +33,7 @@ excerpt: "機率論先由隨機實驗開始，整理實驗所有可能的結果�
 **隨機現象 <span lang="en">(random phenomenon)</span>** 是指不能事先知道結果的現象。例如賭博時投擲一顆骰子，並不能夠事前就知道出現的點數，即可視為一種隨機現象。此種現象具有**不確定性 <span lang="en">(uncertainty)</span>**，因此不能被事前預知其結果；但它往往仍伴隨一定程度的規律，使研究者可以度量其發生的**可能性**，也就是**機率 <span lang="en">(probability)</span>**。整個**機率論 <span lang="en">(probability theory)</span>** 就是在探討這樣的規律性。
 </div>
 
-確定現象強調「在同樣條件下，結果可以被事前肯定」。隨機現象則強調「單次結果無法事前肯定，但大量重複時可能呈現規律」。機率論研究的正是後者。
+確定現象強調「同樣條件下，結果可事前肯定」。隨機現象則強調「單次結果無法事前肯定，但大量重複時可能呈現規律」。機率論研究的正是後者。
 
 ## 隨機實驗
 
@@ -63,13 +63,13 @@ excerpt: "機率論先由隨機實驗開始，整理實驗所有可能的結果�
 隨機實驗之所有可能的結果所形成的集合稱作**樣本空間 (sample space)**，通常以英文字母 $S$ 或希臘字母 $\Omega$ 表示。樣本空間中的元素被稱作**樣本點 (sample point)**，通常以希臘字母 $\omega$ 表示。
 </div>
 
-在符號上，若 $\omega$ 是某個可能結果，而 $S$ 是所有可能結果構成的集合，則我們寫成
+在符號上，若 $\omega$ 為某可能結果，而 $S$ 為所有可能結果構成的集合，則寫成
 
 $$
 \omega \in S
 $$
 
-這是**集合論 (set theory)** 的表示法，表示 $\omega$ 為 $S$ 中的**元素 <span lang="en">(element)</span>**。這裡要特別注意 $\in$ 與 $\subseteq$ 的差別: $\omega\in S$ 表示元素 $\omega$ 屬於**集合 (set)** <span class="text-nowrap">$S$，</span>是元素對集合的關係；而 $A\subseteq S$ 表示集合 $A$ 是 $S$ 的子集合，是集合對集合的關係。這個差異稍後在事件的定義中會立刻出現，集合的**算子 <span lang="en">(operator)</span>** 也會在後續有較完整的介紹。
+這是**集合論 (set theory)** 的表示法，表示 $\omega$ 為 $S$ 中的**元素 <span lang="en">(element)</span>**。這裡要特別留意 $\in$ 與 $\subseteq$ 的差別，其中 $\omega\in S$ 表示元素 $\omega$ 屬於**集合 (set)** $S$ 之中，是元素對集合的關係；而 $A\subseteq S$ 表示集合 $A$ 包含於集合 $S$ 之中，是集合對集合的關係。這個差異稍後在事件的定義中便會出現，集合的**算子 <span lang="en">(operator)</span>** 也會在下一篇完整介紹。
 
 <div id="example-sample-spaces" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.1 (Sample Spaces)</div>
@@ -106,59 +106,51 @@ $$
 
 ## 離散樣本空間與連續樣本空間
 
-上述的例子裡可以發現，樣本空間的型態很多樣，因此可對樣本空間分類。
-
-若將隨機實驗與微積分中的**函數 <span lang="en">(function)</span>** 做聯想，則可以將樣本空間想像成該函數的**值域 <span lang="en">(range)</span>**；依照值域的不同，函數能被分成**實值函數 <span lang="en">(real-valued function)</span>** 等不同函數。同理，我們也能夠以此為樣本空間進行分類，並將其分為二大類。
+由上述例子可見，樣本空間的型態相當多樣。若將隨機實驗類比為微積分中的**函數 <span lang="en">(function)</span>**，樣本空間便對應函數的**值域 (range)**；正如函數可依值域區分為**實值函數 <span lang="en">(real-valued function)</span>** 等類別，樣本空間亦可依元素個數分為下列兩大類。
 
 <div class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.5</div>
 
-**離散樣本空間 <span lang="en">(discrete sample space)</span>** 是指樣本空間中之元素個數為**有限 (finite)** 或**可數無限 <span lang="en">(countably infinite)</span>** 者。
+**離散樣本空間 <span lang="en">(discrete sample space)</span>** 是指所含元素個數為**有限 (finite)** 或**可數無限 <span lang="en">(countably infinite)</span>** 者。
 
 **連續樣本空間 <span lang="en">(continuous sample space)</span>** 是指樣本空間中之元素個數為**不可數無限 <span lang="en">(uncountably infinite)</span>** 者。
 </div>
 
-經過上述的分類以後，回頭來看 [Example 1.1](#example-sample-spaces)，可以發現該題中的三個答案分別對應到此二大類下的三個小類別: 有限樣本空間、可數無限樣本空間及不可數無限樣本空間。
+回顧 [Example 1.1](#example-sample-spaces)，其中的三個樣本空間分別對應有限、可數無限與不可數無限三種情形。
 
 一個無限集合若能與正整數集合 $\mathbb{N}$ 建立一一對應，便稱為可數無限集合。因此，有限集合與可數無限集合都歸入離散樣本空間，不可數無限集合則歸入連續樣本空間。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-前段所說的一一對應，嚴謹的說法如下。一集合為可數即代表其元素個數為有限，或是無限但能與正整數集合 $\mathbb{N}$ **對射 <span lang="en">(bijection)</span>** 的集合；對射是指此對應同時為一對一 (one-to-one) 且映成 (onto)。換言之，該集合的**基數 <span lang="en">(cardinality)</span>** 小於或者等於正整數集合的基數，我們稱此集合為**可數 <span lang="en">(countable)</span>**。
+嚴謹而言，前段所說的一一對應是指**對射 <span lang="en">(bijection)</span>**，亦即同時滿足一對一 (one-to-one) 與映成 (onto) 的對應關係。若一集合的元素個數為有限，或雖為無限但能與正整數集合 $\mathbb{N}$ 建立對射，則其**基數 <span lang="en">(cardinality)</span>** 小於或等於 $\mathbb{N}$ 的基數，稱為**可數 <span lang="en">(countable)</span>** 集合。
 
-在樣本空間的分類上，不可數無限所對應的正是連續的概念；連續與「極限」的概念密不可分，可視為**微積分 <span lang="en">(calculus)</span>** 之起源。
+不可數無限則與**連續 <span lang="en">(continuous)</span>** 的概念密切相關，在樣本空間的分類上對應連續樣本空間 (例如實數線上的任一區間)；連續與「極限」的概念密不可分，可視為**微積分 <span lang="en">(calculus)</span>** 的起源。
 </div>
 
-可以把分類想成下面這張表。
+上述分類可整理如下表。
 
 | 樣本空間型態 | 元素個數 | 典型例子 |
 | :---: | :---: | :---: |
 | 有限 | finite | 擲一顆骰子，$S=\lbrace1,2,3,4,5,6\rbrace$ |
-| 可數無限 | countably infinite | 槓龜次數，$S=\lbrace0,1,2,\ldots\rbrace$ |
-| 不可數無限 | uncountably infinite | 壽命時間，$S=[0,\infty)$ |
+| 可數無限 | <span lang="en">countably infinite</span> | 槓龜次數，$S=\lbrace0,1,2,\ldots\rbrace$ |
+| 不可數無限 | <span lang="en">uncountably infinite</span> | 壽命時間，$S=[0,\infty)$ |
 {: .topic-table--sample-space-types}
 
-前兩者合稱為離散樣本空間；第三者則是連續樣本空間。表中的 $S=[0,\infty)$ 與 [Example 1.1](#example-sample-spaces) 的 $S=\lbrace\,t\mid t\geqslant 0\,\rbrace$ 是同一個集合的兩種寫法。
+前兩者合稱為離散樣本空間；第三者則是連續樣本空間。表中的 $S=[0,\infty)$ 與 Example 1.1 的 $S=\lbrace\,t\mid t\geqslant 0\,\rbrace$ 是同一個集合的兩種寫法。
 
-部分教科書將樣本空間分類成可數與不可數二類，此一分類事實上與上述之離散與連續的二分法相同，其理由在於可數的集合必定也是一個離散的集合，故上述的離散樣本空間事實上可被稱為可數樣本空間，而連續樣本空間則對應到不可數樣本空間。
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-本系列第二章談到隨機變數時，會依其值域與機率的表示方式分為離散型與連續型隨機變數。為了與後續章節一致，本系列在樣本空間的分類上使用離散與連續，而不使用可數與不可數。
-</div>
+部分教科書將樣本空間分為可數與不可數兩類；由於可數集合必為離散集合，該分類實質上與上述離散、連續的二分法一致，離散樣本空間即對應可數樣本空間，連續樣本空間則對應不可數樣本空間。本系列第二章介紹隨機變數時，將依其值域與機率的表示方式分為離散型與連續型隨機變數；為與後續章節用語一致，樣本空間亦統一採用「離散」與「連續」的分類名稱。
 
 ## 事件與事件的發生
 
-樣本空間列出所有可能結果，但我們真正關心的通常是一組結果，而非單一樣本點。例如擲骰子時，關心的可以是是否出現 $5$，也可以是是否出現大於等於 $4$ 的點數。
+樣本空間列出所有可能結果，但我們真正關心的通常是一組結果，而非單一樣本點。例如擲骰子時，我們關心的可能是出現 $5$ 點，也可能是出現大於等於 $4$ 的點數。
 
 <div class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.6</div>
 
 **事件 (event)** 是隨機實驗之某些可能結果所構成的集合，也是樣本空間的子集合。若某次實驗的結果屬於某一事件，則稱此事件**發生 (occur)**。
 
-因此，以 $A\subseteq S$ 表示 $A$ 是一個事件；若實驗結果為 $\omega$，則以 $\omega\in A$ 表示事件 $A$ 發生。
+因此在符號上，以 $A\subseteq S$ 表示 $A$ 是一個事件；若實驗結果為 <span class="text-nowrap">$\omega$，</span>則以 $\omega\in A$ 表示事件 $A$ 發生。
 </div>
 
 這裡出現了機率論最基本的三層結構。
@@ -191,11 +183,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-A&=\lbrace4,5,6\rbrace,\\[0.4em]
-B&=\lbrace1,2,3\rbrace,\\[0.4em]
-C&=\lbrace5\rbrace
-\end{aligned}
+\begin{gathered}
+A=\lbrace4,5,6\rbrace,\\[0.4em]
+B=\lbrace1,2,3\rbrace,\\[0.4em]
+C=\lbrace5\rbrace
+\end{gathered}
 $$
 
 </div>
@@ -206,7 +198,7 @@ $$
 3\notin A,\qquad 3\in B,\qquad 3\notin C
 $$
 
-因此 $B$ 事件發生，而 $A$ 與 $C$ 事件不發生。
+故事件 $B$ 發生，而 $A$ 與 $C$ 不發生。
 </div>
 
 ## 有限樣本空間中的事件數量
@@ -219,13 +211,13 @@ $$
 2^S=\lbrace\,A\mid A\subseteq S\,\rbrace
 $$
 
-事實上，對任意**非空集合 (non-empty set)** 而言，「所有元素都出現」與「所有元素都不出現」所對應的兩個子集合，都是該集合的**顯然子集 <span lang="en">(trivial subset)</span>**；對於一樣本空間而言，此二集合皆為事件。
+對任意**非空集合 (non-empty set)** 而言，「所有元素都出現」與「所有元素都不出現」所對應的兩個子集合，稱為該集合的**顯然子集 <span lang="en">(trivial subset)</span>**；對應到樣本空間時，這兩個子集合皆為事件。
 
 在這 $2^n$ 個事件中，$S$ 稱為**確定事件 <span lang="en">(certain event)</span>**，$\varnothing$ 稱為**虛無事件 (null event)**。空集合 (empty set) 是沒有任何元素的集合。
 
 ## 本篇小結
 
-本篇建立的是機率論的入門基礎，為讀者釐清每一個定義在機率論的角色。
+本篇整理隨機實驗與事件的基本定義，說明各個概念在機率模型中的角色。
 
 | 問題 | 對應角色 |
 | :---: | :---: |
@@ -236,7 +228,7 @@ $$
 | 某事件是否發生？ | 檢查實際結果是否屬於該事件 |
 {: .topic-table--chapter-summary}
 
-等到這些定義都被釐清，[下一篇](/lecture-notes/event-set-operations/)將先介紹事件的聯集、交集、差集、餘集、集合序列與互斥，建立後續機率運算所需的集合工具；之後再討論如何把介於 $0$ 與 $1$ 之間的數值指定給事件。
+建立上述基本定義之後，[下一篇](/lecture-notes/event-set-operations/)將介紹事件的聯集、交集、差集、餘集、集合序列與互斥，備齊後續機率運算所需的集合工具；其後再討論如何將介於 $0$ 與 $1$ 之間的數值賦予事件。
 
 ## 參考文獻與延伸閱讀
 

@@ -10,15 +10,13 @@ order: 204
 permalink: /lecture-notes/computing-probabilities-from-cdf/
 date: 2026-08-04
 published: true
-excerpt: "任一隨機變數落在一段區間上的機率，都可由累積分配函數的兩個函數值相減得到，即 $F_{\\sssig X}(b)-F_{\\sssig X}(a)$；離散型可再寫成機率質量函數在該區間上的加總，連續型則為機率密度函數在該區間上的積分。連續型隨機變數的單點機率恆為 $0$，故區間端點的等號可以互換；離散型具有單點機率，端點的等號不可任意省略，其機率質量函數與累積分配函數之間另有五款對應關係。"
+excerpt: "隨機變數落在區間上的機率可由累積分配函數在兩端點的差值求得。本篇比較連續型與離散型在區間端點等號上的差異，並整理離散型累積分配函數與機率質量函數的五款關係。"
 ---
 
 
-前面幾篇已分別介紹離散型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的[機率質量函數](/lecture-notes/random-variables-and-pmf/)、兩型共用的[累積分配函數](/lecture-notes/cumulative-distribution-functions/)，以及連續型隨機變數的[機率密度函數](/lecture-notes/probability-density-functions/)。三者各自的定義與性質都已齊備，彼此之間如何換算則尚未整理。
+前幾篇已分別介紹離散型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的[機率質量函數](/lecture-notes/random-variables-and-pmf/)、兩型共用的[累積分配函數](/lecture-notes/cumulative-distribution-functions/)，以及連續型隨機變數的[機率密度函數](/lecture-notes/probability-density-functions/)。三者的定義與性質都已齊備，彼此如何換算則尚未整理。
 
-一段區間的機率要如何由 cdf 得到？連續型隨機變數落在單一點上的機率是多少？區間端點的等號可不可以省略？以下依序回答這幾個問題，並以四個例題示範在 cdf 已知時如何計算各種區間的機率。
-
-由於機率質量函數與機率密度函數的相似性，我們可將其性質進行比較，且與累積分配函數進行連結，從而得到一些有用的運算性質。
+區間機率如何由 cdf 得到？連續型隨機變數落在單點上的機率是多少？區間端點的等號可不可以省略？以下將 pmf 與 pdf 的性質對照比較，並與 cdf 連結以回答這幾個問題。
 
 <div id="thm-interval-probability" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.3 (由 cdf 計算區間機率, interval probabilities from a cdf)</div>
@@ -41,8 +39,8 @@ $$
 $$
 \begin{aligned}
 \mathbb{P}(&a<X\leqslant b)=F_{\sssig X}(b)-F_{\sssig X}(a)\\[0.45em]
-&=\sum_{a<x\leqslant b}p_{\sssig X}(x) \quad (\text{當 }X\text{ 為離散型})\\[0.45em]
-&=\int_{a}^{b}f_{\sssig X}(x)\,dx \quad (\text{當 }X\text{ 為連續型})
+&=\sum_{a<x\leqslant b}p_{\sssig X}(x) \quad (\text{當 }X\text{ 為離散型隨機變數})\\[0.45em]
+&=\int_{a}^{b}f_{\sssig X}(x)\,dx \quad (\text{當 }X\text{ 為連續型隨機變數})
 \end{aligned}
 $$
 
@@ -74,8 +72,8 @@ $$
 \mathbb{P}(&a<X\leqslant b)=\mathbb{P}\bigl(\lbrace X\leqslant b\rbrace-\lbrace X\leqslant a\rbrace\bigr)\\[0.45em]
 &=\mathbb{P}(X\leqslant b)-\mathbb{P}(X\leqslant a)\\[0.45em]
 &=F_{\sssig X}(b)-F_{\sssig X}(a)\\[0.45em]
-&=\sum_{a<x\leqslant b}p_{\sssig X}(x) \quad (\text{當 }X\text{ 為離散型})\\[0.45em]
-&=\int_{a}^{b}f_{\sssig X}(x)\,dx \quad (\text{當 }X\text{ 為連續型})
+&=\sum_{a<x\leqslant b}p_{\sssig X}(x) \quad (\text{當 }X\text{ 為離散型隨機變數})\\[0.45em]
+&=\int_{a}^{b}f_{\sssig X}(x)\,dx \quad (\text{當 }X\text{ 為連續型隨機變數})
 \end{aligned}
 $$
 
@@ -84,19 +82,14 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-在連續型隨機變數中，上述的機率可以用下圖來理解:
+在連續型隨機變數中，上述區間機率可由下圖理解。
 
 <figure id="fig-interval-area" class="topic-figure topic-figure--wide">
   <img src="/images/lecture-notes/continuous-interval-area.svg" alt="機率密度函數的曲線，橫軸上以刻度與虛線標出 a 與 b 兩點，兩點之間的曲線下方以淡色填滿，區域中標示這一段區間的機率。">
-  <figcaption><span class="topic-figure__label">Fig. 2.6.</span> 連續型隨機變數落在 $a$ 與 $b$ 之間的機率，即為密度曲線在這一段區間下方所圍出的面積。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 2.6.</span> 連續型隨機變數落在 $a$ 與 $b$ 之間的機率，即密度曲線在此區間下方圍出的面積。</figcaption>
 </figure>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-在面積的運算中，任意可積分函數的單點定積分恆為 $0$，因為我們可將單點積分理解為，面積的底邊為一個單點 (長度為 $0$)，因此我們能夠由此得到以下的重要性質: **連續型隨機變數的單點機率為 $0$**，即 [Theorem 2.4](#thm-point-probability-zero)。
-
-</div>
+由面積觀點來看，任意可積函數在單點上的定積分恆為零，因為單點積分的底邊長度為零、沒有寬度可言；由此即得**連續型隨機變數的單點機率為零**，見下列 [Theorem 2.4](#thm-point-probability-zero)。
 
 <div id="thm-point-probability-zero" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.4 (連續型隨機變數的單點機率為零, zero probability at a single point)</div>
@@ -123,16 +116,16 @@ $$
 
 </div>
 
-[Theorem 2.4](#thm-point-probability-zero) 可以說是連續型隨機變數，與離散型隨機變數間最大的區別，因為離散型隨機變數本身，即是在特定的單點上具有機率，然而連續型隨機變數在特定的單點上，皆不具有機率，我們**必須要在一段範圍中積分**才有面積，也才有機率。
+[Theorem 2.4](#thm-point-probability-zero) 可以說是連續型與離散型隨機變數之間最大的區別。離散型隨機變數是在特定的單點上帶有正機率，而連續型隨機變數在任何單點上的機率皆為零，**必須在一段區間上積分**才有面積，也才有機率。
 
-我們可以用下圖來理解上面的定理:
+我們可以用下圖來理解上面的定理。
 
 <figure id="fig-single-point-zero" class="topic-figure topic-figure--wide">
   <img src="/images/lecture-notes/continuous-point-zero.svg" alt="機率密度函數的曲線，橫軸上以刻度標出單點 a，該處只有一條由橫軸連到曲線、沒有寬度的線段，並以虛線箭頭引出標示，說明該單點的機率為 0。">
   <figcaption><span class="topic-figure__label">Fig. 2.7.</span> 區間縮成單點 $a$ 之後，密度曲線下方只剩一條沒有寬度的線段，沒有面積可言，故 $\mathbb{P}(X=a)=0$。</figcaption>
 </figure>
 
-基於 [Theorem 2.4](#thm-point-probability-zero)，我們可以由此得到以下這個方便且重要的性質:
+基於 [Theorem 2.4](#thm-point-probability-zero) 的結果，我們可以進一步得到下面這個方便且重要的性質。
 
 <div id="thm-continuous-interval-endpoints" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.5 (連續型區間端點可互換, interchangeable endpoints in the continuous case)</div>
@@ -158,17 +151,15 @@ $$
 
 </div>
 
-[上述定理](#thm-continuous-interval-endpoints)僅限於連續型隨機變數，離散型隨機變數並不具有這樣的性質。
+[Theorem 2.5](#thm-continuous-interval-endpoints) 僅適用於連續型隨機變數。離散型隨機變數在質點上具有正機率，**區間端點是否包含等號會直接改變機率值**，不可任意增刪等號。
 
-與之相對，**離散型隨機變數相當講究某個單點上是否具有等號**，其原因當然是因為離散型隨機變數本身具有單點機率，故若隨意忽略單點機率則會發生嚴重的問題。
-
-[上述定理](#thm-continuous-interval-endpoints)的好處在於，我們可以忽略掉端點的單點機率，而將各種區間的機率轉為 cdf 的形式，在 cdf 已知的情況下，這將會是比較簡便的做法。下面就來看一個這樣的例子。
+對連續型隨機變數而言，由於端點的單點機率為零，各種開閉區間的機率皆可改寫為 cdf 的差值；在 cdf 已知時計算格外簡便，以下舉例說明。
 
 <div id="ex-power-demand-density" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.10</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ denotes the growth in demand for electrical power, measured in millions of kilowatt hours, in a certain region over the coming $2$ years, and that the density function of $X$ is
+Assume that the increase in demand for electrical power (in millions of kilowatt hours) over the next $2$ years in a certain region is a random variable $X$ with density function
 
 $$
 f_{\sssig X}(x)=
@@ -183,11 +174,11 @@ $$
 <ol class="topic-list-paren">
   <li>Show that $f_{\sssig X}$ is a legitimate probability density function.</li>
   <li>Find the cumulative distribution function <span class="text-nowrap">$F_{\sssig X}$.</span></li>
-  <li>Suppose that the region is able to supply at most $3$ million additional kilowatt hours. What is the probability that demand exceeds the amount available?</li>
+  <li>If the region can supply at most $3$ million additional kilowatt hours, what is the probability that demand will exceed supply?</li>
 </ol>
 </div>
 
-(1) $f_{\sssig X}(x)\geqslant0$ 對一切 $0<x<4$ 皆成立，且
+(1) 非負條件 $f_{\sssig X}(x)\geqslant0$ 對一切 $0<x<4$ 皆成立，且
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -230,14 +221,17 @@ $$
   <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
   $$
+  \begin{gathered}
+  \int_{0}^{x}\frac{1}{64}t^{3}\,dt=\frac{1}{256}x^{4}\quad(0<x<4)\\[0.65em]
   F_{\sssig X}(x)=
   \left\lbrace
   \begin{array}{c@{\quad}l}
-  0, & x\leqslant0\\[0.7em]
-  \frac{1}{256}x^{4}, & 0<x<4\\[0.7em]
-  1,& x\geqslant4
+  0, & x\leqslant0\\[0.65em]
+  \frac{1}{256}x^{4}, & 0<x<4\\[0.65em]
+  1, & x\geqslant4
   \end{array}
   \right.
+  \end{gathered}
   $$
 
   </div>
@@ -310,16 +304,19 @@ $$
   $$
 
   </div>
-  <div class="topic-math-layout topic-math-layout--mobile">
+  <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
   $$
+  \begin{gathered}
+  \frac{d\,F_{\sssig Y}(y)}{dy}=\frac{d\,y^{3}}{dy}=3y^{2}\quad(0<y<1)\\[0.65em]
   f_{\sssig Y}(y)=
   \left\lbrace
   \begin{array}{c@{\quad}l}
-  3y^{2}, & 0<y<1\\[0.9em]
+  3y^{2}, & 0<y<1\\[0.75em]
   0, & \text{elsewhere}
   \end{array}
   \right.
+  \end{gathered}
   $$
 
   </div>
@@ -357,7 +354,7 @@ $$
 <div id="thm-discrete-interval-probability" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.6 (離散型的 pmf 與 cdf, pmf and cdf in the discrete case)</div>
 
-若 $X$ 為一離散型隨機變數，且 $a<b$，$a,b\in\mathbb{R}$ 為具有機率的質點，我們有
+若 $X$ 為離散型隨機變數，且 <span class="text-nowrap">$a<b$，</span>$a,b\in\mathbb{R}$ 為具有機率的質點，則
 
 <ol class="topic-list-paren topic-list-paren--math">
   <li>
@@ -448,17 +445,17 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[上述定理](#thm-discrete-interval-probability)中 (1) 的直觀意義，是「$X=a$ 的單點機率即為 $F_{\sssig X}(x)$ 在 $a$ 躍升的高度」，且由 (1) 可以相當直觀地得到 (2) 至 (5)，我們便由此將離散型隨機變數的 pmf 與其 cdf 進行連結。
+[Theorem 2.6](#thm-discrete-interval-probability) 中第 (1) 式的幾何意義，在於「$X=a$ 的單點機率即為 $F_{\sssig X}(x)$ 於 $x=a$ 處躍升的高度」；結合區間端點是否包含質點 $a$ 與 <span class="text-nowrap">$b$，</span>由第 (1) 式即可推得第 (2) 至 (5) 式，將離散型隨機變數的 pmf 與 cdf 完整連結。
 
 </div>
 
-在點算離散型隨機變數的機率時，可以透過其已知的 cdf，來幫助我們更簡便地得到答案。下面就來看一個這樣的例子。
+計算離散型隨機變數的區間機率時，若已知其 cdf，往往能更簡便地求得答案。下面就來看一個例子。
 
 <div id="ex-geometric-interval-probability" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.3 <span lang="en">(Continued)</span></div>
 
 <div lang="en" markdown="1">
-Suppose that a random variable $X$ has probability mass function
+Let $X$ be a random variable with probability mass function
 
 $$
 p_{\sssig X}(x)=

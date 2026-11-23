@@ -10,7 +10,7 @@ order: 223
 permalink: /lecture-notes/one-to-one-transformations/
 date: 2026-08-06
 published: true
-excerpt: "已知 $X$ 的機率分配，令 $Y=g(X)$，要如何求出 $Y$ 的機率分配？只要 $g(\\cdot)$ 是定義在實數上的實值可測函數，$Y$ 便仍然是一個隨機變數。離散型有直接列表法、pmf 法與 mgf 法三種做法；連續型無法列表，改以 cdf 法由累積的機率相等下手，或以 Jacobian 法把原變數的 pdf 以新變數表示後再乘上導數的絕對值，而 mgf 法離散與連續通用。本篇例題所出現的轉換，其 $g(\\cdot)$ 都是一對一函數，反函數直接存在；最後把取 $g$ 為 $X$ 自身 cdf 的情形寫成機率積分轉換。"
+excerpt: "已知隨機變數 $X$ 的分配，本篇介紹一對一函數轉換 $Y=g(X)$ 的求法，涵蓋離散型的列表法與 pmf 法、連續型的 cdf 法與 Jacobian 法，以及通用的 mgf 法，最後推導機率積分轉換。"
 ---
 
 [上一篇](/lecture-notes/empirical-rule-bell-shaped-distributions/)以鐘形分配的經驗法則，直接說出[期望值](/lecture-notes/expectation/#def-expectation)左右一個、兩個與三個[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)之內各涵蓋多少機率。到這裡為止，我們處理的都是同一個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)自身的機率與量數。
@@ -61,7 +61,7 @@ $$
 
 ## 離散型的函數轉換
 
-在隨機變數為離散的時候，我們有以下的幾種做法:
+隨機變數為離散時，我們有以下幾種做法:
 
 (1) **直接列表法**
 {: .topic-paren-item}
@@ -165,10 +165,10 @@ $$
 **pmf 法適用於無法窮舉列完所有機率，但彼此間的函數轉換是一一對應，且可輕鬆得到反函數關係的時候**。
 {: .topic-paren-cont}
 
-與直接列表法的原理事實上相同，只是在 $g(\cdot)$ 是一對一函數時，利用 $Y=g(X)$ 的函數關係直接反求得到 $X=g^{-1}(Y)$ 的關係，並且**因為 $g(\cdot)$ 本身一一對應，二者為等價事件，機率必定相等**，從而得到 $Y$ 的 pmf。
+其原理與直接列表法相同；當 $g(\cdot)$ 在 $\mathcal{R}\_{\sssig X}$ 上為一對一函數時，可由 $Y=g(X)$ 直接反解出 <span class="text-nowrap">$X=g^{-1}(Y)$，</span>且**因 $g(\cdot)$ 一一對應，兩側為等價事件而機率相等**，據此即得 $Y$ 的 pmf。
 {: .topic-paren-cont}
 
-也因為此方法乃是操作 $Y=g(X)$ 的方程式關係，因此亦被稱作**方程式解**。
+也因為此方法是操作 $Y=g(X)$ 的方程式關係，因此亦被稱作**方程式解**。
 {: .topic-paren-cont}
 
 (3) **mgf 法**
@@ -394,7 +394,7 @@ $$
 <div class="topic-box__label">Example 2.49</div>
 
 <div lang="en" markdown="1">
-An urn contains five chips numbered $1$ through $5$. Suppose that two of the chips are selected at random and without replacement, and let $X=5$ when the sum of the two numbers drawn is even and $X=-3$ when that sum is odd. Determine the moment generating function of $X$.
+Two chips are drawn at random and without replacement from an urn that contains five chips, numbered $1$ through $5$. If the sum of the chips drawn is even, the random variable $X$ equals $5$; if the sum of the chips drawn is odd, $X=-3$. Find the moment generating function of $X$.
 </div>
 
 我們將所有的可能號碼組合與機率，及其所對應的 $X$ 值列在下方:
@@ -454,7 +454,7 @@ $$
 (1) **cdf 法**
 {: .topic-paren-item}
 
-由於連續變數無法像離散變數一樣列表，故我們只能從函數關係的方程式下手，但又因為方程式解法乃是**基於等式兩側機率相等**所得到的結果，故我們在此是採用 cdf 累積的機率相等，而不是與離散分配使用 pmf。其形式如下:
+連續型隨機變數在單點的機率為零，無法如離散型般逐點列表或直接令單點機率相等；此時須改由**累積機率相等**出發，先求出 $Y$ 的 cdf 再微分求得 pdf，步驟如下:
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -476,13 +476,13 @@ $$
 
 </div>
 
-上述的形式若寫為數學步驟則如下列步驟所示:
+上述形式若寫成數學步驟則如下所示:
 {: .topic-paren-cont}
 
 <div id="prop-cdf-method" class="topic-box topic-box--proposition" markdown="1">
 <div class="topic-box__label">Proposition 2.2 (cdf 法, the cdf method)</div>
 
-令 $X$ 為連續型隨機變數，其 cdf 為 <span class="text-nowrap">$F\_{\sssig X}(x)$，</span>且 $g(\cdot)$ 在 $X$ 的值域 $\mathcal{R}\_{\sssig X}$ 上為嚴格單調函數，若令 $Y=g(X)$，則第一個步驟為
+令 $X$ 為連續型隨機變數，其 cdf 為 <span class="text-nowrap">$F\_{\sssig X}(x)$，</span>且 $g(\cdot)$ 在 $X$ 的值域 $\mathcal{R}\_{\sssig X}$ 上為嚴格單調函數，若令 <span class="text-nowrap">$Y=g(X)$，</span>則求算的第一個步驟為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -525,13 +525,13 @@ $$
 
 </div>
 
-第一個步驟最後的條件分為**保序函數 <span lang="en">(order-preserving function)</span>** 和**反序函數 <span lang="en">(order-reversing function)</span>** 二種，對應到在 $g(X)\leqslant y$ 兩側同時取反函數 $g^{-1}(\cdot)$ 的步驟時，此二種函數的特性將使得反函數存在，並且取反函數後的結果便分別為 $X\leqslant g^{-1}(y)$ 及 $X\geqslant g^{-1}(y)$ 二種。保序函數可以簡單理解為遞增函數，而反序函數則可理解為遞減函數。
+第一個步驟最後的條件分為**保序函數 <span lang="en">(order-preserving function)</span>** 和**反序函數 <span lang="en">(order-reversing function)</span>** 二種，對應到在 $g(X)\leqslant y$ 兩側同時取反函數 $g^{-1}(\cdot)$ 的步驟時，此二種函數的特性將使得反函數存在，並且取反函數後的結果便分別為 $X\leqslant g^{-1}(y)$ 及 $X\geqslant g^{-1}(y)$ 二種。在單調函數的脈絡下，保序函數可視為遞增函數，而反序函數則可視為遞減函數。
 {: .topic-paren-cont}
 
 (2) **Jacobian 法**
 {: .topic-paren-item}
 
-**Jacobian 法**被譯為**亞可比法**，這個方法就是微積分中變數代換的章節中所使用的 Jacobian 法，二者並無二致，是將隨機變數的 pdf 視為一個單純的函數時應具有的自然性質。方法如下:
+**Jacobian 法**譯為**亞可比法**，就是微積分變數代換中所使用的 Jacobian 法，兩者並無二致，是將隨機變數的 pdf 視為一般實值函數作積分代換時自然具備的性質。方法如下:
 {: .topic-paren-cont}
 
 <div id="prop-jacobian-method" class="topic-box topic-box--proposition" markdown="1">
@@ -554,13 +554,13 @@ $$
 上述的 $\lvert\cdot\rvert$ 為絕對值，我們可以將這個方法的流程理解為**將原變數的 pdf 以新變數表示，再乘上原變數對新變數微分的絕對值**。
 {: .topic-paren-cont}
 
-然而很多時候 $g(\cdot)$ 的反函數不存在，這時也不用太擔心，我們只需將原先的隨機變數分段，直到該段中 $g(\cdot)$ 的反函數存在，分段轉換為新變數的 pdf 後，再以分段隨機變數的概念將各段連接起來即可。
+當 $g(\cdot)$ 在整個值域上並非一對一而不存在全域反函數時，可將原隨機變數的值域切分為若干區間，使 $g(\cdot)$ 在各區間內皆具滿足上述可微條件的反函數，分別求得各段對應的密度項 (於該段對應的 $y$ 範圍外記為 $0$) 後，再依 $y$ 的範圍相加合併即可。
 {: .topic-paren-cont}
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個概念被稱為**分治法 <span lang="en">(divide-and-conquer)</span>**，在電腦科學中是非常常使用的手段，特別是當子問題明顯地比原問題容易解決時，我們常常傾向分別解決多個子問題，而非一個困難的原問題；在這裡的情況則是分段求取新的 pdf 後，再行合併得到所求。
+這種將原問題拆解為若干易處理子問題的做法，在電腦科學中稱為**分治法 <span lang="en">(divide-and-conquer)</span>**；於非一對一的函數轉換中，即是將原值域切分為各自嚴格單調的子區間，分別求得各段對應的密度項後，再依對應的 $y$ 範圍相加合併為 $Y$ 的 pdf。
 
 </div>
 
@@ -728,34 +728,21 @@ $$
 <div class="topic-box__label">Example 2.31 <span lang="en">(Continued)</span></div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ has the logistic pdf
-
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+Let $X$ have the logistic pdf
 
 $$
 f_{\sssig X}(x)=\frac{e^{-x}}{\,(1+e^{-x})^{2}\,},\quad -\infty<x<\infty
 $$
 
-</div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
-
-$$
-\begin{aligned}
-f_{\sssig X}(x)&=\frac{e^{-x}}{\,(1+e^{-x})^{2}\,}, ~-\infty<x<\infty
-\end{aligned}
-$$
-
-</div>
-
 <ol class="topic-list-paren topic-list-paren--start-4">
-  <li>Determine the distribution of $$Y=(1+e^{-X})^{-1}.$$</li>
+  <li>Find the distribution of $Y=(1+e^{-X})^{-1}$.</li>
 </ol>
 </div>
 
 (4) **cdf 法**
 {: .topic-paren-item}
 
-由 [cdf 之定義](/lecture-notes/cumulative-distribution-functions/#def-cdf)與 [Example 2.31](/lecture-notes/moment-generating-functions/#ex-logistic-cdf) 第 (1) 小題已求得的 $F\_{\sssig X}(x)=\frac{1}{\,1+e^{-x}\,}$ 可知
+由 [cdf 定義](/lecture-notes/cumulative-distribution-functions/#def-cdf)與 [Example 2.31](/lecture-notes/moment-generating-functions/#ex-logistic-cdf) 第 (1) 小題所得 $F\_{\sssig X}(x)=\frac{1}{\,1+e^{-x}\,}$ 知
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -850,14 +837,7 @@ $$
 
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這題使用的函數 $g(\cdot)$ 比較特殊，是 $X$ 本身的 cdf (捨棄了 cdf 的意義而直接當成一個函數)，這時候得到的結果必定會是 $\mathcal{U}(0, 1)$ 分配。這個性質我們將在均勻分配的小節中提到，是一個特殊的機率性質。
-
-</div>
-
-這個性質對任何連續型隨機變數都成立，反過來走也可以由 $\mathcal{U}(0, 1)$ 回到原來的分配，正式的敘述如下。
+上題所取的轉換函數 $g(\cdot)$ 恰為 $X$ 自身的累積分配函數 $F_{\sssig X}(\cdot)$ (將其視為作用於 $X$ 上的一般實值函數)，所得結果為均勻分配 <span class="text-nowrap">$\mathcal{U}(0, 1)$。</span>這項性質並非邏輯斯分配所獨有，而是對任意連續型隨機變數皆成立，後文介紹均勻分配時亦會再次呼應；反過來，由 $\mathcal{U}(0, 1)$ 出發經分位函數轉換亦可還原原本的分配，正式敘述如下。
 
 <span id="proposition-218"></span>
 <div id="prop-probability-integral-transform" class="topic-box topic-box--proposition" markdown="1">
@@ -875,10 +855,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-F^{-1}_{\sssig X}(u)=\inf\lbrace x\in\mathbb{R}\mid F_{\sssig X}(x)&\geqslant u\rbrace,\\[0.45em]
-&0<u<1
-\end{aligned}
+\begin{gathered}
+F^{-1}_{\sssig X}(u)=\inf\lbrace x\in\mathbb{R}\mid F_{\sssig X}(x)\geqslant u\rbrace,\\[0.45em]
+0<u<1
+\end{gathered}
 $$
 
 </div>
@@ -943,7 +923,7 @@ $$
 此即 $\mathcal{U}(0, 1)$ 的 cdf。
 {: .topic-paren-cont}
 
-(2) 先證對任一 $x\in\mathbb{R}$ 與 $0<u<1$，$F^{-1}\_{\sssig X}(u)\leqslant x$ 若且唯若 $u\leqslant F\_{\sssig X}(x)$。若 $u\leqslant F\_{\sssig X}(x)$，則 $x$ 屬於 $\lbrace t\in\mathbb{R}\mid F\_{\sssig X}(t)\geqslant u\rbrace$，由下確界的定義可得 $F^{-1}\_{\sssig X}(u)\leqslant x$；反之若 $F^{-1}\_{\sssig X}(u)\leqslant x$，由 $F\_{\sssig X}$ 右連續可知該下確界本身也滿足 $F\_{\sssig X}\bigl(F^{-1}\_{\sssig X}(u)\bigr)\geqslant u$，再由 $F\_{\sssig X}$ 遞增可得 $F\_{\sssig X}(x)\geqslant u$。故
+(2) 先證對任一 $x\in\mathbb{R}$ 與 $0<u<1$，$F^{-1}\_{\sssig X}(u)\leqslant x$ 若且唯若 $u\leqslant F\_{\sssig X}(x)$。若 $u\leqslant F\_{\sssig X}(x)$ 成立，則 $x$ 屬於 $\lbrace t\in\mathbb{R}\mid F\_{\sssig X}(t)\geqslant u\rbrace$，由下確界的定義可得 $F^{-1}\_{\sssig X}(u)\leqslant x$；反之若 $F^{-1}\_{\sssig X}(u)\leqslant x$ 成立，由 $F\_{\sssig X}$ 右連續可知該下確界本身也滿足 $F\_{\sssig X}\bigl(F^{-1}\_{\sssig X}(u)\bigr)\geqslant u$，再由 $F\_{\sssig X}$ 遞增可得 $F\_{\sssig X}(x)\geqslant u$。故
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -978,7 +958,7 @@ $$
 
 連續型無法列表。[Proposition 2.2](#prop-cdf-method) 的 cdf 法改由累積的機率相等下手，先依 $g(\cdot)$ 是保序或反序寫出 $F\_{\sssig Y}(y)$，再微分得到 $f\_{\sssig Y}(y)$；[Proposition 2.3](#prop-jacobian-method) 的 Jacobian 法則把原變數的 pdf 以新變數表示，再乘上 $\lvert\mathbf{J}\rvert$。mgf 法在兩型之間並無不同。[Example 2.50](#ex-reciprocal-transformation) 與 [Example 2.31 <span lang="en">(Continued)</span>](#ex-logistic-to-uniform) 各示範一次，後者取 $g$ 為 $X$ 自身的 cdf，結果是 $\mathcal{U}(0, 1)$，這個現象由 [Proposition 2.4](#prop-probability-integral-transform) 的機率積分轉換正式敘述，它同時給出反方向的走法。由 $\mathcal{U}(0, 1)$ 出發，經分位函數即可回到原來的分配。
 
-本篇所處理的 $Y=2X+1$、$Y=\frac{1}{X}$ 與 $Y=\bigl(1+e^{-X}\bigr)^{-1}$，其中的 $g(\cdot)$ 都是一對一函數，反函數直接存在，套上公式即可。[下一篇](/lecture-notes/many-to-one-transformations/)處理反函數不存在的情形，作法正是前面提過的分段。先把值域分成若干段，使 $g(\cdot)$ 在各段上一對一，分別求出各段的密度之後再合併起來。
+本篇所處理的 $Y=2X+1$、$Y=\frac{1}{X}$ 與 $Y=\bigl(1+e^{-X}\bigr)^{-1}$，其中的 $g(\cdot)$ 都是一對一函數，反函數直接存在，套上公式即可。[下一篇](/lecture-notes/many-to-one-transformations/)處理反函數不存在的情形，作法正是前面提過的分段。先把值域分成若干段，使 $g(\cdot)$ 在各段上一對一，分別求出各段對應的密度函數之後再合併起來。
 
 ## 參考文獻與延伸閱讀
 

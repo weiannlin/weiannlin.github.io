@@ -10,12 +10,12 @@ order: 202
 permalink: /lecture-notes/cumulative-distribution-functions/
 date: 2026-08-04
 published: true
-excerpt: "累積分配函數定義為 $F_{\\sssig X}(x)=\\mathbb{P}(X\\leqslant x)$，定義域為整個實數線，函數值落在 $[0,1]$ 之中，離散型與連續型隨機變數都適用。它必然非遞減、右連續，兩端的極限分別為 $0$ 與 $1$；離散型的累積分配函數為階梯函數，每一階的躍升高度即為該質點的機率，故亦可由累積分配函數回頭求得機率質量函數。"
+excerpt: "累積分配函數定義為 $F_{\\sssig X}(x)=\\mathbb{P}(X\\leqslant x)$ 這個機率，適用於離散型與連續型隨機變數。本篇介紹其非遞減、右連續與兩端極限等性質，並說明離散型階梯函數與機率質量函數的對應。"
 ---
 
 [上一篇](/lecture-notes/random-variables-and-pmf/)以[機率質量函數](/lecture-notes/random-variables-and-pmf/#def-pmf)描述離散型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)，把機率逐點記在值域的質點上。但機率質量函數只定義在離散型隨機變數上，[Definition 2.2](/lecture-notes/random-variables-and-pmf/#def-support-classification) 所分出的另一型並不適用。
 
-另一方面，[Definition 2.1](/lecture-notes/random-variables-and-pmf/#def-random-variable) 要求對任意 $x\in\mathbb{R}$，能使 $X(\omega)\leqslant x$ 的樣本點所形成的集合都是事件，故 $\mathbb{P}(X\leqslant x)$ 對每一個實數 $x$ 都有定義。把 $x$ 看成變數，這個機率本身就是一個定義在實數上的函數，且不必事先區分 $X$ 屬於哪一型。
+另一方面，[Definition 2.1](/lecture-notes/random-variables-and-pmf/#def-random-variable) 要求對任意 <span class="text-nowrap">$x\in\mathbb{R}$，</span>能使 $X(\omega)\leqslant x$ 的樣本點集合都是事件，故 $\mathbb{P}(X\leqslant x)$ 對每一個實數 $x$ 都有定義。把 $x$ 看成變數，此機率本身就是一個定義在實數上的函數，且不必事先區分 $X$ 屬於哪一型。
 
 <div id="def-cdf" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 2.4 (累積分配函數, cumulative distribution function, cdf)</div>
@@ -26,13 +26,13 @@ $$
 F_{\sssig X}(x)=\mathbb{P}(X\leqslant x),\ x\in\mathbb{R}
 $$
 
-我們稱 $F_{\sssig X}(x)$ 為 $X$ 的**累積分配函數 <span lang="en">(cumulative distribution function, cdf)</span>** 或簡稱為**分配函數 <span lang="en">(distribution function, df)</span>**。
+我們稱 $F_{\sssig X}(x)$ 為隨機變數 $X$ 的**累積分配函數 <span lang="en">(cumulative distribution function, cdf)</span>**，或簡稱為**分配函數 <span lang="en">(distribution function, df)</span>**。
 
 </div>
 
 累積分配函數有一些地方需要注意:
 
-(1) **累積分配函數** $F_{\sssig X}(x)$ 是一種定義在實數 $\mathbb{R}$ 上的函數，且將其對應到 $[0,1]$ 區間中的函數，可以記為
+(1) **累積分配函數** $F_{\sssig X}(x)$ 是定義在實數集 $\mathbb{R}$ 上、對應至閉區間 $[0,1]$ 的函數，可以記為
 {: .topic-paren-item}
 
 $$
@@ -62,19 +62,12 @@ $$
 
 </div>
 
-這個版本中，如果搭配 $X^{\sssig -1}(\cdot)$ 的定義，我們將更容易看出 cdf 是如何將一個實數範圍上的集合，對應回樣本點進行機率的計算的。
+在此版本中，搭配反映射 $X^{-1}(\cdot)$ 的定義，更容易看出 cdf 如何將實數線區間對應回樣本空間中的事件來計算機率。
 
 </div>
 
-(2) 累積分配函數的定義中，並不限制 $X$ 是一個離散型隨機變數，或是連續型隨機變數，但是由於 $\mathbb{P}(X\leqslant x)$ 的運算，在離散型隨機變數上是採用累加的方式，故亦有教科書認為應分開定義，且應翻譯為**累加分配函數**。
+(2) 累積分配函數的定義並不限制 $X$ 為離散型或連續型隨機變數。在離散型隨機變數上，$\mathbb{P}(X\leqslant x)$ 以**加總 <span lang="en">(summation)</span>** 計算，故亦有部分教科書主張分開定義，並將離散型的情形譯為**累加分配函數**；在連續型隨機變數上則改採微積分中的**積分 <span lang="en">(integration)</span>**，雖本質上同為累積，但因運算形式有別，一般不視同加總。
 {: .topic-paren-item}
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-連續型隨機變數中的累積分配函數，其運算性質是採用微積分中的**積分 <span lang="en">(integration)</span>**，雖然其本質仍為累加，但由於運算細節有所不同，故許多教科書並不將其認為是一種**加總 <span lang="en">(summation)</span>**。
-
-</div>
 
 <div id="thm-cdf-properties" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.1 (cdf 的性質, properties of a cdf)</div>
@@ -117,27 +110,20 @@ $$
 
 故其當然介在 $0$ 至 $1$ 之間。
 
-又因為其機率為累積 (或累加)，隨著 $x$ 的增長，函數值 $F_{\sssig X}(x)$ 只會向上增加或持平，故其累積分配函數當然具有**非遞減**之性質。至於**右連續**，累積本身只保證非遞減，尚須用到機率的連續性。令 $x_1>x_2>\cdots$ 為任一遞減至 $x$ 的數列，則 $\lbrace X\leqslant x_n\rbrace$ 為一非遞增的事件序列，其極限為 $\lbrace X\leqslant x\rbrace$，故由[單調事件序列的機率極限](/lecture-notes/probability-rules-from-axioms/#theorem-continuity)可得
+又因為其機率為累積 (或累加)，隨著自變數 $x$ 增長，函數值 $F_{\sssig X}(x)$ 只會向上增加或持平，故累積分配函數自然具有**非遞減**之性質。至於**右連續**的性質，則與第一章提過的[單調事件序列的機率極限](/lecture-notes/probability-rules-from-axioms/#theorem-continuity)息息相關。若我們取任意一個由右側遞減逼近 $x$ 的數列 $x_1>x_2>\cdots$，則事件序列 $\lbrace X\leqslant x_n\rbrace$ 會隨著 $n$ 增大而逐步縮減為事件 $\lbrace X\leqslant x\rbrace$，依據機率的連續性，其機率極限便收斂到 $F_{\sssig X}(x)$ 這一函數值，此即
 
 $$
 \lim_{n\to\infty}F_{\sssig X}(x_n)=\mathbb{P}(X\leqslant x)=F_{\sssig X}(x)
 $$
 
-此即右連續。
+若 $X$ 為連續型隨機變數，$F_{\sssig X}(x)$ 本身即為連續函數 (同時滿足左連續與右連續)；僅具右連續而在部分點不左連續的情形，則出現在離散型隨機變數或後文將介紹的[混合型隨機變數](/lecture-notes/mixed-random-variables/)。
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-事實上在連續型隨機變數中 $F_{\sssig X}(x)$ 是一連續函數 (即左連續且右連續)；而僅右連續的狀況發生在離散型隨機變數，或稍後的章節中會談到的[混合型隨機變數](/lecture-notes/mixed-random-variables/)中。
-
-</div>
-
-在離散型隨機變數中，$x$ 在累加到具有機率的質點時，其 cdf 會具跳躍式的成長；接著到 $x$ 再累加至具有機率的下一個質點前，由於沒有新的質點，小於等於 $x$ 的機率總和並不會成長，故其函數值會維持水平的狀態，這樣的函數便被稱為**階梯函數**。
+在離散型隨機變數中，當 $x$ 遞增至具有正機率的質點時，cdf 會發生跳躍式的增長；在抵達下一個質點之前，由於區間內沒有新的質點，小於或等於 $x$ 的機率總和維持不變，函數圖形遂呈水平線段，此類函數稱為**階梯函數**。
 
 <div id="note-step-function-isolated-points" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Theorem 2.1](#thm-cdf-properties) 第 (4) 款尚需一個前提，即值域中的質點在每一個有界區間內都只有有限多個，這等價於值域在 $\mathbb{R}$ 中沒有聚點。只要求每一個質點都是孤立點並不夠。取值域為 $\lbrace\,1/n\mid n=1,2,\ldots\,\rbrace$、$p_{\sssig X}(1/n)=2^{-n}$，每一個質點都有一個不含其他質點的鄰域，但 $0$ 的右側任一鄰域內都有無窮多個跳躍，含 $0$ 的區間無法分成有限多段水平線段，$F_{\sssig X}$ 因而不是階梯函數；此時第 (1)、(2)、(3)、(5) 四款仍然成立。
+嚴格而言，[Theorem 2.1](#thm-cdf-properties) 的性質 (4) 須在「值域中的質點於任意有界區間內僅有有限多個」(即值域在實數線上無聚點) 的前提下成立。例如若離散型隨機變數的值域為 $\lbrace\,1/n\mid n=1,2,\ldots\,\rbrace$ 且機率為 $p_{\sssig X}(1/n)=2^{-n}$ 的形式，雖每個質點皆為孤立點，但原點 $0$ 右側任意鄰域內聚集無窮多個跳躍點，使含 $0$ 的區間無法切分為有限段水平線段，此時 $F_{\sssig X}$ 便非嚴格定義的階梯函數 (其餘四項性質仍成立)。
 
 </div>
 
@@ -146,7 +132,7 @@ $$
 
 若箱中有四顆大小形狀完全相同、分別編號 $0$ 至 $3$ 的球，若 $X$ 表示隨機從中一次抽取兩顆球的號碼總和，則試列出且畫出其 cdf。
 
-$X$ 的 pmf 已於 [Example 2.2](/lecture-notes/random-variables-and-pmf/#ex-two-ball-sum) 求得: <span class="text-nowrap">$p_{\sssig X}(3)=\frac{2}{6}=\frac{1}{3}$，</span>其餘四個質點 $1,2,4,5$ 的機率各為 $\frac{1}{6}$。$F_{\sssig X}(x)$ 為小於等於 $x$ 的各質點機率之總和，以 pmf 寫出即
+本題承接 [Example 2.2](/lecture-notes/random-variables-and-pmf/#ex-two-ball-sum) 已求得的 pmf，其中 $p_{\sssig X}(3)=\frac{2}{6}=\frac{1}{3}$ 為最大，其餘四個質點 $1,2,4,5$ 的機率各為六分之一。由於 $F_{\sssig X}(x)$ 為小於或等於 $x$ 的各質點機率總和，以 pmf 寫出即為
 
 $$
 F_{\sssig X}(x)=\sum_{t\leqslant x}p_{\sssig X}(t)
@@ -170,7 +156,7 @@ $$
 
 <figure id="fig-two-ball-sum-cdf" class="topic-figure topic-figure--wide">
   <img src="/images/lecture-notes/two-ball-sum-cdf.svg" alt="四球取兩顆之號碼總和的累積分配函數階梯圖。函數值由 0 開始，在 x 等於 1、2、3、4、5 各躍升一階，躍升之後維持水平，最後停在 1。">
-  <figcaption><span class="topic-figure__label">Fig. 2.1.</span> 號碼總和 $X$ 的 cdf。函數在 $x=1,2,3,4,5$ 五個質點上各躍升一階，兩階之間維持水平。縱軸以 $y=3$ 對應機率 $1$，與 <a href="#fig-cdf-to-pmf">Fig. 2.2</a> 的比例尺不同，兩圖的高度不可直接比較。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 2.1.</span> 號碼總和 $X$ 的 cdf。函數在 $x=1,2,3,4,5$ 五個質點各躍升一階，兩階間維持水平。縱軸以 $y=3$ 對應機率 <span class="text-nowrap">$1$，</span>與 <a href="#fig-cdf-to-pmf">Fig. 2.2</a> 比例尺不同，兩圖高度不可直接比較。</figcaption>
 </figure>
 
 </div>
@@ -178,11 +164,11 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-五個質點 $1,2,3,4,5$ 同時是各段的分界，由於定義取的是小於等於，分界一律歸入右側的那一段: $x=1$ 時 $p_{\sssig X}(1)$ 已經被算進來，所以 <span class="text-nowrap">$F_{\sssig X}(1)=\frac{1}{6}$，</span>與 $x$ 自右側趨近 $1$ 的極限相同，此即 [Theorem 2.1](#thm-cdf-properties) 第 (3) 款右連續在本題的具體情形。最外側的 $x<1$ 與 $5\leqslant x$ 兩段則分別恆為 $0$ 與 $1$，[Theorem 2.1](#thm-cdf-properties) 第 (5) 款的兩個極限在本題即由這兩段給出。
+由[上圖](#fig-two-ball-sum-cdf)可見，五個質點 $1,2,3,4,5$ 恰為階梯函數各段的分界點。由於 cdf 的定義取「小於或等於」，每個分界點皆歸入右側區間；例如在 $x=1$ 處質點機率 $p_{\sssig X}(1)$ 已計入，故函數值 $F_{\sssig X}(1)=\frac{1}{6}$ 與 $x$ 由右側趨近 $1$ 的極限值一致，具體呈現 [Theorem 2.1](#thm-cdf-properties) 性質 (3) 的右連續性。最左端 $x<1$ 與最右端 $x\geqslant5$ 兩段則分別恆為 $0$ 與 <span class="text-nowrap">$1$，</span>對應性質 (5) 的兩端極限。
 
 </div>
 
-[上圖](#fig-two-ball-sum-cdf)是典型的離散型 cdf，每一階的跳躍點，都對應到原本的 pmf 中的機率質點，且躍升的高度即是該點的機率，故我們可以由離散型 cdf 轉換為其對應的 pmf，如下圖:
+[上圖](#fig-two-ball-sum-cdf)是典型的離散型 cdf，每一階的跳躍點都對應原本 pmf 中的質點，且躍升高度即為該點的機率，因此我們可以由離散型 cdf 還原出對應的 pmf，如下圖所示。
 
 <figure id="fig-cdf-to-pmf" class="topic-figure topic-figure--wide">
   <img src="/images/lecture-notes/cdf-to-pmf.svg" alt="由累積分配函數各階躍升高度還原的機率質量函數點圖。x 等於 1、2、4、5 的點高為六分之一，x 等於 3 的點高為三分之一。">
@@ -195,7 +181,7 @@ $$
 <div class="topic-box__label">Example 2.3 <span lang="en">(Continued)</span></div>
 
 <div lang="en" markdown="1">
-Suppose that a random variable $X$ has probability mass function
+Let $X$ be a random variable with probability mass function
 
 $$
 p_{\sssig X}(x)=
@@ -208,7 +194,7 @@ p_{\sssig X}(x)=
 $$
 
 <ol class="topic-list-paren topic-list-paren--start-2">
-  <li>Determine the cumulative distribution function of $X$.</li>
+  <li>Find the cumulative distribution function of $X$.</li>
 </ol>
 </div>
 
@@ -275,7 +261,7 @@ $$
 
 <figure id="fig-degenerate-cdf" class="topic-figure topic-figure--narrow">
   <img src="/images/lecture-notes/degenerate-cdf.svg" alt="退化型隨機變數的累積分配函數圖。x 小於 0 時函數值為 0，在 x 等於 0 處躍升至 1，其後維持水平。">
-  <figcaption><span class="topic-figure__label">Fig. 2.3.</span> $F_{\sssig X}$ 只在 $x=0$ 處躍升，躍升的高度為 <span class="text-nowrap">$1$。</span></figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 2.3.</span> $F_{\sssig X}$ 只在 $x=0$ 處躍升，高度為 <span class="text-nowrap">$1$。</span></figcaption>
 </figure>
 
 $F_{\sssig X}(x)$ 在 $x=0$ 處發生一高度為 $1$ 之跳躍，故可由此得知
@@ -295,7 +281,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-本題的 $X$ 把全部機率都放在單一質點 $x=0$ 上，也就是 <span class="text-nowrap">$\mathbb{P}(X=0)=1$，</span>它其實就是常數 $0$。這一類隨機變數稱為**退化隨機變數 <span lang="en">(degenerate random variable)</span>**，其 cdf 只有一個跳躍，高度恰為 <span class="text-nowrap">$1$。</span>我們在[第二章談變異數的性質](/lecture-notes/variance/#thm-variance-properties)時會再談到它，即常數沒有隨機性，變異數為 <span class="text-nowrap">$0$。</span>
+本題隨機變數將全部機率集中在單點 $x=0$ 上 (即 <span class="text-nowrap">$\mathbb{P}(X=0)=1$</span>)，本質上即為常數 <span class="text-nowrap">$0$。</span>此類無隨機變化的隨機變數稱為**退化隨機變數 <span lang="en">(degenerate random variable)</span>**，其 cdf 圖形僅在該點出現一次高度為 $1$ 的跳躍；後文[討論變異數的性質](/lecture-notes/variance/#thm-variance-properties)時亦可見，退化隨機變數的變異數恆為零。
 
 </div>
 
@@ -304,7 +290,7 @@ $$
 
 累積分配函數定義為 $F_{\sssig X}(x)=\mathbb{P}(X\leqslant x)$，定義域是整條實數線，函數值落在 $[0,1]$ 之中。它的定義並不限制 $X$ 的型態，離散型與連續型都適用，這是它與只定義在離散型上的機率質量函數最大的不同。
 
-[Theorem 2.1](#thm-cdf-properties) 列出五項性質: 函數值介於 $0$ 與 $1$ 之間、非遞減、右連續、$X$ 為離散型時是階梯函數，以及兩端的極限分別為 $0$ 與 $1$。前兩項可由「累積」二字直接看出，右連續另需機率的連續性，第 (4) 款另需質點不聚集的前提。
+[Theorem 2.1](#thm-cdf-properties) 列出 cdf 的五項性質，包括函數值介於 $0$ 與 $1$ 之間、非遞減、右連續、當 $X$ 為離散型時呈階梯函數，以及左右兩端的極限分別為 $0$ 與 $1$。前兩項可由「累積」二字直接看出，右連續來自機率的連續性，第 (4) 款則需質點在有界區間內不無限聚集的前提。
 
 離散型 cdf 的每一階都對應到一個質點，躍升的高度就是該點的機率，故 pmf 與 cdf 之間可以互推。[Example 2.2 <span lang="en">(Continued)</span>](#ex-two-ball-sum-cdf) 由 pmf 累加得到 cdf，[Example 2.5](#ex-degenerate-cdf) 則由 cdf 的單一跳躍回頭求得 pmf。[下一篇](/lecture-notes/probability-density-functions/)進入連續型隨機變數的[機率密度函數](/lecture-notes/probability-density-functions/#def-pdf)。
 

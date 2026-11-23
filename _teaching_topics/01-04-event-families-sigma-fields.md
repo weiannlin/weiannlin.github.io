@@ -10,18 +10,18 @@ order: 104
 permalink: /lecture-notes/event-families-sigma-fields/
 date: 2026-05-05
 published: true
-excerpt: '機率公理要建立在哪裡？本篇依序介紹域、$\sigma$-域、可測空間與機率空間，說明哪些事件可以被測度機率，以及一個機率測度至少應滿足的三大公理。'
+excerpt: "機率公理要建立在哪裡？本篇依序介紹域、$\\sigma$-域、可測空間與機率空間，說明哪些事件可以賦予機率，以及機率測度應滿足的三大公理。"
 ---
 
-[上一篇](/lecture-notes/probability-assignment-classical-geometric/)說明了古典機率、幾何機率、客觀機率與主觀機率等指定方式，也看到這些定義各有其對應的問題，因此無法作為一個嚴謹的數學學科而有較深入的發展。俄羅斯數學家柯爾莫哥洛夫 (Andrey N. Kolmogorov) 便由此提出**機率公理 <span lang="en">(probability axioms)</span>** 作為機率論的基石，他曾說: 「機率論作為數學學科，可以、而且應該，從公理開始建設，和幾何、代數的路一樣。」
+[上一篇](/lecture-notes/probability-assignment-classical-geometric/)說明了古典機率、幾何機率、客觀機率與主觀機率等指定方式，也看到這些定義各有其對應的問題，因此無法作為一個嚴謹的數學學科而有較深入的發展。俄羅斯數學家柯爾莫哥洛夫 (Andrey N. Kolmogorov) 便由此提出**機率公理 <span lang="en">(probability axioms)</span>** 作為機率論的基石，他曾指出，「機率論作為數學學科，可以、而且應該，從公理開始建設，和幾何、代數的路一樣。」
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-**公理 (axiom)** 被作為該領域所有**定理 <span lang="en">(theorem)</span>** 的源頭，不需證明其為真。以機率論為例，所有機率的定理若追本溯源，都可以發現其源頭為 Kolmogorov 的三大機率公理；藉由這些嚴謹的數學定義，機率論得以成為一個正式的數學領域，甚至至今已成為數學的幾個主要分支中的其中一支。
+數學中的**公理 (axiom)** 是推導該領域所有**定理 <span lang="en">(theorem)</span>** 的起點，本身不加證明而直接採納為前提。機率論中的各項定理追本溯源皆奠基於柯爾莫哥洛夫的三大機率公理；正因這套嚴謹的公理化架構，機率論得以確立為現代數學的主要分支之一。
 </div>
 
-事實上，機率公理就是機率必須滿足的一些基礎特性。但在建立機率公理之前，我們需要了解我們要**在哪裡建立**機率公理，也就是**機率空間 <span lang="en">(probability space)</span>**。開始說明機率公理之前，我們首先注意到一些特殊的集合，這些特殊的集合將有助於我們釐清機率公理建構的範圍。
+機率公理規範了機率必須滿足的基本性質；但在寫下公理之前，須先釐清公理建立在何處，即**機率空間 <span lang="en">(probability space)</span>**。為此，我們先從幾類特殊的事件集合族談起，界定哪些集合能夠賦予機率。
 
 ## 域
 
@@ -45,19 +45,13 @@ excerpt: '機率公理要建立在哪裡？本篇依序介紹域、$\sigma$-域�
   $$</li>
 </ol>
 
-則稱 $\mathcal{F}$ 為佈於 $S$ 上的一個**域 (field)**，或譯為**體**，亦稱為**代數 <span lang="en">(algebra)</span>**。
+則稱 $\mathcal{F}$ 為佈於 $S$ 上的**域 (field)**，或譯為**體**，亦稱**代數 <span lang="en">(algebra)</span>**。
 </div>
 
 [Definition 1.15](#definition-field) 在定義機率公理方面，有幾個意義與需要注意的事情:
 
-(1) 在[隨機實驗、樣本空間與事件](/lecture-notes/random-experiments-sample-space-events/#事件與事件的發生)中我們曾經提過，所謂事件就是指樣本空間的子集合。從這個角度切入可以發現，所謂的域，事實上就是由各式各樣的事件所構成的集合。換言之，這個特殊的集合刻畫了可能發生的各種事件。
+(1) 如[隨機實驗、樣本空間與事件](/lecture-notes/random-experiments-sample-space-events/#事件與事件的發生)所述，事件即樣本空間的子集合，因此域是由一族事件所構成的集合。在建構機率公理之前，必須先界定哪些事件可以衡量機率，並規範這些事件彼此的運算關係，這正是定義域的目的。
 {: .topic-paren-item}
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-在了解何謂機率以及建構機率公理之前，我們更可能關心的是，到底哪些東西可以衡量機率，以及這些東西 (即事件) 之間的關係，而域的定義正好在規範這些事情。
-</div>
 
 (2) 通常而言，$S$ 就是樣本空間，故條件 (2) 中的 $A^{\prime}$ 不需要特別定義；否則 $A^{\prime}=S-A$。
 {: .topic-paren-item}
@@ -65,7 +59,7 @@ excerpt: '機率公理要建立在哪裡？本篇依序介紹域、$\sigma$-域�
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個性質規範了域對於事件與餘事件具有封閉性。其直觀意義在於，如果某一事件**可能發生** (即 $A\in\mathcal{F}$)，則該事件也**可能不發生**，因此必須將 $A^{\prime}$ 納入考量之中，故此時必須有 $A^{\prime}\in\mathcal{F}$ 的結果。
+條件 (2) 要求域對餘集運算具有封閉性。就事件而言，若我們關心事件 $A$ **是否發生** (即 <span class="text-nowrap">$A\in\mathcal{F}$)，</span>自然也需要考慮 $A$ **不發生**的情形，故其餘事件 $A^{\prime}$ 亦須屬於 <span class="text-nowrap">$\mathcal{F}$。</span>
 </div>
 
 (3) 在條件 (2) 成立下，條件 (1) 中的 $\varnothing\in\mathcal{F}$ 與 $S\in\mathcal{F}$ 其實等價，且由條件 (1) 可知 $\mathcal{F}$ 顯然非空。
@@ -74,13 +68,13 @@ excerpt: '機率公理要建立在哪裡？本篇依序介紹域、$\sigma$-域�
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，雖然條件 (1) 保證了域的非空性，但卻不一定需要這樣定義。我們可以只定義 $\mathcal{F}$ 非空: 任取 $A\in\mathcal{F}$，由條件 (2) 可知 $A^{\prime}\in\mathcal{F}$；又由 $A,A^{\prime}\in\mathcal{F}$ 與條件 (3) 可得
+條件 (1) 雖直接保證 $\mathcal{F}$ 非空，但定義上只需假設 $\mathcal{F}$ 非空即可推出條件 (1)。任取 $A\in\mathcal{F}$ 後，由條件 (2) 知 $A^{\prime}\in\mathcal{F}$ 成立，再結合條件 (3) 可得
 
 $$
 A\cup A^{\prime}=S\in\mathcal{F}
 $$
 
-再由條件 (2) 可得
+進而再由條件 (2) 可得
 
 $$
 \varnothing\in\mathcal{F}
@@ -98,10 +92,10 @@ $$
 \end{gathered}
 $$
 
-在[有限樣本空間中的事件數量](/lecture-notes/random-experiments-sample-space-events/#有限樣本空間中的事件數量)中我們曾經提過，這個符號代表的是 $S$ 的**冪集合 (power set)**，也就是由 $S$ 的所有可能子集所構成的集合。
+如前文[有限樣本空間中的事件數量](/lecture-notes/random-experiments-sample-space-events/#有限樣本空間中的事件數量)所述，$2^{S}$ 代表 $S$ 的**冪集合 (power set)**，即由 $S$ 的所有可能子集所構成的集合。
 {: .topic-paren-cont}
 
-(5) 由條件 (2)、(3) 再搭配[狄摩根律](/lecture-notes/event-set-operations/#狄摩根律)，可知域對有限交集也具有封閉性: 若 <span class="text-nowrap">$A_1,\ldots,A_n\in\mathcal{F}$，</span>則 $A_1^{\prime},\ldots,A_n^{\prime}\in\mathcal{F}$，故
+(5) 由條件 (2)、(3) 再搭配[狄摩根律](/lecture-notes/event-set-operations/#狄摩根律)，可知域對有限交集也具有封閉性。當 $A_1,\ldots,A_n\in\mathcal{F}$ 時，皆有 $A_1^{\prime},\ldots,A_n^{\prime}\in\mathcal{F}$ 成立，故
 {: .topic-paren-item}
 
 $$
@@ -118,7 +112,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個性質規範了域對於事件與事件間的聯集與交集皆具有封閉性。承接之前的直觀，我們可以注意到一個簡單的特例: 如果我們關心 $A$ 與 $B$ 兩事件是否發生，則我們應該也可能關心「$A$ 或 $B$」是否發生，還有「$A$ 且 $B$」是否發生，故我們當然需要把 $A\cup B$ 與 $A\cap B$ 也納入考量當中。也就是說，若 $A,B\in\mathcal{F}$，則
+條件 (3) 與第 (5) 點共同保證域對有限聯集與有限交集皆具封閉性。以兩個事件為例，若我們關心 $A$ 與 $B$ 是否發生，往往也會關心「$A$ 或 $B$」以及「$A$ 且 $B$」是否發生；因此當 $A,B\in\mathcal{F}$ 時，自然要求
 
 $$
 A\cup B\in\mathcal{F}\quad\text{且}\quad A\cap B\in\mathcal{F}
@@ -126,7 +120,7 @@ $$
 
 </div>
 
-(6) 若 $S$ 為有限樣本空間，佈於其上最大可能的域 $\mathcal{F}=2^{S}$ 也必定是有限的。此時 [Definition 1.15](#definition-field) 中的域已經相當夠用，因為我們只需要考慮至多有限個集合的情況。但在[離散樣本空間與連續樣本空間](/lecture-notes/random-experiments-sample-space-events/#離散樣本空間與連續樣本空間)中我們已經很清楚地看見，樣本空間可能是無窮的。這種時候，僅考慮有限聯集與有限交集的話，$\mathcal{F}$ 很可能不足以涵蓋所有可能的情況，因此我們要將條件 (3) 的性質進行推廣，而成底下的定義。
+(6) 若 $S$ 為有限樣本空間，佈於其上最大的域 $\mathcal{F}=2^{S}$ 亦為有限集合，此時僅考慮有限個集合的運算已足以應付所有情況。然而如[離散樣本空間與連續樣本空間](/lecture-notes/random-experiments-sample-space-events/#離散樣本空間與連續樣本空間)所示，樣本空間可能是無窮集合；此時僅考慮有限聯集與有限交集往往不足以包含所需的事件，故須將條件 (3) 推廣至可數聯集，引出下列定義。
 {: .topic-paren-item}
 
 ## $\sigma$-域
@@ -145,25 +139,19 @@ $$
   $$
   A^{\prime}\in\mathcal{F}
   $$</li>
-  <li>若 $A_1,A_2,\ldots\subseteq S$ 且 <span class="text-nowrap">$A_1,A_2,\ldots\in\mathcal{F}$，</span>則
+  <li>若 $A_1,A_2,\ldots\subseteq S$ 且 $A_1,A_2,\ldots\in\mathcal{F}$ 皆成立，則
   $$
   \bigcup_{i=1}^{\infty}A_i\in\mathcal{F}
   $$</li>
 </ol>
 
-則稱 $\mathcal{F}$ 為佈於 $S$ 上的一個 **$\sigma$-域 ($\sigma$-field)**，或譯為 **$\sigma$-體**，亦稱為 **$\sigma$-代數 ($\sigma$-algebra)**。
+則稱 $\mathcal{F}$ 為佈於 $S$ 上的一個 **$\sigma$-域 ($\sigma$-field)**，或譯為 **$\sigma$-體**，亦稱為 **$\sigma$-代數 <span lang="en">($\sigma$-algebra)</span>**。
 </div>
 
 [Definition 1.16](#definition-sigma-field) 可延伸出底下幾點:
 
-(1) $\sigma$-域可以被視為域的強化版本，且**一個 $\sigma$-域必定也是一個域**。
+(1) $\sigma$-域可視為域的強化版本，且**一個 $\sigma$-域必定也是一個域**；驗證時只需在條件 (3) 中對所有 $k>n$ 令 <span class="text-nowrap">$A_k=\varnothing$，</span>即可由可數聯集的封閉性退化得有限聯集的封閉性。
 {: .topic-paren-item}
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這個證明相當簡單，讀者可以自己嘗試: 只要對所有 $k>n$ 令 $A_k=\varnothing$ 就可以了。
-</div>
 
 (2) 前面說過，對一個樣本空間 $S$ 而言，最小的域是 $\mathcal{F}=\lbrace\varnothing,S\rbrace$，而最大的域是 <span class="text-nowrap">$\mathcal{F}=2^{S}$，</span>這一點在 $\sigma$-域也同樣成立。
 {: .topic-paren-item}
@@ -196,10 +184,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-S&=\lbrace1,2,3,4,5,6\rbrace,\\[0.4em]
-A&=\lbrace5\rbrace,\qquad B=\lbrace2,4,6\rbrace
-\end{aligned}
+\begin{gathered}
+S=\lbrace1,2,3,4,5,6\rbrace,\\[0.4em]
+A=\lbrace5\rbrace,\qquad B=\lbrace2,4,6\rbrace
+\end{gathered}
 $$
 
 </div>
@@ -267,19 +255,19 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在尋找最小 $\sigma$-域時，我們除了將要求的事件算進去之外，還要考慮它們的餘集，以及它們可能衍生的有限聯集與交集；但除此之外就不可以再多放事件進去了，否則就不是最小 $\sigma$-域了。
+建構包含特定事件的最小 $\sigma$-域時，除納入指定事件本身外，亦須將其餘集與彼此間衍生的聯集、交集一併補齊以滿足封閉性；但不得額外加入無關的事件，方能維持「最小」的性質。
 </div>
 
 ## 實數線上的波雷爾 $\sigma$-域 {#實數線上的-borel-sigma-域}
 
-在眾多的樣本空間中，我們可能會遇到不可數無窮的樣本空間，例如: 實數空間 $\mathbb{R}$，這時候樣本空間的子集合可能是一段範圍或一段區間。值得注意的是，由樣本空間 $S$ 中所有**開集合 (open sets)** 所生成的 $\sigma$-域，也就是包含所有開集合的最小 $\sigma$-域，稱作**波雷爾 $\sigma$-域 (Borel $\sigma$-field)**。
+在眾多的樣本空間中，我們可能會遇到不可數無窮的樣本空間，例如實數空間 $\mathbb{R}$ 上，樣本空間的子集合往往是一段範圍或區間。值得注意的是，由樣本空間 $S$ 中所有**開集合 (open sets)** 所生成的 $\sigma$-域，也就是包含所有開集合的最小 $\sigma$-域，稱作**波雷爾 $\sigma$-域 (Borel $\sigma$-field)**。
 
 實數線 $\mathbb{R}$ 上的波雷爾 $\sigma$-域記作 $\mathcal{B}(\mathbb{R})$，它也可以由所有開區間，或由所有半直線 $(-\infty,x]$ 生成。開區間、閉區間、半開區間、可數集合，以及它們經由可數聯集與可數交集形成的集合，都包含在其中。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個特殊的 $\sigma$-域是以法國數學家埃米爾・波雷爾 (Émile Borel, 1871–1956) 的名字所命名的，其最大的貢獻在於，使得實數上的區間也能夠被測度機率。波雷爾生平最有名的故事是介紹了**無限猴子定理 <span lang="en">(infinite monkey theorem)</span>**，這個定理後來也成為**高等機率論 <span lang="en">(advanced probability theory)</span>** 中一個相當重要的定理。
+波雷爾 $\sigma$-域得名自法國數學家埃米爾・波雷爾 (Émile Borel, 1871-1956)，使實數線上各類區間皆能納入機率測度的定義域。波雷爾亦曾介紹著名的**無限猴子定理 <span lang="en">(infinite monkey theorem)</span>**，其背後的極限法則後來成為**高等機率論 <span lang="en">(advanced probability theory)</span>** 的重要結果。
 </div>
 
 ## 可測空間
@@ -300,7 +288,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者應該記得，樣本空間 $S$ 包含隨機實驗的所有可能結果 (也就是樣本點)，而由樣本點構成的所有可能集合 (也就是事件)，並不是每一個都有被測度機率的必要。很直觀的想法是，有些事件明顯永遠不會發生，我們可以將這樣的事件納入 $\mathcal{F}$，再賦予其機率為 $0$；但當然也可以從一開始，就將其排除在可測度的集合之外。正是因此，佈於 $S$ 之上的 $\sigma$-域才會如此多樣。
+樣本空間 $S$ 雖包含隨機實驗的所有樣本點，但由樣本點構成的子集合未必每一個都有賦予機率的必要。例如某些明顯不會發生的集合，既可納入 $\mathcal{F}$ 並賦予機率 <span class="text-nowrap">$0$，</span>亦可一開始便排除在可測集合之外；因此佈於同一樣本空間 $S$ 上的 $\sigma$-域並非唯一。
 </div>
 
 (2) 前述定義中的可測集合，在機率論中就是我們所熟知的**隨機事件 (random events)**，亦即可以被測度機率的事件。
@@ -313,24 +301,24 @@ $$
 <div id="definition-probability-space" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.18</div>
 
-令 $S$ 為某隨機實驗的樣本空間，$\mathcal{F}$ 為佈於 $S$ 上的一個 $\sigma$-域，函數 $\mathbb{P}(\cdot):\mathcal{F}\longrightarrow\mathbb{R}$ 為一個定義於 $\mathcal{F}$ 上的實值函數，且滿足以下三點:
+令 $S$ 為某隨機實驗的樣本空間，$\mathcal{F}$ 為佈於 $S$ 上的 $\sigma$-域，函數 $\mathbb{P}(\cdot):\mathcal{F}\longrightarrow\mathbb{R}$ 為定義於 $\mathcal{F}$ 上的實值函數，且滿足以下三點:
 
 <ol class="topic-list-paren">
-  <li><strong>Axiom 1 (非負性, non-negativity)</strong>: 對任意 $A\in\mathcal{F}$，皆有
+  <li><strong>Axiom 1 (非負性, <span lang="en">non-negativity</span>)</strong>: 對任意 $A\in\mathcal{F}$，皆有
   $$
   \mathbb{P}(A)\geqslant 0
   $$</li>
-  <li><strong>Axiom 2 (歸一性, normalization)</strong>: 樣本空間本身滿足
+  <li><strong>Axiom 2 (歸一性, <span lang="en">normalization</span>)</strong>: 樣本空間本身滿足
   $$
   \mathbb{P}(S)=1
   $$</li>
-  <li><strong>Axiom 3 (可數可加性, countable additivity)</strong>: 若 $A_1,A_2,\ldots\in\mathcal{F}$，且 $A_i\cap A_j=\varnothing$ 對所有 $i\neq j$ 成立，則
+  <li><strong>Axiom 3 (可數可加性, <span lang="en">countable additivity</span>)</strong>: 若 $A_1,A_2,\ldots\in\mathcal{F}$，且 $A_i\cap A_j=\varnothing$ 對所有 $i\neq j$ 成立，則
   $$
   \mathbb{P}\left(\bigcup_{i=1}^{\infty}A_i\right)=\sum_{i=1}^{\infty}\mathbb{P}(A_i)
   $$</li>
 </ol>
 
-我們稱 $\mathbb{P}(\cdot)$ 為**機率測度 <span lang="en">(probability measure)</span>**，且三元組 $(S,\mathcal{F},\mathbb{P})$ 構成一個**機率空間 <span lang="en">(probability space)</span>**。
+此時我們稱函數 $\mathbb{P}(\cdot)$ 為**機率測度 <span lang="en">(probability measure)</span>**，且三元組 $(S,\mathcal{F},\mathbb{P})$ 構成一個**機率空間**。
 </div>
 
 針對 [Definition 1.18](#definition-probability-space)，我們補充幾點:
@@ -341,10 +329,10 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者應該特別注意的是，柯爾莫哥洛夫機率三大公理**並沒有說明如何測度機率，只說明一個機率測度應該滿足怎樣的條件**。這一點與古典機率中的各種定義都不同: 我們並沒有在此規範機率應該**如何被測度**，只說明其**至少應滿足的特性**，但這樣就已足夠建立起整個浩瀚的機率論。
+柯爾莫哥洛夫三大公理**並未指定機率的計算公式，而是規範機率測度必須滿足的基本性質**。這與古典機率等明定計算式的作法截然不同，卻足以建立整套機率論。
 </div>
 
-(2) 機率測度是比較正式的機率論與測度論用詞，其意義是衡量出「事件發生的可能性的大小」，一如數量、長度、面積等等的度量值一樣。但在一般的統計學與數理統計學中，通常會稱其為**機率集合函數 <span lang="en">(probability set function)</span>**，或直接簡稱為**機率函數 <span lang="en">(probability function)</span>**。後續文章在指稱 $\mathbb{P}(\cdot)$ 時，將以機率函數為主，但其他用詞亦可能混用。
+(2) 機率測度是比較正式的機率論與測度論用詞，其意義是衡量出「事件發生的可能性的大小」，一如數量、長度、面積等等的度量值一樣。但在一般的統計學與數理統計學中，通常會稱其為**機率集合函數 <span lang="en">(probability set function)</span>**，或直接簡稱為**機率函數 <span lang="en">(probability function)</span>**。後續各篇在指稱 $\mathbb{P}(\cdot)$ 時，將以機率函數為主，但其他用詞亦可能混用。
 {: .topic-paren-item #term-probability-function}
 
 (3) 三元組 $(S,\mathcal{F},\mathbb{P})$ 除了被稱作機率空間外，又稱**機率三要素 <span lang="en">(probability triple)</span>**，在建構機率及其衍生性質的過程中，具有非常重要的地位。爾後在探討由機率公理所衍生出的各種性質前，我們只需要說明 $(S,\mathcal{F},\mathbb{P})$ 為一個機率空間，讀者便會明白 $S$ 是樣本空間、$\mathcal{F}$ 是佈於 $S$ 上的一個 $\sigma$-域，而 $\mathbb{P}(\cdot)$ 是定義在 $\mathcal{F}$ 上的機率函數。
@@ -353,22 +341,22 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，探討何謂機率，要從隨機實驗本身講起；隨之而來，便會想到隨機實驗的可能結果，也就是樣本空間 $S$；再來是想到在這些結果中，誰需要被測度機率，也就是 $\mathcal{F}$；最後是測度機率的方式，或是測度機率的結果，也就是 $\mathbb{P}(\cdot)$。從這裡來思考就會發現，$(S,\mathcal{F},\mathbb{P})$ 構築出整套機率的前因後果，因此才被稱為「機率空間」或「機率三要素」。
+回顧建構機率模型的脈絡，由隨機實驗出發，先以樣本空間 $S$ 收集所有可能結果，再以 $\sigma$-域 $\mathcal{F}$ 界定可衡量機率的事件範圍，最後以機率函數 $\mathbb{P}(\cdot)$ 賦予各事件機率值。三元組 $(S,\mathcal{F},\mathbb{P})$ 完整串聯這三個層次，故稱為「機率空間」或「機率三要素」。
 </div>
 
-(4) 讀者應該記得，在[互斥與加集](/lecture-notes/event-set-operations/#互斥與加集)中，我們曾經提過有限加集與可數加集，而 Axiom 3 的前提正好與之相同，故 Axiom 3 可以寫為: 若 <span class="text-nowrap">$A_1,A_2,\ldots\in\mathcal{F}$，</span>且 $A_i\cap A_j=\varnothing$ 對所有 $i\neq j$ 成立，則
+(4) 如前篇[互斥與加集](/lecture-notes/event-set-operations/#互斥與加集)所述，Axiom 3 中兩兩互斥的前提恰與可數加集的定義一致。因此當 $A_1,A_2,\ldots\in\mathcal{F}$ 且對所有 $i\neq j$ 皆有 $A_i\cap A_j=\varnothing$ 時，Axiom 3 亦可寫為
 {: .topic-paren-item}
 
 $$
 \mathbb{P}\left(\bigcup_{i=1}^{\infty}A_i\right)=\mathbb{P}\left(\sum_{i=1}^{\infty}A_i\right)=\sum_{i=1}^{\infty}\mathbb{P}(A_i)
 $$
 
-其中 $\mathbb{P}\left(\sum_{i=1}^{\infty}A_i\right)=\sum_{i=1}^{\infty}\mathbb{P}(A_i)$ 滿足**線性函數 <span lang="en">(linear function)</span>** 的特性，故 Axiom 3 的可數可加性，在部分教科書中又被稱作**線性 <span lang="en">(linearity)</span>**。除此之外，可數可加性也被稱作 **$\sigma$-可加性 ($\sigma$-additivity)**；這個名字源於 $\sigma$-域，稍後我們會看見的**有限可加性 <span lang="en">(finite additivity)</span>** 則是對應到一般的域。
+其中 $\mathbb{P}\left(\sum_{i=1}^{\infty}A_i\right)=\sum_{i=1}^{\infty}\mathbb{P}(A_i)$ 滿足**線性函數 <span lang="en">(linear function)</span>** 的特性，故 Axiom 3 的可數可加性在部分教科書中又稱**線性 <span lang="en">(linearity)</span>**。此外，可數可加性亦稱 **$\sigma$-可加性 <span lang="en">($\sigma$-additivity)</span>**，名稱與 $\sigma$-域相對應；下一篇介紹的**有限可加性 <span lang="en">(finite additivity)</span>** 則對應一般的域。
 {: .topic-paren-cont}
 
 ## 本篇小結
 
-本篇由域出發，經 $\sigma$-域與可測空間，最後以三大公理定義出機率測度與機率空間:
+本篇由域出發，經 $\sigma$-域與可測空間，並以三大公理定義機率測度與機率空間:
 
 | 層次 | 符號 | 角色 |
 | :---: | :---: | :---: |
@@ -377,7 +365,7 @@ $$
 | 可測空間 | $(S,\mathcal{F})$ | 指出在哪裡測度機率 |
 | 機率空間 | $(S,\mathcal{F},\mathbb{P})$ | 加入滿足三大公理的機率測度 |
 
-藉由機率公理，我們能夠衍伸出一些相當有用的機率等式與不等式。[下一篇](/lecture-notes/probability-rules-from-axioms/)要談機率公理及其推論，便從單一事件所構成的一些式子開始說明起。
+藉由機率公理，我們能夠衍生出許多實用的機率等式與不等式。[下一篇](/lecture-notes/probability-rules-from-axioms/)將進入機率公理及其推論，先由單一事件的基本性質談起。
 
 ## 參考文獻與延伸閱讀
 

@@ -10,7 +10,7 @@ order: 209
 permalink: /lecture-notes/variance-standard-deviation/
 date: 2026-08-06
 published: true
-excerpt: "三道例題示範變異數的求算: 線性關係下直接套用平方伸縮性，分段定義的密度以分段積分求出期望值與平方期望值，混合型則把離散部分與連續部分分開計算。期望值另有一項重要特性，即在所有實數之中，期望值使平方離差的期望值達到最小。若只知道期望值與變異數，$g(X)$ 的期望值與變異數仍可由泰勒級數展開求得近似值。標準差是變異數開根號後的量數，單位與期望值相同，性質由變異數承接而來，只是平方伸縮性在標準差中改為絕對伸縮性。"
+excerpt: "本篇以線性轉換、分段連續與混合型例題演練變異數的計算，並證明期望值使平方離差的期望值達到最小。其後說明由泰勒展開求取函數期望值與變異數近似值的作法，最後介紹標準差的單位與絕對伸縮性。"
 ---
 
 [上一篇](/lecture-notes/variance/)給出[變異數](/lecture-notes/variance/#def-variance)的定義、計算公式、函數變異數與兩項性質，並以兩道例題示範計算。本篇接著看三道例題。一道是[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)之間的線性關係，一道的密度函數分段定義，一道則是混合型隨機變數。
@@ -21,7 +21,7 @@ excerpt: "三道例題示範變異數的求算: 線性關係下直接套用平�
 <div class="topic-box__label">Example 2.19</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ denotes the number of customer visits recorded in a study of visits and income, and that the variance of $X$ is $0.81$. The income associated with the number of visits is $W=449+0.25X$.
+In a study of customer visits and income, the variance of the number of visits $X$ is $0.81$, and the income associated with $X$ is $W=449+0.25X$.
 
 <ol class="topic-list-paren">
   <li>Find the variance of the income $W$.</li>
@@ -81,7 +81,7 @@ $$
 $$
 \begin{aligned}
 \mathbb{E}(X)&=\int_{-\infty}^{\infty}x\,f_{\sssig X}(x)\,dx=\int_{0}^{1}x\cdot x\,dx+\int_{1}^{2}x\cdot\frac{1}{\,2\,}\,dx\\[0.45em]
-&=\left[\frac{x^{3}}{3}\right]_{0}^{1}+\left[\frac{x^{2}}{4}\right]_{1}^{2}=\left[\frac{1^{3}}{3}-\frac{0^{3}}{3}\right]+\left[\frac{2^{2}}{4}-\frac{1^{2}}{4}\right]=\frac{\,13\,}{12}
+&=\left[\frac{x^{3}}{3}\right]_{0}^{1}+\left[\frac{x^{2}}{4}\right]_{1}^{2}=\left[\frac{1^{3}}{3}-\frac{0^{3}}{3}\right]+\left[\frac{2^{2}}{4}-\frac{1^{2}}{4}\right]=\frac{\,13\,}{12}\fallingdotseq1.083
 \end{aligned}
 $$
 
@@ -94,7 +94,7 @@ $$
 &=\int_{0}^{1}x\cdot x\,dx+\int_{1}^{2}x\cdot\frac{1}{\,2\,}\,dx\\[0.45em]
 &=\left[\frac{x^{3}}{3}\right]_{0}^{1}+\left[\frac{x^{2}}{4}\right]_{1}^{2}\\[0.45em]
 &=\left[\frac{1^{3}}{3}-\frac{0^{3}}{3}\right]+\left[\frac{2^{2}}{4}-\frac{1^{2}}{4}\right]\\[0.45em]
-&=\frac{\,13\,}{12}
+&=\frac{\,13\,}{12}\fallingdotseq1.083
 \end{aligned}
 $$
 
@@ -107,7 +107,7 @@ $$
 $$
 \begin{aligned}
 \mathbb{E}\bigl(X^{2}\bigr)&=\int_{-\infty}^{\infty}x^{2}\,f_{\sssig X}(x)\,dx=\int_{0}^{1}x^{2}\cdot x\,dx+\int_{1}^{2}x^{2}\cdot\frac{1}{\,2\,}\,dx\\[0.45em]
-&=\left[\frac{x^{4}}{4}\right]_{0}^{1}+\left[\frac{x^{3}}{6}\right]_{1}^{2}=\left[\frac{1^{4}}{4}-\frac{0^{4}}{4}\right]+\left[\frac{2^{3}}{6}-\frac{1^{3}}{6}\right]=\frac{\,17\,}{12}
+&=\left[\frac{x^{4}}{4}\right]_{0}^{1}+\left[\frac{x^{3}}{6}\right]_{1}^{2}=\left[\frac{1^{4}}{4}-\frac{0^{4}}{4}\right]+\left[\frac{2^{3}}{6}-\frac{1^{3}}{6}\right]=\frac{\,17\,}{12}\fallingdotseq1.417
 \end{aligned}
 $$
 
@@ -120,7 +120,7 @@ $$
 &=\int_{0}^{1}x^{2}\cdot x\,dx+\int_{1}^{2}x^{2}\cdot\frac{1}{\,2\,}\,dx\\[0.45em]
 &=\left[\frac{x^{4}}{4}\right]_{0}^{1}+\left[\frac{x^{3}}{6}\right]_{1}^{2}\\[0.45em]
 &=\left[\frac{1^{4}}{4}-\frac{0^{4}}{4}\right]+\left[\frac{2^{3}}{6}-\frac{1^{3}}{6}\right]\\[0.45em]
-&=\frac{\,17\,}{12}
+&=\frac{\,17\,}{12}\fallingdotseq1.417
 \end{aligned}
 $$
 
@@ -153,7 +153,7 @@ $$
 <div class="topic-box__label">Example 2.14 <span lang="en">(Continued)</span></div>
 
 <div lang="en" markdown="1">
-Let $Y$ denote the length of life <span lang="en">(in hundreds of hours)</span> of electronic components. These components frequently fail immediately upon insertion into a system. It has been observed that the probability of immediate failure is $\frac{1}{4}$. If a component does not fail immediately, the distribution for its length of life has the exponential density function
+Let $Y$ denote the length of life (in hundreds of hours) of electronic components. These components frequently fail immediately upon insertion into a system. It has been observed that the probability of immediate failure is $\frac{1}{4}$. If a component does not fail immediately, the distribution for its length of life has the exponential density function
 
 $$
 g(y)=
@@ -262,7 +262,7 @@ $$
 <div id="thm-mean-minimizes-squared-deviation" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.14 (期望值使平方離差的期望值最小, the mean minimizes mean squared deviation)</div>
 
-若 $X$ 為一隨機變數，且 $\mathbb{E}(X^{2})<\infty$，並令
+若 $X$ 為一隨機變數，且 $\mathbb{E}(X^{2})<\infty$ 成立，並令函數
 
 $$
 g(a)=\mathbb{E}\bigl[(X-a)^{2}\bigr],\quad\forall\,a\in\mathbb{R}
@@ -318,9 +318,9 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個性質在 [Definition 2.6](/lecture-notes/expectation/#def-expectation) 之後的說明中就已經提過，是期望值的一個重要特性。由於期望值可以簡單視為分配的中心，故任意的位置與期望值所構成的離差 <span lang="en">(deviation)</span> 平方的平均，將是最小的。
+[Definition 2.6](/lecture-notes/expectation/#def-expectation) 後的說明曾提及此性質。由於期望值可視為分配的中心，以隨機變數相對期望值的離差 <span lang="en">(deviation)</span> $X-\mu_{\sssig X}$ 計算平方平均，所得的值在所有參考位置 $a$ 之中為最小。
 
-這個定理的證明過程使用一個技巧，將 $X-a$ 分解為互相正交的兩個部分，分別是 $X-\mu_{\sssig X}$ 與 $\mu_{\sssig X}-a$，我們則借其意，將此方法稱為**正交分解 <span lang="en">(orthogonal decomposition)</span>**，在往後的推導過程中，我們將經常使用這個技巧。
+證明中將 $X-a$ 拆為 $(X-\mu_{\sssig X})$ 與 $(\mu_{\sssig X}-a)$ 兩項，使交叉項期望值消為零，此手法稱為**正交分解 <span lang="en">(orthogonal decomposition)</span>**，後續章節的推導中亦常運用。
 
 </div>
 
@@ -347,7 +347,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Theorem 2.15](#thm-taylor-approximation) 的 (1) 用到 $g^{\prime\prime}(\mu_{\sssig X})$，(2) 用到 $g^{\prime}(\mu_{\sssig X})$，故前提要求 $g(\cdot)$ 二階可微；只有一階可微時，(1) 所寫的 $g^{\prime\prime}(\mu_{\sssig X})$ 並不存在。下面的推導把 $g(X)$ 在 $\mu_{\sssig X}$ 處展開到第三項，用到的也正是二階導數。至於捨去第三項之後的誤差有多大，須另加更強的條件才估計得出來，本篇只取近似值，不再細談。
+[Theorem 2.15](#thm-taylor-approximation) 前提要求 $g(\cdot)$ 為二階可微函數，是因為推導時須將 $g(X)$ 在期望值 $\mu_{\sssig X}$ 處展開至二階導數項 <span class="text-nowrap">$g^{\prime\prime}(\mu_{\sssig X})$。</span>至於捨去高階餘項後的近似誤差，以及大樣本下如何嚴格控制此誤差，將於第五章介紹 **Delta 法 (Delta method)** 時進一步討論。
 
 </div>
 
@@ -418,9 +418,9 @@ $$
 
 $$
 \begin{aligned}
-&\mathrm{Var}\bigl[g(X)\bigr]\\[0.45em]
-&~~\fallingdotseq\mathrm{Var}\bigl[g(\mu_{\sssig X})\bigr]+\bigl[g^{\prime}(\mu_{\sssig X})\bigr]^{2}\,\mathrm{Var}\bigl(X-\mu_{\sssig X}\bigr)\\[0.45em]
-&~~=\bigl[g^{\prime}(\mu_{\sssig X})\bigr]^{2}\sigma_{\sssig X}^{2}
+\mathrm{Var}&\bigl[g(X)\bigr]\\[0.45em]
+&\fallingdotseq\mathrm{Var}\bigl[g(\mu_{\sssig X})\bigr]+\bigl[g^{\prime}(\mu_{\sssig X})\bigr]^{2}\,\mathrm{Var}\bigl(X-\mu_{\sssig X}\bigr)\\[0.45em]
+&=\bigl[g^{\prime}(\mu_{\sssig X})\bigr]^{2}\sigma_{\sssig X}^{2}
 \end{aligned}
 $$
 
@@ -523,23 +523,16 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-雖然標準差的計算多了一道程序，而且因為根號的緣故，較難以推論，但由於單位與原始單位相同，大多數的資料分析，在呈現上還是比較常用標準差。
+標準差因帶有根號，在理論推導上不如變異數簡便；但由於其單位與原變數及期望值一致，實務資料分析在呈現離散程度時仍多採用標準差。
 
 </div>
 
-(2) 我們稱其為母體標準差，避免與具有隨機性的樣本標準差搞混，後者的定義如下
+(2) 標準差與變異數同為衡量隨機變數離散程度的母數，不具隨機性；為與具隨機性的統計量「樣本標準差」區別，通常稱 $\operatorname{SD}(X)$ 為母體標準差，而樣本標準差則定義為
 {: .topic-paren-item}
 
 $$
 S=\sqrt{\frac{1}{\,n-1\,}\sum_{i=1}^{n}\bigl(X_{i}-\overline{X}\bigr)^{2}}
 $$
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-與變異數相同，標準差是用來衡量一個隨機變數離散程度的母數，不具隨機性。
-
-</div>
 
 (3) $X$ 的函數標準差為
 {: .topic-paren-item}
@@ -548,12 +541,8 @@ $$
 \operatorname{SD}\bigl[g(X)\bigr]=\sqrt{\mathrm{Var}\bigl[g(X)\bigr]}
 $$
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-事實上，不論如何，在計算標準差的時候，我們總是都先計算變異數，再行開根號。
-
-</div>
+不論離散型或連續型，求算標準差時一律先求出變異數，最後再開根號。
+{: .topic-paren-cont}
 
 <div id="thm-standard-deviation-properties" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.16 (標準差的性質, standard deviation properties)</div>
@@ -587,7 +576,7 @@ $$
 \mathrm{Var}(X)\geqslant0\qquad\therefore\,\operatorname{SD}(X)\geqslant0
 $$
 
-(2) 由 [Definition 2.8](#def-standard-deviation) 與變異數的平方伸縮性可知
+(2) 由標準差的 [Definition 2.8](#def-standard-deviation) 與變異數的平方伸縮性可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -651,7 +640,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-變異數的**平方伸縮性**，在標準差中不復存在，取而代之的是**絕對伸縮性**。絕對伸縮性的直觀，在於標準差的單位與期望值相同，故若把原隨機變數乘上 $a$ 倍，則其單位尺度應隨之改變，然而因為標準差具有非負性，所以在標準差的單位尺度上，原先應該跟著伸縮 $a$ 倍的變異程度，則隨之改為 $\lvert a\rvert$ 倍。
+變異數的**平方伸縮性**在開根號後轉為標準差的**絕對伸縮性**。直觀上，標準差的單位與原變數及期望值相同，將原隨機變數乘上常數 $a$ 後，離散幅度亦隨之伸縮；又因標準差恆為非負，當 $a<0$ 時須取絕對值，故標準差變為原先的 $\lvert a\rvert$ 倍。
 
 </div>
 
@@ -659,10 +648,10 @@ $$
 <div class="topic-box__label">Example 2.19 <span lang="en">(Continued)</span></div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ denotes the number of customer visits recorded in a study of visits and income, and that the variance of $X$ is $0.81$. The income associated with the number of visits is $W=449+0.25X$.
+In a study of customer visits and income, the variance of the number of visits $X$ is $0.81$, and the income associated with $X$ is $W=449+0.25X$.
 
 <ol class="topic-list-paren topic-list-paren--start-2">
-  <li>Determine the standard deviation of the income $W$.</li>
+  <li>What is the standard deviation of the income $W$?</li>
 </ol>
 </div>
 
@@ -720,7 +709,7 @@ $$
 
 [Theorem 2.14](#thm-mean-minimizes-squared-deviation) 指出，在所有的實數 $a$ 之中，$\mathbb{E}[(X-a)^{2}]$ 在 $a=\mu_{\sssig X}$ 處達到最小，證明的關鍵是把 $X-a$ 拆成 $(X-\mu_{\sssig X})+(\mu_{\sssig X}-a)$ 的正交分解。[Theorem 2.15](#thm-taylor-approximation) 則處理只知道 $\mu_{\sssig X}$ 與 $\sigma_{\sssig X}^{2}$ 的情形。把 $g(X)$ 在 $\mu_{\sssig X}$ 處作泰勒級數展開，取前三項求期望值、取前兩項求變異數，便得到 $g(X)$ 的期望值與變異數的近似值，[Example 2.21](#ex-log-taylor-approximation) 即以 $g(X)=\ln X$ 示範。
 
-[Definition 2.8](#def-standard-deviation) 把標準差定義為變異數的平方根，它的單位與期望值相同，因此資料分析在呈現上多用標準差；指稱時同樣以母體標準差與樣本標準差 $S$ 區別，計算上則一律先求變異數再開根號。[Theorem 2.16](#thm-standard-deviation-properties) 的兩項性質都由 [Theorem 2.13](/lecture-notes/variance/#thm-variance-properties) 承接而來，其中的複合性質經設定後得到常數不具變異性、平移不變性與絕對伸縮性三個子性質，[Example 2.19 <span lang="en">(Continued)</span>](#ex-income-standard-deviation) 便是絕對伸縮性的直接應用。變異數的平方伸縮性在標準差中改為絕對伸縮性，是兩者性質唯一不同之處。[下一篇](/lecture-notes/mode/)離開離散程度的量數，改談指出分配位置的另一個量數，[眾數](/lecture-notes/mode/#def-mode)。
+[Definition 2.8](#def-standard-deviation) 把標準差定義為變異數的平方根，其單位與原變數及期望值相同，因此資料分析在呈現上多用標準差；指稱時同樣以母體標準差與樣本標準差 $S$ 區別，計算上則一律先求變異數再開根號。[Theorem 2.16](#thm-standard-deviation-properties) 的兩項性質都由 [Theorem 2.13](/lecture-notes/variance/#thm-variance-properties) 承接而來，其中的複合性質經設定後得到常數不具變異性、平移不變性與絕對伸縮性三個子性質，[Example 2.19 <span lang="en">(Continued)</span>](#ex-income-standard-deviation) 便是絕對伸縮性的直接應用。變異數的平方伸縮性在標準差中改為絕對伸縮性，是兩者性質唯一不同之處。[下一篇](/lecture-notes/mode/)離開衡量離散程度的量數，改談指出分配位置的另一個量數，即[眾數](/lecture-notes/mode/#def-mode)。
 
 ## 參考文獻與延伸閱讀
 

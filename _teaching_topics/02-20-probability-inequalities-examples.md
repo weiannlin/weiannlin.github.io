@@ -10,7 +10,7 @@ order: 220
 permalink: /lecture-notes/probability-inequalities-examples/
 date: 2026-08-06
 published: true
-excerpt: "八道例題演練同一系列機率不等式的用法。前兩道不套現成的不等式，改由密度或機率函數本身的單調性造出不等關係，一道用積分、一道用等差級數的和。第三道由非負函數的機率界限取 $h(x)=(x-\\mu_{X})^{2}$ 直接導出柴比雪夫不等式，第四道反過來由兩個尾機率求變異數的下界。第五道比較同一個上界在均勻分配與三點分配之下的鬆緊，第六道把柴比雪夫不等式代入卜瓦松分配。第七道以同一題的兩個小問對照馬可夫不等式與單邊柴比雪夫不等式，看出動差訊息愈多、上界愈精確。最後一道是車諾夫不等式的完整示範，代入卜瓦松分配的動差母函數之後，以一階與二階條件求出使上界最小的 $t^{*}$。"
+excerpt: "本篇以八道例題演練各類機率不等式的推導與應用，比較不同動差條件下機率上界的鬆緊程度，並示範如何由車諾夫不等式極小化指數上界。"
 ---
 
 [上一篇](/lecture-notes/probability-inequalities/)由一條以非負函數界定機率的定理出發，依序導出[馬可夫不等式](/lecture-notes/probability-inequalities/#thm-markov)、[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)、[單邊柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-one-tailed-chebyshev)與[車諾夫不等式](/lecture-notes/probability-inequalities/#thm-chernoff)。五條不等式的形式各不相同，用上的動差訊息也有多有少，實際遇到一道題目時該挑哪一條、又該怎麼代入，仍要靠例題才看得清楚。
@@ -22,7 +22,7 @@ excerpt: "八道例題演練同一系列機率不等式的用法。前兩道不�
 <div class="topic-box__label">Example 2.37</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ is a continuous random variable taking only positive values, and that its probability density function $f_{\sssig X}(x)$ is non-increasing on <span class="text-nowrap">$x>0$.</span> Show that
+Assume that $X$ is a positive continuous random variable having a non-increasing probability density function $f_{\sssig X}(x)$ for <span class="text-nowrap">$x>0$.</span> Show that
 
 $$
 x^{2}f_{\sssig X}(x)\leqslant2\,\mathbb{E}(X),\quad x>0
@@ -69,7 +69,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在處理不等式問題的時候，很重要的技巧是考慮函數或範圍本身的大小關係，進而利用這些性質「創造」出不等式中的大小關係，但這些技巧往往需要許多經驗，需要讀者熟悉。
+推導此類不等式的常用手法，是結合積分區間的縮減與被積函數的單調性來建立大小關係。本題先將 $(0,\infty)$ 上的積分縮小至子區間 <span class="text-nowrap">$(0,x)$，</span>再利用 $f\_{\sssig X}(t)$ 在 $(0,x)$ 上不小於端點值 $f\_{\sssig X}(x)$ 的非遞增性質將密度提出積分號外，從而導出目標上界。
 
 </div>
 
@@ -77,7 +77,7 @@ $$
 <div class="topic-box__label">Example 2.38</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ takes values in the positive integers and that $\mathbb{P}(X=a)$ is a decreasing function of <span class="text-nowrap">$a$.</span> Show that
+Let $X$ be a positive-integer-valued random variable such that $\mathbb{P}(X=a)$ is a decreasing function of <span class="text-nowrap">$a$.</span> Prove that
 
 $$
 \mathbb{P}(X=a)\leqslant\frac{\,2\,\mathbb{E}(X)\,}{a^{2}}
@@ -126,7 +126,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這題中，除了應用了等差級數的和之外，其實基本的想法與概念 (甚至是結論) 都與 [Example 2.37](#ex-decreasing-density-bound) 完全相同，讀者不妨細細品味其中的奧妙。
+本題為 [Example 2.37](#ex-decreasing-density-bound) 的離散對應版本。推導時先將無窮級數截斷至前 $a$ 項，再利用機率質量函數的遞減性質提出 <span class="text-nowrap">$\mathbb{P}(X=a)$，</span>搭配等差級數求和公式 $\sum_{n=1}^{a}n=\frac{a(a+1)}{2}\geqslant\frac{a^{2}}{2}$ 即得形式完全對稱的上界。
 
 </div>
 
@@ -134,23 +134,23 @@ $$
 <div class="topic-box__label">Example 2.39</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ is a random variable with $\mathbb{E}(X)=\mu_{\sssig X}$ and $\mathrm{Var}(X)=\sigma_{\sssig X}^{2}$, that $h(x)$ is a non-negative real-valued function, and that $c$ is a positive constant.
+Let $X$ be a random variable with $\mathbb{E}(X)=\mu_{\sssig X}$ and $\mathrm{Var}(X)=\sigma_{\sssig X}^{2}$, $h(x)$ be a non-negative real-valued function, and $c$ be a positive constant.
 
-(1) Show that
+(1) Prove that
 {: .topic-paren-item}
 
 $$
 \mathbb{P}\bigl(h(X)\geqslant c\bigr)\leqslant\frac{\,\mathbb{E}\bigl[h(X)\bigr]\,}{c}
 $$
 
-(2) Using the result of (1), show that Chebyshev’s inequality
+(2) Use the result in (1) to prove Chebyshev’s inequality
 {: .topic-paren-item}
 
 $$
 \mathbb{P}\bigl(\lvert X-\mu_{\sssig X}\rvert\geqslant k\,\sigma_{\sssig X}\bigr)\leqslant\frac{1}{\,k^{2}\,}
 $$
 
-holds for every $k>0$, provided that <span class="text-nowrap">$\sigma_{\sssig X}>0$.</span>
+for any $k>0$, provided that <span class="text-nowrap">$\sigma_{\sssig X}>0$.</span>
 {: .topic-paren-cont}
 
 </div>
@@ -229,10 +229,10 @@ $$
 <div class="topic-box__label">Example 2.40</div>
 
 <div lang="en" markdown="1">
-Suppose that a random variable $X$ satisfies $\mathbb{E}(X)=15$, $\mathbb{P}(X\geqslant20)=0.5$ and <span class="text-nowrap">$\mathbb{P}(X\leqslant10)=0.2$.</span> Determine a lower bound for <span class="text-nowrap">$\mathrm{Var}(X)$.</span>
+Let $X$ be a random variable with $\mathbb{E}(X)=15$, $\mathbb{P}(X\geqslant20)=0.5$, and <span class="text-nowrap">$\mathbb{P}(X\leqslant10)=0.2$.</span> Find a lower bound for <span class="text-nowrap">$\mathrm{Var}(X)$.</span>
 </div>
 
-由題意可知 $\mathbb{E}(X)=15$、$\mathbb{P}(X\geqslant20)=0.5$ 與 $\mathbb{P}(X\leqslant10)=0.2$，則
+由題意可知 $\mathbb{E}(X)=15$、$\mathbb{P}(X\geqslant20)=0.5$ 與 $\mathbb{P}(X\leqslant10)=0.2$ 三項條件，故可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -299,7 +299,7 @@ $$
 <div class="topic-box__label">Example 2.41</div>
 
 <div lang="en" markdown="1">
-Suppose that a random variable $X$ has mean $\mu_{\sssig X}$ and variance <span class="text-nowrap">$0<\sigma_{\sssig X}^{2}<\infty$.</span> Chebyshev’s inequality states that
+Let $X$ be a random variable with mean $\mu_{\sssig X}$ and variance <span class="text-nowrap">$0<\sigma_{\sssig X}^{2}<\infty$.</span> Consider Chebyshev’s inequality
 
 $$
 \mathbb{P}(\lvert X-\mu_{\sssig X}\rvert\geqslant k\,\sigma_{\sssig X})\leqslant\frac{1}{\,k^{2}\,},\quad k>0
@@ -339,13 +339,6 @@ $$
 $$
 
 </div>
-
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-題目給的範圍只有 $k>0$，並未再對 $k$ 加上其他限制。第 (2) 小題要說明的是[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)所提供的上界不可改進，而這件事要先有一個機率分配才有意義，所給的 $\mathbb{P}(X=x)$ 卻要在 $k\geqslant1$ 時才是機率分配: $0<k<1$ 時 $\frac{1}{\,k^{2}\,}>1$，$x=0$ 之處的 $1-\frac{1}{\,k^{2}\,}$ 為負，而機率不能為負。$k=1$ 時 $1-\frac{1}{\,k^{2}\,}=0$，$X$ 以各 $\frac{1}{\,2\,}$ 的機率取 $-1$ 與 $1$，仍是一個機率分配。故第 (2) 小題以下另設 $k\geqslant1$。
 
 </div>
 
@@ -395,7 +388,7 @@ $$
 
 </div>
 
-又[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)可提供之機率上界為
+又[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)提供之上界為
 {: .topic-paren-cont}
 
 $$
@@ -405,16 +398,16 @@ $$
 則可知[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)可提供之機率上界，在此例中並不好。
 {: .topic-paren-cont}
 
-(2) 由 $X$ 之分配可知
+(2) 為使題目所給的 $\mathbb{P}(X=x)$ 滿足機率非負性 (即 $1-\frac{1}{\,k^{2}\,}\geqslant0$ 成立)，我們考慮 $k\geqslant1$ 的情形。由 $X$ 之分配可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(X)&=-1\cdot\frac{1}{\,2k^{2}\,}+0\cdot\Bigl(1-\frac{1}{\,k^{2}\,}\Bigr)+1\cdot\frac{1}{\,2k^{2}\,}=0\\[0.7em]
-\mathbb{E}(X^{2})&=(-1)^{2}\cdot\frac{1}{\,2k^{2}\,}+0^{2}\cdot\Bigl(1-\frac{1}{\,k^{2}\,}\Bigr)+1^{2}\cdot\frac{1}{\,2k^{2}\,}=\frac{1}{\,k^{2}\,}
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(X)=-1\cdot\frac{1}{\,2k^{2}\,}+0\cdot\Bigl(1-\frac{1}{\,k^{2}\,}\Bigr)+1\cdot\frac{1}{\,2k^{2}\,}=0\\[0.7em]
+\mathbb{E}(X^{2})=(-1)^{2}\cdot\frac{1}{\,2k^{2}\,}+0^{2}\cdot\Bigl(1-\frac{1}{\,k^{2}\,}\Bigr)+1^{2}\cdot\frac{1}{\,2k^{2}\,}=\frac{1}{\,k^{2}\,}
+\end{gathered}
 $$
 
 </div>
@@ -422,7 +415,15 @@ $$
 
 $$
 \begin{aligned}
-&\mathbb{E}(X)=0\qquad \mathbb{E}(X^{2})=\frac{1}{\,k^{2}\,}
+\mathbb{E}(X)&=-1\cdot\frac{1}{\,2k^{2}\,}+0\cdot\Bigl(1-\frac{1}{\,k^{2}\,}\Bigr)+1\cdot\frac{1}{\,2k^{2}\,}\\[0.35em]
+&=0
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\mathbb{E}(X^{2})&=(-1)^{2}\cdot\frac{1}{\,2k^{2}\,}+0^{2}\cdot\Bigl(1-\frac{1}{\,k^{2}\,}\Bigr)+1^{2}\cdot\frac{1}{\,2k^{2}\,}\\[0.35em]
+&=\frac{1}{\,k^{2}\,}
 \end{aligned}
 $$
 
@@ -470,7 +471,7 @@ $$
 
 </div>
 
-又[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)可提供之機率上界為
+又[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)提供之上界為
 {: .topic-paren-cont}
 
 $$
@@ -485,7 +486,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在這題中所謂的「不好」或是「不可改進」，其實都是在指這個上界是不是「貼近」真實的機率，故我們的證明策略在第一小題中，是尋找是否有存在某個 <span class="text-nowrap">$k>0$，</span>使得[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)提供之上界無法貼近同範圍之真實機率；反之，如果要說明其不可改進，便是說明對任何的 $k\geqslant1$ 而言，[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)提供之上界都恰巧是同範圍之真實機率。
+評估機率不等式上界的鬆緊程度，關鍵在於比較上界與真實尾端機率的差距。第 (1) 小題針對 $\mathcal{U}(0,1)$ 取 <span class="text-nowrap">$k=\sqrt{3}$，</span>真實尾端機率已為 $0$ 而[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)仍給出上界 <span class="text-nowrap">$\frac{1}{\,3\,}$，</span>顯示該界限在此分配下相當寬鬆；第 (2) 小題的三點對稱分配則對任意 $k\geqslant1$ 皆使真實尾端機率恰好等於上界 <span class="text-nowrap">$\frac{1}{\,k^{2}\,}$，</span>證實僅憑一、二階動差無法將此普適上界進一步壓低 (至於 $0<k<1$ 時，上界 $\frac{1}{\,k^{2}\,}>1$ 本不具實質約束力，且 $1-\frac{1}{\,k^{2}\,}<0$ 亦不構成合法的 pmf)。
 
 </div>
 
@@ -493,7 +494,7 @@ $$
 <div class="topic-box__label">Example 2.42</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ has a Poisson distribution with parameter <span class="text-nowrap">$\lambda$.</span> Using Chebyshev’s inequality, show that
+Assume that a random variable $X$ follows a Poisson distribution with parameter <span class="text-nowrap">$\lambda$.</span> Using Chebyshev’s inequality, verify that
 
 $$
 \mathbb{P}\Bigl(X\leqslant\frac{\,\lambda\,}{2}\Bigr)\leqslant\frac{4}{\,\lambda\,}
@@ -594,7 +595,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這一個問題是一個很好的範例，說明了在計算機率的大致範圍時，如果我們知道更多的動差訊息，我們可以做出一個更好 (更精確) 的機率區間。
+比較本題兩小題的結果，僅使用一階動差 (平均所得) 時，馬可夫不等式僅能給出 $0.2$ 的上界；一旦進一步納入二階動差 (標準差) 並改用單邊柴比雪夫不等式，同一尾端事件的上界即大幅收緊至約 <span class="text-nowrap">$0.03846$，</span>具體展現出掌握的動差資訊愈多、機率界限愈緊密的關係。
 
 </div>
 
@@ -602,7 +603,7 @@ $$
 <div class="topic-box__label">Example 2.44</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ has a Poisson distribution with parameter $\lambda$, and let $a$ be a positive integer with <span class="text-nowrap">$a>\lambda$.</span> Using the Chernoff inequality, show that
+Let $X$ be a Poisson random variable with parameter $\lambda$, and let $a$ be a positive integer with <span class="text-nowrap">$a>\lambda$.</span> Using the Chernoff inequality, show that
 
 $$
 \mathbb{P}(X\geqslant a)\leqslant\frac{\,e^{-\lambda}(e\,\lambda)^{a}\,}{a!}
@@ -610,7 +611,7 @@ $$
 
 </div>
 
-若 $X\sim\mathrm{Poi}(\lambda)$，則可知 $M_{\sssig X}(t)=e^{\lambda(e^{t}-1)}$，且對一切 $t\in\mathbb{R}$ 皆存在，[Theorem 2.35](/lecture-notes/probability-inequalities/#thm-chernoff) 中的 $h$ 因而可取任意正數。依照[車諾夫不等式](/lecture-notes/probability-inequalities/#thm-chernoff)可知
+若 $X\sim\mathrm{Poi}(\lambda)$，則可知 $M_{\sssig X}(t)=e^{\lambda(e^{t}-1)}$ 在所有實數 $t\in\mathbb{R}$ 上皆存在，[Theorem 2.35](/lecture-notes/probability-inequalities/#thm-chernoff) 中的 $h$ 因而可取任意正數。依照[車諾夫不等式](/lecture-notes/probability-inequalities/#thm-chernoff)可知
 
 $$
 \mathbb{P}(X\geqslant a)\leqslant e^{-ta}\,M_{\sssig X}(t),\quad\forall\,t>0
@@ -641,20 +642,17 @@ $$
 
 <div class="topic-math-follow-before" markdown="1">
 
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
-
 $$
 \frac{d}{\,d\,t\,}g(t)=e^{\lambda e^{t}-ta}\bigl(\lambda e^{t}-a\bigr)=0
 $$
 
 </div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+<div class="topic-math-follow" markdown="1">
 
 $$
-\frac{d}{\,d\,t\,}g(t)=e^{\lambda e^{t}-ta}\bigl(\lambda e^{t}-a\bigr)=0
+\Longrightarrow\ t^{*}=\ln\frac{a}{\,\lambda\,}
 $$
-
-</div>
 
 </div>
 
@@ -731,7 +729,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這題當中使用到了卜瓦松分配的 mgf，讀者在此可以先接受其結果，到後面的章節中再來探討為何卜瓦松分配的 mgf 如此；但事實上，讀者若已知卜瓦松分配的 pmf，亦可以自己計算其 mgf。此外，本題當中利用了 $a^{a}\geqslant a!$ 的結果，這也是證明過程中很常使用的一個性質，讀者不妨在理解後將其記起來。
+本題直接引用了卜瓦松分配的動差母函數 <span class="text-nowrap">$M_{\sssig X}(t)=e^{\lambda(e^{t}-1)}$，</span>其推導將於後續機率模型章節詳述 (亦可直接由其 pmf 搭配指數函數的泰勒級數求得)。此外，最後一步利用了正整數的不等式 <span class="text-nowrap">$a^{a}\geqslant a!$；</span>因 $a^{a}$ 與 $a!$ 皆為 $a$ 個正整數相乘，且逐項滿足 $a\geqslant k$ (<span class="text-nowrap">$k=1,2,\ldots,a$</span>)，故分母由 $a^{a}$ 換為 $a!$ 後不等號方向維持不變。
 
 </div>
 
@@ -741,7 +739,7 @@ $$
 
 [Example 2.41](#ex-chebyshev-sharpness) 說明同一個上界在 $\mathcal{U}(0,1)$ 之下離真實機率甚遠，在三點分配之下卻恰好相等，[Example 2.42](#ex-poisson-chebyshev) 示範[柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-chebyshev)在卜瓦松分配上的代入。[Example 2.43](#ex-household-income-bounds) 先以[馬可夫不等式](/lecture-notes/probability-inequalities/#thm-markov)只用[期望值](/lecture-notes/expectation/#def-expectation)求得一個上界，再以[單邊柴比雪夫不等式](/lecture-notes/probability-inequalities/#thm-one-tailed-chebyshev)加入[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)求得更小的上界，同一題的兩個小問正好對照出動差訊息愈多、機率上界愈精確。
 
-[Example 2.44](#ex-poisson-chernoff-tail) 是[車諾夫不等式](/lecture-notes/probability-inequalities/#thm-chernoff)的完整示範。代入卜瓦松分配的 mgf 之後，以一階與二階條件求出使上界最小的 $t^{*}=\ln\frac{a}{\,\lambda\,}$，再由 $a^{a}\geqslant a!$ 得到 $\mathbb{P}(X\geqslant a)\leqslant\frac{\,e^{-\lambda}(e\,\lambda)^{a}\,}{a!}$。[下一篇](/lecture-notes/convexity-jensen-inequality/)轉向另一種不等式。它比較的不再是尾機率與動差，而是 $\mathbb{E}[g(X)]$ 與 $g[\mathbb{E}(X)]$ 的大小，[凸函數與凹函數](/lecture-notes/convexity-jensen-inequality/#def-convex-concave)的性質正是其中的關鍵。
+[Example 2.44](#ex-poisson-chernoff-tail) 是[車諾夫不等式](/lecture-notes/probability-inequalities/#thm-chernoff)的完整示範。代入卜瓦松分配的 mgf 之後，以一階與二階條件求出使上界最小的 $t^{*}=\ln\frac{a}{\,\lambda\,}$，再由 $a^{a}\geqslant a!$ 得到 $\mathbb{P}(X\geqslant a)\leqslant\frac{\,e^{-\lambda}(e\,\lambda)^{a}\,}{a!}$。[下一篇](/lecture-notes/convexity-jensen-inequality/)轉向另一種不等式。它比較的不再是尾機率與動差，而是 $\mathbb{E}[g(X)]$ 與 $g[\mathbb{E}(X)]$ 兩者的大小，[凸函數與凹函數](/lecture-notes/convexity-jensen-inequality/#def-convex-concave)的幾何性質正是其中的關鍵。
 
 ## 參考文獻與延伸閱讀
 

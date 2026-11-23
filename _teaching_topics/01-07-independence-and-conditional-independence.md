@@ -20,7 +20,7 @@ excerpt: "獨立性描述資訊進來後機率仍然不變的情形。本篇依�
 <div id="definition-117" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.20</div>
 
-令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A,B\in\mathcal{F}$。**$A$ 與 $B$ 獨立 <span lang="en">(independent)</span>**，記為 $A\indep B$，與以下條件等價:
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A,B\in\mathcal{F}$。**$A$ 與 $B$ 獨立 <span lang="en">(independent)</span>**，記為 <span class="text-nowrap">$A\indep B$，</span>與以下條件等價:
 
 (1) 在 $\mathbb{P}(A)>0$ 之下，皆有
 {: .topic-paren-item}
@@ -52,7 +52,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，我們後續在判斷兩事件是否為**獨立事件 <span lang="en">(independent events)</span>** 時，較常使用的等價定義為 (3)，因為 (1) 與 (2) 要求 $\mathbb{P}(A)>0$ 或 $\mathbb{P}(B)>0$ (為了使條件機率 $\mathbb{P}(B\mid A)$ 或 $\mathbb{P}(A\mid B)$ 有定義)，而 (3) 則完全避免了條件機率的出現，故即使 $\mathbb{P}(A)=\mathbb{P}(B)=0$，我們仍然可以用其作為判斷是否獨立的依據。
+判斷兩事件是否為**獨立事件 <span lang="en">(independent events)</span>** 時，最常採用條件 (3)。因為條件 (1) 與 (2) 須分別假設 $\mathbb{P}(A)>0$ 或 $\mathbb{P}(B)>0$ 方能使條件機率有定義；條件 (3) 則不涉及條件機率，即使 $\mathbb{P}(A)=0$ 或 <span class="text-nowrap">$\mathbb{P}(B)=0$，</span>仍可直接作為判定事件獨立的準則。
 </div>
 
 <div id="example-computer-ownership" class="topic-box topic-box--example" markdown="1">
@@ -88,11 +88,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{P}(P)&=0.734,\\[0.4em]
-\mathbb{P}(P\cap M)&=0.218,\\[0.4em]
-\mathbb{P}(P\cup M)&=0.801
-\end{aligned}
+\begin{gathered}
+\mathbb{P}(P)=0.734,\\[0.4em]
+\mathbb{P}(P\cap M)=0.218,\\[0.4em]
+\mathbb{P}(P\cup M)=0.801
+\end{gathered}
 $$
 
 </div>
@@ -190,20 +190,20 @@ $$
 <div id="example-independence-true-false" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.19 (True or False)</div>
 
-令 $\mathbb{P}(A)=0.2$、$\mathbb{P}(B)=0.5$、$\mathbb{P}(A\cup B)=0.5$，則以下敘述何者為真？
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A,B\in\mathcal{F}$，且滿足 $\mathbb{P}(A)=0.2$、$\mathbb{P}(B)=0.5$ 與 $\mathbb{P}(A\cup B)=0.5$，則以下敘述何者為真？
 
 <div class="topic-grid-options" markdown="1">
-(1) $A\indep B$。
+(1) $A\indep B$
 
-(2) $A$ 與 $B$ 互斥。
+(2) $A$ 與 $B$ 互斥
 
-(3) $A\indep S$。
+(3) $A\indep S$
 
-(4) $B\indep\varnothing$。
+(4) $B\indep\varnothing$
 
-(5) $B$ 與 $S$ 互斥。
+(5) $B$ 與 $S$ 互斥
 
-(6) $S\indep\varnothing$。
+(6) $S\indep\varnothing$
 </div>
 
 以下依序求解。
@@ -276,16 +276,16 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在 [Example 1.19](#example-independence-true-false) 中我們可以發現，**任何樣本空間的兩個顯然事件 $S$ 與 $\varnothing$ 都與所有事件獨立**，這件事情的原因並不難想像，因為 $S$ 和 $\varnothing$ 這兩個事件不能給我們帶來任何資訊，所以當然與任何事件都獨立。
+由 [Example 1.19](#example-independence-true-false) 可見，**任何樣本空間的兩個顯然事件 $S$ 與 $\varnothing$ 皆與所有事件獨立**。直觀而言，$S$ 必然發生而 $\varnothing$ 絕不發生，兩者皆不會帶來任何額外資訊，自然與任何事件都獨立。
 </div>
 
 ## 互斥與獨立
 
-我們在稍早[介紹互斥](/lecture-notes/event-set-operations/#definition-disjoint-events)時曾經提過，獨立與互斥實為兩個不同的定義，因為獨立需要使用機率，而互斥僅是就集合的角度在探討兩者的關係。
+如前文[介紹互斥](/lecture-notes/event-set-operations/#definition-disjoint-events)時所述，獨立與互斥屬於不同層次的定義，其中獨立須使用機率函數，互斥則僅就集合有無交集來界定。
 
-事實上，大部分的時候，互斥的事件都不獨立，其直觀意義亦很容易理解，因為兩事件若互斥，則可將其視為**必定不會同時發生**，這在機率上應該是一個很強的互相影響關係。
+多數情況下，互斥事件並不獨立；因為兩事件互斥代表**必定不會同時發生**，在機率上通常具有強烈的互相影響關係。
 
-但是，並不是任何時候，彼此互斥的事件，都不可能互相獨立。我們在此整理互斥與獨立的關係，及其對應的情況如下:
+然而在零機率的邊界情況下，互斥事件仍可能獨立。以下參照 Mittelhammer (1996，頁 31；完整書目見文末參考文獻)，將互斥與獨立的對應關係整理如下:
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -301,12 +301,6 @@ $$
 - **當 $\mathbb{P}(A)>0$ 且 $\mathbb{P}(B)>0$**:<br>若 $A\cap B=\varnothing$，則 $A$ 與 $B$ 不獨立；若 $A\cap B\neq\varnothing$，則視 $\mathbb{P}(A\cap B)=\mathbb{P}(A)\,\mathbb{P}(B)$ 是否成立，判斷獨立與否。
 - **當 $\mathbb{P}(A)=0$ 或 $\mathbb{P}(B)=0$**:<br>無論兩事件是否互斥，$A$ 與 $B$ 皆獨立，因為此時必有 $\mathbb{P}(A\cap B)=0$。
 
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-此表格出自 Mittelhammer (1996) 頁 31，完整書目見文末參考文獻。
 </div>
 
 <div id="example-independent-vs-exclusive" class="topic-box topic-box--example" markdown="1">
@@ -356,7 +350,7 @@ $$
 
 </div>
 
-又由[條件機率之定義](/lecture-notes/conditional-probability-information/#definition-conditional-probability)可知，對所有 $A\in\mathcal{F}$ 皆有
+由[條件機率定義](/lecture-notes/conditional-probability-information/#definition-conditional-probability)知，對所有 $A\in\mathcal{F}$ 皆有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -458,7 +452,7 @@ $$
 
 </div>
 
-在上述表格中，表內的機率如 $\mathbb{P}(A_1\cap B_1)$ 等，稱作**聯合機率 <span lang="en">(joint probability)</span>**，而表邊的機率如 $\mathbb{P}(A_1)$ 等，稱作**邊際機率 <span lang="en">(marginal probability)</span>**，這二者的概念與分割及全機率定理具有非常高度的相關，我們將在[下一篇](/lecture-notes/total-probability-bayes-rule/)與後續章節詳細介紹。
+在上述表格中，表內的機率如 $\mathbb{P}(A_1\cap B_1)$ 等，稱作**聯合機率 <span lang="en">(joint probability)</span>**，而表邊的機率如 $\mathbb{P}(A_1)$ 等，稱作**邊際機率 <span lang="en">(marginal probability)</span>**，這二者的概念與分割及全機率定理具有非常高度的相關，我們將在後續主題與章節詳細討論。
 
 ## 獨立事件的餘事件
 
@@ -570,7 +564,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個定理指出，如果某事件發生與否，並不能給另一事件帶來任何資訊，那這件事「是否**不發生**」，也同樣不能帶給另一事件任何資訊，因為知道某件事情「發生」或「不發生」，此二敘述的資訊其實是等價的。
+此定理說明，若某事件是否發生不能給另一事件帶來任何資訊，則該事件「是否**不發生**」同樣不會提供任何資訊；因為得知某事件「發生」與得知其「不發生」，兩者的資訊完全等價。
 </div>
 
 ## 完全獨立與成對獨立
@@ -603,12 +597,12 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-**完全獨立 <span lang="en">(mutually independent)</span>** 除了單純將「交集的機率等於各自機率相乘」推廣至三個事件的版本外，還多了「兩兩事件彼此也要獨立」的條件。若僅滿足 (1) 而沒有滿足 (2) 的話，我們稱之為**成對獨立 <span lang="en">(pairwise independent)</span>**。
+**完全獨立**不僅要求三事件的交集機率等於各自機率相乘，還須滿足兩兩事件彼此獨立；若僅滿足條件 (1) 而不滿足條件 (2)，則稱為**成對獨立 <span lang="en">(pairwise independent)</span>**。
 
-事實上，這個定義若要推廣到任意 $n$ 個事件的話，需要在這 $n$ 個事件中任意取 $k$ 個事件 (其中 $k=2,3,\ldots,n$)，彼此都滿足「交集機率等於各自機率相乘」。若以四個事件而言，則其中任意兩個、三個事件及全部四個事件都要滿足這個條件。
+將此定義推廣至任意 $n$ 個事件時，須要求從這 $n$ 個事件中任取 $k$ 個事件 (<span class="text-nowrap">$k=2,3,\ldots,n$</span>) 皆滿足「交集機率等於各自機率相乘」；以四個事件為例，其中任意兩個、任意三個以及全部四個事件皆須滿足此條件。
 </div>
 
-事實上，讀者應該記得，獨立的定義原先是由「條件機率等於邊際機率」而來，說明了事件之間，並沒有互相影響的關係。在三個或以上的事件時，這個概念仍然適用，而且相當直觀。讀者可見以下的等價定義:
+回顧兩事件獨立的定義，其核心在於「條件機率等於邊際機率」，說明事件間互不影響。此觀點在三個或以上的事件中依然適用，對應等價條件如下:
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -628,9 +622,19 @@ $$
 $$
 \begin{aligned}
 \mathbb{P}(A\mid B,C)&=\mathbb{P}(A\mid B)\\[0.4em]
-&=\mathbb{P}(A\mid C)=\mathbb{P}(A)\\[0.4em]
+&=\mathbb{P}(A\mid C)=\mathbb{P}(A)
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \mathbb{P}(B\mid A,C)&=\mathbb{P}(B\mid A)\\[0.4em]
-&=\mathbb{P}(B\mid C)=\mathbb{P}(B)\\[0.4em]
+&=\mathbb{P}(B\mid C)=\mathbb{P}(B)
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \mathbb{P}(C\mid A,B)&=\mathbb{P}(C\mid A)\\[0.4em]
 &=\mathbb{P}(C\mid B)=\mathbb{P}(C)
 \end{aligned}
@@ -650,7 +654,7 @@ $$
 
 且 $\mathbb{P}(A)$、$\mathbb{P}(B)$、$\mathbb{P}(C)$、$\mathbb{P}(A\cap B)$、$\mathbb{P}(A\cap C)$、$\mathbb{P}(B\cap C)$ 皆大於 $0$。
 
-上式與 [Definition 1.21](#definition-118) 完全等價。但讀者要注意的是，若上式成立，將導致 [Definition 1.21](#definition-118) 中的 (1) 與 (2) 同時成立；反之，[Definition 1.21](#definition-118) 中的 (1) 與 (2) 必須同時成立，才能導致上式成立。
+當各機率皆為正時，上式與 [Definition 1.21](#definition-118) 等價，其中 [Definition 1.21](#definition-118) 的條件 (1) 與 (2) 必須同時成立，方能推得上述所有條件機率等式；反之亦然。
 
 <div id="example-pairwise-not-mutual" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.22 <span lang="en">(Pairwise but Not Mutual)</span></div>
@@ -669,11 +673,11 @@ Four cards are labeled with the numbers $1$, $2$, $3$, and $123$, one number per
 依題意可知
 
 $$
-\begin{aligned}
-A_1&=\lbrace 1,123\rbrace\\[0.4em]
-A_2&=\lbrace 2,123\rbrace\\[0.4em]
-A_3&=\lbrace 3,123\rbrace
-\end{aligned}
+\begin{gathered}
+A_1=\lbrace 1,123\rbrace\\[0.4em]
+A_2=\lbrace 2,123\rbrace\\[0.4em]
+A_3=\lbrace 3,123\rbrace
+\end{gathered}
 $$
 
 則
@@ -700,14 +704,14 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-A_1\cap A_2&=\lbrace 123\rbrace\\[0.4em]
-\Longrightarrow\mathbb{P}(A_1\cap A_2)&=\frac{1}{4}=\mathbb{P}(A_1)\,\mathbb{P}(A_2)\\[0.7em]
-A_1\cap A_3&=\lbrace 123\rbrace\\[0.4em]
-\Longrightarrow\mathbb{P}(A_1\cap A_3)&=\frac{1}{4}=\mathbb{P}(A_1)\,\mathbb{P}(A_3)\\[0.7em]
-A_2\cap A_3&=\lbrace 123\rbrace\\[0.4em]
-\Longrightarrow\mathbb{P}(A_2\cap A_3)&=\frac{1}{4}=\mathbb{P}(A_2)\,\mathbb{P}(A_3)
-\end{aligned}
+\begin{gathered}
+A_1\cap A_2=\lbrace 123\rbrace,\\[0.4em]
+\mathbb{P}(A_1\cap A_2)=\frac{1}{4}=\mathbb{P}(A_1)\,\mathbb{P}(A_2),\\[0.7em]
+A_1\cap A_3=\lbrace 123\rbrace,\\[0.4em]
+\mathbb{P}(A_1\cap A_3)=\frac{1}{4}=\mathbb{P}(A_1)\,\mathbb{P}(A_3),\\[0.7em]
+A_2\cap A_3=\lbrace 123\rbrace,\\[0.4em]
+\mathbb{P}(A_2\cap A_3)=\frac{1}{4}=\mathbb{P}(A_2)\,\mathbb{P}(A_3)
+\end{gathered}
 $$
 
 </div>
@@ -727,10 +731,13 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+A_1\cap A_2\cap A_3=\lbrace 123\rbrace
+$$
+
+$$
 \begin{aligned}
-A_1\cap A_2\cap A_3&=\lbrace 123\rbrace\\[0.4em]
-\Longrightarrow\mathbb{P}(A_1\cap A_2\cap A_3)&=\frac{1}{4}\\[0.4em]
-\neq\mathbb{P}(A_1)\,\mathbb{P}(A_2)\,\mathbb{P}(A_3)&=\frac{1}{8}
+\mathbb{P}(A_1\cap A_2\cap A_3)&=\frac{1}{4}\\[0.4em]
+&\neq\mathbb{P}(A_1)\,\mathbb{P}(A_2)\,\mathbb{P}(A_3)=\frac{1}{8}
 \end{aligned}
 $$
 
@@ -741,19 +748,11 @@ $$
 
 ## 可靠度與串並聯系統
 
-獨立的情況下可以很輕鬆地解決很多問題，例如眾多考試經常出現的「可靠度問題」。
+在獨立假設下，許多複雜系統的機率計算得以大幅簡化，工程與統計中常見的「可靠度問題」(因實際上常探討系統維持運作的壽命，又稱「系統壽命問題」) 即為典型例子。正因其分析上的便利性，處理現實世界的複雜問題時，往往會先簡化假設各部分彼此獨立，以進行初步分析。
 
-正因為其容易操作的特性，現實世界中的複雜問題，往往會先簡化假設至彼此獨立的狀況，以便進行初步的分析，這也是獨立的觀念之所以重要的原因。
+系統的**可靠度 <span lang="en">(reliability)</span>** 是指系統能夠成功運作的機率。一般可靠度問題皆可透過**子系統拆解**，化約為**串聯**與**並聯**兩種最基本的系統結構。首先假設兩個獨立運作的元件，並令 $A$ 與 $B$ 分別表示第一個與第二個元件順利運作的事件，以下分別推導兩種系統的可靠度。
 
-系統的**可靠度 <span lang="en">(reliability)</span>** 就其字面上的意思為**系統可靠的程度**，顧名思義是指系統「可以成功運作的機率」。所有的可靠度問題，都可以經由**子系統拆解**，簡化為最簡單的兩種系統: **串聯**與**並聯**。首先假設兩個獨立的元件，並且 $A$ 與 $B$ 分別是第一個與第二個元件能順利運作的事件，則我們分別探討下列兩種系統的可靠度。
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-可靠度問題實際上是在計算系統壽命，故又稱為「系統壽命問題」。
-</div>
-
-**串聯系統**:
+### 串聯系統
 
 <figure class="topic-figure topic-figure--compact">
   <img src="/images/lecture-notes/independence-series-system.svg" alt="串聯系統示意圖。元件 1 與元件 2 沿同一條線路前後相接。">
@@ -769,7 +768,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-若推廣至 $n$ 個元件的串聯系統，則可靠度為
+推廣至 $n$ 個元件的串聯系統，可靠度為
 
 $$
 \mathbb{P}\left(\bigcap_{i=1}^{n}A_i\right)=\prod_{i=1}^{n}\mathbb{P}(A_i)
@@ -777,7 +776,7 @@ $$
 
 </div>
 
-**並聯系統**:
+### 並聯系統
 
 <figure class="topic-figure topic-figure--compact">
   <img src="/images/lecture-notes/independence-parallel-system.svg" alt="並聯系統示意圖。線路分成上下兩條支線，分別通過元件 1 與元件 2 後再會合。">
@@ -809,7 +808,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-若推廣至 $n$ 個元件的並聯系統，則可靠度為
+推廣至 $n$ 個元件的並聯系統，可靠度為
 
 $$
 \mathbb{P}\left(\bigcup_{i=1}^{n}A_i\right)=1-\prod_{i=1}^{n}\big(1-\mathbb{P}(A_i)\big)
@@ -882,7 +881,7 @@ $$
 
 </div>
 
-**(2)** 由題目敘述可知 $\mathbb{P}(A_2^{\prime}\mid A_3^{\prime})=\mathbb{P}(A_3^{\prime}\mid A_2^{\prime})=0.4$，則由[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)可知
+**(2)** 依題意知 $\mathbb{P}(A_2^{\prime}\mid A_3^{\prime})=\mathbb{P}(A_3^{\prime}\mid A_2^{\prime})=0.4$，故由[乘法原理](/lecture-notes/conditional-probability-information/#theorem-18)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -991,10 +990,18 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+\mathbb{P}(E_1)=0.8
+$$
+
+$$
 \begin{aligned}
-\mathbb{P}(E_1)&=0.8\\[0.4em]
 \mathbb{P}(E_2)&=1-(1-0.9)(1-0.9)\\[0.4em]
-&=0.99\\[0.4em]
+&=0.99
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \mathbb{P}(E_3)&=1-(1-0.9)(1-0.7)\\[0.4em]
 &\qquad(1-0.8)\\[0.4em]
 &=0.994
@@ -1027,7 +1034,7 @@ $$
 
 ## 條件獨立
 
-在貝氏定理與分割模型中，我們常會先固定某個狀態，再討論事件之間是否獨立。這稱為條件獨立。
+討論多個事件時，有時兩事件在整體樣本空間中並不獨立，但在給定某個背景事件 $C$ 發生之後，彼此便不再互相影響。這種建立在條件機率之上的獨立關係稱為條件獨立。
 
 <div id="definition-conditional-independence" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.22</div>
@@ -1042,9 +1049,9 @@ $$
 則稱 $A$ 與 $B$ 在給定 $C$ 後**條件獨立 <span lang="en">(conditionally independent)</span>**。
 </div>
 
-條件獨立的重點在於先固定條件 $C$。固定在 $C$ 所代表的參照世界後，$A$ 的發生不再改變 $B$ 的機率，$B$ 的發生也不再改變 $A$ 的機率。
+條件獨立的關鍵在於先給定事件 <span class="text-nowrap">$C$。</span>固定條件 $C$ 後，若 $\mathbb{P}(A\mid C)>0$ 且 $\mathbb{P}(B\mid C)>0$ 成立，上式同樣表示 $A$ 是否發生不改變 $B$ 在給定 $C$ 下的條件機率，反之亦然。
 
-快篩檢測正是很好的例子。令 $D$ 表示真實罹病狀態，令 $T_1,T_2$ 表示兩次檢測都呈陽性的事件。若我們假設在真實狀態固定後，每次檢測誤差近似獨立，則有
+醫學上的重複檢測便是常見的例子。令 $D$ 表示受檢者確實罹病的事件，$T_1$ 與 $T_2$ 分別表示第一次與第二次檢測呈陽性的事件。若假設在真實罹病與否確定之後，兩次檢測的誤差彼此獨立，則有
 
 $$
 \mathbb{P}(T_1\cap T_2\mid D)
@@ -1058,7 +1065,7 @@ $$
 =\mathbb{P}(T_1\mid D^{\prime})\,\mathbb{P}(T_2\mid D^{\prime})
 $$
 
-但這不代表 $T_1$ 與 $T_2$ 在未給定真實狀態時獨立。第一次陽性會提高我們對罹病狀態的機率評估，而罹病狀態又會提高第二次陽性的機率。因此，未給定 $D$ 或 $D^{\prime}$ 時，兩次陽性結果通常會彼此相關。
+但這並不代表 $T_1$ 與 $T_2$ 在未給定真實狀態時也會獨立。一旦第一次檢測呈陽性，我們對受檢者罹病的機率評估便會提高，進而提高第二次檢測也呈陽性的機率；因此，在未給定 $D$ 或 $D^{\prime}$ 的情況下，$T_1$ 與 $T_2$ 通常並不獨立。
 
 <div class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 1.2</div>
@@ -1085,7 +1092,7 @@ $$
 \frac{1}{2}
 $$
 
-但若要計算 $A\cap B$ 的機率，同樣要先把它拆成兩塊。
+但若要計算 $A\cap B$ 的機率，由全機率定理可先寫為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -1163,7 +1170,7 @@ $$
 \mathbb{P}(A)\,\mathbb{P}(B)=\frac{1}{4}
 $$
 
-因此 $A$ 與 $B$ 在每種條件狀態下都條件獨立，混合回整體後卻不獨立。原因是未給定條件狀態時，$A$ 的發生會改變我們對目前落在 $C_1$ 或 $C_2$ 的判斷；而 $B$ 的發生機率也會隨之改變。這種共同來源會在整體中留下關聯。
+因此 $A$ 與 $B$ 在各條件狀態下都條件獨立，混合回整體後卻不獨立。原因是未給定條件狀態時，$A$ 的發生會改變我們對落在 $C_1$ 或 $C_2$ 的判斷，使 $B$ 的發生機率隨之改變。此共同來源便在整體中留下相依關聯。
 </div>
 
 這個例子也提醒我們，條件獨立與整體獨立不能互相替代。條件資訊若沒有被明確放進模型，混合後的整體關係可能完全不同。
@@ -1186,7 +1193,7 @@ Naive Bayes 分類法常用條件獨立近似。給定類別 $C_k$ 後，若可�
 | [可靠度](#可靠度與串並聯系統) | 串聯與並聯系統的成功機率 |
 | [Definition 1.22](#definition-conditional-independence) | 條件獨立 |
 
-接著若樣本空間被一組互斥且沒有遺漏的事件切開，便可把整體事件拆成幾個來源來加總。這會導向[分割與全機率定理](/lecture-notes/total-probability-bayes-rule/)。
+[下一篇](/lecture-notes/total-probability-bayes-rule/)將介紹樣本空間的分割與全機率定理，說明當樣本空間被一組兩兩互斥且聯集為 $S$ 的事件切開時，如何將一個事件的機率拆成各個互斥部分再加總。
 
 ## 參考文獻與延伸閱讀
 

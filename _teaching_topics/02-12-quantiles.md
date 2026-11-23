@@ -10,7 +10,7 @@ order: 212
 permalink: /lecture-notes/quantiles/
 date: 2026-08-06
 published: true
-excerpt: "分位數把中位數的想法推廣到任意比例。給定一個介於 $0$ 與 $1$ 之間的 $p$，同時滿足 $\\mathbb{P}(X\\leqslant x_{p})\\geqslant p$ 與 $\\mathbb{P}(X\\geqslant x_{p})\\geqslant1-p$ 的 $x_{p}$ 稱為 $p$-分位數，直觀上它把整個分配切成前後兩段，前段佔全部的 $p$、後段佔全部的 $1-p$。換一個角度來看，$q-1$ 個分位數可以把一個分配均分為 $q$ 個等份，第 $k$ 個分界點記為 $q_{k}$；取 $q=4$、$q=10$ 與 $q=100$，便分別得到四分位數、十分位數與百分位數。"
+excerpt: "分位數將中位數推廣至介於 $0$ 與 $1$ 之間的任意比例 $p$ 的情形，把分配切成前段佔 $p$ 與後段佔 $1-p$ 兩部分。本篇說明 $p$-分位數與 $q$-分位數兩種界定方式，並連結四分位數、十分位數與百分位數。"
 ---
 
 [上一篇](/lecture-notes/median/)介紹[中位數](/lecture-notes/median/#def-median)，它把一個分配切成機率各佔一半的前後兩段。這一刀切在正中央，但正中央並不是唯一值得關心的位置。我們也常想知道有四分之一的機率落在哪一個點以下，或是把一個分配均分成十份、一百份之後，各個分界點分別落在哪裡。
@@ -32,15 +32,15 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-&\mathbb{P}(X\leqslant x_{\sssig p})\geqslant p\ \text{且}\\[0.45em]
-&\mathbb{P}(X\geqslant x_{\sssig p})\geqslant1-p
-\end{aligned}
+\begin{gathered}
+\mathbb{P}(X\leqslant x_{\sssig p})\geqslant p\ \text{且}\\[0.45em]
+\mathbb{P}(X\geqslant x_{\sssig p})\geqslant1-p
+\end{gathered}
 $$
 
 </div>
 
-則稱 $x\_{\sssig p}$ 為 $X$ 的 **$p$-分位數 ($p$-quantile)**。
+則稱 $x_{\sssig p}$ 為 $X$ 的 **$p$-分位數 <span lang="en">($p$-quantile)</span>**。
 
 又若在上述條件中，$k, q\in\mathbb{N}$ 且 $1\leqslant k\leqslant q-1$、$q\_{\sssig k}\in\mathbb{R}$ 滿足
 
@@ -54,28 +54,28 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-&\mathbb{P}(X\leqslant q_{\sssig k})\geqslant\frac{k}{\,q\,}\ \text{且}\\[0.45em]
-&\mathbb{P}(X\geqslant q_{\sssig k})\geqslant1-\frac{k}{\,q\,}
-\end{aligned}
+\begin{gathered}
+\mathbb{P}(X\leqslant q_{\sssig k})\geqslant\frac{k}{\,q\,}\ \text{且}\\[0.45em]
+\mathbb{P}(X\geqslant q_{\sssig k})\geqslant1-\frac{k}{\,q\,}
+\end{gathered}
 $$
 
 </div>
 
-則稱 $q\_{\sssig k}$ 為 $X$ 的**第 $k$ 個 $q$-分位數 ($k$-th $q$-quantile)**。
+則稱 $q_{\sssig k}$ 為 $X$ 的**第 $k$ 個 $q$-分位數 <span lang="en">($k$-th $q$-quantile)</span>**。
 
 </div>
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Definition 2.11](#def-quantile) 的第二種定義以 $\frac{k}{q}$ 取代第一種定義中的 $p$，而第一種定義要求 $0<p<1$，故 $k$ 的範圍寫成 $1\leqslant k\leqslant q-1$，兩端都要排除: $k=0$ 給出 $\frac{k}{q}=0$，$k=q$ 給出 $\frac{k}{q}=1$，都落在 $0<p<1$ 之外。這也與下面 $q=4$ 時取 $k=1, 2, 3$、$q=10$ 時取 $k=1, \ldots, 9$ 的用法一致。
+[Definition 2.11](#def-quantile) 的第二種定義以 $\frac{k}{q}$ 取代第一種定義的比例 <span class="text-nowrap">$p$，</span>而第一種定義要求 $0<p<1$ 成立，故 $k$ 的範圍寫成 $1\leqslant k\leqslant q-1$ 以排除兩端，因 $k=0$ 給出 <span class="text-nowrap">$\frac{k}{q}=0$，</span>而 $k=q$ 給出 <span class="text-nowrap">$\frac{k}{q}=1$，</span>兩者都落在開區間 $(0,1)$ 之外。亦與下文取 $q=4$ 時對應 $k=1, 2, 3$ 三點、取 $q=10$ 時對應 $k=1, \ldots, 9$ 九點的用法一致。
 
 </div>
 
 分位數 <span lang="en">(quantile)</span> 有一些地方需要注意:
 
-(1) 上述定義中的分位數較常被稱為**母體分位數 <span lang="en">(population quantile)</span>**，用以避免與敘述統計學中的**樣本分位數 <span lang="en">(sample quantile)</span>** 混淆。
+(1) 上述定義中的分位數常稱為**母體分位數 <span lang="en">(population quantile)</span>**，避免與敘述統計學中的**樣本分位數 <span lang="en">(sample quantile)</span>** 混淆。
 {: .topic-paren-item}
 
 (2) $p$-分位數 (第 $k$ 個 $q$-分位數) 也同樣未必唯一，但我們可以分別透過下面兩個式子，找到其中一個 $p$-分位數與第 $k$ 個 $q$-分位數
@@ -91,7 +91,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-與中位數相同，若 $F\_{\sssig X}$ 連續且於值域上嚴格遞增，則前述的找法所找到的分位數，會是
+如同中位數，若 $F\_{\sssig X}$ 連續且於值域上嚴格遞增，上式所得分位數即為
 
 $$
 \begin{gathered}
@@ -100,35 +100,28 @@ q_{\sssig k}=F^{-1}_{\sssig X}\!\left(\frac{k}{\,q\,}\right)
 \end{gathered}
 $$
 
-這個值也是該分配唯一的 $p$-分位數 (第 $k$ 個 $q$-分位數)。
+且為該分配唯一的 $p$-分位數 (第 $k$ 個 $q$-分位數)。
 
 </div>
 
-(3) 與中位數相似，直觀上來說，$p$-分位數 (第 $k$ 個 $q$-分位數) 的意義在於**該點將整個分配切成前後兩段，前面一段佔全部的 $p$ (或 $\frac{k}{q}$)、後面一段佔全部的 $1-p$ (或 $1-\frac{k}{q}$)**。
+(3) 直觀上，$p$-分位數的意義在於**將整個分配切成前後兩段，前段機率佔 <span class="text-nowrap">$p$、</span>後段機率佔 $1-p$**；若改採第二種定義，則 $q-1$ 個分位數 $q_{\sssig 1},\ldots,q_{\sssig q-1}$ **將整個分配均分為 $q$ 等分，其中 $q_{\sssig k}$ 為第 $k$ 等分與第 $k+1$ 等分的分界點**。
 {: .topic-paren-item}
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-在第二種定義中，這組共 $q-1$ 個的分位數，**將整個分配均分為 $q$ 個等份，$q\_{\sssig k}$ 是其中的第 $k$ 份與第 $k+1$ 份的分界點**。
-
-</div>
 
 下面就用圖示來理解 $p$-分位數的直觀意涵。
 
 <figure id="fig-quantile-intuition" class="topic-figure topic-figure--wide">
   <img src="/images/lecture-notes/quantile-intuition.svg" alt="一條右偏的機率密度曲線，橫軸為 x。曲線下方有一條虛線界線自曲線垂直落到橫軸，軸下標為 x_p。界線左側到曲線起點之間的面積畫上淡色陰影並標為 p，界線右側到曲線右端之間的面積標為 1 減 p。">
-  <figcaption><span class="topic-figure__label">Fig. 2.15.</span> $p$-分位數 $x_{\sssig p}$ 把分配切成前後兩段: 界線左側的面積為 $p$、右側的面積為 $1-p$。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 2.15.</span> $p$-分位數 $x_{\sssig p}$ 把分配切成前後兩段，界線左側面積為 <span class="text-nowrap">$p$，</span>右側面積則為 <span class="text-nowrap">$1-p$。</span></figcaption>
 </figure>
 
 或是以第二種定義來理解第 $k$ 個 $q$-分位數的直觀意涵。
 
 <figure id="fig-kth-q-quantile" class="topic-figure topic-figure--wide">
   <img src="/images/lecture-notes/quartiles-equal-areas.svg" alt="一條右偏的機率密度曲線，橫軸為 x。曲線下方有三條虛線界線自曲線垂直落到橫軸，軸下由左至右標為 q1、q2、q3。三條界線把曲線下的面積分成四塊，四塊深淺交替上色，每一塊各標四分之一。四塊的寬度並不相等，最左一塊最窄，最右一塊一路延伸到曲線的右端。">
-  <figcaption><span class="topic-figure__label">Fig. 2.16.</span> 取 $q=4$ 時，三個分位數 $q_{1}$、$q_{2}$、$q_{3}$ 把整個分配均分為四個等份，每一份的機率各為 $\frac{1}{4}$。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 2.16.</span> 取 $q=4$ 時，三個分位數 $q_{1}$、$q_{2}$、$q_{3}$ 把整個分配均分為四等分，每一等分的機率各為四分之一。</figcaption>
 </figure>
 
-[Definition 2.11](#def-quantile) 中，若我們設定第二種定義的 $q$ 是以下幾個特殊的自然數，則其定義就成為我們常見的幾種分位數，以下就以不同的 $q$ 討論。
+[Definition 2.11](#def-quantile) 中，若設定第二種定義的 $q$ 為以下幾個特殊的自然數，便成為我們常見的幾種分位數，以下就以不同的 $q$ 討論。
 
 (1) **四分位數 <span lang="en">(quartile)</span>**: 若 $q=4$，則 $q\_{\sssig k}, k=1, 2, 3$ 為我們常見的四分位數，更常被記為 $Q\_{\sssig k}, k=1, 2, 3$，其中
 {: .topic-paren-item}
@@ -157,21 +150,17 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-P_{50}&=D_5=Q_2=\eta_{\sssig X}\\[0.45em]
-P_{25}&=Q_1\\[0.45em]
-P_{75}&=Q_3
-\end{aligned}
+\begin{gathered}
+P_{50}=D_5=Q_2=\eta_{\sssig X}\\[0.45em]
+P_{25}=Q_1\\[0.45em]
+P_{75}=Q_3
+\end{gathered}
 $$
 
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-百分位數正是早前臺灣國中的基本學力測驗所採用的「PR 值」。
-
-</div>
+早前臺灣國中基本學力測驗所採用的「PR 值」(百分等級)，即是由百分位數的概念對應而來。
+{: .topic-paren-cont}
 
 <div id="ex-discrete-percentile" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.23</div>
@@ -319,7 +308,7 @@ e^{-x}, & x>0\\[0.4em]
 \right.
 $$
 
-Find the 9-th decile of $X$.
+Find the $9$-th decile of $X$.
 </div>
 
 先求出 $X$ 的 cdf 為
@@ -443,7 +432,7 @@ $$
 <div class="topic-box__label">Example 2.14 <span lang="en">(Continued)</span></div>
 
 <div lang="en" markdown="1">
-Let $Y$ denote the length of life <span lang="en">(in hundreds of hours)</span> of electronic components. These components frequently fail immediately upon insertion into a system. It has been observed that the probability of immediate failure is $\frac{1}{4}$. If a component does not fail immediately, the distribution for its length of life has the exponential density function
+Let $Y$ denote the length of life (in hundreds of hours) of electronic components. These components frequently fail immediately upon insertion into a system. It has been observed that the probability of immediate failure is $\frac{1}{4}$. If a component does not fail immediately, the distribution for its length of life has the exponential density function
 
 $$
 g(y)=
@@ -508,9 +497,9 @@ $$
 
 [Definition 2.11](#def-quantile) 給了分位數的兩種定義。第一種以比例 $p$ 為準，若 $x_{\sssig p}$ 同時滿足 $\mathbb{P}(X\leqslant x_{\sssig p})\geqslant p$ 與 $\mathbb{P}(X\geqslant x_{\sssig p})\geqslant1-p$，則稱它為 $p$-分位數；第二種以等分數 $q$ 為準，把 $p$ 換成 $\frac{k}{q}$，所得的 $q_{\sssig k}$ 稱為第 $k$ 個 $q$-分位數。分位數與中位數一樣未必唯一，取 $\inf\lbrace x\in\mathbb{R}\mid F_{\sssig X}(x)\geqslant p\rbrace$ 可以找到其中一個；若 $F\_{\sssig X}$ 連續且於值域上嚴格遞增，這個值就是 $F^{-1}\_{\sssig X}(p)$，而且是唯一的一個。
 
-兩種定義各有一個直觀意涵。[Fig. 2.15](#fig-quantile-intuition) 對應第一種。分位數把分配切成前後兩段，前段佔全部的 $p$、後段佔全部的 $1-p$。[Fig. 2.16](#fig-kth-q-quantile) 對應第二種。$q-1$ 個分位數把分配均分為 $q$ 個等份，$q_{\sssig k}$ 是第 $k$ 份與第 $k+1$ 份的分界點。設定 <span class="text-nowrap">$q=4$、</span><span class="text-nowrap">$q=10$ 與</span><span class="text-nowrap">$q=100$，</span>便分別得到四分位數 $Q_{\sssig k}$、十分位數 $D_{\sssig k}$ 與百分位數 $P_{\sssig r}$，三者在 $P_{50}=D_5=Q_2=\eta_{\sssig X}$ 這一點上會合。
+兩種定義各有一個直觀意涵。[Fig. 2.15](#fig-quantile-intuition) 對應第一種。分位數把分配切成前後兩段，前段佔全部的 $p$、後段佔全部的 $1-p$。[Fig. 2.16](#fig-kth-q-quantile) 對應第二種。$q-1$ 個分位數把分配均分為 $q$ 等分，$q_{\sssig k}$ 是第 $k$ 等分與第 $k+1$ 等分的分界點。設定 <span class="text-nowrap">$q=4$、</span><span class="text-nowrap">$q=10$ 與</span><span class="text-nowrap">$q=100$，</span>便分別得到四分位數 $Q_{\sssig k}$、十分位數 $D_{\sssig k}$ 與百分位數 $P_{\sssig r}$，三者在 $P_{50}=D_5=Q_2=\eta_{\sssig X}$ 這一點上會合。
 
-五道例題涵蓋三種型態: [Example 2.23](#ex-discrete-percentile) 是離散型，直接由定義的兩個不等式驗證；[Example 2.24](#ex-uniform-upper-quartile) 與 [Example 2.25](#ex-exponential-decile) 是連續型，先求 cdf 再解方程式；[Example 2.26](#ex-nonunique-median) 的密度在 $[2, 4]$ 上為零，該區間內的每一個實數都是中位數，是中位數不唯一的實例；[Example 2.14 <span lang="en">(Continued)</span>](#ex-component-lifetime-first-quartile) 則是混合型，第一四分位數落在質點 $0$ 上。至此，[期望值](/lecture-notes/expectation/#def-expectation)、[變異數](/lecture-notes/variance/#def-variance)、[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)、[眾數](/lecture-notes/mode/#def-mode)、中位數與分位數這幾個量數都已介紹完畢，[下一節](/lecture-notes/moment-system/)要把其中的期望值與變異數收進同一套架構之下，也就是動差系統。
+本篇五道例題涵蓋三種型態。[Example 2.23](#ex-discrete-percentile) 是離散型，直接由定義的兩個不等式驗證；[Example 2.24](#ex-uniform-upper-quartile) 與 [Example 2.25](#ex-exponential-decile) 是連續型，先求 cdf 再解方程式；[Example 2.26](#ex-nonunique-median) 的密度在 $[2, 4]$ 上為零，該區間內的每一個實數都是中位數，是中位數不唯一的實例；[Example 2.14 <span lang="en">(Continued)</span>](#ex-component-lifetime-first-quartile) 則是混合型，第一四分位數落在質點 $0$ 上。至此，[期望值](/lecture-notes/expectation/#def-expectation)、[變異數](/lecture-notes/variance/#def-variance)、[標準差](/lecture-notes/variance-standard-deviation/#def-standard-deviation)、[眾數](/lecture-notes/mode/#def-mode)、中位數與分位數這幾個量數都已介紹完畢，[下一節](/lecture-notes/moment-system/)要把其中的期望值與變異數收進同一套架構之下，也就是動差系統。
 
 ## 參考文獻與延伸閱讀
 

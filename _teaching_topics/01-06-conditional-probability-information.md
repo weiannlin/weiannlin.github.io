@@ -24,7 +24,7 @@ excerpt: "條件機率描述在已知某個事件已經發生之後，我們如�
 <div id="definition-conditional-probability" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 1.19</div>
 
-令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A,B\in\mathcal{F}$，且 $\mathbb{P}(B)>0$，則定義 **$A$ 在給定 $B$ 發生之下的條件機率 <span lang="en">(conditional probability)</span>** 為
+令 $(S,\mathcal{F},\mathbb{P})$ 為機率空間，$A,B\in\mathcal{F}$，且 $\mathbb{P}(B)>0$，定義 **$A$ 在給定 $B$ 發生下的條件機率 <span lang="en">(conditional probability)</span>** 為
 
 $$
 \mathbb{P}(A\mid B)=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}
@@ -32,19 +32,19 @@ $$
 
 </div>
 
-條件機率的意義在於「在已經確定 $B$ 發生的條件下，尋找 $A$ 發生的機率」，故需要將樣本空間縮小到 $B$ 事件身上，讀者可以如下的圖來幫助理解這句話的意涵。
+條件機率的意義在於「在已經確定 $B$ 發生的條件下，尋找 $A$ 發生的機率」，故需要將樣本空間縮小到事件 $B$ 上，讀者可藉下圖理解這句話的意涵。
 
 <figure class="topic-figure topic-figure--medium">
   <img src="/images/lecture-notes/conditional-probability-region.svg" alt="條件機率的文氏圖。矩形代表樣本空間的機率 P(S)，圓 A 與較粗的圓 B 相交，兩圓交集處標示 P(A cap B)。">
   <figcaption><span class="topic-figure__label">Fig. 1.16.</span> 條件機率將樣本空間縮小到 $B$，$\mathbb{P}(A\mid B)$ 即 $\mathbb{P}(A\cap B)$ 在 $\mathbb{P}(B)$ 中所佔的比例。</figcaption>
 </figure>
 
-讀者不妨思考，「在已確定 $B$ 發生的條件下發生 $A$」一事，背後應有一事實，即**在 $B$ 發生的狀況下發生的 $A$，實際上是 $A\cap B$**，這件事情相當直覺，畢竟我們是在 $B$ 已經確定發生之下，進而尋找 $A$，故若此時 $A$ 發生了，則這個事件應該也同時使 $B$ 發生。
+值得留意的是，**在已知 $B$ 發生的前提下事件 $A$ 發生，實際發生的事件即為交集 $A\cap B$**；因為既然以 $B$ 發生為前提，此時觀察到 $A$ 發生便代表 $A$ 與 $B$ 同時發生。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，一般非條件機率的樣本空間，就是 $S$ 本身，也就是「確定 $S$ 會發生的情況下」；故一般的非條件機率 $\mathbb{P}(A)$ 事實上可以被寫為 $\mathbb{P}(A\mid S)$，也就是「在給定 $S$ 發生的條件下，$A$ 發生的機率」。
+一般非條件機率的樣本空間即為 $S$ 本身，相當於已知確定事件 $S$ 必然發生的情形；因此非條件機率 $\mathbb{P}(A)$ 亦可寫為 <span class="text-nowrap">$\mathbb{P}(A\mid S)$，</span>視為給定 $S$ 發生之下事件 $A$ 的條件機率。
 </div>
 
 <div id="example-net-worth-online-trading" class="topic-box topic-box--example" markdown="1">
@@ -54,7 +54,7 @@ $$
 The president of a securities firm is studying the characteristics of stock market investors. A survey shows that $50\%$ of all investors have a net worth exceeding one million dollars, $40\%$ trade through an online trading system, and $35\%$ do both. Let $W$ be the event that an investor’s net worth exceeds one million dollars, and let $T$ be the event that an investor trades through the online trading system. Find $\mathbb{P}(W\cup T)$ and $\mathbb{P}(W^{\prime}\mid T^{\prime})$.
 </div>
 
-依題意知 $\mathbb{P}(W)=0.5$、$\mathbb{P}(T)=0.4$、$\mathbb{P}(W\cap T)=0.35$，由[加法原理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)可知
+已知 $\mathbb{P}(W)=0.5$、$\mathbb{P}(T)=0.4$、$\mathbb{P}(W\cap T)=0.35$，由[加法原理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -74,7 +74,7 @@ $$
 
 </div>
 
-又 $\mathbb{P}(T^{\prime})=1-\mathbb{P}(T)=0.6$，且由[狄摩根律](/lecture-notes/event-set-operations/#theorem-de-morgan)知
+又 $\mathbb{P}(T^{\prime})=1-\mathbb{P}(T)=0.6$，再配合[狄摩根律](/lecture-notes/event-set-operations/#theorem-de-morgan)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -120,10 +120,10 @@ $$
 <div class="topic-box__label">Example 1.14 <span lang="en">(Unions and a Conditional Probability)</span></div>
 
 <div lang="en" markdown="1">
-(1) Suppose that $A$ and $B$ are events for which the union $A\cup B$ has probability $0.76$ and the union $A\cup B^{\prime}$ has probability $0.87$. Find the probability of $A$.
+(1) Let $A$ and $B$ be events with $\mathbb{P}(A\cup B)=0.76$ and <span class="text-nowrap">$\mathbb{P}(A\cup B^{\prime})=0.87$.</span> Find $\mathbb{P}(A)$.
 {: .topic-paren-item}
 
-(2) Suppose that $A$ and $B$ are events for which $A$ has probability $\frac{1}{3}$, $B$ has probability $\frac{1}{2}$, and the probability that both occur is $\frac{1}{5}$. Find the conditional probability that $A$ occurs given that $B$ does not.
+(2) Let $A$ and $B$ be events with $\mathbb{P}(A)=\frac{1}{3}$, $\mathbb{P}(B)=\frac{1}{2}$, and <span class="text-nowrap">$\mathbb{P}(A\cap B)=\frac{1}{5}$.</span> Find $\mathbb{P}(A\mid B^{\prime})$.
 {: .topic-paren-item}
 </div>
 
@@ -134,10 +134,10 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{P}(A\cup B)&=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)=0.76\\[0.4em]
-\mathbb{P}(A\cup B^{\prime})&=\mathbb{P}(A)+\mathbb{P}(B^{\prime})-\mathbb{P}(A\cap B^{\prime})=0.87
-\end{aligned}
+\begin{gathered}
+\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)=0.76\\[0.4em]
+\mathbb{P}(A\cup B^{\prime})=\mathbb{P}(A)+\mathbb{P}(B^{\prime})-\mathbb{P}(A\cap B^{\prime})=0.87
+\end{gathered}
 $$
 
 </div>
@@ -145,16 +145,21 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{P}(A\cup B)&=\mathbb{P}(A)+\mathbb{P}(B)\\[0.4em]
-&\qquad-\mathbb{P}(A\cap B)=0.76\\[0.4em]
-\mathbb{P}(A\cup B^{\prime})&=\mathbb{P}(A)+\mathbb{P}(B^{\prime})\\[0.4em]
-&\qquad-\mathbb{P}(A\cap B^{\prime})=0.87
+\mathbb{P}(A\cup B)&=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)\\[0.4em]
+&=0.76
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\mathbb{P}(A\cup B^{\prime})&=\mathbb{P}(A)+\mathbb{P}(B^{\prime})-\mathbb{P}(A\cap B^{\prime})\\[0.4em]
+&=0.87
 \end{aligned}
 $$
 
 </div>
 
-將兩式相加，其中由[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)可知 $\mathbb{P}(A\cap B)+\mathbb{P}(A\cap B^{\prime})=\mathbb{P}(A)$，因此
+兩式相加，並由[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)知 $\mathbb{P}(A\cap B)+\mathbb{P}(A\cap B^{\prime})=\mathbb{P}(A)$，故
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -296,9 +301,9 @@ $$
 此性質稱為**乘法原理 <span lang="en">(multiplication rule)</span>**。
 </div>
 
-乘法原理只是將條件機率的定義，經過移項後，得到的一個延伸結果，雖然簡單，但卻相當有用。我們常常利用這個定理，將已知的條件機率，反過來用於求取交集機率。
+乘法原理由條件機率的定義移項即得，常用於已知條件機率時求交集機率。
 
-事實上，如果考量了條件機率的一層特殊意義，也就是**條件機率其實是 $\mathbb{P}(A\cap B)$ 在 $\mathbb{P}(B)$ 中，所佔的比例**，則這個定理，在流程上將變得非常直觀，我們用下面的示意圖來理解。
+從比例的角度來看，**條件機率 $\mathbb{P}(A\mid B)$ 即為 $\mathbb{P}(A\cap B)$ 在 $\mathbb{P}(B)$ 中所佔的比例**，兩階段的計算流程可由下方示意圖理解。
 
 <figure class="topic-figure">
   <div class="topic-figure__steps">
@@ -307,23 +312,23 @@ $$
     <span class="topic-figure__step-arrow topic-figure__step-arrow--mobile">$\Downarrow$</span>
     <img src="/images/lecture-notes/conditional-probability-step2.svg" alt="乘法原理流程圖之二。圓 B 之內的虛線箭頭收斂到 A 與 B 的交集，交集處標示 P(A cap B)。">
   </div>
-  <figcaption><span class="topic-figure__label">Fig. 1.17.</span> 乘法原理的流程: step 1 將樣本空間縮小至 <span class="text-nowrap">$B$，</span>即 $\mathbb{P}(S)$ 乘以 $\mathbb{P}(B)$；step 2 在 $B$ 中尋找 <span class="text-nowrap">$A$，</span>即 $\mathbb{P}(B)$ 再乘以 $\mathbb{P}(A\mid B)$。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 1.17.</span> 乘法原理的兩階段流程，其中 step 1 先將樣本空間縮小至事件 $B$ 上，對應於 $\mathbb{P}(S)$ 乘以 $\mathbb{P}(B)$；step 2 再於 $B$ 中尋找事件 $A$ 的部分，對應於 $\mathbb{P}(B)$ 再乘以 $\mathbb{P}(A\mid B)$。</figcaption>
 </figure>
 
-事實上，這個定理就是**利用各種條件，層層篩選**，來尋找我們所要求的交集機率；當然，**路徑未必只有一條**，從 $A$ 出發、再從 $A$ 中尋找 $B$ 也未嘗不可，因此我們當然可以有
+換言之，乘法原理是**利用條件層層篩選**以求得交集機率。**篩選路徑並不唯一**，亦可先由 $A$ 出發、再於 $A$ 中篩選出 <span class="text-nowrap">$B$，</span>寫為
 
 $$
 \mathbb{P}(A\cap B)=\mathbb{P}(B\mid A)\,\mathbb{P}(A),\qquad \mathbb{P}(A)>0
 $$
 
-這是相當直觀的結果。此外，這樣的層層篩選，當然也可以不只有兩個條件，推廣至三個以上的事件時，我們將有以下的定理。
+將此層層篩選的想法推廣至三個以上的事件時，即得下列定理。
 
 ## 廣義乘法原理
 
 <div id="theorem-general-multiplication-rule" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 1.14 <span lang="en">(General Multiplication Rule)</span></div>
 
-令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A_1,\ldots,A_n\in\mathcal{F}$，且 <span class="text-nowrap">$\mathbb{P}\left(\bigcap_{i=1}^{n-1}A_i\right)>0$，</span>則
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，$A_1,\ldots,A_n\in\mathcal{F}$，且滿足 $\mathbb{P}\left(\bigcap_{i=1}^{n-1}A_i\right)>0$ 時，則有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -350,12 +355,12 @@ $$
 此性質稱為**廣義乘法原理 <span lang="en">(general multiplication rule)</span>**。
 </div>
 
-此定理的證明並不困難，讀者應可由[乘法原理](#theorem-18)對事件個數逐步遞推得到，我們在此便不證明。
+此定理的證明並不困難，讀者應可由乘法原理對事件個數逐步遞推得到，故在此省略。
 
 <div id="example-no-king-five-cards" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.15 (No Kings in Five Cards)</div>
 
-自一副 $52$ 張撲克牌中抽取五張牌，試求其中沒有任何 King 的機率為何？
+自一副 $52$ 張撲克牌中抽取五張牌，求其中沒有任何 King 的機率。
 
 **[法一]** 令 $N$ 表示五張牌中沒有 King 的事件，則所求為
 
@@ -398,7 +403,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在 [Example 1.15](#example-no-king-five-cards) 中，除了以組合來計算機率，我們可以把一次抽五張牌，視為依序抽五張牌，取後不放回；好處是，我們很輕易能得知每次抽牌時，沒抽到 King 的條件機率，由此可看出乘法原理的好處。
+在 [Example 1.15](#example-no-king-five-cards) 中，除直接以組合數計算外，亦可將「一次抽取五張牌」視為「取後不放回地依序抽取五張牌」。如此每次抽牌時未抽到 King 的條件機率皆一目了然，由廣義乘法原理相乘即得所求。
 </div>
 
 <div id="example-watering-plant" class="topic-box topic-box--example" markdown="1">
@@ -428,15 +433,15 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{P}(A)&=0.9,\qquad \mathbb{P}(B\mid A^{\prime})=0.8,\\[0.4em]
-\mathbb{P}(B\mid A)&=0.15
-\end{aligned}
+\begin{gathered}
+\mathbb{P}(A)=0.9,\qquad \mathbb{P}(B\mid A^{\prime})=0.8,\\[0.4em]
+\mathbb{P}(B\mid A)=0.15
+\end{gathered}
 $$
 
 </div>
 
-由[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)與[乘法原理](#theorem-18)可知
+由[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)與乘法原理可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -467,7 +472,7 @@ $$
 \mathbb{P}(B^{\prime})=1-\mathbb{P}(B)=0.785
 $$
 
-**(2)** 由[乘法原理](#theorem-18)可知
+**(2)** 由乘法原理可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -511,7 +516,7 @@ $$
 
 ## 蒙提霍爾問題
 
-蒙提霍爾問題 <span lang="en">(Monty Hall problem)</span> 是一個源自真實歷史故事的數學問題。它得名自美國電視遊戲節目 Let’s Make a Deal；節目主持人正是 Monty Hall。這個實境節目自 1963 年開始播出，節目的重點在於「交易」。參賽者可以保留手上的東西，也可以相信主持人的邀請，換成門後、箱子裡或布幕後的未知獎品。這種節目效果後來被整理成三扇門的標準機率問題；看起來像是剩下兩扇門各半，實際上主持人掌握資訊並刻意打開沒有獎品的門，才是計算時不能忽略的線索。
+**蒙提霍爾問題 <span lang="en">(Monty Hall problem)</span>** 是一個源自真實歷史故事的著名數學問題，名稱取自 $1963$ 年開播的美國電視益智節目 *Let’s Make a Deal* 之主持人 Monty Hall。在節目中，參賽者可以選擇保留手上的獎品，或是接受主持人的提議，換成門後或布幕後的未知獎品，這種橋段後來便衍生出以下三扇門的經典機率問題。
 
 <div id="example-monty-hall" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.17 <span lang="en">(The Monty Hall Problem)</span></div>
@@ -522,7 +527,7 @@ On a television game show, a contestant is shown three doors; a prize is hidden 
 
 令 $R$ 表示第一次選擇猜中獎品的事件，$W$ 表示贏得獎品的事件。
 
-**策略一: 換門** 若第一次就猜中獎品，換門之後必定失去獎品；若第一次沒猜中，主持人打開另一個沒有獎品的門後，剩下那個未開且未選的門後必有獎品。因此 $\mathbb{P}(W\mid R)=0$、$\mathbb{P}(W\mid R^{\prime})=1$，由[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)與[乘法原理](#theorem-18)可知
+**策略一 (換門)**。若第一次就猜中獎品，換門之後必定失去獎品；若第一次沒猜中，主持人打開另一個沒有獎品的門後，剩下那個未開且未選的門後必有獎品。因此 $\mathbb{P}(W\mid R)=0$ 且 $\mathbb{P}(W\mid R^{\prime})=1$，由全機率定理與乘法原理可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -548,7 +553,7 @@ $$
 
 </div>
 
-**策略二: 不換** 此時恰好相反，第一次猜中才能贏得獎品，即 $\mathbb{P}(W\mid R)=1$、$\mathbb{P}(W\mid R^{\prime})=0$，同理可知
+**策略二 (不換門)**。此時恰好相反，第一次猜中才能贏得獎品，即 $\mathbb{P}(W\mid R)=1$ 且 $\mathbb{P}(W\mid R^{\prime})=0$，同理可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -577,25 +582,23 @@ $$
 選擇換門，得到獎品的機率較高，是較佳策略，應選擇換門。
 </div>
 
-這個例子的關鍵在於，「第一次就猜中」與「第一次沒猜中」是互斥且恰有一個會發生的兩種情況；[全機率定理](/lecture-notes/probability-rules-from-axioms/#theorem-total-and-addition)把兩種情況下換門策略的貢獻分別算出來，再加總成總勝率。主持人沒有改變獎品的位置，他打開沒有獎品的門的動作改變了資訊狀態。
+這個例子的關鍵在於，「第一次就猜中」與「第一次沒猜中」是互斥且恰有一個會發生的兩種情況；全機率定理把兩種情況下換門策略的貢獻分別算出來，再加總成整體的得獎機率。
 
-這個問題之所以經典，正是因為它很容易讓直覺出錯。主持人打開一個沒有獎品的門後，眼前只剩兩個未開的門，許多人會自然地認為，既然只剩兩個選項，機率應該各半。但這個想法忽略了主持人的行動帶著資訊，具有篩選效果。據說連數學家艾迪胥 (Paul Erdős) 也曾一度不接受換門策略較好的結論，直到看見電腦模擬後才被說服。若想把這個 $2/3$ 看成長期相對頻率，也可以到 Demos 中的<a class="text-nowrap" href="/demos/monty-hall/">蒙提霍爾問題實作</a>親自操作，改變策略、增加模擬次數，觀察換門策略的勝率如何逐漸穩定在理論值附近。
+這個問題之所以廣為人知，是因為它的結論與多數人的直覺大相逕庭。當主持人打開一扇沒有獎品的門之後，場上只剩下兩扇未開的門，許多人便直覺地以為這兩扇門後各有 $\frac{1}{2}$ 的機率藏有獎品。事實上，這種想法忽略了一個關鍵，那就是**主持人是在知道獎品位置的前提下，刻意挑選一扇沒有獎品的門打開**；這項舉動本身就帶來了新的資訊，因此不能單純將剩餘的兩扇門視為機會均等。有趣的是，據說連傳奇數學家艾狄胥 (Paul Erdős) 一開始也不相信「換門比較有利」的結論，直到親眼看見電腦模擬的結果後才終於信服。若想從長期相對次數觀察這個 $\frac{2}{3}$ 的勝率，讀者也可以到互動展示 [The Monty Hall Problem](/demos/monty-hall/) 親自操作，比較不同策略在模擬次數增加時的收斂情形。
 
 <div id="interlude-three-prisoners" class="topic-box topic-box--interlude" markdown="1">
 <div class="topic-box__label">直覺校準 1.1</div>
 
-Monty Hall 問題還有一個結構相同的版本，稱為三囚徒問題 <span lang="en">(three prisoners problem)</span>。
+在機率論中，蒙提霍爾問題還有一個結構完全相同的雙胞胎問題，稱為**三囚徒問題 <span lang="en">(three prisoners problem)</span>**。
 
-想像有三位囚徒 $A,B,C$，其中一人將獲赦免，另外兩人會被處決。囚徒 $A$ 不知道誰會獲赦，於是請知道結果的守衛在 $B,C$ 之中，說出一位「確定不會獲赦」的人。守衛回答「$B$ 不會獲赦」。
+假設有 $A,B,C$ 三位囚犯，其中一人將獲赦免，另兩人則會被處決。囚犯 $A$ 很想知道自己是否獲赦，但守衛不能直接透露 $A$ 的命運，於是 $A$ 央求知道結果的守衛，在 $B$ 與 $C$ 兩人中指出一位「確定會被處決」的人 (若 $B,C$ 兩人都會被處決，守衛會以各半機會隨機說出其中一人)。
 
-請先不要急著算。這時 $A$ 會不會像三門問題中的參賽者一樣，以為「剩下 $A$ 與 $C$，所以自己被赦免的機率變成 $1/2$」？若守衛的規則是，他必須避開 $A$，而且只能說出 $B,C$ 中不會獲赦的人；當 $B,C$ 都不會獲赦時，守衛用對稱方式選一位回答，那麼這個問題和 Monty Hall 的結構相同。
-
-對應關係如下。囚徒 $A$ 就像一開始選定的門，守衛說出的囚徒，就像主持人打開的那個沒有獎品的門，剩下的囚徒 $C$ 就像另一個未開的門。守衛知道答案後，回答時會刻意避開某些選項。因此，真正被重新評估的仍是「一開始 $A$ 是否就是獲赦者」這件事，不能簡單把兩個剩餘選項均分。
+當守衛回答「$B$ 會被處決」之後，囚犯 $A$ 容易誤以為只剩自己與 $C$ 兩人，獲赦機率應變為各占 <span class="text-nowrap">$\frac{1}{2}$。</span>然而將此情境與蒙提霍爾問題對照，可見兩者的邏輯完全一致，其中**囚犯 $A$ 相當於參賽者最初選定的門，守衛指出必被處決的 $B$ 相當於主持人刻意打開的空門，剩下的囚犯 $C$ 則相當於另一扇未開的門**。由於守衛回答時必定避開 <span class="text-nowrap">$A$，</span>這項資訊並不會改變 $A$ 原本 $\frac{1}{3}$ 的獲赦機率，而是將剩餘 $\frac{2}{3}$ 的機率集中到囚犯 $C$ 身上。
 </div>
 
 ## 本篇小結
 
-本篇介紹了條件機率、乘法原理與廣義乘法原理，並以蒙提霍爾問題示範資訊如何改變機率:
+本篇介紹了條件機率、乘法原理與廣義乘法原理，並以蒙提霍爾問題示範資訊如何改變機率，重點整理如下:
 
 | 結果 | 內容 |
 | :---: | :---: |
@@ -607,7 +610,7 @@ Monty Hall 問題還有一個結構相同的版本，稱為三囚徒問題 <span
 
 前面曾經提過，資訊的流入對某件事情的發生與否可能造成影響，然而其造成的影響將提高其發生的機率或是降低其發生的機率呢？這一點在不同的事件上會有不同的結果。
 
-一如稍早的例子中，蘋果公司宣布將發表新款的 iPhone，對其未來一週股價上揚的機率顯然是種正面影響；又若今天某科技公司爆發高層捲款潛逃的消息，則該公司未來一週股價上揚的機率應是大幅下修，此類影響應為負面影響。
+一如稍早的例子中，蘋果公司宣布將發表新款的 iPhone，對其未來一週股價上揚的機率顯然是種正面影響；又若今天某科技公司爆發高層捲款潛逃的消息，則該公司未來一週股價上揚的機率應是大幅下修，即屬負面影響。
 
 既然影響有正有負，那麼在各種資訊流入中，比較特別的是，若某一事件的資訊流入**對於另一事件毫無影響**呢？這種狀況便是所謂的兩事件彼此間**獨立 <span lang="en">(independent)</span>**，我們將在[下一篇](/lecture-notes/independence-and-conditional-independence/)詳細介紹。
 

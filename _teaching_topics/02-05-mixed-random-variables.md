@@ -10,23 +10,23 @@ order: 205
 permalink: /lecture-notes/mixed-random-variables/
 date: 2026-08-04
 published: true
-excerpt: "有一部分隨機變數並不純粹是離散型，也不純粹是連續型，它同時具備離散型的單點機率，與連續型的機率函數不是機率這兩項特性，稱作混合型隨機變數。分解定理指出，任一個 cdf 都可以寫成一個離散型 cdf 與一個處處連續的 cdf 之線性組合，係數 $\\alpha$ 等於所有離散質點的機率總和；當兩個部分都不退化時，這樣的分解是唯一的。同樣的分解也適用於 pdf。"
+excerpt: "同時具備離散單點機率與連續密度成分的隨機變數稱為混合型隨機變數。本篇介紹累積分配函數的分解定理，說明如何將其拆解為離散型與連續型兩部分的線性組合。"
 ---
 
-到目前為止，我們把[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)分為離散型與連續型兩類: 離散型以[機率質量函數](/lecture-notes/random-variables-and-pmf/)記錄每一個質點的單點機率，其 cdf 是在質點上跳躍的階梯函數；連續型以[機率密度函數](/lecture-notes/probability-density-functions/)描述機率的疏密，[任一單點的機率皆為 $0$](/lecture-notes/computing-probabilities-from-cdf/#thm-point-probability-zero)，其 cdf 因而處處連續。
+到目前為止，我們將[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)分為離散型與連續型兩類。離散型以[機率質量函數](/lecture-notes/random-variables-and-pmf/)記錄每一個質點的單點機率，其 cdf 是在質點上跳躍的階梯函數；連續型則以[機率密度函數](/lecture-notes/probability-density-functions/)描述機率的疏密程度，由於[任一單點的機率皆為零](/lecture-notes/computing-probabilities-from-cdf/#thm-point-probability-zero)，其 cdf 因而處處連續。
 
 這兩類並沒有涵蓋所有的隨機變數。有些隨機變數的 cdf 既有跳躍，也有連續上升的部分，離散型與連續型的特性同時出現在同一個變數上。以下便介紹這一類隨機變數，以及把它拆解為離散與連續兩個部分的分解定理。
 
 <span id="example-29"></span>
 <span id="definition-25"></span>
 
-有一部分隨機變數，並不純粹是離散型隨機變數，亦不純粹是連續型隨機變數。其同時具備離散型隨機變數中具有單點機率，及連續型隨機變數中機率函數不是機率，這兩種重要的特性。我們將這種隨機變數稱作**混合型隨機變數 <span lang="en">(mixed random variable)</span>**。
+有一部分隨機變數既非純粹的離散型，亦非純粹的連續型，而是同時具備離散型在特定單點上有正機率，以及連續型以密度描述機率疏密這兩種特性，我們稱之為**混合型隨機變數 <span lang="en">(mixed random variable)</span>**。
 
 <div id="ex-mixed-cdf-density" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.13</div>
 
 <div lang="en" markdown="1">
-Suppose that the distribution function of a random variable $X$ is given by
+Let $X$ be a random variable with distribution function
 
 $$
 F_{\sssig X}(x)=
@@ -38,7 +38,7 @@ F_{\sssig X}(x)=
 \right.
 $$
 
-Find the corresponding density function.
+Find the density function of $X$.
 </div>
 
 由 cdf 在 $x=0$ 的跳躍高度可得
@@ -80,6 +80,8 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+\begin{gathered}
+\frac{d\,(1-0.8e^{-x})}{dx}=0.8\,e^{-x}\quad(x>0)\\[0.6em]
 f_{\sssig X}(x)=
 \left\lbrace
 \begin{array}{c@{\quad}l}
@@ -88,6 +90,7 @@ f_{\sssig X}(x)=
 0, & \text{otherwise}
 \end{array}
 \right.
+\end{gathered}
 $$
 
 </div>
@@ -99,7 +102,7 @@ $$
 
 </div>
 
-混合型隨機變數，可以看成是由一個完整的離散型隨機變數，與一個完整的連續型隨機變數，經由線性組合而得，這一點不論在 pdf 或是 cdf 都通用。以上面的例子而言，我們可以將其 cdf 寫為
+混合型隨機變數的分配可視為一個離散型分配與一個連續型分配的線性組合，這一點在機率函數與 cdf 上皆適用。以 [Example 2.13](#ex-mixed-cdf-density) 為例，其 cdf 可寫為
 
 $$
 F_{\sssig X}(x)=0.2\times F_{\sssig d}(x)+0.8\times F_{\sssig c}(x)
@@ -157,13 +160,6 @@ $$
 
 </div>
 
-<div id="note-continuous-cdf" class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-上列定理只說 $F_{\sssig c}(x)$ 是一個處處連續的 cdf，並沒有說它是連續型隨機變數的 cdf，兩者不是同一件事情。依 [Definition 2.2](/lecture-notes/random-variables-and-pmf/#def-support-classification)，連續型隨機變數是以積分判準界定的，也就是要存在一個非負且可積分的函數，使 $\mathbb{P}(X\leqslant x)$ 能寫成該函數的積分。而稍後第 (3) 步的建構，只保證 $F_{\sssig c}(x)$ 處處沒有跳躍，並不保證這樣的函數存在；處處連續卻找不到密度函數的 cdf 確實存在，此時 $F_{\sssig c}(x)$ 仍是一個合格的 cdf，卻不是連續型隨機變數的 cdf。至於本篇兩個例子中的 $F_{\sssig c}(x)$，都是指數分配的 cdf，密度函數存在，屬於連續型隨機變數的 cdf。
-
-</div>
-
 在進行分解的過程中，可先尋找線性組合的係數 $\alpha$，這個係數將等於離散質點的機率總和，在 [Example 2.13](#ex-mixed-cdf-density) 中，即為
 
 $$
@@ -202,7 +198,7 @@ p_1+p_2, & x_2\leqslant x<x_3\\[0.4em]
 \right.
 $$
 
-質點有可數無限多個時，各段依 $x_1<x_2<\cdots$ 逐段延續下去，沒有 $x\geqslant x_k$ 那一段，$F_{\sssig 1}(x)$ 隨 $x$ 增大而趨近 $\alpha$。以 $x_1<x_2<\cdots$ 列出質點，已經假定它們排得成遞增序列；質點落在有理數上時排不出這樣的序列，逐段寫開的階梯式也就不存在，但 $F_{\sssig 1}(x)=\sum_{x_i\leqslant x}p_i$ 不依賴排序，這種情形下仍然成立。
+上式是以有限個質點 $x_1<\cdots<x_k$ 為例寫成階梯式；若質點有可數無限多個，一般而言便沒有最後一段 $x\geqslant x_k$ 的常數區間，$F_{\sssig 1}(x)=\sum_{x_i\leqslant x}p_i$ 會隨著 $x$ 增大而逐步趨近總和 $\alpha$。
 {: .topic-paren-cont}
 
 (2) $F_{\sssig 1}(x)$ 未必為一 cdf，則可令
@@ -220,7 +216,7 @@ F_{\sssig d}(x)=\frac{1}{\alpha}\,F_{\sssig 1}(x)=
 \right.
 $$
 
-上式由各段同除以 $\alpha$ 而得，寫的同樣是質點個數有限的情形；質點有可數無限多個時也沒有 $x\geqslant x_k$ 那一段，$F_{\sssig d}(x)$ 隨 $x$ 增大而趨近 $1$。此即離散型 cdf。
+上式由 $F_{\sssig 1}(x)$ 各段同除以 $\alpha$ 而得 (若質點有可數無限多個，同樣沒有最後一段 $x\geqslant x_k$ 的常數區間，函數值會隨著 $x$ 增大而趨近於 $1$)，此即離散型部分的 cdf。
 {: .topic-paren-cont}
 
 (3) 令 $F_{\sssig 2}(x)=F_{\sssig X}(x)-F_{\sssig 1}(x)$，則 $F_{\sssig 2}(x)$ 未必為一 cdf，可令
@@ -233,19 +229,9 @@ $$
 此即處處連續的 cdf。
 {: .topic-paren-cont}
 
-事實上，讀者將會發現，實際上在拆解的流程，並不是先知道 $F_{\sssig d}(x)$ 與 $F_{\sssig c}(x)$ 為何，而是先尋找 $\alpha$，再將 $F_{\sssig 1}(x)$ 與 $F_{\sssig 2}(x)$ 這二個未必是 cdf 的函數，進行修正而得。
+實際拆解時，並非事先知道 $F_{\sssig d}(x)$ 與 $F_{\sssig c}(x)$ 的形式，而是先求出離散權重 <span class="text-nowrap">$\alpha$，</span>再依據 [Theorem 2.1](/lecture-notes/cumulative-distribution-functions/#thm-cdf-properties) 中「任一 cdf 的兩端極限須分別為 $0$ 與 $1$」的性質，將尚未正規化的 $F_{\sssig 1}(x)$ 與 $F_{\sssig 2}(x)$ 分別除以 $\alpha$ 與 $1-\alpha$ 修正為正規的 cdf。
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-讀者應該沒有忘記，[Theorem 2.1](/lecture-notes/cumulative-distribution-functions/#thm-cdf-properties) (cdf 的性質) 中指出，任何的 cdf (不論離散或連續)，其函數值都是從 $0$ 開始，而以 $1$ 結尾，因此需要進行修正，才能夠將其變為正規的 cdf。
-
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這其中的特例如下:
+由於上述第 (2) 步須除以 <span class="text-nowrap">$\alpha$、</span>第 (3) 步須除以 <span class="text-nowrap">$1-\alpha$，</span>這套拆解流程是以混合型的 $0<\alpha<1$ 為前提；至於 $\alpha=0$ 與 $\alpha=1$ 兩個邊界情況，則分別退化為純粹連續型與純粹離散型:
 
 **[ 當 $\alpha=0$ 時 ]**
 
@@ -263,19 +249,22 @@ $$
 
 此即 $X$ 為一個純粹的離散型隨機變數。
 
-上列三個步驟中，第 (2) 步除以 $\alpha$、第 (3) 步除以 $1-\alpha$，故三個步驟以 $0<\alpha<1$ 為前提。$\alpha=0$ 與 $\alpha=1$ 這兩個特例，直接由本則的兩個等式得到。
+<div id="note-continuous-cdf" class="topic-box topic-box--note" markdown="1">
+<div class="topic-box__label">Note</div>
+
+[Theorem 2.7](#thm-decomposition) 與第 (3) 步將 $F_{\sssig c}(x)$ 稱為「處處連續的 cdf」，而非直接稱為「連續型隨機變數的 cdf」。原因在於第 (3) 步扣除所有跳躍量後，雖保證 $F_{\sssig c}(x)$ 處處連續而無跳躍，但在少數奇異分配的例子中，處處連續的 cdf 未必具有對應的密度函數可積分 (即未必符合 [Definition 2.2](/lecture-notes/random-variables-and-pmf/#def-support-classification) 的積分判準)。不過在本系列與實務應用常見的混合型分配中，$F_{\sssig c}(x)$ 皆具有對應的 pdf (如本篇兩道例題中的指數分配)，直接視為連續型隨機變數的 cdf 操作即可。
 
 </div>
 
 若想親手安排離散與連續兩個部分，可以參考互動展示 [Mixed distributions](/demos/mixed/)。它讓讀者自行加入質點與其機率，觀察 cdf 在各質點躍升的高度恰為該點的機率，連續的部分則佔 $1-\alpha$ 的權重。
 
-分解定理的概念，並不僅限於 cdf 的分解，其同樣適用於混合型 pdf 的分解，下面我們就來看一個這樣的例子。
+分解定理的概念不僅適用於 cdf，亦適用於混合型機率函數的線性拆解，以下舉例說明。
 
 <div id="ex-component-lifetime" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 2.14</div>
 
 <div lang="en" markdown="1">
-Let $Y$ denote the length of life <span lang="en">(in hundreds of hours)</span> of electronic components. These components frequently fail immediately upon insertion into a system. It has been observed that the probability of immediate failure is $\frac{1}{4}$. If a component does not fail immediately, the distribution for its length of life has the exponential density function
+Let $Y$ denote the length of life (in hundreds of hours) of electronic components. These components frequently fail immediately upon insertion into a system. It has been observed that the probability of immediate failure is $\frac{1}{4}$. If a component does not fail immediately, the distribution for its length of life has the exponential density function
 
 $$
 g(y)=

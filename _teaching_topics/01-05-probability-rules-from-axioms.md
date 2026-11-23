@@ -13,7 +13,7 @@ published: true
 excerpt: "由柯爾莫哥洛夫三大公理出發，本篇依序推出虛無事件的機率、有限可加性、餘事件公式、全機率定理與加法原理、單調性、廣義加法原理，以及布爾與邦佛洛尼不等式，最後以單調事件序列的機率極限作結。"
 ---
 
-[上一篇](/lecture-notes/event-families-sigma-fields/)整理了域、$\sigma$-域與機率空間。藉由機率公理，我們能夠衍伸出一些相當有用的機率等式與不等式，下面就從單一事件所構成的一些式子開始說明起。
+[上一篇](/lecture-notes/event-families-sigma-fields/)整理了域、$\sigma$-域與機率空間。藉由機率公理，我們能夠衍生出一些相當有用的機率等式與不等式，下面就從單一事件所構成的基本性質開始說明。
 
 ## 虛無事件的機率
 
@@ -69,7 +69,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在[隨機實驗、樣本空間與事件](/lecture-notes/random-experiments-sample-space-events/#事件與事件的發生)中我們曾經提到，虛無事件 (null event) 是一個一定會出現在任何樣本空間 $S$ 中的事件；事實上，它也一定會出現在任何佈於 $S$ 上的 $\sigma$-域 $\mathcal{F}$ 中。但究其意義，它代表的是「不可能發生的事件」，因為任何樣本空間的樣本點都不會落於其中。這樣的事件其機率為 $0$，相當符合我們的直觀。
+如[隨機實驗、樣本空間與事件](/lecture-notes/random-experiments-sample-space-events/#事件與事件的發生)所述，虛無事件 (null event) $\varnothing$ 屬於任何樣本空間 $S$ 上的任意 $\sigma$-域 <span class="text-nowrap">$\mathcal{F}$。</span>由於實驗的任何樣本點皆不會落入空集合中，$\varnothing$ 代表「不可能發生的事件」，其機率為 $0$ 與直觀相符。
 </div>
 
 <div id="example-odd-even-faces" class="topic-box topic-box--example" markdown="1">
@@ -85,7 +85,7 @@ $$
 
 以下依序求解。
 
-**(1)** 樣本空間為 $S=\lbrace1,2,3,4,5,6\rbrace$，由題意知 $A=\lbrace2,4,6\rbrace$，$B=\lbrace1,3,5\rbrace$，且骰子為公正骰子，故依[古典機率之定義](/lecture-notes/probability-assignment-classical-geometric/#definition-classical-probability)可知
+**(1)** 樣本空間為 $S=\lbrace1,2,3,4,5,6\rbrace$，由題意知 $A=\lbrace2,4,6\rbrace$，$B=\lbrace1,3,5\rbrace$，且骰子公正，故依[古典機率之定義](/lecture-notes/probability-assignment-classical-geometric/#definition-classical-probability)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -98,10 +98,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{P}(A)&=\frac{\mathrm{n}(A)}{\mathrm{n}(S)}=\frac{3}{6}=\frac{1}{2},\\[0.4em]
-\mathbb{P}(B)&=\frac{\mathrm{n}(B)}{\mathrm{n}(S)}=\frac{3}{6}=\frac{1}{2}
-\end{aligned}
+\begin{gathered}
+\mathbb{P}(A)=\frac{\mathrm{n}(A)}{\mathrm{n}(S)}=\frac{3}{6}=\frac{1}{2},\\[0.4em]
+\mathbb{P}(B)=\frac{\mathrm{n}(B)}{\mathrm{n}(S)}=\frac{3}{6}=\frac{1}{2}
+\end{gathered}
 $$
 
 </div>
@@ -117,13 +117,11 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Example 1.10](#example-odd-even-faces) (1) 使用了古典機率的定義。在[機率空間的定義](/lecture-notes/event-families-sigma-fields/#機率空間)中我們曾提到，公理化機率系統並沒有說明機率應該如何被測度，只說明機率應該具備的性質。這一點顯示，公理化機率並不與古典機率相抵觸，因為古典機率是以如何測度某事件的機率來定義的，二者並沒有衝突。
-</div>
+(1) [Example 1.10](#example-odd-even-faces) (1) 套用了古典機率的定義。如前篇[機率空間的定義](/lecture-notes/event-families-sigma-fields/#機率空間)所述，公理化機率系統僅規範機率測度應具備的基本性質，並不限定機率的計算方式；只要古典機率滿足三大公理，兩者便完全相容。
+{: .topic-paren-item}
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-[Example 1.10](#example-odd-even-faces) (2) 的答案，讀者應可不必計算即知道其機率為 $0$，因為這原先就是一個「不可能發生的事件」，故直覺上其發生的機率為 $0$。然而，這個敘述的逆命題卻未必為真，換言之，即「機率為 $0$ 的事件未必不可能發生」。以 [Theorem 1.3](#theorem-null-event) 來思考此一觀點，即為「$\mathbb{P}(\varnothing)=0$，但機率為 $0$ 的事件卻未必是 $\varnothing$」。此一概念在下一章談到[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)中的連續型變數將會更為清晰，但讀者不妨在此思考一個例子: 有一魔術表演專用的硬幣，有正反二面，但不論如何丟擲，最後都必定會呈現正面朝上，則**丟出反面**的機率是 $0$ (因為必然不會發生)，但**丟出反面的事件**卻不是 $\varnothing$，而是 $\lbrace\mathrm{T}\rbrace$。
+(2) [Example 1.10](#example-odd-even-faces) (2) 顯示不可能發生的事件機率必為 <span class="text-nowrap">$0$，</span>但反之並不成立，亦即「<span class="text-nowrap">$\mathbb{P}(\varnothing)=0$，</span>但滿足 $\mathbb{P}(E)=0$ 的事件 $E$ 未必為空集合 <span class="text-nowrap">$\varnothing$</span>」。此一區別在下一章介紹連續型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)時將更為清晰；在離散情境中亦可設想一枚魔術表演專用硬幣，雖有正反兩面，但不論如何投擲皆正面朝上，此時**丟出反面**的機率雖為 <span class="text-nowrap">$0$，</span>對應的事件卻是單點集合 $\lbrace\mathrm{T}\rbrace$ 而非空集合 <span class="text-nowrap">$\varnothing$。</span>
+{: .topic-paren-item}
 </div>
 
 從 [Theorem 1.3](#theorem-null-event) 可以發現，**不可能發生的事件機率一定為 $0$**。除了符合我們的直覺以外，這個定理還能引導出可數可加性的一個比較弱的版本，也就是**有限可加性 <span lang="en">(finite additivity)</span>**。
@@ -150,7 +148,7 @@ $$
 \bigcup_{i=1}^{\infty}A_i=\bigcup_{i=1}^{n}A_i\cup\varnothing\cup\varnothing\cup\cdots=\bigcup_{i=1}^{n}A_i
 $$
 
-由可數可加性 (Axiom 3) 與 $\mathbb{P}(\varnothing)=0$ 可知
+由可數可加性與 $\mathbb{P}(\varnothing)=0$ 可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -174,9 +172,9 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-有限可加性又被稱作**可加性 <span lang="en">(additivity)</span>**，是一個很有用的性質，特別是在探討有限個成對互斥集合間的機率關係時，我們可以不用每次都令一堆多餘的空集合，而只需要關注有限個集合本身的情況。
+有限可加性又稱**可加性 <span lang="en">(additivity)</span>**；處理有限個成對互斥事件的聯集時，可直接將各事件機率相加，無須再構造無窮多個空集合。
 
-特別之處在於，我們常常會說有限可加性相較於可數可加性，是一個比較**弱 (weak)** 的性質，其理由正是源於上面的證明，因為可數可加性可以直接導致有限可加性的成立。
+相較於可數可加性，有限可加性常稱為較**弱 (weak)** 的性質，因為由上述證明可見，可數可加性可直接推出有限可加性。
 
 此外，如果一隨機實驗的結果只有有限多種 (即 $S$ 有限)，則任一佈於 $S$ 上的域 $\mathcal{F}$ 也會是有限的；此時，機率公理中的 Axiom 3 即使只滿足有限可加性，也足夠應付所有的狀況。
 
@@ -230,23 +228,17 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Theorem 1.5](#theorem-basic-equations) (1) 把一個機率的範圍給了明確的限制。讀者應該記得，機率公理的非負性 (Axiom 1) 只有指出機率不得為負的，卻沒有說「機率至多只能是 $1$」。這是因為公理不需要證明其為真，故數學家通常追求在最少的公理之上建構整套理論，正是因此，機率公理中才沒有寫出這一點。
-</div>
+[Theorem 1.5](#theorem-basic-equations) (1) 確立了機率的上界為 <span class="text-nowrap">$1$。</span>機率公理的非負性 (Axiom 1) 僅規定機率不小於 <span class="text-nowrap">$0$，</span>並未將 $\mathbb{P}(A)\leqslant 1$ 列入公理；這是因為公理系統講求精簡，凡能由既有公理推得的性質，皆歸入定理而不另列為公理。
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-餘事件公式其實相當直觀，用文氏圖可以立刻想通:
+至於 (2) 的餘事件公式則可由下方文氏圖直觀理解，在後續計算複雜事件的機率時相當實用。
 
 <figure class="topic-figure">
   <img src="/images/lecture-notes/probability-rules-complement.svg" alt="餘事件公式的文氏圖。樣本空間的機率分為圓內的 P(A) 與圓外著色區域的 P(A prime) 兩部分。">
   <figcaption><span class="topic-figure__label">Fig. 1.9.</span> 樣本空間的機率被分為 $\mathbb{P}(A)$ 與 $\mathbb{P}(A^{\prime})$ 兩部分。</figcaption>
 </figure>
-
-這個概念很簡單，但卻是計算餘事件機率的相當實用的算法，往後我們會經常用到此結果。
 </div>
 
-讀者在這個階段會發現，這些關於機率的基礎性質，不過就是基於機率三大公理，以及過往我們所知道的一些集合關係，加以推導而得到的。整個機率論，便是基於這些看似簡單的基礎，透過層層堆疊而得，故讀者更應將基礎的重要性謹記於心。
+至此可見，上述機率的基本性質皆由三大機率公理結合集合運算推導而得；整套機率論便是由這些基礎性質逐步推演建立。
 
 接下來，我們將探討兩個事件間的機率關係。一如前面使用集合算子，來討論集合與集合間 (事件與事件間) 的關係，我們同樣可以在機率函數上，探討不同事件間的關係。
 
@@ -290,7 +282,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-**(1)** 由 $B=B\cap S$ 且 $S=A\cup A^{\prime}$，依分配律可知
+**(1)** 由 $B=B\cap S$ 與 $S=A\cup A^{\prime}$ 兩式，依分配律可知
 
 $$
 B=B\cap(A\cup A^{\prime})=(B\cap A)\cup(B\cap A^{\prime})
@@ -344,7 +336,7 @@ $$
 
 </div>
 
-**(2)** 由 $A\cup B=(A\cap B^{\prime})\cup(A\cap B)\cup(A^{\prime}\cap B)$，且三者兩兩互斥:
+**(2)** 由 $A\cup B=(A\cap B^{\prime})\cup(A\cap B)\cup(A^{\prime}\cap B)$，且三者滿足兩兩互斥關係，可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -358,8 +350,8 @@ $$
 $$
 \begin{aligned}
 &(A\cap B^{\prime})\cap(A\cap B)\\[0.4em]
-&\qquad=(A\cap B)\cap(A^{\prime}\cap B)\\[0.4em]
-&\qquad=(A\cap B^{\prime})\cap(A^{\prime}\cap B)=\varnothing
+&=(A\cap B)\cap(A^{\prime}\cap B)\\[0.4em]
+&=(A\cap B^{\prime})\cap(A^{\prime}\cap B)=\varnothing
 \end{aligned}
 $$
 
@@ -400,40 +392,36 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-全機率定理其實更常被寫為 $\mathbb{P}(B)=\mathbb{P}(A\cap B)+\mathbb{P}(A^{\prime}\cap B)$，也就是指，$B$ 的機率被分為有 $A$ 的部分與沒有 $A$ 的部分。這個表示法背後隱含的直覺為「任何事件都可被樣本空間的一組**分割 <span lang="en">(partition)</span>** 切成很多沒有交集的部分」；分割的概念在稍後的文章會有詳盡的介紹，讀者在此可將其想像為一種「各組間不重疊的分類方式」。其概念如下圖:
+(1) 全機率定理常改寫為 $\mathbb{P}(B)=\mathbb{P}(A\cap B)+\mathbb{P}(A^{\prime}\cap B)$ 的形式，亦即將事件 $B$ 拆分為「包含 $A$」與「不包含 $A$」兩個互斥部分。這隱含「任一事件皆可依樣本空間的一組**分割 <span lang="en">(partition)</span>** (各組間互不重疊且合起來不遺漏的分類方式) 切分為互斥區塊」的直覺，分割的正式定義將於後文詳述，概念如下圖所示。
+{: .topic-paren-item}
 
 <figure class="topic-figure">
   <img src="/images/lecture-notes/probability-rules-total-partition.svg" alt="全機率定理的集合示意圖。樣本空間分為 A 與 A prime 兩塊，事件 B 橫跨兩塊，被切成 A 交 B 與 A prime 交 B 兩部分。">
   <figcaption><span class="topic-figure__label">Fig. 1.10.</span> $B$ 的機率被 $A$ 與 $A^{\prime}$ 切成 $\mathbb{P}(A\cap B)$ 與 $\mathbb{P}(A^{\prime}\cap B)$ 兩部分。</figcaption>
 </figure>
-</div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-加法原理的證明漂亮地使用了全機率定理的結果。但事實上，如果對照[聯集與交集的文氏圖](/lecture-notes/event-set-operations/#聯集交集差集與餘集)，則加法原理本身也有非常直觀的圖例可以使用:
+(2) 加法原理除了可如上由全機率定理推得外，亦可對照[聯集與交集的文氏圖](/lecture-notes/event-set-operations/#聯集交集差集與餘集)由下圖直觀理解。計算 $\mathbb{P}(A\cup B)$ 時，將 $\mathbb{P}(A)$ 與 $\mathbb{P}(B)$ 直接相加會使重疊區域 $A\cap B$ 的機率重複計入，扣除一次 $\mathbb{P}(A\cap B)$ 即得聯集機率。
+{: .topic-paren-item}
 
 <figure class="topic-figure">
   <img src="/images/lecture-notes/probability-rules-addition-panels.svg" alt="加法原理的四格圖。A 聯集 B 的機率，等於 A 的機率加 B 的機率，再減去 A 交集 B 的機率。">
   <figcaption><span class="topic-figure__label">Fig. 1.11.</span> $\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)$ 的圖解。</figcaption>
 </figure>
-
-這張圖顯示，$A\cup B$ 的機率，事實上可以直接將 $A$ 的機率與 $B$ 的機率相加，再將其重複的部分 (也就是 $A\cap B$ 的機率) 扣除即可。
 </div>
 
 加法原理與全機率定理都有其應用上的特例，我們首先從加法原理開始。
 
 注意到，當 $A$ 與 $B$ 互斥 (即 $A\cap B=\varnothing$) 時，由 [Theorem 1.3](#theorem-null-event) 得到 $\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)$，因為交集部分的機率為 $0$。
 
-讀者應該會對這個情況感到熟悉，因為這個情況正好與[加集](/lecture-notes/event-set-operations/#互斥與加集)和有限可加性的前提相同，也就是 $A\cup B=A+B$，則由有限可加性，我們有
+此情形恰對應[加集](/lecture-notes/event-set-operations/#互斥與加集)與有限可加性的前提，即 <span class="text-nowrap">$A\cup B=A+B$，</span>由此可得
 
 $$
 \mathbb{P}(A\cup B)=\mathbb{P}(A+B)=\mathbb{P}(A)+\mathbb{P}(B)
 $$
 
-這也是[機率空間一篇](/lecture-notes/event-families-sigma-fields/#機率空間)提到的線性的特例。
+這也是前面介紹機率空間時提到的線性特例。
 
-全機率定理則是在當 $A$ 是 $B$ 的一個子集 (亦即 $A\subseteq B$) 時，會有一較為特殊的結果，這個結果是
+全機率定理則在 $A$ 是 $B$ 的一個子集 (亦即 $A\subseteq B$) 時，有較特殊的結果，即
 
 $$
 \mathbb{P}(B-A)=\mathbb{P}(B)-\mathbb{P}(A)
@@ -443,7 +431,7 @@ $$
 
 <figure class="topic-figure">
   <img src="/images/lecture-notes/probability-rules-subset-case.svg" alt="A 包含於 B 時的文氏圖。大圓 B 內含小圓 A，著色環狀區域的機率為 P(A prime 交 B)。">
-  <figcaption><span class="topic-figure__label">Fig. 1.12.</span> $A\subseteq B$ 時的兩事件配置: $B$ 之中扣除 $A$ 後，剩下的機率是 $\mathbb{P}(A^{\prime}\cap B)$。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 1.12.</span> 當 $A\subseteq B$ 時，自 $B$ 之中扣除 $A$ 後，剩下的機率為 $\mathbb{P}(A^{\prime}\cap B)$。</figcaption>
 </figure>
 
 上圖可以發現 $A\cap B$ 就是 $A$ 本身，故 $\mathbb{P}(A^{\prime}\cap B)$ 可用 $\mathbb{P}(B)$ 直接扣除 $\mathbb{P}(A)$ 得到。這個結果只是全機率定理的一個小特例，但是我們卻可以從這裡來驗證一個非常直觀的結果，即機率的**單調性 <span lang="en">(monotonicity)</span>**。
@@ -482,19 +470,19 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-單調性的直觀意義是，**比較小的集合，機率比較小**。這裡需要特別注意的地方是，我們沒辦法對任意兩個集合比大小，除非這兩個集合有彼此包含的關係，因此可以看出為何單調性需要 $A\subseteq B$ 的前提。
+單調性的直觀意義是**包含範圍較小的事件，其機率也較小 (或相等)**。須留意任意兩個集合未必能直接比較大小，唯有具備包含關係 $A\subseteq B$ 時，方能套用單調性比較機率。
 </div>
 
-值得注意的是，我們可以將單調性進行一個簡單的延伸應用: 由 $(A\cap B)\subseteq A$ 與 $(A\cap B)\subseteq B$，可以推知
+此外，單調性還有一個直接的推論。由 $(A\cap B)\subseteq A$ 與 $(A\cap B)\subseteq B$ 皆成立，可推知
 
 $$
 \mathbb{P}(A\cap B)\leqslant\mathbb{P}(A),\qquad
 \mathbb{P}(A\cap B)\leqslant\mathbb{P}(B)
 $$
 
-這兩種情況的直觀詮釋為: **對 $A$ (或 $B$) 給了更多限制 (使之與 $B$ (或 $A$) 交集)，只會讓機率變得更小 (頂多維持不變)**。
+這兩種情況的直觀意義是，**對 $A$ (或 $B$) 加上更多限制 (使之與 $B$ 或 $A$ 取交集)，只會讓機率變小，至多維持不變**。
 
-加法原理與全機率定理皆可推廣至三個以上的集合彼此間的狀況，其中全機率定理的推廣版本是**貝氏定理 (Bayes’ rule)** 的基礎，將在稍後的文章有詳盡的敘述。
+加法原理與全機率定理皆可推廣至三個以上集合的狀況，其中全機率定理的推廣版本是**貝氏定理 (Bayes’ rule)** 的基礎，將在稍後的文章有詳盡的敘述。
 
 ## 廣義加法原理與排容原理
 
@@ -519,12 +507,13 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-S_1&=\sum_{i=1}^{n}\mathbb{P}(A_i),\\[0.4em]
-S_2&=\underset{i<j}{\sum\sum}\mathbb{P}(A_i\cap A_j),\\[0.4em]
+\begin{gathered}
+S_1=\sum_{i=1}^{n}\mathbb{P}(A_i),\\[0.4em]
+S_2=\underset{i<j}{\sum\sum}\mathbb{P}(A_i\cap A_j),\\[0.4em]
+S_3=\underset{i<j<k}{\sum\sum\sum}\mathbb{P}(A_i\cap A_j\cap A_k),\\[0.4em]
 \ldots,\qquad
-S_n&=\mathbb{P}\left(\bigcap_{i=1}^{n}A_i\right)
-\end{aligned}
+S_n=\mathbb{P}\left(\bigcap_{i=1}^{n}A_i\right)
+\end{gathered}
 $$
 
 </div>
@@ -546,7 +535,7 @@ $$
 $$
 \begin{aligned}
 &\mathbb{P}\left(\bigcup_{i=1}^{n}A_i\right)\\[0.4em]
-&\qquad=S_1-S_2+S_3-\cdots-S_{n-1}+S_n
+&=S_1-S_2+S_3-\cdots-S_{n-1}+S_n
 \end{aligned}
 $$
 
@@ -567,7 +556,7 @@ $$
 $$
 \begin{aligned}
 &\mathbb{P}\left(\bigcup_{i=1}^{n}A_i\right)\\[0.4em]
-&\qquad=S_1-S_2+S_3-\cdots+S_{n-1}-S_n
+&=S_1-S_2+S_3-\cdots+S_{n-1}-S_n
 \end{aligned}
 $$
 
@@ -578,13 +567,13 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-見黃文璋 (2010)，《機率論》，二版，頁 39。 <span class="topic-qed">$\square$</span>
+詳細證明見黃文璋 (2010)，《機率論》，二版，頁 39。 <span class="topic-qed">$\square$</span>
 </div>
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在理解此定理時，建議讀者先以 $n=3$ 作為例子，並繪製出三個集合的文氏圖，協助理解其意義。其直觀的精神，仍然在於「扣除重複的部分」，只是三個以上的集合會遇到需要「加回多扣的部分」的狀況。
+理解此定理時，不妨先以 $n=3$ 對照下方三事件的文氏圖。其核心精神仍在於「扣除重複計算的交集機率」，只是涉及三個以上事件時，兩兩交集逐一扣除後會將三者共同交集多扣一次，故須再將其加回。
 
 <figure class="topic-figure">
   <img src="/images/lecture-notes/probability-rules-inclusion-exclusion-three.svg" alt="三事件排容原理的集合示意圖。三個事件互相重疊時，中央共同交集會被多次計算。">
@@ -592,13 +581,7 @@ $$
 </figure>
 </div>
 
-廣義加法原理的內容，與**組合數學 <span lang="en">(combinatorics)</span>** 中的**排容原理 <span lang="en">(inclusion-exclusion principle)</span>** 是相同的，排容原理的機率版本，就是廣義加法原理。
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-廣義的組合數學即為**離散數學 <span lang="en">(discrete mathematics)</span>**，其細部的差異在此並不探究。組合數學主要用以研究可數或離散空間中的數學問題，其中幾個著名的問題包含**地圖著色問題**與**渡河問題**；臺灣的高中數學所教授的排列組合，即是組合數學中的一個重要領域。
-</div>
+廣義加法原理即為**組合數學 <span lang="en">(combinatorics)</span>** 中**排容原理 <span lang="en">(inclusion-exclusion principle)</span>** 的機率版本。廣義而言，組合數學亦常歸入**離散數學 <span lang="en">(discrete mathematics)</span>** (兩者細部差異此處不贅)，主要探討可數或離散結構中的數學問題，諸如著名的**地圖著色問題**、**渡河問題**，以及臺灣高中數學教授的排列組合皆屬其重要範疇。
 
 在部分機率論專書中，廣義加法原理時常以
 
@@ -668,7 +651,7 @@ $$
 \mathbb{P}(A_1\cup A_2)\leqslant\mathbb{P}(A_1)+\mathbb{P}(A_2)
 $$
 
-**(2)** $n=1$ 時兩側同為 $\mathbb{P}(A_1)$，原式成立；由 (1) 知道 $n=2$ 時原式顯然成立。又令 $n=k$ 時原式成立，即
+**(2)** 當 $n=1$ 時，不等式兩側皆為 $\mathbb{P}(A_1)$ 之值，原式顯然成立；而當 $n=2$ 時，由 (1) 的結果亦知原式成立。又令 $n=k$ 時原式成立，即
 
 $$
 \mathbb{P}\left(\bigcup_{i=1}^{k}A_i\right)\leqslant\sum_{i=1}^{k}\mathbb{P}(A_i)
@@ -706,14 +689,14 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-若將布爾不等式與加法原理相比較，不難發現這個不等式的直觀邏輯在於，「不等式右邊的交集部分的機率沒有被扣除」，所以右式總是會比左式來得大，也就是如下的圖示:
+將布爾不等式與加法原理對照可見，右側上界僅將各事件機率相加而未扣除交集部分的機率，因此恆不小於左側的聯集機率，圖解如下。
 
 <figure class="topic-figure">
   <img src="/images/lecture-notes/probability-rules-boole-panels.svg" alt="布爾不等式的三格圖。A1 聯集 A2 的機率，小於等於 A1 的機率加 A2 的機率。">
-  <figcaption><span class="topic-figure__label">Fig. 1.14.</span> $\mathbb{P}(A_1\cup A_2)\leqslant\mathbb{P}(A_1)+\mathbb{P}(A_2)$ 的圖解: 右側未扣除交集部分。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 1.14.</span> 布爾不等式 $\mathbb{P}(A_1\cup A_2)\leqslant\mathbb{P}(A_1)+\mathbb{P}(A_2)$ 的圖解，右側未扣除交集項。</figcaption>
 </figure>
 
-我們只是在加法原理中，不將右側的交集機率扣除而已。其中，等式發生的情況發生在這組事件彼此為互斥事件，而這個情況，正好是加集與有限可加性的前提。
+當這組事件成對互斥時，交集機率為 <span class="text-nowrap">$0$，</span>不等式兩側等號成立，恰退化回加集與有限可加性的結果。
 </div>
 
 ## 邦佛洛尼不等式
@@ -794,7 +777,7 @@ $$
 \mathbb{P}(A_1\cap A_2)\geqslant\mathbb{P}(A_1)+\mathbb{P}(A_2)-1
 $$
 
-**(2)** $n=1$ 時兩側同為 $\mathbb{P}(A_1)$，原式成立；由 (1) 知道 $n=2$ 時原式顯然成立。又令 $n=k$ 時原式成立，即
+**(2)** 當 $n=1$ 時，不等式兩側皆為 $\mathbb{P}(A_1)$ 之值，原式顯然成立；而當 $n=2$ 時，由 (1) 的結果亦知原式成立。又令 $n=k$ 時原式成立，即
 
 $$
 \mathbb{P}\left(\bigcap_{i=1}^{k}A_i\right)\geqslant\sum_{i=1}^{k}\mathbb{P}(A_i)-(k-1)
@@ -833,32 +816,25 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-邦佛洛尼不等式的右式，常被改寫為 $1-\sum_{i=1}^{n}\mathbb{P}(A_i^{\prime})$，作法是把每個 $\mathbb{P}(A_i)$ 都改為 $1-\mathbb{P}(A_i^{\prime})$。
-
-這個版本的邦佛洛尼不等式，更容易看出其直觀。以 $n=2$ 為例 (即 [Theorem 1.10](#theorem-bonferroni) 中的 (1) 式)，其直覺在於「不等式右邊的重複部分的機率 (也就是 $\mathbb{P}(A_1^{\prime}\cap A_2^{\prime})$) 被重複扣除了」，如下圖:
+將每個 $\mathbb{P}(A_i)$ 改寫為 <span class="text-nowrap">$1-\mathbb{P}(A_i^{\prime})$，</span>邦佛洛尼不等式的右式常改寫為 <span class="text-nowrap">$1-\sum_{i=1}^{n}\mathbb{P}(A_i^{\prime})$。</span>以 $n=2$ (即 [Theorem 1.10](#theorem-bonferroni) (1)) 為例，由下圖可見右側自 $1$ 依序減去 $\mathbb{P}(A_1^{\prime})$ 與 $\mathbb{P}(A_2^{\prime})$ 時，重疊區域 $\mathbb{P}(A_1^{\prime}\cap A_2^{\prime})$ 被重複扣除，因此所得下界恆不大於左側的 $\mathbb{P}(A_1\cap A_2)$ (甚至可能小於 $0$)。
 
 <figure class="topic-figure">
   <img src="/images/lecture-notes/probability-rules-bonferroni-panels.svg" alt="邦佛洛尼不等式的四格圖。A1 交集 A2 的機率，大於等於 1 減 A1 補集的機率減 A2 補集的機率。">
-  <figcaption><span class="topic-figure__label">Fig. 1.15.</span> $\mathbb{P}(A_1\cap A_2)\geqslant 1-\mathbb{P}(A_1^{\prime})-\mathbb{P}(A_2^{\prime})$ 的圖解: $\mathbb{P}(A_1^{\prime}\cap A_2^{\prime})$ 被重複扣除。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 1.15.</span> 邦佛洛尼不等式改寫形式 $\mathbb{P}(A_1\cap A_2)\geqslant 1-\mathbb{P}(A_1^{\prime})-\mathbb{P}(A_2^{\prime})$ 的圖解，其中 $\mathbb{P}(A_1^{\prime}\cap A_2^{\prime})$ 被重複扣除。</figcaption>
 </figure>
 
-其關鍵就在於 $\mathbb{P}(A_1^{\prime}\cap A_2^{\prime})$ 被重複扣除 (且有可能會扣成負的)。而等號成立的條件在於，$A_1$ 與 $A_2$ 沒有同時不成立的部分的時候。這個特例的情況有很多種，但必定是發生在 $A_1$ 與 $A_2$ 的聯集就已經「填滿」樣本空間的情況，也就是 $A_1\cup A_2=S$ 時；而且這個條件與布爾不等式的等號成立條件其實有關係，讀者不妨思考看看。
+當 $A_1$ 與 $A_2$ 沒有同時不發生的部分 (亦即 <span class="text-nowrap">$A_1\cup A_2=S$，</span>聯集已填滿整個樣本空間) 時，有 $\mathbb{P}(A_1^{\prime}\cap A_2^{\prime})=0$ 成立，故不等式兩側等號成立；此條件亦與將布爾不等式套用於餘事件時的等號條件相呼應。
+
 </div>
 
 ## 兩不等式的等價性
 
-事實上我們應可以發現，布爾不等式與邦佛洛尼不等式的出發點同為加法原理，只是一者以聯集為出發，而一者以交集為出發。細心一點的讀者可能在此提問: 這兩個不等式**等價 <span lang="en">(equivalent)</span>** 嗎？這個問題的答案是肯定的，我們在此以狄摩根律證明。
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-證明中將使用的**不失一般性 (without loss of generality，或簡稱 WLOG)**，是數學證明中的一種常用表示法，其最主要的目的是用來表示，在這個條件下所假設的東西足以代表一般的所有狀況，而非僅是一個特例。
-</div>
+布爾不等式與邦佛洛尼不等式皆源自加法原理，分別從聯集與交集出發給出機率界限。這兩條不等式彼此**等價 <span lang="en">(equivalent)</span>**，以下利用狄摩根律證明。
 
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，不失一般性假設 $A_1,\ldots,A_n\in\mathcal{F}$，且令布爾不等式成立，即
+令 $(S,\mathcal{F},\mathbb{P})$ 為一機率空間，不失一般性假設 $A_1,\ldots,A_n\in\mathcal{F}$ 且布爾不等式成立，即
 
 $$
 \mathbb{P}\left(\bigcup_{i=1}^{n}A_i\right)\leqslant\sum_{i=1}^{n}\mathbb{P}(A_i)
@@ -866,8 +842,6 @@ $$
 
 此式成立，若且唯若
 
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
-
 $$
 \begin{aligned}
 \mathbb{P}\left(\bigcap_{i=1}^{n}A_i^{\prime}\right)&=\mathbb{P}\left(\Big(\bigcup_{i=1}^{n}A_i\Big)^{\prime}\right)\\[0.4em]
@@ -878,22 +852,6 @@ $$
 &=\sum_{i=1}^{n}\mathbb{P}(A_i^{\prime})-(n-1)
 \end{aligned}
 $$
-
-</div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
-
-$$
-\begin{aligned}
-\mathbb{P}\left(\bigcap_{i=1}^{n}A_i^{\prime}\right)&=\mathbb{P}\left(\Big(\bigcup_{i=1}^{n}A_i\Big)^{\prime}\right)\\[0.4em]
-&=1-\mathbb{P}\left(\bigcup_{i=1}^{n}A_i\right)\\[0.4em]
-&\geqslant 1-\sum_{i=1}^{n}\mathbb{P}(A_i)\\[0.4em]
-&=1-\sum_{i=1}^{n}\big(1-\mathbb{P}(A_i^{\prime})\big)\\[0.4em]
-&=1-\Big(n-\sum_{i=1}^{n}\mathbb{P}(A_i^{\prime})\Big)\\[0.4em]
-&=\sum_{i=1}^{n}\mathbb{P}(A_i^{\prime})-(n-1)
-\end{aligned}
-$$
-
-</div>
 
 其中，由 $A_1,\ldots,A_n\in\mathcal{F}$ 知道 $A_1^{\prime},\ldots,A_n^{\prime}\in\mathcal{F}$，且
 
@@ -903,6 +861,8 @@ $$
 
 即邦佛洛尼不等式。故可知道布爾不等式成立，若且唯若邦佛洛尼不等式成立，二者為等價不等式。 <span class="topic-qed">$\square$</span>
 </div>
+
+上述證明中的**不失一般性 (<span lang="en">without loss of generality</span>，或簡稱 WLOG)** 為數學證明常用語，表示所作設定足以代表一般情形，而非僅限於特例。
 
 <div id="example-union-covers" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 1.11 <span lang="en">(Union Covering the Sample Space)</span></div>
@@ -931,7 +891,7 @@ $$
 
 </div>
 
-又由 Axiom 2 知 $\mathbb{P}(S)=\mathbb{P}(C_1\cup C_2)=1$，故
+又由 Axiom 2 知 $\mathbb{P}(S)=\mathbb{P}(C_1\cup C_2)=1$ 成立，故
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -963,10 +923,10 @@ $$
 <div class="topic-box__label">Example 1.12 <span lang="en">(Disjoint Complements and a Lower Bound)</span></div>
 
 <div lang="en" markdown="1">
-(1) Suppose that two events $A$ and $B$ cannot occur at the same time. Under what condition is the same true of their complements $A^{\prime}$ and <span class="text-nowrap">$B^{\prime}$?</span>
+(1) Let $A$ and $B$ be two disjoint events. Find the condition under which their complements $A^{\prime}$ and $B^{\prime}$ are also disjoint.
 {: .topic-paren-item}
 
-(2) Suppose that $A_1$, $A_2$, and $A_3$ are events with $\mathbb{P}(A_i)=\frac{1}{4+i}$ for <span class="text-nowrap">$i=1,2,3$.</span> Find a lower bound for the probability that none of the three occurs.
+(2) Let $A_1,A_2,A_3$ be events with $\mathbb{P}(A_i)=\frac{1}{4+i}$ for <span class="text-nowrap">$i=1,2,3$.</span> Find a lower bound for <span class="text-nowrap">$\mathbb{P}(A_1^{\prime}\cap A_2^{\prime}\cap A_3^{\prime})$.</span>
 {: .topic-paren-item}
 </div>
 
@@ -1125,7 +1085,7 @@ $$
 
 原式得證。
 
-**(2)** 由於 $\lbrace A_i\rbrace$ 非遞增，故依[單調集合序列的定義](/lecture-notes/event-set-operations/#單調集合序列與極限)可知
+**(2)** 由於 $\lbrace A_i\rbrace$ 非遞增，故依單調集合序列的定義可知
 
 $$
 \lim_{n\to\infty}A_n=\bigcap_{i=1}^{\infty}A_i

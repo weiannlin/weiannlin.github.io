@@ -10,7 +10,7 @@ order: 216
 permalink: /lecture-notes/uniqueness-of-the-mgf/
 date: 2026-08-06
 published: true
-excerpt: "動差母函數的唯一性指出，兩個隨機變數的 mgf 若存在且相等，則兩者的 pdf (或 pmf) 也會相等。有了這一項性質，只要把各階動差所組成的級數求和，得到一個認得出來的 mgf，就能反過來指出原本的分配是哪一個。各階原動差皆為 $0.8$ 的是伯努利分配，偶階動差為 $\\frac{(2m)!}{2^{m}m!}$ 而奇階動差為 $0$ 的是標準常態分配。離散型的 mgf 還可以展開成 $p_{1}e^{a_{1}t}+\\cdots+p_{n}e^{a_{n}t}$，由各項的係數與指數直接還原 pmf。"
+excerpt: "動差母函數的唯一性定理指出，兩個隨機變數的 mgf 若在原點鄰域存在且相等，則具有相同的機率分配。本篇示範如何由動差級數求和或展開式係數反向辨識分配與還原機率質量函數。"
 ---
 
 [上一篇](/lecture-notes/moment-generating-functions/)給了[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)的定義，說明它如何以微分生成各階原動差，也給了它的動差級數展開；三道例題或由已知的分配求出 mgf，或由已知的 mgf 求出動差與[變異數](/lecture-notes/variance/#def-variance)。
@@ -32,7 +32,7 @@ $$
 </ol>
 </div>
 
-(1) 題目並未給 $\mathbb{E}(X^{0})$ 之值，但我們知道對任意的 $X$，我們有 $\mathbb{E}(X^{0})=\mathbb{E}(1)=1$，則
+(1) 題目未給 <span class="text-nowrap">$\mathbb{E}(X^{0})$，</span>但任意 $X$ 皆有 $\mathbb{E}(X^{0})=\mathbb{E}(1)=1$ 成立，故
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -65,7 +65,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述問題中使用了一個很有名，且很常被使用的泰勒級數，即指數函數 $e^{t}$ 對 $t=0$ 展開的泰勒級數；在對函數自變數為 $0$ 的點所展開的泰勒級數，又被稱作**馬克勞林級數 <span lang="en">(Maclaurin series)</span>**。由於 $g(t)=e^{t}$ 是一個對 $t$ 無限可微的函數，而不論對其微分了幾次都不會改變該函數的樣子，也就是 $g^{(k)}(0)=e^{0}=1$，$k=0,1,2,\ldots$，所以其對 $t=0$ 的泰勒級數為
+上述推導利用了指數函數 $e^{t}$ 在原點 $t=0$ 處的泰勒展開式；以自變數為 $0$ 為中心展開的泰勒級數又稱為**馬克勞林級數 <span lang="en">(Maclaurin series)</span>**。由於 $g(t)=e^{t}$ 對 $t$ 無限可微且各階導函數皆維持原形式，對所有非負整數 $k=0,1,2,\ldots$ 均有 $g^{(k)}(0)=e^{0}=1$ 成立，故其在 $t=0$ 處的展開式為
 
 $$
 e^{t}=\sum_{k=0}^{\infty}g^{(k)}(0)\,\frac{t^{k}}{k!}=\sum_{k=0}^{\infty}\frac{t^{k}}{k!}
@@ -77,7 +77,7 @@ $$
 <div class="topic-box__label">Example 2.33</div>
 
 <div lang="en" markdown="1">
-Suppose that a random variable $X$ has
+Let $X$ be a random variable such that
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -89,15 +89,15 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-&\mathbb{E}(X^{2m})=\frac{(2m)!}{2^{m}\,m!}\\[0.45em]
-\text{and}\quad&\mathbb{E}(X^{2m-1})=0,\quad m=1,2,3,\ldots
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(X^{2m})=\frac{(2m)!}{2^{m}\,m!}\\[0.45em]
+\text{and}\quad\mathbb{E}(X^{2m-1})=0,\quad m=1,2,3,\ldots
+\end{gathered}
 $$
 
 </div>
 
-Determine the mgf of $X$ and the pdf of $X$.
+Find the mgf and the pdf of $X$.
 </div>
 
 由 [Theorem 2.22](/lecture-notes/moment-generating-functions/#thm-mgf-moment-series) 可得
@@ -144,12 +144,7 @@ $$
 
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-上面這題中，我們之所以能直接由 mgf 看出該分配的 pdf，是使用了[下面這個定理](#thm-mgf-uniqueness)，事實上，這也是動差母函數在被創立之後，意外被發現的、比生成動差更有用的功能。
-
-</div>
+上題能直接由動差母函數 $e^{t^{2}/2}$ 判定 $X$ 服從標準常態分配並寫出其 pdf，依據的正是下述[唯一性定理](#thm-mgf-uniqueness)；此性質使動差母函數除了生成動差之外，更成為辨識機率分配的重要工具。
 
 <div id="thm-mgf-uniqueness" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 2.23 (動差母函數的唯一性, uniqueness of mgf)</div>
@@ -216,7 +211,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Example 2.32 <span lang="en">(Continued)</span>](#ex-constant-moments-bernoulli) 為**伯努利分配 <span lang="en">(Bernoulli distribution)</span>**，是**成敗實驗族**中的核心分配之一，我們在後面，將介紹這些常用的機率模型，並且介紹其動差母函數以便辨認。
+[Example 2.32 <span lang="en">(Continued)</span>](#ex-constant-moments-bernoulli) 所對應的分配為**伯努利分配 <span lang="en">(Bernoulli distribution)</span>**，是**成敗實驗族**中的核心分配之一；後續機率模型章節將逐一介紹這些常用分配及其動差母函數，以便辨認。
 
 </div>
 
@@ -224,7 +219,7 @@ $$
 <div class="topic-box__label">Example 2.34</div>
 
 <div lang="en" markdown="1">
-Suppose that a random variable $X$ satisfies
+Let $X$ be a random variable such that
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -243,7 +238,7 @@ $$
 
 </div>
 
-Find the mgf of $X$ and the distribution of $X$.
+Determine the mgf and the distribution of $X$.
 </div>
 
 由 [Theorem 2.22](/lecture-notes/moment-generating-functions/#thm-mgf-moment-series) 可得
@@ -252,7 +247,7 @@ Find the mgf of $X$ and the distribution of $X$.
 
 $$
 \begin{aligned}
-&M_{\sssig X}(t)=\mathbb{E}\bigl(e^{tX}\bigr)=\sum_{r=0}^{\infty}\mathbb{E}(X^{r})\,\frac{t^{r}}{r!}=1+\sum_{m=1}^{\infty}\mathbb{E}(X^{m})\,\frac{t^{m}}{m!}\\[0.45em]
+M_{\sssig X}(t)&=\mathbb{E}\bigl(e^{tX}\bigr)=\sum_{r=0}^{\infty}\mathbb{E}(X^{r})\,\frac{t^{r}}{r!}=1+\sum_{m=1}^{\infty}\mathbb{E}(X^{m})\,\frac{t^{m}}{m!}\\[0.45em]
 &=1+\sum_{m=1}^{\infty}\frac{(m+1)!\,(2t)^{m}}{m!}=\sum_{m=0}^{\infty}\frac{(m+1)!\,(2t)^{m}}{m!}\\[0.45em]
 &=\sum_{m=0}^{\infty}\left.\left(\frac{d}{\,du\,}\,u^{m+1}\right)\right\rvert_{u=2t}=\left.\frac{d}{\,du\,}\left(\sum_{m=0}^{\infty}u^{m+1}\right)\right\rvert_{u=2t}\\[0.45em]
 &=\left.\frac{d}{\,du\,}\left(\frac{u}{\,1-u\,}\right)\right\rvert_{u=2t}=\left.\frac{1}{\,(1-u)^{2}\,}\right\rvert_{u=2t}\\[0.45em]
@@ -291,10 +286,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-X&\sim\mathrm{Gamma}(\alpha=2,\beta=2)\\[0.45em]
-\text{即}\quad X&\sim\chi^{2}(4)
-\end{aligned}
+\begin{gathered}
+X\sim\mathrm{Gamma}(\alpha=2,\beta=2)\\[0.45em]
+\text{即}\quad X\sim\chi^{2}(4)
+\end{gathered}
 $$
 
 </div>
@@ -304,25 +299,25 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-我們在 [Example 2.3 <span lang="en">(Continued)</span>](/lecture-notes/expectation/#ex-geometric-expectation) 中有用過一樣的技巧，即改變加總與微分的順序，讓我們能夠運用幾何級數。
+本題求和時交換了無窮級數加總與微分的順序，藉此套用幾何級數公式，與前文 [Example 2.3 <span lang="en">(Continued)</span>](/lecture-notes/expectation/#ex-geometric-expectation) 所使用的計算技巧相同。
 
-此處的分配是伽瑪分配 <span lang="en">(gamma distribution)</span>，利用 [mgf 的唯一性](#thm-mgf-uniqueness)可以輕鬆判斷，但值得注意的是，這個分配同時也是卡方分配 <span lang="en">(chi-square distribution)</span>，在後面的機率模型章節中，我們會詳述這些關係。
+所得的 $M_{\sssig X}(t)=(1-2t)^{-2}$ 對應參數為 $\alpha=2,\beta=2$ 的**伽瑪分配 <span lang="en">(gamma distribution)</span>**，由 [mgf 的唯一性](#thm-mgf-uniqueness)即可辨認；此參數組合同時也是自由度為 $4$ 的**卡方分配 <span lang="en">(chi-square distribution)</span>**，兩者的從屬關係將於後續機率模型章節詳述。
 
 </div>
 
-由於 mgf 的定義，在離散型分配上是採用加總的方式，即
+由於離散型分配的動差母函數是以加總方式定義，即有
 
 $$
 M_{\sssig X}(t)=\sum_{x\in\mathcal{R}_{\sssig X}}e^{tx}\,p_{\sssig X}(x)
 $$
 
-故我們其實可以將 $X$ 的動差母函數展開成下面的形式
+故可將 $X$ 的動差母函數展開為下列形式
 
 $$
 p_{\sssig 1}e^{a_{1}\,t}+p_{\sssig 2}e^{a_{2}\,t}+\cdots+p_{\sssig n}e^{a_{n}\,t}
 $$
 
-若未來我們看見如前述形式的 mgf，則我們可以馬上轉化為其原本的離散分配，也就是下面的對應
+日後若遇見形如上式的動差母函數，即可由各項指數與係數直接還原其離散分配如下
 
 $$
 p_{\sssig X}(x)=
@@ -369,13 +364,13 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-當然，[動差母函數的唯一性](#thm-mgf-uniqueness)，在連續分配並不能這樣使用，我們在機率模型的章節中，介紹常見機率模型時，便會看見許多連續型的例子。
+相對地，連續型分配的動差母函數由積分定義，無法像離散型這樣逐項對應指數與係數；運用[動差母函數的唯一性](#thm-mgf-uniqueness)辨識連續型分配時，須與後續機率模型章節所列的常見分配逐一比對。
 
 </div>
 
 ## 本篇小結
 
-[Theorem 2.23](#thm-mgf-uniqueness) 使 mgf 不只能生成動差，還能用來辨認分配。只要把手上各階動差所組成的級數求和，得到一個認得出來的 mgf，原本的分配是哪一個也就跟著確定了。本篇的例題正是這樣做的，[Example 2.32](#ex-constant-moments-mgf) 由各階原動差皆為 $0.8$ 求得 $M_{\sssig X}(t)=0.2+0.8e^{t}$，[Example 2.32 <span lang="en">(Continued)</span>](#ex-constant-moments-bernoulli) 再由這個 mgf 得知 $X$ 為伯努利分配；[Example 2.33](#ex-normal-moments-to-pdf) 由偶階與奇階動差求得 $M_{\sssig X}(t)=e^{t^{2}/2}$，因而得知 $X$ 為標準常態分配；[Example 2.34](#ex-factorial-moments-to-mgf) 則以改變加總與微分順序的技巧求得 $M_{\sssig X}(t)=(1-2t)^{-2}$，因而得知 $X$ 為伽瑪分配，也就是自由度為 $4$ 的卡方分配。
+[Theorem 2.23](#thm-mgf-uniqueness) 使 mgf 不只能生成動差，還能用來辨認分配。只要把手上各階動差所組成的級數求和，得到一個認得出來的 mgf，原本的分配是哪一個也就跟著確定了。本篇的例題正是這樣做的，[Example 2.32](#ex-constant-moments-mgf) 由各階原動差皆為 $0.8$ 求得 $M_{\sssig X}(t)=0.2+0.8e^{t}$，[Example 2.32 <span lang="en">(Continued)</span>](#ex-constant-moments-bernoulli) 再由這個 mgf 得知 $X$ 為伯努利分配；[Example 2.33](#ex-normal-moments-to-pdf) 由偶階與奇階動差求得 $M_{\sssig X}(t)=e^{t^{2}/2}$，因而得知 $X$ 為標準常態分配；[Example 2.34](#ex-factorial-moments-to-mgf) 則以改變加總與微分順序的技巧求得 $M_{\sssig X}(t)=(1-2t)^{-2}$，故知 $X$ 為伽瑪分配，即自由度為 $4$ 的卡方分配。
 
 離散型的 mgf 還有一項更直接的用法。這一型的 mgf 可以展開成 $p_{\sssig 1}e^{a_{1}t}+\cdots+p_{\sssig n}e^{a_{n}t}$，各項的指數 $a_{i}$ 就是 $X$ 的各個取值，係數 $p_{\sssig i}$ 就是各個取值的機率，因此看見這種形式的 mgf 便能立刻寫出它的 pmf；連續型的 mgf 沒有這種對應，要由 mgf 認出連續型的分配，仍須回到各個常見機率模型的 mgf 逐一比對。動差母函數之外，還有其他的母函數各自生成不同的量，[下一篇](/lecture-notes/probability-cumulant-generating-functions/)就要介紹生成機率的[機率母函數](/lecture-notes/probability-cumulant-generating-functions/#def-pgf)，以及生成累積量的[累積量母函數](/lecture-notes/probability-cumulant-generating-functions/#def-cgf)。
 
