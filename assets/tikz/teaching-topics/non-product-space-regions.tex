@@ -30,8 +30,8 @@
 \definecolor{journalaccent}{HTML}{9C2D2D}
 
 %% 下標與積分上下限一律撐到 9pt。
-\DeclareMathSizes{10}{10}{9}{9}
 
+\newcommand{\sssig}{\scriptscriptstyle}
 \begin{document}
 \begin{tikzpicture}[x=1cm, y=1cm, >=stealth,
                     every node/.style={journalink, font=\normalsize},
@@ -59,13 +59,13 @@
 
   %% 四個非零區塊各自的積分寫法
   \node[intg] at (2.85,4.99)
-    {$\int_{0}^{x}\!\!\int_{t}^{y} f_{XY}(t,s)\,ds\,dt$};
+    {$\int_{0}^{x}\!\!\int_{t}^{y} f_{\sssig XY}(t,s)\,ds\,dt$};
   \node[intg] at (7.57,3.25)
-    {$\int_{0}^{y}\!\!\int_{0}^{s} f_{XY}(t,s)\,dt\,ds$};
+    {$\int_{0}^{y}\!\!\int_{0}^{s} f_{\sssig XY}(t,s)\,dt\,ds$};
   \node[intg] at (3.25,5.97)
-    {$\int_{0}^{x}\!\!\int_{t}^{1} f_{XY}(t,s)\,ds\,dt$};
+    {$\int_{0}^{x}\!\!\int_{t}^{1} f_{\sssig XY}(t,s)\,ds\,dt$};
   \node[intg] at (7.57,5.97)
-    {$\int_{0}^{1}\!\!\int_{0}^{s} f_{XY}(t,s)\,dt\,ds=1$};
+    {$\int_{0}^{1}\!\!\int_{0}^{s} f_{\sssig XY}(t,s)\,dt\,ds=1$};
 
   %% 其餘各區塊的 cdf 值皆為 0
   \node at (0.45,5.97) {$0$};

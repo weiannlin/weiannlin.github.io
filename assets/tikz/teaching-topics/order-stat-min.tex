@@ -49,12 +49,12 @@
 \usepackage{amssymb}
 \usepackage{xcolor}
 \usetikzlibrary{arrows.meta}
-\DeclareMathSizes{10}{10}{9}{8}
 
 \definecolor{journalink}{HTML}{1F1C18}
 \definecolor{journalmuted}{HTML}{8A7F72}
 \definecolor{journalaccent}{HTML}{9C2D2D}
 
+\newcommand{\sssig}{\scriptscriptstyle}
 \begin{document}
 \begin{tikzpicture}[
   x=0.85cm,
@@ -82,7 +82,7 @@
   \draw[arc] (0,0) .. controls (1,-0.5333) and (2,-0.5333) .. (3,0);
   \draw[arc] (3,0) .. controls (5.3167,-0.5333) and (7.6333,-0.5333)
     .. (9.95,0);
-  \node[anchor=north] at (1.5,-0.65) {$F_X(y_1)$};
-  \node[anchor=north] at (6.5,-0.65) {$1-F_X(y_1)$};
+  \node[anchor=north] at (1.5,-0.65) {$F_{\sssig X}(y_1)$};
+  \node[anchor=north] at (6.5,-0.65) {$1-F_{\sssig X}(y_1)$};
 \end{tikzpicture}
 \end{document}

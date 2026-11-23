@@ -56,7 +56,6 @@
 \usepackage{pgfplots}
 \usepgfplotslibrary{groupplots}
 \pgfplotsset{compat=1.18}
-\DeclareMathSizes{10}{10}{9}{8}
 
 \definecolor{journalink}{HTML}{1F1C18}
 \definecolor{journalmuted}{HTML}{8A7F72}
@@ -94,6 +93,7 @@
     at (rel axis cs:0.5,0) [yshift=#1] {#2}%
 }
 
+\newcommand{\sssig}{\scriptscriptstyle}
 \begin{document}
 \begin{tikzpicture}
 \begin{groupplot}[
@@ -106,40 +106,40 @@
 \pgfplotstableread[col sep=comma, row sep=newline]{data100.csv}\tablea
 \addplot[datapoints] table {\tablea};
 \addplot[guideline] coordinates {(-2.5,-2.5) (2.5,2.5)};
-\panellabel{$\rho_{XY}=1$};
+\panellabel{$\rho_{\sssig XY}=1$};
 
 %% 之二 正相關: 點雲成橢圓形，長軸沿上升的直線
 \nextgroupplot
 \pgfplotstableread[col sep=comma, row sep=newline]{data60.csv}\tableb
 \addplot[datapoints] table {\tableb};
 \addplot[guideline] coordinates {(-2.5,-2.5) (2.5,2.5)};
-\panellabel{$0<\rho_{XY}<1$};
+\panellabel{$0<\rho_{\sssig XY}<1$};
 
 %% 之三 完全負相關: 點全落在同一條下降的直線上
 \nextgroupplot
 \pgfplotstableread[col sep=comma, row sep=newline]{datan100.csv}\tablec
 \addplot[datapoints] table {\tablec};
 \addplot[guideline] coordinates {(-2.5,2.5) (2.5,-2.5)};
-\panellabel{$\rho_{XY}=-1$};
+\panellabel{$\rho_{\sssig XY}=-1$};
 
 %% 之四 負相關: 點雲成橢圓形，長軸沿下降的直線
 \nextgroupplot
 \pgfplotstableread[col sep=comma, row sep=newline]{datan60.csv}\tabled
 \addplot[datapoints] table {\tabled};
 \addplot[guideline] coordinates {(-2.5,2.5) (2.5,-2.5)};
-\panellabel{$-1<\rho_{XY}<0$};
+\panellabel{$-1<\rho_{\sssig XY}<0$};
 
 %% 之五 零相關: 點雲成圓形，沒有方向可言，無參考直線
 \nextgroupplot
 \pgfplotstableread[col sep=comma, row sep=newline]{data0.csv}\tablee
 \addplot[datapoints] table {\tablee};
-\panellabel[-0.85cm]{$\rho_{XY}=0$};
+\panellabel[-0.85cm]{$\rho_{\sssig XY}=0$};
 
 %% 之六 零相關但不獨立: 點排成開口向上的碗形，縱軸範圍改為 0 至 3.8
 \nextgroupplot[ymin=0, ymax=3.8, ytick={1,2,3}]
 \pgfplotstableread[col sep=comma, row sep=newline]{dataBowl.csv}\tablef
 \addplot[datapoints] table {\tablef};
-\panellabel[-0.85cm]{$\rho_{XY}=0$};
+\panellabel[-0.85cm]{$\rho_{\sssig XY}=0$};
 
 \end{groupplot}
 \end{tikzpicture}

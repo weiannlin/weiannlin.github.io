@@ -53,7 +53,6 @@
 \usepackage{pgfplots}
 \usepgfplotslibrary{groupplots}
 \pgfplotsset{compat=1.18}
-\DeclareMathSizes{10}{10}{9}{8}
 
 \definecolor{journalink}{HTML}{1F1C18}
 \definecolor{journalmuted}{HTML}{8A7F72}
@@ -82,6 +81,7 @@
   guideline/.style={mark=none, journalaccent, line width=0.8pt},
 }
 
+\newcommand{\sssig}{\scriptscriptstyle}
 \begin{document}
 \begin{tikzpicture}
 \begin{groupplot}[
@@ -94,14 +94,14 @@
 \pgfplotstableread[col sep=comma, row sep=newline]{data60.csv}\tablea
 \addplot[datapoints] table {\tablea};
 \addplot[guideline] coordinates {(-2.5,-2.5) (2.5,2.5)};
-\node[journalink, font=\normalsize, anchor=north] at (axis cs:0,-2.9) [yshift=-0.45cm] {$\rho_{XY}=0.6$};
+\node[journalink, font=\normalsize, anchor=north] at (axis cs:0,-2.9) [yshift=-0.45cm] {$\rho_{\sssig XY}=0.6$};
 
 %% 右面板: 相關強度接近上限，點雲收成一條窄帶
 \nextgroupplot
 \pgfplotstableread[col sep=comma, row sep=newline]{data99.csv}\tableb
 \addplot[datapoints] table {\tableb};
 \addplot[guideline] coordinates {(-2.5,-2.5) (2.5,2.5)};
-\node[journalink, font=\normalsize, anchor=north] at (axis cs:0,-2.9) [yshift=-0.45cm] {$\rho_{XY}=0.99$};
+\node[journalink, font=\normalsize, anchor=north] at (axis cs:0,-2.9) [yshift=-0.45cm] {$\rho_{\sssig XY}=0.99$};
 
 \end{groupplot}
 \end{tikzpicture}

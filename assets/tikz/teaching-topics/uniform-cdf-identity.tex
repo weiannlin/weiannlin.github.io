@@ -55,12 +55,12 @@
 \usepackage{amssymb}
 \usepackage{xcolor}
 \usetikzlibrary{arrows.meta}
-\DeclareMathSizes{10}{10}{9}{8}
 
 \definecolor{journalink}{HTML}{1F1C18}
 \definecolor{journalmuted}{HTML}{8A7F72}
 \definecolor{journalaccent}{HTML}{9C2D2D}
 
+\newcommand{\sssig}{\scriptscriptstyle}
 \begin{document}
 \begin{tikzpicture}[
   x=1cm, y=1cm,
@@ -85,13 +85,13 @@
   \draw[axis] (0,0) -- (3.4,0);
   \node[anchor=west, inner sep=2.5pt] at (3.4,0) {$u$};
   \draw[axis] (0,0) -- (0,3.2);
-  \node[anchor=south, inner sep=2.5pt] at (0,3.2) {$F_{U}(u)$};
+  \node[anchor=south, inner sep=2.5pt] at (0,3.2) {$F_{\sssig U}(u)$};
 
   %% y 軸刻度
   \draw[tick] ([xshift=1pt]0,2) -- ([xshift=-3pt]0,2);
-  \node[anchor=east, inner sep=2.5pt] at ([xshift=-3pt]0,2) {$F_{U}(b)=b$};
+  \node[anchor=east, inner sep=2.5pt] at ([xshift=-3pt]0,2) {$F_{\sssig U}(b)=b$};
   \draw[tick] ([xshift=1pt]0,1) -- ([xshift=-3pt]0,1);
-  \node[anchor=east, inner sep=2.5pt] at ([xshift=-3pt]0,1) {$F_{U}(a)=a$};
+  \node[anchor=east, inner sep=2.5pt] at ([xshift=-3pt]0,1) {$F_{\sssig U}(a)=a$};
 
   %% x 軸刻度
   \draw[tick] ([yshift=1pt]2,0) -- ([yshift=-3pt]2,0);
@@ -116,13 +116,13 @@
   \draw[axis] (0,0) -- (6.4,0);
   \node[anchor=west, inner sep=2.5pt] at (6.4,0) {$x$};
   \draw[axis] (0,0) -- (0,3.2);
-  \node[anchor=south, inner sep=2.5pt] at (0,3.2) {$F_{X}(x)$};
+  \node[anchor=south, inner sep=2.5pt] at (0,3.2) {$F_{\sssig X}(x)$};
 
   %% y 軸刻度
   \draw[tick] ([xshift=1pt]0,2.317002) -- ([xshift=-3pt]0,2.317002);
-  \node[anchor=east, inner sep=2.5pt] at ([xshift=-3pt]0,2.317002) {$F_{X}(b)$};
+  \node[anchor=east, inner sep=2.5pt] at ([xshift=-3pt]0,2.317002) {$F_{\sssig X}(b)$};
   \draw[tick] ([xshift=1pt]0,0.956728) -- ([xshift=-3pt]0,0.956728);
-  \node[anchor=east, inner sep=2.5pt] at ([xshift=-3pt]0,0.956728) {$F_{X}(a)$};
+  \node[anchor=east, inner sep=2.5pt] at ([xshift=-3pt]0,0.956728) {$F_{\sssig X}(a)$};
 
   %% x 軸刻度
   \draw[tick] ([yshift=1pt]3.9,0) -- ([yshift=-3pt]3.9,0);

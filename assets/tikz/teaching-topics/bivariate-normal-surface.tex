@@ -55,7 +55,6 @@
 
 %% 12pt (即 \large) 之下的 script 級撐到 11pt，
 %% 使 f 的下標 XY 在 350px 顯示寬之下仍在 11px 之上。
-\DeclareMathSizes{12}{12}{11}{10}
 
 %% 書稿用 whitegray 灰階曲面; 本站改用同一色相的墨色濃淡，
 %% 與其他圖的主線色 journalink 相稱。
@@ -76,7 +75,7 @@
     samples=40,
     xlabel=$x$,
     ylabel=$y$,
-    zlabel={$f_{XY}(x,\,y)$},
+    zlabel={$f_{\sssig XY}(x,\,y)$},
     label style={journalink, font=\large},
     %% 座標軸線設為不畫之後，預設的框線刻度仍會在遠端浮出孤立的短記號，
     %% 一併關掉
@@ -92,6 +91,7 @@
 
 \tikzset{panelnote/.style={journalink, font=\large, anchor=north}}
 
+\newcommand{\sssig}{\scriptscriptstyle}
 \begin{document}
 \begin{tikzpicture}[
     declare function={mu1=2;},

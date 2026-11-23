@@ -34,13 +34,12 @@
 
 %% 12pt (即 \large) 與 10pt (即 \normalsize) 之下的 script 級各撐到 10pt
 %% 與 9pt，使 f 的下標在 350px 顯示寬之下仍在 11px 之上。
-\DeclareMathSizes{12}{12}{10}{8}
-\DeclareMathSizes{10}{10}{9}{8}
 
 \pgfplotsset{
   colormap={journalgray}{color(0cm)=(white); color(1cm)=(journalink)}
 }
 
+\newcommand{\sssig}{\scriptscriptstyle}
 \begin{document}
 \begin{tikzpicture}[
     declare function={mu1=2;},
@@ -66,7 +65,7 @@
     samples=40,
     xlabel=$x$,
     ylabel=$y$,
-    zlabel={$f_{XY}(x,\,y)$},
+    zlabel={$f_{\sssig XY}(x,\,y)$},
     label style={journalink, font=\large},
     xtick=\empty,
     ytick=\empty,
@@ -87,9 +86,9 @@
 %%   後牆 (y=4) 的曲線 z = 0.112838 exp(-(x-2)^2/2)，   x=1.81 處 z=0.1108
 %% 位置以像素量過: 標示的墨跡與圖上其他墨跡的最短距離，左邊 0.159cm、
 %% 右邊 0.191cm，在 350px 顯示寬之下是 6.5px 與 7.9px。
-\node[curvelabel] (fY) at (axis cs:0,1.30,0.118) {$f_{Y}(y)$};
+\node[curvelabel] (fY) at (axis cs:0,1.30,0.118) {$f_{\sssig Y}(y)$};
 \draw[leader] (fY.south) -- (axis cs:0,1.15,0.0802);
-\node[curvelabel] (fX) at (axis cs:1.63,4,0.132) {$f_{X}(x)$};
+\node[curvelabel] (fX) at (axis cs:1.63,4,0.132) {$f_{\sssig X}(x)$};
 \draw[leader] (fX.south east) -- (axis cs:1.81,4,0.1108);
 \end{axis}
 \end{tikzpicture}

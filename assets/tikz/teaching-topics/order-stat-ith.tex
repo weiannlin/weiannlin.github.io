@@ -28,12 +28,12 @@
 \usepackage{amssymb}
 \usepackage{xcolor}
 \usetikzlibrary{arrows.meta}
-\DeclareMathSizes{10}{10}{9}{8}
 
 \definecolor{journalink}{HTML}{1F1C18}
 \definecolor{journalmuted}{HTML}{8A7F72}
 \definecolor{journalaccent}{HTML}{9C2D2D}
 
+\newcommand{\sssig}{\scriptscriptstyle}
 \begin{document}
 \begin{tikzpicture}[
   x=0.85cm,
@@ -57,7 +57,7 @@
   % ---- the probability of each stretch ---------------------------------
   \draw[arc] (0,0) .. controls (1.6667,-0.5333) and (3.3333,-0.5333) .. (5,0);
   \draw[arc] (5,0) .. controls (6.65,-0.5333) and (8.3,-0.5333) .. (9.95,0);
-  \node[anchor=north] at (2.5,-0.65) {$F_X(y_i)$};
-  \node[anchor=north] at (7.5,-0.65) {$1-F_X(y_i)$};
+  \node[anchor=north] at (2.5,-0.65) {$F_{\sssig X}(y_i)$};
+  \node[anchor=north] at (7.5,-0.65) {$1-F_{\sssig X}(y_i)$};
 \end{tikzpicture}
 \end{document}
