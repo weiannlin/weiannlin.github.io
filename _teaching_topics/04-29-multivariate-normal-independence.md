@@ -10,12 +10,12 @@ order: 429
 permalink: /lecture-notes/multivariate-normal-independence/
 date: 2026-08-15
 published: false
-excerpt: "多元常態分配之中，零相關與獨立是等價的，推廣到分塊之後即為 $\\mathbf{\\Sigma}_{12}=\\mathbf{0}$ 若且唯若 $\\boldsymbol{X}_1$ 與 $\\boldsymbol{X}_2$ 獨立。本篇先給出這條充要條件，再以它證明常態母體之下樣本平均數與樣本變異數彼此獨立。作法是把 $\\overline{X}$ 與各個 $X_i-\\overline{X}$ 排成一個仿射變換，算出共變異數矩陣的非對角分塊為零矩陣。接著把這個算法一般化為 $\\mathbf{A}\\mathbf{B}^{\\mathrm{T}}=\\mathbf{0}$ 時 $\\mathbf{A}\\boldsymbol{X}$ 與 $\\mathbf{B}\\boldsymbol{X}$ 獨立，並由此給出冪等矩陣的二次形式服從卡方分配這條定理，自由度為該矩陣的跡，最直接的應用即 $(n-1)S^{2}/\\sigma^{2}$ 的抽樣分配。最後一題以雙重期望值定理處理階層模型的邊際分配。"
+excerpt: "多元常態分配下，子向量獨立若且唯若跨區塊共變異數矩陣為零矩陣；對獨立同分配常態樣本，當 $\\mathbf{A}\\mathbf{B}^{\\mathrm{T}}=\\mathbf{0}$ 時線性轉換 $\\mathbf{A}\\boldsymbol{X}$ 與 $\\mathbf{B}\\boldsymbol{X}$ 獨立。本篇據此證明樣本平均數與樣本變異數獨立，並引用冪等矩陣二次形式的卡方分配定理推導樣本變異數的抽樣分配。"
 ---
 
-[上一篇](/lecture-notes/multivariate-normal-distribution/)給出[多元常態分配](/lecture-notes/multivariate-normal-distribution/#def-multivariate-normal)的定義，並依序列出邊際分配、條件分配、仿射變換與二次形式四項性質。本篇處理多元常態分配之中最常被引用的兩條結果: 一是分塊之間零相關與獨立的等價關係，二是冪等矩陣的二次形式所服從的分配。
+[上一篇](/lecture-notes/multivariate-normal-distribution/)給出[多元常態分配](/lecture-notes/multivariate-normal-distribution/#def-multivariate-normal)的定義，並依序列出邊際分配、條件分配、仿射變換與二次形式四項性質。本篇處理多元常態分配之中最常被引用的兩條結果，一是分塊之間零相關與獨立的等價關係，二是對稱冪等矩陣的二次形式所服從的分配。
 
-這兩條結果所補齊的，正是先前談[卡方分配](/lecture-notes/chi-squared-distribution/#def-chi-distribution)與 $t$ 分配時直接引用而沒有證明的兩個前提: 常態母體之下樣本平均數 $\overline{X}$ 與樣本變異數 $S^{2}$ 彼此獨立，以及 $\frac{\,(n-1)S^{2}\,}{\sigma^{2}}$ 服從自由度為 $n-1$ 的卡方分配。前者由分塊獨立的充要條件得到，後者由二次形式的定理得到，兩者的關鍵都在同一個冪等矩陣 $\mathbb{I}_n-\frac{1}{\,n\,}\boldsymbol{1}\boldsymbol{1}^{\mathrm{T}}$ 身上。本篇最後另以一道階層模型的例題收尾，說明條件分配為多元常態時，邊際分配仍為多元常態，只是變異結構多疊了一層。
+這兩條結果所補齊的，正是先前談[卡方分配](/lecture-notes/chi-squared-distribution/#def-chi-distribution)與 $t$ 分配時直接引用而沒有證明的兩個前提，即常態母體之下樣本平均數 $\overline{X}$ 與樣本變異數 $S^{2}$ 彼此獨立，以及 $\frac{\,(n-1)S^{2}\,}{\sigma^{2}}$ 服從自由度為 $n-1$ 的卡方分配。前者由分塊獨立的充要條件得到，後者由二次形式的定理得到，兩者的關鍵都在同一個對稱冪等矩陣 $\mathbb{I}_n-\frac{1}{\,n\,}\boldsymbol{1}\boldsymbol{1}^{\mathrm{T}}$ 身上。本篇最後另以一道階層模型的例題收尾，說明條件分配為多元常態時，邊際分配仍為多元常態，只是變異結構多疊了一層。
 
 ## 多元常態分配的分塊獨立
 
@@ -50,18 +50,31 @@ $$
 
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這一個定理有一個非常重要的應用，就是證明常態母體之下，隨機樣本的樣本平均數與樣本變異數將會獨立，見下列這一題。
-
-</div>
+此定理最重要的統計應用，即是證明常態母體下隨機樣本的樣本平均數 $\overline{X}$ 與樣本變異數 $S^{2}$ 彼此獨立，見下題。
 
 <div id="ex-multivariate-normal-ind-1" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 4.65</div>
 
 <div lang="en" markdown="1">
-Let <span class="text-nowrap">$X_1, \ldots, X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu, \sigma^{2})$,</span> prove that $\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i\indep S^{2}=\frac{1}{\,n-1\,}\sum_{i=1}^{n}(X_i-\overline{X})^{2}$.
+Let $X_1,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})$ (<span class="text-nowrap">$n\geqslant2$</span>), prove that
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i\indep S^{2}=\frac{1}{\,n-1\,}\sum_{i=1}^{n}(X_i-\overline{X})^{2}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i\\[0.3em]
+\indep S^{2}=\frac{1}{\,n-1\,}\sum_{i=1}^{n}(X_i-\overline{X})^{2}
+\end{gathered}
+$$
+
+</div>
 </div>
 
 由 $X_1,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})$ 可知
@@ -130,13 +143,13 @@ $$
 $$
 \begin{aligned}
 &\begin{bmatrix} \frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}\\ \mathbb{I}_n-\mathbf{H} \end{bmatrix}\mathbf{\Sigma}\begin{bmatrix} \frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}\\ \mathbb{I}_n-\mathbf{H} \end{bmatrix}^{\mathrm{T}}\\[0.55em]
-&=\begin{bmatrix} \frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}\mathbf{\Sigma}(\frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}})^{\mathrm{T}} & \frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}\mathbf{\Sigma}(\mathbb{I}_n-\mathbf{H})^{\mathrm{T}}\\ (\mathbb{I}_n-\mathbf{H})\mathbf{\Sigma}(\frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}})^{\mathrm{T}} & (\mathbb{I}_n-\mathbf{H})\mathbf{\Sigma}(\mathbb{I}_n-\mathbf{H})^{\mathrm{T}} \end{bmatrix}
+&=\begin{bmatrix} \begin{array}{l}\frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}\mathbf{\Sigma}\\[0.15em]\quad(\frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}})^{\mathrm{T}}\end{array} & \begin{array}{l}\frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}\mathbf{\Sigma}\\[0.15em]\quad(\mathbb{I}_n-\mathbf{H})^{\mathrm{T}}\end{array}\\[1.1em] \begin{array}{l}(\mathbb{I}_n-\mathbf{H})\mathbf{\Sigma}\\[0.15em]\quad(\frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}})^{\mathrm{T}}\end{array} & \begin{array}{l}(\mathbb{I}_n-\mathbf{H})\mathbf{\Sigma}\\[0.15em]\quad(\mathbb{I}_n-\mathbf{H})^{\mathrm{T}}\end{array} \end{bmatrix}
 \end{aligned}
 $$
 
 </div>
 
-其中 $\mathbb{I}_{n}-\mathbf{H}=\mathbb{I}_{n}-\frac{1}{\,n\,}\boldsymbol{1}\boldsymbol{1}^{\mathrm{T}}$ 為一冪等矩陣 <span lang="en">(idempotent matrix)</span>，故可知共變異數矩陣為
+其中 $\mathbb{I}\_{n}-\mathbf{H}=\mathbb{I}\_{n}-\frac{1}{\,n\,}\boldsymbol{1}\boldsymbol{1}^{\mathrm{T}}$ 為對稱冪等矩陣 <span lang="en">(symmetric idempotent matrix)</span> (冪等矩陣又稱自乘不變矩陣，即滿足任意正整數次方皆等於自身的方陣)，故共變異數矩陣可化簡為
 
 $$
 \begin{bmatrix} \frac{\,\sigma^{2}\,}{n} & \boldsymbol{0}^{\mathrm{T}}\\ \boldsymbol{0} & \sigma^{2}(\mathbb{I}_n-\mathbf{H}) \end{bmatrix}
@@ -173,14 +186,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-冪等矩陣又稱自乘不變矩陣，是一種不論自己經過幾次方，永恆都跟自己相等的矩陣。
-
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-事實上，在上述的證明中，關於 $\overline{X}$ 與 $\begin{bmatrix} X_1-\overline{X} & \cdots & X_n-\overline{X} \end{bmatrix}^{\mathrm{T}}$ 的共變異數矩陣 (或稱共變異數向量)，是 $\mathrm{Cov}\bigl(\overline{X},\ \begin{bmatrix} X_1-\overline{X} & \cdots & X_n-\overline{X} \end{bmatrix}^{\mathrm{T}}\bigr)$ 這個量，但也可以寫為
+上述推導中，$\overline{X}$ 與離差向量 $\begin{bmatrix} X_1-\overline{X} & \cdots & X_n-\overline{X} \end{bmatrix}^{\mathrm{T}}$ 的跨區塊共變異數向量 $\mathrm{Cov}\bigl(\overline{X},\ \begin{bmatrix} X_1-\overline{X} & \cdots & X_n-\overline{X} \end{bmatrix}^{\mathrm{T}}\bigr)$ 可進一步改寫為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -200,18 +206,18 @@ $$
 
 </div>
 
-而剛好由於 $\frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}(\mathbb{I}_{n}-\mathbf{H})^{\mathrm{T}}=\boldsymbol{0}^{\mathrm{T}}$ 的緣故，我們可知二者零相關，在多元常態分配中亦等價於二者獨立。
+由 $\frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}(\mathbb{I}_{n}-\mathbf{H})^{\mathrm{T}}=\boldsymbol{0}^{\mathrm{T}}$ 可知這兩個子向量零相關，而在多元常態分配之下即等價於彼此獨立。
 
-事實上，這可以推廣成一般化的形式，也就是在多元常態分配中，若二矩陣 $\mathbf{A}$ 與 $\mathbf{B}$ 皆可與 $\boldsymbol{X}$ 相乘，且 <span class="text-nowrap">$\mathbf{A}\mathbf{B}^{\mathrm{T}}=\mathbf{0}$，</span>則我們可知
-
-$$
-\mathbf{A}\boldsymbol{X}\indep\mathbf{B}\boldsymbol{X}
-$$
-
-這其中，我們有
+此結果可推廣為一般準則。設 $\boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{\mu},\mathbf{\Sigma})$ 成立，且常數矩陣 $\mathbf{A}$ 與 $\mathbf{B}$ 皆可左乘 <span class="text-nowrap">$\boldsymbol{X}$，</span>由於
 
 $$
 \mathrm{Cov}(\mathbf{A}\boldsymbol{X},\ \mathbf{B}\boldsymbol{X})=\mathbf{A}\mathbf{\Sigma}\mathbf{B}^{\mathrm{T}}
+$$
+
+故在多元常態分配中，$\mathbf{A}\mathbf{\Sigma}\mathbf{B}^{\mathrm{T}}=\mathbf{0}$ 為 $\mathbf{A}\boldsymbol{X}\indep\mathbf{B}\boldsymbol{X}$ 的充要條件。特別是在 $\mathbf{\Sigma}=\sigma^{2}\mathbb{I}\_{n}$ (例如獨立同分配的常態隨機樣本 <span class="text-nowrap">$X_1,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})$，</span>其中 <span class="text-nowrap">$\sigma^{2}>0$</span>) 之下，只要滿足 <span class="text-nowrap">$\mathbf{A}\mathbf{B}^{\mathrm{T}}=\mathbf{0}$，</span>我們便有
+
+$$
+\mathbf{A}\boldsymbol{X}\indep\mathbf{B}\boldsymbol{X}
 $$
 
 </div>
@@ -220,16 +226,16 @@ $$
 <div class="topic-box__label">Example 4.66</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,\ldots,X_n$ form a random sample from a normal distribution <span class="text-nowrap">$\mathcal{N}(\mu,\sigma^{2})$.</span>
+Suppose $X_1,\ldots,X_n$ are i.i.d. from a normal distribution <span class="text-nowrap">$\mathcal{N}(\mu,\sigma^{2})$.</span>
 
 <ol class="topic-list-paren">
-  <li>Suppose that <span class="text-nowrap">$Y=\sum_{i=1}^{n}a_iX_i$,</span> in which every $a_i$ is a real constant. Determine the mgf of <span class="text-nowrap">$Y$,</span> that is, <span class="text-nowrap">$M_{\sssig Y}(t)=\mathbb{E}(e^{tY})$.</span></li>
-  <li>Suppose further that <span class="text-nowrap">$Z=\sum_{i=1}^{n}b_iX_i$,</span> in which every $b_i$ is a real constant. Find a condition on the two sets of constants that is at once necessary and sufficient for $Y$ and $Z$ to be independent. (Hint: locate the condition under which $M_{\sssig YZ}(t,s)=\mathbb{E}(e^{tY+sZ})$ factors into <span class="text-nowrap">$M_{\sssig Y}(t)M_{\sssig Z}(s)$,</span> where <span class="text-nowrap">$M_{\sssig Z}(s)=\mathbb{E}(e^{sZ})$.)</span></li>
-  <li>Evaluate the covariance of $Y$ and <span class="text-nowrap">$Z$,</span> and state what the two preceding parts together allow you to conclude.</li>
+  <li>Let $Y=\sum_{i=1}^{n}a_iX_i$ with <span class="text-nowrap">$a_i\in\mathbb{R}$,</span> for all <span class="text-nowrap">$i$.</span> Calculate the mgf of <span class="text-nowrap">$Y$,</span> which is $M_{\sssig Y}(t)=\mathbb{E}(e^{tY})$.</li>
+  <li>Let $Z=\sum_{i=1}^{n}b_iX_i$ with <span class="text-nowrap">$b_i\in\mathbb{R}$,</span> for all <span class="text-nowrap">$i$.</span> Find a necessary and sufficient condition such that $Y$ and $Z$ are independent. (Hint: Find the condition under which $M_{\sssig YZ}(t,s)=\mathbb{E}(e^{tY+sZ})=M_{\sssig Y}(t)M_{\sssig Z}(s)$, where $M_{\sssig Z}(s)=\mathbb{E}(e^{sZ})$.)</li>
+  <li>Compute the covariance of $Y$ and <span class="text-nowrap">$Z$.</span> What kind of conclusion can you draw from this and previous parts?</li>
 </ol>
 </div>
 
-(1) 依題目設定，$X_1,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})$，且 <span class="text-nowrap">$Y=\sum_{i=1}^{n}a_iX_i$，</span>則
+(1) 依題目設定，$X_1,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2})$ 成立，且 <span class="text-nowrap">$Y=\sum_{i=1}^{n}a_iX_i$，</span>則
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -302,7 +308,7 @@ $$
 
 </div>
 
-則由[定理](/lecture-notes/cross-moments-joint-mgf/#note-joint-mgf-independence)可知 $Y\indep Z$ 之充要條件為 $M_{\sssig YZ}(t,s)=M_{\sssig Y}(t)M_{\sssig Z}(s)$ 這條等式，此即
+則由[定理](/lecture-notes/cross-moments-joint-mgf/#note-joint-mgf-independence)可知 $Y\indep Z$ 之充要條件為 $M_{\sssig YZ}(t,s)=M_{\sssig Y}(t)M_{\sssig Z}(s)$ 這條等式，將上述各式代入可得
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -365,28 +371,28 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在這個問題中，可以令 $\mathbf{A}=\bigl[\,a_1\ \cdots\ a_n\,\bigr]$ 與 $\mathbf{B}=\bigl[\,b_1\ \cdots\ b_n\,\bigr]$ 這個向量，則關於 $Y=\mathbf{A}\boldsymbol{X}$ 與 $Z=\mathbf{B}\boldsymbol{X}$ 之共變異數，可以由前一題所提到的算法計算，此即
+若將兩組係數排成列向量 $\mathbf{A}=\bigl[\,a_1\ \cdots\ a_n\,\bigr]$ 與 <span class="text-nowrap">$\mathbf{B}=\bigl[\,b_1\ \cdots\ b_n\,\bigr]$，</span>則 $Y=\mathbf{A}\boldsymbol{X}$ 與 $Z=\mathbf{B}\boldsymbol{X}$ 的共變異數可直接套用上題的矩陣公式求得
 
 $$
 \mathbf{A}\sigma^{2}\mathbb{I}_n\mathbf{B}^{\mathrm{T}}=\sigma^{2}\sum_{i=1}^{n}a_ib_i
 $$
 
-則二者零相關 (或獨立) 的等價條件為
+故兩者零相關 (亦即獨立) 的充要條件為
 
 $$
 \mathbf{A}\mathbf{B}^{\mathrm{T}}=\sum_{i=1}^{n}a_ib_i=0
 $$
 
-關於上述這個算法，在多元常態分配中有一個重要的衍生性質，見下列定理。
+以下進一步討論多元常態向量二次形式的抽樣分配。
 
 </div>
 
-## 冪等矩陣的二次形式
+## 對稱冪等矩陣的二次形式
 
 <div id="thm-idempotent-quadratic-form" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 4.30 (冪等矩陣的二次形式, quadratic forms with an idempotent matrix)</div>
+<div class="topic-box__label">Theorem 4.30 (對稱冪等矩陣的二次形式, quadratic forms with a symmetric idempotent matrix)</div>
 
-令 $\boldsymbol{X}\sim\mathcal{MN}\bigl(\boldsymbol{\mu},\ \sigma^{2}\mathbb{I}_{n}\bigr)$ 這個分配，且 $\mathbf{A}$ 為一冪等矩陣，且 <span class="text-nowrap">$\mathrm{tr}(\mathbf{A})=k$，</span>並滿足 <span class="text-nowrap">$\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$，</span>則我們有
+令 $\boldsymbol{X}\sim\mathcal{MN}\bigl(\boldsymbol{\mu},\ \sigma^{2}\mathbb{I}_{n}\bigr)$ (其中 <span class="text-nowrap">$\sigma^{2}>0$</span>)，且 $\mathbf{A}$ 為一 $n\times n$ **對稱且冪等**之矩陣 (即 $\mathbf{A}^{\mathrm{T}}=\mathbf{A}$ 且 <span class="text-nowrap">$\mathbf{A}^{2}=\mathbf{A}$</span>)，滿足 $\mathrm{tr}(\mathbf{A})=k$ 與 $\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$ 這兩項條件，則我們有
 
 $$
 \boldsymbol{X}^{\mathrm{T}}\mathbf{A}\boldsymbol{X}/\sigma^{2}\sim\chi^{2}(k)
@@ -394,7 +400,7 @@ $$
 
 </div>
 
-**實務上的應用**: (說明常態母體下，$S^{2}$ 之抽樣分配)
+**實務上的應用**: (說明常態母體下，樣本變異數 $S^{2}$ 之抽樣分配)
 
 <div class="topic-proof" markdown="1">
 **Proof.**
@@ -411,11 +417,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-X_1,\ldots,X_n&\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2}),\\[0.45em]
-\overline{X}&=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i,\\[0.45em]
-S^{2}&=\frac{1}{\,n-1\,}\sum_{i=1}^{n}(X_i-\overline{X})^{2}
-\end{aligned}
+\begin{gathered}
+X_1,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu,\sigma^{2}),\\[0.45em]
+\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i,\\[0.45em]
+S^{2}=\frac{1}{\,n-1\,}\sum_{i=1}^{n}(X_i-\overline{X})^{2}
+\end{gathered}
 $$
 
 </div>
@@ -464,26 +470,35 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這個定理最主要的應用，與[科克蘭定理](/lecture-notes/chi-squared-distribution/#thm-cochran-theorem)很相似，可以用來說明樣本變異數 $S^{2}$ 的抽樣分配。當然，這個定理還有許多進階的應用。
-
-</div>
+上述推導藉由對稱冪等矩陣 $\mathbb{I}_n-\frac{1}{\,n\,}\boldsymbol{1}\boldsymbol{1}^{\mathrm{T}}$ 導出樣本變異數 $S^{2}$ 的卡方抽樣分配，與前文[科克蘭定理](/lecture-notes/chi-squared-distribution/#thm-cochran-theorem)的平方和拆解殊途同歸，在線性模型與變異數分析中應用極廣。
 
 <div id="ex-multivariate-normal-ind-3" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 4.67</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1, X_2, X_3, X_4$ are independent and identically distributed standard normal random variables, and set
+Let <span class="text-nowrap">$X_1, X_2, X_3, X_4\overset{\mathrm{iid}}{\sim}\mathcal{N}(0,1)$,</span> and let
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 Q=X_1^{2}+\frac{\,(X_2-X_3)^{2}\,}{2}+X_4^{2},\quad \boldsymbol{X}^{\mathrm{T}}=\bigl[\,X_1, X_2, X_3, X_4\,\bigr]
 $$
 
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{gathered}
+Q=X_1^{2}+\frac{\,(X_2-X_3)^{2}\,}{2}+X_4^{2},\\[0.35em]
+\boldsymbol{X}^{\mathrm{T}}=\bigl[\,X_1, X_2, X_3, X_4\,\bigr]
+\end{gathered}
+$$
+
+</div>
+
 <ol class="topic-list-paren">
-  <li>Find the matrix $\mathbf{A}$ for which $Q$ is the quadratic form <span class="text-nowrap">$\boldsymbol{X}^{\mathrm{T}}\mathbf{A}\boldsymbol{X}$.</span></li>
-  <li>Show that $Q$ follows a chi-squared distribution, and determine its degrees of freedom.</li>
+  <li>Express $Q$ as a quadratic form $\boldsymbol{X}^{\mathrm{T}}\mathbf{A}\boldsymbol{X}$ and find the matrix <span class="text-nowrap">$\mathbf{A}$.</span></li>
+  <li>Show that $Q$ follows a chi-square distribution and find its degrees of freedom.</li>
 </ol>
 </div>
 
@@ -501,7 +516,7 @@ $$
 
 $$
 \begin{aligned}
-Q&=X_1^{2}+\frac{\,(X_2-X_3)^{2}\,}{2}+X_4^{2}\\[0.45em]
+&Q=X_1^{2}+\frac{\,(X_2-X_3)^{2}\,}{2}+X_4^{2}\\[0.35em]
 &=X_1^{2}+\frac{1}{\,2\,}X_2^{2}+\frac{1}{\,2\,}X_3^{2}+X_4^{2}-X_2X_3
 \end{aligned}
 $$
@@ -529,7 +544,7 @@ $$
 \mathbf{A}=\begin{bmatrix} 1 & 0 & 0 & 0\\ 0 & \frac{1}{\,2\,} & -\frac{1}{\,2\,} & 0\\ 0 & -\frac{1}{\,2\,} & \frac{1}{\,2\,} & 0\\ 0 & 0 & 0 & 1 \end{bmatrix}
 $$
 
-且 $\mathbf{A}$ 為一冪等矩陣，且具以下性質: $\mathrm{tr}\left(\mathbf{A}\right)=3$ 且 <span class="text-nowrap">$\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$，</span>又 $\bigl[\,X_1, X_2, X_3, X_4\,\bigr]^{\mathrm{T}}\sim\mathcal{MN}\bigl(\boldsymbol{0},\ \mathbb{I}_4\bigr)$ 成立，故可知
+且 $\mathbf{A}$ 為一對稱且冪等之矩陣，滿足 $\mathrm{tr}(\mathbf{A})=3$ 與 $\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$ 這兩項條件；又 $\bigl[\,X_1, X_2, X_3, X_4\,\bigr]^{\mathrm{T}}\sim\mathcal{MN}\bigl(\boldsymbol{0},\ \mathbb{I}_4\bigr)$ 成立，故由 [Theorem 4.30](#thm-idempotent-quadratic-form) 可知
 {: .topic-paren-cont}
 
 $$
@@ -544,17 +559,38 @@ $$
 <div class="topic-box__label">Example 4.68</div>
 
 <div lang="en" markdown="1">
-Suppose that $\boldsymbol{X}$ and $\boldsymbol{Y}$ are $k$-dimensional random vectors for which the conditional distribution of $\boldsymbol{X}$ given $\boldsymbol{Y}$ is <span class="text-nowrap">$\mathcal{N}_{\sssig k}(\boldsymbol{Y},\mathbf{\Sigma})$,</span> while $\boldsymbol{Y}$ itself has the distribution <span class="text-nowrap">$\mathcal{N}_{\sssig k}(\boldsymbol{\mu},\mathbf{\Lambda})$,</span> where $\boldsymbol{\mu}$ is a constant $k$-dimensional vector and $\mathbf{\Sigma}$ and $\mathbf{\Lambda}$ are both $k\times k$ covariance matrices. Determine the marginal distribution of <span class="text-nowrap">$\boldsymbol{X}$.</span>
+Let $\boldsymbol{X}$ and $\boldsymbol{Y}$ be two $k$-dimensional random vectors such that $\boldsymbol{X}\mid\boldsymbol{Y}\sim\mathcal{N}\_{\sssig k}(\boldsymbol{Y},\mathbf{\Sigma})$ and $\boldsymbol{Y}\sim\mathcal{N}\_{\sssig k}(\boldsymbol{\mu},\mathbf{\Lambda})$, where $\boldsymbol{\mu}$ is a $k$-dimensional constant vector and both $\mathbf{\Sigma}$ and $\mathbf{\Lambda}$ are $k\times k$ covariance matrices. What is the marginal distribution of <span class="text-nowrap">$\boldsymbol{X}$?</span>
 </div>
 
-依題意可知 $\mathbb{E}\bigl(e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{X}}\bigm|\boldsymbol{Y}=\boldsymbol{y}\bigr)=e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{y}+\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}$ 這條式子，則由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
+依題意可知
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{E}\bigl(e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{X}}\bigm\vert\boldsymbol{Y}=\boldsymbol{y}\bigr)=e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{y}+\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+&\mathbb{E}\bigl(e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{X}}\bigm\vert\boldsymbol{Y}=\boldsymbol{y}\bigr)\\[0.3em]
+&=e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{y}+\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}
+\end{aligned}
+$$
+
+</div>
+
+則由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 \begin{aligned}
-M_{\sssig \boldsymbol{X}}(\boldsymbol{t})&=\mathbb{E}\Bigl[\mathbb{E}\Bigl(e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{X}}\Bigm|\boldsymbol{Y}\Bigr)\Bigr]=\mathbb{E}\Bigl[e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{Y}+\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}\Bigr]=e^{\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}\times\mathbb{E}\Bigl(e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{Y}}\Bigr)\\[0.45em]
-&=e^{\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}\times M_{\sssig \boldsymbol{Y}}(\boldsymbol{t})=e^{\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}\times e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{\mu}+\boldsymbol{t}^{\mathrm{T}}\mathbf{\Lambda}\boldsymbol{t}/2}=e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{\mu}+\boldsymbol{t}^{\mathrm{T}}(\mathbf{\Sigma}+\mathbf{\Lambda})\boldsymbol{t}/2},\ \boldsymbol{t}\in\mathbb{R}^{k}
+M_{\sssig \boldsymbol{X}}(\boldsymbol{t})&=\mathbb{E}\Bigl[\mathbb{E}\Bigl(e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{X}}\Bigm\vert\boldsymbol{Y}\Bigr)\Bigr]=\mathbb{E}\Bigl[e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{Y}+\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}\Bigr]=e^{\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}\times\mathbb{E}\Bigl(e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{Y}}\Bigr)\\[0.45em]
+&=e^{\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}\times M_{\sssig \boldsymbol{Y}}(\boldsymbol{t})=e^{\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}\times e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{\mu}+\boldsymbol{t}^{\mathrm{T}}\mathbf{\Lambda}\boldsymbol{t}/2}\\[0.45em]
+&=e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{\mu}+\boldsymbol{t}^{\mathrm{T}}(\mathbf{\Sigma}+\mathbf{\Lambda})\boldsymbol{t}/2},\ \boldsymbol{t}\in\mathbb{R}^{k}
 \end{aligned}
 $$
 
@@ -563,7 +599,7 @@ $$
 
 $$
 \begin{aligned}
-M_{\sssig \boldsymbol{X}}(\boldsymbol{t})&=\mathbb{E}\Bigl[\mathbb{E}\Bigl(e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{X}}\Bigm|\boldsymbol{Y}\Bigr)\Bigr]\\[0.45em]
+&M_{\sssig \boldsymbol{X}}(\boldsymbol{t})=\mathbb{E}\Bigl[\mathbb{E}\Bigl(e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{X}}\Bigm\vert\boldsymbol{Y}\Bigr)\Bigr]\\[0.45em]
 &=\mathbb{E}\Bigl[e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{Y}+\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}\Bigr]\\[0.45em]
 &=e^{\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}\times\mathbb{E}\Bigl(e^{\boldsymbol{t}^{\mathrm{T}}\boldsymbol{Y}}\Bigr)\\[0.45em]
 &=e^{\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}\times M_{\sssig \boldsymbol{Y}}(\boldsymbol{t})\\[0.45em]
@@ -586,25 +622,25 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個問題有趣的地方在於，這是一個階層模型 <span lang="en">(hierarchical model)</span>，我們必須先知道 $\boldsymbol{Y}$ 的值，進而以其作為 $\boldsymbol{X}$ 的期望值，那麼如果不先給定 $\boldsymbol{Y}$ 的值呢? 平均而言，$\boldsymbol{X}$ 的值將會以 $\boldsymbol{Y}$ 的期望值作為期望值，但是由於多考慮了一層變異 (即 $\boldsymbol{Y}$ 的變異)，故變異數會疊加，也就是 <span class="text-nowrap">$\mathbf{\Sigma}+\mathbf{\Lambda}$，</span>但不改其分配仍為常態的結果。
+本題屬於階層模型 <span lang="en">(hierarchical model)</span> 架構，在給定 $\boldsymbol{Y}$ 之下以 $\boldsymbol{Y}$ 作為 $\boldsymbol{X}$ 的條件期望值。若不對 $\boldsymbol{Y}$ 取條件而直接求取 $\boldsymbol{X}$ 的邊際分配，則其期望值等於 $\boldsymbol{Y}$ 的期望值 <span class="text-nowrap">$\boldsymbol{\mu}$，</span>而共變異數矩陣因同時納入條件變異與 $\boldsymbol{Y}$ 自身的變異而疊加為 <span class="text-nowrap">$\mathbf{\Sigma}+\mathbf{\Lambda}$，</span>且邊際分配仍維持多元常態分配。
 
-我們曾經在[貝塔函數與貝塔分配](/lecture-notes/beta-function-and-distribution/)一篇中提到，貝氏統計學派中，常見的共軛分配中，就有**常態-常態**的選擇，而這題正是這樣的例子，且是一個多元常態分配。
+前文在[貝塔函數與貝塔分配](/lecture-notes/beta-function-and-distribution/)中曾提及貝氏統計的共軛先驗分配，其中常見的**常態-常態**共軛架構在多維參數下即對應本題的多元常態階層模型。
 
 </div>
 
 ## 本篇小結
 
-[Theorem 4.29](#thm-block-independence) 把二元常態分配中「零相關等價於獨立」這件事推廣到分塊的層次。把 $\boldsymbol{X}$ 切成 $\boldsymbol{X}_1$ 與 $\boldsymbol{X}_2$ 兩塊之後，共變異數矩陣也跟著切成四塊，而非對角的那一塊 $\mathbf{\Sigma}_{12}$ 是否為零矩陣，恰好就決定了兩塊之間獨立與否。這條性質為多元常態分配所獨有，一般的分配只有「獨立可推出零相關」這一個方向。
+[Theorem 4.29](#thm-block-independence) 把二元常態分配中「零相關等價於獨立」這件事推廣到分塊的層次。把 $\boldsymbol{X}$ 切成 $\boldsymbol{X}\_1$ 與 $\boldsymbol{X}\_2$ 兩塊之後，共變異數矩陣也跟著切成四塊，而非對角的那一塊 $\mathbf{\Sigma}\_{12}$ 是否為零矩陣，恰好就決定了兩塊之間獨立與否。這條性質為多元常態分配所獨有，一般的分配只有「獨立可推出零相關」這一個方向。
 
-[Example 4.65](#ex-multivariate-normal-ind-1) 是這條性質最重要的應用。作法是把 $\overline{X}$ 與 $n$ 個離差 $X_i-\overline{X}$ 併成一個 $(n+1)$ 維的隨機向量，並把它寫成 $\begin{bmatrix} \frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}\\ \mathbb{I}_n-\mathbf{H} \end{bmatrix}\boldsymbol{X}$ 這個仿射變換，於是新向量仍為多元常態分配，其共變異數矩陣即 $\mathbf{A}\mathbf{\Sigma}\mathbf{A}^{\mathrm{T}}$ 這個式子。由於 $\frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}(\mathbb{I}_n-\mathbf{H})^{\mathrm{T}}=\boldsymbol{0}^{\mathrm{T}}$ 這條等式，非對角分塊為零，因此 $\overline{X}$ 與全部的離差獨立；$S^{2}$ 只是這些離差的函數，故 $\overline{X}$ 與 $S^{2}$ 獨立。同一段推導也給出了一條一般化的準則: $\mathbf{A}\mathbf{B}^{\mathrm{T}}=\mathbf{0}$ 時 $\mathbf{A}\boldsymbol{X}$ 與 $\mathbf{B}\boldsymbol{X}$ 獨立。
+[Example 4.65](#ex-multivariate-normal-ind-1) 是這條性質最重要的應用。作法是把 $\overline{X}$ 與 $n$ 個離差 $X_i-\overline{X}$ 併成一個 $(n+1)$ 維的隨機向量，並把它寫成 $\begin{bmatrix} \frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}\\\\ \mathbb{I}_n-\mathbf{H} \end{bmatrix}\boldsymbol{X}$ 這個仿射變換，於是新向量仍為多元常態分配，其共變異數矩陣即 $\mathbf{A}\mathbf{\Sigma}\mathbf{A}^{\mathrm{T}}$ 這個式子。由於 $\frac{1}{\,n\,}\boldsymbol{1}^{\mathrm{T}}(\mathbb{I}_n-\mathbf{H})^{\mathrm{T}}=\boldsymbol{0}^{\mathrm{T}}$ 這條等式，非對角分塊為零，因此 $\overline{X}$ 與全部的離差獨立；$S^{2}$ 只是這些離差的函數，故 $\overline{X}$ 與 $S^{2}$ 獨立。同一段推導也給出了一條一般化的準則，即對一般多元常態向量 $\boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{\mu},\mathbf{\Sigma})$ 而言，$\mathbf{A}\mathbf{\Sigma}\mathbf{B}^{\mathrm{T}}=\mathbf{0}$ 等價於 $\mathbf{A}\boldsymbol{X}$ 與 $\mathbf{B}\boldsymbol{X}$ 獨立；特別在 $\mathbf{\Sigma}=\sigma^{2}\mathbb{I}\_n$ (如獨立同分配常態樣本) 之下，只要滿足 <span class="text-nowrap">$\mathbf{A}\mathbf{B}^{\mathrm{T}}=\mathbf{0}$，</span>就有 $\mathbf{A}\boldsymbol{X}$ 與 $\mathbf{B}\boldsymbol{X}$ 獨立。
 
-[Example 4.66](#ex-multivariate-normal-ind-2) 換一條路走同一件事。它不動矩陣，改由動差母函數下手。先算出 $Y=\sum_{i=1}^{n}a_iX_i$ 與 $Z=\sum_{i=1}^{n}b_iX_i$ 的聯合動差母函數，再比對它與兩個邊際動差母函數的乘積，兩者相等的充要條件恰好是 <span class="text-nowrap">$\sum_{i=1}^{n}a_ib_i=0$。</span>第三小題算出 $\mathrm{Cov}(Y,Z)=\sigma^{2}\sum_{i=1}^{n}a_ib_i$ 這個結果，與第二小題合起來看，正是零相關與獨立在二元常態分配中等價的又一個實例。若把兩組係數排成 $\mathbf{A}$ 與 $\mathbf{B}$ 兩個列向量，這個條件就寫成 <span class="text-nowrap">$\mathbf{A}\mathbf{B}^{\mathrm{T}}=0$，</span>與前一題的準則完全一致。
+[Example 4.66](#ex-multivariate-normal-ind-2) 換一條路走同一件事。它不動矩陣，改由動差母函數下手。先算出 $Y=\sum_{i=1}^{n}a_iX_i$ 與 $Z=\sum_{i=1}^{n}b_iX_i$ 的聯合動差母函數，再比對它與兩個邊際動差母函數的乘積，兩者相等的充要條件恰好是 <span class="text-nowrap">$\sum_{i=1}^{n}a_ib_i=0$。</span>第三小題算出 $\mathrm{Cov}(Y,Z)=\sigma^{2}\sum_{i=1}^{n}a_ib_i$ 這個結果，與第二小題合起來看，正是零相關與獨立在二元常態分配中等價的又一個實例。若把兩組係數排成 $\mathbf{A}$ 與 $\mathbf{B}$ 兩個列向量，這個條件就寫成內積條件 <span class="text-nowrap">$\mathbf{A}\mathbf{B}^{\mathrm{T}}=0$，</span>與前一題的準則完全一致。
 
-[Theorem 4.30](#thm-idempotent-quadratic-form) 則把矩陣運算用在另一個方向。$\boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{\mu},\sigma^{2}\mathbb{I}_n)$ 而 $\mathbf{A}$ 為冪等矩陣時，二次形式 $\boldsymbol{X}^{\mathrm{T}}\mathbf{A}\boldsymbol{X}/\sigma^{2}$ 服從卡方分配，自由度即 <span class="text-nowrap">$\mathrm{tr}(\mathbf{A})$，</span>條件是 $\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$ 這一項。把 $\mathbf{A}$ 取為 [Example 4.65](#ex-multivariate-normal-ind-1) 中的同一個冪等矩陣 <span class="text-nowrap">$\mathbb{I}_n-\frac{1}{\,n\,}\boldsymbol{1}\boldsymbol{1}^{\mathrm{T}}$，</span>其跡為 $n-1$ 而 $\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$ 成立，於是由這條定理即得 $\frac{\,(n-1)S^{2}\,}{\sigma^{2}}\sim\chi^{2}(n-1)$ 這個結果。[Example 4.67](#ex-multivariate-normal-ind-3) 是同一條定理的操作演練。先把 $Q$ 展開並整理成二次形式以求得 $\mathbf{A}$，再驗證它冪等、跡為 $3$ 且 $\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$，即得 <span class="text-nowrap">$Q\sim\chi^{2}(3)$。</span>
+[Theorem 4.30](#thm-idempotent-quadratic-form) 則把矩陣運算用在另一個方向。當 $\boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{\mu},\sigma^{2}\mathbb{I}_n)$ 而 $\mathbf{A}$ 為對稱且冪等之矩陣時，若滿足 $\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$ 這一條件，二次形式 $\boldsymbol{X}^{\mathrm{T}}\mathbf{A}\boldsymbol{X}/\sigma^{2}$ 便服從卡方分配，自由度即 <span class="text-nowrap">$\mathrm{tr}(\mathbf{A})$。</span>把 $\mathbf{A}$ 取為 [Example 4.65](#ex-multivariate-normal-ind-1) 中的對稱冪等矩陣 $\mathbb{I}\_n-\frac{1}{\,n\,}\boldsymbol{1}\boldsymbol{1}^{\mathrm{T}}$ 這一式，其跡為 $n-1$ 而 $\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$ 成立，於是由這條定理即得 $\frac{\,(n-1)S^{2}\,}{\sigma^{2}}\sim\chi^{2}(n-1)$ 這個結果。[Example 4.67](#ex-multivariate-normal-ind-3) 是同一條定理的操作演練。先把 $Q$ 展開並整理成二次形式以求得對稱矩陣 <span class="text-nowrap">$\mathbf{A}$，</span>再驗證它冪等、跡為 $3$ 且滿足 <span class="text-nowrap">$\boldsymbol{\mu}^{\mathrm{T}}\mathbf{A}\boldsymbol{\mu}=0$，</span>即得 <span class="text-nowrap">$Q\sim\chi^{2}(3)$。</span>
 
 [Example 4.68](#ex-multivariate-normal-ind-4) 收在階層模型上。條件分配與邊際分配都是多元常態時，$\boldsymbol{X}$ 的邊際分配仍為多元常態，期望值取 $\boldsymbol{Y}$ 的期望值 <span class="text-nowrap">$\boldsymbol{\mu}$，</span>共變異數矩陣則是兩層變異相加的 <span class="text-nowrap">$\mathbf{\Sigma}+\mathbf{\Lambda}$。</span>推導只用到雙重期望值定理與動差母函數的唯一性，而 $e^{\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}/2}$ 與 $\boldsymbol{Y}$ 無關可以提到期望值之外，是整段計算的關鍵一步。
 
-第四章至此結束。全章由伯努利實驗一路走到多元常態分配，把常用的機率模型逐一建立起來。[第五章](/lecture-notes/convergence-in-distribution/)轉入極限分配，處理的是母體分配未知或不屬於常見模型時，統計量的抽樣分配該如何逼近，內容包含分配收斂、機率收斂與其他收斂型態，以及中央極限定理與弱大數法則。
+第四章至此結束。全章由伯努利實驗一路走到多元常態分配，逐一建立常用的機率模型。[第五章](/lecture-notes/convergence-in-distribution/)轉入極限分配，處理母體分配未知或不屬於常見模型時，統計量的抽樣分配該如何逼近，內容包含分配收斂、機率收斂與其他收斂型態，以及中央極限定理與弱大數法則。
 
 ## 參考文獻與延伸閱讀
 

@@ -10,7 +10,7 @@ order: 411
 permalink: /lecture-notes/exponential-memoryless-and-minima/
 date: 2026-08-12
 published: false
-excerpt: "指數分配的無記憶性說的是，已經等了 $a$ 單位時間而偶發事件仍未發生時，再多等 $b$ 單位時間仍然沒有發生的機率，與從頭開始等 $b$ 單位時間的機率完全相同。本篇先證明這個性質，再證明它的逆敘述。非負連續隨機變數只要具備無記憶性，就一定服從指數分配，兩者因而互為充要條件。接著轉入兩個獨立指數分配的比較，先指出兩者取極小值之後仍為指數分配，頻率參數為兩者相加，再求出 $Y$ 先發生的機率為 $\\frac{\\lambda_2}{\\,\\lambda_1+\\lambda_2\\,}$ 這個比值。最後以三道例題演練無記憶性的計算、極小值與指標函數的獨立性，以及參數 $\\theta$ 所對應的百分位數。"
+excerpt: "指數分配是唯一具備無記憶性的非負連續分配，已等待 $a$ 單位時間仍未發生之下的剩餘等待分配與從頭等待完全相同。本篇證明此充要性質，並推導獨立指數變數極小值的分配與先後發生機率。"
 ---
 
 [上一篇](/lecture-notes/gamma-function-exponential-distribution/)先給出伽瑪函數，再以卜瓦松過程中的等待時間定義[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)，並說明它與卜瓦松分配之間的對偶關係。本篇處理指數分配最具代表性的一項性質，也就是無記憶性 <span lang="en">(memoryless property)</span>。只要偶發事件還沒有發生，已經等了多久，都不會改變往後還要再等多久的機率。
@@ -25,10 +25,8 @@ excerpt: "指數分配的無記憶性說的是，已經等了 $a$ 單位時間�
 若 <span class="text-nowrap">$X\sim\mathrm{Exp}(\beta)$，</span>則
 
 $$
-\mathbb{P}(X>a+b\mid X>a)=\mathbb{P}(X>b)
+\mathbb{P}(X>a+b\mid X>a)=\mathbb{P}(X>b),\ \text{其中}\ a,b>0
 $$
-
-其中 $a,b>0$
 
 </div>
 
@@ -85,20 +83,18 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這裡的無記憶性與 [Theorem 4.4](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless) 是一樣的，差別只在當時是以幾何分配為例，而此處是以指數分配為例；而此處的直觀意義是「只要還沒有等到偶發事件，就永遠像是重新等一次一樣」。
-
-事實上，我們在當時也曾經說明，此二分配是唯二具有無記憶性的分配，且無記憶性的源頭都源自於 $f_{\sssig X}(a)$ 與 $f_{\sssig X}(a+1)$ 的比例是固定的，因而使得 $\mathbb{P}(X>a+b)$ 與 $\mathbb{P}(X>a)$ 的比例同樣也會是固定的，而這個比例便固定在 <span class="text-nowrap">$\mathbb{P}(X>b)$。</span>
+指數分配的無記憶性與離散型的 [Theorem 4.4](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless) 結構一致，直觀意義為「只要尚未等到偶發事件，後續等待便如同重新起算」。幾何分配與指數分配是常見分配中唯二具備無記憶性的模型，根源皆在於對任意正數增量 <span class="text-nowrap">$b>0$，</span>密度比值 $f\_{\sssig X}(a+b)/f\_{\sssig X}(a)$ 不隨 $a$ 改變，進而使尾機率比值 $\mathbb{P}(X>a+b)/\mathbb{P}(X>a)$ 恆等於 <span class="text-nowrap">$\mathbb{P}(X>b)$。</span>
 
 </div>
 
 ## 連續型無記憶性的逆敘述
 
-我們稍微在此打住。既然指數分配與幾何分配是唯二具有無記憶性的分配，且當時我們曾經證明過，[一個具有無記憶性的正整數值隨機變數必定是幾何分配](/lecture-notes/geometric-distribution-memoryless/#thm-geometric-memoryless-converse)，那我們能不能在這裡說明，如果有一非負連續隨機變數具有無記憶性，則這個分配必定是指數分配呢? 答案同樣是可以的，見[下列定理](#thm-exponential-memoryless-converse)。
+前文曾證明[一個具有無記憶性的正整數值隨機變數必定是幾何分配](/lecture-notes/geometric-distribution-memoryless/#thm-geometric-memoryless-converse)；對應至連續型情形，若一非負連續隨機變數具有無記憶性，是否也能反推其必服從指數分配？答案是肯定的，見[下列定理](#thm-exponential-memoryless-converse)。
 
 <div id="thm-exponential-memoryless-converse" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 4.13 (連續型無記憶性的逆敘述, converse of the memoryless property)</div>
 
-若 $X$ 為一非負連續隨機變數，且已知
+若 $X$ 為一非負連續隨機變數，對任意 $a>0$ 皆滿足 <span class="text-nowrap">$\mathbb{P}(X>a)>0$，</span>且已知其滿足無記憶性條件
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -117,7 +113,7 @@ $$
 
 </div>
 
-則我們可知
+則存在 <span class="text-nowrap">$\beta>0$，</span>使得
 
 $$
 X\sim\mathrm{Exp}(\beta)
@@ -172,13 +168,13 @@ $$
 
 </div>
 
-若令 $R(x)=\mathbb{P}(X>x),\ x>0$ 則
+若令 $R(x)=\mathbb{P}(X>x)$ (<span class="text-nowrap">$x\geqslant0$</span>)，則
 
 $$
 R(a+b)=R(a)\,R(b),\ a,b>0
 $$
 
-考慮 <span class="text-nowrap">$R(x+h)=R(x)\,R(h),\ \forall h>0$，</span>則我們有
+考慮對任意 $h>0$ 皆有 <span class="text-nowrap">$R(x+h)=R(x)\,R(h)$，</span>則我們有
 
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
 
@@ -202,7 +198,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow" markdown="1">
 
 $$
-\Longrightarrow\ \lim_{h\to0}\frac{\,R(x+h)-R(x)\,}{h}=R(x)\lim_{h\to0}\frac{\,R(h)-R(0)\,}{h}=R(x)\,R^{\prime}(0)
+\Longrightarrow\ \lim_{h\to0^{+}}\frac{\,R(x+h)-R(x)\,}{h}=R(x)\lim_{h\to0^{+}}\frac{\,R(h)-R(0)\,}{h}=R(x)\,R^{\prime}(0)
 $$
 
 </div>
@@ -210,15 +206,15 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ &\lim_{h\to0}\frac{\,R(x+h)-R(x)\,}{h}\\[0.45em]
-&=R(x)\lim_{h\to0}\frac{\,R(h)-R(0)\,}{h}\\[0.45em]
+\Longrightarrow\ &\lim_{h\to0^{+}}\frac{\,R(x+h)-R(x)\,}{h}\\[0.45em]
+&=R(x)\lim_{h\to0^{+}}\frac{\,R(h)-R(0)\,}{h}\\[0.45em]
 &=R(x)\,R^{\prime}(0)
 \end{aligned}
 $$
 
 </div>
 
-其中，若令 <span class="text-nowrap">$R^{\prime}(0)=-\frac{1}{\,\beta\,}$，</span>則可知
+由於 $R(x)$ 非遞增且不恆為 <span class="text-nowrap">$1$，</span>可知 <span class="text-nowrap">$R^{\prime}(0)<0$；</span>若令 $R^{\prime}(0)=-\frac{1}{\,\beta\,}$ (其中 <span class="text-nowrap">$\beta>0$</span>)，則我們可以得到
 
 $$
 \frac{\,R^{\prime}(x)\,}{R(x)}=R^{\prime}(0)=-\frac{1}{\,\beta\,}
@@ -255,27 +251,22 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這個定理補足了關於指數分配無記憶性的雙向敘述，也就是說，爾後只要我們知道某個非負連續隨機變數服從指數分配，若且唯若其具備無記憶性。
-
-</div>
+結合 [Theorem 4.12](#thm-memoryless-exp) 與 [Theorem 4.13](#thm-exponential-memoryless-converse) 的雙向結果可知，對所有正數皆具正尾機率的非負連續隨機變數服從指數分配，若且唯若其具備無記憶性。
 
 <div id="ex-exponential-memoryless-1" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 4.28</div>
 
 <div lang="en" markdown="1">
-Suppose that the random variable $X$ has probability density function
+Let the pdf of $X$ be
 
 $$
 f(x)=\frac{1}{\,2\,}e^{-\frac{x}{2}},\ 0\leqslant x<\infty
 $$
 
 <ol class="topic-list-paren">
-  <li>Determine the mean, the variance and the moment-generating function of <span class="text-nowrap">$X$.</span></li>
-  <li>Find the cumulative distribution function of <span class="text-nowrap">$X$.</span></li>
-  <li>Evaluate <span class="text-nowrap">$\mathbb{P}(X>5\mid X>2)$.</span></li>
+  <li>Find the mean, variance, and moment-generating function of <span class="text-nowrap">$X$.</span></li>
+  <li>Find the cdf of <span class="text-nowrap">$X$.</span></li>
+  <li>Calculate <span class="text-nowrap">$\mathbb{P}(X>5\mid X>2)$.</span></li>
 </ol>
 </div>
 
@@ -292,10 +283,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(X)&=2,\quad \mathrm{Var}(X)=2^{2}=4,\\[0.5em]
-M_{\sssig X}(t)&=(1-2t)^{-1},\ t<\frac{1}{\,2\,}
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(X)=2,\quad \mathrm{Var}(X)=2^{2}=4,\\[0.5em]
+M_{\sssig X}(t)=(1-2t)^{-1},\ t<\frac{1}{\,2\,}
+\end{gathered}
 $$
 
 </div>
@@ -423,7 +414,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個定理背後的直觀意義與[幾何分配的版本](/lecture-notes/geometric-distribution-memoryless/#note-min-geometric-intuition)完全相同，因為當我們關注的是 $X$ 與 $Y$ 當中較小者，事實上就好像我們在一個[卜瓦松過程](/lecture-notes/poisson-process-and-distribution/#def-poisson-process)中，只要 $X$ 或 $Y$ 所對應的偶發事件，有任一者發生，即視為發生，因此偶發事件發生的頻率 (rate) 應直接疊加。
+此定理的直觀詮釋與[幾何分配的版本](/lecture-notes/geometric-distribution-memoryless/#note-min-geometric-intuition)完全一致。關注兩獨立等待時間的極小值 <span class="text-nowrap">$\min\lbrace X,Y\rbrace$，</span>相當於合併兩個獨立的[卜瓦松過程](/lecture-notes/poisson-process-and-distribution/#def-poisson-process)，只要 $X$ 或 $Y$ 對應的偶發事件任一者發生即停止等待，故偶發事件的總發生頻率 (rate) 為兩者直接疊加 <span class="text-nowrap">$\lambda_1+\lambda_2$。</span>
 
 </div>
 
@@ -489,7 +480,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個定理背後的直觀意義是，在卜瓦松過程中，我們考慮 $X$ 與 $Y$ 對應的偶發事件，則 $X>Y$ 之事件等價於「$Y$ 所對應的偶發事件先發生」，而這個事件發生的機率與兩種偶發事件的發生率有關，是 <span class="text-nowrap">$\frac{\lambda_2}{\,\lambda_1+\lambda_2\,}$，</span>若 $Y$ 的偶發事件發生率越高，則這個機率會越接近 <span class="text-nowrap">$1$。</span>
+在兩個獨立卜瓦松過程的競爭詮釋下，事件 $X>Y$ 等價於「$Y$ 所對應的偶發事件先發生」；其發生機率恰等於 $Y$ 的發生率佔總發生率的比例 <span class="text-nowrap">$\frac{\lambda_2}{\,\lambda_1+\lambda_2\,}$，</span>當 $Y$ 的發生率相對越高時，此機率越接近 <span class="text-nowrap">$1$。</span>
 
 同理，我們亦有下列的結論
 
@@ -526,10 +517,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\min\lbrace X_1,\ldots,X_n\rbrace&\sim\mathrm{Exp}\Bigl(\lambda=\sum_{i=1}^{n}\lambda_i\Bigr)\\[0.6em]
-\text{與}\ \mathbb{P}\bigl(\min\lbrace X_1,\ldots,X_n\rbrace=X_k\bigr)&=\frac{\lambda_k}{\,\sum_{i=1}^{n}\lambda_i\,}
-\end{aligned}
+\begin{gathered}
+\min\lbrace X_1,\ldots,X_n\rbrace\sim\mathrm{Exp}\Bigl(\lambda=\sum_{i=1}^{n}\lambda_i\Bigr)\\[0.6em]
+\text{與}\ \mathbb{P}\bigl(\min\lbrace X_1,\ldots,X_n\rbrace=X_k\bigr)=\frac{\lambda_k}{\,\sum_{i=1}^{n}\lambda_i\,}
+\end{gathered}
 $$
 
 </div>
@@ -540,11 +531,11 @@ $$
 <div class="topic-box__label">Example 4.29</div>
 
 <div lang="en" markdown="1">
-Suppose that the failure time $X$ follows an exponential distribution with parameter <span class="text-nowrap">$\lambda$,</span> and that the termination time <span class="text-nowrap">$Y$,</span> which is itself random, follows an exponential distribution with parameter <span class="text-nowrap">$\theta$,</span> the two variables being independent of each other. Let <span class="text-nowrap">$T=\min(X,Y)$,</span> and let $\delta=1$ when $X\leqslant Y$ and $\delta=0$ when <span class="text-nowrap">$X>Y$.</span>
+Let the failure time $X$ follow an exponential distribution with parameter <span class="text-nowrap">$\lambda$,</span> and let the random termination time $Y$ follow an exponential distribution with parameter <span class="text-nowrap">$\theta$,</span> independently of <span class="text-nowrap">$X$.</span> Define <span class="text-nowrap">$T=\min(X,Y)$,</span> and let $\delta=1$ if $X\leqslant Y$ and $\delta=0$ if <span class="text-nowrap">$X>Y$.</span>
 
 <ol class="topic-list-paren">
-  <li>Evaluate <span class="text-nowrap">$\mathbb{P}(\delta=1)$.</span></li>
-  <li>Determine whether $T$ and $\delta$ are independent.</li>
+  <li>Find <span class="text-nowrap">$\mathbb{P}(\delta=1)$.</span></li>
+  <li>Are $T$ and $\delta$ independent?</li>
 </ol>
 </div>
 
@@ -645,13 +636,13 @@ $$
 <div class="topic-box__label">Example 4.30</div>
 
 <div lang="en" markdown="1">
-Suppose that <span class="text-nowrap">$X\sim\mathrm{Exp}(\theta)$,</span> where the parameter $\theta$ is the mean of <span class="text-nowrap">$X$,</span> so that the density function of $X$ is
+Let <span class="text-nowrap">$X\sim\mathrm{Exp}(\theta)$,</span> where $\theta$ is the mean of <span class="text-nowrap">$X$,</span> with probability density function
 
 $$
 f_{\sssig X}(x;\theta)=\frac{1}{\,\theta\,}e^{-x/\theta},\ x>0
 $$
 
-Determine the value of $r$ for which $\theta$ is the $r$-th percentile of <span class="text-nowrap">$X$.</span>
+Find the value of $r$ such that $\theta$ is the $r$-th percentile of <span class="text-nowrap">$X$.</span>
 </div>
 
 可先計算
@@ -674,7 +665,7 @@ $$
 
 </div>
 
-故依照[百分位數](/lecture-notes/quantiles/#def-quantile)定義可知，$\theta$ 除期望值外，同時為第 $100\times(1-e^{-1})$ 百分位數。
+故依照[百分位數](/lecture-notes/quantiles/#def-quantile)的定義可知，參數 $\theta$ 除了是期望值之外，同時也是第 $100\times(1-e^{-1})$ 百分位數。
 
 </div>
 
@@ -684,7 +675,7 @@ $$
 
 [Theorem 4.13](#thm-exponential-memoryless-converse) 把這件事反過來說。已知條件先化為 $\mathbb{P}(X>a+b)=\mathbb{P}(X>a)\,\mathbb{P}(X>b)$ 這條乘法關係，令 $R(x)=\mathbb{P}(X>x)$ 之後即為 $R(a+b)=R(a)\,R(b)$ 這個函數方程式。把增量為 $h$ 的差商寫出來再取極限，得到 $R^{\prime}(x)=R(x)\,R^{\prime}(0)$ 這條微分方程式；令 $R^{\prime}(0)=-\frac{1}{\beta}$ 並以 $R(0)=1$ 定出積分常數，還原出來的正是指數分配的 cdf。兩個定理合起來，說明非負連續隨機變數服從指數分配與具備無記憶性互為充要條件。[Example 4.28](#ex-exponential-memoryless-1) 即是這個性質最直接的用法。由 $\mathbb{P}(X>5\mid X>2)$ 直接改寫為 $\mathbb{P}(X>3)$ 這個尾機率，不必再做一次條件機率的積分。
 
-[Theorem 4.14](#thm-min-of-exponentials) 指出兩個獨立指數分配取極小值之後仍為指數分配，頻率參數為 $\lambda_1+\lambda_2$ 這個和。證明由極小值的餘事件下手: $\min\lbrace X,Y\rbrace>z$ 等價於 $X$ 與 $Y$ 都大於 <span class="text-nowrap">$z$，</span>兩個尾機率因獨立而相乘，指數上的頻率因而相加。其直觀意義與幾何分配的版本完全相同。兩種偶發事件只要任一者發生即視為發生，發生的頻率自然疊加。
+[Theorem 4.14](#thm-min-of-exponentials) 指出兩個獨立指數分配取極小值之後仍為指數分配，頻率參數為 $\lambda_1+\lambda_2$ 這個和。證明由極小值的餘事件下手，利用 $\min\lbrace X,Y\rbrace>z$ 等價於 $X$ 與 $Y$ 都大於 <span class="text-nowrap">$z$，</span>兩個尾機率因獨立而相乘，指數上的頻率因而相加。其直觀意義與幾何分配的版本完全相同。兩種偶發事件只要任一者發生即視為發生，發生的頻率自然疊加。
 
 [Theorem 4.15](#thm-exponential-race) 則回答兩者之中哪一個先發生。以 $Y$ 為條件再取期望值，$\mathbb{P}(X>Y)$ 化為一個可直接積出的積分，結果為 $\frac{\lambda_2}{\,\lambda_1+\lambda_2\,}$ 這個比值，$Y$ 的頻率越高，這個機率越接近 <span class="text-nowrap">$1$。</span>同一組論證可以推廣到 $n$ 個獨立的指數分配，極小值的頻率為各頻率之和，而極小值恰好由第 $k$ 個變數取到的機率為 $\lambda_k$ 在總和之中所佔的比例。[Example 4.29](#ex-exponential-memoryless-2) 把這兩個結果放在一起。第一小題求的就是 <span class="text-nowrap">$\mathbb{P}(X\leqslant Y)$，</span>第二小題則把 $T$ 的尾機率與其在 $\delta=1$ 之下的條件尾機率算出來，兩者相同因而 $T$ 與 $\delta$ 獨立。[Example 4.30](#ex-exponential-memoryless-3) 換一個角度看參數 $\theta$ 這個量。它既是期望值，同時也是第 $100\times(1-e^{-1})$ 百分位數。
 

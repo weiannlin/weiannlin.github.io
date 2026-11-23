@@ -10,7 +10,7 @@ order: 404
 permalink: /lecture-notes/geometric-distribution-memoryless/
 date: 2026-08-12
 published: false
-excerpt: "幾何分配記錄的是伯努利實驗一直進行到第一次成功為止所需要的實驗次數，其機率函數的前後項比值恆為失敗機率，驗證機率函數合法與推導期望值、變異數、動差母函數所依靠的工具便是幾何級數。本篇先給出幾何級數，再給出幾何分配的定義與完整推導，並說明以失敗次數計數的另一種版本。接著證明幾何分配的無記憶性。已知實驗次數超過 $a$ 次之後，再多超過 $b$ 次的機率，與重新開始做實驗而超過 $b$ 次的機率相同。最後給出兩個延伸結果: 正整數值的隨機變數只要具備無記憶性便服從幾何分配，以及兩個獨立幾何變數的極小值仍為幾何分配。"
+excerpt: "幾何分配記錄獨立伯努利實驗直到首次成功所需的實驗次數，另有計數失敗次數的版本。本篇運用幾何級數推導其期望值、變異數與動差母函數，並證明幾何分配與離散無記憶性互為充要條件及獨立極小值仍服從幾何分配。"
 ---
 
 [上一篇](/lecture-notes/multinomial-distribution/)把伯努利實驗的兩個類別推廣為 $k$ 個互斥類別，得到多項分配。本篇回到只有成功與失敗兩類的情形，但改變記錄的對象。[二項分配](/lecture-notes/binomial-distribution/#def-binomial)先固定實驗次數，再數其中成功了幾次；本篇的幾何分配則反過來，一直做下去直到第一次成功為止，記錄的是所需要的實驗次數。
@@ -27,7 +27,7 @@ excerpt: "幾何分配記錄的是伯努利實驗一直進行到第一次成功�
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-a+ar+ar^{2}+\ldots+ar^{n-1}=\sum_{k=1}^{n}ar^{k-1}=\frac{\,a(1-r^{n})\,}{1-r}
+a+ar+ar^{2}+\ldots+ar^{n-1}=\sum_{k=1}^{n}ar^{k-1}=\frac{\,a(1-r^{n})\,}{1-r},\ r\neq1
 $$
 
 </div>
@@ -35,15 +35,16 @@ $$
 
 $$
 \begin{aligned}
-a+ar+ar^{2}+\ldots+ar^{n-1}&=\sum_{k=1}^{n}ar^{k-1}=\frac{\,a(1-r^{n})\,}{1-r}
+a+ar+ar^{2}+\ldots+ar^{n-1}&=\sum_{k=1}^{n}ar^{k-1}\\[0.35em]
+&=\frac{\,a(1-r^{n})\,}{1-r},\ r\neq1
 \end{aligned}
 $$
 
 </div>
 
-其中 $a$ 稱為首項、$n$ 是項數、$r$ 是公比。
+其中 $a$ 稱為首項、$n$ 是項數、$r$ 是公比 (當 $r=1$ 時，上述 $n$ 項之和為 <span class="text-nowrap">$na$</span>)。
 
-這個級數在 $n\to\infty$ 時被稱為**無窮等比級數 <span lang="en">(infinite geometric series)</span>**，且該級數收斂 <span lang="en">(converge)</span> 的等價條件為 <span class="text-nowrap">$\lvert r\rvert<1$，</span>並且其結果收斂至 <span class="text-nowrap">$\frac{a}{\,1-r\,}$，</span>此即
+這個級數在 $n\to\infty$ 時被稱為**無窮等比級數 <span lang="en">(infinite geometric series)</span>**；當 $a\neq0$ 時，該級數收斂 <span lang="en">(converge)</span> 的等價條件為 <span class="text-nowrap">$\lvert r\rvert<1$，</span>並且其結果收斂至 <span class="text-nowrap">$\frac{a}{\,1-r\,}$，</span>此即
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -65,7 +66,7 @@ $$
 
 </div>
 
-幾何級數在高中數學當中是一定會提及的級數之一，在微積分中也是很重要的級數。由於前後項之間的比值恆為公比 <span class="text-nowrap">$r$，</span>故又被稱為等比級數，而這個前後項固定比值的特色，將在幾何分配 <span lang="en">(geometric distribution)</span> 中被應用。
+幾何級數前後兩項的比值恆為公比 <span class="text-nowrap">$r$，</span>故又稱等比級數；此一相鄰項比值固定的特性，正是推導幾何分配 <span lang="en">(geometric distribution)</span> 各項性質的核心工具。
 
 ## 幾何分配
 
@@ -129,9 +130,14 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+\begin{gathered}
+\mathbb{E}(X)=\frac{1}{\,p\,},\\[0.5em]
+\mathrm{Var}(X)=\frac{\,1-p\,}{p^{2}}=\frac{q}{\,p^{2}\,}
+\end{gathered}
+$$
+
+$$
 \begin{aligned}
-\mathbb{E}(X)&=\frac{1}{\,p\,},\\[0.5em]
-\mathrm{Var}(X)&=\frac{\,1-p\,}{p^{2}}=\frac{q}{\,p^{2}\,}\\[0.5em]
 M_{\sssig X}(t)&=\frac{pe^{t}}{\,1-(1-p)e^{t}\,}\\[0.3em]
 &=\frac{pe^{t}}{\,1-qe^{t}\,},\ t<-\ln q
 \end{aligned}
@@ -279,24 +285,14 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-(2) 幾何分配的定義可以得到以下幾個延伸性質:
+(2) 若改令 $Y$ 表示進行伯努利實驗直到第一次成功前所經歷的**失敗次數**，則
 {: .topic-paren-item}
-
-若令 $Y$ 表示進行伯努利實驗，至第一次成功所需要的**失敗次數**，則
-{: .topic-paren-cont}
 
 $$
 Y=X-1
 $$
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這個性質的直觀意義在於，幾何分配所進行的伯努利實驗中，只會有一次成功，並且必定是最後一次實驗，故若進行了 $X$ 次實驗，則前面的 $X-1$ 次必定都屬於失敗實驗。
-
-</div>
-
-由於二種定義的幾何分配表示式相同，為了區分二種定義，有些書籍便以**實驗幾何**與**失敗幾何**代稱，或寫出其值域範圍以便區分。失敗幾何 $Y$ 與實驗幾何 $X$ 略有不同:
+在直到首次成功即停止的實驗中，唯一的一次成功必落在第 $X$ 次，因此前 $X-1$ 次實驗皆為失敗。由於兩種定義的幾何分配常共用相同記號，部分書籍會分別以**實驗幾何**與**失敗幾何**代稱，或標明值域範圍以便區分。失敗幾何 $Y$ 與實驗幾何 $X$ 的性質對照如下:
 {: .topic-paren-cont #geo-two-definitions}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -307,8 +303,7 @@ $$
 p_{\sssig Y}(y)=p\,(1-p)^{y}=p\,q^{y},\ y=0,1,\ldots,\infty\\[0.7em]
 \mathbb{E}(Y)=\mathbb{E}(X-1)=\mathbb{E}(X)-1=\frac{1}{\,p\,}-1=\frac{\,1-p\,}{p}=\frac{q}{\,p\,}\\[0.7em]
 \mathrm{Var}(Y)=\mathrm{Var}(X-1)=\mathrm{Var}(X)\\[0.7em]
-M_{\sssig Y}(t)=\mathbb{E}\bigl(e^{tY}\bigr)=\mathbb{E}\bigl[e^{t(X-1)}\bigr]=\mathbb{E}\bigl(e^{tX}\bigr)\,e^{-t}\\[0.3em]
-=e^{-t}M_{\sssig X}(t)=\frac{p}{\,1-qe^{t}\,},\ t<-\ln q
+M_{\sssig Y}(t)=\mathbb{E}\bigl(e^{tY}\bigr)=\mathbb{E}\bigl[e^{t(X-1)}\bigr]=\mathbb{E}\bigl(e^{tX}\bigr)\,e^{-t}=e^{-t}M_{\sssig X}(t)=\frac{p}{\,1-qe^{t}\,},\ t<-\ln q
 \end{gathered}
 $$
 
@@ -415,38 +410,20 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-無記憶性從式子上來看，其意義是一旦確定實驗次數超過 $a$ 次，則實驗次數超過 $a+b$ 次的機率，和重新進行伯努利實驗而實驗次數超過 $b$ 次的機率一樣。而應用在實際情況的直觀意義則是，不論已經失敗了幾次，都像是「遺忘了過去的結果而重新進行」一樣，並不會因失敗而學習到什麼經驗或有什麼改變。
+式中的尾機率 $\mathbb{P}(X>x)$ 代表「前 $x$ 次實驗皆未成功」的機率。無記憶性表明，在已知實驗次數超過 $a$ 次的條件下，總次數超過 $a+b$ 次的條件機率，與從頭進行伯努利實驗而次數超過 $b$ 次的機率完全相同。換言之，不論先前已失敗幾次，後續實驗都如同遺忘過去結果般重新起算，並不會因先前的失敗而改變。
 
-讀者可以特別注意到，此處所使用的 $\mathbb{P}(X>x)$ 即表示「在第 $x$ 次的實驗仍未成功」的機率。
-
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這個敘述便與 [Example 3.24](/lecture-notes/double-expectation-examples/#ex-miner-three-doors) 相同，該礦工並無法回想起上次的選擇，**每次選擇都宛若重新開始**，此即無記憶性；事實上，這個性質也可以用來解釋**賭徒謬誤 <span lang="en">(The Gambler’s Fallacy)</span>**，也就是賭徒常常認為「連輸一段時間之後必有大爆發之時」的謬誤。
+此性質與前文 [Example 3.24](/lecture-notes/double-expectation-examples/#ex-miner-three-doors) 相同，該例中礦工無法回想上次的選擇、**每次選擇都宛若重新開始**，即為無記憶性的體現；同一性質亦可用於說明**賭徒謬誤 <span lang="en">(the gambler’s fallacy)</span>**，亦即誤以為「連輸一段時間後必將翻盤」的認知偏誤。
 
 </div>
 
-事實上，幾何分配是唯二具有無記憶性的分配，且是離散分配中唯一具有這個性質的分配；另一個具有無記憶性的分配是**指數分配 <span lang="en">(exponential distribution)</span>**。
+無記憶性源自幾何分配機率函數的等比結構。由 pmf 可見，相鄰兩項 $p\_{\sssig X}(a+1)$ 與 $p\_{\sssig X}(a)$ 的比值恆為失敗機率 <span class="text-nowrap">$1-p$；</span>反映在尾機率上，$\mathbb{P}(X>a+b)$ 與 $\mathbb{P}(X>a)$ 的差別在於必須多失敗 $b$ 次，兩者機率的比值固定為 <span class="text-nowrap">$(1-p)^{b}$，</span>恰好等於 <span class="text-nowrap">$\mathbb{P}(X>b)$。</span>
 
-幾何分配有一個很特殊的性質是，$p_{\sssig X}(a)$ 與 $p_{\sssig X}(a+1)$ 的比例是固定的，這個特色其實從 pmf 就可以看出來，並不算是需要特別的觀察才能發現的特色，但這正是導致無記憶性的關鍵，因為這種前後比例固定的分配，在無記憶性的推導中，會使得 $\mathbb{P}(X>a+b)$ 與 $\mathbb{P}(X>a)$ 的比例同樣也會是固定的，而這個比例便固定在 <span class="text-nowrap">$\mathbb{P}(X>b)$。</span>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-讀者應可以由推導無記憶性的證明發現，$p_{\sssig X}(a)$ 與 $p_{\sssig X}(a+1)$ 間固定的比例是成敗實驗的**失敗機率** <span class="text-nowrap">$(1-p)$，</span>而 $\mathbb{P}(X>a+b)$ 與 $\mathbb{P}(X>a)$ 之間的差異便在「必須多失敗 $b$ 次」，這個機率是 <span class="text-nowrap">$(1-p)^{b}$，</span>而等比的特色也導致這個機率恰巧等於 <span class="text-nowrap">$\mathbb{P}(X>b)$，</span>因此才能得到無記憶性的性質。
-
-在稍後的小節講到指數分配時，我們會發現指數分配也有這個等比的特色，並且是連續分配中唯一具有這個特色的分配，因此這二個分配才會是唯二具有無記憶性的分配。
-
-</div>
-
-我們稍微在此打住。讀者不妨思考看看，既然幾何分配是因為其分配本身如此特別，才具有無記憶性的特色，那麼當我們確定有一個正整數值的隨機變數具有無記憶性，我們可不可以反過來說明，這個隨機變數服從幾何分配呢? 答案是可以的，請見[下列定理](#thm-geometric-memoryless-converse)。
+幾何分配是離散分配中唯一具備無記憶性的分配；連續分配中則僅有後文將介紹的**指數分配 <span lang="en">(exponential distribution)</span>** 同樣具備等比衰減的特性，兩者是常見分配中唯二具有無記憶性的模型。既然幾何分配因等比結構而具有無記憶性，若已知某個正整數值隨機變數具備無記憶性，是否能反過來推得它必服從幾何分配？答案是肯定的，見[下列定理](#thm-geometric-memoryless-converse)。
 
 <div id="thm-geometric-memoryless-converse" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 4.5 (離散型無記憶性的逆敘述, converse of the memoryless property)</div>
 
-若 $X$ 為一正整數值的隨機變數，且已知
+若 $X$ 為一正整數值的隨機變數，滿足 $0<\mathbb{P}(X=1)<1$ 且對任意 $a\in\mathbb{N}$ 皆有 <span class="text-nowrap">$\mathbb{P}(X>a)>0$，</span>若已知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -468,7 +445,7 @@ $$
 則我們可知
 
 $$
-X\sim\mathrm{Geo}(p)
+X\sim\mathrm{Geo}(p),\ \text{其中}\ p=\mathbb{P}(X=1)
 $$
 
 </div>
@@ -608,10 +585,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-X&\sim\mathrm{Geo}(p),\\[0.4em]
-\text{其中}\ p&=\mathbb{P}(X\leqslant1)=\mathbb{P}(X=1)
-\end{aligned}
+\begin{gathered}
+X\sim\mathrm{Geo}(p),\\[0.4em]
+\text{其中}\ p=\mathbb{P}(X\leqslant1)=\mathbb{P}(X=1)
+\end{gathered}
 $$
 
 </div>
@@ -619,19 +596,14 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這個定理補足了關於無記憶性的雙向敘述，也就是說，某個正整數值的隨機變數服從幾何分配，若且唯若其具備無記憶性。
-
-</div>
+結合 [Theorem 4.4](#thm-memoryless) 與 [Theorem 4.5](#thm-geometric-memoryless-converse) 的雙向結果可知，在非退化條件下，正整數值隨機變數服從幾何分配，若且唯若其具備無記憶性。
 
 ## 兩個獨立幾何分配的極小值
 
 <div id="thm-min-of-geometrics" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 4.6 (兩個獨立幾何分配的極小值, minimum of two geometric variables)</div>
 
-若 $X\sim\mathrm{Geo}(p_1)\indep Y\sim\mathrm{Geo}(p_2)$ 成立，則
+若 $X\sim\mathrm{Geo}(p_1)\indep Y\sim\mathrm{Geo}(p_2)$ 成立，則我們有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -736,17 +708,15 @@ $$
 <div id="note-min-geometric-intuition" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個定理背後具有非常直觀的意義，因為當我們關注的是 $X$ 與 $Y$ 當中較小者，事實上就好像我們在進行一系列的伯努利實驗，且只要 $X$ 或 $Y$ 所對應的成功條件，有任一者達成，即視為成功。
-
-在如此的設定之下，所謂的「失敗類」，其發生條件應是在 $X$ 與 $Y$ 所對應的實驗中，皆出現失敗的現象，又因為 $X$ 與 $Y$ 所對應的實驗獨立，因此此處失敗類的機率必為 <span class="text-nowrap">$1-p=(1-p_1)(1-p_2)$，</span>反之，成功類的機率即為 <span class="text-nowrap">$p=1-(1-p_1)(1-p_2)$。</span>
+此定理有清晰的直觀詮釋。取兩獨立幾何變數的極小值 <span class="text-nowrap">$\min\lbrace X,Y\rbrace$，</span>相當於同步進行兩組獨立的伯努利實驗，只要其中任一組達成成功條件即視為成功。在此設定下，單輪同步實驗歸為「失敗類」代表兩組實驗同時失敗；由獨立性可知單輪同時失敗的機率為 <span class="text-nowrap">$1-p=(1-p_1)(1-p_2)$，</span>故成功類的機率即為 <span class="text-nowrap">$p=1-(1-p_1)(1-p_2)$。</span>
 
 </div>
 
 ## 本篇小結
 
-[Theorem 4.3](#thm-geometric-series) 的幾何級數把首項為 <span class="text-nowrap">$a$、</span>公比為 $r$ 的 $n$ 項加總寫成 <span class="text-nowrap">$\frac{\,a(1-r^{n})\,}{1-r}$，</span>並在 $\lvert r\rvert<1$ 時使無窮項的加總收斂至 $\frac{a}{\,1-r\,}$ 這個值。前後項的比值恆為公比，正是幾何分配的機率函數所具備的特色。
+[Theorem 4.3](#thm-geometric-series) 的幾何級數在 $r\neq1$ 時把首項為 <span class="text-nowrap">$a$、</span>公比為 $r$ 的 $n$ 項加總寫成 <span class="text-nowrap">$\frac{\,a(1-r^{n})\,}{1-r}$，</span>並在 $a\neq0$ 且 $\lvert r\rvert<1$ 時使無窮項的加總收斂至 $\frac{a}{\,1-r\,}$ 這個值。前後項的比值恆為公比，正是幾何分配的機率函數所具備的特色。
 
-[Definition 4.6](#def-geometric) 把 $X$ 定義為伯努利實驗做到第一次成功為止所需要的實驗次數，值域為 <span class="text-nowrap">$\lbrace\,1,\ldots,\infty\,\rbrace$，</span>機率函數為 <span class="text-nowrap">$p\,q^{x-1}$。</span>證明的四個步驟依序是: 以無窮等比級數驗證加總為 $1$ 這件事、把 $x\,q^{x-1}$ 看成 $q^{x}$ 的一階導數而求得 <span class="text-nowrap">$\mathbb{E}(X)=\frac{1}{\,p\,}$、</span>再以二階導數取得階乘動差 $\mathbb{E}\bigl[X(X-1)\bigr]=\frac{2q}{\,p^{2}\,}$ 進而算出 <span class="text-nowrap">$\mathrm{Var}(X)=\frac{q}{\,p^{2}\,}$，</span>最後直接由定義求得 $M_{\sssig X}(t)=\frac{pe^{t}}{\,1-qe^{t}\,}$ 這個式子，其定義域為 <span class="text-nowrap">$t<-\ln q$。</span>換一種計數方式，改記第一次成功之前的失敗次數，得到的 $Y=X-1$ 即為失敗幾何，其值域自 $0$ 起算，期望值降為 <span class="text-nowrap">$\frac{q}{\,p\,}$，</span>變異數不變，動差母函數則少了分子的 $e^{t}$ 這一項。
+[Definition 4.6](#def-geometric) 把 $X$ 定義為伯努利實驗做到第一次成功為止所需要的實驗次數，值域為 $\lbrace\,1,\ldots,\infty\,\rbrace$ 這一集合，機率函數為 <span class="text-nowrap">$p\,q^{x-1}$。</span>證明的四個步驟依序為以無窮等比級數驗證加總為 $1$ 這件事、把 $x\,q^{x-1}$ 看成 $q^{x}$ 的一階導數而求得 <span class="text-nowrap">$\mathbb{E}(X)=\frac{1}{\,p\,}$、</span>再以二階導數取得階乘動差 $\mathbb{E}\bigl[X(X-1)\bigr]=\frac{2q}{\,p^{2}\,}$ 進而算出變異數 <span class="text-nowrap">$\frac{q}{\,p^{2}\,}$，</span>最後直接由定義求得 $M_{\sssig X}(t)=\frac{pe^{t}}{\,1-qe^{t}\,}$ 這個式子，其定義域為 <span class="text-nowrap">$t<-\ln q$。</span>換一種計數方式，改記第一次成功之前的失敗次數，得到的 $Y=X-1$ 即為失敗幾何，其值域自 $0$ 起算，期望值降為 <span class="text-nowrap">$\frac{q}{\,p\,}$，</span>變異數不變，動差母函數則少了分子的 $e^{t}$ 這一項。
 
 [Theorem 4.4](#thm-memoryless) 的無記憶性說的是 $\mathbb{P}(X>a+b\mid X>a)=\mathbb{P}(X>b)$ 這條等式。已經失敗了 $a$ 次之後，實驗次數再多超過 $b$ 次的機率，與重新進行實驗而次數超過 $b$ 次的機率相同。證明的關鍵只有一步，即 $\mathbb{P}(X>x)=(1-p)^{x}$ 這個尾機率，兩個尾機率相除時 $(1-p)^{a}$ 恰好被約掉。追根究柢，$p_{\sssig X}(a)$ 與 $p_{\sssig X}(a+1)$ 之間固定的比值就是失敗機率 <span class="text-nowrap">$1-p$，</span>尾機率因而也等比，這才是無記憶性的來源。
 

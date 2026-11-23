@@ -10,10 +10,10 @@ order: 406
 permalink: /lecture-notes/negative-binomial-distribution/
 date: 2026-08-12
 published: false
-excerpt: "負二項分配描述的是進行伯努利實驗，直到出現第 $r$ 次成功為止所需要的實驗次數。本篇先給出驗證機率函數時所需要的負二項級數，再給出負二項分配的定義，並完整證明其機率函數合法，以及期望值 $r/p$、變異數 $rq/p^2$ 與動差母函數三者的公式。接著說明幾項延伸性質: $r=1$ 時即為幾何分配、成功機率相同且彼此獨立的兩個負二項變數相加仍為負二項分配、$r$ 個獨立的幾何變數相加即為負二項分配，以及實驗負二項與失敗負二項兩種定義的差別；二項分配與負二項分配之間另有對偶關係。最後以射擊、系列賽以及首次達到第 $k$ 次成功的三道例題作為演練。"
+excerpt: "負二項分配描述獨立伯努利實驗直到累計第 $r$ 次成功所需的實驗次數。本篇藉負二項級數推導其期望值 $r/p$ 與變異數 $rq/p^{2}$ 及動差母函數，說明它作為獨立同參數幾何變數之和的可加性及與二項分配的對偶關係。"
 ---
 
-[上一篇](/lecture-notes/geometric-distribution-examples/)以六道例題演練[幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)的計算，其中的隨機變數記錄的都是進行伯努利實驗，直到出現第一次成功實驗所需要的實驗次數。若把「第一次成功」換成「第 $r$ 次成功」，所需要的實驗次數所服從的分配，就是本篇的負二項分配。
+[上一篇](/lecture-notes/geometric-distribution-examples/)以六道例題演練[幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)的計算，其中的隨機變數記錄的都是進行伯努利實驗，直到出現第一次成功實驗所需要的實驗次數。若把「第一次成功」換成「第 $r$ 次成功」，所需要的實驗次數所服從的分配，就是本篇所要介紹的負二項分配。
 
 驗證幾何分配的機率函數合法時，我們用的是[幾何級數](/lecture-notes/geometric-distribution-memoryless/#thm-geometric-series)；把成功次數由一次推到 $r$ 次，所需要的工具則是[負二項級數](#thm-negative-binomial-series)。本篇因而先由這個級數談起，再給出負二項分配的定義，完整證明其機率函數為一個合法的機率函數，以及期望值、變異數與動差母函數的公式。接著說明幾項延伸性質，並給出二項分配與負二項分配之間的對偶關係，最後以三道例題作為演練。
 
@@ -43,7 +43,7 @@ $$
 
 </div>
 
-上式中，我們要求 <span class="text-nowrap">$\lvert q\rvert<1$，</span>$r$ 為任意正整數。
+上式中，我們要求 <span class="text-nowrap">$\lvert q\rvert<1$，</span>同時 $r$ 為任意一個正整數。
 
 </div>
 
@@ -85,13 +85,13 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在[上述定理](#thm-negative-binomial-series)中，我們其實定義了
+[上述定理](#thm-negative-binomial-series)末式中的廣義組合數定義為
 
 $$
 \binom{-r}{k}=\frac{\,(-r)(-r-1)\cdots(-r-k+1)\,}{k!}
 $$
 
-則由此定義可知
+由此定義可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -121,7 +121,7 @@ $$
 
 </div>
 
-透過簡單的改寫，可以得到
+將級數改寫為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -141,9 +141,7 @@ $$
 
 </div>
 
-整個形式宛若[二項式定理](/lecture-notes/moment-system/#thm-binomial)一般，只不過 $(1-q)$ 的次方變成負的 (範圍當然也不同)，因此有了**負二項級數**之名。
-
-值得注意的是，負二項級數雖然因為形式與二項式定理非常類似因此得名，不過事實上，負二項級數所對應的分配 (負二項分配) 其關係反倒是和幾何分配比較接近，稍後我們馬上會看到原因。
+其形式與[二項式定理](/lecture-notes/moment-system/#thm-binomial)相對應，差別在於次方改為負整數 $-r$ 且加總延伸至無窮項，故稱為**負二項級數**。雖然負二項級數因形式類比二項式定理而得名，其對應的負二項分配在實驗結構上實為幾何分配的推廣，下文隨即說明。
 
 </div>
 
@@ -170,7 +168,7 @@ $$
 
 **參數與參數範圍**:
 
-$0<p<1$ 為伯努利實驗中，成功類的發生機率；$r$ 為成功類發生的次數。
+$0<p<1$ 為伯努利實驗中，成功類的發生機率；$r\in\mathbb{N}$ 為成功類發生的次數。
 
 **機率函數**:
 
@@ -210,9 +208,14 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+\begin{gathered}
+\mathbb{E}(X)=\frac{r}{\,p\,},\\[0.5em]
+\mathrm{Var}(X)=\frac{\,r(1-p)\,}{p^{2}}=\frac{rq}{\,p^{2}\,}
+\end{gathered}
+$$
+
+$$
 \begin{aligned}
-\mathbb{E}(X)&=\frac{r}{\,p\,},\\[0.5em]
-\mathrm{Var}(X)&=\frac{\,r(1-p)\,}{p^{2}}=\frac{rq}{\,p^{2}\,}\\[0.5em]
 M_{\sssig X}(t)&=\biggl[\frac{pe^{t}}{\,1-(1-p)e^{t}\,}\biggr]^{r}\\[0.3em]
 &=\biggl(\frac{pe^{t}}{\,1-qe^{t}\,}\biggr)^{r},\ t<-\ln q
 \end{aligned}
@@ -303,7 +306,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}\bigl[(X+1)X\bigr]&=\sum_{x=r}^{\infty}(x+1)x\binom{x-1}{r-1}p^{r}q^{x-r}\\[0.25em]
+&\mathbb{E}\bigl[(X+1)X\bigr]\\[0.3em]
+&=\sum_{x=r}^{\infty}(x+1)x\binom{x-1}{r-1}p^{r}q^{x-r}\\[0.25em]
 &=\sum_{x=r}^{\infty}(x+1)x\frac{(x-1)!}{\,(x-r)!(r-1)!\,}p^{r}q^{x-r}\\[0.25em]
 &=\frac{\,(r+1)r\,}{p^{2}}\sum_{x=r}^{\infty}\frac{(x+1)!}{\,(x-r)!\,(r+1)!\,}p^{r+2}q^{x-r}\\[0.25em]
 &=\frac{\,(r+1)r\,}{p^{2}}\sum_{x=r}^{\infty}\binom{x+1}{r+1}p^{r+2}q^{x-r}\\[0.25em]
@@ -387,7 +391,7 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-(2) 負二項分配的定義可以得到以下幾個延伸性質:
+(2) 由負二項分配的定義可得以下延伸性質:
 {: .topic-paren-item}
 
 第一，我們有
@@ -397,7 +401,7 @@ $$
 \mathrm{Geo}(p)=\mathcal{NB}(r=1,\ p)
 $$
 
-這個性質其實不難理解，因為如果僅要求直到第一次成功實驗出現為止的實驗次數，則負二項分配的敘述會與幾何分配相同。
+當 $r=1$ 時，負二項分配記錄的即是直到第一次成功實驗出現所需的實驗次數，與幾何分配的定義完全一致。
 {: .topic-paren-cont}
 
 第二，若 $X\sim\mathcal{NB}(r_1,\ p),\ Y\sim\mathcal{NB}(r_2,\ p)$ 且 <span class="text-nowrap">$X\indep Y$，</span>則
@@ -446,14 +450,14 @@ $$
 這個性質被稱作負二項分配的可加性，其限制是 $X$ 與 $Y$ 必須獨立，而且**成功機率必須相同**。
 {: .topic-paren-cont}
 
-第三，若 $X\sim\mathrm{Geo}(p),\ Y\sim\mathrm{Geo}(p)$ 成立，則
+第三，若 $X\sim\mathrm{Geo}(p)\indep Y\sim\mathrm{Geo}(p)$ 成立，則
 {: .topic-paren-cont}
 
 $$
 W=X+Y\sim\mathcal{NB}(r=2,\ p)
 $$
 
-讀者當然可由這個前述二個性質結合而得到上面這個性質，我們便不另外證明。而事實上，我們可以將這個性質推廣至更多獨立的幾何分配的加總，即若 $X_1,\ldots,X_r\overset{\mathrm{iid}}{\sim}\mathrm{Geo}(p)$ 成立，則
+結合前兩項性質即可推得上式，此處不再另證。進一步推廣至 $r$ 個獨立同分配的幾何變數之和，若 $X_1,\ldots,X_r\overset{\mathrm{iid}}{\sim}\mathrm{Geo}(p)$ 成立，則
 {: .topic-paren-cont}
 
 $$
@@ -530,7 +534,7 @@ $$
 
 </div>
 
-(3) 讀者應該已經發現，負二項分配之於幾何分配的關係，與[二項分配](/lecture-notes/binomial-distribution/#def-binomial)之於[伯努利分配](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)的關係，二者幾乎是相同的，這一點也導致了二項分配與負二項分配間有**對偶關係 <span lang="en">(dual relationship)</span>** 的存在，即
+(3) 負二項分配之於幾何分配的關係，恰如[二項分配](/lecture-notes/binomial-distribution/#def-binomial)之於[伯努利分配](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)的關係；由此可推得二項分配與負二項分配之間的**對偶關係 <span lang="en">(dual relationship)</span>**，可敘述如下
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -544,29 +548,25 @@ $$
 
 $$
 \boxed{
-\begin{aligned}
-\text{令 }X&\sim\mathrm{Bin}(n,\ p)\ \text{且}\ Y\sim\mathcal{NB}(r,\ p)，\\[0.45em]
-\text{則 }\mathbb{P}(X<r)&=\mathbb{P}(Y>n)
-\end{aligned}
+\begin{gathered}
+\text{令 }X\sim\mathrm{Bin}(n,\ p)\ \text{且}\ Y\sim\mathcal{NB}(r,\ p)\text{，}\\[0.45em]
+\text{則 }\mathbb{P}(X<r)=\mathbb{P}(Y>n)
+\end{gathered}
 }
 $$
 
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
+上式的直觀意義在於，「前 $n$ 次實驗中成功不到 $r$ 次」($X<r$) 與「第 $r$ 次成功所需的實驗次數超過 $n$ 次」($Y>n$) 描述的是同一個事件。
+{: .topic-paren-cont}
 
-這個性質的直觀意義很容易明白，因為「在 $n$ 次實驗中成功的次數不到 $r$ 次」，同時也是在指「第 $r$ 次成功出現所需的實驗次數超過 $n$ 次」，因此有這個對偶關係。
-
-</div>
-
-(4) 負二項分配的邏輯與幾何分配是非常相像的，它們的最後一次實驗都一定是成功實驗；但不同之處在於，除了最後一次之外，幾何分配的前面 $x-1$ 次都是失敗的實驗，而負二項分配的前面 $x-1$ 中有 $r-1$ 次是成功的。
+(4) 負二項分配與幾何分配的最後一次實驗皆必為成功實驗；差別在於除最後一次外，幾何分配的前 $x-1$ 次皆為失敗，而負二項分配的前 $x-1$ 次中恰有 $r-1$ 次成功與 $x-r$ 次失敗。
 {: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-由於這 $r-1$ 次成功可能發生在這 $x-1$ 次中的任意 $r-1$ 次，故引入了組合符號 $\binom{x-1}{r-1}$ 來表示這所有的可能組合，但也正因為這一點，$p_{\sssig X}(a)$ 與 $p_{\sssig X}(a+1)$ 就不再具有等比的性質，故**負二項分配不再具有[無記憶性](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless)**。
+前 $x-1$ 次實驗中的 $r-1$ 次成功可落在任意位置，故機率函數須乘上組合數 <span class="text-nowrap">$\binom{x-1}{r-1}$；</span>也因為此組合因子隨 $x$ 改變，當 $r\geqslant2$ 時相鄰兩項 $p\_{\sssig X}(a)$ 與 $p\_{\sssig X}(a+1)$ 的比值不再固定，故**負二項分配不再具有[無記憶性](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless)**。
 
 </div>
 
@@ -576,16 +576,16 @@ $$
 <div class="topic-box__label">Example 4.16</div>
 
 <div lang="en" markdown="1">
-Suppose that a skilled marksman fails to hit the target on $5\%$ of the shots, on average.
+An expert sharpshooter misses the target, on average, $5\%$ of the time.
 
 <ol class="topic-list-paren">
-  <li>What is the probability that the target is hit at least $18$ times in $20$ shots?</li>
-  <li>What is the probability that the first shot missing the target is the <span class="text-nowrap">$10$th</span> one?</li>
-  <li>What is the probability that the second shot missing the target is the <span class="text-nowrap">$25$th</span> one?</li>
+  <li>What is the probability that in $20$ shots, the sharpshooter will hit the target $18$ or more times?</li>
+  <li>What is the probability that the sharpshooter will need $10$ shots until missing the target for the first time?</li>
+  <li>What is the probability that the sharpshooter will miss the target for the second time on the <span class="text-nowrap">$25^{\text{th}}$</span> shot?</li>
 </ol>
 </div>
 
-(1) 由題意可知，每次射擊皆為 $p=0.95$ 的伯努利分配，則若令 $X$ 表 $20$ 次射擊中的擊中次數，可得
+(1) 由題意可知，每次射擊皆為成功機率 $p=0.95$ 的伯努利實驗，則若令 $X$ 表 $20$ 次射擊中的擊中次數，可得
 {: .topic-paren-item}
 
 $$
@@ -674,7 +674,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個題組的關鍵在於，所謂的「成功」在不同的小題間不斷轉換，尤其是 (2) 與 (3) 中，其「成功」指的是「成功地擊丟目標」，是許多讀者在解題的過程中會誤會的小細節。
+本題組的關鍵在於各小題對「成功」事件的界定不同。第 (1) 小題以擊中目標為成功 (<span class="text-nowrap">$p=0.95$</span>)；第 (2)、(3) 小題關注未擊中的累積次數，故改將「未擊中目標」定義為伯努利實驗中的成功事件 (<span class="text-nowrap">$p=0.05$</span>)。
 
 </div>
 
@@ -682,16 +682,16 @@ $$
 <div class="topic-box__label">Example 4.17</div>
 
 <div lang="en" markdown="1">
-Suppose that two teams, $A$ and <span class="text-nowrap">$B$,</span> meet in a championship series of at most nine games, in which the first team to win five games takes the title, and that $A$ wins any single game with probability <span class="text-nowrap">$0.6$.</span>
+In a championship series, the first team to win five games out of at most nine wins the title. Suppose that team $A$ has probability $0.6$ of winning any single game against team $B$ when both teams face each other in the championship series.
 
 <ol class="topic-list-paren">
-  <li>What is the probability that team $A$ takes the title within seven games?</li>
-  <li>What is the probability that team $A$ takes the championship series?</li>
-  <li>Suppose that the two teams meet instead in a playoff series of at most five games, in which the first team to win three games takes the series. What is the probability that team $A$ takes the playoff series?</li>
+  <li>What is the probability that team $A$ will win the series within seven games?</li>
+  <li>What is the probability that team $A$ will win the championship series?</li>
+  <li>If both teams instead face each other in a best-of-five playoff series (where the first team to win three games wins), what is the probability that team $A$ will win the playoff series?</li>
 </ol>
 </div>
 
-(1) 題目所要求之條件為 $7$ 場內贏得系列賽，代表贏得 $5$ 場比賽所需場次不超過 $7$ 場，則可令 $X$ 表 $A$ 隊直到第 $5$ 次勝利所需要的比賽場次，可得
+(1) 題目所要求之條件為 $7$ 場內贏得系列賽，代表贏得 $5$ 場比賽所需場次不超過 $7$ 場，則可令 $X$ 表 $A$ 隊直到第 $5$ 次勝利所需要的比賽場次，由此可得
 {: .topic-paren-item}
 
 $$
@@ -773,14 +773,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-本題組比較容易混淆的地方在於，BO $9$ 賽制至多只會打 $9$ 場，先搶到 $5$ 勝的隊伍勝出，那為什麼可以用值域範圍到無窮大的負二項分配來描述呢？其原因在於，我們可以想像成，即使 $A$ 隊已經輸了系列賽 (亦即 $B$ 隊已經先於 $A$ 隊在 $9$ 戰當中取得第 $5$ 勝)，兩隊還是在互相較勁，直到 $A$ 隊取得 $5$ 勝為止。這聽起來有一點弔詭，因為在這個模型中，$A$ 隊被允許在第 $9$ 場過後仍能繼續比賽，但事實上，不論 $A$ 隊是在第 $9$ 場過後的哪一場取得第 $5$ 勝都沒關係，因為這都代表 $A$ 隊已經輸了系列賽。
-
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-BO $9$ 賽制 (Best of $9$ games) 就是常見的 $9$ 戰 $5$ 勝制，其中 $9$ 戰可以改成任意的奇數 <span class="text-nowrap">$k$，</span>而兩隊的目標是先於另一隊搶到 $(k+1)/2$ 勝；在運動賽事常見的設定是 BO $5$ 賽制或是 BO $7$ 賽制。
+運動賽事常見的 BO $9$ 賽制 (Best of $9$ games，即 $9$ 戰 $5$ 勝制；一般奇數 $k$ 戰制由先取得 $(k+1)/2$ 勝者勝出，常見如 BO $5$ 與 BO $7$ 賽制) 至多進行 $9$ 場比賽，何以仍可用值域延伸至無窮大的負二項分配計算勝率？我們可設想即使 $B$ 隊已先取得 $5$ 勝而贏得系列賽，兩隊仍繼續對戰直到 $A$ 隊累計滿 $5$ 勝為止。在此延伸實驗下，「$A$ 隊贏得 $9$ 戰 $5$ 勝系列賽」與「$A$ 隊於第 $9$ 場以內取得第 $5$ 勝」(<span class="text-nowrap">$X\leqslant9$</span>) 為完全等價的事件；至於 $X>9$ 的所有結果，無論落在第幾場，皆對應 $A$ 隊已於前 $9$ 場內輸掉系列賽的情形，不影響勝率計算。
 
 </div>
 
@@ -788,7 +781,7 @@ BO $9$ 賽制 (Best of $9$ games) 就是常見的 $9$ 戰 $5$ 勝制，其中 $9
 <div class="topic-box__label">Example 4.18</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,X_2,\ldots$ are i.i.d. random variables such that
+Let $X_1,X_2,\ldots$ be a sequence of i.i.d. random variables with
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -800,15 +793,15 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{P}(X_i=1)&=p,\quad \mathbb{P}(X_i=0)=1-p,\\[0.45em]
-&\text{where}\ 0<p<1
-\end{aligned}
+\begin{gathered}
+\mathbb{P}(X_i=1)=p,\quad \mathbb{P}(X_i=0)=1-p,\\[0.45em]
+\text{where}\ 0<p<1
+\end{gathered}
 $$
 
 </div>
 
-Suppose further that $S_n=\sum_{i=1}^{n}X_i$ is the sum of the first $n$ of these variables, and that $T_k=\min\lbrace n\mid S_n=k\rbrace$ for every <span class="text-nowrap">$k\in\mathbb{N}$.</span> Determine the distribution of <span class="text-nowrap">$T_k$.</span>
+Let $S_n=\sum_{i=1}^{n}X_i$ and $T_k=\min\lbrace n\mid S_n=k\rbrace$ for <span class="text-nowrap">$k\in\mathbb{N}$.</span> Find the distribution of <span class="text-nowrap">$T_k$.</span>
 </div>
 
 依照題目設定可知，若 <span class="text-nowrap">$T_{k}=t$，</span>則表示第 $t$ 次伯努利實驗必定為第 $k$ 次成功，此即
@@ -847,7 +840,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{P}(S_{t-1}=k-1)\,\mathbb{P}(X_t=1)&=\binom{t-1}{k-1}p^{k-1}(1-p)^{t-k}\times p\\[0.25em]
+\mathbb{P}(S_{t-1}=k-1)\,\mathbb{P}(X_t=1)&=\binom{t-1}{k-1}p^{k-1}(1-p)^{t-k}\\[0.25em]
+&\qquad\times p\\[0.25em]
 &=\binom{t-1}{k-1}p^{k}(1-p)^{t-k},\\[0.25em]
 &\qquad\qquad t=k,k+1,\ldots
 \end{aligned}
@@ -881,9 +875,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-本題所設定的 $T_k$ 是在「首次使得 $X_i,\ i=1,\ldots,n$ 的總和達到 $k$ 的 <span class="text-nowrap">$n$」，</span>在這個設定之下，第 $n$ 次 (或是最後一次) 必定是成功的，又加上這是一個 i.i.d. 的序列，所以我們可以把最後一次給「分離出去」。
-
-那麼前面的 $n-1$ 次又如何呢？我們並不知道這 $n-1$ 次成功的位置，但卻知道這 $n-1$ 次裡面必定帶有 $k-1$ 次的成功，而且由於每次的實驗都是伯努利實驗，因此這就是一個 $\mathrm{Bin}(n-1,\ p)$ 的實驗，其中成功了 $k-1$ 次，從而得到前半部分的機率。
+本題定義的 $T\_{k}=\min\lbrace n\mid S\_{n}=k\rbrace$ 為累積和首次達到 $k$ 的實驗次數。事件 $T\_{k}=t$ 發生，代表第 $t$ 次實驗必為成功 (<span class="text-nowrap">$X\_{t}=1$</span>)，且前 $t-1$ 次實驗中恰有 $k-1$ 次成功 (<span class="text-nowrap">$S\_{t-1}=k-1$</span>)。由於各次伯努利實驗獨立同分配，可將最後一次實驗分離出來，前 $t-1$ 次的成功總數服從 <span class="text-nowrap">$\mathrm{Bin}(t-1,\ p)$，</span>兩者機率相乘即得負二項分配的機率函數。
 
 </div>
 
@@ -891,15 +883,15 @@ $$
 
 [Theorem 4.7](#thm-negative-binomial-series) 的負二項級數把 $(1-q)^{-r}$ 展開成 $q$ 的冪級數，係數是 $\binom{k+r-1}{k}$ 這個組合數，成立的條件為 <span class="text-nowrap">$\lvert q\rvert<1$。</span>證明的作法是直接對 $(1-q)^{-r}$ 作馬克勞林展開，逐項的係數即為排列數除以階乘。把組合數改寫成 $(-1)^{k}\binom{-r}{k}$ 之後，整個式子的形式與 [Theorem 2.18](/lecture-notes/moment-system/#thm-binomial) 的二項式定理相同，只是次方變成負的，這也是這個級數名稱的由來。
 
-[Definition 4.7](#def-negative-binomial) 的負二項分配記錄的是進行伯努利實驗，直到出現第 $r$ 次成功實驗所需要的實驗次數，值域自 $r$ 起算，機率函數為 $\binom{x-1}{r-1}p^{r}q^{x-r}$ 這個式子，其中的組合數對應「前 $x-1$ 次之中哪 $r-1$ 次成功」的選法。證明的四個步驟依序是: 以負二項級數驗證機率函數的加總為 <span class="text-nowrap">$1$、</span>把 $x\binom{x-1}{r-1}$ 改寫成 $r\binom{x}{r}$ 這個形式，把加總湊成另一個負二項分配的機率函數而求得 <span class="text-nowrap">$\mathbb{E}(X)=\frac{r}{\,p\,}$、</span>再以 $\mathbb{E}\bigl[(X+1)X\bigr]$ 得到 $\mathbb{E}\bigl(X^{2}\bigr)$ 進而算出 <span class="text-nowrap">$\mathrm{Var}(X)=\frac{\,rq\,}{p^{2}}$，</span>最後直接由定義求得動差母函數。
+[Definition 4.7](#def-negative-binomial) 的負二項分配記錄的是進行伯努利實驗，直到出現第 $r$ 次成功實驗所需要的實驗次數，值域自 $r$ 起算，機率函數為 $\binom{x-1}{r-1}p^{r}q^{x-r}$ 這個式子，其中的組合數對應「前 $x-1$ 次之中哪 $r-1$ 次成功」的選法。證明的四個步驟依序為以負二項級數驗證機率函數的加總為 <span class="text-nowrap">$1$、</span>把 $x\binom{x-1}{r-1}$ 改寫成 $r\binom{x}{r}$ 這個形式，把加總湊成另一個負二項分配的機率函數而求得 <span class="text-nowrap">$\mathbb{E}(X)=\frac{r}{\,p\,}$、</span>再以 $\mathbb{E}\bigl[(X+1)X\bigr]$ 得到 $\mathbb{E}\bigl(X^{2}\bigr)$ 進而算出變異數 <span class="text-nowrap">$\frac{\,rq\,}{p^{2}}$，</span>最後直接由定義求得動差母函數。
 
-定義之後的幾點說明依序是: $r=1$ 時負二項分配即為幾何分配、成功機率相同且彼此獨立的兩個負二項變數相加仍為負二項分配 (可加性)、$r$ 個獨立且成功機率相同的幾何變數相加即為負二項分配，以及實驗負二項與失敗負二項兩種定義的差別，後者記錄的是失敗次數 <span class="text-nowrap">$Y=X-r$，</span>值域自 $0$ 起算，期望值少了 $r$ 而變異數不變。可加性的證明只需把兩個動差母函數相乘，指數因而相加，再由動差母函數的唯一性辨識出結果。
+定義之後的幾點說明依序涵蓋 $r=1$ 時負二項分配即為幾何分配、成功機率相同且彼此獨立的兩個負二項變數相加仍為負二項分配 (可加性)、$r$ 個獨立且成功機率相同的幾何變數相加即為負二項分配，以及實驗負二項與失敗負二項兩種定義的差別，後者記錄的是失敗次數 <span class="text-nowrap">$Y=X-r$，</span>值域自 $0$ 起算，期望值少了 $r$ 而變異數不變。可加性的證明只需把兩個動差母函數相乘，指數因而相加，再由動差母函數的唯一性辨識出結果。
 
 負二項分配之於幾何分配的關係，與二項分配之於伯努利分配的關係相同，兩者因而有對偶關係。「$n$ 次實驗中成功不到 $r$ 次」與「第 $r$ 次成功所需的實驗次數超過 $n$ 次」講的是同一件事情。另一方面，負二項分配與幾何分配的最後一次實驗都一定是成功實驗，差別在於前面的 $x-1$ 次之中還有 $r-1$ 次成功，其位置不固定，因而引入了組合數，也因為這個組合數，相鄰兩個機率值不再成等比，負二項分配於是不再具有無記憶性。
 
 三道例題各有側重。[Example 4.16](#ex-negative-binomial-1) 在同一個題組中把「成功」的定義換了兩次，前一小題以擊中為成功而用二項分配，後兩小題改以擊丟為成功而分別用幾何分配與負二項分配。[Example 4.17](#ex-negative-binomial-2) 把系列賽的勝負改寫成「取得第 $5$ 勝所需的場次不超過上限」，因而以負二項分配的累積機率計算，值域到無窮大並不妨礙，因為超出上限的場次都代表已經輸掉系列賽。[Example 4.18](#ex-negative-binomial-3) 則由首次達到第 $k$ 次成功的定義出發，把最後一次實驗分離出去，前面的 $n-1$ 次以二項分配計算，兩者相乘之後得到的正是負二項分配的機率函數。
 
-[下一篇](/lecture-notes/hypergeometric-distribution/)把抽樣方式改為取後不放回，先給出汎德蒙等式，再依序介紹超幾何實驗與超幾何分配。
+[下一篇](/lecture-notes/hypergeometric-distribution/)把抽樣方式由取後放回改為取後不放回，先給出汎德蒙等式，再依序介紹超幾何實驗與超幾何分配。
 
 ## 參考文獻與延伸閱讀
 

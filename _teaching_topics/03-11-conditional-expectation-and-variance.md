@@ -10,19 +10,19 @@ order: 311
 permalink: /lecture-notes/conditional-expectation-and-variance/
 date: 2026-08-12
 published: false
-excerpt: "條件分配還是一個分配，而且是單變數的分配，這種分配的期望值便稱為條件期望值。離散型以條件機率質量函數對各個取值加權求和，連續型則以條件機率密度函數加權積分，同一套作法套在 $g(X)$ 上便得到函數的條件期望值。條件期望值本質上仍是一種期望值，故期望值所具有的各種性質它都順勢繼承，其中也包含變異數，這種變異數即為條件變異數，同樣有平方的條件期望值減去條件期望值的平方這一條速算公式。條件期望值有一個一般期望值沒有的特色，就是它是「給定的條件」的函數。本篇並以三道例題示範離散型與連續型的計算。"
+excerpt: "以條件機率函數對變數加權平均即得條件期望值 $\\mathbb{E}(X\\mid Y=y)$ 這個量數，進而可定義條件變異數 $\\mathrm{Var}(X\\mid Y=y)$ 的形式。本篇整理兩者由期望值與變異數延續而來的運算性質，並指出它們皆為給定條件 $y$ 的函數。"
 ---
 
 [上一篇](/lecture-notes/multivariate-expectations/)把[期望值](/lecture-notes/expectation/#def-expectation)與[變異數](/lecture-notes/variance/#def-variance)推廣到二元[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的函數 <span class="text-nowrap">$g(X,Y)$，</span>其中所使用的機率分配是聯合分配。但在[條件機率質量函數](/lecture-notes/conditional-distributions/#def-conditional-pmf)與[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)之中，我們已經看過另一種機率分配。它就是把其中一個變數固定成常數之後所得到的條件分配。
 
-既然條件分配仍然是一種機率分配，我們當然也可以談它的期望值與變異數。本篇便由此出發，先分別對離散與連續的情形給出條件期望值的定義，再把它推廣到函數 $g(X)$ 的條件期望值，接著給出條件變異數並導出它的速算公式，最後以三道例題示範離散型與連續型的計算。
+既然條件分配仍然是一種機率分配，我們當然也可以談它的期望值與變異數。本篇便由此出發，先分別對離散與連續的情形給出條件期望值的定義，再把它推廣到函數 $g(X)$ 的條件期望值，接著給出條件變異數並導出速算公式，最後以三道例題示範離散與連續的計算。
 
 ## 條件期望值
 
 <div id="def-conditional-expectation" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.11 (條件期望值, conditional expectation)</div>
 
-令 $(X,Y)$ 為二元**離散**隨機變數，且 conditional pmf 為 $p_{\sssig X\mid Y}(x\mid y)$ 及 <span class="text-nowrap">$p_{\sssig Y\mid X}(y\mid x)$，</span>則稱
+令 $(X,Y)$ 為二元**離散**隨機變數，且 conditional pmf 為 $p_{\sssig X\mid Y}(x\mid y)$ 及 <span class="text-nowrap">$p_{\sssig Y\mid X}(y\mid x)$，</span>則稱以下的量數
 
 $$
 \mathbb{E}(X\mid Y=y)=\sum_{x\in\mathcal{R}_{\sssig X}}x\,p_{\sssig X\mid Y}(x\mid y)
@@ -36,7 +36,7 @@ $$
 
 為 $Y$ 給定 $X=x$ 的**條件期望值**。
 
-令 $(X,Y)$ 為二元**連續**隨機變數，且 conditional pdf 為 $f_{\sssig X\mid Y}(x\mid y)$ 及 <span class="text-nowrap">$f_{\sssig Y\mid X}(y\mid x)$，</span>則稱
+令 $(X,Y)$ 為二元**連續**隨機變數，且 conditional pdf 為 $f_{\sssig X\mid Y}(x\mid y)$ 及 <span class="text-nowrap">$f_{\sssig Y\mid X}(y\mid x)$，</span>則稱以下的量數
 
 $$
 \mathbb{E}(X\mid Y=y)=\int_{x\in\mathcal{R}_{\sssig X}}x\,f_{\sssig X\mid Y}(x\mid y)\,dx
@@ -52,19 +52,19 @@ $$
 
 </div>
 
-稍早我們曾提過，**條件分配還是一個分配**，而且是單變數的分配，這種分配的期望值便稱為**條件期望值**。
+如前所述，**條件分配本身仍是一個單變數機率分配**，對其取期望值即稱為**條件期望值**。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-我們曾經提過，條件分配的直觀意義是**將樣本空間縮小至 $Y=y$ (或 $X=x$) 的空間**，且期望值的直觀意義是**一個機率分配的重心**，若由此二觀點而言，條件期望值的直觀意義便是**在 $Y=y$ (或 $X=x$) 的空間中的重心**。
+條件分配的直觀意義是**將樣本空間縮小至給定 $Y=y$ (或 $X=x$) 的條件空間**，而期望值的物理直覺則是**一個機率分配的重心**；結合兩者可知，條件期望值的直觀意義便是**在 $Y=y$ (或 $X=x$) 的空間中的重心**。
 
 </div>
 
 <div id="def-conditional-expectation-of-function" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.12 (函數的條件期望值, conditional expectation of a function)</div>
 
-令 $(X,Y)$ 為二元**離散**隨機變數，且 conditional pmf 為 $p_{\sssig X\mid Y}(x\mid y)$ 及 <span class="text-nowrap">$p_{\sssig Y\mid X}(y\mid x)$，</span>則稱
+令 $(X,Y)$ 為二元**離散**隨機變數，且 conditional pmf 為 $p_{\sssig X\mid Y}(x\mid y)$ 及 <span class="text-nowrap">$p_{\sssig Y\mid X}(y\mid x)$，</span>則稱以下的量數
 
 $$
 \mathbb{E}\bigl[g(X)\mid Y=y\bigr]=\sum_{x\in\mathcal{R}_{\sssig X}}g(x)\,p_{\sssig X\mid Y}(x\mid y)
@@ -78,7 +78,7 @@ $$
 
 為 $g(Y)$ 給定 $X=x$ 的**條件期望值**。
 
-令 $(X,Y)$ 為二元**連續**隨機變數，且 conditional pdf 為 $f_{\sssig X\mid Y}(x\mid y)$ 及 <span class="text-nowrap">$f_{\sssig Y\mid X}(y\mid x)$，</span>則稱
+令 $(X,Y)$ 為二元**連續**隨機變數，且 conditional pdf 為 $f_{\sssig X\mid Y}(x\mid y)$ 及 <span class="text-nowrap">$f_{\sssig Y\mid X}(y\mid x)$，</span>則稱以下的量數
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -91,7 +91,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}\bigl[g(X)\mid Y=y\bigr]&=\int_{x\in\mathcal{R}_{\sssig X}}g(x)\,f_{\sssig X\mid Y}(x\mid y)\,dx
+\mathbb{E}\bigl[g(X)\mid Y=y\bigr]&=\int_{x\in\mathcal{R}_{\sssig X}}g(x)\\[0.3em]
+&\qquad\times f_{\sssig X\mid Y}(x\mid y)\,dx
 \end{aligned}
 $$
 
@@ -110,7 +111,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}\bigl[g(Y)\mid X=x\bigr]&=\int_{y\in\mathcal{R}_{\sssig Y}}g(y)\,f_{\sssig Y\mid X}(y\mid x)\,dy
+\mathbb{E}\bigl[g(Y)\mid X=x\bigr]&=\int_{y\in\mathcal{R}_{\sssig Y}}g(y)\\[0.3em]
+&\qquad\times f_{\sssig Y\mid X}(y\mid x)\,dy
 \end{aligned}
 $$
 
@@ -122,19 +124,19 @@ $$
 
 條件期望值與函數的條件期望值有一些地方需要注意:
 
-(1) 條件期望值只不過是**使用了條件分配作為機率分配**而得到的期望值，本質上而言還是一種期望值，故期望值所具有的各種性質，條件期望值都應順勢繼承。
+(1) 條件期望值只是**使用了條件分配作為機率分配**而得到的期望值，本質上仍是一種期望值，故單變數期望值的各項運算性質皆順勢成立。
 {: .topic-paren-item}
 
-(2) 由於條件期望值繼承了期望值的所有性質，這當中是否包含我們曾提過的特殊期望值，也就是**變異數**呢？這是當然的，這種變異數稱作**條件變異數**，我們馬上會看到[其定義](#def-conditional-variance)。
+(2) 既然條件期望值繼承了期望值的各項性質，以離差平方之期望值定義的**變異數**亦可相應推廣為**條件變異數**，見下方[定義](#def-conditional-variance)。
 {: .topic-paren-item}
 
-(3) 條件期望值有一個一般期望值沒有的特色，是**條件期望值是「給定的條件」的函數**，這一點在稍後提到**[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation) <span lang="en">(double expectation theorem)</span>** 時我們會有更詳細的了解。
+(3) 條件期望值有一項一般無條件期望值沒有的特色，亦即**條件期望值是「給定的條件」的函數**；後文介紹**[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation) <span lang="en">(double expectation theorem)</span>** 時將進一步運用此一性質。
 {: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上我們在處理 $X$ (或 $Y$) 的條件分配時，如果機率函數中還有給定的 $Y=y$ (或 $X=x$)，我們會將此處的 $y$ (或 $x$) 當成一個常數，而條件期望值的運算**只把 $X$ (或 $Y$) 當成隨機變數**，在條件期望值算完後，$Y=y$ (或 $X=x$) 會被留下來，所以我們會說**條件期望值是「給定的條件」的函數**。
+計算 $\mathbb{E}(X\mid Y=y)$ 時，條件機率函數中的 $y$ 視為固定常數，加總或積分**只把 $X$ 當成隨機變數**；當 $x$ 被加總或積分消去後，式中所含的 $y$ 便保留下來，使運算結果成為給定條件 $y$ 的函數 (求 $\mathbb{E}(Y\mid X=x)$ 時則成為 $x$ 的函數)。
 
 </div>
 
@@ -143,7 +145,7 @@ $$
 <div id="def-conditional-variance" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.13 (條件變異數, conditional variance)</div>
 
-令 $(X,Y)$ 為二元隨機變數，且條件期望值分別為 $\mathbb{E}(X\mid Y=y)$ 及 <span class="text-nowrap">$\mathbb{E}(Y\mid X=x)$，</span>則稱
+令 $(X,Y)$ 為二元隨機變數，且條件期望值分別為 $\mathbb{E}(X\mid Y=y)$ 及 <span class="text-nowrap">$\mathbb{E}(Y\mid X=x)$，</span>則稱以下的量數
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -156,7 +158,8 @@ $$
 
 $$
 \begin{aligned}
-\mathrm{Var}(X\mid Y=y)&=\mathbb{E}\Bigl(\bigl[X-\mathbb{E}(X\mid Y=y)\bigr]^{2}\Bigm\vert Y=y\Bigr)
+\mathrm{Var}(X\mid Y=y)&=\mathbb{E}\Bigl(\bigl[X-\mathbb{E}(X\mid Y=y)\bigr]^{2}\\[0.3em]
+&\qquad\quad\Bigm\vert Y=y\Bigr)
 \end{aligned}
 $$
 
@@ -175,7 +178,8 @@ $$
 
 $$
 \begin{aligned}
-\mathrm{Var}(Y\mid X=x)&=\mathbb{E}\Bigl(\bigl[Y-\mathbb{E}(Y\mid X=x)\bigr]^{2}\Bigm\vert X=x\Bigr)
+\mathrm{Var}(Y\mid X=x)&=\mathbb{E}\Bigl(\bigl[Y-\mathbb{E}(Y\mid X=x)\bigr]^{2}\\[0.3em]
+&\qquad\quad\Bigm\vert X=x\Bigr)
 \end{aligned}
 $$
 
@@ -204,7 +208,8 @@ $$
 
 $$
 \begin{aligned}
-\mathrm{Var}(X\mid Y=y)&=\mathbb{E}\Bigl(\bigl[X-\mathbb{E}(X\mid Y=y)\bigr]^{2}\Bigm\vert Y=y\Bigr)\\[0.45em]
+\mathrm{Var}(X\mid Y=y)&=\mathbb{E}\Bigl(\bigl[X-\mathbb{E}(X\mid Y=y)\bigr]^{2}\\[0.3em]
+&\qquad\quad\Bigm\vert Y=y\Bigr)\\[0.45em]
 &=\mathbb{E}\Bigl(X^{2}-2X\,\mathbb{E}(X\mid Y=y)+\bigl[\mathbb{E}(X\mid Y=y)\bigr]^{2}\Bigm\vert Y=y\Bigr)\\[0.45em]
 &=\mathbb{E}\bigl(X^{2}\mid Y=y\bigr)-2\,\mathbb{E}(X\mid Y=y)\,\mathbb{E}(X\mid Y=y)\\[0.2em]
 &\qquad +\bigl[\mathbb{E}(X\mid Y=y)\bigr]^{2}\\[0.45em]
@@ -217,7 +222,8 @@ $$
 
 $$
 \begin{aligned}
-\mathrm{Var}(X\mid Y=y)&=\mathbb{E}\Bigl(\bigl[X-\mathbb{E}(X\mid Y=y)\bigr]^{2}\Bigm\vert Y=y\Bigr)\\[0.45em]
+\mathrm{Var}(X\mid Y=y)&=\mathbb{E}\Bigl(\bigl[X-\mathbb{E}(X\mid Y=y)\bigr]^{2}\\[0.3em]
+&\qquad\quad\Bigm\vert Y=y\Bigr)\\[0.45em]
 &=\mathbb{E}\Bigl(X^{2}-2X\,\mathbb{E}(X\mid Y=y)\\[0.2em]
 &\qquad+\bigl[\mathbb{E}(X\mid Y=y)\bigr]^{2}\Bigm\vert Y=y\Bigr)\\[0.45em]
 &=\mathbb{E}\bigl(X^{2}\mid Y=y\bigr)\\[0.2em]
@@ -229,7 +235,7 @@ $$
 
 </div>
 
-此即**平方的條件期望值減去條件期望值的平方**。
+換言之，此即**平方的條件期望值減去條件期望值的平方**。
 {: .topic-paren-cont}
 
 ## 條件期望值與條件變異數的計算
@@ -238,7 +244,7 @@ $$
 <div class="topic-box__label">Example 3.18</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ is the amount by which the price of a certain product rises, that $Y$ is the amount by which the quantity sold falls, and that the joint probability distribution of $X$ and $Y$ is the one recorded in the table below.
+Let $X$ denote the price increase of a certain product and $Y$ denote the decrease in its sales volume. Suppose that the joint pmf of $X$ and $Y$ is given in the table below.
 
 | $X\backslash Y$ | $10$ | $20$ | $30$ |
 | :---: | :---: | :---: | :---: |
@@ -248,12 +254,12 @@ Suppose that $X$ is the amount by which the price of a certain product rises, th
 {: .topic-table--matrix}
 
 <ol class="topic-list-paren">
-  <li>Determine whether $X$ and $Y$ are independent.</li>
-  <li>Evaluate $\mathbb{E}(X\mid Y=20)$ and <span class="text-nowrap">$\mathrm{Var}(X\mid Y=20)$.</span></li>
+  <li>Are $X$ and $Y$ independent?</li>
+  <li>Find $\mathbb{E}(X\mid Y=20)$ and <span class="text-nowrap">$\mathrm{Var}(X\mid Y=20)$.</span></li>
 </ol>
 </div>
 
-(1) 首先先將邊際分配算出來，如下:
+(1) 先將邊際分配算出來如下:
 {: .topic-paren-item}
 
 | $X\backslash Y$ | $10$ | $20$ | $30$ | $p_{\sssig X}(x)$ |
@@ -333,10 +339,10 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{aligned}
-\Longrightarrow\ &\mathbb{E}(X\mid Y=20)=5\times 0.5+10\times 0.25+15\times 0.25=8.75\\[0.45em]
-&\mathbb{E}\bigl(X^{2}\mid Y=20\bigr)=5^{2}\times 0.5+10^{2}\times 0.25+15^{2}\times 0.25=93.75
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(X\mid Y=20)=5\times 0.5+10\times 0.25+15\times 0.25=8.75\\[0.45em]
+\mathbb{E}\bigl(X^{2}\mid Y=20\bigr)=5^{2}\times 0.5+10^{2}\times 0.25+15^{2}\times 0.25=93.75
+\end{gathered}
 $$
 
 </div>
@@ -344,8 +350,13 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ \mathbb{E}(X\mid Y=20)&=5\times 0.5+10\times 0.25\\[0.2em]
-&\qquad+15\times 0.25=8.75\\[0.45em]
+\mathbb{E}(X\mid Y=20)&=5\times 0.5+10\times 0.25\\[0.2em]
+&\qquad+15\times 0.25=8.75
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \mathbb{E}\bigl(X^{2}\mid Y=20\bigr)&=5^{2}\times 0.5+10^{2}\times 0.25\\[0.2em]
 &\qquad+15^{2}\times 0.25=93.75
 \end{aligned}
@@ -360,7 +371,7 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ \mathrm{Var}(X\mid Y=20)&=\mathbb{E}\bigl(X^{2}\mid Y=20\bigr)-\bigl[\mathbb{E}(X\mid Y=20)\bigr]^{2}\\[0.45em]
+\mathrm{Var}(X\mid Y=20)&=\mathbb{E}\bigl(X^{2}\mid Y=20\bigr)-\bigl[\mathbb{E}(X\mid Y=20)\bigr]^{2}\\[0.45em]
 &=93.75-(8.75)^{2}=17.1875
 \end{aligned}
 $$
@@ -370,7 +381,7 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ \mathrm{Var}(X\mid Y=20)&=\mathbb{E}\bigl(X^{2}\mid Y=20\bigr)\\[0.2em]
+\mathrm{Var}(X\mid Y=20)&=\mathbb{E}\bigl(X^{2}\mid Y=20\bigr)\\[0.2em]
 &\qquad-\bigl[\mathbb{E}(X\mid Y=20)\bigr]^{2}\\[0.45em]
 &=93.75-(8.75)^{2}=17.1875
 \end{aligned}
@@ -384,7 +395,7 @@ $$
 <div class="topic-box__label">Example 3.19</div>
 
 <div lang="en" markdown="1">
-Suppose that the joint probability density function of $X$ and $Y$ is
+Let $X$ and $Y$ have joint probability density function
 
 $$
 f_{\sssig XY}(x,y)=
@@ -397,8 +408,8 @@ c\,y, & 0<y<x<2\\[0.5em]
 $$
 
 <ol class="topic-list-paren">
-  <li>Determine the constant $c$ for which $f_{\sssig XY}(x,y)$ is a legitimate pdf.</li>
-  <li>Evaluate $\mathbb{E}(Y\mid X=1)$ and <span class="text-nowrap">$\mathbb{E}(X\mid Y=1)$.</span></li>
+  <li>Find the value of $c$ that makes $f_{\sssig XY}(x,y)$ a valid pdf.</li>
+  <li>Find $\mathbb{E}(Y\mid X=1)$ and <span class="text-nowrap">$\mathbb{E}(X\mid Y=1)$.</span></li>
 </ol>
 </div>
 
@@ -468,7 +479,12 @@ $$
 $$
 \begin{aligned}
 f_{\sssig X}(x)&=\int_{0}^{x}\frac{3}{\,4\,}y\,dy=\Bigl[\frac{3}{\,8\,}y^{2}\Bigr]_{0}^{x}\\[0.45em]
-&=\frac{3}{\,8\,}x^{2},\ 0<x<2\\[0.9em]
+&=\frac{3}{\,8\,}x^{2},\ 0<x<2
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 f_{\sssig Y}(y)&=\int_{y}^{2}\frac{3}{\,4\,}y\,dx=\Bigl[\frac{3}{\,4\,}xy\Bigr]_{y}^{2}\\[0.45em]
 &=\frac{3}{\,2\,}y-\frac{3}{\,4\,}y^{2},\ 0<y<2
 \end{aligned}
@@ -476,7 +492,7 @@ $$
 
 </div>
 
-接著可以算出二種 conditional pdf 分別為:
+接著可算出二種 conditional pdf 為:
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -494,7 +510,12 @@ $$
 $$
 \begin{aligned}
 f_{\sssig X\mid Y}(x\mid y)&=\frac{\,f_{\sssig XY}(x,y)\,}{f_{\sssig Y}(y)}=\frac{\frac{3}{\,4\,}y}{\,\frac{3}{\,2\,}y-\frac{3}{4}y^{2}\,}\\[0.45em]
-&=\frac{1}{\,2-y\,},\ 0<y<x<2\\[0.9em]
+&=\frac{1}{\,2-y\,},\ 0<y<x<2
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 f_{\sssig Y\mid X}(y\mid x)&=\frac{\,f_{\sssig XY}(x,y)\,}{f_{\sssig X}(x)}=\frac{\frac{3}{\,4\,}y}{\,\frac{3}{\,8\,}x^{2}\,}\\[0.45em]
 &=\frac{2y}{\,x^{2}\,},\ 0<y<x<2
 \end{aligned}
@@ -520,7 +541,12 @@ $$
 $$
 \begin{aligned}
 \mathbb{E}(Y\mid X=1)&=\int_{0}^{1}y\,\frac{2y}{1^{2}}\,dy\\[0.45em]
-&=\Bigl[\frac{2}{3}y^{3}\Bigr]_{0}^{1}=\frac{2}{\,3\,}\\[0.9em]
+&=\Bigl[\frac{2}{3}y^{3}\Bigr]_{0}^{1}=\frac{2}{\,3\,}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \mathbb{E}(X\mid Y=1)&=\int_{1}^{2}x\,\frac{1}{2-1}\,dx\\[0.45em]
 &=\Bigl[\frac{1}{2}x^{2}\Bigr]_{1}^{2}=\frac{3}{\,2\,}
 \end{aligned}
@@ -534,7 +560,7 @@ $$
 <div class="topic-box__label">Example 3.20</div>
 
 <div lang="en" markdown="1">
-Suppose that a continuous random vector $(X,Y)$ has the joint pdf
+Let $(X,Y)$ be a continuous random vector with joint pdf
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -562,7 +588,7 @@ $$
   </div>
   <div class="topic-cases__rows">
     <div class="topic-cases__val">$x+y,$</div>
-    <div class="topic-cases__cond">$0\leqslant x\leqslant 1$, $0\leqslant y\leqslant 1$</div>
+    <div class="topic-cases__cond">$0\leqslant x\leqslant 1,\ 0\leqslant y\leqslant 1$</div>
     <div class="topic-cases__val">$0,$</div>
     <div class="topic-cases__cond">$\text{o.w.}$</div>
   </div>
@@ -571,8 +597,8 @@ $$
 </div>
 
 <ol class="topic-list-paren">
-  <li>Evaluate the conditional variance <span class="text-nowrap">$\mathrm{Var}(Y\mid X=x)$.</span></li>
-  <li>Evaluate the conditional variance <span class="text-nowrap">$\mathrm{Var}(2Y+3X+4\mid X=x)$.</span></li>
+  <li>Find the conditional variance <span class="text-nowrap">$\mathrm{Var}(Y\mid X=x)$.</span></li>
+  <li>Find the conditional variance <span class="text-nowrap">$\mathrm{Var}(2Y+3X+4\mid X=x)$.</span></li>
 </ol>
 </div>
 
@@ -636,7 +662,12 @@ $$
 $$
 \begin{aligned}
 \mathbb{E}(Y\mid X=x)&=\int_{0}^{1}y\,\frac{x+y}{\,x+\frac{1}{2}\,}\,dy\\[0.45em]
-&=\frac{\,\frac{x}{2}+\frac{1}{3}\,}{x+\frac{1}{2}},\ 0\leqslant x\leqslant 1\\[0.9em]
+&=\frac{\,\frac{x}{2}+\frac{1}{3}\,}{x+\frac{1}{2}},\ 0\leqslant x\leqslant 1
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \mathbb{E}\bigl(Y^{2}\mid X=x\bigr)&=\int_{0}^{1}y^{2}\,\frac{x+y}{\,x+\frac{1}{2}\,}\,dy\\[0.45em]
 &=\frac{\,\frac{x}{3}+\frac{1}{4}\,}{x+\frac{1}{2}},\ 0\leqslant x\leqslant 1
 \end{aligned}

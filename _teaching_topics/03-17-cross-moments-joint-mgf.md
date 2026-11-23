@@ -10,7 +10,7 @@ order: 317
 permalink: /lecture-notes/cross-moments-joint-mgf/
 date: 2026-08-13
 published: false
-excerpt: "動差可以描述一個機率分配的各種特徵，而 $\\mathbb{E}(X^nY^m)$ 這種交叉動差描述的則是兩個隨機變數共同變化的各種特徵。生成交叉動差的工具，是把單變數的動差母函數推廣到兩個變數之後所得到的聯合動差母函數。它對 $t_1$ 微分 $n$ 次、對 $t_2$ 微分 $m$ 次再代入零，即得 $(n+m)$ 階交叉動差；只把 $t_1$ 與 $t_2$ 其中一個代入零，則得到該變數的邊際動差母函數。本篇並以兩道例題示範它的用法，一道由聯合動差母函數求共變異數，另一道由展開式認出離散型的聯合與邊際機率質量函數。"
+excerpt: "交叉動差 $\\mathbb{E}(X^{n}Y^{m})$ 描述兩個隨機變數共同變化的動差結構，可由聯合動差母函數 $M_{\\sssig XY}(t_1,t_2)$ 對兩個自變數偏微分後代入原點求得。本篇介紹聯合 mgf 與邊際 mgf 的關係、獨立判準及計算例題。"
 ---
 
 [上一篇](/lecture-notes/wald-identity-gamblers-ruin/)以[沃德等式](/lecture-notes/wald-identity-gamblers-ruin/#thm-wald-identity)處理了加總的項數本身也是[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的情形。本篇轉而處理兩個隨機變數共同變化的情況。
@@ -32,16 +32,16 @@ $$
 
 </div>
 
-動差能夠用來描述一個機率分配的各種特徵，而交叉動差 (cross moment) 也有同樣的功用，主要是用來描述 **$X$ 與 $Y$ 共同變化的各種特徵**。
+單變數動差用以刻畫單一機率分配的特徵，交叉動差 (cross moment) 則用以刻畫 **$X$ 與 $Y$ 共同變化的特徵**。
 
 ## 聯合動差母函數
 
-在介紹單變數隨機變數的動差時，我們曾引入 mgf 來協助我們生成各階的原動差。事實上，mgf 的功能，當然不僅止於生成一個變數的動差，像上面所定義的交叉動差，也能夠由 mgf 協助生成，但是在介紹 mgf 要如何生成兩個變數的交叉動差之前，我們首先要定義兩個或多個隨機變數的**聯合動差母函數 <span lang="en">(joint moment generating function, joint mgf)</span>**。
+在單變數情形中，我們曾引入 mgf 來生成各階原動差；上述的交叉動差同樣可由動差母函數生成。為此，我們先將 mgf 推廣至多元情形，定義**聯合動差母函數 <span lang="en">(joint moment generating function, joint mgf)</span>**。
 
 <div id="def-joint-mgf" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.15 (聯合動差母函數, joint mgf)</div>
 
-若 $X$ 與 $Y$ 為**離散**變數，且對任意正數 <span class="text-nowrap">$h$，</span>下列[期望值](/lecture-notes/expectation/#def-expectation)在 $-h < t_1, t_2 < h$ 皆存在，則
+若 $X$ 與 $Y$ 為**離散**變數，且存在某個正數 <span class="text-nowrap">$h$，</span>使下列[期望值](/lecture-notes/expectation/#def-expectation)在 $-h < t_1, t_2 < h$ 皆存在，則
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -63,7 +63,7 @@ $$
 
 被定義為 $X$ 與 $Y$ 之**聯合動差母函數 (joint mgf)**
 
-若 $X$ 與 $Y$ 為連續變數，且對任意正數 <span class="text-nowrap">$h$，</span>下列期望值在 $-h < t_1, t_2 < h$ 皆存在，則
+若 $X$ 與 $Y$ 為連續變數，且存在某個正數 <span class="text-nowrap">$h$，</span>使下列期望值在 $-h < t_1, t_2 < h$ 皆存在，則
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -88,7 +88,7 @@ $$
 
 </div>
 
-聯合動差母函數與單變數的 mgf 相同，並不是任何時候都存在。一個 joint mgf 必須在 $-h < t_1, t_2 < h$ 的區間內皆有定義才存在，並且一旦 joint mgf 存在，即**保證了該二個隨機變數的各階交叉動差都存在**。
+聯合動差母函數與單變數的 mgf 相同，並不是任何時候都存在。一個 joint mgf 必須在某個 $-h < t_1, t_2 < h$ ($h>0$) 的區間內皆有定義才存在，並且一旦 joint mgf 存在，即**保證了該二個隨機變數的各階交叉動差都存在**。
 
 ## 由聯合動差母函數生成交叉動差
 
@@ -116,25 +116,18 @@ $$
 
 </div>
 
-這個定理的證明是 [Theorem 2.21](/lecture-notes/moment-generating-functions/#thm-mgf-generates-moments) 的簡單推廣，故將這個定理的證明省略。有興趣的讀者可自行嘗試推導。
+此定理的證明為單變數情形 ([Theorem 2.21](/lecture-notes/moment-generating-functions/#thm-mgf-generates-moments)) 的直接推廣，此處省略，讀者可自行推導。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[Theorem 3.13](#thm-generate-cross-moment) 說明了 joint mgf 如何生出兩個隨機變數之間的各階交叉動差。一個簡單的應用是當 $n=m=1$ 時，我們會得到 <span class="text-nowrap">$\mathbb{E}(XY)$，</span>也就是 $X$ 與 $Y$ 的二階交叉動差，這個交叉動差在後續的小節所介紹的[共變異數](/lecture-notes/covariance/#def-covariance) <span lang="en">(covariance)</span> 會起到關鍵的作用。
+在 [Theorem 3.13](#thm-generate-cross-moment) 中取 <span class="text-nowrap">$n=m=1$，</span>即得 $X$ 與 $Y$ 的二階交叉動差 <span class="text-nowrap">$\mathbb{E}(XY)$，</span>此量是後文定義[共變異數](/lecture-notes/covariance/#def-covariance) <span lang="en">(covariance)</span> 時的關鍵項目。
 
 </div>
 
 ## 由聯合動差母函數取得邊際動差母函數
 
-此外，joint mgf 當然也可以只生成其中一個變數的特徵，因為 joint mgf 能夠輕易轉為**邊際動差母函數 <span lang="en">(marginal mgf)</span>**，詳見下列定理。
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-邊際動差母函數即為邊際分配的 mgf。
-
-</div>
+聯合 mgf 亦可用於生成單一變數的各階動差，只需將另一個自變數代入 <span class="text-nowrap">$0$，</span>即可化為對應邊際分配的動差母函數，稱為**邊際動差母函數 <span lang="en">(marginal mgf)</span>**，見下列定理。
 
 <div id="thm-marginal-mgf" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 3.14 (由聯合動差母函數取得邊際動差母函數, marginal mgf from a joint mgf)</div>
@@ -156,7 +149,12 @@ $$
 $$
 \begin{aligned}
 M_{\sssig XY}(t_1, 0)&=\mathbb{E}\bigl(e^{t_1X+0\cdot Y}\bigr)\\[0.3em]
-&=\mathbb{E}\bigl(e^{t_1X}\bigr)=M_{\sssig X}(t_1)\\[0.7em]
+&=\mathbb{E}\bigl(e^{t_1X}\bigr)=M_{\sssig X}(t_1)
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 M_{\sssig XY}(0, t_2)&=\mathbb{E}\bigl(e^{0\cdot X+t_2Y}\bigr)\\[0.3em]
 &=\mathbb{E}\bigl(e^{t_2Y}\bigr)=M_{\sssig Y}(t_2)
 \end{aligned}
@@ -200,7 +198,7 @@ $$
 <div id="note-joint-mgf-independence" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-當然，若是 <span class="text-nowrap">$X\indep Y$，</span>若且唯若我們有 $M_{\sssig XY}(t_1, t_2)$ $=$ $M_{\sssig X}(t_1)\,M_{\sssig Y}(t_2)$ 的結果，讀者應可自行嘗試推導。
+當聯合動差母函數於某原點鄰域 $-h < t\_1, t\_2 < h$ ($h>0$) 內存在時，$X\indep Y$ 若且唯若對該鄰域內所有 $(t\_1,t\_2)$ 皆滿足 $M\_{\sssig XY}(t\_1, t\_2)=M\_{\sssig X}(t\_1)\,M\_{\sssig Y}(t\_2)$ 這一分解式，讀者可結合獨立性與唯一性定理自行推導。
 
 </div>
 
@@ -210,7 +208,7 @@ $$
 <div class="topic-box__label">Example 3.35</div>
 
 <div lang="en" markdown="1">
-Suppose that the random variables $X_1$ and $X_2$ have the joint moment generating function
+Let the random variables $X_1$ and $X_2$ have the joint moment generating function
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -229,20 +227,20 @@ $$
 
 </div>
 
-Determine the covariance of $X_1$ and <span class="text-nowrap">$X_2$.</span>
+Find the covariance of $X_1$ and <span class="text-nowrap">$X_2$.</span>
 </div>
 
-由於 $\operatorname{Cov}(X_1, X_2)$ $=$ $\mathbb{E}(X_1X_2)-\mathbb{E}(X_1)\mathbb{E}(X_2)$
-
-故先計算 $\mathbb{E}(X_1X_2)$ 與 <span class="text-nowrap">$\mathbb{E}(X_1)$、</span>$\mathbb{E}(X_2)$
+利用下一篇將介紹的共變異數公式 $\operatorname{Cov}(X\_1, X\_2)=\mathbb{E}(X\_1X\_2)-\mathbb{E}(X\_1)\mathbb{E}(X\_2)$ 來計算，先分別求取 $\mathbb{E}(X\_1X\_2)$ 與 <span class="text-nowrap">$\mathbb{E}(X_1)$、</span>$\mathbb{E}(X\_2)$ 如下
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 \begin{aligned}
 \mathbb{E}(X_1X_2)&=\left.\frac{\partial^{2}M_{\sssig X_1X_2}(t_1, t_2)}{\partial t_1\,\partial t_2}\right|_{t_1=t_2=0}=\left.\frac{\partial}{\partial t_1}\biggl[\frac{\partial M_{\sssig X_1X_2}(t_1, t_2)}{\partial t_2}\biggr]\right|_{t_1=t_2=0}\\[0.45em]
-&=\left.\frac{\partial}{\partial t_1}\biggl[\frac{\partial\,(1-t_1+2t_2)^{-4}(1-t_1)^{-5}}{\partial t_2}\biggr]\right|_{t_1=t_2=0}=\left.\frac{\partial}{\partial t_1}\biggl[-8\Bigl((1-t_1+2t_2)(1-t_1)\Bigr)^{-5}\biggr]\right|_{t_1=t_2=0}\\[0.45em]
-&=\left.-40\Bigl((1-t_1+2t_2)^{-6}(1-t_1)^{-5}+(1-t_1+2t_2)^{-5}(1-t_1)^{-6}\Bigr)\right|_{t_1=t_2=0}=-80
+&=\left.\frac{\partial}{\partial t_1}\biggl[\frac{\partial\,(1-t_1+2t_2)^{-4}(1-t_1)^{-5}}{\partial t_2}\biggr]\right|_{t_1=t_2=0}\\[0.45em]
+&=\left.\frac{\partial}{\partial t_1}\biggl[-8\Bigl((1-t_1+2t_2)(1-t_1)\Bigr)^{-5}\biggr]\right|_{t_1=t_2=0}\\[0.45em]
+&=\left.-40\Bigl((1-t_1+2t_2)^{-6}(1-t_1)^{-5}+(1-t_1+2t_2)^{-5}(1-t_1)^{-6}\Bigr)\right|_{t_1=t_2=0}\\[0.45em]
+&=-80
 \end{aligned}
 $$
 
@@ -258,7 +256,7 @@ $$
 &=\frac{\partial}{\partial t_1}\biggl[-8\Bigl((1-t_1+2t_2)(1-t_1)\Bigr)^{-5}\biggr]\\[0.15em]
 &\qquad\qquad\qquad\qquad\qquad\biggr|_{t_1=t_2=0}\\[0.45em]
 &=-40\Bigl((1-t_1+2t_2)^{-6}(1-t_1)^{-5}\\[0.25em]
-&\quad\ +(1-t_1+2t_2)^{-5}(1-t_1)^{-6}\Bigr)\biggr|_{t_1=t_2=0}\\[0.45em]
+&\qquad+(1-t_1+2t_2)^{-5}(1-t_1)^{-6}\Bigr)\biggr|_{t_1=t_2=0}\\[0.45em]
 &=-80
 \end{aligned}
 $$
@@ -284,7 +282,12 @@ $$
 $$
 \begin{aligned}
 \mathbb{E}(X_1)&=\left.\frac{\partial M_{\sssig X_1}(t_1)}{\partial t_1}\right|_{t_1=0}\\[0.25em]
-&=-9(1-0)^{-10}\times(-1)=9\\[0.7em]
+&=-9(1-0)^{-10}\times(-1)=9
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \mathbb{E}(X_2)&=\left.\frac{\partial M_{\sssig X_2}(t_2)}{\partial t_2}\right|_{t_2=0}\\[0.25em]
 &=-4(1+0)^{-5}\times 2=-8
 \end{aligned}
@@ -312,18 +315,11 @@ $$
 
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-共變異數的定義及算法在稍後即會提到。
-
-</div>
-
 <div id="ex-joint-mgf-covariance" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.36</div>
 
 <div lang="en" markdown="1">
-Suppose that the two random variables $X$ and $Y$ have the joint moment generating function
+Let $X$ and $Y$ be two random variables with joint moment generating function
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -343,7 +339,7 @@ $$
 
 </div>
 
-Find the joint and marginal density functions of $X$ and <span class="text-nowrap">$Y$.</span>
+Find the joint and marginal probability mass functions of $X$ and <span class="text-nowrap">$Y$.</span>
 </div>
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -352,7 +348,7 @@ $$
 \begin{aligned}
 M_{\sssig XY}(t_1, t_2)&=\mathbb{E}\Bigl(e^{t_1X+t_2Y}\Bigr)=\biggl[\frac{1}{\,3\,}(e^{t_1+t_2}+1)+\frac{1}{\,6\,}(e^{t_1}+e^{t_2})\biggr]^{2}\\[0.45em]
 &=\frac{1}{\,9\,}e^{2t_1+2t_2}+\frac{1}{\,9\,}e^{2t_1+t_2}+\frac{1}{\,9\,}e^{t_1+2t_2}+\frac{5}{\,18\,}e^{t_1+t_2}\\[0.45em]
-&\quad +\frac{1}{\,36\,}e^{2t_1}+\frac{1}{\,36\,}e^{2t_2}+\frac{1}{\,9\,}e^{t_1}+\frac{1}{\,9\,}e^{t_2}+\frac{1}{\,9\,}
+&\qquad +\frac{1}{\,36\,}e^{2t_1}+\frac{1}{\,36\,}e^{2t_2}+\frac{1}{\,9\,}e^{t_1}+\frac{1}{\,9\,}e^{t_2}+\frac{1}{\,9\,}
 \end{aligned}
 $$
 
@@ -387,7 +383,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，joint mgf 與 marginal mgf 一樣，能夠刻畫整個分配的所有特徵，因此也具有如 [Theorem 2.23](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness) 的唯一性定理能夠使用，特別是在離散型[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)上，辨認方式完全類同過去，即將 $X, Y$ 的 joint mgf $M_{\sssig XY}(t_1, t_2)$ $=$ $\sum_{(x, y)\in\mathbb{R}^{2}}e^{t_1x+t_2y}\,p_{\sssig XY}(x,y)$ 展開，看成是 $p_{\sssig 1}e^{a_{11}\,t_1+a_{12}\,t_2}$ $+$ $...$ $+$ $p_{\sssig n}e^{a_{n1}\,t_1+a_{n2}\,t_2}$ 的形式，並認出其分配為
+聯合 mgf 與單變數 mgf 一樣能完整刻畫機率分配，故同樣具備如 [Theorem 2.23](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness) 的唯一性性質。對於離散型[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)，辨認方式與單變數情形相同，只需將 $M\_{\sssig XY}(t\_1, t\_2)=\sum\_{(x, y)\in\mathbb{R}^{2}}e^{t\_1x+t\_2y}\,p\_{\sssig XY}(x,y)$ 展開並對照 $p\_{\sssig 1}e^{a\_{11}\,t\_1+a\_{12}\,t\_2}+\cdots+p\_{\sssig n}e^{a\_{n1}\,t\_1+a\_{n2}\,t\_2}$ 的形式，即可辨認出聯合 pmf 為
 
 $$
 p_{\sssig XY}(x,y)=\left\lbrace
@@ -403,13 +399,13 @@ $$
 
 ## 本篇小結
 
-[Definition 3.14](#def-cross-moment) 把單變數的動差推廣為 $\mathbb{E}(X^nY^m)$ 這種交叉動差，用來描述 $X$ 與 $Y$ 共同變化的各種特徵；[Definition 3.15](#def-joint-mgf) 則把動差母函數推廣為聯合動差母函數，離散型以[聯合機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-joint-pmf)加權求和、連續型以[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)加權積分。與單變數的 mgf 相同，joint mgf 必須在 $-h < t_1, t_2 < h$ 的整個區間內皆有定義才算存在，而一旦它存在，各階交叉動差也就都跟著存在。
+[Definition 3.14](#def-cross-moment) 把單變數的動差推廣為 $\mathbb{E}(X^nY^m)$ 這種交叉動差，用來描述 $X$ 與 $Y$ 共同變化的各種特徵；[Definition 3.15](#def-joint-mgf) 則把動差母函數推廣為聯合動差母函數，離散型以[聯合機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-joint-pmf)加權求和、連續型以[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)加權積分。與單變數的 mgf 相同，joint mgf 必須在某個 $-h < t_1, t_2 < h$ ($h>0$) 的區間內皆有定義才算存在，而一旦它存在，各階交叉動差也就都跟著存在。
 
-生成的方式由 [Theorem 3.13](#thm-generate-cross-moment) 給出。對 $t_1$ 微分 $n$ 次、對 $t_2$ 微分 $m$ 次，再代入 <span class="text-nowrap">$t_1=t_2=0$，</span>所得即為 $(n+m)$ 階交叉動差。其中 $n=m=1$ 的情形給出 $\mathbb{E}(XY)$ 這個量，它是[下一篇](/lecture-notes/covariance/)定義共變異數時所需的關鍵一項。[Theorem 3.14](#thm-marginal-mgf) 則指出，只要把 $t_1$ 與 $t_2$ 其中一個代入 <span class="text-nowrap">$0$，</span>該變數在指數上的那一項就整個消去，剩下的正是另一個變數自己的動差母函數；證明只需把聯合機率密度函數對其中一個變數積分，得到的就是[邊際機率密度函數](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)。
+生成的方式由 [Theorem 3.13](#thm-generate-cross-moment) 給出。對 $t_1$ 微分 $n$ 次、對 $t_2$ 微分 $m$ 次，再代入 <span class="text-nowrap">$t_1=t_2=0$，</span>所得即為 $(n+m)$ 階交叉動差。其中 $n=m=1$ 的情形給出 $\mathbb{E}(XY)$ 這個量，它是[下一篇](/lecture-notes/covariance/)定義共變異數時所需的關鍵一項。[Theorem 3.14](#thm-marginal-mgf) 則指出，只要把 $t_1$ 與 $t_2$ 其中一個代入 <span class="text-nowrap">$0$，</span>該變數在指數上的那一項就整個消去，剩下的正是另一變數自己的動差母函數；證明只需把聯合機率密度函數對其中一個變數積分，即得[邊際機率密度函數](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)。
 
-兩道例題示範它在計算上的用法。[Example 3.35](#ex-joint-mgf-two-variables) 先對 $t_2$ 再對 $t_1$ 微分求得 <span class="text-nowrap">$\mathbb{E}(X_1X_2)=-80$，</span>再由 $M_{\sssig X_1X_2}(t_1, 0)$ 與 $M_{\sssig X_1X_2}(0, t_2)$ 取得兩個邊際動差母函數，各微分一次得到 $9$ 與 <span class="text-nowrap">$-8$，</span>合起來即得共變異數為 <span class="text-nowrap">$-8$。</span>[Example 3.36](#ex-joint-mgf-covariance) 則把聯合動差母函數的平方展開成九項，每一項的係數就是一個機率、指數上的兩個係數就是一組取值，由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)即可把整張聯合與邊際機率質量函數的表填出來。離散型的辨認方式與單變數時完全相同，差別只在指數上由一個變數變成兩個。
+兩道例題示範它在計算上的用法。[Example 3.35](#ex-joint-mgf-two-variables) 先對 $t_2$ 再對 $t_1$ 微分求得 <span class="text-nowrap">$\mathbb{E}(X_1X_2)=-80$，</span>再由 $M_{\sssig X_1X_2}(t_1, 0)$ 與 $M_{\sssig X_1X_2}(0, t_2)$ 取得兩個邊際動差母函數，各微分一次得到 $9$ 與 <span class="text-nowrap">$-8$，</span>合起來即得共變異數為 <span class="text-nowrap">$-8$。</span>[Example 3.36](#ex-joint-mgf-covariance) 則把聯合動差母函數的平方展開成九項，每一項的係數就是一個機率、指數上的兩個係數就是一組取值，由[動差母函數的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)即可把整張聯合與邊際機率質量函數的表填出來。離散型的辨認方式與單變數相同，差別只在指數由一個變數變成兩個。
 
-[下一篇](/lecture-notes/covariance/)正式給出共變異數的定義，並說明它與二階交叉動差 $\mathbb{E}(XY)$ 之間的關係。
+[下一篇](/lecture-notes/covariance/)正式定義共變異數，並說明它與二階交叉動差 $\mathbb{E}(XY)$ 的關係。
 
 ## 參考文獻與延伸閱讀
 

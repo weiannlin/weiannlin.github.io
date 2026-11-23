@@ -10,18 +10,18 @@ order: 313
 permalink: /lecture-notes/double-expectation-examples/
 date: 2026-08-13
 published: false
-excerpt: "本篇以五道例題示範雙重期望值定理的用法。第一道題由聯合機率密度函數依序求出邊際密度、條件期望值與 $\\mathbb{E}(Y)$ 的值，是這條定理最直接的一種用法；第二道題的 $X$ 在給定 $Y=y$ 之下為常態分配、$Y$ 本身為伽瑪分配，兩者合起來所得的邊際密度在 $k=1$ 時即為 $\\mathrm{Cauchy}(0,1)$ 分配，此時 $\\mathbb{E}(X)$ 不存在，定理的等式因而不成立。第三道題只給了兩個已知數值與一條迴歸函數，仍然求得 $\\mathbb{E}(Y)$ 與 $\\mathbb{E}(XY)$ 兩個值。最後兩道題是礦工脫困與擲銅板的問題，兩者都先設一個輔助變數把實驗切成幾種情形，再讓所求的期望值在等式的兩側同時出現，解一條方程式即可求得。"
+excerpt: "本篇以五道例題演練雙重期望值定理，涵蓋階層模型的邊際期望值計算、邊際為柯西分配時因期望值不存在而失效的反例，以及透過第一步條件化建立遞迴方程式求解的礦工困井與連續投擲問題。"
 ---
 
 [上一篇](/lecture-notes/double-expectation-theorem/)由[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation)是條件的函數這一點出發，先以[迴歸函數](/lecture-notes/double-expectation-theorem/#thm-regression-function)為這種函數取了名字，再給出[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation) <span lang="en">(double expectation theorem)</span>，並說明這條定理背後的直觀就是加權平均。先把原始空間依 $Y$ 的取值切成一片一片，在每一片的條件分配上找到重心，再以 $f_{\sssig Y}(y)$ 為權重把這些重心平均起來，所得的就是 $X$ 自己的重心。
 
-本篇以五道例題示範這條定理的用法。前三道題是直接的計算: 第一道由[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)依序求出邊際密度與條件期望值，再取一次期望值即得 $\mathbb{E}(Y)$ 的值；第二道說明 $\mathbb{E}(X)$ 不存在時，定理的等式會不成立；第三道只給了兩個已知數值與一條迴歸函數，仍然可以求出 $\mathbb{E}(Y)$ 與 $\mathbb{E}(XY)$ 兩個值。後兩道題的型態不同，都是先設一個輔助變數把整個實驗切成幾種情形，再讓所求的期望值在等式的兩側同時出現，解一條方程式即可求得。
+本篇以五道例題示範這條定理的用法。前三道題是直接的計算，第一道由[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)依序求出邊際密度與條件期望值，再取一次期望值即得 $\mathbb{E}(Y)$ 的值；第二道說明 $\mathbb{E}(X)$ 不存在時，定理的等式會不成立；第三道只給了兩個已知數值與一條迴歸函數，仍然可以求出 $\mathbb{E}(Y)$ 與 $\mathbb{E}(XY)$ 兩個值。後兩道題的型態不同，都是先設一個輔助變數把整個實驗切成幾種情形，再讓所求的期望值在等式的兩側同時出現，解一條方程式即可求得。
 
 <div id="ex-conditional-expectation-density" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.21</div>
 
 <div lang="en" markdown="1">
-Suppose that the joint probability density function of $X$ and $Y$ is
+Let $X$ and $Y$ have joint density
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -36,25 +36,31 @@ f_{\sssig XY}(x,y)=
 $$
 
 </div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+<div class="topic-math-layout topic-math-layout--mobile">
 
-$$
-\begin{aligned}
-f_{\sssig XY}(x,y)&=\left\lbrace
-\begin{array}{c@{}l}
-\dfrac{6}{\,5\,}\bigl(x+y^{2}\bigr), & 0<x<1,\ 0<y<1\\[0.8em]
-0, & \text{o.w.}
-\end{array}
-\right.
-\end{aligned}
-$$
+<div class="topic-cases">
+  <div class="topic-cases__lhs">$f_{\sssig XY}(x,y)=$</div>
+  <div class="topic-cases__brace" aria-hidden="true">
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 11 0.8 C 7.6 0.8 6 2.4 6 5.2 L 6 12" vector-effect="non-scaling-stroke"/></svg>
+    <span class="topic-cases__brace-bar"></span>
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 6 0 L 6 3.4 C 6 5 4.6 6 1 6 C 4.6 6 6 7 6 8.6 L 6 12" vector-effect="non-scaling-stroke"/></svg>
+    <span class="topic-cases__brace-bar"></span>
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 6 0 L 6 6.8 C 6 9.6 7.6 11.2 11 11.2" vector-effect="non-scaling-stroke"/></svg>
+  </div>
+  <div class="topic-cases__rows">
+    <div class="topic-cases__val">$\dfrac{6}{\,5\,}\bigl(x+y^{2}\bigr),$</div>
+    <div class="topic-cases__cond">$0<x<1,\ 0<y<1$</div>
+    <div class="topic-cases__val">$0,$</div>
+    <div class="topic-cases__cond">$\text{o.w.}$</div>
+  </div>
+</div>
 
 </div>
 
 <ol class="topic-list-paren">
-  <li>Determine the marginal pdf of <span class="text-nowrap">$X$.</span></li>
-  <li>Evaluate <span class="text-nowrap">$\mathbb{E}(Y\mid X=x)$.</span></li>
-  <li>Evaluate <span class="text-nowrap">$\mathbb{E}(Y)$.</span></li>
+  <li>Find the marginal pdf of <span class="text-nowrap">$X$.</span></li>
+  <li>Find <span class="text-nowrap">$\mathbb{E}(Y\mid X=x)$.</span></li>
+  <li>Find <span class="text-nowrap">$\mathbb{E}(Y)$.</span></li>
 </ol>
 </div>
 
@@ -112,8 +118,8 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ \mathbb{E}(Y\mid X=x)&=\int_{0}^{1}y\cdot\frac{3\bigl(x+y^{2}\bigr)}{3x+1}\,dy\\[0.45em]
-&=\int_{0}^{1}\Bigl[\frac{3x}{\,3x+1\,}y+\frac{3}{\,3x+1\,}y^{3}\Bigr]dy\\[0.45em]
+\mathbb{E}(Y\mid X=x)&=\int_{0}^{1}y\cdot\frac{3\bigl(x+y^{2}\bigr)}{3x+1}\,dy\\[0.45em]
+&=\int_{0}^{1}\Bigl[\frac{3x}{\,3x+1\,}y+\frac{3}{\,3x+1\,}y^{3}\Bigr]\,dy\\[0.45em]
 &=\Bigl[\frac{3x}{\,2(3x+1)\,}y^{2}+\frac{3}{\,4(3x+1)\,}y^{4}\Bigr]_{0}^{1}\\[0.45em]
 &=\frac{3x}{\,2(3x+1)\,}+\frac{3}{\,4(3x+1)\,}\\[0.45em]
 &=\frac{\,6x+3\,}{12x+4},\ 0<x<1
@@ -125,8 +131,8 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ \mathbb{E}(Y\mid X=x)&=\int_{0}^{1}y\cdot\frac{3\bigl(x+y^{2}\bigr)}{3x+1}\,dy\\[0.45em]
-&=\int_{0}^{1}\Bigl[\frac{3x}{\,3x+1\,}y+\frac{3}{\,3x+1\,}y^{3}\Bigr]dy\\[0.45em]
+\mathbb{E}(Y\mid X=x)&=\int_{0}^{1}y\cdot\frac{3\bigl(x+y^{2}\bigr)}{3x+1}\,dy\\[0.45em]
+&=\int_{0}^{1}\Bigl[\frac{3x}{\,3x+1\,}y+\frac{3}{\,3x+1\,}y^{3}\Bigr]\,dy\\[0.45em]
 &=\Bigl[\frac{3x}{\,2(3x+1)\,}y^{2}+\frac{3}{\,4(3x+1)\,}y^{4}\Bigr]_{0}^{1}\\[0.45em]
 &=\frac{3x}{\,2(3x+1)\,}+\frac{3}{\,4(3x+1)\,}\\[0.45em]
 &=\frac{\,6x+3\,}{12x+4},\ 0<x<1
@@ -143,8 +149,8 @@ $$
 $$
 \begin{aligned}
 \mathbb{E}\bigl[\mathbb{E}(Y\mid X)\bigr]&=\int_{0}^{1}\mathbb{E}(Y\mid X=x)\,f_{\sssig X}(x)\,dx\\[0.45em]
-&=\int_{0}^{1}\frac{\,6x+3\,}{12x+4}\cdot\Bigl[\frac{6}{\,5\,}x+\frac{2}{\,5\,}\Bigr]dx\\[0.45em]
-&=\int_{0}^{1}\Bigl[\frac{\,6x+3\,}{10}\Bigr]dx=\Bigl[\frac{3}{\,10\,}x^{2}+\frac{3}{\,10\,}x\Bigr]_{0}^{1}=\frac{3}{\,5\,}
+&=\int_{0}^{1}\frac{\,6x+3\,}{12x+4}\cdot\Bigl[\frac{6}{\,5\,}x+\frac{2}{\,5\,}\Bigr]\,dx\\[0.45em]
+&=\int_{0}^{1}\Bigl[\frac{\,6x+3\,}{10}\Bigr]\,dx=\Bigl[\frac{3}{\,10\,}x^{2}+\frac{3}{\,10\,}x\Bigr]_{0}^{1}=\frac{3}{\,5\,}
 \end{aligned}
 $$
 
@@ -154,8 +160,8 @@ $$
 $$
 \begin{aligned}
 \mathbb{E}\bigl[\mathbb{E}(Y\mid X)\bigr]&=\int_{0}^{1}\mathbb{E}(Y\mid X=x)\,f_{\sssig X}(x)\,dx\\[0.45em]
-&=\int_{0}^{1}\frac{\,6x+3\,}{12x+4}\cdot\Bigl[\frac{6}{\,5\,}x+\frac{2}{\,5\,}\Bigr]dx\\[0.45em]
-&=\int_{0}^{1}\Bigl[\frac{\,6x+3\,}{10}\Bigr]dx\\[0.45em]
+&=\int_{0}^{1}\frac{\,6x+3\,}{12x+4}\cdot\Bigl[\frac{6}{\,5\,}x+\frac{2}{\,5\,}\Bigr]\,dx\\[0.45em]
+&=\int_{0}^{1}\Bigl[\frac{\,6x+3\,}{10}\Bigr]\,dx\\[0.45em]
 &=\Bigl[\frac{3}{\,10\,}x^{2}+\frac{3}{\,10\,}x\Bigr]_{0}^{1}=\frac{3}{\,5\,}
 \end{aligned}
 $$
@@ -237,7 +243,7 @@ $$
 f_{\sssig XY}(x,y)&=f_{\sssig X\mid Y}(x\mid y)\,f_{\sssig Y}(y)\\[0.45em]
 &=\frac{\,k^{\frac{\,k\,}{2}}\,y^{\frac{\,k\,}{2}-1}\,e^{-\frac{\,k\,}{2}y}\,}{\Gamma\bigl(\frac{\,k\,}{2}\bigr)2^{\frac{\,k\,}{2}}}\times\frac{\sqrt{y}}{\sqrt{2\pi}}\exp\left\lbrace\frac{\,-yx^{2}\,}{2}\right\rbrace\\[0.45em]
 &=\frac{k^{\frac{k}{2}}}{\Gamma\bigl(\frac{k}{2}\bigr)\sqrt{2\pi}\,2^{\frac{k}{2}}}\,y^{\frac{k+1}{2}-1}\\[0.2em]
-&\quad \times\exp\left\lbrace-\Bigl(\frac{k}{2}+\frac{\,x^{2}\,}{2}\Bigr)y\right\rbrace,\ x\in\mathbb{R},\ y>0
+&\qquad\times\exp\left\lbrace-\Bigl(\frac{k}{2}+\frac{\,x^{2}\,}{2}\Bigr)y\right\rbrace,\ x\in\mathbb{R},\ y>0
 \end{aligned}
 $$
 
@@ -264,7 +270,7 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow f_{\sssig X}(x)&=\int_{0}^{\infty}f_{\sssig XY}(x,y)\,dy\\[0.45em]
+f_{\sssig X}(x)&=\int_{0}^{\infty}f_{\sssig XY}(x,y)\,dy\\[0.45em]
 &=\frac{k^{\frac{k}{2}}}{\Gamma\bigl(\frac{k}{2}\bigr)\sqrt{2\pi}\,2^{\frac{k}{2}}}\int_{0}^{\infty}y^{\frac{k+1}{2}-1}\,\exp\left\lbrace-\Bigl(\frac{k}{2}+\frac{\,x^{2}\,}{2}\Bigr)y\right\rbrace\,dy\\[0.45em]
 &=\frac{k^{\frac{k}{2}}}{\Gamma\bigl(\frac{k}{2}\bigr)\sqrt{2\pi}\,2^{\frac{k}{2}}}\,\frac{\Gamma\bigl(\frac{k+1}{2}\bigr)}{\bigl(\frac{k}{2}+\frac{\,x^{2}\,}{2}\bigr)^{\frac{k+1}{2}}}\\[0.45em]
 &=\frac{\Gamma\bigl(\frac{k+1}{2}\bigr)}{\sqrt{\pi k}\,\Gamma\bigl(\frac{k}{2}\bigr)}\frac{1}{\bigl(1+\frac{x^{2}}{k}\bigr)^{\frac{k+1}{2}}},\ x\in\mathbb{R}
@@ -276,9 +282,9 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow f_{\sssig X}(x)&=\int_{0}^{\infty}f_{\sssig XY}(x,y)\,dy\\[0.45em]
+f_{\sssig X}(x)&=\int_{0}^{\infty}f_{\sssig XY}(x,y)\,dy\\[0.45em]
 &=\frac{k^{\frac{k}{2}}}{\Gamma\bigl(\frac{k}{2}\bigr)\sqrt{2\pi}\,2^{\frac{k}{2}}}\int_{0}^{\infty}y^{\frac{k+1}{2}-1}\\[0.2em]
-&\qquad\exp\left\lbrace-\Bigl(\frac{k}{2}+\frac{\,x^{2}\,}{2}\Bigr)y\right\rbrace\,dy\\[0.45em]
+&\qquad\times\exp\left\lbrace-\Bigl(\frac{k}{2}+\frac{\,x^{2}\,}{2}\Bigr)y\right\rbrace\,dy\\[0.45em]
 &=\frac{k^{\frac{k}{2}}}{\Gamma\bigl(\frac{k}{2}\bigr)\sqrt{2\pi}\,2^{\frac{k}{2}}}\,\frac{\Gamma\bigl(\frac{k+1}{2}\bigr)}{\bigl(\frac{k}{2}+\frac{\,x^{2}\,}{2}\bigr)^{\frac{k+1}{2}}}\\[0.45em]
 &=\frac{\Gamma\bigl(\frac{k+1}{2}\bigr)}{\sqrt{\pi k}\,\Gamma\bigl(\frac{k}{2}\bigr)}\frac{1}{\bigl(1+\frac{x^{2}}{k}\bigr)^{\frac{k+1}{2}}},\ x\in\mathbb{R}
 \end{aligned}
@@ -311,7 +317,7 @@ $$
 {: .topic-paren-cont}
 
 $$
-\Longrightarrow\ \mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]=0
+\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]=0
 $$
 
 故知道
@@ -326,7 +332,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-第二小題使用到的分配是 $t(1)$ 分配，也是 $\mathrm{Cauchy}(0,1)$ 分配。這個分配的特色是，雖然它是一個單峰對稱於 $0$ 的分配，但由於尾部機率過厚，其一階絕對動差是不存在的，這也導致期望值不存在，讀者不妨以 $\mathbb{E}\bigl(\lvert X\rvert\bigr)$ 的定義驗證看看。
+第 (2) 小題在 $k=1$ 時所得的邊際分配為 $t(1)$ 分配，亦即標準柯西分配 <span class="text-nowrap">$\mathrm{Cauchy}(0,1)$。</span>此分配雖單峰且對稱於 <span class="text-nowrap">$0$，</span>但因雙尾機率過厚，其一階絕對動差 $\mathbb{E}\bigl(\lvert X\rvert\bigr)=\infty$ 發散，導致邊際期望值 $\mathbb{E}(X)$ 不存在，因而並不滿足雙重期望值定理的前提條件。
 
 </div>
 
@@ -334,7 +340,7 @@ $$
 <div class="topic-box__label">Example 3.23</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ and $Y$ are random variables for which <span class="text-nowrap">$\mathbb{E}(X)=0$,</span> $\mathrm{Var}(X)=4$ and <span class="text-nowrap">$\mathbb{E}(Y\mid X)=2-3X$.</span> Find $\mathbb{E}(Y)$ and <span class="text-nowrap">$\mathbb{E}(XY)$.</span>
+Let $X$ and $Y$ be random variables such that <span class="text-nowrap">$\mathbb{E}(X)=0$,</span> <span class="text-nowrap">$\mathrm{Var}(X)=4$,</span> and <span class="text-nowrap">$\mathbb{E}(Y\mid X)=2-3X$.</span> Find $\mathbb{E}(Y)$ and <span class="text-nowrap">$\mathbb{E}(XY)$.</span>
 </div>
 
 由雙重期望值定理可知
@@ -452,21 +458,21 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-Y&=\left\lbrace
+\begin{gathered}
+Y=\left\lbrace
 \begin{array}{c@{}l}
 1, & \text{選擇第一扇門}\\[0.3em]
 2, & \text{選擇第二扇門}\\[0.3em]
 3, & \text{選擇第三扇門}
 \end{array}
 \right.\\[0.9em]
-\text{則}\ f_{\sssig Y}(y)&=\left\lbrace
+\text{則}\ f_{\sssig Y}(y)=\left\lbrace
 \begin{array}{c@{}l}
 \dfrac{1}{\,3\,}, & y=1,2,3\\[0.8em]
 0, & \text{o.w.}
 \end{array}
 \right.
-\end{aligned}
+\end{gathered}
 $$
 
 </div>
@@ -486,11 +492,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(X\mid Y=1)&=2,\\[0.45em]
-\mathbb{E}(X\mid Y=2)&=\mathbb{E}(X+3)\\[0.45em]
-\text{與}\ \mathbb{E}(X\mid Y=3)&=\mathbb{E}(X+5)
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(X\mid Y=1)=2,\\[0.45em]
+\mathbb{E}(X\mid Y=2)=\mathbb{E}(X+3)\\[0.45em]
+\text{與}\ \mathbb{E}(X\mid Y=3)=\mathbb{E}(X+5)
+\end{gathered}
 $$
 
 </div>
@@ -528,7 +534,7 @@ $$
 則所求為
 
 $$
-\Longrightarrow\ \mathbb{E}(X)=10
+\mathbb{E}(X)=10
 $$
 
 </div>
@@ -536,9 +542,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這題是隨機過程 <span lang="en">(random process)</span> 中的一道重要入門題。
-
-特別需要注意的是，若選擇的為第一道門，則該礦工經過 $2$ 小時後將直接走出礦坑，此即 $\mathbb{E}(X\mid Y=1)=2$ 這個結果；若選擇第二或第三道門，則因為經過 $3$ 及 $5$ 小時後會回到選擇點，且由於該礦工在選擇點時，總是均等機率地選擇其中一道門 (該礦工無法記憶上次的選擇)，故每次選擇時，平均而言，要再花掉的時間與尚未選擇時一模一樣，可是又因為已經浪費了 $3$ 及 $5$ 小時，故平均的脫困時間會分別**增加 $3$ 及 $5$ 小時**，此即 $\mathbb{E}(X\mid Y=2)$ $=\mathbb{E}(X+3)$ 與 $\mathbb{E}(X\mid Y=3)$ <span class="text-nowrap">$=\mathbb{E}(X+5)$。</span>
+本題是隨機過程 <span lang="en">(random process)</span> 中的經典入門題。若礦工選中第一道門，行進 $2$ 小時即可脫困，故 <span class="text-nowrap">$\mathbb{E}(X\mid Y=1)=2$；</span>若選中第二或第三道門，分別耗時 $3$ 或 $5$ 小時後又回到選擇點。由於礦工每次回到選擇點時皆以均等機率重新選門 (無法記憶上次的選擇)，此後尚須花費的平均時間與起初完全相同，均為 <span class="text-nowrap">$\mathbb{E}(X)$；</span>加上已耗費的 $3$ 或 $5$ 小時，條件期望脫困時間遂分別**增加 $3$ 及 $5$ 小時**，寫為 $\mathbb{E}(X\mid Y=2)=\mathbb{E}(X+3)$ 與 <span class="text-nowrap">$\mathbb{E}(X\mid Y=3)=\mathbb{E}(X+5)$。</span>
 
 </div>
 
@@ -549,7 +553,7 @@ $$
 A coin whose probability of coming up heads is $0.5$ is flipped repeatedly until heads appears twice among the three most recent flips, and $N$ denotes the number of flips made. Find <span class="text-nowrap">$\mathbb{E}(N)$,</span> where $N=2$ whenever the first two flips both come up heads.
 </div>
 
-依照題目設定之規則，可令一輔助用之變數
+依題目設定之規則，可令一輔助變數
 
 $$
 X=\left\lbrace
@@ -577,12 +581,12 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(N\mid X=1)&=2,\\[0.45em]
-\mathbb{E}(N\mid X=2)&=3,\\[0.45em]
-\mathbb{E}(N\mid X=3)&=\mathbb{E}(N)+3,\\[0.45em]
-\mathbb{E}(N\mid X=4)&=\mathbb{E}(N)+1
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(N\mid X=1)=2,\\[0.45em]
+\mathbb{E}(N\mid X=2)=3,\\[0.45em]
+\mathbb{E}(N\mid X=3)=\mathbb{E}(N)+3,\\[0.45em]
+\mathbb{E}(N\mid X=4)=\mathbb{E}(N)+1
+\end{gathered}
 $$
 
 </div>
@@ -599,10 +603,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{P}(X=1)&=\frac{1}{\,4\,},\ \mathbb{P}(X=2)=\frac{1}{\,8\,},\\[0.45em]
-\mathbb{P}(X=3)&=\frac{1}{\,8\,},\ \mathbb{P}(X=4)=\frac{1}{\,2\,}
-\end{aligned}
+\begin{gathered}
+\mathbb{P}(X=1)=\frac{1}{\,4\,},\ \mathbb{P}(X=2)=\frac{1}{\,8\,},\\[0.45em]
+\mathbb{P}(X=3)=\frac{1}{\,8\,},\ \mathbb{P}(X=4)=\frac{1}{\,2\,}
+\end{gathered}
 $$
 
 </div>
@@ -638,7 +642,7 @@ $$
 則所求為
 
 $$
-\Longrightarrow\ \mathbb{E}(N)=\frac{\,14\,}{3}
+\mathbb{E}(N)=\frac{\,14\,}{3}
 $$
 
 </div>
@@ -646,19 +650,19 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-由於規則的原因，本題需要先羅列前幾次的結果進行討論，用以確定接下來的實驗是否還有需要進行，以及討論其是否將累積之正面歸零，這種討論的步驟，是這種題型的關鍵。
+處理此類連續投擲問題時，關鍵在於依前幾次結果劃分互斥且窮盡的初始分支，藉此判斷實驗是否結束或累積正面是否歸零。例如首擲反面 (T) 或前三次為 HTT 時，最近兩次結果皆不含正面，後續達成停止條件所需的額外投擲次數分配與從頭開始完全相同，故條件期望值可寫為 $\mathbb{E}(N)+1$ 與 <span class="text-nowrap">$\mathbb{E}(N)+3$。</span>
 
 </div>
 
-至此，讀者應該已經熟悉雙重期望值定理，是如何以加權平均的方式做出邊際期望值。然而，讀者也許會猜想，這樣透過加權平均得到邊際產物的過程，能不能用在分配本身身上呢？事實上是可以的，這正是接下來要介紹的定理。
+至此我們已熟悉如何運用雙重期望值定理，透過條件期望值的加權平均求得邊際期望值。同樣的分層加權觀念亦可直接施於機率分配本身，此即下一篇要介紹的定理。
 
 ## 本篇小結
 
-[Example 3.21](#ex-conditional-expectation-density) 是[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)最直接的一種用法。由聯合機率密度函數先積出 <span class="text-nowrap">$f_{\sssig X}(x)$，</span>再由[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)求得 $\mathbb{E}(Y\mid X=x)=\frac{6x+3}{12x+4}$ 這一條迴歸函數，最後以 $f_{\sssig X}(x)$ 為權重把這個條件期望值平均起來，得到 $\mathbb{E}(Y)=\frac{3}{5}$ 這個值。[Example 3.22](#ex-beta-conditional-expectation) 則提醒讀者定理的前提: $X$ 在給定 $Y=y$ 之下為常態分配、$Y$ 本身為伽瑪分配，兩者合起來所得的邊際密度在 $k=1$ 時是 $t(1)$ 分配，也就是 $\mathrm{Cauchy}(0,1)$ 分配，其尾部機率過厚而使一階絕對動差不存在，$\mathbb{E}(X)$ 因而不存在；但 $\mathbb{E}(X\mid Y=y)$ 恆為 <span class="text-nowrap">$0$，</span>因此 $\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]$ 仍然算得出來，兩者於是不相等。
+[Example 3.21](#ex-conditional-expectation-density) 是[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)最直接的一種用法。由聯合機率密度函數先積出 <span class="text-nowrap">$f_{\sssig X}(x)$，</span>再由[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)求得 $\mathbb{E}(Y\mid X=x)=\frac{6x+3}{12x+4}$ 這一條迴歸函數，最後以 $f_{\sssig X}(x)$ 為權重把這個條件期望值平均起來，得到 $\mathbb{E}(Y)=\frac{3}{5}$ 這個值。[Example 3.22](#ex-beta-conditional-expectation) 則提醒讀者定理的前提。$X$ 在給定 $Y=y$ 之下為常態分配、$Y$ 本身為伽瑪分配，兩者合起來所得的邊際密度在 $k=1$ 時是 $t(1)$ 分配，也就是 $\mathrm{Cauchy}(0,1)$ 分配，其尾部機率過厚而使一階絕對動差不存在，$\mathbb{E}(X)$ 因而不存在；但 $\mathbb{E}(X\mid Y=y)$ 恆為 <span class="text-nowrap">$0$，</span>因此 $\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]$ 仍然可以算得出來，兩者因而並不相等。
 
-[Example 3.23](#ex-conditional-expectation-linear) 所給的條件只有 $\mathbb{E}(X)=0$ 與 $\mathrm{Var}(X)=4$ 兩個數值，以及 $\mathbb{E}(Y\mid X)$ $=$ $2-3X$ 這一條迴歸函數，並不知道分配是什麼，但[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)只需要對這條迴歸函數取一次期望值便得到 <span class="text-nowrap">$\mathbb{E}(Y)=2$；</span>再配合把 $X$ 視為常數提到條件期望值之外的性質，$\mathbb{E}(XY)$ 也可以化成 $\mathbb{E}(2X-3X^{2})$ 而求得 $-12$ 這個值。
+[Example 3.23](#ex-conditional-expectation-linear) 所給的條件只有 $\mathbb{E}(X)=0$ 與 $\mathrm{Var}(X)=4$ 兩個數值，以及 $\mathbb{E}(Y\mid X)$ $=$ $2-3X$ 這一條迴歸函數，並不知道分配是什麼，但[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)只需要對這條迴歸函數取一次期望值便得到 <span class="text-nowrap">$\mathbb{E}(Y)=2$；</span>再配合把 $X$ 視為常數提到條件期望值之外的性質，$\mathbb{E}(XY)$ 也可以化成 $\mathbb{E}(2X-3X^{2})$ 進而求得 $-12$ 這個期望值。
 
-[Example 3.24](#ex-miner-three-doors) 與 [Example 3.25](#ex-coin-until-two-heads) 是同一種型態。先設一個輔助變數把整個實驗切成幾種情形，礦工題切成三扇門、銅板題切成前幾次的結果，接著寫出每一種情形之下的條件期望值。由於部分情形會使實驗回到原先的狀態，所求的期望值在等式的兩側同時出現，解一條方程式便得到 $\mathbb{E}(X)=10$ 與 <span class="text-nowrap">$\mathbb{E}(N)=\frac{14}{3}$。</span>礦工題之所以是 $\mathbb{E}(X\mid Y=2)=\mathbb{E}(X+3)$ 而不是別的式子，關鍵在於該礦工無法記憶上次的選擇，回到選擇點之後平均還要花掉的時間與尚未選擇時一模一樣，只是白白多花了 $3$ 小時；銅板題則要先羅列前幾次的結果，才能確定實驗是否還要進行，以及累積的正面是否歸零。
+[Example 3.24](#ex-miner-three-doors) 與 [Example 3.25](#ex-coin-until-two-heads) 是同一種型態。先設一個輔助變數把整個實驗切成幾種情形，礦工題切成三扇門、銅板題切成前幾次的結果，接著寫出每一種情形之下的條件期望值。由於部分情形會使實驗回到原先的狀態，所求的期望值在等式的兩側同時出現，解一條方程式便得到 $\mathbb{E}(X)=10$ 與 <span class="text-nowrap">$\mathbb{E}(N)=\frac{14}{3}$。</span>礦工題之所以是 $\mathbb{E}(X\mid Y=2)=\mathbb{E}(X+3)$ 而不是別的式子，關鍵在於該礦工無法記憶上次的選擇，回到選擇點之後平均還要花掉的時間與尚未選擇時一模一樣，只是白白多花了 $3$ 小時；銅板題則要先羅列前幾次結果，才能確定實驗是否繼續，以及累積正面是否歸零。
 
 [下一篇](/lecture-notes/conditional-law-of-total-probability/)把同一套加權平均用在分配本身上，也就是[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)版本的全機率定理，並以三道例題示範它在機率計算上的用法。
 

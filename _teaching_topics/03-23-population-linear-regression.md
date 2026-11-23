@@ -10,7 +10,7 @@ order: 323
 permalink: /lecture-notes/population-linear-regression/
 date: 2026-08-13
 published: false
-excerpt: "相關係數衡量的是兩個隨機變數之間線性相關的強度，但這條直線本身的截距與斜率究竟是什麼，到目前為止還沒有寫出來。本篇的定理指出，當條件期望值恰好是條件變數的線性函數時，這條直線的截距與斜率完全由兩個變數的期望值、標準差與相關係數決定，此即母體線性迴歸式；證明的作法是先把條件期望值寫成 $\\beta_0+\\beta_1x$ 的形式，再由雙重期望值定理列出兩條式子解聯立方程式。把 $X$ 與 $Y$ 的角色對調可以得到逆迴歸，而正逆迴歸兩條斜率相乘恰好等於相關係數的平方，這給了一個由兩條迴歸式求相關係數的辦法。本篇最後以三道例題示範這條定理的用法。"
+excerpt: "當條件期望值 $\\mathbb{E}(Y\\mid X=x)$ 為 $x$ 的線性函數時，其截距與斜率完全由兩變數的期望值、標準差與相關係數決定，稱為母體線性迴歸式。本篇推導正迴歸與逆迴歸係數，說明兩斜率乘積等於 $\\rho_{\\sssig XY}^{2}$ 這個關係，並以例題演練。"
 ---
 
 [上一篇](/lecture-notes/correlation-properties-and-matrix/)由[相關係數](/lecture-notes/correlation-coefficient/#def-corr)的範圍推得 [Theorem 3.20](/lecture-notes/correlation-properties-and-matrix/#thm-var-cov-ineq) 的[變異數](/lecture-notes/variance/#def-variance)-[共變異數](/lecture-notes/covariance/#def-covariance)不等式，再以 [Definition 3.20](/lecture-notes/correlation-properties-and-matrix/#def-corr-matrix) 把數個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)兩兩之間的相關係數收成[相關矩陣](/lecture-notes/correlation-properties-and-matrix/#def-corr-matrix)。
@@ -37,10 +37,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(Y\mid X=x)&=\mu_{\sssig Y}+\rho_{\sssig XY}\frac{\,\sigma_{\sssig Y}\,}{\sigma_{\sssig X}}(x-\mu_{\sssig X})\\[0.55em]
-\text{或是}\ \ \mathbb{E}(X\mid Y=y)&=\mu_{\sssig X}+\rho_{\sssig XY}\frac{\,\sigma_{\sssig X}\,}{\sigma_{\sssig Y}}(y-\mu_{\sssig Y})
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(Y\mid X=x)=\mu_{\sssig Y}+\rho_{\sssig XY}\frac{\,\sigma_{\sssig Y}\,}{\sigma_{\sssig X}}(x-\mu_{\sssig X})\\[0.45em]
+\text{或是}\quad\mathbb{E}(X\mid Y=y)=\mu_{\sssig X}+\rho_{\sssig XY}\frac{\,\sigma_{\sssig X}\,}{\sigma_{\sssig Y}}(y-\mu_{\sssig Y})
+\end{gathered}
 $$
 
 </div>
@@ -115,10 +115,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile topic-math-follow-before" markdown="1">
 
 $$
-\begin{aligned}
-\beta_0&=\mu_{\sssig Y}-\frac{\sigma_{\sssig XY}}{\sigma^{2}_{\sssig X}}\mu_{\sssig X}=\mu_{\sssig Y}-\rho_{\sssig XY}\frac{\sigma_{\sssig Y}}{\sigma_{\sssig X}}\mu_{\sssig X}\\[0.55em]
-\text{與}\quad\beta_1&=\frac{\sigma_{\sssig XY}}{\sigma^{2}_{\sssig X}}=\rho_{\sssig XY}\frac{\sigma_{\sssig Y}}{\sigma_{\sssig X}}
-\end{aligned}
+\begin{gathered}
+\beta_0=\mu_{\sssig Y}-\frac{\sigma_{\sssig XY}}{\sigma^{2}_{\sssig X}}\mu_{\sssig X}=\mu_{\sssig Y}-\rho_{\sssig XY}\frac{\sigma_{\sssig Y}}{\sigma_{\sssig X}}\mu_{\sssig X}\\[0.55em]
+\text{與}\quad\beta_1=\frac{\sigma_{\sssig XY}}{\sigma^{2}_{\sssig X}}=\rho_{\sssig XY}\frac{\sigma_{\sssig Y}}{\sigma_{\sssig X}}
+\end{gathered}
 $$
 
 </div>
@@ -151,7 +151,7 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-母體線性迴歸式 <span lang="en">(population linear regression equation)</span> 有一些地方需要注意:
+母體線性迴歸式 <span lang="en">(population linear regression equation)</span> 有幾點須注意:
 
 (1) 在 [Theorem 3.8](/lecture-notes/double-expectation-theorem/#thm-regression-function) 中，我們曾稱條件期望值 $\mathbb{E}(Y\mid X=x)$ <span class="text-nowrap">(或 $\mathbb{E}(X\mid Y=y)$)</span> 為 $Y$ 對 $X$ <span class="text-nowrap">(或 $X$ 對 $Y$)</span> 的迴歸函數 <span lang="en">(regression function)</span>。
 {: .topic-paren-item}
@@ -159,11 +159,11 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，若強調其母體性質，我們應稱其為母體迴歸式 <span lang="en">(population regression equation)</span>，但是，讀者應再一次注意到，**條件期望值雖然是條件變數的函數，卻未必一定是「線性的」函數**，只是當這個函數是線性函數時，會具有以上的性質，並且被稱作母體**線性**迴歸式。
+若強調其描述母體分配的特性，條件期望值 $\mathbb{E}(Y\mid X=x)$ 亦稱為母體迴歸式 <span lang="en">(population regression equation)</span>。須特別區辨的是，**條件期望值雖然是條件變數的函數，卻未必一定是「線性的」函數**；唯有當此函數確為線性函數時，方具有 [Theorem 3.21](#thm-popu-reg) 的截距與斜率形式，並特稱為母體**線性**迴歸式。
 
 </div>
 
-(2) 由於線性模型 <span lang="en">(linear model)</span> 的領域時常將 $X$ 視為解釋變數 <span lang="en">(explanatory variable)</span>、將 $Y$ 視為反應變數 <span lang="en">(response variable)</span>，故我們會認為 $\mathbb{E}(Y\mid X=x)$ $=$ $\beta_0+\beta_1x$ 是**正迴歸 <span lang="en">(direct regression)</span>** 而 $\mathbb{E}(X\mid Y=y)$ $=$ $\alpha_0+\alpha_1y$ 是**逆迴歸 <span lang="en">(reverse regression)</span>**，其中:
+(2) 在線性模型 (linear model) 中，常將 $X$ 視為解釋變數 <span lang="en">(explanatory variable)</span>、將 $Y$ 視為反應變數 <span lang="en">(response variable)</span> (不同領域對 $X$ 與 $Y$ 另有不同稱呼，所對應的角色則相同)，並稱 $\mathbb{E}(Y\mid X=x)=\beta\_0+\beta\_1x$ 為**正迴歸 <span lang="en">(direct regression)</span>**、稱 $\mathbb{E}(X\mid Y=y)=\alpha\_0+\alpha\_1y$ 為**逆迴歸 <span lang="en">(reverse regression)</span>**，其中逆迴歸係數為:
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -176,22 +176,15 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\alpha_0&=\mu_{\sssig X}-\frac{\,\sigma_{\sssig XY}\,}{\sigma^{2}_{\sssig Y}}\mu_{\sssig Y}=\mu_{\sssig X}-\rho_{\sssig XY}\frac{\,\sigma_{\sssig X}\,}{\sigma_{\sssig Y}}\mu_{\sssig Y}\\[0.55em]
-\text{與}\quad\alpha_1&=\frac{\,\sigma_{\sssig XY}\,}{\sigma^{2}_{\sssig Y}}=\rho_{\sssig XY}\frac{\,\sigma_{\sssig X}\,}{\sigma_{\sssig Y}}
-\end{aligned}
+\begin{gathered}
+\alpha_0=\mu_{\sssig X}-\frac{\,\sigma_{\sssig XY}\,}{\sigma^{2}_{\sssig Y}}\mu_{\sssig Y}=\mu_{\sssig X}-\rho_{\sssig XY}\frac{\,\sigma_{\sssig X}\,}{\sigma_{\sssig Y}}\mu_{\sssig Y}\\[0.55em]
+\text{與}\quad\alpha_1=\frac{\,\sigma_{\sssig XY}\,}{\sigma^{2}_{\sssig Y}}=\rho_{\sssig XY}\frac{\,\sigma_{\sssig X}\,}{\sigma_{\sssig Y}}
+\end{gathered}
 $$
 
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-在不同領域中，$X$ 與 $Y$ 所對應的角色有很多不同的名字，但通常擔任的角色是相同的。
-
-</div>
-
-並且正逆迴歸有這個性質:
+將正、逆迴歸的斜率相乘可得:
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
@@ -242,27 +235,7 @@ $$
 <div class="topic-box__label">Example 3.46</div>
 
 <div lang="en" markdown="1">
-Suppose that two random variables $X$ and $Y$ satisfy the two regression equations
-
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
-
-$$
-\mathbb{E}(Y\mid X)=30-1.5X\quad\text{and}\quad\mathbb{E}(X\mid Y)=12-0.54Y
-$$
-
-</div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
-
-$$
-\begin{aligned}
-\mathbb{E}(Y\mid X)&=30-1.5X\\[0.55em]
-\text{and}\quad\mathbb{E}(X\mid Y)&=12-0.54Y
-\end{aligned}
-$$
-
-</div>
-
-Determine the absolute value of the correlation coefficient between $X$ and <span class="text-nowrap">$Y$.</span>
+Given the two linear regression equations $\mathbb{E}(Y\mid X)=30-1.5X$ and <span class="text-nowrap">$\mathbb{E}(X\mid Y)=12-0.54Y$,</span> what is the absolute value of the correlation coefficient between $X$ and <span class="text-nowrap">$Y$?</span>
 </div>
 
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
@@ -291,14 +264,14 @@ $$
 <div class="topic-box__label">Example 3.47</div>
 
 <div lang="en" markdown="1">
-Suppose that for people in East Asia the correlation coefficient between the height $X$ and the weight $Y$ equals <span class="text-nowrap">$0.65$,</span> and that
+Assume that the correlation coefficient between height ($X$) and weight ($Y$) for people in East Asia is <span class="text-nowrap">$0.65$,</span> and that
 
 $$
 \mathbb{E}(Y\mid X=x)=22.5+0.25x
 $$
 
 <ol class="topic-list-paren">
-  <li>Evaluate the ratio <span class="text-nowrap">$\frac{\mathrm{Var}(Y)}{\mathrm{Var}(X)}$.</span></li>
+  <li>Find <span class="text-nowrap">$\frac{\,\mathrm{Var}(Y)\,}{\mathrm{Var}(X)}$.</span></li>
   <li>Given that <span class="text-nowrap">$\mathbb{E}(X)=170$,</span> find <span class="text-nowrap">$\mathbb{E}(Y)$.</span></li>
 </ol>
 </div>
@@ -316,8 +289,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile topic-math-follow-before" markdown="1">
 
 $$
+0.25=\rho_{\sssig XY}\frac{\,\sigma_{\sssig Y}\,}{\sigma_{\sssig X}}
+$$
+
+$$
 \begin{aligned}
-0.25&=\rho_{\sssig XY}\frac{\,\sigma_{\sssig Y}\,}{\sigma_{\sssig X}}\\[0.55em]
 \text{故}\quad\frac{\,\sigma_{\sssig Y}\,}{\sigma_{\sssig X}}&=\frac{0.25}{\,0.65\,}=\frac{5}{\,13\,}\\[0.4em]
 &\qquad\therefore\, \frac{\,\mathrm{Var}(Y)\,}{\mathrm{Var}(X)}=\frac{5^{2}}{\,13^{2}\,}=\frac{25}{\,169\,}
 \end{aligned}
@@ -356,7 +332,7 @@ $$
 <div class="topic-box__label">Example 3.48</div>
 
 <div lang="en" markdown="1">
-Suppose that the random variables $X$ and $Y$ have the joint pmf
+Let $(X,Y)$ have joint pmf
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -380,7 +356,7 @@ $$
 <ol class="topic-list-paren">
   <li>Find <span class="text-nowrap">$\mathbb{E}(X\mid Y=y)$.</span></li>
   <li>Find <span class="text-nowrap">$\mathbb{E}(Y\mid X=x)$.</span></li>
-  <li>Determine the correlation coefficient <span class="text-nowrap">$\rho_{\sssig XY}$.</span></li>
+  <li>Find the correlation coefficient <span class="text-nowrap">$\rho_{\sssig XY}$.</span></li>
 </ol>
 </div>
 
@@ -530,7 +506,7 @@ $$
 
 三道例題都用到這個結構。[Example 3.46](#ex-two-regression-lines) 直接把兩條迴歸式的斜率相乘，開根號即得相關係數的絕對值為 <span class="text-nowrap">$0.9$。</span>[Example 3.47](#ex-height-weight-regression) 由斜率 $0.25$ 與相關係數 $0.65$ 反推兩個標準差的比值，進而得到兩個變數變異數的比值，第二小題則直接由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)求得 $\mathbb{E}(Y)$ 的值。[Example 3.48](#ex-joint-pdf-regression-line) 由聯合 pmf 依序求出兩個邊際 pmf 與兩個條件 pmf，兩個條件期望值都是條件變數的線性函數且斜率同為 <span class="text-nowrap">$\frac{1}{2}$，</span>兩者相乘再開根號即得 $\rho_{\sssig XY}$ 的值。
 
-[下一篇](/lecture-notes/many-to-many-transformations/)離開共變異數與相關係數的主題，開始處理[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的函數轉換，先介紹多對多的情形。
+[下一篇](/lecture-notes/many-to-many-transformations/)離開共變異數與相關係數，開始處理[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的函數轉換，先介紹多對多的情形。
 
 ## 參考文獻與延伸閱讀
 

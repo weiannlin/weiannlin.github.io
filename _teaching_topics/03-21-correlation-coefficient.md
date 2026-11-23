@@ -10,7 +10,7 @@ order: 321
 permalink: /lecture-notes/correlation-coefficient/
 date: 2026-08-13
 published: false
-excerpt: "共變異數的正負號說明了兩個變數共同變化的方向，卻沒有範圍限制，因而看不出相關程度的上限，也無法比較兩組不同的二元分配何者的相關程度比較高。相關係數把 $X$ 與 $Y$ 各自的變異程度先行消除，形成一個標準化的形式，所衡量的是線性相關的強度，也就是 $X$ 與 $Y$ 之間的關係有多接近直線，其值恆落在 $-1$ 與 $1$ 之間。由定義可以整理出 $\\rho_{\\sssig XY}$ 等於共變異數除以兩個標準差相乘的簡易表示式，並依取值把相關程度分成完全正相關、正相關、零相關、負相關與完全負相關五類；零相關只表示沒有直線關係，二次曲線那樣明顯的關係仍然可能是零相關。本篇最後證明相關係數的六款性質，其中範圍落在 $-1$ 與 $1$ 之間這一款用到隨機變數版本的柯西-舒瓦茲不等式，並說明相關係數的幾何意義就是兩個隨機變數在變數空間中夾角的餘弦值。"
+excerpt: "相關係數 $\\rho_{\\sssig XY}=\\operatorname{Cov}(X,Y)/(\\sigma_{\\sssig X}\\sigma_{\\sssig Y})$ 消除了變數單位與尺度，衡量兩隨機變數間線性相關的強度與方向。本篇運用隨機變數版柯西-舒瓦茲不等式證明 $-1\\leqslant\\rho_{\\sssig XY}\\leqslant 1$ 恆成立，並討論等號成立的充要條件與幾何夾角意義。"
 ---
 
 [上一篇](/lecture-notes/covariance-matrix/)把[共變異數](/lecture-notes/covariance/#def-covariance)推廣到[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)之上，以 [Definition 3.17](/lecture-notes/covariance-matrix/#def-covar-matrix) 的[共變異數矩陣](/lecture-notes/covariance-matrix/#def-covar-matrix)收納各個分量兩兩之間的共變異數，並整理了常數向量與矩陣作用在隨機向量上時，[期望值](/lecture-notes/expectation/#def-expectation)與共變異數矩陣的算法。
@@ -48,13 +48,13 @@ $$
 
 相關係數有一些地方需要注意:
 
-(1) 相關係數與共變異數相當類似，只是相關係數額外將 $X$ 與 $Y$ 的變異程度給消除掉，形成一個**標準化 <span lang="en">(standardized)</span>** 的形式，如此便限制了相關係數的範圍必須在 $1$ 與 $-1$ 之間，稍後我們會詳述此性質。
+(1) 相關係數在共變異數的基礎上，進一步除以各自的標準差以消除 $X$ 與 $Y$ 的變異尺度，形成**標準化 <span lang="en">(standardized)</span>** 的無單位量數，使其取值恆介於 $-1$ 與 $1$ 之間，後文將詳述此性質。
 {: .topic-paren-item}
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，$\frac{X-\mu_{\sssig X}}{\sigma_{\sssig X}}$ 與 $\frac{Y-\mu_{\sssig Y}}{\sigma_{\sssig Y}}$ 即是對 $X$ 與 $Y$ 標準化，而標準化隨機變數具有期望值是 $0$ 且變異數是 $1$ 的特色，且上述定義可改為
+式中的 $\frac{X-\mu\_{\sssig X}}{\sigma\_{\sssig X}}$ 與 $\frac{Y-\mu\_{\sssig Y}}{\sigma\_{\sssig Y}}$ 分別為 $X$ 與 $Y$ 的標準化隨機變數，各自的期望值皆為 <span class="text-nowrap">$0$、</span>變異數皆為 <span class="text-nowrap">$1$，</span>故相關係數亦能直觀地寫成兩標準化變數的共變異數
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -73,14 +73,12 @@ $$
 
 </div>
 
-這個寫法更具直觀意義。
-
 </div>
 
 (2) 相關係數所衡量的相關性，是指線性相關 <span lang="en">(linear correlation)</span> 的強度，換句話說就是 **$X$ 與 $Y$ 之間的關係有多接近直線**。
 {: .topic-paren-item}
 
-線性相關程度，是指相關係數的數值 (即 <span class="text-nowrap">$\lvert\rho_{\sssig XY}\rvert$)，</span>其值越大 (表示 $\rho_{\sssig XY}$ 越接近 $1$ 或 <span class="text-nowrap">$-1$)，</span>則觀察值的散佈情形越接近一條直線；反之，其值越小 (越接近 <span class="text-nowrap">$0$)，</span>則越不具直線關係。
+線性相關程度，是指相關係數的數值 (即 <span class="text-nowrap">$\lvert\rho_{\sssig XY}\rvert$)，</span>其值越大 (表示 $\rho_{\sssig XY}$ 越接近 $1$ 或 <span class="text-nowrap">$-1$)，</span>則觀察值的散佈情形越接近一條直線；反之，其值越小 (越接近 <span class="text-nowrap">$0$)，</span>則散佈情形越不具直線關係。
 {: .topic-paren-cont}
 
 下圖是 $\rho_{\sssig XY}=0.6$ 與 $\rho_{\sssig XY}=0.99$ 的聯合分配抽取樣本形成的散佈圖 <span lang="en">(scatter plot)</span>:
@@ -91,7 +89,7 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 3.18.</span> 左右兩個面板共用同一組座標範圍與同一個比例尺，各畫一批樣本的散佈，並附同一條斜率為正的參考直線。左面板所標的 $\rho_{\sssig XY}$ 較小，點散得開，離參考直線遠的不少；右面板所標的 <span class="text-nowrap">$\rho_{\sssig XY}$</span> 接近 <span class="text-nowrap">$1$，</span>點幾乎都貼著參考直線排成一條窄帶。<span class="text-nowrap">$\lvert\rho_{\sssig XY}\rvert$</span> 越大，點的散佈就越接近一條直線，這正是相關係數所衡量的線性相關強度。</figcaption>
 </figure>
 
-上面二張圖中，左圖是由相關係數 $0.6$ 的聯合分配所抽出來的，而右圖是由相關係數高達 $0.99$ 的聯合分配中所抽出來的，其散佈情況相當接近一條斜直線。
+上圖左側抽自相關係數為 $0.6$ 的聯合分配，右側則抽自相關係數達 $0.99$ 的聯合分配，可見後者樣本點緊密排列於斜直線附近。
 {: .topic-paren-cont}
 
 (3) 由相關係數的定義，我們可以得到一個比較簡易的表示式，即
@@ -118,17 +116,17 @@ $$
 
 </div>
 
-(4) 相關係數與共變異數相同之處在於，相關係數的正負號分別對應了正相關及負相關，也對應到上圖中直線斜率的符號；而若相關係數為 $0$ 則代表零相關。但是讀者應特別注意一點，雖然相關係數的符號與斜率的符號會相同，但**相關係數的數值大小與斜率的數值大小沒有關係**。
+(4) 與共變異數相同，相關係數的正負號對應正相關與負相關 (亦對應上圖參考直線斜率的正負號)，為 $0$ 則代表零相關。但須注意，**相關係數的數值大小與直線斜率的數值大小沒有關係**。
 {: .topic-paren-item}
 
-(5) 相關係數與共變異數最大的不同在有範圍限制，因此我們可以看出相關程度的上限，也能夠以此比較兩組不同的二元分配間，哪一組的相關程度比較高，這都是共變異數所做不到的地方，也正因此，我們可以將其分類如下:
+(5) 相關係數與共變異數最大的不同在有範圍限制，因此我們可以看出相關程度的上限，也能以此比較兩組不同的二元分配間，哪一組的相關程度較高，這都是共變異數做不到的地方，也正因此，我們可將其分類如下:
 {: .topic-paren-item}
 
-- 若 <span class="text-nowrap">$\rho_{\sssig XY}=1$，</span>則稱 $X$ 與 $Y$ **完全正相關 <span lang="en">(perfect positive correlated)</span>**
-- 若 <span class="text-nowrap">$0<\rho_{\sssig XY}<1$，</span>則稱 $X$ 與 $Y$ **正相關 <span lang="en">(positive correlated)</span>**
+- 若 <span class="text-nowrap">$\rho_{\sssig XY}=1$，</span>則稱 $X$ 與 $Y$ **完全正相關 <span lang="en">(perfectly positively correlated)</span>**
+- 若 <span class="text-nowrap">$0<\rho_{\sssig XY}<1$，</span>則稱 $X$ 與 $Y$ **正相關 <span lang="en">(positively correlated)</span>**
 - 若 <span class="text-nowrap">$\rho_{\sssig XY}=0$，</span>則稱 $X$ 與 $Y$ **零相關 <span lang="en">(uncorrelated)</span>**
-- 若 <span class="text-nowrap">$-1<\rho_{\sssig XY}<0$，</span>則稱 $X$ 與 $Y$ **負相關 <span lang="en">(negative correlated)</span>**
-- 若 <span class="text-nowrap">$\rho_{\sssig XY}=-1$，</span>則稱 $X$ 與 $Y$ **完全負相關 <span lang="en">(perfect negative correlated)</span>**
+- 若 <span class="text-nowrap">$-1<\rho_{\sssig XY}<0$，</span>則稱 $X$ 與 $Y$ **負相關 <span lang="en">(negatively correlated)</span>**
+- 若 <span class="text-nowrap">$\rho_{\sssig XY}=-1$，</span>則稱 $X$ 與 $Y$ **完全負相關 <span lang="en">(perfectly negatively correlated)</span>**
 
 (6) 下面我們便將以上的五種分類情況圖示如下:
 {: .topic-paren-item}
@@ -138,12 +136,12 @@ $$
   <figcaption><span class="topic-figure__label">Fig. 3.19.</span> 六個面板排成三列，每列兩個，畫出五種相關型態，最後一個面板另外畫零相關卻不獨立的情形。第一列左邊是完全正相關，點全落在同一條上升的直線上；右邊是正相關，點散成一團沿上升方向拉長的雲。第二列的方向相反，左邊是完全負相關，右邊是負相關。第三列左邊是零相關，點沒有方向可言。第三列右邊的點排成一條開口向上的二次曲線，$X$ 與 $Y$ 顯然有關係，<span class="text-nowrap">$\rho_{\sssig XY}$</span> 卻與左邊一樣是 <span class="text-nowrap">$0$，</span>因為相關係數只衡量線性的那一部分。前四個面板各附一條與該型態同號的參考直線，後兩個面板沒有參考直線。</figcaption>
 </figure>
 
-讀者或許好奇，最後一張圖中，$X$ 與 $Y$ 是二次函數的關係應是非常明顯的，但為何這樣還會說是零相關呢？這個原因在於，**相關性只用來衡量線性相關**。
+在 [Fig. 3.19](#fig-correlation-types-scatter) 右下角的面板中，$X$ 與 $Y$ 雖呈現明顯的二次函數關係，相關係數卻仍為 <span class="text-nowrap">$0$，</span>原因在於**相關性只用來衡量線性相關**。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-一個稍嫌不嚴謹但相對簡單的想法是，這裡的相關性指的是 $X$ 與 $Y$ 之間有沒有「$X$ 變大則 $Y$ 跟著變大」或「$X$ 變小則 $Y$ 跟著變小」的趨勢，而二次曲線在極值的左右兩側成長的趨勢正好相反，這會導致整體而言，$X$ 與 $Y$ 的相關趨勢互相抵銷而變為零相關。
+直觀而言，線性相關衡量的是整體是否具有「$X$ 增大時 $Y$ 隨之增大 (或減小)」的一致趨勢。二次曲線在極值點左右兩側的增減方向正好相反，兩側的相關趨勢在整體平均下互相抵銷，故相關係數為 <span class="text-nowrap">$0$。</span>
 
 </div>
 
@@ -247,13 +245,6 @@ $$
 
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這個性質顯示，自己與自己的相關性，永恆是 <span class="text-nowrap">$1$。</span>
-
-</div>
-
 (4)
 {: .topic-paren-item}
 
@@ -274,10 +265,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile topic-math-follow-before" markdown="1">
 
 $$
-\begin{aligned}
-\mathrm{Var}(aX+c)&=a^{2}\,\mathrm{Var}(X),\\[0.45em]
-\mathrm{Var}(bY+d)&=b^{2}\,\mathrm{Var}(Y)
-\end{aligned}
+\begin{gathered}
+\mathrm{Var}(aX+c)=a^{2}\,\mathrm{Var}(X),\\[0.45em]
+\mathrm{Var}(bY+d)=b^{2}\,\mathrm{Var}(Y)
+\end{gathered}
 $$
 
 </div>
@@ -296,7 +287,7 @@ $$
 
 $$
 \begin{aligned}
-&\Longrightarrow\ \operatorname{Corr}\bigl(aX+c,\,bY+d\bigr)\\[0.45em]
+\Longrightarrow\ &\operatorname{Corr}\bigl(aX+c,\,bY+d\bigr)\\[0.45em]
 &=\frac{\operatorname{Cov}\bigl(aX+c,\,bY+d\bigr)}{\sqrt{\mathrm{Var}(aX+c)\,\mathrm{Var}(bY+d)}}\\[0.45em]
 &=\frac{ab\,\operatorname{Cov}(X,Y)}{\lvert ab\rvert\sqrt{\mathrm{Var}(X)\,\mathrm{Var}(Y)}}
 \end{aligned}
@@ -339,9 +330,9 @@ $$
 
 $$
 \begin{aligned}
-&\Longrightarrow\ \operatorname{Corr}\bigl(aX+c,\,bY+d\bigr)\\[0.45em]
+\Longrightarrow\ &\operatorname{Corr}\bigl(aX+c,\,bY+d\bigr)\\[0.45em]
 &=\left\lbrace
-\begin{array}{c@{\quad}l}
+\begin{array}{c@{}l}
 \operatorname{Corr}(X,Y), & \text{if } ab>0\\[0.6em]
 -\operatorname{Corr}(X,Y), & \text{if } ab<0
 \end{array}
@@ -377,17 +368,10 @@ $$
 
 $$
 \begin{aligned}
-&\Longrightarrow\ \operatorname{Corr}(X,Y)=\frac{\operatorname{Cov}(X,Y)}{\sqrt{\mathrm{Var}(X)\,\mathrm{Var}(Y)}}\\[0.45em]
+\Longrightarrow\ \operatorname{Corr}(X,Y)&=\frac{\operatorname{Cov}(X,Y)}{\sqrt{\mathrm{Var}(X)\,\mathrm{Var}(Y)}}\\[0.45em]
 &=\frac{\operatorname{Cov}(Y,X)}{\sqrt{\mathrm{Var}(Y)\,\mathrm{Var}(X)}}=\operatorname{Corr}(Y,X)
 \end{aligned}
 $$
-
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-相關性並沒有可伸縮的性質，不論是平方或是絕對值皆然；但相關性的方向卻會受係數的影響，這是因為相關係數在定義時，已經將單位尺度消除，故即使對隨機變數伸縮，相關係數也不會受到伸縮影響，僅需要考慮其方向 (即符號)。
 
 </div>
 
@@ -426,10 +410,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{aligned}
-\bigl(\because(U+t\,V)^{2}&\geqslant0\\[0.45em]
-&\!\!\Longrightarrow\ \mathbb{E}\bigl[(U+tV)^{2}\bigr]\geqslant0\bigr)
-\end{aligned}
+\bigl(\because\ (U+t\,V)^{2}\geqslant0\ \Longrightarrow\ \mathbb{E}\bigl[(U+tV)^{2}\bigr]\geqslant0\bigr)
 $$
 
 </div>
@@ -437,8 +418,8 @@ $$
 
 $$
 \begin{aligned}
-\bigl(\because(U+t\,V)^{2}&\geqslant0\\[0.2em]
-&\!\!\Longrightarrow\ \mathbb{E}\bigl[(U+tV)^{2}\bigr]\geqslant0\bigr)
+&\bigl(\because\ (U+t\,V)^{2}\geqslant0\\[0.25em]
+&\qquad\Longrightarrow\ \mathbb{E}\bigl[(U+tV)^{2}\bigr]\geqslant0\bigr)
 \end{aligned}
 $$
 
@@ -447,64 +428,22 @@ $$
 若將 $\mathbb{E}\bigl[(U+tV)^{2}\bigr]$ $=$ $\mathbb{E}\bigl(U^{2}\bigr)$ $+\,2\,\mathbb{E}(UV)\,t$ $+\,\mathbb{E}\bigl(V^{2}\bigr)\,t^{2}$ 視為 $t$ 的二次式，則可知
 {: .topic-paren-cont}
 
-$$
-\begin{aligned}
-&\Longrightarrow\ \bigl[2\,\mathbb{E}(UV)\bigr]^{2}-4\,\mathbb{E}\bigl(U^{2}\bigr)\mathbb{E}\bigl(V^{2}\bigr)\leqslant0\\[0.45em]
-&\Longrightarrow\ \bigl[\mathbb{E}(UV)\bigr]^{2}\leqslant\mathbb{E}\bigl(U^{2}\bigr)\mathbb{E}\bigl(V^{2}\bigr)
-\end{aligned}
-$$
-
-此不等式即隨機變數版本的**柯西-舒瓦茲不等式 <span lang="en">(Cauchy-Schwarz inequality)</span>**。
-{: .topic-paren-cont}
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-**柯西-舒瓦茲不等式**的一般形式是指以下的不等式: 若令 $U_1, \ldots, U_n,$ $V_1, \ldots, V_n$ 為實數，則
-
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+<div class="topic-math-follow-before" markdown="1">
 
 $$
-\biggl(\sum_{i=1}^{n}U_iV_i\biggr)^{2}\leqslant\biggl(\sum_{i=1}^{n}U_i^{2}\biggr)\biggl(\sum_{i=1}^{n}V_i^{2}\biggr)
+\bigl[2\,\mathbb{E}(UV)\bigr]^{2}-4\,\mathbb{E}\bigl(U^{2}\bigr)\mathbb{E}\bigl(V^{2}\bigr)\leqslant0
 $$
 
 </div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+<div class="topic-math-follow" markdown="1">
 
 $$
-\begin{aligned}
-\biggl(&\sum_{i=1}^{n}U_iV_i\biggr)^{2}\\[0.45em]
-&\leqslant\biggl(\sum_{i=1}^{n}U_i^{2}\biggr)\biggl(\sum_{i=1}^{n}V_i^{2}\biggr)
-\end{aligned}
+\Longrightarrow\ \bigl[\mathbb{E}(UV)\bigr]^{2}\leqslant\mathbb{E}\bigl(U^{2}\bigr)\mathbb{E}\bigl(V^{2}\bigr)
 $$
 
 </div>
 
-其中，將上式改寫為
-
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
-
-$$
-\biggl(\frac{1}{\,n\,}\sum_{i=1}^{n}U_iV_i\biggr)^{2}\leqslant\biggl(\frac{1}{\,n\,}\sum_{i=1}^{n}U_i^{2}\biggr)\biggl(\frac{1}{\,n\,}\sum_{i=1}^{n}V_i^{2}\biggr)
-$$
-
-</div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
-
-$$
-\begin{aligned}
-\biggl(&\frac{1}{\,n\,}\sum_{i=1}^{n}U_iV_i\biggr)^{2}\\[0.45em]
-&\leqslant\biggl(\frac{1}{\,n\,}\sum_{i=1}^{n}U_i^{2}\biggr)\biggl(\frac{1}{\,n\,}\sum_{i=1}^{n}V_i^{2}\biggr)
-\end{aligned}
-$$
-
-</div>
-
-則可與期望值類比，其與隨機變數版本的關聯即變得很清楚且容易理解。
-
-</div>
-
-由上述結果可以得到
+此不等式即隨機變數版本的**柯西-舒瓦茲不等式 <span lang="en">(Cauchy-Schwarz inequality)</span>**。代回原變數可得
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -536,10 +475,54 @@ $$
 {: .topic-paren-cont}
 </div>
 
+[Theorem 3.19](#thm-corr-proper) 的前五款性質皆可由共變異數的性質除以標準差之積而得。其中第 (3) 款指出變數與自身的相關係數恆為 <span class="text-nowrap">$1$；</span>第 (4) 款則顯示，由於相關係數在定義時已消除單位尺度，對隨機變數作非零常數伸縮並不會改變相關係數的絕對值大小 (不具平方或絕對值伸縮性)，僅須考慮係數乘積 $ab$ 的正負號對相關方向的影響。
+
+第 (6) 款證明中所用的不等式與實數版本的**柯西-舒瓦茲不等式**相對應。對任意實數 $U\_1, \ldots, U\_n$ 與 <span class="text-nowrap">$V_1, \ldots, V_n$，</span>實數版柯西-舒瓦茲不等式為
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\biggl(\sum_{i=1}^{n}U_iV_i\biggr)^{2}\leqslant\biggl(\sum_{i=1}^{n}U_i^{2}\biggr)\biggl(\sum_{i=1}^{n}V_i^{2}\biggr)
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\biggl(&\sum_{i=1}^{n}U_iV_i\biggr)^{2}\\[0.45em]
+&\leqslant\biggl(\sum_{i=1}^{n}U_i^{2}\biggr)\biggl(\sum_{i=1}^{n}V_i^{2}\biggr)
+\end{aligned}
+$$
+
+</div>
+
+將上式兩側同除以 $n^{2}$ 改寫為算術平均的形式
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\biggl(\frac{1}{\,n\,}\sum_{i=1}^{n}U_iV_i\biggr)^{2}\leqslant\biggl(\frac{1}{\,n\,}\sum_{i=1}^{n}U_i^{2}\biggr)\biggl(\frac{1}{\,n\,}\sum_{i=1}^{n}V_i^{2}\biggr)
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+\biggl(&\frac{1}{\,n\,}\sum_{i=1}^{n}U_iV_i\biggr)^{2}\\[0.45em]
+&\leqslant\biggl(\frac{1}{\,n\,}\sum_{i=1}^{n}U_i^{2}\biggr)\biggl(\frac{1}{\,n\,}\sum_{i=1}^{n}V_i^{2}\biggr)
+\end{aligned}
+$$
+
+</div>
+
+即可與隨機變數期望值版本直接對照。
+
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在上述證明中，如果令存在唯一的 <span class="text-nowrap">$t\in\mathbb{R}$，</span>使得
+在上述第 (6) 款的證明中，若存在唯一的 <span class="text-nowrap">$t\in\mathbb{R}$，</span>使得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -559,11 +542,9 @@ $$
 
 </div>
 
-則透過二次式的判別式，我們有 $\bigl[\mathbb{E}(UV)\bigr]^{2}$ $=$ $\mathbb{E}\bigl(U^{2}\bigr)\mathbb{E}\bigl(V^{2}\bigr)$ 的結論，此即 <span class="text-nowrap">$\rho_{\sssig XY}^{2}=1$。</span>
+則二次式的判別式為 <span class="text-nowrap">$0$，</span>即得 $\bigl[\mathbb{E}(UV)\bigr]^{2}=\mathbb{E}\bigl(U^{2}\bigr)\mathbb{E}\bigl(V^{2}\bigr)$ 的結論，對應 <span class="text-nowrap">$\rho_{\sssig XY}^{2}=1$。</span>另一方面，對該實數 <span class="text-nowrap">$t$，</span>非負隨機變數 $(U+tV)^{2}$ 的期望值為 <span class="text-nowrap">$0$，</span>故必有 <span class="text-nowrap">$\mathbb{P}(U+tV=0)=1$，</span>表示 $(U,V)$ (進而 $(X,Y)$) 的觀察值落在同一條直線上的機率為 <span class="text-nowrap">$1$，</span>符合 $\rho\_{\sssig XY}^{2}=1$ 的結論。
 
-另一方面，<span class="text-nowrap">$\forall t\in\mathbb{R}$，</span>$U+tV$ 皆為一隨機變數，故由 $\mathbb{E}\bigl[(U+tV)^{2}\bigr]$ <span class="text-nowrap">$=0$，</span>$\forall t\in\mathbb{R}$ 可知 $\mathbb{P}(U+tV=0)$ <span class="text-nowrap">$=1$，</span>此即對任意數對 <span class="text-nowrap">$(U,V)$，</span>其觀察值在一直線上的機率為 <span class="text-nowrap">$1$，</span>符合 $\rho_{\sssig XY}^{2}=1$ 之結論。
-
-一個簡單的例子是，令某分配為
+舉一簡單離散分配為例，設
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -575,10 +556,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{P}\bigl((X,Y)=(a_i,b_i)\bigr)&=\frac{1}{\,n\,},\\[0.45em]
-i&=1,\ldots,n
-\end{aligned}
+\begin{gathered}
+\mathbb{P}\bigl((X,Y)=(a_i,b_i)\bigr)=\frac{1}{\,n\,},\\[0.45em]
+i=1,\ldots,n
+\end{gathered}
 $$
 
 </div>
@@ -621,28 +602,19 @@ $$
 並且等號成立於
 
 $$
-a_i=t\,b_i,\quad i=1,\ldots,n,\ \exists t
+a_i=t\,b_i,\quad i=1,\ldots,n,\ \exists\,t
 $$
 
 </div>
 
 ## 相關係數的幾何意義
 
-事實上，相關係數另有幾何意義，即兩個隨機變數在變數空間中之「夾角的餘弦值」。
-
-我們時常使用兩個向量夾角的餘弦值，取代直接說明其角度，並且當餘弦值為 $1$ 時，表示該二個向量夾角為 <span class="text-nowrap">$0$，</span>即「同向」；反之，餘弦值為 $-1$ 時則表示該二向量夾角為 <span class="text-nowrap">$\pi$，</span>即「反向」；又當餘弦值為 $0$ 時，表示該二個向量「垂直」，呼應了相關係數為 $1$ 代表完全正相關、相關係數為 $-1$ 代表完全負相關、而相關係數為 $0$ 則代表零相關的意義。
+相關係數在幾何上可詮釋為兩個中心化隨機變數在變數空間中「夾角的餘弦值」。當餘弦值為 $1$ 時，表示兩向量夾角為 $0$ (同向)，對應完全正相關；餘弦值為 $-1$ 時，表示兩向量夾角為 $\pi$ (反向)，對應完全負相關；餘弦值為 $0$ 時，表示兩向量「垂直」，對應零相關。在線性代數、線性模型與實驗設計等領域中，亦常將零相關或獨立與向量的垂直 (或譯直交 <span lang="en">(orthogonal)</span>) 互相連結。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這些幾何意義不只在此處互相呼應，在線性代數、線性模型或是實驗設計的領域，我們亦常常把獨立的概念與垂直 (或譯直交 <span lang="en">(orthogonal)</span>) 的概念互相連結。
-
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這層意義在剛剛的簡例中更容易明白，我們可令 $\boldsymbol{a}$ $=$ $[a_1,\ldots,a_n]^{\mathrm{T}}$ 與 $\boldsymbol{b}$ $=$ <span class="text-nowrap">$[b_1,\ldots,b_n]^{\mathrm{T}}$，</span>則可得到
+延續上一個離散均勻分配的例子，令 $\boldsymbol{a}=[a\_1,\ldots,a\_n]^{\mathrm{T}}$ 與 <span class="text-nowrap">$\boldsymbol{b}=[b_1,\ldots,b_n]^{\mathrm{T}}$，</span>由實數內積的柯西-舒瓦茲不等式可得
 
 $$
 \bigl(\lVert\boldsymbol{a}\rVert^{2}\,\lVert\boldsymbol{b}\rVert^{2}\bigr)\geqslant\bigl(\,\boldsymbol{a}^{\mathrm{T}}\,\boldsymbol{b}\,\bigr)^{2}
@@ -657,10 +629,10 @@ $$
 並且等號成立於
 
 $$
-a_i=t\,b_i,\quad i=1,\ldots,n,\ \exists t
+a_i=t\,b_i,\quad i=1,\ldots,n,\ \exists\,t
 $$
 
-然讀者或許有些疑惑，這上述的 $\cos(\boldsymbol{a},\boldsymbol{b})$ 分明是對應到 $\frac{\mathbb{E}(XY)}{\sqrt{\mathbb{E}(X^{2})\,\mathbb{E}(Y^{2})}}$，如何能說是 $\rho_{\sssig XY}$ 呢？這其實是利用了向量平移不改變夾角的原理，才使得二者相等；而這一點亦可呼應相關係數的平移不變。
+注意上式的 $\cos(\boldsymbol{a},\boldsymbol{b})$ 對應的是未中心化的 $\frac{\mathbb{E}(XY)}{\sqrt{\mathbb{E}(X^{2})\,\mathbb{E}(Y^{2})}}$ 這一比值；若先將兩變數減去各自的期望值作中心化平移 (當 $\mu\_{\sssig X}=\mu\_{\sssig Y}=0$ 時兩式即相等)，則中心化向量的夾角餘弦值恰為 <span class="text-nowrap">$\rho_{\sssig XY}$，</span>且對原變數加上任意常數平移均不改變中心化向量的夾角，也呼應相關係數的平移不變性。
 
 </div>
 
@@ -672,7 +644,7 @@ $$
 
 [Theorem 3.19](#thm-corr-proper) 的六款性質，前五款都由[共變異數的對應性質](/lecture-notes/covariance/#thm-covar-proper)除以標準差之積而得，其中第四款顯示對 $X$ 與 $Y$ 作伸縮平移之後，相關係數至多只改變正負號，改變與否由 $\operatorname{sgn}(ab)$ 決定，這正是單位尺度已在定義時被消除的結果。第六款的範圍則另有一套作法。把兩個標準化變數的線性組合平方之後取期望值，得到 $t$ 的一個非負二次式，再由判別式非正推出隨機變數版本的柯西-舒瓦茲不等式，最後代回標準化變數即得 $-1\leqslant\rho_{\sssig XY}\leqslant1$ 這個範圍。等號成立的情形對應到觀察值全部落在一條直線上的機率為 $1$ 這件事。
 
-相關係數另有幾何意義，即兩個隨機變數在變數空間中夾角的餘弦值: 餘弦值為 $1$ 表示同向、為 $-1$ 表示反向、為 $0$ 則表示垂直，恰好呼應完全正相關、完全負相關與零相關。這個餘弦值是由沒有先減去期望值的動差算出來的，之所以仍然等於 <span class="text-nowrap">$\rho_{\sssig XY}$，</span>靠的是向量平移不改變夾角這一點，這也再一次呼應相關係數的平移不變。
+相關係數另有幾何意義，即兩個中心化隨機變數在變數空間中夾角的餘弦值，餘弦值為 $1$ 表示同向、為 $-1$ 表示反向、為 $0$ 則表示垂直，恰好呼應完全正相關、完全負相關與零相關。若未先減去期望值，內積餘弦對應的僅是 $\frac{\mathbb{E}(XY)}{\sqrt{\mathbb{E}(X^{2})\,\mathbb{E}(Y^{2})}}$ 這一動差比值；須先作中心化平移使兩變數期望值為 <span class="text-nowrap">$0$，</span>所得夾角餘弦值才等於 <span class="text-nowrap">$\rho_{\sssig XY}$，</span>且對原變數加上任意常數平移均不改變中心化後的向量夾角，這也再一次呼應相關係數的平移不變性。
 
 [下一篇](/lecture-notes/correlation-properties-and-matrix/)接著證明變異數-共變異數不等式，並把相關係數的想法推廣到隨機向量上，成為[相關矩陣](/lecture-notes/correlation-properties-and-matrix/#def-corr-matrix)。
 

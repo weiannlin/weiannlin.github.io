@@ -10,7 +10,7 @@ order: 319
 permalink: /lecture-notes/variance-of-linear-combination/
 date: 2026-08-13
 published: false
-excerpt: "共變異數的性質裡，有一款說一個變數與自己的共變異數就是變異數，另一款說常數的伸縮會原封不動地反映在共變異數上；把這兩款整合起來，便得到一組隨機變數線性組合的變異數。它等於各項變異數的加權和，再加上兩倍的各對共變異數之和。當各項彼此獨立或零相關時，所有的共變異數都是 $0$，式子簡化為 $\\mathrm{Var}\\bigl(\\sum a_iX_i\\bigr)=\\sum a_i^{2}\\mathrm{Var}(X_i)$，也是 $\\mathrm{Var}(\\overline{X})=\\sigma_{\\sssig X}^{2}/n$ 的由來。本篇的兩道例題所處理的加總，各項都不是彼此獨立的: 一道給定任兩項同時取值為 $1$ 的機率，另一道是有限母體之下的取後不放回抽樣，其期望值與變異數很像二項分配，只差了一個有限母體校正因子。"
+excerpt: "一組隨機變數線性組合的變異數，等於各項變異數的加權和加上兩倍的成對共變異數加權和；當各項獨立或零相關時，交叉項全數歸零。本篇證明此通式，並以相依指標變數之和與有限母體不放回抽樣為例演練。"
 ---
 
 [上一篇](/lecture-notes/covariance/)以 [Definition 3.16](/lecture-notes/covariance/#def-covariance) 給出[共變異數](/lecture-notes/covariance/#def-covariance)，並以 [Theorem 3.15](/lecture-notes/covariance/#thm-covar-proper) 列出它的六款性質，其中第 (3) 款說一個變數與自己的共變異數就是變異數，第 (4) 款說常數的伸縮會原封不動地反映在共變異數上。
@@ -78,22 +78,13 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-讀者應特別注意，當 $X_1, \ldots, X_n$ 彼此皆[獨立](/lecture-notes/independent-random-variables/#def-indep-r-v)或零相關的時候，[上述定理](#thm-covar-proper2)可以簡化成
+當 $X\_1, \ldots, X\_n$ 兩兩零相關 (特別是彼此[獨立](/lecture-notes/independent-random-variables/#def-indep-r-v)) 時，對所有 $i\neq j$ 皆有 <span class="text-nowrap">$\operatorname{Cov}(X_i,X_j)=0$，</span>[Theorem 3.16](#thm-covar-proper2) 隨即簡化為
 
 $$
 \mathrm{Var}\Bigl(\sum_{i=1}^{n}a_i\,X_i\Bigr)=\sum_{i=1}^{n}a_i^{2}\,\mathrm{Var}(X_i)
 $$
 
-因為 <span class="text-nowrap">$\operatorname{Cov}(X_i,X_j)=0,\ \forall i\neq j$，</span>並且這其實就是變異數的[**平方伸縮性**](/lecture-notes/variance/#thm-variance-properties)的推廣。
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這個特例就是在 [Theorem 3.12](/lecture-notes/wald-identity-gamblers-ruin/#thm-wald-identity) 的沃德等式第二式中，$\mathrm{Var}(S_{\sssig N}\mid N=n)$ $=$ $n\sigma_{\sssig X}^{2}$ 的原因。
-
-</div>
-
-而此特例又能衍生出一個非常重要的結果，即
+此式為單變數變異數[**平方伸縮性**](/lecture-notes/variance/#thm-variance-properties)的多變數推廣；前文證明[沃德等式](/lecture-notes/wald-identity-gamblers-ruin/#thm-wald-identity)第二式時所用到的 $\mathrm{Var}(S\_{\sssig N}\mid N=n)=n\sigma\_{\sssig X}^{2}$ 這一關係，即為令 $a\_1=\cdots=a\_n=1$ 且各項同變異數的特例。另一方面，若取 $a\_1=\cdots=a\_n=1/n$ 且設各項具有共同變異數 <span class="text-nowrap">$\sigma_{\sssig X}^{2}$，</span>則可得樣本平均數的變異數公式
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -120,8 +111,8 @@ $$
 
 <div lang="en" markdown="1">
 <ol class="topic-list-paren">
-  <li>Suppose that $X_1,\ldots,X_n$ are random variables for which $\mathbb{P}(X_i=1)=p$ and $\mathbb{P}(X_i=0)=1-p$, while $\mathbb{P}(X_i=1,X_j=1)=q$ holds for every pair with <span class="text-nowrap">$i\neq j$.</span> Find <span class="text-nowrap">$\mathrm{Var}(X_1+\cdots+X_n)$.</span></li>
-  <li>Suppose that $X_1,\ldots,X_n$ are independent and identically distributed random variables with finite variance <span class="text-nowrap">$\sigma^{2}$.</span> Show that $\operatorname{Cov}(X_i-\overline{X},\overline{X})=0$.</li>
+  <li>Suppose $X_1,\ldots,X_n$ satisfy <span class="text-nowrap">$\mathbb{P}(X_i=1)=p$,</span> <span class="text-nowrap">$\mathbb{P}(X_i=0)=1-p$,</span> and $\mathbb{P}(X_i=1,X_j=1)=q$ whenever <span class="text-nowrap">$i\neq j$.</span> Find <span class="text-nowrap">$\mathrm{Var}(X_1+\cdots+X_n)$.</span></li>
+  <li>Let $X_1,\ldots,X_n$ be independent and identically distributed random variables with variance <span class="text-nowrap">$\sigma^{2}<\infty$.</span> Show that <span class="text-nowrap">$\operatorname{Cov}(X_i-\overline{X},\overline{X})=0$.</span></li>
 </ol>
 </div>
 
@@ -219,7 +210,7 @@ $$
 
 </div>
 
-又 $\operatorname{Cov}(\overline{X},\overline{X})$ $=$ $\mathrm{Var}\bigl(\overline{X}\bigr)$ $=$ <span class="text-nowrap">$\frac{\,\sigma^{2}\,}{n}$，</span>故可知
+又 $\operatorname{Cov}(\overline{X},\overline{X})$ $=$ $\mathrm{Var}\bigl(\overline{X}\bigr)$ $=$ <span class="text-nowrap">$\frac{\,\sigma^{2}\,}{n}$，</span>兩項相減可得
 {: .topic-paren-cont}
 
 $$
@@ -232,7 +223,7 @@ $$
 <div class="topic-box__label">Example 3.40</div>
 
 <div lang="en" markdown="1">
-Suppose that a collection of $N$ components includes $M$ that are defective, and that components are drawn one at a time at random without replacement. For each <span class="text-nowrap">$i$,</span> let $X_i$ record the number of defective components obtained on the $i$-th draw. Find the mean and the variance of <span class="text-nowrap">$Y=\sum_{i=1}^{n}X_i$.</span>
+A lot of $N$ components contains $M$ defective items, and $n$ components are drawn one at a time at random without replacement. Let $X_i$ denote the number of defective components obtained on the $i$-th draw. Find the mean and variance of <span class="text-nowrap">$Y=\sum_{i=1}^{n}X_i$.</span>
 </div>
 
 由題意可令
@@ -263,7 +254,12 @@ $$
 $$
 \begin{aligned}
 \mathbb{E}(X_i)&=\mathbb{E}(X_i^{2})=\mathbb{P}(X_i=1)\\[0.2em]
-&=\frac{\,M\,}{N}\\[0.45em]
+&=\frac{\,M\,}{N}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \mathrm{Var}(X_i)&=\mathbb{E}(X_i^{2})-\bigl[\mathbb{E}(X_i)\bigr]^{2}\\[0.2em]
 &=\frac{\,M\,}{N}\times\frac{\,(N-M)\,}{N}
 \end{aligned}
@@ -362,17 +358,11 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這一題的情境設計，是**有限母體 <span lang="en">(finite element population)</span>** 下的取後不放回抽樣。
-
-讀者會發現，單看每一個 <span class="text-nowrap">$X_i$，</span>它們都是 $\mathrm{Ber}(p)$ 分配，其中的 <span class="text-nowrap">$p=M/N$，</span>但由於抽樣設計的緣故，每一個 $X_i$ 並沒有彼此獨立，因此無法以稍後會提到的**[二項分配可加性](/lecture-notes/binomial-distribution/)**來處理這個問題；儘管如此，讀者仍會發現 $Y=\sum_{i=1}^{n}X_i$ 的[期望值](/lecture-notes/expectation/#def-expectation)與變異數仍然很像二項分配，只是差了一個 <span class="text-nowrap">$(N-n)/(N-1)$，</span>這被稱作**有限母體校正因子 <span lang="en">(finite population correction factor, FPC factor)</span>**。
-
-事實上，這題的結果正是**[超幾何分配](/lecture-notes/hypergeometric-distribution/#def-hypergeometric) <span lang="en">(hypergeometric distribution)</span>**，在稍後的章節會一併談到。
+本題為**有限母體 <span lang="en">(finite element population)</span>** 下的取後不放回抽樣。單看每次抽取的指標變數 <span class="text-nowrap">$X_i$，</span>其邊際分配皆為參數 $p=M/N$ 的 <span class="text-nowrap">$\mathrm{Ber}(p)$；</span>但因取後不放回，各個 $X\_i$ 之間並非獨立，無法套用後文的**[二項分配可加性](/lecture-notes/binomial-distribution/)**。儘管如此，$Y=\sum\_{i=1}^{n}X\_i$ 的[期望值](/lecture-notes/expectation/#def-expectation)仍與二項分配相同，變異數則僅多乘上因子 <span class="text-nowrap">$(N-n)/(N-1)$，</span>此項稱為**有限母體校正因子 <span lang="en">(finite population correction factor, FPC factor)</span>**。事實上，$Y$ 所服從的分配即為後文將介紹的**[超幾何分配](/lecture-notes/hypergeometric-distribution/#def-hypergeometric) <span lang="en">(hypergeometric distribution)</span>**。
 
 </div>
 
-多元隨機變數由於表示上與運算上的複雜度，會隨著變數個數越來越多而越來越複雜，故除了機率論與數理統計外，在多變量分析 <span lang="en">(multivariate analysis)</span> 及迴歸分析 <span lang="en">(regression analysis)</span> 的領域中，我們更常以向量的形式來表示一組多元隨機變數 (即[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector))，並且基於線性代數 <span lang="en">(linear algebra)</span> 性質來操作。
-
-這其中的基礎，當屬隨機向量的**[共變異數矩陣](/lecture-notes/covariance-matrix/#def-covar-matrix) <span lang="en">(covariance matrix)</span>**，見[下列定義](/lecture-notes/covariance-matrix/#def-covar-matrix):
+隨著變數個數增加，多元隨機變數的逐項表示與運算會迅速變得繁複。因此在機率論、數理統計，以及多變量分析 <span lang="en">(multivariate analysis)</span> 與迴歸分析 <span lang="en">(regression analysis)</span> 等領域中，常將一組隨機變數寫成[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)，並藉由線性代數 <span lang="en">(linear algebra)</span> 的矩陣運算加以處理；其中最核心的結構即為[下一篇](/lecture-notes/covariance-matrix/)將介紹的**[共變異數矩陣](/lecture-notes/covariance-matrix/#def-covar-matrix) <span lang="en">(covariance matrix)</span>**。
 
 ## 本篇小結
 
@@ -380,7 +370,7 @@ $$
 
 當各項彼此[獨立](/lecture-notes/independent-random-variables/#def-indep-r-v)或零相關的時候，所有的共變異數都是 <span class="text-nowrap">$0$，</span>式子簡化為 $\mathrm{Var}\bigl(\sum_{i=1}^{n}a_iX_i\bigr)$ $=$ <span class="text-nowrap">$\sum_{i=1}^{n}a_i^{2}\mathrm{Var}(X_i)$，</span>這正是變異數[平方伸縮性](/lecture-notes/variance/#thm-variance-properties)的推廣；[沃德等式](/lecture-notes/wald-identity-gamblers-ruin/#thm-wald-identity)第二式在推導過程中所用到的 $\mathrm{Var}(S_{\sssig N}\mid N=n)$ $=$ $n\sigma_{\sssig X}^{2}$ 也由此而來。這個特例又衍生出 $\mathrm{Var}\bigl(\overline{X}\bigr)$ $=$ $\frac{\,\sigma_{\sssig X}^{2}\,}{n}$ 這個往後經常用到的結果。
 
-兩道例題所加總的各項都不是彼此獨立的。[Example 3.39](#ex-bernoulli-sum-covariance) 由 $\mathbb{P}(X_i=1,X_j=1)=q$ 求得每一對的共變異數為 <span class="text-nowrap">$q-p^{2}$，</span>$n$ 項加總的變異數因而是 <span class="text-nowrap">$n\,p(1-p)+n(n-1)(q-p^{2})$；</span>該題的第二小題則說明 $X_i-\overline{X}$ 與 $\overline{X}$ 的共變異數為 <span class="text-nowrap">$0$，</span>關鍵是獨立使 $\operatorname{Cov}(X_i,\overline{X})$ 只留下 $\mathrm{Var}(X_i)$ 這一項，恰好與 $\mathrm{Var}\bigl(\overline{X}\bigr)$ 相消。[Example 3.40](#ex-hypergeometric-variance) 的取後不放回使各次抽取不獨立，變異數因而多出共變異數的部分，整理之後為 $n\frac{\,M\,}{N}\bigl(1-\frac{\,M\,}{N}\bigr)\frac{\,N-n\,}{N-1}$，其中的 $\frac{\,N-n\,}{N-1}$ 即有限母體校正因子，而這一題的結果正是超幾何分配。
+兩道例題所加總的各項都不是彼此獨立的。[Example 3.39](#ex-bernoulli-sum-covariance) 由 $\mathbb{P}(X_i=1,X_j=1)=q$ 求得每一對的共變異數為 <span class="text-nowrap">$q-p^{2}$，</span>$n$ 項加總的變異數因而是 <span class="text-nowrap">$n\,p(1-p)+n(n-1)(q-p^{2})$；</span>該題的第二小題則說明 $X_i-\overline{X}$ 與 $\overline{X}$ 的共變異數為 <span class="text-nowrap">$0$，</span>關鍵是獨立使 $\operatorname{Cov}(X_i,\overline{X})$ 只留下 $\mathrm{Var}(X_i)$ 這一項，恰好與 $\mathrm{Var}\bigl(\overline{X}\bigr)$ 相消。[Example 3.40](#ex-hypergeometric-variance) 的取後不放回使各次抽取不獨立，變異數因而多出共變異數的部分，整理之後為 $n\frac{\,M\,}{N}\bigl(1-\frac{\,M\,}{N}\bigr)\frac{\,N-n\,}{N-1}$ 這一式，其中的 $\frac{\,N-n\,}{N-1}$ 即有限母體校正因子，而這一題的結果正是超幾何分配。
 
 [下一篇](/lecture-notes/covariance-matrix/)改以向量與矩陣的形式來表示一組多元隨機變數，並由此給出共變異數矩陣的定義。
 

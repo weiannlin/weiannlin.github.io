@@ -10,12 +10,12 @@ order: 413
 permalink: /lecture-notes/weibull-reliability-and-hazard/
 date: 2026-08-12
 published: false
-excerpt: "韋伯分配由 $(X/\\alpha)^{\\gamma}$ 服從 $\\mathrm{Exp}(1)$ 這個分配所界定，其中 $\\alpha$ 為比例參數、$\\gamma$ 為形狀參數，期望值與變異數都要用伽瑪函數表示。本篇先證明其機率函數為合法的機率函數並求得期望值與變異數，再給出可靠度函數與風險函數的定義: 前者是壽命超過 $t$ 的機率，後者是已知在 $t$ 尚未故障之下，下一瞬間故障的機率密度。韋伯分配的風險函數為 $\\frac{\\gamma}{\\alpha}(t/\\alpha)^{\\gamma-1}$ 這個式子，因而在 $\\gamma$ 大於、等於、小於 $1$ 時分別遞增、恆定與遞減，其中恆定的情形正是無記憶性。最後證明由風險函數可以還原出 cdf 與 pdf，並以三道例題演練壽命期望值與條件存活機率的計算。"
+excerpt: "韋伯分配由指數分配經冪次轉換界定，常用於壽命與可靠度分析。本篇推導韋伯分配的期望值與變異數，引入可靠度函數與風險函數，並說明形狀參數 $\\gamma$ 大於、等於或小於 $1$ 時如何對應遞增、恆定與遞減風險。"
 ---
 
-[上一篇](/lecture-notes/gamma-distribution/)介紹[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)，把等待第一次偶發事件的[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)推廣為等待第 $\alpha$ 次偶發事件所需要的時間。本篇的韋伯分配是另一個方向的推廣。偶發事件的次數不變，改為要求 $X$ 除以 $\alpha$ 之後再取 $\gamma$ 次方，所得到的量服從 $\mathrm{Exp}(1)$ 這個分配。
+[上一篇](/lecture-notes/gamma-distribution/)介紹[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)，把等待第一次偶發事件的[指數分配](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution)推廣為等待第 $\alpha$ 次偶發事件所需要的時間。本篇的韋伯分配是另一個方向的推廣。偶發事件的次數不變，改為要求 $X$ 除以 $\alpha$ 之後再取 $\gamma$ 次方，經轉換後所得到的量服從 $\mathrm{Exp}(1)$ 這個分配。
 
-韋伯分配的期望值與變異數都要用[伽瑪函數](/lecture-notes/gamma-function-exponential-distribution/#def-gamma-function)表示，本篇先證明其機率函數為合法的機率函數並求出這兩個量，再說明形狀參數取 $1$ 與取 $2$ 時分別對應到哪一個分配。接著給出可靠度函數與風險函數這兩個定義，它們是描述壽命的兩個基本工具，也正是韋伯分配比指數分配更適合描述壽命的原因所在。最後證明風險函數足以反推出 cdf 與 pdf，並以三道例題作為演練。
+韋伯分配的期望值與變異數都要用[伽瑪函數](/lecture-notes/gamma-function-exponential-distribution/#def-gamma-function)表示，本篇先證明其機率函數為合法的機率函數並求出這兩個量，再說明形狀參數取 $1$ 與取 $2$ 時分別對應到哪一個分配。接著給出可靠度函數與風險函數這兩個定義，它們是描述壽命的兩個基本工具，也正是韋伯分配比指數分配更適合描述壽命的原因所在。最後證明風險函數足以反推出 cdf 與 pdf，並以三道例題演練上述各項結果。
 
 ## 韋伯分配
 
@@ -102,7 +102,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-先驗證機率函數在值域範圍上的積分為 <span class="text-nowrap">$1$，</span>可得
+先驗證機率函數在值域範圍上的積分為 <span class="text-nowrap">$1$，</span>我們可以得到
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -191,15 +191,8 @@ $$
 \mathrm{Weibull}(\alpha,\gamma=1)\sim\mathrm{Exp}(\beta=\alpha)
 $$
 
-(3) 當 $\gamma=2$ 時，韋伯分配又被稱作**雷利分配 <span lang="en">(Rayleigh distribution)</span>**，這個分配在 $U,V\overset{\mathrm{iid}}{\sim}\mathcal{N}(0,\sigma^{2})$ 時，可以用來描述 $(U,V)$ 所構成的隨機向量之長度。
+(3) 當 $\gamma=2$ 時，韋伯分配又稱為**雷利分配 <span lang="en">(Rayleigh distribution)</span>**；當 $U,V\overset{\mathrm{iid}}{\sim}\mathcal{N}(0,\sigma^{2})$ 為獨立同分配的常態分配 <span lang="en">(normal distribution)</span> 隨機變數時 (常態分配將於後文正式介紹)，雷利分配可用來描述隨機向量 $(U,V)$ 的長度。
 {: .topic-paren-item}
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-常態分配 <span lang="en">(normal distribution)</span> 在稍後馬上將會提到，讀者在此可以不必心急。
-
-</div>
 
 (4) 韋伯分配相較於指數分配而言，更適合用來描述生物或機件的壽命，主要的原因與死亡或損壞的風險有關，見下列關於[可靠度](#def-reliability-function)與[風險](#def-hazard-function)的討論。
 {: .topic-paren-item}
@@ -208,6 +201,8 @@ $$
 
 <div id="def-reliability-function" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 4.16 (可靠度函數, reliability function)</div>
+
+對一連續型隨機變數 <span class="text-nowrap">$X$，</span>我們將其可靠度函數定義為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -231,20 +226,13 @@ $$
 
 可靠度函數 <span lang="en">(reliability function)</span> 的應用相當廣泛，有以下需要注意的事項:
 
-(1) 若非負隨機變數 $X$ 被用來表示某機件的壽命或存活時間 <span lang="en">(time to failure)</span> 時，其可靠度函數 $R_{\sssig X}(t)$ 可被理解為，該物品能使用超過 $t$ 時間的機率。
+(1) 若非負隨機變數 $X$ 表示某機件的壽命或存活時間 <span lang="en">(time to failure)</span>，可靠度函數 $R_{\sssig X}(t)$ 即代表該機件能使用超過 $t$ 時間 (亦即在時間點 $t$ 仍未故障) 的機率。
 {: .topic-paren-item}
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-另有一說是，在 $t$ 時間時，此機件仍未故障的機率。
-
-</div>
 
 (2) 在生物統計學 <span lang="en">(biostatistics)</span> 的應用上，我們常以 $X$ 代表某生物的壽命，此時 $R_{\sssig X}(t)$ 常被記為 <span class="text-nowrap">$S_{\sssig X}(t)$，</span>並且被稱為存活函數 <span lang="en">(survivor function)</span>，即該生物能存活超過 $t$ 時間的機率。
 {: .topic-paren-item}
 
-(3) 無記憶性 <span lang="en">(memoryless property)</span> 就是以可靠度函數定義的，我們可將其寫為
+(3) 無記憶性 <span lang="en">(memoryless property)</span> 就是以可靠度函數定義的，可寫為
 {: .topic-paren-item}
 
 <div class="topic-math-follow-before" markdown="1">
@@ -270,6 +258,8 @@ $$
 
 <div id="def-hazard-function" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 4.17 (風險函數, hazard function)</div>
+
+對一連續型隨機變數 <span class="text-nowrap">$X$，</span>在 $R_{\sssig X}(t)=\mathbb{P}(X\geqslant t)>0$ 處，我們將其風險函數定義為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -303,9 +293,9 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個定義雖然聽起來有一點弔詭，但其實背後的想法相當直觀，因為我們在衡量的是機件在某個瞬間壞掉 (或生物在某個瞬間死亡) 的機率密度，然而，這個情況勢必是**在此瞬間該機件還能運作 (或該生物還存活)**，如此才有討論的意義，故以這個條件機率密度來討論是相當合理的。
+衡量機件於時刻 $t$ 損壞 (或生物於時刻 $t$ 死亡) 的瞬時傾向時，前提必為**在此瞬間該機件還能運作 (或該生物還存活)**，故以條件於 $X\geqslant t$ 之下的條件機率密度定義風險函數最為合理。
 
-基於上述概念，風險函數另有定義如下:
+基於上述概念，風險函數亦可由條件機率的極限定義如下:
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -335,7 +325,7 @@ $$
 
 </div>
 
-(2) 針對[韋伯分配](#def-weibull-distribution)，令 <span class="text-nowrap">$X\sim\mathrm{Weibull}(\alpha,\gamma)$，</span>則 $X^{\gamma}\sim\mathrm{Exp}(\beta=\alpha^{\gamma})$ 這個分配，可知可靠度函數為
+(2) 針對[韋伯分配](#def-weibull-distribution)，令 $X\sim\mathrm{Weibull}(\alpha,\gamma)$ 成立，則 $X^{\gamma}\sim\mathrm{Exp}(\beta=\alpha^{\gamma})$ 這個分配，可知可靠度函數為
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -392,7 +382,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者應該記得，在[韋伯分配的第 (2) 點](#weibull-exp-relation)中我們曾經提過，當 $\gamma=1$ 時，韋伯分配服從指數分配，又當 $\gamma=1$ 時，韋伯分配的風險函數是常數函數，此即稍早所提到的**風險恆定**，亦即風險不隨時間變化。事實上，風險恆定的性質正是[無記憶性](/lecture-notes/exponential-memoryless-and-minima/#thm-memoryless-exp)，此即，只要沒有壞的話，無論現在的時點 (壽命) $t$ 為何，下一個瞬間故障失效的機率密度是固定的，不與 $t$ 有關。
+如前文[韋伯分配的第 (2) 點](#weibull-exp-relation)所述，$\gamma=1$ 時韋伯分配退化為指數分配；此時風險函數為常數函數 <span class="text-nowrap">$h_{\sssig X}(t)=1/\alpha$，</span>即前文提到的**風險恆定**。風險恆定與[無記憶性](/lecture-notes/exponential-memoryless-and-minima/#thm-memoryless-exp)互為一體兩面，代表只要機件尚未損壞，無論目前的已使用時間 $t$ 為何，下一瞬間故障失效的條件機率密度皆固定不變。
 
 </div>
 
@@ -402,9 +392,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這種命名源自於風險函數對於**已存活時間**的相關性，以機件或生物的壽命而言，通常較貼近於 $\gamma>1$ 的情況，也就是隨著壽命越來越大，損壞 (或死亡) 的風險就越來越高。
-
-這種討論在工業上相當普遍，因為機件所受的損傷只會隨著使用而不斷累積，損壞的風險只會增高，這也是為何稍早曾提過，相較於指數分配而言，韋伯分配更適合用來描述生物或機件的壽命。
+上述命名源自風險函數與**已存活時間**的變化關係。在工業可靠度與壽命分析中，機件磨損與生物老化會隨使用時間累積，損壞或死亡的風險隨之遞增，通常貼近 $\gamma>1$ 的情形；韋伯分配能藉形狀參數 $\gamma$ 刻畫遞增或遞減風險，因此比風險恆定的指數分配更適合描述生物或機件的壽命。
 
 </div>
 
@@ -526,7 +514,7 @@ $$
 <div class="topic-box__label">Example 4.35</div>
 
 <div lang="en" markdown="1">
-Suppose that the lifetime $T$ of a component is distributed as a Weibull random variable, with probability density function
+Let the lifetime $T$ of a component follow a Weibull distribution with probability density function
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -547,9 +535,9 @@ $$
 </div>
 
 <ol class="topic-list-paren">
-  <li>Determine the expected value of <span class="text-nowrap">$T$,</span> which is the mean time to failure of the component, and express it with the gamma function <span class="text-nowrap">$\Gamma(\alpha)=\int_{0}^{\infty}x^{\alpha-1}e^{-x}\,dx$.</span></li>
-  <li>Suppose that $T_1,T_2,\ldots,T_n$ are independent and identically distributed with the density given above. Find the distribution of <span class="text-nowrap">$T_{\sssig (1)}=\min(T_1,T_2,\ldots,T_n)$,</span> and determine whether it is again a Weibull distribution.</li>
-  <li>Suppose that a system is built from $n$ identical components connected in series, the lifetimes of which are independent and identically distributed with the density given above. Find the mean time to failure (M.T.T.F.) of the system, and determine whether it is larger or smaller than the mean time to failure of a single component.</li>
+  <li>Find the expected value of $T$ (i.e., the mean time to failure of the component) in terms of the gamma function $\Gamma(\alpha)=\int_{0}^{\infty}x^{\alpha-1}e^{-x}\,dx$.</li>
+  <li>Assume $T_1,T_2,\ldots,T_n$ are independently and identically distributed with the Weibull distribution in (1). Find the distribution of $T_{\sssig (1)}=\min(T_1,T_2,\ldots,T_n)$, and determine whether it is also a Weibull distribution.</li>
+  <li>Consider a system composed of $n$ identical components connected in series, whose lifetimes are i.i.d. with the Weibull distribution in (1). What is the mean time to failure (M.T.T.F.) of this system? Is it larger or smaller than the M.T.T.F. of a single component?</li>
 </ol>
 </div>
 
@@ -679,15 +667,13 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-本題的題幹指出，壽命期望值就是故障前平均時間 <span lang="en">(mean time to failure, MTTF)</span>，讀者應該不會感到陌生，因為早在[第二章討論期望值的時候](/lecture-notes/properties-of-expectation/)，我們便曾經提過這件事。
-
-更甚者，我們在當時也曾提過，[Theorem 2.8](/lecture-notes/expectation/#thm-expectation-tail-sum) 的連續型版本可以用來計算 MTTF，此即可靠度函數在值域範圍上的積分，也就是
+題幹所稱的故障前平均時間 <span lang="en">(mean time to failure, MTTF)</span> 即壽命隨機變數的期望值，前文[第二章討論期望值的時候](/lecture-notes/properties-of-expectation/)亦曾介紹。由 [Theorem 2.8](/lecture-notes/expectation/#thm-expectation-tail-sum) 的非負連續型尾機率積分公式可知，MTTF 等於可靠度函數在值域範圍上的積分:
 
 $$
 \mathbb{E}(X)=\int_{0}^{\infty}R_{\sssig X}(x)\,dx
 $$
 
-因此若本題並不是給 pdf，而是給了 cdf 或可靠度函數 (甚至是風險函數)，我們同樣可以先求得可靠度函數 <span class="text-nowrap">$R_{\sssig X}(x)$，</span>再透過 [Theorem 2.8](/lecture-notes/expectation/#thm-expectation-tail-sum) 求得壽命之 MTTF。
+因此若題目並未直接給定 pdf，而是給定 cdf、可靠度函數或風險函數，亦可先求得可靠度函數 <span class="text-nowrap">$R_{\sssig X}(x)$，</span>再依 [Theorem 2.8](/lecture-notes/expectation/#thm-expectation-tail-sum) 積分求得壽命之 MTTF。
 
 </div>
 
@@ -695,11 +681,11 @@ $$
 <div class="topic-box__label">Example 4.36</div>
 
 <div lang="en" markdown="1">
-Suppose that an item has a lifetime whose hazard rate function is <span class="text-nowrap">$\lambda(t)=t^{3},\ t>0$.</span>
+The lifetime of an item has hazard rate function <span class="text-nowrap">$\lambda(t)=t^{3},\ t>0$.</span> Find the probability that
 
 <ol class="topic-list-paren">
-  <li>What is the probability that the item is still working at age <span class="text-nowrap">$2$?</span></li>
-  <li>What is the probability that an item which has already been in use for one unit of time is still working at age <span class="text-nowrap">$2$?</span></li>
+  <li>the item survives to age <span class="text-nowrap">$2$;</span></li>
+  <li>a one-unit-time-old item survives to age <span class="text-nowrap">$2$.</span></li>
 </ol>
 </div>
 
@@ -769,7 +755,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，這個問題中的風險函數已經足以認出 $X$ 是一個具[韋伯分配](#def-weibull-distribution)之隨機變數，只是本題並不需要刻意從此分配計算機率。
+由風險函數 $\lambda(t)=t^{3}=\frac{4}{\,4^{1/4}\,}\bigl(\frac{t}{\,4^{1/4}\,}\bigr)^{4-1}$ 亦可辨識出 $X$ 服從參數為 $\alpha=4^{1/4},\ \gamma=4$ 的[韋伯分配](#def-weibull-distribution)，不過本題直接由可靠度函數計算所求的存活機率會更為簡捷。
 
 </div>
 
@@ -777,13 +763,13 @@ $$
 <div class="topic-box__label">Example 4.37</div>
 
 <div lang="en" markdown="1">
-Suppose that $T$ is a positive continuous random variable whose hazard rate function is given by
+For a positive continuous random variable <span class="text-nowrap">$T$,</span> its hazard rate function $r(t)$ is defined as
 
 $$
 r(t)=\frac{f(t)}{\,1-F(t)\,}
 $$
 
-where $f(t)$ denotes the probability density function of $T$ and $F(t)$ denotes its cumulative distribution function. Suppose further that the hazard rate function of the lifetime of a smoker is twice that of a non-smoker, and that a non-smoker aged $50$ lives beyond age $60$ with probability <span class="text-nowrap">$0.7$.</span> What is the probability that a smoker aged $50$ lives beyond age <span class="text-nowrap">$60$?</span>
+where $f(t)$ is the probability density function of $T$ and $F(t)$ is its cumulative distribution function. Suppose the hazard rate function for the lifetime of a smoker is twice that of a non-smoker. If the probability that a $50$-year-old non-smoker survives past age $60$ is <span class="text-nowrap">$0.7$,</span> what is the corresponding probability that a $50$-year-old smoker survives past age <span class="text-nowrap">$60$?</span>
 </div>
 
 依題意可令 $X$ 與 $Y$ 分別表示抽菸者與不抽菸者的壽命，$r_{\sssig X}(t)$ 與 $r_{\sssig Y}(t)$ 分別表示抽菸者與不抽菸者的風險函數，且 <span class="text-nowrap">$r_{\sssig X}(t)=2r_{\sssig Y}(t)$。</span>
@@ -883,19 +869,19 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個問題相當考驗讀者對於風險函數的熟悉程度，且由本題的結果，我們可以發現，事實上，關於求取「已活過 $t$ 歲的人活過 $t+a$ 歲」這種條件機率，可以直接透過風險函數 $t$ 到 $t+a$ 時間段上的積分變換而來，是一個有趣且實用的性質。
+由本題推導可見，「已存活至 $t$ 歲的個體繼續存活超過 $t+a$ 歲」的條件機率 $\mathbb{P}(T\geqslant t+a\mid T\geqslant t)$ 可直接由風險函數在區間 $[t,t+a]$ 上的積分表示為 $\exp\bigl\lbrace-\int_{t}^{t+a}r(u)\,du\bigr\rbrace$ 這一形式，因此無須先行求出其完整的邊際分配。
 
 </div>
 
 ## 本篇小結
 
-[Definition 4.15](#def-weibull-distribution) 由 $\left(\frac{\,X\,}{\alpha}\right)^{\gamma}\sim\mathrm{Exp}(1)$ 這條關係界定韋伯分配，其中 $\alpha$ 是比例參數、$\gamma$ 是形狀參數，機率函數為 $\frac{\gamma}{\,\alpha\,}\left(\frac{\,x\,}{\,\alpha\,}\right)^{\gamma-1}e^{-\left(\frac{x}{\alpha}\right)^{\gamma}}$ 這個式子。證明的三個步驟依序是: 把積分變數換成 $\left(\frac{x}{\alpha}\right)^{\gamma}$ 之後直接驗證積分為 <span class="text-nowrap">$1$、</span>由 $Y\sim\mathrm{Exp}(1)$ 的 $k$ 階原動差 $\Gamma(k+1)$ 得到 $X$ 的一二階原動差，再相減得到變異數。期望值與變異數因而都要用伽瑪函數表示。定義之後的四點說明指出: $\gamma=1$ 時韋伯分配即為 <span class="text-nowrap">$\mathrm{Exp}(\beta=\alpha)$、</span>$\gamma=2$ 時被稱作雷利分配並可用來描述兩個獨立同分配的常態變數所構成之隨機向量的長度，以及韋伯分配比指數分配更適合描述壽命的原因在於風險。
+[Definition 4.15](#def-weibull-distribution) 由 $\left(\frac{\,X\,}{\alpha}\right)^{\gamma}\sim\mathrm{Exp}(1)$ 這條關係界定韋伯分配，其中 $\alpha$ 是比例參數、$\gamma$ 是形狀參數，機率函數為 $\frac{\gamma}{\,\alpha\,}\left(\frac{\,x\,}{\,\alpha\,}\right)^{\gamma-1}e^{-\left(\frac{x}{\alpha}\right)^{\gamma}}$ 這個式子。證明的三個步驟依序為把積分變數換成 $\left(\frac{x}{\alpha}\right)^{\gamma}$ 之後直接驗證積分為 <span class="text-nowrap">$1$、</span>由 $Y\sim\mathrm{Exp}(1)$ 的 $k$ 階原動差 $\Gamma(k+1)$ 得到 $X$ 的一二階原動差，再相減得到變異數。期望值與變異數因而都要用伽瑪函數表示。定義之後的四點說明指出 $\gamma=1$ 時韋伯分配即為 <span class="text-nowrap">$\mathrm{Exp}(\beta=\alpha)$、</span>$\gamma=2$ 時被稱作雷利分配並可用來描述兩個獨立同分配的常態變數所構成之隨機向量的長度，以及韋伯分配比指數分配更適合描述壽命的原因在於風險。
 
 [Definition 4.16](#def-reliability-function) 的可靠度函數是 $1-F_{\sssig X}(t)$ 這個尾機率，讀作該物品能使用超過 $t$ 時間的機率；生物統計學上把它記為 $S_{\sssig X}(t)$ 並稱為存活函數。無記憶性正是以它定義的，寫成可靠度函數的形式即 $R_{\sssig X}(a+b)=R_{\sssig X}(a)\,R_{\sssig X}(b)$ 這條乘法關係。[Definition 4.17](#def-hazard-function) 的風險函數則是 $\frac{f_{\sssig X}(t)}{R_{\sssig X}(t)}$ 這個比值，也就是已知在 $t$ 尚未故障的條件下，下一瞬間故障的機率密度；把條件機率的極限寫開來，得到的正是同一個式子。
 
-韋伯分配的風險函數為 $\frac{\gamma}{\,\alpha\,}\left(\frac{\,t\,}{\,\alpha\,}\right)^{\gamma-1}$ 這個式子，指數上的 $\gamma-1$ 決定它是遞增、常數還是遞減: $\gamma>1$ 時風險隨壽命增高，稱為正時間相關性；$\gamma=1$ 時風險恆定，這正是無記憶性，也對應到 $\gamma=1$ 時韋伯分配退回指數分配這件事；$\gamma<1$ 時風險遞減，稱為負時間相關性。機件的損傷只會隨使用而累積，通常較貼近 $\gamma>1$ 的情況，這就是韋伯分配比指數分配更適合描述壽命的理由。[Theorem 4.16](#thm-hazard-to-distribution) 反過來說明風險函數本身就足以決定分配。把風險函數看成 $-\ln\bigl[1-F_{\sssig X}(t)\bigr]$ 的導數，積分之後即得 cdf，再微分一次即得 pdf。
+韋伯分配的風險函數為 $\frac{\gamma}{\,\alpha\,}\left(\frac{\,t\,}{\,\alpha\,}\right)^{\gamma-1}$ 這個式子，指數上的 $\gamma-1$ 決定它是遞增、常數還是遞減。當 $\gamma>1$ 時風險隨壽命增高，稱為正時間相關性；$\gamma=1$ 時風險恆定，這正是無記憶性，也對應到 $\gamma=1$ 時韋伯分配退回指數分配這件事；$\gamma<1$ 時風險遞減，稱為負時間相關性。機件的損傷只會隨使用而累積，通常較貼近 $\gamma>1$ 的情況，這就是韋伯分配比指數分配更適合描述壽命的理由。[Theorem 4.16](#thm-hazard-to-distribution) 反過來說明風險函數本身就足以決定分配。把風險函數看成 $-\ln\bigl[1-F_{\sssig X}(t)\bigr]$ 的導數，積分之後即得 cdf，再微分一次即得 pdf。
 
-三道例題各練一種用法。[Example 4.35](#ex-weibull-1) 先以 $Y\sim\mathrm{Exp}(1)$ 求得韋伯分配的壽命期望值，再說明 $n$ 個獨立同分配的韋伯變數取極小值之後仍為韋伯分配，比例參數縮成原來的 $n^{-\frac{1}{\nu}}$ 倍，因此串聯系統的故障前平均時間不會比單一元件來得長。[Example 4.36](#ex-weibull-2) 由風險函數 $\lambda(t)=t^{3}$ 出發，先用 [Theorem 4.16](#thm-hazard-to-distribution) 還原出 cdf 與可靠度函數，再算條件存活機率。[Example 4.37](#ex-weibull-3) 則不必求出分配。兩個時點的可靠度相除，指數上只剩下風險函數在該時間段上的積分，抽菸者的風險是兩倍，答案因而是不抽菸者機率的平方。
+三道例題各練一種用法。[Example 4.35](#ex-weibull-1) 先以 $Y\sim\mathrm{Exp}(1)$ 求得韋伯分配的壽命期望值，再說明 $n$ 個獨立同分配的韋伯變數取極小值之後仍為韋伯分配，比例參數縮成原來的 $n^{-\frac{1}{\nu}}$ 倍，因此串聯系統的故障前平均時間不會比單一元件來得長。[Example 4.36](#ex-weibull-2) 由風險函數 $\lambda(t)=t^{3}$ 出發，先用 [Theorem 4.16](#thm-hazard-to-distribution) 還原出 cdf 與可靠度函數，再算條件存活機率。[Example 4.37](#ex-weibull-3) 則不必求出分配。兩個時點的可靠度相除，指數上只剩下風險函數在該時間段上的積分，由於抽菸者的風險是兩倍，答案因而是不抽菸者存活機率的平方。
 
 [下一篇](/lecture-notes/uniform-distribution-integral-transform/)轉入貝塔相關的機率模型，先介紹均勻分配，再由它給出機率積分轉換與逆機率積分轉換這兩個定理。
 

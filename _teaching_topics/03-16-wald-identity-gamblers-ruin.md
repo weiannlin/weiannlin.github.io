@@ -10,7 +10,7 @@ order: 316
 permalink: /lecture-notes/wald-identity-gamblers-ruin/
 date: 2026-08-13
 published: false
-excerpt: "沃德等式處理的是加總的項數本身也是隨機變數的情形。若 $X_1,X_2,\\ldots$ 為獨立同分配的隨機變數，$N$ 是與它們獨立的非負整數隨機變數，則 $S_{\\sssig N}=\\sum_{i=1}^{N}X_i$ 的期望值是兩個期望值相乘，變異數則由兩項相加而得。它的證明正是雙重期望值定理與變異數分解定理的直接應用。本篇以四道例題示範它的用法: 前兩道處理同一個問題，一道由沃德等式與全機率定理求出每日售出 laptop PC 的期望值、標準差與分配，另一道改以動差母函數確認同一個分配；後兩道是賭徒破產問題，公平賭局的版本可由沃德等式一步得解，不公平賭局的版本則須逐項相減再以等比級數求和。"
+excerpt: "當獨立同分配隨機變數的加總項數 $N$ 為與各項獨立的非負整數隨機變數時，沃德等式給出隨機和 $S_{\\sssig N}$ 的期望值與變異數公式。本篇由雙重期望值與變異數分解證明此定理，並應用於隨機和問題與賭徒破產問題。"
 ---
 
 [上一篇](/lecture-notes/variance-decomposition-theorem/)以 [Theorem 3.11](/lecture-notes/variance-decomposition-theorem/#thm-var-decom-thm) 把一個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的[變異數](/lecture-notes/variance/#def-variance)拆成組內變異與組間變異兩個部分。[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)與[變異數分解定理](/lecture-notes/variance-decomposition-theorem/#thm-var-decom-thm)，都是把條件之下的產物依條件變數的機率加權平均，從而得到邊際的產物；這兩條定理還有一個很典型的衍生應用，就是加總的項數本身也是隨機變數的情形。
@@ -146,23 +146,18 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-證明過程中使用到 $\mathrm{Var}(S_{\sssig N}\mid N=n)$ $=$ $n\sigma_{\sssig X}^{2}$ 的結果，我們至此還沒有說明過原因，但讀者可以不用心急，稍後介紹到[共變異數](/lecture-notes/covariance/#def-covariance)的環節時，我們將會學到所有所需的細節。
-
-</div>
+上述第 (2) 式的證明用到了獨立同分配隨機變數和的變異數公式 $\mathrm{Var}(S_{\sssig N}\mid N=n)=n\sigma_{\sssig X}^{2}$ 這一結果，其一般推導將於後文介紹[共變異數](/lecture-notes/covariance/#def-covariance)與線性組合的變異數時給出。以下先以四道例題演練沃德等式的應用。
 
 <div id="ex-store-laptop-purchases" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.31 <span lang="en">(The random sum problem)</span></div>
 
 <div lang="en" markdown="1">
-Suppose that every customer walking into Mova’s store buys a laptop PC with probability <span class="text-nowrap">$p$,</span> and that the count of customers walking in on a single day follows a Poisson distribution whose mean is <span class="text-nowrap">$\lambda$.</span>
+Each customer who enters Mova’s store will purchase a laptop PC with probability <span class="text-nowrap">$p$.</span> Assume that the number of customers entering the store per day follows a Poisson distribution with mean <span class="text-nowrap">$\lambda$.</span>
 
 <ol class="topic-list-paren">
-  <li>Determine the expected number of laptop PCs that Mova’s store sells in a day, and evaluate the standard deviation of that number.</li>
-  <li>What is the probability that a whole day goes by without Mova selling a single laptop PC?</li>
-  <li>Suppose that $X$ denotes the number of laptop PCs sold in a day at Mova’s store, and determine the probability distribution of <span class="text-nowrap">$X$.</span></li>
+  <li>What is the expected number of laptop PCs sold per day in Mova’s store? What is the standard deviation of the number of sales?</li>
+  <li>What is the probability that Mova does not sell any laptop PCs on a given day?</li>
+  <li>Let $X$ denote the number of laptop PCs sold per day in Mova’s store. Derive the probability distribution of <span class="text-nowrap">$X$.</span></li>
 </ol>
 </div>
 
@@ -177,7 +172,7 @@ X\mid(N=n)\sim\mathrm{Bin}(n,p)
 \end{gathered}
 $$
 
-則
+其中 $\mathrm{Poi}(\lambda)$ 為後文將介紹的[卜瓦松分配](/lecture-notes/poisson-process-and-distribution/#def-poisson-distribution) <span lang="en">(Poisson distribution)</span>，其期望值與變異數皆為 <span class="text-nowrap">$\lambda$，</span>故有
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -190,10 +185,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(N)&=\lambda,\ \ \mathrm{Var}(N)=\lambda,\\[0.45em]
-\mathbb{E}(Y_i)&=p,\ \ \mathrm{Var}(Y_i)=p(1-p)
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(N)=\lambda,\ \ \mathrm{Var}(N)=\lambda,\\[0.45em]
+\mathbb{E}(Y_i)=p,\ \ \mathrm{Var}(Y_i)=p(1-p)
+\end{gathered}
 $$
 
 </div>
@@ -225,13 +220,6 @@ $$
 &\qquad\therefore\, \operatorname{SD}(X)=\sqrt{\mathrm{Var}(X)}=\sqrt{\lambda p}
 \end{aligned}
 $$
-
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-$\mathrm{Poi}(\lambda)$ 是[卜瓦松分配](/lecture-notes/poisson-process-and-distribution/#def-poisson-distribution) <span lang="en">(Poisson distribution)</span>，這種分配我們在之後會談到，期望值與變異數都是 <span class="text-nowrap">$\lambda$，</span>是相當特殊的分配。
 
 </div>
 
@@ -307,7 +295,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述的全機率定理中，之所以 $n$ 的範圍從 $x$ 開始而非從 $0$ 開始，乃是因為其 conditional pmf 的範圍如下
+上述全機率定理的加總指標 $n$ 之所以由 $x$ 起算而非由 $0$ 起算，是因為條件 pmf 的非零範圍可改寫如下
 
 $$
 \begin{aligned}
@@ -335,7 +323,7 @@ n=x,x+1,\ldots,\infty
 \end{aligned}
 $$
 
-這意味著，雖然是給定了 $N=n$ 且 <span class="text-nowrap">$n\in\lbrace 0\rbrace\cup\mathbb{N}$，</span>但是在固定 $X=x$ 時，$n$ 不可能是一個比 $x$ 還要更小的非負整數，所以在上述的全機率定理中，加總的起點是 $x$ 而非 <span class="text-nowrap">$0$。</span>
+儘管 $N$ 本身的取值範圍為 <span class="text-nowrap">$\lbrace 0\rbrace\cup\mathbb{N}$，</span>但在固定售出數量 $X=x$ 後，進店人數 $n$ 不可能小於 <span class="text-nowrap">$x$，</span>故對 $n$ 加總的起點為 $x$ 而非 <span class="text-nowrap">$0$。</span>
 
 </div>
 
@@ -345,19 +333,19 @@ $$
 <div class="topic-box__label">Example 3.32</div>
 
 <div lang="en" markdown="1">
-Suppose that $\lbrace Y,X_1,X_2,\ldots\rbrace$ are mutually independent random variables, that the distribution of $Y$ is
+Let $Y,X_1,X_2,\ldots$ be mutually independent random variables such that $Y$ has pmf
 
 $$
 \mathbb{P}(Y=n)=\frac{\,e^{-\lambda}\lambda^{n}\,}{n!},\ n=0,1,2,\ldots
 $$
 
-and that $\lbrace X_1,X_2,\ldots\rbrace$ share the common distribution
+and $X_1,X_2,\ldots$ have common pmf
 
 $$
 \mathbb{P}(X=x)=p^{x}(1-p)^{1-x},\ x=0,1
 $$
 
-For every <span class="text-nowrap">$t\in\mathbb{R}$,</span> write
+For <span class="text-nowrap">$t\in\mathbb{R}$,</span> define
 
 $$
 \phi(t,y)=\mathbb{E}\Bigl(e^{t(X_1+X_2+\cdots+X_{\sssig Y})}\Bigm\vert Y=y\Bigr)
@@ -365,7 +353,7 @@ $$
 
 <ol class="topic-list-paren">
   <li>Find <span class="text-nowrap">$\phi(t,y)$.</span></li>
-  <li>Determine $\mathbb{E}\bigl[\,\phi(t,Y)\,\bigr]$ from the result of the previous part.</li>
+  <li>Using <span class="text-nowrap">(1),</span> find <span class="text-nowrap">$\mathbb{E}\bigl[\,\phi(t,Y)\,\bigr]$.</span></li>
 </ol>
 </div>
 
@@ -451,26 +439,13 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，這題是[上一個問題](#ex-store-laptop-purchases)第 (3) 小題的另一種做法，也就是由 [mgf](/lecture-notes/moment-generating-functions/#def-mgf) 來確認 $\sum_{i=1}^{Y}X_i$ 的分配。
+本題為[前一題](#ex-store-laptop-purchases)第 (3) 小題的另一種解法，改由 [mgf](/lecture-notes/moment-generating-functions/#def-mgf) 確認隨機和 $\sum_{i=1}^{Y}X_i$ 的分配。
 
-儘管我們還沒有正式講到多元隨機變數的 mgf 以及其衍生的計算方式，但是讀者仍然可以把 $e^{t(X_1+X_2+\cdots+X_{\sssig Y})}$ 當成 $X_1, X_2, \ldots, X_{\sssig Y}$ 的函數，並且利用彼此獨立的性質，改為邊際的 mgf 相乘，從而得到所求結果；而這也是雙重期望值定理的另一個應用，即
-
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+雖然後文才會正式定義多元隨機變數的聯合 mgf，但給定 $Y=y$ 後，可先利用 $X\_1, X\_2, \ldots, X\_y$ 彼此獨立的性質，將 $e^{t(X\_1+X\_2+\cdots+X\_y)}$ 的期望值拆為各邊際 mgf 的乘積；再由雙重期望值定理對 $Y$ 取期望值，即得
 
 $$
 \mathbb{E}\bigl[e^{t(X_1+\cdots+X_{\sssig Y})}\bigr]=\mathbb{E}\Bigl(\mathbb{E}\bigl[e^{t(X_1+\cdots+X_{\sssig Y})}\bigm\vert Y\bigr]\Bigr)
 $$
-
-</div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
-
-$$
-\begin{aligned}
-\mathbb{E}\bigl[e^{t(X_1+\cdots+X_{\sssig Y})}\bigr]&=\mathbb{E}\Bigl(\mathbb{E}\bigl[e^{t(X_1+\cdots+X_{\sssig Y})}\bigm\vert Y\bigr]\Bigr)
-\end{aligned}
-$$
-
-</div>
 
 </div>
 
@@ -478,7 +453,7 @@ $$
 <div class="topic-box__label">Example 3.33 <span lang="en">(The gambler’s ruin problem)</span></div>
 
 <div lang="en" markdown="1">
-Suppose that Mr. Adams and Ms. Smith wager on a coin that is tossed again and again. Mr. Adams holds $a$ dollars and Ms. Smith holds $b$ dollars once play begins; after each toss the one who loses hands a single dollar to the one who wins, and play carries on until one of the two has been ruined. Taking as given that the mathematical expectation of either player is zero in an equitable game, find the probability that Mr. Adams takes the $b$ dollars of Ms. Smith before parting with his own $a$ dollars. Please list the steps by which this probability is obtained.
+Mr. Adams and Ms. Smith are betting on repeated flips of a coin. At the start of the game, Mr. Adams has $a$ dollars and Ms. Smith has $b$ dollars; at each flip, the loser pays the winner one dollar, and the game continues until either player is “ruined.” Making use of the fact that in an equitable game each player’s mathematical expectation is zero, find the probability that Mr. Adams will win Ms. Smith’s $b$ dollars before he loses his $a$ dollars. Please show the steps by which you obtain this probability.
 </div>
 
 令 $X_i$ 表示第 $i$ 次賭局，Mr. Adams 增加的資產量，且由題意可知 $\mathbb{E}(X_i)=0$
@@ -511,7 +486,7 @@ $$
 
 </div>
 
-又由於 $S_{\sssig T}$ 只可能是 $0$ 或是 <span class="text-nowrap">$a+b$，</span>故我們有
+又由於 $S_{\sssig T}$ 只可能是 $0$ 或 <span class="text-nowrap">$a+b$，</span>故有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -547,7 +522,7 @@ $$
 <div class="topic-box__label">Example 3.34</div>
 
 <div lang="en" markdown="1">
-Two gamblers, A and B, stake money on a coin that is tossed one time after another. A receives one unit from B whenever a toss shows a head, whereas A hands one unit to B whenever a toss shows a tail, and the play carries on until one of the two has nothing left. Suppose that the tosses are independent of one another and that a head appears on any one toss with probability <span class="text-nowrap">$p$.</span> What is the probability that A finishes holding all of the money, given that A begins with $i$ units and B begins with $N-i$ units?
+Two gamblers, A and B, bet on the outcomes of successive flips of a coin. On each flip, if the coin comes up heads, A collects one unit from B, whereas if it comes up tails, A pays one unit to B. They continue to do this until one of them runs out of money. Assuming that the successive flips of the coin are independent and each flip results in a head with probability <span class="text-nowrap">$p$,</span> what is the probability that A ends up with all the money if A starts with $i$ units and B starts with $N-i$ units?
 </div>
 
 令 $E$ 表示 A 最後贏走所有錢的事件、$H$ 表示硬幣出現正面之事件。
@@ -666,7 +641,7 @@ $$
 
 </div>
 
-將前 $i$ 條等式之左式與右式各自加總之後可得
+將前 $i$ 條等式之左右兩式各自加總可得
 
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
 
@@ -768,22 +743,22 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，[Example 3.34](#ex-gambler-ruin-biased) 是 [Example 3.33](#ex-gambler-ruin-fair-coin) 的一般化類題，但解法卻大相徑庭，這是因為，在不曉得是否為公平賭局的情形下，我們沒有辦法應用資產增加量平均為 $0$ 的設定來規避 $\mathbb{E}(T)$ 的計算，因此應用[沃德等式](#thm-wald-identity)反而會讓解題變得更麻煩。
+[Example 3.34](#ex-gambler-ruin-biased) 為 [Example 3.33](#ex-gambler-ruin-fair-coin) 的一般化問題，解法卻截然不同。原因在於賭局未必公平時，無法利用每局資產增量期望值為 $0$ 的條件消去未知的 <span class="text-nowrap">$\mathbb{E}(T)$，</span>直接套用[沃德等式](#thm-wald-identity)反而難以求解。
 
-但是，於 [Example 3.33](#ex-gambler-ruin-fair-coin) 中，若已知
+反之，在 [Example 3.33](#ex-gambler-ruin-fair-coin) 的公平賭局下，一旦求得
 
 $$
 \mathbb{P}(S_{\sssig T}=a+b)=\frac{a}{\,a+b\,}
 $$
 
-則我們確實可以反過來計算 <span class="text-nowrap">$\mathbb{E}(T)$，</span>作法如下:
+便可利用沃德等式的變異數公式反推期望停止時間 <span class="text-nowrap">$\mathbb{E}(T)$，</span>作法如下:
 
 <div class="topic-proof" markdown="1">
 **Proof.**
 
 由 [Example 3.33](#ex-gambler-ruin-fair-coin) 已知 $\mathbb{P}(S_{\sssig T}=a+b)$ $=$ $\frac{a}{\,a+b\,}$ 及 $\mathbb{E}(S_{\sssig T})=a$
 
-且由於 $S_{\sssig T}$ 只可能是 $0$ 或 <span class="text-nowrap">$a+b$，</span>故知道
+且因 $S_{\sssig T}$ 只可能是 $0$ 或 <span class="text-nowrap">$a+b$，</span>故知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -838,19 +813,17 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-其中，雖然已知每回合的財產增量期望值為 $0$ (即 <span class="text-nowrap">$\mathbb{E}(X_i)=0$)，</span>但由於規則可能未必與此處相同，因此財產增量的變異數可能不同。
+注意上式保留了一般的 <span class="text-nowrap">$\mathrm{Var}(X)$，</span>因為即使公平賭局皆滿足 <span class="text-nowrap">$\mathbb{E}(X_i)=0$，</span>不同規則下單局資產增量變異數仍可能不同。
 
 </div>
 
-至此，我們已經將所有「給定條件下」的情形都看過了，讀者應該已經熟悉在這種情形之下的機率分配及其應用，也能夠以條件分配及其衍生的產物，進行加權平均，從而得到邊際產物 (包含分配、期望值與變異數)。
-
-然而，儘管我們可以有各種方式取得邊際產物，但很多時候，我們並不會單純地只想看見邊際的產物而已，隨機變數之間**共同變化的情況**也會是我們所關注的重點之一，見[下列小節](/lecture-notes/cross-moments-joint-mgf/)。
+至此，我們已完整討論給定條件下的機率分配、條件期望值與條件變異數，以及如何將這些條件量加權平均以還原邊際分配、邊際期望值與邊際變異數。然而在多元問題中，除了個別變數的邊際性質外，隨機變數之間**共同變化的情況**亦是分析重點，這正是[下一篇](/lecture-notes/cross-moments-joint-mgf/)所要探討的主題。
 
 ## 本篇小結
 
-[Theorem 3.12](#thm-wald-identity) 處理的是加總的項數本身也是隨機變數的情形。若 $X_1, X_2, \ldots$ 為獨立同分配的隨機變數，$N$ 是一個與它們獨立的非負整數隨機變數，則 $S_{\sssig N}=\sum_{i=1}^{N}X_i$ 的期望值為 <span class="text-nowrap">$\mu_{\sssig X}\mu_{\sssig N}$，</span>變異數則為 $\sigma_{\sssig X}^{2}\mu_{\sssig N}+\mu_{\sssig X}^{2}\sigma_{\sssig N}^{2}$。它的證明分別以[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)與[變異數分解定理](/lecture-notes/variance-decomposition-theorem/#thm-var-decom-thm)完成，所需的兩個條件量是 $\mathbb{E}(S_{\sssig N}\mid N=n)$ $=$ $n\mu_{\sssig X}$ 與 $\mathrm{Var}(S_{\sssig N}\mid N=n)$ $=$ $n\sigma_{\sssig X}^{2}$ 這兩條式子。
+[Theorem 3.12](#thm-wald-identity) 處理的是加總的項數本身也是隨機變數的情形。若 $X_1, X_2, \ldots$ 為獨立同分配的隨機變數，$N$ 是一個與它們獨立的非負整數隨機變數，則 $S_{\sssig N}=\sum_{i=1}^{N}X_i$ 的期望值為 <span class="text-nowrap">$\mu_{\sssig X}\mu_{\sssig N}$，</span>變異數則為 $\sigma_{\sssig X}^{2}\mu_{\sssig N}+\mu_{\sssig X}^{2}\sigma_{\sssig N}^{2}$ 這一和式。它的證明分別以[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)與[變異數分解定理](/lecture-notes/variance-decomposition-theorem/#thm-var-decom-thm)完成，所需的兩個條件量是 $\mathbb{E}(S_{\sssig N}\mid N=n)$ $=$ $n\mu_{\sssig X}$ 與 $\mathrm{Var}(S_{\sssig N}\mid N=n)$ $=$ $n\sigma_{\sssig X}^{2}$ 這兩條式子。
 
-[Example 3.31](#ex-store-laptop-purchases) 是沃德等式最直接的用法: 每日進入商店的人數為卜瓦松分配，每位顧客購買 laptop PC 之數量則為 <span class="text-nowrap">$\mathrm{Ber}(p)$，</span>兩者合起來得到 $\mathbb{E}(X)=\lambda p$ 與 <span class="text-nowrap">$\operatorname{SD}(X)=\sqrt{\lambda p}$；</span>再以[全機率定理](/lecture-notes/conditional-law-of-total-probability/#thm-law-of-total-prob-r-v)把條件 pmf 依 $N$ 的機率加權，可得 $\mathbb{P}(X=0)$ $=$ $e^{-\lambda p}$ 以及 <span class="text-nowrap">$X\sim\mathrm{Poi}(\lambda p)$。</span>這裡的加總起點之所以是 $x$ 而非 <span class="text-nowrap">$0$，</span>是因為在固定 $X=x$ 之後，$n$ 不可能小於 <span class="text-nowrap">$x$。</span>[Example 3.32](#ex-poisson-random-sum) 改用另一種做法。先求出給定 $Y=y$ 之下的 $\phi(t,y)$ $=$ $\bigl[\,pe^{t}+(1-p)\,\bigr]^{y}$ 這條式子，再對 $Y$ 取一次期望值，得到 <span class="text-nowrap">$e^{\lambda p(e^{t}-1)}$，</span>正是同一個分配的 mgf。
+[Example 3.31](#ex-store-laptop-purchases) 是沃德等式最直接的用法。每日進入商店的人數為卜瓦松分配，每位顧客購買 laptop PC 之數量則為 <span class="text-nowrap">$\mathrm{Ber}(p)$，</span>兩者合起來得到 $\mathbb{E}(X)=\lambda p$ 與 <span class="text-nowrap">$\operatorname{SD}(X)=\sqrt{\lambda p}$；</span>再以[全機率定理](/lecture-notes/conditional-law-of-total-probability/#thm-law-of-total-prob-r-v)把條件 pmf 依 $N$ 的機率加權，可得 $\mathbb{P}(X=0)$ $=$ $e^{-\lambda p}$ 以及 <span class="text-nowrap">$X\sim\mathrm{Poi}(\lambda p)$。</span>這裡的加總起點之所以是 $x$ 而非 <span class="text-nowrap">$0$，</span>是因為在固定 $X=x$ 之後，$n$ 不可能小於 <span class="text-nowrap">$x$。</span>[Example 3.32](#ex-poisson-random-sum) 改用另一種做法。先求出給定 $Y=y$ 之下的 $\phi(t,y)$ $=$ $\bigl[\,pe^{t}+(1-p)\,\bigr]^{y}$ 這條式子，再對 $Y$ 取一次期望值，得到 <span class="text-nowrap">$e^{\lambda p(e^{t}-1)}$，</span>正是同一個分配的 mgf。
 
 [Example 3.33](#ex-gambler-ruin-fair-coin) 與 [Example 3.34](#ex-gambler-ruin-biased) 是同一個賭徒破產問題的兩種版本。公平賭局之下每回合的資產增量期望值為 <span class="text-nowrap">$0$，</span>沃德等式因而給出 <span class="text-nowrap">$\mathbb{E}(S_{\sssig T})=a$，</span>再配合 $S_{\sssig T}$ 只有 $0$ 與 $a+b$ 兩種取值，即得 $\mathbb{P}(S_{\sssig T}=a+b)$ $=$ <span class="text-nowrap">$\frac{a}{\,a+b\,}$。</span>不公平賭局之下沒有這個設定可用，$\mathbb{E}(T)$ 無法迴避，故改由 $p_{\sssig i}$ $=$ $p\,p_{\sssig i+1}+q\,p_{\sssig i-1}$ 這條關係式逐項相減、再以等比級數求和，得到 $p\neq\frac{1}{2}$ 與 $p=\frac{1}{2}$ 兩種情形的答案。反過來說，公平賭局的版本一旦知道了破產機率，也可以由變異數倒推出 $\mathbb{E}(T)$ $=$ <span class="text-nowrap">$\frac{ab}{\,\mathrm{Var}(X)\,}$。</span>
 

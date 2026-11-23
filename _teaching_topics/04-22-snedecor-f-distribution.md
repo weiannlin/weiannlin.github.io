@@ -10,7 +10,7 @@ order: 422
 permalink: /lecture-notes/snedecor-f-distribution/
 date: 2026-08-15
 published: false
-excerpt: "斯內德克 $\\mathcal{F}$ 分配正比於兩個獨立卡方分配的比值，因此常被當作變異數相關之檢定的抽樣分配。本篇先給出它的定義，說明由兩個獨立卡方變數各除以自身自由度再相除的建構方式，並證明其期望值為 $\\frac{\\nu_2}{\\nu_2-2}$。接著轉入常態母體之下統計量的抽樣分配，證明兩組獨立常態隨機樣本的樣本變異數比值除以母體變異數比值服從 $\\mathcal{F}(n_1-1,\\ n_2-1)$ 分配，並附上母體期望值皆已知時的對應版本。其後給出 $\\mathcal{F}$ 分配與貝塔分配的關係，指出 $\\frac{1}{1+\\frac{\\nu_1}{\\nu_2}F}$ 與 $\\frac{\\frac{\\nu_1}{\\nu_2}F}{1+\\frac{\\nu_1}{\\nu_2}F}$ 分別服從兩個參數互換的貝塔分配。最後以三道例題演練，依序處理卡方與 $\\mathcal{F}$ 分配的辨識、常態母體之下 $t$ 與 $\\mathcal{F}$ 的抽樣分配，以及以貝塔分配求算兩段長度比較的機率。"
+excerpt: "斯內德克 $\\mathcal{F}$ 分配定義為兩個獨立卡方變數各除以自身自由度後的比值。本篇推導其期望值、兩獨立常態母體樣本變異數比值的抽樣分配，以及 $\\mathcal{F}$ 分配經分式轉換化為貝塔分配的關係與例題。"
 ---
 
 [上一篇](/lecture-notes/student-t-distribution/)給出[司徒頓 $t$ 分配](/lecture-notes/student-t-distribution/#def-t-distribution)的定義，並在常態母體之下推導了樣本平均數 $\overline{X}$ 在母體變異數未知時的抽樣分配。四大常用抽樣分配之中，只剩下斯內德克 $\mathcal{F}$ 分配尚未介紹，本篇處理的就是這一個分配。
@@ -42,7 +42,7 @@ $$
 
 **自由度**:
 
-$\nu_1,\nu_2>0$ 為斯內德克 $\mathcal{F}$ 分配的分子與分母自由度，通常設為正整數，但不限於此。
+$\nu_1,\nu_2>0$ 分別為斯內德克 $\mathcal{F}$ 分配的分子自由度與分母自由度，通常設為正整數，但不限於此。
 
 **機率函數**:
 
@@ -78,10 +78,10 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(F)&=\frac{\nu_2}{\,\nu_2-2\,}\quad(\,\nu_2\leqslant2\ \text{時期望值發散}\,)\\[0.45em]
-\mathrm{Var}(F)&=\frac{\,2\nu_2^{2}(\nu_1+\nu_2-2)\,}{\nu_1(\nu_2-2)^{2}(\nu_2-4)}\quad(\,\nu_2\leqslant4\ \text{時變異數發散}\,)
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(F)=\frac{\nu_2}{\,\nu_2-2\,}\quad(\,\nu_2\leqslant2\ \text{時期望值發散}\,)\\[0.45em]
+\mathrm{Var}(F)=\frac{\,2\nu_2^{2}(\nu_1+\nu_2-2)\,}{\nu_1(\nu_2-2)^{2}(\nu_2-4)}\quad(\,\nu_2\leqslant4\ \text{時變異數發散}\,)
+\end{gathered}
 $$
 
 </div>
@@ -90,7 +90,12 @@ $$
 $$
 \begin{aligned}
 \mathbb{E}(F)&=\frac{\nu_2}{\,\nu_2-2\,}\\[0.25em]
-&\qquad(\,\nu_2\leqslant2\ \text{時期望值發散}\,)\\[0.5em]
+&\qquad(\,\nu_2\leqslant2\ \text{時期望值發散}\,)
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \mathrm{Var}(F)&=\frac{\,2\nu_2^{2}(\nu_1+\nu_2-2)\,}{\nu_1(\nu_2-2)^{2}(\nu_2-4)}\\[0.25em]
 &\qquad(\,\nu_2\leqslant4\ \text{時變異數發散}\,)
 \end{aligned}
@@ -109,10 +114,10 @@ $$
 
 $$
 \boxed{
-\begin{aligned}
-\text{令}\ X_1&\sim\chi^{2}(\nu_1)\indep X_2\sim\chi^{2}(\nu_2)\text{，定義}\ F=\frac{\,X_1/\nu_1\,}{\,X_2/\nu_2\,}\\[0.45em]
-\text{則}\ F&\sim\mathcal{F}(\nu_1,\nu_2)
-\end{aligned}
+\begin{gathered}
+\text{令}\ X_1\sim\chi^{2}(\nu_1)\indep X_2\sim\chi^{2}(\nu_2)\text{，定義}\ F=\frac{\,X_1/\nu_1\,}{\,X_2/\nu_2\,}\\[0.45em]
+\text{則}\ F\sim\mathcal{F}(\nu_1,\nu_2)
+\end{gathered}
 }
 $$
 
@@ -121,11 +126,11 @@ $$
 
 $$
 \boxed{
-\begin{aligned}
-\text{令}\ X_1&\sim\chi^{2}(\nu_1)\indep X_2\sim\chi^{2}(\nu_2)\text{，}\\[0.45em]
-\text{定義}\ F&=\frac{\,X_1/\nu_1\,}{\,X_2/\nu_2\,}\\[0.45em]
-\text{則}\ F&\sim\mathcal{F}(\nu_1,\nu_2)
-\end{aligned}
+\begin{gathered}
+\text{令}\ X_1\sim\chi^{2}(\nu_1)\indep X_2\sim\chi^{2}(\nu_2)\text{，}\\[0.45em]
+\text{定義}\ F=\frac{\,X_1/\nu_1\,}{\,X_2/\nu_2\,}\\[0.45em]
+\text{則}\ F\sim\mathcal{F}(\nu_1,\nu_2)
+\end{gathered}
 }
 $$
 
@@ -137,7 +142,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在兩個獨立常態母體的推論中，我們想比較的事情，除了期望值之外，通常會是這兩個母體的分散程度，然而分散程度是一個非負的值，因此二者的比較並不是互相加減，而是應該用分散程度的比值來推論，這也是建構 $\mathcal{F}$ 分配的基礎。
+推論兩個獨立常態母體時，除比較期望值之差外，亦常比較兩母體的分散程度 (變異數)。由於變異數恆正，衡量相對大小自然取比值而非差值，這正是以兩獨立卡方變數比值建構 $\mathcal{F}$ 分配的統計動機。
 
 </div>
 
@@ -172,7 +177,7 @@ $$
 
 </div>
 
-其中，$\mathbb{E}\bigl(\frac{1}{\,X_2\,}\bigr)$ 在 $\nu_2\leqslant2$ 時並不存在，故此時期望值 $\mathbb{E}(F)$ 不存在。原式得證。 <span class="topic-qed">$\square$</span>
+其中，$\mathbb{E}\bigl(\frac{1}{\,X_2\,}\bigr)$ 在 $\nu_2\leqslant2$ 時不存在，故此時 $\mathbb{E}(F)$ 不存在。原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
 (3) 斯內德克 $\mathcal{F}$ 分配在不同自由度的組合時，圖形差異頗大。下面便將幾個不同參數的 $\mathcal{F}$ 分配的機率密度函數繪製在下方:
@@ -202,10 +207,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-X_1,X_2,\ldots,X_{n_1}&\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_1,\sigma_1^{2})\\[0.45em]
-\indep\ Y_1,Y_2,\ldots,Y_{n_2}&\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_2,\sigma_2^{2})
-\end{aligned}
+\begin{gathered}
+X_1,X_2,\ldots,X_{n_1}\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_1,\sigma_1^{2})\\[0.45em]
+\indep\ Y_1,Y_2,\ldots,Y_{n_2}\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_2,\sigma_2^{2})
+\end{gathered}
 $$
 
 </div>
@@ -243,10 +248,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-S_1^{2}&=\frac{1}{\,n_1-1\,}\sum_{i=1}^{n_1}(X_i-\overline{X})^{2},\\[0.45em]
-S_2^{2}&=\frac{1}{\,n_2-1\,}\sum_{i=1}^{n_2}(Y_i-\overline{Y})^{2}
-\end{aligned}
+\begin{gathered}
+S_1^{2}=\frac{1}{\,n_1-1\,}\sum_{i=1}^{n_1}(X_i-\overline{X})^{2},\\[0.45em]
+S_2^{2}=\frac{1}{\,n_2-1\,}\sum_{i=1}^{n_2}(Y_i-\overline{Y})^{2}
+\end{gathered}
 $$
 
 </div>
@@ -268,10 +273,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-X_1,X_2,\ldots,X_{n_1}&\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_1,\sigma_1^{2})\\[0.45em]
-\indep\ Y_1,Y_2,\ldots,Y_{n_2}&\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_2,\sigma_2^{2})
-\end{aligned}
+\begin{gathered}
+X_1,X_2,\ldots,X_{n_1}\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_1,\sigma_1^{2})\\[0.45em]
+\indep\ Y_1,Y_2,\ldots,Y_{n_2}\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_2,\sigma_2^{2})
+\end{gathered}
 $$
 
 </div>
@@ -288,10 +293,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\frac{\,(n_1-1)S_1^{2}\,}{\sigma_1^{2}}&\sim\chi^{2}(n_1-1)\\[0.45em]
-\indep\ \frac{\,(n_2-1)S_2^{2}\,}{\sigma_2^{2}}&\sim\chi^{2}(n_2-1)
-\end{aligned}
+\begin{gathered}
+\frac{\,(n_1-1)S_1^{2}\,}{\sigma_1^{2}}\sim\chi^{2}(n_1-1)\\[0.45em]
+\indep\ \frac{\,(n_2-1)S_2^{2}\,}{\sigma_2^{2}}\sim\chi^{2}(n_2-1)
+\end{gathered}
 $$
 
 </div>
@@ -329,7 +334,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-當然，這裡也有一個在實務上不會使用的版本如下:
+對應地，當兩母體期望值 $\mu_1,\mu_2$ 皆已知時，亦有如下僅供理論對照的樣本變異數比值抽樣分配形式:
 
 **兩獨立樣本變異數比值 $S_1^{\prime2}/S_2^{\prime2}$ 的抽樣分配 ($\mu_1,\mu_2$ 皆已知)**:
 
@@ -345,10 +350,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-X_1,X_2,\ldots,X_{n_1}&\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_1,\sigma_1^{2})\\[0.45em]
-\indep\ Y_1,Y_2,\ldots,Y_{n_2}&\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_2,\sigma_2^{2})
-\end{aligned}
+\begin{gathered}
+X_1,X_2,\ldots,X_{n_1}\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_1,\sigma_1^{2})\\[0.45em]
+\indep\ Y_1,Y_2,\ldots,Y_{n_2}\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_2,\sigma_2^{2})
+\end{gathered}
 $$
 
 </div>
@@ -386,10 +391,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-S_1^{\prime2}&=\frac{1}{\,n_1\,}\sum_{i=1}^{n_1}(X_i-\mu_1)^{2},\\[0.45em]
-S_2^{\prime2}&=\frac{1}{\,n_2\,}\sum_{i=1}^{n_2}(Y_i-\mu_2)^{2}
-\end{aligned}
+\begin{gathered}
+S_1^{\prime2}=\frac{1}{\,n_1\,}\sum_{i=1}^{n_1}(X_i-\mu_1)^{2},\\[0.45em]
+S_2^{\prime2}=\frac{1}{\,n_2\,}\sum_{i=1}^{n_2}(Y_i-\mu_2)^{2}
+\end{gathered}
 $$
 
 </div>
@@ -409,10 +414,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-X_1,X_2,\ldots,X_{n_1}&\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_1,\sigma_1^{2})\\[0.45em]
-\indep\ Y_1,Y_2,\ldots,Y_{n_2}&\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_2,\sigma_2^{2})
-\end{aligned}
+\begin{gathered}
+X_1,X_2,\ldots,X_{n_1}\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_1,\sigma_1^{2})\\[0.45em]
+\indep\ Y_1,Y_2,\ldots,Y_{n_2}\overset{\mathrm{iid}}{\sim}\mathcal{N}(\mu_2,\sigma_2^{2})
+\end{gathered}
 $$
 
 </div>
@@ -429,10 +434,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\frac{\,n_1S_1^{\prime2}\,}{\sigma_1^{2}}&\sim\chi^{2}(n_1)\\[0.45em]
-\indep\ \frac{\,n_2S_2^{\prime2}\,}{\sigma_2^{2}}&\sim\chi^{2}(n_2)
-\end{aligned}
+\begin{gathered}
+\frac{\,n_1S_1^{\prime2}\,}{\sigma_1^{2}}\sim\chi^{2}(n_1)\\[0.45em]
+\indep\ \frac{\,n_2S_2^{\prime2}\,}{\sigma_2^{2}}\sim\chi^{2}(n_2)
+\end{gathered}
 $$
 
 </div>
@@ -475,27 +480,21 @@ $$
 <div class="topic-box__label">Example 4.55</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,\ldots,X_{20}$ are independent random variables, each following the standard normal distribution, and put
+Let $X_1,\ldots,X_{20}$ be independent standard normal random variables. Let $W_1=\sum_{i=1}^{10}X_i^{2}$ and <span class="text-nowrap">$W_2=\sum_{i=11}^{20}X_i^{2}$.</span> Which one of the following statements is false?
 
-$$
-W_1=\sum_{i=1}^{10}X_i^{2},\qquad W_2=\sum_{i=11}^{20}X_i^{2}
-$$
-
-Determine which one of the following statements is false.
-
-(A) $W_1$ follows the $\chi^{2}(10)$ distribution.
+(A) $W_1$ is distributed as <span class="text-nowrap">$\chi^{2}(10)$.</span>
 {: .topic-paren-item}
 
-(B) $W_2$ follows the $\chi^{2}(10)$ distribution.
+(B) $W_2$ is distributed as <span class="text-nowrap">$\chi^{2}(10)$.</span>
 {: .topic-paren-item}
 
-(C) $W_1+W_2$ follows the $\chi^{2}(20)$ distribution.
+(C) $W_1+W_2$ is distributed as <span class="text-nowrap">$\chi^{2}(20)$.</span>
 {: .topic-paren-item}
 
-(D) $W_1/W_2$ follows the $\mathcal{F}(10,10)$ distribution.
+(D) $W_1/W_2$ is distributed as <span class="text-nowrap">$\mathcal{F}(10,10)$.</span>
 {: .topic-paren-item}
 
-(E) $X_1^{2}/W_2$ follows the $\mathcal{F}(1,10)$ distribution.
+(E) $X_1^{2}/W_2$ is distributed as <span class="text-nowrap">$\mathcal{F}(1,10)$.</span>
 {: .topic-paren-item}
 </div>
 
@@ -520,8 +519,8 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ W_1&=\sum_{i=1}^{10}X_i^{2}\sim\chi^{2}(10)\\[0.45em]
-\indep\ W_2&=\sum_{i=11}^{20}X_i^{2}\sim\chi^{2}(10)
+\Longrightarrow\ \ &W_1=\sum_{i=1}^{10}X_i^{2}\sim\chi^{2}(10)\\[0.45em]
+\indep\ \ &W_2=\sum_{i=11}^{20}X_i^{2}\sim\chi^{2}(10)
 \end{aligned}
 $$
 
@@ -535,27 +534,21 @@ $$
 <div class="topic-box__label">Example 4.56</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,\ldots,X_5$ form a random sample of size $5$ drawn from the $\mathcal{N}(\mu,\sigma^{2})$ distribution, and let
+Let $X_1,\ldots,X_5$ be a random sample of size $5$ from <span class="text-nowrap">$\mathcal{N}(\mu,\sigma^{2})$.</span> Let $\overline{X}=\frac{1}{\,5\,}\sum_{i=1}^{5}X_i$ and $S^{2}=\frac{1}{\,4\,}\sum_{i=1}^{5}(X_i-\overline{X})^{2}$ denote, respectively, the sample mean and the sample variance. Which of the following statements are true?
 
-$$
-\overline{X}=\frac{1}{\,5\,}\sum_{i=1}^{5}X_i,\qquad S^{2}=\frac{1}{\,4\,}\sum_{i=1}^{5}(X_i-\overline{X})^{2}
-$$
-
-denote the sample mean and the sample variance, respectively. Determine which of the following statements are true.
-
-(A) $\sqrt{5}(\overline{X}-\mu)/S$ follows the standard normal distribution.
+(A) $\sqrt{5}(\overline{X}-\mu)/S$ has a standard normal distribution.
 {: .topic-paren-item}
 
-(B) $\sqrt{5}(\overline{X}-\mu)/S$ follows the $t(5)$ distribution.
+(B) $\sqrt{5}(\overline{X}-\mu)/S$ has a $t(5)$ distribution.
 {: .topic-paren-item}
 
-(C) $\sqrt{5}(\overline{X}-\mu)/S$ follows the $t(4)$ distribution.
+(C) $\sqrt{5}(\overline{X}-\mu)/S$ has a $t(4)$ distribution.
 {: .topic-paren-item}
 
-(D) $5(\overline{X}-\mu)^{2}/S^{2}$ follows the $\mathcal{F}(5,1)$ distribution.
+(D) $5(\overline{X}-\mu)^{2}/S^{2}$ has an $\mathcal{F}(5,1)$ distribution.
 {: .topic-paren-item}
 
-(E) $5(\overline{X}-\mu)^{2}/S^{2}$ follows the $\mathcal{F}(1,4)$ distribution.
+(E) $5(\overline{X}-\mu)^{2}/S^{2}$ has an $\mathcal{F}(1,4)$ distribution.
 {: .topic-paren-item}
 </div>
 
@@ -564,7 +557,7 @@ denote the sample mean and the sample variance, respectively. Determine which of
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\Longrightarrow\ \frac{\sqrt{5}(\overline{X}-\mu)}{S}=\frac{\,\overline{X}-\mu\,}{\dfrac{S}{\sqrt{5}}}\sim t(4)
+\frac{\sqrt{5}(\overline{X}-\mu)}{S}=\frac{\,\overline{X}-\mu\,}{\dfrac{S}{\sqrt{5}}}\sim t(4)
 $$
 
 </div>
@@ -572,7 +565,7 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ \frac{\sqrt{5}(\overline{X}-\mu)}{S}&=\frac{\,\overline{X}-\mu\,}{\dfrac{S}{\sqrt{5}}}\\[0.45em]
+\frac{\sqrt{5}(\overline{X}-\mu)}{S}&=\frac{\,\overline{X}-\mu\,}{\dfrac{S}{\sqrt{5}}}\\[0.45em]
 &\sim t(4)
 \end{aligned}
 $$
@@ -591,10 +584,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile topic-math-follow-before" markdown="1">
 
 $$
-\begin{aligned}
-\frac{\,5(\overline{X}-\mu)^{2}\,}{\sigma^{2}}&\sim\chi^{2}(1)\\[0.45em]
-\indep\ \frac{\,(5-1)S^{2}\,}{\sigma^{2}}&\sim\chi^{2}(4)
-\end{aligned}
+\begin{gathered}
+\frac{\,5(\overline{X}-\mu)^{2}\,}{\sigma^{2}}\sim\chi^{2}(1)\\[0.45em]
+\indep\ \frac{\,(5-1)S^{2}\,}{\sigma^{2}}\sim\chi^{2}(4)
+\end{gathered}
 $$
 
 </div>
@@ -659,10 +652,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-X_1&\sim\chi^{2}(\nu_1)\indep X_2\sim\chi^{2}(\nu_2),\\[0.45em]
-\text{且}\ F&=\frac{\,X_1/\nu_1\,}{\,X_2/\nu_2\,}
-\end{aligned}
+\begin{gathered}
+X_1\sim\chi^{2}(\nu_1)\indep X_2\sim\chi^{2}(\nu_2),\\[0.45em]
+\text{且}\ F=\frac{\,X_1/\nu_1\,}{\,X_2/\nu_2\,}
+\end{gathered}
 $$
 
 </div>
@@ -685,10 +678,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-X_1&\sim\mathrm{Gamma}\Bigl(\alpha=\frac{\nu_1}{2},\ \beta=2\Bigr),\\[0.45em]
-X_2&\sim\mathrm{Gamma}\Bigl(\alpha=\frac{\nu_2}{2},\ \beta=2\Bigr)
-\end{aligned}
+\begin{gathered}
+X_1\sim\mathrm{Gamma}\Bigl(\alpha=\frac{\nu_1}{2},\ \beta=2\Bigr),\\[0.45em]
+X_2\sim\mathrm{Gamma}\Bigl(\alpha=\frac{\nu_2}{2},\ \beta=2\Bigr)
+\end{gathered}
 $$
 
 </div>
@@ -746,13 +739,13 @@ $$
 <div class="topic-box__label">Example 4.57</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,X_2,X_3,X_4$ are independent random variables, each following the $\mathcal{N}(0,1)$ distribution, and put
+Let $X_1,X_2,X_3,X_4$ be independent $\mathcal{N}(0,1)$ random variables, and let
 
 $$
 Y_1=\sqrt{X_1^{2}+X_2^{2}},\qquad Y_2=2\sqrt{X_3^{2}+X_4^{2}}
 $$
 
-Find $\mathbb{P}(Y_1>Y_2)$.
+Find <span class="text-nowrap">$\mathbb{P}(Y_1>Y_2)$.</span>
 </div>
 
 所求為
@@ -780,10 +773,10 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
 
 $$
-\begin{aligned}
-X_1^{2}+X_2^{2}&\sim\chi^{2}(2)\sim\mathrm{Gamma}\Bigl(\alpha=\frac{2}{\,2\,},\ \beta=2\Bigr)\\[0.45em]
-\indep\ X_3^{2}+X_4^{2}&\sim\chi^{2}(2)\sim\mathrm{Gamma}\Bigl(\alpha=\frac{2}{\,2\,},\ \beta=2\Bigr)
-\end{aligned}
+\begin{gathered}
+X_1^{2}+X_2^{2}\sim\chi^{2}(2)\sim\mathrm{Gamma}\Bigl(\alpha=\frac{2}{\,2\,},\ \beta=2\Bigr)\\[0.45em]
+\indep\ X_3^{2}+X_4^{2}\sim\chi^{2}(2)\sim\mathrm{Gamma}\Bigl(\alpha=\frac{2}{\,2\,},\ \beta=2\Bigr)
+\end{gathered}
 $$
 
 </div>
@@ -792,7 +785,12 @@ $$
 $$
 \begin{aligned}
 X_1^{2}+X_2^{2}&\sim\chi^{2}(2)\\[0.45em]
-&\sim\mathrm{Gamma}\Bigl(\alpha=\frac{2}{\,2\,},\ \beta=2\Bigr)\\[0.5em]
+&\sim\mathrm{Gamma}\Bigl(\alpha=\frac{2}{\,2\,},\ \beta=2\Bigr)
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 \indep\ X_3^{2}+X_4^{2}&\sim\chi^{2}(2)\\[0.45em]
 &\sim\mathrm{Gamma}\Bigl(\alpha=\frac{2}{\,2\,},\ \beta=2\Bigr)
 \end{aligned}
@@ -845,9 +843,7 @@ $$
 
 </div>
 
-在上列的幾個問題中，我們不斷使用到分配與分配之間的關係，來協助我們求解各種問題。這樣的技巧不只好用，很多時候更有助於我們判斷幾個不同的統計檢定是不是彼此互為「等價檢定」。
-
-但是，要具備這樣的能力，我們至少要在常見的四大抽樣分配中，完全摸清楚彼此的關係，以下我們便開一個小節來討論這些等價關係。
+上述例題反覆運用各分配之間的轉換關係化簡機率計算；在統計推論中，這類轉換亦常用於判別不同形式的檢定統計量是否構成「等價檢定」。為此，下一篇將系統整理四大常用抽樣分配之間的轉換與極限關係。
 
 ## 本篇小結
 
@@ -855,11 +851,11 @@ $$
 
 定義之後的三點說明，第一點交代建構方式。取兩個獨立的卡方變數，各自除以自身的自由度之後再相除，得到的即為 $\mathcal{F}$ 分配，分子與分母的自由度分別承襲兩個卡方變數的自由度。這個建構方式對應到兩個獨立常態母體的推論需求，因為分散程度是非負的量，比較時用的是比值而不是差。第二點只證明期望值，作法是先由獨立性把 $\mathbb{E}\bigl(\frac{X_1}{X_2}\bigr)$ 拆成 $\mathbb{E}(X_1)$ 與 $\mathbb{E}\bigl(\frac{1}{X_2}\bigr)$ 的乘積，再代入卡方分配的期望值與其倒數的期望值，同時看出 $\nu_2\leqslant2$ 時後者不存在。第三點則以密度曲線圖說明不同自由度組合之下圖形的差異。
 
-[Theorem 4.25](#thm-s-sq-ratio-samp-dist) 轉入常態母體之下統計量的抽樣分配。兩組獨立的常態隨機樣本，其樣本變異數的比值 $S_1^{2}/S_2^{2}$ 除以母體變異數的比值 $\sigma_1^{2}/\sigma_2^{2}$ 之後，服從 $\mathcal{F}(n_1-1,\ n_2-1)$ 分配。證明的關鍵只有一步。兩個 $\frac{(n_i-1)S_i^{2}}{\sigma_i^{2}}$ 各自服從自由度為 $n_i-1$ 的卡方分配而且彼此獨立，再把它們各除以自身自由度並相除，恰好把 $\sigma_1^{2}$ 與 $\sigma_2^{2}$ 留在該留的位置上。隨後的 Note 給出母體期望值皆已知時的對應版本，此時分母改除以 $n_i$ 而不是 <span class="text-nowrap">$n_i-1$，</span>自由度也隨之改為 $n_1$ 與 <span class="text-nowrap">$n_2$，</span>這個版本在實務上不會用到。
+[Theorem 4.25](#thm-s-sq-ratio-samp-dist) 轉入常態母體之下統計量的抽樣分配。兩組獨立的常態隨機樣本，其樣本變異數的比值 $S_1^{2}/S_2^{2}$ 除以母體變異數的比值 $\sigma_1^{2}/\sigma_2^{2}$ 之後，服從 $\mathcal{F}(n_1-1,\ n_2-1)$ 分配。證明的關鍵只有一步。兩個 $\frac{(n_i-1)S_i^{2}}{\sigma_i^{2}}$ 各自服從自由度為 $n_i-1$ 的卡方分配而且彼此獨立，再把它們各除以自身自由度並相除，恰好把 $\sigma_1^{2}$ 與 $\sigma_2^{2}$ 留在該留的位置上。隨後的註記給出母體期望值皆已知時的對應版本，此時分母改除以 $n_i$ 而不是 <span class="text-nowrap">$n_i-1$，</span>自由度也隨之改為 $n_1$ 與 <span class="text-nowrap">$n_2$，</span>這個版本在實務上不會用到。
 
-[Theorem 4.26](#thm-f-to-beta) 給出 $\mathcal{F}$ 分配與貝塔分配的關係。把 $F$ 寫回兩個獨立卡方變數的比值之後，$\frac{1}{1+\frac{\nu_1}{\nu_2}F}$ 恰好等於 $\frac{X_2}{X_1+X_2}$ 這個比例，而 $X_1$ 與 $X_2$ 分別是形狀參數為 $\frac{\nu_1}{2}$ 與 $\frac{\nu_2}{2}$、比例參數同為 $2$ 的獨立伽瑪變數，因此由 [Theorem 4.19](/lecture-notes/gamma-beta-relationship/#thm-gamma-to-beta) 可知該比例服從 $\mathrm{Beta}\bigl(\frac{\nu_2}{2},\frac{\nu_1}{2}\bigr)$ 分配。另一項只要取 $1$ 減去它，即得參數互換的 $\mathrm{Beta}\bigl(\frac{\nu_1}{2},\frac{\nu_2}{2}\bigr)$ 分配。
+[Theorem 4.26](#thm-f-to-beta) 給出 $\mathcal{F}$ 分配與貝塔分配的關係。把 $F$ 寫回兩獨立卡方變數的比值後，$\frac{1}{1+\frac{\nu_1}{\nu_2}F}$ 即為 $\frac{X_2}{X_1+X_2}$ 之比，而 $X_1$ 與 $X_2$ 分別是形狀參數為 $\frac{\nu_1}{2}$ 與 <span class="text-nowrap">$\frac{\nu_2}{2}$、</span>比例參數同為 $2$ 的獨立伽瑪變數，因此由 [Theorem 4.19](/lecture-notes/gamma-beta-relationship/#thm-gamma-to-beta) 可知該比例服從 $\mathrm{Beta}\bigl(\frac{\nu_2}{2},\frac{\nu_1}{2}\bigr)$ 分配。另一項以 $1$ 減去該比例，即得參數互換的 $\mathrm{Beta}\bigl(\frac{\nu_1}{2},\frac{\nu_2}{2}\bigr)$ 分配。
 
-三道例題各自演練一個方向。[Example 4.55](#ex-snedecor-f-1) 檢查的是 $\mathcal{F}$ 分配定義中「各除以自身自由度」這件事有沒有被漏掉: $\frac{X_1^{2}}{W_2}$ 與 $\frac{X_1^{2}/1}{W_2/10}$ 差了一個 $10$ 倍，前者並不服從 $\mathcal{F}(1,10)$ 分配。[Example 4.56](#ex-snedecor-f-2) 同時用到 $t$ 與 $\mathcal{F}$ 兩條抽樣分配。樣本平均數標準化之後除以樣本標準差得到的是 $t(4)$ 而不是 $t(5)$，其平方則為 $\mathcal{F}(1,4)$ 分配。[Example 4.57](#ex-snedecor-f-3) 表面上是兩段長度的比較，實際上把兩邊平方之後就是兩個獨立卡方變數的比較，再由上述的貝塔關係化為[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的機率，答案為 <span class="text-nowrap">$\frac{1}{\,5\,}$。</span>
+三道例題各自演練一個方向。[Example 4.55](#ex-snedecor-f-1) 檢查的是 $\mathcal{F}$ 分配定義中「各除以自身自由度」這件事有沒有被漏掉，因為 $\frac{X_1^{2}}{W_2}$ 與 $\frac{X_1^{2}/1}{W_2/10}$ 差了一個 $10$ 倍，前者並不服從 $\mathcal{F}(1,10)$ 分配。[Example 4.56](#ex-snedecor-f-2) 同時用到 $t$ 與 $\mathcal{F}$ 兩條抽樣分配。樣本平均數標準化之後除以樣本標準差得到的是 $t(4)$ 而不是 <span class="text-nowrap">$t(5)$，</span>其平方則為 $\mathcal{F}(1,4)$ 分配。[Example 4.57](#ex-snedecor-f-3) 表面上是兩段長度的比較，實際上把兩邊平方之後就是兩個獨立卡方變數的比較，再由上述的貝塔關係化為[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的機率，答案為 <span class="text-nowrap">$\frac{1}{\,5\,}$。</span>
 
 至此，標準常態分配、卡方分配、司徒頓 $t$ 分配與斯內德克 $\mathcal{F}$ 分配這四大常用抽樣分配都已經介紹完畢。[下一篇](/lecture-notes/sampling-distribution-relationships/)把這四個分配之間的關係集中整理成一條定理，並定出各分配右尾點的寫法。
 

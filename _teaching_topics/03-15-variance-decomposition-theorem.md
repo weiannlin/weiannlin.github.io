@@ -10,7 +10,7 @@ order: 315
 permalink: /lecture-notes/variance-decomposition-theorem/
 date: 2026-08-13
 published: false
-excerpt: "變異數分解定理把 $\\mathrm{Var}(X)$ 分解成兩個部分: 條件變異數的期望值 $\\mathbb{E}[\\mathrm{Var}(X\\mid Y)]$ 對應到組內變異，條件期望值的變異數 $\\mathrm{Var}[\\mathbb{E}(X\\mid Y)]$ 則是組間變異，這個對應與變異數分析中的組內變異與組間變異完全一致。證明的作法是把條件變異數與條件期望值各自以速算公式展開，中間兩項相消之後正好留下平方的期望值減去期望值的平方。本篇的兩道例題示範這條定理的用法，其中第二道題的 $X$ 是一個參數為隨機變數的分配，先給定 $P=p$ 之後才是我們所認知的二項分配，這種狀況正是雙重期望值定理、全機率定理與變異數分解定理的最佳使用時機。"
+excerpt: "變異數分解定理將 $\\mathrm{Var}(X)$ 拆解為條件變異數的期望值 $\\mathbb{E}[\\mathrm{Var}(X\\mid Y)]$ 與條件期望值的變異數 $\\mathrm{Var}[\\mathbb{E}(X\\mid Y)]$ 之和，分別對應組內變異與組間變異。本篇給出證明並以階層模型例題示範應用。"
 ---
 
 [上一篇](/lecture-notes/conditional-law-of-total-probability/)把全機率定理改寫成[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的版本，說明邊際的機率函數，可以由條件的機率函數以另一個變數的機率函數加權而得。這一條與[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)的作法相同，先給定條件把問題簡化，再對條件本身取一次期望值，把條件的作用消掉。
@@ -66,11 +66,11 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}&\bigl[\mathrm{Var}(X\mid Y)\bigr]+\mathrm{Var}\bigl[\mathbb{E}(X\mid Y)\bigr]\\[0.45em]
+\mathbb{E}\bigl[&\mathrm{Var}(X\mid Y)\bigr]+\mathrm{Var}\bigl[\mathbb{E}(X\mid Y)\bigr]\\[0.45em]
 &=\mathbb{E}\Bigl[\mathbb{E}\bigl(X^{2}\mid Y\bigr)-\bigl[\mathbb{E}(X\mid Y)\bigr]^{2}\Bigr]\\[0.2em]
-&\quad +\mathbb{E}\Bigl(\bigl[\mathbb{E}(X\mid Y)\bigr]^{2}\Bigr)-\Bigl(\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]\Bigr)^{2}\\[0.45em]
+&\qquad +\mathbb{E}\Bigl(\bigl[\mathbb{E}(X\mid Y)\bigr]^{2}\Bigr)-\Bigl(\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]\Bigr)^{2}\\[0.45em]
 &=\mathbb{E}\Bigl[\mathbb{E}\bigl(X^{2}\mid Y\bigr)\Bigr]-\mathbb{E}\Bigl(\bigl[\mathbb{E}(X\mid Y)\bigr]^{2}\Bigr)\\[0.2em]
-&\quad +\mathbb{E}\Bigl(\bigl[\mathbb{E}(X\mid Y)\bigr]^{2}\Bigr)-\Bigl(\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]\Bigr)^{2}\\[0.45em]
+&\qquad +\mathbb{E}\Bigl(\bigl[\mathbb{E}(X\mid Y)\bigr]^{2}\Bigr)-\Bigl(\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]\Bigr)^{2}\\[0.45em]
 &=\mathbb{E}\bigl(X^{2}\bigr)-\bigl[\mathbb{E}(X)\bigr]^{2}=\mathrm{Var}(X)
 \end{aligned}
 $$
@@ -80,7 +80,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}\bigl[&\mathrm{Var}(X\mid Y)\bigr]+\mathrm{Var}\bigl[\mathbb{E}(X\mid Y)\bigr]=\mathbb{E}\Bigl[\mathbb{E}\bigl(X^{2}\mid Y\bigr)-\bigl[\mathbb{E}(X\mid Y)\bigr]^{2}\Bigr]\\[0.2em]
+\mathbb{E}\bigl[&\mathrm{Var}(X\mid Y)\bigr]+\mathrm{Var}\bigl[\mathbb{E}(X\mid Y)\bigr]\\[0.3em]
+&=\mathbb{E}\Bigl[\mathbb{E}\bigl(X^{2}\mid Y\bigr)-\bigl[\mathbb{E}(X\mid Y)\bigr]^{2}\Bigr]\\[0.2em]
 &\qquad+\mathbb{E}\Bigl(\bigl[\mathbb{E}(X\mid Y)\bigr]^{2}\Bigr)\\[0.2em]
 &\qquad-\Bigl(\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]\Bigr)^{2}\\[0.45em]
 &=\mathbb{E}\Bigl[\mathbb{E}\bigl(X^{2}\mid Y\bigr)\Bigr]\\[0.2em]
@@ -100,7 +101,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[此定理](#thm-var-decom-thm)指出，$X$ 的變異數可以被分解成兩個部分: $\mathbb{E}\bigl[\mathrm{Var}(X\mid Y)\bigr]$ 對應到的是**組內變異**，$\mathrm{Var}\bigl[\mathbb{E}(X\mid Y)\bigr]$ 則是**組間變異**。事實上，這個對應在實驗設計 <span lang="en">(experimental design)</span> 的領域裡，與變異數分析 <span lang="en">(analysis of variance, ANOVA)</span> 中的組內變異與組間變異完全對應。
+[此定理](#thm-var-decom-thm)將 $X$ 的總變異數拆解為兩個部分。若將條件變數 $Y$ 的不同取值視為不同組別，第一項 $\mathbb{E}\bigl[\mathrm{Var}(X\mid Y)\bigr]$ 是各組內部離散程度的平均，對應**組內變異**；第二項 $\mathrm{Var}\bigl[\mathbb{E}(X\mid Y)\bigr]$ 則是各組條件期望值之間的變異程度，對應**組間變異**。在實驗設計 <span lang="en">(experimental design)</span> 與變異數分析 <span lang="en">(analysis of variance, ANOVA)</span> 中，總變異分解為組內變異與組間變異的架構即與此定理完全對應。
 
 </div>
 
@@ -108,7 +109,7 @@ $$
 <div class="topic-box__label">Example 3.29</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ and $Y$ are random variables whose conditional expectation and conditional variance are given by $\mathbb{E}(X\mid Y=y)=5y$ and <span class="text-nowrap">$\mathrm{Var}(X\mid Y=y)=8y$,</span> while $Y$ itself has $\mathbb{E}(Y)=2$ and <span class="text-nowrap">$\mathrm{Var}(Y)=6$.</span> Evaluate $\mathbb{E}(X)$ and <span class="text-nowrap">$\mathrm{Var}(X)$.</span>
+Let $X$ and $Y$ be two random variables such that <span class="text-nowrap">$\mathbb{E}(X\mid Y=y)=5y$,</span> <span class="text-nowrap">$\mathrm{Var}(X\mid Y=y)=8y$,</span> <span class="text-nowrap">$\mathbb{E}(Y)=2$,</span> and <span class="text-nowrap">$\mathrm{Var}(Y)=6$.</span> Find $\mathbb{E}(X)$ and <span class="text-nowrap">$\mathrm{Var}(X)$.</span>
 </div>
 
 由[雙重期望值定理](/lecture-notes/double-expectation-theorem/#thm-double-expectation)可知
@@ -163,7 +164,7 @@ $$
 <div class="topic-box__label">Example 3.30</div>
 
 <div lang="en" markdown="1">
-Suppose that a random variable $P$ spreads its probability evenly over the unit interval, so that its density is $f_{\sssig P}(p)=1$ for <span class="text-nowrap">$0<p<1$,</span> and suppose that, once the value $P=p$ is given, the conditional pmf of $X$ is the binomial one with parameters $n$ and <span class="text-nowrap">$p$,</span> that is,
+Let $P$ be a random variable uniformly distributed over <span class="text-nowrap">$(0,1)$,</span> so that $f_{\sssig P}(p)=1$ for <span class="text-nowrap">$0<p<1$.</span> Assume that the conditional distribution of $X$ given $P=p$ is binomial with parameters $n$ and <span class="text-nowrap">$p$,</span> i.e.,
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -195,13 +196,13 @@ $$
 </div>
 
 <ol class="topic-list-paren">
-  <li>Evaluate <span class="text-nowrap">$\mathbb{E}(X)$.</span></li>
-  <li>Evaluate <span class="text-nowrap">$\mathrm{Var}(X)$.</span></li>
-  <li>Determine the distribution of <span class="text-nowrap">$X$.</span></li>
+  <li>Find <span class="text-nowrap">$\mathbb{E}(X)$.</span></li>
+  <li>Find <span class="text-nowrap">$\mathrm{Var}(X)$.</span></li>
+  <li>Find the distribution of <span class="text-nowrap">$X$.</span></li>
 </ol>
 </div>
 
-(1) 依題意可知 $X\mid(P=p)$ $\sim$ <span class="text-nowrap">$\mathrm{Bin}(n,p)$，</span>由雙重期望值定理可以知道
+(1) 依題意可知 $X\mid(P=p)$ $\sim$ <span class="text-nowrap">$\mathrm{Bin}(n,p)$，</span>由雙重期望值定理可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -232,7 +233,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-$\mathrm{Bin}(n,p)$ 是[二項分配](/lecture-notes/binomial-distribution/#def-binomial) <span lang="en">(binomial distribution)</span>，這種分配我們在之後會談到，期望值是 <span class="text-nowrap">$np$，</span>變異數是 <span class="text-nowrap">$np(1-p)$；</span>而 $\mathcal{U}(0,1)$ 的[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution) <span lang="en">(standard uniform distribution)</span> 期望值是 <span class="text-nowrap">$\frac{\,1+0\,}{2}=\frac{1}{\,2\,}$，</span>變異數是 <span class="text-nowrap">$\frac{\,(1-0)^{2}\,}{12}=\frac{1}{\,12\,}$。</span>
+此處用到的 $\mathrm{Bin}(n,p)$ 為後文將介紹的[二項分配](/lecture-notes/binomial-distribution/#def-binomial) <span lang="en">(binomial distribution)</span>，其期望值為 <span class="text-nowrap">$np$、</span>變異數為 <span class="text-nowrap">$np(1-p)$；</span>而[標準均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution) <span lang="en">(standard uniform distribution)</span> $\mathcal{U}(0,1)$ 的期望值為 <span class="text-nowrap">$\frac{\,1+0\,}{2}=\frac{1}{\,2\,}$、</span>變異數為 <span class="text-nowrap">$\frac{\,(1-0)^{2}\,}{12}=\frac{1}{\,12\,}$。</span>
 
 </div>
 
@@ -322,13 +323,11 @@ $$
 <div id="note-hierarchical-model" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[這道題目](#ex-uniform-p-binomial)包含幾個很重要的觀念，其中 $X$ 是一個**參數為隨機變數的分配**，換言之即**需要先給定參數的值才是我們所認知的分配**，這種狀況便是雙重期望值定理、全機率定理與[變異數分解定理](#thm-var-decom-thm)的最佳使用時機。
-
-另外，在**階層模型 <span lang="en">(hierarchical model)</span>** 中，這樣的狀況更是必然會出現，讀者不妨在此將此觀念熟悉，以便未來在進行研究時，方能夠由此進階更深入的情況。
+在[這道題目](#ex-uniform-p-binomial)中，$X$ 服從一個**參數為隨機變數的分配**，亦即**須先給定參數 $P=p$ 的值，$X$ 才回到我們熟悉的二項分配**。面對此類由條件分配與參數邊際分配分層建構的**階層模型 <span lang="en">(hierarchical model)</span>**，雙重期望值定理、全機率定理與[變異數分解定理](#thm-var-decom-thm)正是推導邊際期望值、邊際分配與邊際變異數的標準工具。
 
 </div>
 
-事實上，關於雙重期望值定理與[變異數分解定理](#thm-var-decom-thm)，還有一些衍生的特殊應用，這正是下一篇要介紹的定理。
+雙重期望值定理與[變異數分解定理](#thm-var-decom-thm)還可進一步用於處理隨機個數之和的問題，此即下一篇要介紹的定理。
 
 ## 本篇小結
 

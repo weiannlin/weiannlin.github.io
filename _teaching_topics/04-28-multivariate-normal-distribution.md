@@ -10,14 +10,14 @@ order: 428
 permalink: /lecture-notes/multivariate-normal-distribution/
 date: 2026-08-15
 published: false
-excerpt: "多元常態分配把常態分配推廣到 $n$ 維，以期望值向量 $\\boldsymbol{\\mu}$ 與共變異數矩陣 $\\mathbf{\\Sigma}$ 兩個參數界定，動差母函數為 $e^{\\boldsymbol{\\mu}^{\\mathrm{T}}\\boldsymbol{t}+\\frac{1}{2}\\boldsymbol{t}^{\\mathrm{T}}\\mathbf{\\Sigma}\\boldsymbol{t}}$ 這個式子。本篇先給出定義的六個欄位，再依序說明四項性質: 邊際分配均為常態分配，把向量分塊之後每一塊也仍是多元常態分配；條件分配的期望值與變異數可以由分塊後的 $\\mathbf{\\Sigma}$ 直接寫出，其形式與二元常態的結果完全對得起來；任意多個線性組合經仿射變換之後仍為多元常態分配，其等價敘述是任一個多元常態向量都可以由獨立的標準常態向量經 $\\boldsymbol{X}=\\mathbf{D}\\boldsymbol{Z}+\\boldsymbol{\\mu}$ 生成；二次形式 $(\\boldsymbol{X}-\\boldsymbol{\\mu})^{\\mathrm{T}}\\mathbf{\\Sigma}^{-1}(\\boldsymbol{X}-\\boldsymbol{\\mu})$ 服從自由度為 $n$ 的卡方分配，開根號之後即為馬氏距離。最後以三道例題演練仿射變換的用法。"
+excerpt: "多元常態分配將常態模型推廣至 $n$ 維隨機向量，由期望值向量 $\\boldsymbol{\\mu}$ 與共變異數矩陣 $\\mathbf{\\Sigma}$ 完全決定。本篇介紹其密度與動差母函數，並說明子向量邊際與條件常態性、經仿射變換仍為多元常態分配，以及二次形式服從卡方分配的性質。"
 ---
 
 [上一篇](/lecture-notes/bivariate-normal-examples/)以三道例題演練[二元常態分配](/lecture-notes/bivariate-normal-distribution/#def-bivariate-normal)的性質，其中最後一題的註記曾經提到，該題另有一種以矩陣求解的作法，只是那需要先具備處理矩陣版本的能力。本篇處理的正是這個矩陣版本，也就是[常態分配](/lecture-notes/normal-distribution/#def-normal)在 $n$ 維空間中的推廣，稱為多元常態分配。
 
 多元常態分配以期望值向量 $\boldsymbol{\mu}$ 與[共變異數矩陣](/lecture-notes/covariance-matrix/#def-covar-matrix) $\mathbf{\Sigma}$ 這兩個參數界定，機率函數之中的 $(\boldsymbol{x}-\boldsymbol{\mu})^{\mathrm{T}}\mathbf{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{\mu})$ 這個式子，恰好就是單變數常態分配指數上 $\frac{(x-\mu)^{2}}{\sigma^{2}}$ 的矩陣版本。
 
-本篇先給出定義，再依序說明四項性質: 邊際分配均為常態分配，而且把向量分塊之後每一塊也仍是多元常態分配；條件分配的期望值與變異數可以由分塊後的 $\mathbf{\Sigma}$ 直接寫出；任意多個線性組合經仿射變換之後仍為多元常態分配；二次形式服從[卡方分配](/lecture-notes/chi-squared-distribution/#def-chi-distribution)，其開根號之值即為馬氏距離。最後以三道例題演練這些性質在計算上的用法。
+本篇先給出定義，再依序說明四項性質。首先是邊際分配均為常態分配，而且把向量分塊之後每一塊也仍是多元常態分配；條件分配的期望值與變異數可以由分塊後的 $\mathbf{\Sigma}$ 直接寫出；任意多個線性組合經仿射變換之後仍為多元常態分配；二次形式服從[卡方分配](/lecture-notes/chi-squared-distribution/#def-chi-distribution)，其開根號之值即為馬氏距離。最後以三道例題演練這些性質在計算上的用法。
 
 ## 多元常態分配
 
@@ -56,9 +56,9 @@ $$
 
 **參數與參數範圍**:
 
-$\boldsymbol{\mu}\in\mathbb{R}^{n}$ 為 $\boldsymbol{X}$ 的期望值、$\mathbf{\Sigma}$ 為 $\boldsymbol{X}$ 的共變異數矩陣，為對稱 <span lang="en">(symmetric)</span> 且半正定 <span lang="en">(positive semi-definite)</span> 之 $n\times n$ 方陣。
+$\boldsymbol{\mu}\in\mathbb{R}^{n}$ 為 $\boldsymbol{X}$ 的期望值；$\mathbf{\Sigma}$ 為 $\boldsymbol{X}$ 的共變異數矩陣，為對稱 <span lang="en">(symmetric)</span> 且半正定 <span lang="en">(positive semi-definite)</span> 之 $n\times n$ 方陣 (下方由動差母函數刻畫之定義與線性轉換性質在半正定時皆成立；聯合機率密度函數則須在 $\mathbf{\Sigma}$ 為正定 <span lang="en">(positive definite)</span> 矩陣、即 $\lvert\mathbf{\Sigma}\rvert>0$ 時才存在)。
 
-**機率函數**:
+**機率函數** ($\mathbf{\Sigma}$ 正定時):
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -93,10 +93,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(\boldsymbol{X})&=\boldsymbol{\mu},\quad \mathrm{Var}(\boldsymbol{X})=\mathbf{\Sigma},\\[0.45em]
-M_{\sssig \boldsymbol{X}}(\boldsymbol{t})&=e^{\boldsymbol{\mu}^{\mathrm{T}}\boldsymbol{t}+\frac{1}{\,2\,}\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}},\ \boldsymbol{t}\in\mathbb{R}^{n}
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(\boldsymbol{X})=\boldsymbol{\mu},\quad \mathrm{Var}(\boldsymbol{X})=\mathbf{\Sigma},\\[0.45em]
+M_{\sssig \boldsymbol{X}}(\boldsymbol{t})=e^{\boldsymbol{\mu}^{\mathrm{T}}\boldsymbol{t}+\frac{1}{\,2\,}\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}},\ \boldsymbol{t}\in\mathbb{R}^{n}
+\end{gathered}
 $$
 
 </div>
@@ -115,20 +115,11 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-如同我們過去所提到，二元常態分配的邊際分配均為常態分配，但任意兩個「不獨立」的常態分配，卻不見得能組成一個二元常態分配；多元常態分配的邊際分配雖均為常態分配，任意 $n$ 個「不獨立」的常態分配，卻不見得能組成一個多元常態分配。
-
-但是，任意多個「獨立」的常態分配，必能組成一個共變異數矩陣為對角矩陣 <span lang="en">(diagonal matrix)</span> 的多元常態分配，且若此些常態分配的變異數同為 <span class="text-nowrap">$\sigma^{2}$，</span>則其共變異數矩陣為 <span class="text-nowrap">$\sigma^{2}\mathbb{I}_n$，</span>其中 $\mathbb{I}_n$ 為 $n\times n$ 的單位矩陣 <span lang="en">(identity matrix)</span>。
+與二元常態分配的情形相同，多元常態分配的邊際分配雖皆為常態分配，但任意 $n$ 個不獨立的常態隨機變數未必能組成多元常態分配。反之，任意 $n$ 個彼此獨立的常態隨機變數，必共同服從共變異數矩陣為對角矩陣 <span lang="en">(diagonal matrix)</span> 的多元常態分配 (共變異數矩陣為對角矩陣代表各分量兩兩零相關，在多元常態分配下恰與彼此獨立等價)；特別當各分量的變異數同為 $\sigma^{2}$ 時，其共變異數矩陣即為 <span class="text-nowrap">$\sigma^{2}\mathbb{I}_n$，</span>其中 $\mathbb{I}_n$ 為 $n\times n$ 單位矩陣 <span lang="en">(identity matrix)</span>。
 
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-共變異數矩陣是一個對角矩陣時，說明這一些隨機變數彼此零相關，而在多元常態中，這更等價於彼此獨立。
-
-</div>
-
-除此之外，多元常態分配的其中幾個變數亦會形成多元常態分配，此即: 令
+此外，多元常態向量的任意子向量仍服從多元常態分配。具體而言，令
 {: .topic-paren-cont}
 
 $$
@@ -148,10 +139,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\boldsymbol{X}_1&=\bigl[\,X_1,\ldots,X_q\,\bigr]^{\mathrm{T}},\\[0.45em]
-\boldsymbol{X}_2&=\bigl[\,X_{q+1},\ldots,X_n\,\bigr]^{\mathrm{T}},\quad q<n
-\end{aligned}
+\begin{gathered}
+\boldsymbol{X}_1=\bigl[\,X_1,\ldots,X_q\,\bigr]^{\mathrm{T}},\\[0.45em]
+\boldsymbol{X}_2=\bigl[\,X_{q+1},\ldots,X_n\,\bigr]^{\mathrm{T}},\quad q<n
+\end{gathered}
 $$
 
 </div>
@@ -176,24 +167,24 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\boldsymbol{X}_1&\sim\mathcal{MN}\bigl(\boldsymbol{\mu}_1,\mathbf{\Sigma}_{11}\bigr),\\[0.45em]
-\boldsymbol{X}_2&\sim\mathcal{MN}\bigl(\boldsymbol{\mu}_2,\mathbf{\Sigma}_{22}\bigr)
-\end{aligned}
+\begin{gathered}
+\boldsymbol{X}_1\sim\mathcal{MN}\bigl(\boldsymbol{\mu}_1,\mathbf{\Sigma}_{11}\bigr),\\[0.45em]
+\boldsymbol{X}_2\sim\mathcal{MN}\bigl(\boldsymbol{\mu}_2,\mathbf{\Sigma}_{22}\bigr)
+\end{gathered}
 $$
 
 </div>
 
-(2) 多元常態分配的條件分配均為多元 (或單元) 常態分配:
+(2) 在 $\mathbf{\Sigma}\_{11}$ 與 $\mathbf{\Sigma}\_{22}$ 皆為正定矩陣之下，多元常態分配的條件分配均為多元 (或單元) 常態分配，表示如下:
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{aligned}
-\boldsymbol{X}_1\bigm|(\boldsymbol{X}_2=\boldsymbol{x}_2)&\sim\mathcal{MN}\Bigl(\boldsymbol{\mu}_1+\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\bigl(\boldsymbol{x}_2-\boldsymbol{\mu}_2\bigr),\ \mathbf{\Sigma}_{11}-\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\Bigr)\\[0.45em]
-\boldsymbol{X}_2\bigm|(\boldsymbol{X}_1=\boldsymbol{x}_1)&\sim\mathcal{MN}\Bigl(\boldsymbol{\mu}_2+\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1}\bigl(\boldsymbol{x}_1-\boldsymbol{\mu}_1\bigr),\ \mathbf{\Sigma}_{22}-\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\Bigr)
-\end{aligned}
+\begin{gathered}
+\boldsymbol{X}_1\bigm|(\boldsymbol{X}_2=\boldsymbol{x}_2)\sim\mathcal{MN}\Bigl(\boldsymbol{\mu}_1+\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\bigl(\boldsymbol{x}_2-\boldsymbol{\mu}_2\bigr),\ \mathbf{\Sigma}_{11}-\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\Bigr)\\[0.45em]
+\boldsymbol{X}_2\bigm|(\boldsymbol{X}_1=\boldsymbol{x}_1)\sim\mathcal{MN}\Bigl(\boldsymbol{\mu}_2+\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1}\bigl(\boldsymbol{x}_1-\boldsymbol{\mu}_1\bigr),\ \mathbf{\Sigma}_{22}-\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\Bigr)
+\end{gathered}
 $$
 
 </div>
@@ -218,15 +209,15 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-我們可將二元常態分配之條件分配的性質改寫為以下:
+將二元常態分配的條件分配改以共變異數 $\sigma_{12}=\sigma_{21}=\rho\sigma_1\sigma_2$ 寫出:
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{aligned}
-X\mid(Y=y)&\sim\mathcal{N}\left(\mu_1+\sigma_{12}\frac{1}{\,\sigma_2^{2}\,}(y-\mu_2),\ \sigma_1^{2}-\sigma_{12}\frac{1}{\,\sigma_2^{2}\,}\sigma_{21}\right)\\[0.45em]
-Y\mid(X=x)&\sim\mathcal{N}\left(\mu_2+\sigma_{21}\frac{1}{\,\sigma_1^{2}\,}(x-\mu_1),\ \sigma_2^{2}-\sigma_{21}\frac{1}{\,\sigma_1^{2}\,}\sigma_{12}\right)
-\end{aligned}
+\begin{gathered}
+X\mid(Y=y)\sim\mathcal{N}\left(\mu_1+\sigma_{12}\frac{1}{\,\sigma_2^{2}\,}(y-\mu_2),\ \sigma_1^{2}-\sigma_{12}\frac{1}{\,\sigma_2^{2}\,}\sigma_{21}\right)\\[0.45em]
+Y\mid(X=x)\sim\mathcal{N}\left(\mu_2+\sigma_{21}\frac{1}{\,\sigma_1^{2}\,}(x-\mu_1),\ \sigma_2^{2}-\sigma_{21}\frac{1}{\,\sigma_1^{2}\,}\sigma_{12}\right)
+\end{gathered}
 $$
 
 </div>
@@ -248,21 +239,31 @@ $$
 
 </div>
 
-則上列這個性質完全可以跟二元的情況作對照，二者間具有驚人的相似性。
+與上方的分塊矩陣公式逐項對照，可見二元形式正是多元條件期望值與條件共變異數矩陣在一維分塊下的特例。
 
 </div>
 
-(3) 多元常態分配隨機變數之間的任意「多個」線性組合仍為多元常態分配。這與稍早我們所談到的[仿射變換](/lecture-notes/bivariate-normal-distribution/#note-affine-transformation) <span lang="en">(affine transformation)</span> 是同樣的性質，我們表示如下:
+(3) 多元常態隨機向量的任意多個線性組合仍服從多元常態分配；前文提及的[仿射變換](/lecture-notes/bivariate-normal-distribution/#note-affine-transformation) <span lang="en">(affine transformation)</span> 本就不限於多維映至一維，由多個線性組合構成的向量轉換亦同屬仿射變換，表示如下:
 {: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 \boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{\mu},\mathbf{\Sigma})\qquad\Longrightarrow\ \boldsymbol{Y}=\mathbf{B}\boldsymbol{X}+\boldsymbol{c}\sim\mathcal{MN}\bigl(\mathbf{B}\boldsymbol{\mu}+\boldsymbol{c},\ \mathbf{B}\mathbf{\Sigma}\mathbf{B}^{\mathrm{T}}\bigr)
 $$
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
-事實上，仿射變換原先就不僅限於多維轉一維，多個線性組合共同構成的情況同樣稱為仿射變換。
+$$
+\begin{aligned}
+&\boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{\mu},\mathbf{\Sigma})\\[0.4em]
+&\quad\Longrightarrow\ \begin{aligned}[t]
+\boldsymbol{Y}&=\mathbf{B}\boldsymbol{X}+\boldsymbol{c}\\[0.25em]
+&\sim\mathcal{MN}\bigl(\mathbf{B}\boldsymbol{\mu}+\boldsymbol{c},\ \mathbf{B}\mathbf{\Sigma}\mathbf{B}^{\mathrm{T}}\bigr)
+\end{aligned}
+\end{aligned}
+$$
 
 </div>
 
@@ -272,13 +273,6 @@ $$
 $$
 \boldsymbol{c}=\bigl[\,c_1,\ldots,c_k\,\bigr]^{\mathrm{T}}=\begin{bmatrix} c_1\\ \vdots\\ c_k \end{bmatrix}
 $$
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-其實由 [Theorem 3.18](/lecture-notes/covariance-matrix/#thm-matrix-operation)，我們已經可以知道期望值向量與共變異數矩陣的數值了，只不過多元常態分配的仿射變換性質，保證了在期望值向量與共變異數矩陣已知的基礎上，確保這時候的線性組合結果仍為多元常態分配。
-
-</div>
 
 仿射變換也等價於底下的這個性質: 令
 {: .topic-paren-cont}
@@ -304,14 +298,14 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者可能會覺得，上述兩個等價性質，好像與單變數常態分配的線性組合可加性與反標準化的性質有所呼應，事實上這麼理解是沒有問題的，差別只在於，在多元常態的情況下，我們不再僅限於多轉一或是一轉一的結果，多轉多在此也是可行的。
+對任意隨機向量而言，前文的 [Theorem 3.18](/lecture-notes/covariance-matrix/#thm-matrix-operation) 已給出線性轉換後的期望值向量 $\mathbf{B}\boldsymbol{\mu}+\boldsymbol{c}$ 與共變異數矩陣 <span class="text-nowrap">$\mathbf{B}\mathbf{\Sigma}\mathbf{B}^{\mathrm{T}}$；</span>多元常態分配的仿射變換性質則進一步保證轉換後的隨機向量仍服從多元常態分配。此外，上述兩項等價性質恰分別對應單變數常態分配的線性組合可加性與反標準化表示式，並將純量運算或單一線性組合推廣至多維對多維的矩陣轉換。
 
 </div>
 
 (4) 多元常態分配的[二次形式](/lecture-notes/covariance-matrix/#thm-vector-operation) <span lang="en">(quadratic form)</span> 為卡方分配:
 {: .topic-paren-item}
 
-若令 $\boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{\mu},\mathbf{\Sigma})$ 表示 $n$ 維的多元常態分配，則我們有
+若令 $\boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{\mu},\mathbf{\Sigma})$ 表示共變異數矩陣 $\mathbf{\Sigma}$ 正定之 $n$ 維多元常態分配，則我們有
 {: .topic-paren-cont}
 
 $$
@@ -321,16 +315,9 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者應該記得我們曾經提過，二次形式事實上可以類比為「平方」，除此之外，向量的二次形式事實上是有類似於內積 <span lang="en">(inner product)</span> 的功用的，所以除了「平方」之外還有「和」的功能；而中間的 $\mathbf{\Sigma}^{-1}$ 可以類比為「變異數的倒數」，這麼一來，這個結果就相當於「平方和除以變異數」，因此有卡方分配的結果是很自然的，其自由度跟隨向量的維度。
+向量的二次形式兼具內積 <span lang="en">(inner product)</span> 的加總結構與平方效果，而中間的 $\mathbf{\Sigma}^{-1}$ 對應單變數中變異數的倒數；故 $(\boldsymbol{X}-\boldsymbol{\mu})^{\mathrm{T}}\mathbf{\Sigma}^{-1}(\boldsymbol{X}-\boldsymbol{\mu})$ 可類比為「標準化平方和」，服從自由度等於向量維度 $n$ 的卡方分配。
 
-此外，多維度空間中，一個點 $\boldsymbol{X}$ 與 $\boldsymbol{\mu}$ 的距離，可以用 $\bigl[(\boldsymbol{X}-\boldsymbol{\mu})^{\mathrm{T}}\mathbf{\Sigma}^{-1}(\boldsymbol{X}-\boldsymbol{\mu})\bigr]^{\frac{1}{2}}$ 來衡量，這被稱作**馬氏距離 <span lang="en">(Mahalanobis distance)</span>**，也就是二次形式開根號之值，搭配多元常態之二次形式為卡方分配的結果，我們可以用機率分配來描述一個點離期望值有多遠。
-
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-事實上，這個概念也被叫做**統計距離**，也就是透過機率分配來描述「多遠」、「差多少」之類的概念，這也是統計檢定的核心精神。
+在多維空間中，將該二次形式開根號所得的 $\bigl[(\boldsymbol{X}-\boldsymbol{\mu})^{\mathrm{T}}\mathbf{\Sigma}^{-1}(\boldsymbol{X}-\boldsymbol{\mu})\bigr]^{\frac{1}{2}}$ 用以衡量隨機向量 $\boldsymbol{X}$ 與期望值 $\boldsymbol{\mu}$ 的距離，稱為**馬氏距離 <span lang="en">(Mahalanobis distance)</span>**，亦稱**統計距離**。結合上述二次形式服從卡方分配的性質，即可透過機率分配刻畫觀測點偏離中心的程度，這正是多變量統計檢定的核心依據。
 
 </div>
 
@@ -340,10 +327,10 @@ $$
 <div class="topic-box__label">Example 4.63</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1$, $X_2$ and $X_3$ are independent random variables, each having the standard normal distribution. Find the joint pdf of $Y_1=X_1+X_2$ and <span class="text-nowrap">$Y_2=X_2+X_3$.</span>
+Let $X_1,X_2,X_3$ be three independent standard normal random variables and let <span class="text-nowrap">$Y_1=X_1+X_2$,</span> <span class="text-nowrap">$Y_2=X_2+X_3$.</span> Find the joint density function of $Y_1$ and <span class="text-nowrap">$Y_2$.</span>
 </div>
 
-由於 $X_1,X_2,X_3\overset{\mathrm{iid}}{\sim}\mathcal{N}(0,1)$ 成立，故可知
+由 $X_1,X_2,X_3\overset{\mathrm{iid}}{\sim}\mathcal{N}(0,1)$ 可知
 
 $$
 \boldsymbol{X}=\begin{bmatrix} X_1 & X_2 & X_3 \end{bmatrix}^{\mathrm{T}}\sim\mathcal{MN}\bigl(\boldsymbol{0},\ \mathbb{I}_3\bigr)
@@ -385,10 +372,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mu_1&=\mu_2=0,\quad \sigma_1^{2}=\sigma_2^{2}=2,\\[0.45em]
-\rho&=\frac{1}{\,\sqrt{2\times2}\,}=\frac{1}{\,2\,}
-\end{aligned}
+\begin{gathered}
+\mu_1=\mu_2=0,\quad \sigma_1^{2}=\sigma_2^{2}=2,\\[0.45em]
+\rho=\frac{1}{\,\sqrt{2\times2}\,}=\frac{1}{\,2\,}
+\end{gathered}
 $$
 
 </div>
@@ -419,16 +406,16 @@ $$
 <div class="topic-box__label">Example 4.60 <span lang="en">(Continued)</span></div>
 
 <div lang="en" markdown="1">
-Suppose that the random vector $\begin{bmatrix} X\\ Y \end{bmatrix}$ has a multivariate normal distribution whose mean vector and covariance matrix are
+Let $\begin{bmatrix} X\\\\ Y \end{bmatrix}$ be a vector of random variables from a multivariate normal distribution with mean vector $\boldsymbol{\mu}$ and covariance matrix $\mathbf{\Sigma}$ given by
 
 $$
 \boldsymbol{\mu}=\begin{bmatrix} 5\\ 10 \end{bmatrix},\quad \mathbf{\Sigma}=\begin{bmatrix} 1 & 5\rho\\ 5\rho & 25 \end{bmatrix}
 $$
 
-where $\rho>0$ and <span class="text-nowrap">$\mathbb{P}(6<Y<14\mid X=5)=0.6827$.</span> It is also given that $\mathbb{P}(Z<1)=0.8413$ for <span class="text-nowrap">$Z\sim\mathcal{N}(0,1)$.</span>
+Suppose that $\rho>0$ and $\mathbb{P}(6<Y<14\mid X=5)=0.6827$. Note that $\mathbb{P}(Z<1)=0.8413$ when <span class="text-nowrap">$Z\sim\mathcal{N}(0,1)$.</span>
 
 <ol class="topic-list-paren topic-list-paren--start-4">
-  <li>Suppose further that $U=5X+Y$ and <span class="text-nowrap">$V=5X-Y$.</span> Determine whether $U$ and $V$ are independent.</li>
+  <li>Let $U=5X+Y$ and <span class="text-nowrap">$V=5X-Y$.</span> Are $U$ and $V$ independent?</li>
 </ol>
 </div>
 
@@ -439,7 +426,7 @@ $$
 \mathbf{A}=\begin{bmatrix} 5 & 1\\ 5 & -1 \end{bmatrix}
 $$
 
-則依照多元常態分配之仿射變換性質可知
+則由多元常態分配的仿射變換可知
 {: .topic-paren-cont}
 
 $$
@@ -495,7 +482,7 @@ $$
 <div class="topic-box__label">Example 4.64</div>
 
 <div lang="en" markdown="1">
-Suppose that $Y_1$ and $Y_2$ are independent, each having the standard normal distribution. Find the distribution of each of the random variables below.
+Let <span class="text-nowrap">$Y_1,Y_2\overset{\mathrm{iid}}{\sim}\mathcal{N}(0,1)$.</span> Find the distribution of the following random variables:
 
 <ol class="topic-list-paren topic-list-paren--math">
   <li>
@@ -591,19 +578,19 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述兩個問題，事實上都使用了**二元常態分配中，零相關等價於獨立**這個性質。這個性質事實上能夠推廣至多元常態分配，其中，我們甚至可以將其一個服從多元常態分配的向量分成幾個部分，這些部分間的共變異數 (矩陣) 若是 $0$ (或是零矩陣)，則它們也會獨立，見[下一篇的定理](/lecture-notes/multivariate-normal-independence/#thm-block-independence)。
+上述兩題皆利用了**二元常態分配中零相關與獨立等價**的性質。此性質可推廣至多元常態分配；將多元常態隨機向量分塊後，只要不同子向量之間的跨區塊共變異數矩陣為零矩陣，各子向量即彼此獨立，詳見[下一篇的定理](/lecture-notes/multivariate-normal-independence/#thm-block-independence)。
 
 </div>
 
 ## 本篇小結
 
-[Definition 4.26](#def-multivariate-normal) 的多元常態分配以期望值向量 $\boldsymbol{\mu}$ 與共變異數矩陣 $\mathbf{\Sigma}$ 兩個參數界定，值域為整個 <span class="text-nowrap">$\mathbb{R}^{n}$，</span>機率函數為 $\frac{1}{\,\sqrt{(2\pi)^{n}\lvert\mathbf{\Sigma}\rvert}\,}e^{-\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^{\mathrm{T}}\mathbf{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{\mu})}$ 這個式子，動差母函數則為 $e^{\boldsymbol{\mu}^{\mathrm{T}}\boldsymbol{t}+\frac{1}{2}\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}}$ 這個式子。其中 $\mathbf{\Sigma}$ 必須是對稱且半正定的 $n\times n$ 方陣，這正是共變異數矩陣本來就具備的兩項性質。
+[Definition 4.26](#def-multivariate-normal) 的多元常態分配以期望值向量 $\boldsymbol{\mu}$ 與共變異數矩陣 $\mathbf{\Sigma}$ 兩個參數界定，值域為整個 <span class="text-nowrap">$\mathbb{R}^{n}$，</span>機率函數為 $\frac{1}{\,\sqrt{(2\pi)^{n}\lvert\mathbf{\Sigma}\rvert}\,}e^{-\frac{1}{2}(\boldsymbol{x}-\boldsymbol{\mu})^{\mathrm{T}}\mathbf{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{\mu})}$ 這個式子，動差母函數則為 $e^{\boldsymbol{\mu}^{\mathrm{T}}\boldsymbol{t}+\frac{1}{2}\boldsymbol{t}^{\mathrm{T}}\mathbf{\Sigma}\boldsymbol{t}}$ 這個式子。其中共變異數矩陣 $\mathbf{\Sigma}$ 為對稱半正定方陣，而欲使聯合機率密度函數與 $\mathbf{\Sigma}^{-1}$ 存在，則須要求 $\mathbf{\Sigma}$ 為對稱且正定的 $n\times n$ 方陣。
 
-四項性質之中，前兩項處理的是把向量拆開來看的結果。邊際分配均為常態分配，而且把 $\boldsymbol{X}$ 分成 $\boldsymbol{X}_1$ 與 $\boldsymbol{X}_2$ 兩塊之後，每一塊各自服從以對應的 $\boldsymbol{\mu}_i$ 與 $\mathbf{\Sigma}_{ii}$ 為參數的多元常態分配。條件分配同樣是多元 (或單元) 常態分配，期望值為 $\boldsymbol{\mu}_1+\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}(\boldsymbol{x}_2-\boldsymbol{\mu}_2)$ 這個式子、變異數為 $\mathbf{\Sigma}_{11}-\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}$ 這個式子，把矩陣換成純量之後，兩者恰好就是二元常態分配的條件期望值與條件變異數。要留意的是，邊際分配為常態分配這件事並不能反過來說。任意 $n$ 個「不獨立」的常態分配未必能組成一個多元常態分配，但任意多個「獨立」的常態分配則必能組成一個共變異數矩陣為對角矩陣的多元常態分配。
+四項性質之中，前兩項處理的是把向量拆開來看的結果。邊際分配均為常態分配，而且把 $\boldsymbol{X}$ 分成 $\boldsymbol{X}\_1$ 與 $\boldsymbol{X}\_2$ 兩塊之後，每一塊各自服從以對應的 $\boldsymbol{\mu}\_i$ 與 $\mathbf{\Sigma}\_{ii}$ 為參數的多元常態分配。條件分配同樣是多元 (或單元) 常態分配，期望值為 $\boldsymbol{\mu}\_1+\mathbf{\Sigma}\_{12}\mathbf{\Sigma}\_{22}^{-1}(\boldsymbol{x}\_2-\boldsymbol{\mu}\_2)$ 這個式子、變異數為 $\mathbf{\Sigma}\_{11}-\mathbf{\Sigma}\_{12}\mathbf{\Sigma}\_{22}^{-1}\mathbf{\Sigma}\_{21}$ 這個式子，把矩陣換成純量之後，兩者恰好就是二元常態分配的條件期望值與條件變異數。要留意的是，邊際分配為常態分配這件事不能反過來說。任意 $n$ 個「不獨立」的常態分配未必能組成多元常態分配，但任意多個「獨立」的常態分配則必能組成共變異數矩陣為對角矩陣的多元常態分配。
 
-後兩項性質處理的是整個向量的轉換。仿射變換保證 $\boldsymbol{Y}=\mathbf{B}\boldsymbol{X}+\boldsymbol{c}$ 仍為多元常態分配，期望值向量與共變異數矩陣分別是 $\mathbf{B}\boldsymbol{\mu}+\boldsymbol{c}$ 與 <span class="text-nowrap">$\mathbf{B}\mathbf{\Sigma}\mathbf{B}^{\mathrm{T}}$；</span>它的等價敘述是任一個多元常態向量都可以寫成 <span class="text-nowrap">$\boldsymbol{X}=\mathbf{D}\boldsymbol{Z}+\boldsymbol{\mu}$，</span>其中 $\boldsymbol{Z}$ 由獨立的標準常態分配構成而 <span class="text-nowrap">$\mathbf{\Sigma}=\mathbf{D}\mathbf{D}^{\mathrm{T}}$。</span>這兩件事正是單變數的線性組合可加性與反標準化的矩陣版本，差別只在於多轉多在此也是可行的。二次形式 $(\boldsymbol{X}-\boldsymbol{\mu})^{\mathrm{T}}\mathbf{\Sigma}^{-1}(\boldsymbol{X}-\boldsymbol{\mu})$ 則服從自由度為 $n$ 的卡方分配，把它理解為「平方和除以變異數」便不難接受這個結果，而它開根號之值即為馬氏距離。
+後兩項性質處理的是整個向量的轉換。仿射變換保證 $\boldsymbol{Y}=\mathbf{B}\boldsymbol{X}+\boldsymbol{c}$ 仍為多元常態分配，期望值向量與共變異數矩陣分別是 $\mathbf{B}\boldsymbol{\mu}+\boldsymbol{c}$ 與 <span class="text-nowrap">$\mathbf{B}\mathbf{\Sigma}\mathbf{B}^{\mathrm{T}}$；</span>它的等價敘述是任一個多元常態向量都可以寫成 $\boldsymbol{X}=\mathbf{D}\boldsymbol{Z}+\boldsymbol{\mu}$ 這個線性表示式，其中 $\boldsymbol{Z}$ 由獨立的標準常態分配構成且滿足 $\mathbf{\Sigma}=\mathbf{D}\mathbf{D}^{\mathrm{T}}$ 這一分解。這兩件事正是單變數的線性組合可加性與反標準化的矩陣版本，差別只在於多轉多在此也是可行的。二次形式 $(\boldsymbol{X}-\boldsymbol{\mu})^{\mathrm{T}}\mathbf{\Sigma}^{-1}(\boldsymbol{X}-\boldsymbol{\mu})$ 則服從自由度為 $n$ 的卡方分配，把它理解為「平方和除以變異數」便不難接受這個結果，而它開根號之值即為馬氏距離。
 
-三道例題都是仿射變換的演練。[Example 4.63](#ex-multivariate-normal-1) 把三個獨立標準常態變數排成 <span class="text-nowrap">$\boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{0},\mathbb{I}_3)$，</span>再以 $\mathbf{A}=\begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 1 \end{bmatrix}$ 這個矩陣取出 $Y_1$ 與 <span class="text-nowrap">$Y_2$，</span>由 $\mathbf{A}\mathbb{I}_3\mathbf{A}^{\mathrm{T}}$ 讀得兩個變異數皆為 $2$ 而共變異數為 <span class="text-nowrap">$1$，</span>相關係數因而是 <span class="text-nowrap">$\frac{1}{\,2\,}$，</span>代回二元常態的機率函數即得所求。[Example 4.60 <span lang="en">(Continued)</span>](#ex-bivariate-normal-ex-1-continued) 則以 $\mathbf{A}=\begin{bmatrix} 5 & 1\\ 5 & -1 \end{bmatrix}$ 同時取得 $U$ 與 <span class="text-nowrap">$V$，</span>算出的 $\mathbf{A}\mathbf{\Sigma}\mathbf{A}^{\mathrm{T}}$ 是一個對角矩陣，兩者零相關；由於它們出自同一個二元常態分配，零相關便等價於獨立。[Example 4.64](#ex-multivariate-normal-2) 的三個小題共用同一個作法。先由 $\mathbf{A}=\begin{bmatrix} 1 & 1\\ 1 & -1 \end{bmatrix}$ 得知 $Y_1+Y_2$ 與 $Y_1-Y_2$ 各自服從 $\mathcal{N}(0,2)$ 且彼此獨立。第一個統計量本身就是標準常態變數，第二個是兩個獨立卡方變數的比值，第三個則是標準常態變數除以獨立卡方變數開根號之後的比值，答案依序為 <span class="text-nowrap">$\mathcal{N}(0,1)$、</span>$\mathcal{F}(1,1)$ 與 <span class="text-nowrap">$t(1)$。</span>
+三道例題都是仿射變換的演練。[Example 4.63](#ex-multivariate-normal-1) 把三個獨立標準常態變數排成 $\boldsymbol{X}\sim\mathcal{MN}(\boldsymbol{0},\mathbb{I}_3)$ 這個標準多元常態向量，再以 $\mathbf{A}=\begin{bmatrix} 1 & 1 & 0\\\\ 0 & 1 & 1 \end{bmatrix}$ 這個矩陣取出 $Y_1$ 與 <span class="text-nowrap">$Y_2$，</span>由 $\mathbf{A}\mathbb{I}_3\mathbf{A}^{\mathrm{T}}$ 讀得兩個變異數皆為 $2$ 而共變異數為 <span class="text-nowrap">$1$，</span>相關係數因而是 <span class="text-nowrap">$\frac{1}{\,2\,}$，</span>代回二元常態的機率函數即得所求。[Example 4.60 <span lang="en">(Continued)</span>](#ex-bivariate-normal-ex-1-continued) 則以 $\mathbf{A}=\begin{bmatrix} 5 & 1\\\\ 5 & -1 \end{bmatrix}$ 同時取得 $U$ 與 <span class="text-nowrap">$V$，</span>算出的 $\mathbf{A}\mathbf{\Sigma}\mathbf{A}^{\mathrm{T}}$ 是一個對角矩陣，兩者零相關；由於它們出自同一個二元常態分配，零相關便等價於獨立。[Example 4.64](#ex-multivariate-normal-2) 的三個小題共用同一個作法。先由 $\mathbf{A}=\begin{bmatrix} 1 & 1\\\\ 1 & -1 \end{bmatrix}$ 得知 $Y_1+Y_2$ 與 $Y_1-Y_2$ 各自服從 $\mathcal{N}(0,2)$ 且彼此獨立。第一個統計量本身就是標準常態變數，第二個是兩個獨立卡方變數的比值，第三個則是標準常態變數除以獨立卡方變數開根號之後的比值，答案依序為 <span class="text-nowrap">$\mathcal{N}(0,1)$、</span>$\mathcal{F}(1,1)$ 與 <span class="text-nowrap">$t(1)$。</span>
 
 最後兩道例題都用到二元常態分配中零相關等價於獨立這個性質。[下一篇](/lecture-notes/multivariate-normal-independence/)把這個性質推廣到多元常態分配的分塊之上，並以它證明常態母體之下樣本平均數與樣本變異數彼此獨立。
 

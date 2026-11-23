@@ -1,6 +1,6 @@
 ---
 title: "史拉斯基定理與 Delta 法"
-subtitle: "Slutsky's Theorem and the Delta Method"
+subtitle: "Slutsky’s Theorem and the Delta Method"
 layout: topic
 collection: teaching_topics
 category: "機率概論"
@@ -10,19 +10,19 @@ order: 508
 permalink: /lecture-notes/slutsky-and-delta-method/
 date: 2026-08-15
 published: false
-excerpt: "上一篇的定理都是為機率收斂而生的，本篇把其中一個序列改為分配收斂，得到史拉斯基定理。若 $X_n\\pconv c$ 且 $Y_n\\dconv W$，則和、積與商仍然分配收斂，極限分別為 $c+W$、$cW$ 與 $\\frac{W}{c}$。三道例題依序處理兩組樣本的比值、標準常態樣本的比值，以及 $t$ 統計量分配收斂至標準常態這件事，並由最後一題得知自由度趨於無窮時 $t$ 分配的極限分配就是標準常態分配。其後給出 Delta 法，把 $\\sqrt{n}\\,(X_n-\\theta)$ 的極限分配推廣到 $\\sqrt{n}\\,[g(X_n)-g(\\theta)]$，變異數多乘一個 $[g^{\\prime}(\\theta)]^{2}$。四道例題分別取 $g(x)=x^{2}$、$g(x)=e^{x}$、$g(x)=\\frac{x-1}{x^{2}}$ 與 $g(x)=\\sqrt{x}$，用來求樣本平均數平方、均勻樣本乘積、幾何母體樣本與卡方變數平方根的極限分配。"
+excerpt: "史拉斯基定理給出一序列機率收斂至常數 $c$ 與另一序列分配收斂時的和、積及 $c\\neq 0$ 下商的極限分配；而 Delta 法結合一階泰勒展開，在 $g^{\\prime}(\\theta)\\neq 0$ 下將 $\\sqrt{n}(X_n-\\theta)$ 的常態極限分配推廣至 $\\sqrt{n}[g(X_n)-g(\\theta)]$ 的形式。本篇證明 Delta 法並以七道例題演練。"
 ---
 
 [上一篇](/lecture-notes/continuous-mapping-theorem/)給出[機率收斂的運算性質與連續映射定理](/lecture-notes/continuous-mapping-theorem/#thm-pconv-related)，其中每一條的前提都是[機率收斂](/lecture-notes/convergence-in-probability/#def-converge-in-probability)。本篇把其中一個序列的前提換成[分配收斂](/lecture-notes/convergence-in-distribution/#def-converge-in-distribution)，這些運算性質的結論會隨之改變。
 
-本篇有兩個定理。第一個是史拉斯基定理，處理的是一個序列機率收斂到常數、另一個序列分配收斂到隨機變數時，兩者的和、積與商各自收斂到什麼；三道例題依序求兩組樣本的比值、標準常態樣本的比值，以及 $t$ 統計量的極限分配。第二個是 Delta 法，處理的是一般化的函數轉換: 已知 $\sqrt{n}\,(X_n-\theta)$ 的極限分配，要求 $\sqrt{n}\,[g(X_n)-g(\theta)]$ 的極限分配；四道例題分別取平方、指數、有理函數與平方根四種 $g$ 來演練。
+本篇有兩個定理。第一個是史拉斯基定理，處理的是一個序列機率收斂到常數、另一個序列分配收斂到隨機變數時，兩者的和、積與商各自收斂到什麼；三道例題依序求兩組樣本的比值、標準常態樣本的比值，以及 $t$ 統計量的極限分配。第二個是 Delta 法，處理的是一般化的函數轉換，在已知 $\sqrt{n}\,(X_n-\theta)$ 的極限分配之下，求 $\sqrt{n}\,[g(X_n)-g(\theta)]$ 的極限分配；四道例題分別取平方、指數、有理函數與平方根四種 $g$ 來演練。
 
 ## 史拉斯基定理
 
-前述定理包含連續映射定理在內，主要是針對機率收斂而生的定理，然而，如果同時考慮了分配收斂，則這些收斂的結果將稍有變化，而這個結果，正是鼎鼎大名的**史拉斯基定理 <span lang="en">(Slutsky's theorem)</span>**，見下列敘述。
+前篇的四則運算性質與連續映射定理皆以機率收斂為前提；若將其中一個序列的條件放寬為分配收斂至某個隨機變數，另一個序列仍機率收斂至常數，對應的合成極限便由**史拉斯基定理 <span lang="en">(Slutsky’s theorem)</span>** 給出，見下列敘述。
 
 <div id="thm-slutsky" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 5.11 (史拉斯基定理, Slutsky's theorem)</div>
+<div class="topic-box__label">Theorem 5.11 (史拉斯基定理, Slutsky’s theorem)</div>
 
 若 $X_n\pconv c$ 且 <span class="text-nowrap">$Y_n\dconv W$，</span>其中 $c$ 為常數、$W$ 為隨機變數，則我們有
 
@@ -44,7 +44,7 @@ excerpt: "上一篇的定理都是為機率收斂而生的，本篇把其中一�
   </li>
 </ol>
 
-其中 $c\neq0$。
+其中 <span class="text-nowrap">$c\neq0$。</span>
 {: .topic-paren-cont}
 
 </div>
@@ -53,7 +53,7 @@ excerpt: "上一篇的定理都是為機率收斂而生的，本篇把其中一�
 <div class="topic-box__label">Example 5.30</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,\ldots,X_n$ is a random sample drawn from the uniform distribution $\mathcal{U}(0,\ 1)$, and that $Y_1,\ldots,Y_n$ is a random sample drawn from an unspecified distribution for which $\mathbb{E}(Y_1)=0$ and $\mathrm{Var}(Y_1)=1$. Put
+Let $\lbrace X_i\rbrace_{i=1}^{n}$ be a random sample from <span class="text-nowrap">$\mathcal{U}(0,1)$,</span> and let $\lbrace Y_i\rbrace_{i=1}^{n}$ be a random sample from a distribution with $\mathbb{E}(Y_1)=0$ and <span class="text-nowrap">$\mathrm{Var}(Y_1)=1$.</span> Define
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -65,21 +65,21 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-Z_n&=\frac{X_1+X_2+\cdots+X_n}{X_1^{2}+X_2^{2}+\cdots+X_n^{2}},\\[0.45em]
-W_n&=\frac{\sqrt{n}\,(Y_1+Y_2+\cdots+Y_n)}{X_1^{2}+X_2^{2}+\cdots+X_n^{2}}
-\end{aligned}
+\begin{gathered}
+Z_n=\frac{X_1+X_2+\cdots+X_n}{X_1^{2}+X_2^{2}+\cdots+X_n^{2}},\\[0.45em]
+W_n=\frac{\sqrt{n}\,(Y_1+Y_2+\cdots+Y_n)}{X_1^{2}+X_2^{2}+\cdots+X_n^{2}}
+\end{gathered}
 $$
 
 </div>
 
 <ol class="topic-list-paren">
-  <li>Suppose that $Z_n$ converges in probability to a constant $c$. Determine the value of $c$.</li>
-  <li>Find the limiting distribution of $W_n$.</li>
+  <li>If $Z_n$ converges in probability to a constant <span class="text-nowrap">$c$,</span> find <span class="text-nowrap">$c$.</span></li>
+  <li>Find the limiting distribution of <span class="text-nowrap">$W_n$.</span></li>
 </ol>
 </div>
 
-(1) 由於 <span class="text-nowrap">$X_1,\ldots,X_n\iidto\mathcal{U}(0,\ 1)$，</span>由[均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的期望值與變異數可得
+(1) 由於 $X_1,\ldots,X_n\iidto\mathcal{U}(0,1)$ 成立，由[均勻分配](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution)的期望值與變異數可得
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -92,10 +92,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(X_i)&=\frac{\,1\,}{2},\quad\mathrm{Var}(X_i)=\frac{\,1\,}{12},\\[0.45em]
-\mathbb{E}(X_i^{2})&=\Bigl(\frac{1}{\,2\,}\Bigr)^{2}+\frac{\,1\,}{12}=\frac{1}{\,3\,}
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(X_i)=\frac{\,1\,}{2},\quad\mathrm{Var}(X_i)=\frac{\,1\,}{12},\\[0.45em]
+\mathbb{E}(X_i^{2})=\Bigl(\frac{1}{\,2\,}\Bigr)^{2}+\frac{\,1\,}{12}=\frac{1}{\,3\,}
+\end{gathered}
 $$
 
 </div>
@@ -113,10 +113,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\frac{\,1\,}{n}\sum_{i=1}^{n}X_i&\pconv\mathbb{E}(X_i)=\frac{\,1\,}{2},\\[0.45em]
-\frac{\,1\,}{n}\sum_{i=1}^{n}X_i^{2}&\pconv\mathbb{E}(X^{2})=\frac{1}{\,3\,}
-\end{aligned}
+\begin{gathered}
+\frac{\,1\,}{n}\sum_{i=1}^{n}X_i\pconv\mathbb{E}(X_i)=\frac{\,1\,}{2},\\[0.45em]
+\frac{\,1\,}{n}\sum_{i=1}^{n}X_i^{2}\pconv\mathbb{E}(X^{2})=\frac{1}{\,3\,}
+\end{gathered}
 $$
 
 </div>
@@ -142,7 +142,7 @@ $$
 
 </div>
 
-(2) 由於 <span class="text-nowrap">$Y_1,\ldots,Y_n\iidto(0,\ 1)$，</span>由[中央極限定理](/lecture-notes/weak-law-and-central-limit-theorem/#thm-central-limit-theorem)可知
+(2) 由於 $Y_1,\ldots,Y_n\iidto(0,1)$ 成立，由[中央極限定理](/lecture-notes/weak-law-and-central-limit-theorem/#thm-central-limit-theorem)可知
 {: .topic-paren-item}
 
 $$
@@ -188,13 +188,13 @@ $$
 <div class="topic-box__label">Example 5.31</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,\ldots,X_n$ are iid $\mathcal{N}(0,\ 1)$ random variables, where <span class="text-nowrap">$n\geqslant1$,</span> and put
+Let $X_1,\ldots,X_n$ be iid $\mathcal{N}(0,1)$ random variables (<span class="text-nowrap">$n\geqslant1$),</span> and define
 
 $$
 U_n=\frac{\sqrt{n}\,(X_1+X_2+\cdots+X_n)}{X_1^{2}+X_2^{2}+\cdots+X_n^{2}}
 $$
 
-Show that the limiting distribution of $U_n$ is the standard normal distribution.
+Show that $U_n$ converges in distribution to the standard normal distribution as <span class="text-nowrap">$n\to\infty$.</span>
 </div>
 
 由中央極限定理可知
@@ -239,7 +239,7 @@ $$
 <div class="topic-box__label">Example 5.32</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,\ldots,X_n$ is a random sample taken from a normal distribution whose mean is $\mu$ and whose variance $\sigma^{2}$ is finite, and put
+Let $X_1,\ldots,X_n$ be a random sample from a normal distribution with mean $\mu$ and finite variance <span class="text-nowrap">$\sigma^{2}$,</span> and let
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -251,15 +251,15 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\overline{X}&=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i,\\[0.45em]
-S_n^{2}&=\frac{1}{\,n-1\,}\sum_{i=1}^{n}(X_i-\overline{X})^{2}
-\end{aligned}
+\begin{gathered}
+\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i,\\[0.45em]
+S_n^{2}=\frac{1}{\,n-1\,}\sum_{i=1}^{n}(X_i-\overline{X})^{2}
+\end{gathered}
 $$
 
 </div>
 
-Show that $T=\frac{\,\overline{X}-\mu\,}{S_n/\sqrt{n}}$ converges in distribution to <span class="text-nowrap">$\mathcal{N}(0,\ 1)$.</span>
+Show that $T=\frac{\,\overline{X}-\mu\,}{S_n/\sqrt{n}}$ converges in distribution to <span class="text-nowrap">$\mathcal{N}(0,1)$.</span>
 </div>
 
 令
@@ -311,13 +311,11 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上面這一題說明了一個很重要的事實，也就是當自由度趨近無窮大時，[司徒頓 $t$ 分配](/lecture-notes/student-t-distribution/#def-t-distribution)將會分配收斂至標準常態分配，也就是指，若 <span class="text-nowrap">$T_n\sim t(n)$，</span>則 $T_n$ 之極限分配就是標準常態分配。
+由於常態樣本下的統計量 $T$ 服從自由度為 $n-1$ 的[司徒頓 $t$ 分配](/lecture-notes/student-t-distribution/#def-t-distribution)，本題同時說明當自由度趨近無窮大時，$t$ 分配會分配收斂至標準常態分配；換言之，若 <span class="text-nowrap">$T_n\sim t(n)$，</span>則 $T_n$ 的極限分配即為標準常態分配。
 
 </div>
 
-讀者應該會發現，相較於 [Theorem 5.10](/lecture-notes/continuous-mapping-theorem/#thm-pconv-related)，將其中一個序列的收斂改為分配收斂至某個隨機變數後，史拉斯基定理的結果，原則上與 Theorem 5.10 的內容相呼應，只是其結果由機率收斂改為分配收斂。
-
-然而，這個結果獨漏了一般化的函數轉換，那麼，一般化的函數轉換，其分配收斂的狀況又如何呢？這個問題的結果，是馬上將要談到的 **Delta 法 (Delta method)**。
+對照 [Theorem 5.10](/lecture-notes/continuous-mapping-theorem/#thm-pconv-related) 可見，將其中一個序列的前提改為分配收斂後，史拉斯基定理的四則運算結論與機率收斂時相呼應，僅將結論改為分配收斂。然而，史拉斯基定理並未包含一般化的非線性函數轉換；若統計量序列具有漸近常態性，經函數 $g(\cdot)$ 轉換後的極限分配該如何求取？這正是下文介紹的 **Delta 法 (Delta method)**。
 
 ## Delta 法
 
@@ -357,19 +355,19 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-先說明 $X_n$ 本身機率收斂至 $\theta$。由於
+先說明 $X_n$ 本身機率收斂至 <span class="text-nowrap">$\theta$。</span>由於
 
 $$
 X_n-\theta=\frac{1}{\sqrt{n}}\times\sqrt{n}\,(X_n-\theta)
 $$
 
-其中 $\frac{1}{\sqrt{n}}$ 是一個收斂至 $0$ 的常數序列，而 $\sqrt{n}\,(X_n-\theta)\dconv W$，故由 [Theorem 5.11](#thm-slutsky) 的第 (2) 款可得
+其中 $\frac{1}{\sqrt{n}}$ 是一個收斂至 $0$ 的常數序列，而 $\sqrt{n}\,(X_n-\theta)\dconv W$ 成立，故由 [Theorem 5.11](#thm-slutsky) 的第 (2) 款可得
 
 $$
 X_n-\theta\dconv0\times W\equiv0
 $$
 
-收斂的對象是一個常數，故由 [Theorem 5.3](/lecture-notes/convergence-in-probability/#thm-pconv-iff-dconv) 可知
+收斂對象為常數，故由 [Theorem 5.3](/lecture-notes/convergence-in-probability/#thm-pconv-iff-dconv) 知
 
 $$
 X_n\pconv\theta
@@ -381,13 +379,13 @@ $$
 h(x)=\frac{\,g(x)-g(\theta)\,}{x-\theta}-g^{\prime}(\theta),\ x\neq\theta
 $$
 
-並補上 $h(\theta)=0$，則 $h$ 在 $\theta$ 上連續，且對每一個 $x$ 皆有
+並補上 <span class="text-nowrap">$h(\theta)=0$，</span>則 $h$ 在 $\theta$ 上連續，且對每一個 $x$ 皆有
 
 $$
 g(x)-g(\theta)=\bigl[g^{\prime}(\theta)+h(x)\bigr](x-\theta)
 $$
 
-把 $x$ 換成 $X_n$ 並在兩側同乘 $\sqrt{n}$，可得
+把 $x$ 換成 $X_n$ 並在兩側同乘 <span class="text-nowrap">$\sqrt{n}$，</span>可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -414,7 +412,7 @@ $$
 g^{\prime}(\theta)\,\sqrt{n}\,(X_n-\theta)\dconv g^{\prime}(\theta)\,W
 $$
 
-右側第二項則由 $h$ 在 $\theta$ 上連續與 $X_n\pconv\theta$，依 [Theorem 5.10](/lecture-notes/continuous-mapping-theorem/#thm-pconv-related) 的連續映射定理可得
+右側第二項則由 $h$ 在 $\theta$ 上連續與 <span class="text-nowrap">$X_n\pconv\theta$，</span>依 [Theorem 5.10](/lecture-notes/continuous-mapping-theorem/#thm-pconv-related) 的連續映射定理可得
 
 $$
 h(X_n)\pconv h(\theta)=0
@@ -432,10 +430,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-h(X_n)\,\sqrt{n}\,(X_n-\theta)&\dconv0\times W\equiv0,\\[0.45em]
-\text{也就是}\quad h(X_n)\,\sqrt{n}\,(X_n-\theta)&\pconv0
-\end{aligned}
+\begin{gathered}
+h(X_n)\,\sqrt{n}\,(X_n-\theta)\dconv0\times W\equiv0,\\[0.45em]
+\text{也就是}\quad h(X_n)\,\sqrt{n}\,(X_n-\theta)\pconv0
+\end{gathered}
 $$
 
 </div>
@@ -475,7 +473,7 @@ $$
 <div class="topic-box__label">Example 5.33</div>
 
 <div lang="en" markdown="1">
-Suppose that $\overline{X}_n$ is the sample mean of a random sample of size $n$ taken from a distribution whose mean is $\mu$ and whose variance is <span class="text-nowrap">$\sigma^{2}$.</span> Find the limiting distribution of <span class="text-nowrap">$n^{1/2}\bigl(\overline{X}_n^{2}-\mu^{2}\bigr)$.</span>
+Let $\overline{X}_n$ be the sample mean of a random sample of size $n$ from a distribution with mean $\mu$ and variance <span class="text-nowrap">$\sigma^{2}$.</span> Find the limiting distribution of $n^{1/2}\bigl(\overline{X}_n^{2}-\mu^{2}\bigr)$.
 </div>
 
 由中央極限定理知
@@ -484,7 +482,7 @@ $$
 \sqrt{n}\,(\overline{X}_n-\mu)\dconv W\sim\mathcal{N}(0,\ \sigma^{2})
 $$
 
-取 <span class="text-nowrap">$g(x)=x^{2}$，</span>則 <span class="text-nowrap">$g^{\prime}(\mu)=2\mu$，</span>由 Delta 法知
+取函數 <span class="text-nowrap">$g(x)=x^{2}$，</span>則有 <span class="text-nowrap">$g^{\prime}(\mu)=2\mu$，</span>由 Delta 法可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -516,7 +514,7 @@ $$
 <div class="topic-box__label">Example 5.34</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,X_2,\ldots,X_n$ are iid random variables having the uniform distribution on <span class="text-nowrap">$(0,\ 1)$,</span> and put <span class="text-nowrap">$Y_n=\bigl(\prod_{i=1}^{n}X_i\bigr)^{-\frac{1}{n}}$.</span> Show that $\sqrt{n}\,(Y_n-e)$ converges in distribution to <span class="text-nowrap">$\mathcal{N}(0,\ e^{2})$.</span>
+Let $X_1,X_2,\ldots,X_n$ be iid $\mathcal{U}(0,1)$ random variables, and let $Y_n=\bigl(\prod_{i=1}^{n}X_i\bigr)^{-\frac{1}{n}}$. Show that $\sqrt{n}\,(Y_n-e)$ converges in distribution to <span class="text-nowrap">$\mathcal{N}(0,e^{2})$.</span>
 </div>
 
 令 <span class="text-nowrap">$W_i=-\ln X_i$，</span>則由 [cdf 法](/lecture-notes/one-to-one-transformations/#prop-cdf-method)可得
@@ -572,13 +570,13 @@ $$
 <div class="topic-box__label">Example 5.35</div>
 
 <div lang="en" markdown="1">
-Suppose that a random sample of size $n$ is taken from a population whose probability function is
+Consider a random sample of size $n$ from a population with pmf
 
 $$
 f(x)=(1-p)^{x-1}\,p,\ 0<p<1,\ x=1,2,3,\ldots
 $$
 
-Determine the asymptotic distribution of <span class="text-nowrap">$\frac{\,\overline{X}_n-1\,}{\overline{X}_n^{2}}$.</span>
+Find the asymptotic distribution of $\frac{\,\overline{X}_n-1\,}{\overline{X}_n^{2}}$.
 </div>
 
 由題意可知樣本抽自[幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)，也就是
@@ -599,7 +597,7 @@ $$
 \sqrt{n}\Bigl(\overline{X}_n-\frac{1}{\,p\,}\Bigr)\dconv V\sim\mathcal{N}\Bigl(0,\ \frac{\,1-p\,}{p^{2}}\Bigr)
 $$
 
-令 <span class="text-nowrap">$g(x)=\frac{\,x-1\,}{x^{2}},\ x>0$，</span>則
+於 $x>0$ 上定義 $g(x)=\frac{\,x-1\,}{x^{2}}$ 這個函數，其導函數為
 
 $$
 g^{\prime}(x)=\frac{\,-1\,}{x^{2}}+\frac{2}{\,x^{3}\,},\ x>0
@@ -637,11 +635,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-g(\overline{X}_n)&=\frac{\,\overline{X}_n-1\,}{\overline{X}_n^{2}},\\[0.45em]
-g\Bigl(\frac{1}{\,p\,}\Bigr)&=\frac{\,\frac{1}{p}-1\,}{\bigl(\frac{1}{p}\bigr)^{2}}=p(1-p),\\[0.45em]
-\Bigl[g^{\prime}\Bigl(\frac{1}{\,p\,}\Bigr)\Bigr]^{2}&=p^{4}(1-2p)^{2}
-\end{aligned}
+\begin{gathered}
+g(\overline{X}_n)=\frac{\,\overline{X}_n-1\,}{\overline{X}_n^{2}},\\[0.45em]
+g\Bigl(\frac{1}{\,p\,}\Bigr)=\frac{\,\frac{1}{p}-1\,}{\bigl(\frac{1}{p}\bigr)^{2}}=p(1-p),\\[0.45em]
+\Bigl[g^{\prime}\Bigl(\frac{1}{\,p\,}\Bigr)\Bigr]^{2}=p^{4}(1-2p)^{2}
+\end{gathered}
 $$
 
 </div>
@@ -692,7 +690,7 @@ $$
 <div class="topic-box__label">Example 5.36</div>
 
 <div lang="en" markdown="1">
-Suppose that the random variable $Y$ has a chi-squared distribution with $n$ degrees of freedom. Find the limiting distribution of <span class="text-nowrap">$\sqrt{Y}-\sqrt{n}$.</span>
+Let $Y$ follow a chi-square distribution with $n$ degrees of freedom. Find the limiting distribution of <span class="text-nowrap">$\sqrt{Y}-\sqrt{n}$.</span>
 </div>
 
 由[卡方分配](/lecture-notes/chi-squared-distribution/#def-chi-distribution)的可加性，可令
@@ -713,7 +711,7 @@ $$
 \sqrt{n}\,(\overline{X}-1)\dconv W\sim\mathcal{N}(0,\ 2)
 $$
 
-取 <span class="text-nowrap">$g(x)=\sqrt{x}$，</span>則 <span class="text-nowrap">$g^{\prime}(1)=\frac{1}{\,2\,}$，</span>由 Delta 法知
+取函數 <span class="text-nowrap">$g(x)=\sqrt{x}$，</span>則有 <span class="text-nowrap">$g^{\prime}(1)=\frac{1}{\,2\,}$，</span>由 Delta 法可知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -743,15 +741,15 @@ $$
 
 ## 本篇小結
 
-[Theorem 5.11](#thm-slutsky) 的前提是一個序列機率收斂到常數、另一個序列分配收斂到隨機變數，結論則是兩者的和、積與商各自分配收斂到 $c+W$、$cW$ 與 <span class="text-nowrap">$\frac{\,W\,}{c}$，</span>其中商的部分另外要求 <span class="text-nowrap">$c\neq0$。</span>這與 [Theorem 5.10](/lecture-notes/continuous-mapping-theorem/#thm-pconv-related) 的各條相呼應，差別只在結論由機率收斂改為分配收斂。
+[Theorem 5.11](#thm-slutsky) 的前提是一個序列機率收斂到常數、另一個序列分配收斂到隨機變數，結論則是兩者的和、積與商各自分配收斂到 <span class="text-nowrap">$c+W$、</span>$cW$ 與 <span class="text-nowrap">$\frac{\,W\,}{c}$，</span>其中商的部分另外要求 <span class="text-nowrap">$c\neq0$。</span>這與 [Theorem 5.10](/lecture-notes/continuous-mapping-theorem/#thm-pconv-related) 的各條相呼應，差別只在結論由機率收斂改為分配收斂。
 
-三道例題的作法一致: 先把整個統計量拆成「分配收斂的部分」與「機率收斂到常數的部分」，再各自處理。[Example 5.30](#ex-slutsky-uniform-ratio) 的兩小題都靠這一步，第一小題把 $Z_n$ 的分子分母同除以 <span class="text-nowrap">$n$，</span>兩者各自由弱大數法則得到機率極限 $\frac{\,1\,}{2}$ 與 <span class="text-nowrap">$\frac{1}{\,3\,}$；</span>第二小題的分子由中央極限定理得到 <span class="text-nowrap">$\sqrt{n}\,\overline{Y}\dconv Z$，</span>分母機率收斂到 <span class="text-nowrap">$\frac{1}{\,3\,}$，</span>兩者相除得到 <span class="text-nowrap">$3Z\sim\mathcal{N}(0,\ 9)$。</span>[Example 5.31](#ex-slutsky-normal-ratio) 是同一個作法，分母的機率極限為 <span class="text-nowrap">$1$，</span>因此極限分配就是標準常態分配本身。
+三道例題都是先把整個統計量拆成「分配收斂的部分」與「機率收斂到常數的部分」，再各自處理。[Example 5.30](#ex-slutsky-uniform-ratio) 的兩小題都靠這一步，第一小題把 $Z_n$ 的分子分母同除以 <span class="text-nowrap">$n$，</span>兩者各自由弱大數法則得到機率極限 $\frac{\,1\,}{2}$ 與 <span class="text-nowrap">$\frac{1}{\,3\,}$；</span>第二小題的分子由中央極限定理得到 <span class="text-nowrap">$\sqrt{n}\,\overline{Y}\dconv Z$，</span>分母機率收斂到 <span class="text-nowrap">$\frac{1}{\,3\,}$，</span>兩者相除得到 <span class="text-nowrap">$3Z\sim\mathcal{N}(0,9)$。</span>[Example 5.31](#ex-slutsky-normal-ratio) 是同一個作法，分母的機率極限為 <span class="text-nowrap">$1$，</span>因此極限分配就是標準常態分配本身。
 
-[Example 5.32](#ex-t-statistic-to-standard-normal) 把 $t$ 統計量寫成 $\sqrt{\frac{\sigma^{2}}{\,S_n^{2}\,}}$ 與 $\frac{\,\overline{X}-\mu\,}{\sigma/\sqrt{n}}$ 的乘積，前者由連續映射定理機率收斂到 <span class="text-nowrap">$1$，</span>後者不論 $n$ 多大都是標準常態分配，因此 $T$ 分配收斂至標準常態分配。換句話說，自由度趨於無窮時，$t$ 分配的極限分配就是標準常態分配。
+[Example 5.32](#ex-t-statistic-to-standard-normal) 把 $t$ 統計量寫成 $\sqrt{\frac{\sigma^{2}}{\,S_n^{2}\,}}$ 與 $\frac{\,\overline{X}-\mu\,}{\sigma/\sqrt{n}}$ 之積，前者由連續映射定理機率收斂到 <span class="text-nowrap">$1$，</span>後者不論 $n$ 多大都是標準常態分配，故 $T$ 分配收斂至標準常態分配。換言之，自由度趨於無窮時，$t$ 分配的極限分配即標準常態分配。
 
-[Theorem 5.12](#thm-delta-method) 處理的是史拉斯基定理沒有涵蓋的一般化函數轉換: 已知 <span class="text-nowrap">$\sqrt{n}\,(X_n-\theta)\dconv W\sim\mathcal{N}(0,\ \sigma^{2})$，</span>則 $\sqrt{n}\,[g(X_n)-g(\theta)]$ 的極限分配仍是常態分配，變異數多乘一個 <span class="text-nowrap">$[g^{\prime}(\theta)]^{2}$。</span>四道例題的差別只在 $g$ 取什麼: [Example 5.33](#ex-delta-method-squared-mean) 取 <span class="text-nowrap">$g(x)=x^{2}$，</span>得到 <span class="text-nowrap">$\mathcal{N}(0,\ 4\mu^{2}\sigma^{2})$；</span>[Example 5.34](#ex-delta-method-product-of-uniforms) 先令 $W_i=-\ln X_i$ 把均勻樣本的乘積化為指數樣本的平均數，再取 <span class="text-nowrap">$g(x)=e^{x}$；</span>[Example 5.35](#ex-delta-method-geometric-distribution) 取 <span class="text-nowrap">$g(x)=\frac{\,x-1\,}{x^{2}}$，</span>並在最後把極限分配改寫為 $n$ 有限時的漸近分配；[Example 5.36](#ex-delta-method-chi-square-root) 取 <span class="text-nowrap">$g(x)=\sqrt{x}$，</span>並把自由度為 $n$ 的卡方變數看成 $n$ 個自由度為 $1$ 的卡方變數之和，才有辦法套用中央極限定理。
+[Theorem 5.12](#thm-delta-method) 處理的是史拉斯基定理沒有涵蓋的一般化函數轉換，只要已知 $\sqrt{n}\,(X_n-\theta)\dconv W\sim\mathcal{N}(0,\sigma^{2})$ 這個前提，則 $\sqrt{n}\,[g(X_n)-g(\theta)]$ 的極限分配仍是常態分配，變異數多乘一個 <span class="text-nowrap">$[g^{\prime}(\theta)]^{2}$。</span>四道例題的差別只在 $g$ 的選取。[Example 5.33](#ex-delta-method-squared-mean) 取 <span class="text-nowrap">$g(x)=x^{2}$，</span>得到 $\mathcal{N}(0,4\mu^{2}\sigma^{2})$ 這個分配；[Example 5.34](#ex-delta-method-product-of-uniforms) 先令 $W_i=-\ln X_i$ 把均勻樣本的乘積化為指數樣本的平均數，再取 <span class="text-nowrap">$g(x)=e^{x}$；</span>[Example 5.35](#ex-delta-method-geometric-distribution) 取 <span class="text-nowrap">$g(x)=\frac{\,x-1\,}{x^{2}}$，</span>並在最後把極限分配改寫為 $n$ 有限時的漸近分配；[Example 5.36](#ex-delta-method-chi-square-root) 取 <span class="text-nowrap">$g(x)=\sqrt{x}$，</span>並把自由度為 $n$ 的卡方變數看成 $n$ 個自由度為 $1$ 的卡方變數之和，才有辦法套用中央極限定理。
 
-機率論的環節至此已經全部結束，此刻讀者應已經具備足夠的基礎，可以邁向數理統計的環節。
+機率論部分的內容至此全部結束，讀者已具備完整的機率模型與極限分配基礎，可進一步銜接後續數理統計的課題。
 
 ## 參考文獻與延伸閱讀
 

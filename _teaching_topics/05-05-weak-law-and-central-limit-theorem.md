@@ -10,10 +10,10 @@ order: 505
 permalink: /lecture-notes/weak-law-and-central-limit-theorem/
 date: 2026-08-15
 published: false
-excerpt: "弱大數法則說的是，在期望值 $\\mu$ 與變異數 $\\sigma^{2}$ 皆存在的前提下，iid 序列的樣本平均數 $\\overline{X}$ 機率收斂至 $\\mu$；證明只用到柴比雪夫不等式，因為 $\\mathrm{Var}(\\overline{X})=\\frac{\\sigma^{2}}{n}$ 隨樣本大小遞減至 $0$。中央極限定理則說標準化之後的 $\\frac{\\sqrt{n}(\\overline{X}-\\mu)}{\\sigma}$ 分配收斂至標準常態分配。本篇以六道例題演練這兩條定理: 兩道把弱大數法則推廣到二階動差與配對差的平方和，一道以動差母函數的泰勒展開式搭配列維連續性定理完成大學部教本常見的中央極限定理證明，一道以標準柯西分配說明期望值與變異數不存在時中央極限定理會失效，最後兩道求均勻母體與卡方母體之下的極限分配。其後整理兩條定理的異同、常態隨機樣本不必取極限即為標準常態這一項對照，以及中央極限定理的四種寫法。"
+excerpt: "在期望值 $\\mu$ 與正且有限的變異數 $\\sigma^{2}$ 存在下，弱大數法則保證獨立同分配樣本平均數 $\\overline{X}$ 機率收斂至 $\\mu$ 這一常數，中央極限定理則指出標準化後的 $\\sqrt{n}(\\overline{X}-\\mu)/\\sigma$ 分配收斂至標準常態分配。本篇給出證明、失效反例與四種等價寫法。"
 ---
 
-[上一篇](/lecture-notes/convergence-in-mean-and-almost-sure/)把 $r$ 次均方收斂與幾乎確信收斂放在一起，說明這兩種收斂型態彼此並不蘊含，至此四種收斂型態之間的強弱關係已經完整。本篇轉入這些收斂型態最重要的兩個應用: 弱大數法則與中央極限定理。
+[上一篇](/lecture-notes/convergence-in-mean-and-almost-sure/)把 $r$ 次均方收斂與幾乎確信收斂放在一起，說明這兩種收斂型態彼此並不蘊含，至此四種收斂型態之間的強弱關係已經完整。本篇轉入這些收斂型態最重要的兩個應用，分別是弱大數法則與中央極限定理。
 
 兩條定理的前提相同，都要求 iid 序列的期望值 $\mu$ 與變異數 $\sigma^{2}$ 存在，結論也都是關於樣本平均數 $\overline{X}$ 的極限行為，但收斂的型態並不相同。弱大數法則說 $\overline{X}$ 本身[機率收斂](/lecture-notes/convergence-in-probability/#def-converge-in-probability)到 $\mu$ 這個常數，中央極限定理說 $\overline{X}$ 經標準化之後[分配收斂](/lecture-notes/convergence-in-distribution/#def-converge-in-distribution)到一個服從標準常態分配的隨機變數。本篇先給出弱大數法則與其證明，再由兩道例題看它的延伸用法；其後給出中央極限定理，並以動差母函數的泰勒展開式示範大學部教本常見的證明，以及標準柯西分配這個前提不成立的反例。
 
@@ -25,7 +25,7 @@ excerpt: "弱大數法則說的是，在期望值 $\\mu$ 與變異數 $\\sigma^{
 令 $\lbrace X_n\rbrace_{n=1}^{\infty}$ 為一定義在機率空間上之 iid 隨機變數序列，且期望值 $\mu$ 與[變異數](/lecture-notes/variance/#def-variance) $\sigma^{2}$ 皆存在，則當 $n$ 趨近於無窮大，對於樣本平均數 $\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i$ 而言，我們有
 
 $$
-\lim_{n\to\infty}\mathbb{P}\bigl(\lvert\overline{X}-\mu\rvert<\varepsilon\bigr)=1,\ \forall\varepsilon>0
+\lim_{n\to\infty}\mathbb{P}\bigl(\lvert\overline{X}-\mu\rvert<\varepsilon\bigr)=1,\ \forall\,\varepsilon>0
 $$
 
 此即
@@ -39,7 +39,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-由於 $X_1,X_2,\ldots,X_n\iidto(\mu,\sigma^{2})$，我們有
+由於 $X_1,X_2,\ldots,X_n\iidto(\mu,\sigma^{2})$ 為獨立同分配的隨機變數，我們有
 
 $$
 \mathbb{E}\bigl(\overline{X}\bigr)=\mu,\ \ \mathrm{Var}\bigl(\overline{X}\bigr)=\frac{\sigma^{2}}{\,n\,}
@@ -50,7 +50,7 @@ $$
 <div class="topic-math-follow-before" markdown="1">
 
 $$
-\mathbb{P}\bigl(\lvert\overline{X}-\mu\rvert<\varepsilon\bigr)\geqslant1-\frac{\bigl(\frac{\sigma^{2}}{n}\bigr)}{\varepsilon^{2}}=1-\frac{\sigma^{2}}{\,n\varepsilon^{2}\,},\ \forall\varepsilon>0
+\mathbb{P}\bigl(\lvert\overline{X}-\mu\rvert<\varepsilon\bigr)\geqslant1-\frac{\bigl(\frac{\sigma^{2}}{n}\bigr)}{\varepsilon^{2}}=1-\frac{\sigma^{2}}{\,n\varepsilon^{2}\,},\ \forall\,\varepsilon>0
 $$
 
 </div>
@@ -58,7 +58,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\Longrightarrow\ \lim_{n\to\infty}\mathbb{P}\bigl(\lvert\overline{X}-\mu\rvert<\varepsilon\bigr)\geqslant\lim_{n\to\infty}\biggl(1-\frac{\sigma^{2}}{n\varepsilon^{2}}\biggr)=1,\ \forall\varepsilon>0
+\Longrightarrow\ \lim_{n\to\infty}\mathbb{P}\bigl(\lvert\overline{X}-\mu\rvert<\varepsilon\bigr)\geqslant\lim_{n\to\infty}\biggl(1-\frac{\sigma^{2}}{n\varepsilon^{2}}\biggr)=1,\ \forall\,\varepsilon>0
 $$
 
 </div>
@@ -67,7 +67,7 @@ $$
 $$
 \begin{aligned}
 \Longrightarrow\ \lim_{n\to\infty}\mathbb{P}\bigl(\lvert\overline{X}-\mu\rvert<\varepsilon\bigr)&\geqslant\lim_{n\to\infty}\biggl(1-\frac{\sigma^{2}}{n\varepsilon^{2}}\biggr)\\[0.45em]
-&=1,\ \forall\varepsilon>0
+&=1,\ \forall\,\varepsilon>0
 \end{aligned}
 $$
 
@@ -79,30 +79,44 @@ $$
 
 弱大數法則 <span lang="en">(Weak Law of Large Numbers, WLLN)</span> 有一些地方需要注意:
 
-(1) 從樣本平均數 $\overline{X}$ 的變異數是 $\frac{\sigma^{2}}{\,n\,}$ 這件事可以看出，隨著樣本大小 $n$ 越來越大，$\overline{X}$ 除了期望值仍然會是 $\mu$ 外，變異數會越來越小，最終當 $n\to\infty$ 時，$\mathrm{Var}\bigl(\overline{X}\bigr)$ 會趨近於 $0$，因而 $\overline{X}$ 會漸漸退化至 $\mu$。
+(1) 由樣本平均數 $\overline{X}$ 的期望值恆為 <span class="text-nowrap">$\mu$、</span>變異數為 $\frac{\sigma^{2}}{\,n\,}$ 可見，隨著樣本大小 $n$ 增大，$\mathrm{Var}\bigl(\overline{X}\bigr)$ 逐漸縮小並在 $n\to\infty$ 時趨近於 <span class="text-nowrap">$0$，</span>使 $\overline{X}$ 的抽樣分配退化集中於常數 <span class="text-nowrap">$\mu$。</span>
 {: .topic-paren-item}
 
-(2) 上述證明所使用的方法是柴比雪夫不等式，使用該不等式的條件是 $\mu$ 與 $\sigma^{2}$ 都要存在，但事實上，即使母體變異數 $\sigma^{2}$ 不存在，我們仍可使用其他方法證明此定理成立。[^cf]
+(2) 上述證明倚賴柴比雪夫不等式，故須同時假設 $\mu$ 與有限變異數 $\sigma^{2}$ 存在；實質上，即使母體變異數 $\sigma^{2}$ 不存在，只要一階動差 $\mu$ 有限，在高等機率論中仍可改以**[特徵函數](/lecture-notes/characteristic-functions/#def-characteristic-function) <span lang="en">(characteristic function, cf)</span>** 證明此定理成立 (相關理論與極限定理可參閱 Athreya and Lahiri, 2006, *Measure Theory and Probability Theory*, 1st ed.)。不過在絕大多數應用情境中，皆可直接假設序列為 iid 且期望值與變異數均存在。
 {: .topic-paren-item}
 
 <div id="ex-wlln-second-moment" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 5.15</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,\ldots,X_n$ are independent and identically distributed random variables whose common pdf is
+Let $X_1,\ldots,X_n$ be iid random variables with common pdf
 
 $$
 f(x)=\frac{\,x^{\mu-1}e^{-x}\,}{\Gamma(\mu)},\ x>0,\ \mu>0
 $$
 
-Find the constant $c$ for which $\frac{1}{\,n\,}(X_1^{2}+X_2^{2}+\cdots+X_n^{2})\pconv c$.
+Find the constant $c$ such that $\frac{1}{\,n\,}(X_1^{2}+X_2^{2}+\cdots+X_n^{2})\pconv c$.
 </div>
 
 經題意敘述可知
 
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
 $$
 X_1,\ldots,X_n\iidto\mathrm{Gamma}(\alpha=\mu,\ \beta=1)\qquad\therefore\, \mathbb{E}(X_i)=\mu,\ \mathrm{Var}(X_i)=\mu
 $$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+X_1,\ldots,X_n&\iidto\mathrm{Gamma}(\alpha=\mu,\ \beta=1)\\[0.45em]
+&\qquad\therefore\, \mathbb{E}(X_i)=\mu,\ \mathrm{Var}(X_i)=\mu
+\end{aligned}
+$$
+
+</div>
 
 由弱大數法則可知
 
@@ -136,33 +150,33 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個問題的做法，是 WLLN 的一種延伸應用，也就是令 $Y_i=X_i^{2}$，則可知
+本題將弱大數法則套用於轉換後的隨機變數序列。令 <span class="text-nowrap">$Y_i=X_i^{2}$，</span>則 $Y_1,\ldots,Y_n$ 仍為獨立同分配序列，且所求平均數即為
 
 $$
 \frac{1}{\,n\,}(X_1^{2}+X_2^{2}+\cdots+X_n^{2})=\overline{Y}
 $$
 
-因此利用 WLLN 可知
+故可直接套用 WLLN 得
 
 $$
 \overline{Y}\pconv\mathbb{E}(Y_i)=\mathbb{E}(X_i^{2})
 $$
 
-此外，這種概念亦有其他的延伸應用方式，見下列這題。
-
 </div>
+
+同一技巧亦可推廣至兩組獨立樣本的配對函數平均，見下列例題。
 
 <div id="ex-wlln-paired-difference" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 5.16</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,\ldots,X_n,Y_1,\ldots,Y_n$ form a collection of $2n$ independent and identically distributed random variables with common mean $\mathbb{E}(X_i)=\mathbb{E}(Y_i)=\mu$ and common variance $\mathrm{Var}(X_i)=\mathrm{Var}(Y_i)=\sigma^{2}$, and let
+Let $X_1,\ldots,X_n,Y_1,\ldots,Y_n$ be $2n$ independent and identically distributed random variables with mean $\mathbb{E}(X_i)=\mathbb{E}(Y_i)=\mu$ and variance <span class="text-nowrap">$\mathrm{Var}(X_i)=\mathrm{Var}(Y_i)=\sigma^{2}$.</span> Define
 
 $$
 T=\frac{k}{\,n\,}\sum_{i=1}^{n}(X_i-Y_i)^{2}
 $$
 
-Determine the value of $k$ that turns $T$ into a consistent estimator of $\sigma^{2}$, that is, $T\pconv\sigma^{2}$, and justify the answer.
+Find the constant $k$ such that $T$ is a consistent estimator of $\sigma^{2}$ (i.e., <span class="text-nowrap">$T\pconv\sigma^{2}$),</span> and explain your answer.
 </div>
 
 由弱大數法則可知
@@ -210,14 +224,14 @@ $$
 故可知
 
 $$
-\therefore\ k=\frac{1}{\,2\,}
+k=\frac{1}{\,2\,}
 $$
 
 </div>
 
 ## 中央極限定理
 
-接下來要看見的這個定理，可以說是整個統計學中最重要的定理。
+以下介紹統計學中最重要的極限定理，即中央極限定理。
 
 <div id="thm-central-limit-theorem" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 5.8 (中央極限定理, Central Limit Theorem, CLT)</div>
@@ -263,16 +277,16 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-m(0)&=1,\\[0.45em]
-m^{\prime}(0)&=\mathbb{E}(X-\mu)=0,\\[0.45em]
-m^{\prime\prime}(0)&=\mathbb{E}\bigl[(X-\mu)^{2}\bigr]=\sigma^{2}
-\end{aligned}
+\begin{gathered}
+m(0)=1,\\[0.45em]
+m^{\prime}(0)=\mathbb{E}(X-\mu)=0,\\[0.45em]
+m^{\prime\prime}(0)=\mathbb{E}\bigl[(X-\mu)^{2}\bigr]=\sigma^{2}
+\end{gathered}
 $$
 
 </div>
 
-對 $m(t)$ 在 $t=0$ 處作帶餘項的泰勒展開，可知存在一個介於 $0$ 與 $t$ 之間的 $\xi$，使得
+對 $m(t)$ 在 $t=0$ 處作帶餘項的泰勒展開，可知存在一個介於 $0$ 與 $t$ 之間的 <span class="text-nowrap">$\xi$，</span>使得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -338,7 +352,7 @@ $$
 
 </div>
 
-其中 $-h<\frac{t}{\sqrt{n}\,\sigma}<h$。把上面 $m(t)$ 的展開式中的 $t$ 換成 $\frac{t}{\sqrt{n}\,\sigma}$，可得
+其中 $-h<\frac{t}{\sqrt{n}\,\sigma}<h$ 成立。把上面 $m(t)$ 的展開式中的 $t$ 換成 $\frac{t}{\sqrt{n}\,\sigma}$ 這個比值，可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -370,7 +384,7 @@ $$
 M_{\sssig W_n}(t)=\Bigl[1+\frac{\,t^{2}/2\,}{n}+\frac{\,\psi(n)\,}{n}\Bigr]^{n}
 $$
 
-由於 $m^{\prime\prime}(t)$ 在 $t=0$ 處連續，而 $n\to\infty$ 時 $\frac{t}{\sqrt{n}\,\sigma}\to0$，被夾在中間的 $\xi$ 也隨之趨於 $0$，故
+由於 $m^{\prime\prime}(t)$ 在 $t=0$ 處連續，而 $n\to\infty$ 時 $\frac{t}{\sqrt{n}\,\sigma}\to0$ 成立，被夾在中間的 $\xi$ 也隨之趨於 <span class="text-nowrap">$0$，</span>由此可得
 
 $$
 \lim_{n\to\infty}\psi(n)=0
@@ -388,10 +402,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-&\lim_{n\to\infty}\Bigl(1+\frac{b}{\,n\,}+\frac{\,\psi(n)\,}{n}\Bigr)^{n}=e^{b},\\[0.45em]
-&\text{其中}\ b\ \text{為常數且}\ \lim_{n\to\infty}\psi(n)=0
-\end{aligned}
+\begin{gathered}
+\lim_{n\to\infty}\Bigl(1+\frac{b}{\,n\,}+\frac{\,\psi(n)\,}{n}\Bigr)^{n}=e^{b},\\[0.45em]
+\text{其中}\ b\ \text{為常數且}\ \lim_{n\to\infty}\psi(n)=0
+\end{gathered}
 $$
 
 </div>
@@ -427,13 +441,13 @@ $$
 
 本證明的作法取自 Hogg, McKean and Craig (2019) 第 342 至 343 頁，其中的泰勒展開寫成帶餘項的形式，因此只需要二階動差存在，不必假設 mgf 可以展開成無窮級數；後文以 mgf 搭配列維連續性定理的證明，則另外假設了 mgf 存在，前提比本定理強。
 
-如同前面腳註所提到的一樣，中央極限定理也有許多版本的證明，其中，在較高等的機率論中普遍以特徵函數證明之；而在大學部的數理統計與機率論教本中，證明普遍假設 $\lbrace X_n\rbrace_{n=1}^{\infty}$ 之 mgf $M_{\sssig X_n}(t)$ 皆存在，並以 mgf 搭配列維連續性定理證明之，見下列這題。
+一如弱大數法則的情形，中央極限定理在高等機率論中通常改以特徵函數證明，以免除 mgf 存在的前提；而在大學部的數理統計與機率論教材中，普遍假設序列 $\lbrace X_n\rbrace_{n=1}^{\infty}$ 的 mgf $M_{\sssig X_n}(t)$ 存在，再結合泰勒級數展開與列維連續性定理推導，見下列例題。
 
 <div id="ex-clt-proof-by-mgf" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 5.17</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,X_2,\ldots,X_n$ are i.i.d. random variables drawn from an arbitrary population whose mean is $\mu=\mathbb{E}(X)$ and whose variance is $\sigma^{2}=\mathrm{Var}(X)<\infty$, and put
+Let $X_1,X_2,\ldots,X_n$ be a random sample from a population with mean $\mu=\mathbb{E}(X)$ and finite variance <span class="text-nowrap">$\sigma^{2}=\mathrm{Var}(X)<\infty$,</span> and define
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -445,23 +459,23 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-Z_i&=\frac{\,X_i-\mu\,}{\sigma},\quad\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i,\\[0.45em]
-W_n&=\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}=\frac{\,\sqrt{n}\,(\overline{X}-\mu)\,}{\sigma}
-\end{aligned}
+\begin{gathered}
+Z_i=\frac{\,X_i-\mu\,}{\sigma},\quad\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i,\\[0.45em]
+W_n=\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}=\frac{\,\sqrt{n}\,(\overline{X}-\mu)\,}{\sigma}
+\end{gathered}
 $$
 
 </div>
 
 <ol class="topic-list-paren">
-  <li>Determine, by means of a Taylor expansion, the expansion of the moment generating function $M_{\sssig Z}\left(\frac{t}{\sqrt{n}}\right)$ about $t=0$.</li>
-  <li>Show that the moment generating function of $W_n$ satisfies $M_{\sssig W_n}(t)=\left[M_{\sssig Z}\left(\frac{t}{\sqrt{n}}\right)\right]^{n}$.</li>
-  <li>Evaluate $\lim_{n\to\infty}M_{\sssig W_n}(t)$ from the results of (1) and (2).</li>
-  <li>Determine what conclusion follows from (3), and discuss it.</li>
+  <li>Write down the Taylor expansion of the moment generating function $M_{\sssig Z}\bigl(\frac{t}{\sqrt{n}}\bigr)$ at <span class="text-nowrap">$t=0$.</span></li>
+  <li>Show that the moment generating function of $W_n$ satisfies $M_{\sssig W_n}(t)=\bigl[M_{\sssig Z}\bigl(\frac{t}{\sqrt{n}}\bigr)\bigr]^{n}$.</li>
+  <li>Using (1) and <span class="text-nowrap">(2),</span> find <span class="text-nowrap">$\lim_{n\to\infty}M_{\sssig W_n}(t)$.</span></li>
+  <li>State and discuss the conclusion that follows from <span class="text-nowrap">(3).</span></li>
 </ol>
 </div>
 
-(1) 經由泰勒展開式，對 $M_{\sssig Z}(t)$ 在 $t=0$ 處作 Taylor 展開 (也就是 Maclaurin 展開) 可得
+(1) 對 $M_{\sssig Z}(t)$ 在 $t=0$ 處作泰勒展開 (也就是 Maclaurin 展開) 可得
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -501,7 +515,7 @@ $$
 <div class="topic-math-follow-before" markdown="1">
 
 $$
-\Longrightarrow\ \mathbb{E}(Z_i^{2})=1+0^{2}=1
+\mathbb{E}(Z_i^{2})=1+0^{2}=1
 $$
 
 </div>
@@ -510,7 +524,7 @@ $$
 
 $$
 \begin{aligned}
-\therefore\ M_{\sssig Z}\biggl(\frac{t}{\sqrt{n}}\biggr)&=1+\frac{\left(\frac{t}{\sqrt{n}}\right)^{2}}{2}+\frac{\left(\frac{t}{\sqrt{n}}\right)^{3}}{6}\,\mathbb{E}(Z^{3})+\cdots\\[0.45em]
+\Longrightarrow\ M_{\sssig Z}\biggl(\frac{t}{\sqrt{n}}\biggr)&=1+\frac{\left(\frac{t}{\sqrt{n}}\right)^{2}}{2}+\frac{\left(\frac{t}{\sqrt{n}}\right)^{3}}{6}\,\mathbb{E}(Z^{3})+\cdots\\[0.45em]
 &=1+\frac{t^{2}}{\,2n\,}+\frac{t^{3}}{\,6\sqrt{n^{3}}\,}\,\mathbb{E}(Z^{3})+\cdots\\[0.45em]
 &=1+\frac{t^{2}}{\,2n\,}+o\!\left(\frac{\,t^{2}\,}{n}\right),\ t\in\mathbb{R}
 \end{aligned}
@@ -521,11 +535,12 @@ $$
 
 $$
 \begin{aligned}
-\therefore\ M_{\sssig Z}\biggl(\frac{t}{\sqrt{n}}\biggr)&=1+\frac{\left(\frac{t}{\sqrt{n}}\right)^{2}}{2}\\[0.2em]
+\Longrightarrow\ M_{\sssig Z}\biggl(\frac{t}{\sqrt{n}}\biggr)&=1+\frac{\left(\frac{t}{\sqrt{n}}\right)^{2}}{2}\\[0.2em]
 &\qquad+\frac{\left(\frac{t}{\sqrt{n}}\right)^{3}}{6}\,\mathbb{E}(Z^{3})+\cdots\\[0.45em]
 &=1+\frac{t^{2}}{\,2n\,}\\[0.2em]
 &\qquad+\frac{t^{3}}{\,6\sqrt{n^{3}}\,}\,\mathbb{E}(Z^{3})+\cdots\\[0.45em]
-&=1+\frac{t^{2}}{\,2n\,}+o\!\left(\frac{\,t^{2}\,}{n}\right),\ t\in\mathbb{R}
+&=1+\frac{t^{2}}{\,2n\,}+o\!\left(\frac{\,t^{2}\,}{n}\right),\\[0.2em]
+&\qquad t\in\mathbb{R}
 \end{aligned}
 $$
 
@@ -638,7 +653,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個問題是假設了 $Z_i$ 的 mgf 存在，因此利用泰勒展開式說明 $W_n$ 之 mgf 收斂至標準常態之 mgf，但是，我們仍要再三強調，**mgf 存在並不是 CLT 的必備條件之一**，即使 mgf 不存在，我們也可以透過特徵函數來證明 CLT；但是即便 mgf 不存在，我們仍要求期望值與變異數皆存在，如果這個條件無法滿足，即便是 iid 序列，CLT 也有可能失效，見下列這題。
+上題藉由假設 $Z_i$ 的 mgf 存在，以泰勒展開證明 $W_n$ 的 mgf 收斂至標準常態分配的 mgf。須留意 **mgf 存在並非 CLT 的必備條件**；即使母體的 mgf 不存在，仍可透過特徵函數證明 CLT 成立。相對地，母體期望值與有限正變異數存在則是不可或缺的前提；一旦此條件不滿足，即便為 iid 序列，CLT 亦可能失效，見下列反例。
 
 </div>
 
@@ -648,16 +663,16 @@ $$
 <div class="topic-box__label">Example 5.18</div>
 
 <div lang="en" markdown="1">
-The central limit theorem states that for an i.i.d. random sample $X_1,X_2,\ldots,X_n$ whose second moment $\mathbb{E}(X_1^{2})$ is finite, the random variable $\sqrt{n}\bigl[\overline{X}-\mathbb{E}(X_1)\bigr]$ converges in distribution to $\mathcal{N}\bigl(0,\mathrm{Var}(X_1)\bigr)$. Suppose instead that $X_1,X_2,\ldots,X_n$ are i.i.d. from the standard Cauchy distribution $\mathrm{Cauchy}(0,1)$, whose pdf is
+By the central limit theorem, for an iid sample $X_1,X_2,\ldots,X_n$ with <span class="text-nowrap">$\mathbb{E}(X_i^{2})<\infty$,</span> $\sqrt{n}\bigl[\overline{X}-\mathbb{E}(X_1)\bigr]$ converges in distribution to $\mathcal{N}\bigl(0,\mathrm{Var}(X_1)\bigr)$. Now suppose $X_1,X_2,\ldots,X_n$ are iid from $\mathrm{Cauchy}(0,1)$ with pdf
 
 $$
 f(x)=\frac{1}{\,\pi(1+x^{2})\,},\ x\in\mathbb{R}
 $$
 
-and whose characteristic function is known to be $\phi(t)=\mathbb{E}(e^{itX})=e^{-\lvert t\rvert}$. Show that $\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i$ carries the same distribution as $X_1$, so that the central limit theorem fails for this distribution.
+and characteristic function $\phi(t)=\mathbb{E}(e^{itX})=e^{-\lvert t\rvert}$. Show that $\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_i$ has the same distribution as <span class="text-nowrap">$X_1$,</span> and conclude that the central limit theorem does not apply to the Cauchy distribution.
 </div>
 
-依題意可證明 $\overline{X}$ 與 $X_1$ 之特徵函數相等，此即
+依題意可證明 $\overline{X}$ 與 $X_1$ 之特徵函數相等，其推導如下
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -692,20 +707,18 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-雖然我們並沒有談到關於特徵函數的一些特色，但讀者應該也會發現，事實上，cf 的整體特性與 mgf 非常相近，唯一的不同在於 cf 需要複變函數的計算能力。
+特徵函數的運算性質與 mgf 高度相近，差別在於特徵函數需運用複變指數運算。相較於未必處處存在的 mgf，任何機率分配皆必具備特徵函數，且可藉由反演公式 <span lang="en">(inversion formula)</span> 由特徵函數直接還原對應的 pdf，適用範圍比 mgf 廣泛得多。
 
-事實上，cf 的使用情境要比 mgf 廣泛得多，因為 mgf 並不一定在任何分配中都存在，可是 cf 卻是不論任何分配都具備的；除此之外，cf 還能透過反演公式 <span lang="en">(inversion formula)</span> 直接求取對應的 pdf，這一點是 mgf 無法做到的。
-
-另一方面，這個例子中，之所以 CLT 失效，是因為此例的標準柯西分配並沒有期望值與變異數，因此不滿足 CLT 的使用前提。
+回到本題，標準柯西分配之所以使 CLT 失效，關鍵即在於其母體期望值與變異數皆不存在，不滿足定理的前提條件。
 
 </div>
 
 中央極限定理 <span lang="en">(Central Limit Theorem)</span> 有一些地方需要注意:
 
-(1) 我們可以將中央極限定理理解為，在樣本大小 $n$ 趨於無窮大時，樣本平均數 $\overline{X}$ **經標準化後**會分配收斂至標準常態分配。
+(1) 中央極限定理指出，當樣本大小 $n$ 趨於無窮大時，樣本平均數 $\overline{X}$ **經標準化後**會分配收斂至標準常態分配。
 {: .topic-paren-item}
 
-(2) 與弱大數法則相同，中央極限定理要求 $n\to\infty$，二者也都是在描述跟樣本平均數 $\overline{X}$ 有關的事情，然而二者卻有很大的差別: $\overline{X}$ 本身機率收斂到 $\mu$ 這個常數，但 $\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}$ 分配收斂到一個服從標準常態分配的隨機變數。我們將這二者的異同列在下方:
+(2) 弱大數法則與中央極限定理皆考慮 $n\to\infty$ 下樣本平均數 $\overline{X}$ 的漸近行為，但刻畫的層次截然不同；$\overline{X}$ 本身機率收斂至常數 <span class="text-nowrap">$\mu$，</span>標準化後的 $\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}$ 則分配收斂至服從標準常態分配的隨機變數。兩者對照如下:
 {: .topic-paren-item}
 
 **弱大數法則**:
@@ -725,38 +738,36 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-由弱大數法則，我們可以發現中央極限定理的分子部分 $\overline{X}-\mu$ 與 $0$ 任意接近的機率是 $1$，我們能理解為 $\overline{X}-\mu$ 的變異數隨著 $n$ 的成長而逐漸縮小到 $0$ (或理解成隨機性逐漸退化)。
-
-另一方面，中央極限定理的分母部分除上一個逐漸縮小到 $0$ 的標準差，這個舉動**將分子的隨機性逐漸退化的過程完全抵消**，讓這個標準化的結構維持其隨機性，並且分配收斂到標準常態分配。
+由弱大數法則可知，中央極限定理的分子 $\overline{X}-\mu$ 機率收斂至 <span class="text-nowrap">$0$，</span>其變異數隨 $n$ 增大而逐漸縮小至 <span class="text-nowrap">$0$，</span>隨機性隨之退化。分母除以同樣隨 $n$ 縮小至 $0$ 的標準差 <span class="text-nowrap">$\frac{\sigma}{\sqrt{n}}$，</span>恰好**將分子的隨機性逐漸退化的過程完全抵消**，使標準化後的結構維持非退化的隨機變異，並分配收斂至標準常態分配。
 
 </div>
 
-(3) 讀者應記得，我們曾運用[常態分配](/lecture-notes/normal-distribution/#def-normal)的仿射變換特性，指出[一個相當重要的應用](/lecture-notes/normal-distribution/#prop-normal-linear-combination):
+(3) 前文曾運用[常態分配](/lecture-notes/normal-distribution/#def-normal)的仿射變換性質，推導出[常態樣本平均數的抽樣分配](/lecture-notes/normal-distribution/#prop-normal-linear-combination):
 {: .topic-paren-item}
 
 $$
 \text{若}\ X_1,X_2,\ldots,X_n\iidto\mathcal{N}(\mu,\sigma^{2})\text{，則}\ \overline{X}\sim\mathcal{N}\biggl(\mu,\frac{\sigma^{2}}{n}\biggr)
 $$
 
-這個應用的結果能夠經由標準化而改寫出以下這個性質:
+將上式標準化即可改寫為:
 {: .topic-paren-cont}
 
 $$
 \text{若}\ X_1,X_2,\ldots,X_n\iidto\mathcal{N}(\mu,\sigma^{2})\text{，則}\ \frac{\overline{X}-\mu}{\frac{\sigma}{\sqrt{n}}}\sim\mathcal{N}(0,1)
 $$
 
-讀者應特別注意，這個結構與中央極限定理並不相同，這是「來自常態分配的隨機樣本」才有的性質，不論樣本大小多大，樣本平均數經過標準化之後必定會是標準常態分配，而不需要樣本大小趨於無窮大這個條件。
+此一確切抽樣分配性質與中央極限定理不同；當隨機樣本抽自常態母體時，無論樣本大小 $n$ 為何，樣本平均數經標準化後皆必確切服從標準常態分配，完全無須令樣本大小趨於無窮大。
 {: .topic-paren-cont}
 
 <div id="ex-uniform-wlln-and-clt" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 5.19</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,X_2,\ldots,X_n$ is a random sample drawn from the uniform distribution $\mathcal{U}(0,1)$, and let $\overline{X}_n=\sum_{i=1}^{n}\frac{\,X_i\,}{n}$.
+Let $X_1,X_2,\ldots,X_n$ be a random sample from <span class="text-nowrap">$\mathcal{U}(0,1)$,</span> and let $\overline{X}\_{n}=\sum\_{i=1}^{n}\frac{\,X_i\,}{n}$.
 
 <ol class="topic-list-paren">
-  <li>Find the value of $c$ for which $\overline{X}_n\pconv c$.</li>
-  <li>Find, by the central limit theorem, the value of $d$ for which $\frac{\,2\sum_{i=1}^{n}X_i-n\,}{\sqrt{n}}\dconv\mathcal{N}(0,d)$.</li>
+  <li>Find the constant $c$ such that <span class="text-nowrap">$\overline{X}_n\pconv c$.</span></li>
+  <li>Use the central limit theorem to find the constant $d$ such that $\frac{\,2\sum_{i=1}^{n}X_i-n\,}{\sqrt{n}}\dconv\mathcal{N}(0,d)$.</li>
 </ol>
 </div>
 
@@ -771,14 +782,14 @@ $$
 {: .topic-paren-cont}
 
 $$
-\overline{X}\pconv\mathbb{E}(X_i)=\frac{1}{\,2\,}
+\overline{X}_n\pconv\mathbb{E}(X_i)=\frac{1}{\,2\,}
 $$
 
 故可知
 {: .topic-paren-cont}
 
 $$
-\therefore\ c=\frac{1}{\,2\,}
+c=\frac{1}{\,2\,}
 $$
 
 (2) 由中央極限定理可知
@@ -802,7 +813,7 @@ $$
 {: .topic-paren-cont}
 
 $$
-\therefore\ d=\frac{1}{\,3\,}
+d=\frac{1}{\,3\,}
 $$
 
 </div>
@@ -811,7 +822,7 @@ $$
 <div class="topic-box__label">Example 5.20</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,X_2,\ldots,X_n$ are independent random variables, each having the chi-square distribution with one degree of freedom, and set $Y=\sum_{i=1}^{n}X_i$. Determine the limiting distribution of $Z=\frac{Y}{\sqrt{n}}-\sqrt{n}$.
+Let $X_1,X_2,\ldots,X_n$ be independent chi-square random variables each with $1$ degree of freedom, and let $Y=\sum_{i=1}^{n}X_i$. Find the limiting distribution of <span class="text-nowrap">$Z=(Y/\sqrt{n}-\sqrt{n})$.</span>
 </div>
 
 由 $X_1,X_2,\ldots,X_n\iidto\chi^{2}(\nu=1)$ 可知
@@ -852,50 +863,51 @@ $$
 
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-讀者可以注意到，上述兩題中，我們都不僅是單純使用中央極限定理而已，同時還乘上一個常數，這是可以被接受的，畢竟乘上一個常數並不會影響中央極限定理的收斂行為，而僅會影響到變異數而已。
-
-這一個特性導致了中央極限定理的一些變化版本，我們將其列在下方。
-
-</div>
+在上述兩道例題中，我們皆將中央極限定理的標準化統計量再乘上一個非零常數；非零常數倍伸縮不會改變常態極限分配的型態，僅會等比例調整極限分配的變異數。據此可整理出中央極限定理常用的四種等價形式如下。
 
 **(中央極限定理的各種變化版本)**
 
 令 $\lbrace X_n\rbrace_{n=1}^{\infty}$ 為一定義在機率空間上之 iid 隨機變數序列，且期望值 $\mu$ 與變異數 $\sigma^{2}$ 皆存在，則當 $n$ 趨近於無窮大，我們有
 
-$$
-\diamond\quad\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}=\frac{\,\sqrt{n}(\overline{X}-\mu)\,}{\sigma}\dconv Z\sim\mathcal{N}(0,1)
-$$
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\diamond\quad\frac{\,\sum_{i=1}^{n}X_i-n\mu\,}{\sqrt{n}\sigma}\dconv Z\sim\mathcal{N}(0,1)
+\begin{aligned}
+&\diamond\quad\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}=\frac{\,\sqrt{n}(\overline{X}-\mu)\,}{\sigma}\dconv Z\sim\mathcal{N}(0,1)\\[0.65em]
+&\diamond\quad\frac{\,\sum_{i=1}^{n}X_i-n\mu\,}{\sqrt{n}\sigma}\dconv Z\sim\mathcal{N}(0,1)\\[0.65em]
+&\diamond\quad\sqrt{n}\,(\overline{X}-\mu)\dconv\sigma Z\sim\mathcal{N}(0,\sigma^{2})\\[0.65em]
+&\diamond\quad\frac{\,\sum_{i=1}^{n}X_i-n\mu\,}{\sqrt{n}}\dconv\sigma Z\sim\mathcal{N}(0,\sigma^{2})
+\end{aligned}
 $$
 
-$$
-\diamond\quad\sqrt{n}\,(\overline{X}-\mu)\dconv\sigma Z\sim\mathcal{N}(0,\sigma^{2})
-$$
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\diamond\quad\frac{\,\sum_{i=1}^{n}X_i-n\mu\,}{\sqrt{n}}\dconv\sigma Z\sim\mathcal{N}(0,\sigma^{2})
+\begin{aligned}
+&\diamond\quad\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}=\frac{\,\sqrt{n}(\overline{X}-\mu)\,}{\sigma}\\[0.25em]
+&\qquad\qquad\dconv Z\sim\mathcal{N}(0,1)\\[0.6em]
+&\diamond\quad\frac{\,\sum_{i=1}^{n}X_i-n\mu\,}{\sqrt{n}\sigma}\dconv Z\sim\mathcal{N}(0,1)\\[0.6em]
+&\diamond\quad\sqrt{n}\,(\overline{X}-\mu)\dconv\sigma Z\sim\mathcal{N}(0,\sigma^{2})\\[0.6em]
+&\diamond\quad\frac{\,\sum_{i=1}^{n}X_i-n\mu\,}{\sqrt{n}}\dconv\sigma Z\sim\mathcal{N}(0,\sigma^{2})
+\end{aligned}
 $$
+
+</div>
 
 以上這些版本都能夠稱作中央極限定理。稍後，我們還會再看到基於這些中央極限定理變化版本的一些延伸應用。
 
-[^cf]: 在較為高等的機率論中，我們可以使用**[特徵函數](/lecture-notes/characteristic-functions/#def-characteristic-function) <span lang="en">(characteristic function, cf)</span>** 來進行證明，但在絕大多數的情境中，我們都可以假設 iid 序列，以及期望值與變異數皆存在。關於特徵函數以及相關的極限定理說明，可以參考 Athreya and Lahiri (2006), *Measure Theory and Probability Theory*, 1st ed.，當中有相當深入的探討與說明。
-
 ## 本篇小結
 
-[Theorem 5.7](#thm-weak-law-of-large-numbers) 的弱大數法則說，iid 序列在期望值 $\mu$ 與變異數 $\sigma^{2}$ 皆存在時，樣本平均數 $\overline{X}$ 機率收斂至 $\mu$。證明只用到 $\mathrm{Var}\bigl(\overline{X}\bigr)=\frac{\sigma^{2}}{\,n\,}$ 與柴比雪夫不等式: 後者把 $\mathbb{P}\bigl(\lvert\overline{X}-\mu\rvert<\varepsilon\bigr)$ 由下界住於 $1-\frac{\sigma^{2}}{\,n\varepsilon^{2}\,}$ 這個值，而這個下界隨 $n$ 趨於 $1$。柴比雪夫不等式要求 $\mu$ 與 $\sigma^{2}$ 都存在，但這只是這一條證明路線的條件，變異數不存在時另有別的證明方法。
+[Theorem 5.7](#thm-weak-law-of-large-numbers) 的弱大數法則說，iid 序列在期望值 $\mu$ 與變異數 $\sigma^{2}$ 皆存在時，樣本平均數 $\overline{X}$ 機率收斂至常數 <span class="text-nowrap">$\mu$。</span>證明只用到 $\mathrm{Var}\bigl(\overline{X}\bigr)=\frac{\sigma^{2}}{\,n\,}$ 與柴比雪夫不等式，後者把 $\mathbb{P}\bigl(\lvert\overline{X}-\mu\rvert<\varepsilon\bigr)$ 由下界住於 $1-\frac{\sigma^{2}}{\,n\varepsilon^{2}\,}$ 這個值，而這個下界隨 $n$ 趨於 <span class="text-nowrap">$1$。</span>柴比雪夫不等式要求 $\mu$ 與 $\sigma^{2}$ 都存在，但這只是這一條證明路線的條件，變異數不存在時另有別的證明方法。
 
-[Example 5.15](#ex-wlln-second-moment) 與 [Example 5.16](#ex-wlln-paired-difference) 示範同一種延伸用法: 弱大數法則講的是 $\overline{X}$ 收斂到 $\mathbb{E}(X_i)$，只要把新的隨機變數取為原變數的函數，就能得到別的機率極限。前者取 $Y_i=X_i^{2}$，因而 $\frac{1}{\,n\,}\sum_{i=1}^{n}X_i^{2}$ 機率收斂至 $\mathbb{E}(X_i^{2})=\mu+\mu^{2}$；後者取 $k(X_i-Y_i)^{2}$，其期望值為 $2k\sigma^{2}$，要它等於 $\sigma^{2}$ 便得到 $k=\frac{1}{\,2\,}$ 這個答案。
+[Example 5.15](#ex-wlln-second-moment) 與 [Example 5.16](#ex-wlln-paired-difference) 示範同一種延伸用法。弱大數法則講的是 $\overline{X}$ 收斂到期望值 <span class="text-nowrap">$\mathbb{E}(X_i)$，</span>只要把新的隨機變數取為原變數的函數，就能得到別的機率極限。前者取 <span class="text-nowrap">$Y_i=X_i^{2}$，</span>因而 $\frac{1}{\,n\,}\sum_{i=1}^{n}X_i^{2}$ 機率收斂至 $\mathbb{E}(X_i^{2})=\mu+\mu^{2}$ 這一常數；後者取 $k(X_i-Y_i)^{2}$ 這一組合，其期望值為 <span class="text-nowrap">$2k\sigma^{2}$，</span>要它等於 $\sigma^{2}$ 便得到 $k=\frac{1}{\,2\,}$ 這個答案。
 
-[Theorem 5.8](#thm-central-limit-theorem) 的中央極限定理則說標準化之後的 $\frac{\,\sqrt{n}(\overline{X}-\mu)\,}{\sigma}$ 分配收斂至標準常態分配。[Example 5.17](#ex-clt-proof-by-mgf) 給出大學部教本常見的那一條證明路線: 先把 $M_{\sssig Z}\bigl(\frac{t}{\sqrt{n}}\bigr)$ 在 $t=0$ 處展開成 $1+\frac{t^{2}}{\,2n\,}+o\bigl(\frac{\,t^{2}\,}{n}\bigr)$ 這個式子，再由獨立性得到 $M_{\sssig W_n}(t)=\bigl[M_{\sssig Z}\bigl(\frac{t}{\sqrt{n}}\bigr)\bigr]^{n}$，取極限即得標準常態的 mgf $e^{\frac{\,t^{2}\,}{2}}$，最後由列維連續性定理把 mgf 的收斂換成分配的收斂。這條路線多假設了 mgf 存在，而中央極限定理本身並不需要這個條件。
+[Theorem 5.8](#thm-central-limit-theorem) 的中央極限定理則說標準化之後的 $\frac{\,\sqrt{n}(\overline{X}-\mu)\,}{\sigma}$ 分配收斂至標準常態分配。[Example 5.17](#ex-clt-proof-by-mgf) 給出大學部教本常見的那一條證明路線，先把 $M_{\sssig Z}\bigl(\frac{t}{\sqrt{n}}\bigr)$ 在 $t=0$ 處展開成 $1+\frac{t^{2}}{\,2n\,}+o\bigl(\frac{\,t^{2}\,}{n}\bigr)$ 這個式子，再由獨立性得到 $M_{\sssig W_n}(t)=\bigl[M_{\sssig Z}\bigl(\frac{t}{\sqrt{n}}\bigr)\bigr]^{n}$ 這個關係，取極限即得標準常態的 mgf $e^{\frac{\,t^{2}\,}{2}}$ 這個函數，最後由列維連續性定理把 mgf 的收斂換成分配的收斂。這條路線多假設了 mgf 存在，而中央極限定理本身並不需要這個條件。
 
-[Example 5.18](#ex-cauchy-clt-fails) 則是前提不成立的反例。標準柯西分配沒有期望值也沒有變異數，其特徵函數 $e^{-\lvert t\rvert}$ 使 $\overline{X}$ 的特徵函數仍為 $e^{-\lvert t\rvert}$，因此不論樣本大小多大，$\overline{X}$ 與單一觀測值同分配，中央極限定理在此失效。
+[Example 5.18](#ex-cauchy-clt-fails) 則是前提不成立的反例。標準柯西分配沒有期望值也沒有變異數，其特徵函數 $e^{-\lvert t\rvert}$ 使 $\overline{X}$ 的特徵函數仍為 <span class="text-nowrap">$e^{-\lvert t\rvert}$，</span>因此不論樣本大小多大，$\overline{X}$ 與單一觀測值同分配，中央極限定理在此失效。
 
-其後的三點注意事項把兩條定理擺在一起: $\overline{X}$ 機率收斂到 $\mu$ 這個常數，而 $\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}$ 分配收斂到一個隨機變數，兩者的差別在於分母上那個逐漸縮小到 $0$ 的標準差恰好抵消了分子隨機性退化的過程。另一項對照是常態隨機樣本: 這時 $\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}$ 對每一個樣本大小都恰為標準常態分配，不必取極限，與中央極限定理是兩回事。[Example 5.19](#ex-uniform-wlln-and-clt) 與 [Example 5.20](#ex-chi-square-sum-clt) 分別在均勻母體與卡方母體上把兩條定理用過一遍，兩題都在中央極限定理的結論之外再乘上一個常數，這個動作不影響收斂本身，只影響極限分配的變異數，中央極限定理的四種寫法正是由此而來。
+其後的三點注意事項把兩條定理擺在一起比較，$\overline{X}$ 機率收斂到 $\mu$ 這個常數，而 $\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}$ 分配收斂到一個隨機變數，兩者的差別在於分母上那個逐漸縮小到 $0$ 的標準差恰好抵消了分子隨機性退化的過程。另一項對照是常態隨機樣本，這時 $\frac{\,\overline{X}-\mu\,}{\frac{\sigma}{\sqrt{n}}}$ 對每一個樣本大小都恰為標準常態分配，不必取極限，與中央極限定理是兩回事。[Example 5.19](#ex-uniform-wlln-and-clt) 與 [Example 5.20](#ex-chi-square-sum-clt) 分別在均勻母體與卡方母體上把兩條定理用過一遍，兩題都在中央極限定理的結論之外再乘上一個常數，這個動作不影響收斂本身，只影響極限分配的變異數，中央極限定理的四種寫法正是由此而來。
 
 [下一篇](/lecture-notes/normal-approximation-continuity-correction/)把中央極限定理用在近似計算上，處理以常態分配近似離散型分配時所需要的連續性校正。
 

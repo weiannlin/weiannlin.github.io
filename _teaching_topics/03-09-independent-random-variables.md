@@ -10,10 +10,10 @@ order: 309
 permalink: /lecture-notes/independent-random-variables/
 date: 2026-08-12
 published: false
-excerpt: "把條件機率密度函數的定義移項，就得到乘法原理的機率函數版本，也就是聯合機率密度函數等於條件機率密度函數與邊際機率密度函數的乘積。若條件機率密度函數與邊際機率密度函數相同，也就是一個變數的取值不影響另一個變數，則稱這兩個隨機變數獨立，記為 $X\\indep Y$ 這個符號，其等價寫法是聯合機率密度函數等於兩個邊際機率密度函數的乘積。實務上另有一個快速的判斷法，即聯合值域為積空間，且聯合機率密度函數可以拆成一個只含 $x$ 的函數與一個只含 $y$ 的函數之乘積，兩個條件同時滿足才與獨立等價。本篇以五道例題示範獨立與否的判定，最後一題並利用三個變數中兩組的獨立性，把條件機率化為一個面積佔比。"
+excerpt: "由條件機率函數移項可得機率函數版本的乘法原理；當條件分配恆等於邊際分配時，稱隨機變數彼此獨立。本篇建立聯合機率函數分解判準，強調聯合值域為積空間與公式可拆解兩項條件缺一不可。"
 ---
 
-[上一篇](/lecture-notes/conditional-distributions-examples/)以五道例題示範了[條件機率質量函數](/lecture-notes/conditional-distributions/#def-conditional-pmf)與[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)的求法，並把條件放寬到一整段範圍，得到截尾分配。這些例題所處理的，都是在另一個變數取定某個值或落在某個範圍之後，這個變數的機率分配會變成什麼樣子。
+[上一篇](/lecture-notes/conditional-distributions-examples/)以五道例題示範了[條件機率質量函數](/lecture-notes/conditional-distributions/#def-conditional-pmf)與[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)的求法，並把條件放寬到一整段範圍，得到截尾分配。這些例題所處理的，都是在另一變數取定某值或落在某範圍後，這個變數的機率分配會變成什麼樣子。
 
 本篇處理的則是相反的情形。若這個條件完全沒有改變原本的機率分配，也就是條件機率密度函數與[邊際機率密度函數](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)一模一樣，那會是什麼狀況。這正是第一章[事件的獨立](/lecture-notes/independence-and-conditional-independence/#definition-117)推廣到[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)之後的樣子。在進入獨立的定義之前，我們先把條件機率密度函數的定義移項，得到乘法原理的機率函數版本。
 
@@ -53,22 +53,22 @@ $$
 <div id="def-indep-r-v" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.10 (獨立隨機變數, independent random variables)</div>
 
-$X$ 與 $Y$ 是二個隨機變數，**$X$ 與 $Y$ 獨立 <span lang="en">(independent)</span>** 記為 <span class="text-nowrap">$X\indep Y$，</span>與以下等價:
+$X$ 與 $Y$ 是二個隨機變數，**$X$ 與 $Y$ 獨立 <span lang="en">(independent)</span>** 記為 <span class="text-nowrap">$X\indep Y$，</span>其定義與下列各關係式等價:
 
 <ol class="topic-list-paren topic-list-paren--math">
   <li>
 $$
-f_{\sssig X\mid Y}(x\mid y)=f_{\sssig X}(x),\ \forall (x,y)\in\mathcal{R}_{\sssig XY}
+f_{\sssig X\mid Y}(x\mid y)=f_{\sssig X}(x),\ \forall\,(x,y)\in\mathcal{R}_{\sssig XY}
 $$
   </li>
   <li>
 $$
-f_{\sssig Y\mid X}(y\mid x)=f_{\sssig Y}(y),\ \forall (x,y)\in\mathcal{R}_{\sssig XY}
+f_{\sssig Y\mid X}(y\mid x)=f_{\sssig Y}(y),\ \forall\,(x,y)\in\mathcal{R}_{\sssig XY}
 $$
   </li>
   <li>
 $$
-f_{\sssig XY}(x,y)=f_{\sssig X}(x)\,f_{\sssig Y}(y),\ \forall (x,y)\in\mathcal{R}_{\sssig XY}
+f_{\sssig XY}(x,y)=f_{\sssig X}(x)\,f_{\sssig Y}(y),\ \forall\,(x,y)\in\mathcal{R}_{\sssig XY}
 $$
   </li>
 </ol>
@@ -83,7 +83,7 @@ $$
 (2) 在第一章探討[事件的獨立](/lecture-notes/independence-and-conditional-independence/#definition-117)時，我們曾理解為 **$A$ 的發生並不影響 $B$ 發生的機率**，推廣到隨機變數時，其直觀意義為 **$X$ (或 $Y$) 的值為多少並不影響 $Y$ (或 $X$) 的值**。
 {: .topic-paren-item}
 
-(3) 若事件 $\lbrace\,(X,Y)\in A\,\rbrace$ 可以拆解為 $\lbrace\,X\in A_{\sssig X}\,\rbrace$ $\times$ $\lbrace\,Y\in A_{\sssig Y}\,\rbrace$ 這樣的形式，且 <span class="text-nowrap">$X\indep Y$，</span>則
+(3) 若事件 $\lbrace\,(X,Y)\in A\,\rbrace$ 可以拆解為 $\lbrace\,X\in A_{\sssig X}\,\rbrace$ $\times$ $\lbrace\,Y\in A_{\sssig Y}\,\rbrace$ 這樣的形式，且 <span class="text-nowrap">$X\indep Y$，</span>則有下式
 {: .topic-paren-item}
 
 $$
@@ -121,42 +121,31 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-離散型隨機變數中，**機率列聯表的「每一格」若都等於該行與該列所在的邊際機率的乘積**，則該二個隨機變數為獨立，這個性質可以直接由上列定義推衍而得到。
-
-機率列聯表中，每一格都是 <span class="text-nowrap">$p_{\sssig XY}(x,y)$，</span>而該格所對應的邊際機率應為 $p_{\sssig X}(x)$ 與 <span class="text-nowrap">$p_{\sssig Y}(y)$，</span>故由上列定義可知，若對所有 $(x,y)\in\mathcal{R}\_{\sssig XY}$ 皆有
+在二元離散型的機率列聯表中，每一格的數值即為聯合機率 <span class="text-nowrap">$p\_{\sssig XY}(x,y)$，</span>表邊的行列總和則對應邊際機率 $p\_{\sssig X}(x)$ 與 <span class="text-nowrap">$p\_{\sssig Y}(y)$。</span>因此依獨立定義，兩隨機變數互相獨立 (<span class="text-nowrap">$X\indep Y$</span>)，**若且唯若機率列聯表中的每一格皆等於其所在列與行邊際機率的乘積**，亦即對所有 $(x,y)\in\mathcal{R}\_{\sssig XY}$ (及整張表的所有格位) 皆滿足
 
 $$
 p_{\sssig XY}(x,y)=p_{\sssig X}(x)\,p_{\sssig Y}(y)
 $$
 
-則 <span class="text-nowrap">$X\indep Y$。</span>
-
 </div>
 
-(4) 我們可將上述定義擴展至 $n$ 個變數的獨立，即若 $X_1,X_2,\ldots,X_n$ 互相獨立，若且唯若
+(4) 上述定義可推廣至 $n$ 個隨機變數，即 $X_1,X_2,\ldots,X_n$ 互相獨立，若且唯若
 {: .topic-paren-item}
 
 $$
 f_{\sssig X_1\cdots X_n}(x_1,\ldots,x_n)=\prod_{i=1}^{n}f_{\sssig X_i}(x_i)
 $$
 
-(5) 事實上，我們可以快速判斷一組隨機變數是否獨立。即同時滿足以下條件，若且唯若 <span class="text-nowrap">$X\indep Y$:</span>
+(5) 判斷一組隨機變數是否獨立時，可利用以下的分解判準。$X\indep Y$ 成立，若且唯若同時滿足下列兩項條件:
 {: .topic-paren-item}
 
 - 聯合值域 $\mathcal{R}\_{\sssig XY}$ 為積空間 (即二維矩形)
-- <span class="text-nowrap">$f\_{\sssig XY}(x,y)=g(x)\,h(y)$，</span>其中 $g(x)$ 是僅有 $x$ 的函數、$h(y)$ 是僅有 $y$ 的函數。
+- <span class="text-nowrap">$f\_{\sssig XY}(x,y)=g(x)\,h(y)$，</span>且 $g(x)$ 僅為 $x$ 的函數、$h(y)$ 僅為 $y$ 的函數。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-特別需要注意的是，在此 $g(x)$ 與 $h(y)$ 不必分別是 $X$ 與 $Y$ 的 pdf，只要分別是僅包含 $x$ 與 $y$ 的函數即可。
-
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這個判斷法的使用情境是「若此二條件同時成立若且唯若 $X$ $\indep$ <span class="text-nowrap">$Y$」，</span>換句話說「其中任一條件不滿足，若且唯若 $X$ $\not\indep$ <span class="text-nowrap">$Y$」，</span>反過來說，已知 $X$ $\not\indep$ <span class="text-nowrap">$Y$，</span>若且唯若至少任一條件不滿足。
+此判準中的 $g(x)$ 與 $h(y)$ 不必預先標準化為 $X$ 與 $Y$ 各自的 pdf，只要能拆成僅含 $x$ 與僅含 $y$ 的兩項非負函數相乘即可 (常數倍數可在積分時重新分配)。此外，由於「兩項條件同時成立」與 $X\indep Y$ 等價，只要其中任一項條件不滿足 (例如聯合值域為三角形而非積空間，即使密度函數形式上可拆解)，即可直接判定 <span class="text-nowrap">$X\not\indep Y$。</span>
 
 </div>
 
@@ -164,7 +153,7 @@ $$
 <div class="topic-box__label">Example 3.2 <span lang="en">(Continued)</span></div>
 
 <div lang="en" markdown="1">
-Suppose that a continuous random vector $(X,Y)$ has joint probability density function
+Let $(X,Y)$ be a continuous random vector with joint probability density function
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -192,7 +181,7 @@ $$
   </div>
   <div class="topic-cases__rows">
     <div class="topic-cases__val">$12\,xy(1-x),$</div>
-    <div class="topic-cases__cond">$0<x<1$, $0<y<1$</div>
+    <div class="topic-cases__cond">$0<x<1,\ 0<y<1$</div>
     <div class="topic-cases__val">$0,$</div>
     <div class="topic-cases__cond">$\text{o.w.}$</div>
   </div>
@@ -236,7 +225,7 @@ $$
 <div class="topic-box__label">Example 3.3 <span lang="en">(Continued)</span></div>
 
 <div lang="en" markdown="1">
-Suppose that a continuous random vector $(X,Y)$ has joint probability density function
+Let $(X,Y)$ be a continuous random vector with joint pdf
 
 $$
 f_{\sssig XY}(x,y)=
@@ -249,7 +238,7 @@ f_{\sssig XY}(x,y)=
 $$
 
 <ol class="topic-list-paren topic-list-paren--start-5">
-  <li>Determine whether $X$ and $Y$ are independent.</li>
+  <li>Are $X$ and $Y$ independent?</li>
 </ol>
 </div>
 
@@ -277,7 +266,7 @@ $$
 <div class="topic-box__label">Example 3.9 <span lang="en">(Continued)</span></div>
 
 <div lang="en" markdown="1">
-Suppose that the joint pmf and the marginal pmfs of a two-dimensional discrete random vector $(X_1,X_2)$ are given in the following table.
+Let $(X_1,X_2)$ be a two-dimensional discrete random vector whose joint pmf and marginal pmfs are given in the following table.
 
 | $X_1\backslash X_2$ | $0$ | $1$ | $2$ | $p_{\sssig X_1}(x_1)$ |
 | :---: | :---: | :---: | :---: | :---: |
@@ -288,7 +277,7 @@ Suppose that the joint pmf and the marginal pmfs of a two-dimensional discrete r
 {: .topic-table--joint-pmf}
 
 <ol class="topic-list-paren topic-list-paren--start-3">
-  <li>Determine whether $X_1$ and $X_2$ are independent.</li>
+  <li>Are $X_1$ and $X_2$ independent?</li>
 </ol>
 </div>
 
@@ -343,7 +332,7 @@ $$
 <div class="topic-box__label">Example 3.12</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ and $Y$ are two binary random variables, and that $\mathbb{P}(Y=j\mid X=i)$ denotes a conditional probability with <span class="text-nowrap">$i,j=0,1$.</span> Define
+Let $X$ and $Y$ denote two binary random variables, and let $\mathbb{P}(Y=j\mid X=i)$ be the conditional probability for <span class="text-nowrap">$i,j=0,1$.</span> Define
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -355,10 +344,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\alpha&=\frac{\,\mathbb{P}(Y=1\mid X=1)\,}{\,\mathbb{P}(Y=0\mid X=1)\,},\\[0.45em]
-\beta&=\frac{\,\mathbb{P}(Y=1\mid X=0)\,}{\,\mathbb{P}(Y=0\mid X=0)\,}
-\end{aligned}
+\begin{gathered}
+\alpha=\frac{\,\mathbb{P}(Y=1\mid X=1)\,}{\,\mathbb{P}(Y=0\mid X=1)\,},\\[0.45em]
+\beta=\frac{\,\mathbb{P}(Y=1\mid X=0)\,}{\,\mathbb{P}(Y=0\mid X=0)\,}
+\end{gathered}
 $$
 
 </div>
@@ -366,13 +355,13 @@ $$
 and let <span class="text-nowrap">$\theta=\frac{\,\alpha\,}{\,\beta\,}$.</span>
 
 <ol class="topic-list-paren">
-  <li>Show that $\theta=1$ whenever $X$ and $Y$ are independent.</li>
-  <li>Show that $\theta$ can also be written as
+  <li>Show that if $X$ and $Y$ are independent, then <span class="text-nowrap">$\theta=1$.</span></li>
+  <li>Show that $\theta$ can be expressed as
 $$
 \frac{\,\mathbb{P}(X=1\mid Y=1)\,\mathbb{P}(X=0\mid Y=0)\,}{\,\mathbb{P}(X=0\mid Y=1)\,\mathbb{P}(X=1\mid Y=0)\,}
 $$
   </li>
-  <li>Determine whether $\theta=1$ implies that $X$ and $Y$ are independent.</li>
+  <li>Are $X$ and $Y$ independent if <span class="text-nowrap">$\theta=1$?</span></li>
 </ol>
 </div>
 
@@ -382,7 +371,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{P}(Y=j\mid X=i)=\mathbb{P}(Y=j),\ \forall i,j=0,1
+\mathbb{P}(Y=j\mid X=i)=\mathbb{P}(Y=j),\ \forall\,i,j=0,1
 $$
 
 </div>
@@ -391,7 +380,7 @@ $$
 $$
 \begin{aligned}
 \mathbb{P}(Y=j\mid X=i)&=\mathbb{P}(Y=j),\\[0.45em]
-&\forall i,j=0,1
+&\forall\,i,j=0,1
 \end{aligned}
 $$
 
@@ -458,10 +447,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-p_{ij}&=\mathbb{P}(X=i,Y=j),\\[0.45em]
-p_{i\bullet}&=\mathbb{P}(X=i),\quad p_{\bullet j}=\mathbb{P}(Y=j)
-\end{aligned}
+\begin{gathered}
+p_{ij}=\mathbb{P}(X=i,Y=j),\\[0.45em]
+p_{i\bullet}=\mathbb{P}(X=i),\quad p_{\bullet j}=\mathbb{P}(Y=j)
+\end{gathered}
 $$
 
 </div>
@@ -496,7 +485,7 @@ $$
 
 </div>
 
-且同理可知 $p_{i\bullet}\,p_{\bullet j}=p_{ij}$ 對 $i,j=0,1$ 皆成立，故可知，若 $\theta=1$ 則有
+且同理可知 $p_{i\bullet}\,p_{\bullet j}=p_{ij}$ 對 $i,j=0,1$ 皆成立，故若 $\theta=1$ 則有
 {: .topic-paren-cont}
 
 $$
@@ -509,7 +498,7 @@ $$
 <div class="topic-box__label">Example 3.13</div>
 
 <div lang="en" markdown="1">
-Suppose that the random variables <span class="text-nowrap">$X$,</span> $Y$ and $Z$ have the following probability density function
+Let the random variables <span class="text-nowrap">$X$,</span> <span class="text-nowrap">$Y$,</span> and $Z$ have joint probability density function
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -537,7 +526,7 @@ $$
   </div>
   <div class="topic-cases__rows">
     <div class="topic-cases__val">$1,$</div>
-    <div class="topic-cases__cond">$0<x<y<1$, $0<z<2$</div>
+    <div class="topic-cases__cond">$0<x<y<1,\ 0<z<2$</div>
     <div class="topic-cases__val">$0,$</div>
     <div class="topic-cases__cond">$\text{o.w.}$</div>
   </div>
@@ -553,10 +542,7 @@ Find <span class="text-nowrap">$\mathbb{P}(4X>Y\mid 4Z<2)$.</span>
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{aligned}
-&\lbrace\,(x,y,z)\mid 0<x<y<1,\ 0<z<2\,\rbrace\\[0.45em]
-&\quad =\lbrace\,(x,y)\mid 0<x<y<1\,\rbrace\times\lbrace\,z\mid 0<z<2\,\rbrace
-\end{aligned}
+\lbrace\,(x,y,z)\mid 0<x<y<1,\ 0<z<2\,\rbrace=\lbrace\,(x,y)\mid 0<x<y<1\,\rbrace\times\lbrace\,z\mid 0<z<2\,\rbrace
 $$
 
 </div>
@@ -608,9 +594,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這題的分配雖然不是常見機率模型，但其實仍是一種均勻分配。事實上，只要在指定範圍之內，機率密度都是常數，都能算是均勻分配，只是其範圍未必規則，且構成的變數間也未必獨立。
-
-與過去的均勻分配不同的地方在於，過去的均勻分配之所以直接以所求範圍的面積作為機率，是因為機率密度為 <span class="text-nowrap">$1$，</span>因此體積與底面積相等；此處則因為機率密度不為 $1$ (但仍是常數)，因此計算體積的問題，只能等價於底面積在值域總面積的佔比。
+本題中 $(X,Y)$ 的邊際聯合分配雖非矩形上的標準模型，但因其在值域 $0<x<y<1$ 內的機率密度恆為常數 <span class="text-nowrap">$2$，</span>本質上仍屬於一般區域上的均勻分配 (由於值域為三角形，$X$ 與 $Y$ 彼此並不獨立)。前文處理單位正方形或單位立方體上的標準均勻分配時，因整個值域的面積或體積為 $1$ 且密度恆為 <span class="text-nowrap">$1$，</span>事件機率直接等於子區域的面積或體積；此處值域面積為 <span class="text-nowrap">$\frac{1}{2}$、</span>常數密度為 <span class="text-nowrap">$2$，</span>曲面下體積便等價於子區域面積在整個值域面積中的佔比。
 
 </div>
 

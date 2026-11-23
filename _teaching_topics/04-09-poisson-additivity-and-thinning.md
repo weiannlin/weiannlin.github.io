@@ -10,7 +10,7 @@ order: 409
 permalink: /lecture-notes/poisson-additivity-and-thinning/
 date: 2026-08-12
 published: false
-excerpt: "兩個獨立的卜瓦松變數相加之後仍為卜瓦松分配，平均發生率相加；而在兩者的總和固定為 $n$ 的條件下，其中一個變數的條件分配是二項分配，成功機率為兩個平均發生率的比值。反過來看，若卜瓦松變數所計數的每一次發生都以固定機率 $p$ 被歸入某一類，則該類的個數服從 $\\mathrm{Poi}(\\lambda p)$ 這個分配，另一類的個數服從 $\\mathrm{Poi}\\bigl(\\lambda(1-p)\\bigr)$ 這個分配，而且兩者彼此獨立。本篇完整證明這兩個定理，並以六道例題演練卜瓦松機率的計算、二項機率的卜瓦松近似，以及定義在頁數與體積這一類非時間區段上的卜瓦松分配。"
+excerpt: "兩個獨立卜瓦松變數給定總和為 $n$ 時，條件分配為二項分配；反之將每次發生以固定機率 $p$ 獨立分類，所得兩類計數仍為彼此獨立的卜瓦松變數。本篇證明這兩項性質並以六道例題演練。"
 ---
 
 [上一篇](/lecture-notes/poisson-process-and-distribution/)給出[卜瓦松過程](/lecture-notes/poisson-process-and-distribution/#def-poisson-process)與[卜瓦松分配](/lecture-notes/poisson-process-and-distribution/#def-poisson-distribution)的定義，並完整推導了卜瓦松分配的機率函數、期望值、變異數與動差母函數。本篇先以兩道例題演練卜瓦松機率的計算，其中一道用到二項機率的卜瓦松近似。
@@ -23,12 +23,12 @@ excerpt: "兩個獨立的卜瓦松變數相加之後仍為卜瓦松分配，平�
 <div class="topic-box__label">Example 4.21</div>
 
 <div lang="en" markdown="1">
-Suppose that a traffic police officer must patrol the important places of a precinct during every half-hour period. Let $Y$ denote the number of times one particular place is patrolled within half an hour, and suppose that $Y$ follows a Poisson distribution whose mean is one patrol per half hour.
+A traffic police officer patrols the key locations within his jurisdiction during each half-hour period. Let <span class="text-nowrap">$Y$,</span> the number of times he patrols a particular location in a half-hour period, follow a Poisson distribution with a mean of $1$ patrol per half hour. Find the probability that in a given half-hour period:
 
 <ol class="topic-list-paren">
-  <li>What is the probability that the officer misses that particular place entirely during a given half-hour period?</li>
-  <li>What is the probability that the officer patrols that place exactly once?</li>
-  <li>What is the probability that the officer patrols that place at least once?</li>
+  <li>the officer misses that location and does not patrol it at all;</li>
+  <li>the officer patrols that location exactly once;</li>
+  <li>the officer patrols that location at least once.</li>
 </ol>
 </div>
 
@@ -73,10 +73,10 @@ $$
 <div class="topic-box__label">Example 4.3 <span lang="en">(Continued)</span></div>
 
 <div lang="en" markdown="1">
-Suppose that a newly produced LED lamp fails to work with probability <span class="text-nowrap">$3\%$.</span>
+Research data show that the probability of a defect in a new LED lamp is <span class="text-nowrap">$3\%$.</span>
 
 <ol class="topic-list-paren topic-list-paren--start-2">
-  <li>Suppose that the quality control department draws $200$ such lamps at random. Find the probability that exactly $7$ of them fail to work, using the Poisson approximation.</li>
+  <li>If the quality control department randomly selects $200$ lamps, find the probability that exactly $7$ lamps are defective using the Poisson approximation.</li>
 </ol>
 </div>
 
@@ -87,7 +87,7 @@ $$
 X\sim\mathrm{Bin}(n=200,\ p=0.03)
 $$
 
-又由二項分配的卜瓦松近似可知，若令
+又由二項分配的卜瓦松近似可知，若令隨機變數
 {: .topic-paren-cont}
 
 $$
@@ -143,7 +143,7 @@ $$
 <div id="thm-poisson-sum-conditional" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 4.10 (卜瓦松分配的和與條件二項, the sum and the conditional binomial)</div>
 
-令 $X\sim\mathrm{Poi}(\lambda=\lambda_1)$ $\indep$ $Y\sim\mathrm{Poi}(\lambda=\lambda_2)$ 成立，則
+令 $X\sim\mathrm{Poi}(\lambda=\lambda_1)\indep Y\sim\mathrm{Poi}(\lambda=\lambda_2)$ 成立，則
 
 (1)
 {: .topic-paren-item}
@@ -177,7 +177,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-(1) 由 $X\sim\mathrm{Poi}(\lambda=\lambda_1)\indep Y\sim\mathrm{Poi}(\lambda=\lambda_2)$ 可知
+(1) 由 $X\sim\mathrm{Poi}(\lambda=\lambda_1)\indep Y\sim\mathrm{Poi}(\lambda=\lambda_2)$ 可知其動差母函數為
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -190,10 +190,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-M_{\sssig X}(t)&=e^{\lambda_1(e^{t}-1)},\\[0.45em]
-M_{\sssig Y}(t)&=e^{\lambda_2(e^{t}-1)}
-\end{aligned}
+\begin{gathered}
+M_{\sssig X}(t)=e^{\lambda_1(e^{t}-1)},\\[0.45em]
+M_{\sssig Y}(t)=e^{\lambda_2(e^{t}-1)}
+\end{gathered}
 $$
 
 </div>
@@ -284,18 +284,31 @@ $$
 <div class="topic-box__label">Example 4.22</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ and $Y$ are independent Poisson random variables whose probability functions are
+Let $X$ and $Y$ be independent Poisson random variables with probability mass functions
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+f(x)=\frac{\,m^{x}e^{-m}\,}{x!},\ x=0,1,2,\ldots\quad \text{and}\quad f(y)=\frac{\,n^{y}e^{-n}\,}{y!},\ y=0,1,2,\ldots
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
 \begin{gathered}
 f(x)=\frac{\,m^{x}e^{-m}\,}{x!},\ x=0,1,2,\ldots\\[0.45em]
-\text{and}\ f(y)=\frac{\,n^{y}e^{-n}\,}{y!},\ y=0,1,2,\ldots
+\text{and}\quad f(y)=\frac{\,n^{y}e^{-n}\,}{y!},\ y=0,1,2,\ldots
 \end{gathered}
 $$
 
+</div>
+
+Find:
+
 <ol class="topic-list-paren">
-  <li>Find the probability function of <span class="text-nowrap">$X+Y$.</span></li>
-  <li>Find the conditional probability function <span class="text-nowrap">$f(x\mid x+y=50)$.</span></li>
+  <li>the probability mass function of <span class="text-nowrap">$X+Y$;</span></li>
+  <li>the conditional probability mass function <span class="text-nowrap">$f(x\mid x+y=50)$.</span></li>
 </ol>
 </div>
 
@@ -319,10 +332,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-M_{\sssig X}(t)&=e^{m(e^{t}-1)},\\[0.45em]
-M_{\sssig Y}(t)&=e^{n(e^{t}-1)}
-\end{aligned}
+\begin{gathered}
+M_{\sssig X}(t)=e^{m(e^{t}-1)},\\[0.45em]
+M_{\sssig Y}(t)=e^{n(e^{t}-1)}
+\end{gathered}
 $$
 
 </div>
@@ -370,7 +383,7 @@ $$
 
 </div>
 
-(2) 承上題，令 <span class="text-nowrap">$W=X+Y\sim\mathrm{Poi}(\lambda=m+n)$，</span>由於 <span class="text-nowrap">$X\indep Y$，</span>我們有
+(2) 承上題，令 $W=X+Y\sim\mathrm{Poi}(\lambda=m+n)$ 成立，由於 <span class="text-nowrap">$X\indep Y$，</span>我們有
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -423,19 +436,14 @@ $$
 
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-二項分配與卜瓦松分配間的特殊關係並不只有上述的這一項，下面這一層關係也很常見。
-
-</div>
-
 ## 卜瓦松分配的稀化
+
+除上述「給定兩獨立卜瓦松變數總和，條件分配為二項分配」的性質外，卜瓦松分配與二項分配之間另有反向的分類拆解關係如下。
 
 <div id="thm-poisson-thinning" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 4.11 (卜瓦松分配的稀化, thinning of a Poisson variable)</div>
 
-令 $X\sim\mathrm{Poi}(\lambda)$ 與 $Y\mid(X=x)\sim\mathrm{Bin}(n=x,\ p)$ 成立，則
+令 $X\sim\mathrm{Poi}(\lambda)$ 與 $Y\mid(X=x)\sim\mathrm{Bin}(n=x,\ p)$ (其中 <span class="text-nowrap">$0<p<1$</span>) 成立，則
 
 (1)
 {: .topic-paren-item}
@@ -479,8 +487,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+p_{\sssig X}(x)=\frac{\,e^{-\lambda}\lambda^{x}\,}{x!},\ x=0,1,\ldots
+$$
+
+$$
 \begin{aligned}
-p_{\sssig X}(x)&=\frac{\,e^{-\lambda}\lambda^{x}\,}{x!},\ x=0,1,\ldots\\[0.45em]
 \text{與}\ p_{\sssig Y\mid X}(y\mid x)&=\binom{x}{y}p^{y}(1-p)^{x-y},\\[0.25em]
 &\qquad y=0,1,\ldots,x
 \end{aligned}
@@ -621,10 +632,10 @@ $$
 <div class="topic-box__label">Example 4.23</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ follows a Poisson distribution with parameter <span class="text-nowrap">$\lambda$,</span> that is <span class="text-nowrap">$X\sim\mathrm{Poi}(\lambda)$,</span> and that given $X=x$ the random variable $Y$ follows the binomial distribution <span class="text-nowrap">$\mathrm{Bin}(x,p)$.</span>
+Let $X$ follow a Poisson distribution with parameter <span class="text-nowrap">$\lambda$,</span> i.e., <span class="text-nowrap">$X\sim\mathrm{Poi}(\lambda)$,</span> and given <span class="text-nowrap">$X=x$,</span> let $Y$ follow the binomial distribution <span class="text-nowrap">$\mathrm{Bin}(x,p)$.</span>
 
 <ol class="topic-list-paren">
-  <li>Evaluate $\mathbb{E}(Y)$ and <span class="text-nowrap">$\mathrm{Var}(Y)$.</span></li>
+  <li>Find $\mathbb{E}(Y)$ and <span class="text-nowrap">$\mathrm{Var}(Y)$.</span></li>
   <li>Show that $Y$ and $X-Y$ are independent.</li>
 </ol>
 </div>
@@ -642,10 +653,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-X&\sim\mathrm{Poi}(\lambda),\\[0.45em]
-Y\mid(X=x)&\sim\mathrm{Bin}(x,\ p)
-\end{aligned}
+\begin{gathered}
+X\sim\mathrm{Poi}(\lambda),\\[0.45em]
+Y\mid(X=x)\sim\mathrm{Bin}(x,\ p)
+\end{gathered}
 $$
 
 </div>
@@ -714,8 +725,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+p_{\sssig X}(x)=\frac{\,e^{-\lambda}\lambda^{x}\,}{x!},\ x=0,1,\ldots
+$$
+
+$$
 \begin{aligned}
-p_{\sssig X}(x)&=\frac{\,e^{-\lambda}\lambda^{x}\,}{x!},\ x=0,1,\ldots\\[0.45em]
 \text{與}\ p_{\sssig Y\mid X}(y\mid x)&=\binom{x}{y}p^{y}(1-p)^{x-y},\\[0.25em]
 &\qquad y=0,1,\ldots,x
 \end{aligned}
@@ -780,7 +794,7 @@ $$
 
 </div>
 
-則由於 $p_{\sssig UV}(u,v)=p_{\sssig U}(u)\,p_{\sssig V}(v)$ (由 [Theorem 4.11](#thm-poisson-thinning) 之證明可知)，故知道
+則由於 $p_{\sssig UV}(u,v)=p_{\sssig U}(u)\,p_{\sssig V}(v)$ (見 [Theorem 4.11](#thm-poisson-thinning) 之證明)，故知
 {: .topic-paren-cont}
 
 $$
@@ -795,11 +809,11 @@ $$
 <div class="topic-box__label">Example 4.24</div>
 
 <div lang="en" markdown="1">
-Ellen is enrolled in a typing course, and the task assigned to her is to produce a report of $10$ pages within one hour. Suppose that the number of typing errors she makes in every $10$ pages follows a Poisson distribution whose mean is <span class="text-nowrap">$\lambda=2$.</span>
+Ellen is taking a typing course and her assignment is to type a $10$-page report within one hour. Suppose the number of typing errors she makes per $10$ pages follows a Poisson distribution with mean <span class="text-nowrap">$\lambda=2$.</span>
 
 <ol class="topic-list-paren">
-  <li>What is the probability that no typing error at all appears on a single page selected at random?</li>
-  <li>What is the probability that a total of $4$ typing errors appear on two pages?</li>
+  <li>What is the probability that she makes no typing errors on a single randomly selected page?</li>
+  <li>What is the probability that she makes a total of $4$ typing errors across two pages?</li>
 </ol>
 </div>
 
@@ -828,7 +842,7 @@ $$
 {: .topic-paren-cont}
 
 $$
-\mathbb{P}(Y=4)=\frac{\,e^{-0.4}(0.4)^{4}\,}{4!}\fallingdotseq0.0007
+\mathbb{P}(Y=4)=\frac{\,e^{-0.4}(0.4)^{4}\,}{4!}\fallingdotseq0.0007150
 $$
 
 </div>
@@ -837,11 +851,11 @@ $$
 <div class="topic-box__label">Example 4.25</div>
 
 <div lang="en" markdown="1">
-Bacteria of a certain kind are known to occur in water at a rate of three bacteria per cubic centimeter of water. Suppose that this phenomenon obeys the Poisson probability law, and that a sample of two cubic centimeters of water is taken.
+Bacteria of a certain kind are known to occur in water at a rate of three bacteria per cubic centimeter. Assuming that this phenomenon follows a Poisson process, find the probability that a sample of two cubic centimeters of water contains
 
 <ol class="topic-list-paren">
-  <li>Find the probability that the sample contains at most two bacteria.</li>
-  <li>Find the probability that the sample contains at least three bacteria.</li>
+  <li>at most two bacteria;</li>
+  <li>at least three bacteria.</li>
 </ol>
 </div>
 
@@ -886,19 +900,19 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述的兩個問題，是應用在非時間區段的例子，我們曾在[上一篇](/lecture-notes/poisson-process-and-distribution/)中提到，卜瓦松過程可以推廣至任意的區間，包含任意線段、平面、空間... 等等的區間，這當然導致了其上的卜瓦松分配被定義在非時間區段上，但使用的邏輯與定義在時間區段上的卜瓦松分配是完全相同的。
+上述兩題皆為非時間區段的應用實例。如[上一篇](/lecture-notes/poisson-process-and-distribution/)所述，卜瓦松過程可由時間軸推廣至線段、平面或立體空間等區段；定義於頁數或體積上的卜瓦松分配，其比例伸縮與獨立增量等性質皆與定義在時間區段上的用法完全相同。
 
 </div>
 
 ## 本篇小結
 
-[Example 4.21](#ex-poisson-sum-1) 與 [Example 4.3 <span lang="en">(Continued)</span>](#ex-binomial-2-continued) 是卜瓦松機率的兩種基本用法。前者把每半小時平均巡視一次直接當成 <span class="text-nowrap">$\lambda=1$，</span>三個小題依序求 <span class="text-nowrap">$\mathbb{P}(Y=0)$、</span>$\mathbb{P}(Y=1)$ 與 $\mathbb{P}(Y\geqslant1)$ 這三個機率，最後一項以餘事件計算。後者承接[上一篇](/lecture-notes/poisson-process-and-distribution/)所證的二項分配卜瓦松近似: $n=200$ 很大、$p=0.03$ 很小而 <span class="text-nowrap">$np=6$，</span>以 $\mathrm{Poi}(6)$ 求得的 $0.1377$ 與二項分配的精確值 $0.1398$ 相當接近。
+[Example 4.21](#ex-poisson-sum-1) 與 [Example 4.3 <span lang="en">(Continued)</span>](#ex-binomial-2-continued) 是卜瓦松機率的兩種基本用法。前者把每半小時平均巡視一次直接當成 <span class="text-nowrap">$\lambda=1$，</span>三個小題依序求 <span class="text-nowrap">$\mathbb{P}(Y=0)$、</span>$\mathbb{P}(Y=1)$ 與 $\mathbb{P}(Y\geqslant1)$ 這三個機率，最後一項以餘事件計算。後者承接[上一篇](/lecture-notes/poisson-process-and-distribution/)所證的二項分配卜瓦松近似，在 $n=200$ 很大、$p=0.03$ 很小而 <span class="text-nowrap">$np=6$</span> 時，以 $\mathrm{Poi}(6)$ 求得的結果 $0.1377$ 與二項分配的精確值 $0.1398$ 相當接近。
 
 [Theorem 4.10](#thm-poisson-sum-conditional) 給出兩個獨立卜瓦松變數相加之後的兩件事。第一件是可加性，證明只需把兩個動差母函數相乘，指數上的 $\lambda_1$ 與 $\lambda_2$ 因而相加，再由動差母函數的唯一性辨識出 $\mathrm{Poi}(\lambda_1+\lambda_2)$ 這個分配。第二件是在總和固定為 $n$ 的條件下，$X$ 的條件分配為二項分配，成功機率是 $\frac{\lambda_1}{\,\lambda_1+\lambda_2\,}$ 這個比值；證明把條件機率函數的分子寫成兩個機率函數的乘積、分母寫成和的機率函數，指數項相消之後剩下的正是二項分配的形式。[Example 4.22](#ex-poisson-sum-2) 把同一組推導在參數為 $m$ 與 $n$ 而總和固定為 $50$ 的情形下再作一次。
 
 [Theorem 4.11](#thm-poisson-thinning) 處理的是相反的方向。先有一個服從 $\mathrm{Poi}(\lambda)$ 的變數 <span class="text-nowrap">$X$，</span>再在給定 $X=x$ 之下讓 $Y$ 服從 <span class="text-nowrap">$\mathrm{Bin}(x,p)$，</span>也就是把 $X$ 所計數的每一次發生各以機率 $p$ 歸入 $Y$ 這一類。證明先由條件機率函數與邊際機率函數相乘得到聯合機率函數，再取 $U=Y$ 與 $V=X-Y$ 這組轉換，聯合機率函數隨即分解成 $\mathrm{Poi}(\lambda p)$ 與 $\mathrm{Poi}\bigl(\lambda(1-p)\bigr)$ 兩個機率函數的乘積；分解一旦完成，三個結論同時成立，兩類的個數各自服從卜瓦松分配，而且彼此獨立。[Example 4.23](#ex-poisson-sum-3) 的第一小題由條件期望值與條件變異數求出 $\mathbb{E}(Y)=p\lambda$ 與 <span class="text-nowrap">$\mathrm{Var}(Y)=p\lambda$，</span>與 $Y\sim\mathrm{Poi}(\lambda p)$ 的期望值、變異數一致；第二小題則是 [Theorem 4.11](#thm-poisson-thinning) 第三項的完整重述。
 
-最後兩道例題把卜瓦松分配用在非時間的區段上。[Example 4.24](#ex-poisson-sum-4) 以頁數為區段，每 $10$ 頁平均打錯 $2$ 個字，一頁的平均錯字數因而是 <span class="text-nowrap">$0.2$、</span>兩頁是 <span class="text-nowrap">$0.4$；</span>[Example 4.25](#ex-poisson-sum-5) 以體積為區段，每立方公分平均有 $3$ 隻細菌，兩立方公分因而是 <span class="text-nowrap">$\lambda=6$。</span>兩題都直接套用比例伸縮性質，計算的邏輯與定義在時間區段上的卜瓦松分配完全相同。
+最後兩道例題把卜瓦松分配用在非時間的區段上。[Example 4.24](#ex-poisson-sum-4) 以頁數為區段，每 $10$ 頁平均打錯 $2$ 個字，一頁的平均錯字數因而是 <span class="text-nowrap">$0.2$、</span>兩頁是 <span class="text-nowrap">$0.4$；</span>[Example 4.25](#ex-poisson-sum-5) 以體積為區段，每立方公分平均有 $3$ 隻細菌，兩立方公分因而是 <span class="text-nowrap">$\lambda=6$。</span>兩題都直接套用比例伸縮性質求解，背後的計算邏輯與定義在時間區段上的卜瓦松分配完全相同。
 
 [下一篇](/lecture-notes/gamma-function-exponential-distribution/)由伽瑪函數談起，接著給出卜瓦松過程下轄的第二個分配，也就是描述偶發事件發生間隔的指數分配。
 

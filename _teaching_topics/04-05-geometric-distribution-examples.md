@@ -10,12 +10,12 @@ order: 405
 permalink: /lecture-notes/geometric-distribution-examples/
 date: 2026-08-12
 published: false
-excerpt: "本篇以六道例題演練幾何分配。前兩道直接由實驗幾何分配的機率函數求期望值、變異數與指定事件的機率，其中「投擲硬幣直到第一次出現正面，所需次數為奇數」的機率，正好由無窮等比級數求得 $\\frac{1}{\\,2-p\\,}$ 這個結果。接下來兩道把「等到出現若干個不同結果」的總次數寫成一串成功機率遞減的幾何變數之和，期望值即為各項倒數相加。最後兩道分別以輔助變數搭配雙重期望值定理、全機率定理與變異數分解定理求算，以及由失敗幾何分配說明無記憶性。"
+excerpt: "本篇以六道例題演練幾何分配的計算，包含首次成功落在奇數次實驗的無窮級數求和、集滿多類結果所需次數的分解求和，以及結合雙重期望值定理、變異數分解定理與無記憶性的應用。"
 ---
 
 [上一篇](/lecture-notes/geometric-distribution-memoryless/)由幾何級數出發，給出[幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)的定義，證明了機率函數的合法性與期望值、變異數及動差母函數，接著給出[無記憶性](/lecture-notes/geometric-distribution-memoryless/#thm-memoryless)及其逆敘述，最後說明兩個獨立幾何變數取極小值之後仍為幾何分配。本篇不再新增性質，改以六道例題演練上述結果。
 
-六道例題依序處理四件事: 先直接由實驗幾何分配的機率函數求期望值、變異數與指定事件的機率，再把「等到出現若干個不同結果」的總次數寫成一串幾何變數之和，接著以一個輔助變數把問題化為條件分配之下的計算，最後回到失敗幾何分配，看無記憶性在題目中如何呈現。
+六道例題依序處理四類計算，先直接由實驗幾何分配的機率函數求期望值、變異數與指定事件的機率，再把「等到出現若干個不同結果」的總次數寫成一串幾何變數之和，接著以一個輔助變數把問題化為條件分配之下的計算，最後回到失敗幾何分配，看無記憶性在題目中如何呈現。
 
 ## 實驗幾何分配的機率、期望值與變異數
 
@@ -23,12 +23,12 @@ excerpt: "本篇以六道例題演練幾何分配。前兩道直接由實驗幾�
 <div class="topic-box__label">Example 4.10</div>
 
 <div lang="en" markdown="1">
-Suppose that a box contains $6$ Hello Kitty stickers and $4$ One Piece stickers. Stickers are drawn from the box one at a time at random, and each sticker is put back into the box after it has been examined. Let $Y$ denote the number of draws made up to and including the first Hello Kitty sticker.
+A box contains $6$ Hello Kitty stickers and $4$ One Piece stickers. Stickers are drawn one by one at random with replacement. Let $Y$ denote the number of draws required until the first Hello Kitty sticker is obtained.
 
 <ol class="topic-list-paren">
-  <li>Determine the distribution of <span class="text-nowrap">$Y$.</span></li>
-  <li>Evaluate $\mathbb{E}(Y)$ and <span class="text-nowrap">$\mathrm{Var}(Y)$.</span></li>
-  <li>What is the probability that at least $2$ draws are needed to obtain a Hello Kitty sticker?</li>
+  <li>What is the probability distribution of <span class="text-nowrap">$Y$?</span></li>
+  <li>What are the expectation and variance of <span class="text-nowrap">$Y$?</span></li>
+  <li>What is the probability that at least $2$ draws are required to obtain a Hello Kitty sticker?</li>
 </ol>
 </div>
 
@@ -42,12 +42,23 @@ $$
 (2) 由[實驗幾何分配](/lecture-notes/geometric-distribution-memoryless/#def-geometric)的性質可知
 {: .topic-paren-item}
 
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+\mathbb{E}(Y)=\frac{1}{\,p\,}=\frac{1}{\,0.6\,}\fallingdotseq1.667,\qquad \mathrm{Var}(Y)=\frac{\,1-p\,}{p^{2}}=\frac{\,1-0.6\,}{0.6^{2}}\fallingdotseq1.111
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
 $$
 \begin{gathered}
-\mathbb{E}(Y)=\frac{1}{\,p\,}=\frac{1}{\,0.6\,}\fallingdotseq1.6667\\[0.5em]
-\mathrm{Var}(Y)=\frac{\,1-p\,}{p^{2}}=\frac{\,1-0.6\,}{0.6^{2}}\fallingdotseq1.1111
+\mathbb{E}(Y)=\frac{1}{\,p\,}=\frac{1}{\,0.6\,}\fallingdotseq1.667,\\[0.45em]
+\mathrm{Var}(Y)=\frac{\,1-p\,}{p^{2}}=\frac{\,1-0.6\,}{0.6^{2}}\fallingdotseq1.111
 \end{gathered}
 $$
+
+</div>
 
 (3) 所求為
 {: .topic-paren-item}
@@ -79,7 +90,7 @@ $$
 <div class="topic-box__label">Example 4.11</div>
 
 <div lang="en" markdown="1">
-Suppose that a coin is tossed repeatedly, that a head occurs on each toss with probability <span class="text-nowrap">$p$,</span> and that a tail occurs with probability <span class="text-nowrap">$1-p$.</span> The tossing stops as soon as the first head is obtained. What is the probability that the number of tosses required is an odd number?
+Consider a coin-tossing experiment in which the probability of “head” is $p$ and the probability of “tail” is <span class="text-nowrap">$1-p$.</span> If we toss the coin until a head appears for the first time, what is the probability that the number of required tosses is odd?
 </div>
 
 依題意可令 $X$ 表示直到第一次出現正面所需之投擲次數，則 $X\sim\mathrm{Geo}(p)$ 為實驗幾何分配，所求為 <span class="text-nowrap">$\mathbb{P}(X\ \text{為奇數})$，</span>即
@@ -98,7 +109,8 @@ $$
 
 $$
 \begin{aligned}
-p_{\sssig X}(1)+p_{\sssig X}(3)+p_{\sssig X}(5)+\cdots&=p+p(1-p)^{2}+p(1-p)^{4}+\cdots\\[0.3em]
+p_{\sssig X}(1)+p_{\sssig X}(3)+p_{\sssig X}(5)+\cdots&=p+p(1-p)^{2}\\[0.25em]
+&\qquad+p(1-p)^{4}+\cdots\\[0.35em]
 &=\frac{p}{\,1-(1-p)^{2}\,}=\frac{1}{\,2-p\,}
 \end{aligned}
 $$
@@ -113,10 +125,10 @@ $$
 <div class="topic-box__label">Example 4.12</div>
 
 <div lang="en" markdown="1">
-Suppose that a fair die is rolled repeatedly until each of its $6$ faces has appeared at least once. Determine the expected number of rolls required.
+How many times would you expect to roll a fair die before all $6$ sides appear at least once?
 </div>
 
-依題意可令 $X_i,\ i=1,\ldots,6$ 表示首次擲出第 $i$ 個不曾出現的面所需的投擲次數，則
+依題意可令 $X_i,\ i=1,\ldots,6$ 表示首次擲出第 $i$ 個不曾出現的面所需的投擲次數，則由幾何分配可知
 
 $$
 X_i\sim\mathrm{Geo}\Bigl(p=\frac{\,7-i\,}{6}\Bigr),\ i=1,\ldots,6
@@ -148,7 +160,7 @@ $$
 <div class="topic-box__label">Example 4.13</div>
 
 <div lang="en" markdown="1">
-Suppose that a bag contains $r$ balls, numbered <span class="text-nowrap">$1,2,\ldots,r$.</span> Balls are drawn one at a time with replacement, so that on each draw a ball is taken out, its number is recorded, and the ball is then returned to the bag. The procedure is repeated until $k$ distinct numbers have been recorded, where $k$ is an integer smaller than <span class="text-nowrap">$r$.</span> Let $S_k$ denote the number of draws required. Find <span class="text-nowrap">$\mathbb{E}(S_k)$.</span>
+An urn contains $r$ balls numbered <span class="text-nowrap">$1,2,\ldots,r$.</span> Balls are drawn one by one at random with replacement, with the number recorded after each draw. This process is repeated until $k$ distinct numbers (where $k$ is an integer less than <span class="text-nowrap">$r$</span>) have appeared. Let $S_k$ denote the total number of draws required. Find <span class="text-nowrap">$\mathbb{E}(S_k)$.</span>
 </div>
 
 依題意可令 $X_i,\ i=1,\ldots,k$ 表示得到第 $i$ 個不同的號碼所需的抽樣次數，則
@@ -199,12 +211,12 @@ $$
 <div class="topic-box__label">Example 4.14</div>
 
 <div lang="en" markdown="1">
-Suppose that in a certain school the ratio of male students to female students is $2$ to <span class="text-nowrap">$1$.</span> In order to estimate the average height of the students, individuals are sampled at random one at a time, and the sampling stops as soon as the sample contains at least one male student and at least one female student. Let $N$ denote the number of students sampled.
+Suppose the ratio of male to female students at a school is <span class="text-nowrap">$2:1$.</span> To estimate the average height of students at the school, students are sampled at random until the sample contains at least one male and one female student. Let $N$ denote the number of students sampled. Find
 
 <ol class="topic-list-paren">
-  <li>Evaluate <span class="text-nowrap">$\mathbb{E}(N)$.</span></li>
-  <li>Find <span class="text-nowrap">$\mathbb{P}(N=4)$.</span></li>
-  <li>Evaluate <span class="text-nowrap">$\mathrm{Var}(N)$.</span></li>
+  <li><span class="text-nowrap">$\mathbb{E}(N)$.</span></li>
+  <li><span class="text-nowrap">$\mathbb{P}(N=4)$.</span></li>
+  <li><span class="text-nowrap">$\mathrm{Var}(N)$.</span></li>
 </ol>
 </div>
 
@@ -277,8 +289,8 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ \mathbb{E}(N-1\mid X=0)&=\frac{3}{\,2\,}\\[0.35em]
-\Longrightarrow\ \mathbb{E}(N\mid X=0)&=\frac{\,5\,}{2}
+&\Longrightarrow\ \mathbb{E}(N-1\mid X=0)=\frac{3}{\,2\,}\\[0.35em]
+&\Longrightarrow\ \mathbb{E}(N\mid X=0)=\frac{\,5\,}{2}
 \end{aligned}
 $$
 
@@ -292,8 +304,8 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ \mathbb{E}(N-1\mid X=1)&=3\\[0.35em]
-\Longrightarrow\ \mathbb{E}(N\mid X=1)&=4
+&\Longrightarrow\ \mathbb{E}(N-1\mid X=1)=3\\[0.35em]
+&\Longrightarrow\ \mathbb{E}(N\mid X=1)=4
 \end{aligned}
 $$
 
@@ -310,8 +322,8 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ \mathbb{E}(N-1\mid X=0)&=\frac{3}{\,2\,}\\[0.3em]
-\Longrightarrow\ \mathbb{E}(N\mid X=0)&=\frac{\,5\,}{2}
+&\Longrightarrow\ \mathbb{E}(N-1\mid X=0)=\frac{3}{\,2\,}\\[0.3em]
+&\Longrightarrow\ \mathbb{E}(N\mid X=0)=\frac{\,5\,}{2}
 \end{aligned}
 $$
 
@@ -325,8 +337,8 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ \mathbb{E}(N-1\mid X=1)&=3\\[0.3em]
-\Longrightarrow\ \mathbb{E}(N\mid X=1)&=4
+&\Longrightarrow\ \mathbb{E}(N-1\mid X=1)=3\\[0.3em]
+&\Longrightarrow\ \mathbb{E}(N\mid X=1)=4
 \end{aligned}
 $$
 
@@ -371,7 +383,7 @@ $$
 \mathbb{P}(N=4)&=\sum_{x=0}^{1}\mathbb{P}(N=4,\ X=x)\\[0.45em]
 &=\sum_{x=0}^{1}\mathbb{P}(N=4\mid X=x)\,\mathbb{P}(X=x)\\[0.45em]
 &=\mathbb{P}(N=4\mid X=0)\,\mathbb{P}(X=0)\\[0.45em]
-&\quad +\mathbb{P}(N=4\mid X=1)\,\mathbb{P}(X=1)\\[0.45em]
+&\qquad +\mathbb{P}(N=4\mid X=1)\,\mathbb{P}(X=1)\\[0.45em]
 &=\Bigl(\frac{1}{\,3\,}\Bigr)^{2}\Bigl(\frac{2}{\,3\,}\Bigr)\times\frac{1}{\,3\,}+\Bigl(\frac{2}{\,3\,}\Bigr)^{2}\Bigl(\frac{1}{\,3\,}\Bigr)\times\frac{2}{\,3\,}=\frac{10}{\,81\,}
 \end{aligned}
 $$
@@ -386,7 +398,8 @@ $$
 &=\mathbb{P}(N=4\mid X=0)\,\mathbb{P}(X=0)\\[0.3em]
 &\qquad +\mathbb{P}(N=4\mid X=1)\,\mathbb{P}(X=1)\\[0.3em]
 &=\Bigl(\frac{1}{\,3\,}\Bigr)^{2}\Bigl(\frac{2}{\,3\,}\Bigr)\times\frac{1}{\,3\,}\\[0.3em]
-&\qquad +\Bigl(\frac{2}{\,3\,}\Bigr)^{2}\Bigl(\frac{1}{\,3\,}\Bigr)\times\frac{2}{\,3\,}=\frac{10}{\,81\,}
+&\qquad +\Bigl(\frac{2}{\,3\,}\Bigr)^{2}\Bigl(\frac{1}{\,3\,}\Bigr)\times\frac{2}{\,3\,}\\[0.3em]
+&=\frac{10}{\,81\,}
 \end{aligned}
 $$
 
@@ -401,9 +414,10 @@ $$
 \begin{aligned}
 \mathrm{Var}(N)&=\mathbb{E}\bigl[\mathrm{Var}(N\mid X)\bigr]+\mathrm{Var}\bigl[\mathbb{E}(N\mid X)\bigr]\\[0.45em]
 &=\mathrm{Var}(N\mid X=0)\,\mathbb{P}(X=0)+\mathrm{Var}(N\mid X=1)\,\mathbb{P}(X=1)\\[0.45em]
-&\quad +\mathrm{Var}\bigl[\mathbb{E}(N\mid X)\bigr]\\[0.45em]
+&\qquad +\mathrm{Var}\bigl[\mathbb{E}(N\mid X)\bigr]\\[0.45em]
 &=\frac{\frac{1}{\,3\,}}{\,\bigl(\frac{2}{\,3\,}\bigr)^{2}\,}\times\frac{1}{\,3\,}+\frac{\frac{2}{\,3\,}}{\,\bigl(\frac{1}{\,3\,}\bigr)^{2}\,}\times\frac{2}{\,3\,}\\[0.45em]
-&\quad +\biggl[\Bigl(\frac{\,5\,}{2}\Bigr)^{2}\times\frac{1}{\,3\,}+4^{2}\times\frac{2}{\,3\,}\biggr]-\Bigl(\frac{\,7\,}{2}\Bigr)^{2}=\frac{\,19\,}{4}
+&\qquad +\biggl[\Bigl(\frac{\,5\,}{2}\Bigr)^{2}\times\frac{1}{\,3\,}+4^{2}\times\frac{2}{\,3\,}\biggr]-\Bigl(\frac{\,7\,}{2}\Bigr)^{2}\\[0.45em]
+&=\frac{\,19\,}{4}
 \end{aligned}
 $$
 
@@ -418,7 +432,8 @@ $$
 &\qquad +\mathrm{Var}\bigl[\mathbb{E}(N\mid X)\bigr]\\[0.3em]
 &=\frac{\frac{1}{\,3\,}}{\,\bigl(\frac{2}{\,3\,}\bigr)^{2}\,}\times\frac{1}{\,3\,}+\frac{\frac{2}{\,3\,}}{\,\bigl(\frac{1}{\,3\,}\bigr)^{2}\,}\times\frac{2}{\,3\,}\\[0.3em]
 &\qquad +\biggl[\Bigl(\frac{\,5\,}{2}\Bigr)^{2}\times\frac{1}{\,3\,}+4^{2}\times\frac{2}{\,3\,}\biggr]\\[0.3em]
-&\qquad -\Bigl(\frac{\,7\,}{2}\Bigr)^{2}=\frac{\,19\,}{4}
+&\qquad -\Bigl(\frac{\,7\,}{2}\Bigr)^{2}\\[0.3em]
+&=\frac{\,19\,}{4}
 \end{aligned}
 $$
 
@@ -429,9 +444,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述 (2) 當中所計算的 <span class="text-nowrap">$\mathbb{P}(N=4\mid X=x),\ x=0,1$，</span>若讀者感到稍微陌生，不妨思考看看此時已知的分配為何，可以得到 <span class="text-nowrap">$\mathbb{P}(N-1=4-1\mid X=x),\ x=0,1$，</span>如此一來便可計算其機率。
-
-而在 (3) 中，我們利用了 $\mathrm{Var}(N\mid X=x)=\mathrm{Var}(N-1\mid X=x)$ 的特性，快速地得到[條件變異數](/lecture-notes/conditional-expectation-and-variance/#def-conditional-variance)，並計算條件變異數的期望值；再由 (1) 所計算的[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation)，計算條件期望值的變異數，從而完成變異數分解定理。
+第 (2) 小題計算條件機率 $\mathbb{P}(N=4\mid X=x)$ (<span class="text-nowrap">$x=0,1$</span>) 時，由於已知的是 $N-1\mid(X=x)$ 的幾何分配，可將該式改寫為 $\mathbb{P}(N-1=4-1\mid X=x)$ 後直接代入幾何分配的機率函數。第 (3) 小題則利用 $\mathrm{Var}(N\mid X=x)=\mathrm{Var}(N-1\mid X=x)$ 這項平移不改變變異數的性質，直接由幾何分配求得[條件變異數](/lecture-notes/conditional-expectation-and-variance/#def-conditional-variance)並計算其期望值，再搭配第 (1) 小題所得[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation)的變異數，套用變異數分解定理求得 <span class="text-nowrap">$\mathrm{Var}(N)$。</span>
 
 </div>
 
@@ -441,16 +454,16 @@ $$
 <div class="topic-box__label">Example 4.15</div>
 
 <div lang="en" markdown="1">
-Suppose that, during the Second World War, a bomber of the British Air Force is sent on a sequence of missions against targets in Germany. Each mission is dangerous: the bomber comes back safely from any single mission with probability <span class="text-nowrap">$p_s$,</span> and this probability does not depend on how many missions it has already completed safely. All missions are independent of one another. Let $X$ denote the number of missions that the bomber completes safely before it is shot down.
+During World War II, the British Air Force sent out bombers to attack targets in Germany. The missions were dangerous and risky. Suppose the probability that a bomber returns safely from a mission is <span class="text-nowrap">$p_s$,</span> independent of the number of safe missions it has already completed. Let $X$ be the random variable representing the number of safe missions a bomber completes before being shot down. Assume all missions are independent in the following questions.
 
 <ol class="topic-list-paren">
-  <li>Determine the name of the distribution of <span class="text-nowrap">$X$,</span> and find <span class="text-nowrap">$\mathbb{P}(X=x)$.</span></li>
-  <li>Suppose that the bomber has already completed $k$ missions safely, and let $Y$ denote the number of further missions that it completes safely before being shot down. Find <span class="text-nowrap">$\mathbb{P}(Y=y)$.</span></li>
-  <li>Determine how the distributions of $X$ and $Y$ are related, and find the property of this kind of distribution that accounts for this relationship.</li>
+  <li>What is the name of the distribution of <span class="text-nowrap">$X$,</span> and what is <span class="text-nowrap">$\mathbb{P}(X=x)$?</span></li>
+  <li>Let $Y$ be the random variable representing how many additional safe missions a bomber completes before being shot down, given that it has already completed $k$ safe missions. What is <span class="text-nowrap">$\mathbb{P}(Y=y)$?</span></li>
+  <li>Compare the distributions of $X$ and <span class="text-nowrap">$Y$.</span> Which property of this distribution explains the relationship between $X$ and <span class="text-nowrap">$Y$?</span></li>
 </ol>
 </div>
 
-(1) 依題意可知 <span class="text-nowrap">$X\sim\mathrm{Geo}(p=1-p_s)$</span> (此處為失敗幾何，$\mathcal{R}_{\sssig X}=\lbrace\,0,1,\ldots,\infty\,\rbrace$ 這個集合，兩種定義的區分見[幾何分配](/lecture-notes/geometric-distribution-memoryless/#geo-two-definitions))，且可知
+(1) 依題意可知 <span class="text-nowrap">$X\sim\mathrm{Geo}(p=1-p_s)$</span> (此處為失敗幾何，$\mathcal{R}_{\sssig X}=\lbrace\,0,1,\ldots,\infty\,\rbrace$ 這個集合，兩種定義的區分見[幾何分配](/lecture-notes/geometric-distribution-memoryless/#geo-two-definitions))，且其機率函數為
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">

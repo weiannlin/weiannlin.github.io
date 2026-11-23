@@ -10,7 +10,7 @@ order: 418
 permalink: /lecture-notes/normal-probability-computation/
 date: 2026-08-12
 published: false
-excerpt: "上一篇給出常態分配的定義、標準化與線性組合可加性，本篇接著以四道例題演練常態機率的實際計算。前三題的作法一致，先把常態變數標準化，再把所求化為標準常態的機率，分別處理裝瓶容量的不合格率、兩支股票年報酬的比較，以及以 $\\Phi(\\cdot)$ 表達一段區間的機率。最後一題換一個方向，先驗證 $2\\,\\phi(z)\\Phi(\\lambda z)$ 是一個合法的 pdf，再以 cdf 法與 Jacobian 法兩種作法證明其平方服從 $\\chi^{2}(1)$ 分配。過程中會看到滿足 $h(x)+h(-x)=1$ 的偏斜函數，以及標準常態的對稱關係在其中的用處。"
+excerpt: "本篇以四道例題演練常態分配的標準化機率計算與密度轉換，包含區間不良率、兩獨立常態組合的比較，以及證明偏斜常態形式 $2\\phi(z)\\Phi(\\lambda z)$ 為合法密度且其平方服從自由度為 $1$ 的卡方分配。"
 ---
 
 [上一篇](/lecture-notes/normal-distribution/)給出[常態分配](/lecture-notes/normal-distribution/#def-normal)的定義，並依序說明標準常態分配、標準化、反標準化與線性組合可加性這幾項性質。本篇不再增加新的定義，而是把這些性質用在實際的機率計算上。
@@ -23,11 +23,11 @@ excerpt: "上一篇給出常態分配的定義、標準化與線性組合可加�
 <div class="topic-box__label">Example 4.44</div>
 
 <div lang="en" markdown="1">
-Suppose that the content filled by a bottling process is normally distributed with a mean of $600$ cc and a standard deviation of $2$ cc, and that the customer accepts a bottle only when its content lies within $600\pm5$ cc.
+The content of a bottling process is normally distributed with mean $600$ cc and standard deviation $2$ cc. The customer’s specification requirement is $600\pm5$ cc.
 
 <ol class="topic-list-paren">
-  <li>Determine the percentage of defective bottles that this process produces.</li>
-  <li>Suppose that a quality engineer intends to bring that percentage down to $1\%$ by reducing the variation alone. Find the standard deviation that this requires.</li>
+  <li>What is the defective percentage of the bottling process?</li>
+  <li>A quality engineer wants to reduce the defective percentage by reducing the variation. What is the required standard deviation to reduce the defective percentage to <span class="text-nowrap">$1\%$?</span></li>
 </ol>
 </div>
 
@@ -38,7 +38,7 @@ $$
 X\sim\mathcal{N}(\mu=600,\ \sigma^{2}=4)
 $$
 
-又題目敘述中表示，不合格的情況為 $X>605$ 或 <span class="text-nowrap">$X<595$，</span>則不合格的機率為
+依題意，不合格的情況為 $X>605$ 或 <span class="text-nowrap">$X<595$，</span>故所求機率為
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -46,7 +46,7 @@ $$
 $$
 \begin{aligned}
 \mathbb{P}(X>605)+\mathbb{P}(X<595)&=\mathbb{P}\biggl(\frac{X-600}{2}>\frac{605-600}{2}\biggr)\\[0.45em]
-&\quad +\mathbb{P}\biggl(\frac{X-600}{2}<\frac{595-600}{2}\biggr)\\[0.45em]
+&\qquad +\mathbb{P}\biggl(\frac{X-600}{2}<\frac{595-600}{2}\biggr)\\[0.45em]
 &=\mathbb{P}(Z>2.5)+\mathbb{P}(Z<-2.5)\\[0.45em]
 &=0.0062+0.0062=0.0124
 \end{aligned}
@@ -67,7 +67,7 @@ $$
 
 </div>
 
-(2) 題目的敘述是求取標準差 $\sigma$ 使不合格事件 $X>605$ 或 $X<595$ 的事件機率下降至 <span class="text-nowrap">$1\%$，</span>此即令 <span class="text-nowrap">$X\sim\mathcal{N}(600,\ \sigma^{2})$，</span>並且使得
+(2) 題目的敘述是求取標準差 $\sigma$ 使不合格事件 $X>605$ 或 $X<595$ 的事件機率下降至 <span class="text-nowrap">$1\%$，</span>此即令 $X\sim\mathcal{N}(600,\ \sigma^{2})$ 並要求
 {: .topic-paren-item}
 
 $$
@@ -82,7 +82,8 @@ $$
 $$
 \begin{aligned}
 \mathbb{P}(X>605)+\mathbb{P}(X<595)&=\mathbb{P}\biggl(Z>\frac{605-600}{\sigma}\biggr)\\[0.45em]
-&\quad +\mathbb{P}\biggl(Z<\frac{595-600}{\sigma}\biggr)=0.01
+&\qquad +\mathbb{P}\biggl(Z<\frac{595-600}{\sigma}\biggr)\\[0.45em]
+&=0.01
 \end{aligned}
 $$
 
@@ -93,7 +94,8 @@ $$
 \begin{aligned}
 &\mathbb{P}(X>605)+\mathbb{P}(X<595)\\[0.3em]
 &=\mathbb{P}\biggl(Z>\frac{605-600}{\sigma}\biggr)\\[0.3em]
-&\qquad+\mathbb{P}\biggl(Z<\frac{595-600}{\sigma}\biggr)=0.01
+&\qquad+\mathbb{P}\biggl(Z<\frac{595-600}{\sigma}\biggr)\\[0.3em]
+&=0.01
 \end{aligned}
 $$
 
@@ -110,7 +112,7 @@ $$
 {: .topic-paren-cont}
 
 $$
-\frac{5}{\,\sigma\,}=2.575\qquad\therefore\,\sigma=1.9418
+\frac{5}{\,\sigma\,}=2.575\qquad\therefore\,\sigma=\frac{5}{\,2.575\,}\fallingdotseq1.942
 $$
 
 </div>
@@ -119,12 +121,12 @@ $$
 <div class="topic-box__label">Example 4.45</div>
 
 <div lang="en" markdown="1">
-Suppose that an analyst on Wall Street treats the annual return on the stock of Company A and the annual return on the stock of Company B each as an observation from a normal distribution, the two means being $\mu_{\sssig A}=8.0\%$ and $\mu_{\sssig B}=9.5\%$ and the two standard deviations being $\sigma_{\sssig A}=1.5\%$ and <span class="text-nowrap">$\sigma_{\sssig B}=2.0\%$.</span> In making an investment decision the analyst counts a return above $5\%$ as “satisfactory” and a return above $10\%$ as “excellent”.
+A Wall Street analyst estimates that the annual returns from the stocks of Company A and Company B follow normal distributions with means $\mu_{\sssig A}=8.0\%$ and $\mu_{\sssig B}=9.5\%$ and standard deviations $\sigma_{\sssig A}=1.5\%$ and <span class="text-nowrap">$\sigma_{\sssig B}=2.0\%$,</span> respectively. The analyst considers any return greater than $5\%$ and at most $10\%$ to be “satisfactory” and any return greater than $10\%$ to be “excellent”.
 
 <ol class="topic-list-paren">
-  <li>What is the probability that the stock of Company A turns out to be “unsatisfactory”?</li>
-  <li>Suppose further that the two annual returns are independent of each other. What is the probability that the stock of Company B does better than the stock of Company A?</li>
-  <li>Given that the stock of Company A is “satisfactory”, what is the probability that the stocks of both companies are “satisfactory”?</li>
+  <li>What is the probability that Company A’s stock will prove to be “unsatisfactory” (at most <span class="text-nowrap">$5\%$</span>)?</li>
+  <li>Assuming that the returns from the stocks of Company A and Company B are independent of each other, what is the probability that Company B’s stock performs better than Company A’s stock?</li>
+  <li>Given that Company A’s stock is “satisfactory”, what is the probability that both Companies A and B’s stocks are “satisfactory”?</li>
 </ol>
 </div>
 
@@ -212,8 +214,8 @@ $$
 
 $$
 \begin{aligned}
-Y-X\sim\mathcal{N}\bigl(&\mu=\mu_{\sssig B}-\mu_{\sssig A}=0.015,\\[0.3em]
-&\sigma^{2}=\sigma^{2}_{\sssig A}+\sigma^{2}_{\sssig B}=0.000625\bigr)
+&Y-X\sim\mathcal{N}\bigl(\mu=\mu_{\sssig B}-\mu_{\sssig A}=0.015,\\[0.3em]
+&\qquad\sigma^{2}=\sigma^{2}_{\sssig A}+\sigma^{2}_{\sssig B}=0.000625\bigr)
 \end{aligned}
 $$
 
@@ -244,7 +246,7 @@ $$
 
 </div>
 
-(3) 題目所求為，在給定 $0.05<X\leqslant0.10$ 的條件下 $0.05<Y\leqslant0.10$ 的機率，此即
+(3) 所求為在 $0.05<X\leqslant0.10$ 條件下 $0.05<Y\leqslant0.10$ 的機率，即
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -288,7 +290,7 @@ $$
 <div class="topic-box__label">Example 4.46</div>
 
 <div lang="en" markdown="1">
-Suppose that $Y$ has the distribution <span class="text-nowrap">$\mathcal{N}(2,4)$.</span> Determine $\mathbb{P}(1\leqslant Y\leqslant4)$ in terms of <span class="text-nowrap">$\Phi(\cdot)$,</span> the cdf of the standard normal distribution.
+If <span class="text-nowrap">$Y\sim\mathcal{N}(2,4)$,</span> find $\mathbb{P}(1\leqslant Y\leqslant4)$ in terms of <span class="text-nowrap">$\Phi(\cdot)$,</span> the cdf of the standard normal distribution.
 </div>
 
 由題目敘述可知 <span class="text-nowrap">$Y\sim\mathcal{N}(2,4)$，</span>則所求為
@@ -326,7 +328,7 @@ $$
 <div class="topic-box__label">Example 4.47</div>
 
 <div lang="en" markdown="1">
-Let <span class="text-nowrap">$f_{\sssig Z}(z)=2\,\phi(z)\Phi(\lambda z),\ z\in\mathbb{R}$,</span> and $\lambda\in\mathbb{R}$ is a constant, where $\phi(z)$ and $\Phi(z)$ are the pdf and cdf of standard normal distribution, respectively. Show that
+Let $f_{\sssig Z}(z)=2\,\phi(z)\Phi(\lambda z),$ <span class="text-nowrap">$z\in\mathbb{R}$,</span> and $\lambda\in\mathbb{R}$ is a constant, where $\phi(z)$ and $\Phi(z)$ are the pdf and cdf of standard normal distribution, respectively. Show that
 
 <ol class="topic-list-paren">
   <li>$f_{\sssig Z}(z)$ is a valid pdf.</li>
@@ -386,7 +388,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述做法中，利用了 $\phi(z)$ 為一個偶函數 (即 $\phi(z)=\phi(-z),\ \forall z\in\mathbb{R}$) 的特性，將積分範圍考慮為 $(-\infty,0]$ 與 $(0,\infty)$ 兩段，並且利用 $\Phi(-z)=1-\Phi(z)$ 的性質完成此證明。事實上，凡滿足 <span class="text-nowrap">$h(x)+h(-x)=1$，</span>且 $0\leqslant h(x)\leqslant1$ 之函數，皆被稱作**偏斜函數 <span lang="en">(skewing function)</span>**，這種函數在許多特殊的問題上皆能看見，而 $\Phi(z)$ 正是此類的函數之一。
+上述推導利用 $\phi(z)$ 為偶函數 (對所有 $z\in\mathbb{R}$ 滿足 <span class="text-nowrap">$\phi(-z)=\phi(z)$</span>) 的對稱性，將積分區間拆為 $(-\infty,0]$ 與 $(0,\infty)$ 兩段，再配合 $\Phi(-z)=1-\Phi(z)$ 使兩段合併消去參數 <span class="text-nowrap">$\lambda$。</span>一般而言，滿足 $h(x)+h(-x)=1$ 且 $0\leqslant h(x)\leqslant1$ 的函數稱為**偏斜函數 <span lang="en">(skewing function)</span>**，標準常態累積分配函數 $\Phi(z)$ 即屬此類。
 
 </div>
 
@@ -605,13 +607,13 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-$\mathrm{Gamma}\bigl(\alpha=\frac{1}{\,2\,},\ \beta=2\bigr)$ 分配事實上就是 $\chi^{2}(\nu=1)$ 分配，這是一個固定且重要的結果，在稍後卡方分配的小節中，我們一定會看到這個重要的關係。此外，未來我們會學到，標準常態分配的平方也服從 $\chi^{2}(\nu=1)$ 分配，但這題中的分配不是標準常態分配，卻同樣具備這個性質，這也是由 $\Phi(-z)=1-\Phi(z)$ 導致的。
+$\mathrm{Gamma}\bigl(\alpha=\frac{1}{\,2\,},\ \beta=2\bigr)$ 即為自由度 $1$ 的卡方分配 <span class="text-nowrap">$\chi^{2}(\nu=1)$，</span>後文介紹卡方分配時將正式建立此一關係。此外，標準常態變數的平方服從 $\chi^{2}(\nu=1)$ 分配；本題中的 $Z$ 雖非標準常態分配，但因 $\Phi(-z)=1-\Phi(z)$ 使正負半軸上的偏斜因子在平方轉換下相互抵消，故 $Z^{2}$ 仍服從同一 $\chi^{2}(\nu=1)$ 分配。
 
 </div>
 
 ## 本篇小結
 
-[Example 4.44](#ex-normal-prob-1) 到 [Example 4.46](#ex-normal-prob-3) 三題的作法一致。把常態變數減去期望值再除以標準差，化為標準常態變數 <span class="text-nowrap">$Z$，</span>所求的機率便可以由標準常態的機率表達。[Example 4.44](#ex-normal-prob-1) 的第一小題把「不合格」寫成 $X>605$ 或 $X<595$ 這兩個互斥事件，標準化之後兩側各得 <span class="text-nowrap">$0.0062$，</span>合計為 <span class="text-nowrap">$0.0124$；</span>第二小題反過來，把不合格的機率固定為 <span class="text-nowrap">$1\%$，</span>由對稱性得到單側機率為 <span class="text-nowrap">$0.005$，</span>再由 $\frac{5}{\,\sigma\,}=2.575$ 這條等式解出所需要的標準差。
+[Example 4.44](#ex-normal-prob-1) 到 [Example 4.46](#ex-normal-prob-3) 三題的作法一致。把常態變數減去期望值再除以標準差，化為標準常態變數 <span class="text-nowrap">$Z$，</span>所求的機率便可以由標準常態的機率表達。[Example 4.44](#ex-normal-prob-1) 的第一小題把「不合格」寫成 $X>605$ 或 $X<595$ 這兩個互斥事件，標準化之後兩側各得 <span class="text-nowrap">$0.0062$，</span>合計為 <span class="text-nowrap">$0.0124$；</span>第二小題反過來，把不合格的機率固定為 <span class="text-nowrap">$1\%$，</span>由對稱性得到單側機率為 <span class="text-nowrap">$0.005$，</span>再由 $\frac{5}{\,\sigma\,}=2.575$ 解出所需的標準差。
 
 [Example 4.45](#ex-normal-prob-2) 的第一小題只是單一常態變數的機率計算。第二小題要比較兩支股票的年報酬，作法是把 $\mathbb{P}(Y>X)$ 改寫成 $\mathbb{P}(Y-X>0)$ 這個形式，再由[上一篇](/lecture-notes/normal-distribution/)的線性組合可加性得知 $Y-X$ 仍為常態分配，其期望值為兩者的期望值之差、變異數為兩者的變異數之和。第三小題則先以條件機率的定義展開，再由獨立性把分子拆成兩個機率相乘，與分母約去之後只剩下 B 公司的那一項。[Example 4.46](#ex-normal-prob-3) 要求以 $\Phi(\cdot)$ 表達答案，因此標準化之後把結果留在 $\Phi(1)-\Phi(-0.5)$ 這個差，不再換算為數值。
 
@@ -619,7 +621,7 @@ $\mathrm{Gamma}\bigl(\alpha=\frac{1}{\,2\,},\ \beta=2\bigr)$ 分配事實上就�
 
 值得留意的是，讓 $\lambda$ 完全消失的關鍵在於 $\Phi(-z)=1-\Phi(z)$ 這條關係。凡滿足 $h(x)+h(-x)=1$ 且 $0\leqslant h(x)\leqslant1$ 的函數都具有這項性質，這種函數稱作偏斜函數。也因為如此，[Example 4.47](#ex-normal-prob-4) 中的分配並不是標準常態分配，其平方卻同樣服從 $\chi^{2}(1)$ 分配。
 
-[下一篇](/lecture-notes/standard-normal-moments-stein-lemma/)回到標準常態分配本身，先求出它的各階原動差，再由此給出斯泰因引理。
+[下一篇](/lecture-notes/standard-normal-moments-stein-lemma/)回到標準常態分配，先求出各階原動差，再由此給出斯泰因引理。
 
 ## 參考文獻與延伸閱讀
 

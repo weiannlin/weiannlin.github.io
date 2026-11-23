@@ -10,14 +10,14 @@ order: 324
 permalink: /lecture-notes/many-to-many-transformations/
 date: 2026-08-13
 published: false
-excerpt: "已知隨機向量 $\\boldsymbol{X}$ 的分配，若令 $\\boldsymbol{Y}=g(\\boldsymbol{X})$ 則 $\\boldsymbol{Y}$ 的分配是什麼？多對多的情形可以由二對二推廣，故本篇只處理二對二。離散型採 pmf 法，把兩條函數關係當成二元聯立方程式反解，再代回原來的聯合 pmf；連續型採 Jacobian 法，將原變數的 pdf 以新變數表示，再乘上原變數對新變數偏微分所成行列式的絕對值。本篇的五道例題，先以三個伯努利變數示範樣本平均數、中位數與眾數的抽樣分配，接著以 pmf 法反解出兩個變數之和與差的聯合 pmf，再以 Jacobian 法處理三道連續型的轉換，其中包含由均勻與指數分配造出兩個獨立標準常態的作法，以及著名的 Box-Muller 轉換。"
+excerpt: "本篇介紹多元隨機向量的多對多函數轉換，離散型透過聯立反解代回聯合 pmf，連續型則結合逆轉換與偏導數行列式絕對值套用多變數 Jacobian 法，並以和差轉換及 Box-Muller 轉換等五道例題示範。"
 ---
 
 [上一篇](/lecture-notes/population-linear-regression/)以母體線性迴歸式，把兩個[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)之間的線性關係寫成一條直線，並以三道例題示範它的求法。到這裡為止，我們所處理的都是[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)自身的分配、條件分配與由這些分配所導出的各種量數。
 
 本篇要看的是另一件事情。已知 $(X_1,X_2)$ 的聯合分配，令 $Y_1$ 與 $Y_2$ 各為 $X_1$ 與 $X_2$ 的函數，$(Y_1,Y_2)$ 的聯合分配是什麼？我們先說明 $\boldsymbol{Y}=g(\boldsymbol{X})$ 在什麼條件之下仍然是一個隨機向量，接著分離散型與連續型兩個部分，各給出一種求法，最後以五道例題示範。
 
-在[隨機變數的函數轉換](/lecture-notes/one-to-one-transformations/)小節時，我們曾提過隨機變數的轉換。而事實上，我們更常會遇到需要將隨機向量取函數進行轉換的情況，例如**抽樣分配 <span lang="en">(sampling distribution)</span>** 即是在探討**統計量 <span lang="en">(statistics)</span>** 的分配，而**統計量是樣本的函數組合**，所以我們必須先具備求取隨機變數經過函數轉換後的分配的能力，才有辦法進行更深入的探討。
+前文已介紹[單一隨機變數的函數轉換](/lecture-notes/one-to-one-transformations/)；在統計推論中，更常需要處理隨機向量的函數轉換。例如**抽樣分配 <span lang="en">(sampling distribution)</span>** 所探討的即是**統計量 <span lang="en">(statistics)</span>** 的分配，而**統計量是樣本的函數組合**，故掌握隨機向量函數轉換後的分配求法，是後續推論的基礎。
 
 隨機向量的函數轉換的形式如下:
 
@@ -48,12 +48,12 @@ $$
 
 </div>
 
-當然，$\boldsymbol{Y}=g(\boldsymbol{X})$ 在此也將是一個隨機向量，此即以下定理。
+由下列定理可知，轉換後的 $\boldsymbol{Y}=g(\boldsymbol{X})$ 仍為隨機向量。
 
 <div id="thm-measurable-function-of-random-vector" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 3.22 (隨機向量的可測函數, measurable functions of a random vector)</div>
 
-若 $\boldsymbol{X}$ 為一隨機向量，且函數 $g(\cdot)\colon\mathbb{R}^n\to\mathbb{R}^m$ 為一定義在實數上的實值可測向量函數，則 $\boldsymbol{Y}=g(\boldsymbol{X})$ 亦為隨機向量。
+若 $\boldsymbol{X}$ 為一隨機向量，且函數 $g(\cdot)\colon\mathbb{R}^n\to\mathbb{R}^m$ 為一定義在實數上的實值可測向量函數，則 $\boldsymbol{Y}=g(\boldsymbol{X})$ 亦為一個隨機向量。
 
 </div>
 
@@ -61,16 +61,7 @@ $$
 
 ## 隨機變數的多對多函數轉換
 
-我們在[隨機變數的函數轉換](/lecture-notes/one-to-one-transformations/)小節所介紹的方法，主要是一對一的函數轉換，但若遇到二對二甚至是多對多的函數轉換時，之前的方法在使用上多半會有點問題，因此我們特別介紹多對多的函數轉換該如何處理。
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這裡的一對一指的是一個隨機變數是由另一個隨機變數轉換而來，而不是我們在之前所講的一對一函數，這個用法是為了與多個隨機變數是由另外多個隨機變數所共同轉換而來的多對多轉換區隔。
-
-</div>
-
-由於多對多的例子可以輕易由二對二推廣，故在此只介紹二對二的函數轉換，形式如下:
+前文在[隨機變數的函數轉換](/lecture-notes/one-to-one-transformations/)中處理的是「單一隨機變數轉為單一隨機變數」的情形；本篇則討論「多個隨機變數共同轉為多個隨機變數」的多對多轉換 (此處的「一對一」與「多對多」指轉換前後隨機變數的個數，而非單射函數之意)。由於一般多對多轉換可直接由二對二情形推廣，以下僅介紹二對二轉換，形式如下:
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -101,9 +92,11 @@ $$
 
 ## 離散型的 pmf 法
 
-在隨機變數為離散的時候，我們採用的做法如下:
+當隨機變數為離散時，我們的做法如下:
 
 **pmf 法**
+
+設轉換 $(g\_1,g\_2)$ 在聯合值域 $\mathcal{R}\_{\sssig X\_1X\_2}$ 上為一對一對應，使其可唯一反解為 $X\_1=h\_1(Y\_1,Y\_2)$ 與 <span class="text-nowrap">$X_2=h_2(Y_1,Y_2)$，</span>則有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -130,18 +123,18 @@ $$
 
 </div>
 
-上述過程中，$g_1(X_1,X_2)=y_1,$ $g_2(X_1,X_2)=y_2$ 變為 $X_1=h_1(y_1,y_2),$ $X_2=h_2(y_1,y_2)$ 事實上就是解二元聯立方程式，將以 $X_1,X_2$ 表示的形式反解為以 $Y_1,Y_2$ 來表示。
+上述過程中，由 $g\_1(X\_1,X\_2)=y\_1,$ $g\_2(X\_1,X\_2)=y\_2$ 化為 $X\_1=h\_1(y\_1,y\_2),$ $X\_2=h\_2(y\_1,y\_2)$ 即為解二元聯立方程式，將原變數反解為新變數的函數。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，在多維度對多維度的問題中，[直接列表法](/lecture-notes/one-to-one-transformations/#離散型的函數轉換)雖然還是可以使用，但是多數情況會因為值域結構龐大而導致窮舉的耗時及困難，故 pmf 法以方程式反解的概念反而會是比較簡單的做法。
+在多維轉換問題中，雖然仍可使用[直接列表法](/lecture-notes/one-to-one-transformations/#離散型的函數轉換)，但聯合值域的組合數往往隨維度迅速增加而難以逐一窮舉；改採 pmf 法反解聯立方程式通常更為簡捷。
 
 </div>
 
 ## 連續型的 Jacobian 法
 
-而在隨機變數為連續的時候，我們採用的做法如下:
+而當隨機變數為連續時，我們的做法如下:
 
 **Jacobian 法**
 
@@ -205,14 +198,14 @@ $$
 
 表示體積轉換因子 <span lang="en">(Jacobian)</span>。
 
-事實上，這個 Jacobian 法仍與[一維的 Jacobian 法](/lecture-notes/one-to-one-transformations/#prop-jacobian-method)沒有二致，這在微積分中就是多維度對多維度的變數變換。
+此法與[一維 Jacobian 法](/lecture-notes/one-to-one-transformations/#prop-jacobian-method)原理一致，對應微積分的多變數積分變換公式。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者應該把一維的 $\mathbf{J}$ 視為一維度的行列式 (當然，結果並沒有差異)，若這樣來理解 $\mathbf{J}$ 的話，讀者應可發現其實一維的 Jacobian 法只是多維的 Jacobian 法的一個特例而已，其核心精神都是**將原變數的 pdf 以新變數表示，再乘上「原變數對新變數偏微分的行列式 <span lang="en">(determinant)</span>」的絕對值**。
+若將一維的 $\mathbf{J}=\frac{dx}{dy}$ 視為一階行列式，則一維 Jacobian 法即為多維 Jacobian 法的特例；兩者的共同原則皆是**將原變數的 pdf 以新變數表示，再乘上「原變數對新變數之偏微分矩陣的行列式 <span lang="en">(determinant)</span>」的絕對值**。
 
-一個特別需要注意的限制是，我們其實並沒有限制隨機變數的多對多轉換，在轉換前後必須是相同的維度，但是若要使用體積轉換因子 Jacobian 來進行轉換的話，轉換前後的維度必須相同，若一定要在不同維度的轉換中使用 Jacobian，其方法我們在下一小節敘述。
+須注意，雖然隨機向量的函數轉換本身不要求轉換前後維度相等，但直接套用上述單一公式的 Jacobian 法時，除要求轉換前後的維度必須相同外，轉換 $(g\_1,g\_2)$ 在聯合值域 $\mathcal{R}\_{\sssig X\_1X\_2}$ 上亦須為一對一對應，且反解函數 $h\_1,h\_2$ 具連續一階偏導數並滿足 <span class="text-nowrap">$\mathbf{J}\neq 0$</span> (若非全域一對一，則須如單變數情形先將值域分割為各自一對一的子區域，分段轉換後再相加)；至於轉換前後維度不同而仍欲使用 Jacobian 法的作法，將於[下一篇](/lecture-notes/mgf-method-transformations/)說明。
 
 </div>
 
@@ -222,25 +215,21 @@ $$
 <div class="topic-box__label">Example 3.49</div>
 
 <div lang="en" markdown="1">
-Suppose that <span class="text-nowrap">$X_1$,</span> $X_2$ and $X_3$ are independent random variables, each of which records the outcome of a single Bernoulli trial, so that
+Let <span class="text-nowrap">$X_1$,</span> <span class="text-nowrap">$X_2$,</span> and $X_3$ be independent random variables associated with a Bernoulli trial such that
 
 $$
 \mathbb{P}(X_i=0)=\mathbb{P}(X_i=1)=0.5
 $$
 
 <ol class="topic-list-paren">
-  <li>Find the sampling distributions of the sample mean, the sample median and the sample mode of <span class="text-nowrap">$(X_1,X_2,X_3)$.</span></li>
-  <li>Evaluate the expected value and the variance of each of the three statistics obtained in (1).</li>
-  <li>Find the sampling distributions of the order statistics <span class="text-nowrap">$X_{\sssig (1)}$,</span> $X_{\sssig (2)}$ and $X_{\sssig (3)}$ built from <span class="text-nowrap">$(X_1,X_2,X_3)$.</span></li>
+  <li>Find the sampling distributions of the sample mean, sample median, and sample mode of <span class="text-nowrap">$(X_1,X_2,X_3)$.</span></li>
+  <li>Find the expected value and variance of each statistic in <span class="text-nowrap">(1).</span></li>
+  <li>Find the sampling distributions of the order statistics <span class="text-nowrap">$X_{\sssig (1)}$,</span> <span class="text-nowrap">$X_{\sssig (2)}$,</span> and $X_{\sssig (3)}$ of <span class="text-nowrap">$(X_1,X_2,X_3)$.</span></li>
 </ol>
 </div>
 
 (1) 由題意可知，$X_1,X_2,X_3$ $\overset{\mathrm{iid}}{\sim}$ [$\mathrm{Ber}(p=0.5)$](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)
 {: .topic-paren-item}
-
-<!-- 版面待量: 本表桌面版八欄, 手機版依 EDITORIAL 二之一與第四節「手機版表格不得需要橫向捲動」
-     拆成兩張五欄的表。兩種寬度均尚未實測 (本批不得啟動瀏覽器), 量測時若手機版仍溢位,
-     須在 _sass/layout/_topic.scss 另加一個只縮字級與內距、不加灰底列標題欄的表格類別。 -->
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -319,10 +308,10 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
 
 $$
-\begin{aligned}
-&\mathbb{E}(\overline{X})=0\times\frac{1}{\,8\,}+\frac{1}{\,3\,}\times\frac{3}{\,8\,}+\frac{2}{\,3\,}\times\frac{3}{\,8\,}+1\times\frac{1}{\,8\,}=\frac{1}{\,2\,}\\[0.9em]
-&\mathbb{E}\bigl(\overline{X}^{2}\bigr)=(0)^{2}\times\frac{1}{\,8\,}+\Bigl(\frac{1}{\,3\,}\Bigr)^{2}\times\frac{3}{\,8\,}+\Bigl(\frac{2}{\,3\,}\Bigr)^{2}\times\frac{3}{\,8\,}+(1)^{2}\times\frac{1}{\,8\,}=\frac{1}{\,3\,}
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(\overline{X})=0\times\frac{1}{\,8\,}+\frac{1}{\,3\,}\times\frac{3}{\,8\,}+\frac{2}{\,3\,}\times\frac{3}{\,8\,}+1\times\frac{1}{\,8\,}=\frac{1}{\,2\,}\\[0.9em]
+\mathbb{E}\bigl(\overline{X}^{2}\bigr)=(0)^{2}\times\frac{1}{\,8\,}+\Bigl(\frac{1}{\,3\,}\Bigr)^{2}\times\frac{3}{\,8\,}+\Bigl(\frac{2}{\,3\,}\Bigr)^{2}\times\frac{3}{\,8\,}+(1)^{2}\times\frac{1}{\,8\,}=\frac{1}{\,3\,}
+\end{gathered}
 $$
 
 </div>
@@ -331,7 +320,12 @@ $$
 $$
 \begin{aligned}
 &\mathbb{E}(\overline{X})=0\times\frac{1}{\,8\,}+\frac{1}{\,3\,}\times\frac{3}{\,8\,}\\[0.2em]
-&\qquad +\frac{2}{\,3\,}\times\frac{3}{\,8\,}+1\times\frac{1}{\,8\,}=\frac{1}{\,2\,}\\[0.9em]
+&\qquad +\frac{2}{\,3\,}\times\frac{3}{\,8\,}+1\times\frac{1}{\,8\,}=\frac{1}{\,2\,}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
 &\mathbb{E}\bigl(\overline{X}^{2}\bigr)=(0)^{2}\times\frac{1}{\,8\,}+\Bigl(\frac{1}{\,3\,}\Bigr)^{2}\times\frac{3}{\,8\,}\\[0.2em]
 &\qquad +\Bigl(\frac{2}{\,3\,}\Bigr)^{2}\times\frac{3}{\,8\,}+(1)^{2}\times\frac{1}{\,8\,}=\frac{1}{\,3\,}
 \end{aligned}
@@ -350,8 +344,8 @@ $$
 
 $$
 \begin{aligned}
-&\Longrightarrow\ \mathrm{Var}(\overline{X})=\mathbb{E}\bigl(\overline{X}^{2}\bigr)-\bigl[\mathbb{E}(\overline{X})\bigr]^{2}\\[0.2em]
-&\qquad =\frac{1}{\,12\,}
+\Longrightarrow\ \mathrm{Var}(\overline{X})&=\mathbb{E}\bigl(\overline{X}^{2}\bigr)-\bigl[\mathbb{E}(\overline{X})\bigr]^{2}\\[0.35em]
+&=\frac{1}{\,12\,}
 \end{aligned}
 $$
 
@@ -370,12 +364,12 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(m_e)&=p=\frac{1}{\,2\,},\\[0.7em]
-\mathrm{Var}(m_e)&=p(1-p)=\frac{1}{\,4\,}\\[0.7em]
-\mathbb{E}(m_o)&=p=\frac{1}{\,2\,},\\[0.7em]
-\mathrm{Var}(m_o)&=p(1-p)=\frac{1}{\,4\,}
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(m_e)=p=\frac{1}{\,2\,},\\[0.7em]
+\mathrm{Var}(m_e)=p(1-p)=\frac{1}{\,4\,}\\[0.7em]
+\mathbb{E}(m_o)=p=\frac{1}{\,2\,},\\[0.7em]
+\mathrm{Var}(m_o)=p(1-p)=\frac{1}{\,4\,}
+\end{gathered}
 $$
 
 </div>
@@ -422,11 +416,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-X_{\sssig (1)}&\sim\mathrm{Ber}\Bigl(p=\frac{1}{\,8\,}\Bigr),\\[0.7em]
-X_{\sssig (2)}&\sim\mathrm{Ber}\Bigl(p=\frac{1}{\,2\,}\Bigr),\\[0.7em]
-X_{\sssig (3)}&\sim\mathrm{Ber}\Bigl(p=\frac{7}{\,8\,}\Bigr)
-\end{aligned}
+\begin{gathered}
+X_{\sssig (1)}\sim\mathrm{Ber}\Bigl(p=\frac{1}{\,8\,}\Bigr),\\[0.7em]
+X_{\sssig (2)}\sim\mathrm{Ber}\Bigl(p=\frac{1}{\,2\,}\Bigr),\\[0.7em]
+X_{\sssig (3)}\sim\mathrm{Ber}\Bigl(p=\frac{7}{\,8\,}\Bigr)
+\end{gathered}
 $$
 
 </div>
@@ -437,7 +431,7 @@ $$
 <div class="topic-box__label">Example 3.50</div>
 
 <div lang="en" markdown="1">
-A joint probability mass function
+Let $(X_1,X_2)$ have joint probability mass function
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -457,7 +451,7 @@ $$
 
 </div>
 
-Let $Y_1=X_1+X_2$ and <span class="text-nowrap">$Y_2=X_1-X_2$,</span> find the joint pmf of $Y_1$ and <span class="text-nowrap">$Y_2$.</span>
+Let $Y_1=X_1+X_2$ and <span class="text-nowrap">$Y_2=X_1-X_2$.</span> Find the joint pmf of $Y_1$ and <span class="text-nowrap">$Y_2$.</span>
 </div>
 
 **pmf 法**
@@ -510,7 +504,9 @@ $$
 <div class="topic-box__label">Example 3.51</div>
 
 <div lang="en" markdown="1">
-Suppose that the continuous random variables $X$ and $Y$ have joint probability density function
+Let $X$ and $Y$ be continuous random variables with joint probability density function
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 f_{\sssig XY}(x,y)=
@@ -522,8 +518,30 @@ f_{\sssig XY}(x,y)=
 \right.
 $$
 
+</div>
+<div class="topic-math-layout topic-math-layout--mobile">
+
+<div class="topic-cases">
+  <div class="topic-cases__lhs">$f_{\sssig XY}(x,y)=$</div>
+  <div class="topic-cases__brace" aria-hidden="true">
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 11 0.8 C 7.6 0.8 6 2.4 6 5.2 L 6 12" vector-effect="non-scaling-stroke"/></svg>
+    <span class="topic-cases__brace-bar"></span>
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 6 0 L 6 3.4 C 6 5 4.6 6 1 6 C 4.6 6 6 7 6 8.6 L 6 12" vector-effect="non-scaling-stroke"/></svg>
+    <span class="topic-cases__brace-bar"></span>
+    <svg viewBox="0 0 12 12" preserveAspectRatio="none"><path d="M 6 0 L 6 6.8 C 6 9.6 7.6 11.2 11 11.2" vector-effect="non-scaling-stroke"/></svg>
+  </div>
+  <div class="topic-cases__rows">
+    <div class="topic-cases__val">$24xy,$</div>
+    <div class="topic-cases__cond">$0<x<1,\ 0<y<1,\ x+y<1$</div>
+    <div class="topic-cases__val">$0,$</div>
+    <div class="topic-cases__cond">$\text{o.w.}$</div>
+  </div>
+</div>
+
+</div>
+
 <ol class="topic-list-paren">
-  <li>Determine the joint probability density function of $Z=X+Y$ and <span class="text-nowrap">$W=X$.</span></li>
+  <li>Find the joint probability density function of $Z=X+Y$ and <span class="text-nowrap">$W=X$.</span></li>
 </ol>
 </div>
 
@@ -589,7 +607,10 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow" markdown="1">
 
 $$
-\Longrightarrow\ f_{\sssig ZW}(z,w)=24w(z-w)\cdot\bigl\lvert-1\bigr\rvert=24w(z-w),\ 0<w<1,\ 0<z<1,\ w<z
+\begin{aligned}
+\Longrightarrow\ f_{\sssig ZW}(z,w)&=24w(z-w)\cdot\bigl\lvert-1\bigr\rvert\\[0.45em]
+&=24w(z-w),\ 0<w<1,\ 0<z<1,\ w<z
+\end{aligned}
 $$
 
 </div>
@@ -597,10 +618,10 @@ $$
 
 $$
 \begin{aligned}
-&\Longrightarrow\ f_{\sssig ZW}(z,w)\\[0.45em]
-&=24w(z-w)\cdot\bigl\lvert-1\bigr\rvert\\[0.45em]
-&=24w(z-w),\\[0.2em]
-&\qquad 0<w<1,\ 0<z<1,\ w<z
+\Longrightarrow\ f_{\sssig ZW}(z,w)&=24w(z-w)\cdot\bigl\lvert-1\bigr\rvert\\[0.45em]
+&=24w(z-w),\\[0.25em]
+&\quad 0<w<1,\ 0<z<1,\\[0.2em]
+&\quad w<z
 \end{aligned}
 $$
 
@@ -654,16 +675,16 @@ $$
 <div class="topic-box__label">Example 3.52</div>
 
 <div lang="en" markdown="1">
-Suppose that $U$ follows the uniform distribution on the interval <span class="text-nowrap">$(0,2\pi)$,</span> that $V$ follows the exponential distribution whose mean is equal to <span class="text-nowrap">$1$,</span> and that $U$ and $V$ are independent. Show that the two random variables
+If $U$ is uniformly distributed over the interval <span class="text-nowrap">$(0,2\pi)$,</span> $V$ is exponentially distributed with mean <span class="text-nowrap">$1$,</span> and $U$ is independent of <span class="text-nowrap">$V$,</span> show that
 
 $$
 X=\sqrt{2V}\cos(U),\qquad Y=\sqrt{2V}\sin(U)
 $$
 
-are independent, each having the standard normal distribution <span class="text-nowrap">$\mathcal{N}(0,1)$.</span>
+are independent $\mathcal{N}(0,1)$ random variables.
 </div>
 
-由 $U\sim\mathcal{U}(0,2\pi)$ $\indep$ $V\sim\mathrm{Exp}(\beta=1)$ 可知
+由 $U\sim\mathcal{U}(0,2\pi)$ $\indep$ $V\sim\mathrm{Exp}(\beta=1)$ 之獨立性可知
 
 $$
 f_{\sssig UV}(u,v)=\frac{1}{\,2\pi\,}\times e^{-v},\quad 0<u<2\pi,\ v>0
@@ -743,8 +764,8 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ \ f_{\sssig X}(x)&=\int_{-\infty}^{\infty}f_{\sssig XY}(x,y)\,dy=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,x^{2}\,}{2}},\ -\infty<x<\infty\\[0.7em]
-f_{\sssig Y}(y)&=\int_{-\infty}^{\infty}f_{\sssig XY}(x,y)\,dx=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,y^{2}\,}{2}},\ -\infty<y<\infty
+&\Longrightarrow\ f_{\sssig X}(x)=\int_{-\infty}^{\infty}f_{\sssig XY}(x,y)\,dy=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,x^{2}\,}{2}},\ -\infty<x<\infty\\[0.65em]
+&\Longrightarrow\ f_{\sssig Y}(y)=\int_{-\infty}^{\infty}f_{\sssig XY}(x,y)\,dx=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,y^{2}\,}{2}},\ -\infty<y<\infty
 \end{aligned}
 $$
 
@@ -753,11 +774,16 @@ $$
 
 $$
 \begin{aligned}
-&\Longrightarrow\ \ f_{\sssig X}(x)\\[0.2em]
-&=\int_{-\infty}^{\infty}f_{\sssig XY}(x,y)\,dy\\[0.2em]
-&=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,x^{2}\,}{2}},\ -\infty<x<\infty\\[0.9em]
-f_{\sssig Y}(y)&=\int_{-\infty}^{\infty}f_{\sssig XY}(x,y)\,dx\\[0.2em]
-&=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,y^{2}\,}{2}},\ -\infty<y<\infty
+&\Longrightarrow\ \begin{aligned}[t]
+f_{\sssig X}(x)&=\int_{-\infty}^{\infty}f_{\sssig XY}(x,y)\,dy\\[0.35em]
+&=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,x^{2}\,}{2}},\\[0.2em]
+&\quad -\infty<x<\infty
+\end{aligned}\\[0.65em]
+&\Longrightarrow\ \begin{aligned}[t]
+f_{\sssig Y}(y)&=\int_{-\infty}^{\infty}f_{\sssig XY}(x,y)\,dx\\[0.35em]
+&=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,y^{2}\,}{2}},\\[0.2em]
+&\quad -\infty<y<\infty
+\end{aligned}
 \end{aligned}
 $$
 
@@ -775,7 +801,7 @@ $$
 <div class="topic-box__label">Example 3.53 <span lang="en">(Box-Muller transformation)</span></div>
 
 <div lang="en" markdown="1">
-If $U_1$ and $U_2$ are random samples from the $\mathcal{U}(0,1)$ distribution, and let
+Let $U_1$ and $U_2$ be independent $\mathcal{U}(0,1)$ random variables, and let
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -787,15 +813,15 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-Z_1&=\sqrt{-2\ln U_1}\cos(2\pi U_2)\\[0.55em]
-\text{and}\quad Z_2&=\sqrt{-2\ln U_1}\sin(2\pi U_2)
-\end{aligned}
+\begin{gathered}
+Z_1=\sqrt{-2\ln U_1}\cos(2\pi U_2)\\[0.55em]
+\text{and}\quad Z_2=\sqrt{-2\ln U_1}\sin(2\pi U_2)
+\end{gathered}
 $$
 
 </div>
 
-show that $Z_1$ and $Z_2$ are independent random variables with a standard normal distribution.
+Show that $Z_1$ and $Z_2$ are independent standard normal random variables.
 </div>
 
 由 $U_1,U_2\overset{\mathrm{iid}}{\sim}\mathcal{U}(0,1)$ 可知
@@ -883,8 +909,8 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ \ f_{\sssig Z_1}(z_1)&=\int_{-\infty}^{\infty}f_{\sssig Z_1Z_2}(z_1,z_2)\,dz_2=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,z_1^{2}\,}{2}},\ -\infty<z_1<\infty\\[0.7em]
-f_{\sssig Z_2}(z_2)&=\int_{-\infty}^{\infty}f_{\sssig Z_1Z_2}(z_1,z_2)\,dz_1=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,z_2^{2}\,}{2}},\ -\infty<z_2<\infty
+&\Longrightarrow\ f_{\sssig Z_1}(z_1)=\int_{-\infty}^{\infty}f_{\sssig Z_1Z_2}(z_1,z_2)\,dz_2=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,z_1^{2}\,}{2}},\ -\infty<z_1<\infty\\[0.65em]
+&\Longrightarrow\ f_{\sssig Z_2}(z_2)=\int_{-\infty}^{\infty}f_{\sssig Z_1Z_2}(z_1,z_2)\,dz_1=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,z_2^{2}\,}{2}},\ -\infty<z_2<\infty
 \end{aligned}
 $$
 
@@ -893,11 +919,12 @@ $$
 
 $$
 \begin{aligned}
-&\Longrightarrow\ \ f_{\sssig Z_1}(z_1)\\[0.2em]
-&=\int_{-\infty}^{\infty}f_{\sssig Z_1Z_2}(z_1,z_2)\,dz_2\\[0.2em]
-&=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,z_1^{2}\,}{2}},\ -\infty<z_1<\infty\\[0.9em]
-f_{\sssig Z_2}(z_2)&=\int_{-\infty}^{\infty}f_{\sssig Z_1Z_2}(z_1,z_2)\,dz_1\\[0.2em]
-&=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,z_2^{2}\,}{2}},\ -\infty<z_2<\infty
+\Longrightarrow\ f_{\sssig Z_1}(z_1)&=\int_{-\infty}^{\infty}f_{\sssig Z_1Z_2}(z_1,z_2)\,dz_2\\[0.35em]
+&=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,z_1^{2}\,}{2}},\\[0.2em]
+&\quad -\infty<z_1<\infty\\[0.65em]
+\Longrightarrow\ f_{\sssig Z_2}(z_2)&=\int_{-\infty}^{\infty}f_{\sssig Z_1Z_2}(z_1,z_2)\,dz_1\\[0.35em]
+&=\frac{1}{\,\sqrt{2\pi}\,}e^{-\frac{\,z_2^{2}\,}{2}},\\[0.2em]
+&\quad -\infty<z_2<\infty
 \end{aligned}
 $$
 
@@ -914,7 +941,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-本題是著名的 Box-Muller 轉換，這個轉換的用途在於，電腦亂數僅能生成 [$\mathcal{U}(0,1)$](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution) 的隨機亂數，而[標準常態分配](/lecture-notes/normal-distribution/#def-normal)的 cdf 又不具備解析解形式，因而導致[機率積分轉換](/lecture-notes/one-to-one-transformations/#prop-probability-integral-transform) <span lang="en">(probability integral transformation, PIT)</span> 計算不易，導致難以生成標準常態分配的隨機變數值；此時便可透過這個二轉二的特殊轉換，一口氣利用兩個獨立的 $\mathcal{U}(0,1)$ 亂數，得到兩個獨立的標準常態分配亂數。
+本題為著名的 Box-Muller 轉換。在電腦模擬中，基礎亂數產生器通常僅提供獨立的 [$\mathcal{U}(0,1)$](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution) 亂數，而[標準常態分配](/lecture-notes/normal-distribution/#def-normal)的 cdf 無初等解析表示式，不易直接套用[機率積分轉換](/lecture-notes/one-to-one-transformations/#prop-probability-integral-transform) <span lang="en">(probability integral transformation, PIT)</span> 求反函數；Box-Muller 轉換則透過二對二的極座標變換，由兩個獨立的 $\mathcal{U}(0,1)$ 亂數直接生成兩個獨立的標準常態亂數。
 
 </div>
 
@@ -922,7 +949,7 @@ $$
 
 本篇由隨機向量的函數轉換談起。[Theorem 3.22](#thm-measurable-function-of-random-vector) 說的是，只要 $g(\cdot)$ 是由 $\mathbb{R}^n$ 映到 $\mathbb{R}^m$ 的實值可測向量函數，$\boldsymbol{Y}=g(\boldsymbol{X})$ 就仍然是一個隨機向量，其後才有分配可求。統計量正是樣本的函數組合，抽樣分配所探討的就是統計量的分配，因此求取轉換後的分配，是往後更深入探討的基礎。由於多對多的例子可以由二對二推廣，本篇只處理二對二的情形。
 
-離散型採 pmf 法。把 $Y_1=g_1(X_1,X_2)$ 與 $Y_2=g_2(X_1,X_2)$ 當成二元聯立方程式反解，得到 $X_1=h_1(Y_1,Y_2)$ 與 $X_2=h_2(Y_1,Y_2)$ 這兩條反解式，再把它們代回原本的聯合 pmf。維度一高，直接列表法會因為值域結構龐大而難以窮舉，方程式反解反而簡單。連續型採 Jacobian 法。同樣先反解，再把原變數的 pdf 以新變數表示，並乘上原變數對新變數偏微分所成行列式的絕對值。一維的 Jacobian 法只是它的特例，把一維的 $\mathbf{J}$ 看成一維度的行列式即可；但這個做法要求轉換前後的維度相同。
+離散型採 pmf 法。把 $Y_1=g_1(X_1,X_2)$ 與 $Y_2=g_2(X_1,X_2)$ 當成二元聯立方程式反解，得到 $X_1=h_1(Y_1,Y_2)$ 與 $X_2=h_2(Y_1,Y_2)$ 這兩條反解式，再把它們代回原本的聯合 pmf。維度一高，直接列表法會因為值域結構龐大而難以窮舉，方程式反解反而簡單。連續型採 Jacobian 法。同樣先反解，再把原變數的 pdf 以新變數表示，並乘上原變數對新變數偏微分所成行列式的絕對值。一維的 Jacobian 法只是它的特例，把一維的 $\mathbf{J}$ 看成一維度的行列式即可；但直接套用單一公式時，要求轉換前後維度相同且映射在聯合值域上為一對一對應 (反解函數具連續一階偏導數且 <span class="text-nowrap">$\mathbf{J}\neq 0$</span>)。
 
 五道例題分成兩組。[Example 3.49](#ex-three-independent-transformation) 以三個獨立的伯努利變數窮舉八種結果，一次求得樣本平均數、[中位數](/lecture-notes/median/#def-median)、[眾數](/lecture-notes/mode/#def-mode)與三個排序後變數的抽樣分配，並由其中前三個統計量的分配算出各自的[期望值](/lecture-notes/expectation/#def-expectation)與[變異數](/lecture-notes/variance/#def-variance)。[Example 3.50](#ex-discrete-joint-transformation) 是 pmf 法的標準用法。由 $Y_1=X_1+X_2$ 與 $Y_2=X_1-X_2$ 反解得 $X_1=\frac{y_1+y_2}{2}$ 與 $X_2=\frac{y_1-y_2}{2}$ 這兩式，代回之後指數相加相消，聯合 pmf 只剩下 $y_1$ 而與 $y_2$ 無關，但 $(y_1,y_2)$ 的可能取值仍受原本值域的限制。
 

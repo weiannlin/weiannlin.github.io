@@ -10,7 +10,7 @@ order: 302
 permalink: /lecture-notes/joint-cumulative-distribution-functions/
 date: 2026-08-12
 published: false
-excerpt: "二元隨機向量的聯合累積分配函數定義為 $F_{\\sssig XY}(x,y)=\\mathbb{P}(X\\leqslant x,Y\\leqslant y)$ 這個機率，定義域是二維實數平面，函數值落在 $[0,1]$ 之中。它所取的機率，來自使 $X(\\omega)\\leqslant x$ 且 $Y(\\omega)\\leqslant y$ 的那些樣本點所構成的集合，故處理聯合 cdf 時最要緊的事情就是弄清楚目前的加總或積分範圍。二元離散型的情形以雙重加總寫出，把橫向不超過 $x$ 且縱向不超過 $y$ 的各個質點機率相加即可。本篇並以機率列聯表示範指定位置上的 cdf 值如何求得。"
+excerpt: "二元隨機向量的聯合累積分配函數定義為 $F_{\\sssig XY}(x,y)=\\mathbb{P}(X\\leqslant x,Y\\leqslant y)$ 這個機率。本篇說明其對應的左下區域事件幾何，並以二元離散型機率列聯表示範雙重加總的計算。"
 ---
 
 [上一篇](/lecture-notes/random-vectors-joint-pmf/)由[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的定義出發，介紹了二元離散型隨機向量的[聯合機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-joint-pmf)與[邊際機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-marginal-pmf)。聯合機率質量函數只定義在離散型的隨機向量上，而第二章的[累積分配函數](/lecture-notes/cumulative-distribution-functions/#def-cdf)則是由 $\mathbb{P}(X\leqslant x)$ 出發，離散型與連續型都適用。
@@ -20,12 +20,12 @@ excerpt: "二元隨機向量的聯合累積分配函數定義為 $F_{\\sssig XY}
 <div id="def-joint-cdf" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.4 (聯合累積分配函數, joint cdf)</div>
 
-若 $(X,Y)$ 為一二元隨機向量，且定義函數
+若 $(X,Y)$ 為二元隨機向量，定義函數
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-F_{\sssig XY}(x,y)=\mathbb{P}(X\leqslant x,Y\leqslant y),\ \forall (x,y)\in\mathbb{R}^{2}
+F_{\sssig XY}(x,y)=\mathbb{P}(X\leqslant x,Y\leqslant y),\ \forall\,(x,y)\in\mathbb{R}^{2}
 $$
 
 </div>
@@ -34,7 +34,7 @@ $$
 $$
 \begin{aligned}
 F_{\sssig XY}(x,y)&=\mathbb{P}(X\leqslant x,Y\leqslant y),\\[0.45em]
-&\forall (x,y)\in\mathbb{R}^{2}
+&\forall\,(x,y)\in\mathbb{R}^{2}
 \end{aligned}
 $$
 
@@ -46,24 +46,20 @@ $$
 
 聯合累積分配函數有一些地方需要注意:
 
-(1) **聯合累積分配函數** $F_{\sssig XY}(x,y)$ 是一種定義在二維實數平面 $\mathbb{R}^{2}$ 上的函數，且將其對應到 $[0,1]$ 區間中的函數，可以記為
+(1) **聯合累積分配函數** $F_{\sssig XY}(x,y)$ 是將二維實數平面 $\mathbb{R}^{2}$ 對應至 $[0,1]$ 區間的函數，可記為
 {: .topic-paren-item}
 
 $$
 F\colon\mathbb{R}^{2}\to[0,1]
 $$
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-當然，在更高維度的狀況中，$F_{\sssig \boldsymbol{X}}(\boldsymbol{x})$ 的定義域將是高維實數空間 <span class="text-nowrap">$\mathbb{R}^{n}$。</span>
-
-</div>
+推廣至更高維度時，$F_{\sssig \boldsymbol{X}}(\boldsymbol{x})$ 的定義域即為高維實數空間 <span class="text-nowrap">$\mathbb{R}^{n}$。</span>
+{: .topic-paren-cont}
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-cdf 的定義可搭配隨機向量的定義寫為
+結合隨機向量的定義，joint cdf 可寫為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -84,14 +80,14 @@ $$
 
 </div>
 
-也就是對使得 $X(\omega)\leqslant x$ 且 $Y(\omega)\leqslant y$ 的 $\omega$ 所構成的集合取機率，其範圍如下圖所示:
+亦即對使 $X(\omega)\leqslant x$ 且 $Y(\omega)\leqslant y$ 同時成立的樣本點集合取機率，對應平面上的左下區域如下圖所示:
 
 <figure id="fig-joint-cdf-quadrants" class="topic-figure topic-figure--wide">
   <img src="/images/lecture-notes/joint-cdf-quadrants.svg" alt="以點 (x, y) 為分割點，一條縱線與一條橫線把平面切成四塊。左下一塊標示 X 小於等於 x 且 Y 小於等於 y，以淡紅色填滿，即聯合累積分配函數所取的範圍；右下標示 X 大於 x 且 Y 小於等於 y；左上標示 X 小於等於 x 且 Y 大於 y；右上標示 X 大於 x 且 Y 大於 y。橫軸右端標 X，縱軸上端標 Y，縱線下端標 X 等於 x，橫線左端標 Y 等於 y，交點畫一個實心圓點。">
-  <figcaption><span class="topic-figure__label">Fig. 3.1.</span> 兩條分界線 $X=x$ 與 $Y=y$ 把平面切成四塊，左下角填色的一塊即 $F_{\sssig XY}(x,y)$ 所取的範圍。</figcaption>
+  <figcaption><span class="topic-figure__label">Fig. 3.1.</span> 兩條分界線 $X=x$ 與 $Y=y$ 把座標平面切成四塊，左下角填色的那一塊就是 $F_{\sssig XY}(x,y)$ 所對應的範圍。</figcaption>
 </figure>
 
-事實上，這也是在處理 joint cdf 時，最重要的事情，也就是**弄清楚目前的積分 (或加總) 範圍**。
+因此處理 joint cdf 時，首要關鍵便是**弄清楚目前的積分 (或加總) 範圍**。
 
 </div>
 
@@ -101,7 +97,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-F_{\sssig XY}(x,y)=\mathbb{P}(X\leqslant x,Y\leqslant y)=\sum_{t\leqslant x}\sum_{s\leqslant y}p_{\sssig XY}(t,s),\ \forall (x,y)\in\mathbb{R}^{2}
+F_{\sssig XY}(x,y)=\mathbb{P}(X\leqslant x,Y\leqslant y)=\sum_{t\leqslant x}\sum_{s\leqslant y}p_{\sssig XY}(t,s),\ \forall\,(x,y)\in\mathbb{R}^{2}
 $$
 
 </div>
@@ -111,28 +107,22 @@ $$
 \begin{aligned}
 F_{\sssig XY}(x,y)&=\mathbb{P}(X\leqslant x,Y\leqslant y)\\[0.45em]
 &=\sum_{t\leqslant x}\sum_{s\leqslant y}p_{\sssig XY}(t,s),\\[0.2em]
-&\qquad\forall (x,y)\in\mathbb{R}^{2}
+&\qquad\forall\,(x,y)\in\mathbb{R}^{2}
 \end{aligned}
 $$
 
 </div>
 
-讀者或許已經發現，上列這些性質，事實上與單變數 cdf 相去不遠，很多部分甚至一樣，則我們是不是能夠用與單變數時相同的手法，從而定義二元連續型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的**[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf) (joint pdf)** 呢？
-
-這個答案當然是肯定的，我們稍後便會看到這樣的定義，但在此之前我們先來看一些 joint cdf 的例子。
+上述性質與單變數 cdf 十分相近。那麼，我們能否沿用單變數的關係，進一步定義二元連續型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的**[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf) (joint pdf)** 呢？答案是肯定的；在進入下一篇的正式定義之前，我們先透過例題熟悉 joint cdf 的計算。
 
 <div id="ex-joint-pmf-constant-cdf" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.1 <span lang="en">(Continued)</span></div>
 
 <div lang="en" markdown="1">
-Suppose that the joint pmf of a two-dimensional discrete random vector $(X,Y)$ is
-
-$$
-p_{\sssig XY}(x,y)=\frac{\,x+2y\,}{12},\quad (x,y)\in\lbrace(0,1),(0,2),(1,0),(1,1),(2,0)\rbrace
-$$
+Let $(X,Y)$ be a discrete random vector with joint pmf $p_{\sssig XY}(x,y)=\frac{\,x+2y\,}{12}$ for $(x,y)\in\lbrace(0,1),(0,2),(1,0),(1,1),(2,0)\rbrace$.
 
 <ol class="topic-list-paren topic-list-paren--start-4">
-  <li>Suppose that $F_{\sssig XY}(x,y)$ is the joint cdf of <span class="text-nowrap">$(X,Y)$.</span> Evaluate $F_{\sssig XY}(1,1)$ and <span class="text-nowrap">$F_{\sssig XY}(1.5,0.3)$.</span></li>
+  <li>Let $F_{\sssig XY}(x,y)$ be the joint cdf of <span class="text-nowrap">$(X,Y)$.</span> Find $F_{\sssig XY}(1,1)$ and <span class="text-nowrap">$F_{\sssig XY}(1.5,0.3)$.</span></li>
 </ol>
 </div>
 
@@ -189,9 +179,9 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者會發現，依照 joint cdf 的定義，如果僅是想要求取指定位置上的 cdf 值時，原問題都將被轉換回**求取一個範圍上的聯合機率**，事實上並不困難。
+依 joint cdf 的定義，求取特定點 $(x,y)$ 上的函數值，即是計算左下區域 $\lbrace X\leqslant x,\,Y\leqslant y\rbrace$ 內的**聯合機率總和**。
 
-另外，在二維的情況下，求取 cdf 的機率可以機率列聯表搭配 [Fig. 3.1](#fig-joint-cdf-quadrants) 中的 cdf 範圍示意圖完成，以前述小題的 $F_{\sssig XY}(1,1)$ 為例，此即求取 $X\leqslant 1$ 且 $Y\leqslant 1$ 之範圍內的機率總和，故透過將列聯表進行二維座標的對應，我們有以下的圖例:
+在二元離散型的情況下，可將機率列聯表的行列依二維座標排列，並對照 [Fig. 3.1](#fig-joint-cdf-quadrants) 的左下角範圍直接加總。以前述 $F_{\sssig XY}(1,1)$ 為例，將縱軸 $Y$ 由下而上排列後，滿足 $X\leqslant 1$ 且 $Y\leqslant 1$ 的區域標示如下:
 
 <table class="topic-table--matrix">
   <thead>
@@ -224,7 +214,7 @@ $$
   </tbody>
 </table>
 
-這種半圖示的計算方式，在二維離散變數的值域相對簡單時，是一個好用的解題技巧之一；但讀者也不妨也藉此思考及理解 joint cdf 的定義，與其本質究竟為何。
+將標色格內的機率相加即得 $F_{\sssig XY}(1,1)=6/12=1/2$ 的結果。當離散變數的值域較為單純時，此種座標對應表能清楚呈現 joint cdf 累積左下區域機率的幾何意義。
 
 </div>
 
@@ -232,7 +222,7 @@ $$
 
 [Definition 3.4](#def-joint-cdf) 把累積分配函數推廣到二元的情形，定義為 $F_{\sssig XY}(x,y)=\mathbb{P}(X\leqslant x,Y\leqslant y)$ 這個機率，定義域是二維實數平面，函數值落在 $[0,1]$ 之中。它所取的是使 $X(\omega)\leqslant x$ 且 $Y(\omega)\leqslant y$ 的那些樣本點所構成的集合之機率，[Fig. 3.1](#fig-joint-cdf-quadrants) 把這個範圍畫在平面上；處理 joint cdf 時最重要的事情，就是弄清楚目前的積分或加總範圍。
 
-二元離散型的 joint cdf 以雙重加總寫出，把橫向不超過 $x$ 且縱向不超過 $y$ 的各個質點機率相加即可。[Example 3.1 <span lang="en">(Continued)</span>](#ex-joint-pmf-constant-cdf) 依此求得 $F_{\sssig XY}(1,1)=\frac{1}{2}$ 與 $F_{\sssig XY}(1.5,0.3)=\frac{1}{12}$ 兩個值，其中後者示範了指定位置不是質點時，cdf 值如何退回到兩個座標都不超過該位置的質點；把聯合 pmf 排成機率列聯表，再對應到二維座標，同一個總和也可以半圖示的方式求得。
+二元離散型的 joint cdf 以雙重加總寫出，把橫向不超過 $x$ 且縱向不超過 $y$ 的各個質點機率相加即可。[Example 3.1 <span lang="en">(Continued)</span>](#ex-joint-pmf-constant-cdf) 依此求得 $F_{\sssig XY}(1,1)=\frac{1}{2}$ 與 $F_{\sssig XY}(1.5,0.3)=\frac{1}{12}$ 兩個值，其中後者示範了指定位置不是質點時，cdf 值如何退回到兩個座標都不超過該位置的質點；把聯合 pmf 排成列聯表，再對應到二維座標，同一總和也可以半圖示方式求得。
 
 這些性質與單變數的 cdf 相去不遠，故我們也能用與單變數時相同的手法，定義二元連續型隨機變數的聯合機率密度函數。[下一篇](/lecture-notes/joint-probability-density-functions/)便由聯合機率密度函數的定義開始，並說明它與聯合累積分配函數之間的關係。
 

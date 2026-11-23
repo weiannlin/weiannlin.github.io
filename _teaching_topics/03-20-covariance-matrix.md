@@ -10,12 +10,12 @@ order: 320
 permalink: /lecture-notes/covariance-matrix/
 date: 2026-08-13
 published: false
-excerpt: "把一組隨機變數兩兩之間的變異數與共變異數收在同一個矩陣裡，就是共變異數矩陣；它的主對角線是各個變數自己的變異數，而由共變異數的對稱性可知它必為對稱矩陣。本篇接著介紹隨機向量在向量與矩陣上的運算。常數向量與隨機向量相乘之後，期望值為 $\\boldsymbol{a}^{\\mathrm{T}}\\boldsymbol{\\mu}$ 這個純量，變異數則為 $\\boldsymbol{a}^{\\mathrm{T}}\\mathbf{\\Sigma}\\boldsymbol{a}$ 這個二次形式，後者恰好可以用來證明共變異數矩陣必為正半定；把常數向量換成常數矩陣之後，所得的結果則是一個維度比 $1$ 還高的隨機向量。最後以一道二元常態的例題示範這些結果在計算上的用法。"
+excerpt: "共變異數矩陣 $\\mathbf{\\Sigma}$ 將隨機向量各分量的變異數與成對共變異數收錄於同一對稱矩陣。本篇推導常數向量線性形式的二次形式變異數 $\\boldsymbol{a}^{\\mathrm{T}}\\mathbf{\\Sigma}\\boldsymbol{a}$ 以證明 $\\mathbf{\\Sigma}$ 必為正半定，並推廣至常數矩陣轉換下的期望值向量與共變異數矩陣。"
 ---
 
 [上一篇](/lecture-notes/variance-of-linear-combination/)以 [Theorem 3.16](/lecture-notes/variance-of-linear-combination/#thm-covar-proper2) 給出線性組合的[變異數](/lecture-notes/variance/#def-variance)展開式，並在最後指出，多元[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的表示與運算會隨著變數個數增加而越來越複雜，因此在多變量分析與迴歸分析的領域中，我們更常改以向量的形式來處理一組多元隨機變數。
 
-本篇即由此出發，先以 [Definition 3.17](#def-covar-matrix) 把所有變數之間的變異數與[共變異數](/lecture-notes/covariance/#def-covariance)收在同一個矩陣裡，再以 [Definition 3.18](#def-var-of-r-vvec) 說明這個矩陣其實就是[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的變異數，兩者事實上是同一件事情。接著介紹隨機向量在向量與矩陣上的運算: [Theorem 3.17](#thm-vector-operation) 處理常數向量與隨機向量的乘積，其中變異數的結果稱為二次形式，並由此證明共變異數矩陣必為正半定矩陣；[Theorem 3.18](#thm-matrix-operation) 則把常數向量換成常數矩陣，所得的結果是一個維度比 $1$ 還高的隨機向量。最後以一道二元常態的例題示範這些結果在計算上的用法。
+本篇即由此出發，先以 [Definition 3.17](#def-covar-matrix) 把所有變數之間的變異數與[共變異數](/lecture-notes/covariance/#def-covariance)收在同一個矩陣裡，再以 [Definition 3.18](#def-var-of-r-vvec) 說明這個矩陣其實就是[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的變異數，兩者事實上是同一件事情。接著介紹隨機向量在向量與矩陣上的運算，其中 [Theorem 3.17](#thm-vector-operation) 處理常數向量與隨機向量的乘積，其中變異數的結果稱為二次形式，並由此證明共變異數矩陣必為正半定矩陣；[Theorem 3.18](#thm-matrix-operation) 則把常數向量換成常數矩陣，所得的結果是一個維度比 $1$ 還高的隨機向量。最後以一道二元常態的例題示範這些結果在計算上的用法。
 
 ## 共變異數矩陣
 
@@ -67,13 +67,13 @@ $$
 
 共變異數矩陣有一些地方需要注意:
 
-(1) 上述定義中的 $\sigma^{2}_{\sssig X}, \sigma^{2}_{\sssig Y}, \sigma^{2}_{\sssig Z}$ 分別表 $X, Y, Z$ 的變異數；而 $\sigma_{\sssig XY}, \sigma_{\sssig XZ}, \sigma_{\sssig YZ},$ $\sigma_{\sssig YX}, \sigma_{\sssig ZX}, \sigma_{\sssig ZY}$ 則分別表 $X, Y, Z$ 間的共變異數，我們可以透過得知一個共變異數矩陣，得知所有變數間的變異數與共變異數。
+(1) 上述定義中的 $\sigma^{2}\_{\sssig X}, \sigma^{2}\_{\sssig Y}, \sigma^{2}\_{\sssig Z}$ 分別表 $X, Y, Z$ 的變異數；而 $\sigma\_{\sssig XY}, \sigma\_{\sssig XZ}, \sigma\_{\sssig YZ},$ $\sigma\_{\sssig YX}, \sigma\_{\sssig ZX}, \sigma\_{\sssig ZY}$ 則分別表 $X, Y, Z$ 間的共變異數，故由共變異數矩陣即可一併掌握各變數的變異數與所有成對共變異數。
 {: .topic-paren-item}
 
-(2) 由[共變異數的對稱性](/lecture-notes/covariance/#thm-covar-proper)，我們可以發現其實 $\sigma_{\sssig XY} = \sigma_{\sssig YX},$ $\sigma_{\sssig XZ} = \sigma_{\sssig ZX}$ 及 <span class="text-nowrap">$\sigma_{\sssig YZ} = \sigma_{\sssig ZY}$，</span>換言之，$\mathbf{\Sigma}$ 是一個對稱矩陣 <span lang="en">(symmetric matrix)</span>。
+(2) 由[共變異數的對稱性](/lecture-notes/covariance/#thm-covar-proper)可知 $\sigma\_{\sssig XY} = \sigma\_{\sssig YX},$ $\sigma\_{\sssig XZ} = \sigma\_{\sssig ZX}$ 及 <span class="text-nowrap">$\sigma_{\sssig YZ} = \sigma_{\sssig ZY}$，</span>換言之，$\mathbf{\Sigma}$ 必為對稱矩陣 <span lang="en">(symmetric matrix)</span>。
 {: .topic-paren-item}
 
-另外，由於我們曾經知道[變異數非負](/lecture-notes/variance/#thm-variance-properties)的特色，故一個合法的共變異數矩陣的主對角線 <span lang="en">(main diagonal)</span> 不應出現負數。例如以下的矩陣即不為合法的共變異數矩陣:
+另外，由[變異數非負](/lecture-notes/variance/#thm-variance-properties)可知，合法的共變異數矩陣其主對角線 <span lang="en">(main diagonal)</span> 不得出現負數。例如以下三個矩陣皆非合法的共變異數矩陣:
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -102,23 +102,23 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-&\begin{bmatrix}
+\begin{gathered}
+\begin{bmatrix}
 -1 & 2 & 3\\
 2 & 1 & 4\\
 3 & 4 & 1
 \end{bmatrix}\\[0.55em]
-&\begin{bmatrix}
+\begin{bmatrix}
 1 & 2 & 3\\
 4 & 2 & 5\\
 3 & 6 & 3
 \end{bmatrix}\\[0.55em]
-&\begin{bmatrix}
+\begin{bmatrix}
 1 & 2 & 3\\
 2 & 1 & 4\\
 3 & 4 & 1
 \end{bmatrix}
-\end{aligned}
+\end{gathered}
 $$
 
 </div>
@@ -126,11 +126,11 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者或許好奇，前二個矩陣不能當作共變異數矩陣的原因很明顯，但第三個矩陣為何不能作為共變異數矩陣呢？這個原因在稍後我們介紹[**相關係數 <span lang="en">(correlation coefficient)</span>**](/lecture-notes/correlation-coefficient/#def-corr)的時候會談到。
+前兩個矩陣分別因主對角線出現負數與矩陣不對稱而不合法；第三個矩陣雖對稱且主對角線皆為正，但非對角線的共變異數超出合理界限，其具體判準將於後文介紹[**相關係數 <span lang="en">(correlation coefficient)</span>**](/lecture-notes/correlation-coefficient/#def-corr)與變異數-共變異數不等式時說明。
 
 </div>
 
-(3) 上述的定義並不僅限於三個隨機變數，我們可將其推廣至任意 $n$ 個隨機變數，如下定義:
+(3) 上述定義不限於三個隨機變數，可將其推廣至任意 $n$ 個隨機變數如下:
 {: .topic-paren-item}
 
 若 $X_1, \ldots, X_n$ 為 $n$ 個隨機變數，則定義其共變異數矩陣為
@@ -181,7 +181,7 @@ $$
 
 ## 隨機向量的變異數
 
-「共變異數矩陣」在統計上是很通用的稱呼，因為其描述了多元隨機變數間的變異數與共變異數。但實際上，該矩陣其實就是隨機向量的變異數，故有一派說法認為，我們應直接稱其為隨機向量的變異數 <span lang="en">(variance of random vector)</span>。這個說法在向量版本的定義中，將變得非常直觀，見下列定義。
+「共變異數矩陣」是統計學通用的稱呼，用以統整多元隨機變數各自的變異數與彼此間的共變異數。從隨機向量的觀點來看，此矩陣本身即為**隨機向量的變異數 <span lang="en">(variance of random vector)</span>**，這一點在向量形式的定義中格外清楚，見下列定義。
 
 <div id="def-var-of-r-vvec" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.18 (隨機向量的變異數, variance of random vector)</div>
@@ -216,7 +216,7 @@ $$
 
 </div>
 
-[Definition 3.17](#def-covar-matrix) 與 [Definition 3.18](#def-var-of-r-vvec) 事實上是一樣的，因為針對一個矩陣的期望值，與針對一個向量的期望值，其定義都是「直接對每個元 <span lang="en">(element)</span> 都取期望值」，故有以下結果:
+[Definition 3.17](#def-covar-matrix) 與 [Definition 3.18](#def-var-of-r-vvec) 完全等價。由於矩陣與向量的期望值皆定義為直接對每個元 <span lang="en">(element)</span> 逐一取期望值，展開可得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -233,34 +233,20 @@ $$
 
 $$
 \begin{aligned}
-\mathbf{\Sigma}&=\mathbb{E}\Bigl[\,(\boldsymbol{X}-\boldsymbol{\mu})(\boldsymbol{X}-\boldsymbol{\mu})^{\mathrm{T}}\,\Bigr]\\[0.55em]
+&\mathbf{\Sigma}=\mathbb{E}\Bigl[\,(\boldsymbol{X}-\boldsymbol{\mu})(\boldsymbol{X}-\boldsymbol{\mu})^{\mathrm{T}}\,\Bigr]\\[0.55em]
 &=\mathbb{E}\begin{bmatrix} (X_1-\mu_1)(X_1-\mu_1) & \cdots & (X_1-\mu_1)(X_n-\mu_n)\\ \vdots & \ddots & \vdots\\ (X_n-\mu_n)(X_1-\mu_1) & \cdots & (X_n-\mu_n)(X_n-\mu_n) \end{bmatrix}\\[0.55em]
-&=\begin{bmatrix} \mathbb{E}\bigl[(X_1-\mu_1)(X_1-\mu_1)\bigr] & \cdots & \mathbb{E}\bigl[(X_1-\mu_1)(X_n-\mu_n)\bigr]\\ \vdots & \ddots & \vdots\\ \mathbb{E}\bigl[(X_n-\mu_n)(X_1-\mu_1)\bigr] & \cdots & \mathbb{E}\bigl[(X_n-\mu_n)(X_n-\mu_n)\bigr] \end{bmatrix}\\[0.55em]
+&=\begin{bmatrix} \mathbb{E}[(X_1-\mu_1)(X_1-\mu_1)] & \cdots & \mathbb{E}[(X_1-\mu_1)(X_n-\mu_n)]\\ \vdots & \ddots & \vdots\\ \mathbb{E}[(X_n-\mu_n)(X_1-\mu_1)] & \cdots & \mathbb{E}[(X_n-\mu_n)(X_n-\mu_n)] \end{bmatrix}\\[0.55em]
 &=\begin{bmatrix} \sigma_{1}^{2} & \sigma_{12} & \cdots & \sigma_{1n}\\ \sigma_{21} & \sigma_{2}^{2} & \cdots & \sigma_{2n}\\ \vdots & \vdots & \ddots & \vdots\\ \sigma_{n1} & \sigma_{n2} & \cdots & \sigma_{n}^{2} \end{bmatrix}
 \end{aligned}
 $$
 
 </div>
 
-除了上述性質外，如同變異數有非負性，共變異數矩陣也必須是**正半定 <span lang="en">(positive semi-definite)</span>** 的，但要證明這件事情，我們需要先學會隨機向量在矩陣上的運算。
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-通常來說我們希望變異數為正，但至少我們接受變異數為 $0$ 的情況 (雖然這個情況有點無趣)，所以我們通常說變異數非負；同理，我們也未必要求共變異數矩陣一定要是**正定 <span lang="en">(positive definite)</span>** 的，但至少必須是**正半定**的。
-
-</div>
+如同單變數變異數允許退化為 $0$ 而僅要求非負，我們亦不強求共變異數矩陣必為**正定 <span lang="en">(positive definite)</span>**，但至少須為**正半定 <span lang="en">(positive semi-definite)</span>**。為證明此性質，以下先建立隨機向量的線性運算規則。
 
 ## 常數向量與隨機向量的乘積
 
-讀者在此應該特別注意的地方是，與矩陣相關的運算，都可以算是線性 (linear) 的運算，因此如果我們對隨機向量乘上某個向量 <span class="text-nowrap">$\boldsymbol{a}^{\mathrm{T}}$，</span>則其運算完全可以承襲過去我們所學的隨機變數的線性變換性質，包含[期望值的線性轉換](/lecture-notes/properties-of-expectation/#thm-expectation-linearity)，與[變異數平方擴充](/lecture-notes/variance/#thm-variance-properties)等等特性。我們在此以向量及矩陣的形式呈現。
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-當然，其維度必須要可以相乘才行。
-
-</div>
+向量與矩陣乘法本質上屬於線性 (linear) 運算。在維度相容的前提下，將隨機向量左乘常數列向量 <span class="text-nowrap">$\boldsymbol{a}^{\mathrm{T}}$，</span>其性質直接承襲單變數的線性轉換規則，包含[期望值的線性轉換](/lecture-notes/properties-of-expectation/#thm-expectation-linearity)與[變異數的平方伸縮性](/lecture-notes/variance/#thm-variance-properties)，以向量與矩陣形式表述如下。
 
 <div id="thm-vector-operation" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 3.17 (常數向量的線性形式, linear forms of a random vector)</div>
@@ -291,7 +277,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\mathbb{E}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})=\mathbb{E}(a_1X_1 + \ldots + a_nX_n)=a_1\mu_1 + \ldots + a_n\mu_n=\sum_{i=1}^{n}a_i\mu_i=\boldsymbol{a}^{\mathrm{T}}\boldsymbol{\mu}
+\mathbb{E}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})=\mathbb{E}(a_1X_1 + \cdots + a_nX_n)=a_1\mu_1 + \cdots + a_n\mu_n=\sum_{i=1}^{n}a_i\mu_i=\boldsymbol{a}^{\mathrm{T}}\boldsymbol{\mu}
 $$
 
 </div>
@@ -299,8 +285,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})&=\mathbb{E}(a_1X_1 + \ldots + a_nX_n)\\[0.45em]
-&=a_1\mu_1 + \ldots + a_n\mu_n\\[0.45em]
+\mathbb{E}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})&=\mathbb{E}(a_1X_1 + \cdots + a_nX_n)\\[0.45em]
+&=a_1\mu_1 + \cdots + a_n\mu_n\\[0.45em]
 &=\sum_{i=1}^{n}a_i\mu_i=\boldsymbol{a}^{\mathrm{T}}\boldsymbol{\mu}
 \end{aligned}
 $$
@@ -340,21 +326,12 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-(2) 的結果稱為 $\boldsymbol{a}$ 的**二次形式 <span lang="en">(quadratic form)</span>**。
-
-事實上，如果我們把變異數的平方擴充性 $\mathrm{Var}(aX) = a^2\mathrm{Var}(X) = a^2\sigma^2$ 改寫為 <span class="text-nowrap">$a^{\mathrm{T}}\sigma^2a$，</span>那這個性質就完全與變異數的平方擴充性相同了，因此也可以理解為向量版本的平方擴充性。
+第 (2) 式的結果 $\boldsymbol{a}^{\mathrm{T}}\,\mathbf{\Sigma}\,\boldsymbol{a}$ 稱為 $\boldsymbol{a}$ 的**二次形式 <span lang="en">(quadratic form)</span>**。在單變數情形中，純量 $a$ 等於其自身的轉置 <span class="text-nowrap">$a^{\mathrm{T}}$，</span>若將變異數的平方伸縮式 $\mathrm{Var}(aX)=a^{2}\sigma^{2}$ 改寫為 <span class="text-nowrap">$a^{\mathrm{T}}\sigma^{2}a$，</span>便與[二次形式](#thm-vector-operation) $\boldsymbol{a}^{\mathrm{T}}\,\mathbf{\Sigma}\,\boldsymbol{a}$ 的結構完全對應，故第 (2) 式可視為向量版本的平方伸縮性。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個理解雖然並不精確，但確實有其可類比性。我們以[二次形式](#thm-vector-operation)的角度，將 $\boldsymbol{a}^{\mathrm{T}}\,\mathbf{\Sigma}\,\boldsymbol{a}$ 理解為「$\boldsymbol{a}$ 的平方再乘以 <span class="text-nowrap">$\mathbf{\Sigma}$」；</span>而在單變數的平方擴充性中，$a$ 作為一個純量，永遠等於其自己的轉置，所以故意將 $\sigma^2$ 前方 $a$ 改寫為 <span class="text-nowrap">$a^{\mathrm{T}}$，</span>用以跟二次形式作為類比。
-
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-讀者可以嘗試令 $\boldsymbol{a} = [\,a_1, a_2\,]^{\mathrm{T}}$ 而 $\boldsymbol{X} = \bigl[\,X_1, X_2\,\bigr]^{\mathrm{T}}$，作為最簡單的隨機向量，則我們有
+以二維情形為例，取 $\boldsymbol{a} = [\,a\_1, a\_2\,]^{\mathrm{T}}$ 與 <span class="text-nowrap">$\boldsymbol{X} = \bigl[\,X_1, X_2\,\bigr]^{\mathrm{T}}$，</span>代入上式即得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -366,28 +343,21 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})&=a_1\mu_1 + a_2\mu_2\\[0.55em]
-\text{與}\quad\mathrm{Var}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})&=a_1^2\sigma^2_1 + a_2^2\sigma_2^2 + 2a_1a_2\sigma_{12}
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})=a_1\mu_1 + a_2\mu_2\\[0.55em]
+\text{與}\quad\mathrm{Var}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})=a_1^2\sigma^2_1 + a_2^2\sigma_2^2 + 2a_1a_2\sigma_{12}
+\end{gathered}
 $$
 
 </div>
 
-這一結果完全與多元隨機變數裡的結果相同。
+此結果與前文逐項展開所得的線性組合期望值與變異數公式完全一致。
 
 </div>
 
-這一點也體現出向量與矩陣的威力，過往在多元隨機變數中，只要隨機變數的數量稍微多了，就會讓人感到相當頭痛；但在向量與矩陣的世界裡，只要是線性的運算，哪怕是維度再高，都可以用一行式子來解決。
+由此亦可見向量與矩陣記號的優勢。隨著變數個數增加，逐項加總的展開式會迅速膨脹，而矩陣記號能將任意維度的線性運算濃縮為單一簡潔公式；由於機率論與高等統計學中的核心運算 (如線性組合、共變異與相關結構) 大多具備線性形式，向量與矩陣遂成為多變量統計分析不可或缺的基礎工具。
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-事實上，機率論與統計學會用到的運算多數都是線性的，包含相關性等等的運算，絕大多數都是線性的，因此向量與矩陣在較為高等的統計相關學科中，確實扮演舉足輕重的地位。
-
-</div>
-
-此外，有了二次形式，我們便可以證明共變異數矩陣是正半定矩陣了:
+利用二次形式的變異數表法，即可立即證明共變異數矩陣必為正半定矩陣:
 
 <div class="topic-proof" markdown="1">
 **Proof.**
@@ -415,7 +385,7 @@ $\therefore \mathbf{\Sigma} = \mathrm{Var}(\boldsymbol{X})$ 為正半定矩陣�
 
 ## 常數矩陣與隨機向量的乘積
 
-至此，讀者或許會有點疑惑。透過常數向量與隨機向量的乘積，我們得到的結果，維度永遠都是 <span class="text-nowrap">$1$，</span>那要如何透過線性組合得到更高維度的結果呢？這個問題的答案是**矩陣**。
+常數列向量與隨機向量相乘所得的線性組合恆為純量 (維度為 <span class="text-nowrap">$1$)；</span>若要同時由多組線性組合構成更高維度的隨機向量，只需將常數向量擴充為常數**矩陣**。
 
 <div id="thm-matrix-operation" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 3.18 (矩陣的線性形式, matrix forms of a random vector)</div>
@@ -517,12 +487,12 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-如果我們不注意看，這個定理與證明，好像與 [Theorem 3.17](#thm-vector-operation) 幾乎相同，但事實上，如果讀者注意細究其維度，我們將會發現，$\mathbf{A}\boldsymbol{X}$ 事實上已經是個維度比 $1$ 還高的隨機向量了，這些結果再再說明了向量及矩陣的威力。
+[Theorem 3.18](#thm-matrix-operation) 的形式與證明步驟雖與 [Theorem 3.17](#thm-vector-operation) 相似，但兩者的結果維度不同。此處 $\mathbf{A}\boldsymbol{X}$ 為 $k\times 1$ 隨機向量，而 $\mathrm{Var}(\mathbf{A}\boldsymbol{X})=\mathbf{A}\mathbf{\Sigma}\mathbf{A}^{\mathrm{T}}$ 則為階數 $k\times k$ 的共變異數矩陣。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-特別需要注意的地方是，我們習慣上喜歡將向量寫成行向量，因此在 [Theorem 3.17](#thm-vector-operation) 中，常數向量 $\boldsymbol{a}$ 與隨機向量 $\boldsymbol{X}$ 相乘時，為了使維度可以相乘，我們會把 $\boldsymbol{a}$ 轉置；但在 [Theorem 3.18](#thm-matrix-operation) 中，常數矩陣 $\mathbf{A}$ 原本就已經可以與 $\boldsymbol{X}$ 相乘了，所以不需要額外轉置。
+依慣例我們將向量寫為行向量，故在 [Theorem 3.17](#thm-vector-operation) 中須先將 $n\times 1$ 的常數向量 $\boldsymbol{a}$ 轉置為 $1\times n$ 的 <span class="text-nowrap">$\boldsymbol{a}^{\mathrm{T}}$，</span>方能與 $n\times 1$ 的 $\boldsymbol{X}$ 相乘；而在 [Theorem 3.18](#thm-matrix-operation) 中，$\mathbf{A}$ 本身即為 $k\times n$ 矩陣，可直接左乘 <span class="text-nowrap">$\boldsymbol{X}$，</span>無須額外轉置。
 
 </div>
 
@@ -532,13 +502,13 @@ $$
 <div class="topic-box__label">Example 3.41</div>
 
 <div lang="en" markdown="1">
-Suppose that the random vector formed by $X$ and $Y$ follows a bivariate normal distribution, that is,
+Let $(X,Y)^{\mathrm{T}}$ follow a bivariate normal distribution
 
 $$
 \begin{bmatrix} X\\ Y \end{bmatrix}\sim\mathcal{N}_{2}\Biggl(\begin{bmatrix} 3\\ 5 \end{bmatrix},\ \begin{bmatrix} 4 & 2\\ 2 & 3 \end{bmatrix}\Biggr)
 $$
 
-Determine the variance of <span class="text-nowrap">$3X+2Y$.</span>
+Find the variance of <span class="text-nowrap">$3X+2Y$.</span>
 </div>
 
 **[ 法一 ]**
@@ -603,13 +573,13 @@ $$
 
 </div>
 
-讀者目前應該已經能夠理解與掌握共變異數，但是，作為刻畫 $X$ 與 $Y$ 共變關係的共變異數，卻沒有範圍上的限制，僅知道共同變化的「方向」，不知道「程度」，這該如何是好呢？為了解決這個問題，我們將會介紹[**相關係數**](/lecture-notes/correlation-coefficient/#def-corr)。
+共變異數雖能刻畫兩變數共同變化的「方向」，其數值卻受變數單位影響而無固定上下界，難以直接衡量共同變化的「強弱程度」。為消除尺度影響，[下一篇](/lecture-notes/correlation-coefficient/)將引入[**相關係數**](/lecture-notes/correlation-coefficient/#def-corr)。
 
 ## 本篇小結
 
-[Definition 3.17](#def-covar-matrix) 把三個隨機變數兩兩之間的變異數與共變異數收在同一個矩陣裡，主對角線上的 $\sigma^{2}_{\sssig X}, \sigma^{2}_{\sssig Y}, \sigma^{2}_{\sssig Z}$ 是各個變數自己的變異數，其餘位置則是變數之間的共變異數，因此知道一個共變異數矩陣，就等於知道所有變數之間的變異數與共變異數。由[共變異數的對稱性](/lecture-notes/covariance/#thm-covar-proper)可知 $\mathbf{\Sigma}$ 必為對稱矩陣，又由[變異數非負](/lecture-notes/variance/#thm-variance-properties)可知主對角線不應出現負數，這兩件事各排除了一類不合法的矩陣；至於主對角線為正、又對稱的矩陣為何仍可能不合法，要等到相關係數才能回答。同樣的定義並不限於三個變數，$n$ 個變數的版本只是把矩陣擴充為 $n \times n$ 而已。
+[Definition 3.17](#def-covar-matrix) 把三個隨機變數兩兩之間的變異數與共變異數收在同一個矩陣裡，主對角線上的 $\sigma^{2}\_{\sssig X}, \sigma^{2}\_{\sssig Y}, \sigma^{2}\_{\sssig Z}$ 是各個變數自己的變異數，其餘位置則是變數之間的共變異數，因此知道一個共變異數矩陣，就等於知道所有變數之間的變異數與共變異數。由[共變異數的對稱性](/lecture-notes/covariance/#thm-covar-proper)可知 $\mathbf{\Sigma}$ 必為對稱矩陣，又由[變異數非負](/lecture-notes/variance/#thm-variance-properties)可知主對角線不應出現負數，這兩件事各排除了一類不合法的矩陣；至於主對角線為正、又對稱的矩陣為何仍可能不合法，要等到相關係數才能回答。同樣的定義並不限於三個變數，$n$ 個變數的版本只是把矩陣擴充為 $n \times n$ 而已。
 
-[Definition 3.18](#def-var-of-r-vvec) 改以隨機向量書寫同一件事情，也就是 $\mathbf{\Sigma}$ $=$ $\mathrm{Var}(\boldsymbol{X})$ $=$ $\mathbb{E}\bigl[(\boldsymbol{X}-\boldsymbol{\mu})(\boldsymbol{X}-\boldsymbol{\mu})^{\mathrm{T}}\bigr]$ 這一條式子。兩個定義之所以一樣，是因為矩陣與向量的期望值都是「直接對每個元都取期望值」，把定義中兩個向量相乘所得的矩陣逐元取期望值，得到的正是 [Definition 3.17](#def-covar-matrix) 的那個矩陣。共變異數矩陣還必須是正半定的，而要證明這件事，得先學會隨機向量在向量與矩陣上的運算。
+[Definition 3.18](#def-var-of-r-vvec) 改以隨機向量書寫同一件事情，也就是 $\mathbf{\Sigma}$ $=$ $\mathrm{Var}(\boldsymbol{X})$ $=$ $\mathbb{E}\bigl[(\boldsymbol{X}-\boldsymbol{\mu})(\boldsymbol{X}-\boldsymbol{\mu})^{\mathrm{T}}\bigr]$ 這一條式子。兩個定義之所以一樣，是因為矩陣與向量的期望值都是「直接對每個元都取期望值」，把定義中兩個向量相乘所得的矩陣逐元取期望值，得到的正是 [Definition 3.17](#def-covar-matrix) 的那個矩陣。共變異數矩陣還必須是正半定的，要證明這件事，得先學會隨機向量的向量與矩陣運算。
 
 [Theorem 3.17](#thm-vector-operation) 處理常數向量與隨機向量的乘積。期望值為 $\boldsymbol{a}^{\mathrm{T}}\boldsymbol{\mu}$ 這個向量版本的線性轉換，變異數則為 $\boldsymbol{a}^{\mathrm{T}}\,\mathbf{\Sigma}\,\boldsymbol{a}$ 這個二次形式，也就是向量版本的平方擴充性。證明的關鍵一步是把轉置拆開之後，$\boldsymbol{a}^{\mathrm{T}}$ 與 $\boldsymbol{a}$ 分別提到期望值的兩側，中間剩下的恰好就是 $\mathbf{\Sigma}$ 的定義。由於變異數必定非負，二次形式對任意 $\boldsymbol{a}$ 都不小於 <span class="text-nowrap">$0$，</span>共變異數矩陣因而是正半定矩陣。[Theorem 3.18](#thm-matrix-operation) 把常數向量換成 $k \times n$ 的常數矩陣，兩式的形狀幾乎相同，但 $\mathbf{A}\boldsymbol{X}$ 已經是維度比 $1$ 還高的隨機向量，其變異數為 <span class="text-nowrap">$\mathbf{A}\mathbf{\Sigma}\mathbf{A}^{\mathrm{T}}$。</span>兩者的差別只在於習慣上向量寫成行向量，故 $\boldsymbol{a}$ 需要轉置，而 $\mathbf{A}$ 本來就可以與 $\boldsymbol{X}$ 相乘。
 

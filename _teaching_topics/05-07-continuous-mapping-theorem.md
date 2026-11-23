@@ -10,12 +10,12 @@ order: 507
 permalink: /lecture-notes/continuous-mapping-theorem/
 date: 2026-08-15
 published: false
-excerpt: "前面幾篇處理的都是單一序列的收斂，本篇轉而處理兩個機率收斂的序列之間的運算。Theorem 5.10 給出三款結果: 線性組合 $aX_n+bY_n$ 機率收斂至 $ac+bd$、乘積 $X_nY_n$ 機率收斂至 $cd$，以及連續函數轉換 $g(X_n)$ 機率收斂至 $g(c)$，最後一款即連續映射定理。三款的證明都建立在同一個集合包含關係之上，也就是兩項的和偏離其極限之和超過 $a+b$ 時，兩項之中至少有一項各自偏離超過 $a$ 或 $b$，本篇以一則註記把它單獨證明一次。由這三款還可以再得到差與商的結果。其後三道例題演練這些性質與弱大數法則的搭配: 不假設常態母體時樣本變異數仍然機率收斂至 $\\sigma^{2}$、對稱密度之下三次方和的極限分配與樣本二階動差的機率極限，以及伯努利樣本平均數倒數平方根的極限。"
+excerpt: "本篇建立機率收斂序列的運算性質與連續映射定理，證明若 $X_n\\pconv c$ 與 $Y_n\\pconv d$ 成立，則線性組合、乘積與 $d\\neq 0$ 時的商仍機率收斂，且在 $c$ 處連續的 $g$ 滿足 $g(X_n)\\pconv g(c)$ 的性質，最後以樣本變異數一致性等例題演練。"
 ---
 
 [上一篇](/lecture-notes/normal-approximation-continuity-correction/)談常態近似與連續性校正。至此，讀者已經掌握了單一序列的收斂性質，也理解基於[中央極限定理](/lecture-notes/weak-law-and-central-limit-theorem/#thm-central-limit-theorem) <span lang="en">(central limit theorem, CLT)</span>，所得到與[常態分配](/lecture-notes/normal-distribution/#def-normal)相關的一些漸近特性。
 
-然而，有的時候我們會好奇一些更進階的延伸特性，比如序列取了函數轉換後，在極限之下，收斂的對象會發生怎樣的改變呢？會不會因此就不收斂了呢？這些問題的解答，便是我們此處要探討的極限相關定理。
+實務推論中常需對統計量序列作四則運算或函數轉換；轉換之後，序列是否依然收斂，其極限對象又如何改變？這正是本篇要探討的極限相關定理。
 
 本篇先給出[機率收斂](/lecture-notes/convergence-in-probability/#def-converge-in-probability)之下的三項運算性質，其中第三項就是連續映射定理，並在一則註記中補上證明所倚賴的集合包含關係，以及由這三項再導出的差與商。其後以三道例題演練這些性質與[弱大數法則](/lecture-notes/weak-law-and-central-limit-theorem/#thm-weak-law-of-large-numbers) <span lang="en">(weak law of large numbers, WLLN)</span> 的搭配。
 
@@ -24,7 +24,7 @@ excerpt: "前面幾篇處理的都是單一序列的收斂，本篇轉而處理�
 <div id="thm-pconv-related" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 5.10 (機率收斂的運算性質與連續映射定理)</div>
 
-若 $X\_{n}\pconv c$、$Y\_{n}\pconv d$，且 $a,b,c$ 與 $d$ 皆為常數，則我們有
+若 <span class="text-nowrap">$X\_{n}\pconv c$、</span><span class="text-nowrap">$Y\_{n}\pconv d$，</span>且 $a,b,c$ 與 $d$ 皆為常數，則我們有
 
 (1)
 {: .topic-paren-item}
@@ -67,10 +67,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\lim_{n\to\infty}\mathbb{P}\bigl(\lvert X_{n}-c\rvert>\varepsilon\bigr)&=0,\\[0.45em]
-\lim_{n\to\infty}\mathbb{P}\bigl(\lvert Y_{n}-d\rvert>\varepsilon\bigr)&=0
-\end{aligned}
+\begin{gathered}
+\lim_{n\to\infty}\mathbb{P}\bigl(\lvert X_{n}-c\rvert>\varepsilon\bigr)=0,\\[0.45em]
+\lim_{n\to\infty}\mathbb{P}\bigl(\lvert Y_{n}-d\rvert>\varepsilon\bigr)=0
+\end{gathered}
 $$
 
 </div>
@@ -87,10 +87,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\lim_{n\to\infty}\mathbb{P}\bigl(\lvert aX_{n}-ac\rvert>\lvert a\rvert\varepsilon\bigr)&=0,\\[0.45em]
-\lim_{n\to\infty}\mathbb{P}\bigl(\lvert bY_{n}-bd\rvert>\lvert b\rvert\varepsilon\bigr)&=0
-\end{aligned}
+\begin{gathered}
+\lim_{n\to\infty}\mathbb{P}\bigl(\lvert aX_{n}-ac\rvert>\lvert a\rvert\varepsilon\bigr)=0,\\[0.45em]
+\lim_{n\to\infty}\mathbb{P}\bigl(\lvert bY_{n}-bd\rvert>\lvert b\rvert\varepsilon\bigr)=0
+\end{gathered}
 $$
 
 </div>
@@ -100,7 +100,10 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\lbrace\lvert(aX_{n}+bY_{n})-(ac+bd)\rvert>(\lvert a\rvert+\lvert b\rvert)\varepsilon\rbrace\subset\lbrace\lvert aX_{n}-ac\rvert>\lvert a\rvert\varepsilon\rbrace\cup\lbrace\lvert bY_{n}-bd\rvert>\lvert b\rvert\varepsilon\rbrace
+\begin{aligned}
+&\lbrace\lvert(aX_{n}+bY_{n})-(ac+bd)\rvert>(\lvert a\rvert+\lvert b\rvert)\varepsilon\rbrace\\[0.45em]
+&\qquad\subset\lbrace\lvert aX_{n}-ac\rvert>\lvert a\rvert\varepsilon\rbrace\cup\lbrace\lvert bY_{n}-bd\rvert>\lvert b\rvert\varepsilon\rbrace
+\end{aligned}
 $$
 
 </div>
@@ -170,7 +173,7 @@ $$
 
 </div>
 
-其中 $(\lvert a\rvert+\lvert b\rvert)\varepsilon$ 隨著 $\varepsilon$ 取遍全部的正數，故
+若 $a=b=0$ 則下式顯然成立；當 $\lvert a\rvert+\lvert b\rvert>0$ 時，$(\lvert a\rvert+\lvert b\rvert)\varepsilon$ 隨著 $\varepsilon$ 取遍全部的正數，故
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -250,7 +253,7 @@ $$
 
 </div>
 
-其中，由於 $X\_{n}\pconv c$，把 $X\_{n}$ 寫成 $(X\_{n}-c)+c$ 再取絕對值，可知 $\lbrace\lvert X\_{n}-c\rvert\leqslant1\rbrace\subset\lbrace\lvert X\_{n}\rvert\leqslant\lvert c\rvert+1\rbrace$，故我們有
+其中，由於 <span class="text-nowrap">$X\_{n}\pconv c$，</span>把 $X\_{n}$ 寫成 $(X\_{n}-c)+c$ 再取絕對值，可知 $\lbrace\lvert X\_{n}-c\rvert\leqslant1\rbrace\subset\lbrace\lvert X\_{n}\rvert\leqslant\lvert c\rvert+1\rbrace$ 這個包含關係，故我們有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -319,7 +322,7 @@ $$
 
 此即 $X\_{n}Y\_{n}\pconv cd$ 這個結果。
 
-第 (3) 款由於 $g(\cdot)$ 在 $c$ 上連續，故由連續之 $\varepsilon-\delta$ 定義可知，對任意 $\varepsilon>0$，存在 $\delta(\varepsilon)>0$，使得
+第 (3) 款由於 $g(\cdot)$ 在 $c$ 上連續，故由連續之 $\varepsilon-\delta$ 定義可知，對任意 <span class="text-nowrap">$\varepsilon>0$，</span>存在正數 <span class="text-nowrap">$\delta(\varepsilon)>0$，</span>使得
 
 $$
 \lvert x-c\rvert<\delta(\varepsilon)\qquad\Longrightarrow\ \lvert g(x)-g(c)\rvert<\varepsilon
@@ -365,7 +368,7 @@ $$
 
 </div>
 
-由於 $X\_{n}\pconv c$，我們有
+由於 <span class="text-nowrap">$X\_{n}\pconv c$，</span>我們有
 
 $$
 \lim_{n\to\infty}\mathbb{P}\bigl(\lvert X_{n}-c\rvert<\delta\bigr)=1,\ \forall\,\delta>0
@@ -395,7 +398,7 @@ $$
 <div class="topic-math-follow" markdown="1">
 
 $$
-\therefore\ g(X_{n})\pconv g(c)
+\Longrightarrow\ g(X_{n})\pconv g(c)
 $$
 
 </div>
@@ -406,7 +409,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述皆使用到
+上述第 (1)、(2) 款的證明皆運用了下列集合包含關係
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -427,12 +430,12 @@ $$
 
 </div>
 
-之結果，證明如下。
+其證明如下。
 
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-令 $(x,y)\notin\lbrace\lvert X-c\rvert>a\rbrace\cup\lbrace\lvert Y-d\rvert>b\rbrace$ 則
+令 $(x,y)\notin\lbrace\lvert X-c\rvert>a\rbrace\cup\lbrace\lvert Y-d\rvert>b\rbrace$ 成立，則依序有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -525,19 +528,19 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-此外，由 (1)，我們當然也有
+此外，在 (1) 中取 $a=1$ 與 $b=-1$ 立得差值的機率極限如下
 
 $$
 X_{n}-Y_{n}\pconv c-d
 $$
 
-又由 CMT 可令 $g(x)=\frac{1}{\,x\,}$ 在 $d\neq0$ 上連續，則我們有 $\frac{1}{\,Y\_{n}\,}\pconv\frac{1}{\,d\,}$，搭配 (2) 可知
+當 $d\neq0$ 時，函數 $g(x)=\frac{1}{\,x\,}$ 在 $x=d$ 處連續，由連續映射定理可得 $\frac{1}{\,Y\_{n}\,}\pconv\frac{1}{\,d\,}$ 這一結果，再搭配 (2) 的乘積性質即得商的機率收斂性質
 
 $$
 \frac{\,X_{n}\,}{Y_{n}}\pconv\frac{c}{\,d\,}
 $$
 
-其中 $d\neq0$。
+其中 <span class="text-nowrap">$d\neq0$。</span>
 
 </div>
 
@@ -547,7 +550,7 @@ $$
 <div class="topic-box__label">Example 5.27 ($S^{2}$ 的一致性)</div>
 
 <div lang="en" markdown="1">
-Suppose that <span class="text-nowrap">$X_{1},\ldots,X_{n}\iidto(\mu,\sigma^{2})$,</span> and let $S^{2}=\frac{1}{\,n-1\,}\sum_{i=1}^{n}(X_{i}-\overline{X})^{2}$ denote the sample variance of these $n$ observations. Determine the value to which $S^{2}$ converges in probability.
+Let $X_{1},\ldots,X_{n}\iidto(\mu,\sigma^{2})$, and let $S^{2}=\frac{1}{\,n-1\,}\sum_{i=1}^{n}(X_{i}-\overline{X})^{2}$ be the sample variance. Find the probability limit of <span class="text-nowrap">$S^{2}$.</span>
 </div>
 
 先把樣本變異數改寫成樣本二階動差與樣本平均數平方的組合，可得
@@ -582,15 +585,15 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_{i}&\pconv\mu,\\[0.45em]
-\frac{1}{\,n\,}\sum_{i=1}^{n}X_{i}^{2}&\pconv\mathbb{E}\bigl(X_{i}^{2}\bigr)=\sigma^{2}+\mu^{2}
-\end{aligned}
+\begin{gathered}
+\overline{X}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_{i}\pconv\mu,\\[0.45em]
+\frac{1}{\,n\,}\sum_{i=1}^{n}X_{i}^{2}\pconv\mathbb{E}\bigl(X_{i}^{2}\bigr)=\sigma^{2}+\mu^{2}
+\end{gathered}
 $$
 
 </div>
 
-其中 $\mathbb{E}(X\_{i}^{2})=\sigma^{2}+\mu^{2}$ 來自[變異數的計算公式](/lecture-notes/variance/#thm-variance-formula)。若令 $g(x)=x^{2}$，則 $g(x)$ 在 $x=\mu$ 上連續，由 CMT 可知
+其中 $\mathbb{E}(X\_{i}^{2})=\sigma^{2}+\mu^{2}$ 來自[變異數的計算公式](/lecture-notes/variance/#thm-variance-formula)。若令 <span class="text-nowrap">$g(x)=x^{2}$，</span>則 $g(x)$ 在 $x=\mu$ 上連續，由 CMT 可知
 
 $$
 g(\overline{X})=\overline{X}^{2}\pconv\mu^{2}
@@ -622,15 +625,13 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個問題和 [Example 5.10](/lecture-notes/levy-continuity-theorem/#ex-s-squared-consistency-mgf) 不同的地方在於，這題並沒有常態假設，但 $S^{2}\pconv\sigma^{2}$ 的結果卻仍然不變。
-
-當然，我們也可以由此結果，搭配 CMT，令 $g(x)=\sqrt{x}$ 在 $x>0$ 連續，則我們有
+相較於前文的 [Example 5.10](/lecture-notes/levy-continuity-theorem/#ex-s-squared-consistency-mgf)，本題不須假設母體服從常態分配，僅憑母體期望值 $\mu$ 與有限變異數 $\sigma^{2}$ 存在，即可證得 <span class="text-nowrap">$S^{2}\pconv\sigma^{2}$。</span>進一步取在 $x>0$ 上連續的函數 <span class="text-nowrap">$g(x)=\sqrt{x}$，</span>於 $\sigma>0$ 下套用連續映射定理立得樣本標準差的一致性如下
 
 $$
 S=\sqrt{S^{2}}\pconv\sqrt{\sigma^{2}}=\sigma
 $$
 
-在稍後將有重要的應用。
+此一結果在下一篇推導 $t$ 統計量的極限分配時將直接派上用場。
 
 </div>
 
@@ -638,11 +639,11 @@ $$
 <div class="topic-box__label">Example 5.28</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_{1},\ldots,X_{n}$ are independent and identically distributed with common distribution function <span class="text-nowrap">$F$,</span> that every moment of the common distribution is finite, and that the density $f=F^{\prime}$ satisfies $f(x)=f(-x)$ for every <span class="text-nowrap">$x$,</span> so that $f$ is symmetric about the origin.
+Let $X_{1},\ldots,X_{n}$ be iid random variables with common cdf $F$ and finite moments of all orders. Assume further that $f=F^{\prime}$ satisfies $f(x)=f(-x)$ for all $x\in\mathbb{R}$ (i.e., $f$ is symmetric about <span class="text-nowrap">$0$).</span>
 
 <ol class="topic-list-paren">
-  <li>Find the limiting distribution of <span class="text-nowrap">$T_{n}=n^{-\frac{1}{2}}\sum_{i=1}^{n}X_{i}^{3}$.</span></li>
-  <li>Find the constant $c$ for which <span class="text-nowrap">$S_{n}\pconv c$,</span> where $S_{n}=n^{-1}\bigl(\sum_{i=1}^{n}X_{i}^{2}+\sum_{i=1}^{n}X_{i}^{3}\bigr)-n^{-2}\bigl(\sum_{i=1}^{n}X_{i}\bigr)^{2}$.</li>
+  <li>Find the limiting distribution of $T_{n}=n^{-\frac{1}{2}}\sum_{i=1}^{n}X_{i}^{3}$.</li>
+  <li>Let $S_{n}=n^{-1}\bigl(\sum_{i=1}^{n}X_{i}^{2}+\sum_{i=1}^{n}X_{i}^{3}\bigr)-n^{-2}\bigl(\sum_{i=1}^{n}X_{i}\bigr)^{2}$. Find the probability limit $c$ such that <span class="text-nowrap">$S_{n}\pconv c$.</span></li>
 </ol>
 </div>
 
@@ -653,7 +654,7 @@ $$
 \mathbb{E}\bigl(X^{2k-1}\bigr)=0,\ \forall\,k=1,2,3,\ldots
 $$
 
-又由於 $X$ 之各階動差皆存在，可知 $\mathrm{Var}(X^{3})=\mathbb{E}(X^{6})<\infty$，則由 CLT 可知
+又由於 $X$ 之各階動差皆存在，故有 $\mathrm{Var}(X^{3})=\mathbb{E}(X^{6})<\infty$ 成立，因此我們可由 CLT 得知
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -687,11 +688,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\frac{1}{\,n\,}\sum_{i=1}^{n}X_{i}&\pconv\mathbb{E}(X_{i})=0,\\[0.45em]
-\frac{1}{\,n\,}\sum_{i=1}^{n}X_{i}^{2}&\pconv\mathbb{E}\bigl(X_{i}^{2}\bigr),\\[0.45em]
-\frac{1}{\,n\,}\sum_{i=1}^{n}X_{i}^{3}&\pconv\mathbb{E}\bigl(X_{i}^{3}\bigr)=0
-\end{aligned}
+\begin{gathered}
+\frac{1}{\,n\,}\sum_{i=1}^{n}X_{i}\pconv\mathbb{E}(X_{i})=0,\\[0.45em]
+\frac{1}{\,n\,}\sum_{i=1}^{n}X_{i}^{2}\pconv\mathbb{E}\bigl(X_{i}^{2}\bigr),\\[0.45em]
+\frac{1}{\,n\,}\sum_{i=1}^{n}X_{i}^{3}\pconv\mathbb{E}\bigl(X_{i}^{3}\bigr)=0
+\end{gathered}
 $$
 
 </div>
@@ -749,10 +750,10 @@ $$
 <div class="topic-box__label">Example 5.29</div>
 
 <div lang="en" markdown="1">
-Suppose that <span class="text-nowrap">$X_{1},\ldots,X_{n}\iidto\mathrm{Bernoulli}(p)$,</span> where <span class="text-nowrap">$0<p<1$,</span> and let <span class="text-nowrap">$U_{n}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_{i}$.</span> Find the limiting distribution of $\frac{1}{\,\sqrt{U_{n}}\,}$.
+Let $X_{1},\ldots,X_{n}\iidto\mathrm{Bernoulli}(p)$ with <span class="text-nowrap">$0<p<1$,</span> and let $U_{n}=\frac{1}{\,n\,}\sum_{i=1}^{n}X_{i}$. Find the limiting distribution of <span class="text-nowrap">$\frac{1}{\,\sqrt{U_{n}}\,}$.</span>
 </div>
 
-由 WLLN 可知 $U\_{n}=\frac{1}{\,n\,}\sum\_{i=1}^{n}X\_{i}\pconv p$，其中 $X\_{i}$ 服從[伯努利分配](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)，又由 CMT 可令 $g(x)=\frac{1}{\,\sqrt{x}\,}$ 在 $x=p$ 上連續，則可知
+由 WLLN 可知 $U\_{n}=\frac{1}{\,n\,}\sum\_{i=1}^{n}X\_{i}\pconv p$ 成立，其中 $X\_{i}$ 服從[伯努利分配](/lecture-notes/bernoulli-trials-and-distribution/#def-bernoulli)，又由 CMT 可令 $g(x)=\frac{1}{\,\sqrt{x}\,}$ 在 $x=p$ 上連續，則可知
 
 $$
 g(U_{n})=\frac{1}{\,\sqrt{U_{n}}\,}\pconv\frac{1}{\,\sqrt{p}\,}
@@ -768,13 +769,13 @@ $$
 
 ## 本篇小結
 
-[Theorem 5.10](#thm-pconv-related) 把機率收斂由單一序列推廣到兩個序列之間的運算，三款結果分別處理線性組合、乘積與連續函數轉換，其中第三款就是連續映射定理。三款證明的共同基礎是同一個集合包含關係: 兩項的和偏離其極限之和超過 $a+b$ 時，兩項之中至少有一項各自偏離超過 $a$ 或 $b$。有了這個包含關係，機率對聯集的上界就把一個難以直接處理的事件，換成兩個已知趨於零的事件之和。
+[Theorem 5.10](#thm-pconv-related) 把機率收斂由單一序列推廣到兩個序列之間的運算，三款結果分別處理線性組合、乘積與連續函數轉換，其中第三款就是連續映射定理。三款證明的共同基礎是同一個集合包含關係，也就是兩項的和偏離其極限之和超過 $a+b$ 時，兩項之中至少有一項各自偏離超過 $a$ 或 <span class="text-nowrap">$b$。</span>有了這個包含關係，機率對聯集的上界就把一個難以直接處理的事件，換成兩個已知趨於零的事件之和。
 
-由這三款還可以再往下推。第 (1) 款取 $a=1$ 與 $b=-1$ 即得 $X\_{n}-Y\_{n}\pconv c-d$；連續映射定理取 $g(x)=\frac{1}{\,x\,}$ 得 $\frac{1}{\,Y\_{n}\,}\pconv\frac{1}{\,d\,}$，再搭配第 (2) 款便得到商的結果 $\frac{\,X\_{n}\,}{Y\_{n}}\pconv\frac{c}{\,d\,}$，其中 $d\neq0$。也就是說，四則運算在機率收斂之下都可以逐項處理。
+由這三款還可以再往下推。第 (1) 款取 $a=1$ 與 $b=-1$ 即得 $X\_{n}-Y\_{n}\pconv c-d$ 這一性質；連續映射定理取 $g(x)=\frac{1}{\,x\,}$ 得 $\frac{1}{\,Y\_{n}\,}\pconv\frac{1}{\,d\,}$ 這個結果，再搭配第 (2) 款便得到商的結果 $\frac{\,X\_{n}\,}{Y\_{n}}\pconv\frac{c}{\,d\,}$ 成立，其中 <span class="text-nowrap">$d\neq0$。</span>也就是說，四則運算在機率收斂之下都可以逐項處理。
 
-[Example 5.27](#ex-s-squared-consistency-general) 把樣本變異數寫成 $\frac{n}{\,n-1\,}\bigl(\frac{1}{\,n\,}\sum X\_{i}^{2}-\overline{X}^{2}\bigr)$ 這個形式，弱大數法則處理兩個樣本動差，連續映射定理處理 $\overline{X}^{2}$ 這一項，兩者合起來得到 $S^{2}\pconv\sigma^{2}$。與先前以動差母函數處理的版本相比，這一題完全沒有用到常態假設，結果卻相同；再取一次平方根，還得到 $S\pconv\sigma$ 這個在後續推論中很常用的結果。
+[Example 5.27](#ex-s-squared-consistency-general) 把樣本變異數寫成 $\frac{n}{\,n-1\,}\bigl(\frac{1}{\,n\,}\sum X\_{i}^{2}-\overline{X}^{2}\bigr)$ 這個形式，弱大數法則處理兩個樣本動差，連續映射定理處理 $\overline{X}^{2}$ 這一項，兩者合起來得到 <span class="text-nowrap">$S^{2}\pconv\sigma^{2}$。</span>與先前以動差母函數處理的版本相比，這一題完全沒有用到常態假設，結果卻相同；再取一次平方根，還得到 $S\pconv\sigma$ 這個在後續推論中很常用的結果。
 
-[Example 5.28](#ex-symmetric-density-moments) 與 [Example 5.29](#ex-bernoulli-inverse-square-root) 則示範這兩條定理如何分工。前者的第一小題要的是極限分配，因此用中央極限定理，對稱性讓 $\mathbb{E}(X^{3})=0$，變異數則化為 $\mathbb{E}(X^{6})$；第二小題要的是機率極限，因此用弱大數法則求出三個樣本動差的極限，再以連續映射定理處理平方項。後者的作法相同，$U\_{n}\pconv p$ 之後取 $g(x)=\frac{1}{\,\sqrt{x}\,}$，得到的極限是一個退化隨機變數，因此收斂到常數 $\frac{1}{\,\sqrt{p}\,}$ 這件事，同時也是分配收斂。
+[Example 5.28](#ex-symmetric-density-moments) 與 [Example 5.29](#ex-bernoulli-inverse-square-root) 則示範這兩條定理如何分工。前者的第一小題要的是極限分配，因此用中央極限定理，對稱性讓 <span class="text-nowrap">$\mathbb{E}(X^{3})=0$，</span>變異數則化為六階原動差 <span class="text-nowrap">$\mathbb{E}(X^{6})$；</span>第二小題要的是機率極限，因此用弱大數法則求出三個樣本動差的極限，再以連續映射定理處理平方項。後者的作法相同，$U\_{n}\pconv p$ 之後取 <span class="text-nowrap">$g(x)=\frac{1}{\,\sqrt{x}\,}$，</span>得到的極限是一個退化隨機變數，因此收斂到常數 $\frac{1}{\,\sqrt{p}\,}$ 這件事，同時也是分配收斂。
 
 以上各款都是針對機率收斂而生的。如果把分配收斂一併考慮進來，這些運算的結果將稍有變化，[下一篇](/lecture-notes/slutsky-and-delta-method/)的史拉斯基定理處理的正是這件事，其後並由此發展出 Delta 法。
 

@@ -10,7 +10,7 @@ order: 414
 permalink: /lecture-notes/uniform-distribution-integral-transform/
 date: 2026-08-12
 published: false
-excerpt: "均勻分配的機率密度在整個值域上處處相同，它的 cdf 是唯一一條直線，而其中的標準均勻分配 $\\mathcal{U}(0,\\ 1)$ 更把這條直線變成恆等函數，變數值本身就是累積機率。本篇先給出均勻分配的定義，完整推導期望值 $\\frac{a+b}{2}$、變異數 $\\frac{(b-a)^{2}}{12}$ 與動差母函數，再證明任何一個均勻分配都可以由標準均勻分配先伸縮 $b-a$ 倍、再平移 $a$ 而得。由於這個轉換所用的函數正是該均勻分配自己的 cdf，同樣的手法可以推廣到任意的連續分配，這就是機率積分轉換與逆機率積分轉換兩個定理的內容。最後以三道例題演練均勻分配的截尾期望值、以自己的 cdf 轉換之後所得變數的分配，以及如何由標準均勻分配生出指數分配。"
+excerpt: "連續均勻分配在區間 $(a,b)$ 上具有常數密度與線性累積分配函數。本篇推導其期望值、變異數與線性伸縮關係，並進一步建立任意連續分配與標準均勻分配 $\\mathcal{U}(0,1)$ 互相轉換的機率積分轉換與逆機率積分轉換。"
 ---
 
 [上一篇](/lecture-notes/weibull-reliability-and-hazard/)以[韋伯分配](/lecture-notes/weibull-reliability-and-hazard/#def-weibull-distribution)、[可靠度函數](/lecture-notes/weibull-reliability-and-hazard/#def-reliability-function)與[風險函數](/lecture-notes/weibull-reliability-and-hazard/#def-hazard-function)作結，卜瓦松過程所衍生的各個機率模型至此全部給出。本篇轉入第三大類的機率模型，也就是與貝塔分配相關的一系列分配，而這一類之中最基本的一個，是值域上每一個點都具有相同機率密度的均勻分配。
@@ -68,16 +68,16 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(X)&=\frac{\,a+b\,}{2},\\[0.5em]
-\mathrm{Var}(X)&=\frac{\,(b-a)^{2}\,}{12}\\[0.5em]
-M_{\sssig X}(t)&=\left\lbrace
+\begin{gathered}
+\mathbb{E}(X)=\frac{\,a+b\,}{2},\\[0.5em]
+\mathrm{Var}(X)=\frac{\,(b-a)^{2}\,}{12}\\[0.5em]
+M_{\sssig X}(t)=\left\lbrace
 \begin{array}{c@{}l}
 \dfrac{\,e^{bt}-e^{at}\,}{(b-a)t}, & t\neq0\\[0.9em]
 1, & t=0
 \end{array}
 \right.
-\end{aligned}
+\end{gathered}
 $$
 
 </div>
@@ -222,7 +222,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-均勻分配的動差母函數在 $t=0$ 處被定義為 $1$ 的原因，是為了滿足對任意的 <span class="text-nowrap">$h>0$，</span>$-h<t<h$ 都應該可微分。
+當 $t=0$ 時，分式 $\frac{e^{bt}-e^{at}}{\,(b-a)t\,}$ 呈 $\frac{0}{\,0\,}$ 不定型，但直接由定義有 <span class="text-nowrap">$M\_{\sssig X}(0)=\mathbb{E}(e^{0})=1$，</span>且與該分式在 $t\to0$ 時的極限一致；如此分段補齊 $t=0$ 處的函數值後，$M\_{\sssig X}(t)$ 在原點鄰域 $-h<t<h$ (<span class="text-nowrap">$h>0$</span>) 內處處連續且可微分。
 
 </div>
 
@@ -239,7 +239,7 @@ F_{\sssig Y}(y)=\left\lbrace
 \right.
 $$
 
-這是**唯一一個線性的 cdf**，而**均勻分配一族是唯一一個具有線性 cdf 的分配族**。
+這是**唯一的線性 cdf**，而**均勻分配一族是唯一具有線性 cdf 的分配族**。
 {: .topic-paren-cont}
 
 (3) 眾多均勻分配之中，有一個特例是**標準均勻分配 <span lang="en">(standard uniform distribution)</span>**，有許多和均勻分配有關的特殊性質都是基於這個特例而衍伸出來的，見以下敘述:
@@ -264,7 +264,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-所有均勻分配都可以由標準均勻分配，透過線性轉換 <span lang="en">(linear transformation)</span> 而得，即令
+所有均勻分配都可以由標準均勻分配，透過線性轉換 <span lang="en">(linear transformation)</span> 而得，亦即我們可令
 
 $$
 Y=(b-a)U+a
@@ -333,15 +333,13 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-事實上，標準均勻分配也可以由任意的均勻分配進行伸縮與平移得到，做法恰巧與上述顛倒，是令
+反之，對任意均勻分配變數 $Y\sim\mathcal{U}(a,\ b)$ 作反向的平移與伸縮轉換
 
 $$
 U=\frac{\,Y-a\,}{b-a}
 $$
 
-讀者可以使用 cdf 法自行證明。
-
-然而，讀者應該也已經發現，從任意均勻分配轉換為標準均勻分配的過程中所使用的函數，事實上正是該均勻分配自己的 cdf，這並不是巧合，甚至在任意非均勻的連續分配中，我們也同樣可以透過這個手法，在任意分配與標準均勻分配間轉換，見[下列定理](#thm-p-i-t)。
+同樣可由 cdf 法驗證 <span class="text-nowrap">$U\sim\mathcal{U}(0,\ 1)$。</span>值得注意的是，上式將 $Y$ 轉為標準均勻分配所使用的函數 $\frac{\,y-a\,}{b-a}$ 恰為 $Y$ 自身的 cdf；此一關係並非均勻分配特有的巧合，對任意連續分配同樣可藉自身的 cdf 與標準均勻分配互相轉換，見[下列定理](#thm-p-i-t)。
 
 </div>
 
@@ -397,20 +395,13 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-此定理指出，任意隨機變數以「自己的 cdf」進行轉換後會變為標準均勻分配，且其證明有賴以下兩點:
+此定理表明，將連續隨機變數 $X$ 代入其自身的累積分配函數 $F\_{\sssig X}(\cdot)$ 作函數轉換，所得變數 $U=F\_{\sssig X}(X)$ 必服從標準均勻分配。操作時係將 $F\_{\sssig X}(\cdot)$ 視為確定性的實數函數並代入隨機變數 <span class="text-nowrap">$X$；</span>例如當 $X\sim\mathrm{Exp}(\beta=1)$ 時，其在 $[0,\infty)$ 上的 cdf 為 <span class="text-nowrap">$F\_{\sssig X}(x)=1-e^{-x}$，</span>故對應的隨機變數轉換即為 <span class="text-nowrap">$U=F\_{\sssig X}(X)=1-e^{-X}$。</span>上述證明的關鍵在於以下兩點:
 
-(1) $F\_{\sssig X}(\cdot)$ 是一個非遞減函數，故若 $F^{-1}\_{\sssig X}(\cdot)$ 存在，則 $F^{-1}\_{\sssig X}(\cdot)$ 也會是一個非遞減函數。
+(1) 由於 $F\_{\sssig X}(\cdot)$ 本身為非遞減函數，故當其反函數 $F^{-1}\_{\sssig X}(\cdot)$ 存在時，$F^{-1}\_{\sssig X}(\cdot)$ 亦同為非遞減函數。
 {: .topic-paren-item}
 
 (2) 標準均勻分配是唯一一個 cdf 在 $[0,1]$ 區間內為恆等函數的分配。
 {: .topic-paren-item}
-
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這裡要注意的是，我們是將 $F_{\sssig X}(\cdot)$ 當成一個純粹的函數，而令 $U=F_{\sssig X}(X)$ 為 $X$ 的一個函數轉換。例如: 若 <span class="text-nowrap">$X\sim\mathrm{Exp}(\beta=1)$，</span>則我們是將其在 $[0,\infty)$ 區間內的部分 $F_{\sssig X}(x)=1-e^{-x},\ 0\leqslant x<\infty$ 當成一個純粹的函數，而令 $U=F_{\sssig X}(X)=1-e^{-X}$ 為 $X$ 的函數轉換，而後求取 $U$ 的 cdf。
 
 </div>
 
@@ -419,7 +410,7 @@ $$
 <div id="thm-i-p-i-t" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 4.18 (逆機率積分轉換, inverse probability integral transform)</div>
 
-令 $U\sim\mathcal{U}(0,\ 1)$ 為一標準均勻分配，$0\leqslant g(\cdot)\leqslant1$ 為一非遞減函數，且其反函數 $g^{-1}(\cdot)$ 存在，若令 $X=g^{-1}(U)$ 為 $U$ 的函數轉換，則 $g(\cdot)$ 為 $X$ 的 cdf，此即
+令 $U\sim\mathcal{U}(0,\ 1)$ 為一標準均勻分配，$g:\mathbb{R}\to(0,1)$ 為一連續且嚴格遞增函數，滿足 $\lim_{x\to-\infty}g(x)=0$ 與 <span class="text-nowrap">$\lim_{x\to\infty}g(x)=1$，</span>其反函數 $g^{-1}(\cdot)$ 存在。若令 $X=g^{-1}(U)$ 為 $U$ 的函數轉換，則 $g(\cdot)$ 為 $X$ 的 cdf，此即
 
 $$
 F_{\sssig X}(x)=g(x)
@@ -466,28 +457,24 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個定理也被稱作逆抽樣轉換，其內容事實上是第一部分的反敘述。我們對標準均勻分配以 $g^{-1}(\cdot)$ 進行函數轉換，則轉換後變數的 cdf 就是 $g(\cdot)$，換句話說，若以「欲求取之分配的 cdf 的反函數」對標準均勻分配進行函數轉換，則轉換後的分配即是欲求取的分配。
-
-這個性質在實務上的用途非常廣泛，因為在較底層的運算系統中，所謂的「隨機數」就是標準均勻分配的隨機變數，也就是 $0$ 到 $1$ 之間的隨機亂數，若要以這個僅有的隨機系統生出具有各式分配的「隨機變數」，便要借助此定理來達成。
+此定理又稱為逆抽樣轉換，為機率積分轉換的反向敘述。對標準均勻隨機變數 $U$ 施以 $g^{-1}(\cdot)$ 轉換，所得變數的 cdf 即為 <span class="text-nowrap">$g(\cdot)$；</span>換言之，以目標分配 cdf 的反函數轉換標準均勻變數，即可得到該目標分配。此性質在統計模擬中用途極廣，因為運算系統產生的亂數即為 $(0,1)$ 區間上的標準均勻變數，各類連續分配的隨機樣本皆可藉此反函數轉換生成。
 
 </div>
 
-機率積分轉換 <span lang="en">(probability integral transformation)</span> 與逆機率積分轉換 <span lang="en">(inverse probability integral transformation)</span> 事實上使用了同一組關係式，只是表示法不相同，此即
+機率積分轉換 <span lang="en">(probability integral transformation)</span> 與逆機率積分轉換 <span lang="en">(inverse probability integral transformation)</span> 實為同一組關係式的雙向表示，即
 
 $$
 \boxed{\ U=F_{\sssig X}(X)\qquad\Longleftrightarrow\ X=F^{-1}_{\sssig X}(U)\ }
 $$
 
-至於為什麼是以 $X$ 的 cdf $F_{\sssig X}(\cdot)$ 作為 $\mathcal{U}(0,\ 1)$ 分配與任意 $X$ 的分配間聯繫的橋樑，其實是因為 $X$ 的 cdf $F_{\sssig X}(\cdot)$ 記錄了關於 $X$ 的所有特殊的資訊，其中包含關於伸縮回恆等函數所需要的訊息，都被完整地記錄下來，其概念可以由下方的兩張圖理解:
+之所以能以 $X$ 的累積分配函數 $F\_{\sssig X}(\cdot)$ 作為 $\mathcal{U}(0,\ 1)$ 與一般連續分配之間的橋樑，是因為 $F\_{\sssig X}(\cdot)$ 完整刻畫了 $X$ 累積機率的速度，恰提供將曲線拉回恆等函數所需的非線性伸縮資訊，如下圖所示:
 
 <figure id="fig-uniform-cdf-identity" class="topic-figure topic-figure--wide">
   <img src="/images/lecture-notes/uniform-cdf-identity.svg" alt="上下兩個面板，各有一條帶箭頭的橫軸與一條帶箭頭的鉛直軸。上面板的鉛直軸頂端標 F_U(u)，橫軸右端標 u，主線是一條由原點往右上、與兩軸各成四十五度的直線段。鉛直軸上兩處刻度由下而上標 F_U(a) 等於 a 與 F_U(b) 等於 b，橫軸上兩處刻度由左至右標 a 與 b。兩組虛線各自由鉛直軸的刻度水平拉到直線上，再由該點垂直落到橫軸的刻度。下面板的鉛直軸頂端標 F_X(x)，橫軸右端標 x，主線是一條先緩後陡再轉緩的 S 形遞增曲線，右端趨近一個固定高度之後不再上升。鉛直軸上兩處刻度由下而上標 F_X(a) 與 F_X(b)，橫軸上兩處刻度由左至右標 a 與 b，兩組虛線同樣由鉛直軸的刻度水平拉到曲線上，再垂直落到橫軸的刻度。兩個面板都沒有其他刻度數值，也沒有填色。">
   <figcaption><span class="topic-figure__label">Fig. 4.2.</span> 兩個面板各畫一條 cdf。一條在 $0$ 與 $1$ 之間是恆等函數，$a$ 與 $b$ 兩點的 cdf 值 $F_{\sssig U}(a)$ 與 $F_{\sssig U}(b)$ 恰好等於 $a$ 與 $b$ 本身；另一條是一般的 <span class="text-nowrap">cdf，</span>同樣兩點的 $F_{\sssig X}(a)$ 與 $F_{\sssig X}(b)$ 則由曲線的高度決定。把一般的 cdf 伸縮回恆等函數所需要的訊息，全部記在 <span class="text-nowrap">$F_{\sssig X}(\cdot)$ 之中。</span></figcaption>
 </figure>
 
-上方是標準均勻分配的 cdf <span class="text-nowrap">$F_{\sssig U}(u)$，</span>在 $[0,1]$ 的範圍內是恆等函數，不論給任何的 $a$ 與 <span class="text-nowrap">$b$，</span>我們總是可以得到恰好一樣的 cdf 值 $F_{\sssig U}(a)=a$ 與 <span class="text-nowrap">$F_{\sssig U}(b)=b$，</span>一般任意的分配如果要得到這種結果，要將 $U$ 經過妥善的「拉伸」，才能夠從下方的一般化圖示，變成上方的標準均勻分配。
-
-然而，每個隨機變數的分配各有特色，我們一般很難知道該怎麼「拉伸」才能夠從下方漂亮地變到上方，但所幸這個資訊被完整地刻劃在 $X$ 的 cdf $F_{\sssig X}(x)$ 當中，所以選用這個 cdf 當作這個橋樑，便能夠很漂亮地得到這個結果；而機率積分轉換與逆機率積分轉換則分別只是這組關係式在方向上的不同而已。
+上圖的上面板為標準均勻分配的 cdf <span class="text-nowrap">$F\_{\sssig U}(u)$，</span>在 $[0,1]$ 上為恆等函數，對任意 $a,b\in[0,1]$ 恆有 $F\_{\sssig U}(a)=a$ 與 <span class="text-nowrap">$F\_{\sssig U}(b)=b$；</span>下面板則為一般連續分配的曲線型 cdf <span class="text-nowrap">$F\_{\sssig X}(x)$。</span>若要將隨機變數 $X$ 經適當的非線性拉伸化為標準均勻分配，所需的轉換關係正完整記錄於 $F\_{\sssig X}(x)$ 之中；機率積分轉換與逆機率積分轉換，即是沿此曲線在橫軸與縱軸之間雙向對應的結果。
 
 ## 均勻分配與機率積分轉換的例題
 
@@ -495,7 +482,7 @@ $$
 <div class="topic-box__label">Example 4.38</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ follows the uniform distribution on the interval <span class="text-nowrap">$(0,1)$.</span> Evaluate the conditional expectation <span class="text-nowrap">$\mathbb{E}\left[X\,\middle|\,X<\frac{1}{\,4\,}\right]$.</span>
+Let $X$ be uniformly distributed on <span class="text-nowrap">$(0,1)$.</span> Find $\mathbb{E}\left[X\,\middle\vert\,X<\frac{1}{\,4\,}\right]$.
 </div>
 
 由[截尾分配的定義](/lecture-notes/conditional-distributions-examples/#def-truncated-distribution)可知
@@ -504,7 +491,7 @@ Suppose that $X$ follows the uniform distribution on the interval <span class="t
 
 $$
 \begin{aligned}
-f_{\sssig X}\left(x\,\middle|\,x<\frac{1}{\,4\,}\right)&=\frac{f_{\sssig X}(x)}{\,\mathbb{P}\left(X<\frac{1}{\,4\,}\right)\,}=\frac{1}{\int_{0}^{1/4}f_{\sssig X}(x)\,dx}\\[0.45em]
+f_{\sssig X}\left(x\,\middle\vert\,X<\frac{1}{\,4\,}\right)&=\frac{f_{\sssig X}(x)}{\,\mathbb{P}\left(X<\frac{1}{\,4\,}\right)\,}=\frac{1}{\int_{0}^{1/4}f_{\sssig X}(x)\,dx}\\[0.45em]
 &=\frac{1}{\,1/4\,}=4,\ 0<x<\frac{1}{\,4\,}
 \end{aligned}
 $$
@@ -514,7 +501,8 @@ $$
 
 $$
 \begin{aligned}
-f_{\sssig X}\left(x\,\middle|\,x<\frac{1}{\,4\,}\right)&=\frac{f_{\sssig X}(x)}{\,\mathbb{P}\left(X<\frac{1}{\,4\,}\right)\,}=\frac{1}{\int_{0}^{1/4}f_{\sssig X}(x)\,dx}\\[0.45em]
+f_{\sssig X}\left(x\,\middle\vert\,X<\frac{1}{\,4\,}\right)&=\frac{f_{\sssig X}(x)}{\,\mathbb{P}\left(X<\frac{1}{\,4\,}\right)\,}\\[0.35em]
+&=\frac{1}{\int_{0}^{1/4}f_{\sssig X}(x)\,dx}\\[0.35em]
 &=\frac{1}{\,1/4\,}=4,\ 0<x<\frac{1}{\,4\,}
 \end{aligned}
 $$
@@ -527,7 +515,7 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}\left[X\,\middle|\,X<\frac{1}{\,4\,}\right]&=\int_{0}^{1/4}x\,f_{\sssig X}\left(x\,\middle|\,x<\frac{1}{\,4\,}\right)dx\\[0.45em]
+\mathbb{E}\left[X\,\middle\vert\,X<\frac{1}{\,4\,}\right]&=\int_{0}^{1/4}x\,f_{\sssig X}\left(x\,\middle\vert\,X<\frac{1}{\,4\,}\right)\,dx\\[0.45em]
 &=\int_{0}^{1/4}4x\,dx=\Bigl[2x^{2}\Bigr]^{\frac{1}{4}}_{0}=\frac{1}{\,8\,}
 \end{aligned}
 $$
@@ -537,7 +525,7 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}\left[X\,\middle|\,X<\frac{1}{\,4\,}\right]&=\int_{0}^{1/4}x\,f_{\sssig X}\left(x\,\middle|\,x<\frac{1}{\,4\,}\right)dx\\[0.45em]
+\mathbb{E}\left[X\,\middle\vert\,X<\frac{1}{\,4\,}\right]&=\int_{0}^{1/4}x\,f_{\sssig X}\left(x\,\middle\vert\,X<\frac{1}{\,4\,}\right)\,dx\\[0.35em]
 &=\int_{0}^{1/4}4x\,dx=\Bigl[2x^{2}\Bigr]^{\frac{1}{4}}_{0}=\frac{1}{\,8\,}
 \end{aligned}
 $$
@@ -549,7 +537,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-一個有趣的事實是，均勻分配的截尾分配必定還是均勻分配，但這事實上也很容易理解，因為我們只是針對某個均勻分配進行範圍上的限制，並沒有改變該分配在此範圍內的「形狀」，而在這個範圍內，每個點的機率密度仍然相同，因此必定還是均勻分配。
+均勻分配經區間截尾後仍為均勻分配。這是因為截尾僅縮限取值範圍並重新標準化常數，並未改變子區間內各點機率密度相等的特性。
 
 </div>
 
@@ -557,7 +545,7 @@ $$
 <div class="topic-box__label">Example 4.39</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ is a continuous random variable whose cumulative distribution function is <span class="text-nowrap">$F_{\sssig X}(x)$,</span> and let $Y$ denote the transformed variable <span class="text-nowrap">$Y=F_{\sssig X}(X)$.</span> Determine the probability density function of <span class="text-nowrap">$Y$,</span> and evaluate its variance.
+Let the continuous random variable $X$ have cumulative distribution function <span class="text-nowrap">$F_{\sssig X}(x)$.</span> Find the probability density function (pdf) and variance of the random variable <span class="text-nowrap">$Y=F_{\sssig X}(X)$.</span>
 </div>
 
 由 cdf 之定義可知
@@ -603,16 +591,16 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-Y&\sim\mathcal{U}(0,\ 1),\\[0.6em]
-f_{\sssig Y}(y)&=\left\lbrace
+\begin{gathered}
+Y\sim\mathcal{U}(0,\ 1),\\[0.6em]
+f_{\sssig Y}(y)=\left\lbrace
 \begin{array}{c@{}l}
 1, & 0<y<1\\[0.35em]
 0, & \text{o.w.}
 \end{array}
 \right.,\\[0.6em]
-\sigma^{2}_{\sssig Y}&=\frac{\,(1-0)^{2}\,}{12}=\frac{1}{\,12\,}
-\end{aligned}
+\sigma^{2}_{\sssig Y}=\frac{\,(1-0)^{2}\,}{12}=\frac{1}{\,12\,}
+\end{gathered}
 $$
 
 </div>
@@ -623,11 +611,11 @@ $$
 <div class="topic-box__label">Example 4.40</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ follows an exponential distribution whose probability density function is $f(x)=\frac{1}{\,\lambda\,}e^{-\frac{x}{\lambda}}$ for <span class="text-nowrap">$x\geqslant0$.</span>
+Let $X$ follow an exponential distribution with pdf $f(x)=\frac{1}{\,\lambda\,}e^{-\frac{x}{\lambda}}$ for <span class="text-nowrap">$x\geqslant0$.</span>
 
 <ol class="topic-list-paren">
-  <li>Find a function $g(x)$ for which the transformed variable $Y=g(X)$ is uniformly distributed on <span class="text-nowrap">$(0,1)$.</span></li>
-  <li>Find a function $h(u)$ for which, given a variable $U$ that is uniformly distributed on <span class="text-nowrap">$(0,1)$,</span> the transformed variable $X=h(U)$ has the density $f(x)=\frac{1}{\,\lambda\,}e^{-\frac{x}{\lambda}}$ for <span class="text-nowrap">$x\geqslant0$.</span></li>
+  <li>Find a function $g(x)$ such that $Y=g(X)$ is uniformly distributed on <span class="text-nowrap">$(0,1)$.</span></li>
+  <li>Find a function $h(u)$ such that if $U$ is uniformly distributed on <span class="text-nowrap">$(0,1)$,</span> then $X=h(U)$ has pdf $f(x)=\frac{1}{\,\lambda\,}e^{-\frac{x}{\lambda}}$ for <span class="text-nowrap">$x\geqslant0$.</span></li>
 </ol>
 </div>
 
@@ -690,7 +678,7 @@ $$
 X=F^{-1}_{\sssig X}(U)=-\lambda\ln(1-U)
 $$
 
-且因為 <span class="text-nowrap">$X\sim\mathrm{Exp}(\beta=\lambda)$，</span>可知所求之
+且因為 <span class="text-nowrap">$X\sim\mathrm{Exp}(\beta=\lambda)$，</span>可知所求之函數為
 {: .topic-paren-cont}
 
 $$
@@ -702,13 +690,13 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在操作逆機率積分轉換時，讀者要特別注意，我們在操作流程上，必須先求取「目標分配的 cdf」，如此才能夠知道要透過怎樣的變換，將 $\mathcal{U}(0,\ 1)$ 轉換為該分配，因此以本題而言，我們儘管一看就知道目標分配是 $\mathrm{Exp}(\beta=\lambda)$，仍然需要以這個資訊先行求取其 cdf <span class="text-nowrap">$F_{\sssig X}(x)$。</span>
+運用逆機率積分轉換將 $\mathcal{U}(0,\ 1)$ 轉換為目標分配時，標準流程須先求出目標分配的累積分配函數 <span class="text-nowrap">$F\_{\sssig X}(x)$，</span>再反解出 $F^{-1}\_{\sssig X}(u)$ 代入。因此本題雖可直接看出目標分配為 <span class="text-nowrap">$\mathrm{Exp}(\beta=\lambda)$，</span>仍須先積分寫出其 cdf $F\_{\sssig X}(x)=1-e^{-x/\lambda}$ 方能完成反解。
 
 </div>
 
 ## 本篇小結
 
-[Definition 4.18](#def-uniform-distribution) 的均勻分配由「值域中的所有點皆具有相同機率密度」界定，值域為 <span class="text-nowrap">$\lbrace\,x\mid a\leqslant x\leqslant b\,\rbrace$，</span>機率函數因而是常數 <span class="text-nowrap">$\frac{1}{\,b-a\,}$，</span>兩個參數 $a$ 與 $b$ 都是位置參數，分別是值域的下界與上界。證明的四個步驟依序是: 直接積分驗證機率函數的積分為 <span class="text-nowrap">$1$、</span>求得 <span class="text-nowrap">$\mathbb{E}(X)=\frac{\,a+b\,}{2}$、</span>再由 $\mathbb{E}\bigl(X^{2}\bigr)=\frac{\,a^{2}+ab+b^{2}\,}{3}$ 相減得到 <span class="text-nowrap">$\mathrm{Var}(X)=\frac{\,(b-a)^{2}\,}{12}$，</span>最後由定義求得動差母函數。動差母函數在 $t=0$ 處另行定義為 <span class="text-nowrap">$1$，</span>是為了讓它在原點的一個鄰域內都可微分。
+[Definition 4.18](#def-uniform-distribution) 的均勻分配由「值域中的所有點皆具有相同機率密度」界定，值域為閉區間 <span class="text-nowrap">$[a,b]$</span> (即 $\lbrace\,x\mid a\leqslant x\leqslant b\,\rbrace$)，機率函數因而是常數 <span class="text-nowrap">$\frac{1}{\,b-a\,}$，</span>兩個參數 $a$ 與 $b$ 都是位置參數，分別是值域的下界與上界。證明的四個步驟依序為直接積分驗證機率函數的積分為 <span class="text-nowrap">$1$、</span>求得 <span class="text-nowrap">$\mathbb{E}(X)=\frac{\,a+b\,}{2}$、</span>再由 $\mathbb{E}\bigl(X^{2}\bigr)=\frac{\,a^{2}+ab+b^{2}\,}{3}$ 相減得到變異數 <span class="text-nowrap">$\frac{\,(b-a)^{2}\,}{12}$，</span>最後由定義求得動差母函數。動差母函數在 $t=0$ 處另行定義為 <span class="text-nowrap">$1$，</span>是為了讓它在原點鄰域內可微分。
 
 均勻分配的 cdf 在 $a$ 與 $b$ 之間是一次式，這是唯一一個線性的 cdf；其中 $a=0$ 且 $b=1$ 的特例即標準均勻分配，它的 cdf 在 $[0,1]$ 上是恆等函數，變數值本身就是累積機率。由 $Y=(b-a)U+a$ 這個先伸縮再平移的轉換，可以由標準均勻分配得到任何一個均勻分配；反過來走則是 <span class="text-nowrap">$U=\frac{\,Y-a\,}{b-a}$，</span>而這個反向的函數恰好就是 $Y$ 自己的 cdf。
 

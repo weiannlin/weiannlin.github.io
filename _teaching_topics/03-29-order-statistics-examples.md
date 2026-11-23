@@ -10,7 +10,7 @@ order: 329
 permalink: /lecture-notes/order-statistics-examples/
 date: 2026-08-13
 published: false
-excerpt: "標準均勻分配的五個順序統計量，其聯合 pdf 恆為 $120$ 這個常數，但值域限定在 $0\\lt y_1\\lt y_2\\lt y_3\\lt y_4\\lt y_5\\lt 1$ 之上，因此彼此並不獨立；最小值與最大值分別服從 $\\mathrm{Beta}(1,5)$ 與 $\\mathrm{Beta}(5,1)$，全距 $R=Y_5-Y_1$ 則服從 $\\mathrm{Beta}(4,2)$。順序統計量還可以定義出樣本全距與樣本中位數等統計量，而指數分配的隨機樣本，其最小值與最大值的分配則可以直接由事件的定義求出 cdf 再微分而得。本篇並給出順序統計量的抽樣分配 cdf，其中第 $i$ 個順序統計量的 cdf 是一組二項機率之和，最小值與最大值的聯合 cdf 則由兩個機率相減而得。"
+excerpt: "本篇將順序統計量的累積分配函數表為二項機率的加總，介紹樣本全距與樣本中位數的求法，並以標準均勻樣本與指數樣本演練極值、全距與聯合分配的計算。"
 ---
 
 [上一篇](/lecture-notes/order-statistics-distributions/)以 [Theorem 3.24](/lecture-notes/order-statistics-distributions/#thm-order-stat-samp-dist-pdf) 給出隨機樣本之[順序統計量](/lecture-notes/order-statistics/#def-order-stat)的抽樣分配 pdf，並以幾張圖說明其中的排列組合是怎麼數出來的，最後指出標準均勻分配的順序統計量都是[貝塔分配](/lecture-notes/beta-function-and-distribution/#def-beta-distribution)。
@@ -23,14 +23,14 @@ excerpt: "標準均勻分配的五個順序統計量，其聯合 pdf 恆為 $120
 <div class="topic-box__label">Example 3.63</div>
 
 <div lang="en" markdown="1">
-Suppose that $\lbrace X_i\rbrace_{i=1}^{5}$ is a random sample drawn from the uniform distribution <span class="text-nowrap">$\mathcal{U}(0,1)$,</span> and let <span class="text-nowrap">$Y_i$,</span> <span class="text-nowrap">$i=1,2,3,4,5$,</span> denote the $i$-th smallest order statistic.
+Let $\lbrace X_i\rbrace_{i=1}^{5}$ be a random sample drawn from the uniform distribution <span class="text-nowrap">$\mathcal{U}(0,1)$,</span> and let <span class="text-nowrap">$Y_i$,</span> <span class="text-nowrap">$i=1,2,3,4,5$,</span> denote the $i$-th smallest order statistic.
 
 <ol class="topic-list-paren">
-  <li>Find the joint pdf of <span class="text-nowrap">$(Y_1,Y_2,Y_3,Y_4,Y_5)$,</span> and determine whether $Y_1,Y_2,Y_3,Y_4,Y_5$ are independent of one another.</li>
-  <li>Find the marginal pdf of $Y_1$ and the marginal pdf of <span class="text-nowrap">$Y_5$,</span> and determine the name and the parameters of each of the two distributions.</li>
+  <li>Find the joint pdf of <span class="text-nowrap">$(Y_1,Y_2,Y_3,Y_4,Y_5)$,</span> and determine whether $Y_1,Y_2,Y_3,Y_4,Y_5$ are independent.</li>
+  <li>Find the marginal pdfs of $Y_1$ and <span class="text-nowrap">$Y_5$,</span> and identify the name and parameters of each distribution.</li>
   <li>Let the range be <span class="text-nowrap">$R=Y_5-Y_1$.</span><br>
-  (i) Find the pdf of <span class="text-nowrap">$R$,</span> and determine the name and the parameters of its distribution.<br>
-  (ii) Evaluate the expectation $\mathbb{E}(R)$ and the variance <span class="text-nowrap">$\mathrm{Var}(R)$.</span></li>
+  (i) Find the pdf of <span class="text-nowrap">$R$,</span> and identify the name and parameters of its distribution.<br>
+  (ii) Find the expectation $\mathbb{E}(R)$ and variance <span class="text-nowrap">$\mathrm{Var}(R)$.</span></li>
 </ol>
 </div>
 
@@ -66,15 +66,15 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-f_{\sssig X}(x)&=
+\begin{gathered}
+f_{\sssig X}(x)=
 \left\lbrace
 \begin{array}{c@{}l}
 1, & 0<x<1\\[0.5em]
 0, & \text{o.w.}
 \end{array}
 \right.,\\[1em]
-F_{\sssig X}(x)&=
+F_{\sssig X}(x)=
 \left\lbrace
 \begin{array}{c@{}l}
 0, & x<0\\[0.5em]
@@ -82,7 +82,7 @@ x, & 0\leqslant x<1\\[0.5em]
 1, & x\geqslant 1
 \end{array}
 \right.
-\end{aligned}
+\end{gathered}
 $$
 
 </div>
@@ -93,8 +93,8 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow f_{\sssig Y_1\cdots Y_5}(y_1,y_2,y_3,y_4,y_5)&=5!\times f_{\sssig X}(y_1)\times f_{\sssig X}(y_2)\times f_{\sssig X}(y_3)\\[0.45em]
-&\qquad\times f_{\sssig X}(y_4)\times f_{\sssig X}(y_5)\\[0.45em]
+\Longrightarrow\ f_{\sssig Y_1\cdots Y_5}(y_1,y_2,y_3,y_4,y_5)&=5!\times f_{\sssig X}(y_1)\times f_{\sssig X}(y_2)\\[0.35em]
+&\qquad\times f_{\sssig X}(y_3)\times f_{\sssig X}(y_4)\times f_{\sssig X}(y_5)\\[0.45em]
 &=5!\times 1^{5}=120,\ \ 0<y_1<y_2<y_3<y_4<y_5<1
 \end{aligned}
 $$
@@ -104,10 +104,12 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow f_{\sssig Y_1\cdots Y_5}(&y_1,y_2,y_3,y_4,y_5) =5!\times f_{\sssig X}(y_1)\times f_{\sssig X}(y_2)\\[0.2em]
-&\qquad\times f_{\sssig X}(y_3)\times f_{\sssig X}(y_4)\times f_{\sssig X}(y_5)\\[0.45em]
+\Longrightarrow\ &f_{\sssig Y_1\cdots Y_5}(y_1,y_2,y_3,y_4,y_5)\\[0.35em]
+&=5!\times f_{\sssig X}(y_1)\times f_{\sssig X}(y_2)\\[0.2em]
+&\qquad\times f_{\sssig X}(y_3)\times f_{\sssig X}(y_4)\\[0.2em]
+&\qquad\times f_{\sssig X}(y_5)\\[0.45em]
 &=5!\times 1^{5}=120,\\[0.45em]
-&\quad 0<y_1<y_2<y_3<y_4<y_5<1
+&\qquad 0<y_1<y_2<y_3<y_4<y_5<1
 \end{aligned}
 $$
 
@@ -300,29 +302,24 @@ $$
 
 </div>
 
-<div class="topic-math-follow" markdown="1">
+故可知 <span class="text-nowrap">$R\sim\mathrm{Beta}(4,2)$，</span>由此可得
+{: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{gathered}
-\Longrightarrow R\sim\mathrm{Beta}(4,2)\\[0.6em]
 \mathbb{E}(R)=\frac{4}{\,4+2\,}=\frac{2}{\,3\,},\qquad\mathrm{Var}(R)=\frac{4\times 2}{\,(4+2)^{2}(4+2+1)\,}=\frac{2}{\,63\,}
-\end{gathered}
 $$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\Longrightarrow R&\sim\mathrm{Beta}(4,2)\\[0.6em]
-\mathbb{E}(R)&=\frac{4}{\,4+2\,}=\frac{2}{\,3\,},\\[0.6em]
-\mathrm{Var}(R)&=\frac{4\times 2}{\,(4+2)^{2}(4+2+1)\,}=\frac{2}{\,63\,}
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(R)=\frac{4}{\,4+2\,}=\frac{2}{\,3\,}\\[0.55em]
+\mathrm{Var}(R)=\frac{4\times 2}{\,(4+2)^{2}(4+2+1)\,}=\frac{2}{\,63\,}
+\end{gathered}
 $$
-
-</div>
 
 </div>
 
@@ -331,13 +328,13 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，由順序統計量可加以定義的統計量相當多元，樣本全距 (sample range) 即是一個很好的例子，即
+許多常見統計量皆可由順序統計量定義而成。例如本題計算的樣本全距 (sample range) 為
 
 $$
 R=Y_n-Y_1
 $$
 
-另一個例子是樣本中位數 (sample median)，即
+另一個常見統計量為樣本中位數 (sample median)，定義為
 
 $$
 m_{\sssig e}=
@@ -357,7 +354,7 @@ $$
 <div class="topic-box__label">Example 3.64</div>
 
 <div lang="en" markdown="1">
-Suppose that <span class="text-nowrap">$X_1$,</span> $X_2$ and $X_3$ are independent and identically distributed random variables whose common pdf is
+Let <span class="text-nowrap">$X_1$,</span> <span class="text-nowrap">$X_2$,</span> and $X_3$ be independent and identically distributed random variables with common pdf
 
 $$
 f_{\sssig X}(x)=
@@ -370,12 +367,12 @@ e^{-x}, & 0<x<\infty\\[0.5em]
 $$
 
 <ol class="topic-list-paren">
-  <li>Determine the distribution of <span class="text-nowrap">$Y=\min\lbrace X_1,X_2,X_3\rbrace$.</span></li>
-  <li>Determine the distribution of <span class="text-nowrap">$Y=\max\lbrace X_1,X_2,X_3\rbrace$.</span></li>
+  <li>Find the distribution of <span class="text-nowrap">$Y=\min\lbrace X_1,X_2,X_3\rbrace$.</span></li>
+  <li>Find the distribution of <span class="text-nowrap">$Y=\max\lbrace X_1,X_2,X_3\rbrace$.</span></li>
 </ol>
 </div>
 
-(1) 我們首先計算 $X_i,\ i=1,2,3$ 的 cdf 如下
+(1) 先計算 $X_i,\ i=1,2,3$ 的 cdf 如下
 {: .topic-paren-item}
 
 $$
@@ -590,7 +587,7 @@ $$
 
 </div>
 
-(4) 依照 joint cdf 及順序統計量之定義，我們有
+(4) 由 joint cdf 及順序統計量之定義可得
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -626,7 +623,7 @@ $$
 <div class="topic-box__label">Example 3.65</div>
 
 <div lang="en" markdown="1">
-Suppose that a distribution has the pmf <span class="text-nowrap">$f_{\sssig X}(x)=\frac{1}{\,6\,}$,</span> <span class="text-nowrap">$x=1,2,3,4,5,6$.</span> Find the pmf of the smallest observation in a random sample of size $5$ drawn from this distribution.
+Let <span class="text-nowrap">$f_{\sssig X}(x)=\frac{1}{\,6\,}$,</span> <span class="text-nowrap">$x=1,2,3,4,5,6$,</span> be the pmf of a distribution. Find the pmf of the smallest observation in a random sample of size $5$ drawn from this distribution.
 </div>
 
 依題意可令 $Y_1$ $=$ <span class="text-nowrap">$\min(X_1,\ldots,X_5)$，</span>則
@@ -686,11 +683,12 @@ $$
 <div class="topic-box__label">Example 3.66</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,X_2,\ldots,X_m$ are $m$ independent random variables taking non-negative integer values, all of them sharing the common distribution <span class="text-nowrap">$\mathbb{P}(X=k)=p_{\sssig k}$,</span> and let <span class="text-nowrap">$r_{\sssig n}=\sum_{k=n}^{\infty}p_{\sssig k}$.</span> Show that
+Let $X_1,X_2,\ldots,X_m$ be $m$ independent non-negative integer-valued random variables with common distribution <span class="text-nowrap">$\mathbb{P}(X=k)=p_{\sssig k}$.</span> Define <span class="text-nowrap">$r_{\sssig n}=\sum_{k=n}^{\infty}p_{\sssig k}$.</span> Show that
 
 $$
 \mathbb{E}\bigl[\min(X_1,\ldots,X_m)\bigr]=\sum_{n=1}^{\infty}r_{\sssig n}^{m}
 $$
+
 </div>
 
 令 $Y$ $=$ <span class="text-nowrap">$\min(X_1,\ldots,X_m)$，</span>則由 [Theorem 2.8](/lecture-notes/expectation/#thm-expectation-tail-sum) 可知
@@ -755,13 +753,13 @@ $$
 
 由順序統計量所定義出來的統計量相當多元，樣本全距與樣本中位數都是很好的例子，後者在 $n$ 為奇數時取正中間的那一個順序統計量，$n$ 為偶數時取中間兩個的平均。[Example 3.64](#ex-three-iid-order-pdf) 換成指數分配的隨機樣本，作法則回到事件本身。最小者大於 $y$ 這件事等於三個變數都大於 <span class="text-nowrap">$y$，</span>最大者小於等於 $y$ 這件事等於三個變數都小於等於 <span class="text-nowrap">$y$，</span>各以獨立性拆成三個機率相乘之後即得 <span class="text-nowrap">cdf，</span>再對 $y$ 微分就是 pdf。最小者的 pdf 是 <span class="text-nowrap">$3e^{-3y}$，</span>仍為指數分配，只是平均數縮成原本的三分之一；最大者的 pdf 則是 <span class="text-nowrap">$3[1-e^{-y}]^{2}(e^{-y})$，</span>已經不是指數分配。
 
-[Theorem 3.25](#thm-order-stat-samp-dist-cdf) 把同一組結果改寫成 cdf 的形式。最小者與最大者的 cdf 分別是 $1-\bigl[1-F_{\sssig X}(y_1)\bigr]^{n}$ 與 $\bigl[F_{\sssig X}(y_n)\bigr]^{n}$ 這兩個式子，證明與 [Theorem 3.24](/lecture-notes/order-statistics-distributions/#thm-order-stat-samp-dist-pdf) 的前兩款相同。第 $i$ 個順序統計量的 cdf 則換一個角度來數。$Y_i\leqslant y_i$ 這件事等於至少有 $i$ 個樣本比 $y_i$ 小，而每一個樣本比 $y_i$ 小的機率都是 <span class="text-nowrap">$F_{\sssig X}(y_i)$，</span>因此所求就是一組二項機率由 $k=i$ 加到 $k=n$ 的和。最小者與最大者的聯合 cdf 則以相減求得。先取 $Y_n\leqslant y_n$ 的機率，再扣掉其中 $Y_1>y_1$ 的那一部分，後者表示所有樣本都落在 $y_1$ 與 $y_n$ 之間，機率為 $\bigl[F_{\sssig X}(y_n)-F_{\sssig X}(y_1)\bigr]^{n}$ 這個式子。
+[Theorem 3.25](#thm-order-stat-samp-dist-cdf) 把同一組結果改寫成 cdf 的形式。最小者與最大者的 cdf 分別是 $1-\bigl[1-F_{\sssig X}(y_1)\bigr]^{n}$ 與 $\bigl[F_{\sssig X}(y_n)\bigr]^{n}$ 這兩個式子，證明與 [Theorem 3.24](/lecture-notes/order-statistics-distributions/#thm-order-stat-samp-dist-pdf) 的前兩款相同。第 $i$ 個順序統計量的 cdf 則換一個角度來數。$Y_i\leqslant y_i$ 這件事等於至少有 $i$ 個樣本比 $y_i$ 小，而每一個樣本比 $y_i$ 小的機率都是 <span class="text-nowrap">$F_{\sssig X}(y_i)$，</span>因此所求就是一組二項機率由 $k=i$ 加到 $k=n$ 的和。最小者與最大者的聯合 cdf 則以相減求得。先取 $Y_n\leqslant y_n$ 的機率，再扣掉其中 $Y_1>y_1$ 的部分，後者表示樣本全都落在 $y_1$ 與 $y_n$ 之間，機率為 $\bigl[F_{\sssig X}(y_n)-F_{\sssig X}(y_1)\bigr]^{n}$ 這一項。
 
 最後兩道例題把同一套作法用在離散型之上。[Example 3.65](#ex-discrete-order-statistics-die) 的 cdf 是 <span class="text-nowrap">$\frac{\,x_i\,}{6}$，</span>代入 [Theorem 3.25](#thm-order-stat-samp-dist-cdf) 的第一款即得最小者的 <span class="text-nowrap">cdf，</span>離散型的 pmf 再由相鄰兩個 cdf 相減求得。[Example 3.66](#ex-order-statistics-minimum) 求的是最小者的[期望值](/lecture-notes/expectation/#def-expectation)，非負整數型[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)的期望值可以寫成尾機率之和，而 $Y\geqslant k$ 這件事等於每一個樣本都大於等於 <span class="text-nowrap">$k$，</span>機率因而是 $r_{\sssig k}$ 的 $m$ 次方，加總之後即得所求。這兩題所用的都是同一個觀點，最小者的事件可以拆成 $m$ 個獨立事件的交集。
 
-第三章到此結束。全章先以[隨機向量與聯合 pmf](/lecture-notes/random-vectors-joint-pmf/) 把討論的對象由一個隨機變數推廣到多個，再依序給出[聯合 cdf](/lecture-notes/joint-cumulative-distribution-functions/)、[聯合 pdf](/lecture-notes/joint-probability-density-functions/) 與[邊際 pdf](/lecture-notes/marginal-probability-density-functions/)，並以[區域機率](/lecture-notes/region-probabilities-joint-density/)與[序列型例題](/lecture-notes/marginal-cumulative-distribution-functions/)示範聯合密度的積分怎麼算。接著是[條件分配](/lecture-notes/conditional-distributions/)與[它的例題](/lecture-notes/conditional-distributions-examples/)，以及聯合分配可以拆成兩個邊際分配相乘的[獨立隨機變數](/lecture-notes/independent-random-variables/)。有了這些之後，[多元隨機變數的期望值](/lecture-notes/multivariate-expectations/)、[條件期望值與條件變異數](/lecture-notes/conditional-expectation-and-variance/)各自把單變數的量數推廣到多變數，[雙重期望值定理](/lecture-notes/double-expectation-theorem/)、[它的例題](/lecture-notes/double-expectation-examples/)、[條件版全機率定理](/lecture-notes/conditional-law-of-total-probability/)、[變異數分解定理](/lecture-notes/variance-decomposition-theorem/)與[沃德等式](/lecture-notes/wald-identity-gamblers-ruin/)則圍繞著同一個加權平均的想法展開。[交叉動差與聯合 mgf](/lecture-notes/cross-moments-joint-mgf/) 之後進入兩個變數之間的關聯: [共變異數](/lecture-notes/covariance/)、[線性組合的變異數](/lecture-notes/variance-of-linear-combination/)、[共變異數矩陣](/lecture-notes/covariance-matrix/)、[相關係數](/lecture-notes/correlation-coefficient/)、[相關矩陣](/lecture-notes/correlation-properties-and-matrix/)與[母體線性迴歸式](/lecture-notes/population-linear-regression/)。全章最後處理的是多變數的函數轉換與排序: [多對多](/lecture-notes/many-to-many-transformations/)、[多對一與動差母函數法](/lecture-notes/mgf-method-transformations/)、[動差母函數法的例題](/lecture-notes/mgf-method-examples/)，以及[順序統計量的定義](/lecture-notes/order-statistics/)、[它的抽樣分配](/lecture-notes/order-statistics-distributions/)與本篇的例題。
+第三章到此結束。全章先以[隨機向量與聯合 pmf](/lecture-notes/random-vectors-joint-pmf/) 把討論的對象由一個隨機變數推廣到多個，再依序給出[聯合 cdf](/lecture-notes/joint-cumulative-distribution-functions/)、[聯合 pdf](/lecture-notes/joint-probability-density-functions/) 與[邊際 pdf](/lecture-notes/marginal-probability-density-functions/)，並以[區域機率](/lecture-notes/region-probabilities-joint-density/)與[序列型例題](/lecture-notes/marginal-cumulative-distribution-functions/)示範聯合密度的積分怎麼算。接著是[條件分配](/lecture-notes/conditional-distributions/)與[它的例題](/lecture-notes/conditional-distributions-examples/)，以及聯合分配可以拆成兩個邊際分配相乘的[獨立隨機變數](/lecture-notes/independent-random-variables/)。有了這些之後，[多元隨機變數的期望值](/lecture-notes/multivariate-expectations/)、[條件期望值與條件變異數](/lecture-notes/conditional-expectation-and-variance/)各自把單變數的量數推廣到多變數，[雙重期望值定理](/lecture-notes/double-expectation-theorem/)、[它的例題](/lecture-notes/double-expectation-examples/)、[條件版全機率定理](/lecture-notes/conditional-law-of-total-probability/)、[變異數分解定理](/lecture-notes/variance-decomposition-theorem/)與[沃德等式](/lecture-notes/wald-identity-gamblers-ruin/)則圍繞著同一個加權平均的想法展開。[交叉動差與聯合 mgf](/lecture-notes/cross-moments-joint-mgf/) 之後進入兩個變數之間的關聯，依序討論[共變異數](/lecture-notes/covariance/)、[線性組合的變異數](/lecture-notes/variance-of-linear-combination/)、[共變異數矩陣](/lecture-notes/covariance-matrix/)、[相關係數](/lecture-notes/correlation-coefficient/)、[相關矩陣](/lecture-notes/correlation-properties-and-matrix/)與[母體線性迴歸式](/lecture-notes/population-linear-regression/)。全章最後處理的是多變數的函數轉換與排序，包含[多對多](/lecture-notes/many-to-many-transformations/)、[多對一與動差母函數法](/lecture-notes/mgf-method-transformations/)、[動差母函數法的例題](/lecture-notes/mgf-method-examples/)，以及[順序統計量的定義](/lecture-notes/order-statistics/)、[它的抽樣分配](/lecture-notes/order-statistics-distributions/)與本篇的例題。
 
-<!-- ref-point: 待第四章各篇發布後，在此補一句銜接下一章的話並指向第四章第一篇。 -->
+[第四章](/lecture-notes/bernoulli-trials-and-distribution/)轉入常見的機率模型，由伯努利實驗與伯努利分配出發，依序建立離散型與連續型的常用機率分配。
 
 ## 參考文獻與延伸閱讀
 

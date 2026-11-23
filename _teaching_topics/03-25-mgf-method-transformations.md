@@ -10,20 +10,16 @@ order: 325
 permalink: /lecture-notes/mgf-method-transformations/
 date: 2026-08-13
 published: false
-excerpt: "維度相同的多對多轉換求的是轉換後的聯合分配，但有的時候我們要的只是轉換後其中一個變數的邊際分配。作法是先照樣作一個維度相同的轉換，求出聯合 pdf 之後，再把不需要的那個變數積分掉，本篇的兩道例題即依此求得 $f_{\\sssig Z}(z)$ 與 $f_{\\sssig Y_1}(y_1)$ 這兩個邊際 pdf。若轉換本身是線性的，而且各個變數彼此獨立，另有一條更快的路: $W=\\sum_{i=1}^{n}a_i\\,X_i+b$ 的動差母函數等於 $e^{bt}$ 與各項動差母函數在 $a_i\\,t$ 之處的值連乘，求出來之後再由 mgf 的唯一性認出分配即可。本篇最後兩道例題即以此求出兩個獨立離散變數之和的機率函數，以及三個獨立同分配變數之和的期望值與變異數。"
+excerpt: "求多元函數轉換後單一變數的分配時，可先補齊維度作多對多轉換再積分消去輔助變數。若變數彼此獨立且為線性組合，動差母函數法可將組合後的 mgf 拆為各項代換引數後的乘積並由唯一性辨識分配，本篇分別以例題示範兩種作法。"
 ---
 
-[上一篇](/lecture-notes/many-to-many-transformations/)介紹了維度相同的多對多函數轉換: 離散型以 pmf 法解聯立方程式，把原變數以新變數表示；連續型則以 Jacobian 法把原變數的 pdf 以新變數表示，再乘上體積轉換因子的絕對值。兩者求得的都是轉換後的聯合分配。
+[上一篇](/lecture-notes/many-to-many-transformations/)介紹了維度相同的多對多函數轉換，其中離散型以 pmf 法解聯立方程式，把原變數以新變數表示；連續型則以 Jacobian 法把原變數的 pdf 以新變數表示，再乘上體積轉換因子的絕對值。兩者求得的都是轉換後的聯合分配。
 
 本篇處理的是另一種需求，也就是轉換之後我們只要其中一個變數的邊際分配。前半先說明多對一的處理流程，即先作一個維度相同的轉換，再把不需要的變數積分掉，並以兩道例題示範；後半則指出當轉換是線性的，且各個變數彼此獨立時，[Theorem 3.23](#thm-mgf-two-to-one) 可以直接由各項的 mgf 求出線性組合的 mgf，最後以兩道例題示範這條路。
 
 ## 隨機變數的多對一函數轉換
 
-有的時候，我們或許不是要求函數轉換後的聯合分配，而是求函數轉換後的多個變數中，其一的邊際分配。
-
-這個時候比較直觀的作法是，一樣假設多對多 (維度相同) 的函數轉換，如同 [Example 3.51](/lecture-notes/many-to-many-transformations/#ex-integral-one-variable) 一樣，隨後再將轉換完後不需要的變數給積分掉，從而得到這個所求變數單獨的邊際分配。
-
-綜觀來看，這是一個多對一的函數轉換問題，其流程如下:
+有時我們關心的並非轉換後整組隨機向量的聯合分配，而是單一轉換變數的邊際分配。直觀的作法是先引入適當的輔助變數，配成維度相同的多對多轉換 (如 [Example 3.51](/lecture-notes/many-to-many-transformations/#ex-integral-one-variable))，求出轉換後的聯合分配後，再將輔助變數積分消去，即可取得所求變數的邊際分配。此類多對一函數轉換的流程如下:
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -44,13 +40,13 @@ $$
 
 </div>
 
-而這個流程所需要使用的技巧我們已經全部學會，見下列例題。
+以下以兩道例題示範此流程。
 
 <div id="ex-integral-one-variable-many-to-one" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.51 <span lang="en">(Continued)</span></div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ and $Y$ are continuous random variables whose joint probability density function is
+Let $X$ and $Y$ be continuous random variables with joint probability density function
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -82,21 +78,24 @@ $$
 </div>
 
 <ol class="topic-list-paren topic-list-paren--start-2">
-  <li>Determine the marginal probability density function of <span class="text-nowrap">$Z$.</span></li>
+  <li>Find the marginal probability density function of <span class="text-nowrap">$Z$.</span></li>
 </ol>
 </div>
 
 (2) 由 (1) 已知
 {: .topic-paren-item}
 
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+<div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
 
 $$
-f_{\sssig ZW}(z,w)=24w(z-w)\cdot\bigl\lvert-1\bigr\rvert=24w(z-w),\ 0<w<1,\ 0<z<1,\ w<z
+\begin{aligned}
+f_{\sssig ZW}(z,w)&=24w(z-w)\cdot\bigl\lvert-1\bigr\rvert\\[0.45em]
+&=24w(z-w),\ 0<w<1,\ 0<z<1,\ w<z
+\end{aligned}
 $$
 
 </div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+<div class="topic-math-layout topic-math-layout--mobile topic-math-follow-before" markdown="1">
 
 $$
 \begin{aligned}
@@ -111,7 +110,10 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow" markdown="1">
 
 $$
-\Longrightarrow\ f_{\sssig Z}(z)=\int_{0}^{z}f_{\sssig ZW}(z,w)\,dw=24\int_{0}^{z}\bigl(zw-w^{2}\bigr)\,dw=4z^{3},\ 0<z<1
+\begin{aligned}
+\Longrightarrow\ f_{\sssig Z}(z)&=\int_{0}^{z}f_{\sssig ZW}(z,w)\,dw=24\int_{0}^{z}\bigl(zw-w^{2}\bigr)\,dw\\[0.45em]
+&=4z^{3},\ 0<z<1
+\end{aligned}
 $$
 
 </div>
@@ -119,8 +121,7 @@ $$
 
 $$
 \begin{aligned}
-&\Longrightarrow\ f_{\sssig Z}(z)\\[0.45em]
-&=\int_{0}^{z}f_{\sssig ZW}(z,w)\,dw\\[0.45em]
+\Longrightarrow\ f_{\sssig Z}(z)&=\int_{0}^{z}f_{\sssig ZW}(z,w)\,dw\\[0.45em]
 &=24\int_{0}^{z}\bigl(zw-w^{2}\bigr)\,dw\\[0.45em]
 &=4z^{3},\ 0<z<1
 \end{aligned}
@@ -134,7 +135,7 @@ $$
 <div class="topic-box__label">Example 3.54</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1$ and $X_2$ are independent and identically distributed random variables whose common probability density function is
+Let $X_1$ and $X_2$ be independent and identically distributed random variables with common probability density function
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -165,7 +166,7 @@ $$
 </div>
 
 <ol class="topic-list-paren">
-  <li>Setting $Y_1=X_1+X_2$ and <span class="text-nowrap">$Y_2=\frac{X_1}{\,X_1+X_2\,}$,</span> determine the joint pdf of $Y_1$ and <span class="text-nowrap">$Y_2$.</span></li>
+  <li>Let $Y_1=X_1+X_2$ and <span class="text-nowrap">$Y_2=\frac{X_1}{\,X_1+X_2\,}$.</span> Find the joint pdf of $Y_1$ and <span class="text-nowrap">$Y_2$.</span></li>
   <li>Find the marginal pdf of $Y_1$ and the marginal pdf of <span class="text-nowrap">$Y_2$.</span></li>
 </ol>
 </div>
@@ -173,9 +174,23 @@ $$
 (1) 先將轉換式反解，可得
 {: .topic-paren-item}
 
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
 $$
 Y_1=X_1+X_2,\ \ Y_2=\frac{X_1}{\,X_1+X_2\,}\qquad\therefore\, X_1=Y_1Y_2,\ \ X_2=Y_1-Y_1Y_2
 $$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+Y_1&=X_1+X_2,\ \ Y_2=\frac{X_1}{\,X_1+X_2\,}\\[0.4em]
+&\qquad\therefore\, X_1=Y_1Y_2,\ \ X_2=Y_1-Y_1Y_2
+\end{aligned}
+$$
+
+</div>
 
 接著依 Jacobian 法可知
 {: .topic-paren-cont}
@@ -187,7 +202,7 @@ $$
 其中
 {: .topic-paren-cont}
 
-<div class="topic-math-layout topic-math-layout--desktop topic-math-follow-before" markdown="1">
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 \mathbf{J}=
@@ -206,7 +221,7 @@ y_2 & y_1\\[0.35em]
 $$
 
 </div>
-<div class="topic-math-layout topic-math-layout--mobile topic-math-follow-before" markdown="1">
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
 \begin{aligned}
@@ -232,24 +247,12 @@ $$
 由此可得
 {: .topic-paren-cont}
 
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
-
-$$
-f_{\sssig Y_1Y_2}(y_1,y_2)=e^{-y_1y_2}e^{-(y_1-y_1y_2)}\cdot\bigl\lvert-y_1\bigr\rvert=y_1e^{-y_1},\ y_1>0,\ 0<y_2<1
-$$
-
-</div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
-
 $$
 \begin{aligned}
-f_{\sssig Y_1Y_2}(y_1,y_2)&\\[0.45em]
-&=e^{-y_1y_2}e^{-(y_1-y_1y_2)}\cdot\bigl\lvert-y_1\bigr\rvert\\[0.45em]
+f_{\sssig Y_1Y_2}(y_1,y_2)&=e^{-y_1y_2}e^{-(y_1-y_1y_2)}\cdot\bigl\lvert-y_1\bigr\rvert\\[0.45em]
 &=y_1e^{-y_1},\ y_1>0,\ 0<y_2<1
 \end{aligned}
 $$
-
-</div>
 
 (2) 由 (1) 已知
 {: .topic-paren-item}
@@ -262,31 +265,13 @@ $$
 
 </div>
 
-<div class="topic-math-layout topic-math-layout--desktop topic-math-follow topic-math-follow-before" markdown="1">
-
-$$
-\Longrightarrow\ f_{\sssig Y_1}(y_1)=\int_{0}^{1}f_{\sssig Y_1Y_2}(y_1,y_2)\,dy_2=\int_{0}^{1}y_1e^{-y_1}\,dy_2=y_1e^{-y_1},\ y_1>0
-$$
-
-</div>
-<div class="topic-math-layout topic-math-layout--mobile topic-math-follow topic-math-follow-before" markdown="1">
-
-$$
-\begin{aligned}
-&\Longrightarrow\ f_{\sssig Y_1}(y_1)\\[0.45em]
-&=\int_{0}^{1}f_{\sssig Y_1Y_2}(y_1,y_2)\,dy_2\\[0.45em]
-&=\int_{0}^{1}y_1e^{-y_1}\,dy_2=y_1e^{-y_1},\ y_1>0
-\end{aligned}
-$$
-
-</div>
-
 <div class="topic-math-layout topic-math-layout--desktop topic-math-follow" markdown="1">
 
 $$
 \begin{aligned}
-&\Longrightarrow\ f_{\sssig Y_2}(y_2)\\[0.45em]
-&=\int_{0}^{\infty}f_{\sssig Y_1Y_2}(y_1,y_2)\,dy_1=\int_{0}^{\infty}y_1^{2-1}e^{-\frac{y_1}{1}}\,dy_1\\[0.45em]
+\Longrightarrow\ f_{\sssig Y_1}(y_1)&=\int_{0}^{1}f_{\sssig Y_1Y_2}(y_1,y_2)\,dy_2=\int_{0}^{1}y_1e^{-y_1}\,dy_2\\[0.45em]
+&=y_1e^{-y_1},\ y_1>0\\[0.65em]
+\Longrightarrow\ f_{\sssig Y_2}(y_2)&=\int_{0}^{\infty}f_{\sssig Y_1Y_2}(y_1,y_2)\,dy_1=\int_{0}^{\infty}y_1^{2-1}e^{-\frac{y_1}{1}}\,dy_1\\[0.45em]
 &=1^{2}\,\Gamma(2)=1,\ 0<y_2<1
 \end{aligned}
 $$
@@ -296,8 +281,10 @@ $$
 
 $$
 \begin{aligned}
-&\Longrightarrow\ f_{\sssig Y_2}(y_2)\\[0.45em]
-&=\int_{0}^{\infty}f_{\sssig Y_1Y_2}(y_1,y_2)\,dy_1\\[0.45em]
+\Longrightarrow\ f_{\sssig Y_1}(y_1)&=\int_{0}^{1}f_{\sssig Y_1Y_2}(y_1,y_2)\,dy_2\\[0.45em]
+&=\int_{0}^{1}y_1e^{-y_1}\,dy_2\\[0.45em]
+&=y_1e^{-y_1},\ y_1>0\\[0.65em]
+\Longrightarrow\ f_{\sssig Y_2}(y_2)&=\int_{0}^{\infty}f_{\sssig Y_1Y_2}(y_1,y_2)\,dy_1\\[0.45em]
 &=\int_{0}^{\infty}y_1^{2-1}e^{-\frac{y_1}{1}}\,dy_1\\[0.45em]
 &=1^{2}\,\Gamma(2)=1,\ 0<y_2<1
 \end{aligned}
@@ -309,7 +296,7 @@ $$
 
 ## 線性組合的動差母函數
 
-多轉一的[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)變換問題，如果是線性的變換且變數彼此獨立，我們可以由 mgf 法求得其轉換後的結果，見下列定理。
+在多對一的[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)轉換問題中，若各變數彼此獨立且所求為線性組合，亦可直接藉由動差母函數法求得轉換後的分配，見下列定理。
 
 <div id="thm-mgf-two-to-one" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 3.23 (線性組合的動差母函數, mgf of a linear combination)</div>
@@ -357,7 +344,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，[Theorem 3.23](#thm-mgf-two-to-one) 就是 [Theorem 2.39](/lecture-notes/one-to-one-transformations/#thm-mgf-linear-transformation) 的延伸版本，只不過利用了 $X_1, \ldots, X_n$ 彼此獨立的特性，將分項相乘的[期望值](/lecture-notes/expectation/#def-expectation)，改為先取期望值再相乘，進而變成一個多轉一的方法。
+[Theorem 3.23](#thm-mgf-two-to-one) 為單變數線性轉換公式 ([Theorem 2.39](/lecture-notes/one-to-one-transformations/#thm-mgf-linear-transformation)) 的多變數推廣。關鍵在於利用 $X\_1, \ldots, X\_n$ 彼此獨立的性質，將指數乘積的[期望值](/lecture-notes/expectation/#def-expectation)拆為各項期望值的連乘積，再結合 mgf 的唯一性即可辨識線性組合的分配。
 
 </div>
 
@@ -365,23 +352,23 @@ $$
 <div class="topic-box__label">Example 3.55</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ and $Y$ are independent random variables, that the moment generating function of $X$ is
+Let $X$ and $Y$ be independent random variables with moment generating functions
 
 $$
 M_{\sssig X}(t)=\frac{1}{4}\bigl(e^{t}+e^{2t}+e^{3t}+e^{4t}\bigr)
 $$
 
-and that the moment generating function of $Y$ is
+and
 
 $$
 M_{\sssig Y}(t)=\frac{1}{3}\bigl(e^{t}+e^{2t}+e^{3t}\bigr)
 $$
 
-and let <span class="text-nowrap">$W=X+Y$.</span>
+respectively, and let <span class="text-nowrap">$W=X+Y$.</span>
 
 <ol class="topic-list-paren">
-  <li>Determine the moment generating function of <span class="text-nowrap">$W$.</span></li>
-  <li>Find the probability function of <span class="text-nowrap">$W$.</span></li>
+  <li>Find the moment generating function of <span class="text-nowrap">$W$.</span></li>
+  <li>Find the probability mass function of <span class="text-nowrap">$W$.</span></li>
 </ol>
 </div>
 
@@ -437,12 +424,12 @@ $$
 <div class="topic-box__label">Example 3.56</div>
 
 <div lang="en" markdown="1">
-Suppose that <span class="text-nowrap">$X_1$,</span> $X_2$ and $X_3$ are independent and identically distributed random variables whose common moment generating function is $M_{\sssig X}(t)=e^{e^{t}-1}$ for every <span class="text-nowrap">$t\in\mathbb{R}$,</span> and let <span class="text-nowrap">$Y=X_1+X_2+X_3$.</span>
+Let $X_1,X_2,X_3$ be iid random variables with common mgf $M_{\sssig X}(t)=e^{e^{t}-1}$ for all <span class="text-nowrap">$t\in\mathbb{R}$,</span> and let <span class="text-nowrap">$Y=X_1+X_2+X_3$.</span>
 
 <ol class="topic-list-paren">
-  <li>List the probability mass function of <span class="text-nowrap">$X_1$.</span></li>
-  <li>Evaluate the probability <span class="text-nowrap">$\mathbb{P}(Y=0)$.</span></li>
-  <li>Determine the mean and the variance of <span class="text-nowrap">$Y$.</span></li>
+  <li>Write down the probability mass function of <span class="text-nowrap">$X_1$.</span></li>
+  <li>Find the probability <span class="text-nowrap">$\mathbb{P}(Y=0)$.</span></li>
+  <li>Find the mean and variance of <span class="text-nowrap">$Y$.</span></li>
 </ol>
 </div>
 
@@ -459,8 +446,26 @@ p_{\sssig X_1}(x)=
 \right.
 $$
 
-(2) $M_{\sssig Y}(t)$ $=$ $M_{\sssig X_1}(t)\,M_{\sssig X_2}(t)\,M_{\sssig X_3}(t)$ $=$ <span class="text-nowrap">$e^{3(e^{t}-1)}$,</span> for all $t\in\mathbb{R}$
+(2) 對所有 <span class="text-nowrap">$t\in\mathbb{R}$，</span>皆有
 {: .topic-paren-item}
+
+<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
+
+$$
+M_{\sssig Y}(t)=M_{\sssig X_1}(t)\,M_{\sssig X_2}(t)\,M_{\sssig X_3}(t)=e^{3(e^{t}-1)}
+$$
+
+</div>
+<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
+
+$$
+\begin{aligned}
+M_{\sssig Y}(t)&=M_{\sssig X_1}(t)\,M_{\sssig X_2}(t)\,M_{\sssig X_3}(t)\\[0.35em]
+&=e^{3(e^{t}-1)}
+\end{aligned}
+$$
+
+</div>
 
 由 mgf 的唯一性可知 $Y=X_1+X_2+X_3$ $\sim$ <span class="text-nowrap">$\mathrm{Poi}(\lambda=1+1+1=3)$，</span>故可知
 {: .topic-paren-cont}
@@ -497,7 +502,7 @@ $$
 
 當轉換是線性的，而且各個變數彼此獨立時，另有一條不必動用積分的路。[Theorem 3.23](#thm-mgf-two-to-one) 指出 $W$ $=$ $\sum_{i=1}^{n}a_i\,X_i+b$ 的[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)是 $e^{bt}$ <span class="text-nowrap">$\prod_{i=1}^{n}M_{\sssig X_i}(a_i\,t)$，</span>證明只有兩個關鍵步驟。先把指數上的加總拆成各項相乘，再由獨立性把乘積的期望值改寫成期望值的乘積。常數項 $e^{bt}$ 則直接提到外面。它與單變數的 [Theorem 2.39](/lecture-notes/one-to-one-transformations/#thm-mgf-linear-transformation) 是同一件事的延伸版本，差別只在多了「先取期望值再相乘」這一步。
 
-兩道例題示範這條路怎麼走。[Example 3.55](#ex-mgf-discrete-sum) 把兩個獨立變數的 mgf 直接相乘，再把乘開後的六項各自看成一個機率乘上 <span class="text-nowrap">$e^{wt}$，</span>由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)即可把 $W$ 的機率函數完整寫出來。[Example 3.56](#ex-poisson-mgf-sum) 反過來由 mgf 認出各項的分配，三項相乘之後所得的 $e^{3(e^{t}-1)}$ 仍是同一個分配族的 mgf，只是參數由 $1$ 變成 <span class="text-nowrap">$3$，</span>因而不必再算積分或加總，直接就能寫出 $\mathbb{P}(Y=0)=e^{-3}$ 以及 $Y$ 的期望值與[變異數](/lecture-notes/variance/#def-variance)。兩題所倚靠的都是同一件事，線性組合的 mgf 算得出來，分配就認得出來。
+兩道例題示範這條路怎麼走。[Example 3.55](#ex-mgf-discrete-sum) 把兩個獨立變數的 mgf 直接相乘，再把乘開後的六項各自看成一個機率乘上 <span class="text-nowrap">$e^{wt}$，</span>由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)即可把 $W$ 的機率函數完整寫出來。[Example 3.56](#ex-poisson-mgf-sum) 反過來由 mgf 認出各項的分配，三項相乘之後所得的 $e^{3(e^{t}-1)}$ 仍是同一個分配族的 mgf，只是參數由 $1$ 變成 <span class="text-nowrap">$3$，</span>因而不必再算積分或加總，直接就能寫出 $\mathbb{P}(Y=0)=e^{-3}$ 以及 $Y$ 的期望值與[變異數](/lecture-notes/variance/#def-variance)。兩題所倚靠的都是同一件事，線性組合的 mgf 算得出來，轉換後的分配就認得出來。
 
 [下一篇](/lecture-notes/mgf-method-examples/)將以三道例題繼續示範 mgf 法在多轉一問題上的用法。
 

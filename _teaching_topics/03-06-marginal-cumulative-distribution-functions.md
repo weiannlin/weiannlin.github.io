@@ -10,35 +10,22 @@ order: 306
 permalink: /lecture-notes/marginal-cumulative-distribution-functions/
 date: 2026-08-12
 published: false
-excerpt: "一列 iid 標準均勻分配的隨機變數，可以用「首次滿足特定條件的下標」定出一個隨機的 $N$，再求 $N$ 與序列本身的聯合機率。這一類問題的作法是回到 $N$ 的定義，把所求的事件改寫成一組不等式所界定的範圍，再以重積分求該範圍的體積，本篇的兩道例題分別以首次遞增的下標與部分和首次超過 $1$ 的下標示範這個作法。本篇後半給出邊際累積分配函數。離散型是邊際 pmf 的加總，連續型是邊際 pdf 的積分。若把這個定義與聯合機率密度函數及邊際機率密度函數的定義相結合，則可以得到 $F_{\\sssig X}(x)=F_{\\sssig XY}(x,\\infty)$ 與 $F_{\\sssig Y}(y)=F_{\\sssig XY}(\\infty,y)$ 這個有用的性質。"
+excerpt: "本篇前半以兩道獨立同分配均勻序列例題，示範如何將首次滿足條件的下標事件化為重積分求算機率。後半定義邊際累積分配函數，並推導由聯合 cdf 令另一變數趨於無窮大求邊際 cdf 的性質。"
 ---
 
 [上一篇](/lecture-notes/region-probabilities-joint-density/)以三道例題示範了[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)在指定區域上的積分，其中最後一題的三個變數都服從標準均勻分配，機率因而等於所求範圍在整個值域中所佔的比例。
 
-本篇分成兩個部分，兩者所處理的對象並不相同。**前半是兩道序列型的例題**: 題目給的是一列 iid <span lang="en">(independent and identically distributed)</span> 標準均勻分配的[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable) $U_1,U_2,\ldots$ 這個序列，並以某個條件首次成立的下標定出一個隨機的 <span class="text-nowrap">$N$，</span>所求則是 $N$ 與序列本身的聯合機率。這兩題所用的工具正是上一篇的重積分，只是積分的維度由三維推廣到 $n$ 維，而題目本身的關鍵，則在於回到 $N$ 的定義去建構所求機率的範圍。**後半回到分配函數本身**: 二元[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的[聯合累積分配函數](/lecture-notes/joint-cumulative-distribution-functions/#def-joint-cdf)、聯合機率密度函數與[邊際機率密度函數](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)都已經定義過，還差邊際的累積分配函數尚未給出，本篇把它補上，並說明它與聯合累積分配函數之間的關係。
+本篇分成前後兩個部分。**前半是兩道序列型的例題**，題目給的是一列 iid <span lang="en">(independent and identically distributed)</span> 標準均勻分配的[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable) $U_1,U_2,\ldots$ 這個序列，並以某個條件首次成立的下標定出一個隨機的 <span class="text-nowrap">$N$，</span>所求則是 $N$ 與序列本身的聯合機率。這兩題所用的工具正是上一篇的重積分，只是積分的維度由三維推廣到 $n$ 維，而解題關鍵在於回到 $N$ 的定義建構所求機率的範圍。**後半回到分配函數本身**，二元[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的[聯合累積分配函數](/lecture-notes/joint-cumulative-distribution-functions/#def-joint-cdf)、聯合機率密度函數與[邊際機率密度函數](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)都已經定義過，本篇補上邊際累積分配函數的定義，並說明它與聯合累積分配函數之間的關係。
 
 ## 標準均勻分配序列與首次滿足特定條件的下標
 
-在進入這兩道例題之前，先把上一篇最後一題所用到的那個微積分事實記下來。
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-事實上，在微積分中，$\iint_{A}1\,dx\,dy$ 表示 $A$ 區域的面積、$\iiint_{V}1\,dx\,dy\,dz$ 表示 $V$ 區域的體積，以此類推。這個性質在標準均勻分配的隨機變數上特別容易使用，我們可以將求取機率的問題，轉變為求取多維空間中的體積 (或面積)。
-
-</div>
+在微積分中，重積分 $\iint\_{A}1\,dx\,dy$ 表示區域 $A$ 的面積，$\iiint\_{V}1\,dx\,dy\,dz$ 表示區域 $V$ 的體積，更高維度亦同。對於獨立同服從標準均勻分配 $\mathcal{U}(0,1)$ 的隨機變數序列，其聯合密度在單位超立方體內恆為 <span class="text-nowrap">$1$，</span>故求取事件機率即可化為計算對應多維區域的體積 (或面積)。以下兩道例題皆運用此性質處理序列問題。
 
 <div id="ex-uniform-sequence-first-rise" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.7</div>
 
 <div lang="en" markdown="1">
-Suppose that $U_1,U_2,\ldots$ are iid $\mathcal{U}(0,1)$ random variables, and that $N$ is the first index at which the sequence rises, that is,
-
-$$
-N=\min\lbrace\,n\mid n\geqslant 2,\ U_n>U_{n-1}\,\rbrace
-$$
-
-Suppose that <span class="text-nowrap">$0<u\leqslant 1$.</span>
+Let $U_1,U_2,\ldots$ be a sequence of iid $\mathcal{U}(0,1)$ random variables, and let $N=\min\lbrace\,n\mid n\geqslant 2,\ U_n>U_{n-1}\,\rbrace$. For <span class="text-nowrap">$0<u\leqslant 1$:</span>
 
 <ol class="topic-list-paren">
   <li>Show that
@@ -46,11 +33,7 @@ $$
 \mathbb{P}(U_1\leqslant u,N=n)=\frac{\,u^{n-1}\,}{\,(n-1)!\,}-\frac{\,u^{n}\,}{\,n!\,},\quad n\geqslant 2
 $$
   </li>
-  <li>Evaluate
-$$
-\mathbb{P}(U_1\leqslant u,\ N\ \text{is even})
-$$
-  </li>
+  <li>Find $\mathbb{P}(U_1\leqslant u,\ N\ \text{is even})$.</li>
 </ol>
 </div>
 
@@ -63,7 +46,7 @@ $$
 \begin{aligned}
 \mathbb{P}(U_1\leqslant u,N=n)&=\mathbb{P}(U_{n-1}<U_{n-2}<\cdots<U_{1}\leqslant u,\ U_{n}>U_{n-1})\\[0.45em]
 &=\mathbb{P}(U_{n-1}<U_{n-2}<\cdots<U_{1}\leqslant u)\\[0.45em]
-&\quad -\mathbb{P}(U_{n}<U_{n-1}<U_{n-2}<\cdots<U_{1}\leqslant u)
+&\qquad -\mathbb{P}(U_{n}<U_{n-1}<U_{n-2}<\cdots<U_{1}\leqslant u)
 \end{aligned}
 $$
 
@@ -109,10 +92,10 @@ $$
 
 $$
 \begin{aligned}
-&\mathbb{P}(U_{n}<U_{n-1}<U_{n-2}<\cdots<U_{1}\leqslant u)\\[0.45em]
-&\quad =\int_{0}^{u}\int_{0}^{u_1}\int_{0}^{u_2}\cdots\int_{0}^{u_{n-1}}1\,du_{n}\,du_{n-1}\cdots\,du_{1}\\[0.45em]
-&\quad =\int_{0}^{u}\int_{0}^{u_1}\int_{0}^{u_2}\cdots\int_{0}^{u_{n-2}}u_{n-1}\,du_{n-1}\,du_{n-2}\cdots\,du_{1}\\[0.45em]
-&\quad =\cdots=\int_{0}^{u}\frac{1}{\,(n-1)!\,}u_1^{n-1}\,du_{1}=\frac{\,u^n\,}{\,n!\,},\quad 0<u\leqslant 1
+\mathbb{P}(&U_{n}<U_{n-1}<U_{n-2}<\cdots<U_{1}\leqslant u)\\[0.45em]
+&=\int_{0}^{u}\int_{0}^{u_1}\int_{0}^{u_2}\cdots\int_{0}^{u_{n-1}}1\,du_{n}\,du_{n-1}\cdots\,du_{1}\\[0.45em]
+&=\int_{0}^{u}\int_{0}^{u_1}\int_{0}^{u_2}\cdots\int_{0}^{u_{n-2}}u_{n-1}\,du_{n-1}\,du_{n-2}\cdots\,du_{1}\\[0.45em]
+&=\cdots=\int_{0}^{u}\frac{1}{\,(n-1)!\,}u_1^{n-1}\,du_{1}=\frac{\,u^n\,}{\,n!\,},\quad 0<u\leqslant 1
 \end{aligned}
 $$
 
@@ -147,7 +130,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{P}(U_{n-1}<U_{n-2}<\cdots<U_{1}\leqslant u)&=\frac{\,u^{n-1}\,}{\,(n-1)!\,},\quad 0<u\leqslant 1
+\mathbb{P}(U_{n-1}<U_{n-2}<\cdots<U_{1}\leqslant u)&=\frac{\,u^{n-1}\,}{\,(n-1)!\,},\\[0.35em]
+&\qquad 0<u\leqslant 1
 \end{aligned}
 $$
 
@@ -200,7 +184,7 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{P}(U_1\leqslant u,\ N\ \text{為偶數})&=\sum_{k=1}^{\infty}\mathbb{P}(U_1\leqslant u,N=2k)=\sum_{k=1}^{\infty}\left[\frac{\,u^{2k-1}\,}{\,(2k-1)!\,}-\frac{\,u^{2k}\,}{\,(2k)!\,}\right]\\[0.45em]
+\mathbb{P}(U_1\leqslant u,\ N\ \text{is even})&=\sum_{k=1}^{\infty}\mathbb{P}(U_1\leqslant u,N=2k)=\sum_{k=1}^{\infty}\left[\frac{\,u^{2k-1}\,}{\,(2k-1)!\,}-\frac{\,u^{2k}\,}{\,(2k)!\,}\right]\\[0.45em]
 &=\frac{\,u\,}{1!}-\frac{\,u^2\,}{2!}+\frac{\,u^3\,}{3!}-\frac{\,u^4\,}{4!}+\cdots\\[0.45em]
 &=1-\left(1-\frac{\,u\,}{1!}+\frac{\,u^2\,}{2!}-\frac{\,u^3\,}{3!}+\frac{\,u^4\,}{4!}-\cdots\right)\\[0.45em]
 &=1-e^{-u},\quad 0<u\leqslant 1
@@ -212,7 +196,7 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{P}(U_1\leqslant u,\ N\ \text{為偶數})&=\sum_{k=1}^{\infty}\mathbb{P}(U_1\leqslant u,N=2k)\\[0.45em]
+\mathbb{P}(U_1\leqslant u,\ N\ \text{is even})&=\sum_{k=1}^{\infty}\mathbb{P}(U_1\leqslant u,N=2k)\\[0.45em]
 &=\sum_{k=1}^{\infty}\left[\frac{\,u^{2k-1}\,}{\,(2k-1)!\,}-\frac{\,u^{2k}\,}{\,(2k)!\,}\right]\\[0.45em]
 &=\frac{\,u\,}{1!}-\frac{\,u^2\,}{2!}+\frac{\,u^3\,}{3!}-\frac{\,u^4\,}{4!}+\cdots\\[0.45em]
 &=1-\biggl(1-\frac{\,u\,}{1!}+\frac{\,u^2\,}{2!}\\[0.2em]
@@ -228,9 +212,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在此處中沿用了[前一道題](/lecture-notes/region-probabilities-joint-density/#ex-three-iid-uniform-order)的計算結果，除此之外，讀者應該會對此處的做法感到熟悉，因為在 [Example 2.16](/lecture-notes/properties-of-expectation/#ex-car-offer-waiting-time) 中，我們就曾經依照 $N$ 的定義，以序列計算所求機率，甚至求出[期望值](/lecture-notes/expectation/#def-expectation)。
-
-類似此處定義 $N$ 為「首次滿足特定條件的序列下標」還有很多變化的題型，甚至 $N$ 本身也可以服從常見機率模型，我們將在稍後看到這種情況衍生的特殊等式，但不論如何，我們總是可以利用 $N$ 的定義，反過來建構出指定的機率範圍，如下面這題。
+本題的重積分沿用了[前一道題](/lecture-notes/region-probabilities-joint-density/#ex-three-iid-uniform-order)的計算結果；而依首次達標下標 $N$ 的定義拆解事件並求算機率或[期望值](/lecture-notes/expectation/#def-expectation)的做法，亦與第二章的 [Example 2.16](/lecture-notes/properties-of-expectation/#ex-car-offer-waiting-time) 一脈相承。此類將 $N$ 定義為「首次滿足特定條件之序列下標」的問題形式多樣，$N$ 本身亦可能服從常見離散機率模型 (後文將介紹由此衍生的特殊等式)；解題關鍵皆在於利用 $\lbrace N=n\rbrace$ 的定義反推前 $n$ 個變數須滿足的不等式範圍，如下題所示。
 
 </div>
 
@@ -238,18 +220,14 @@ $$
 <div class="topic-box__label">Example 3.8</div>
 
 <div lang="en" markdown="1">
-Suppose that $U_1,U_2,\ldots$ are independent random numbers drawn from the same $\mathcal{U}(0,1)$ distribution, and that $N$ is defined by
+Let $U_1,U_2,\ldots$ be iid random variables from a $\mathcal{U}(0,1)$ distribution, and define
 
 $$
 N=\min\Bigl\lbrace\,n\,\Bigm|\,\sum_{i=1}^{n}U_i>1\,\Bigr\rbrace
 $$
 
 <ol class="topic-list-paren">
-  <li>Show that
-$$
-\mathbb{P}(N>n)=\frac{1}{\,n!\,}
-$$
-  </li>
+  <li>Show that $\mathbb{P}(N>n)=\frac{1}{\,n!\,}$.</li>
   <li>Evaluate <span class="text-nowrap">$\mathbb{E}(N)$.</span></li>
 </ol>
 </div>
@@ -308,10 +286,11 @@ $$
 
 $$
 \begin{aligned}
-&\mathbb{P}(U_1+\cdots+U_{n-1}+U_n\leqslant 1)\\[0.45em]
-&\quad =\int_{0}^{1}\int_{0}^{1-u_1}\int_{0}^{1-u_1-u_{2}}\cdots\int_{0}^{1-u_1-\cdots-u_{n-1}}1\,du_{n}\,du_{n-1}\cdots\,du_{1}\\[0.45em]
-&\quad =\int_{0}^{1}\int_{0}^{1-u_1}\int_{0}^{1-u_1-u_{2}}\cdots\int_{0}^{1-u_1-\cdots-u_{n-2}}(1-u_1-\cdots-u_{n-1})\,du_{n-1}\,du_{n-2}\cdots\,du_{1}\\[0.45em]
-&\quad =\cdots=\int_{0}^{1}\frac{1}{\,(n-1)!\,}(1-u_1)^{n-1}\,du_{1}=\frac{\,1\,}{\,n!\,}
+\mathbb{P}(&U_1+\cdots+U_{n-1}+U_n\leqslant 1)\\[0.45em]
+&=\int_{0}^{1}\int_{0}^{1-u_1}\int_{0}^{1-u_1-u_{2}}\cdots\int_{0}^{1-u_1-\cdots-u_{n-1}}1\,du_{n}\,du_{n-1}\cdots\,du_{1}\\[0.45em]
+&=\int_{0}^{1}\int_{0}^{1-u_1}\int_{0}^{1-u_1-u_{2}}\cdots\int_{0}^{1-u_1-\cdots-u_{n-2}}(1-u_1-\cdots-u_{n-1})\\[0.2em]
+&\qquad\qquad du_{n-1}\,du_{n-2}\cdots\,du_{1}\\[0.45em]
+&=\cdots=\int_{0}^{1}\frac{1}{\,(n-1)!\,}(1-u_1)^{n-1}\,du_{1}=\frac{\,1\,}{\,n!\,}
 \end{aligned}
 $$
 
@@ -394,20 +373,18 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-我們又一次地利用了 $N$ 的定義，建構出所求機率所對應的機率範圍，是解題的關鍵。
-
-此外，本題的積分雖然都只是多項式積分，但積分範圍與過程卻需要讀者細心思考。
+本題同樣利用 $N$ 的定義，將事件 $\lbrace N=n\rbrace$ 拆解為「前 $n-1$ 項和不超過 <span class="text-nowrap">$1$」</span>減去「前 $n$ 項和不超過 <span class="text-nowrap">$1$」</span>兩項機率之差。計算 $n$ 重積分時，各層上限 $1-u_1-\cdots-u_k$ 隨外層變數遞減；由內而外逐層對 $(1-u_1-\cdots-u_k)$ 的次方積分，每積一層便在分母多乘入一個正整數，累計 $n$ 層後即得階乘分母 <span class="text-nowrap">$1/n!$。</span>
 
 </div>
 
 ## 邊際累積分配函數
 
-以上兩題所處理的都是特定範圍上的機率。接下來我們把注意力移回分配函數本身: 二元隨機向量的聯合累積分配函數、聯合機率密度函數與邊際機率密度函數都已經給過定義，還差各個變數自己的累積分配函數尚未定義。
+以上兩題所處理的都是特定範圍上的機率。接下來我們把注意力移回分配函數本身。二元隨機向量的聯合累積分配函數、聯合機率密度函數與邊際機率密度函數都已經給過定義，還差各個變數自己的累積分配函數尚未定義。
 
 <div id="def-marginal-cdf" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.7 (邊際累積分配函數, marginal cdf)</div>
 
-若 $(X,Y)$ 為二元**離散型**隨機變數，其邊際 pmf 分別為 $p_{\sssig X}(x)$ 與 <span class="text-nowrap">$p_{\sssig Y}(y)$，</span>則
+若 $(X,Y)$ 為二元**離散型**隨機變數，其邊際 pmf 為 $p_{\sssig X}(x)$ 與 <span class="text-nowrap">$p_{\sssig Y}(y)$，</span>則
 
 $$
 F_{\sssig X}(x)=\sum_{t\leqslant x}p_{\sssig X}(t)
@@ -421,7 +398,7 @@ $$
 
 為 $Y$ 的**邊際累積分配函數**。
 
-若 $(X,Y)$ 為二元**連續型**隨機變數，其邊際 pdf 分別為 $f_{\sssig X}(x)$ 與 <span class="text-nowrap">$f_{\sssig Y}(y)$，</span>則
+若 $(X,Y)$ 為二元**連續型**隨機變數，其邊際 pdf 為 $f_{\sssig X}(x)$ 與 <span class="text-nowrap">$f_{\sssig Y}(y)$，</span>則
 
 $$
 F_{\sssig X}(x)=\int_{-\infty}^{x}f_{\sssig X}(t)\,dt
@@ -442,7 +419,7 @@ $$
 <div id="thm-joint-cdf-prob" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 3.2 (邊際累積分配函數的求法, marginal cdf from a joint cdf)</div>
 
-若 $(X,Y)$ 為二元**離散型**隨機變數，其邊際 pmf 分別為 $p_{\sssig X}(x)$ 與 <span class="text-nowrap">$p_{\sssig Y}(y)$，</span>則
+若 $(X,Y)$ 為二元**離散型**隨機變數，其邊際 pmf 為 $p_{\sssig X}(x)$ 與 <span class="text-nowrap">$p_{\sssig Y}(y)$，</span>則
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -472,7 +449,7 @@ $$
 
 </div>
 
-若 $(X,Y)$ 為二元**連續型**隨機變數，其邊際 pdf 分別為 $f_{\sssig X}(x)$ 與 <span class="text-nowrap">$f_{\sssig Y}(y)$，</span>則
+若 $(X,Y)$ 為二元**連續型**隨機變數，其邊際 pdf 為 $f_{\sssig X}(x)$ 與 <span class="text-nowrap">$f_{\sssig Y}(y)$，</span>則
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -540,7 +517,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者如果確實將 [Example 3.2](/lecture-notes/marginal-probability-density-functions/#ex-joint-pdf-region-basic) 至 [Example 3.4](/lecture-notes/region-probabilities-joint-density/#ex-joint-pdf-exponential-region) 的積分範圍思考透徹，則應該發現，這些範圍上的積分結果，事實上都能夠與 [Theorem 3.2](#thm-joint-cdf-prob) 的結果相呼應。
+回顧前文 [Example 3.2](/lecture-notes/marginal-probability-density-functions/#ex-joint-pdf-region-basic) 至 [Example 3.4](/lecture-notes/region-probabilities-joint-density/#ex-joint-pdf-exponential-region) 的分段積分範圍，即可直接印證 [Theorem 3.2](#thm-joint-cdf-prob)。例如在 Example 3.2 與 Example 3.3 的 joint cdf 中，當 $y\geqslant 1$ (故 $y\to\infty$ 時亦同) 且 $0<x<1$ 時，該分支的函數式分別為 $3x^{2}-2x^{3}$ 與 <span class="text-nowrap">$-x^{3}+x^{2}+x$，</span>恰為各自邊際密度 $f\_{\sssig X}(t)$ 由 $0$ 積至 $x$ 所得的邊際 cdf <span class="text-nowrap">$F\_{\sssig X}(x)$。</span>
 
 </div>
 

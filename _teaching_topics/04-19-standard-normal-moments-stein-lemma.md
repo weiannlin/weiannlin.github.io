@@ -10,7 +10,7 @@ order: 419
 permalink: /lecture-notes/standard-normal-moments-stein-lemma/
 date: 2026-08-15
 published: false
-excerpt: "本篇先以兩道例題示範標準常態變數的隨機組合: 一是以取值為 $1$ 與 $-1$ 的隨機正負號乘上標準常態變數，所得的變數仍為標準常態分配，與原變數零相關卻不獨立；二是以隨機的權數組合兩個獨立的標準常態變數，由條件分配與條件動差母函數兩種作法都可判定其仍為標準常態分配。接著把 $e^{\\frac{t^{2}}{2}}$ 展成馬克勞林級數並與動差級數比較係數，得到標準常態分配的各階原動差在 $k$ 為偶數時為 $\\frac{k!}{2^{\\frac{k}{2}}(\\frac{k}{2})!}$、在 $k$ 為奇數時為 $0$。一般常態分配的高階動差若循反標準化計算相當繁複，斯泰因引理提供了另一條路。對 $X\\sim\\mathcal{N}(\\mu,\\sigma^{2})$ 與可微函數 $g$，有 $\\mathbb{E}[g(X)(X-\\mu)]=\\sigma^{2}\\mathbb{E}[g^{\\prime}(X)]$，證明用的是分部積分。最後以 $\\mathbb{E}[Z\\Phi(Z)]$ 與 $\\mathbb{E}[Z^{2}\\Phi(Z)]$ 兩個期望值演練這條引理。"
+excerpt: "本篇先以隨機正負號與隨機權數兩道例題探討標準常態的構造與零相關不獨立現象，再由動差母函數展開求得標準常態各階原動差。後半在 $g$ 可微且導數期望值有限下，證明斯泰因引理 $\\mathbb{E}[g(X)(X-\\mu)]=\\sigma^{2}\\mathbb{E}[g^{\\prime}(X)]$ 並演練期望值計算。"
 ---
 
 [上一篇](/lecture-notes/normal-probability-computation/)以四道例題演練常態機率的計算。本篇仍以[常態分配](/lecture-notes/normal-distribution/#def-normal)為對象，但把重心由機率的計算轉到動差的求算。
@@ -25,13 +25,13 @@ excerpt: "本篇先以兩道例題示範標準常態變數的隨機組合: 一�
 <div class="topic-box__label">Example 4.48</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ is a normal random variable with mean $0$ and variance $1$, and that $Z$ is a random variable independent of $X$ with $\mathbb{P}(Z=1)=\frac{1}{\,2\,}$ and <span class="text-nowrap">$\mathbb{P}(Z=-1)=\frac{1}{\,2\,}$.</span> Define <span class="text-nowrap">$Y=Z\cdot X$,</span> so that $Y$ equals $X$ when $Z=1$ and equals $-X$ when <span class="text-nowrap">$Z=-1$.</span>
+Let $X$ be a normal random variable with mean $0$ and variance <span class="text-nowrap">$1$,</span> and let $Z$ be a random variable independent of $X$ with $\mathbb{P}(Z=1)=\frac{1}{\,2\,}$ and <span class="text-nowrap">$\mathbb{P}(Z=-1)=\frac{1}{\,2\,}$.</span> Define <span class="text-nowrap">$Y=Z\cdot X$,</span> i.e., $Y=X$ if $Z=1$ and $Y=-X$ if <span class="text-nowrap">$Z=-1$.</span>
 
 <ol class="topic-list-paren">
-  <li>Determine whether $X$ and $Y$ are independent.</li>
-  <li>Determine whether $Z$ and $Y$ are independent.</li>
-  <li>Show that $Y$ is a normal random variable with mean $0$ and variance $1$.</li>
-  <li>Show that $\operatorname{Cov}(X,Y)=0$.</li>
+  <li>Are $X$ and $Y$ independent?</li>
+  <li>Are $Z$ and $Y$ independent?</li>
+  <li>Show that $Y$ is a normal random variable with mean $0$ and variance <span class="text-nowrap">$1$.</span></li>
+  <li>Show that <span class="text-nowrap">$\mathrm{Cov}(X,Y)=0$.</span></li>
 </ol>
 </div>
 
@@ -95,20 +95,20 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{aligned}
-M_{\sssig X}(t)&=M_{\sssig XY}(t,0)=e^{\frac{\,t^{2}\,}{2}},\ t\in\mathbb{R}\\[0.45em]
-M_{\sssig Y}(s)&=M_{\sssig XY}(0,s)=e^{\frac{\,s^{2}\,}{2}},\ s\in\mathbb{R}
-\end{aligned}
+\begin{gathered}
+M_{\sssig X}(t)=M_{\sssig XY}(t,0)=e^{\frac{\,t^{2}\,}{2}},\ t\in\mathbb{R}\\[0.45em]
+M_{\sssig Y}(s)=M_{\sssig XY}(0,s)=e^{\frac{\,s^{2}\,}{2}},\ s\in\mathbb{R}
+\end{gathered}
 $$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-M_{\sssig X}(t)&=M_{\sssig XY}(t,0)=e^{\frac{\,t^{2}\,}{2}},\ t\in\mathbb{R}\\[0.45em]
-M_{\sssig Y}(s)&=M_{\sssig XY}(0,s)=e^{\frac{\,s^{2}\,}{2}},\ s\in\mathbb{R}
-\end{aligned}
+\begin{gathered}
+M_{\sssig X}(t)=M_{\sssig XY}(t,0)=e^{\frac{\,t^{2}\,}{2}},\ t\in\mathbb{R}\\[0.45em]
+M_{\sssig Y}(s)=M_{\sssig XY}(0,s)=e^{\frac{\,s^{2}\,}{2}},\ s\in\mathbb{R}
+\end{gathered}
 $$
 
 </div>
@@ -180,10 +180,10 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{aligned}
-M_{\sssig Z}(t)&=M_{\sssig ZY}(t,0)=\frac{1}{\,2\,}\left[e^{t}+e^{-t}\right],\ t\in\mathbb{R}\\[0.45em]
-M_{\sssig Y}(s)&=M_{\sssig ZY}(0,s)=e^{\frac{\,s^{2}\,}{2}},\ s\in\mathbb{R}
-\end{aligned}
+\begin{gathered}
+M_{\sssig Z}(t)=M_{\sssig ZY}(t,0)=\frac{1}{\,2\,}\left[e^{t}+e^{-t}\right],\ t\in\mathbb{R}\\[0.45em]
+M_{\sssig Y}(s)=M_{\sssig ZY}(0,s)=e^{\frac{\,s^{2}\,}{2}},\ s\in\mathbb{R}
+\end{gathered}
 $$
 
 </div>
@@ -192,9 +192,12 @@ $$
 $$
 \begin{aligned}
 M_{\sssig Z}(t)&=M_{\sssig ZY}(t,0)\\[0.2em]
-&=\frac{1}{\,2\,}\left[e^{t}+e^{-t}\right],\ t\in\mathbb{R}\\[0.45em]
-M_{\sssig Y}(s)&=M_{\sssig ZY}(0,s)=e^{\frac{\,s^{2}\,}{2}},\ s\in\mathbb{R}
+&=\frac{1}{\,2\,}\left[e^{t}+e^{-t}\right],\ t\in\mathbb{R}
 \end{aligned}
+$$
+
+$$
+M_{\sssig Y}(s)=M_{\sssig ZY}(0,s)=e^{\frac{\,s^{2}\,}{2}},\ s\in\mathbb{R}
 $$
 
 </div>
@@ -220,7 +223,7 @@ $$
 
 $$
 \begin{aligned}
-\operatorname{Cov}(X,Y)&=\mathbb{E}\bigl[\operatorname{Cov}(X,ZX\mid Z)\bigr]\\[0.45em]
+\mathrm{Cov}(X,Y)&=\mathbb{E}\bigl[\operatorname{Cov}(X,ZX\mid Z)\bigr]\\[0.45em]
 &=\frac{1}{\,2\,}\operatorname{Cov}(X,X\mid Z=1)+\frac{1}{\,2\,}\operatorname{Cov}(X,-X\mid Z=-1)=0
 \end{aligned}
 $$
@@ -230,7 +233,7 @@ $$
 
 $$
 \begin{aligned}
-\operatorname{Cov}(X,Y)&=\mathbb{E}\bigl[\operatorname{Cov}(X,ZX\mid Z)\bigr]\\[0.3em]
+\mathrm{Cov}(X,Y)&=\mathbb{E}\bigl[\operatorname{Cov}(X,ZX\mid Z)\bigr]\\[0.3em]
 &=\frac{1}{\,2\,}\operatorname{Cov}(X,X\mid Z=1)\\[0.2em]
 &\qquad+\frac{1}{\,2\,}\operatorname{Cov}(X,-X\mid Z=-1)\\[0.3em]
 &=0
@@ -263,7 +266,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\operatorname{Cov}(X,Y)=\mathbb{E}(XY)-\mathbb{E}(X)\mathbb{E}(Y)=0\qquad(\,\because\ \mathbb{E}(X)=0\,)
+\mathrm{Cov}(X,Y)=\mathbb{E}(XY)-\mathbb{E}(X)\mathbb{E}(Y)=0\qquad(\,\because\ \mathbb{E}(X)=0\,)
 $$
 
 </div>
@@ -271,7 +274,7 @@ $$
 
 $$
 \begin{aligned}
-\operatorname{Cov}(X,Y)&=\mathbb{E}(XY)-\mathbb{E}(X)\mathbb{E}(Y)=0\\[0.2em]
+\mathrm{Cov}(X,Y)&=\mathbb{E}(XY)-\mathbb{E}(X)\mathbb{E}(Y)=0\\[0.2em]
 &\qquad(\,\because\ \mathbb{E}(X)=0\,)
 \end{aligned}
 $$
@@ -283,7 +286,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-此一問題的設定也是一個「零相關但不獨立」的例子，除了經典的[梅花座](/lecture-notes/covariance/#ex-uncorrelated-not-independent)一例之外，讀者亦可以此例參考。
+本題給出連續型隨機變數「零相關卻不獨立」的經典反例 (<span class="text-nowrap">$\mathrm{Cov}(X,Y)=0$</span> 但 <span class="text-nowrap">$X\not\indep Y$</span>)，可與前文離散型的[梅花座反例](/lecture-notes/covariance/#ex-uncorrelated-not-independent)相互對照。
 
 </div>
 
@@ -291,13 +294,13 @@ $$
 <div class="topic-box__label">Example 4.49</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$, $Y$ and $Z$ are independent and identically distributed random variables, each having the $\mathcal{N}(0,1)$ distribution. Determine the distribution of
+Let <span class="text-nowrap">$X,Y,Z\overset{\mathrm{iid}}{\sim}\mathcal{N}(0,1)$.</span> Find the distribution of
 
 $$
 W=\frac{\,X+YZ\,}{\,\sqrt{1+Z^{2}}\,}
 $$
 
-[Hint: work with the conditional distribution of $W$ given <span class="text-nowrap">$Z=z$.]</span>
+[Hint: Consider the conditional distribution of <span class="text-nowrap">$W\mid(Z=z)$.]</span>
 </div>
 
 令
@@ -351,18 +354,21 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{aligned}
-\Longrightarrow\ f_{\sssig W\mid(Z=z)}(w\mid z)&=\phi(w)\\[0.45em]
-\text{且}\ f_{\sssig WZ}(w,z)&=f_{\sssig W\mid(Z=z)}(w\mid z)f_{\sssig Z}(z)=\phi(w)\phi(z)
-\end{aligned}
+\begin{gathered}
+f_{\sssig W\mid(Z=z)}(w\mid z)=\phi(w)\\[0.45em]
+\text{且}\ f_{\sssig WZ}(w,z)=f_{\sssig W\mid(Z=z)}(w\mid z)f_{\sssig Z}(z)=\phi(w)\phi(z)
+\end{gathered}
 $$
 
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+f_{\sssig W\mid(Z=z)}(w\mid z)=\phi(w)
+$$
+
+$$
 \begin{aligned}
-\Longrightarrow\ f_{\sssig W\mid(Z=z)}(w\mid z)&=\phi(w)\\[0.45em]
 \text{且}\ f_{\sssig WZ}(w,z)&=f_{\sssig W\mid(Z=z)}(w\mid z)f_{\sssig Z}(z)\\[0.2em]
 &=\phi(w)\phi(z)
 \end{aligned}
@@ -376,7 +382,7 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ f_{\sssig W}(w)&=\int_{-\infty}^{\infty}f_{\sssig WZ}(w,z)\,dz=\int_{-\infty}^{\infty}\phi(w)\phi(z)\,dz\\[0.45em]
+f_{\sssig W}(w)&=\int_{-\infty}^{\infty}f_{\sssig WZ}(w,z)\,dz=\int_{-\infty}^{\infty}\phi(w)\phi(z)\,dz\\[0.45em]
 &=\phi(w)\times\int_{-\infty}^{\infty}\phi(z)\,dz=\phi(w)
 \end{aligned}
 $$
@@ -386,7 +392,7 @@ $$
 
 $$
 \begin{aligned}
-\Longrightarrow\ f_{\sssig W}(w)&=\int_{-\infty}^{\infty}f_{\sssig WZ}(w,z)\,dz\\[0.3em]
+f_{\sssig W}(w)&=\int_{-\infty}^{\infty}f_{\sssig WZ}(w,z)\,dz\\[0.3em]
 &=\int_{-\infty}^{\infty}\phi(w)\phi(z)\,dz\\[0.3em]
 &=\phi(w)\times\int_{-\infty}^{\infty}\phi(z)\,dz\\[0.3em]
 &=\phi(w)
@@ -479,7 +485,7 @@ $$
 <div id="thm-standard-normal-moments" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 4.21 (標準常態的各階原動差, moments of the standard normal)</div>
 
-令 <span class="text-nowrap">$Z\sim\mathcal{N}(0,1)$，</span>若且唯若 $Z$ 之各階原動差為
+令 <span class="text-nowrap">$Z\sim\mathcal{N}(0,1)$，</span>若且唯若隨機變數 $Z$ 之各階原動差為
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -520,7 +526,7 @@ $$
 <div class="topic-proof" markdown="1">
 **Proof.**
 
-由 $Z\sim\mathcal{N}(0,1)$ 可知 $M_{\sssig Z}(t)=e^{\frac{\,t^{2}\,}{2}},\ t\in\mathbb{R}$ 這個式子，則由馬克勞林級數可知
+由 $Z\sim\mathcal{N}(0,1)$ 可知 $M_{\sssig Z}(t)=e^{\frac{\,t^{2}\,}{2}},\ t\in\mathbb{R}$ 成立，再由馬克勞林級數知
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -579,26 +585,19 @@ $$
 
 </div>
 
+反之，若隨機變數 $Z$ 的各階原動差滿足上式，則對任意 $t\in\mathbb{R}$ 動差級數 $\sum_{k=0}^{\infty}\mathbb{E}(\lvert Z\rvert^{k})\frac{\,\lvert t\rvert^{k}\,}{k!}=\sum_{m=0}^{\infty}\frac{\,(2m)!\,}{\,2^{m}m!\,}\frac{\,\lvert t\rvert^{2m}\,}{(2m)!}=e^{\frac{\,t^{2}\,}{2}}<\infty$ 處處收斂，故 $Z$ 的動差母函數存在且為 $M_{\sssig Z}(t)=e^{\frac{\,t^{2}\,}{2}}$ 這一函數；由 [mgf 的唯一性](/lecture-notes/uniqueness-of-the-mgf/#thm-mgf-uniqueness)即得 <span class="text-nowrap">$Z\sim\mathcal{N}(0,1)$。</span>
+
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-事實上，這個性質在 [Example 2.33](/lecture-notes/uniqueness-of-the-mgf/#ex-normal-moments-to-pdf) 中就已經見到過了，在此處就不再重新探究，讀者可以翻回去看看其結果。
-
-</div>
-
-上述定理是一個關於標準常態分配各階原動差的定理，一般的常態分配雖然可以由此進行反標準化計算，然計算過程卻相當不容易。
-
-事實上，由於常態分配的分配核心 (kernel) 的緣故，當牽涉到計算常態分配的動差時，若不經過繁複的運算，求算的過程往往很困難。但所幸，我們可以利用下面將要提到的這個定理，來協助我們進行高階動差的求算。
+此一動差與分配的對應關係先前已在 [Example 2.33](/lecture-notes/uniqueness-of-the-mgf/#ex-normal-moments-to-pdf) 中由反方向驗證過。然而上述定理僅針對標準常態分配；對一般常態分配 $\mathcal{N}(\mu,\sigma^{2})$ 而言，受限於其分配核心 (kernel) 的指數平方結構，無論直接積分或經反標準化二項展開求算高階動差皆頗為繁複。下一節介紹的斯泰因引理則提供一條簡潔的遞推途徑。
 
 ## 斯泰因引理
 
 <div id="thm-stein-lemma" class="topic-box topic-box--theorem" markdown="1">
-<div class="topic-box__label">Theorem 4.22 (斯泰因引理, Stein’s Lemma)</div>
+<div class="topic-box__label">Theorem 4.22 (斯泰因引理, Stein’s lemma)</div>
 
-令 <span class="text-nowrap">$X\sim\mathcal{N}(\mu,\sigma^{2})$，</span>且 $g(x)$ 為可微函數，並滿足 <span class="text-nowrap">$\mathbb{E}\bigl[g^{\prime}(X)\bigr]<\infty$，</span>則
+令 <span class="text-nowrap">$X\sim\mathcal{N}(\mu,\sigma^{2})$，</span>且 $g(x)$ 為連續可微函數，並滿足 $\mathbb{E}\bigl[\lvert g^{\prime}(X)\rvert\bigr]<\infty$ 這一條件，則有下列等式
 
 $$
 \mathbb{E}\bigl[g(X)(X-\mu)\bigr]=\sigma^{2}\,\mathbb{E}\bigl[g^{\prime}(X)\bigr]
@@ -649,13 +648,10 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-<!-- ref-point: 斯泰因估計量在估計理論才出現，目前站上沒有對應的頁面，故下面這則 Note 中的
-     這一處只留文字不掛連結。日後該篇寫成之後，回填為指向該篇 anchor 的站內連結。 -->
-
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在上述的證明當中，$\mathbb{E}\bigl[g^{\prime}(X)\bigr]<\infty$ 的條件即保證
+在上述的證明當中，$\mathbb{E}\bigl[\lvert g^{\prime}(X)\rvert\bigr]<\infty$ 的條件即保證
 
 $$
 \lim_{x\to\pm\infty}g(x)e^{-\frac{\,(x-\mu)^{2}\,}{2\sigma^{2}}}=0
@@ -669,16 +665,9 @@ $$
 
 亦有教科書直接將該條件改為 $\lim_{x\to\pm\infty}g(x)e^{-\frac{\,(x-\mu)^{2}\,}{2\sigma^{2}}}=0$ 這條等式。
 
-斯泰因引理 (Stein’s Lemma) 是為了紀念斯泰因 (Charles M. Stein, 1920 - 2016) 而以他的姓氏命名，這個引理在數理統計學中，能夠有效搭配[中央極限定理](/lecture-notes/weak-law-and-central-limit-theorem/#thm-central-limit-theorem)的結果，求算任意隨機變數的近似動差，在投資組合選擇理論、斯泰因估計量 <span lang="en">(Stein’s estimator)</span> 與經驗貝氏法 <span lang="en">(empirical Bayes)</span> 等領域應用極廣。
+斯泰因引理以統計學家斯泰因 (Charles M. Stein, 1920-2016) 命名，且與[卜瓦松分配](/lecture-notes/poisson-process-and-distribution/#def-poisson-distribution)等後人冠名的例子不同，此引理確由斯泰因本人提出。在數理統計中，斯泰因引理常配合[中央極限定理](/lecture-notes/weak-law-and-central-limit-theorem/#thm-central-limit-theorem)求算隨機變數的近似動差，並廣泛應用於投資組合選擇理論、斯泰因估計量 <span lang="en">(Stein’s estimator)</span> 與經驗貝氏法 <span lang="en">(empirical Bayes)</span> 等領域。
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-有趣的事情是，儘管同樣是為了紀念而以 Stein 的姓氏命名，但與[卜瓦松分配](/lecture-notes/poisson-process-and-distribution/#def-poisson-distribution)不同之處在於，這個定理的作者正是斯泰因本人。
-
-</div>
-
-此處的使用將以常態分配的高階動差為主，例如，若 <span class="text-nowrap">$X\sim\mathcal{N}(\mu,\sigma^{2})$，</span>則
+本篇主要利用此引理遞推常態分配的高階動差。例如設 <span class="text-nowrap">$X\sim\mathcal{N}(\mu,\sigma^{2})$，</span>取 $g(x)=x^{2}$ 代入引理可得
 
 $$
 \mathbb{E}\bigl[X^{2}(X-\mu)\bigr]=\sigma^{2}\mathbb{E}(2X)=2\mu\sigma^{2}
@@ -710,9 +699,20 @@ $$
 
 可知
 
+<div class="topic-math-follow-before" markdown="1">
+
 $$
-2\mu\sigma^{2}=\mathbb{E}\bigl(X^{3}\bigr)-\mu\sigma^{2}-\mu^{3}\qquad\Longrightarrow\ \mathbb{E}\bigl(X^{3}\bigr)=3\mu\sigma^{2}+\mu^{3}
+2\mu\sigma^{2}=\mathbb{E}\bigl(X^{3}\bigr)-\mu\sigma^{2}-\mu^{3}
 $$
+
+</div>
+<div class="topic-math-follow" markdown="1">
+
+$$
+\Longrightarrow\ \mathbb{E}\bigl(X^{3}\bigr)=3\mu\sigma^{2}+\mu^{3}
+$$
+
+</div>
 
 </div>
 
@@ -720,10 +720,10 @@ $$
 <div class="topic-box__label">Example 4.50</div>
 
 <div lang="en" markdown="1">
-Suppose that $Z\sim\mathcal{N}(0,1)$ and let $\Phi(\cdot)$ denote the cdf of <span class="text-nowrap">$Z$.</span> Evaluate $\mathbb{E}\bigl[Z\Phi(Z)\bigr]$ and <span class="text-nowrap">$\mathbb{E}\bigl[Z^{2}\Phi(Z)\bigr]$.</span>
+Let $Z\sim\mathcal{N}(0,1)$ and let $\Phi(\cdot)$ be the cdf of <span class="text-nowrap">$Z$.</span> Calculate $\mathbb{E}\bigl[Z\Phi(Z)\bigr]$ and $\mathbb{E}\bigl[Z^{2}\Phi(Z)\bigr]$.
 </div>
 
-由於 <span class="text-nowrap">$\mathbb{E}(Z)=0$，</span>故 $\mathbb{E}\bigl[Z\Phi(Z)\bigr]$ 可改寫為 <span class="text-nowrap">$\mathbb{E}\bigl[\Phi(Z)(Z-0)\bigr]$，</span>則由斯泰因引理知
+由於 <span class="text-nowrap">$\mathbb{E}(Z)=0$，</span>故 $\mathbb{E}\bigl[Z\Phi(Z)\bigr]$ 可改寫為 $\mathbb{E}\bigl[\Phi(Z)(Z-0)\bigr]$ 的形式，再套用斯泰因引理即可求得
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -771,7 +771,7 @@ $$
 
 </div>
 
-又由[機率積分轉換](/lecture-notes/uniform-distribution-integral-transform/#thm-p-i-t)可知 <span class="text-nowrap">$\Phi(Z)\sim\mathcal{U}(0,1)$，</span>故
+又由[機率積分轉換](/lecture-notes/uniform-distribution-integral-transform/#thm-p-i-t)可知 <span class="text-nowrap">$\Phi(Z)\sim\mathcal{U}(0,1)$，</span>由此可得
 
 $$
 \mathbb{E}\bigl[\Phi(Z)\bigr]=\frac{1}{\,2\,}
@@ -813,7 +813,7 @@ $$
 
 [Theorem 4.21](#thm-standard-normal-moments) 給出標準常態分配的各階原動差。證明把 $M_{\sssig Z}(t)=e^{\frac{\,t^{2}\,}{2}}$ 依馬克勞林級數展開，得到只含 $t$ 的偶次方項的級數，再與 $\sum_{k=0}^{\infty}\mathbb{E}(Z^{k})\frac{t^{k}}{k!}$ 比較係數。奇次項的係數為 <span class="text-nowrap">$0$，</span>偶次項則給出 $\mathbb{E}(Z^{k})=\frac{k!}{\,2^{\frac{k}{2}}(\frac{k}{2})!\,}$ 這個結果。這個結果在 [Example 2.33](/lecture-notes/uniqueness-of-the-mgf/#ex-normal-moments-to-pdf) 中其實已經反過來用過一次。
 
-一般常態分配的高階動差可以由此經反標準化得到，但過程繁複。[Theorem 4.22](#thm-stein-lemma) 的斯泰因引理提供了另一條路。對 $X\sim\mathcal{N}(\mu,\sigma^{2})$ 與可微函數 <span class="text-nowrap">$g$，</span>$g(X)$ 與 $X-\mu$ 相乘的期望值等於 $\sigma^{2}$ 乘上 $g^{\prime}(X)$ 的期望值。證明的關鍵是把 $\frac{-(x-\mu)}{\sigma^{2}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}$ 看成 $e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}$ 的導數，再作分部積分；$\mathbb{E}\bigl[g^{\prime}(X)\bigr]<\infty$ 這個條件保證了邊界項為 <span class="text-nowrap">$0$。</span>取 $g(x)=x^{2}$ 即由 $\mathbb{E}(X^{2})$ 遞推出 <span class="text-nowrap">$\mathbb{E}(X^{3})=3\mu\sigma^{2}+\mu^{3}$。</span>
+一般常態分配的高階動差可以由此經反標準化得到，但過程繁複。[Theorem 4.22](#thm-stein-lemma) 的斯泰因引理提供了另一條路。對 $X\sim\mathcal{N}(\mu,\sigma^{2})$ 與連續可微函數 <span class="text-nowrap">$g$，</span>$g(X)$ 與 $X-\mu$ 相乘的期望值等於 $\sigma^{2}$ 乘上 $g^{\prime}(X)$ 的期望值。證明的關鍵是把 $\frac{-(x-\mu)}{\sigma^{2}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}$ 看成 $e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}$ 的導數，再作分部積分；$\mathbb{E}\bigl[\lvert g^{\prime}(X)\rvert\bigr]<\infty$ 這個條件保證了邊界項為 <span class="text-nowrap">$0$。</span>取 $g(x)=x^{2}$ 即由 $\mathbb{E}(X^{2})$ 遞推出三階原動差 $3\mu\sigma^{2}+\mu^{3}$ 這一結果。
 
 [Example 4.50](#ex-normal-moments-3) 是這條引理的兩次演練。取 $g(z)=\Phi(z)$ 得到 $\mathbb{E}\bigl[Z\Phi(Z)\bigr]=\mathbb{E}\bigl[\phi(Z)\bigr]$ 這條等式，而 $\phi^{2}$ 的積分可以化為 $e^{-z^{2}}$ 的積分，其值為 <span class="text-nowrap">$\sqrt{\pi}$，</span>故答案為 <span class="text-nowrap">$\frac{1}{\,2\sqrt{\pi}\,}$。</span>取 $g(z)=z\Phi(z)$ 則得到 $\mathbb{E}\bigl[Z^{2}\Phi(Z)\bigr]=\mathbb{E}\bigl[\Phi(Z)+Z\phi(Z)\bigr]$ 這條等式，其中 $\mathbb{E}\bigl[\Phi(Z)\bigr]$ 由機率積分轉換得知為 <span class="text-nowrap">$\frac{1}{\,2\,}$，</span>而 $\mathbb{E}\bigl[Z\phi(Z)\bigr]$ 的被積分函數為奇函數，其值為 <span class="text-nowrap">$0$，</span>故答案為 <span class="text-nowrap">$\frac{1}{\,2\,}$。</span>
 

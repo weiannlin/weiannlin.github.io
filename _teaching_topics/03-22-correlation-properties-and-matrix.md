@@ -10,7 +10,7 @@ order: 322
 permalink: /lecture-notes/correlation-properties-and-matrix/
 date: 2026-08-13
 published: false
-excerpt: "相關係數恆落在 $-1$ 與 $1$ 之間，把這個範圍乘回兩個標準差，馬上得到變異數-共變異數不等式，也就是共變異數必定界在 $-\\sigma_{\\sssig X}\\sigma_{\\sssig Y}$ 與 $\\sigma_{\\sssig X}\\sigma_{\\sssig Y}$ 之間。在了解相關係數以後，共變異數矩陣也可以改寫為相關矩陣。它同樣是對稱矩陣，但主對角線元素必定為 $1$，非對角線元素為相關係數而界在 $-1$ 到 $1$ 之間，因此主對角線不為 $1$、兩側不對稱或元素超出範圍的矩陣都不是合法的相關矩陣。本篇的四道例題依序處理最大值期望值的上界、由共變異數建構相關矩陣、旋轉之後兩個新變數的相關係數，以及線性組合之間的相關係數。"
+excerpt: "由相關係數界於 $-1$ 與 $1$ 之間可直接導出變異數-共變異數不等式，並將共變異數矩陣標準化為主對角線皆為 $1$ 的相關矩陣。本篇說明合法相關矩陣的條件，並以四道例題演練期望值上界與線性組合的相關係數。"
 ---
 
 [上一篇](/lecture-notes/correlation-coefficient/)以 [Definition 3.19](/lecture-notes/correlation-coefficient/#def-corr) 給出[相關係數](/lecture-notes/correlation-coefficient/#def-corr)，並以 [Theorem 3.19](/lecture-notes/correlation-coefficient/#thm-corr-proper) 證明它的六款性質，其中最後一款是相關係數恆落在 $-1$ 與 $1$ 之間。
@@ -46,13 +46,13 @@ $$
 <div class="topic-box__label">Example 3.42</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ and $Y$ are two dependent random variables sharing a common mean $0$ and a common variance <span class="text-nowrap">$1$,</span> and let $\rho$ be their correlation coefficient. Show that
+Let $X$ and $Y$ be two dependent random variables with common mean <span class="text-nowrap">$0$,</span> common variance <span class="text-nowrap">$1$,</span> and correlation coefficient <span class="text-nowrap">$\rho$.</span> Show that
 
 $$
 \mathbb{E}\bigl[\max(X^{2}, Y^{2})\bigr]\leqslant 1+\sqrt{1-\rho^{2}}
 $$
 
-[hint: the identity $\max(a, b)=\frac{1}{\,2\,}\bigl(\lvert a+b\rvert+\lvert a-b\rvert\bigr)$ holds for every <span class="text-nowrap">$a, b\geqslant 0$;</span> apply it together with the Cauchy-Schwarz inequality.]
+[Hint: Use the fact that $\max(a, b)=\frac{1}{\,2\,}\bigl(\lvert a+b\rvert+\lvert a-b\rvert\bigr)$ for all $a, b\geqslant 0$ and the Cauchy-Schwarz inequality.]
 </div>
 
 由於 $\max(a, b)$ $=$ $\frac{1}{\,2\,}\bigl(\lvert a+b\rvert+\lvert a-b\rvert\bigr)$ 這條等式在 $a, b \geqslant 0$ 之下成立，故知道
@@ -109,8 +109,7 @@ $$
 \begin{gathered}
 \mathbb{E}\bigl[(X+Y)^{2}\bigr]=\mathbb{E}(X^{2}+Y^{2}+2XY)=2+2\rho\\[0.45em]
 \mathbb{E}\bigl[(X-Y)^{2}\bigr]=2-2\rho\\[0.45em]
-\Bigl(\because\ \mathrm{Var}(X)=\mathrm{Var}(Y)=1\\[0.45em]
-\Longrightarrow\ \mathbb{E}(XY)=\frac{\mathbb{E}(XY)}{\sqrt{\mathrm{Var}(X)\mathrm{Var}(Y)}}=\rho\Bigr)
+\Bigl(\because\ \mathrm{Var}(X)=\mathrm{Var}(Y)=1\ \Longrightarrow\ \mathbb{E}(XY)=\frac{\mathbb{E}(XY)}{\sqrt{\mathrm{Var}(X)\mathrm{Var}(Y)}}=\rho\Bigr)
 \end{gathered}
 $$
 
@@ -120,10 +119,18 @@ $$
 $$
 \begin{aligned}
 \mathbb{E}\bigl[(X+Y)^{2}\bigr]&=\mathbb{E}(X^{2}+Y^{2}+2XY)\\[0.45em]
-&=2+2\rho\\[0.45em]
-\mathbb{E}\bigl[(X-Y)^{2}\bigr]&=2-2\rho\\[0.45em]
-\Bigl(\because\ \mathrm{Var}(X)&=\mathrm{Var}(Y)=1\\[0.45em]
-\Longrightarrow\ \mathbb{E}(XY)&=\frac{\mathbb{E}(XY)}{\sqrt{\mathrm{Var}(X)\mathrm{Var}(Y)}}=\rho\Bigr)
+&=2+2\rho
+\end{aligned}
+$$
+
+$$
+\mathbb{E}\bigl[(X-Y)^{2}\bigr]=2-2\rho
+$$
+
+$$
+\begin{aligned}
+&\Bigl(\because\ \mathrm{Var}(X)=\mathrm{Var}(Y)=1\\[0.35em]
+&\qquad\Longrightarrow\ \mathbb{E}(XY)=\frac{\mathbb{E}(XY)}{\sqrt{\mathrm{Var}(X)\mathrm{Var}(Y)}}=\rho\Bigr)
 \end{aligned}
 $$
 
@@ -161,7 +168,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}\bigl[\max(X^{2}, Y^{2})\bigr]&=\frac{1}{\,2\,}\mathbb{E}(X^{2}+Y^{2})+\frac{1}{\,2\,}\mathbb{E}\bigl[\lvert (X+Y)(X-Y)\rvert\bigr]\\[0.45em]
+\mathbb{E}\bigl[\max(X^{2}, Y^{2})\bigr]&=\frac{1}{\,2\,}\mathbb{E}(X^{2}+Y^{2})\\[0.25em]
+&\qquad+\frac{1}{\,2\,}\mathbb{E}\bigl[\lvert (X+Y)(X-Y)\rvert\bigr]\\[0.45em]
 &\leqslant 1+\sqrt{1-\rho^{2}}
 \end{aligned}
 $$
@@ -220,7 +228,7 @@ $$
 
 相關矩陣有一些地方需要注意:
 
-(1) 上述定義中的 $\rho_{\sssig XY}, \rho_{\sssig XZ}, \rho_{\sssig YZ},$ $\rho_{\sssig YX}, \rho_{\sssig ZX}, \rho_{\sssig ZY}$ 分別表 $X, Y, Z$ 間的相關係數，且由[相關係數的對稱性](/lecture-notes/correlation-coefficient/#thm-corr-proper)，我們可以發現其實 $\rho_{\sssig XY} = \rho_{\sssig YX},$ $\rho_{\sssig XZ} = \rho_{\sssig ZX}$ 及 <span class="text-nowrap">$\rho_{\sssig YZ} = \rho_{\sssig ZY}$。</span>
+(1) 上述定義中的 $\rho\_{\sssig XY}, \rho\_{\sssig XZ}, \rho\_{\sssig YZ},$ $\rho\_{\sssig YX}, \rho\_{\sssig ZX}, \rho\_{\sssig ZY}$ 分別表 $X, Y, Z$ 間的相關係數，且由[相關係數的對稱性](/lecture-notes/correlation-coefficient/#thm-corr-proper)可知 $\rho\_{\sssig XY} = \rho\_{\sssig YX},$ $\rho\_{\sssig XZ} = \rho\_{\sssig ZX}$ 及 <span class="text-nowrap">$\rho_{\sssig YZ} = \rho_{\sssig ZY}$。</span>
 {: .topic-paren-item}
 
 與共變異數矩陣相同，相關矩陣是一個對稱矩陣，但主對角線元素必定為 <span class="text-nowrap">$1$，</span>且由於非對角線元素 <span lang="en">(off-diagonal element)</span> 為相關係數，故其應界在 $-1$ 到 $1$ 之間。
@@ -255,28 +263,28 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-&\begin{bmatrix}
+\begin{gathered}
+\begin{bmatrix}
 2 & 0.2 & 0.3\\
 0.2 & 2 & 0.4\\
 0.3 & 0.4 & 3
 \end{bmatrix}\\[0.55em]
-&\begin{bmatrix}
+\begin{bmatrix}
 1 & 0.2 & 0.7\\
 0.2 & 1 & 0.5\\
 0.7 & 0.3 & 1
 \end{bmatrix}\\[0.55em]
-&\begin{bmatrix}
+\begin{bmatrix}
 1 & 2 & 3\\
 2 & 1 & 4\\
 3 & 4 & 1
 \end{bmatrix}
-\end{aligned}
+\end{gathered}
 $$
 
 </div>
 
-(2) 當然，上述的定義也不僅限於三個變數，我們可將其推廣至任意 $n$ 個變數，如下定義:
+(2) 上述定義不限於三個變數，可推廣至任意 $n$ 個變數:
 {: .topic-paren-item}
 
 若 $X_1, \ldots, X_n$ 為 $n$ 個隨機變數，則定義其相關矩陣為
@@ -324,7 +332,7 @@ $$
 
 </div>
 
-(3) 事實上，基於相關矩陣與共變異數矩陣的相似性，我們可以額外定義矩陣
+(3) 利用相關矩陣與共變異數矩陣的對應關係，若定義標準差對角矩陣
 {: .topic-paren-item}
 
 $$
@@ -337,7 +345,7 @@ $$
 \end{bmatrix}
 $$
 
-則相關矩陣 $\mathbf{C}$ 可以被表示為
+則相關矩陣 $\mathbf{C}$ 可表示為
 {: .topic-paren-cont}
 
 $$
@@ -347,7 +355,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上這是利用了對角矩陣 <span lang="en">(diagonal matrix)</span> 的左乘 <span lang="en">(left product)</span> 與右乘 <span lang="en">(right product)</span>，分別會讓矩陣的列與行對應乘上指定倍數的功能，再搭配對角矩陣的反矩陣即是對角元素各自的倒數構成的對角矩陣的性質，所得到的做法。雖然看似平淡無奇，但這種寫法在程式語言中卻能發揮奇大的作用。
+上式運用了對角矩陣 <span lang="en">(diagonal matrix)</span> 的反矩陣恰以各對角元素的倒數為對角元素，且以對角矩陣對 $\mathbf{\Sigma}$ 作左乘 <span lang="en">(left product)</span> 與右乘 <span lang="en">(right product)</span> 會分別將 $\mathbf{\Sigma}$ 的各列與各行除以對應的標準差。在統計計算與程式實作中，此種矩陣化寫法能大幅簡化相關矩陣的運算。
 
 </div>
 
@@ -357,7 +365,7 @@ $$
 <div class="topic-box__label">Example 3.43</div>
 
 <div lang="en" markdown="1">
-Suppose that $\boldsymbol{X}=\bigl[\,X_1, X_2, X_3, X_4\,\bigr]^{\mathrm{T}}$ follows a $4$-dimensional normal distribution whose means are <span class="text-nowrap">$\mathbb{E}(X_1)=2$,</span> <span class="text-nowrap">$\mathbb{E}(X_2)=1$,</span> $\mathbb{E}(X_3)=3$ and <span class="text-nowrap">$\mathbb{E}(X_4)=6$,</span> whose variances are <span class="text-nowrap">$\mathrm{Var}(X_1)=1$,</span> <span class="text-nowrap">$\mathrm{Var}(X_2)=2$,</span> $\mathrm{Var}(X_3)=3$ and <span class="text-nowrap">$\mathrm{Var}(X_4)=4$,</span> and whose covariances satisfy $\operatorname{Cov}(X_i,\,X_j)=1$ for every <span class="text-nowrap">$i\neq j$.</span> Find the correlation matrix of <span class="text-nowrap">$\boldsymbol{X}$.</span>
+Let $\boldsymbol{X}=\bigl[\,X_1, X_2, X_3, X_4\,\bigr]^{\mathrm{T}}$ follow a $4$-dimensional normal distribution with <span class="text-nowrap">$\mathbb{E}(X_1)=2$,</span> <span class="text-nowrap">$\mathbb{E}(X_2)=1$,</span> <span class="text-nowrap">$\mathbb{E}(X_3)=3$,</span> <span class="text-nowrap">$\mathbb{E}(X_4)=6$,</span> <span class="text-nowrap">$\mathrm{Var}(X_1)=1$,</span> <span class="text-nowrap">$\mathrm{Var}(X_2)=2$,</span> <span class="text-nowrap">$\mathrm{Var}(X_3)=3$,</span> <span class="text-nowrap">$\mathrm{Var}(X_4)=4$,</span> and $\operatorname{Cov}(X_i,\,X_j)=1$ for all <span class="text-nowrap">$i\neq j$.</span> Construct the correlation matrix of <span class="text-nowrap">$\boldsymbol{X}$.</span>
 </div>
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -373,11 +381,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\rho_{\sssig 12}&=\frac{\sigma_{12}}{\sigma_1\sigma_2}=\frac{1}{\sqrt{2}},\ \rho_{\sssig 13}=\frac{\sigma_{13}}{\sigma_1\sigma_3}=\frac{1}{\sqrt{3}},\\[0.55em]
-\rho_{\sssig 14}&=\frac{\sigma_{14}}{\sigma_1\sigma_4}=\frac{1}{\sqrt{4}},\ \rho_{\sssig 23}=\frac{\sigma_{23}}{\sigma_2\sigma_3}=\frac{1}{\sqrt{6}},\\[0.55em]
-\rho_{\sssig 24}&=\frac{\sigma_{24}}{\sigma_2\sigma_4}=\frac{1}{\sqrt{8}},\ \rho_{\sssig 34}=\frac{\sigma_{34}}{\sigma_3\sigma_4}=\frac{1}{\sqrt{12}}
-\end{aligned}
+\begin{gathered}
+\rho_{\sssig 12}=\frac{\sigma_{12}}{\sigma_1\sigma_2}=\frac{1}{\sqrt{2}},\ \rho_{\sssig 13}=\frac{\sigma_{13}}{\sigma_1\sigma_3}=\frac{1}{\sqrt{3}},\\[0.55em]
+\rho_{\sssig 14}=\frac{\sigma_{14}}{\sigma_1\sigma_4}=\frac{1}{\sqrt{4}},\ \rho_{\sssig 23}=\frac{\sigma_{23}}{\sigma_2\sigma_3}=\frac{1}{\sqrt{6}},\\[0.55em]
+\rho_{\sssig 24}=\frac{\sigma_{24}}{\sigma_2\sigma_4}=\frac{1}{\sqrt{8}},\ \rho_{\sssig 34}=\frac{\sigma_{34}}{\sigma_3\sigma_4}=\frac{1}{\sqrt{12}}
+\end{gathered}
 $$
 
 </div>
@@ -400,7 +408,7 @@ $$
 <div class="topic-box__label">Example 3.44</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1$ and $X_2$ are independently distributed with mean $\mu_i$ and variance $\sigma_{i}^{2}$ for <span class="text-nowrap">$i=1, 2$,</span> and define
+Let $X_1$ and $X_2$ be independent random variables with means $\mu_1,\mu_2$ and variances <span class="text-nowrap">$\sigma_{1}^{2},\sigma_{2}^{2}$,</span> respectively, and define
 
 $$
 \left\lbrace\begin{array}{l} Z_1 = X_1\cos\theta + X_2\sin\theta\\ Z_2 = X_2\cos\theta-X_1\sin\theta\end{array}\right.
@@ -443,9 +451,10 @@ $$
 
 $$
 \begin{aligned}
-\mathrm{Var}(\boldsymbol{Z})&=\mathrm{Var}\Biggl(\begin{bmatrix} \cos\theta & \sin\theta\\ -\sin\theta & \cos\theta \end{bmatrix}\begin{bmatrix} X_1\\ X_2 \end{bmatrix}\Biggr)\\[0.45em]
-&=\begin{bmatrix} \cos\theta & \sin\theta\\ -\sin\theta & \cos\theta \end{bmatrix}\begin{bmatrix} \sigma_1^{2} & 0\\ 0 & \sigma_{2}^{2} \end{bmatrix}\begin{bmatrix} \cos\theta & \sin\theta\\ -\sin\theta & \cos\theta \end{bmatrix}^{\mathrm{T}}\\[0.45em]
-&=\begin{bmatrix} \cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2} & -\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})\\ -\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2}) & \sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2} \end{bmatrix}
+&\mathrm{Var}(\boldsymbol{Z})=\mathrm{Var}\Biggl(\begin{bmatrix} \cos\theta & \sin\theta\\ -\sin\theta & \cos\theta \end{bmatrix}\begin{bmatrix} X_1\\ X_2 \end{bmatrix}\Biggr)\\[0.45em]
+&=\begin{bmatrix} \cos\theta & \sin\theta\\ -\sin\theta & \cos\theta \end{bmatrix}\begin{bmatrix} \sigma_1^{2} & 0\\ 0 & \sigma_{2}^{2} \end{bmatrix}\\[0.35em]
+&\qquad\begin{bmatrix} \cos\theta & \sin\theta\\ -\sin\theta & \cos\theta \end{bmatrix}^{\mathrm{T}}\\[0.45em]
+&=\begin{bmatrix} \begin{array}{c}\cos^{2}\theta\sigma_1^{2}\\[0.1em]+\sin^{2}\theta\sigma_2^{2}\end{array} & \begin{array}{c}-\cos\theta\sin\theta\\[0.1em]\times(\sigma_1^{2}-\sigma_2^{2})\end{array}\\[1.1em] \begin{array}{c}-\cos\theta\sin\theta\\[0.1em]\times(\sigma_1^{2}-\sigma_2^{2})\end{array} & \begin{array}{c}\sin^{2}\theta\sigma_1^{2}\\[0.1em]+\cos^{2}\theta\sigma_2^{2}\end{array} \end{bmatrix}
 \end{aligned}
 $$
 
@@ -464,8 +473,9 @@ $$
 
 $$
 \begin{aligned}
-\mathbf{D}&=\sqrt{\mathrm{diag}\bigl[\mathrm{Var}(\boldsymbol{Z})\bigr]}\\[0.55em]
-&=\begin{bmatrix} \sqrt{\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2}} & 0\\ 0 & \sqrt{\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2}} \end{bmatrix}
+\mathbf{D}&=\sqrt{\mathrm{diag}\bigl[\mathrm{Var}(\boldsymbol{Z})\bigr]}\\[0.45em]
+&=\mathrm{diag}\Bigl(\sqrt{\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2}},\\[0.25em]
+&\qquad\quad\sqrt{\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2}}\,\Bigr)
 \end{aligned}
 $$
 
@@ -473,28 +483,11 @@ $$
 
 則可知 $\boldsymbol{Z}$ 之相關矩陣為
 
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
-
 $$
-\begin{aligned}
-\mathbf{C}_{\sssig \boldsymbol{Z}}&=\mathbf{D}^{-1}\begin{bmatrix} \cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2} & -\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})\\ -\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2}) & \sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2} \end{bmatrix}\mathbf{D}^{-1}\\[0.45em]
-&=\begin{bmatrix} 1 & \frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})(\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})}}\\[1.2em] \frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})(\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})}} & 1 \end{bmatrix}
-\end{aligned}
+\mathbf{C}_{\sssig \boldsymbol{Z}}=\mathbf{D}^{-1}\mathrm{Var}(\boldsymbol{Z})\mathbf{D}^{-1}=\begin{bmatrix} 1 & \rho\\ \rho & 1 \end{bmatrix}
 $$
 
-</div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
-
-$$
-\begin{aligned}
-\mathbf{C}_{\sssig \boldsymbol{Z}}&=\mathbf{D}^{-1}\begin{bmatrix} \cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2} & -\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})\\ -\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2}) & \sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2} \end{bmatrix}\mathbf{D}^{-1}\\[0.55em]
-&=\begin{bmatrix} 1 & \frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})(\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})}}\\[1.2em] \frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})(\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})}} & 1 \end{bmatrix}
-\end{aligned}
-$$
-
-</div>
-
-此即
+其中
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -506,7 +499,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\rho=\frac{-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})}{\sqrt{(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})(\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})}}
+\begin{aligned}
+\rho&=\bigl[-\cos\theta\sin\theta(\sigma_1^{2}-\sigma_2^{2})\bigr]\\[0.35em]
+&\qquad\Big/\Bigl[\sqrt{\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2}}\\[0.2em]
+&\qquad\quad\times\sqrt{\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2}}\,\Bigr]
+\end{aligned}
 $$
 
 </div>
@@ -527,8 +524,13 @@ $$
 
 $$
 \begin{aligned}
-\rho^{2}&=\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})(\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})}\\[0.45em]
-&=\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{(\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}+(\cos^{4}\theta+\sin^{4}\theta)\sigma_1^{2}\sigma_2^{2}+\cos^{2}\theta\sin^{2}\theta\sigma_2^{4})}
+\rho^{2}&=\bigl[\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}\bigr]\\[0.25em]
+&\qquad\Big/\bigl[(\cos^{2}\theta\sigma_1^{2}+\sin^{2}\theta\sigma_2^{2})\\[0.15em]
+&\qquad\quad\times(\sin^{2}\theta\sigma_1^{2}+\cos^{2}\theta\sigma_2^{2})\bigr]\\[0.45em]
+&=\bigl[\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}\bigr]\\[0.25em]
+&\qquad\Big/\bigl[\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}\\[0.15em]
+&\qquad+(\cos^{4}\theta+\sin^{4}\theta)\sigma_1^{2}\sigma_2^{2}\\[0.15em]
+&\qquad+\cos^{2}\theta\sin^{2}\theta\sigma_2^{4}\bigr]
 \end{aligned}
 $$
 
@@ -539,7 +541,7 @@ $$
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-1=(\sin^{2}\theta+\cos^{2}\theta)^{2}=\sin^{4}\theta+2\sin^{2}\theta\cos^{2}\theta+\cos^{4}\theta\qquad\therefore\, \sin^{4}\theta+\cos^{4}\theta=1-2\sin^{2}\theta\cos^{2}\theta
+1=(\sin^{2}\theta+\cos^{2}\theta)^{2}=\sin^{4}\theta+2\sin^{2}\theta\cos^{2}\theta+\cos^{4}\theta
 $$
 
 </div>
@@ -547,18 +549,29 @@ $$
 
 $$
 \begin{aligned}
-1&=(\sin^{2}\theta+\cos^{2}\theta)^{2}\\[0.45em]
-&=\sin^{4}\theta+2\sin^{2}\theta\cos^{2}\theta+\cos^{4}\theta\\[0.4em]
-&\qquad\therefore\, \sin^{4}\theta+\cos^{4}\theta=1-2\sin^{2}\theta\cos^{2}\theta
+1&=(\sin^{2}\theta+\cos^{2}\theta)^{2}\\[0.4em]
+&=\sin^{4}\theta+2\sin^{2}\theta\cos^{2}\theta+\cos^{4}\theta
 \end{aligned}
 $$
 
 </div>
 
+故可知
+
+$$
+\sin^{4}\theta+\cos^{4}\theta=1-2\sin^{2}\theta\cos^{2}\theta
+$$
+
 且可知
 
 $$
-\sin^{2}(2\theta)=4\sin^{2}\theta\cos^{2}\theta\leqslant 1\qquad\therefore\, 1-2\cos^{2}\theta\sin^{2}\theta\geqslant 2\cos^{2}\theta\sin^{2}\theta
+\sin^{2}(2\theta)=4\sin^{2}\theta\cos^{2}\theta\leqslant 1
+$$
+
+由此可得
+
+$$
+1-2\cos^{2}\theta\sin^{2}\theta\geqslant 2\cos^{2}\theta\sin^{2}\theta
 $$
 
 故可知
@@ -579,10 +592,19 @@ $$
 
 $$
 \begin{aligned}
-\rho^{2}&=\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{(\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}+(\cos^{4}\theta+\sin^{4}\theta)\sigma_1^{2}\sigma_2^{2}+\cos^{2}\theta\sin^{2}\theta\sigma_2^{4})}\\[0.45em]
-&=\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{(\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}+(1-2\cos^{2}\theta\sin^{2}\theta)\sigma_1^{2}\sigma_2^{2}+\cos^{2}\theta\sin^{2}\theta\sigma_2^{4})}\\[0.45em]
-&\leqslant\frac{\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}}{(\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}+2\sin^{2}\theta\cos^{2}\theta\sigma_1^{2}\sigma_2^{2}+\cos^{2}\theta\sin^{2}\theta\sigma_2^{4})}\\[0.45em]
-&=\frac{(\sigma_1^{2}-\sigma_2^{2})^{2}}{(\sigma_1^{4}+2\sigma_1^{2}\sigma_2^{2}+\sigma_2^{4})}=\biggl(\frac{\sigma_1^{2}-\sigma_2^{2}}{\sigma_1^{2}+\sigma_2^{2}}\biggr)^{2}
+\rho^{2}&=\bigl[\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}\bigr]\\[0.25em]
+&\qquad\Big/\bigl[\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}\\[0.15em]
+&\qquad+(\cos^{4}\theta+\sin^{4}\theta)\sigma_1^{2}\sigma_2^{2}\\[0.15em]
+&\qquad+\cos^{2}\theta\sin^{2}\theta\sigma_2^{4}\bigr]\\[0.45em]
+&=\bigl[\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}\bigr]\\[0.25em]
+&\qquad\Big/\bigl[\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}\\[0.15em]
+&\qquad+(1-2\cos^{2}\theta\sin^{2}\theta)\sigma_1^{2}\sigma_2^{2}\\[0.15em]
+&\qquad+\cos^{2}\theta\sin^{2}\theta\sigma_2^{4}\bigr]\\[0.45em]
+&\leqslant\bigl[\cos^{2}\theta\sin^{2}\theta(\sigma_1^{2}-\sigma_2^{2})^{2}\bigr]\\[0.25em]
+&\qquad\Big/\bigl[\cos^{2}\theta\sin^{2}\theta\sigma_1^{4}\\[0.15em]
+&\qquad+2\sin^{2}\theta\cos^{2}\theta\sigma_1^{2}\sigma_2^{2}\\[0.15em]
+&\qquad+\cos^{2}\theta\sin^{2}\theta\sigma_2^{4}\bigr]\\[0.45em]
+&=\frac{(\sigma_1^{2}-\sigma_2^{2})^{2}}{\sigma_1^{4}+2\sigma_1^{2}\sigma_2^{2}+\sigma_2^{4}}=\biggl(\frac{\sigma_1^{2}-\sigma_2^{2}}{\sigma_1^{2}+\sigma_2^{2}}\biggr)^{2}
 \end{aligned}
 $$
 
@@ -600,7 +622,7 @@ $$
 <div class="topic-box__label">Example 3.45</div>
 
 <div lang="en" markdown="1">
-Suppose that <span class="text-nowrap">$X_1$,</span> $X_2$ and $X_3$ are uncorrelated random variables whose common variance is <span class="text-nowrap">$\sigma^{2}$.</span> Determine the correlation between $X_1 + X_2$ and <span class="text-nowrap">$X_2 + X_3$.</span>
+Let <span class="text-nowrap">$X_1$,</span> <span class="text-nowrap">$X_2$,</span> and $X_3$ be uncorrelated random variables with common variance <span class="text-nowrap">$\sigma^{2}$.</span> Find the correlation between $X_1 + X_2$ and <span class="text-nowrap">$X_2 + X_3$.</span>
 </div>
 
 **[ 法一 ]**
@@ -653,10 +675,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\boldsymbol{X}&=\begin{bmatrix} X_1\\ X_2\\ X_3 \end{bmatrix},\ \text{則}\ \mathrm{Var}(\boldsymbol{X})=\begin{bmatrix} \sigma^{2} & 0 & 0\\ 0 & \sigma^{2} & 0\\ 0 & 0 & \sigma^{2} \end{bmatrix},\\[0.55em]
-\text{又令}\ \mathbf{A}&=\begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 1 \end{bmatrix}
-\end{aligned}
+\begin{gathered}
+\boldsymbol{X}=\begin{bmatrix} X_1\\ X_2\\ X_3 \end{bmatrix},\ \text{則}\ \mathrm{Var}(\boldsymbol{X})=\begin{bmatrix} \sigma^{2} & 0 & 0\\ 0 & \sigma^{2} & 0\\ 0 & 0 & \sigma^{2} \end{bmatrix},\\[0.55em]
+\text{又令}\ \mathbf{A}=\begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 1 \end{bmatrix}
+\end{gathered}
 $$
 
 </div>
@@ -722,17 +744,14 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-至此，讀者應該很自然地會在計算 $\operatorname{Cov}(X_1+X_2, X_2+X_3)$ 時，先利用線性組合的性質，將 $X_1+X_2$ 與 <span class="text-nowrap">$X_2+X_3$，</span>由 $\boldsymbol{X} = \begin{bmatrix} X_1 & X_2 & X_3 \end{bmatrix}^{\mathrm{T}}$ 與矩陣 $\mathbf{A} = \begin{bmatrix} 1 & 1 & 0\\ 0 & 1 & 1 \end{bmatrix}$ 生成出來，進而觀察非對角項，也就是共變異數。
-
-然而，若讀者在計算矩陣時多留心，應該會發現，事實上，即使不計算整個共變異數矩陣，我們還是可以用矩陣的方式求解共變異數。
-
-舉例如下:
+在法二中，我們先以矩陣 $\mathbf{A} = \begin{bmatrix} 1 & 1 & 0\\\\ 0 & 1 & 1 \end{bmatrix}$ 左乘 $\boldsymbol{X} = \begin{bmatrix} X\_1 & X\_2 & X\_3 \end{bmatrix}^{\mathrm{T}}$ 同時生成 $X\_1+X\_2$ 與 <span class="text-nowrap">$X_2+X_3$，</span>再由 $\mathrm{Var}(\mathbf{A}\boldsymbol{X})$ 的非對角項取得兩者的共變異數。若僅需求取這兩個線性組合之間的共變異數，其實無須算出整個共變異數矩陣，可直接以向量形式計算如下:
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 \begin{aligned}
-\operatorname{Cov}(X_1+X_2, X_2+X_3)&=\operatorname{Cov}\Bigl(\begin{bmatrix} 1 & 1 & 0 \end{bmatrix}\boldsymbol{X},\ \begin{bmatrix} 0 & 1 & 1 \end{bmatrix}\boldsymbol{X}\Bigr)\\[0.45em]
+\operatorname{Cov}(X_1+X_2, X_2+X_3)&=\operatorname{Cov}\Bigl(\begin{bmatrix} 1 & 1 & 0 \end{bmatrix}\boldsymbol{X},\\[0.25em]
+&\qquad\quad\begin{bmatrix} 0 & 1 & 1 \end{bmatrix}\boldsymbol{X}\Bigr)\\[0.45em]
 &=\begin{bmatrix} 1 & 1 & 0 \end{bmatrix}\begin{bmatrix} \sigma^{2} & 0 & 0\\ 0 & \sigma^{2} & 0\\ 0 & 0 & \sigma^{2} \end{bmatrix}\begin{bmatrix} 0\\ 1\\ 1 \end{bmatrix}=\sigma^{2}
 \end{aligned}
 $$
@@ -742,20 +761,22 @@ $$
 
 $$
 \begin{aligned}
-\operatorname{Cov}(X_1+X_2, X_2+X_3)&=\operatorname{Cov}\Bigl(\begin{bmatrix} 1 & 1 & 0 \end{bmatrix}\boldsymbol{X},\ \begin{bmatrix} 0 & 1 & 1 \end{bmatrix}\boldsymbol{X}\Bigr)\\[0.45em]
+&\operatorname{Cov}(X_1+X_2, X_2+X_3)\\[0.35em]
+&=\operatorname{Cov}\Bigl(\begin{bmatrix} 1 & 1 & 0 \end{bmatrix}\boldsymbol{X},\\[0.25em]
+&\qquad\qquad\begin{bmatrix} 0 & 1 & 1 \end{bmatrix}\boldsymbol{X}\Bigr)\\[0.45em]
 &=\begin{bmatrix} 1 & 1 & 0 \end{bmatrix}\begin{bmatrix} \sigma^{2} & 0 & 0\\ 0 & \sigma^{2} & 0\\ 0 & 0 & \sigma^{2} \end{bmatrix}\begin{bmatrix} 0\\ 1\\ 1 \end{bmatrix}=\sigma^{2}
 \end{aligned}
 $$
 
 </div>
 
-事實上，這並不是巧合，讀者如果仔細觀察將會發現，這事實上就是計算整個共變異數矩陣中的其中一個步驟而已，而且其對應的正好是非對角項，我們將其一般化的形式寫在下方:
+這並非巧合，上式恰為計算 $\mathbf{A}\,\mathrm{Var}(\boldsymbol{X})\,\mathbf{A}^{\mathrm{T}}$ 非對角項時的單一內積步驟。一般而言，對任意與[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector) $\boldsymbol{X}$ 同維度的常數向量 $\boldsymbol{a}$ 與 <span class="text-nowrap">$\boldsymbol{b}$，</span>兩線性組合的共變異數為
 
 $$
 \operatorname{Cov}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X},\ \boldsymbol{b}^{\mathrm{T}}\boldsymbol{X})=\boldsymbol{a}^{\mathrm{T}}\mathrm{Var}(\boldsymbol{X})\boldsymbol{b}
 $$
 
-這個做法提供我們一個關於[隨機向量](/lecture-notes/random-vectors-joint-pmf/#def-random-vector)的各式線性組合間的共變異數的方便算法，而且完全可以對照 $\mathrm{Var}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})$ 的結構，如同我們在 [Theorem 3.15](/lecture-notes/covariance/#thm-covar-proper) 中的性質 (3) 與 (4)，將共變異數與變異數對照的想法一樣。
+此雙線性形式與二次形式 $\mathrm{Var}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})=\boldsymbol{a}^{\mathrm{T}}\mathrm{Var}(\boldsymbol{X})\boldsymbol{a}$ 直接對照 (當 $\boldsymbol{a}=\boldsymbol{b}$ 時即退化為變異數)，正呼應 [Theorem 3.15](/lecture-notes/covariance/#thm-covar-proper) 第 (3) 與第 (4) 款連結共變異數與變異數的結構。
 
 </div>
 
@@ -769,7 +790,7 @@ $$
 
 本篇最後的 Note 指出，即使不計算整個共變異數矩陣，也可以用 $\boldsymbol{a}^{\mathrm{T}}\mathrm{Var}(\boldsymbol{X})\boldsymbol{b}$ 求得任意兩個線性組合之間的共變異數，它正是計算共變異數矩陣時的其中一個步驟，對應的恰好是非對角項。這個寫法可以與 $\mathrm{Var}(\boldsymbol{a}^{\mathrm{T}}\boldsymbol{X})$ 的結構互相對照，如同 [Theorem 3.15](/lecture-notes/covariance/#thm-covar-proper) 的性質 (3) 與 (4) 把共變異數與變異數對照起來一樣。
 
-[下一篇](/lecture-notes/population-linear-regression/)將由相關係數出發，導出以一個變數預測另一個變數的母體線性迴歸式。
+[下一篇](/lecture-notes/population-linear-regression/)由相關係數出發，導出以一變數預測另一變數的母體線性迴歸式。
 
 ## 參考文獻與延伸閱讀
 

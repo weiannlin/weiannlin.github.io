@@ -10,7 +10,7 @@ order: 416
 permalink: /lecture-notes/gamma-beta-relationship/
 date: 2026-08-12
 published: false
-excerpt: "兩個比例參數相同且彼此獨立的伽瑪變數，其中一個在兩者之和中所佔的比例服從貝塔分配，兩者之和則仍為伽瑪分配，而且這兩個新變數彼此獨立。本篇以 Jacobian 法完整證明這個結果。先寫出兩個伽瑪變數的聯合機率密度函數，換元之後求得新變數的聯合機率密度函數，再分別對另一個變數積分而得到兩個邊際機率密度函數。這個結果背後有一個簡單直接的想法，即比例的平均為 $\\frac{a}{\\,a+b\\,}$，恰好是貝塔分配的期望值；其特例是兩個獨立同分配的指數變數，其比例服從標準均勻分配。最後以三道例題演練，依序處理指數變數的比例與和、標準均勻分配之順序統計量的共變異數與全距，以及三個獨立標準均勻變數的極大值與極小值。"
+excerpt: "兩個獨立且同比例參數的伽瑪變數，其和仍服從伽瑪分配，而其中一者佔總和的比例則服從貝塔分配，且和與比例彼此獨立。本篇以二元 Jacobian 法完整證明此定理，並應用於指數比例與均勻順序統計量的計算。"
 ---
 
 [上一篇](/lecture-notes/beta-function-and-distribution/)由[貝塔函數](/lecture-notes/beta-function-and-distribution/#def-beta-function)出發，給出[貝塔分配](/lecture-notes/beta-function-and-distribution/#def-beta-distribution)的定義。貝塔函數本身就是由兩個[伽瑪函數](/lecture-notes/gamma-function-exponential-distribution/#def-gamma-function)的乘積除以另一個伽瑪函數而來，因此貝塔分配與[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)之間存在一項直接的關係，本篇處理的就是這項關係。
@@ -34,15 +34,15 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-X&\sim\mathrm{Gamma}(\alpha=a,\ \beta)\\[0.5em]
-\indep\ Y&\sim\mathrm{Gamma}(\alpha=b,\ \beta)
-\end{aligned}
+\begin{gathered}
+X\sim\mathrm{Gamma}(\alpha=a,\ \beta)\\[0.5em]
+\indep\ Y\sim\mathrm{Gamma}(\alpha=b,\ \beta)
+\end{gathered}
 $$
 
 </div>
 
-若令 $U=\frac{X}{\,X+Y\,}$ 與 <span class="text-nowrap">$V=X+Y$，</span>則我們可知
+若令 $U=\frac{X}{\,X+Y\,}$ 與 <span class="text-nowrap">$V=X+Y$，</span>則有
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -54,10 +54,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-U&\sim\mathrm{Beta}(a,\ b)\\[0.5em]
-\indep\ V&\sim\mathrm{Gamma}(\alpha=a+b,\ \beta)
-\end{aligned}
+\begin{gathered}
+U\sim\mathrm{Beta}(a,\ b)\\[0.5em]
+\indep\ V\sim\mathrm{Gamma}(\alpha=a+b,\ \beta)
+\end{gathered}
 $$
 
 </div>
@@ -78,9 +78,20 @@ $$
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
+<div class="topic-math-follow-before" markdown="1">
+
 $$
-U=\frac{X}{\,X+Y\,},\ V=X+Y\qquad\Longrightarrow\ X=UV,\ Y=V(1-U)
+U=\frac{X}{\,X+Y\,},\quad V=X+Y
 $$
+
+</div>
+<div class="topic-math-follow" markdown="1">
+
+$$
+\Longrightarrow\ X=UV,\quad Y=V(1-U)
+$$
+
+</div>
 
 </div>
 
@@ -260,10 +271,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-U&\sim\mathrm{Beta}(a,\ b)\\[0.5em]
-\indep\ V&\sim\mathrm{Gamma}(\alpha=a+b,\ \beta)
-\end{aligned}
+\begin{gathered}
+U\sim\mathrm{Beta}(a,\ b)\\[0.5em]
+\indep\ V\sim\mathrm{Gamma}(\alpha=a+b,\ \beta)
+\end{gathered}
 $$
 
 </div>
@@ -274,9 +285,9 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個性質背後有一個稍不嚴謹但卻簡單直接的想法，即 $U=\frac{X}{\,X+Y\,}$ 是 $X$ 在 $X+Y$ 間的比例，平均而言，這個比例會是 $X$ 的期望值在 $X+Y$ 的期望值之間的比例，即 $\frac{a\beta}{\,a\beta+b\beta\,}=\frac{a}{\,a+b\,}$ 這個比值，恰好被 $\mathrm{Beta}(a,\ b)$ 分配描述出來。
+直觀上，$U=\frac{X}{\,X+Y\,}$ 代表 $X$ 在總和 $X+Y$ 中所佔的比例；就平均而言，此比例對應 $X$ 與 $X+Y$ 兩者期望值的比值 $\frac{a\beta}{\,a\beta+b\beta\,}=\frac{a}{\,a+b\,}$ 這一結果，恰為 $\mathrm{Beta}(a,\ b)$ 分配的期望值。
 
-此外，這個性質也有一個特例，即若
+此外，取 $a=b=1$ 即得指數分配的特例，若
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -288,10 +299,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-X&\sim\mathrm{Exp}(\beta)\\[0.5em]
-\indep\ Y&\sim\mathrm{Exp}(\beta)
-\end{aligned}
+\begin{gathered}
+X\sim\mathrm{Exp}(\beta)\\[0.5em]
+\indep\ Y\sim\mathrm{Exp}(\beta)
+\end{gathered}
 $$
 
 </div>
@@ -310,26 +321,24 @@ $$
 <div class="topic-box__label">Example 4.41</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1$ and $X_2$ are independent and identically distributed random variables whose common probability density function is $f(x)=\frac{e^{-kx}}{\,k!\,}$ for <span class="text-nowrap">$x>0$.</span>
+Let $X_1$ and $X_2$ be two i.i.d. random variables with common pdf $f(x)=\frac{e^{-kx}}{\,k!\,},$ <span class="text-nowrap">$x>0$.</span>
 
 <ol class="topic-list-paren">
-  <li>Determine the value of $k$ for which $f$ is a probability density function.</li>
-  <li>Find the joint probability density function of $X_1$ and <span class="text-nowrap">$X_2$.</span></li>
-  <li>Let $Y_1=X_1+X_2$ and <span class="text-nowrap">$Y_2=\frac{X_1}{\,X_1+X_2\,}$.</span> Find the joint probability density function of $Y_1$ and <span class="text-nowrap">$Y_2$.</span></li>
-  <li>Find the marginal probability density function of $Y_1$ and that of <span class="text-nowrap">$Y_2$.</span></li>
-  <li>Determine whether $Y_1$ and $Y_2$ are independent.</li>
+  <li>Find the value of $k$ such that $f(x)$ is a valid pdf.</li>
+  <li>Find the joint pdf of $X_1$ and <span class="text-nowrap">$X_2$.</span></li>
+  <li>Let $Y_1=X_1+X_2$ and <span class="text-nowrap">$Y_2=\frac{X_1}{\,X_1+X_2\,}$.</span> Find the joint pdf of $Y_1$ and <span class="text-nowrap">$Y_2$.</span></li>
+  <li>Find the marginal pdfs of $Y_1$ and <span class="text-nowrap">$Y_2$.</span></li>
+  <li>Are $Y_1$ and $Y_2$ independent?</li>
 </ol>
 </div>
 
-(1) 由 [pdf 的性質](/lecture-notes/probability-density-functions/#thm-pdf-properties)檢查可知
+(1) 由 [pdf 的性質](/lecture-notes/probability-density-functions/#thm-pdf-properties)，欲使積分收斂且階乘有定義須滿足 <span class="text-nowrap">$k\in\mathbb{N}$，</span>檢查可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
-\begin{aligned}
-1&=\int_{0}^{\infty}\frac{e^{-kx}}{\,k!\,}\,dx=\left[\frac{e^{-kx}}{\,(-k)\cdot k!\,}\right]_{0}^{\infty}=-\frac{1}{\,(-k)\cdot k!\,}\qquad\Longrightarrow\ k=1
-\end{aligned}
+1=\int_{0}^{\infty}\frac{e^{-kx}}{\,k!\,}\,dx=\left[\frac{e^{-kx}}{\,(-k)\cdot k!\,}\right]_{0}^{\infty}=-\frac{1}{\,(-k)\cdot k!\,}\qquad\therefore\, k=1
 $$
 
 </div>
@@ -338,7 +347,7 @@ $$
 $$
 \begin{aligned}
 1&=\int_{0}^{\infty}\frac{e^{-kx}}{\,k!\,}\,dx=\left[\frac{e^{-kx}}{\,(-k)\cdot k!\,}\right]_{0}^{\infty}\\[0.45em]
-&=-\frac{1}{\,(-k)\cdot k!\,}\qquad\Longrightarrow\ k=1
+&=-\frac{1}{\,(-k)\cdot k!\,}\qquad\therefore\, k=1
 \end{aligned}
 $$
 
@@ -385,9 +394,20 @@ $$
 </div>
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
+<div class="topic-math-follow-before" markdown="1">
+
 $$
-Y_1=X_1+X_2,\ Y_2=\frac{X_1}{\,X_1+X_2\,}\qquad\Longrightarrow\ X_1=Y_1Y_2,\ X_2=Y_1(1-Y_2)
+Y_1=X_1+X_2,\quad Y_2=\frac{X_1}{\,X_1+X_2\,}
 $$
+
+</div>
+<div class="topic-math-follow" markdown="1">
+
+$$
+\Longrightarrow\ X_1=Y_1Y_2,\quad X_2=Y_1(1-Y_2)
+$$
+
+</div>
 
 </div>
 
@@ -474,7 +494,7 @@ $$
 
 </div>
 
-(4) 由 [marginal pdf 的定義](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)可知
+(4) 由[邊際 pdf 的定義](/lecture-notes/marginal-probability-density-functions/#def-marginal-pdf)可知
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -537,10 +557,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-Y_2&\sim\mathrm{Beta}(a=1,\ b=1)\\[0.5em]
-\text{或}\ Y_2&\sim\mathcal{U}(0,1)
-\end{aligned}
+\begin{gathered}
+Y_2\sim\mathrm{Beta}(a=1,\ b=1)\\[0.5em]
+\text{或}\ Y_2\sim\mathcal{U}(0,1)
+\end{gathered}
 $$
 
 </div>
@@ -548,23 +568,9 @@ $$
 (5) 因為下列等式成立
 {: .topic-paren-item}
 
-<div class="topic-math-layout topic-math-layout--desktop" markdown="1">
-
 $$
 f_{\sssig Y_1Y_2}(y_1,y_2)=f_{\sssig Y_1}(y_1)f_{\sssig Y_2}(y_2)
 $$
-
-</div>
-<div class="topic-math-layout topic-math-layout--mobile" markdown="1">
-
-$$
-\begin{aligned}
-&f_{\sssig Y_1Y_2}(y_1,y_2)\\[0.5em]
-&=f_{\sssig Y_1}(y_1)f_{\sssig Y_2}(y_2)
-\end{aligned}
-$$
-
-</div>
 
 且範圍並不互相影響，故可知 <span class="text-nowrap">$Y_1\indep Y_2$。</span>
 {: .topic-paren-cont}
@@ -575,30 +581,28 @@ $$
 <div class="topic-box__label">Example 4.42</div>
 
 <div lang="en" markdown="1">
-Suppose that $Y_1,\ldots,Y_n$ are independent and identically distributed random variables, each having the $\mathcal{U}(0,1)$ distribution, and let
-
-$$
-Y_{\sssig (1)}\leqslant Y_{\sssig (2)}\leqslant\cdots\leqslant Y_{\sssig (n)}
-$$
-
-denote the associated order statistics.
+Let $Y_1,\ldots,Y_n\overset{\mathrm{iid}}{\sim}\mathcal{U}(0,1)$ (<span class="text-nowrap">$n\geqslant2$</span>), and let $Y_{\sssig (1)}\leqslant Y_{\sssig (2)}\leqslant\cdots\leqslant Y_{\sssig (n)}$ be the corresponding order statistics.
 
 <ol class="topic-list-paren">
-  <li>Find <span class="text-nowrap">$\mathrm{Cov}\bigl(Y_{\sssig (r)},Y_{\sssig (s)}\bigr)$,</span> where <span class="text-nowrap">$1\leqslant r<s\leqslant n$.</span></li>
-  <li>Let <span class="text-nowrap">$R=Y_{\sssig (n)}-Y_{\sssig (1)}$.</span> Evaluate <span class="text-nowrap">$\mathrm{Var}(R)$.</span></li>
-  <li>Suppose further that $X_1,X_2,\ldots,X_n$ are independent and identically distributed $\mathrm{Weibull}(\lambda,\ \alpha)$ random variables, the cumulative distribution function of which is $G(x)=1-e^{-(\lambda x)^{\alpha}}$ for <span class="text-nowrap">$x>0$,</span> $\lambda>0$ and <span class="text-nowrap">$\alpha>0$,</span> and let <span class="text-nowrap">$Z=\max\bigl[G(X_i)\bigr]-\min\bigl[G(X_i)\bigr]$.</span> Evaluate $\mathbb{E}(Z)$ and <span class="text-nowrap">$\mathrm{Var}(Z)$.</span></li>
+  <li>Find $\mathrm{Cov}\bigl(Y_{\sssig (r)},Y_{\sssig (s)}\bigr)$, where <span class="text-nowrap">$1\leqslant r<s\leqslant n$.</span></li>
+  <li>Let <span class="text-nowrap">$R=Y_{\sssig (n)}-Y_{\sssig (1)}$.</span> Calculate <span class="text-nowrap">$\mathrm{Var}(R)$.</span></li>
+  <li>Suppose $X_1,X_2,\ldots,X_n\overset{\mathrm{iid}}{\sim}\mathrm{Weibull}(\lambda,\alpha)$ with cumulative distribution function
+  $$
+  G(x)=1-e^{-(\lambda x)^{\alpha}},\ x>0,\ \lambda>0,\ \alpha>0
+  $$
+  Let $Z=\max\bigl[G(X_i)\bigr]-\min\bigl[G(X_i)\bigr]$. Find $\mathbb{E}(Z)$ and <span class="text-nowrap">$\mathrm{Var}(Z)$.</span></li>
 </ol>
 </div>
 
-(1) 由[順序統計量](/lecture-notes/order-statistics-distributions/#thm-order-stat-samp-dist-pdf)，我們可知 $Y_{\sssig (r)}$ 與 $Y_{\sssig (s)}$ 之 joint pdf 為
+(1) 由[順序統計量](/lecture-notes/order-statistics-distributions/#thm-order-stat-samp-dist-pdf)，我們可知 $Y_{\sssig (r)}$ 與 $Y_{\sssig (s)}$ 之聯合 pdf 為
 {: .topic-paren-item}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
 $$
 \begin{aligned}
-f_{Y_{\sssig (r)}Y_{\sssig (s)}}(u,v)&=\frac{n!}{\,(r-1)!(s-r-1)!(n-s)!\,}f_{\sssig Y}(u)f_{\sssig Y}(v)\\[0.45em]
-&\quad \times\bigl[F_{\sssig Y}(u)\bigr]^{r-1}\bigl[F_{\sssig Y}(v)-F_{\sssig Y}(u)\bigr]^{s-r-1}\bigl[1-F_{\sssig Y}(v)\bigr]^{n-s},\\[0.25em]
+f_{\sssig Y_{(r)}Y_{(s)}}(u,v)&=\frac{n!}{\,(r-1)!(s-r-1)!(n-s)!\,}f_{\sssig Y}(u)f_{\sssig Y}(v)\\[0.45em]
+&\qquad \times\bigl[F_{\sssig Y}(u)\bigr]^{r-1}\bigl[F_{\sssig Y}(v)-F_{\sssig Y}(u)\bigr]^{s-r-1}\bigl[1-F_{\sssig Y}(v)\bigr]^{n-s},\\[0.25em]
 &\qquad\qquad 0<u\leqslant v<1\\[0.45em]
 &=\frac{n!}{\,(r-1)!(s-r-1)!(n-s)!\,}u^{r-1}(v-u)^{s-r-1}(1-v)^{n-s},\\[0.25em]
 &\qquad\qquad 0<u\leqslant v<1
@@ -610,7 +614,7 @@ $$
 
 $$
 \begin{aligned}
-f_{Y_{\sssig (r)}Y_{\sssig (s)}}(u,v)&=\frac{n!}{\,(r-1)!(s-r-1)!(n-s)!\,}\\[0.25em]
+f_{\sssig Y_{(r)}Y_{(s)}}(u,v)&=\frac{n!}{\,(r-1)!(s-r-1)!(n-s)!\,}\\[0.25em]
 &\qquad f_{\sssig Y}(u)f_{\sssig Y}(v)\\[0.25em]
 &\qquad\times\bigl[F_{\sssig Y}(u)\bigr]^{r-1}\bigl[F_{\sssig Y}(v)-F_{\sssig Y}(u)\bigr]^{s-r-1}\\[0.25em]
 &\qquad\bigl[1-F_{\sssig Y}(v)\bigr]^{n-s},\\[0.25em]
@@ -630,11 +634,10 @@ $$
 
 $$
 \begin{gathered}
-\mathbb{E}\bigl(Y_{\sssig (r)}Y_{\sssig (s)}\bigr)=\int_{0}^{1}\int_{0}^{v}uv\,f_{Y_{\sssig (r)}Y_{\sssig (s)}}(u,v)\,du\,dv=\frac{\,(s+1)r\,}{\,(n+2)(n+1)\,}\\[0.7em]
-\mathbb{E}\bigl(Y_{\sssig (r)}\bigr)=\int_{0}^{1}\int_{0}^{v}u\,f_{Y_{\sssig (r)}Y_{\sssig (s)}}(u,v)\,du\,dv=\frac{r}{\,n+1\,}\\[0.7em]
-\mathbb{E}\bigl(Y_{\sssig (s)}\bigr)=\int_{0}^{1}\int_{0}^{v}v\,f_{Y_{\sssig (r)}Y_{\sssig (s)}}(u,v)\,du\,dv=\frac{s}{\,n+1\,}\\[0.7em]
-\mathrm{Cov}\bigl(Y_{\sssig (r)},Y_{\sssig (s)}\bigr)=\mathbb{E}\bigl(Y_{\sssig (r)}Y_{\sssig (s)}\bigr)-\mathbb{E}\bigl(Y_{\sssig (r)}\bigr)\mathbb{E}\bigl(Y_{\sssig (s)}\bigr)\\[0.3em]
-=\frac{r(n+1-s)}{\,(n+1)^2(n+2)\,},\ 1\leqslant r<s\leqslant n
+\mathbb{E}\bigl(Y_{\sssig (r)}Y_{\sssig (s)}\bigr)=\int_{0}^{1}\int_{0}^{v}uv\,f_{\sssig Y_{(r)}Y_{(s)}}(u,v)\,du\,dv=\frac{\,(s+1)r\,}{\,(n+2)(n+1)\,}\\[0.7em]
+\mathbb{E}\bigl(Y_{\sssig (r)}\bigr)=\int_{0}^{1}\int_{0}^{v}u\,f_{\sssig Y_{(r)}Y_{(s)}}(u,v)\,du\,dv=\frac{r}{\,n+1\,}\\[0.7em]
+\mathbb{E}\bigl(Y_{\sssig (s)}\bigr)=\int_{0}^{1}\int_{0}^{v}v\,f_{\sssig Y_{(r)}Y_{(s)}}(u,v)\,du\,dv=\frac{s}{\,n+1\,}\\[0.7em]
+\mathrm{Cov}\bigl(Y_{\sssig (r)},Y_{\sssig (s)}\bigr)=\mathbb{E}\bigl(Y_{\sssig (r)}Y_{\sssig (s)}\bigr)-\mathbb{E}\bigl(Y_{\sssig (r)}\bigr)\mathbb{E}\bigl(Y_{\sssig (s)}\bigr)=\frac{r(n+1-s)}{\,(n+1)^2(n+2)\,},\ 1\leqslant r<s\leqslant n
 \end{gathered}
 $$
 
@@ -643,16 +646,30 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}\bigl(Y_{\sssig (r)}Y_{\sssig (s)}\bigr)&=\int_{0}^{1}\int_{0}^{v}uv\,f_{Y_{\sssig (r)}Y_{\sssig (s)}}(u,v)\,du\,dv\\[0.25em]
-&=\frac{\,(s+1)r\,}{\,(n+2)(n+1)\,}\\[0.7em]
-\mathbb{E}\bigl(Y_{\sssig (r)}\bigr)&=\int_{0}^{1}\int_{0}^{v}u\,f_{Y_{\sssig (r)}Y_{\sssig (s)}}(u,v)\,du\,dv\\[0.25em]
-&=\frac{r}{\,n+1\,}\\[0.7em]
-\mathbb{E}\bigl(Y_{\sssig (s)}\bigr)&=\int_{0}^{1}\int_{0}^{v}v\,f_{Y_{\sssig (r)}Y_{\sssig (s)}}(u,v)\,du\,dv\\[0.25em]
-&=\frac{s}{\,n+1\,}\\[0.7em]
-\mathrm{Cov}\bigl(&Y_{\sssig (r)},Y_{\sssig (s)}\bigr)\\[0.25em]
+\mathbb{E}\bigl(Y_{\sssig (r)}Y_{\sssig (s)}\bigr)&=\int_{0}^{1}\int_{0}^{v}uv\,f_{\sssig Y_{(r)}Y_{(s)}}(u,v)\,du\,dv\\[0.25em]
+&=\frac{\,(s+1)r\,}{\,(n+2)(n+1)\,}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\mathbb{E}\bigl(Y_{\sssig (r)}\bigr)&=\int_{0}^{1}\int_{0}^{v}u\,f_{\sssig Y_{(r)}Y_{(s)}}(u,v)\,du\,dv\\[0.25em]
+&=\frac{r}{\,n+1\,}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\mathbb{E}\bigl(Y_{\sssig (s)}\bigr)&=\int_{0}^{1}\int_{0}^{v}v\,f_{\sssig Y_{(r)}Y_{(s)}}(u,v)\,du\,dv\\[0.25em]
+&=\frac{s}{\,n+1\,}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+&\mathrm{Cov}\bigl(Y_{\sssig (r)},Y_{\sssig (s)}\bigr)\\[0.25em]
 &=\mathbb{E}\bigl(Y_{\sssig (r)}Y_{\sssig (s)}\bigr)-\mathbb{E}\bigl(Y_{\sssig (r)}\bigr)\mathbb{E}\bigl(Y_{\sssig (s)}\bigr)\\[0.25em]
-&=\frac{r(n+1-s)}{\,(n+1)^2(n+2)\,},\\[0.25em]
-&\qquad\qquad 1\leqslant r<s\leqslant n
+&=\frac{r(n+1-s)}{\,(n+1)^2(n+2)\,},\ 1\leqslant r<s\leqslant n
 \end{aligned}
 $$
 
@@ -728,9 +745,12 @@ $$
 $$
 \begin{aligned}
 R&=Y_{\sssig (n)}-Y_{\sssig (1)}\\[0.5em]
-&\sim\mathrm{Beta}(a=n-1,\ b=2),\\[0.5em]
-\mathrm{Var}(R)&=\frac{2(n-1)}{\,(n+1)^2(n+2)\,}
+&\sim\mathrm{Beta}(a=n-1,\ b=2)
 \end{aligned}
+$$
+
+$$
+\mathrm{Var}(R)=\frac{2(n-1)}{\,(n+1)^2(n+2)\,}
 $$
 
 </div>
@@ -742,7 +762,7 @@ $$
 G(X_i)\overset{\mathrm{iid}}{\sim}\mathcal{U}(0,1),\ i=1,2,\ldots,n
 $$
 
-故事實上
+故
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -776,10 +796,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(Z)&=\frac{n-1}{\,n+1\,},\\[0.5em]
-\mathrm{Var}(Z)&=\frac{2(n-1)}{\,(n+1)^2(n+2)\,}
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(Z)=\frac{n-1}{\,n+1\,},\\[0.5em]
+\mathrm{Var}(Z)=\frac{2(n-1)}{\,(n+1)^2(n+2)\,}
+\end{gathered}
 $$
 
 </div>
@@ -789,9 +809,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-事實上，這個問題並不需要如此繁複的做法，我們可以利用[順序統計量的性質](/lecture-notes/order-statistics-distributions/#標準均勻分配的順序統計量與貝塔分配)來處理這個問題，作法如下:
-
-由下列事實
+第 (1) 小題的共變異數亦可直接利用[標準均勻分配順序統計量的性質](/lecture-notes/order-statistics-distributions/#標準均勻分配的順序統計量與貝塔分配)求得，無須重作重積分。由
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -843,10 +861,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-Y_{\sssig (s)}&\sim\mathrm{Beta}(a=s,\ b=n-s+1),\\[0.5em]
-Y_{\sssig (r)}&\sim\mathrm{Beta}(a=r,\ b=n-r+1)
-\end{aligned}
+\begin{gathered}
+Y_{\sssig (s)}\sim\mathrm{Beta}(a=s,\ b=n-s+1),\\[0.5em]
+Y_{\sssig (r)}\sim\mathrm{Beta}(a=r,\ b=n-r+1)
+\end{gathered}
 $$
 
 </div>
@@ -863,10 +881,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathrm{Var}\bigl(Y_{\sssig (s)}\bigr)&=\frac{\,s(n-s+1)\,}{(n+1)^2(n+2)},\\[0.5em]
-\mathrm{Var}\bigl(Y_{\sssig (r)}\bigr)&=\frac{\,r(n-r+1)\,}{(n+1)^2(n+2)}
-\end{aligned}
+\begin{gathered}
+\mathrm{Var}\bigl(Y_{\sssig (s)}\bigr)=\frac{\,s(n-s+1)\,}{(n+1)^2(n+2)},\\[0.5em]
+\mathrm{Var}\bigl(Y_{\sssig (r)}\bigr)=\frac{\,r(n-r+1)\,}{(n+1)^2(n+2)}
+\end{gathered}
 $$
 
 </div>
@@ -899,11 +917,11 @@ $$
 <div class="topic-box__label">Example 4.43</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1,X_2,X_3$ are independent random variables, each having the $\mathcal{U}(0,1)$ distribution. Let $Y_1$ denote the smallest and $Y_3$ the largest among <span class="text-nowrap">$X_1,X_2,X_3$.</span>
+Let $X_1,X_2,X_3$ be independent $\mathcal{U}(0,1)$ random variables. Let $Y_1$ be the smallest and $Y_3$ be the largest of <span class="text-nowrap">$X_1,X_2,X_3$.</span>
 
 <ol class="topic-list-paren">
-  <li>Find the probability density function of <span class="text-nowrap">$Y_3-Y_1$.</span></li>
-  <li>Evaluate $\mathbb{E}\left[\frac{1}{\,2\,}(Y_1+Y_3)\right]$ and <span class="text-nowrap">$\mathrm{Var}\left[\frac{1}{\,2\,}(Y_1+Y_3)\right]$.</span></li>
+  <li>Find the pdf of <span class="text-nowrap">$Y_3-Y_1$.</span></li>
+  <li>Find $\mathbb{E}\left[\frac{1}{\,2\,}(Y_1+Y_3)\right]$ and $\mathrm{Var}\left[\frac{1}{\,2\,}(Y_1+Y_3)\right]$.</li>
 </ol>
 </div>
 
@@ -980,11 +998,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathrm{Var}(Y_1)&=\frac{1\times 3}{\,(1+3)^2(1+3+1)\,}=\frac{3}{\,80\,},\\[0.5em]
-\mathrm{Var}(Y_3)&=\frac{3\times 1}{\,(3+1)^2(3+1+1)\,}=\frac{3}{\,80\,}\\[0.5em]
-\mathrm{Cov}(Y_1,Y_3)&=\frac{1(3+1-3)}{\,(3+1)^2(3+2)\,}=\frac{1}{\,80\,}
-\end{aligned}
+\begin{gathered}
+\mathrm{Var}(Y_1)=\frac{1\times 3}{\,(1+3)^2(1+3+1)\,}=\frac{3}{\,80\,},\\[0.5em]
+\mathrm{Var}(Y_3)=\frac{3\times 1}{\,(3+1)^2(3+1+1)\,}=\frac{3}{\,80\,}\\[0.5em]
+\mathrm{Cov}(Y_1,Y_3)=\frac{1(3+1-3)}{\,(3+1)^2(3+2)\,}=\frac{1}{\,80\,}
+\end{gathered}
 $$
 
 </div>
@@ -993,11 +1011,11 @@ $$
 
 ## 本篇小結
 
-[Theorem 4.19](#thm-gamma-to-beta) 把伽瑪分配與貝塔分配接了起來。兩個比例參數同為 $\beta$ 而形狀參數分別為 $a$ 與 $b$ 的獨立伽瑪變數，其中一個在兩者之和中所佔的比例 $U=\frac{X}{\,X+Y\,}$ 服從 <span class="text-nowrap">$\mathrm{Beta}(a,\ b)$，</span>兩者之和 $V=X+Y$ 則服從 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=a+b,\ \beta)$，</span>而且 $U$ 與 $V$ 彼此獨立。證明採 Jacobian 法，先寫出兩個伽瑪變數的聯合機率密度函數，換元之後所得到的聯合機率密度函數恰好可以拆成只含 $u$ 的一段與只含 $v$ 的一段，兩段各自積分之後，貝塔分配與伽瑪分配的機率函數就分別出現在 $U$ 與 $V$ 的邊際機率密度函數上。
+[Theorem 4.19](#thm-gamma-to-beta) 把伽瑪分配與貝塔分配接了起來。兩個比例參數同為 $\beta$ 而形狀參數分別為 $a$ 與 $b$ 的獨立伽瑪變數，其中一個在兩者之和中所佔的比例 $U=\frac{X}{\,X+Y\,}$ 服從 <span class="text-nowrap">$\mathrm{Beta}(a,\ b)$，</span>兩者之和 $V=X+Y$ 則服從形狀參數相加的 <span class="text-nowrap">$\mathrm{Gamma}(a+b,\ \beta)$，</span>而且 $U$ 與 $V$ 彼此獨立。證明採 Jacobian 法，先寫出兩個伽瑪變數的聯合機率密度函數，換元之後所得到的聯合機率密度函數恰好可以拆成只含 $u$ 的一段與只含 $v$ 的一段，兩段各自積分之後，貝塔分配與伽瑪分配的機率函數就分別出現在 $U$ 與 $V$ 的邊際機率密度函數上。
 
 定理之後的說明給出一個稍不嚴謹但簡單直接的想法。比例的平均是兩個期望值之間的比例，也就是 $\frac{a\beta}{\,a\beta+b\beta\,}=\frac{a}{\,a+b\,}$ 這個比值，恰好是貝塔分配的期望值。同一段也指出一個特例，即兩個比例參數相同且彼此獨立的指數分配變數，其比例服從標準均勻分配。
 
-三道例題各練一種用法。[Example 4.41](#ex-gamma-beta-1) 先由機率密度函數的合法性定出 <span class="text-nowrap">$k=1$，</span>辨識出兩個變數服從 <span class="text-nowrap">$\mathrm{Exp}(\beta=1)$，</span>再依 Jacobian 法逐步算出 $Y_1=X_1+X_2$ 與 $Y_2=\frac{X_1}{\,X_1+X_2\,}$ 的聯合與邊際機率密度函數，最後由聯合機率密度函數可以拆成兩個邊際機率密度函數的乘積、且範圍互不影響，判定兩者獨立，這正是 [Theorem 4.19](#thm-gamma-to-beta) 在 $a=b=1$ 時的情形。[Example 4.42](#ex-gamma-beta-2) 處理標準均勻分配的順序統計量。由兩個順序統計量的聯合機率密度函數算出共變異數 <span class="text-nowrap">$\frac{r(n+1-s)}{\,(n+1)^2(n+2)\,}$，</span>再以變數變換求得全距 $R=Y_{\sssig (n)}-Y_{\sssig (1)}$ 服從 <span class="text-nowrap">$\mathrm{Beta}(a=n-1,\ b=2)$；</span>第三小題則以機率積分轉換把韋伯變數換成標準均勻變數，所求的量因而與第二小題完全相同。該題之後的說明另給一個省事的作法。直接引用順序統計量之差服從貝塔分配這個結果，再由變異數的展開式反解共變異數。[Example 4.43](#ex-gamma-beta-3) 是同一組結果在 $n=3$ 上的演練，$Y_3-Y_1$ 服從 <span class="text-nowrap">$\mathrm{Beta}(a=2,\ b=2)$，</span>而極小值與極大值之平均的期望值為 <span class="text-nowrap">$\frac{1}{\,2\,}$、</span>變異數為 <span class="text-nowrap">$\frac{1}{\,40\,}$。</span>
+三道例題各練一種用法。[Example 4.41](#ex-gamma-beta-1) 先由機率密度函數的合法性定出 <span class="text-nowrap">$k=1$，</span>辨識出兩個變數服從 <span class="text-nowrap">$\mathrm{Exp}(\beta=1)$，</span>再依 Jacobian 法逐步算出 $Y_1=X_1+X_2$ 與 $Y_2=\frac{X_1}{\,X_1+X_2\,}$ 的聯合與邊際機率密度函數，最後由聯合機率密度函數可以拆成兩個邊際機率密度函數的乘積、且範圍互不影響，判定兩者獨立，這正是 [Theorem 4.19](#thm-gamma-to-beta) 在 $a=b=1$ 時的情形。[Example 4.42](#ex-gamma-beta-2) 處理標準均勻分配的順序統計量。由兩個順序統計量的聯合機率密度函數算出共變異數 $\frac{r(n+1-s)}{\,(n+1)^2(n+2)\,}$ 這一結果，再以變數變換求得全距 $R=Y_{\sssig (n)}-Y_{\sssig (1)}$ 服從 <span class="text-nowrap">$\mathrm{Beta}(a=n-1,\ b=2)$；</span>第三小題則以機率積分轉換把韋伯變數換成標準均勻變數，所求的量因而與第二小題完全相同。該題之後的說明另給一個省事的作法。直接引用順序統計量之差服從貝塔分配這個結果，再由變異數的展開式反解共變異數。[Example 4.43](#ex-gamma-beta-3) 是同一組結果在 $n=3$ 上的演練，$Y_3-Y_1$ 服從 <span class="text-nowrap">$\mathrm{Beta}(a=2,\ b=2)$，</span>而極小值與極大值之平均的期望值為 <span class="text-nowrap">$\frac{1}{\,2\,}$、</span>變異數為 <span class="text-nowrap">$\frac{1}{\,40\,}$。</span>
 
 [下一篇](/lecture-notes/normal-distribution/)轉入常態相關的機率模型，先給出高斯積分，再定義常態分配，並說明標準化與線性組合的可加性。
 

@@ -10,14 +10,14 @@ order: 327
 permalink: /lecture-notes/order-statistics/
 date: 2026-08-13
 published: false
-excerpt: "把一組隨機變數由小到大重新排列，所得的這一組新的隨機變數即為順序統計量，其中最受關注的是最小的 $Y_1$ 與最大的 $Y_n$ 這兩個。求兩個順序統計量的聯合機率密度函數時，必須先把所有可能的大小順序逐一列出，各自作一次函數轉換，再把各種情況的結果加總起來。而在隨機樣本的情況中，同分配的對稱性會使各種情況的結果完全相同，加總因而只剩下一個與階乘有關的倍數，排序的問題也就成了古典機率中的排列組合問題。本篇以三道例題示範這兩件事，其中最後一題甚至不需要知道共同的分配是哪一個，只憑對稱性即可求得機率。"
+excerpt: "將一組隨機變數依數值由小到大排序所得的序列稱為順序統計量。本篇說明如何由排列對稱性與多對多函數轉換求取順序統計量的聯合分配，並以三道例題演練極值與排序機率的計算。"
 ---
 
 [上一篇](/lecture-notes/mgf-method-examples/)以三道例題示範了[動差母函數](/lecture-notes/moment-generating-functions/#def-mgf)法的用法，其中最後一道例題的第三小題求的是獨立均勻樣本中最大者的分配，該篇末尾的註記便由此指出，「取排序後最大者」是一種多轉一的轉換。
 
 本篇先以 [Definition 3.21](#def-order-stat) 給出順序統計量，接著以兩道例題示範最小值與最大值的[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)該怎麼求，說明為什麼必須先把所有可能的大小順序逐一列出，各自以 [Jacobian 法](/lecture-notes/many-to-many-transformations/#連續型的-jacobian-法)轉換之後再行加總，最後以一道例題說明隨機樣本的對稱性如何把排序的問題轉為排列組合的問題。
 
-稍早我們曾經提過，「排序」其實也是一種函數轉換。這個小節所要探討的，便是這種特殊的函數轉換，我們稱之為**順序統計量 <span lang="en">(order statistics)</span>**，並且一併探討順序統計量在特定的母體中所對應的抽樣分配。
+將一組隨機樣本依數值由小到大重新排列，本身即構成一種函數轉換；轉換後所得的有序隨機變數稱為**順序統計量 <span lang="en">(order statistics)</span>**。
 
 ## 順序統計量的定義
 
@@ -40,9 +40,7 @@ $$
 
 </div>
 
-順序統計量僅單純地針對一組隨機變數進行排序，故其具有大小關係是一定的。
-
-通常，比較重要的順序統計量，是樣本中最小的和最大的，也就是 $Y_1$ $=$ $X_{\sssig (1)}$ $=$ $\min\lbrace X_1,\ldots,X_n\rbrace$ 與 $Y_n$ $=$ $X_{\sssig (n)}$ $=$ $\max\lbrace X_1,\ldots,X_n\rbrace$ 二者，但我們也會關心其中任意兩個順序統計量所組成的聯合分配。下面便來看看這些順序統計量該具有什麼抽樣分配。
+順序統計量將一組隨機變數依數值大小重排，故恆滿足遞增的大小關係。實務與推論上最常關注樣本最小值 $Y\_1=X\_{\sssig (1)}=\min\lbrace X\_1,\ldots,X\_n\rbrace$ 與最大值 $Y\_n=X\_{\sssig (n)}=\max\lbrace X\_1,\ldots,X\_n\rbrace$ 這兩個極端值，同時也常需要求取任意兩個順序統計量的聯合分配。以下先透過例題說明其求法。
 
 ## 最小值與最大值的聯合機率密度函數
 
@@ -50,13 +48,13 @@ $$
 <div class="topic-box__label">Example 3.60</div>
 
 <div lang="en" markdown="1">
-Suppose that the random variables $X$ and $Y$ have the joint probability density function
+Let $X$ and $Y$ have joint probability density function
 
 $$
 f_{\sssig XY}(x,y)=\frac{\,12\,}{7}x(x+y),\quad 0<x,y<1
 $$
 
-and let $U=\min(X,Y)$ and <span class="text-nowrap">$V=\max(X,Y)$.</span> Determine the joint probability density function of the pair <span class="text-nowrap">$(U,V)$.</span>
+and let $U=\min(X,Y)$ and <span class="text-nowrap">$V=\max(X,Y)$.</span> Find the joint probability density function of <span class="text-nowrap">$(U,V)$.</span>
 </div>
 
 樣本排序可分為 $X>Y$ 與 $X<Y$ 兩種狀況，故以下分列之
@@ -197,7 +195,7 @@ $$
 <div class="topic-box__label">Example 3.61</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ and $Y$ are independent random variables whose probability density functions are
+Let $X$ and $Y$ be independent random variables with probability density functions
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -209,15 +207,15 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-f_{\sssig X}(x)&=2x,\ 0<x<1\\[0.55em]
-\text{and}\quad f_{\sssig Y}(y)&=3y^{2},\ 0<y<1
-\end{aligned}
+\begin{gathered}
+f_{\sssig X}(x)=2x,\ 0<x<1\\[0.55em]
+\text{and}\quad f_{\sssig Y}(y)=3y^{2},\ 0<y<1
+\end{gathered}
 $$
 
 </div>
 
-respectively. Find the joint probability density function of the pair <span class="text-nowrap">$(U,V)$,</span> where $U=\min(X,Y)$ and <span class="text-nowrap">$V=\max(X,Y)$.</span>
+respectively. Find the joint probability density function of <span class="text-nowrap">$(U,V)$,</span> where $U=\min(X,Y)$ and <span class="text-nowrap">$V=\max(X,Y)$.</span>
 </div>
 
 由 $X$ $\indep$ $Y$ 可知
@@ -349,13 +347,9 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-順序統計量的原意是要討論隨機變數間，順序的可能情況，並逐一對應此時的每一個順序統計量，是原本的哪一個隨機變數，這一點在任意聯合分配中都應如此。
+求取一般聯合分配的順序統計量時，須先窮舉原隨機變數之間所有可能的大小順序，在各個順序區間內分別對應反解並套用 Jacobian 法轉換，最後再將各分支所得的機率密度相加。
 
-在討論所有的可能性後，我們應分列其結果進行轉換，再行加總而得到最後的聯合分配，就好像過去我們所遇到的，所有具有不同來源的情況一樣。
-
-然而，在隨機樣本 (特指獨立且同分配) 的情況中，這些討論的結果，會因為同分配的對稱性而完全變為同一個結果，故再行加總的一步只會變成一定的倍數，而且這個倍數將與階乘 (即排列數) 有關。
-
-事實上，隨機樣本的排序問題，通常都會被轉換為古典機率中的排列組合問題，見[下列這題](#ex-three-iid-order-probability)。
+當 $X\_1,\ldots,X\_n$ 為獨立同分配的隨機樣本時，由同分配的對稱性可知每種排列順序轉換後的密度函數完全相同，加總後僅差一個對應排列數的階乘倍數；隨機樣本的排序機率也因此可直接化為古典機率中的排列組合問題，見[下一題](#ex-three-iid-order-probability)。
 
 </div>
 
@@ -365,11 +359,11 @@ $$
 <div class="topic-box__label">Example 3.62</div>
 
 <div lang="en" markdown="1">
-Suppose that <span class="text-nowrap">$X_1$,</span> $X_2$ and $X_3$ are independent and identically distributed continuous random variables.
+Let <span class="text-nowrap">$X_1$,</span> <span class="text-nowrap">$X_2$,</span> and $X_3$ be independent and identically distributed continuous random variables.
 
 <ol class="topic-list-paren">
-  <li>Evaluate <span class="text-nowrap">$\mathbb{P}(X_1>X_2\mid X_1>X_3)$.</span></li>
-  <li>Evaluate <span class="text-nowrap">$\mathbb{P}(X_1>X_2\mid X_1<X_3)$.</span></li>
+  <li>Find <span class="text-nowrap">$\mathbb{P}(X_1>X_2\mid X_1>X_3)$.</span></li>
+  <li>Find <span class="text-nowrap">$\mathbb{P}(X_1>X_2\mid X_1<X_3)$.</span></li>
 </ol>
 </div>
 
@@ -387,7 +381,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{P}(X_1>X_2\mid X_1>X_3)&=\frac{\,\mathbb{P}\bigl(\lbrace X_1>X_2\rbrace\cap\lbrace X_1>X_3\rbrace\bigr)\,}{\mathbb{P}(X_1>X_3)}
+&\mathbb{P}(X_1>X_2\mid X_1>X_3)\\[0.35em]
+&=\frac{\,\mathbb{P}\bigl(\lbrace X_1>X_2\rbrace\cap\lbrace X_1>X_3\rbrace\bigr)\,}{\mathbb{P}(X_1>X_3)}
 \end{aligned}
 $$
 
@@ -406,10 +401,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{P}\bigl(\lbrace X_1>X_2\rbrace\cap\lbrace X_1>X_3\rbrace\bigr)&=\frac{1}{\,3\,},\\[0.55em]
-\mathbb{P}(X_1>X_3)&=\frac{1}{\,2\,}
-\end{aligned}
+\begin{gathered}
+\mathbb{P}\bigl(\lbrace X_1>X_2\rbrace\cap\lbrace X_1>X_3\rbrace\bigr)=\frac{1}{\,3\,},\\[0.55em]
+\mathbb{P}(X_1>X_3)=\frac{1}{\,2\,}
+\end{gathered}
 $$
 
 </div>
@@ -454,10 +449,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{P}(X_3>X_1>X_2)&=\frac{1}{\,6\,},\\[0.55em]
-\mathbb{P}(X_1<X_3)&=\frac{1}{\,2\,}
-\end{aligned}
+\begin{gathered}
+\mathbb{P}(X_3>X_1>X_2)=\frac{1}{\,6\,},\\[0.55em]
+\mathbb{P}(X_1<X_3)=\frac{1}{\,2\,}
+\end{gathered}
 $$
 
 </div>
@@ -474,9 +469,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[上述問題](#ex-three-iid-order-probability)中，我們甚至不知道 $X_1, X_2, X_3$ 同分配的分配是何者，但藉由其獨立且同分配的特色，依照其對稱性，將排序的問題轉換為排列組合的問題，從而知道其機率。
-
-這個概念在隨機樣本的順序統計量中格外重要，這是因為，隨機樣本的對稱性將允許我們在計算整套順序統計量的聯合分配時，省略掉非常多討論的步驟，而只需要討論其排列的可能數。
+在 [Example 3.62](#ex-three-iid-order-probability) 中，即使未指定 $X\_1, X\_2, X\_3$ 的具體連續分配形式，仍可藉由獨立同分配的對稱性 (連續型隨機變數出現同值的機率為 <span class="text-nowrap">$0$，</span>$3!$ 種嚴格大小順序均等可能)，將排序問題化為排列數之比而求得機率。此對稱性亦使我們在[下一篇](/lecture-notes/order-statistics-distributions/)計算整套順序統計量的聯合分配時，無須逐一分案討論，僅須計入可能的排列數。
 
 </div>
 

@@ -10,32 +10,32 @@ order: 326
 permalink: /lecture-notes/mgf-method-examples/
 date: 2026-08-13
 published: false
-excerpt: "本篇以三道例題演練動差母函數法。第一題只給出兩個獨立變數的 mgf，先由線性組合的 mgf 認出 $U=3X+2Y$ 的分配，再由 mgf 的唯一性回推兩個 pdf，改以 Jacobian 法求得 $U$ 與 $V$ 的聯合 pdf，進而得到 $V$ 的期望值與變異數。第二題求隨機樣本之樣本平均的分配，樣本平均也是一種針對樣本的線性組合，每個樣本的權重都是 $\\frac{1}{n}$ 這個值，而常態分配的任意線性組合仍為常態分配。第三題以三個小題處理獨立均勻樣本的和、對數乘積與最大值，其中兩個變數之和的 pdf 分別以 Jacobian 法與 cdf 法各解一次，並附上座標系轉換前後的值域圖，最後一則註記則指出「排序」其實也是一種函數轉換。"
+excerpt: "本篇以三道綜合例題演練動差母函數法、Jacobian 法與 cdf 法的搭配運用，包含由獨立變數的 mgf 辨識線性組合分配、推導常態隨機樣本平均數的分配，以及求取獨立均勻變數之和與最大值的分配。"
 ---
 
 [上一篇](/lecture-notes/mgf-method-transformations/)先以兩道例題示範多對一的作法，即先做一次維度相同的函數轉換，再把不需要的變數積分掉；接著以 [Theorem 3.23](/lecture-notes/mgf-method-transformations/#thm-mgf-two-to-one) 指出，若各變數彼此[獨立](/lecture-notes/independent-random-variables/#def-indep-r-v)且轉換是線性的，則 $W=\sum_{i=1}^{n}a_i\,X_i+b$ 的 mgf 是 $e^{bt}$ 與各項 mgf 的乘積，並以另外兩道例題由 mgf 的唯一性認出轉換後的分配。
 
-本篇以三道例題繼續演練這個做法。[Example 3.57](#ex-independent-mgf-difference) 先由兩個獨立變數的 mgf 認出線性組合的分配，再由 mgf 的唯一性回推出兩個 pdf，改以 [Jacobian 法](/lecture-notes/many-to-many-transformations/#連續型的-jacobian-法)求出另一個變數的[期望值](/lecture-notes/expectation/#def-expectation)與[變異數](/lecture-notes/variance/#def-variance)；[Example 3.58](#ex-random-sample-mgf-mean) 求隨機樣本之樣本平均的分配；[Example 3.59](#ex-independent-mgf-linear) 則以三個小題處理獨立均勻樣本的和、對數乘積與最大值，其中兩個變數之和的 pdf 分別以 Jacobian 法與 cdf 法各解一次。
+本篇以三道例題繼續演練這個做法。[Example 3.57](#ex-independent-mgf-difference) 先由兩個獨立變數的 mgf 認出線性組合的分配，再由 mgf 的唯一性回推出兩個 pdf，改以 [Jacobian 法](/lecture-notes/many-to-many-transformations/#連續型的-jacobian-法)求出另一個變數的[期望值](/lecture-notes/expectation/#def-expectation)與[變異數](/lecture-notes/variance/#def-variance)；[Example 3.58](#ex-random-sample-mgf-mean) 求隨機樣本之樣本平均的分配；[Example 3.59](#ex-independent-mgf-linear) 則以三個小題處理獨立均勻樣本的和、對數乘積與最大值，其中第一小題將兩變數之和的 pdf 分別以 Jacobian 法與 cdf 法各解一次。
 
 <div id="ex-independent-mgf-difference" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.57</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ and $Y$ are two independent random variables, that the mgf of $X$ is
+Let $X$ and $Y$ be two independent random variables. Suppose that the mgf of $X$ is
 
 $$
 M_{\sssig X}(t)=(1-2t)^{-3},\ t<1/2
 $$
 
-and that the mgf of $Y$ is
+and the mgf of $Y$ is
 
 $$
 M_{\sssig Y}(t)=(1-3t)^{-2},\ t<1/3
 $$
 
 <ol class="topic-list-paren">
-  <li>Determine the distribution of <span class="text-nowrap">$U=3X+2Y$.</span></li>
-  <li>Evaluate the mean and the variance of <span class="text-nowrap">$V=\frac{2Y}{\,3X+2Y\,}$.</span></li>
+  <li>What is the distribution of <span class="text-nowrap">$U=3X+2Y$?</span></li>
+  <li>Find the mean and variance of <span class="text-nowrap">$V=\frac{2Y}{\,3X+2Y\,}$.</span></li>
 </ol>
 </div>
 
@@ -81,10 +81,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-f_{\sssig X}(x)&=\frac{1}{\,2^{3}\Gamma(3)\,}x^{3-1}e^{\frac{-x}{2}},\ x>0\\[0.55em]
-\text{及}\quad f_{\sssig Y}(y)&=\frac{1}{\,3^{2}\Gamma(2)\,}y^{2-1}e^{\frac{-y}{3}},\ y>0
-\end{aligned}
+\begin{gathered}
+f_{\sssig X}(x)=\frac{1}{\,2^{3}\Gamma(3)\,}x^{3-1}e^{\frac{-x}{2}},\ x>0\\[0.55em]
+\text{及}\quad f_{\sssig Y}(y)=\frac{1}{\,3^{2}\Gamma(2)\,}y^{2-1}e^{\frac{-y}{3}},\ y>0
+\end{gathered}
 $$
 
 </div>
@@ -232,10 +232,10 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-U&\sim\mathrm{Gamma}(\alpha=5,\beta=6)\\[0.45em]
-\indep\ V&\sim\mathrm{Beta}(a=2,b=3)
-\end{aligned}
+\begin{gathered}
+U\sim\mathrm{Gamma}(\alpha=5,\beta=6)\\[0.45em]
+\indep\ V\sim\mathrm{Beta}(a=2,b=3)
+\end{gathered}
 $$
 
 </div>
@@ -253,17 +253,15 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-\mathbb{E}(V)&=\frac{2}{\,2+3\,}=\frac{2}{\,5\,},\\[0.55em]
-\mathrm{Var}(V)&=\frac{2\times3}{\,(2+3+1)(2+3)^{2}\,}=\frac{1}{\,25\,}
-\end{aligned}
+\begin{gathered}
+\mathbb{E}(V)=\frac{2}{\,2+3\,}=\frac{2}{\,5\,},\\[0.55em]
+\mathrm{Var}(V)=\frac{2\times3}{\,(2+3+1)(2+3)^{2}\,}=\frac{1}{\,25\,}
+\end{gathered}
 $$
 
 </div>
 
 </div>
-
-<!-- ref-point: 待第四章的伽瑪分配與貝塔分配主題發布後，將本題中的 Gamma 與 Beta 兩個分配名稱改為指向該處的站內連結。 -->
 
 <div id="ex-random-sample-mgf-mean" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.58</div>
@@ -310,9 +308,7 @@ $$
 <div id="note-affine-transformation" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-樣本平均 (sample mean) 也是一種針對樣本的線性組合，每個樣本的權重同為 <span class="text-nowrap">$\frac{1}{n}$。</span>
-
-事實上，[常態分配](/lecture-notes/normal-distribution/#def-normal)的任意線性組合，其結果都是常態分配，這是常態分配特有的**仿射變換 <span lang="en">(affine transformation)</span>** 性質，在多元常態的矩陣運算中特別有用 (讀者不應忘記，矩陣運算屬於線性運算的一環)。
+樣本平均 (sample mean) 本身即為樣本的線性組合，各觀測值的權重皆為 <span class="text-nowrap">$\frac{1}{n}$。</span>更一般而言，獨立[常態分配](/lecture-notes/normal-distribution/#def-normal) (或聯合常態) 隨機變數經非退化線性組合後仍服從常態分配，此即常態分配特有的**仿射變換 <span lang="en">(affine transformation)</span>** 性質，在後文多元常態分配的矩陣線性轉換中尤為實用。
 
 </div>
 
@@ -320,21 +316,21 @@ $$
 <div class="topic-box__label">Example 3.59</div>
 
 <div lang="en" markdown="1">
-Suppose that $X_1, \ldots, X_n$ are independent random variables sharing the common pdf
+Let $X_1,\ldots,X_n$ be independent random variables with common pdf
 
 $$
 f_{\sssig X}(x)=\left\lbrace
-\begin{array}{cl}
-1, &\ 0<x<1\\[0.2em]
-0, &\ \text{otherwise.}
+\begin{array}{c@{\quad}l}
+1, & 0<x<1\\[0.4em]
+0, & \text{otherwise}
 \end{array}
 \right.
 $$
 
 <ol class="topic-list-paren">
-  <li>Determine the pdf of <span class="text-nowrap">$X_1+X_2$.</span></li>
-  <li>Suppose that <span class="text-nowrap">$Y=-2\ln\prod_{i=1}^{n}X_i$.</span> Determine the pdf, the mean and the variance of <span class="text-nowrap">$Y$.</span></li>
-  <li>Suppose that <span class="text-nowrap">$X_{\sssig (n)}=\max\lbrace X_1,\ldots,X_n\rbrace$.</span> Determine the pdf, the mean and the variance of <span class="text-nowrap">$X_{\sssig (n)}$.</span></li>
+  <li>Find the pdf of <span class="text-nowrap">$X_1+X_2$.</span></li>
+  <li>Let <span class="text-nowrap">$Y=-2\ln\prod_{i=1}^{n}X_i$.</span> Find the pdf, mean, and variance of <span class="text-nowrap">$Y$.</span></li>
+  <li>Let <span class="text-nowrap">$X_{\sssig (n)}=\max\lbrace X_1,\ldots,X_n\rbrace$.</span> Find the pdf, mean, and variance of <span class="text-nowrap">$X_{\sssig (n)}$.</span></li>
 </ol>
 </div>
 
@@ -502,21 +498,21 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在考慮 $U$ 與 $V$ 的聯合值域時，我們可以先考慮 $X_1$ 與 $X_2$ 的聯合值域，並做座標系轉換。$X_1$ 與 $X_2$ 的聯合值域如下
+求取 $(U,V)$ 的聯合值域時，可先畫出 $(X\_1,X\_2)$ 的原始值域再作座標轉換。轉換前 $(X\_1,X\_2)$ 的值域如下
 
 <figure id="fig-transform-original-range" class="topic-figure topic-figure--medium">
   <img src="/images/lecture-notes/transform-original-range.svg" alt="平面上一個正方形以淡紅色填滿，它的左邊與下邊就是兩條帶箭頭的座標軸，上邊與右邊各以一條實線描出。橫軸右端標 x 下標 1，縱軸上端標 x 下標 2。原點下方標 0，橫軸上正方形右邊所在之處標 1，縱軸上正方形上邊所在之處標 1。全圖只有這一個正方形，沒有任何斜線。">
   <figcaption><span class="topic-figure__label">Fig. 3.21.</span> 轉換之前 $X_1$ 與 $X_2$ 的聯合值域，是兩軸上 $0$ 與 $1$ 之間所圍出的正方形，圖中填色的部分即此值域。</figcaption>
 </figure>
 
-令 $U=X_1+X_2$ 及 <span class="text-nowrap">$V=X_1$，</span>我們可將 $U$ 與 $V$ 在原始座標系的範圍繪製如下
+令 $U=X\_1+X\_2$ 及 <span class="text-nowrap">$V=X_1$，</span>可將對應邊界標示並轉換至 $(v,u)$ 座標系，繪製圖形如下
 
 <figure id="fig-transform-uv-range" class="topic-figure topic-figure--medium">
   <img src="/images/lecture-notes/transform-uv-range.svg" alt="上下兩個面板，中間是一個朝下的雙線箭號，箭號右方寫著 u 等於 x 下標 1 加 x 下標 2、v 等於 x 下標 1。上面板是轉換之前的平面，橫軸右端標 x 下標 1 等於 v，縱軸上端標 x 下標 2，兩軸各標 0 與 1；淡紅色填滿的正方形即聯合值域，上邊與右邊以實線描出。正方形內有一條由左上角連到右下角的虛線，正方形的左下角之外與右上角之外各有一條與該虛線平行的實線，分別標 u 等於 x 下標 1 加 x 下標 2 等於 0 與 u 等於 x 下標 1 加 x 下標 2 等於 2。下面板是轉換之後的平面，橫軸標 v 並標出 0 與 1，縱軸標 u 並標出 1 與 2；淡紅色填滿的是一個向右上傾斜的平行四邊形，四個頂點依序落在原點、橫一縱一、橫一縱二與橫零縱一。平行四邊形的兩條斜邊各以實線向兩端延長，右上那條標 v 等於 u 減 1，左下那條標 v 等於 u，平行四邊形的右邊亦以實線畫出。另有三條虛線，兩條分別自縱軸的 1 與 2 向右畫到平行四邊形，一條自橫軸的 1 向上畫到平行四邊形的下方頂點。">
   <figcaption><span class="topic-figure__label">Fig. 3.22.</span> 上面板是轉換之前的 $(x_1,x_2)$ 平面，正方形值域上畫出 $u=x_1+x_2$ 等於 <span class="text-nowrap">$0$、</span>$1$ 與 $2$ 的三條線，中間那條是虛線。下面板是轉換之後的 $(v,u)$ 平面，值域成為 $v=u$ 與 $v=u-1$ 兩條線之間、$v$ 由 $0$ 到 $1$ 的平行四邊形。兩個面板取同一個單位長，正方形的邊與平行四邊形的邊因此可以直接比對。</figcaption>
 </figure>
 
-如此便可以知道 $U$ 與 $V$ 的聯合值域，進一步求取 $U$ 的邊際分配。
+由平行四邊形區域即可定出固定 $u$ 時 $v$ 的積分上下限 (在 $u=1$ 處分段)，進而求得 $U$ 的邊際分配。
 
 </div>
 
@@ -625,14 +621,14 @@ u, &\ 0<u<1\\[0.4em]
 \right.
 $$
 
-(2) 首先令 $W_i=-2\ln X_i,$ <span class="text-nowrap">$i=1,2,\ldots,n$，</span>則 <span class="text-nowrap">$Y=\sum_{i=1}^{n}W_i$，</span>並且我們有
+(2) 首先令 $W_i=-2\ln X_i,$ <span class="text-nowrap">$i=1,2,\ldots,n$，</span>則 <span class="text-nowrap">$Y=\sum_{i=1}^{n}W_i$，</span>並且有
 {: .topic-paren-item}
 
 $$
 X_i=e^{\frac{-W_i}{2}}\qquad\therefore\, \mathbf{J}=\frac{d\,x_i}{d\,w_i}=-\frac{1}{2}e^{-\frac{\,w_i\,}{2}}
 $$
 
-又由於 <span class="text-nowrap">$X_i\overset{\mathrm{iid}}{\sim}\mathcal{U}(0,1)$，</span>由 Jacobian 法可知
+又由於 $X_i\overset{\mathrm{iid}}{\sim}$ [$\mathcal{U}(0,1)$](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution) 成立，由 Jacobian 法可知
 {: .topic-paren-cont}
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
@@ -654,7 +650,7 @@ $$
 
 </div>
 
-此即 $W_i\overset{\mathrm{iid}}{\sim}\mathrm{Exp}(\beta=2)$，則由 [Gamma 分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)的可加性可知
+此即 $W_i\overset{\mathrm{iid}}{\sim}$ [$\mathrm{Exp}(\beta=2)$](/lecture-notes/gamma-function-exponential-distribution/#def-exponential-distribution) 成立，則由[伽瑪分配](/lecture-notes/gamma-distribution/#def-gamma-distribution)的可加性可知
 {: .topic-paren-cont}
 
 $$
@@ -674,11 +670,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
-\begin{aligned}
-f_{\sssig Y}(y)&=\frac{1}{\,2^{n}\Gamma(n)\,}y^{n-1}e^{\frac{-y}{2}},\ \ y>0,\\[0.55em]
-\mathbb{E}(Y)&=n\times2=2n,\\[0.55em]
-\mathrm{Var}(Y)&=n\times2^{2}=4n
-\end{aligned}
+\begin{gathered}
+f_{\sssig Y}(y)=\frac{1}{\,2^{n}\Gamma(n)\,}y^{n-1}e^{\frac{-y}{2}},\ \ y>0,\\[0.55em]
+\mathbb{E}(Y)=n\times2=2n,\\[0.55em]
+\mathrm{Var}(Y)=n\times2^{2}=4n
+\end{gathered}
 $$
 
 </div>
@@ -768,8 +764,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+\mathbb{E}(X_{\sssig (n)})=\frac{n}{\,n+1\,}
+$$
+
+$$
 \begin{aligned}
-\mathbb{E}(X_{\sssig (n)})&=\frac{n}{\,n+1\,},\\[0.55em]
 \mathrm{Var}(X_{\sssig (n)})&=\frac{n\times1}{\,(n+1+1)(n+1)^{2}\,}\\[0.35em]
 &=\frac{n}{\,(n+2)(n+1)^{2}\,}
 \end{aligned}
@@ -779,24 +778,20 @@ $$
 
 </div>
 
-<!-- ref-point: 待第四章的均勻分配、指數分配、伽瑪分配與貝塔分配主題發布後，將 Example 3.59 解答中的 $\mathcal{U}(0,1)$、$\mathrm{Exp}(\beta=2)$、Gamma 分配的可加性與 $\mathrm{Beta}(a=n,b=1)$ 各改為指向該處的站內連結。 -->
-
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-「排序」其實也是一種函數轉換，而「取排序後最大者」則是一種多轉一的轉換。
-
-事實上，「排序」在統計學中被稱作[順序統計量](/lecture-notes/order-statistics/#def-order-stat) <span lang="en">(order statistics)</span>，我們馬上就會看到其相關的性質。
+將一組樣本「依大小排序」本身即為多對多的函數轉換，而第 (3) 小題「取排序後最大者」則屬多轉一的轉換。排序後的樣本在統計學中稱為[順序統計量](/lecture-notes/order-statistics/#def-order-stat) <span lang="en">(order statistics)</span>，[下一篇](/lecture-notes/order-statistics/)將系統介紹其定義與相關性質。
 
 </div>
 
 ## 本篇小結
 
-[Example 3.57](#ex-independent-mgf-difference) 把 mgf 法與 Jacobian 法接在同一道題裡。前半只用到獨立時 mgf 相乘這一點，$M_{\sssig U}(t)$ $=$ $M_{\sssig X}(3t)\,M_{\sssig Y}(2t)$ 化簡之後是 <span class="text-nowrap">$(1-6t)^{-5}$，</span>由唯一性即知 $U$ $=$ $3X+2Y$ 服從 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=5,\beta=6)$。</span>後半要求的是 $V$ 的期望值與變異數，而 $V$ 並不是線性組合，[Theorem 3.23](/lecture-notes/mgf-method-transformations/#thm-mgf-two-to-one) 用不上，作法改為由唯一性回推 $X$ 與 $Y$ 的 pdf，寫出聯合 pdf 之後再以 Jacobian 法轉到 $(U,V)$ 上；轉換後的聯合 pdf 恰好拆成一個只含 $u$ 的因式與一個只含 $v$ 的因式，因此 $U$ 與 $V$ 獨立，而 $V$ 服從 <span class="text-nowrap">$\mathrm{Beta}(a=2,b=3)$，</span>期望值與變異數分別為 $\frac{2}{5}$ 與 <span class="text-nowrap">$\frac{1}{25}$。</span>
+[Example 3.57](#ex-independent-mgf-difference) 把 mgf 法與 Jacobian 法接在同一道題裡。前半只用到獨立時 mgf 相乘這一點，$M_{\sssig U}(t)$ $=$ $M_{\sssig X}(3t)\,M_{\sssig Y}(2t)$ 化簡之後是 <span class="text-nowrap">$(1-6t)^{-5}$，</span>由唯一性即知 $U$ $=$ $3X+2Y$ 服從 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=5,\beta=6)$。</span>後半要求的是 $V$ 的期望值與變異數，而 $V$ 並不是線性組合，[Theorem 3.23](/lecture-notes/mgf-method-transformations/#thm-mgf-two-to-one) 用不上，作法改為由唯一性回推 $X$ 與 $Y$ 的 pdf，寫出聯合 pdf 之後再以 Jacobian 法轉到 $(U,V)$ 上；轉換後的聯合 pdf 恰好拆成一個只含 $u$ 的因式與一個只含 $v$ 的因式，因此 $U$ 與 $V$ 獨立，而 $V$ 服從 [$\mathrm{Beta}(a=2,b=3)$](/lecture-notes/beta-function-and-distribution/#def-beta-distribution) 這個分配，故可得其期望值與變異數分別為 $\frac{2}{5}$ 與 <span class="text-nowrap">$\frac{1}{25}$。</span>
 
-[Example 3.58](#ex-random-sample-mgf-mean) 是線性組合的一個特例。樣本平均也是一種針對樣本的線性組合，只是每個樣本的權重同為 <span class="text-nowrap">$\frac{1}{n}$，</span>因此把 $\frac{t}{n}$ 代入每一項的 mgf 再相乘即可，所得的 $e^{\mu t+\frac{\sigma^{2}}{n}\frac{t^{2}}{2}}$ 仍是常態分配的 mgf，只是變異數縮成 <span class="text-nowrap">$\frac{\sigma^{2}}{n}$。</span>常態分配的任意線性組合都仍是常態分配，這是常態分配特有的仿射變換性質。
+[Example 3.58](#ex-random-sample-mgf-mean) 是線性組合的一個特例。樣本平均也是一種針對樣本的線性組合，只是每個樣本的權重同為 <span class="text-nowrap">$\frac{1}{n}$，</span>因此把 $\frac{t}{n}$ 代入每一項的 mgf 再相乘即可，所得的 $e^{\mu t+\frac{\sigma^{2}}{n}\frac{t^{2}}{2}}$ 仍是常態分配的 mgf，只是變異數縮成 <span class="text-nowrap">$\frac{\sigma^{2}}{n}$。</span>獨立常態 (或聯合常態) 隨機變數經非退化線性組合後仍服從常態分配，這是常態分配特有的仿射變換性質。
 
-[Example 3.59](#ex-independent-mgf-linear) 的三個小題各走一條路。第一小題求兩個獨立均勻變數之和的 pdf，Jacobian 法補上 $V=X_1$ 這個輔助變數以湊足維度，轉換後再把 $V$ 積分掉，積分的上下限依 $u$ 落在 $0<u<1$ 或 $1\leqslant u<2$ 而不同；cdf 法則不必補變數，直接把 $\lbrace U\leqslant u\rbrace$ 畫在 $(x_1,x_2)$ 平面上求面積，同樣分成兩段，微分之後得到同一個三角形密度。第二小題先對每一項作 $W_i=-2\ln X_i$ 的轉換得到 <span class="text-nowrap">$\mathrm{Exp}(\beta=2)$，</span>再由 Gamma 分配的可加性得到 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=n,\beta=2)$。</span>第三小題則利用最大值的事件可以拆成 $n$ 個獨立事件的交集這一點，直接由 cdf 相乘得到 $F_{\sssig X_1}(x)$ 的 $n$ 次方，微分之後即 <span class="text-nowrap">$\mathrm{Beta}(a=n,b=1)$。</span>
+[Example 3.59](#ex-independent-mgf-linear) 的三個小題各走一條路。第一小題求兩個獨立均勻變數之和的 pdf，Jacobian 法補上 $V=X_1$ 這個輔助變數以湊足維度，轉換後再把 $V$ 積分掉，積分的上下限依 $u$ 落在 $0<u<1$ 或 $1\leqslant u<2$ 而不同；cdf 法則不必補變數，直接把 $\lbrace U\leqslant u\rbrace$ 畫在 $(x_1,x_2)$ 平面上求面積，同樣分成兩段，微分之後得到同一個三角形密度。第二小題先對每一項作 $W_i=-2\ln X_i$ 的轉換得到 <span class="text-nowrap">$\mathrm{Exp}(\beta=2)$，</span>再由伽瑪分配的可加性得到 <span class="text-nowrap">$\mathrm{Gamma}(\alpha=n,\beta=2)$。</span>第三小題則利用最大值的事件可以拆成 $n$ 個獨立事件的交集這一點，直接由 cdf 相乘得到 $F_{\sssig X_1}(x)$ 的 $n$ 次方，微分之後即 <span class="text-nowrap">$\mathrm{Beta}(a=n,b=1)$。</span>
 
 第一小題的三張圖說明的是同一件事的兩種看法。Jacobian 法的那兩張把單位正方形依 $u=x_1+x_2$ 與 $v=x_1$ 重新畫成 $(v,u)$ 平面上的平行四邊形，$U$ 與 $V$ 的聯合值域一目瞭然；cdf 法的那一張則留在原座標系上，$0<u<1$ 時所求區域是一個三角形，$1\leqslant u<2$ 時改成整個正方形扣掉右上角的三角形，這正是求 $\mathbb{P}(U>u)$ 反而比較好算的原因。
 

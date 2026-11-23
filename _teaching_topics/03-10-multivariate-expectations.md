@@ -10,7 +10,7 @@ order: 310
 permalink: /lecture-notes/multivariate-expectations/
 date: 2026-08-12
 published: false
-excerpt: "本篇把期望值推廣到二元的情形。離散型以 joint pmf 作雙重加總，連續型以 joint pdf 作二重積分，被加總或被積分的都是實值函數 $g(x,y)$ 的值。把 $g$ 設定為 $X$ 或 $Y$，所得的正是邊際分配的期望值 $\\mathbb{E}(X)$ 與 $\\mathbb{E}(Y)$。線性組合仍然可以與期望值交換，相乘這種非線性的設定則不然，只有在 $X$ 與 $Y$ 獨立時，$\\mathbb{E}\\bigl[g(X)h(Y)\\bigr]$ 才會等於兩個期望值相乘；反過來說並不成立。最後以四道例題求兩個獨立隨機變數乘積的變異數、空盒個數的期望值與變異數，以及以一階泰勒展式求得的變異數近似值。"
+excerpt: "多元隨機變數函數 $g(X,Y)$ 的期望值，在離散型與連續型分別由聯合 pmf 的雙重加總與聯合 pdf 的二重積分定義。本篇介紹期望值對線性組合的可交換性，並證明獨立條件下函數乘積期望值可拆解的性質與相關例題。"
 ---
 
 [上一篇](/lecture-notes/independent-random-variables/)先以 [Theorem 3.3](/lecture-notes/independent-random-variables/#thm-multiplication-rule-r-v) 說明聯合機率函數如何由條件機率函數與邊際機率函數相乘而得，再以 [Definition 3.10](/lecture-notes/independent-random-variables/#def-indep-r-v) 給出[獨立隨機變數](/lecture-notes/independent-random-variables/#def-indep-r-v)的定義。本篇把[期望值](/lecture-notes/expectation/#def-expectation)推廣到二元的情形。
@@ -71,7 +71,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}\bigl[g(X,Y)\bigr]&=\iint_{(x,y)\in\mathcal{R}_{\sssig XY}}g(x,y)\,f_{\sssig XY}(x,y)\,dx\,dy
+\mathbb{E}\bigl[g(X,Y)\bigr]&=\iint_{(x,y)\in\mathcal{R}_{\sssig XY}}g(x,y)\\[0.3em]
+&\qquad\times f_{\sssig XY}(x,y)\,dx\,dy
 \end{aligned}
 $$
 
@@ -87,7 +88,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-讀者或許會好奇，這樣與邊際分配的期望值 $\mathbb{E}(X)$ 和 $\mathbb{E}(Y)$ 會相同嗎？答案是肯定的，我們將這個特例以連續型隨機變數及 $g(X,Y) = X$ 證明在下方:
+此處由聯合分配算出的 $\mathbb{E}(X)$ 與 <span class="text-nowrap">$\mathbb{E}(Y)$，</span>與直接由邊際分配求得的邊際期望值完全一致。以連續型隨機變數取 $g(X,Y)=X$ 為例證明如下:
 
 <div class="topic-proof" markdown="1">
 **Proof.**
@@ -120,17 +121,17 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-上列性質的直觀意義在於**與 $X$ 無關的地方可以先行積分，其效果相當於「將 $Y$ 都積分掉」，即相當於「留下 $X$ 的邊際 pdf」**，故當然會等於直接算邊際期望值 <span class="text-nowrap">$\mathbb{E}(X)$。</span>
+其直觀意義在於**先對與 $X$ 無關的變數 $Y$ 積分，效果相當於將 $Y$ 積分消去而留下 $X$ 的邊際 pdf**，故結果必與直接計算邊際期望值 $\mathbb{E}(X)$ 相同。
 
 </div>
 
-(2) 有了多元隨機變數的期望值，我們便能夠進行許多運算，但我們應該先關心的是，如同 [Theorem 2.9](/lecture-notes/properties-of-expectation/#thm-expectation-of-function) 與 [Theorem 2.10](/lecture-notes/properties-of-expectation/#thm-expectation-linearity) 的關係一般，[Theorem 3.4](#thm-multi-exp) 也有類似 [Theorem 2.10](/lecture-notes/properties-of-expectation/#thm-expectation-linearity) 的性質，下面馬上就來看看這個性質。
+(2) 如同單變數時由 [Theorem 2.9](/lecture-notes/properties-of-expectation/#thm-expectation-of-function) 推得線性性質 [Theorem 2.10](/lecture-notes/properties-of-expectation/#thm-expectation-linearity)，由多元隨機變數期望值 [Theorem 3.4](#thm-multi-exp) 亦可得線性組合與期望值可交換，敘述如下。
 {: .topic-paren-item}
 
 <div id="thm-multi-exp-proper" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 3.5 (多元隨機變數期望值的性質, properties of multivariate expectations)</div>
 
-若 $(X, Y)$ 為二元隨機變數，$g_1(\cdot,\cdot),\ldots,g_k(\cdot,\cdot)$ 為實值函數且 $a_1,\ldots,a_k,b$ 為常數，則
+若 $(X, Y)$ 為二元隨機變數，$g_1(\cdot,\cdot),\ldots,g_k(\cdot,\cdot)$ 為實值函數且 $a_1,\ldots,a_k,b$ 為常數，則有下式
 
 <div class="topic-math-layout topic-math-layout--desktop" markdown="1">
 
@@ -143,7 +144,8 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}\biggl[\sum_{i=1}^{k}a_i\,g_i(X,Y)+b\biggr]&=\sum_{i=1}^{k}a_i\,\mathbb{E}\bigl[g_i(X,Y)\bigr]+b
+\mathbb{E}\biggl[\sum_{i=1}^{k}a_i\,g_i(X,Y)+b\biggr]&=\sum_{i=1}^{k}a_i\,\mathbb{E}\bigl[g_i(X,Y)\bigr]\\[0.3em]
+&\qquad+b
 \end{aligned}
 $$
 
@@ -151,18 +153,7 @@ $$
 
 </div>
 
-上述定理只強調了，兩個隨機變數間的線性關係與期望值是可以交換的，卻沒有說到非線性的函數具不具有可以與期望值交換。
-
-在考慮兩個 (或更多) 變數時，$g(\cdot, \cdot)$ 的設定就變得比較複雜，因為可能出現變數之間相乘的情況。
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-單變數的時候，不論 $X$ 的函數怎麼相乘，由於只有一個變數，結果都還會是 $X$ 的函數。
-
-</div>
-
-當然，相乘不是線性函數，所以一般的狀況下，我們只能利用 [Theorem 3.5](#thm-multi-exp-proper)，將係數與常數提出去，再利用 [Theorem 3.4](#thm-multi-exp) 計算，但在 $X$ $\indep$ $Y$ 的前提以及特殊的相乘設定之下，這個計算將變得容易許多，詳見下列定理。
+[Theorem 3.5](#thm-multi-exp-proper) 僅保證線性組合可與期望值交換，並未擴及非線性函數。在單變數情形中，無論 $X$ 的函數如何相乘，乘積仍只是單一變數 $X$ 的函數；然而考慮兩個以上變數時，$g(X,Y)$ 可能出現不同變數相乘的形式。一般而言，乘積並非線性運算，只能先依 [Theorem 3.5](#thm-multi-exp-proper) 提出常數係數，再回到 [Theorem 3.4](#thm-multi-exp) 對聯合分配計算；但在 $X\indep Y$ 的前提下，變數各自函數的乘積期望值可直接拆解，見下列定理。
 
 <div id="thm-indep-exp" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 3.6 (獨立隨機變數函數乘積的期望值, product expectation under independence)</div>
@@ -194,9 +185,12 @@ $$
 
 $$
 \begin{aligned}
-\mathbb{E}\bigl[&g(X)h(Y)\bigr] =\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}g(x)\,h(y)\,f_{\sssig XY}(x, y)\,dx\,dy\\[0.45em]
-&=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}g(x)\,h(y)\,f_{\sssig X}(x)\,f_{\sssig Y}(y)\,dx\,dy\\[0.45em]
-&=\int_{-\infty}^{\infty}g(x)\,f_{\sssig X}(x)\,dx\,\int_{-\infty}^{\infty}h(y)\,f_{\sssig Y}(y)\,dy\\[0.45em]
+\mathbb{E}\bigl[g(X)h(Y)\bigr]&=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}g(x)\,h(y)\\[0.25em]
+&\qquad\times f_{\sssig XY}(x, y)\,dx\,dy\\[0.45em]
+&=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}g(x)\,h(y)\\[0.25em]
+&\qquad\times f_{\sssig X}(x)\,f_{\sssig Y}(y)\,dx\,dy\\[0.45em]
+&=\int_{-\infty}^{\infty}g(x)\,f_{\sssig X}(x)\,dx\\[0.25em]
+&\qquad\times\int_{-\infty}^{\infty}h(y)\,f_{\sssig Y}(y)\,dy\\[0.45em]
 &=\mathbb{E}\bigl[g(X)\bigr]\,\mathbb{E}\bigl[h(Y)\bigr]
 \end{aligned}
 $$
@@ -206,23 +200,12 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-讀者應該已經發現，多數需要 $X$ $\indep$ $Y$ 作為前提的定理，其原因大部分都是因為需要 $f_{\sssig XY}(x, y)$ $=$ $f_{\sssig X}(x)\,f_{\sssig Y}(y)$ 的性質。
-
-但需要特別注意的是，「若 $X$ $\indep$ $Y$ 則此性質成立」不表示「若此性質成立則 $X$ $\indep$ <span class="text-nowrap">$Y$」，</span>這個反向敘述在絕大多數時候並不成立。
+由上述證明可見，多數以 $X\indep Y$ 為前提的定理，關鍵皆在於運用聯合機率函數可拆解為 $f\_{\sssig XY}(x,y)=f\_{\sssig X}(x)\,f\_{\sssig Y}(y)$ 的性質。[Theorem 3.6](#thm-indep-exp) 最常見的用途在於求取 $X$ 與 $Y$ 的**[交叉動差](/lecture-notes/cross-moments-joint-mgf/#def-cross-moment) (cross moment)** <span class="text-nowrap">$\mathbb{E}(XY)$；</span>當 $X\indep Y$ 時，直接有 <span class="text-nowrap">$\mathbb{E}(XY)=\mathbb{E}(X)\mathbb{E}(Y)$，</span>此一特例將在後文介紹**[共變異數](/lecture-notes/covariance/#def-covariance) <span lang="en">(covariance)</span>** 時進一步討論。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-稍後我們會看見，$X$ $\indep$ $Y$ $\Longrightarrow$ $\mathbb{E}(XY)$ $=$ <span class="text-nowrap">$\mathbb{E}(X)\mathbb{E}(Y)$，</span>此即 $X$ 與 $Y$ 獨立導致 $X$ 與 $Y$ **[零相關](/lecture-notes/covariance/#def-covariance) <span lang="en">(uncorrelated)</span>**，但這個敘述的逆命題一般而言卻是不對的。
-
-</div>
-
-上述定理常見的用途在於，尋找 $X$ 與 $Y$ 的**[交叉動差](/lecture-notes/cross-moments-joint-mgf/#def-cross-moment) (cross moment)**，即 <span class="text-nowrap">$\mathbb{E}(XY)$，</span>在 $X$ $\indep$ $Y$ 的狀況下，$\mathbb{E}(XY)$ $=$ <span class="text-nowrap">$\mathbb{E}(X)\mathbb{E}(Y)$。</span>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這個特例在稍後的小節介紹**[共變異數](/lecture-notes/covariance/#def-covariance) <span lang="en">(covariance)</span>** 的時候會談到。
+上述性質對特定函數的逆敘述一般並不成立。例如即便 $\mathbb{E}(XY)=\mathbb{E}(X)\mathbb{E}(Y)$ 成立，亦不能反推 <span class="text-nowrap">$X\indep Y$。</span>後文將會看到，$X\indep Y$ 必能推得兩變數**[零相關](/lecture-notes/covariance/#def-covariance) <span lang="en">(uncorrelated)</span>**，但零相關未必獨立。
 
 </div>
 
@@ -242,7 +225,8 @@ $$
 
 $$
 \begin{aligned}
-\mathrm{Var}\bigl[g(X, Y)\bigr]&=\mathbb{E}\Bigl[\bigl(g(X, Y)-\mathbb{E}\bigl[g(X, Y)\bigr]\bigr)^{2}\Bigr]
+\mathrm{Var}\bigl[g(X, Y)\bigr]&=\mathbb{E}\Bigl[\bigl(g(X, Y)\\[0.25em]
+&\qquad-\mathbb{E}\bigl[g(X, Y)\bigr]\bigr)^{2}\Bigr]
 \end{aligned}
 $$
 
@@ -250,12 +234,12 @@ $$
 
 </div>
 
-這個定理事實上就是 [Theorem 2.12](/lecture-notes/variance/#thm-variance-of-function) 的延伸版本。
+此定理事實上就是 [Theorem 2.12](/lecture-notes/variance/#thm-variance-of-function) 的延伸。
 
 <div id="ex-independent-product-expectation" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.14</div>
 
-令 $X$ $\indep$ $Y$ 為二獨立隨機變數，$\mathbb{E}\bigl(Y^2\bigr)$ 存在且 $\mathbb{E}(X)$ $=$ $\mathrm{Var}(X)$ $=$ <span class="text-nowrap">$0$，</span>求 $\mathrm{Var}(XY)$ 為何？
+令 $X$ $\indep$ $Y$ 為二獨立隨機變數，$\mathbb{E}\bigl(Y^2\bigr)$ 存在且 $\mathbb{E}(X)$ $=$ $\mathrm{Var}(X)$ $=$ <span class="text-nowrap">$0$，</span>求 $\mathrm{Var}(XY)$ 之值為何？
 
 由於 $\mathbb{E}(X)$ $=$ $\mathrm{Var}(X)$ $=$ $0$ 且 $X$ $\indep$ $Y$
 
@@ -305,7 +289,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-在[第二章談變異數的性質](/lecture-notes/variance/#thm-variance-properties)中，我們曾經提過退化隨機變數 <span lang="en">(degenerate random variable)</span>，此處的 $X$ 正是這個概念。直觀上而言，讀者不妨將其視為一個常數 <span class="text-nowrap">$0$，</span>如此一來，這個問題就幾乎等同於在問 <span class="text-nowrap">$\mathrm{Var}(0\,Y)$，</span>其結果便顯得很直觀。
+[第二章討論變異數性質](/lecture-notes/variance/#thm-variance-properties)時曾介紹過退化隨機變數 <span lang="en">(degenerate random variable)</span>，本題中滿足 $\mathbb{E}(X)=\mathrm{Var}(X)=0$ 的 $X$ 即以機率 $1$ 取常數值 <span class="text-nowrap">$0$。</span>直觀上可將 $X$ 視為常數 <span class="text-nowrap">$0$，</span>所求即等同於 <span class="text-nowrap">$\mathrm{Var}(0\,Y)=0$。</span>
 
 </div>
 
@@ -313,7 +297,7 @@ $$
 <div class="topic-box__label">Example 3.15</div>
 
 <div lang="en" markdown="1">
-Suppose that $X$ and $Y$ are independent random variables whose expected values are $\mu_1$ and <span class="text-nowrap">$\mu_2$,</span> and whose variances are $\sigma^2_1$ and <span class="text-nowrap">$\sigma^2_2$.</span> Determine $\mathrm{Var}(XY)$ in terms of these four quantities.
+Let $X$ and $Y$ be independent random variables with expected values $\mu_1$ and <span class="text-nowrap">$\mu_2$,</span> and variances $\sigma_1^{2}$ and <span class="text-nowrap">$\sigma_2^{2}$,</span> respectively. Find $\mathrm{Var}(XY)$ in terms of these expected values and variances.
 </div>
 
 由題意敘述可知 $X$ $\indep$ <span class="text-nowrap">$Y$，</span>故
@@ -331,8 +315,11 @@ $$
 <div class="topic-math-layout topic-math-layout--mobile" markdown="1">
 
 $$
+\mathbb{E}(XY)=\mathbb{E}(X)\mathbb{E}(Y)=\mu_1\,\mu_2
+$$
+
+$$
 \begin{aligned}
-\mathbb{E}(XY)&=\mathbb{E}(X)\mathbb{E}(Y)=\mu_1\,\mu_2\\[0.45em]
 \mathbb{E}\bigl[(XY)^2\bigr]&=\mathbb{E}(X^2)\mathbb{E}(Y^2)\\[0.2em]
 &=(\sigma^2_1+\mu_1^2)(\sigma_2^2+\mu_2^2)
 \end{aligned}
@@ -368,7 +355,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這個結果顯示，即便是在 $X$ $\indep$ $Y$ 的條件下，$\mathrm{Var}(XY)$ 也不會與 $\mathrm{Var}(X)\mathrm{Var}(Y)$ 相等。
+由上述結果可見，即便在 $X\indep Y$ 的條件下，$\mathrm{Var}(XY)$ 仍多出 $\mu\_1^{2}\,\sigma\_2^{2}+\mu\_2^{2}\,\sigma\_1^{2}$ 兩項，一般並不等於 $\mathrm{Var}(X)\,\mathrm{Var}(Y)$ (在非退化情形下，除非 <span class="text-nowrap">$\mu_1=\mu_2=0$</span>)。
 
 </div>
 
@@ -376,13 +363,13 @@ $$
 <div class="topic-box__label">Example 3.16</div>
 
 <div lang="en" markdown="1">
-Suppose that $n$ balls are placed at random into $r$ boxes, and that $X_i$ takes the value $1$ when box $i$ receives no ball and the value $0$ otherwise.
+Suppose $n$ balls are distributed at random into $r$ boxes. Let $X_i=1$ if box $i$ is empty and $X_i=0$ otherwise.
 
 <ol class="topic-list-paren">
-  <li>Evaluate <span class="text-nowrap">$\mathbb{E}(X_i)$.</span></li>
-  <li>Evaluate $\mathbb{E}(X_i\,X_j)$ for <span class="text-nowrap">$i\neq j$.</span></li>
-  <li>Suppose that $S_r$ is the number of boxes that receive no ball, and determine <span class="text-nowrap">$\mathbb{E}(S_r)$.</span></li>
-  <li>Determine <span class="text-nowrap">$\mathrm{Var}(S_r)$.</span></li>
+  <li>Compute <span class="text-nowrap">$\mathbb{E}(X_i)$.</span></li>
+  <li>For <span class="text-nowrap">$i\neq j$,</span> compute <span class="text-nowrap">$\mathbb{E}(X_i\,X_j)$.</span></li>
+  <li>Let $S_r$ denote the number of empty boxes. Compute <span class="text-nowrap">$\mathbb{E}(S_r)$.</span></li>
+  <li>Compute <span class="text-nowrap">$\mathrm{Var}(S_r)$.</span></li>
 </ol>
 </div>
 
@@ -522,11 +509,11 @@ $$
 <div class="topic-box__label">Example 3.17</div>
 
 <div lang="en" markdown="1">
-Suppose that the load-bearing capacity of a structure is written as <span class="text-nowrap">$F=f(X_1,X_2,X_3,X_4)$,</span> where $X_1,X_2,X_3,X_4$ are the parameters under which the structure is produced and are mutually independent random variables.
+Let $F=f(X_1,X_2,X_3,X_4)$ denote the load-bearing capacity of a structure, where the production parameters $X_1,X_2,X_3,X_4$ are mutually independent random variables.
 
 <ol class="topic-list-paren">
-  <li>Determine an approximation of $\mathrm{Var}(F)$ obtained from a first-order Taylor expansion.</li>
-  <li>Evaluate $\mathrm{Var}(F)$ for <span class="text-nowrap">$F=X_1X_2X_3^3/4X_4^3$.</span></li>
+  <li>Use a first-order Taylor expansion to approximate <span class="text-nowrap">$\mathrm{Var}(F)$.</span></li>
+  <li>Find this approximation to $\mathrm{Var}(F)$ when <span class="text-nowrap">$F=X_1X_2X_3^{3}/4X_4^{3}$.</span></li>
 </ol>
 </div>
 
@@ -596,7 +583,7 @@ $$
 $$
 \begin{aligned}
 \mathrm{Var}(F)&\fallingdotseq\Bigl(\frac{1}{4}\mu_{\sssig X_2}\mu_{\sssig X_3}^{3}\mu_{\sssig X_4}^{-3}\Bigr)^{2}\sigma_{\sssig X_1}^{2}+\Bigl(\frac{1}{4}\mu_{\sssig X_1}\mu_{\sssig X_3}^{3}\mu_{\sssig X_4}^{-3}\Bigr)^{2}\sigma_{\sssig X_2}^{2}\\[0.45em]
-&\quad +\Bigl(\frac{3}{4}\mu_{\sssig X_1}\mu_{\sssig X_2}\mu_{\sssig X_3}^{2}\mu_{\sssig X_4}^{-3}\Bigr)^{2}\sigma_{\sssig X_3}^{2}+\Bigl(\frac{-3}{4}\mu_{\sssig X_1}\mu_{\sssig X_2}\mu_{\sssig X_3}^{3}\mu_{\sssig X_4}^{-4}\Bigr)^{2}\sigma_{\sssig X_4}^{2}
+&\qquad +\Bigl(\frac{3}{4}\mu_{\sssig X_1}\mu_{\sssig X_2}\mu_{\sssig X_3}^{2}\mu_{\sssig X_4}^{-3}\Bigr)^{2}\sigma_{\sssig X_3}^{2}+\Bigl(\frac{-3}{4}\mu_{\sssig X_1}\mu_{\sssig X_2}\mu_{\sssig X_3}^{3}\mu_{\sssig X_4}^{-4}\Bigr)^{2}\sigma_{\sssig X_4}^{2}
 \end{aligned}
 $$
 
@@ -619,7 +606,7 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-上述問題事實上是 [Theorem 2.15](/lecture-notes/variance-standard-deviation/#thm-taylor-approximation) 的延伸，只是此處由於變數變多了，故將微分改為偏微分，其他原理皆相同。
+本題是單變數泰勒近似 [Theorem 2.15](/lecture-notes/variance-standard-deviation/#thm-taylor-approximation) 向多變數的延伸。由於自變數增為四個，一階導數相應改為各變數在 $\boldsymbol{X}=\boldsymbol{\mu}$ 處的偏導數；又因 $X_1,X_2,X_3,X_4$ 互相獨立，線性展開式中不同變數間的交叉項變異數為 <span class="text-nowrap">$0$，</span>總變異數遂直接化為四項偏導數平方與個別變異數乘積之和。
 
 </div>
 
@@ -629,7 +616,7 @@ $$
 
 [Theorem 3.5](#thm-multi-exp-proper) 指出線性組合仍然可以與期望值交換，[Theorem 3.6](#thm-indep-exp) 則處理相乘這種非線性的設定。在兩個變數獨立的前提之下，$g(X)$ 與 $h(Y)$ 乘積的期望值等於兩個期望值相乘，證明所依據的正是聯合 pdf 可以分解成兩個邊際 pdf 相乘。要留意的是這個敘述反過來說並不成立。[Theorem 3.7](#thm-multi-function-var) 把變異數的定義一併推廣到二元的函數上。
 
-四道例題之中，[Example 3.14](#ex-independent-product-expectation) 與 [Example 3.15](#ex-exponential-product-expectation) 都在求兩個獨立隨機變數乘積的變異數，前者的 $X$ 期望值與變異數皆為 $0$ 而使結果為 <span class="text-nowrap">$0$，</span>後者則求得 $\mu_1^2\,\sigma_2^2$ $+$ $\mu_2^2\,\sigma_1^2$ $+$ $\sigma_1^2\,\sigma_2^2$ 這個式子，可見即便兩者獨立，$\mathrm{Var}(XY)$ 也不等於 $\mathrm{Var}(X)$ 與 $\mathrm{Var}(Y)$ 相乘之值。[Example 3.16](#ex-balls-into-boxes-empty) 把空盒總數寫成只取 $0$ 與 $1$ 的變數之和，再以交叉項的期望值求得變異數；[Example 3.17](#ex-structure-load-expectation) 則把一階泰勒展開推廣到四個變數，微分因而改為偏微分。
+四道例題之中，[Example 3.14](#ex-independent-product-expectation) 與 [Example 3.15](#ex-exponential-product-expectation) 都在求兩個獨立隨機變數乘積的變異數，前者的 $X$ 期望值與變異數皆為 $0$ 而使結果為 <span class="text-nowrap">$0$，</span>後者則求得 $\mu_1^2\,\sigma_2^2$ $+$ $\mu_2^2\,\sigma_1^2$ $+$ $\sigma_1^2\,\sigma_2^2$ 這個式子，可見即便兩者獨立，$\mathrm{Var}(XY)$ 也不等於 $\mathrm{Var}(X)$ 與 $\mathrm{Var}(Y)$ 相乘之值。[Example 3.16](#ex-balls-into-boxes-empty) 把空盒總數寫成只取 $0$ 與 $1$ 的變數之和，再以交叉項的期望值求得變異數；[Example 3.17](#ex-structure-load-expectation) 則把一階泰勒展開推廣到四個變數，單變數的微分因而改為偏微分。
 
 [下一篇](/lecture-notes/conditional-expectation-and-variance/)把期望值放到條件分配之上，介紹[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation)與[條件變異數](/lecture-notes/conditional-expectation-and-variance/#def-conditional-variance)。
 

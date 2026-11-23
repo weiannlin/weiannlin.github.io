@@ -10,22 +10,20 @@ order: 312
 permalink: /lecture-notes/double-expectation-theorem/
 date: 2026-08-13
 published: false
-excerpt: "條件期望值算完之後，被給定的那個值會留下來，因此條件期望值是條件的函數，這個函數即稱為迴歸函數。若把條件本身看成隨機的，$\\mathbb{E}(X\\mid Y)$ 便是 $Y$ 的函數，也就是一個隨機變數，我們因而可以再取一次期望值；雙重期望值定理指出，這一次期望值恰好等於 $X$ 的邊際期望值 $\\mathbb{E}(X)$。它背後的直觀是加權平均。先把 $X$ 的分配依 $Y$ 的取值切成一片一片的條件分配，在每一片上找到重心，再以 $f_{\\sssig Y}(y)$ 為權重把這些重心平均起來，所得的就是原始空間中的重心。本篇並把這條定理推廣到 $g(X)$ 的版本。"
+excerpt: "將條件期望值視為條件變數 $Y$ 的函數，在 $\\mathbb{E}(X)$ 存在下對 $Y$ 再取一次期望值，即得雙重期望值定理 $\\mathbb{E}[\\mathbb{E}(X\\mid Y)]=\\mathbb{E}(X)$ 這條恆等式。本篇介紹迴歸函數的概念，證明此定理及其函數推廣形式，並說明分層加權平均的直觀意義。"
 ---
 
 [上一篇](/lecture-notes/conditional-expectation-and-variance/)以 [Definition 3.11](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation) 與 [Definition 3.13](/lecture-notes/conditional-expectation-and-variance/#def-conditional-variance) 給出[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation)與[條件變異數](/lecture-notes/conditional-expectation-and-variance/#def-conditional-variance)，並在最後指出條件期望值是「給定的條件」的函數。
 
 本篇先列出把條件當成常數所得到的三個特例，再以 [Theorem 3.8](#thm-regression-function) 為「條件期望值是條件的函數」中的那個函數取名為迴歸函數，接著討論條件本身是隨機的情形，並由此得到 [Theorem 3.9](#thm-double-expectation) 的雙重期望值定理，最後以一張立體圖說明這條定理背後的加權平均。
 
-在[上一篇](/lecture-notes/conditional-expectation-and-variance/)我們曾經提過一個特別的觀點，即一旦給定了某個變數 $Y=y$ (或 $X=x$) 後，在這個條件期望值之中，$Y=y$ (或 $X=x$) 即**被視為常數**。我們在此詳細探討這個觀點。
-
-讀者可以回想一下，我們在[初次介紹期望值](/lecture-notes/expectation/#def-expectation)的時候曾說過，期望值對常數的運算結果就是該常數本身，及變異數對常數的運算結果必定為 $0$ (因為常數沒有變異性)，故我們馬上可以得到以下幾個有用的特例:
+[上一篇](/lecture-notes/conditional-expectation-and-variance/)曾指出，一旦給定條件 $Y=y$ (或 <span class="text-nowrap">$X=x$</span>)，在該條件期望值的運算中，$Y=y$ (或 <span class="text-nowrap">$X=x$</span>) 即**被視為常數**。結合[第二章期望值](/lecture-notes/expectation/#def-expectation)與變異數的基本性質，常數的期望值即該常數本身，常數的變異數則恆為 <span class="text-nowrap">$0$，</span>由此可直接得到以下三個常用特例:
 
 - $\mathbb{E}(X\mid X=x)$ $=$ $\mathbb{E}(x\mid X=x)$ $=$ $x\mathbb{E}(1\mid X=x)$ $=$ $x$
 - $\mathrm{Var}(X\mid X=x)$ $=$ $\mathrm{Var}(x\mid X=x)$ $=$ $0$
 - $\mathbb{E}(XY\mid X=x)$ $=$ $\mathbb{E}(xY\mid X=x)$ $=$ $x\mathbb{E}(Y\mid X=x)$
 
-上述三個特例各有其重要的地方，但我們只需要想著「把 $X$ 當成常數」則這一切都會變得很簡單。這種條件期望值除了是條件的函數以外，我們對其有特別的稱呼。
+只要掌握「在給定 $X=x$ 下把 $X$ 當成常數」的原則，上述三式便一目了然。這類隨給定條件而變的條件期望值函數，在統計學中有專門的稱呼。
 
 ## 迴歸函數
 
@@ -68,34 +66,18 @@ $$
 原式得證。 <span class="topic-qed">$\square$</span>
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-上述定理指出，如果我們正在處理 $X$ 給定 $Y=y$ 的條件期望值，則我們可以將這個條件期望值的結果，與其條件 $y$ 的值產生連結，也就是透過決定一個 $y$ 的值，而直接知道 $X$ 的條件期望值。
-
-</div>
-
-很多時候，我們會看到 $\mathbb{E}(X\mid Y)$ 的設定，這與前面我們所熟知的條件期望值，最大的差異是**條件是隨機的**，這句話的意思是，在期望值的內部，$Y$ 雖然還是常數沒錯，但在期望值的外側時，我們卻**不知道 $Y$ 是哪一個常數**。
+[Theorem 3.8](#thm-regression-function) 建立了條件值 $y$ 與條件期望值之間的對應關係，每給定一個實數值 <span class="text-nowrap">$y$，</span>即可由迴歸函數 $g(y)$ 確定對應的 <span class="text-nowrap">$\mathbb{E}(X\mid Y=y)$。</span>然而在推導與應用中，我們更常看到不指定特定數值的 $\mathbb{E}(X\mid Y)$ 記法，此時最大的差異在於**條件本身是隨機的**，亦即在期望值內部運算時雖將 $Y$ 視為固定條件，但在期望值外側並未預先指定 $Y$ 落在哪一個數值。
 
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-這導致**當 $Y$ 被提出期望值的外面後，$Y$ 仍然具有隨機性** (也就是 $Y$ 仍需保持大寫)。
-
-</div>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-這個差異即是 $g(y)$ 與 $g(Y)$ 的差異，前者只是數字，後者卻是[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)。
+比較兩種記號可知，$\mathbb{E}(X\mid Y=y)=g(y)$ 代入固定實數 $y$ 後只是一個數字；而 $\mathbb{E}(X\mid Y)=g(Y)$ 則是隨 $Y$ 取值變動的**[隨機變數](/lecture-notes/random-variables-and-pmf/#def-random-variable)**。因此**當條件變數 $Y$ 被提出條件期望值外側時，$Y$ 仍然具有隨機性而須維持大寫** (例如 <span class="text-nowrap">$\mathbb{E}(XY\mid Y)=Y\,\mathbb{E}(X\mid Y)$</span>)。
 
 </div>
 
 ## 雙重期望值定理
 
-如果考慮條件是隨機的情況，[Theorem 3.8](#thm-regression-function) 將變成具有隨機性的版本，即 $\mathbb{E}(X\mid Y)$ $=$ $g(Y)$ 的形式，這樣一來，我們便會發現 $X$ 給定 $Y$ 的條件期望值竟然是 $Y$ 的函數 (亦是一個隨機變數)，而且當 $Y$ 的值產生變化，$\mathbb{E}(X\mid Y)$ $=$ $g(Y)$ 的值亦會隨之變動。
-
-若有此結果，我們便可以再接續探討 $\mathbb{E}(X\mid Y)$ $=$ $g(Y)$ 的期望值，也就是 <span class="text-nowrap">$\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]$，</span>此即相當重要且知名的**雙重期望值定理 <span lang="en">(double expectation theorem)</span>**。
+當條件本身為隨機時，[Theorem 3.8](#thm-regression-function) 即寫成隨機變數形式 <span class="text-nowrap">$\mathbb{E}(X\mid Y)=g(Y)$，</span>其值隨 $Y$ 的取值變化而變動。既然 $\mathbb{E}(X\mid Y)$ 是 $Y$ 的函數，自然可進一步探討它的期望值 <span class="text-nowrap">$\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]$，</span>由此即得**雙重期望值定理 <span lang="en">(double expectation theorem)</span>**。
 
 <div id="thm-double-expectation" class="topic-box topic-box--theorem" markdown="1">
 <div class="topic-box__label">Theorem 3.9 (雙重期望值定理, double expectation theorem)</div>
@@ -120,7 +102,8 @@ $$
 \mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]&=\int_{y\in\mathcal{R}_{\sssig Y}}\mathbb{E}(X\mid Y=y)\,f_{\sssig Y}(y)\,dy\\[0.45em]
 &=\int_{y\in\mathcal{R}_{\sssig Y}}\biggl[\int_{x\in\mathcal{R}_{\sssig X}}x\,f_{\sssig X\mid Y}(x\mid y)\,dx\biggr]\,f_{\sssig Y}(y)\,dy\\[0.45em]
 &=\int_{y\in\mathcal{R}_{\sssig Y}}\biggl[\int_{x\in\mathcal{R}_{\sssig X}}x\,\frac{f_{\sssig XY}(x,y)}{f_{\sssig Y}(y)}\,dx\biggr]\,f_{\sssig Y}(y)\,dy\\[0.45em]
-&=\int_{y\in\mathcal{R}_{\sssig Y}}\int_{x\in\mathcal{R}_{\sssig X}}x\,\frac{f_{\sssig XY}(x,y)}{f_{\sssig Y}(y)}f_{\sssig Y}(y)\,dx\,dy\\[0.45em]
+&=\int_{y\in\mathcal{R}_{\sssig Y}}\int_{x\in\mathcal{R}_{\sssig X}}x\,\frac{f_{\sssig XY}(x,y)}{f_{\sssig Y}(y)}\\[0.2em]
+&\qquad\times f_{\sssig Y}(y)\,dx\,dy\\[0.45em]
 &=\int_{y\in\mathcal{R}_{\sssig Y}}\int_{x\in\mathcal{R}_{\sssig X}}x\,f_{\sssig XY}(x,y)\,dx\,dy=\mathbb{E}(X)
 \end{aligned}
 $$
@@ -132,10 +115,11 @@ $$
 \begin{aligned}
 \mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]&=\int_{y\in\mathcal{R}_{\sssig Y}}\mathbb{E}(X\mid Y=y)\,f_{\sssig Y}(y)\,dy\\[0.45em]
 &=\int_{y\in\mathcal{R}_{\sssig Y}}\biggl[\int_{x\in\mathcal{R}_{\sssig X}}x\,f_{\sssig X\mid Y}(x\mid y)\,dx\biggr]\\[0.2em]
-&\quad f_{\sssig Y}(y)\,dy\\[0.45em]
+&\qquad\times f_{\sssig Y}(y)\,dy\\[0.45em]
 &=\int_{y\in\mathcal{R}_{\sssig Y}}\biggl[\int_{x\in\mathcal{R}_{\sssig X}}x\,\frac{f_{\sssig XY}(x,y)}{f_{\sssig Y}(y)}\,dx\biggr]\\[0.2em]
-&\quad f_{\sssig Y}(y)\,dy\\[0.45em]
-&=\int_{y\in\mathcal{R}_{\sssig Y}}\int_{x\in\mathcal{R}_{\sssig X}}x\,\frac{f_{\sssig XY}(x,y)}{f_{\sssig Y}(y)}f_{\sssig Y}(y)\,dx\,dy\\[0.45em]
+&\qquad\times f_{\sssig Y}(y)\,dy\\[0.45em]
+&=\int_{y\in\mathcal{R}_{\sssig Y}}\int_{x\in\mathcal{R}_{\sssig X}}x\,\frac{f_{\sssig XY}(x,y)}{f_{\sssig Y}(y)}\\[0.2em]
+&\qquad\times f_{\sssig Y}(y)\,dx\,dy\\[0.45em]
 &=\int_{y\in\mathcal{R}_{\sssig Y}}\int_{x\in\mathcal{R}_{\sssig X}}x\,f_{\sssig XY}(x,y)\,dx\,dy\\[0.45em]
 &=\mathbb{E}(X)
 \end{aligned}
@@ -149,13 +133,13 @@ $$
 <div class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
-[雙重期望值定理](#thm-double-expectation)可以推廣到 $X$ 的函數條件期望值的版本，即
+在 $\mathbb{E}\bigl[g(X)\bigr]$ 存在的條件下，[雙重期望值定理](#thm-double-expectation)可推廣至 $X$ 的函數條件期望值形式
 
 $$
 \mathbb{E}\Bigl(\mathbb{E}\bigl[g(X)\mid Y\bigr]\Bigr)=\mathbb{E}\bigl[g(X)\bigr]
 $$
 
-這給我們很大的使用方便，例如:
+例如計算二階動差時常用的特例為
 
 $$
 \mathbb{E}\Bigl[\mathbb{E}\bigl(X^{2}\mid Y\bigr)\Bigr]=\mathbb{E}\bigl(X^{2}\bigr)
@@ -163,31 +147,18 @@ $$
 
 </div>
 
-我們原先已經知道 $X$ 的條件期望值 $\mathbb{E}(X\mid Y)$ 是 $Y$ 的函數 <span class="text-nowrap">$g(Y)$，</span>若我們將這個 $Y$ 的函數轉換再取一個期望值，則[雙重期望值定理](#thm-double-expectation)指出，**這個期望值竟然等於 $X$ 的邊際期望值**。這是一個相當特別的定理，但卻不算太過意外，因為其背後的直觀即是「加權平均」。
-
-在計算 $g(Y)$ 的期望值時我們知道，其算法是將 $g(Y)$ 乘上其機率函數 $f_{\sssig Y}(y)$ 再行積分，而我們亦知道這個直觀意義就是一種加權平均，其中的權重就是 <span class="text-nowrap">$f_{\sssig Y}(y)$。</span>
-
-而在計算 $\mathbb{E}(X\mid Y)$ 的期望值時，由於 $\mathbb{E}(X\mid Y)$ 是 $Y$ 的函數轉換，故當然也要乘上 $Y$ 的機率函數以符合定義，這也是上列證明的小細節。然而，這個關鍵的小步驟即是看出為何[雙重期望值定理](#thm-double-expectation)是一種加權平均的關鍵，我們將其圖解如下:
+[雙重期望值定理](#thm-double-expectation)指出，將條件期望值 $\mathbb{E}(X\mid Y)=g(Y)$ 對 $Y$ 再取一次期望值，**結果恰等於 $X$ 的邊際期望值**。這項性質背後的直觀意義即是「加權平均」。計算隨機變數函數 $g(Y)$ 的期望值時，是以邊際密度 $f\_{\sssig Y}(y)$ 為權重對 $g(y)$ 加權積分；因此對 $\mathbb{E}(X\mid Y)$ 取外層期望值時，同樣須乘上 $Y$ 的機率函數 <span class="text-nowrap">$f\_{\sssig Y}(y)$，</span>如上列證明第一步所示。此一加權機制可圖解如下:
 
 <figure id="fig-regression-function-surface" class="topic-figure topic-figure--wide">
   <img src="/images/lecture-notes/regression-function-surface.svg" alt="一個三維曲面圖。曲面在中央隆起成鐘形，四周向外遞減趨近於零，底面兩軸分別標 x 與 y，鉛直軸標聯合機率密度函數的函數值。y 軸上依序標出 y_1、y_2 與 y_n 三個位置，每一處各有一片沿 x 方向的截面立在曲面上，截面的輪廓以深色曲線描出，其下以淡紅色填滿。三片截面的高低不同，位在 y_2 的那一片最高，位在 y_1 的那一片最矮。">
   <figcaption><span class="topic-figure__label">Fig. 3.16.</span> joint pdf 的曲面沿 $y$ 切成薄片，圖中在 <span class="text-nowrap">$y_1$、</span>$y_2$ 與 $y_n$ 三處各切出一片，每一片的形狀就是 $X$ 給定 $Y=y$ 的條件分配，其重心即 <span class="text-nowrap">$\mathbb{E}(X\mid Y=y)$。</span>三片的高低不同，正是加權平均中各片權重不同的來源。</figcaption>
 </figure>
 
-上圖的意義在於，$X$ 的分配可以先透過給定不同的 <span class="text-nowrap">$Y$，</span>切割成不同的空間，這個切割出來的空間即為 $X$ 給定 $Y=y$ 的分配。
-
-接著我們可以先在這個空間中，找到該空間上 $X$ 的重心 (即 <span class="text-nowrap">$\mathbb{E}(X\mid Y=y)$)，</span>而再回頭考慮從一開始被給定到 $Y=y$ 的空間的可能性 (即 <span class="text-nowrap">$f_{\sssig Y}(y)$)，</span>再將每個薄片的重心以 $f_{\sssig Y}(y)$ 為權重加權平均，從而得到原始空間中 (即 $X$ 自己的分配) $X$ 的重心所在 (即 <span class="text-nowrap">$\mathbb{E}(X)$)。</span>
-
-<div class="topic-box topic-box--note" markdown="1">
-<div class="topic-box__label">Note</div>
-
-上述流程中最需要注意的核心觀念是，整個原始空間 (即 $X$ 的分配) 可以被 $Y$ 切割成不同的薄片，每個薄片都會形成一個機率分配，而我們是先在這些不同的條件分配上找到重心，並對這些重心進行加權平均，從而得到原始空間中的重心所在。
-
-</div>
+如 [Fig. 3.16](#fig-regression-function-surface) 所示，整個原始空間可先依給定不同的 $Y=y$ 切割成一片片薄切片，每個薄片標準化後各自形成條件分配 <span class="text-nowrap">$f\_{\sssig X\mid Y}(x\mid y)$。</span>我們先在各個條件分配切片上找出 $X$ 的局部重心 <span class="text-nowrap">$\mathbb{E}(X\mid Y=y)$，</span>再依各切片發生的相對可能性 $f\_{\sssig Y}(y)$ 為權重對這些局部重心作加權平均，最終合成的整體重心即為原始空間中 $X$ 的邊際期望值 <span class="text-nowrap">$\mathbb{E}(X)$。</span>
 
 ## 本篇小結
 
-把條件當成常數，馬上可以得到三個有用的特例: $\mathbb{E}(X\mid X=x)$ $=$ $x$ 與 $\mathrm{Var}(X\mid X=x)$ $=$ $0$ 這兩條，說的是給定之後 $X$ 已經沒有隨機性；$\mathbb{E}(XY\mid X=x)$ $=$ $x\mathbb{E}(Y\mid X=x)$ 這一條，說的是給定的那個值可以像常數一樣提到期望值的外面。[Theorem 3.8](#thm-regression-function) 則為這個函數取了名字。條件期望值是條件的函數，即 $\mathbb{E}(X\mid Y=y)$ $=$ <span class="text-nowrap">$g(y)$，</span>我們稱其為 $X$ 對 $Y$ 的迴歸函數。證明只用到[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)的定義，把 $f_{\sssig Y}(y)$ 提到積分之外，剩下的積分便只與 $y$ 有關。
+把條件當成常數，馬上可以得到三個有用的特例。其中 $\mathbb{E}(X\mid X=x)$ $=$ $x$ 與 $\mathrm{Var}(X\mid X=x)$ $=$ $0$ 這兩條，說的是給定之後 $X$ 已經沒有隨機性；$\mathbb{E}(XY\mid X=x)$ $=$ $x\mathbb{E}(Y\mid X=x)$ 這一條，說的是給定的那個值可以像常數一樣提到期望值的外面。[Theorem 3.8](#thm-regression-function) 則為這個函數取了名字。條件期望值是條件的函數，即 $\mathbb{E}(X\mid Y=y)$ $=$ <span class="text-nowrap">$g(y)$，</span>我們稱其為 $X$ 對 $Y$ 的迴歸函數。證明只用到[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)的定義，把 $f_{\sssig Y}(y)$ 提到積分之外，剩下的積分便只與 $y$ 有關。
 
 若把條件本身看成隨機的，$\mathbb{E}(X\mid Y)$ $=$ $g(Y)$ 就是 $Y$ 的函數，也是一個隨機變數，因此還可以再取一次期望值。[Theorem 3.9](#thm-double-expectation) 的雙重期望值定理指出，這一次期望值恰好等於 $X$ 的邊際期望值，即 $\mathbb{E}\bigl[\mathbb{E}(X\mid Y)\bigr]$ $=$ <span class="text-nowrap">$\mathbb{E}(X)$。</span>證明的關鍵一步是把 $\mathbb{E}(X\mid Y=y)$ 乘上 $f_{\sssig Y}(y)$ 之後，$f_{\sssig X\mid Y}(x\mid y)$ 分母上的 $f_{\sssig Y}(y)$ 恰好被消掉，只剩下 $X$ 與 $Y$ 的[聯合機率密度函數](/lecture-notes/joint-probability-density-functions/#def-joint-pdf)。這條定理另有 $g(X)$ 的版本，其中 $\mathbb{E}\bigl[\mathbb{E}(X^{2}\mid Y)\bigr]$ $=$ $\mathbb{E}(X^{2})$ 這個特例後續會經常用到。
 
