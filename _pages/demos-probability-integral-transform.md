@@ -393,9 +393,9 @@ author_profile: true
   }
 </style>
 
-[Proposition 2.4](/lecture-notes/one-to-one-transformations/#prop-probability-integral-transform) connects a continuous cdf with the standard uniform distribution in both directions. This demo uses the standard Cauchy distribution because its pdf, cdf, and quantile function all have closed forms. Its heavy tails also make the changes in local slope especially visible.
+[Proposition 2.4](/lecture-notes/one-to-one-transformations/#prop-probability-integral-transform) connects a continuous cdf with the [standard uniform distribution](/lecture-notes/uniform-distribution-integral-transform/#def-uniform-distribution) in both directions (see also [Theorem 4.17](/lecture-notes/uniform-distribution-integral-transform/#thm-p-i-t) and [Theorem 4.18](/lecture-notes/uniform-distribution-integral-transform/#thm-i-p-i-t)). This demo uses the [standard Cauchy distribution](/lecture-notes/student-t-distribution/#standard-cauchy-distribution) because its pdf, cdf, and quantile function all have closed forms. Its heavy tails also make the changes in local slope especially visible.
 
-The standard Cauchy distribution will be introduced in a later teaching topic. For now, only the following three functions are needed. Its cdf is continuous and strictly increasing, so its quantile function agrees with the ordinary inverse of the cdf. Write $Q=F^{-1}$. Then
+For the standard Cauchy distribution, only the following three functions are needed. Its cdf is continuous and strictly increasing, so its quantile function agrees with the ordinary inverse of the cdf. Write $Q=F^{-1}$. Then
 
 <div class="pit-formulas" markdown="1">
 $$
@@ -570,7 +570,7 @@ The first histogram should be approximately flat. The second should follow the s
 
 **The plotted Cauchy range is incomplete.** The simulation chart displays only the central interval from $Q(0.05)$ to $Q(0.95)$. Tail observations are counted below the chart, and every histogram density is divided by the full sample size rather than only by the number of visible observations.
 
-The proof, the quantile-function formula used by the transform, and the endpoint convention are in [Proposition 2.4](/lecture-notes/one-to-one-transformations/#prop-probability-integral-transform). To review how a density builds a cdf before applying the transformation, see [From pdf to cdf](/demos/pdf-cdf/).
+The proof, the quantile-function formula used by the transform, and the endpoint convention are in [Proposition 2.4](/lecture-notes/one-to-one-transformations/#prop-probability-integral-transform); for the invertible-cdf formulation and the worked examples that follow, see [Theorem 4.17](/lecture-notes/uniform-distribution-integral-transform/#thm-p-i-t) and [Theorem 4.18](/lecture-notes/uniform-distribution-integral-transform/#thm-i-p-i-t). To review how a density builds a cdf before applying the transformation, see [From pdf to cdf](/demos/pdf-cdf/).
 
 <script>
 (function () {

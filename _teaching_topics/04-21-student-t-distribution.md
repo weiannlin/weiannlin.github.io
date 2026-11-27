@@ -293,7 +293,7 @@ $$
 </div>
 
 (4) 自由度為 $1$ 的 $t$ 分配 (即 $t(1)$ 分配) 亦稱作**標準柯西分配 <span lang="en">(standard Cauchy distribution)</span>**，其機率密度函數為
-{: .topic-paren-item}
+{: #standard-cauchy-distribution .topic-paren-item}
 
 $$
 f_{\sssig X}(x)=\frac{1}{\,\pi(1+x^{2})\,},\ -\infty<x<\infty

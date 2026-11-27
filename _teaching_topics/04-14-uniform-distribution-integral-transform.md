@@ -476,6 +476,8 @@ $$
 
 上圖的上面板為標準均勻分配的 cdf <span class="text-nowrap">$F\_{\sssig U}(u)$，</span>在 $[0,1]$ 上為恆等函數，對任意 $a,b\in[0,1]$ 恆有 $F\_{\sssig U}(a)=a$ 與 <span class="text-nowrap">$F\_{\sssig U}(b)=b$；</span>下面板則為一般連續分配的曲線型 cdf <span class="text-nowrap">$F\_{\sssig X}(x)$。</span>若要將隨機變數 $X$ 經適當的非線性拉伸化為標準均勻分配，所需的轉換關係正完整記錄於 $F\_{\sssig X}(x)$ 之中；機率積分轉換與逆機率積分轉換，即是沿此曲線在橫軸與縱軸之間雙向對應的結果。
 
+若想實際操作這兩個方向的對應，可在互動展示 [Probability Integral Transform and Inverse Transform Sampling](/demos/probability-integral-transform/) 中調整輸入值 $u$ 的大小，觀察[標準柯西分配](/lecture-notes/student-t-distribution/#standard-cauchy-distribution) <span lang="en">(standard Cauchy distribution)</span> 的 $F^{-1}\_{\sssig X}$ 與 $F\_{\sssig X}$ 接連作用後如何回到 $u$ 本身，並比較 $\mathcal{U}(0,\ 1)$ 樣本經反函數轉換前後的直方圖。
+
 ## 均勻分配與機率積分轉換的例題
 
 <div id="ex-uniform-1" class="topic-box topic-box--example" markdown="1">
