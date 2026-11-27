@@ -16,8 +16,8 @@
 %   f_X|Y(x|1.5) = 0.3989423 e^{-(x-2.8)^2/2}            (area 1)
 %   f_XY(x,1.5)  = (2/3) f_X|Y(x|1.5)                    (area 2/3)
 % The factor 2/3 is the manuscript's own 3 : 4.5 ratio read the other way
-% round, i.e. the picture is drawn for f_Y(1.5) = 2/3.  Over the plotted
-% range 0 <= x <= 6.4 the upper curve encloses 0.99521 rather than 1, the
+% round, i.e. the picture is drawn for f_Y(1.5) = 2/3.  Over the symmetric plotted
+% range -0.8 <= x <= 6.4 (2.8 +/- 3.6) the upper curve encloses 0.99968 rather than 1, the
 % remainder being the two tails outside the range; the ratio of the two
 % curves is exact everywhere.
 %
@@ -38,11 +38,10 @@
 %
 % 2. \DeclareMathSizes{10}{10}{9}{8} raises the math script sizes from the
 %    default 7pt/5pt, as CH2_FIGURE_SPECS.md 1.3 requires wherever \sssig
-%    appears.  Native size 213.56 x 95.265 pt (drawing 7.37cm wide).  A mark
-%    of S pt shows at S x 0.99626 x <display width> / 213.56 px, so at the
-%    350px phone width of a topic-figure--wide in body text
-%        10pt text 16.33px, 9pt scripts 14.69px, 8pt scriptscripts 13.06px
-%    and at the 620px desktop width 28.92 / 26.03 / 23.14px.
+%    appears.  Native size 220.517 x 95.282 pt (symmetric domain -0.8 <= x <= 6.4,
+%    axis -1.0 to 6.6).  At the 350px phone width 10pt main text renders at
+%    15.81px (and 28.01px at 620px desktop width), retaining native \sssig
+%    scriptscript proportions per 2026-11-23 ruling.
 %
 % 3. The leader off the shorter curve crosses the taller curve at about
 %    x = 4.6, where the taller curve stands at 0.60cm, i.e. one fifth of its
@@ -72,21 +71,21 @@
 ]
   % ---- the raw slice, shaded underneath -------------------------------
   \fill[region]
-    (0,0) -- (6.4,0) -- (6.4,0.0004079)
-    -- plot[domain=6.4:0, samples=200, smooth]
+    (-0.8,0.0004079) -- (-0.8,0) -- (6.4,0) -- (6.4,0.0004079)
+    -- plot[domain=6.4:-0.8, samples=240, smooth]
        (\x,{0.2659615*exp(-(\x-2.8)*(\x-2.8)/2)})
     -- cycle;
 
   % ---- the two curves --------------------------------------------------
   % lower: the slice f_XY(x, 1.5), area 2/3
-  \draw[curve] plot[domain=0:6.4, samples=200, smooth]
+  \draw[curve] plot[domain=-0.8:6.4, samples=240, smooth]
     (\x,{0.2659615*exp(-(\x-2.8)*(\x-2.8)/2)});
   % upper: the conditional pdf f_X|Y(x|1.5), area 1
-  \draw[curve] plot[domain=0:6.4, samples=200, smooth]
+  \draw[curve] plot[domain=-0.8:6.4, samples=240, smooth]
     (\x,{0.3989423*exp(-(\x-2.8)*(\x-2.8)/2)});
 
   % ---- x axis ----------------------------------------------------------
-  \draw[axis] (-0.3,0) -- (6.6,0);
+  \draw[axis] (-1.0,0) -- (6.6,0);
   \node[anchor=west, inner sep=2.8pt] at (6.6,0) {$x$};
 
   % ---- label on the conditional pdf, leader up-left --------------------

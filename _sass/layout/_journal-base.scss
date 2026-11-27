@@ -363,8 +363,15 @@ body {
   }
 }
 
-/* ---- Mobile overflow guards (apply globally so demo / topic / archive
-   tables and math don't blow out on narrow screens) --------------------- */
+/* ---- Mobile overflow & typography guards (apply globally so demo / topic /
+   archive tables, uppercase labels, and math never distort MathJax) -------- */
+
+mjx-container {
+  text-transform: none;
+  letter-spacing: normal;
+  font-variant: normal;
+  font-feature-settings: normal;
+}
 
 .page__content,
 .topic-content {
