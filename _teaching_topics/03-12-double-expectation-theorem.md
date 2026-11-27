@@ -156,6 +156,8 @@ $$
 
 如 [Fig. 3.16](#fig-regression-function-surface) 所示，整個原始空間可先依給定不同的 $Y=y$ 切割成一片片薄切片，每個薄片標準化後各自形成條件分配 <span class="text-nowrap">$f\_{\sssig X\mid Y}(x\mid y)$。</span>我們先在各個條件分配切片上找出 $X$ 的局部重心 <span class="text-nowrap">$\mathbb{E}(X\mid Y=y)$，</span>再依各切片發生的相對可能性 $f\_{\sssig Y}(y)$ 為權重對這些局部重心作加權平均，最終合成的整體重心即為原始空間中 $X$ 的邊際期望值 <span class="text-nowrap">$\mathbb{E}(X)$。</span>
 
+一般二元分配的迴歸函數隨條件變化的軌跡未必為直線，也不必貼著聯合密度曲面的山脊行進。讀者可對照互動展示 [One-Way Linear Regression and Hyperbolic-Tangent S-Curves](/demos/asymmetric-regression-mixture/) 與 [Nonlinear Regression and Valley Centroids on a Bifurcating Ridge](/demos/bimodal-fork-regression/)，前者呈現一個方向的迴歸函數為直線、反方向卻經[貝氏定理](/lecture-notes/bayes-rule-posterior-probability/#theorem-bayes-rule)加權而彎曲成雙曲正切曲線的情形，後者則展示曲面山脊分岔為雙峰時，各切片重心 $\mathbb{E}(Y\mid X=x)$ 落在雙峰之間的低谷，而以邊際密度加權平均後仍回到邊際期望值 <span class="text-nowrap">$\mathbb{E}(Y)$。</span>
+
 ## 本篇小結
 
 把條件當成常數，馬上可以得到三個有用的特例。其中 $\mathbb{E}(X\mid X=x)$ $=$ $x$ 與 $\mathrm{Var}(X\mid X=x)$ $=$ $0$ 這兩條，說的是給定之後 $X$ 已經沒有隨機性；$\mathbb{E}(XY\mid X=x)$ $=$ $x\mathbb{E}(Y\mid X=x)$ 這一條，說的是給定的那個值可以像常數一樣提到期望值的外面。[Theorem 3.8](#thm-regression-function) 則為這個函數取了名字。條件期望值是條件的函數，即 $\mathbb{E}(X\mid Y=y)$ $=$ <span class="text-nowrap">$g(y)$，</span>我們稱其為 $X$ 對 $Y$ 的迴歸函數。證明只用到[條件機率密度函數](/lecture-notes/conditional-distributions/#def-conditional-pdf)的定義，把 $f_{\sssig Y}(y)$ 提到積分之外，剩下的積分便只與 $y$ 有關。

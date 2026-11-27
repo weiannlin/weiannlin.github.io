@@ -145,6 +145,8 @@ $$
 
 </div>
 
+除了左右對稱的二次曲線外，即使兩個方向的[迴歸函數](/lecture-notes/double-expectation-theorem/#thm-regression-function)皆非常數 (雙向皆不具[期望值上獨立](/lecture-notes/covariance/#note-mean-independence))，相關係數仍可能恰好為 <span class="text-nowrap">$0$。</span>讀者可在互動展示 [Stein-Detrended Odd Wave: Zero Correlation Without Mean Independence](/demos/stein-wave-uncorrelated/) 中調整波浪頻率與振幅，觀察兩個方向的條件期望值如何隨條件擺動，而共變異數被積函數的正負區段面積仍始終抵銷為零相關。
+
 ## 相關係數的性質
 
 <div id="thm-corr-proper" class="topic-box topic-box--theorem" markdown="1">

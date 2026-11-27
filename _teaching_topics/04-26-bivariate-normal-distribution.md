@@ -352,6 +352,9 @@ $$
 
 </div>
 
+若想在三維空間中同時觀察立體鐘形曲面、等高橢圓與條件切片，可在互動展示 [Bivariate Normal Surface, Conditional Slices, and Regression Lines](/demos/bivariate-normal/) 中自由旋轉視角並調整 $\rho,\sigma\_1,\sigma\_2$ 與切片位置，直接比較正迴歸線、逆迴歸線與等高橢圓長軸三者的斜率差異，觀察各切片峰頂為何落在橢圓鉛直或水平切點而非橢圓長軸山脊上。
+{: .topic-paren-cont}
+
 (4) 二元常態分配中，$X$ 與 $Y$ 零相關等價於 $X$ 與 $Y$ 獨立，此即
 {: .topic-paren-item}
 

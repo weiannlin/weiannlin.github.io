@@ -149,6 +149,8 @@ $$
 
 </div>
 
+若想從三維截面觀察獨立時條件密度不隨給定值改變的幾何意義，可在互動展示 [Conditional Slices, Side-Wall Marginals, and Area Renormalization](/demos/slice-renormalization/) 中將參數 $\beta$ 設為 $0$ 並移動切片位置 <span class="text-nowrap">$x\_0$，</span>此時原始截面 $f\_{\sssig XY}(x\_0,y)$ 的高低雖隨 $f\_{\sssig X}(x\_0)$ 起伏，除以截面積後的條件密度曲線 $f\_{\sssig Y\mid X}(y\mid x\_0)$ 則處處與側牆上的邊際密度 $f\_{\sssig Y}(y)$ 完全重合。
+
 <div id="ex-joint-pdf-region-basic-independence" class="topic-box topic-box--example" markdown="1">
 <div class="topic-box__label">Example 3.2 <span lang="en">(Continued)</span></div>
 

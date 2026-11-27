@@ -177,6 +177,8 @@ $$
 
 </div>
 
+若想在立體曲面上實際移動切面，可在互動展示 [Conditional Slices, Side-Wall Marginals, and Area Renormalization](/demos/slice-renormalization/) 中調整切片位置 $x\_0$ 或改沿 $Y=y\_0$ 切割，同步對照側牆上的邊際密度 $f\_{\sssig X}(x\_0)$ 高度、原始截面曲線 $f\_{\sssig XY}(x\_0,y)$ 與面積標準化為 $1$ 的條件密度曲線 <span class="text-nowrap">$f\_{\sssig Y\mid X}(y\mid x\_0)$，</span>觀察 $f\_{\sssig X}(x\_0)<1$ 時曲線如何拉高、$f\_{\sssig X}(x\_0)>1$ 時又如何壓低。
+
 ## 本篇小結
 
 [Definition 3.8](#def-conditional-pmf) 把條件機率推廣到二元離散型的情形。給定 $Y=y$ 之下 $X$ 的條件機率質量函數，是[聯合機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-joint-pmf)除以 $Y$ 的[邊際機率質量函數](/lecture-notes/random-vectors-joint-pmf/#def-marginal-pmf)，給定 $X=x$ 之下 $Y$ 的條件機率質量函數亦同。這種 pmf 只有 $X$ 是隨機變數，$Y=y$ 則視為常數；它本身就是機率，而且就是第一章的條件機率推廣到離散隨機變數的版本，也就是把樣本空間縮小到 $Y=y$ 已經發生的狀況下，再看 $X=x$ 發生的機率。既然它仍是一種 pmf，也就同樣具有介於 $0$ 與 $1$ 之間、在值域上加總為 <span class="text-nowrap">$1$，</span>以及給定 $Y=y$ 之下事件 $A$ 的條件機率為 $A\cap\mathcal{R}_{\sssig X}$ 上之加總這三個性質。

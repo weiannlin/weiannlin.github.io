@@ -805,9 +805,11 @@ $$
 
 </div>
 
+斯泰因引理亦可用於構造精確零相關的非線性相依分配。對 $X\sim\mathcal{N}(0,\sigma\_1^{2})$ 取 $g(x)=\sin(\omega x)$ 並套用 [Theorem 4.22](#thm-stein-lemma) 可得 $\mathbb{E}\bigl[X\sin(\omega X)\bigr]=\omega\sigma\_1^{2}e^{-\frac{1}{2}\omega^{2}\sigma\_1^{2}}$ 這項結果，據此消去線性趨勢後，即可在互動展示 [Stein-Detrended Odd Wave: Zero Correlation Without Mean Independence](/demos/stein-wave-uncorrelated/) 中觀察正、逆[迴歸函數](/lecture-notes/double-expectation-theorem/#thm-regression-function)雖皆隨條件擺動，[共變異數](/lecture-notes/covariance/#def-covariance)被積函數的正負區段面積仍始終抵銷為 <span class="text-nowrap">$0$。</span>
+
 ## 本篇小結
 
-[Example 4.48](#ex-normal-moments-1) 把標準常態變數 $X$ 乘上一個取值為 $1$ 與 $-1$ 且與 $X$ 獨立的隨機正負號 <span class="text-nowrap">$Z$，</span>得到 <span class="text-nowrap">$Y=ZX$。</span>四個小題的作法都是先對 $Z$ 取條件再取期望值。前兩小題各求出一個[聯合動差母函數](/lecture-notes/cross-moments-joint-mgf/#def-joint-mgf)，$M_{\sssig XY}(t,s)$ 不等於兩個邊際動差母函數的乘積，$M_{\sssig ZY}(t,s)$ 卻恰好等於，因此 $X$ 與 $Y$ 不獨立而 $Z$ 與 $Y$ 獨立；第三小題由 $M_{\sssig Y}(s)=e^{\frac{\,s^{2}\,}{2}}$ 認出 $Y$ 仍為標準常態分配；第四小題以條件化與速算公式兩種作法各算一次[共變異數](/lecture-notes/covariance/#def-covariance)，都得到 <span class="text-nowrap">$0$。</span>$X$ 與 $Y$ 零相關卻不獨立，這是繼梅花座之後的另一個例子。
+[Example 4.48](#ex-normal-moments-1) 把標準常態變數 $X$ 乘上一個取值為 $1$ 與 $-1$ 且與 $X$ 獨立的隨機正負號 <span class="text-nowrap">$Z$，</span>得到 <span class="text-nowrap">$Y=ZX$。</span>四個小題的作法都是先對 $Z$ 取條件再取期望值。前兩小題各求出一個[聯合動差母函數](/lecture-notes/cross-moments-joint-mgf/#def-joint-mgf)，$M_{\sssig XY}(t,s)$ 不等於兩個邊際動差母函數的乘積，$M_{\sssig ZY}(t,s)$ 卻恰好等於，因此 $X$ 與 $Y$ 不獨立而 $Z$ 與 $Y$ 獨立；第三小題由 $M_{\sssig Y}(s)=e^{\frac{\,s^{2}\,}{2}}$ 認出 $Y$ 仍為標準常態分配；第四小題以條件化與速算公式兩種作法各算一次共變異數，都得到 <span class="text-nowrap">$0$。</span>$X$ 與 $Y$ 零相關卻不獨立，這是繼梅花座之後的另一個例子。
 
 [Example 4.49](#ex-normal-moments-2) 的 $W=\frac{X+YZ}{\sqrt{1+Z^{2}}}$ 也是同一個路數。法一固定 <span class="text-nowrap">$Z=z$，</span>此時 $W$ 是 $X$ 與 $Y$ 的線性組合，兩個係數的平方和恰為 <span class="text-nowrap">$1$，</span>故條件分配為標準常態分配；把條件密度乘上 $Z$ 的邊際密度再對 $z$ 積分，$\phi(w)$ 便可以提到積分外而得到 <span class="text-nowrap">$f_{\sssig W}(w)=\phi(w)$。</span>法二改求動差母函數，條件動差母函數算出來是與 $z$ 無關的 <span class="text-nowrap">$e^{\frac{\,t^{2}\,}{2}}$，</span>再取一次期望值仍是同一個式子。兩種作法的關鍵都在於「條件之後係數的平方和為 $1$」這一件事。
 

@@ -1,0 +1,1956 @@
+<div class="jd-workbench" data-jd-workbench>
+  <div class="jd-dock" id="jd-dock">
+    <div class="jd-dock__row">
+      <div class="jd-btn-group jd-scroll-strip" id="jd-focus-group" role="group" aria-label="Spotlight visual focus">
+        <span class="jd-group-label">Focus</span>
+        <button type="button" class="jd-btn jd-btn--focus" data-focus="all" aria-pressed="true">All</button>
+        <button type="button" class="jd-btn jd-btn--focus" data-focus="slice" aria-pressed="false">Slice &amp; scaling</button>
+        <button type="button" class="jd-btn jd-btn--focus" data-focus="marginals" aria-pressed="false">Marginal pdfs</button>
+        <button type="button" class="jd-btn jd-btn--focus" data-focus="direct" aria-pressed="false">Direct E(Y | X = x)</button>
+        <button type="button" class="jd-btn jd-btn--focus" data-focus="reverse" aria-pressed="false">Reverse E(X | Y = y)</button>
+      </div>
+      <div class="jd-dock__pin">
+        <label class="jd-check-pill" title="Overlay the renormalized conditional pdf directly on the 3D cutting plane alongside the raw slice">
+          <input type="checkbox" id="jd-chk-cond3d" checked>
+          <span><span class="jd-lbl-full">3D conditional pdf</span><span class="jd-lbl-short">3D cond.</span></span>
+        </label>
+        <button type="button" class="jd-btn" id="jd-collapse-btn" aria-expanded="true" aria-controls="jd-sliders" title="Collapse or expand parameter sliders">&#9662; Sliders</button>
+      </div>
+    </div>
+
+    <div class="jd-dock__row jd-dock__row--cut">
+      <div class="jd-btn-group jd-scroll-strip" id="jd-slice-group" role="group" aria-label="Slice direction and model options">
+        <span class="jd-group-label">Cut</span>
+        <button type="button" class="jd-btn" id="jd-mode-x" aria-pressed="true">Slice X = x<sub>0</sub></button>
+        <button type="button" class="jd-btn" id="jd-mode-y" aria-pressed="false">Slice Y = y<sub>0</sub></button>
+        <span id="jd-extra-modes" style="display:inline-flex;gap:0.3rem;"></span>
+      </div>
+      <div class="jd-btn-group jd-dock__cam" role="group" aria-label="3D camera presets">
+        <span class="jd-group-label">3D</span>
+        <button type="button" class="jd-btn" data-view="oblique">Oblique</button>
+        <button type="button" class="jd-btn" data-view="slice">Face slice</button>
+        <button type="button" class="jd-btn" data-view="top">Top-down</button>
+        <button type="button" class="jd-btn" id="jd-reset">Reset</button>
+      </div>
+    </div>
+
+    <div class="jd-dock__row" id="jd-presets-row" style="display:none;">
+      <div class="jd-btn-group jd-scroll-strip" id="jd-presets-group" role="group" aria-label="Parameter presets">
+        <span class="jd-group-label">Presets</span>
+        <span id="jd-extra-presets" style="display:inline-flex;gap:0.3rem;"></span>
+      </div>
+    </div>
+
+    <div class="jd-sliders" id="jd-sliders"></div>
+  </div>
+
+  <div class="jd-status-strip" id="jd-status-strip" style="display:none;" aria-label="Dependence hierarchy status">
+    <div class="jd-badge jd-badge--holds" id="jd-st-indep">
+      <span class="jd-badge__prop">$X\indep Y$</span>
+      <span class="jd-badge__verdict" id="jd-st-indep-v">Holds</span>
+    </div>
+    <div class="jd-badge jd-badge--holds" id="jd-st-my">
+      <span class="jd-badge__prop">$\mathbb{E}(Y\mid X=x)=\mathbb{E}(Y)$</span>
+      <span class="jd-badge__verdict" id="jd-st-my-v">Holds</span>
+    </div>
+    <div class="jd-badge jd-badge--holds" id="jd-st-mx">
+      <span class="jd-badge__prop">$\mathbb{E}(X\mid Y=y)=\mathbb{E}(X)$</span>
+      <span class="jd-badge__verdict" id="jd-st-mx-v">Holds</span>
+    </div>
+    <div class="jd-badge jd-badge--holds" id="jd-st-cov">
+      <span class="jd-badge__prop">$\operatorname{Cov}(X,Y)=0$</span>
+      <span class="jd-badge__verdict" id="jd-st-cov-v">Holds</span>
+    </div>
+  </div>
+
+  <div class="jd-stage jd-stage--3" id="jd-stage">
+    <section class="jd-card" aria-labelledby="jd-3d-heading">
+      <h3 id="jd-3d-heading">3D joint pdf, side-wall marginals, and slice</h3>
+      <p id="jd-3d-sub">Drag or use arrow keys to rotate. Side walls display marginal pdfs; the base plane (z = 0) displays the regression curves.</p>
+      <div class="jd-canvas-wrap">
+        <canvas id="jd-surface" class="jd-canvas-3d" width="520" height="480" tabindex="0" role="img" aria-label="Interactive 3D joint pdf surface with side-wall marginal pdfs, raw cross-section, and optional renormalized conditional pdf. Use arrow keys or drag to rotate."></canvas>
+        <div class="jd-view-badge" id="jd-angle-badge">az +36° · el 28°</div>
+      </div>
+    </section>
+
+    <section class="jd-card" aria-labelledby="jd-contour-heading">
+      <h3 id="jd-contour-heading">Equal-density contours and regression</h3>
+      <p id="jd-contour-sub">Click or drag on the plane to move the active slice. The filled dot marks the conditional mean on the slice.</p>
+      <svg id="jd-contour" class="jd-contour-svg" viewBox="0 0 380 380" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="jd-contour-title jd-contour-desc"></svg>
+    </section>
+
+    <div class="jd-col-stack" id="jd-right-col">
+      <section class="jd-card jd-card--slice" aria-labelledby="jd-slice-heading">
+        <h3 id="jd-slice-heading">Slice renormalization vs. marginal pdf</h3>
+        <p id="jd-slice-caption">Raw slice f<sub>XY</sub> (ochre), normalized conditional pdf (crimson), and fixed marginal pdf (dashed violet) on a shared scale.</p>
+        <svg id="jd-slice-chart" class="jd-chart-svg" viewBox="0 0 430 214" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="jd-slice-title jd-slice-desc"></svg>
+      </section>
+
+      <section class="jd-card" id="jd-cov-card" style="display:none;" aria-labelledby="jd-cov-heading">
+        <h3 id="jd-cov-heading">Covariance integrand (x &minus; E(X)) &middot; E(Y | X = x) &middot; f<sub>X</sub>(x)</h3>
+        <p id="jd-cov-caption">Positive (green) and negative (crimson) cross-product lobes integrate to Cov(X, Y).</p>
+        <svg id="jd-cov-chart" class="jd-chart-svg" viewBox="0 0 430 176" preserveAspectRatio="xMidYMid meet" role="img"></svg>
+      </section>
+    </div>
+  </div>
+
+  <div class="jd-legend" id="jd-legend" aria-label="Curve and marker legend">
+    <span data-leg="raw"><i class="jd-swatch jd-swatch--raw" aria-hidden="true"></i>Raw slice f<sub>XY</sub> (area = marginal ordinate)</span>
+    <span data-leg="cond"><i class="jd-swatch jd-swatch--direct" aria-hidden="true"></i>Conditional pdf &amp; Direct E(Y | X = x)</span>
+    <span data-leg="reverse"><i class="jd-swatch jd-swatch--reverse" aria-hidden="true"></i>Reverse E(X | Y = y)</span>
+    <span data-leg="marg"><i class="jd-swatch jd-swatch--marg" aria-hidden="true"></i>Marginal pdfs f<sub>X</sub>(x), f<sub>Y</sub>(y)</span>
+    <span data-leg="ridge" id="jd-leg-ridge" style="display:none;"><i class="jd-swatch jd-swatch--ridge" aria-hidden="true"></i>Ellipse major axis (ridge)</span>
+    <span data-leg="mean"><i class="jd-dot-mean" aria-hidden="true"></i>Slice centroid (conditional mean)</span>
+  </div>
+
+  <div class="jd-readout-grid" id="jd-readouts">
+    <div class="jd-readout-item">
+      <span id="jd-ro1-lbl">Slice area (marginal ordinate)</span>
+      <strong id="jd-ro1-val">–</strong>
+    </div>
+    <div class="jd-readout-item">
+      <span id="jd-ro2-lbl">Renormalization factor</span>
+      <strong id="jd-ro2-val">–</strong>
+    </div>
+    <div class="jd-readout-item">
+      <span id="jd-ro3-lbl">Conditional moments</span>
+      <strong id="jd-ro3-val">–</strong>
+    </div>
+    <div class="jd-readout-item">
+      <span id="jd-ro4-lbl">Model summary</span>
+      <strong id="jd-ro4-val">–</strong>
+    </div>
+  </div>
+
+  <nav class="jd-pager" id="jd-pager" aria-label="Previous and next lab navigation" style="display:none;"></nav>
+</div>
+
+<script>
+(function () {
+  const cfg = window.JD_CONFIG;
+  const root = document.querySelector('[data-jd-workbench]');
+  if (!cfg || !root) return;
+
+  const TWO_PI = 2 * Math.PI;
+  const MIN_SLICE_AREA = 1e-6;
+  const L = cfg.domainL || 3.2;
+  const N_BASE = 42;
+  const BASE_COORDS = new Float64Array(N_BASE + 1);
+  for (let i = 0; i <= N_BASE; i++) BASE_COORDS[i] = -L + (2 * L * i) / N_BASE;
+
+  const N_CONT = 72;
+  const CONT_COORDS = new Float64Array(N_CONT + 1);
+  for (let i = 0; i <= N_CONT; i++) CONT_COORDS[i] = -L + (2 * L * i) / N_CONT;
+
+  const COLORS = {
+    paper: '#f5efe2',
+    ink: '#1f1c18',
+    inkSoft: '#443d35',
+    inkMute: '#8a7f72',
+    direct: '#9c2d2d',
+    reverse: '#4f7d45',
+    raw: '#9e6b24',
+    marg: '#5b437a',
+    ridge: '#2f6f8f',
+    arrow: '#3d5a73',
+    divider: 'rgba(31, 28, 24, 0.18)'
+  };
+
+  const SERIES_LABS = [
+    { slug: 'slice-renormalization', short: '1. Slice Scaling', url: '/demos/slice-renormalization/' },
+    { slug: 'skewed-slice-centroid', short: '2. Centroid vs. Peak', url: '/demos/skewed-slice-centroid/' },
+    { slug: 'asymmetric-regression-mixture', short: '3. One-Way Linear', url: '/demos/asymmetric-regression-mixture/' },
+    { slug: 'bimodal-fork-regression', short: '4. Bimodal Fork', url: '/demos/bimodal-fork-regression/' },
+    { slug: 'volcano-mean-independence', short: '5. Volcano Crater', url: '/demos/volcano-mean-independence/' },
+    { slug: 'parabolic-ridge-covariance', short: '6. Parabolic Ridge', url: '/demos/parabolic-ridge-covariance/' },
+    { slug: 'stein-wave-uncorrelated', short: '7. Odd Wave', url: '/demos/stein-wave-uncorrelated/' },
+    { slug: 'bivariate-normal', short: '8. Bivariate Normal', url: '/demos/bivariate-normal/' }
+  ];
+
+  // Auto-center active pill in mobile series nav & populate bottom Prev/Next Lab pager
+  const seriesNav = document.querySelector('.jd-series-nav[data-jd-current]');
+  const pagerEl = root.querySelector('#jd-pager');
+  if (seriesNav) {
+    const activePill = seriesNav.querySelector('[aria-current="page"]');
+    if (activePill && seriesNav.scrollWidth > seriesNav.clientWidth) {
+      seriesNav.scrollLeft = Math.max(0, activePill.offsetLeft - 48);
+    }
+    const curSlug = seriesNav.getAttribute('data-jd-current');
+    const curIdx = SERIES_LABS.findIndex(x => x.slug === curSlug);
+    if (curIdx >= 0 && pagerEl) {
+      const prev = curIdx > 0 ? SERIES_LABS[curIdx - 1] : null;
+      const next = curIdx < SERIES_LABS.length - 1 ? SERIES_LABS[curIdx + 1] : null;
+      let pHtml = prev
+        ? `<a href="${prev.url}">&larr; ${prev.short}</a>`
+        : `<a href="/demos/joint-density-3d/">&larr; 3D Series Overview</a>`;
+      pHtml += `<a href="/demos/joint-density-3d/">3D Series Overview</a>`;
+      pHtml += next
+        ? `<a href="${next.url}">${next.short} &rarr;</a>`
+        : `<span style="font-size:0.78rem;color:var(--journal-ink-soft);">End of 8-lab series</span>`;
+      pagerEl.innerHTML = pHtml;
+      pagerEl.style.display = '';
+    }
+  }
+
+  const dock = root.querySelector('#jd-dock');
+  const focusGroup = root.querySelector('#jd-focus-group');
+  const chkCond3D = root.querySelector('#jd-chk-cond3d');
+  const collapseBtn = root.querySelector('#jd-collapse-btn');
+  const modeXBtn = root.querySelector('#jd-mode-x');
+  const modeYBtn = root.querySelector('#jd-mode-y');
+  const extraModesEl = root.querySelector('#jd-extra-modes');
+  const presetsRowEl = root.querySelector('#jd-presets-row');
+  const extraPresetsEl = root.querySelector('#jd-extra-presets');
+  const resetBtn = root.querySelector('#jd-reset');
+  const slidersEl = root.querySelector('#jd-sliders');
+  const statusStrip = root.querySelector('#jd-status-strip');
+  const stageEl = root.querySelector('#jd-stage');
+  const rightCol = root.querySelector('#jd-right-col');
+  const covCard = root.querySelector('#jd-cov-card');
+  const legRidge = root.querySelector('#jd-leg-ridge');
+
+  const surfaceCanvas = root.querySelector('#jd-surface');
+  const angleBadge = root.querySelector('#jd-angle-badge');
+  const contourSvg = root.querySelector('#jd-contour');
+  const sliceSvg = root.querySelector('#jd-slice-chart');
+  const sliceCaption = root.querySelector('#jd-slice-caption');
+  const covSvg = root.querySelector('#jd-cov-chart');
+  const covHeading = root.querySelector('#jd-cov-heading');
+  const covCaption = root.querySelector('#jd-cov-caption');
+
+  function formatMathUiHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/([A-Za-zα-ωΑ-Ω])_([A-Za-z0-9]+)/g, '$1<sub>$2</sub>')
+      .replace(/₀/g, '<sub>0</sub>')
+      .replace(/₁/g, '<sub>1</sub>')
+      .replace(/₂/g, '<sub>2</sub>')
+      .replace(/²/g, '<sup>2</sup>');
+  }
+
+  // Optional pure-slice mode (Lab 1: before conditional expectation / regression is introduced)
+  if (cfg.hideRegression) {
+    focusGroup.querySelectorAll('[data-focus="direct"], [data-focus="reverse"]').forEach(el => { el.style.display = 'none'; });
+    const legRev = root.querySelector('#jd-legend [data-leg="reverse"]');
+    const legMean = root.querySelector('#jd-legend [data-leg="mean"]');
+    const legCond = root.querySelector('#jd-legend [data-leg="cond"]');
+    if (legRev) legRev.style.display = 'none';
+    if (legMean) legMean.style.display = 'none';
+    if (legCond) legCond.innerHTML = '<i class="jd-swatch jd-swatch--direct" aria-hidden="true"></i>Renormalized conditional pdf';
+    root.querySelector('#jd-3d-sub').innerHTML = formatMathUiHtml('Drag or use arrow keys to rotate. Side walls display marginal pdfs f_X(x) and f_Y(y) on the same vertical density scale as the slice.');
+    root.querySelector('#jd-contour-heading').textContent = 'Equal-density contours and active cut';
+    root.querySelector('#jd-contour-sub').textContent = 'Click or drag on the (x, y) plane to move the active vertical or horizontal cutting plane.';
+  }
+
+  // Optional Ridge / Mode comparison focus pill
+  if (cfg.hasRidge) {
+    const rBtn = document.createElement('button');
+    rBtn.type = 'button';
+    rBtn.className = 'jd-btn jd-btn--focus';
+    rBtn.dataset.focus = 'ridge';
+    rBtn.setAttribute('aria-pressed', 'false');
+    rBtn.innerHTML = formatMathUiHtml(cfg.ridgeFocusLabel || 'Ellipse ridge');
+    focusGroup.appendChild(rBtn);
+    legRidge.style.display = '';
+  }
+
+  // Optional 4-panel covariance integrand layout
+  if (cfg.hasCovPanel) {
+    stageEl.classList.remove('jd-stage--3');
+    stageEl.classList.add('jd-stage--4');
+    covCard.style.display = '';
+    covSvg.setAttribute('aria-labelledby', 'jd-cov-title jd-cov-desc');
+  } else {
+    const sliceCard = rightCol.querySelector('.jd-card--slice');
+    stageEl.replaceChild(sliceCard, rightCol);
+  }
+
+  if (cfg.hasStatusStrip) {
+    statusStrip.style.display = '';
+  }
+
+  if (cfg.readoutLabels) {
+    if (cfg.readoutLabels[0]) root.querySelector('#jd-ro1-lbl').innerHTML = formatMathUiHtml(cfg.readoutLabels[0]);
+    if (cfg.readoutLabels[1]) root.querySelector('#jd-ro2-lbl').innerHTML = formatMathUiHtml(cfg.readoutLabels[1]);
+    if (cfg.readoutLabels[2]) root.querySelector('#jd-ro3-lbl').innerHTML = formatMathUiHtml(cfg.readoutLabels[2]);
+    if (cfg.readoutLabels[3]) root.querySelector('#jd-ro4-lbl').innerHTML = formatMathUiHtml(cfg.readoutLabels[3]);
+  }
+
+  const state = {
+    mode: cfg.defaultMode || 'x',
+    subMode: cfg.defaultSubMode || null,
+    focus: 'all',
+    showCond3D: cfg.defaultCond3D !== false,
+    az: cfg.defaultAz !== undefined ? cfg.defaultAz : 36,
+    el: cfg.defaultEl !== undefined ? cfg.defaultEl : 28,
+    params: {}
+  };
+  chkCond3D.checked = state.showCond3D;
+
+  // Measure fixed masthead height dynamically so sticky dock never sits underneath it
+  function syncStickyOffset() {
+    const mh = document.querySelector('.masthead');
+    if (!mh) return;
+    const h = Math.round(mh.getBoundingClientRect().height);
+    if (h > 0) root.style.setProperty('--jd-sticky-top', h + 'px');
+  }
+  syncStickyOffset();
+  window.addEventListener('load', syncStickyOffset, { once: true });
+  window.addEventListener('resize', syncStickyOffset, { passive: true });
+  if (window.ResizeObserver) {
+    const mh = document.querySelector('.masthead');
+    if (mh) new ResizeObserver(syncStickyOffset).observe(mh);
+  }
+
+  // Build sliders from cfg.sliders
+  const sliderRefs = {};
+  (cfg.sliders || []).forEach(s => {
+    state.params[s.id] = s.def;
+    const wrap = document.createElement('div');
+    wrap.className = 'jd-control';
+    const head = document.createElement('div');
+    head.className = 'jd-range-head';
+    const lbl = document.createElement('label');
+    lbl.setAttribute('for', 'jd-sl-' + s.id);
+    lbl.id = 'jd-lbl-' + s.id;
+    lbl.innerHTML = formatMathUiHtml(s.label);
+    const out = document.createElement('output');
+    out.id = 'jd-out-' + s.id;
+    out.setAttribute('for', 'jd-sl-' + s.id);
+    head.appendChild(lbl);
+    head.appendChild(out);
+
+    const inp = document.createElement('input');
+    inp.type = 'range';
+    inp.id = 'jd-sl-' + s.id;
+    inp.min = String(s.min);
+    inp.max = String(s.max);
+    inp.step = String(s.step);
+    inp.value = String(s.def);
+
+    inp.addEventListener('input', () => {
+      state.params[s.id] = parseFloat(inp.value);
+      scheduleRender();
+    });
+
+    wrap.appendChild(head);
+    wrap.appendChild(inp);
+    slidersEl.appendChild(wrap);
+    sliderRefs[s.id] = { spec: s, inp, lbl, out };
+  });
+
+  function setParam(id, val) {
+    if (!sliderRefs[id]) return;
+    state.params[id] = val;
+    sliderRefs[id].inp.value = String(val);
+  }
+
+  function setSliceMode(m) {
+    state.mode = m;
+    modeXBtn.setAttribute('aria-pressed', m === 'x' ? 'true' : 'false');
+    modeYBtn.setAttribute('aria-pressed', m === 'y' ? 'true' : 'false');
+    contourSvg.style.touchAction = m === 'x' ? 'pan-y' : 'pan-x';
+  }
+
+  function setFocus(f) {
+    state.focus = f;
+    focusGroup.querySelectorAll('[data-focus]').forEach(b => {
+      b.setAttribute('aria-pressed', b.dataset.focus === f ? 'true' : 'false');
+    });
+  }
+
+  function setCond3D(on) {
+    state.showCond3D = !!on;
+    chkCond3D.checked = state.showCond3D;
+  }
+
+  // Extra sub-mode toggle buttons (e.g. Mixture on X / Mixture on Y)
+  const subModeBtns = [];
+  if (cfg.subModes && cfg.subModes.length) {
+    cfg.subModes.forEach(sm => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'jd-btn';
+      b.dataset.submode = sm.id;
+      b.setAttribute('aria-pressed', sm.id === state.subMode ? 'true' : 'false');
+      b.innerHTML = formatMathUiHtml(sm.label);
+      if (sm.title) b.title = sm.title;
+      b.addEventListener('click', () => {
+        state.subMode = sm.id;
+        subModeBtns.forEach(x => x.setAttribute('aria-pressed', x.dataset.submode === sm.id ? 'true' : 'false'));
+        if (sm.onSelect) sm.onSelect(state, setParam, setSliceMode);
+        scheduleRender();
+      });
+      extraModesEl.appendChild(b);
+      subModeBtns.push(b);
+    });
+  }
+
+  // Extra quick preset buttons (dedicated Presets row so always visible on desktop & mobile)
+  if (cfg.presets && cfg.presets.length) {
+    presetsRowEl.style.display = '';
+    cfg.presets.forEach(pr => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'jd-btn';
+      b.id = 'jd-preset-' + pr.id;
+      b.innerHTML = formatMathUiHtml(pr.label);
+      if (pr.title) b.title = pr.title;
+      b.addEventListener('click', () => {
+        pr.apply(state, setParam, setSliceMode, setFocus, setCond3D);
+        scheduleRender();
+      });
+      extraPresetsEl.appendChild(b);
+    });
+  }
+
+  focusGroup.querySelectorAll('[data-focus]').forEach(b => {
+    b.addEventListener('click', () => {
+      setFocus(b.dataset.focus);
+      scheduleRender();
+    });
+  });
+
+  chkCond3D.addEventListener('change', () => {
+    state.showCond3D = chkCond3D.checked;
+    scheduleRender();
+  });
+
+  collapseBtn.addEventListener('click', () => {
+    const collapsed = dock.classList.toggle('is-collapsed');
+    collapseBtn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+    collapseBtn.innerHTML = collapsed ? '&#9656; Sliders' : '&#9662; Sliders';
+  });
+
+  modeXBtn.addEventListener('click', () => { setSliceMode('x'); scheduleRender(); });
+  modeYBtn.addEventListener('click', () => { setSliceMode('y'); scheduleRender(); });
+  setSliceMode(state.mode);
+
+  let rafPending = false;
+  let animFrame = null;
+
+  function formatSigned(v, digits, plusSign) {
+    const clean = Math.abs(v) < 0.5 * Math.pow(10, -digits) ? 0 : v;
+    const absStr = Math.abs(clean).toFixed(digits);
+    if (clean < 0) return '−' + absStr;
+    if (plusSign && clean > 0) return '+' + absStr;
+    return absStr;
+  }
+
+  function formatAreaNum(a, digits) {
+    if (a <= 0) return '0.0000';
+    if (a < 1e-3) return a.toExponential(2);
+    return a.toFixed(digits !== undefined ? digits : 4);
+  }
+
+  function formatMultNum(mult) {
+    if (mult >= 1000) return '×' + mult.toExponential(1);
+    if (mult >= 100) return '×' + mult.toFixed(0);
+    return '×' + mult.toFixed(2);
+  }
+
+  function syncSliderFill(inp) {
+    const min = parseFloat(inp.min);
+    const max = parseFloat(inp.max);
+    const val = parseFloat(inp.value);
+    const pct = ((val - min) / (max - min)) * 100;
+    inp.style.setProperty('--jd-fill', pct.toFixed(2) + '%');
+  }
+
+  // Evaluate conditional ordinate accurately (closed-form hook first, otherwise raw / area)
+  function evalCondOrdinate(t, sliceVal, mode, p, rawVal, sliceArea) {
+    if (typeof cfg.evalCond === 'function') {
+      const cv = cfg.evalCond(t, sliceVal, mode, p, state);
+      if (cv !== null && cv !== undefined && Number.isFinite(cv)) {
+        return { val: cv, valid: true };
+      }
+    }
+    if (sliceArea > MIN_SLICE_AREA) {
+      return { val: rawVal / sliceArea, valid: true };
+    }
+    return { val: 0, valid: false };
+  }
+
+  function getFocusAlphas() {
+    const f = state.focus;
+    if (f === 'slice') {
+      return { surfBack: 0.20, surfFront: 0.14, margAct: 0.96, margInact: 0.16, raw: 1.0, cond: 1.0, direct: 0.15, reverse: 0.14, ridge: 0.14, contour: 0.20, meanDot: 0.92 };
+    }
+    if (f === 'marginals') {
+      return { surfBack: 0.18, surfFront: 0.13, margAct: 1.0, margInact: 1.0, raw: 0.20, cond: 0.20, direct: 0.14, reverse: 0.14, ridge: 0.14, contour: 0.22, meanDot: 0.22 };
+    }
+    if (f === 'direct') {
+      return { surfBack: 0.18, surfFront: 0.11, margAct: 0.15, margInact: 0.13, raw: 0.22, cond: 0.34, direct: 1.0, reverse: 0.14, ridge: 0.14, contour: 0.26, meanDot: state.mode === 'x' ? 1.0 : 0.24 };
+    }
+    if (f === 'reverse') {
+      return { surfBack: 0.18, surfFront: 0.11, margAct: 0.15, margInact: 0.13, raw: 0.22, cond: 0.34, direct: 0.14, reverse: 1.0, ridge: 0.14, contour: 0.26, meanDot: state.mode === 'y' ? 1.0 : 0.24 };
+    }
+    if (f === 'ridge') {
+      return {
+        surfBack: 0.19,
+        surfFront: 0.12,
+        margAct: 0.14,
+        margInact: 0.13,
+        raw: 0.26,
+        cond: 0.88,
+        direct: state.mode === 'x' ? 0.96 : 0.16,
+        reverse: state.mode === 'y' ? 0.96 : 0.14,
+        ridge: 1.0,
+        contour: 0.35,
+        meanDot: 1.0
+      };
+    }
+    return { surfBack: 0.94, surfFront: 0.84, margAct: 0.82, margInact: 0.72, raw: 0.96, cond: 0.95, direct: 1.0, reverse: 0.94, ridge: 0.92, contour: 1.0, meanDot: 1.0 };
+  }
+
+  function syncLegendAlphas(A) {
+    const map = {
+      raw: Math.max(0.28, A.raw),
+      cond: Math.max(0.28, Math.max(A.cond, A.direct)),
+      reverse: Math.max(0.28, A.reverse),
+      marg: Math.max(0.28, Math.max(A.margAct, A.margInact)),
+      ridge: Math.max(0.28, A.ridge),
+      mean: Math.max(0.28, A.meanDot)
+    };
+    root.querySelectorAll('#jd-legend [data-leg]').forEach(el => {
+      const k = el.getAttribute('data-leg');
+      if (map[k] !== undefined) el.style.opacity = map[k].toFixed(2);
+    });
+  }
+
+  function buildCoordsWithSeam(seamVal) {
+    const clamped = Math.max(-L, Math.min(L, seamVal));
+    for (let i = 0; i <= N_BASE; i++) {
+      if (Math.abs(BASE_COORDS[i] - clamped) < 1e-4) return Array.from(BASE_COORDS);
+    }
+    const out = [];
+    let inserted = false;
+    for (let i = 0; i <= N_BASE; i++) {
+      if (!inserted && BASE_COORDS[i] > clamped) {
+        out.push(clamped);
+        inserted = true;
+      }
+      out.push(BASE_COORDS[i]);
+    }
+    if (!inserted) out.push(clamped);
+    return out;
+  }
+
+  function buildSliceSamples(nSteps, extraKnots) {
+    const pts = [];
+    for (let i = 0; i <= nSteps; i++) pts.push(-L + (2 * L * i) / nSteps);
+    if (extraKnots && extraKnots.length) {
+      for (let k = 0; k < extraKnots.length; k++) {
+        const v = extraKnots[k];
+        if (v !== null && v !== undefined && Number.isFinite(v) && v > -L + 1e-5 && v < L - 1e-5) {
+          pts.push(v);
+        }
+      }
+      pts.sort((a, b) => a - b);
+      const dedup = [pts[0]];
+      for (let i = 1; i < pts.length; i++) {
+        if (pts[i] - dedup[dedup.length - 1] > 1e-5) dedup.push(pts[i]);
+      }
+      return dedup;
+    }
+    return pts;
+  }
+
+  function computeScene() {
+    const p = state.params;
+    const sliceVal = p.slice;
+    const grid = new Float64Array((N_CONT + 1) * (N_CONT + 1));
+    let maxJointZ = 1e-6;
+    for (let i = 0; i <= N_CONT; i++) {
+      const x = CONT_COORDS[i];
+      for (let j = 0; j <= N_CONT; j++) {
+        const y = CONT_COORDS[j];
+        const z = cfg.evalJoint(x, y, p, state);
+        grid[i * (N_CONT + 1) + j] = z;
+        if (z > maxJointZ) maxJointZ = z;
+      }
+    }
+
+    const nMarg = 128;
+    const margX = new Float64Array(nMarg + 1);
+    const margY = new Float64Array(nMarg + 1);
+    let maxMargX = 1e-6, maxMargY = 1e-6;
+    let idxPeakMX = 64, idxPeakMY = 64;
+    for (let i = 0; i <= nMarg; i++) {
+      const u = -L + (2 * L * i) / nMarg;
+      const mx = cfg.evalMargX(u, p, state);
+      const my = cfg.evalMargY(u, p, state);
+      margX[i] = mx;
+      margY[i] = my;
+      if (mx > maxMargX) { maxMargX = mx; idxPeakMX = i; }
+      if (my > maxMargY) { maxMargY = my; idxPeakMY = i; }
+    }
+
+    let sliceArea, condMean = null, condSd = null;
+    if (state.mode === 'x') {
+      sliceArea = cfg.evalMargX(sliceVal, p, state);
+      if (!cfg.hideRegression) {
+        const dm = cfg.evalDirect(sliceVal, p, state);
+        condMean = dm.mean;
+        condSd = dm.sd;
+      }
+    } else {
+      sliceArea = cfg.evalMargY(sliceVal, p, state);
+      if (!cfg.hideRegression) {
+        const rm = cfg.evalReverse(sliceVal, p, state);
+        condMean = rm.mean;
+        condSd = rm.sd;
+      }
+    }
+
+    const hasValidCond = evalCondOrdinate(0, sliceVal, state.mode, p, 0, sliceArea).valid;
+
+    // Unified vertical density scale including fixed probes + active slice peak when 3D conditional pdf is active
+    let maxCondRef = Math.max(maxMargX, maxMargY);
+    const probes = state.showCond3D ? [-1.8, -0.9, 0, 0.9, 1.8, sliceVal] : [-1.8, -0.9, 0, 0.9, 1.8];
+    for (let pi = 0; pi < probes.length; pi++) {
+      const u0 = probes[pi];
+      const m0 = state.mode === 'x' ? cfg.evalMargX(u0, p, state) : cfg.evalMargY(u0, p, state);
+      for (let k = -32; k <= 32; k++) {
+        const v = (L * k) / 32;
+        const jz = state.mode === 'x' ? cfg.evalJoint(u0, v, p, state) : cfg.evalJoint(v, u0, p, state);
+        const co = evalCondOrdinate(v, u0, state.mode, p, jz, m0);
+        if (co.valid && co.val > maxCondRef) maxCondRef = co.val;
+      }
+    }
+    const zRefMax = Math.min(
+      Math.max(maxJointZ * 1.18, maxMargX, maxMargY, maxCondRef),
+      Math.max(maxMargX, maxMargY, maxJointZ) * 4.5
+    ) * 1.08;
+
+    const nCurve = 96;
+    const directCurve = [];
+    const reverseCurve = [];
+    const ridgeCurve = [];
+    const ridgeSlope = cfg.evalRidgeSlope ? cfg.evalRidgeSlope(p, state) : null;
+
+    for (let s = 0; s <= nCurve; s++) {
+      const u = -L + (2 * L * s) / nCurve;
+      if (!cfg.hideRegression) {
+        const dm = cfg.evalDirect(u, p, state);
+        if (dm && dm.mean !== null && Math.abs(dm.mean) <= L && (dm.fx === undefined || dm.fx > 2e-5)) {
+          directCurve.push({ x: u, y: dm.mean, z: cfg.evalJoint(u, dm.mean, p, state) });
+        } else {
+          directCurve.push(null);
+        }
+        const rm = cfg.evalReverse(u, p, state);
+        if (rm && rm.mean !== null && Math.abs(rm.mean) <= L && (rm.fy === undefined || rm.fy > 2e-5)) {
+          reverseCurve.push({ x: rm.mean, y: u, z: cfg.evalJoint(rm.mean, u, p, state) });
+        } else {
+          reverseCurve.push(null);
+        }
+      }
+      if (cfg.evalModeCurvePt) {
+        const mpt = cfg.evalModeCurvePt(u, state.mode, p, state, L);
+        if (mpt && Math.abs(mpt.x) <= L && Math.abs(mpt.y) <= L) {
+          ridgeCurve.push({ x: mpt.x, y: mpt.y, z: cfg.evalJoint(mpt.x, mpt.y, p, state) });
+        } else {
+          ridgeCurve.push(null);
+        }
+      } else if (cfg.evalModeY) {
+        const my = cfg.evalModeY(u, p, state);
+        if (my !== null && Math.abs(my) <= L) ridgeCurve.push({ x: u, y: my, z: cfg.evalJoint(u, my, p, state) });
+        else ridgeCurve.push(null);
+      } else if (ridgeSlope !== null) {
+        if (ridgeSlope.vertical || Math.abs(ridgeSlope.m) > 1) {
+          const rx = ridgeSlope.vertical ? 0 : u / ridgeSlope.m;
+          if (Math.abs(rx) <= L) ridgeCurve.push({ x: rx, y: u, z: cfg.evalJoint(rx, u, p, state) });
+          else ridgeCurve.push(null);
+        } else {
+          const ry = ridgeSlope.m * u;
+          if (Math.abs(ry) <= L) ridgeCurve.push({ x: u, y: ry, z: cfg.evalJoint(u, ry, p, state) });
+          else ridgeCurve.push(null);
+        }
+      }
+    }
+
+    const centroidX = (condMean !== null && hasValidCond) ? (state.mode === 'x' ? sliceVal : condMean) : null;
+    const centroidY = (condMean !== null && hasValidCond) ? (state.mode === 'x' ? condMean : sliceVal) : null;
+    const centroidRawZ = (centroidX !== null && centroidY !== null)
+      ? cfg.evalJoint(centroidX, centroidY, p, state)
+      : 0;
+
+    let ridgeCross = null;
+    if (cfg.evalSliceModePoint) {
+      ridgeCross = cfg.evalSliceModePoint(sliceVal, state.mode, p, state, L);
+    } else if (ridgeSlope !== null) {
+      if (state.mode === 'x' && !ridgeSlope.vertical) {
+        const ry = ridgeSlope.m * sliceVal;
+        if (Math.abs(ry) <= L) ridgeCross = { x: sliceVal, y: ry, t: ry, rawZ: cfg.evalJoint(sliceVal, ry, p, state), inPlot: true };
+      } else if (state.mode === 'y') {
+        const rx = ridgeSlope.vertical ? 0 : (Math.abs(ridgeSlope.m) > 1e-6 ? sliceVal / ridgeSlope.m : null);
+        if (rx !== null && Math.abs(rx) <= L) ridgeCross = { x: rx, y: sliceVal, t: rx, rawZ: cfg.evalJoint(rx, sliceVal, p, state), inPlot: true };
+      }
+    }
+
+    const sliceKnots = cfg.evalSliceKnots ? cfg.evalSliceKnots(sliceVal, state.mode, p, state, L) : null;
+
+    return {
+      grid,
+      maxJointZ,
+      zRefMax,
+      nMarg,
+      margX,
+      margY,
+      maxMargX,
+      maxMargY,
+      idxPeakMX,
+      idxPeakMY,
+      directCurve,
+      reverseCurve,
+      ridgeCurve,
+      ridgeSlope,
+      ridgeCross,
+      sliceArea,
+      hasValidCond,
+      condMean,
+      condSd,
+      centroidX,
+      centroidY,
+      centroidRawZ,
+      sliceKnots
+    };
+  }
+
+  function render3DSurface(scene, A) {
+    const p = state.params;
+    const sliceVal = p.slice;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const rect = surfaceCanvas.getBoundingClientRect();
+    const cssW = Math.max(260, Math.round(rect.width || 480));
+    const cssH = Math.round(cssW / 1.08);
+    if (surfaceCanvas.width !== Math.round(cssW * dpr) || surfaceCanvas.height !== Math.round(cssH * dpr)) {
+      surfaceCanvas.width = Math.round(cssW * dpr);
+      surfaceCanvas.height = Math.round(cssH * dpr);
+    }
+    const ctx = surfaceCanvas.getContext('2d');
+    ctx.save();
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, cssW, cssH);
+
+    const azRad = (state.az * Math.PI) / 180;
+    const elRad = (state.el * Math.PI) / 180;
+    const ca = Math.cos(azRad), sa = Math.sin(azRad);
+    const ce = Math.cos(elRad), se = Math.sin(elRad);
+
+    const rx = ca, ry = sa;
+    const uxCam = -sa * se, uyCam = ca * se, uzCam = ce;
+    const vx = sa * ce, vy = -ca * ce;
+
+    const boxWorldH = 2.85;
+    const zToWorld = boxWorldH / scene.zRefMax;
+    const zCenter = boxWorldH * 0.40 * ce;
+
+    const scale = Math.min(cssW, cssH) * 0.106 * Math.min(1, 3.2 / L);
+    const cx0 = cssW * 0.5;
+    const cy0 = cssH * (0.50 + 0.12 * ce);
+
+    function project(x, y, z) {
+      const zPos = Math.max(0, z);
+      const zw = zPos * zToWorld;
+      const sx = cx0 + scale * (x * rx + y * ry);
+      const sy = cy0 - scale * (x * uxCam + y * uyCam + (zw - zCenter) * uzCam);
+      return { sx, sy };
+    }
+
+    const farX = vx >= 0 ? -L : L;
+    const farY = vy >= 0 ? -L : L;
+
+    // 0. Floor grid & border
+    ctx.lineWidth = 0.75;
+    ctx.strokeStyle = 'rgba(31, 28, 24, 0.12)';
+    for (let k = -3; k <= 3; k++) {
+      if (Math.abs(k) > L + 1e-6) continue;
+      const a1 = project(k, -L, 0), a2 = project(k, L, 0);
+      ctx.beginPath(); ctx.moveTo(a1.sx, a1.sy); ctx.lineTo(a2.sx, a2.sy); ctx.stroke();
+      const b1 = project(-L, k, 0), b2 = project(L, k, 0);
+      ctx.beginPath(); ctx.moveTo(b1.sx, b1.sy); ctx.lineTo(b2.sx, b2.sy); ctx.stroke();
+    }
+
+    ctx.lineWidth = 1.0;
+    ctx.strokeStyle = 'rgba(31, 28, 24, 0.30)';
+    const c00 = project(-L, -L, 0), c10 = project(L, -L, 0);
+    const c11 = project(L, L, 0), c01 = project(-L, L, 0);
+    ctx.beginPath();
+    ctx.moveTo(c00.sx, c00.sy); ctx.lineTo(c10.sx, c10.sy);
+    ctx.lineTo(c11.sx, c11.sy); ctx.lineTo(c01.sx, c01.sy);
+    ctx.closePath();
+    ctx.stroke();
+
+    // 1. Textbook-style 3D side-wall marginal pdfs f_X(x) and f_Y(y)
+    if (ce > 0.09) {
+      const zWallTop = scene.zRefMax * 0.98;
+      const wCorner = project(farX, farY, 0);
+      const wCornerTop = project(farX, farY, zWallTop);
+      const wXEnd = project(-farX, farY, 0);
+      const wXEndTop = project(-farX, farY, zWallTop);
+      const wYEnd = project(farX, -farY, 0);
+      const wYEndTop = project(farX, -farY, zWallTop);
+
+      ctx.save();
+      ctx.strokeStyle = 'rgba(31, 28, 24, 0.14)';
+      ctx.lineWidth = 0.8;
+      ctx.beginPath();
+      ctx.moveTo(wXEnd.sx, wXEnd.sy); ctx.lineTo(wXEndTop.sx, wXEndTop.sy);
+      ctx.lineTo(wCornerTop.sx, wCornerTop.sy); ctx.lineTo(wYEndTop.sx, wYEndTop.sy);
+      ctx.lineTo(wYEnd.sx, wYEnd.sy);
+      ctx.stroke();
+
+      if (scene.zRefMax >= 1.05) {
+        const pOneA = project(farX, farY, 1.0);
+        const pOneX = project(-farX, farY, 1.0);
+        const pOneY = project(farX, -farY, 1.0);
+        ctx.save();
+        ctx.setLineDash([2, 3]);
+        ctx.strokeStyle = 'rgba(91, 67, 122, 0.25)';
+        ctx.beginPath();
+        ctx.moveTo(pOneX.sx, pOneX.sy); ctx.lineTo(pOneA.sx, pOneA.sy); ctx.lineTo(pOneY.sx, pOneY.sy);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      ctx.strokeStyle = 'rgba(31, 28, 24, 0.30)';
+      ctx.lineWidth = 1.0;
+      ctx.beginPath(); ctx.moveTo(wCorner.sx, wCorner.sy); ctx.lineTo(wCornerTop.sx, wCornerTop.sy); ctx.stroke();
+      ctx.fillStyle = COLORS.inkSoft;
+      ctx.font = 'italic 12px Georgia, "Times New Roman", serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText('density', wCornerTop.sx, Math.max(14, wCornerTop.sy - 3));
+      ctx.restore();
+
+      const edgeXWall = Math.min(1, Math.max(0, (Math.abs(ca) - 0.06) / 0.12));
+      const edgeYWall = Math.min(1, Math.max(0, (Math.abs(sa) - 0.06) / 0.12));
+      const alphaMX = (state.mode === 'x' ? A.margAct : A.margInact) * edgeXWall;
+      const alphaMY = (state.mode === 'y' ? A.margAct : A.margInact) * edgeYWall;
+
+      function drawMarginalWallLabel(subVar, argVar, cx, pinTopY) {
+        const fFont = 'italic 13.5px Georgia, "Times New Roman", serif';
+        const subFont = 'italic 8.2px Georgia, "Times New Roman", serif';
+        const parenFont = '12.5px Georgia, "Times New Roman", serif';
+        const argFont = 'italic 13px Georgia, "Times New Roman", serif';
+        ctx.save();
+        ctx.fillStyle = COLORS.marg;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'alphabetic';
+
+        ctx.font = fFont;
+        const wF = ctx.measureText('f').width;
+        ctx.font = subFont;
+        const wSub = ctx.measureText(subVar).width;
+        ctx.font = parenFont;
+        const wOpen = ctx.measureText('(').width;
+        const wClose = ctx.measureText(')').width;
+        ctx.font = argFont;
+        const wArg = ctx.measureText(argVar).width;
+
+        const gapFSub = 0.6;
+        const gapSubOpen = 1.0;
+        const gapOpenArg = 0.25;
+        const gapArgClose = 0.35;
+        const totalW = wF + gapFSub + wSub + gapSubOpen + wOpen + gapOpenArg + wArg + gapArgClose + wClose;
+
+        let xCur = Math.max(4, Math.min(cssW - totalW - 4, cx - 0.5 * totalW));
+        const baseY = Math.max(13, pinTopY - 5.5);
+
+        ctx.font = fFont;
+        ctx.fillText('f', xCur, baseY);
+        xCur += wF + gapFSub;
+
+        ctx.font = subFont;
+        ctx.fillText(subVar, xCur, baseY + 2.7);
+        xCur += wSub + gapSubOpen;
+
+        ctx.font = parenFont;
+        ctx.fillText('(', xCur, baseY);
+        xCur += wOpen + gapOpenArg;
+
+        ctx.font = argFont;
+        ctx.fillText(argVar, xCur, baseY);
+        xCur += wArg + gapArgClose;
+
+        ctx.font = parenFont;
+        ctx.fillText(')', xCur, baseY);
+        ctx.restore();
+      }
+
+      function drawWallMarginal(arr, isXWall, alphaWall, peakIdx, subVar, argVar) {
+        if (alphaWall < 0.02) return;
+        ctx.save();
+        ctx.globalAlpha = alphaWall;
+        const ptsWall = [];
+        for (let i = 0; i <= scene.nMarg; i++) {
+          const u = -L + (2 * L * i) / scene.nMarg;
+          ptsWall.push(isXWall ? project(u, farY, arr[i]) : project(farX, u, arr[i]));
+        }
+        const pStart = isXWall ? project(-L, farY, 0) : project(farX, -L, 0);
+        const pEnd = isXWall ? project(L, farY, 0) : project(farX, L, 0);
+
+        ctx.fillStyle = 'rgba(91, 67, 122, 0.13)';
+        ctx.beginPath();
+        ctx.moveTo(pStart.sx, pStart.sy);
+        for (let i = 0; i <= scene.nMarg; i++) ctx.lineTo(ptsWall[i].sx, ptsWall[i].sy);
+        ctx.lineTo(pEnd.sx, pEnd.sy);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.strokeStyle = COLORS.marg;
+        ctx.lineWidth = 1.85;
+        ctx.setLineDash([5, 3.2]);
+        ctx.beginPath();
+        for (let i = 0; i <= scene.nMarg; i++) {
+          if (i === 0) ctx.moveTo(ptsWall[i].sx, ptsWall[i].sy);
+          else ctx.lineTo(ptsWall[i].sx, ptsWall[i].sy);
+        }
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        const uPeak = -L + (2 * L * peakIdx) / scene.nMarg;
+        const zPeak = arr[peakIdx];
+        const pCurve = isXWall ? project(uPeak, farY, zPeak) : project(farX, uPeak, zPeak);
+        const pLabel = isXWall
+          ? project(uPeak, farY, Math.min(zWallTop * 0.96, zPeak + scene.zRefMax * 0.13))
+          : project(farX, uPeak, Math.min(zWallTop * 0.96, zPeak + scene.zRefMax * 0.13));
+        const pinTopY = Math.max(19, Math.min(pLabel.sy + 3, pCurve.sy - 11));
+        ctx.strokeStyle = COLORS.marg;
+        ctx.lineWidth = 0.9;
+        ctx.beginPath();
+        ctx.moveTo(pCurve.sx, pCurve.sy);
+        ctx.lineTo(pLabel.sx, pinTopY);
+        ctx.stroke();
+        drawMarginalWallLabel(subVar, argVar, pLabel.sx, pinTopY);
+        ctx.restore();
+      }
+
+      drawWallMarginal(scene.margX, true, alphaMX, scene.idxPeakMX, 'X', 'x');
+      drawWallMarginal(scene.margY, false, alphaMY, scene.idxPeakMY, 'Y', 'y');
+
+      // Highlighted normalizing ordinate pin on the active marginal wall (f_X(x0) or f_Y(y0))
+      const ordAlpha = state.mode === 'x' ? alphaMX : alphaMY;
+      if (ordAlpha >= 0.02) {
+        ctx.save();
+        ctx.globalAlpha = ordAlpha;
+        const pBase = state.mode === 'x' ? project(sliceVal, farY, 0) : project(farX, sliceVal, 0);
+        const pOrd = state.mode === 'x' ? project(sliceVal, farY, scene.sliceArea) : project(farX, sliceVal, scene.sliceArea);
+        ctx.strokeStyle = COLORS.marg;
+        ctx.lineWidth = 2.0;
+        ctx.beginPath(); ctx.moveTo(pBase.sx, pBase.sy); ctx.lineTo(pOrd.sx, pOrd.sy); ctx.stroke();
+        ctx.fillStyle = COLORS.marg;
+        ctx.beginPath(); ctx.arc(pOrd.sx, pOrd.sy, 3.6, 0, TWO_PI); ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    // Build seam-split surface mesh
+    const xs = state.mode === 'x' ? buildCoordsWithSeam(sliceVal) : Array.from(BASE_COORDS);
+    const ys = state.mode === 'y' ? buildCoordsWithSeam(sliceVal) : Array.from(BASE_COORDS);
+    const nx = xs.length, ny = ys.length;
+
+    const pts = new Array(nx * ny);
+    const zVals = new Float64Array(nx * ny);
+    for (let i = 0; i < nx; i++) {
+      const x = xs[i];
+      for (let j = 0; j < ny; j++) {
+        const y = ys[j];
+        const z = cfg.evalJoint(x, y, p, state);
+        const idx = i * ny + j;
+        zVals[idx] = z;
+        pts[idx] = project(x, y, z);
+      }
+    }
+
+    const viewerNormal = state.mode === 'x' ? vx : vy;
+    const backQuads = [];
+    const frontQuads = [];
+
+    for (let i = 0; i < nx - 1; i++) {
+      const xm = 0.5 * (xs[i] + xs[i + 1]);
+      for (let j = 0; j < ny - 1; j++) {
+        const ym = 0.5 * (ys[j] + ys[j + 1]);
+        const i00 = i * ny + j, i10 = (i + 1) * ny + j;
+        const i11 = (i + 1) * ny + (j + 1), i01 = i * ny + (j + 1);
+        const p00 = pts[i00], p10 = pts[i10], p11 = pts[i11], p01 = pts[i01];
+        const avgZ = 0.25 * (zVals[i00] + zVals[i10] + zVals[i11] + zVals[i01]);
+        // Exact orthographic heightfield topological depth order (xm * sin(az) - ym * cos(az))
+        const xyDepth = xm * sa - ym * ca;
+        const coord = state.mode === 'x' ? xm : ym;
+        const isFront = viewerNormal >= 0 ? coord > sliceVal : coord < sliceVal;
+        const quad = { p00, p10, p11, p01, avgZ, xyDepth };
+        if (isFront) frontQuads.push(quad);
+        else backQuads.push(quad);
+      }
+    }
+
+    backQuads.sort((a, b) => a.xyDepth - b.xyDepth);
+    frontQuads.sort((a, b) => a.xyDepth - b.xyDepth);
+
+    function drawQuadList(list, alpha) {
+      if (alpha < 0.02) return;
+      for (let k = 0; k < list.length; k++) {
+        const q = list[k];
+        const t = Math.min(1, Math.max(0, q.avgZ / scene.maxJointZ));
+        const shade = Math.pow(t, 0.80);
+        const r = Math.round(252 - shade * (252 - 46));
+        const g = Math.round(248 - shade * (248 - 40));
+        const b = Math.round(239 - shade * (239 - 35));
+        ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
+        ctx.strokeStyle = `rgba(31,28,24,${(0.11 + 0.16 * shade) * alpha})`;
+        ctx.lineWidth = 0.46;
+        ctx.beginPath();
+        ctx.moveTo(q.p00.sx, q.p00.sy);
+        ctx.lineTo(q.p10.sx, q.p10.sy);
+        ctx.lineTo(q.p11.sx, q.p11.sy);
+        ctx.lineTo(q.p01.sx, q.p01.sy);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      }
+    }
+
+    function drawFloorCurve(curvePts, color, dash, lineWidth, alpha) {
+      if (!curvePts || !curvePts.length || alpha < 0.02) return;
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lineWidth;
+      ctx.setLineDash(dash);
+      let penDown = false;
+      ctx.beginPath();
+      for (let s = 0; s < curvePts.length; s++) {
+        const pt = curvePts[s];
+        if (!pt) { penDown = false; continue; }
+        const pr = project(pt.x, pt.y, 0);
+        if (!penDown) { ctx.moveTo(pr.sx, pr.sy); penDown = true; }
+        else ctx.lineTo(pr.sx, pr.sy);
+      }
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawLiftedCurve(curvePts, color, dash, lineWidth, sideFilter, alpha) {
+      if (!curvePts || !curvePts.length || alpha < 0.02) return;
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lineWidth;
+      ctx.setLineDash(dash);
+      let penDown = false;
+      let prevPt = null, prevKeep = false;
+      ctx.beginPath();
+      for (let s = 0; s < curvePts.length; s++) {
+        const pt = curvePts[s];
+        if (!pt) { penDown = false; prevPt = null; prevKeep = false; continue; }
+        const coord = state.mode === 'x' ? pt.x : pt.y;
+        const isFront = viewerNormal >= 0 ? coord >= sliceVal : coord <= sliceVal;
+        const keep = sideFilter === 'all' || (sideFilter === 'front' ? isFront : !isFront);
+        if (keep) {
+          if (!prevKeep && prevPt) {
+            const c0 = state.mode === 'x' ? prevPt.x : prevPt.y;
+            const denom = coord - c0;
+            if (Math.abs(denom) > 1e-8) {
+              const tSeam = Math.max(0, Math.min(1, (sliceVal - c0) / denom));
+              const sxm = prevPt.x + tSeam * (pt.x - prevPt.x);
+              const sym = prevPt.y + tSeam * (pt.y - prevPt.y);
+              const szm = cfg.evalJoint(sxm, sym, p, state);
+              const prSeam = project(sxm, sym, szm + scene.zRefMax * 0.003);
+              ctx.moveTo(prSeam.sx, prSeam.sy);
+              penDown = true;
+            }
+          }
+          const pr = project(pt.x, pt.y, pt.z + scene.zRefMax * 0.003);
+          if (!penDown) { ctx.moveTo(pr.sx, pr.sy); penDown = true; }
+          else ctx.lineTo(pr.sx, pr.sy);
+        } else if (prevKeep && prevPt) {
+          const c0 = state.mode === 'x' ? prevPt.x : prevPt.y;
+          const denom = coord - c0;
+          if (Math.abs(denom) > 1e-8) {
+            const tSeam = Math.max(0, Math.min(1, (sliceVal - c0) / denom));
+            const sxm = prevPt.x + tSeam * (pt.x - prevPt.x);
+            const sym = prevPt.y + tSeam * (pt.y - prevPt.y);
+            const szm = cfg.evalJoint(sxm, sym, p, state);
+            const prSeam = project(sxm, sym, szm + scene.zRefMax * 0.003);
+            ctx.lineTo(prSeam.sx, prSeam.sy);
+          }
+          penDown = false;
+        } else {
+          penDown = false;
+        }
+        prevPt = pt;
+        prevKeep = keep;
+      }
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // 1.5. Regression & mode curves on the base plane (z = 0)
+    if (cfg.hasRidge) drawFloorCurve(scene.ridgeCurve, COLORS.ridge, [6, 3.5], 1.95, A.ridge);
+    drawFloorCurve(scene.reverseCurve, COLORS.reverse, [5, 3.8], 2.05, A.reverse);
+    drawFloorCurve(scene.directCurve, COLORS.direct, [], 2.35, A.direct);
+
+    // 2. Back half of surface
+    drawQuadList(backQuads, A.surfBack);
+    if (cfg.hasRidge) drawLiftedCurve(scene.ridgeCurve, COLORS.ridge, [6, 3.5], 1.55, 'back', A.ridge * 0.65);
+
+    // 3. Active cutting plane: raw cross-section AND optional 3D normalized conditional pdf
+    const sliceTs = buildSliceSamples(108, scene.sliceKnots);
+    const nS = sliceTs.length;
+    const zPlaneTop = scene.zRefMax * 0.96;
+    const sA = state.mode === 'x' ? project(sliceVal, -L, 0) : project(-L, sliceVal, 0);
+    const sB = state.mode === 'x' ? project(sliceVal, L, 0) : project(L, sliceVal, 0);
+    const sC = state.mode === 'x' ? project(sliceVal, L, zPlaneTop) : project(L, sliceVal, zPlaneTop);
+    const sD = state.mode === 'x' ? project(sliceVal, -L, zPlaneTop) : project(-L, sliceVal, zPlaneTop);
+
+    ctx.save();
+    ctx.globalAlpha = Math.max(A.raw, A.cond);
+    ctx.fillStyle = 'rgba(158, 107, 36, 0.05)';
+    ctx.strokeStyle = 'rgba(158, 107, 36, 0.30)';
+    ctx.lineWidth = 0.95;
+    ctx.beginPath();
+    ctx.moveTo(sA.sx, sA.sy); ctx.lineTo(sB.sx, sB.sy);
+    ctx.lineTo(sC.sx, sC.sy); ctx.lineTo(sD.sx, sD.sy);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+
+    const rawPts = new Array(nS);
+    const condPts = new Array(nS);
+    let bestSliceIdx = 0, bestCondVal = -1, bestRawVal = -1;
+
+    for (let s = 0; s < nS; s++) {
+      const t = sliceTs[s];
+      const x = state.mode === 'x' ? sliceVal : t;
+      const y = state.mode === 'x' ? t : sliceVal;
+      const rz = cfg.evalJoint(x, y, p, state);
+      const co = evalCondOrdinate(t, sliceVal, state.mode, p, rz, scene.sliceArea);
+      if (co.val > bestCondVal) { bestCondVal = co.val; bestRawVal = rz; bestSliceIdx = s; }
+      rawPts[s] = project(x, y, rz);
+      condPts[s] = project(x, y, co.val);
+    }
+
+    if (state.showCond3D && scene.hasValidCond) {
+      ctx.save();
+      ctx.globalAlpha = A.cond;
+      ctx.fillStyle = 'rgba(156, 45, 45, 0.13)';
+      ctx.beginPath();
+      ctx.moveTo(sA.sx, sA.sy);
+      for (let s = 0; s < nS; s++) ctx.lineTo(condPts[s].sx, condPts[s].sy);
+      ctx.lineTo(sB.sx, sB.sy);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.strokeStyle = COLORS.direct;
+      ctx.lineWidth = 2.35;
+      ctx.beginPath();
+      for (let s = 0; s < nS; s++) {
+        if (s === 0) ctx.moveTo(condPts[s].sx, condPts[s].sy);
+        else ctx.lineTo(condPts[s].sx, condPts[s].sy);
+      }
+      ctx.stroke();
+
+      const pRawPk = rawPts[bestSliceIdx];
+      const pCondPk = condPts[bestSliceIdx];
+      const dyPx = pCondPk.sy - pRawPk.sy;
+      if (Math.abs(dyPx) > 8 && bestCondVal > 1e-3) {
+        ctx.strokeStyle = COLORS.arrow;
+        ctx.lineWidth = 1.45;
+        ctx.setLineDash([3, 2]);
+        ctx.beginPath();
+        ctx.moveTo(pRawPk.sx, pRawPk.sy);
+        ctx.lineTo(pCondPk.sx, pCondPk.sy);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+      ctx.restore();
+    }
+
+    // 3b. Raw cross-section arch (ochre)
+    ctx.save();
+    ctx.globalAlpha = A.raw;
+    ctx.fillStyle = 'rgba(158, 107, 36, 0.25)';
+    ctx.beginPath();
+    ctx.moveTo(sA.sx, sA.sy);
+    for (let s = 0; s < nS; s++) ctx.lineTo(rawPts[s].sx, rawPts[s].sy);
+    ctx.lineTo(sB.sx, sB.sy);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.strokeStyle = COLORS.raw;
+    ctx.lineWidth = 2.3;
+    ctx.beginPath();
+    for (let s = 0; s < nS; s++) {
+      if (s === 0) ctx.moveTo(rawPts[s].sx, rawPts[s].sy);
+      else ctx.lineTo(rawPts[s].sx, rawPts[s].sy);
+    }
+    ctx.stroke();
+    ctx.restore();
+
+    // Centroid vertical plumb line from floor regression curve up to slice arch
+    let pCentBase = null, pCentTop = null;
+    if (scene.centroidX !== null && Math.abs(scene.centroidX) <= L && Math.abs(scene.centroidY) <= L) {
+      pCentBase = project(scene.centroidX, scene.centroidY, 0);
+      const tCent = state.mode === 'x' ? scene.centroidY : scene.centroidX;
+      const coCent = evalCondOrdinate(tCent, sliceVal, state.mode, p, scene.centroidRawZ, scene.sliceArea);
+      const topZ = (state.showCond3D && coCent.valid)
+        ? Math.max(scene.centroidRawZ, coCent.val)
+        : scene.centroidRawZ;
+      pCentTop = project(scene.centroidX, scene.centroidY, topZ);
+      ctx.save();
+      ctx.globalAlpha = A.meanDot;
+      ctx.strokeStyle = COLORS.direct;
+      ctx.lineWidth = 1.55;
+      ctx.setLineDash([2.5, 2.5]);
+      ctx.beginPath();
+      ctx.moveTo(pCentBase.sx, pCentBase.sy);
+      ctx.lineTo(pCentTop.sx, pCentTop.sy);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // 4. Front half of surface (softly translucent in low-elevation Face slice when slice sits behind origin)
+    let frontSurfAlpha = A.surfFront;
+    if (state.el < 14 && viewerNormal * sliceVal < -0.05) {
+      frontSurfAlpha *= 0.35 + 0.65 * Math.max(0, (state.el - 6) / 8);
+    }
+    drawQuadList(frontQuads, frontSurfAlpha);
+    if (cfg.hasRidge) drawLiftedCurve(scene.ridgeCurve, COLORS.ridge, [6, 3.5], 1.65, 'front', A.ridge * 0.65);
+
+    // 4.5. Subtle see-through trace of floor curves beneath the bell
+    if (cfg.hasRidge) drawFloorCurve(scene.ridgeCurve, COLORS.ridge, [6, 3.5], 1.5, A.ridge * (state.focus === 'ridge' ? 0.80 : 0.36));
+    drawFloorCurve(scene.reverseCurve, COLORS.reverse, [5, 3.8], 1.6, A.reverse * (state.focus === 'reverse' ? 0.85 : 0.38));
+    drawFloorCurve(scene.directCurve, COLORS.direct, [], 1.85, A.direct * (state.focus === 'direct' || state.focus === 'ridge' ? 0.85 : 0.42));
+
+    if (state.showCond3D && scene.hasValidCond) {
+      ctx.save();
+      ctx.globalAlpha = A.cond * 0.62;
+      ctx.strokeStyle = COLORS.direct;
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      for (let s = 0; s < nS; s++) {
+        if (s === 0) ctx.moveTo(condPts[s].sx, condPts[s].sy);
+        else ctx.lineTo(condPts[s].sx, condPts[s].sy);
+      }
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    ctx.save();
+    ctx.globalAlpha = A.raw * 0.55;
+    ctx.strokeStyle = COLORS.raw;
+    ctx.lineWidth = 1.25;
+    ctx.beginPath();
+    for (let s = 0; s < nS; s++) {
+      if (s === 0) ctx.moveTo(rawPts[s].sx, rawPts[s].sy);
+      else ctx.lineTo(rawPts[s].sx, rawPts[s].sy);
+    }
+    ctx.stroke();
+    ctx.restore();
+
+    if (pCentBase) {
+      ctx.save();
+      ctx.globalAlpha = A.meanDot;
+      if (pCentTop) {
+        ctx.strokeStyle = COLORS.direct;
+        ctx.lineWidth = 1.2;
+        ctx.setLineDash([2.5, 2.5]);
+        ctx.beginPath();
+        ctx.moveTo(pCentBase.sx, pCentBase.sy);
+        ctx.lineTo(pCentTop.sx, pCentTop.sy);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = COLORS.direct;
+        ctx.beginPath();
+        ctx.arc(pCentTop.sx, pCentTop.sy, 3.0, 0, TWO_PI);
+        ctx.fill();
+      }
+      ctx.fillStyle = COLORS.direct;
+      ctx.strokeStyle = COLORS.paper;
+      ctx.lineWidth = 1.7;
+      ctx.beginPath();
+      ctx.arc(pCentBase.sx, pCentBase.sy, 5.0, 0, TWO_PI);
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    if (cfg.hasRidge && scene.ridgeCross && scene.ridgeCross.inPlot !== false && scene.hasValidCond) {
+      const prcBase = project(scene.ridgeCross.x, scene.ridgeCross.y, 0);
+      const coRc = evalCondOrdinate(scene.ridgeCross.t, sliceVal, state.mode, p, scene.ridgeCross.rawZ, scene.sliceArea);
+      const rcTopZ = (state.showCond3D && coRc.valid)
+        ? Math.max(scene.ridgeCross.rawZ, coRc.val)
+        : scene.ridgeCross.rawZ;
+      const prcTop = project(scene.ridgeCross.x, scene.ridgeCross.y, rcTopZ);
+      ctx.save();
+      ctx.globalAlpha = A.ridge;
+      ctx.strokeStyle = COLORS.ridge;
+      ctx.lineWidth = 1.3;
+      ctx.setLineDash([2.5, 2.5]);
+      ctx.beginPath();
+      ctx.moveTo(prcBase.sx, prcBase.sy);
+      ctx.lineTo(prcTop.sx, prcTop.sy);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = COLORS.paper;
+      ctx.strokeStyle = COLORS.ridge;
+      ctx.lineWidth = 2.0;
+      ctx.beginPath();
+      ctx.arc(prcBase.sx, prcBase.sy, 4.4, 0, TWO_PI);
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(prcTop.sx, prcTop.sy, 3.3, 0, TWO_PI);
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    const pxLabel = project(L + 0.34, 0, 0);
+    const pyLabel = project(0, L + 0.34, 0);
+    ctx.fillStyle = COLORS.ink;
+    ctx.font = 'italic 13.5px Georgia, "Times New Roman", serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('x', Math.max(8, Math.min(cssW - 8, pxLabel.sx)), Math.max(10, Math.min(cssH - 8, pxLabel.sy)));
+    ctx.fillText('y', Math.max(8, Math.min(cssW - 8, pyLabel.sx)), Math.max(10, Math.min(cssH - 8, pyLabel.sy)));
+
+    ctx.restore();
+
+    const azDisp = Math.round(state.az);
+    const elDisp = Math.round(state.el);
+    angleBadge.textContent = `az ${azDisp >= 0 ? '+' : '−'}${Math.abs(azDisp)}° · el ${elDisp}°`;
+  }
+
+  function buildMarchingSquaresPath(grid, level, mapX, mapY) {
+    const n = N_CONT;
+    let d = '';
+    function interp(v1, v2, c1, c2) {
+      const denom = v2 - v1;
+      const t = Math.abs(denom) < 1e-12 ? 0.5 : (level - v1) / denom;
+      return c1 + Math.max(0, Math.min(1, t)) * (c2 - c1);
+    }
+    for (let i = 0; i < n; i++) {
+      const x0 = CONT_COORDS[i], x1 = CONT_COORDS[i + 1];
+      for (let j = 0; j < n; j++) {
+        const y0 = CONT_COORDS[j], y1 = CONT_COORDS[j + 1];
+        const z00 = grid[i * (n + 1) + j];
+        const z10 = grid[(i + 1) * (n + 1) + j];
+        const z11 = grid[(i + 1) * (n + 1) + (j + 1)];
+        const z01 = grid[i * (n + 1) + (j + 1)];
+        const mask = (z00 >= level ? 1 : 0) | (z10 >= level ? 2 : 0) | (z11 >= level ? 4 : 0) | (z01 >= level ? 8 : 0);
+        if (mask === 0 || mask === 15) continue;
+
+        const ePt = edge => {
+          if (edge === 0) return [mapX(interp(z00, z10, x0, x1)), mapY(y0)];
+          if (edge === 1) return [mapX(x1), mapY(interp(z10, z11, y0, y1))];
+          if (edge === 2) return [mapX(interp(z01, z11, x0, x1)), mapY(y1)];
+          return [mapX(x0), mapY(interp(z00, z01, y0, y1))];
+        };
+        const addSeg = (ea, eb) => {
+          const a = ePt(ea), b = ePt(eb);
+          d += `M${a[0].toFixed(1)},${a[1].toFixed(1)}L${b[0].toFixed(1)},${b[1].toFixed(1)}`;
+        };
+
+        if (mask === 1 || mask === 14) addSeg(3, 0);
+        else if (mask === 2 || mask === 13) addSeg(0, 1);
+        else if (mask === 3 || mask === 12) addSeg(3, 1);
+        else if (mask === 4 || mask === 11) addSeg(1, 2);
+        else if (mask === 6 || mask === 9) addSeg(0, 2);
+        else if (mask === 7 || mask === 8) addSeg(3, 2);
+        else if (mask === 5) {
+          const center = 0.25 * (z00 + z10 + z11 + z01);
+          if (center >= level) { addSeg(3, 2); addSeg(0, 1); } else { addSeg(3, 0); addSeg(1, 2); }
+        } else if (mask === 10) {
+          const center = 0.25 * (z00 + z10 + z11 + z01);
+          if (center >= level) { addSeg(3, 0); addSeg(1, 2); } else { addSeg(3, 2); addSeg(0, 1); }
+        }
+      }
+    }
+    return d;
+  }
+
+  function curveSvgPath(curvePts, mapX, mapY) {
+    let d = '', pen = false;
+    for (let i = 0; i < curvePts.length; i++) {
+      const pt = curvePts[i];
+      if (!pt) { pen = false; continue; }
+      d += (pen ? 'L' : 'M') + mapX(pt.x).toFixed(2) + ',' + mapY(pt.y).toFixed(2);
+      pen = true;
+    }
+    return d;
+  }
+
+  function renderContour(scene, A) {
+    const sliceVal = state.params.slice;
+    const H = 380;
+    const padL = 38, padT = 18;
+    const side = 324;
+    const x0Plot = padL, y0Plot = padT;
+    const mapX = x => x0Plot + ((x + L) / (2 * L)) * side;
+    const mapY = y => y0Plot + ((L - y) / (2 * L)) * side;
+
+    let html = cfg.hideRegression
+      ? '<title id="jd-contour-title">Equal-density contours and active cutting plane</title><desc id="jd-contour-desc">Top-down contour view of the joint pdf with the active vertical or horizontal cutting plane.</desc>'
+      : '<title id="jd-contour-title">Equal-density contours and regression curves</title><desc id="jd-contour-desc">Top-down contour view of the joint pdf with direct and reverse regression curves and the active slice.</desc>';
+    html += `<defs><clipPath id="jd-cclip"><rect x="${x0Plot}" y="${y0Plot}" width="${side}" height="${side}"/></clipPath></defs>`;
+    html += `<rect x="${x0Plot}" y="${y0Plot}" width="${side}" height="${side}" fill="rgba(255,255,255,0.34)" stroke="${COLORS.divider}" stroke-width="1"/>`;
+
+    for (let k = -2; k <= 2; k++) {
+      const gx = mapX(k).toFixed(2), gy = mapY(k).toFixed(2);
+      const op = k === 0 ? 0.26 : 0.10;
+      html += `<line x1="${gx}" y1="${y0Plot}" x2="${gx}" y2="${y0Plot + side}" stroke="rgba(31,28,24,${op})" stroke-width="1"/>`;
+      html += `<line x1="${x0Plot}" y1="${gy}" x2="${x0Plot + side}" y2="${gy}" stroke="rgba(31,28,24,${op})" stroke-width="1"/>`;
+      html += `<text x="${gx}" y="${y0Plot + side + 15}" text-anchor="middle" fill="${COLORS.inkSoft}" font-family="'IBM Plex Mono', monospace" font-size="10.5">${k}</text>`;
+      html += `<text x="${x0Plot - 7}" y="${(parseFloat(gy) + 3.5).toFixed(2)}" text-anchor="end" fill="${COLORS.inkSoft}" font-family="'IBM Plex Mono', monospace" font-size="10.5">${k}</text>`;
+    }
+
+    html += `<g clip-path="url(#jd-cclip)">`;
+
+    const fracs = [0.08, 0.22, 0.42, 0.65, 0.86];
+    for (let k = 0; k < fracs.length; k++) {
+      const cd = buildMarchingSquaresPath(scene.grid, scene.maxJointZ * fracs[k], mapX, mapY);
+      if (cd) {
+        const op = ((0.20 + 0.12 * k) * A.contour).toFixed(2);
+        html += `<path d="${cd}" fill="none" stroke="rgba(31,28,24,${op})" stroke-width="1.05"/>`;
+      }
+    }
+
+    if (scene.centroidRawZ > 1e-4 && scene.centroidRawZ < scene.maxJointZ * 0.995) {
+      const tcd = buildMarchingSquaresPath(scene.grid, scene.centroidRawZ, mapX, mapY);
+      if (tcd) {
+        html += `<path d="${tcd}" fill="none" stroke="${COLORS.direct}" stroke-opacity="${(0.38 * Math.max(A.contour, A.ridge)).toFixed(2)}" stroke-width="1.4"/>`;
+      }
+    }
+
+    if (cfg.hasRidge) {
+      const ridgeD = curveSvgPath(scene.ridgeCurve, mapX, mapY);
+      if (ridgeD) html += `<path d="${ridgeD}" fill="none" stroke="${COLORS.ridge}" stroke-opacity="${A.ridge.toFixed(2)}" stroke-width="1.9" stroke-dasharray="6 3.5"/>`;
+    }
+
+    const revD = curveSvgPath(scene.reverseCurve, mapX, mapY);
+    if (revD) html += `<path d="${revD}" fill="none" stroke="${COLORS.reverse}" stroke-opacity="${A.reverse.toFixed(2)}" stroke-width="2.0" stroke-dasharray="5 3.5"/>`;
+
+    const dirD = curveSvgPath(scene.directCurve, mapX, mapY);
+    if (dirD) html += `<path d="${dirD}" fill="none" stroke="${COLORS.direct}" stroke-opacity="${A.direct.toFixed(2)}" stroke-width="2.2"/>`;
+
+    const sliceOp = Math.max(0.22, Math.max(A.raw, A.cond)).toFixed(2);
+    if (state.mode === 'x') {
+      const sx = mapX(sliceVal).toFixed(2);
+      html += `<line x1="${sx}" y1="${y0Plot}" x2="${sx}" y2="${y0Plot + side}" stroke="${COLORS.raw}" stroke-opacity="${sliceOp}" stroke-width="1.65"/>`;
+    } else {
+      const sy = mapY(sliceVal).toFixed(2);
+      html += `<line x1="${x0Plot}" y1="${sy}" x2="${x0Plot + side}" y2="${sy}" stroke="${COLORS.raw}" stroke-opacity="${sliceOp}" stroke-width="1.65"/>`;
+    }
+
+    if (cfg.hasRidge && scene.ridgeCross && scene.ridgeCross.inPlot !== false && scene.hasValidCond) {
+      html += `<circle cx="${mapX(scene.ridgeCross.x).toFixed(2)}" cy="${mapY(scene.ridgeCross.y).toFixed(2)}" r="4.5" fill="${COLORS.paper}" stroke="${COLORS.ridge}" stroke-width="2.0" opacity="${A.ridge.toFixed(2)}"/>`;
+    }
+
+    if (scene.centroidX !== null && Math.abs(scene.centroidX) <= L && Math.abs(scene.centroidY) <= L) {
+      html += `<circle cx="${mapX(scene.centroidX).toFixed(2)}" cy="${mapY(scene.centroidY).toFixed(2)}" r="4.9" fill="${COLORS.direct}" stroke="${COLORS.paper}" stroke-width="1.6" opacity="${A.meanDot.toFixed(2)}"/>`;
+    }
+
+    html += `</g>`;
+    html += `<text x="${x0Plot + side / 2}" y="${H - 5}" text-anchor="middle" fill="${COLORS.ink}" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="14">x</text>`;
+    html += `<text x="12" y="${y0Plot + side / 2}" text-anchor="middle" fill="${COLORS.ink}" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="14">y</text>`;
+    contourSvg.innerHTML = html;
+  }
+
+  function renderSliceChart(scene, A) {
+    const p = state.params;
+    const sliceVal = p.slice;
+    const W = 430, H = 214;
+    const padL = 38, padR = 22, padT = 36, padB = 30;
+    const pw = W - padL - padR;
+    const ph = H - padT - padB;
+
+    const sliceTs = buildSliceSamples(168, scene.sliceKnots);
+    const nS = sliceTs.length;
+    const rawArr = new Float64Array(nS);
+    const condArr = new Float64Array(nS);
+    const margArr = new Float64Array(nS);
+
+    let maxVal = 0.35;
+    let bestIdx = 0, bestCond = -1;
+    let visCondArea = 0;
+
+    for (let i = 0; i < nS; i++) {
+      const t = sliceTs[i];
+      const raw = state.mode === 'x' ? cfg.evalJoint(sliceVal, t, p, state) : cfg.evalJoint(t, sliceVal, p, state);
+      const co = evalCondOrdinate(t, sliceVal, state.mode, p, raw, scene.sliceArea);
+      const marg = state.mode === 'x' ? cfg.evalMargY(t, p, state) : cfg.evalMargX(t, p, state);
+      rawArr[i] = raw;
+      condArr[i] = co.val;
+      margArr[i] = marg;
+      if (raw > maxVal) maxVal = raw;
+      if (co.val > maxVal) maxVal = co.val;
+      if (marg > maxVal) maxVal = marg;
+      if (co.val > bestCond) { bestCond = co.val; bestIdx = i; }
+      if (i > 0) visCondArea += 0.5 * (condArr[i - 1] + condArr[i]) * (sliceTs[i] - sliceTs[i - 1]);
+    }
+
+    const yMax = maxVal * 1.15;
+    const mapT = t => padL + ((t + L) / (2 * L)) * pw;
+    const mapD = d => padT + ph - (d / yMax) * ph;
+
+    let rawPath = '', rawArea = `M${mapT(-L).toFixed(2)},${(padT + ph).toFixed(2)}`;
+    let condPath = '', condArea = `M${mapT(-L).toFixed(2)},${(padT + ph).toFixed(2)}`;
+    let margPath = '';
+
+    for (let i = 0; i < nS; i++) {
+      const px = mapT(sliceTs[i]).toFixed(2);
+      const pyR = mapD(rawArr[i]).toFixed(2);
+      const pyC = mapD(condArr[i]).toFixed(2);
+      const pyM = mapD(margArr[i]).toFixed(2);
+      rawPath += (i === 0 ? 'M' : 'L') + px + ',' + pyR;
+      rawArea += 'L' + px + ',' + pyR;
+      condPath += (i === 0 ? 'M' : 'L') + px + ',' + pyC;
+      condArea += 'L' + px + ',' + pyC;
+      margPath += (i === 0 ? 'M' : 'L') + px + ',' + pyM;
+    }
+    rawArea += `L${mapT(L).toFixed(2)},${(padT + ph).toFixed(2)}Z`;
+    condArea += `L${mapT(L).toFixed(2)},${(padT + ph).toFixed(2)}Z`;
+
+    const axisVar = state.mode === 'x' ? 'y' : 'x';
+    const margSubVar = state.mode === 'x' ? 'Y' : 'X';
+    const margArgVar = state.mode === 'x' ? 'y' : 'x';
+    const margSvgSym = `<tspan font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="11.2">f</tspan><tspan font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="7.2" dy="2.3">${margSubVar}</tspan><tspan font-family="Georgia, 'Times New Roman', serif" font-size="10.6" dy="-2.3">(</tspan><tspan font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="10.8">${margArgVar}</tspan><tspan font-family="Georgia, 'Times New Roman', serif" font-size="10.6">)</tspan>`;
+    const hasScale = scene.hasValidCond && scene.sliceArea > 0;
+    const scaleFactor = hasScale ? 1 / scene.sliceArea : 0;
+    const actionWord = scaleFactor > 1.02 ? 'stretched up' : (scaleFactor < 0.98 ? 'scaled down' : 'unit scale');
+    const margSliceAlpha = Math.max(A.margAct, A.margInact);
+
+    let html = '<title id="jd-slice-title">Raw cross-section, renormalized conditional pdf, and marginal pdf</title>';
+    html += '<desc id="jd-slice-desc">Shared vertical scale comparing the raw slice of area equal to the marginal ordinate, the renormalized conditional pdf, and the fixed marginal pdf.</desc>';
+
+    for (const v of [yMax * 0.5, yMax / 1.15]) {
+      const gy = mapD(v).toFixed(2);
+      html += `<line x1="${padL}" y1="${gy}" x2="${padL + pw}" y2="${gy}" stroke="rgba(31,28,24,0.08)" stroke-width="1"/>`;
+      html += `<text x="${padL - 5}" y="${(parseFloat(gy) + 3.5).toFixed(2)}" text-anchor="end" fill="${COLORS.inkMute}" font-family="'IBM Plex Mono', monospace" font-size="9.8">${v.toFixed(2)}</text>`;
+    }
+
+    html += `<line x1="${padL}" y1="${padT + ph}" x2="${padL + pw}" y2="${padT + ph}" stroke="${COLORS.inkSoft}" stroke-width="1"/>`;
+    for (let k = -3; k <= 3; k++) {
+      if (Math.abs(k) > L + 1e-6) continue;
+      const tx = mapT(k).toFixed(2);
+      html += `<line x1="${tx}" y1="${padT + ph}" x2="${tx}" y2="${padT + ph + 4}" stroke="${COLORS.inkSoft}" stroke-width="1"/>`;
+      html += `<text x="${tx}" y="${padT + ph + 16}" text-anchor="middle" fill="${COLORS.inkSoft}" font-family="'IBM Plex Mono', monospace" font-size="11">${k}</text>`;
+    }
+
+    if (scene.hasValidCond) {
+      html += `<path d="${condArea}" fill="rgba(156,45,45,${(0.10 * A.cond).toFixed(3)})"/>`;
+    }
+    html += `<path d="${rawArea}" fill="rgba(158,107,36,${(0.22 * A.raw).toFixed(3)})"/>`;
+    html += `<path d="${margPath}" fill="none" stroke="${COLORS.marg}" stroke-opacity="${margSliceAlpha.toFixed(2)}" stroke-width="2.0" stroke-dasharray="5 3.2"/>`;
+    html += `<path d="${rawPath}" fill="none" stroke="${COLORS.raw}" stroke-opacity="${A.raw.toFixed(2)}" stroke-width="2.0"/>`;
+    if (scene.hasValidCond) {
+      html += `<path d="${condPath}" fill="none" stroke="${COLORS.direct}" stroke-opacity="${A.cond.toFixed(2)}" stroke-width="2.3"/>`;
+    }
+
+    // Snap vertical stretch/shrink arrow to exact peak/mean marker if aligned so stems never double-braid
+    let tArrow = sliceTs[bestIdx];
+    let rawAtArrow = rawArr[bestIdx];
+    let condAtArrow = condArr[bestIdx];
+    const snapTol = (2 * L) / 96;
+    if (cfg.hasRidge && scene.ridgeCross && scene.ridgeCross.inPlot !== false && Math.abs(scene.ridgeCross.t - tArrow) < snapTol) {
+      tArrow = scene.ridgeCross.t;
+      rawAtArrow = scene.ridgeCross.rawZ;
+      condAtArrow = evalCondOrdinate(tArrow, sliceVal, state.mode, p, rawAtArrow, scene.sliceArea).val;
+    } else if (scene.condMean !== null && Math.abs(scene.condMean - tArrow) < snapTol) {
+      tArrow = scene.condMean;
+      rawAtArrow = state.mode === 'x' ? cfg.evalJoint(sliceVal, tArrow, p, state) : cfg.evalJoint(tArrow, sliceVal, p, state);
+      condAtArrow = evalCondOrdinate(tArrow, sliceVal, state.mode, p, rawAtArrow, scene.sliceArea).val;
+    }
+
+    const ax = mapT(tArrow);
+    const yRawPx = mapD(rawAtArrow);
+    const yCondPx = mapD(condAtArrow);
+    const arrowOp = Math.min(A.raw, A.cond);
+    const hasMarkerAtArrow = (cfg.hasRidge && scene.ridgeCross && scene.ridgeCross.inPlot !== false && Math.abs(scene.ridgeCross.t - tArrow) < 1e-4)
+      || (scene.condMean !== null && Math.abs(scene.condMean - tArrow) < 1e-4);
+    const tipPad = hasMarkerAtArrow ? 5.2 : 0.5;
+
+    if (scene.hasValidCond && Math.abs(yCondPx - yRawPx) > 11 && condAtArrow > 1e-3 && arrowOp > 0.35) {
+      const dir = yCondPx < yRawPx ? -1 : 1;
+      const tipY = yCondPx - dir * tipPad;
+      html += `<g opacity="${arrowOp.toFixed(2)}">`;
+      html += `<line x1="${ax.toFixed(2)}" y1="${yRawPx.toFixed(2)}" x2="${ax.toFixed(2)}" y2="${(tipY - dir * 3).toFixed(2)}" stroke="${COLORS.arrow}" stroke-width="1.55" stroke-dasharray="3 2"/>`;
+      html += `<polygon points="${ax.toFixed(2)},${tipY.toFixed(2)} ${(ax - 3.2).toFixed(2)},${(tipY - dir * 5.6).toFixed(2)} ${(ax + 3.2).toFixed(2)},${(tipY - dir * 5.6).toFixed(2)}" fill="${COLORS.arrow}"/>`;
+      html += `</g>`;
+    }
+
+    if (cfg.hasRidge && scene.ridgeCross && scene.ridgeCross.inPlot !== false && scene.hasValidCond && Math.abs(scene.ridgeCross.t) <= L) {
+      const rxPx = mapT(scene.ridgeCross.t);
+      const rcCond = evalCondOrdinate(scene.ridgeCross.t, sliceVal, state.mode, p, scene.ridgeCross.rawZ, scene.sliceArea).val;
+      const ryPx = mapD(rcCond);
+      const stemTop = (Math.abs(scene.ridgeCross.t - tArrow) < 1e-4 && yCondPx < yRawPx) ? yRawPx : ryPx;
+      html += `<g opacity="${A.ridge.toFixed(2)}">`;
+      html += `<line x1="${rxPx.toFixed(2)}" y1="${(padT + ph).toFixed(2)}" x2="${rxPx.toFixed(2)}" y2="${stemTop.toFixed(2)}" stroke="${COLORS.ridge}" stroke-width="1.4" stroke-dasharray="3 2.5"/>`;
+      html += `<circle cx="${rxPx.toFixed(2)}" cy="${ryPx.toFixed(2)}" r="4.2" fill="${COLORS.paper}" stroke="${COLORS.ridge}" stroke-width="1.9"/>`;
+      html += `</g>`;
+    }
+
+    if (scene.hasValidCond && scene.condMean !== null && Math.abs(scene.condMean) <= L) {
+      const cx = mapT(scene.condMean);
+      const rawAtMean = state.mode === 'x' ? cfg.evalJoint(sliceVal, scene.condMean, p, state) : cfg.evalJoint(scene.condMean, sliceVal, p, state);
+      const cy = mapD(evalCondOrdinate(scene.condMean, sliceVal, state.mode, p, rawAtMean, scene.sliceArea).val);
+      const stemTop = (Math.abs(scene.condMean - tArrow) < 1e-4 && yCondPx < yRawPx) ? yRawPx : cy;
+      html += `<g opacity="${A.meanDot.toFixed(2)}">`;
+      html += `<line x1="${cx.toFixed(2)}" y1="${(padT + ph).toFixed(2)}" x2="${cx.toFixed(2)}" y2="${stemTop.toFixed(2)}" stroke="${COLORS.direct}" stroke-width="1.5" stroke-dasharray="2.5 2.5"/>`;
+      html += `<circle cx="${cx.toFixed(2)}" cy="${cy.toFixed(2)}" r="4.5" fill="${COLORS.direct}" stroke="${COLORS.paper}" stroke-width="1.5"/>`;
+      html += `</g>`;
+    }
+
+    const areaTxt = formatAreaNum(scene.sliceArea, 3);
+    html += `<text x="${padL}" y="13" text-anchor="start" fill="${COLORS.raw}" opacity="${Math.max(0.3, A.raw).toFixed(2)}" font-family="'IBM Plex Mono', monospace" font-size="10.0">raw slice area = ${areaTxt}</text>`;
+    if (hasScale) {
+      html += `<text x="${padL}" y="26" text-anchor="start" fill="${COLORS.arrow}" opacity="${Math.max(0.3, arrowOp).toFixed(2)}" font-family="'IBM Plex Mono', monospace" font-size="9.8" font-weight="600">scale ${formatMultNum(scaleFactor)} (${actionWord})</text>`;
+    }
+
+    let condHdr = 'conditional pdf: negligible mass';
+    if (scene.hasValidCond) {
+      condHdr = visCondArea < 0.985
+        ? `area on ℝ = 1.000 (${Math.round(Math.min(100, visCondArea * 100))}% in view)`
+        : 'conditional area = 1.000';
+    }
+    html += `<text x="${padL + pw}" y="13" text-anchor="end" fill="${COLORS.direct}" opacity="${Math.max(0.3, A.cond).toFixed(2)}" font-family="'IBM Plex Mono', monospace" font-size="10.0">${condHdr}</text>`;
+    html += `<text x="${padL + pw}" y="26" text-anchor="end" fill="${COLORS.marg}" opacity="${Math.max(0.3, margSliceAlpha).toFixed(2)}" font-family="'IBM Plex Mono', monospace" font-size="10.0">dashed: marginal ${margSvgSym}</text>`;
+    html += `<text x="${padL + pw + 11}" y="${padT + ph + 4}" text-anchor="middle" fill="${COLORS.ink}" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="14">${axisVar}</text>`;
+
+    sliceSvg.innerHTML = html;
+
+    if (cfg.formatSliceCaption) {
+      sliceCaption.innerHTML = formatMathUiHtml(cfg.formatSliceCaption(scene, state, formatSigned));
+    } else {
+      const mName = state.mode === 'x' ? `f_X(${formatSigned(sliceVal, 2, true)})` : `f_Y(${formatSigned(sliceVal, 2, true)})`;
+      if (!scene.hasValidCond || scene.sliceArea <= 0) {
+        sliceCaption.innerHTML = formatMathUiHtml(`Here ${mName} = ${areaTxt}: the active slice lies outside or in the extreme tail of the marginal support, so renormalization is undefined or omitted.`);
+      } else if (scaleFactor > 1.02) {
+        sliceCaption.innerHTML = formatMathUiHtml(`Here ${mName} = ${areaTxt} < 1, so dividing by ${mName} stretches the ochre cross-section upward by ${formatMultNum(scaleFactor)} into the crimson conditional pdf.`);
+      } else if (scaleFactor < 0.98) {
+        sliceCaption.innerHTML = formatMathUiHtml(`Here ${mName} = ${areaTxt} > 1, so dividing by ${mName} scales the ochre cross-section downward by ${formatMultNum(scaleFactor)} so the conditional pdf integrates to 1.`);
+      } else {
+        sliceCaption.innerHTML = formatMathUiHtml(`Here ${mName} = ${areaTxt} ≒ 1, so the raw cross-section and normalized conditional pdf have nearly identical height.`);
+      }
+    }
+  }
+
+  function evalCovIntegrandAt(u, p) {
+    if (state.mode === 'x') {
+      const dm = cfg.evalDirect(u, p, state);
+      const fx = cfg.evalMargX(u, p, state);
+      return dm.mean !== null ? u * dm.mean * fx : 0;
+    }
+    const rm = cfg.evalReverse(u, p, state);
+    const fy = cfg.evalMargY(u, p, state);
+    return rm.mean !== null ? u * rm.mean * fy : 0;
+  }
+
+  function renderCovChart(scene, A) {
+    if (!cfg.hasCovPanel) return;
+    const p = state.params;
+    const sliceVal = p.slice;
+    const W = 430, H = 176;
+    const padL = 42, padR = 22, padT = 24, padB = 28;
+    const pw = W - padL - padR;
+    const ph = H - padT - padB;
+    const steps = 160;
+    const vals = new Float64Array(steps + 1);
+    let rawMaxAbs = 0.0;
+
+    for (let i = 0; i <= steps; i++) {
+      const u = -L + (2 * L * i) / steps;
+      const v = evalCovIntegrandAt(u, p);
+      vals[i] = v;
+      if (Math.abs(v) > rawMaxAbs) rawMaxAbs = Math.abs(v);
+    }
+
+    const scaleBase = Math.max(0.11, rawMaxAbs);
+    const yLim = scaleBase * 1.22;
+    const mapU = u => padL + ((u + L) / (2 * L)) * pw;
+    const mapV = v => padT + ph * 0.5 - (v / yLim) * (ph * 0.5);
+    const yZero = (padT + ph * 0.5).toFixed(2);
+
+    let posArea = `M${mapU(-L).toFixed(2)},${yZero}`;
+    let negArea = `M${mapU(-L).toFixed(2)},${yZero}`;
+    let linePath = '';
+    for (let i = 0; i <= steps; i++) {
+      const u = -L + (2 * L * i) / steps;
+      const px = mapU(u).toFixed(2);
+      const v = vals[i];
+      posArea += `L${px},${mapV(Math.max(0, v)).toFixed(2)}`;
+      negArea += `L${px},${mapV(Math.min(0, v)).toFixed(2)}`;
+      linePath += (i === 0 ? 'M' : 'L') + px + ',' + mapV(v).toFixed(2);
+    }
+    posArea += `L${mapU(L).toFixed(2)},${yZero}Z`;
+    negArea += `L${mapU(L).toFixed(2)},${yZero}Z`;
+
+    const axisVar = state.mode === 'x' ? 'x' : 'y';
+    const opCov = state.mode === 'x' ? Math.max(0.35, A.direct) : Math.max(0.35, A.reverse);
+
+    let html = '<title id="jd-cov-title">Signed covariance integrand</title>';
+    html += '<desc id="jd-cov-desc">Signed cross-product integrand showing positive and negative lobes canceling to zero covariance over the real line.</desc>';
+
+    for (const tv of [scaleBase * 0.85, -scaleBase * 0.85]) {
+      const gy = mapV(tv).toFixed(2);
+      html += `<line x1="${padL}" y1="${gy}" x2="${padL + pw}" y2="${gy}" stroke="rgba(31,28,24,0.07)" stroke-width="1"/>`;
+      html += `<text x="${padL - 5}" y="${(parseFloat(gy) + 3.2).toFixed(2)}" text-anchor="end" fill="${COLORS.inkMute}" font-family="'IBM Plex Mono', monospace" font-size="9.2">${formatSigned(tv, 2, true)}</text>`;
+    }
+
+    html += `<line x1="${mapU(0).toFixed(2)}" y1="${padT}" x2="${mapU(0).toFixed(2)}" y2="${padT + ph}" stroke="rgba(31,28,24,0.12)" stroke-width="1"/>`;
+    html += `<line x1="${padL}" y1="${yZero}" x2="${padL + pw}" y2="${yZero}" stroke="${COLORS.inkSoft}" stroke-width="1"/>`;
+    html += `<text x="${padL - 5}" y="${(parseFloat(yZero) + 3.2).toFixed(2)}" text-anchor="end" fill="${COLORS.inkMute}" font-family="'IBM Plex Mono', monospace" font-size="9.2">0</text>`;
+
+    html += `<g opacity="${opCov.toFixed(2)}">`;
+    html += `<path d="${posArea}" fill="rgba(63,109,57,0.25)"/>`;
+    html += `<path d="${negArea}" fill="rgba(156,45,45,0.23)"/>`;
+    html += `<path d="${linePath}" fill="none" stroke="${COLORS.ink}" stroke-width="1.85"/>`;
+
+    const sx = mapU(sliceVal);
+    const sy = mapV(evalCovIntegrandAt(sliceVal, p));
+    html += `<line x1="${sx.toFixed(2)}" y1="${yZero}" x2="${sx.toFixed(2)}" y2="${sy.toFixed(2)}" stroke="${COLORS.raw}" stroke-width="1.5"/>`;
+    html += `<circle cx="${sx.toFixed(2)}" cy="${sy.toFixed(2)}" r="3.8" fill="${COLORS.raw}" stroke="${COLORS.paper}" stroke-width="1.3"/>`;
+    html += `</g>`;
+
+    for (let k = -3; k <= 3; k++) {
+      if (Math.abs(k) > L + 1e-6) continue;
+      const tx = mapU(k).toFixed(2);
+      html += `<line x1="${tx}" y1="${padT + ph}" x2="${tx}" y2="${padT + ph + 4}" stroke="${COLORS.inkSoft}" stroke-width="1"/>`;
+      html += `<text x="${tx}" y="${padT + ph + 15}" text-anchor="middle" fill="${COLORS.inkSoft}" font-family="'IBM Plex Mono', monospace" font-size="10.5">${k}</text>`;
+    }
+    html += `<text x="${padL}" y="14" text-anchor="start" fill="#2b5326" font-family="'IBM Plex Mono', monospace" font-size="9.8">+ lobe</text>`;
+    html += `<text x="${padL + 46}" y="14" text-anchor="start" fill="#8a2020" font-family="'IBM Plex Mono', monospace" font-size="9.8">− lobe</text>`;
+    html += `<text x="${padL + pw}" y="14" text-anchor="end" fill="${COLORS.inkSoft}" font-family="'IBM Plex Mono', monospace" font-size="9.8">integral over ℝ: Cov(X, Y) = 0.0000</text>`;
+    html += `<text x="${padL + pw + 11}" y="${padT + ph + 4}" text-anchor="middle" fill="${COLORS.ink}" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="13.5">${axisVar}</text>`;
+    covSvg.innerHTML = html;
+
+    if (covHeading) {
+      covHeading.innerHTML = formatMathUiHtml(
+        state.mode === 'x'
+          ? 'Covariance integrand (x − E(X)) · E(Y | X = x) · f_X(x)'
+          : 'Covariance integrand (y − E(Y)) · E(X | Y = y) · f_Y(y)'
+      );
+    }
+    if (cfg.formatCovCaption) covCaption.innerHTML = formatMathUiHtml(cfg.formatCovCaption(scene, state));
+  }
+
+  function setBadge(boxId, txtId, holds, text) {
+    const box = root.querySelector('#' + boxId);
+    const txt = root.querySelector('#' + txtId);
+    box.className = 'jd-badge ' + (holds ? 'jd-badge--holds' : 'jd-badge--fails');
+    txt.textContent = text;
+  }
+
+  function renderAll() {
+    rafPending = false;
+    Object.keys(sliderRefs).forEach(id => {
+      const r = sliderRefs[id];
+      const lblTxt = typeof r.spec.dynamicLabel === 'function' ? r.spec.dynamicLabel(state) : r.spec.label;
+      r.lbl.innerHTML = formatMathUiHtml(lblTxt);
+      r.out.textContent = formatSigned(state.params[id], r.spec.digits !== undefined ? r.spec.digits : 2, !!r.spec.signed);
+      syncSliderFill(r.inp);
+    });
+
+    if (cfg.hasRidge && cfg.ridgeLegendLabel) {
+      const legLbl = typeof cfg.ridgeLegendLabel === 'function' ? cfg.ridgeLegendLabel(state) : cfg.ridgeLegendLabel;
+      legRidge.innerHTML = '<i class="jd-swatch jd-swatch--ridge" aria-hidden="true"></i>' + formatMathUiHtml(legLbl);
+    }
+
+    const A = getFocusAlphas();
+    syncLegendAlphas(A);
+
+    const scene = computeScene();
+    render3DSurface(scene, A);
+    renderContour(scene, A);
+    renderSliceChart(scene, A);
+    renderCovChart(scene, A);
+
+    if (cfg.hasStatusStrip && cfg.evalBadges) {
+      const b = cfg.evalBadges(state, scene);
+      setBadge('jd-st-indep', 'jd-st-indep-v', b.indep.holds, b.indep.text);
+      setBadge('jd-st-my', 'jd-st-my-v', b.my.holds, b.my.text);
+      setBadge('jd-st-mx', 'jd-st-mx-v', b.mx.holds, b.mx.text);
+      setBadge('jd-st-cov', 'jd-st-cov-v', b.cov.holds, b.cov.text);
+    }
+
+    if (cfg.formatReadouts) {
+      const ro = cfg.formatReadouts(scene, state, formatSigned);
+      root.querySelector('#jd-ro1-val').innerHTML = formatMathUiHtml(ro[0]);
+      root.querySelector('#jd-ro2-val').innerHTML = formatMathUiHtml(ro[1]);
+      root.querySelector('#jd-ro3-val').innerHTML = formatMathUiHtml(ro[2]);
+      root.querySelector('#jd-ro4-val').innerHTML = formatMathUiHtml(ro[3]);
+    }
+  }
+
+  function scheduleRender() {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(renderAll);
+  }
+
+  function animateCameraTo(targetAz, targetEl) {
+    if (animFrame) cancelAnimationFrame(animFrame);
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
+      state.az = targetAz;
+      state.el = targetEl;
+      scheduleRender();
+      return;
+    }
+    const startAz = state.az, startEl = state.el;
+    const deltaAz = ((targetAz - startAz + 540) % 360) - 180;
+    const t0 = performance.now();
+    const dur = 250;
+    function tick(now) {
+      const pr = Math.min(1, (now - t0) / dur);
+      const ease = 1 - Math.pow(1 - pr, 3);
+      state.az = startAz + deltaAz * ease;
+      state.el = startEl + (targetEl - startEl) * ease;
+      renderAll();
+      if (pr < 1) animFrame = requestAnimationFrame(tick);
+      else animFrame = null;
+    }
+    animFrame = requestAnimationFrame(tick);
+  }
+
+  root.querySelectorAll('[data-view]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const v = btn.getAttribute('data-view');
+      if (v === 'oblique') animateCameraTo(36, 28);
+      else if (v === 'slice') {
+        // Always keep +y (mode='x') or +x (mode='y') pointing right to match 1D/2D plots
+        if (state.mode === 'x') animateCameraTo(90, 8);
+        else animateCameraTo(0, 8);
+      } else if (v === 'top') animateCameraTo(0, 90);
+    });
+  });
+
+  resetBtn.addEventListener('click', () => {
+    Object.keys(sliderRefs).forEach(id => {
+      const def = sliderRefs[id].spec.def;
+      state.params[id] = def;
+      sliderRefs[id].inp.value = String(def);
+    });
+    setSliceMode(cfg.defaultMode || 'x');
+    if (cfg.defaultSubMode) {
+      state.subMode = cfg.defaultSubMode;
+      subModeBtns.forEach(x => x.setAttribute('aria-pressed', x.dataset.submode === state.subMode ? 'true' : 'false'));
+    }
+    setCond3D(cfg.defaultCond3D !== false);
+    setFocus('all');
+    animateCameraTo(cfg.defaultAz !== undefined ? cfg.defaultAz : 36, cfg.defaultEl !== undefined ? cfg.defaultEl : 28);
+  });
+
+  // 3D pointer drag & keyboard rotation
+  let drag3D = false, lx = 0, ly = 0;
+  surfaceCanvas.addEventListener('pointerdown', e => {
+    if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
+    drag3D = true; lx = e.clientX; ly = e.clientY;
+    try { surfaceCanvas.setPointerCapture(e.pointerId); } catch (_) {}
+  });
+  surfaceCanvas.addEventListener('pointermove', e => {
+    if (!drag3D) return;
+    const dx = e.clientX - lx, dy = e.clientY - ly;
+    lx = e.clientX; ly = e.clientY;
+    state.az -= dx * 0.52;
+    if (state.az > 180) state.az -= 360;
+    if (state.az <= -180) state.az += 360;
+    state.el = Math.max(4, Math.min(90, state.el + dy * 0.42));
+    scheduleRender();
+  });
+  const end3D = e => { if (!drag3D) return; drag3D = false; try { surfaceCanvas.releasePointerCapture(e.pointerId); } catch (_) {} };
+  surfaceCanvas.addEventListener('pointerup', end3D);
+  surfaceCanvas.addEventListener('pointercancel', end3D);
+
+  surfaceCanvas.addEventListener('keydown', e => {
+    let handled = true;
+    if (e.key === 'ArrowLeft') state.az += 6;
+    else if (e.key === 'ArrowRight') state.az -= 6;
+    else if (e.key === 'ArrowUp') state.el = Math.min(90, state.el + 5);
+    else if (e.key === 'ArrowDown') state.el = Math.max(4, state.el - 5);
+    else if (e.key === 'Home') { state.az = 36; state.el = 28; }
+    else handled = false;
+    if (handled) {
+      e.preventDefault();
+      if (state.az > 180) state.az -= 360;
+      if (state.az <= -180) state.az += 360;
+      scheduleRender();
+    }
+  });
+
+  // 2D contour drag (with touch-scroll pass-through along orthogonal axis)
+  let drag2D = false, touchPending = false, tStartX = 0, tStartY = 0;
+  function updateFromContour(e) {
+    const rect = contourSvg.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    const ux = ((e.clientX - rect.left) / rect.width) * 380;
+    const uy = ((e.clientY - rect.top) / rect.height) * 380;
+    const raw = state.mode === 'x' ? -L + ((ux - 38) / 324) * (2 * L) : L - ((uy - 18) / 324) * (2 * L);
+    const slSpec = sliderRefs.slice.spec;
+    const snapped = Math.round(raw / slSpec.step) * slSpec.step;
+    const clamped = Math.max(slSpec.min, Math.min(slSpec.max, snapped));
+    setParam('slice', clamped);
+    scheduleRender();
+  }
+
+  contourSvg.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'touch') {
+      touchPending = true;
+      drag2D = false;
+      tStartX = e.clientX;
+      tStartY = e.clientY;
+      return;
+    }
+    drag2D = true;
+    touchPending = false;
+    try { contourSvg.setPointerCapture(e.pointerId); } catch (_) {}
+    updateFromContour(e);
+  });
+  contourSvg.addEventListener('pointermove', e => {
+    if (touchPending) {
+      const adx = Math.abs(e.clientX - tStartX);
+      const ady = Math.abs(e.clientY - tStartY);
+      if (state.mode === 'x') {
+        if (ady > adx && ady > 6) { touchPending = false; return; }
+        if (adx > 5) {
+          touchPending = false;
+          drag2D = true;
+          try { contourSvg.setPointerCapture(e.pointerId); } catch (_) {}
+        } else return;
+      } else {
+        if (adx > ady && adx > 6) { touchPending = false; return; }
+        if (ady > 5) {
+          touchPending = false;
+          drag2D = true;
+          try { contourSvg.setPointerCapture(e.pointerId); } catch (_) {}
+        } else return;
+      }
+    }
+    if (!drag2D) return;
+    updateFromContour(e);
+  });
+  const end2D = e => {
+    touchPending = false;
+    if (!drag2D) return;
+    drag2D = false;
+    try { contourSvg.releasePointerCapture(e.pointerId); } catch (_) {}
+  };
+  contourSvg.addEventListener('pointerup', end2D);
+  contourSvg.addEventListener('pointercancel', end2D);
+
+  if (window.ResizeObserver) {
+    new ResizeObserver(() => scheduleRender()).observe(surfaceCanvas);
+  } else {
+    window.addEventListener('resize', () => scheduleRender(), { passive: true });
+  }
+
+  renderAll();
+})();
+</script>

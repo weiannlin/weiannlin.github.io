@@ -310,7 +310,7 @@ $$
 
 </div>
 
-<div class="topic-box topic-box--note" markdown="1">
+<div id="note-mean-independence" class="topic-box topic-box--note" markdown="1">
 <div class="topic-box__label">Note</div>
 
 第 (6) 款的條件 $\mathbb{E}(Y\mid X)=\mathbb{E}(Y)$ 常稱為**期望值上獨立**，意指**平均而言，$X$ 對 $Y$ 沒有影響**。對照雙重期望值定理的[立體圖形](/lecture-notes/double-expectation-theorem/#fig-regression-function-surface)，一般情形下給定不同的條件會對應不同的條件分配重心位置 (即[條件期望值](/lecture-notes/conditional-expectation-and-variance/#def-conditional-expectation))，而 $\mathbb{E}(Y\mid X)=\mathbb{E}(Y)$ 表示各條件分配的形狀雖可能不同，重心位置卻恆維持不變。此條件弱於獨立 (要求各條件分配完全相同)，卻又強於零相關 (僅要求 $X$ 與 $Y$ 的共同變化關係在平均下互相抵銷)。三者的強弱關係可歸納成下列逆不真的敘述
@@ -346,6 +346,8 @@ $$
 此外，如第 (6) 款證明所示，在條件期望值已知的問題中，亦常藉由 $\mathbb{E}(XY)=\mathbb{E}\bigl[X\,\mathbb{E}(Y\mid X)\bigr]$ 這項變形來計算共變異數。
 
 </div>
+
+若想在連續型聯合密度曲面上逐層對照上述逆不真的強弱關係，可參考互動展示 [Radially Symmetric Volcano Crater: Mean Independence Without Independence](/demos/volcano-mean-independence/) 與 [Parabolic Ridge: One-Way Mean Independence and Zero Covariance](/demos/parabolic-ridge-covariance/)。前者各切片形狀隨切面位置由雙峰轉為單峰，卻因徑向對稱使兩個方向的條件期望值恆維持常數，呈現期望值上獨立卻不獨立；後者則使 $\mathbb{E}(Y\mid X=x)$ 呈二次拋物線變化、反方向維持 <span class="text-nowrap">$\mathbb{E}(X\mid Y=y)=0$，</span>並由正負對稱面積相消得到 <span class="text-nowrap">$\operatorname{Cov}(X,Y)=0$。</span>
 
 ## 共變異數的計算
 

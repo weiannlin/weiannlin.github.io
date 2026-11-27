@@ -229,6 +229,8 @@ $$
 其中，$\rho_{\sssig XY}$ 的正負號與正迴歸及逆迴歸的斜率相同。
 {: .topic-paren-cont}
 
+若想將本章的聯合密度曲面、側牆邊際密度、條件切片、正逆迴歸軌跡，以及[獨立](/lecture-notes/independent-random-variables/#def-indep-r-v)、[期望值上獨立](/lecture-notes/covariance/#note-mean-independence)與零相關的強弱關係放在同一套三維座標中綜合比較，可瀏覽互動展示總覽 [3D Joint Density Surfaces, Conditional Slices, and Regression](/demos/joint-density-3d/)，對照雙向線性、單向線性及雙向非線性等八組連續型二元分配的幾何差異。
+
 ## 母體線性迴歸式的例題
 
 <div id="ex-two-regression-lines" class="topic-box topic-box--example" markdown="1">

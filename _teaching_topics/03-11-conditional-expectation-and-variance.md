@@ -61,6 +61,8 @@ $$
 
 </div>
 
+當條件分配並非左右對稱時，切片的重心與峰頂[眾數](/lecture-notes/mode/#def-mode)未必落在同一點。讀者可在互動展示 [Skewed Conditional Slices: Conditional Expectation as Centroid, Not Peak](/demos/skewed-slice-centroid/) 中觀察單峰右偏的條件切片，比較切片峰頂在底平面的投影位置與受右側長尾牽引的條件期望值 $\mathbb{E}(Y\mid X=x\_0)$ 如何分離。
+
 <div id="def-conditional-expectation-of-function" class="topic-box topic-box--definition" markdown="1">
 <div class="topic-box__label">Definition 3.12 (函數的條件期望值, conditional expectation of a function)</div>
 
